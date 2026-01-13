@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import Stripe from "stripe";
-import { stripe } from "@/lib/stripe/stripe";
+import { getStripeClient } from "@/lib/stripe/stripe";
 import prisma from "@/lib/db";
 
 export async function POST(request: Request) {
@@ -19,6 +19,7 @@ export async function POST(request: Request) {
   let event: Stripe.Event;
 
   try {
+    const stripe = getStripeClient();
     event = stripe.webhooks.constructEvent(
       body,
       signature,
@@ -83,6 +84,7 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
   }
 
   // Get subscription details
+  const stripe = getStripeClient();
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
 
   // Create or update subscription record

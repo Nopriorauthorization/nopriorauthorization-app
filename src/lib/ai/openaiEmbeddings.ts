@@ -1,13 +1,21 @@
 import OpenAI from "openai";
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let client: OpenAI | null = null;
 
-export async function getEmbedding(text: string): Promise<number[] | null> {
-  if (!process.env.OPENAI_API_KEY) {
+function getOpenAIClient() {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
     return null;
   }
+  if (!client) {
+    client = new OpenAI({ apiKey });
+  }
+  return client;
+}
+
+export async function getEmbedding(text: string): Promise<number[] | null> {
+  const client = getOpenAIClient();
+  if (!client) return null;
 
   const response = await client.embeddings.create({
     model: "text-embedding-3-small",

@@ -8,18 +8,25 @@ import {
 import { detectMascot } from "./routing";
 import { getSafetyResponse, needsSafetyResponse } from "./safety";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
-});
+let openaiClient: OpenAI | null = null;
+
+function getOpenAIClient() {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error("Missing OPENAI_API_KEY");
+  }
+  if (!openaiClient) {
+    openaiClient = new OpenAI({ apiKey });
+  }
+  return openaiClient;
+}
 
 export async function generateChatResponse(
   userMessage: string,
   mascotId?: string,
   tier: LibraryTier = "free"
 ) {
-  if (!process.env.OPENAI_API_KEY) {
-    throw new Error("Missing OPENAI_API_KEY");
-  }
+  const openai = getOpenAIClient();
 
   const appendDisclaimer = (text: string) => {
     if (text.includes("\n---\n")) return text;

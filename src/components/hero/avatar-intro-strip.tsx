@@ -106,6 +106,7 @@ function AvatarCard({
   muted,
   onActivate,
   onToggleSound,
+  onCtaClick,
   videoRef,
 }: {
   avatar: AvatarIntro;

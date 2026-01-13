@@ -1,0 +1,32 @@
+[
+  {
+    "id": "slim-t-metabolism",
+    "mascotId": "slim-t",
+    "tier": "free",
+    "title": "What actually affects metabolism",
+    "summary": "Consistency, sleep, stress, and muscle mass matter more than hacks.",
+    "body": "Metabolism responds to activity, recovery, and muscle. Sustainable routines beat quick fixes.",
+    "tags": ["metabolism", "habits", "consistency"],
+    "keywords": ["metabolism", "weight loss", "habits"]
+  },
+  {
+    "id": "slim-t-glp1-realities",
+    "mascotId": "slim-t",
+    "tier": "free",
+    "title": "GLP-1 realities",
+    "summary": "GLP-1s can help, but they are not a magic fix.",
+    "body": "Long-term success still depends on habits, nutrition, and medical oversight.",
+    "tags": ["glp-1", "weight loss", "realities"],
+    "keywords": ["ozempic", "semaglutide", "glp-1"]
+  },
+  {
+    "id": "slim-t-hormones",
+    "mascotId": "slim-t",
+    "tier": "premium",
+    "title": "Hormones and long-term health",
+    "summary": "Hormones can influence energy and weight, but context matters.",
+    "body": "Labs and symptoms must be interpreted carefully. Focus on long-term health over quick changes.",
+    "tags": ["hormones", "health", "context"],
+    "keywords": ["hormones", "energy", "labs"]
+  }
+]

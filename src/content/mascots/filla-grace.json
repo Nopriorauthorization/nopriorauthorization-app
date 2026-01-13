@@ -1,0 +1,32 @@
+[
+  {
+    "id": "filla-grace-balance",
+    "mascotId": "filla-grace",
+    "tier": "free",
+    "title": "Facial balance and fillers",
+    "summary": "Fillers are about harmony and proportion, not changing who you are.",
+    "body": "Providers often assess the face as a whole. Subtle volume can restore balance without looking overdone.",
+    "tags": ["fillers", "balance", "harmony"],
+    "keywords": ["facial balance", "proportion", "natural looking"]
+  },
+  {
+    "id": "filla-grace-consult",
+    "mascotId": "filla-grace",
+    "tier": "free",
+    "title": "What to expect at a filler consult",
+    "summary": "A thoughtful consult includes a full-face assessment and conservative plan.",
+    "body": "You should hear what is realistic, what is optional, and how results are maintained over time.",
+    "tags": ["consultation", "expectations", "plan"],
+    "keywords": ["filler consult", "what to expect", "symmetry"]
+  },
+  {
+    "id": "filla-grace-natural",
+    "mascotId": "filla-grace",
+    "tier": "premium",
+    "title": "Why natural does not always mean invisible",
+    "summary": "Natural results are subtle, but still noticeable in photos and motion.",
+    "body": "Natural is about balance, not perfection. The goal is refreshed, not transformed.",
+    "tags": ["natural", "results", "expectations"],
+    "keywords": ["natural results", "before after", "subtle"]
+  }
+]

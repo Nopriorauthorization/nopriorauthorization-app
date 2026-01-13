@@ -1,0 +1,102 @@
+[
+  {
+    "id": "beau-tox-basics",
+    "mascotId": "beau-tox",
+    "tier": "free",
+    "title": "What Botox is and how it works",
+    "summary": "Botox is a neuromodulator that relaxes targeted muscles to soften expression lines.",
+    "body": "Botox works by temporarily reducing muscle activity where it is placed, which can soften lines caused by repeated facial expressions. Results are subtle and gradual, and timing varies by person.",
+    "tags": ["botox", "neuromodulator", "wrinkles", "expression lines"],
+    "keywords": ["what is botox", "how does botox work", "neuromodulator"]
+  },
+  {
+    "id": "beau-tox-consult",
+    "mascotId": "beau-tox",
+    "tier": "free",
+    "title": "How to prepare for a Botox consultation",
+    "summary": "Know your goals, bring questions, and expect a face-by-face assessment.",
+    "body": "A good consult focuses on your goals, your natural expressions, and your comfort level. Ask about what outcomes are realistic, how subtle changes are planned, and how follow-ups are handled.",
+    "tags": ["consultation", "questions", "expectations"],
+    "keywords": ["consult", "appointment", "what to ask"]
+  },
+  {
+    "id": "filla-grace-balance",
+    "mascotId": "filla-grace",
+    "tier": "free",
+    "title": "Facial balance and fillers",
+    "summary": "Fillers are about restoring harmony, not changing who you are.",
+    "body": "Providers often look at the face as a whole - how features relate in proportion and profile. Subtle volume changes can restore balance without making anything look done.",
+    "tags": ["fillers", "balance", "harmony"],
+    "keywords": ["facial balance", "proportion", "natural looking"]
+  },
+  {
+    "id": "filla-grace-consult",
+    "mascotId": "filla-grace",
+    "tier": "free",
+    "title": "What to expect at a filler consult",
+    "summary": "You'll discuss goals, symmetry, and a conservative plan.",
+    "body": "A thoughtful consult includes a full-face assessment, discussion of concerns, and a plan that prioritizes subtle changes over instant transformation.",
+    "tags": ["consultation", "symmetry", "expectations"],
+    "keywords": ["filler consult", "what to expect", "symmetry"]
+  },
+  {
+    "id": "slim-t-metabolism",
+    "mascotId": "slim-t",
+    "tier": "free",
+    "title": "What actually affects metabolism",
+    "summary": "Consistency, sleep, stress, and muscle mass matter more than hacks.",
+    "body": "Metabolism is influenced by activity, recovery, and muscle. Sustainable routines beat quick fixes because they support hormones, energy, and adherence.",
+    "tags": ["metabolism", "habits", "consistency"],
+    "keywords": ["metabolism", "weight loss", "habits"]
+  },
+  {
+    "id": "slim-t-mindset",
+    "mascotId": "slim-t",
+    "tier": "free",
+    "title": "Mindset for sustainable change",
+    "summary": "Small, repeatable wins beat all-or-nothing plans.",
+    "body": "Aim for habits that are simple enough to repeat on busy days. Consistency creates momentum and reduces the pressure to be perfect.",
+    "tags": ["mindset", "habits", "consistency"],
+    "keywords": ["motivation", "discipline", "consistency"]
+  },
+  {
+    "id": "peppi-peptides-101",
+    "mascotId": "peppi",
+    "tier": "free",
+    "title": "Peptides in simple terms",
+    "summary": "Peptides are short chains of amino acids that can signal processes in the body.",
+    "body": "Think of peptides as small messengers. Different peptides are studied for different roles, which is why clear goals and good sources matter.",
+    "tags": ["peptides", "science", "basics"],
+    "keywords": ["what are peptides", "amino acids", "signaling"]
+  },
+  {
+    "id": "peppi-hype-vs-real",
+    "mascotId": "peppi",
+    "tier": "free",
+    "title": "Hype vs. real in peptide science",
+    "summary": "Research is promising in some areas, but not all claims are equal.",
+    "body": "Some peptides have emerging evidence, others are mostly theoretical. It is smart to ask what is studied, in whom, and for how long.",
+    "tags": ["research", "evidence", "hype"],
+    "keywords": ["hype", "evidence", "research"]
+  },
+  {
+    "id": "harmony-balance",
+    "mascotId": "harmony",
+    "tier": "free",
+    "title": "What hormone balance means",
+    "summary": "It is about symptoms, patterns, and overall wellbeing, not a single number.",
+    "body": "Hormones work as a system, so balance is often about trends and how you feel over time. A licensed clinician can interpret labs in context.",
+    "tags": ["hormones", "balance", "wellness"],
+    "keywords": ["hormone balance", "what does it mean", "labs"]
+  },
+  {
+    "id": "harmony-consult",
+    "mascotId": "harmony",
+    "tier": "free",
+    "title": "Preparing for a hormone consult",
+    "summary": "Bring symptom timelines, lifestyle factors, and questions.",
+    "body": "Helpful context includes changes in sleep, energy, mood, and cycle patterns. That context helps a provider interpret labs thoughtfully.",
+    "tags": ["consultation", "symptoms", "questions"],
+    "keywords": ["hormone consult", "what to ask", "prepare"]
+  }
+]

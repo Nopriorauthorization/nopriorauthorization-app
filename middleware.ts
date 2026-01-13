@@ -1,0 +1,60 @@
+// src/middleware.ts
+import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
+
+export default withAuth(
+  function middleware(req) {
+    return NextResponse.next();
+  },
+  {
+    callbacks: {
+      authorized: ({ token, req }) => {
+        const { pathname } = req.nextUrl;
+        if (process.env.INTERNAL_ACCESS_BYPASS === "true") {
+          return true;
+        }
+
+        // ✅ PUBLIC routes — no login required
+        const publicRoutes = [
+          "/",
+          "/home",
+          "/about",
+          "/pricing",
+          "/characters",
+          "/chat",
+          "/login",
+          "/signup",
+          "/subscribe",
+          "/api/chat",
+          "/api/peppi",
+          "/api/beau-tox",
+          "/api/filla-grace",
+          "/api/slim-t",
+          "/api/harmony",
+          "/api/auth",
+        ];
+
+        if (
+          publicRoutes.includes(pathname) ||
+          pathname.startsWith("/_next") ||
+          pathname.includes(".") ||
+          pathname.startsWith("/characters") ||
+          pathname.startsWith("/api/auth")
+        ) {
+          return true;
+        }
+
+        // 🔐 Require auth for everything else
+        return !!token;
+      },
+    },
+    pages: {
+      signIn: "/login",
+    },
+  }
+);
+
+// ✅ This makes sure it matches everything except Stripe webhook
+export const config = {
+  matcher: ["/((?!api/stripe/webhook).*)"],
+};

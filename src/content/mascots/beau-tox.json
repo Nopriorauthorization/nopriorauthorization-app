@@ -1,0 +1,32 @@
+[
+  {
+    "id": "beau-tox-basics",
+    "mascotId": "beau-tox",
+    "tier": "free",
+    "title": "What Botox is and how it works",
+    "summary": "Botox is a neuromodulator that relaxes targeted muscles to soften expression lines.",
+    "body": "It temporarily reduces muscle activity where it is placed, which can soften lines caused by repeated expressions. Results are subtle and vary by person.",
+    "tags": ["botox", "neuromodulator", "wrinkles", "expression lines"],
+    "keywords": ["what is botox", "how does botox work", "neuromodulator"]
+  },
+  {
+    "id": "beau-tox-myths",
+    "mascotId": "beau-tox",
+    "tier": "free",
+    "title": "Common Botox myths",
+    "summary": "The biggest myths are about looking frozen, safety, and instant results.",
+    "body": "Most results are subtle when done conservatively. Outcomes depend on dosage, placement, and your anatomy, which is why consults matter.",
+    "tags": ["myths", "marketing", "results"],
+    "keywords": ["frozen face", "myth", "instant results"]
+  },
+  {
+    "id": "beau-tox-red-flags",
+    "mascotId": "beau-tox",
+    "tier": "premium",
+    "title": "Red flags in med spas",
+    "summary": "High-pressure sales, vague credentials, and rushed consults are warning signs.",
+    "body": "A safe provider explains options clearly, sets expectations, and welcomes questions. If you feel rushed or pushed, pause.",
+    "tags": ["red flags", "safety", "provider"],
+    "keywords": ["med spa", "red flags", "sales pressure"]
+  }
+]

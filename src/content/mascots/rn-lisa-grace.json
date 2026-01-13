@@ -1,0 +1,32 @@
+[
+  {
+    "id": "rn-lisa-grace-consent",
+    "mascotId": "rn-lisa-grace",
+    "tier": "free",
+    "title": "What informed consent should include",
+    "summary": "Risks, alternatives, and realistic outcomes should be clearly explained.",
+    "body": "You should understand benefits, risks, and what to do if something feels off. Questions are welcome, not rushed.",
+    "tags": ["consent", "safety", "rights"],
+    "keywords": ["informed consent", "consent form", "rights"]
+  },
+  {
+    "id": "rn-lisa-grace-red-flags",
+    "mascotId": "rn-lisa-grace",
+    "tier": "free",
+    "title": "Medical red flags",
+    "summary": "Rushed consults and unclear credentials are common warning signs.",
+    "body": "You should feel safe, listened to, and never pressured. If you do not, it is okay to pause.",
+    "tags": ["red flags", "safety", "provider"],
+    "keywords": ["red flags", "unsafe", "pressure"]
+  },
+  {
+    "id": "rn-lisa-grace-walk-away",
+    "mascotId": "rn-lisa-grace",
+    "tier": "premium",
+    "title": "When to walk away",
+    "summary": "Trust your instincts when something feels rushed or dismissive.",
+    "body": "A good provider explains options, listens, and respects your boundaries. If not, you can leave.",
+    "tags": ["boundaries", "safety", "advocacy"],
+    "keywords": ["walk away", "boundaries", "dismissive"]
+  }
+]

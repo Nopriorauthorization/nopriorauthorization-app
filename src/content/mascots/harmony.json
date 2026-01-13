@@ -1,0 +1,32 @@
+[
+  {
+    "id": "harmony-balance",
+    "mascotId": "harmony",
+    "tier": "free",
+    "title": "What hormone balance means",
+    "summary": "Balance is about patterns and symptoms, not one number.",
+    "body": "Hormones work as a system. A clinician interprets labs with your history and goals in mind.",
+    "tags": ["hormones", "balance", "wellness"],
+    "keywords": ["hormone balance", "labs", "symptoms"]
+  },
+  {
+    "id": "harmony-consult",
+    "mascotId": "harmony",
+    "tier": "free",
+    "title": "Preparing for a hormone consult",
+    "summary": "Bring symptom timelines and lifestyle context.",
+    "body": "Sleep, energy, mood, and cycle patterns help a provider interpret results responsibly.",
+    "tags": ["consultation", "symptoms", "questions"],
+    "keywords": ["hormone consult", "prepare", "questions"]
+  },
+  {
+    "id": "harmony-myths",
+    "mascotId": "harmony",
+    "tier": "premium",
+    "title": "Common hormone myths",
+    "summary": "Symptoms often overlap, which is why simplistic answers fail.",
+    "body": "The goal is to avoid one-size-fits-all fixes and focus on careful, personalized care.",
+    "tags": ["myths", "overlap", "context"],
+    "keywords": ["hormone myths", "one size fits all", "overlap"]
+  }
+]

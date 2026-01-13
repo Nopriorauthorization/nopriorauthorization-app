@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ryan-why-it-depends",
+    "mascotId": "ryan",
+    "tier": "free",
+    "title": "Why providers say 'it depends'",
+    "summary": "Real care depends on anatomy, history, and goals.",
+    "body": "Providers avoid one-size answers because outcomes vary. Good consults personalize the plan.",
+    "tags": ["consults", "nuance", "expectations"],
+    "keywords": ["it depends", "why vague", "nuance"]
+  },
+  {
+    "id": "ryan-workflow",
+    "mascotId": "ryan",
+    "tier": "free",
+    "title": "Why answers can feel vague",
+    "summary": "Time limits and safety checks shape how providers explain things.",
+    "body": "Most clinics balance education with time, which is why clear questions help.",
+    "tags": ["workflow", "constraints", "communication"],
+    "keywords": ["why vague", "time limits", "provider workflow"]
+  },
+  {
+    "id": "ryan-ask-better",
+    "mascotId": "ryan",
+    "tier": "premium",
+    "title": "Questions that unlock clearer answers",
+    "summary": "Ask about goals, tradeoffs, and follow-up plans.",
+    "body": "Specific questions get specific answers. Focus on outcomes, timelines, and alternatives.",
+    "tags": ["questions", "consults", "clarity"],
+    "keywords": ["what to ask", "consult questions", "clarity"]
+  }
+]

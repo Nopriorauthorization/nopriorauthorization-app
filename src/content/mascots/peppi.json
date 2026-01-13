@@ -1,0 +1,32 @@
+[
+  {
+    "id": "peppi-peptides-101",
+    "mascotId": "peppi",
+    "tier": "free",
+    "title": "Peptides in simple terms",
+    "summary": "Peptides are short chains of amino acids that can signal processes in the body.",
+    "body": "Think of them as tiny messengers. Different peptides are studied for different roles, which is why context and evidence matter.",
+    "tags": ["peptides", "basics", "science"],
+    "keywords": ["what are peptides", "amino acids", "messengers"]
+  },
+  {
+    "id": "peppi-hype-vs-real",
+    "mascotId": "peppi",
+    "tier": "free",
+    "title": "Hype vs reality",
+    "summary": "Some claims are early research, not proven outcomes.",
+    "body": "Ask what is studied, in whom, and for how long. Promising does not mean proven.",
+    "tags": ["research", "evidence", "hype"],
+    "keywords": ["hype", "evidence", "research"]
+  },
+  {
+    "id": "peppi-safety",
+    "mascotId": "peppi",
+    "tier": "premium",
+    "title": "Safety considerations",
+    "summary": "Safety depends on sourcing, supervision, and individual risk factors.",
+    "body": "Peptides are not all the same. The safest path is clinician-guided, with clear goals and monitoring.",
+    "tags": ["safety", "risk", "monitoring"],
+    "keywords": ["is it safe", "side effects", "supervision"]
+  }
+]

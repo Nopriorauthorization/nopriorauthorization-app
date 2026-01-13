@@ -1,0 +1,32 @@
+[
+  {
+    "id": "f-ill-migration",
+    "mascotId": "f-ill",
+    "tier": "free",
+    "title": "Filler migration myths",
+    "summary": "Migration can happen, but not every puffiness is migration.",
+    "body": "Swelling, placement, and product choice all affect how filler looks over time. The right question is why it looks that way.",
+    "tags": ["migration", "myths", "puffiness"],
+    "keywords": ["migration", "puffy", "why does it move"]
+  },
+  {
+    "id": "f-ill-overfilling",
+    "mascotId": "f-ill",
+    "tier": "free",
+    "title": "Overfilling consequences",
+    "summary": "Too much filler can change facial movement and proportions.",
+    "body": "Overfilling is often gradual. Small additions over time can add up to a look that feels off.",
+    "tags": ["overfilling", "proportions", "movement"],
+    "keywords": ["overfilled", "too much filler", "pillow face"]
+  },
+  {
+    "id": "f-ill-dissolving",
+    "mascotId": "f-ill",
+    "tier": "premium",
+    "title": "Dissolving realities",
+    "summary": "Dissolving is a tool, but it is not a reset button.",
+    "body": "It may take multiple sessions and should be handled conservatively. A careful plan matters.",
+    "tags": ["dissolving", "hyaluronidase", "realities"],
+    "keywords": ["dissolve filler", "hyaluronidase", "reversal"]
+  }
+]

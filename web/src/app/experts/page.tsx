@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { EXPERTS } from "@/content/experts";
+import ExpertChat from "@/components/experts/expert-chat";
 
 export default function ExpertsPage() {
   return (
@@ -52,6 +53,8 @@ export default function ExpertsPage() {
             </div>
           ))}
         </div>
+
+        <ExpertChat />
       </div>
     </main>
   );

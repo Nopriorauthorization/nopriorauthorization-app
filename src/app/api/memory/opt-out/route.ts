@@ -20,9 +20,9 @@ export async function POST(request: NextRequest) {
       where: { userId },
       update: {
         optOut: true,
-        goals: null,
-        preferences: null,
-        topicsDiscussed: null,
+        goals: [],
+        preferences: {},
+        topicsDiscussed: [],
       },
       create: {
         userId,
@@ -34,9 +34,9 @@ export async function POST(request: NextRequest) {
       where: { anonId },
       update: {
         optOut: true,
-        goals: null,
-        preferences: null,
-        topicsDiscussed: null,
+        goals: [],
+        preferences: {},
+        topicsDiscussed: [],
       },
       create: {
         anonId,

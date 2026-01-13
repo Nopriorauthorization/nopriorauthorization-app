@@ -1,6 +1,8 @@
 import ChatInterface from "@/components/chat/chat-interface";
 import WidgetTracker from "@/components/provider/widget-tracker";
 
+export const dynamic = "force-dynamic";
+
 export default function WidgetPage() {
   return (
     <main className="min-h-screen bg-white">

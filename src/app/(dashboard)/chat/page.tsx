@@ -10,6 +10,8 @@ import ChatInterface from "@/components/chat/chat-interface";
 import { getMascotMeta } from "@/lib/mascots";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default function ChatPage() {
   const { data: session, status } = useSession();
   const searchParams = useSearchParams();

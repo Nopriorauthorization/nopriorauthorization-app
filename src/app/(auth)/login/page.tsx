@@ -9,6 +9,8 @@ import Input from "@/components/ui/input";
 import Card, { CardContent, CardHeader } from "@/components/ui/card";
 import BeauTox from "@/lib/ai/beau-tox";
 
+export const dynamic = "force-dynamic";
+
 export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();

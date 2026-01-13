@@ -7,6 +7,8 @@ import Button from "@/components/ui/button";
 import Card, { CardContent } from "@/components/ui/card";
 import BeauTox from "@/lib/ai/beau-tox";
 
+export const dynamic = "force-dynamic";
+
 export default function SubscribePage() {
   const router = useRouter();
   const searchParams = useSearchParams();

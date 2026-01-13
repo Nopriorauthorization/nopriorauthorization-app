@@ -37,6 +37,7 @@ export default function ExpertChat() {
       const response = await fetch(APP_CHAT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({
           message: trimmed,
           mascot: selectedId,

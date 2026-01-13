@@ -1,21 +1,32 @@
 import Stripe from "stripe";
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error("STRIPE_SECRET_KEY is not set in environment variables");
+let stripeClient: Stripe | null = null;
+
+function getStripeClient() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error("STRIPE_SECRET_KEY is not set in environment variables");
+  }
+  if (!stripeClient) {
+    stripeClient = new Stripe(key, {
+      apiVersion: "2025-02-24.acacia",
+      typescript: true,
+    });
+  }
+  return stripeClient;
 }
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2025-02-24.acacia",
-  typescript: true,
-});
-
-export const SUBSCRIPTION_PRICE_ID = process.env.STRIPE_PRICE_ID!;
+export const SUBSCRIPTION_PRICE_ID = process.env.STRIPE_PRICE_ID ?? "";
 
 export async function createCheckoutSession(
   userId: string,
   email: string,
   customerId?: string
 ) {
+  if (!SUBSCRIPTION_PRICE_ID) {
+    throw new Error("STRIPE_PRICE_ID is not set in environment variables");
+  }
+  const stripe = getStripeClient();
   const session = await stripe.checkout.sessions.create({
     customer: customerId,
     customer_email: customerId ? undefined : email,
@@ -43,6 +54,7 @@ export async function createCheckoutSession(
 }
 
 export async function createCustomerPortalSession(customerId: string) {
+  const stripe = getStripeClient();
   const session = await stripe.billingPortal.sessions.create({
     customer: customerId,
     return_url: `${process.env.NEXTAUTH_URL}/chat`,
@@ -52,10 +64,12 @@ export async function createCustomerPortalSession(customerId: string) {
 }
 
 export async function getSubscription(subscriptionId: string) {
+  const stripe = getStripeClient();
   return stripe.subscriptions.retrieve(subscriptionId);
 }
 
 export async function cancelSubscription(subscriptionId: string) {
+  const stripe = getStripeClient();
   return stripe.subscriptions.update(subscriptionId, {
     cancel_at_period_end: true,
   });

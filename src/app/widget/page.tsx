@@ -1,9 +1,8 @@
+import { Suspense } from "react";
 import ChatInterface from "@/components/chat/chat-interface";
 import WidgetTracker from "@/components/provider/widget-tracker";
 
-export const dynamic = "force-dynamic";
-
-export default function WidgetPage() {
+function WidgetPageInner() {
   return (
     <main className="min-h-screen bg-white">
       <WidgetTracker />
@@ -17,5 +16,13 @@ export default function WidgetPage() {
         <ChatInterface />
       </div>
     </main>
+  );
+}
+
+export default function WidgetPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" aria-hidden />}>
+      <WidgetPageInner />
+    </Suspense>
   );
 }

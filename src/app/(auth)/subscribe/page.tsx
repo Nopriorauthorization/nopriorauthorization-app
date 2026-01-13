@@ -1,15 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Button from "@/components/ui/button";
 import Card, { CardContent } from "@/components/ui/card";
 import BeauTox from "@/lib/ai/beau-tox";
 
-export const dynamic = "force-dynamic";
-
-export default function SubscribePage() {
+function SubscribePageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { data: session, status } = useSession();
@@ -173,5 +171,15 @@ export default function SubscribePage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function SubscribePage() {
+  return (
+    <Suspense
+      fallback={<div className="min-h-screen bg-gray-50" aria-hidden />}
+    >
+      <SubscribePageInner />
+    </Suspense>
   );
 }

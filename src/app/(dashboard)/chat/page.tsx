@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Providers from "@/components/layout/providers";
 import Header from "@/components/layout/header";
 import DashboardNav from "@/components/layout/nav";
@@ -10,9 +10,7 @@ import ChatInterface from "@/components/chat/chat-interface";
 import { getMascotMeta } from "@/lib/mascots";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
-
-export default function ChatPage() {
+function ChatPageInner() {
   const { data: session, status } = useSession();
   const searchParams = useSearchParams();
   const subscriptionSuccess = searchParams.get("subscription") === "success";
@@ -134,5 +132,13 @@ export default function ChatPage() {
         <DashboardNav />
       </div>
     </Providers>
+  );
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" aria-hidden />}>
+      <ChatPageInner />
+    </Suspense>
   );
 }

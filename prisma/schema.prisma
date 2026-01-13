@@ -16,6 +16,7 @@ model User {
   updatedAt    DateTime      @updatedAt
   chatSessions ChatSession[]
   subscription Subscription?
+  memory       UserMemory?
 }
 
 model Subscription {
@@ -50,4 +51,20 @@ model Analytics {
 
   @@index([event])
   @@index([createdAt])
+}
+
+model UserMemory {
+  id                    String   @id @default(cuid())
+  userId                String?  @unique
+  anonId                String?  @unique
+  goals                 Json?
+  preferences           Json?
+  topicsDiscussed       Json?
+  disclaimerAcknowledged Boolean @default(false)
+  optOut                Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  user                  User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([anonId])
 }

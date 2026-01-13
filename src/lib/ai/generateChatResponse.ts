@@ -24,7 +24,8 @@ function getOpenAIClient() {
 export async function generateChatResponse(
   userMessage: string,
   mascotId?: string,
-  tier: LibraryTier = "free"
+  tier: LibraryTier = "free",
+  memoryContext?: string
 ) {
   const openai = getOpenAIClient();
 
@@ -61,6 +62,7 @@ export async function generateChatResponse(
     );
   }
   const libraryContext = formatLibraryContext(entries);
+  const memoryBlock = memoryContext ? `${memoryContext}\n` : "";
   const responseRules =
     tier === "premium"
       ? "Keep the response clear and focused. Use 2-4 short paragraphs and one optional bullet list."
@@ -76,6 +78,7 @@ export async function generateChatResponse(
             type: "input_text",
             text:
               `${mascot.systemPrompt}\n\n` +
+              memoryBlock +
               "LIBRARY CONTEXT (use only if relevant; do not mention the library):\n" +
               `${libraryContext}\n\n` +
               "RESPONSE RULES:\n" +

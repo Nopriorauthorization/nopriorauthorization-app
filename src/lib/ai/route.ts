@@ -29,15 +29,16 @@ export async function POST(req: NextRequest) {
             ],
         });
 
-        // response.content shape can vary; handle common cases defensively
+        // response.content shape can vary; extract text safely
         let reply = "";
         if (Array.isArray(response.content)) {
-            reply = response.content[0]?.text ?? "";
-        } else if (typeof response.content === "object" && response.content !== null) {
-            // @ts-ignore
-            reply = response.content.text ?? "";
+            const textBlock = response.content.find(
+                (block) => block.type === "text"
+            );
+            if (textBlock && "text" in textBlock) {
+                reply = textBlock.text ?? "";
+            }
         } else if (typeof response.content === "string") {
-            // @ts-ignore
             reply = response.content;
         }
 

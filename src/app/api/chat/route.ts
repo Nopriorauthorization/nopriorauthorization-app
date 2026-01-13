@@ -66,14 +66,20 @@ export async function POST(request: NextRequest) {
     });
     const memoryPayload = memoryRecord
       ? updateMemoryFromMessage(message, mascot, {
-          goals: Array.isArray(memoryRecord.goals) ? memoryRecord.goals : [],
+          goals: Array.isArray(memoryRecord.goals)
+            ? (memoryRecord.goals as string[])
+            : [],
           preferences:
             typeof memoryRecord.preferences === "object" &&
             memoryRecord.preferences !== null
-              ? (memoryRecord.preferences as any)
+              ? (memoryRecord.preferences as {
+                  tone?: "calm" | "direct" | "supportive" | "witty";
+                  depth?: "concise" | "detailed";
+                  expertAffinity?: string;
+                })
               : {},
           topicsDiscussed: Array.isArray(memoryRecord.topicsDiscussed)
-            ? memoryRecord.topicsDiscussed
+            ? (memoryRecord.topicsDiscussed as string[])
             : [],
         })
       : updateMemoryFromMessage(message, mascot);

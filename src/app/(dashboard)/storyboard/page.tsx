@@ -5,22 +5,16 @@ import Link from "next/link";
 import Providers from "@/components/layout/providers";
 import Header from "@/components/layout/header";
 import DashboardNav from "@/components/layout/nav";
-
-type TreatmentStatus = "current" | "past" | "considering";
-type TreatmentCategory = "treatment" | "medication" | "supplement" | "peptide";
-
-type TreatmentItem = {
-  id: string;
-  name: string;
-  category: TreatmentCategory;
-  status: TreatmentStatus;
-  addedAt: string;
-  insights: Array<{ expert: string; text: string }>;
-  notes: string;
-};
+import ExportModal from "@/components/export/ExportModal";
+import {
+  StoryboardSnapshot,
+  TreatmentCategory,
+  TreatmentItem,
+  TreatmentStatus,
+} from "@/types/storyboard";
 
 export default function StoryboardPage() {
-  const [snapshot, setSnapshot] = useState({
+  const [snapshot, setSnapshot] = useState<StoryboardSnapshot>({
     ageRange: "",
     goals: "",
     allergies: "",
@@ -35,6 +29,7 @@ export default function StoryboardPage() {
     status: "current" as TreatmentStatus,
     notes: "",
   });
+  const [isExportOpen, setIsExportOpen] = useState(false);
 
   const hasContent =
     Object.values(snapshot).some((value) => value.trim().length > 0) ||
@@ -78,6 +73,18 @@ export default function StoryboardPage() {
               Your personal health story — built over time, one question at a
               time.
             </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => setIsExportOpen(true)}
+                className="rounded-full bg-hot-pink px-5 py-2 text-sm font-semibold text-black transition hover:bg-pink-500"
+              >
+                Export My Health Blueprint
+              </button>
+              <p className="text-sm text-gray-500">
+                Capture a snapshot of your journey and share it with providers.
+              </p>
+            </div>
           </header>
 
           {!hasContent && (
@@ -352,6 +359,12 @@ export default function StoryboardPage() {
         </main>
 
         <DashboardNav />
+        <ExportModal
+          open={isExportOpen}
+          onClose={() => setIsExportOpen(false)}
+          snapshot={snapshot}
+          treatments={treatments}
+        />
       </div>
     </Providers>
   );

@@ -29,7 +29,6 @@ export default async function AdminPage() {
       href: "/admin/share-links",
       description: "Active provider shares, revoke access, access tracking",
       icon: "🔗",
-      disabled: true, // Phase 2A.3
     },
     {
       title: "Consent History",

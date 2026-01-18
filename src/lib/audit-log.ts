@@ -19,6 +19,7 @@ export type ResourceType =
   | "PROVIDER_PACKET"
   | "DOCUMENT"
   | "SHARE_LINK"
+  | "DOCUMENT_SHARE"
   | "CONSENT"
   | "USER_DATA"
   | "USER";

@@ -129,14 +129,14 @@ model DocumentShareLink {
   token      String    @unique
   expiresAt  DateTime
   revokedAt  DateTime?
+  revokedBy  String?
   createdAt  DateTime  @default(now())
 
-  document Document                  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  document Document               @relation(fields: [documentId], references: [id], onDelete: Cascade)
   accesses DocumentShareLinkAccess[]
 
   @@index([documentId])
 }
-
 model DocumentShareLinkAccess {
   id          String   @id @default(cuid())
   shareLinkId String

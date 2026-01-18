@@ -135,8 +135,7 @@ function AvatarCard({
           poster={avatar.poster}
           style={{ objectPosition: avatar.objectPosition ?? "50% 20%" }}
         >
-          <source src={`${AVATAR_MEDIA_BASE}/${avatar.id}.webm`} type="video/webm" />
-          <source src={`${AVATAR_MEDIA_BASE}/${avatar.id}.mp4`} type="video/mp4" />
+          <source src={`${AVATAR_MEDIA_BASE}/${avatar.id}-intro.mp4`} type="video/mp4" />
         </video>
         <div className="avatar-card__overlay" />
         <div className="avatar-card__fallback">
@@ -189,7 +188,7 @@ function AvatarCard({
         )}
         <div className="avatar-card__actions">
           <button type="button" className="avatar-card__sound" onClick={onToggleSound}>
-            {muted ? "Tap to hear" : "Sound on"}
+            {muted ? "Meet Me" : "Sound on"}
           </button>
           <div className="avatar-card__cta-group">
             <button type="button" className="avatar-card__cta" onClick={onCtaClick}>

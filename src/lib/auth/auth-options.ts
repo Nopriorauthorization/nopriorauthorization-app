@@ -39,6 +39,7 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           subscriptionStatus: user.subscription?.status || "inactive",
+          role: user.role,
         };
       },
     }),
@@ -56,6 +57,7 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = user.id;
         token.subscriptionStatus = user.subscriptionStatus;
+        token.role = user.role;
       }
 
       // Handle session updates (e.g., after subscription change)
@@ -69,6 +71,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = token.id as string;
         session.user.subscriptionStatus = token.subscriptionStatus as string;
+        session.user.role = token.role as string;
       }
       return session;
     },
@@ -80,6 +83,7 @@ declare module "next-auth" {
   interface User {
     id: string;
     subscriptionStatus: string;
+    role: string;
   }
 
   interface Session {
@@ -88,6 +92,7 @@ declare module "next-auth" {
       email: string;
       name?: string | null;
       subscriptionStatus: string;
+      role: string;
     };
   }
 }
@@ -96,5 +101,6 @@ declare module "next-auth/jwt" {
   interface JWT {
     id: string;
     subscriptionStatus: string;
+    role: string;
   }
 }

@@ -128,7 +128,7 @@ function AvatarCard({
         <video
           ref={videoRef}
           className="avatar-card__video"
-          muted
+          muted={muted}
           loop
           playsInline
           preload="metadata"

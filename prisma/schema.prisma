@@ -8,12 +8,28 @@ datasource db {
 }
 
 model User {
-  id           String        @id @default(cuid())
-  email        String        @unique
-  passwordHash String
-  name         String?
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  id                              String        @id @default(cuid())
+  email                           String        @unique
+  passwordHash                    String
+  name                            String?
+  createdAt                       DateTime      @default(now())
+  updatedAt                       DateTime      @updatedAt
+  lastAccessAt                    DateTime?
+  
+  // Privacy & Consent
+  consentToShareClinicalSummary   Boolean       @default(false)
+  allowProviderToProviderSharing  Boolean       @default(false)
+  emailNotificationsEnabled       Boolean       @default(true)
+  
+  // Provider-only settings
+  defaultClinicalSummaryView      String?       @default("provider")
+  includeProviderNotesInShares    Boolean       @default(false)
+  copyToEHRFormat                 String?       @default("plain_text")
+  
+  // Data controls
+  dataExportRequestedAt           DateTime?
+  accountDeletionRequestedAt      DateTime?
+  
   chatSessions ChatSession[]
   subscription Subscription?
   memory       UserMemory?

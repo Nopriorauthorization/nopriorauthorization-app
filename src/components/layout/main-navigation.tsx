@@ -10,7 +10,7 @@ const marketingLinks = [
   { label: "Home", href: "/" },
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },
-  { label: "Resources", href: "/resources" },
+  { label: "Sacred Vault", href: "/vault" },
   { label: "Chat", href: "/chat" },
   { label: "Settings", href: "/settings" },
 ];
@@ -19,7 +19,7 @@ const appLinks = [
   { label: "Home", href: "/" },
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },
-  { label: "Resources", href: "/resources" },
+  { label: "Sacred Vault", href: "/vault" },
   { label: "Chat", href: "/chat" },
   { label: "Settings", href: "/settings" },
 ]

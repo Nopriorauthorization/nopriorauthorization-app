@@ -187,8 +187,13 @@ function AvatarCard({
           <p className="avatar-card__microcopy">{avatar.microcopy}</p>
         )}
         <div className="avatar-card__actions">
-          <button type="button" className="avatar-card__sound" onClick={onToggleSound}>
-            {muted ? "Meet Me" : "Sound on"}
+          <button 
+            type="button" 
+            className="avatar-card__sound" 
+            onClick={onToggleSound}
+            aria-label="Hear mascot introduction"
+          >
+            {muted ? "Hear Me" : "🔇 Mute"}
           </button>
           <div className="avatar-card__cta-group">
             <button type="button" className="avatar-card__cta" onClick={onCtaClick}>

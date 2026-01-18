@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import Button from "@/components/ui/button";
 
@@ -10,7 +10,7 @@ const marketingLinks = [
   { label: "Home", href: "/" },
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },
-  { label: "Sacred Vault", href: "/vault" },
+  { label: "Sacred Vault", href: "/vault", dynamic: true },
   { label: "Chat", href: "/chat" },
   { label: "Settings", href: "/settings" },
 ];
@@ -19,7 +19,7 @@ const appLinks = [
   { label: "Home", href: "/" },
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },
-  { label: "Sacred Vault", href: "/vault" },
+  { label: "Sacred Vault", href: "/vault", dynamic: true },
   { label: "Chat", href: "/chat" },
   { label: "Settings", href: "/settings" },
 ]
@@ -29,6 +29,25 @@ export default function MainNavigation() {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [vaultName, setVaultName] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchVaultName() {
+      if (session?.user) {
+        try {
+          const res = await fetch("/api/vault/settings");
+          if (res.ok) {
+            const data = await res.json();
+            setVaultName(data.vaultName);
+          }
+        } catch (error) {
+          console.error("Failed to fetch vault name:", error);
+        }
+      }
+    }
+
+    fetchVaultName();
+  }, [session]);
 
   const directNavigate = (href: string) => {
     router.push(href);
@@ -37,7 +56,14 @@ export default function MainNavigation() {
 
   const isAppNav = Boolean(session);
 
-  const renderLinks = (links: { label: string; href: string }[]) =>
+  const getDisplayLabel = (link: { label: string; dynamic?: boolean }) => {
+    if (link.dynamic && link.label === "Sacred Vault" && vaultName) {
+      return vaultName;
+    }
+    return link.label;
+  };
+
+  const renderLinks = (links: { label: string; href: string; dynamic?: boolean }[]) =>
     links.map((link) => (
       <button
         key={link.href}
@@ -46,7 +72,7 @@ export default function MainNavigation() {
           pathname === link.href ? "text-hot-pink" : "text-white/70"
         }`}
       >
-        {link.label}
+        {getDisplayLabel(link)}
       </button>
     ));
 

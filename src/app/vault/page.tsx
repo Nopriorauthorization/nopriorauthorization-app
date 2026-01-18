@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import VaultOnboardingModal from "@/components/vault/vault-onboarding-modal";
 
 type VaultFeature = {
   id: string;
@@ -123,6 +124,39 @@ const VAULT_FEATURES: VaultFeature[] = [
 ];
 
 export default function VaultPage() {
+  const [vaultName, setVaultName] = useState<string | null>(null);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchVaultSettings() {
+      try {
+        const res = await fetch("/api/vault/settings");
+        if (res.ok) {
+          const data = await res.json();
+          setVaultName(data.vaultName);
+          
+          // Show onboarding if no vault name set
+          if (!data.vaultName) {
+            setShowOnboarding(true);
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch vault settings:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchVaultSettings();
+  }, []);
+
+  const handleOnboardingComplete = (name: string) => {
+    setVaultName(name);
+    setShowOnboarding(false);
+  };
+
+  const displayVaultName = vaultName || "Sacred Vault";
   const [filter, setFilter] = useState<"all" | "instant" | "capture" | "power">("all");
 
   const filteredFeatures = filter === "all" 
@@ -137,13 +171,18 @@ export default function VaultPage() {
 
   return (
     <main className="min-h-screen bg-black text-white px-6 py-16">
+      <VaultOnboardingModal
+        open={showOnboarding}
+        onComplete={handleOnboardingComplete}
+      />
+      
       <div className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <div className="space-y-6 mb-12">
           <div className="flex items-center gap-3">
             <span className="text-4xl">🔐</span>
             <p className="text-xs font-semibold tracking-[0.35em] text-pink-400 uppercase">
-              Your Sacred Vault
+              {displayVaultName}
             </p>
           </div>
           <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
@@ -154,6 +193,14 @@ export default function VaultPage() {
             <br />
             We remember like ChatGPT doesn't. We talk to you like MyChart won't.
           </p>
+          {vaultName && (
+            <button
+              onClick={() => setShowOnboarding(true)}
+              className="text-sm text-pink-400 hover:text-pink-300 transition"
+            >
+              ✏️ Rename your vault
+            </button>
+          )}
         </div>
 
         {/* Filter Tabs */}

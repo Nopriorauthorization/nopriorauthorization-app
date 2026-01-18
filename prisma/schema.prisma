@@ -88,6 +88,7 @@ model UserMemory {
   goals                  Json?
   preferences            Json?
   topicsDiscussed        Json?
+  vaultName              String?  // Personalized name for Sacred Vault
   disclaimerAcknowledged Boolean  @default(false)
   optOut                 Boolean  @default(false)
   createdAt              DateTime @default(now())

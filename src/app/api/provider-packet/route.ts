@@ -18,52 +18,15 @@ export async function GET(_request: NextRequest) {
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
   try {
-    const [supplements, treatments, user] = await Promise.all([
-      prisma.supplementRecord.findMany({
-        where: { userId, status: "CURRENT" },
-        orderBy: { updatedAt: "desc" },
-      }),
-      prisma.userTreatment.findMany({
-        where: {
-          userId,
-          OR: [
-            { startDate: { gte: oneYearAgo } },
-            { updatedAt: { gte: oneYearAgo } },
-          ],
-        },
-        include: { treatment: true, globalTreatment: true },
-        orderBy: { updatedAt: "desc" },
-      }),
-      prisma.user.findUnique({
-        where: { id: userId },
-        select: { name: true, email: true, metadata: true },
-      }),
-    ]);
-
-    const governance = getGovernanceProfile(user?.metadata);
-
-    const medicationList = supplements.map((item) => ({
-      name: item.name,
-      status: item.status,
-      startDate: item.startDate?.toISOString() ?? null,
-      endDate: item.endDate?.toISOString() ?? null,
-      notes: item.notes ?? null,
-    }));
-
-    const treatmentList = treatments.map((item) => {
-      const name =
-        item.treatment?.name ??
-        item.globalTreatment?.name ??
-        "Unnamed treatment";
-      return {
-        name,
-        status: item.status,
-        startDate: item.startDate?.toISOString() ?? null,
-        endDate: item.endDate?.toISOString() ?? null,
-        notes: item.notes ?? null,
-        updatedAt: item.updatedAt.toISOString(),
-      };
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { name: true, email: true },
     });
+
+    const governance = getGovernanceProfile(null);
+
+    const medicationList: any[] = []; // Supplements feature not yet implemented
+    const treatmentList: any[] = []; // Treatments feature not yet implemented
 
     return NextResponse.json({
       patientName: user?.name ?? session.user.email ?? "Patient",

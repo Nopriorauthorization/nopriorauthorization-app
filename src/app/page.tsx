@@ -74,9 +74,7 @@ export default function HomePage() {
             </h1>
             <p className="text-gray-300 text-base md:text-lg leading-relaxed">
               We tell you the{" "}
-              <span className="hero-highlight">juicy stuff</span> you don&apos;t want
-              to ask providers — and what{" "}
-              <span className="hero-highlight">Google won&apos;t</span>.
+              <span className="hero-highlight">juicy stuff</span> you don&apos;t want to ask providers — Take Authority over your healthcare with your personal blueprint.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link href="/chat" className="cinematic-cta">

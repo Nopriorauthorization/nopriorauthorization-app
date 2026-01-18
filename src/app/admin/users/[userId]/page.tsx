@@ -31,6 +31,16 @@ type DisableEvent = {
   resolvedByEmail?: string;
 };
 
+type ConsentLog = {
+  id: string;
+  consentType: string;
+  oldValue: boolean;
+  newValue: boolean;
+  changedAt: string;
+  changedBy: { id: string; email: string; name: string | null } | null;
+  source: string;
+};
+
 export default function UserDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -38,6 +48,7 @@ export default function UserDetailPage() {
 
   const [user, setUser] = useState<UserDetail | null>(null);
   const [consent, setConsent] = useState<any>(null);
+  const [consentHistory, setConsentHistory] = useState<ConsentLog[]>([]);
   const [dataRequests, setDataRequests] = useState<any>(null);
   const [summary, setSummary] = useState<any>(null);
   const [disableHistory, setDisableHistory] = useState<DisableEvent[]>([]);
@@ -75,6 +86,13 @@ export default function UserDetailPage() {
       setDataRequests(data.dataRequests);
       setSummary(data.summary);
       setDisableHistory(data.disableHistory);
+
+      // Fetch consent history
+      const consentResponse = await fetch(`/api/admin/users/${userId}/consent-history`);
+      if (consentResponse.ok) {
+        const consentData = await consentResponse.json();
+        setConsentHistory(consentData.logs || []);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");
     } finally {
@@ -268,10 +286,10 @@ export default function UserDetailPage() {
                 → View Active Share Links (Coming Soon)
               </Link>
               <Link
-                href={`/admin/consent-history?userId=${user.id}`}
-                className="block text-sm text-gray-300 hover:text-hot-pink transition opacity-50 cursor-not-allowed"
+                href={`/admin/consent-history?search=${user.email}`}
+                className="block text-sm text-gray-300 hover:text-hot-pink transition"
               >
-                → View Consent History (Coming Soon)
+                → View Consent History
               </Link>
             </div>
           </section>
@@ -296,7 +314,49 @@ export default function UserDetailPage() {
                 )}
                 <span className="text-gray-300">Provider-to-Provider Sharing</span>
               </div>
+              <div className="flex items-center gap-2">
+                {consent.emailNotificationsEnabled ? (
+                  <span className="text-green-400">✅</span>
+                ) : (
+                  <span className="text-red-400">❌</span>
+                )}
+                <span className="text-gray-300">Email Notifications</span>
+              </div>
             </div>
+            
+            {/* Recent Consent Changes */}
+            {consentHistory.length > 0 && (
+              <div className="mt-4 border-t border-white/10 pt-4">
+                <h3 className="text-sm font-semibold text-gray-400 mb-2">Recent Changes</h3>
+                <div className="space-y-2 max-h-60 overflow-y-auto">
+                  {consentHistory.slice(0, 10).map((log) => (
+                    <div key={log.id} className="text-xs bg-black/30 rounded p-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-300">
+                          {log.consentType === "clinicalSummary" && "Clinical Summary"}
+                          {log.consentType === "providerSharing" && "Provider Sharing"}
+                          {log.consentType === "emailNotifications" && "Email Notifications"}
+                        </span>
+                        <span className={log.newValue ? "text-green-400" : "text-red-400"}>
+                          {log.oldValue ? "✓" : "✗"} → {log.newValue ? "✓" : "✗"}
+                        </span>
+                      </div>
+                      <div className="text-gray-500 mt-1">
+                        {new Date(log.changedAt).toLocaleString()} •{" "}
+                        {log.changedBy ? log.changedBy.email : "Self"} •{" "}
+                        {log.source}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <Link
+                  href={`/admin/consent-history?search=${user.email}`}
+                  className="text-xs text-hot-pink hover:underline mt-2 inline-block"
+                >
+                  View all consent changes →
+                </Link>
+              </div>
+            )}
           </section>
 
           {/* Summary Stats */}

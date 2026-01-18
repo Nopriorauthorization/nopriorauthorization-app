@@ -43,6 +43,7 @@ model User {
   memory         UserMemory?
   disableEvents  UserDisableEvent[]
   passwordResetTokens  PasswordResetToken[]
+  consentChangeLogs     ConsentChangeLog[]
 }
 
 model Subscription {
@@ -239,4 +240,21 @@ model PasswordResetToken {
   @@index([token])
   @@index([userId])
   @@index([expiresAt])
+}
+
+model ConsentChangeLog {
+  id          String   @id @default(cuid())
+  userId      String
+  consentType String   // "clinicalSummary", "providerSharing", "emailNotifications"
+  oldValue    Boolean
+  newValue    Boolean
+  changedBy   String?  // User ID who made the change (null = user themselves)
+  changedAt   DateTime @default(now())
+  source      String   // "user_settings", "admin_portal", "onboarding"
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, changedAt])
+  @@index([consentType])
+  @@index([changedAt])
 }

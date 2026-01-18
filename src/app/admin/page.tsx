@@ -35,7 +35,6 @@ export default async function AdminPage() {
       href: "/admin/consent-history",
       description: "Per-user consent timeline for compliance audits",
       icon: "✅",
-      disabled: true, // Phase 2A.4
     },
     {
       title: "Data Requests",

@@ -19,6 +19,7 @@ model User {
   passwordHash String
   name         String?
   role         UserRole  @default(PATIENT)
+  isDisabled   Boolean   @default(false)
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
   lastAccessAt DateTime?
@@ -37,9 +38,10 @@ model User {
   dataExportRequestedAt      DateTime?
   accountDeletionRequestedAt DateTime?
 
-  chatSessions ChatSession[]
-  subscription Subscription?
-  memory       UserMemory?
+  chatSessions   ChatSession[]
+  subscription   Subscription?
+  memory         UserMemory?
+  disableEvents  UserDisableEvent[]
 }
 
 model Subscription {
@@ -204,4 +206,21 @@ model AccessLog {
   @@index([subjectUserId, createdAt])
   @@index([resourceType, resourceId])
   @@index([createdAt])
+}
+
+// User Disable Events - Preserves history across multiple disable/enable cycles
+model UserDisableEvent {
+  id          String    @id @default(cuid())
+  userId      String
+  disabledAt  DateTime  @default(now())
+  disabledBy  String    // Admin user ID who performed the disable
+  reason      String?   // Optional free text reason
+  resolvedAt  DateTime? // When account was re-enabled (null = still disabled)
+  resolvedBy  String?   // Admin user ID who re-enabled
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([disabledAt])
+  @@index([resolvedAt])
 }

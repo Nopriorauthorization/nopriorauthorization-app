@@ -34,6 +34,11 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Invalid password");
         }
 
+        // Check if account is disabled
+        if (user.isDisabled) {
+          throw new Error("This account has been disabled. Please contact support.");
+        }
+
         return {
           id: user.id,
           email: user.email,

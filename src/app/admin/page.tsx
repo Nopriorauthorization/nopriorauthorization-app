@@ -23,7 +23,6 @@ export default async function AdminPage() {
       href: "/admin/users",
       description: "User lookup, role visibility, account status management",
       icon: "👤",
-      disabled: true, // Phase 2A.2
     },
     {
       title: "Share Links",

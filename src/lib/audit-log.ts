@@ -9,7 +9,10 @@ export type AuditAction =
   | "CONSENT_GRANTED"
   | "CONSENT_REVOKED"
   | "DELETE"
-  | "UPDATE";
+  | "UPDATE"
+  | "USER_DISABLED"
+  | "USER_ENABLED"
+  | "ADMIN_REVOKE";
 
 export type ResourceType =
   | "CLINICAL_SUMMARY"
@@ -17,7 +20,8 @@ export type ResourceType =
   | "DOCUMENT"
   | "SHARE_LINK"
   | "CONSENT"
-  | "USER_DATA";
+  | "USER_DATA"
+  | "USER";
 
 interface LogAccessParams {
   actorId?: string | null;

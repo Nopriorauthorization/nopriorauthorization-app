@@ -80,8 +80,8 @@ export default function HomePage() {
               <Link href="/chat" className="cinematic-cta">
                 Ask a Mascot
               </Link>
-              <Link href="/chat?mascot=beau-tox" className="cinematic-cta-outline">
-                Start with Beau-Tox
+              <Link href="/blueprint" className="cinematic-cta-outline">
+                Build your Blueprint
               </Link>
             </div>
           </div>

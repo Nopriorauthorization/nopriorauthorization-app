@@ -68,3 +68,98 @@ model UserMemory {
 
   @@index([anonId])
 }
+enum DocumentCategory {
+  LAB
+  IMAGING
+  VISIT_NOTE
+  DISCHARGE
+  OTHER
+}
+
+model Document {
+  id                     String           @id @default(cuid())
+  userId                 String?
+  anonId                 String?
+  title                  String
+  category               DocumentCategory @default(OTHER)
+  docDate                DateTime?
+  storagePath            String
+  mimeType               String
+  sizeBytes              Int
+  includeInPacketDefault Boolean          @default(false)
+  createdAt              DateTime         @default(now())
+  deletedAt              DateTime?
+
+  shareLinks             DocumentShareLink[]
+
+  @@index([userId])
+  @@index([anonId])
+}
+
+model DocumentShareLink {
+  id         String   @id @default(cuid())
+  documentId String
+  token      String   @unique
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  createdAt  DateTime @default(now())
+
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  accesses   DocumentShareLinkAccess[]
+
+  @@index([documentId])
+}
+
+model DocumentShareLinkAccess {
+  id          String   @id @default(cuid())
+  shareLinkId String
+  accessedAt  DateTime @default(now())
+  ipAddress   String?
+  userAgent   String?
+
+  shareLink   DocumentShareLink @relation(fields: [shareLinkId], references: [id], onDelete: Cascade)
+}
+
+enum ProviderPacketTemplate {
+  PRIMARY
+  SPECIALIST
+  URGENT
+}
+
+model ProviderPacket {
+  id         String                @id @default(cuid())
+  userId     String?
+  anonId     String?
+  template   ProviderPacketTemplate @default(PRIMARY)
+  payload    Json
+  createdAt  DateTime              @default(now())
+
+  shareLinks ProviderPacketLink[]
+
+  @@index([userId])
+  @@index([anonId])
+}
+
+model ProviderPacketLink {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  packetId  String
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+
+  packet    ProviderPacket @relation(fields: [packetId], references: [id], onDelete: Cascade)
+  accesses  ProviderPacketAccessLog[]
+
+  @@index([packetId])
+}
+
+model ProviderPacketAccessLog {
+  id                   String   @id @default(cuid())
+  providerPacketLinkId String
+  accessedAt           DateTime @default(now())
+  ipAddress            String?
+  userAgent            String?
+
+  link ProviderPacketLink @relation(fields: [providerPacketLinkId], references: [id], onDelete: Cascade)
+}

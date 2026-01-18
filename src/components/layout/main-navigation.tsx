@@ -35,26 +35,13 @@ export default function MainNavigation() {
     setOpen(false);
   };
 
-  const navigateAuthAware = (href: string) => {
-    if (session) {
-      directNavigate(href);
-      return;
-    }
-    router.push(`/login?callbackUrl=${encodeURIComponent(href)}`);
-    setOpen(false);
-  };
-
   const isAppNav = Boolean(session);
 
   const renderLinks = (links: { label: string; href: string }[]) =>
     links.map((link) => (
       <button
         key={link.href}
-        onClick={() =>
-          link.label === "Log in" || link.label === "Home" || link.href.startsWith("/#")
-            ? directNavigate(link.href)
-            : navigateAuthAware(link.href)
-        }
+        onClick={() => directNavigate(link.href)}
         className={`text-sm font-medium transition ${
           pathname === link.href ? "text-hot-pink" : "text-white/70"
         }`}
@@ -86,11 +73,7 @@ export default function MainNavigation() {
             </Link>
           )}
           <button
-            onClick={() =>
-              session
-                ? router.push("/blueprint")
-                : router.push("/login?callbackUrl=/blueprint")
-            }
+            onClick={() => router.push("/blueprint")}
             className="rounded-full bg-hot-pink px-4 py-2 text-sm font-semibold text-black transition hover:bg-pink-500"
           >
             Open Blueprint

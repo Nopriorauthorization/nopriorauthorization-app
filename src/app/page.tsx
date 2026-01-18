@@ -1,6 +1,63 @@
 import Link from "next/link";
 import Image from "next/image";
 import AvatarIntroStrip from "@/components/hero/avatar-intro-strip";
+import BlueprintCTA from "@/components/ui/BlueprintCTA";
+
+const featureHighlights = [
+  {
+    title: "One identity snapshot for every provider",
+    description:
+      "A single reference that shows your story, so you don’t repeat intake every time.",
+  },
+  {
+    title: "Export to providers (PDF + secure link)",
+    description:
+      "Deliver a professional packet before you walk in—PDF download plus a reversible link.",
+  },
+  {
+    title: "Medications + supplements inventory",
+    description:
+      "Track current meds, supplements, and notes so every provider sees the same list.",
+  },
+  {
+    title: "Treatments timeline",
+    description:
+      "See what you’ve tried, what’s working, and what you want to explore next.",
+  },
+  {
+    title: "Documents Vault (labs, imaging, visit notes)",
+    description:
+      "Save PDFs, labs, and visit notes beside your Blueprint for instant reference.",
+  },
+  {
+    title: "Remembers you over time",
+    description:
+      "Blueprint builds as you add records, giving you a consistent snapshot to share.",
+  },
+];
+
+const howItWorks = [
+  {
+    label: "Save",
+    title: "Capture your history",
+    description: "Store notes, labs, meds, docs, and questions in one spot.",
+  },
+  {
+    label: "Organize",
+    title: "Keep it consistent",
+    description: "Blueprint grows over time with every update you add.",
+  },
+  {
+    label: "Export",
+    title: "Share with providers",
+    description: "Create a PDF and secure link in minutes for any appointment.",
+  },
+  {
+    label: "Repeat",
+    title: "Stay prepared",
+    description: "Add new data once and keep the record ready for future visits.",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -46,7 +103,88 @@ export default function HomePage() {
           </div>
         </section>
 
-        <AvatarIntroStrip />
+        {/* MID SECTION */}
+        <section
+          id="blueprint"
+          className="mx-auto mt-12 max-w-6xl space-y-6"
+        >
+          <div className="space-y-3 text-center">
+            <p className="text-xs uppercase tracking-[0.4em] text-hot-pink">
+              No Prior Authorization
+            </p>
+            <h2 className="font-display text-3xl font-semibold md:text-4xl">
+              Your Blueprint is your lifetime health record — built for real life.
+            </h2>
+            <p className="text-base text-white/70">
+              One place to store your history, treatments, meds, labs, and questions
+              — then export it for any appointment in minutes.
+            </p>
+          </div>
+          <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
+            <div className="grid gap-4 md:grid-cols-2">
+              {featureHighlights.map((feature) => (
+                <div
+                  key={feature.title}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white"
+                >
+                  <h3 className="text-base font-semibold text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-xs text-white/70">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6">
+              <div>
+                <p className="text-xs uppercase tracking-[0.4em] text-white/60">
+                  How it works
+                </p>
+                <h3 className="mt-2 text-lg font-semibold text-white">
+                  Turn your Blueprint into a ready-to-share resource
+                </h3>
+              </div>
+              <ol className="space-y-4">
+                {howItWorks.map((step, index) => (
+                  <li
+                    key={step.title}
+                    className="flex gap-4 rounded-2xl border border-white/5 bg-black/20 p-3"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/5 text-sm font-semibold text-hot-pink">
+                      {index + 1}
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.35em] text-white/60">
+                        {step.label}
+                      </p>
+                      <p className="text-sm font-semibold text-white">
+                        {step.title}
+                      </p>
+                      <p className="text-xs text-white/60">{step.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row">
+            <p className="text-xs text-white/60">
+              Educational only. Not medical advice.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/subscribe"
+                className="rounded-full bg-hot-pink px-6 py-3 text-sm font-semibold text-black transition hover:bg-pink-500"
+              >
+                View Plans
+              </Link>
+              <BlueprintCTA />
+            </div>
+          </div>
+        </section>
+
+        <section id="experts">
+          <AvatarIntroStrip />
+        </section>
 
         {/* FOOTER CTA */}
         <section className="mt-20 text-center">

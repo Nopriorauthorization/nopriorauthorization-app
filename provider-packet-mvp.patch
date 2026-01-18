@@ -1,0 +1,814 @@
+diff --git a/package-lock.json b/package-lock.json
+index c9951cb..7b8e0c1 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -11,6 +11,7 @@
+         "@anthropic-ai/sdk": "^0.32.1",
+         "@prisma/client": "^5.22.0",
+         "@stripe/stripe-js": "^4.9.0",
++        "@supabase/supabase-js": "^2.90.1",
+         "bcryptjs": "^2.4.3",
+         "next": "^14.2.35",
+         "next-auth": "^4.24.10",
+@@ -18,6 +19,7 @@
+         "react": "^18.3.1",
+         "react-dom": "^18.3.1",
+         "stripe": "^17.3.1",
++        "uuid": "^13.0.0",
+         "zod": "^3.23.8"
+       },
+       "devDependencies": {
+@@ -641,6 +643,86 @@
+         "node": ">=12.16"
+       }
+     },
++    "node_modules/@supabase/auth-js": {
++      "version": "2.90.1",
++      "resolved": "https://registry.npmjs.org/@supabase/auth-js/-/auth-js-2.90.1.tgz",
++      "integrity": "sha512-vxb66dgo6h3yyPbR06735Ps+dK3hj0JwS8w9fdQPVZQmocSTlKUW5MfxSy99mN0XqCCuLMQ3jCEiIIUU23e9ng==",
++      "license": "MIT",
++      "dependencies": {
++        "tslib": "2.8.1"
++      },
++      "engines": {
++        "node": ">=20.0.0"
++      }
++    },
++    "node_modules/@supabase/functions-js": {
++      "version": "2.90.1",
++      "resolved": "https://registry.npmjs.org/@supabase/functions-js/-/functions-js-2.90.1.tgz",
++      "integrity": "sha512-x9mV9dF1Lam9qL3zlpP6mSM5C9iqMPtF5B/tU1Jj/F0ufX5mjDf9ghVBaErVxmrQJRL4+iMKWKY2GnODkpS8tw==",
++      "license": "MIT",
++      "dependencies": {
++        "tslib": "2.8.1"
++      },
++      "engines": {
++        "node": ">=20.0.0"
++      }
++    },
++    "node_modules/@supabase/postgrest-js": {
++      "version": "2.90.1",
++      "resolved": "https://registry.npmjs.org/@supabase/postgrest-js/-/postgrest-js-2.90.1.tgz",
++      "integrity": "sha512-jh6vqzaYzoFn3raaC0hcFt9h+Bt+uxNRBSdc7PfToQeRGk7PDPoweHsbdiPWREtDVTGKfu+PyPW9e2jbK+BCgQ==",
++      "license": "MIT",
++      "dependencies": {
++        "tslib": "2.8.1"
++      },
++      "engines": {
++        "node": ">=20.0.0"
++      }
++    },
++    "node_modules/@supabase/realtime-js": {
++      "version": "2.90.1",
++      "resolved": "https://registry.npmjs.org/@supabase/realtime-js/-/realtime-js-2.90.1.tgz",
++      "integrity": "sha512-PWbnEMkcQRuor8jhObp4+Snufkq8C6fBp+MchVp2qBPY1NXk/c3Iv3YyiFYVzo0Dzuw4nAlT4+ahuPggy4r32w==",
++      "license": "MIT",
++      "dependencies": {
++        "@types/phoenix": "^1.6.6",
++        "@types/ws": "^8.18.1",
++        "tslib": "2.8.1",
++        "ws": "^8.18.2"
++      },
++      "engines": {
++        "node": ">=20.0.0"
++      }
++    },
++    "node_modules/@supabase/storage-js": {
++      "version": "2.90.1",
++      "resolved": "https://registry.npmjs.org/@supabase/storage-js/-/storage-js-2.90.1.tgz",
++      "integrity": "sha512-GHY+Ps/K/RBfRj7kwx+iVf2HIdqOS43rM2iDOIDpapyUnGA9CCBFzFV/XvfzznGykd//z2dkGZhlZZprsVFqGg==",
++      "license": "MIT",
++      "dependencies": {
++        "iceberg-js": "^0.8.1",
++        "tslib": "2.8.1"
++      },
++      "engines": {
++        "node": ">=20.0.0"
++      }
++    },
++    "node_modules/@supabase/supabase-js": {
++      "version": "2.90.1",
++      "resolved": "https://registry.npmjs.org/@supabase/supabase-js/-/supabase-js-2.90.1.tgz",
++      "integrity": "sha512-U8KaKGLUgTIFHtwEW1dgw1gK7XrdpvvYo7nzzqPx721GqPe8WZbAiLh/hmyKLGBYQ/mmQNr20vU9tWSDZpii3w==",
++      "license": "MIT",
++      "dependencies": {
++        "@supabase/auth-js": "2.90.1",
++        "@supabase/functions-js": "2.90.1",
++        "@supabase/postgrest-js": "2.90.1",
++        "@supabase/realtime-js": "2.90.1",
++        "@supabase/storage-js": "2.90.1"
++      },
++      "engines": {
++        "node": ">=20.0.0"
++      }
++    },
+     "node_modules/@swc/counter": {
+       "version": "0.1.3",
+       "resolved": "https://registry.npmjs.org/@swc/counter/-/counter-0.1.3.tgz",
+@@ -701,6 +783,12 @@
+         "form-data": "^4.0.4"
+       }
+     },
++    "node_modules/@types/phoenix": {
++      "version": "1.6.7",
++      "resolved": "https://registry.npmjs.org/@types/phoenix/-/phoenix-1.6.7.tgz",
++      "integrity": "sha512-oN9ive//QSBkf19rfDv45M7eZPi0eEXylht2OLEXicu5b4KoQ1OzXIw+xDSGWxSxe1JmepRR/ZH283vsu518/Q==",
++      "license": "MIT"
++    },
+     "node_modules/@types/prop-types": {
+       "version": "15.7.15",
+       "resolved": "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.15.tgz",
+@@ -730,6 +818,15 @@
+         "@types/react": "^18.0.0"
+       }
+     },
++    "node_modules/@types/ws": {
++      "version": "8.18.1",
++      "resolved": "https://registry.npmjs.org/@types/ws/-/ws-8.18.1.tgz",
++      "integrity": "sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==",
++      "license": "MIT",
++      "dependencies": {
++        "@types/node": "*"
++      }
++    },
+     "node_modules/@typescript-eslint/eslint-plugin": {
+       "version": "7.18.0",
+       "resolved": "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-7.18.0.tgz",
+@@ -3426,6 +3523,15 @@
+         "ms": "^2.0.0"
+       }
+     },
++    "node_modules/iceberg-js": {
++      "version": "0.8.1",
++      "resolved": "https://registry.npmjs.org/iceberg-js/-/iceberg-js-0.8.1.tgz",
++      "integrity": "sha512-1dhVQZXhcHje7798IVM+xoo/1ZdVfzOMIc8/rgVSijRK38EDqOJoGula9N/8ZI5RD8QTxNQtK/Gozpr+qUqRRA==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=20.0.0"
++      }
++    },
+     "node_modules/ignore": {
+       "version": "5.3.2",
+       "resolved": "https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz",
+@@ -4411,6 +4517,15 @@
+         }
+       }
+     },
++    "node_modules/next-auth/node_modules/uuid": {
++      "version": "8.3.2",
++      "resolved": "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz",
++      "integrity": "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==",
++      "license": "MIT",
++      "bin": {
++        "uuid": "dist/bin/uuid"
++      }
++    },
+     "node_modules/next/node_modules/postcss": {
+       "version": "8.4.31",
+       "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz",
+@@ -6400,12 +6515,16 @@
+       "license": "MIT"
+     },
+     "node_modules/uuid": {
+-      "version": "8.3.2",
+-      "resolved": "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz",
+-      "integrity": "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==",
++      "version": "13.0.0",
++      "resolved": "https://registry.npmjs.org/uuid/-/uuid-13.0.0.tgz",
++      "integrity": "sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w==",
++      "funding": [
++        "https://github.com/sponsors/broofa",
++        "https://github.com/sponsors/ctavan"
++      ],
+       "license": "MIT",
+       "bin": {
+-        "uuid": "dist/bin/uuid"
++        "uuid": "dist-node/bin/uuid"
+       }
+     },
+     "node_modules/web-streams-polyfill": {
+@@ -6656,6 +6775,28 @@
+       "dev": true,
+       "license": "ISC"
+     },
++    "node_modules/ws": {
++      "version": "8.19.0",
++      "resolved": "https://registry.npmjs.org/ws/-/ws-8.19.0.tgz",
++      "integrity": "sha512-blAT2mjOEIi0ZzruJfIhb3nps74PRWTCz1IjglWEEpQl5XS/UNama6u2/rjFkDDouqr4L67ry+1aGIALViWjDg==",
++      "license": "MIT",
++      "peer": true,
++      "engines": {
++        "node": ">=10.0.0"
++      },
++      "peerDependencies": {
++        "bufferutil": "^4.0.1",
++        "utf-8-validate": ">=5.0.2"
++      },
++      "peerDependenciesMeta": {
++        "bufferutil": {
++          "optional": true
++        },
++        "utf-8-validate": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/yallist": {
+       "version": "4.0.0",
+       "resolved": "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz",
+diff --git a/package.json b/package.json
+index b182dd5..d65f8eb 100644
+--- a/package.json
++++ b/package.json
+@@ -16,6 +16,7 @@
+     "@anthropic-ai/sdk": "^0.32.1",
+     "@prisma/client": "^5.22.0",
+     "@stripe/stripe-js": "^4.9.0",
++    "@supabase/supabase-js": "^2.90.1",
+     "bcryptjs": "^2.4.3",
+     "next": "^14.2.35",
+     "next-auth": "^4.24.10",
+@@ -23,6 +24,7 @@
+     "react": "^18.3.1",
+     "react-dom": "^18.3.1",
+     "stripe": "^17.3.1",
++    "uuid": "^13.0.0",
+     "zod": "^3.23.8"
+   },
+   "devDependencies": {
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index b91c1f5..b0f4529 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -8,15 +8,28 @@ datasource db {
+ }
+ 
+ model User {
+-  id           String        @id @default(cuid())
+-  email        String        @unique
+-  passwordHash String
+-  name         String?
+-  createdAt    DateTime      @default(now())
+-  updatedAt    DateTime      @updatedAt
+-  chatSessions ChatSession[]
+-  subscription Subscription?
+-  memory       UserMemory?
++  id                String             @id @default(cuid())
++  email             String             @unique
++  passwordHash      String
++  name              String?
++  role              String             @default("user") // 'user' | 'super-admin'
++  subscriptionTier  String             @default("beginner")
++  createdAt         DateTime           @default(now())
++  updatedAt         DateTime           @updatedAt
++  referralCode      String?            @unique
++  referredBy        String?
++  metadata          Json?
++  chatSessions      ChatSession[]
++  subscription      Subscription?
++  memory            UserMemory?
++  userTreatments    UserTreatment[]
++  supplementRecords SupplementRecord[]
++  adminActions      AdminActionLog[]   @relation("AdminActions")
++  targetUserActions AdminActionLog[]   @relation("TargetUserActions")
++  referralsSent     Referral[]         @relation("Referrer")
++  referralReceived  Referral?          @relation("Referee")
++  diaryEntries      DiaryEntry[]
++  documents         Document[]
+ }
+ 
+ model Subscription {
+@@ -24,6 +37,7 @@ model Subscription {
+   userId           String    @unique
+   stripeCustomerId String    @unique
+   stripeSubId      String?   @unique
++  tier             String    @default("beginner")
+   status           String    @default("inactive")
+   currentPeriodEnd DateTime?
+   createdAt        DateTime  @default(now())
+@@ -54,17 +68,427 @@ model Analytics {
+ }
+ 
+ model UserMemory {
+-  id                    String   @id @default(cuid())
+-  userId                String?  @unique
+-  anonId                String?  @unique
+-  goals                 Json?
+-  preferences           Json?
+-  topicsDiscussed       Json?
+-  disclaimerAcknowledged Boolean @default(false)
+-  optOut                Boolean  @default(false)
+-  createdAt             DateTime @default(now())
+-  updatedAt             DateTime @updatedAt
+-  user                  User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
++  id                     String   @id @default(cuid())
++  userId                 String?  @unique
++  anonId                 String?  @unique
++  goals                  Json?
++  preferences            Json?
++  topicsDiscussed        Json?
++  disclaimerAcknowledged Boolean  @default(false)
++  optOut                 Boolean  @default(false)
++  createdAt              DateTime @default(now())
++  updatedAt              DateTime @updatedAt
++  user                   User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+   @@index([anonId])
+ }
++
++model DiaryEntry {
++  id        String   @id @default(cuid())
++  userId    String?
++  anonId    String?
++  content   String
++  summary   String?
++  mood      String?
++  tags      Json?
++  isPinned  Boolean  @default(false)
++  createdAt DateTime @default(now())
++  updatedAt DateTime @updatedAt
++  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
++
++  @@index([userId])
++  @@index([anonId])
++}
++
++model Resource {
++  id           String         @id @default(cuid())
++  slug         String?
++  title        String
++  summary      String
++  mascotOwner  String
++  category     String
++  resourceType String
++  content      String
++  tags         Json?
++  isPublic     Boolean        @default(false)
++  status       String         @default("draft")
++  tierAccess   String         @default("foundation")
++  archived     Boolean        @default(false)
++  createdAt    DateTime       @default(now())
++  updatedAt    DateTime       @updatedAt
++  saves        ResourceSave[]
++
++  @@index([mascotOwner])
++  @@index([category])
++  @@index([resourceType])
++}
++
++model ResourceSave {
++  id         String   @id @default(cuid())
++  resourceId String
++  userId     String?
++  anonId     String?
++  createdAt  DateTime @default(now())
++  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
++
++  @@unique([resourceId, userId])
++  @@unique([resourceId, anonId])
++  @@index([userId])
++  @@index([anonId])
++}
++
++model Treatment {
++  id              String             @id @default(cuid())
++  name            String
++  category        String
++  subcategory     String?
++  description     String
++  commonUses      String
++  comparisonNotes String?
++  isPublished     Boolean            @default(false)
++  createdAt       DateTime           @default(now())
++  updatedAt       DateTime           @updatedAt
++  versions        TreatmentVersion[]
++  userTreatments  UserTreatment[]
++
++  @@index([category])
++  @@index([isPublished])
++}
++
++model TreatmentVersion {
++  id              String    @id @default(cuid())
++  treatmentId     String
++  name            String
++  category        String
++  subcategory     String?
++  description     String
++  commonUses      String
++  comparisonNotes String?
++  isPublished     Boolean
++  createdAt       DateTime  @default(now())
++  treatment       Treatment @relation(fields: [treatmentId], references: [id], onDelete: Cascade)
++
++  @@index([treatmentId, createdAt])
++}
++
++enum TreatmentCategory {
++  AESTHETICS
++  METABOLIC
++  HORMONES
++  RECOVERY
++}
++
++model GlobalTreatment {
++  id             String            @id @default(cuid())
++  name           String
++  category       TreatmentCategory
++  mascotId       String
++  description    String            @db.Text
++  fullscriptUrl  String?
++  isPublished    Boolean           @default(false)
++  createdAt      DateTime          @default(now())
++  updatedAt      DateTime          @updatedAt
++  userTreatments UserTreatment[]
++
++  @@map("global_treatments")
++}
++
++enum TreatmentStatus {
++  TRIED
++  CURRENT
++  CONSIDERING
++}
++
++model UserTreatment {
++  id                String           @id @default(cuid())
++  treatmentId       String?
++  globalTreatmentId String?
++  userId            String?
++  anonId            String?
++  status            TreatmentStatus
++  interestNote      String?
++  experienceNote    String?
++  startDate         DateTime?
++  endDate           DateTime?
++  notes             String?          @db.Text
++  createdAt         DateTime         @default(now())
++  updatedAt         DateTime         @updatedAt
++  treatment         Treatment?       @relation(fields: [treatmentId], references: [id], onDelete: Cascade)
++  globalTreatment   GlobalTreatment? @relation(fields: [globalTreatmentId], references: [id], onDelete: Cascade)
++  user              User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
++
++  @@unique([treatmentId, userId])
++  @@unique([treatmentId, anonId])
++  @@unique([globalTreatmentId, userId])
++  @@unique([globalTreatmentId, anonId])
++  @@index([userId])
++  @@index([anonId])
++  @@map("user_treatments")
++}
++
++model SupplementRecord {
++  id        String          @id @default(cuid())
++  userId    String
++  name      String
++  status    TreatmentStatus
++  startDate DateTime?
++  endDate   DateTime?
++  notes     String?         @db.Text
++  createdAt DateTime        @default(now())
++  updatedAt DateTime        @updatedAt
++  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
++
++  @@index([userId])
++  @@map("supplement_records")
++}
++
++model Peptide {
++  id           String           @id @default(cuid())
++  name         String           @unique
++  description  String
++  commonTopics String
++  disclaimer   String
++  isPublished  Boolean          @default(false)
++  createdAt    DateTime         @default(now())
++  updatedAt    DateTime         @updatedAt
++  versions     PeptideVersion[]
++
++  @@index([isPublished])
++}
++
++model PeptideVersion {
++  id           String   @id @default(cuid())
++  peptideId    String
++  name         String
++  description  String
++  commonTopics String
++  disclaimer   String
++  isPublished  Boolean
++  createdAt    DateTime @default(now())
++  peptide      Peptide  @relation(fields: [peptideId], references: [id], onDelete: Cascade)
++
++  @@index([peptideId, createdAt])
++}
++
++model BlogPost {
++  id          String   @id @default(cuid())
++  title       String
++  slug        String   @unique
++  excerpt     String
++  content     String
++  mascotOwner String?
++  category    String?
++  tags        Json?
++  status      String   @default("draft")
++  isPublished Boolean  @default(false)
++  featured    Boolean  @default(false)
++  createdAt   DateTime @default(now())
++  updatedAt   DateTime @updatedAt
++}
++
++model EmailCapture {
++  id        String   @id @default(cuid())
++  email     String
++  source    String
++  createdAt DateTime @default(now())
++
++  @@index([email])
++  @@index([source])
++}
++
++model SiteCopy {
++  id        String   @id @default(cuid())
++  key       String   @unique
++  title     String?
++  body      String
++  status    String   @default("published")
++  updatedAt DateTime @updatedAt
++
++  versions SiteCopyVersion[]
++}
++
++model MascotGuideline {
++  id            String   @id @default(cuid())
++  mascotId      String   @unique
++  tone          String
++  allowedTopics String
++  cautionAreas  String
++  updatedAt     DateTime @updatedAt
++}
++
++model SiteCopyVersion {
++  id         String   @id @default(cuid())
++  siteCopyId String
++  key        String
++  title      String?
++  body       String
++  status     String
++  createdAt  DateTime @default(now())
++
++  siteCopy SiteCopy @relation(fields: [siteCopyId], references: [id], onDelete: Cascade)
++
++  @@index([siteCopyId, createdAt])
++  @@index([key])
++}
++
++model BlueprintSectionRule {
++  id                 String   @id @default(cuid())
++  key                String   @unique
++  title              String
++  description        String
++  source             String
++  isEnabled          Boolean  @default(true)
++  collapsedByDefault Boolean  @default(false)
++  sortOrder          Int      @default(0)
++  createdAt          DateTime @default(now())
++  updatedAt          DateTime @updatedAt
++}
++
++model FeatureFlag {
++  id          String   @id @default(cuid())
++  key         String   @unique
++  description String
++  enabled     Boolean  @default(false)
++  createdAt   DateTime @default(now())
++  updatedAt   DateTime @updatedAt
++}
++
++model TierConfig {
++  id                   String   @id @default(cuid())
++  key                  String   @unique
++  label                String
++  mascotLimit          Int      @default(3)
++  allowAdvancedExports Boolean  @default(false)
++  allowProviderMode    Boolean  @default(false)
++  allowBetaMascots     Boolean  @default(false)
++  createdAt            DateTime @default(now())
++  updatedAt            DateTime @updatedAt
++}
++
++model AdminActionLog {
++  id           String   @id @default(cuid())
++  adminId      String
++  targetUserId String
++  action       String // REFUND, CANCEL, TIER_CHANGE
++  reason       String
++  details      Json?
++  createdAt    DateTime @default(now())
++  admin        User     @relation("AdminActions", fields: [adminId], references: [id])
++  targetUser   User     @relation("TargetUserActions", fields: [targetUserId], references: [id])
++
++  @@index([adminId])
++  @@index([targetUserId])
++}
++
++model Referral {
++  id             String         @id @default(cuid())
++  referrerId     String
++  refereeId      String         @unique
++  status         ReferralStatus @default(PENDING)
++  conversionDate DateTime?
++  createdAt      DateTime       @default(now())
++  updatedAt      DateTime       @updatedAt
++  referrer       User           @relation("Referrer", fields: [referrerId], references: [id])
++  referee        User           @relation("Referee", fields: [refereeId], references: [id])
++
++  @@index([referrerId])
++}
++
++enum ReferralStatus {
++  PENDING
++  SUCCESSFUL
++  REWARDED
++}
++
++enum DocumentCategory {
++  LAB
++  IMAGING
++  VISIT_NOTE
++  DISCHARGE
++  OTHER
++}
++
++model Document {
++  id                     String           @id @default(cuid())
++  userId                 String?
++  anonId                 String?
++  title                  String
++  category               DocumentCategory @default(OTHER)
++  docDate                DateTime?
++  storagePath            String
++  mimeType               String
++  sizeBytes              Int
++  includeInPacketDefault Boolean          @default(false)
++  createdAt              DateTime         @default(now())
++  deletedAt              DateTime?
++
++  user                   User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
++  shareLinks             DocumentShareLink[]
++
++  @@index([userId])
++  @@index([anonId])
++}
++
++enum ProviderPacketTemplate {
++  PRIMARY
++  SPECIALIST
++  URGENT
++}
++
++model ProviderPacket {
++  id        String                  @id @default(cuid())
++  userId    String?
++  anonId    String?
++  template  ProviderPacketTemplate  @default(PRIMARY)
++  payload   Json
++  createdAt DateTime                @default(now())
++
++  shareLinks ProviderPacketLink[]
++
++  @@index([userId])
++  @@index([anonId])
++}
++
++model ProviderPacketLink {
++  id        String                @id @default(cuid())
++  token     String                @unique
++  packetId  String
++  expiresAt DateTime
++  revokedAt DateTime?
++  createdAt DateTime              @default(now())
++
++  packet ProviderPacket @relation(fields: [packetId], references: [id], onDelete: Cascade)
++  accesses ProviderPacketAccessLog[]
++}
++
++model ProviderPacketAccessLog {
++  id                    String                @id @default(cuid())
++  providerPacketLinkId  String
++  accessedAt            DateTime              @default(now())
++  ipAddress             String?
++  userAgent             String?
++
++  link ProviderPacketLink @relation(fields: [providerPacketLinkId], references: [id], onDelete: Cascade)
++}
++
++model DocumentShareLink {
++  id         String                   @id @default(cuid())
++  documentId String
++  token      String                   @unique
++  expiresAt  DateTime
++  revokedAt  DateTime?
++  createdAt  DateTime                 @default(now())
++
++  document   Document                 @relation(fields: [documentId], references: [id], onDelete: Cascade)
++  accesses   DocumentShareLinkAccess[]
++}
++
++model DocumentShareLinkAccess {
++  id          String              @id @default(cuid())
++  shareLinkId String
++  accessedAt  DateTime            @default(now())
++  ipAddress   String?
++  userAgent   String?
++
++  shareLink   DocumentShareLink   @relation(fields: [shareLinkId], references: [id], onDelete: Cascade)
++}
+diff --git a/src/app/(dashboard)/storyboard/page.tsx b/src/app/(dashboard)/storyboard/page.tsx
+index 263f094..3631ba5 100644
+--- a/src/app/(dashboard)/storyboard/page.tsx
++++ b/src/app/(dashboard)/storyboard/page.tsx
+@@ -5,22 +5,16 @@ import Link from "next/link";
+ import Providers from "@/components/layout/providers";
+ import Header from "@/components/layout/header";
+ import DashboardNav from "@/components/layout/nav";
+-
+-type TreatmentStatus = "current" | "past" | "considering";
+-type TreatmentCategory = "treatment" | "medication" | "supplement" | "peptide";
+-
+-type TreatmentItem = {
+-  id: string;
+-  name: string;
+-  category: TreatmentCategory;
+-  status: TreatmentStatus;
+-  addedAt: string;
+-  insights: Array<{ expert: string; text: string }>;
+-  notes: string;
+-};
++import ExportModal from "@/components/export/ExportModal";
++import {
++  StoryboardSnapshot,
++  TreatmentCategory,
++  TreatmentItem,
++  TreatmentStatus,
++} from "@/types/storyboard";
+ 
+ export default function StoryboardPage() {
+-  const [snapshot, setSnapshot] = useState({
++  const [snapshot, setSnapshot] = useState<StoryboardSnapshot>({
+     ageRange: "",
+     goals: "",
+     allergies: "",
+@@ -35,6 +29,7 @@ export default function StoryboardPage() {
+     status: "current" as TreatmentStatus,
+     notes: "",
+   });
++  const [isExportOpen, setIsExportOpen] = useState(false);
+ 
+   const hasContent =
+     Object.values(snapshot).some((value) => value.trim().length > 0) ||
+@@ -78,6 +73,18 @@ export default function StoryboardPage() {
+               Your personal health story — built over time, one question at a
+               time.
+             </p>
++            <div className="mt-4 flex flex-wrap gap-3">
++              <button
++                type="button"
++                onClick={() => setIsExportOpen(true)}
++                className="rounded-full bg-hot-pink px-5 py-2 text-sm font-semibold text-black transition hover:bg-pink-500"
++              >
++                Export My Health Blueprint
++              </button>
++              <p className="text-sm text-gray-500">
++                Capture a snapshot of your journey and share it with providers.
++              </p>
++            </div>
+           </header>
+ 
+           {!hasContent && (
+@@ -352,6 +359,12 @@ export default function StoryboardPage() {
+         </main>
+ 
+         <DashboardNav />
++        <ExportModal
++          open={isExportOpen}
++          onClose={() => setIsExportOpen(false)}
++          snapshot={snapshot}
++          treatments={treatments}
++        />
+       </div>
+     </Providers>
+   );
+diff --git a/web/package-lock.json b/web/package-lock.json
+index 7937a87..52fa296 100644
+--- a/web/package-lock.json
++++ b/web/package-lock.json
+@@ -3217,6 +3217,7 @@
+       "integrity": "sha512-whOE1HFo/qJDyX4SnXzP4N6zOWn79WhnCUY/iDR0mPfQZO8wcYE4JClzI2oZrhBnnMUCBCHZhO6VQyoBU95mZA==",
+       "dev": true,
+       "license": "MIT",
++      "peer": true,
+       "dependencies": {
+         "@rtsao/scc": "^1.1.0",
+         "array-includes": "^3.1.9",

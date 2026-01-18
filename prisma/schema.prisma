@@ -8,15 +8,28 @@ datasource db {
 }
 
 model User {
-  id           String        @id @default(cuid())
-  email        String        @unique
-  passwordHash String
-  name         String?
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  chatSessions ChatSession[]
-  subscription Subscription?
-  memory       UserMemory?
+  id                String             @id @default(cuid())
+  email             String             @unique
+  passwordHash      String
+  name              String?
+  role              String             @default("user") // 'user' | 'super-admin'
+  subscriptionTier  String             @default("beginner")
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  referralCode      String?            @unique
+  referredBy        String?
+  metadata          Json?
+  chatSessions      ChatSession[]
+  subscription      Subscription?
+  memory            UserMemory?
+  userTreatments    UserTreatment[]
+  supplementRecords SupplementRecord[]
+  adminActions      AdminActionLog[]   @relation("AdminActions")
+  targetUserActions AdminActionLog[]   @relation("TargetUserActions")
+  referralsSent     Referral[]         @relation("Referrer")
+  referralReceived  Referral?          @relation("Referee")
+  diaryEntries      DiaryEntry[]
+  documents         Document[]
 }
 
 model Subscription {
@@ -24,6 +37,7 @@ model Subscription {
   userId           String    @unique
   stripeCustomerId String    @unique
   stripeSubId      String?   @unique
+  tier             String    @default("beginner")
   status           String    @default("inactive")
   currentPeriodEnd DateTime?
   createdAt        DateTime  @default(now())
@@ -54,17 +68,427 @@ model Analytics {
 }
 
 model UserMemory {
-  id                    String   @id @default(cuid())
-  userId                String?  @unique
-  anonId                String?  @unique
-  goals                 Json?
-  preferences           Json?
-  topicsDiscussed       Json?
-  disclaimerAcknowledged Boolean @default(false)
-  optOut                Boolean  @default(false)
-  createdAt             DateTime @default(now())
-  updatedAt             DateTime @updatedAt
-  user                  User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                     String   @id @default(cuid())
+  userId                 String?  @unique
+  anonId                 String?  @unique
+  goals                  Json?
+  preferences            Json?
+  topicsDiscussed        Json?
+  disclaimerAcknowledged Boolean  @default(false)
+  optOut                 Boolean  @default(false)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+  user                   User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([anonId])
+}
+
+model DiaryEntry {
+  id        String   @id @default(cuid())
+  userId    String?
+  anonId    String?
+  content   String
+  summary   String?
+  mood      String?
+  tags      Json?
+  isPinned  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([anonId])
+}
+
+model Resource {
+  id           String         @id @default(cuid())
+  slug         String?
+  title        String
+  summary      String
+  mascotOwner  String
+  category     String
+  resourceType String
+  content      String
+  tags         Json?
+  isPublic     Boolean        @default(false)
+  status       String         @default("draft")
+  tierAccess   String         @default("foundation")
+  archived     Boolean        @default(false)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  saves        ResourceSave[]
+
+  @@index([mascotOwner])
+  @@index([category])
+  @@index([resourceType])
+}
+
+model ResourceSave {
+  id         String   @id @default(cuid())
+  resourceId String
+  userId     String?
+  anonId     String?
+  createdAt  DateTime @default(now())
+  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@unique([resourceId, userId])
+  @@unique([resourceId, anonId])
+  @@index([userId])
+  @@index([anonId])
+}
+
+model Treatment {
+  id              String             @id @default(cuid())
+  name            String
+  category        String
+  subcategory     String?
+  description     String
+  commonUses      String
+  comparisonNotes String?
+  isPublished     Boolean            @default(false)
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  versions        TreatmentVersion[]
+  userTreatments  UserTreatment[]
+
+  @@index([category])
+  @@index([isPublished])
+}
+
+model TreatmentVersion {
+  id              String    @id @default(cuid())
+  treatmentId     String
+  name            String
+  category        String
+  subcategory     String?
+  description     String
+  commonUses      String
+  comparisonNotes String?
+  isPublished     Boolean
+  createdAt       DateTime  @default(now())
+  treatment       Treatment @relation(fields: [treatmentId], references: [id], onDelete: Cascade)
+
+  @@index([treatmentId, createdAt])
+}
+
+enum TreatmentCategory {
+  AESTHETICS
+  METABOLIC
+  HORMONES
+  RECOVERY
+}
+
+model GlobalTreatment {
+  id             String            @id @default(cuid())
+  name           String
+  category       TreatmentCategory
+  mascotId       String
+  description    String            @db.Text
+  fullscriptUrl  String?
+  isPublished    Boolean           @default(false)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  userTreatments UserTreatment[]
+
+  @@map("global_treatments")
+}
+
+enum TreatmentStatus {
+  TRIED
+  CURRENT
+  CONSIDERING
+}
+
+model UserTreatment {
+  id                String           @id @default(cuid())
+  treatmentId       String?
+  globalTreatmentId String?
+  userId            String?
+  anonId            String?
+  status            TreatmentStatus
+  interestNote      String?
+  experienceNote    String?
+  startDate         DateTime?
+  endDate           DateTime?
+  notes             String?          @db.Text
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  treatment         Treatment?       @relation(fields: [treatmentId], references: [id], onDelete: Cascade)
+  globalTreatment   GlobalTreatment? @relation(fields: [globalTreatmentId], references: [id], onDelete: Cascade)
+  user              User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([treatmentId, userId])
+  @@unique([treatmentId, anonId])
+  @@unique([globalTreatmentId, userId])
+  @@unique([globalTreatmentId, anonId])
+  @@index([userId])
+  @@index([anonId])
+  @@map("user_treatments")
+}
+
+model SupplementRecord {
+  id        String          @id @default(cuid())
+  userId    String
+  name      String
+  status    TreatmentStatus
+  startDate DateTime?
+  endDate   DateTime?
+  notes     String?         @db.Text
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("supplement_records")
+}
+
+model Peptide {
+  id           String           @id @default(cuid())
+  name         String           @unique
+  description  String
+  commonTopics String
+  disclaimer   String
+  isPublished  Boolean          @default(false)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  versions     PeptideVersion[]
+
+  @@index([isPublished])
+}
+
+model PeptideVersion {
+  id           String   @id @default(cuid())
+  peptideId    String
+  name         String
+  description  String
+  commonTopics String
+  disclaimer   String
+  isPublished  Boolean
+  createdAt    DateTime @default(now())
+  peptide      Peptide  @relation(fields: [peptideId], references: [id], onDelete: Cascade)
+
+  @@index([peptideId, createdAt])
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  content     String
+  mascotOwner String?
+  category    String?
+  tags        Json?
+  status      String   @default("draft")
+  isPublished Boolean  @default(false)
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model EmailCapture {
+  id        String   @id @default(cuid())
+  email     String
+  source    String
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([source])
+}
+
+model SiteCopy {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  title     String?
+  body      String
+  status    String   @default("published")
+  updatedAt DateTime @updatedAt
+
+  versions SiteCopyVersion[]
+}
+
+model MascotGuideline {
+  id            String   @id @default(cuid())
+  mascotId      String   @unique
+  tone          String
+  allowedTopics String
+  cautionAreas  String
+  updatedAt     DateTime @updatedAt
+}
+
+model SiteCopyVersion {
+  id         String   @id @default(cuid())
+  siteCopyId String
+  key        String
+  title      String?
+  body       String
+  status     String
+  createdAt  DateTime @default(now())
+
+  siteCopy SiteCopy @relation(fields: [siteCopyId], references: [id], onDelete: Cascade)
+
+  @@index([siteCopyId, createdAt])
+  @@index([key])
+}
+
+model BlueprintSectionRule {
+  id                 String   @id @default(cuid())
+  key                String   @unique
+  title              String
+  description        String
+  source             String
+  isEnabled          Boolean  @default(true)
+  collapsedByDefault Boolean  @default(false)
+  sortOrder          Int      @default(0)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model FeatureFlag {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  description String
+  enabled     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model TierConfig {
+  id                   String   @id @default(cuid())
+  key                  String   @unique
+  label                String
+  mascotLimit          Int      @default(3)
+  allowAdvancedExports Boolean  @default(false)
+  allowProviderMode    Boolean  @default(false)
+  allowBetaMascots     Boolean  @default(false)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model AdminActionLog {
+  id           String   @id @default(cuid())
+  adminId      String
+  targetUserId String
+  action       String // REFUND, CANCEL, TIER_CHANGE
+  reason       String
+  details      Json?
+  createdAt    DateTime @default(now())
+  admin        User     @relation("AdminActions", fields: [adminId], references: [id])
+  targetUser   User     @relation("TargetUserActions", fields: [targetUserId], references: [id])
+
+  @@index([adminId])
+  @@index([targetUserId])
+}
+
+model Referral {
+  id             String         @id @default(cuid())
+  referrerId     String
+  refereeId      String         @unique
+  status         ReferralStatus @default(PENDING)
+  conversionDate DateTime?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  referrer       User           @relation("Referrer", fields: [referrerId], references: [id])
+  referee        User           @relation("Referee", fields: [refereeId], references: [id])
+
+  @@index([referrerId])
+}
+
+enum ReferralStatus {
+  PENDING
+  SUCCESSFUL
+  REWARDED
+}
+
+enum DocumentCategory {
+  LAB
+  IMAGING
+  VISIT_NOTE
+  DISCHARGE
+  OTHER
+}
+
+model Document {
+  id                     String           @id @default(cuid())
+  userId                 String?
+  anonId                 String?
+  title                  String
+  category               DocumentCategory @default(OTHER)
+  docDate                DateTime?
+  storagePath            String
+  mimeType               String
+  sizeBytes              Int
+  includeInPacketDefault Boolean          @default(false)
+  createdAt              DateTime         @default(now())
+  deletedAt              DateTime?
+
+  user                   User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  shareLinks             DocumentShareLink[]
+
+  @@index([userId])
+  @@index([anonId])
+}
+
+enum ProviderPacketTemplate {
+  PRIMARY
+  SPECIALIST
+  URGENT
+}
+
+model ProviderPacket {
+  id        String                  @id @default(cuid())
+  userId    String?
+  anonId    String?
+  template  ProviderPacketTemplate  @default(PRIMARY)
+  payload   Json
+  createdAt DateTime                @default(now())
+
+  shareLinks ProviderPacketLink[]
+
+  @@index([userId])
+  @@index([anonId])
+}
+
+model ProviderPacketLink {
+  id        String                @id @default(cuid())
+  token     String                @unique
+  packetId  String
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime              @default(now())
+
+  packet ProviderPacket @relation(fields: [packetId], references: [id], onDelete: Cascade)
+  accesses ProviderPacketAccessLog[]
+}
+
+model ProviderPacketAccessLog {
+  id                    String                @id @default(cuid())
+  providerPacketLinkId  String
+  accessedAt            DateTime              @default(now())
+  ipAddress             String?
+  userAgent             String?
+
+  link ProviderPacketLink @relation(fields: [providerPacketLinkId], references: [id], onDelete: Cascade)
+}
+
+model DocumentShareLink {
+  id         String                   @id @default(cuid())
+  documentId String
+  token      String                   @unique
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  createdAt  DateTime                 @default(now())
+
+  document   Document                 @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  accesses   DocumentShareLinkAccess[]
+}
+
+model DocumentShareLinkAccess {
+  id          String              @id @default(cuid())
+  shareLinkId String
+  accessedAt  DateTime            @default(now())
+  ipAddress   String?
+  userAgent   String?
+
+  shareLink   DocumentShareLink   @relation(fields: [shareLinkId], references: [id], onDelete: Cascade)
 }

@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Button from "@/components/ui/button";
 
 export default function ProviderPacketPage() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -25,12 +21,6 @@ export default function ProviderPacketPage() {
     treatmentGoals: "",
     questions: "",
   });
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login?callbackUrl=/provider-packet");
-    }
-  }, [status, router]);
 
   const handleSave = async () => {
     setSaving(true);
@@ -56,18 +46,6 @@ export default function ProviderPacketPage() {
       setSaving(false);
     }
   };
-
-  if (status === "loading") {
-    return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <p className="text-gray-400">Loading...</p>
-      </div>
-    );
-  }
-
-  if (status === "unauthenticated") {
-    return null;
-  }
 
   return (
     <div className="min-h-screen bg-black text-white">

@@ -1,32 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import DocumentsVault from "@/components/documents/DocumentsVault";
 
 export default function DocumentsPage() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login?callbackUrl=/documents");
-    }
-  }, [status, router]);
-
-  if (status === "loading") {
-    return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <p className="text-gray-400">Loading...</p>
-      </div>
-    );
-  }
-
-  if (status === "unauthenticated") {
-    return null;
-  }
-
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="mx-auto max-w-6xl px-6 py-12">

@@ -41,7 +41,6 @@ export default async function AdminPage() {
       href: "/admin/data-requests",
       description: "Export/deletion queue management",
       icon: "📦",
-      disabled: true, // Phase 2A.5
     },
   ];
 
@@ -66,25 +65,14 @@ export default async function AdminPage() {
           {domains.map((domain) => (
             <Link
               key={domain.href}
-              href={domain.disabled ? "#" : domain.href}
-              className={`
-                rounded-2xl border border-white/10 bg-white/5 p-6 transition
-                ${
-                  domain.disabled
-                    ? "opacity-40 cursor-not-allowed"
-                    : "hover:border-hot-pink/40 hover:bg-white/10"
-                }
-              `}
-              {...(domain.disabled && { onClick: (e: React.MouseEvent) => e.preventDefault() })}
+              href={domain.href}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-hot-pink/40 hover:bg-white/10"
             >
               <div className="flex items-start gap-4">
                 <div className="text-3xl">{domain.icon}</div>
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold mb-2">
                     {domain.title}
-                    {domain.disabled && (
-                      <span className="ml-2 text-xs text-gray-500">(Coming Soon)</span>
-                    )}
                   </h3>
                   <p className="text-sm text-gray-400">{domain.description}</p>
                 </div>

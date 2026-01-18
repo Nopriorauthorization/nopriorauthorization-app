@@ -44,6 +44,7 @@ model User {
   disableEvents  UserDisableEvent[]
   passwordResetTokens  PasswordResetToken[]
   consentChangeLogs     ConsentChangeLog[]
+  dataRequests        DataRequest[]
 }
 
 model Subscription {
@@ -257,4 +258,25 @@ model ConsentChangeLog {
   @@index([userId, changedAt])
   @@index([consentType])
   @@index([changedAt])
+}
+
+model DataRequest {
+  id            String   @id @default(cuid())
+  userId        String
+  requestType   String   // "export", "deletion"
+  status        String   @default("pending") // "pending", "in_progress", "completed", "cancelled"
+  requestedAt   DateTime @default(now())
+  fulfilledAt   DateTime?
+  fulfilledBy   String?  // Admin user ID who fulfilled the request
+  cancelledAt   DateTime?
+  cancelledBy   String?  // Admin user ID who cancelled the request
+  cancellationReason String?
+  notes         String?  // Admin notes about the request
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([status])
+  @@index([requestType])
+  @@index([requestedAt])
 }

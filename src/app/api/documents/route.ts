@@ -41,84 +41,100 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const identity = await resolveDocumentIdentity(request);
-  const hasUser =
-    typeof identity.userId === "string" && identity.userId.length > 0;
-  const existingAnonId = request.cookies.get("npa_uid")?.value ?? null;
-  const anonId =
-    identity.anonId ||
-    (!hasUser ? getOrCreateAnonId(existingAnonId) : null);
+  try {
+    const identity = await resolveDocumentIdentity(request);
+    const hasUser =
+      typeof identity.userId === "string" && identity.userId.length > 0;
+    const existingAnonId = request.cookies.get("npa_uid")?.value ?? null;
+    const anonId =
+      identity.anonId ||
+      (!hasUser ? getOrCreateAnonId(existingAnonId) : null);
 
-  if (!hasUser && !anonId) {
-    return NextResponse.json(
-      { error: "Authentication required." },
-      { status: 401 }
-    );
-  }
+    if (!hasUser && !anonId) {
+      return NextResponse.json(
+        { error: "Authentication required." },
+        { status: 401 }
+      );
+    }
 
-  const formData = await request.formData();
-  const file = formData.get("file");
-  if (!file || !(file instanceof File)) {
-    return NextResponse.json(
-      { error: "A document file is required." },
-      { status: 400 }
-    );
-  }
+    const formData = await request.formData();
+    const file = formData.get("file");
+    if (!file || !(file instanceof File)) {
+      return NextResponse.json(
+        { error: "A document file is required." },
+        { status: 400 }
+      );
+    }
 
-  if (!ALLOWED_MIME_TYPES.has(file.type)) {
-    return NextResponse.json(
-      { error: "Only PDF, PNG, and JPG files are allowed." },
-      { status: 400 }
-    );
-  }
+    if (!ALLOWED_MIME_TYPES.has(file.type)) {
+      return NextResponse.json(
+        { error: "Only PDF, PNG, and JPG files are allowed." },
+        { status: 400 }
+      );
+    }
 
-  const buffer = Buffer.from(await file.arrayBuffer());
-  const ownerId = (hasUser ? identity.userId : anonId) as string;
-  const extension = path.extname(file.name ?? ".pdf").toLowerCase() || ".pdf";
-  const storagePath = `documents/${ownerId}/${randomUUID()}${extension}`;
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const ownerId = (hasUser ? identity.userId : anonId) as string;
+    const extension = path.extname(file.name ?? ".pdf").toLowerCase() || ".pdf";
+    const storagePath = `documents/${ownerId}/${randomUUID()}${extension}`;
 
-  await uploadToBucket({
-    path: storagePath,
-    data: buffer,
-    mimeType: file.type || "application/octet-stream",
-  });
+    try {
+      await uploadToBucket({
+        path: storagePath,
+        data: buffer,
+        mimeType: file.type || "application/octet-stream",
+      });
+    } catch (uploadError: any) {
+      console.error("Storage upload failed:", uploadError);
+      return NextResponse.json(
+        { error: uploadError.message || "File storage is not available. Please contact support." },
+        { status: 503 }
+      );
+    }
 
-  const categoryRaw = (formData.get("category") as string | null) ?? "OTHER";
-  const category = (Object.keys(DocumentCategory) as Array<
-    keyof typeof DocumentCategory
-  >).includes(categoryRaw as keyof typeof DocumentCategory)
-    ? (categoryRaw as DocumentCategory)
-    : DocumentCategory.OTHER;
+    const categoryRaw = (formData.get("category") as string | null) ?? "OTHER";
+    const category = (Object.keys(DocumentCategory) as Array<
+      keyof typeof DocumentCategory
+    >).includes(categoryRaw as keyof typeof DocumentCategory)
+      ? (categoryRaw as DocumentCategory)
+      : DocumentCategory.OTHER;
 
-  const docDateRaw = (formData.get("docDate") as string | null) ?? null;
-  const includeDefault =
-    (formData.get("includeInPacketDefault") as string | null) === "true";
+    const docDateRaw = (formData.get("docDate") as string | null) ?? null;
+    const includeDefault =
+      (formData.get("includeInPacketDefault") as string | null) === "true";
 
-  const document = await prisma.document.create({
-    data: {
-      userId: hasUser ? identity.userId : undefined,
-      anonId: hasUser ? undefined : anonId ?? undefined,
-      title: (formData.get("title") as string | null)?.trim() ||
-        file.name ||
-        "Document",
-      category,
-      docDate: docDateRaw ? new Date(docDateRaw) : undefined,
-      storagePath,
-      mimeType: file.type || "application/octet-stream",
-      sizeBytes: buffer.length,
-      includeInPacketDefault: includeDefault,
-    },
-  });
-
-  const response = NextResponse.json({ document: formatDocument(document) });
-  if (!hasUser && !existingAnonId && anonId) {
-    response.cookies.set("npa_uid", anonId, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 365,
+    const document = await prisma.document.create({
+      data: {
+        userId: hasUser ? identity.userId : undefined,
+        anonId: hasUser ? undefined : anonId ?? undefined,
+        title: (formData.get("title") as string | null)?.trim() ||
+          file.name ||
+          "Document",
+        category,
+        docDate: docDateRaw ? new Date(docDateRaw) : undefined,
+        storagePath,
+        mimeType: file.type || "application/octet-stream",
+        sizeBytes: buffer.length,
+        includeInPacketDefault: includeDefault,
+      },
     });
+
+    const response = NextResponse.json({ document: formatDocument(document) });
+    if (!hasUser && !existingAnonId && anonId) {
+      response.cookies.set("npa_uid", anonId, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 60 * 60 * 24 * 365,
+      });
+    }
+    return response;
+  } catch (error: any) {
+    console.error("Document upload error:", error);
+    return NextResponse.json(
+      { error: error.message || "An unexpected error occurred while uploading the document." },
+      { status: 500 }
+    );
   }
-  return response;
 }

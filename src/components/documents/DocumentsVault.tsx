@@ -49,6 +49,7 @@ export default function DocumentsVault() {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
   const [isDragging, setIsDragging] = useState(false);
+  const [sendingToBlueprint, setSendingToBlueprint] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const loadDocuments = useCallback(async () => {
@@ -139,6 +140,25 @@ export default function DocumentsVault() {
       loadDocuments();
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const sendToBlueprint = async (documentId: string) => {
+    setSendingToBlueprint(documentId);
+    try {
+      const response = await fetch(`/api/documents/${documentId}/send-to-blueprint`, {
+        method: "POST",
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send to blueprint");
+      }
+      // Show success feedback (you could add a toast notification here)
+      alert("Document sent to your Blueprint!");
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Failed to send to blueprint");
+    } finally {
+      setSendingToBlueprint(null);
     }
   };
 
@@ -315,6 +335,13 @@ export default function DocumentsVault() {
                     />
                     Include in packet by default
                   </label>
+                  <button
+                    onClick={() => sendToBlueprint(document.id)}
+                    disabled={sendingToBlueprint === document.id}
+                    className="text-xs font-semibold text-hot-pink underline-offset-4 hover:underline disabled:opacity-50"
+                  >
+                    {sendingToBlueprint === document.id ? "Sending..." : "Send to Blueprint"}
+                  </button>
                   <a
                     href={`/api/documents/${document.id}/download`}
                     className="text-xs font-semibold text-hot-pink underline-offset-4 hover:underline"

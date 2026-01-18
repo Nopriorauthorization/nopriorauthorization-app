@@ -12,10 +12,17 @@ export type DocumentItem = {
 };
 
 export const DOCUMENT_CATEGORIES: { value: DocumentCategory; label: string }[] = [
-  { value: DocumentCategory.LAB, label: "Lab Result" },
-  { value: DocumentCategory.IMAGING, label: "Imaging" },
-  { value: DocumentCategory.VISIT_NOTE, label: "Visit Note" },
-  { value: DocumentCategory.DISCHARGE, label: "Discharge Summary" },
+  { value: DocumentCategory.LAB_RESULT, label: "Lab Results" },
+  { value: DocumentCategory.IMAGING, label: "Imaging (X-ray, MRI, CT)" },
+  { value: DocumentCategory.PRESCRIPTION, label: "Prescription" },
+  { value: DocumentCategory.VISIT_NOTE, label: "Visit Notes" },
+  { value: DocumentCategory.DISCHARGE_SUMMARY, label: "Discharge Summary" },
+  { value: DocumentCategory.INSURANCE, label: "Insurance Documents" },
+  { value: DocumentCategory.REFERRAL, label: "Referral" },
+  { value: DocumentCategory.VACCINATION, label: "Vaccination Record" },
+  { value: DocumentCategory.PROCEDURE_NOTE, label: "Procedure Notes" },
+  { value: DocumentCategory.PATHOLOGY, label: "Pathology Report" },
+  { value: DocumentCategory.ALLERGY_RECORD, label: "Allergy Information" },
   { value: DocumentCategory.OTHER, label: "Other" },
 ];
 

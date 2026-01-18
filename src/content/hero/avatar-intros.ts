@@ -47,7 +47,7 @@ export const AVATAR_INTROS: AvatarIntro[] = [
     ctaNote: "No sugar-coating",
     ctaHref: "/chat?mascot=beau-tox",
     domain: "aesthetics",
-    poster: "/characters/beau.png",
+    poster: "/characters/Beau sitting.png",
     objectPosition: "50% 20%",
   },
   {

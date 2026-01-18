@@ -70,15 +70,14 @@ export default function HomePage() {
               No prior authorization
             </p>
             <h1 className="text-3xl md:text-5xl font-semibold leading-tight">
-              <span className="hero-pop">We tell you what providers don&apos;t.</span>
+              <span className="hero-pop">Welcome to Your Circle</span>
             </h1>
             <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-              We tell you the{" "}
-              <span className="hero-highlight">juicy stuff</span> you don&apos;t want to ask providers — Take Authority over your healthcare with your personal blueprint.
+              Personalized health intelligence that stays with you — with your consent.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link href="/chat" className="cinematic-cta">
-                Ask a Mascot
+                Step Into Your Circle
               </Link>
               <Link href="/blueprint" className="cinematic-cta-outline">
                 Build your Blueprint

@@ -59,10 +59,14 @@ export default function BeauTox({
 // Chat avatar variant
 export function BeauToxAvatar({ className = "" }: { className?: string }) {
   return (
-    <div
-      className={`w-8 h-8 rounded-full bg-gradient-to-br from-hot-pink to-hot-pink-dark flex items-center justify-center text-white text-xs font-bold ${className}`}
-    >
-      BT
+    <div className={`w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-hot-pink to-hot-pink-dark flex items-center justify-center ${className}`}>
+      <Image
+        src="/mascot/beau-tox.png"
+        alt="Beau-Tox"
+        width={32}
+        height={32}
+        className="object-cover"
+      />
     </div>
   );
 }

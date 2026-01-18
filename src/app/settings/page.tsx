@@ -224,7 +224,7 @@ export default function SettingsPage() {
                   className="w-full rounded-lg border border-gray-700 bg-gray-800 px-4 py-3 text-gray-400"
                 />
                 <p className="text-xs text-gray-400">
-                  Contact support to change your account type.
+                  Your role is managed by support.
                 </p>
               </div>
 

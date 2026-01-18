@@ -42,6 +42,7 @@ model User {
   subscription   Subscription?
   memory         UserMemory?
   disableEvents  UserDisableEvent[]
+  passwordResetTokens  PasswordResetToken[]
 }
 
 model Subscription {
@@ -223,4 +224,19 @@ model UserDisableEvent {
   @@index([userId])
   @@index([disabledAt])
   @@index([resolvedAt])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  usedAt    DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+  @@index([expiresAt])
 }

@@ -1,13 +1,11 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/db";
-
-// Note: In production, you would integrate an email service like Resend, SendGrid, or AWS SES
-// For MVP, this endpoint validates the email exists and logs the reset request
+import crypto from "crypto";
 
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
-
+    
     if (!email) {
       return NextResponse.json(
         { error: "Email is required" },
@@ -16,16 +14,36 @@ export async function POST(request: Request) {
     }
 
     const normalizedEmail = email.toLowerCase();
-
-    // Check if user exists (don't reveal whether email exists in response)
+    
     const user = await prisma.user.findUnique({
       where: { email: normalizedEmail },
     });
 
     if (user) {
-      // In production: Generate reset token and send email
-      // For now, log the request
-      console.log(`Password reset requested for: ${normalizedEmail}`);
+      // Generate secure token
+      const token = crypto.randomBytes(32).toString('hex');
+      const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+
+      // Store token
+      await prisma.passwordResetToken.create({
+        data: {
+          token,
+          userId: user.id,
+          expiresAt,
+        },
+      });
+
+      // Build reset URL
+      const baseUrl = process.env.NEXTAUTH_URL || 'https://nopriorauthorization.com';
+      const resetUrl = `${baseUrl}/reset-password?token=${token}`;
+
+      // Log for development (in production, send email via Resend/SendGrid)
+      console.log('========================================');
+      console.log('PASSWORD RESET REQUESTED');
+      console.log('Email:', normalizedEmail);
+      console.log('Reset URL:', resetUrl);
+      console.log('Expires:', expiresAt.toISOString());
+      console.log('========================================');
 
       // Track analytics
       await prisma.analytics.create({
@@ -34,11 +52,6 @@ export async function POST(request: Request) {
           userId: user.id,
         },
       });
-
-      // TODO: Implement email sending
-      // 1. Generate secure token: crypto.randomBytes(32).toString('hex')
-      // 2. Store token with expiry in database
-      // 3. Send email with reset link: /reset-password?token=xxx
     }
 
     // Always return success to prevent email enumeration

@@ -53,7 +53,7 @@ export default function MainNavigation() {
       <button
         key={link.href}
         onClick={() =>
-          link.label === "Log in" || link.label === "Home" || !session
+          link.label === "Log in" || link.label === "Home" || link.href.startsWith("/#")
             ? directNavigate(link.href)
             : navigateAuthAware(link.href)
         }

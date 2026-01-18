@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Button from "@/components/ui/button";
 
 type UserSettings = {
+  role: string;
   name: string;
   email: string;
   lastAccessAt: string | null;
@@ -208,6 +209,25 @@ export default function SettingsPage() {
             
             <div className="space-y-4">
               <div>
+              <div className="space-y-2">
+                <label className="mb-2 block text-sm text-gray-300">Account Type</label>
+                <input
+                  type="text"
+                  value={
+                    settings.role === "PROVIDER"
+                      ? "Provider"
+                      : settings.role === "ADMIN"
+                      ? "Admin"
+                      : "Patient"
+                  }
+                  disabled
+                  className="w-full rounded-lg border border-gray-700 bg-gray-800 px-4 py-3 text-gray-400"
+                />
+                <p className="text-xs text-gray-400">
+                  Contact support to change your account type.
+                </p>
+              </div>
+
                 <label className="mb-2 block text-sm text-gray-300">Name</label>
                 <input
                   type="text"

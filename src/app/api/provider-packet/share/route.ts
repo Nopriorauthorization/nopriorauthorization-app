@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
+import { logAccess, getRequestMetadata } from "@/lib/audit-log";
 import { getOrCreateAnonId } from "@/lib/memory/userMemory";
 import {
   resolveProviderPacketIdentity,
@@ -114,6 +115,21 @@ function buildPayload(body: any): ProviderPacketPayload {
 export async function POST(request: NextRequest) {
   const identity = await resolveProviderPacketIdentity(request);
   const hasUser = Boolean(identity.userId);
+  
+  // HIPAA CRITICAL: Consent enforcement before sharing
+  if (hasUser && identity.userId) {
+    const user = await prisma.user.findUnique({
+      where: { id: identity.userId },
+      select: { consentToShareClinicalSummary: true },
+    });
+    
+    if (!user?.consentToShareClinicalSummary) {
+      return NextResponse.json(
+        { error: "You must consent to share your clinical summary before creating a share link." },
+        { status: 403 }
+      );
+    }
+  }
   const existingAnonId = request.cookies.get("npa_uid")?.value ?? null;
   const anonId =
     identity.anonId ||
@@ -157,6 +173,19 @@ export async function POST(request: NextRequest) {
       packetId: packet.id,
       expiresAt,
     },
+  });
+
+  // HIPAA CRITICAL: Log share creation
+  const { ipAddress, userAgent } = getRequestMetadata(request);
+  await logAccess({
+    actorId: identity.userId || null,
+    subjectUserId: identity.userId || null,
+    action: "SHARE",
+    resourceType: "PROVIDER_PACKET",
+    resourceId: packet.id,
+    ipAddress,
+    userAgent,
+    metadata: { expiresAt: expiresAt.toISOString(), template },
   });
 
   const response = NextResponse.json({

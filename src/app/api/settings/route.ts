@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/auth-options";
 import prisma from "@/lib/db";
+import { logConsentChange, getRequestMetadata } from "@/lib/audit-log";
 
 // GET /api/settings - Load user settings
 export async function GET(req: NextRequest) {
@@ -89,6 +90,18 @@ export async function PATCH(req: NextRequest) {
 
     const body = await req.json();
 
+
+    // HIPAA CRITICAL: Track consent changes - fetch current state
+    const currentUser = await prisma.user.findUnique({
+      where: { email: session.user.email },
+      select: {
+        id: true,
+        consentToShareClinicalSummary: true,
+        allowProviderToProviderSharing: true,
+      },
+    });
+
+    const { ipAddress, userAgent } = getRequestMetadata(req);
     const updatedUser = await prisma.user.update({
       where: { email: session.user.email },
       data: {
@@ -103,6 +116,35 @@ export async function PATCH(req: NextRequest) {
         updatedAt: new Date(),
       },
     });
+
+        // HIPAA CRITICAL: Log consent changes
+    if (currentUser) {
+      if (
+        typeof body.consentToShareClinicalSummary === "boolean" &&
+        body.consentToShareClinicalSummary !== currentUser.consentToShareClinicalSummary
+      ) {
+        await logConsentChange(
+          currentUser.id,
+          body.consentToShareClinicalSummary ? "CONSENT_GRANTED" : "CONSENT_REVOKED",
+          "consentToShareClinicalSummary",
+          ipAddress,
+          userAgent
+        );
+      }
+
+      if (
+        typeof body.allowProviderToProviderSharing === "boolean" &&
+        body.allowProviderToProviderSharing !== currentUser.allowProviderToProviderSharing
+      ) {
+        await logConsentChange(
+          currentUser.id,
+          body.allowProviderToProviderSharing ? "CONSENT_GRANTED" : "CONSENT_REVOKED",
+          "allowProviderToProviderSharing",
+          ipAddress,
+          userAgent
+        );
+      }
+    }
 
     return NextResponse.json({ success: true, user: updatedUser });
   } catch (error) {

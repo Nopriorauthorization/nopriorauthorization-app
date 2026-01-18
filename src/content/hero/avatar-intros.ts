@@ -68,12 +68,12 @@ export const AVATAR_INTROS: AvatarIntro[] = [
   },
   {
     id: "f-ill",
-    displayName: "F-Ill",
+    displayName: "Grace",
     introParts: [
       { text: "I explain fillers, facial anatomy, and why " },
       { text: "'natural' is usually just good marketing.", emphasis: true },
     ],
-    cta: "Ask F-Ill",
+    cta: "Ask Grace",
     ctaNote: "Reality check",
     ctaHref: "/chat?mascot=f-ill",
     domain: "fillers",
@@ -83,15 +83,15 @@ export const AVATAR_INTROS: AvatarIntro[] = [
   },
   {
     id: "rn-lisa-grace",
-    displayName: "R.N. Lisa Grace",
+    displayName: "Harmony",
     introParts: [
       { text: "I'm here for safety, ethics, and " },
       { text: "stopping bad medicine before it hurts someone.", emphasis: true },
     ],
-    cta: "Ask R.N. Lisa Grace",
+    cta: "Ask Harmony",
     ctaNote: "Safety first",
     ctaHref: "/chat?mascot=rn-lisa-grace",
-    domain: "safety",
+    domain: "hormones",
     microcopy: "Part of your Circle",
     poster: "/characters/harmony.png",
     objectPosition: "50% 20%",

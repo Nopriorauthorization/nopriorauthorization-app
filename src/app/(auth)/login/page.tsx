@@ -35,13 +35,21 @@ function LoginPageInner() {
         redirect: false,
       });
 
+      console.log('Login result:', result);
+
       if (result?.error) {
+        console.error('Login error:', result.error);
         setErrorMessage(result.error);
-      } else {
+      } else if (result?.ok) {
+        console.log('Login successful, redirecting to:', callbackUrl);
         router.push(callbackUrl);
         router.refresh();
+      } else {
+        console.warn('Unexpected result:', result);
+        setErrorMessage("Login failed. Please try again.");
       }
-    } catch {
+    } catch (error) {
+      console.error('Login exception:', error);
       setErrorMessage("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);

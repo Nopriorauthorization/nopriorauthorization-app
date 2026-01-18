@@ -8,22 +8,20 @@ import Button from "@/components/ui/button";
 
 const marketingLinks = [
   { label: "Home", href: "/" },
-  { label: "How it works", href: "/#blueprint" },
-  { label: "Experts", href: "/#experts" },
-  { label: "Pricing", href: "/subscribe" },
-  { label: "Log in", href: "/login" },
+  { label: "Blueprint", href: "/blueprint" },
+  { label: "Treatments", href: "/treatments" },
+  { label: "Resources", href: "/resources" },
+  { label: "Chat", href: "/chat" },
+  { label: "Settings", href: "/settings" },
 ];
 
 const appLinks = [
+  { label: "Home", href: "/" },
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },
-  { label: "Diary", href: "/diary" },
   { label: "Resources", href: "/resources" },
   { label: "Chat", href: "/chat" },
-  { label: "Provider Packet", href: "/provider-packet" },
-  { label: "Documents Vault", href: "/documents" },
   { label: "Settings", href: "/settings" },
-  { label: "Subscribe", href: "/subscribe" },
 ]
 
 export default function MainNavigation() {

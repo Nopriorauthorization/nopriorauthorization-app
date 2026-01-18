@@ -12,6 +12,8 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        console.log('🔐 Login attempt for:', credentials?.email);
+        
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Email and password are required");
         }
@@ -20,6 +22,8 @@ export const authOptions: NextAuthOptions = {
           where: { email: credentials.email.toLowerCase() },
           include: { subscription: true },
         });
+
+        console.log('👤 User found:', user ? `${user.email} (${user.role})` : 'NOT FOUND');
 
         if (!user) {
           throw new Error("No account found with this email");
@@ -30,14 +34,19 @@ export const authOptions: NextAuthOptions = {
           user.passwordHash
         );
 
+        console.log('🔑 Password valid:', isValidPassword);
+
         if (!isValidPassword) {
           throw new Error("Invalid password");
         }
 
         // Check if account is disabled
         if (user.isDisabled) {
+          console.log('🚫 Account is disabled');
           throw new Error("This account has been disabled. Please contact support.");
         }
+
+        console.log('✅ Login successful for:', user.email);
 
         return {
           id: user.id,

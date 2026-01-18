@@ -17,7 +17,7 @@ function LoginPageInner() {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(
     error === "CredentialsSignin" ? "Invalid email or password" : ""

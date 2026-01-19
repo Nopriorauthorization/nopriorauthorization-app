@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { google } from "googleapis";
-import prisma from "@/lib/prisma";
+import prisma from "@/lib/db";
 
 const REDIRECT_URI = process.env.NEXTAUTH_URL + "/api/vault/calendar/callback";
 

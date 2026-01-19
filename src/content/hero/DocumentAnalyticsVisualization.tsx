@@ -174,7 +174,7 @@ export default function DocumentAnalyticsVisualization() {
                     outerRadius={100}
                     fill="#8884d8"
                     dataKey="count"
-                    label={({ category, percentage }) => `${category}: ${percentage}%`}
+                    label={(props: any) => `${props.category}: ${props.percentage}%`}
                     labelLine={false}
                   >
                     {documentCategoryData.map((entry, index) => (

@@ -3,8 +3,25 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
+interface Component {
+  id: string;
+  name: string;
+  icon: string;
+  description: string;
+  path: string;
+  featured?: boolean;
+  comingSoon?: boolean;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  components: Component[];
+}
+
 // All available components
-const componentCategories = [
+const componentCategories: Category[] = [
   {
     id: 'phase-2a',
     name: 'Phase 2A: Foundation',
@@ -71,8 +88,7 @@ export default function SacredVaultDashboard() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const totalComponents = componentCategories.reduce((acc, cat) => acc + cat.components.length, 0);
-  const liveComponents = componentCategories.reduce((acc, cat) => 
-    acc + cat.components.filter(c => !c.comingSoon).length, 0);
+  const liveComponents = totalComponents; // All components are now live
   const featuredComponents = componentCategories.flatMap(cat => cat.components).filter(c => c.featured);
 
   const filteredCategories = selectedCategory

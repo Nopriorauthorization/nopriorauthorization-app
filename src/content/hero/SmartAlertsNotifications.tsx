@@ -783,7 +783,7 @@ export default function SmartAlertsNotifications() {
                     
                     {alert.actions.secondary && (
                       <button 
-                        onClick={() => handleAlertAction(alert.id, alert.actions.secondary.action)}
+                        onClick={() => handleAlertAction(alert.id, alert.actions.secondary!.action)}
                         className="px-4 py-2 bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-lg hover:bg-blue-500/30 transition"
                       >
                         {alert.actions.secondary.label}

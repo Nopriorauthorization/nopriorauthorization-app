@@ -307,7 +307,7 @@ const documents: AnalyzedDocument[] = [
       followUpNeeded: false,
       urgency: 'routine',
       confidenceScore: 88,
-      analysisMethod: 'content-analysis'
+      analysisMethod: 'nlp'
     },
     qualityScore: 95,
     processingTime: 1890,

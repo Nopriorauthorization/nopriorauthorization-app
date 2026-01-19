@@ -9,6 +9,7 @@ import {
   resolveDocumentIdentity,
 } from "@/lib/documents/server";
 import { getOrCreateAnonId } from "@/lib/memory/userMemory";
+import { smartCategorize } from "@/lib/documents/ai-categorization";
 
 const ALLOWED_MIME_TYPES = new Set([
   "application/pdf",
@@ -83,7 +84,12 @@ export async function POST(request: NextRequest) {
     mimeType: file.type || "application/octet-stream",
   });
 
-  const categoryRaw = (formData.get("category") as string | null) ?? "OTHER";
+  // AI-powered smart categorization
+  const title = (formData.get("title") as string | null) ?? file.name ?? "Untitled Document";
+  const aiAnalysis = smartCategorize(title, file.name, file.type);
+  
+  // Use provided category or fall back to AI suggestion
+  const categoryRaw = (formData.get("category") as string | null) ?? aiAnalysis.suggestedCategory;
   const category = (Object.keys(DocumentCategory) as Array<
     keyof typeof DocumentCategory
   >).includes(categoryRaw as keyof typeof DocumentCategory)

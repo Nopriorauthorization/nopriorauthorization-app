@@ -16,6 +16,7 @@ import {
   uploadDocument,
   updateDocument,
 } from "@/lib/documents/client";
+import { getCategoryDisplay } from "@/lib/documents/ai-categorization";
 
 const SEARCH_PLACEHOLDER = "Search by title, category, or keyword";
 
@@ -48,6 +49,8 @@ export default function DocumentsVault() {
   const [includeDefault, setIncludeDefault] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
+  const [aiAnalysis, setAiAnalysis] = useState<any>(null);
+  const [showAiSuggestion, setShowAiSuggestion] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -67,6 +70,48 @@ export default function DocumentsVault() {
   useEffect(() => {
     loadDocuments();
   }, [loadDocuments]);
+
+  // AI categorization effect
+  useEffect(() => {
+    async function analyzeDocument() {
+      if (!title.trim() || !pendingFile) {
+        setAiAnalysis(null);
+        setShowAiSuggestion(false);
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/documents/ai-categorize', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: title,
+            filename: pendingFile?.name,
+            mimeType: pendingFile?.type
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setAiAnalysis(data.analysis);
+          
+          // Show suggestion if AI is confident and differs from current selection
+          if (data.analysis.confidence > 60 && data.analysis.suggestedCategory !== category) {
+            setShowAiSuggestion(true);
+          } else {
+            setShowAiSuggestion(false);
+          }
+        }
+      } catch (error) {
+        console.error('AI categorization failed:', error);
+        setAiAnalysis(null);
+        setShowAiSuggestion(false);
+      }
+    }
+
+    const timeoutId = setTimeout(analyzeDocument, 500); // Debounce
+    return () => clearTimeout(timeoutId);
+  }, [title, pendingFile?.name, pendingFile?.type, category]);
 
   const filteredDocuments = useMemo(() => {
     return documents.filter((document) => {
@@ -155,7 +200,7 @@ export default function DocumentsVault() {
             Blueprint.
           </p>
         </div>
-        <div className="flex flex-col gap-2 md:flex-row">
+        <div className="flex flex-col gap-2 md:flex-row md:items-center">
           <input
             type="text"
             value={search}
@@ -168,13 +213,35 @@ export default function DocumentsVault() {
             onChange={(event) => setCategoryFilter(event.target.value)}
             className="rounded-full border border-hot-pink/40 bg-black px-4 py-2 text-sm text-white"
           >
-            <option value="">Filter by category</option>
-            {DOCUMENT_CATEGORIES.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
+            <option value="">All Categories ({documents.length})</option>
+            {DOCUMENT_CATEGORIES.map((option) => {
+              const categoryDisplay = getCategoryDisplay(option.value);
+              const count = documents.filter(doc => doc.category === option.value).length;
+              return (
+                <option key={option.value} value={option.value}>
+                  {categoryDisplay.icon} {option.label} ({count})
+                </option>
+              );
+            })}
           </select>
+          
+          {/* Smart Filter Tags */}
+          {(search || categoryFilter) && (
+            <div className="flex gap-2 flex-wrap">
+              {search && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 bg-pink-500/20 text-pink-300 text-xs rounded-full">
+                  Search: "{search}"
+                  <button onClick={() => setSearch("")} className="hover:text-white">×</button>
+                </span>
+              )}
+              {categoryFilter && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full">
+                  {getCategoryDisplay(categoryFilter).icon} {getCategoryDisplay(categoryFilter).name}
+                  <button onClick={() => setCategoryFilter("")} className="hover:text-white">×</button>
+                </span>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
@@ -238,6 +305,35 @@ export default function DocumentsVault() {
               </option>
             ))}
           </select>
+          
+          {/* AI Categorization Suggestion */}
+          {showAiSuggestion && aiAnalysis && (
+            <div className="mt-2 p-3 rounded-lg bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-400/30">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-purple-300">🤖</span>
+                <span className="text-sm font-medium text-purple-300">AI Suggestion</span>
+                <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">
+                  {aiAnalysis.confidence}% confident
+                </span>
+              </div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-lg">{getCategoryDisplay(aiAnalysis.suggestedCategory).icon}</span>
+                <span className="text-sm text-white">
+                  Looks like <strong>{getCategoryDisplay(aiAnalysis.suggestedCategory).name}</strong>
+                </span>
+                <button
+                  onClick={() => {
+                    setCategory(aiAnalysis.suggestedCategory);
+                    setShowAiSuggestion(false);
+                  }}
+                  className="text-xs bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 px-2 py-1 rounded transition"
+                >
+                  Use this
+                </button>
+              </div>
+              <p className="text-xs text-gray-400">{aiAnalysis.reasoning}</p>
+            </div>
+          )}
         </label>
         <label className="text-sm text-gray-300">
           Document date

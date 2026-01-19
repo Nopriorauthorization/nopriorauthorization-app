@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const content = `"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -122,7 +125,7 @@ export default function ProvidersPage() {
     try {
       const method = editingProvider ? "PUT" : "POST";
       const url = editingProvider 
-        ? `/api/vault/providers/${editingProvider.id}`
+        ? \`/api/vault/providers/\${editingProvider.id}\`
         : "/api/vault/providers";
       
       const res = await fetch(url, {
@@ -146,7 +149,7 @@ export default function ProvidersPage() {
     if (!confirm("Are you sure you want to delete this provider?")) return;
     
     try {
-      const res = await fetch(`/api/vault/providers/${id}`, {
+      const res = await fetch(\`/api/vault/providers/\${id}\`, {
         method: "DELETE"
       });
       
@@ -500,13 +503,13 @@ export default function ProvidersPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className={`text-xs px-2 py-1 rounded ${
+                    <span className={\`text-xs px-2 py-1 rounded \${
                       apt.status === 'completed'
                         ? 'bg-green-500/20 text-green-300'
                         : apt.status === 'cancelled'
                         ? 'bg-red-500/20 text-red-300'
                         : 'bg-yellow-500/20 text-yellow-300'
-                    }`}>
+                    }\`}>
                       {apt.status}
                     </span>
                   </div>
@@ -519,3 +522,8 @@ export default function ProvidersPage() {
     </main>
   );
 }
+`;
+
+const filePath = path.resolve(__dirname, '../src/app/vault/providers/page.tsx');
+fs.writeFileSync(filePath, content, 'utf8');
+console.log('✅ Providers page successfully written to:', filePath);

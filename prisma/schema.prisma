@@ -322,3 +322,21 @@ model Appointment {
   @@index([appointmentDate])
   @@index([status])
 }
+
+model Provider {
+  id        String   @id @default(cuid())
+  userId    String?
+  anonId    String?
+  name      String
+  specialty String?
+  phone     String?
+  email     String?
+  address   String?
+  notes     String?
+  tags      String[] @default([])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([anonId])
+}

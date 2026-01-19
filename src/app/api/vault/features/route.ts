@@ -24,7 +24,11 @@ export async function GET(req: NextRequest) {
       prisma.document.count({ where }),
       prisma.chatSession.count({ where }),
       prisma.appointment.count({ where }),
-      prisma.documentDecode.count({ where }),
+      prisma.documentDecode.count({
+        where: {
+          document: where,
+        },
+      }),
       prisma.userMemory.findFirst({
         where,
         select: { vaultName: true },

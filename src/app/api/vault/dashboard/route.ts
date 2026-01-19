@@ -55,16 +55,15 @@ export async function GET(req: NextRequest) {
       prisma.appointment.findMany({
         where: {
           ...(identity.userId ? { userId: identity.userId } : { anonId: identity.anonId }),
-          date: { gte: new Date() },
+          appointmentDate: { gte: new Date() },
         },
-        orderBy: { date: "asc" },
+        orderBy: { appointmentDate: "asc" },
         take: 3,
         select: {
           id: true,
-          title: true,
-          date: true,
+          providerName: true,
+          appointmentDate: true,
           location: true,
-          provider: true,
         },
       }),
       prisma.documentDecode.count({

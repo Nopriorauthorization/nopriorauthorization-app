@@ -140,7 +140,7 @@ export default function PrioritySpace() {
   };
 
   const renderNamingModal = () => (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+    <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] flex items-center justify-center p-6">
       <div className="max-w-2xl w-full bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-white/20 p-8">
         <div className="text-center mb-8">
           <div className="text-5xl mb-4">🛡️</div>
@@ -960,10 +960,10 @@ export default function PrioritySpace() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-black to-gray-950 text-white p-6">
+    <div className="text-white">
       {showNaming && renderNamingModal()}
       
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Navigation breadcrumb */}
         <div className="mb-6 text-sm text-gray-400">
           <span className="hover:text-blue-400 cursor-pointer transition">Sacred Vault</span>

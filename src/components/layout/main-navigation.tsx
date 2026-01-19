@@ -11,6 +11,7 @@ const marketingLinks = [
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },
   { label: "Sacred Vault", href: "/vault", dynamic: true },
+  { label: "Life Changing Diagnosis", href: "/vault/priority", icon: "🛡️" },
   { label: "Chat", href: "/chat" },
   { label: "Settings", href: "/settings" },
 ];
@@ -20,6 +21,7 @@ const appLinks = [
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },
   { label: "Sacred Vault", href: "/vault", dynamic: true },
+  { label: "Life Changing Diagnosis", href: "/vault/priority", icon: "🛡️" },
   { label: "Chat", href: "/chat" },
   { label: "Settings", href: "/settings" },
 ]
@@ -63,15 +65,16 @@ export default function MainNavigation() {
     return link.label;
   };
 
-  const renderLinks = (links: { label: string; href: string; dynamic?: boolean }[]) =>
+  const renderLinks = (links: { label: string; href: string; dynamic?: boolean; icon?: string }[]) =>
     links.map((link) => (
       <button
         key={link.href}
         onClick={() => directNavigate(link.href)}
-        className={`text-sm font-medium transition ${
+        className={`text-sm font-medium transition flex items-center gap-1.5 ${
           pathname === link.href ? "text-hot-pink" : "text-white/70"
         }`}
       >
+        {link.icon && <span>{link.icon}</span>}
         {getDisplayLabel(link)}
       </button>
     ));

@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const documentsPageContent = `"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -52,7 +55,7 @@ export default function DocumentsPage() {
       if (selectedCategory !== "all") params.set("category", selectedCategory);
       if (searchQuery) params.set("search", searchQuery);
 
-      const res = await fetch(`/api/vault/documents?${params}`);
+      const res = await fetch(\`/api/vault/documents?\${params}\`);
       if (res.ok) {
         const docsData = await res.json();
         setData(docsData);
@@ -240,11 +243,11 @@ export default function DocumentsPage() {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setSelectedCategory("all")}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
+              className={\`px-4 py-2 rounded-full text-sm font-semibold transition \${
                 selectedCategory === "all"
                   ? "bg-pink-400 text-black"
                   : "bg-white/5 text-white/70 hover:bg-white/10"
-              }`}
+              }\`}
             >
               All Categories
             </button>
@@ -252,11 +255,11 @@ export default function DocumentsPage() {
               <button
                 key={cat.value}
                 onClick={() => setSelectedCategory(cat.value)}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition flex items-center gap-2 ${
+                className={\`px-4 py-2 rounded-full text-sm font-semibold transition flex items-center gap-2 \${
                   selectedCategory === cat.value
                     ? "bg-pink-400 text-black"
                     : "bg-white/5 text-white/70 hover:bg-white/10"
-                }`}
+                }\`}
               >
                 <span>{getCategoryIcon(cat.value)}</span>
                 <span>{cat.name}</span>
@@ -312,11 +315,11 @@ export default function DocumentsPage() {
             documents.map((doc: any) => (
               <div
                 key={doc.id}
-                className={`p-5 rounded-xl border transition ${
+                className={\`p-5 rounded-xl border transition \${
                   selectedDocs.has(doc.id)
                     ? "border-pink-400/30 bg-pink-400/5"
                     : "border-white/10 bg-white/5 hover:bg-white/10"
-                }`}
+                }\`}
               >
                 <div className="flex items-start gap-4">
                   <input
@@ -358,7 +361,7 @@ export default function DocumentsPage() {
                     </div>
                     <div className="flex gap-2 mt-3">
                       <a
-                        href={`/api/documents/${doc.id}/download`}
+                        href={\`/api/documents/\${doc.id}/download\`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white text-sm transition"
@@ -367,7 +370,7 @@ export default function DocumentsPage() {
                       </a>
                       {(!doc.decodes || doc.decodes.length === 0) && (
                         <Link
-                          href={`/vault/decoder?doc=${doc.id}`}
+                          href={\`/vault/decoder?doc=\${doc.id}\`}
                           className="px-4 py-2 rounded-lg bg-pink-400/10 hover:bg-pink-400/20 text-pink-400 text-sm transition"
                         >
                           Decode
@@ -375,7 +378,7 @@ export default function DocumentsPage() {
                       )}
                       {doc.decodes && doc.decodes.length > 0 && (
                         <Link
-                          href={`/vault/decoder?doc=${doc.id}`}
+                          href={\`/vault/decoder?doc=\${doc.id}\`}
                           className="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white text-sm transition"
                         >
                           View Decode
@@ -429,3 +432,8 @@ export default function DocumentsPage() {
     </main>
   );
 }
+`;
+
+const targetPath = path.join(process.cwd(), 'src/app/vault/documents/page.tsx');
+fs.writeFileSync(targetPath, documentsPageContent, 'utf8');
+console.log('✅ Documents page successfully written to:', targetPath);

@@ -1,4 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+const fs = require('fs');
+const path = require('path');
+
+const appointmentsApiContent = `import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { resolveDocumentIdentity } from "@/lib/documents/server";
 
@@ -153,3 +156,8 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+`;
+
+const targetPath = path.join(process.cwd(), 'src/app/api/vault/appointments/route.ts');
+fs.writeFileSync(targetPath, appointmentsApiContent, 'utf8');
+console.log('✅ Appointments API successfully written to:', targetPath);

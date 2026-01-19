@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const appointmentsPageContent = `"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -63,7 +66,7 @@ export default function AppointmentsPage() {
     e.preventDefault();
     try {
       const url = editingId 
-        ? `/api/vault/appointments/${editingId}` 
+        ? \`/api/vault/appointments/\${editingId}\` 
         : "/api/vault/appointments";
       const method = editingId ? "PUT" : "POST";
 
@@ -95,7 +98,7 @@ export default function AppointmentsPage() {
   async function handleDelete(id: string) {
     if (!confirm("Are you sure you want to delete this appointment?")) return;
     try {
-      const res = await fetch(`/api/vault/appointments/${id}`, {
+      const res = await fetch(\`/api/vault/appointments/\${id}\`, {
         method: "DELETE",
       });
       if (res.ok) {
@@ -463,3 +466,8 @@ export default function AppointmentsPage() {
     </main>
   );
 }
+`;
+
+const targetPath = path.join(process.cwd(), 'src/app/vault/appointments/page.tsx');
+fs.writeFileSync(targetPath, appointmentsPageContent, 'utf8');
+console.log('✅ Appointments page successfully written to:', targetPath);

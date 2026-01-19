@@ -24,6 +24,12 @@ model User {
   updatedAt    DateTime  @updatedAt
   lastAccessAt DateTime?
 
+  // Subscription & referrals
+  subscriptionTier String  @default("free")
+  referralCode     String? @unique
+  referredBy       String?
+  metadata         Json?
+
   // Privacy & Consent
   consentToShareClinicalSummary  Boolean @default(false)
   allowProviderToProviderSharing Boolean @default(false)

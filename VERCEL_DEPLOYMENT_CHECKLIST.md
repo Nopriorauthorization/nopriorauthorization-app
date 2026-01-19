@@ -8,7 +8,7 @@ Go to: **https://vercel.com/dashboard → Your Project → Settings → Environm
 
 ```bash
 # 1. NextAuth Secret (GENERATE NEW - DO NOT USE LOCAL VALUE)
-NEXTAUTH_SECRET=<paste output from: openssl rand -base64 32>
+NEXTAUTH_SECRET=E77jV3nbqHRVE4negvcmcsC7f0oXiOLvE9RhyEQM+z8=
 
 # 2. NextAuth URL (Production domain)
 NEXTAUTH_URL=https://nopriorauthorization.com

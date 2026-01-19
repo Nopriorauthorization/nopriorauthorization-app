@@ -45,6 +45,7 @@ model User {
   passwordResetTokens  PasswordResetToken[]
   consentChangeLogs     ConsentChangeLog[]
   dataRequests        DataRequest[]
+  appointments         Appointment[]
 }
 
 model Subscription {
@@ -280,4 +281,27 @@ model DataRequest {
   @@index([status])
   @@index([requestType])
   @@index([requestedAt])
+}
+
+model Appointment {
+  id                String   @id @default(cuid())
+  userId            String?
+  anonId            String?
+  providerName      String
+  providerSpecialty String?
+  appointmentDate   DateTime
+  appointmentType   String   // "checkup", "follow-up", "consultation", "procedure", "lab", "imaging", "other"
+  status            String   @default("scheduled") // "scheduled", "completed", "cancelled", "missed"
+  location          String?  // Office name or address
+  notes             String?
+  reminderSent      Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([anonId])
+  @@index([appointmentDate])
+  @@index([status])
 }

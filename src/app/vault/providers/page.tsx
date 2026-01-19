@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 type Provider = {
@@ -16,11 +16,106 @@ type Provider = {
   tags?: string[];
 };
 
+type AppointmentWithProvider = {
+  id: string;
+  providerName: string;
+  providerSpecialty: string | null;
+  appointmentDate: Date;
+  appointmentType: string;
+  status: string;
+  location: string | null;
+  notes: string | null;
+};
+
+type GroupedAppointments = {
+  upcoming: AppointmentWithProvider[];
+  past: AppointmentWithProvider[];
+  byProvider: Record<string, {
+    appointments: AppointmentWithProvider[];
+    count: number;
+    lastVisit: Date | null;
+    nextVisit: Date | null;
+  }>;
+};
+
+// Function to get appointment type emoji
+function getAppointmentIcon(type: string): string {
+  const icons: Record<string, string> = {
+    'checkup': '🩺',
+    'follow-up': '🔄',
+    'consultation': '💬',
+    'procedure': '⚕️',
+    'lab': '🧪',
+    'imaging': '📊',
+    'other': '📅'
+  };
+  return icons[type.toLowerCase()] || '📅';
+}
+
+// Function to format date
+function formatDate(date: Date | string): string {
+  const d = typeof date === 'string' ? new Date(date) : date;
+  return d.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric"
+  });
+}
+
+// Function to format time
+function formatTime(date: Date | string): string {
+  const d = typeof date === 'string' ? new Date(date) : date;
+  return d.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true
+  });
+}
+
 export default function ProvidersPage() {
-  const [providers] = useState<Provider[]>([
-    // Placeholder data - will be populated from Blueprint
-  ]);
+  const [providers] = useState<Provider[]>([]);
+  const [appointments, setAppointments] = useState<GroupedAppointments>({
+    upcoming: [],
+    past: [],
+    byProvider: {}
+  });
+  const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
+
+  useEffect(() => {
+    async function fetchAppointments() {
+      try {
+        const res = await fetch("/api/vault/appointments");
+        if (res.ok) {
+          const data = await res.json();
+          setAppointments(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch appointments:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchAppointments();
+  }, []);
+
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-black text-white px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="animate-pulse">
+            <div className="h-8 bg-white/10 rounded w-1/3 mb-4"></div>
+            <div className="h-12 bg-white/10 rounded w-2/3 mb-8"></div>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="h-40 bg-white/5 rounded-lg"></div>
+              <div className="h-40 bg-white/5 rounded-lg"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-black text-white px-6 py-16">
@@ -48,8 +143,7 @@ export default function ProvidersPage() {
             </button>
           </div>
           <p className="text-gray-400 text-lg">
-            Your complete provider directory — timestamped visits, contact info,
-            and private notes.
+            Your complete provider directory — appointments, visits, and care coordination.
           </p>
         </div>
 
@@ -79,174 +173,182 @@ export default function ProvidersPage() {
                     className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-pink-400"
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="(555) 123-4567"
-                    className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-pink-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="provider@clinic.com"
-                    className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-pink-400"
-                  />
-                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  placeholder="123 Main St, City, State 12345"
-                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-pink-400"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Notes (Private)
-                </label>
-                <textarea
-                  rows={3}
-                  placeholder="Great bedside manner, always on time, explains everything..."
-                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-pink-400"
-                />
-              </div>
-              <div className="flex gap-3">
-                <button
-                  type="submit"
-                  className="px-6 py-2 rounded-full bg-pink-400 text-black font-semibold hover:bg-pink-500 transition"
-                >
-                  Save Provider
-                </button>
+              <div className="flex gap-4">
                 <button
                   type="button"
                   onClick={() => setShowAddForm(false)}
-                  className="px-6 py-2 rounded-full bg-white/10 text-white font-semibold hover:bg-white/20 transition"
+                  className="px-6 py-2 rounded-lg border border-white/20 text-white hover:bg-white/10 transition"
                 >
                   Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2 rounded-lg bg-pink-400 text-black font-medium hover:bg-pink-500 transition"
+                >
+                  Add Provider
                 </button>
               </div>
             </form>
           </div>
         )}
 
-        {/* Providers List */}
-        {providers.length > 0 ? (
-          <div className="grid gap-6 md:grid-cols-2">
-            {providers.map((provider) => (
-              <div
-                key={provider.id}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-pink-400/30 hover:bg-white/10 transition"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-semibold">{provider.name}</h3>
-                    <p className="text-sm text-pink-400 mt-1">
-                      {provider.specialty}
-                    </p>
+        {/* Upcoming Appointments */}
+        {appointments.upcoming.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+              <span>📅</span> Upcoming Appointments
+            </h2>
+            <div className="grid gap-4 md:grid-cols-2">
+              {appointments.upcoming.map((apt) => (
+                <div
+                  key={apt.id}
+                  className="bg-gradient-to-br from-green-500/10 to-blue-500/10 rounded-lg p-6 border border-white/10 hover:border-green-400/30 transition"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl">{getAppointmentIcon(apt.appointmentType)}</span>
+                      <div>
+                        <h3 className="font-semibold">{apt.providerName}</h3>
+                        <p className="text-sm text-white/60">{apt.providerSpecialty}</p>
+                      </div>
+                    </div>
+                    <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">
+                      {apt.status}
+                    </span>
                   </div>
-                  {provider.rating && (
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <span
-                          key={i}
-                          className={
-                            i < provider.rating!
-                              ? "text-pink-400"
-                              : "text-white/20"
-                          }
-                        >
-                          ⭐
-                        </span>
-                      ))}
+                  <div className="space-y-1 mb-3">
+                    <div className="flex items-center gap-2 text-sm">
+                      <span>📅</span>
+                      <span>{formatDate(apt.appointmentDate)}</span>
+                      <span className="text-white/60">at {formatTime(apt.appointmentDate)}</span>
+                    </div>
+                    {apt.location && (
+                      <div className="flex items-center gap-2 text-sm text-white/60">
+                        <span>📍</span>
+                        <span>{apt.location}</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-sm bg-white/5 rounded px-3 py-2">
+                    <span className="text-white/60">Type:</span> {apt.appointmentType}
+                  </div>
+                  {apt.notes && (
+                    <div className="text-sm text-white/60 mt-2">
+                      <span className="text-white/80">Notes:</span> {apt.notes}
                     </div>
                   )}
                 </div>
-
-                {provider.phone && (
-                  <p className="text-sm text-gray-400 mb-1">
-                    📞 {provider.phone}
-                  </p>
-                )}
-                {provider.email && (
-                  <p className="text-sm text-gray-400 mb-1">
-                    ✉️ {provider.email}
-                  </p>
-                )}
-                {provider.address && (
-                  <p className="text-sm text-gray-400 mb-3">
-                    📍 {provider.address}
-                  </p>
-                )}
-
-                {provider.lastVisit && (
-                  <p className="text-xs text-gray-500 mb-3">
-                    Last visit: {provider.lastVisit}
-                  </p>
-                )}
-
-                {provider.tags && provider.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {provider.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-1 rounded-full bg-pink-400/10 text-pink-400 text-xs font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {provider.notes && (
-                  <p className="text-sm text-gray-400 italic border-t border-white/10 pt-3">
-                    "{provider.notes}"
-                  </p>
-                )}
-
-                <div className="flex gap-2 mt-4">
-                  <button className="flex-1 px-4 py-2 rounded-lg bg-white/10 text-white text-sm font-semibold hover:bg-white/20 transition">
-                    Edit
-                  </button>
-                  <button className="px-4 py-2 rounded-lg bg-pink-400/10 text-pink-400 text-sm font-semibold hover:bg-pink-400/20 transition">
-                    Log Visit
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16 rounded-2xl border border-white/10 bg-white/5">
-            <span className="text-6xl mb-4 block">👩‍⚕️</span>
-            <p className="text-gray-400 text-lg mb-6">
-              No providers added yet. Start building your provider directory.
-            </p>
-            <button
-              onClick={() => setShowAddForm(true)}
-              className="inline-block px-6 py-3 rounded-full bg-pink-400 text-black text-sm font-semibold hover:bg-pink-500 transition"
-            >
-              Add Your First Provider
-            </button>
+              ))}
+            </div>
           </div>
         )}
 
-        {/* Info Footer */}
-        <div className="mt-8 p-6 rounded-xl border border-white/10 bg-white/5">
-          <p className="text-sm text-gray-400">
-            <strong className="text-white">Your private directory:</strong> All
-            provider notes, ratings, and tags are encrypted and visible only to
-            you. Share access with trusted family members through Trusted Circle.
-          </p>
+        {/* Providers by Visit History */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+            <span>👥</span> Your Provider Network
+          </h2>
+          
+          {Object.keys(appointments.byProvider).length === 0 ? (
+            <div className="bg-white/5 rounded-lg p-8 text-center">
+              <p className="text-white/60 mb-4">
+                No appointments found yet. Add your first provider above or schedule an appointment.
+              </p>
+              <button
+                onClick={() => setShowAddForm(true)}
+                className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-2 rounded-lg hover:opacity-90 transition"
+              >
+                Add Your First Provider
+              </button>
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2">
+              {Object.entries(appointments.byProvider).map(([providerName, data]) => (
+                <div
+                  key={providerName}
+                  className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg p-6 border border-white/10 hover:border-purple-400/30 transition"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-semibold">{providerName}</h3>
+                      {data.appointments[0]?.providerSpecialty && (
+                        <p className="text-white/60">{data.appointments[0].providerSpecialty}</p>
+                      )}
+                    </div>
+                    <span className="text-sm bg-purple-500/20 text-purple-300 px-2 py-1 rounded">
+                      {data.count} visits
+                    </span>
+                  </div>
+
+                  <div className="space-y-3 mb-4">
+                    {data.nextVisit && (
+                      <div className="flex items-center gap-2 text-sm">
+                        <span>🔜</span>
+                        <span className="text-green-300">Next:</span>
+                        <span>{formatDate(data.nextVisit)}</span>
+                      </div>
+                    )}
+                    {data.lastVisit && (
+                      <div className="flex items-center gap-2 text-sm text-white/60">
+                        <span>📅</span>
+                        <span>Last visit:</span>
+                        <span>{formatDate(data.lastVisit)}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex gap-2">
+                    <button className="text-xs bg-white/10 hover:bg-white/20 px-3 py-1 rounded transition">
+                      View History
+                    </button>
+                    <button className="text-xs bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 px-3 py-1 rounded transition">
+                      Schedule
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
+
+        {/* Recent Visit History */}
+        {appointments.past.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+              <span>🏥</span> Recent Visits
+            </h2>
+            <div className="space-y-3">
+              {appointments.past.slice(0, 5).map((apt) => (
+                <div
+                  key={apt.id}
+                  className="bg-white/5 rounded-lg p-4 border border-white/10 hover:border-white/20 transition flex items-center justify-between"
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="text-xl">{getAppointmentIcon(apt.appointmentType)}</span>
+                    <div>
+                      <div className="font-medium">{apt.providerName}</div>
+                      <div className="text-sm text-white/60">
+                        {apt.appointmentType} • {formatDate(apt.appointmentDate)}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className={`text-xs px-2 py-1 rounded ${
+                      apt.status === 'completed' 
+                        ? 'bg-green-500/20 text-green-300'
+                        : apt.status === 'cancelled' 
+                        ? 'bg-red-500/20 text-red-300'
+                        : 'bg-yellow-500/20 text-yellow-300'
+                    }`}>
+                      {apt.status}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );

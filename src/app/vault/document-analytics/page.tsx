@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import DocumentAnalyticsVisualization from '@/content/hero/DocumentAnalyticsVisualization';
 
 export default function DocumentAnalyticsPage() {
-  redirect('/vault/analytics');
+  return <DocumentAnalyticsVisualization />;
 }

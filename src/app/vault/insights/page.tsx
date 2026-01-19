@@ -1,6 +1,5 @@
-import { redirect } from 'next/navigation';
+import HealthInsightsCards from '@/content/hero/HealthInsightsCards';
 
 export default function InsightsPage() {
-  // Redirect to unified AI Insights page
-  redirect('/vault/ai-insights');
+  return <HealthInsightsCards />;
 }

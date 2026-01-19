@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth/auth-options";
 import prisma from "@/lib/db";
-import { resolveDocumentIdentity } from "@/lib/documents/server";
 
 type TimelineEvent = {
   id: string;
@@ -42,24 +43,33 @@ function getCategoryIcon(category: string): string {
   return icons[category] || "📄";
 }
 
-export async function GET(req: NextRequest) {
+export async function GET(req: Request) {
   try {
-    const identity = await resolveDocumentIdentity(req);
-    if (!identity.userId && !identity.anonId) {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
-    const where = identity.userId
-      ? { userId: identity.userId, deletedAt: null }
-      : { anonId: identity.anonId, deletedAt: null };
 
     // Get query params for filtering
     const { searchParams } = new URL(req.url);
     const filterType = searchParams.get("type") || "all"; // all, documents, chats, milestones
 
+    // Fetch user
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
     // Fetch all documents with enhanced data
     const documents = await prisma.document.findMany({
-      where,
+      where: {
+        userId: user.id,
+        deletedAt: null,
+      },
       orderBy: {
         docDate: "desc",
       },
@@ -75,9 +85,10 @@ export async function GET(req: NextRequest) {
     });
 
     // Fetch chat sessions with full context
-    const chatWhere = identity.userId ? { userId: identity.userId } : { anonId: identity.anonId };
     const chatSessions = await prisma.chatSession.findMany({
-      where: chatWhere,
+      where: {
+        userId: user.id,
+      },
       orderBy: {
         createdAt: "desc",
       },
@@ -149,23 +160,19 @@ export async function GET(req: NextRequest) {
 
     // Add milestones if not filtered out
     if (filterType === "all" || filterType === "milestones") {
-      // Add join milestone (use identity createdAt or first document date as fallback)
-      const milestoneDate = documents.length > 0 
-        ? documents[documents.length - 1].createdAt 
-        : new Date();
-      
+      // Account creation milestone
       events.push({
-        id: "milestone-started",
+        id: "milestone-created",
         type: "milestone",
-        title: "Started Your Health Journey 💫",
+        title: "Joined Ask Beau 💫",
         category: "MILESTONE",
-        date: new Date(milestoneDate).toLocaleDateString("en-US", {
+        date: new Date(user.createdAt).toLocaleDateString("en-US", {
           month: "long",
           day: "numeric",
           year: "numeric",
         }),
-        description: "Welcome to your health vault",
-        timestamp: milestoneDate,
+        description: "Welcome to your health journey",
+        timestamp: user.createdAt,
       });
 
       // Document count milestones

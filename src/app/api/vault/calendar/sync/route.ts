@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resolveDocumentIdentity } from "@/lib/documents/server";
-import prisma from "@/lib/db";
+import { resolveDocumentIdentity } from "@/lib/auth/document-identity";
+import prisma from "@/lib/prisma";
 import { google } from "googleapis";
 import { addDays, startOfDay } from "date-fns";
 
@@ -17,7 +17,7 @@ function getOAuth2Client() {
 // GET: Fetch calendar events (read-only)
 export async function GET(req: NextRequest) {
   const identity = await resolveDocumentIdentity(req);
-  if (!identity || !identity.userId) {
+  if (!identity) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

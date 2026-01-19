@@ -1,0 +1,394 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AccessLog {
+  id            String   @id
+  actorId       String?
+  subjectUserId String?
+  action        String
+  resourceType  String
+  resourceId    String
+  ipAddress     String?
+  userAgent     String?
+  metadata      Json?
+  createdAt     DateTime @default(now())
+
+  @@index([actorId, createdAt])
+  @@index([createdAt])
+  @@index([resourceType, resourceId])
+  @@index([subjectUserId, createdAt])
+}
+
+model Analytics {
+  id        String   @id
+  event     String
+  metadata  Json?
+  userId    String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([event])
+}
+
+model Appointment {
+  id                String   @id
+  userId            String?
+  anonId            String?
+  providerName      String
+  providerSpecialty String?
+  appointmentDate   DateTime
+  appointmentType   String
+  status            String   @default("scheduled")
+  location          String?
+  notes             String?
+  reminderSent      Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime
+  User              User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([anonId])
+  @@index([appointmentDate])
+  @@index([status])
+  @@index([userId])
+}
+
+model CarePlan {
+  id                 String    @id
+  userId             String?
+  anonId             String?
+  title              String
+  goal               String
+  questionsToAsk     String[]  @default([])
+  linkedDocuments    String[]  @default([])
+  linkedAppointments String[]  @default([])
+  notes              String?
+  targetDate         DateTime?
+  status             String    @default("active")
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime
+
+  @@index([anonId])
+  @@index([status])
+  @@index([userId])
+}
+
+model CareTeamMember {
+  id              String   @id
+  userId          String?
+  anonId          String?
+  name            String
+  role            String
+  specialty       String?
+  organization    String?
+  phone           String?
+  email           String?
+  notes           String?
+  isPrimary       Boolean  @default(false)
+  linkedProviders String[] @default([])
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime
+
+  @@index([anonId])
+  @@index([userId])
+}
+
+model ChatSession {
+  id        String   @id
+  userId    String
+  messages  Json     @default("[]")
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model ConsentChangeLog {
+  id          String   @id
+  userId      String
+  consentType String
+  oldValue    Boolean
+  newValue    Boolean
+  changedBy   String?
+  changedAt   DateTime @default(now())
+  source      String
+  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([changedAt])
+  @@index([consentType])
+  @@index([userId, changedAt])
+}
+
+model DataRequest {
+  id                 String    @id
+  userId             String
+  requestType        String
+  status             String    @default("pending")
+  requestedAt        DateTime  @default(now())
+  fulfilledAt        DateTime?
+  fulfilledBy        String?
+  cancelledAt        DateTime?
+  cancelledBy        String?
+  cancellationReason String?
+  notes              String?
+  User               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([requestType])
+  @@index([requestedAt])
+  @@index([status])
+  @@index([userId])
+}
+
+model Document {
+  id                     String              @id
+  userId                 String?
+  anonId                 String?
+  title                  String
+  category               DocumentCategory    @default(OTHER)
+  docDate                DateTime?
+  storagePath            String
+  mimeType               String
+  sizeBytes              Int
+  includeInPacketDefault Boolean             @default(false)
+  createdAt              DateTime            @default(now())
+  deletedAt              DateTime?
+  DocumentDecode         DocumentDecode?
+  DocumentShareLink      DocumentShareLink[]
+
+  @@index([anonId])
+  @@index([userId])
+}
+
+model DocumentDecode {
+  id         String   @id
+  documentId String   @unique
+  summary    String
+  keyTerms   Json
+  questions  Json
+  nextSteps  Json
+  safetyNote String?
+  createdAt  DateTime @default(now())
+  Document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+}
+
+model DocumentShareLink {
+  id                      String                    @id
+  documentId              String
+  token                   String                    @unique
+  expiresAt               DateTime
+  revokedAt               DateTime?
+  createdAt               DateTime                  @default(now())
+  revokedBy               String?
+  Document                Document                  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  DocumentShareLinkAccess DocumentShareLinkAccess[]
+
+  @@index([documentId])
+}
+
+model DocumentShareLinkAccess {
+  id                String            @id
+  shareLinkId       String
+  accessedAt        DateTime          @default(now())
+  ipAddress         String?
+  userAgent         String?
+  DocumentShareLink DocumentShareLink @relation(fields: [shareLinkId], references: [id], onDelete: Cascade)
+}
+
+model PasswordResetToken {
+  id        String    @id
+  token     String    @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+  usedAt    DateTime?
+  User      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([expiresAt])
+  @@index([token])
+  @@index([userId])
+}
+
+model Priority {
+  id                String    @id
+  userId            String?
+  anonId            String?
+  title             String
+  description       String?
+  type              String
+  status            String    @default("active")
+  linkedAppointment String?
+  linkedCareTeam    String?
+  linkedCarePlan    String?
+  dueDate           DateTime?
+  completedAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime
+
+  @@index([anonId])
+  @@index([status])
+  @@index([type])
+  @@index([userId])
+}
+
+model Provider {
+  id        String   @id
+  userId    String?
+  anonId    String?
+  name      String
+  specialty String?
+  phone     String?
+  email     String?
+  address   String?
+  notes     String?
+  tags      String[] @default([])
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+
+  @@index([anonId])
+  @@index([userId])
+}
+
+model ProviderPacket {
+  id                 String                 @id
+  userId             String?
+  anonId             String?
+  template           ProviderPacketTemplate @default(PRIMARY)
+  payload            Json
+  createdAt          DateTime               @default(now())
+  ProviderPacketLink ProviderPacketLink[]
+
+  @@index([anonId])
+  @@index([userId])
+}
+
+model ProviderPacketAccessLog {
+  id                   String             @id
+  providerPacketLinkId String
+  accessedAt           DateTime           @default(now())
+  ipAddress            String?
+  userAgent            String?
+  ProviderPacketLink   ProviderPacketLink @relation(fields: [providerPacketLinkId], references: [id], onDelete: Cascade)
+}
+
+model ProviderPacketLink {
+  id                      String                    @id
+  token                   String                    @unique
+  packetId                String
+  expiresAt               DateTime
+  revokedAt               DateTime?
+  createdAt               DateTime                  @default(now())
+  ProviderPacketAccessLog ProviderPacketAccessLog[]
+  ProviderPacket          ProviderPacket            @relation(fields: [packetId], references: [id], onDelete: Cascade)
+
+  @@index([packetId])
+}
+
+model Subscription {
+  id               String    @id
+  userId           String    @unique
+  stripeCustomerId String    @unique
+  stripeSubId      String?   @unique
+  status           String    @default("inactive")
+  currentPeriodEnd DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime
+  User             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id                             String               @id
+  email                          String               @unique
+  passwordHash                   String
+  name                           String?
+  createdAt                      DateTime             @default(now())
+  updatedAt                      DateTime
+  accountDeletionRequestedAt     DateTime?
+  allowProviderToProviderSharing Boolean              @default(false)
+  consentToShareClinicalSummary  Boolean              @default(false)
+  copyToEHRFormat                String?              @default("plain_text")
+  dataExportRequestedAt          DateTime?
+  defaultClinicalSummaryView     String?              @default("provider")
+  emailNotificationsEnabled      Boolean              @default(true)
+  includeProviderNotesInShares   Boolean              @default(false)
+  lastAccessAt                   DateTime?
+  role                           UserRole             @default(PATIENT)
+  isDisabled                     Boolean              @default(false)
+  Appointment                    Appointment[]
+  ChatSession                    ChatSession[]
+  ConsentChangeLog               ConsentChangeLog[]
+  DataRequest                    DataRequest[]
+  PasswordResetToken             PasswordResetToken[]
+  Subscription                   Subscription?
+  UserDisableEvent               UserDisableEvent[]
+  UserMemory                     UserMemory?
+}
+
+model UserDisableEvent {
+  id         String    @id
+  userId     String
+  disabledAt DateTime  @default(now())
+  disabledBy String
+  reason     String?
+  resolvedAt DateTime?
+  resolvedBy String?
+  User       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([disabledAt])
+  @@index([resolvedAt])
+  @@index([userId])
+}
+
+model UserMemory {
+  id                     String   @id
+  userId                 String?  @unique
+  anonId                 String?  @unique
+  goals                  Json?
+  preferences            Json?
+  topicsDiscussed        Json?
+  disclaimerAcknowledged Boolean  @default(false)
+  optOut                 Boolean  @default(false)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime
+  vaultName              String?
+  User                   User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([anonId])
+}
+
+enum DocumentCategory {
+  LAB
+  IMAGING
+  VISIT_NOTE
+  DISCHARGE
+  OTHER
+  LAB_RESULT
+  PRESCRIPTION
+  REFERRAL
+  INSURANCE_CARD
+  GOVERNMENT_ID
+  LAB_ORDER
+  IMAGING_ORDER
+  PRIOR_AUTH
+  BENEFITS_SUMMARY
+  BILLING
+}
+
+enum ProviderPacketTemplate {
+  PRIMARY
+  SPECIALIST
+  URGENT
+}
+
+enum UserRole {
+  PATIENT
+  PROVIDER
+  ADMIN
+}

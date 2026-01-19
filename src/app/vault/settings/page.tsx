@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -11,7 +11,7 @@ type CalendarSettings = {
   email: string | null;
 };
 
-function CalendarSettingsContent() {
+export default function CalendarSettingsPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -288,13 +288,5 @@ function CalendarSettingsContent() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function CalendarSettingsPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-6"><div className="max-w-4xl mx-auto"><div className="bg-white/5 rounded-lg p-8 border border-white/10"><div className="animate-pulse space-y-4"><div className="h-6 bg-white/10 rounded w-1/3"></div><div className="h-4 bg-white/10 rounded w-2/3"></div></div></div></div></div>}>
-      <CalendarSettingsContent />
-    </Suspense>
   );
 }

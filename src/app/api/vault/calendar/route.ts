@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resolveDocumentIdentity } from "@/lib/documents/server";
-import prisma from "@/lib/db";
+import { resolveDocumentIdentity } from "@/lib/auth/document-identity";
+import prisma from "@/lib/prisma";
 import { google } from "googleapis";
 
 // Google Calendar OAuth setup
@@ -18,7 +18,7 @@ function getOAuth2Client() {
 // GET: Check calendar connection status
 export async function GET(req: NextRequest) {
   const identity = await resolveDocumentIdentity(req);
-  if (!identity || !identity.userId) {
+  if (!identity) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -54,7 +54,7 @@ export async function GET(req: NextRequest) {
 // POST: Initiate OAuth flow or disconnect
 export async function POST(req: NextRequest) {
   const identity = await resolveDocumentIdentity(req);
-  if (!identity || !identity.userId) {
+  if (!identity) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

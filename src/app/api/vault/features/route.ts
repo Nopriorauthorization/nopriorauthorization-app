@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
-import { resolveDocumentIdentity } from '@/lib/auth/document-identity';
+import prisma from '@/lib/db';
+import { resolveDocumentIdentity } from '@/lib/documents/server';
 
 export async function GET(req: NextRequest) {
   try {

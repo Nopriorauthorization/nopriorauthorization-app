@@ -139,6 +139,16 @@ export default function VaultPage() {
           // Show onboarding if no vault name set
           if (!data.vaultName) {
             setShowOnboarding(true);
+            
+            // Log analytics: onboarding shown
+            await fetch("/api/analytics", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                event: "vault_onboarding_shown",
+                metadata: { timestamp: new Date().toISOString() },
+              }),
+            }).catch(console.error);
           }
         }
       } catch (error) {
@@ -174,6 +184,7 @@ export default function VaultPage() {
       <VaultOnboardingModal
         open={showOnboarding}
         onComplete={handleOnboardingComplete}
+        currentName={vaultName}
       />
       
       <div className="max-w-6xl mx-auto">

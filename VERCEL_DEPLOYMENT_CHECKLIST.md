@@ -214,3 +214,4 @@ Once all variables are set and redeployed:
 5. ✅ Users can access their vault
 
 **Current Status**: 🔴 Missing `NEXTAUTH_SECRET` → Add it to fix all 500 errors
+

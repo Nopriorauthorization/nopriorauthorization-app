@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const pageContent = `"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -58,7 +61,7 @@ export default function DocumentsPage() {
         params.set("category", selectedCategory);
       }
 
-      const res = await fetch(`/api/vault/documents?${params.toString()}`);
+      const res = await fetch(\`/api/vault/documents?\${params.toString()}\`);
       const json = await res.json();
       setData(json);
     } catch (error) {
@@ -168,11 +171,11 @@ export default function DocumentsPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
           <button
             onClick={() => setSelectedCategory("all")}
-            className={`p-3 rounded-lg border transition-colors ${
+            className={\`p-3 rounded-lg border transition-colors \${
               selectedCategory === "all"
                 ? "bg-pink-400/20 border-pink-400 text-white"
                 : "bg-white/5 border-white/10 text-white/70 hover:border-white/30"
-            }`}
+            }\`}
           >
             <div className="text-2xl mb-1">📁</div>
             <div className="text-xs font-medium">All Types</div>
@@ -183,11 +186,11 @@ export default function DocumentsPage() {
               <button
                 key={cat.value}
                 onClick={() => setSelectedCategory(cat.value)}
-                className={`p-3 rounded-lg border transition-colors ${
+                className={\`p-3 rounded-lg border transition-colors \${
                   selectedCategory === cat.value
                     ? "bg-pink-400/20 border-pink-400 text-white"
                     : "bg-white/5 border-white/10 text-white/70 hover:border-white/30"
-                }`}
+                }\`}
               >
                 <div className="text-2xl mb-1">{cat.icon}</div>
                 <div className="text-xs font-medium">{cat.label}</div>
@@ -308,3 +311,9 @@ export default function DocumentsPage() {
     </div>
   );
 }
+`;
+
+const outputPath = path.join(__dirname, '../src/app/vault/documents/page.tsx');
+
+fs.writeFileSync(outputPath, pageContent, 'utf8');
+console.log('✅ Identity Vault (Documents) page successfully written to', outputPath);

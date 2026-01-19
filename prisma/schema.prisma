@@ -101,9 +101,19 @@ model UserMemory {
 
 enum DocumentCategory {
   LAB
+  LAB_RESULT
   IMAGING
   VISIT_NOTE
   DISCHARGE
+  PRESCRIPTION
+  REFERRAL
+  INSURANCE_CARD
+  GOVERNMENT_ID
+  LAB_ORDER
+  IMAGING_ORDER
+  PRIOR_AUTH
+  BENEFITS_SUMMARY
+  BILLING
   OTHER
 }
 
@@ -379,4 +389,25 @@ model CarePlan {
   @@index([userId])
   @@index([anonId])
   @@index([status])
+}
+model Priority {
+  id                 String   @id @default(cuid())
+  userId             String?
+  anonId             String?
+  title              String
+  description        String?
+  type               String // "question", "bring-item", "follow-up", "other"
+  status             String   @default("active") // active, completed
+  linkedAppointment  String? // Appointment ID
+  linkedCareTeam     String? // CareTeamMember ID
+  linkedCarePlan     String? // CarePlan ID
+  dueDate            DateTime?
+  completedAt        DateTime?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([userId])
+  @@index([anonId])
+  @@index([status])
+  @@index([type])
 }

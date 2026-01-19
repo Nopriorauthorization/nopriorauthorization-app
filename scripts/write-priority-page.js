@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const pageContent = `"use client";
 
 import { useState, useEffect } from "react";
 
@@ -71,7 +74,7 @@ export default function PriorityPage() {
     e.preventDefault();
 
     const url = editingId
-      ? `/api/vault/priority/${editingId}`
+      ? \`/api/vault/priority/\${editingId}\`
       : "/api/vault/priority";
     const method = editingId ? "PUT" : "POST";
 
@@ -122,7 +125,7 @@ export default function PriorityPage() {
 
   const handleComplete = async (id: string) => {
     try {
-      const res = await fetch(`/api/vault/priority/${id}`, {
+      const res = await fetch(\`/api/vault/priority/\${id}\`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "completed" }),
@@ -137,7 +140,7 @@ export default function PriorityPage() {
 
   const handleReopen = async (id: string) => {
     try {
-      const res = await fetch(`/api/vault/priority/${id}`, {
+      const res = await fetch(\`/api/vault/priority/\${id}\`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "active" }),
@@ -151,10 +154,10 @@ export default function PriorityPage() {
   };
 
   const handleDelete = async (id: string, title: string) => {
-    if (!confirm(`Delete "${title}"?`)) return;
+    if (!confirm(\`Delete "\${title}"?\`)) return;
 
     try {
-      const res = await fetch(`/api/vault/priority/${id}`, {
+      const res = await fetch(\`/api/vault/priority/\${id}\`, {
         method: "DELETE",
       });
       if (res.ok) {
@@ -398,7 +401,7 @@ export default function PriorityPage() {
                                 {priority.title}
                               </h3>
                               <span
-                                className={`px-2 py-1 bg-${typeInfo.color}-400/20 text-${typeInfo.color}-400 text-xs font-medium rounded`}
+                                className={\`px-2 py-1 bg-\${typeInfo.color}-400/20 text-\${typeInfo.color}-400 text-xs font-medium rounded\`}
                               >
                                 {typeInfo.label}
                               </span>
@@ -512,3 +515,9 @@ export default function PriorityPage() {
     </div>
   );
 }
+`;
+
+const outputPath = path.join(__dirname, '../src/app/vault/priority/page.tsx');
+
+fs.writeFileSync(outputPath, pageContent, 'utf8');
+console.log('✅ Priority/Tasks page successfully written to', outputPath);

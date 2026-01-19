@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const content = `"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -188,10 +191,10 @@ export default function VaultPage() {
           </div>
 
           <div className="flex flex-wrap gap-3 mb-8 border-b border-white/10 pb-4">
-            <button onClick={() => setFilter("all")} className={`px-4 py-2 rounded-full text-sm font-semibold transition ${filter === "all" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}`}>All Features</button>
-            <button onClick={() => setFilter("instant")} className={`px-4 py-2 rounded-full text-sm font-semibold transition ${filter === "instant" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}`}>⚡ Instant Access</button>
-            <button onClick={() => setFilter("capture")} className={`px-4 py-2 rounded-full text-sm font-semibold transition ${filter === "capture" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}`}>📸 Smart Capture</button>
-            <button onClick={() => setFilter("power")} className={`px-4 py-2 rounded-full text-sm font-semibold transition ${filter === "power" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}`}>🎯 My Resources</button>
+            <button onClick={() => setFilter("all")} className={\`px-4 py-2 rounded-full text-sm font-semibold transition \${filter === "all" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}\`}>All Features</button>
+            <button onClick={() => setFilter("instant")} className={\`px-4 py-2 rounded-full text-sm font-semibold transition \${filter === "instant" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}\`}>⚡ Instant Access</button>
+            <button onClick={() => setFilter("capture")} className={\`px-4 py-2 rounded-full text-sm font-semibold transition \${filter === "capture" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}\`}>📸 Smart Capture</button>
+            <button onClick={() => setFilter("power")} className={\`px-4 py-2 rounded-full text-sm font-semibold transition \${filter === "power" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}\`}>🎯 My Resources</button>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -257,10 +260,10 @@ export default function VaultPage() {
         </div>
 
         <div className="flex flex-wrap gap-3 mb-8 border-b border-white/10 pb-4">
-          <button onClick={() => setFilter("all")} className={`px-4 py-2 rounded-full text-sm font-semibold transition ${filter === "all" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}`}>All Features</button>
-          <button onClick={() => setFilter("instant")} className={`px-4 py-2 rounded-full text-sm font-semibold transition ${filter === "instant" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}`}>⚡ Instant Access</button>
-          <button onClick={() => setFilter("capture")} className={`px-4 py-2 rounded-full text-sm font-semibold transition ${filter === "capture" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}`}>📸 Smart Capture</button>
-          <button onClick={() => setFilter("power")} className={`px-4 py-2 rounded-full text-sm font-semibold transition ${filter === "power" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}`}>🎯 My Resources</button>
+          <button onClick={() => setFilter("all")} className={\`px-4 py-2 rounded-full text-sm font-semibold transition \${filter === "all" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}\`}>All Features</button>
+          <button onClick={() => setFilter("instant")} className={\`px-4 py-2 rounded-full text-sm font-semibold transition \${filter === "instant" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}\`}>⚡ Instant Access</button>
+          <button onClick={() => setFilter("capture")} className={\`px-4 py-2 rounded-full text-sm font-semibold transition \${filter === "capture" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}\`}>📸 Smart Capture</button>
+          <button onClick={() => setFilter("power")} className={\`px-4 py-2 rounded-full text-sm font-semibold transition \${filter === "power" ? "bg-pink-400 text-black" : "bg-white/5 text-white/70 hover:bg-white/10"}\`}>🎯 My Resources</button>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -304,3 +307,8 @@ export default function VaultPage() {
     </main>
   );
 }
+`;
+
+const targetPath = path.join(__dirname, '..', 'src', 'app', 'vault', 'page.tsx');
+fs.writeFileSync(targetPath, content, 'utf8');
+console.log('✅ Vault page successfully written to:', targetPath);

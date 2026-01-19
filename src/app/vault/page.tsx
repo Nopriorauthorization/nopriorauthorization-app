@@ -80,6 +80,15 @@ const VAULT_FEATURES: VaultFeature[] = [
     href: "/vault/decoder"
   },
   {
+    id: "priority",
+    title: "Life Changing Diagnosis",
+    description: "Your private crisis center—escape, learn, and access everything NPA offers when facing something urgent or life-changing",
+    tier: "power",
+    icon: "🛡️",
+    status: "active",
+    href: "/vault/priority",
+  },
+  {
     id: "voice",
     title: "Voice Memos",
     description: "Post-appointment brain dump → transcribed, organized, and searchable. Just talk.",

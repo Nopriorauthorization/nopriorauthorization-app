@@ -38,14 +38,14 @@ model User {
   dataExportRequestedAt      DateTime?
   accountDeletionRequestedAt DateTime?
 
-  chatSessions   ChatSession[]
-  subscription   Subscription?
-  memory         UserMemory?
-  disableEvents  UserDisableEvent[]
-  passwordResetTokens  PasswordResetToken[]
-  consentChangeLogs     ConsentChangeLog[]
+  chatSessions        ChatSession[]
+  subscription        Subscription?
+  memory              UserMemory?
+  disableEvents       UserDisableEvent[]
+  passwordResetTokens PasswordResetToken[]
+  consentChangeLogs   ConsentChangeLog[]
   dataRequests        DataRequest[]
-  appointments         Appointment[]
+  appointments        Appointment[]
 }
 
 model Subscription {
@@ -89,7 +89,7 @@ model UserMemory {
   goals                  Json?
   preferences            Json?
   topicsDiscussed        Json?
-  vaultName              String?  // Personalized name for Sacred Vault
+  vaultName              String? // Personalized name for Sacred Vault
   disclaimerAcknowledged Boolean  @default(false)
   optOut                 Boolean  @default(false)
   createdAt              DateTime @default(now())
@@ -122,9 +122,25 @@ model Document {
   deletedAt              DateTime?
 
   shareLinks DocumentShareLink[]
+  decode     DocumentDecode?
 
   @@index([userId])
   @@index([anonId])
+}
+
+model DocumentDecode {
+  id         String   @id @default(cuid())
+  documentId String   @unique
+  summary    String   @db.Text
+  keyTerms   Json // Array of {term, definition, category}
+  questions  Json // Array of strings
+  nextSteps  Json // Array of strings
+  safetyNote String?  @db.Text
+  createdAt  DateTime @default(now())
+
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
 }
 
 model DocumentShareLink {
@@ -136,11 +152,12 @@ model DocumentShareLink {
   revokedBy  String?
   createdAt  DateTime  @default(now())
 
-  document Document               @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  document Document                  @relation(fields: [documentId], references: [id], onDelete: Cascade)
   accesses DocumentShareLinkAccess[]
 
   @@index([documentId])
 }
+
 model DocumentShareLinkAccess {
   id          String   @id @default(cuid())
   shareLinkId String
@@ -215,27 +232,27 @@ model AccessLog {
 
 // User Disable Events - Preserves history across multiple disable/enable cycles
 model UserDisableEvent {
-  id          String    @id @default(cuid())
-  userId      String
-  disabledAt  DateTime  @default(now())
-  disabledBy  String    // Admin user ID who performed the disable
-  reason      String?   // Optional free text reason
-  resolvedAt  DateTime? // When account was re-enabled (null = still disabled)
-  resolvedBy  String?   // Admin user ID who re-enabled
-  
+  id         String    @id @default(cuid())
+  userId     String
+  disabledAt DateTime  @default(now())
+  disabledBy String // Admin user ID who performed the disable
+  reason     String? // Optional free text reason
+  resolvedAt DateTime? // When account was re-enabled (null = still disabled)
+  resolvedBy String? // Admin user ID who re-enabled
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+
   @@index([userId])
   @@index([disabledAt])
   @@index([resolvedAt])
 }
 
 model PasswordResetToken {
-  id        String   @id @default(cuid())
-  token     String   @unique
+  id        String    @id @default(cuid())
+  token     String    @unique
   userId    String
   expiresAt DateTime
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   usedAt    DateTime?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -248,12 +265,12 @@ model PasswordResetToken {
 model ConsentChangeLog {
   id          String   @id @default(cuid())
   userId      String
-  consentType String   // "clinicalSummary", "providerSharing", "emailNotifications"
+  consentType String // "clinicalSummary", "providerSharing", "emailNotifications"
   oldValue    Boolean
   newValue    Boolean
-  changedBy   String?  // User ID who made the change (null = user themselves)
+  changedBy   String? // User ID who made the change (null = user themselves)
   changedAt   DateTime @default(now())
-  source      String   // "user_settings", "admin_portal", "onboarding"
+  source      String // "user_settings", "admin_portal", "onboarding"
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -263,20 +280,20 @@ model ConsentChangeLog {
 }
 
 model DataRequest {
-  id            String   @id @default(cuid())
-  userId        String
-  requestType   String   // "export", "deletion"
-  status        String   @default("pending") // "pending", "in_progress", "completed", "cancelled"
-  requestedAt   DateTime @default(now())
-  fulfilledAt   DateTime?
-  fulfilledBy   String?  // Admin user ID who fulfilled the request
-  cancelledAt   DateTime?
-  cancelledBy   String?  // Admin user ID who cancelled the request
+  id                 String    @id @default(cuid())
+  userId             String
+  requestType        String // "export", "deletion"
+  status             String    @default("pending") // "pending", "in_progress", "completed", "cancelled"
+  requestedAt        DateTime  @default(now())
+  fulfilledAt        DateTime?
+  fulfilledBy        String? // Admin user ID who fulfilled the request
+  cancelledAt        DateTime?
+  cancelledBy        String? // Admin user ID who cancelled the request
   cancellationReason String?
-  notes         String?  // Admin notes about the request
-  
+  notes              String? // Admin notes about the request
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+
   @@index([userId])
   @@index([status])
   @@index([requestType])
@@ -290,9 +307,9 @@ model Appointment {
   providerName      String
   providerSpecialty String?
   appointmentDate   DateTime
-  appointmentType   String   // "checkup", "follow-up", "consultation", "procedure", "lab", "imaging", "other"
+  appointmentType   String // "checkup", "follow-up", "consultation", "procedure", "lab", "imaging", "other"
   status            String   @default("scheduled") // "scheduled", "completed", "cancelled", "missed"
-  location          String?  // Office name or address
+  location          String? // Office name or address
   notes             String?
   reminderSent      Boolean  @default(false)
   createdAt         DateTime @default(now())

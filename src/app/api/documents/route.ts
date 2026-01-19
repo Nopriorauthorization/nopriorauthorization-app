@@ -22,6 +22,13 @@ export async function GET(request: NextRequest) {
   if (!identity.userId && !identity.anonId) {
     return NextResponse.json({ documents: [] });
   }
+  
+  const { searchParams } = new URL(request.url);
+  const decodedOnly = searchParams.get("decoded") === "true";
+  const limit = searchParams.get("limit") 
+    ? parseInt(searchParams.get("limit") as string, 10) 
+    : undefined;
+  
   const filters: Array<Record<string, string>> = [];
   if (identity.userId) {
     filters.push({ userId: identity.userId });
@@ -29,15 +36,28 @@ export async function GET(request: NextRequest) {
   if (identity.anonId) {
     filters.push({ anonId: identity.anonId });
   }
+  
   const documents = await prisma.document.findMany({
     where: {
       deletedAt: null,
       OR: filters,
+      ...(decodedOnly ? { decode: { isNot: null } } : {}),
+    },
+    include: {
+      decode: decodedOnly,
     },
     orderBy: { createdAt: "desc" },
+    ...(limit ? { take: limit } : {}),
   });
+  
   return NextResponse.json({
-    documents: documents.map((document) => formatDocument(document)),
+    documents: documents.map((document) => ({
+      ...formatDocument(document),
+      hasDecoded: !!document.decode,
+      termCount: document.decode 
+        ? (Array.isArray(document.decode.keyTerms) ? document.decode.keyTerms.length : 0)
+        : 0,
+    })),
   });
 }
 

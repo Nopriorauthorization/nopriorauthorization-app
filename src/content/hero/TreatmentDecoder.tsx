@@ -42,6 +42,26 @@ type HealthTopic = {
     description: string;
     commonTerms: string[];
     relatedTools: string[];
+    id: string;
+  }[];
+};
+
+// Educational Content Library
+type EducationalContent = {
+  topicId: string;
+  articles: {
+    title: string;
+    summary: string;
+    keyPoints: string[];
+  }[];
+  trustedResources: {
+    name: string;
+    url: string;
+    description: string;
+  }[];
+  faqs: {
+    question: string;
+    answer: string;
   }[];
 };
 
@@ -54,24 +74,28 @@ const healthDirectory: HealthTopic[] = [
     color: 'pink',
     topics: [
       {
+        id: 'birth-control',
         title: 'Birth Control & Contraception',
         description: 'Understanding your options, side effects, and effectiveness',
         commonTerms: ['IUD', 'Oral contraceptive', 'Depo-Provera', 'Nexplanon', 'Emergency contraception'],
         relatedTools: ['Treatment Decoder', 'Provider Finder', 'AI Health Insights']
       },
       {
+        id: 'pregnancy',
         title: 'Pregnancy & Prenatal Care',
         description: 'From conception through delivery and postpartum',
         commonTerms: ['HCG levels', 'Prenatal vitamins', 'Ultrasound', 'Gestational diabetes', 'Preeclampsia'],
         relatedTools: ['Treatment Decoder', 'Timeline Tracker', 'Document Analysis']
       },
       {
+        id: 'menstrual-health',
         title: 'Menstrual Health & PCOS',
         description: 'Period tracking, irregularities, and hormonal conditions',
         commonTerms: ['Amenorrhea', 'Dysmenorrhea', 'PCOS', 'Endometriosis', 'Fibroids'],
         relatedTools: ['Symptom Tracker', 'AI Health Insights', 'Provider Finder']
       },
       {
+        id: 'menopause',
         title: 'Menopause & Hormone Therapy',
         description: 'Navigating perimenopause, menopause, and HRT options',
         commonTerms: ['Hot flashes', 'HRT', 'Estrogen therapy', 'Bone density', 'Vaginal atrophy'],
@@ -86,18 +110,21 @@ const healthDirectory: HealthTopic[] = [
     color: 'blue',
     topics: [
       {
+        id: 'prostate-health',
         title: 'Prostate Health',
         description: 'Screening, enlargement, and prostate-specific concerns',
         commonTerms: ['PSA test', 'BPH', 'Prostatitis', 'Digital rectal exam', 'Finasteride'],
         relatedTools: ['Treatment Decoder', 'Lab Result Analyzer', 'Provider Finder']
       },
       {
+        id: 'testosterone-health',
         title: 'Testosterone & Hormone Health',
         description: 'Understanding low T, testing, and treatment options',
         commonTerms: ['Total testosterone', 'Free testosterone', 'TRT', 'Hypogonadism', 'SHBG'],
         relatedTools: ['Lab Decoder', 'AI Health Insights', 'Medication Guide']
       },
       {
+        id: 'sexual-health-ed',
         title: 'Sexual Health & ED',
         description: 'Erectile dysfunction, STI screening, and reproductive health',
         commonTerms: ['Erectile dysfunction', 'Sildenafil', 'Tadalafil', 'STI panel', 'Viagra'],
@@ -112,24 +139,28 @@ const healthDirectory: HealthTopic[] = [
     color: 'purple',
     topics: [
       {
+        id: 'anxiety-disorders',
         title: 'Anxiety & Panic Disorders',
         description: 'Symptoms, medications, and coping strategies',
         commonTerms: ['Generalized anxiety', 'Panic attack', 'SSRI', 'Benzodiazepine', 'CBT'],
         relatedTools: ['Crisis Center', 'Medication Decoder', 'Provider Finder']
       },
       {
+        id: 'depression-disorders',
         title: 'Depression & Mood Disorders',
         description: 'Understanding depression, bipolar, and treatment options',
         commonTerms: ['Major depressive disorder', 'Antidepressant', 'SNRI', 'Mood stabilizer', 'PHQ-9'],
         relatedTools: ['Treatment Decoder', 'AI Health Insights', 'Crisis Resources']
       },
       {
+        id: 'adhd-focus',
         title: 'ADHD & Focus',
         description: 'Diagnosis, stimulant medications, and management',
         commonTerms: ['ADHD', 'Adderall', 'Vyvanse', 'Methylphenidate', 'Strattera'],
         relatedTools: ['Medication Guide', 'Provider Finder', 'Treatment Decoder']
       },
       {
+        id: 'sleep-disorders',
         title: 'Sleep Disorders',
         description: 'Insomnia, sleep apnea, and sleep medication',
         commonTerms: ['Insomnia', 'Sleep apnea', 'CPAP', 'Melatonin', 'Zolpidem'],
@@ -144,24 +175,28 @@ const healthDirectory: HealthTopic[] = [
     color: 'red',
     topics: [
       {
+        id: 'diabetes-management',
         title: 'Diabetes Management',
         description: 'Type 1, Type 2, monitoring, and medications',
         commonTerms: ['HbA1c', 'Fasting glucose', 'Metformin', 'Insulin', 'CGM', 'Diabetic retinopathy'],
         relatedTools: ['Lab Decoder', 'Medication Tracker', 'AI Health Insights']
       },
       {
+        id: 'heart-health',
         title: 'Heart Health & Blood Pressure',
         description: 'Hypertension, cholesterol, and cardiovascular care',
         commonTerms: ['Hypertension', 'LDL cholesterol', 'Statin', 'ACE inhibitor', 'Beta blocker'],
         relatedTools: ['Treatment Decoder', 'Vital Signs Tracker', 'Provider Finder']
       },
       {
+        id: 'thyroid-disorders',
         title: 'Thyroid Disorders',
         description: 'Hypothyroid, hyperthyroid, and hormone replacement',
         commonTerms: ['TSH', 'T4', 'Levothyroxine', 'Hashimoto', 'Graves disease'],
         relatedTools: ['Lab Result Decoder', 'Medication Guide', 'AI Insights']
       },
       {
+        id: 'autoimmune-conditions',
         title: 'Autoimmune Conditions',
         description: 'Lupus, RA, Crohn\'s, and immune system disorders',
         commonTerms: ['Rheumatoid arthritis', 'Lupus', 'Crohn\'s', 'Biologics', 'Immunosuppressant'],
@@ -176,18 +211,21 @@ const healthDirectory: HealthTopic[] = [
     color: 'rose',
     topics: [
       {
+        id: 'sti-testing',
         title: 'STI Testing & Prevention',
         description: 'Screening, treatment, and prevention strategies',
         commonTerms: ['Chlamydia', 'Gonorrhea', 'HIV test', 'Syphilis', 'HPV vaccine', 'PrEP'],
         relatedTools: ['Lab Decoder', 'Provider Finder', 'Confidential Resources']
       },
       {
+        id: 'birth-control-family-planning',
         title: 'Birth Control & Family Planning',
         description: 'All contraceptive options explained clearly',
         commonTerms: ['IUD insertion', 'Birth control pill', 'Nexplanon', 'Tubal ligation', 'Vasectomy'],
         relatedTools: ['Treatment Decoder', 'Provider Finder', 'Cost Estimator']
       },
       {
+        id: 'sexual-wellness',
         title: 'Sexual Wellness',
         description: 'Libido, function, and sexual health concerns',
         commonTerms: ['Low libido', 'Painful intercourse', 'Erectile dysfunction', 'Hormone therapy'],
@@ -202,18 +240,21 @@ const healthDirectory: HealthTopic[] = [
     color: 'green',
     topics: [
       {
+        id: 'cancer-screening',
         title: 'Cancer Screening',
         description: 'Mammograms, colonoscopy, skin checks, and early detection',
         commonTerms: ['Mammogram', 'Colonoscopy', 'PAP smear', 'PSA screening', 'Skin biopsy'],
         relatedTools: ['Test Result Decoder', 'Provider Finder', 'Timeline Tracker']
       },
       {
+        id: 'vaccinations',
         title: 'Vaccinations & Immunizations',
         description: 'Adult vaccines, travel immunizations, and boosters',
         commonTerms: ['Flu shot', 'COVID vaccine', 'Tdap', 'HPV vaccine', 'Shingles vaccine'],
         relatedTools: ['Immunization Record', 'Provider Finder', 'Travel Health']
       },
       {
+        id: 'annual-wellness',
         title: 'Annual Wellness & Labs',
         description: 'Understanding routine bloodwork and physical exams',
         commonTerms: ['CBC', 'CMP', 'Lipid panel', 'Vitamin D', 'Annual physical'],
@@ -228,18 +269,21 @@ const healthDirectory: HealthTopic[] = [
     color: 'orange',
     topics: [
       {
+        id: 'weight-management',
         title: 'Weight Management',
         description: 'Medications, nutrition, and sustainable approaches',
         commonTerms: ['GLP-1', 'Ozempic', 'Wegovy', 'Metformin', 'BMI', 'Bariatric surgery'],
         relatedTools: ['Medication Decoder', 'Provider Finder', 'Cost Calculator']
       },
       {
+        id: 'sports-medicine',
         title: 'Sports Medicine & Injuries',
         description: 'Treating and preventing athletic injuries',
         commonTerms: ['ACL tear', 'Rotator cuff', 'Stress fracture', 'Physical therapy', 'MRI'],
         relatedTools: ['Imaging Decoder', 'Provider Finder', 'Recovery Tracker']
       },
       {
+        id: 'nutrition-supplements',
         title: 'Nutrition & Supplements',
         description: 'Vitamins, deficiencies, and dietary guidance',
         commonTerms: ['Vitamin D deficiency', 'Iron deficiency', 'B12', 'Omega-3', 'Probiotics'],
@@ -254,18 +298,21 @@ const healthDirectory: HealthTopic[] = [
     color: 'yellow',
     topics: [
       {
+        id: 'pediatric-vaccines',
         title: 'Pediatric Vaccinations',
         description: 'Childhood immunization schedules and safety',
         commonTerms: ['DTaP', 'MMR', 'Varicella', 'HPV vaccine', 'Meningococcal'],
         relatedTools: ['Vaccine Tracker', 'Provider Finder', 'Educational Resources']
       },
       {
+        id: 'child-development',
         title: 'Growth & Development',
         description: 'Milestones, growth charts, and developmental screening',
         commonTerms: ['Growth percentile', 'Developmental delay', 'Well-child visit', 'Autism screening'],
         relatedTools: ['Growth Tracker', 'Pediatric Resources', 'Provider Network']
       },
       {
+        id: 'childhood-conditions',
         title: 'Common Childhood Conditions',
         description: 'Ear infections, asthma, allergies, and pediatric care',
         commonTerms: ['Otitis media', 'Pediatric asthma', 'Food allergy', 'Strep throat', 'RSV'],
@@ -274,6 +321,127 @@ const healthDirectory: HealthTopic[] = [
     ]
   }
 ];
+
+// Educational Content Library - Plain-English guides for each health topic
+const contentLibrary: EducationalContent[] = [
+  {
+    topicId: 'birth-control',
+    articles: [
+      {
+        title: 'Birth Control Options: What You Need to Know',
+        summary: 'A complete guide to all contraceptive methods, from IUDs to pills to permanent options.',
+        keyPoints: [
+          'IUDs are 99% effective and last 3-12 years depending on type',
+          'Birth control pills must be taken daily at the same time',
+          'Emergency contraception (Plan B) works best within 24 hours',
+          'Many options are covered 100% by insurance under the ACA',
+          'You don\'t need parental consent if you\'re 18+ in most states'
+        ]
+      },
+      {
+        title: 'Understanding Birth Control Side Effects',
+        summary: 'What\'s normal, what\'s not, and when to call your doctor.',
+        keyPoints: [
+          'Spotting is common in the first 3 months of starting hormonal BC',
+          'Mood changes should be discussed with your provider',
+          'Severe headaches or leg pain need immediate medical attention',
+          'IUD insertion cramping usually resolves within 24-48 hours',
+          'Non-hormonal options exist (copper IUD, condoms, diaphragm)'
+        ]
+      }
+    ],
+    trustedResources: [
+      {
+        name: 'Planned Parenthood - Birth Control Guide',
+        url: 'https://www.plannedparenthood.org/learn/birth-control',
+        description: 'Compare all birth control methods with effectiveness rates'
+      },
+      {
+        name: 'Bedsider Birth Control Support Network',
+        url: 'https://www.bedsider.org',
+        description: 'Interactive tool to find the best birth control for your lifestyle'
+      },
+      {
+        name: 'CDC Contraceptive Effectiveness',
+        url: 'https://www.cdc.gov/reproductivehealth/contraception/index.htm',
+        description: 'Evidence-based information on contraceptive effectiveness'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Can I get birth control without my parents knowing?',
+        answer: 'If you\'re 18+, yes - your healthcare is confidential. If you\'re under 18, laws vary by state, but many states allow minors to consent to contraceptive services. Planned Parenthood and similar clinics offer confidential services regardless of age.'
+      },
+      {
+        question: 'Does insurance cover birth control?',
+        answer: 'Under the Affordable Care Act (ACA), most insurance plans must cover FDA-approved contraceptives without copay. This includes pills, IUDs, implants, rings, and patches. If you\'re denied coverage, you can appeal.'
+      },
+      {
+        question: 'What if I miss a birth control pill?',
+        answer: 'Take it as soon as you remember. If you miss 2+ pills, use backup contraception (condoms) for 7 days. Consider emergency contraception if you had unprotected sex in the last 5 days.'
+      }
+    ]
+  },
+  {
+    topicId: 'pregnancy',
+    articles: [
+      {
+        title: 'Your First Trimester: What to Expect',
+        summary: 'Week-by-week guide to early pregnancy symptoms, tests, and prenatal care.',
+        keyPoints: [
+          'First prenatal visit typically happens at 8-10 weeks',
+          'Morning sickness affects 70-80% of pregnant people',
+          'Prenatal vitamins with folic acid reduce birth defect risk by 70%',
+          'First ultrasound confirms due date and heartbeat',
+          'Most miscarriages happen in first trimester - it\'s not your fault'
+        ]
+      },
+      {
+        title: 'Prenatal Testing: What\'s Required vs Optional',
+        summary: 'Understanding genetic screening, glucose tests, and ultrasounds.',
+        keyPoints: [
+          'NIPT (cell-free DNA) can screen for genetic conditions at 10 weeks',
+          'Glucose tolerance test screens for gestational diabetes at 24-28 weeks',
+          'Anatomy ultrasound at 20 weeks checks baby\'s development',
+          'Group B strep test happens at 35-37 weeks',
+          'You can decline any test - ask questions first'
+        ]
+      }
+    ],
+    trustedResources: [
+      {
+        name: 'March of Dimes Pregnancy Guide',
+        url: 'https://www.marchofdimes.org/find-support/topics/pregnancy',
+        description: 'Week-by-week pregnancy guide with science-backed information'
+      },
+      {
+        name: 'ACOG Patient Education',
+        url: 'https://www.acog.org/womens-health/faqs',
+        description: 'American College of Obstetricians and Gynecologists resources'
+      },
+      {
+        name: 'CDC Pregnancy Information',
+        url: 'https://www.cdc.gov/pregnancy/index.html',
+        description: 'Health guidance for before, during, and after pregnancy'
+      }
+    ],
+    faqs: [
+      {
+        question: 'When should I take a pregnancy test?',
+        answer: 'For most accurate results, wait until the first day of your missed period. Tests detect HCG hormone which doubles every 48-72 hours in early pregnancy. If negative but still no period, test again in 3-4 days.'
+      },
+      {
+        question: 'What prenatal vitamins should I take?',
+        answer: 'Look for one with at least 400-800 mcg of folic acid, plus iron, calcium, and vitamin D. Start taking prenatal vitamins before trying to conceive if possible. Many generic versions work just as well as name brands.'
+      },
+      {
+        question: 'Is it normal to have cramping in early pregnancy?',
+        answer: 'Mild cramping is normal as your uterus expands. However, severe cramping with bleeding, especially on one side, needs immediate medical evaluation to rule out ectopic pregnancy or miscarriage.'
+      }
+    ]
+  }
+];
+
 
 // Medical dictionary
 const medicalDictionary: MedicalTerm[] = [
@@ -558,6 +726,7 @@ export default function TreatmentDecoder() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDoc, setSelectedDoc] = useState<string | null>(null);
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+  const [showEducationalContent, setShowEducationalContent] = useState(false);
 
   const filteredDictionary = medicalDictionary.filter(term => {
     const matchesSearch = term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -923,7 +1092,7 @@ export default function TreatmentDecoder() {
             </div>
 
             {/* Quick Actions */}
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2 mb-8">
               <button className="p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 transition text-left">
                 <div className="text-2xl mb-2">🔍</div>
                 <div className="font-semibold mb-1">Decode a Document</div>
@@ -942,12 +1111,95 @@ export default function TreatmentDecoder() {
                 <div className="text-sm text-gray-400">Get personalized guidance about this topic</div>
               </button>
               
-              <button className="p-4 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 hover:bg-orange-500/20 transition text-left">
+              <button 
+                onClick={() => setShowEducationalContent(!showEducationalContent)}
+                className="p-4 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 hover:bg-orange-500/20 transition text-left"
+              >
                 <div className="text-2xl mb-2">📚</div>
                 <div className="font-semibold mb-1">Educational Resources</div>
-                <div className="text-sm text-gray-400">Learn more with plain-English articles</div>
+                <div className="text-sm text-gray-400">
+                  {showEducationalContent ? 'Hide articles and guides' : 'Learn more with plain-English articles'}
+                </div>
               </button>
             </div>
+
+            {/* Educational Content Section */}
+            {showEducationalContent && (() => {
+              const content = contentLibrary.find(c => c.topicId === topicDetail.id);
+              if (!content) return null;
+
+              return (
+                <div className="space-y-6">
+                  {/* Articles */}
+                  <div className="rounded-xl border border-orange-500/30 bg-orange-500/5 p-6">
+                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                      📖 Plain-English Articles
+                    </h3>
+                    <div className="space-y-4">
+                      {content.articles.map((article, idx) => (
+                        <div key={idx} className="rounded-lg bg-white/5 p-5 border border-white/10">
+                          <h4 className="text-xl font-semibold text-white mb-2">{article.title}</h4>
+                          <p className="text-gray-300 mb-4">{article.summary}</p>
+                          <div className="space-y-2">
+                            <div className="font-semibold text-orange-400">Key Points:</div>
+                            <ul className="space-y-2">
+                              {article.keyPoints.map((point, pIdx) => (
+                                <li key={pIdx} className="flex gap-2 text-gray-300">
+                                  <span className="text-orange-400">•</span>
+                                  <span>{point}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Trusted Resources */}
+                  <div className="rounded-xl border border-blue-500/30 bg-blue-500/5 p-6">
+                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                      🔗 Trusted Resources & Links
+                    </h3>
+                    <div className="space-y-3">
+                      {content.trustedResources.map((resource, idx) => (
+                        <a 
+                          key={idx}
+                          href={resource.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block rounded-lg bg-white/5 p-4 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 transition group"
+                        >
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1">
+                              <h4 className="font-semibold text-blue-400 group-hover:text-blue-300 mb-1">
+                                {resource.name} →
+                              </h4>
+                              <p className="text-sm text-gray-400">{resource.description}</p>
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* FAQs */}
+                  <div className="rounded-xl border border-purple-500/30 bg-purple-500/5 p-6">
+                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                      ❓ Frequently Asked Questions
+                    </h3>
+                    <div className="space-y-4">
+                      {content.faqs.map((faq, idx) => (
+                        <div key={idx} className="rounded-lg bg-white/5 p-5 border border-white/10">
+                          <h4 className="font-semibold text-purple-400 mb-2">{faq.question}</h4>
+                          <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
       );

@@ -119,8 +119,10 @@ const sampleEntries: PriorityEntry[] = [
 ];
 
 export default function PrioritySpace() {
+  const [activeTab, setActiveTab] = useState<'scenarios' | 'providers' | 'resources'>('scenarios');
   const [selectedScenario, setSelectedScenario] = useState<ScenarioId | null>(null);
   const [activeEntry, setActiveEntry] = useState<string | null>(null);
+  const [userZip, setUserZip] = useState('');
 
   const renderScenarioBuilder = () => {
     if (!selectedScenario) return null;
@@ -691,7 +693,49 @@ export default function PrioritySpace() {
 
     return (
       <div className="space-y-6">
-        {/* Crisis Center Header */}
+        {/* Tabs Navigation */}
+        <div className="flex gap-2 border-b border-white/10 pb-4">
+          <button
+            onClick={() => setActiveTab('scenarios')}
+            className={`px-6 py-3 rounded-lg font-semibold transition ${
+              activeTab === 'scenarios'
+                ? 'bg-red-500/20 border border-red-500/30 text-red-400'
+                : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10'
+            }`}
+          >
+            🛡️ Crisis Scenarios
+          </button>
+          <button
+            onClick={() => setActiveTab('providers')}
+            className={`px-6 py-3 rounded-lg font-semibold transition ${
+              activeTab === 'providers'
+                ? 'bg-blue-500/20 border border-blue-500/30 text-blue-400'
+                : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10'
+            }`}
+          >
+            📍 Find Local Provider
+          </button>
+          <button
+            onClick={() => setActiveTab('resources')}
+            className={`px-6 py-3 rounded-lg font-semibold transition ${
+              activeTab === 'resources'
+                ? 'bg-purple-500/20 border border-purple-500/30 text-purple-400'
+                : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10'
+            }`}
+          >
+            📚 Resources & Rights
+          </button>
+        </div>
+
+        {activeTab === 'scenarios' && renderScenariosTab()}
+        {activeTab === 'providers' && renderProvidersTab()}
+        {activeTab === 'resources' && renderResourcesTab()}
+      </div>
+    );
+  };
+
+  const renderScenariosTab = () => (
+    <div className="space-y-6">{/* Crisis Center Header */}
         <div className="rounded-xl border border-red-500/30 bg-gradient-to-br from-red-900/20 via-gray-900/50 to-black p-8">
           <div className="mb-4">
             <div className="flex items-center gap-3 mb-3">
@@ -808,85 +852,237 @@ export default function PrioritySpace() {
         </div>
 
         {/* Learn & Understand */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <span>📚</span>
-            Learn and understand
-          </h3>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="p-6 rounded-xl border border-white/10 bg-gradient-to-br from-blue-500/10 to-purple-500/10">
-              <h4 className="font-semibold text-white mb-3">Common Concerns</h4>
-              <div className="space-y-2 text-sm">
-                <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ What does a positive STI test mean?</a>
-                <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ Understanding pregnancy options</a>
-                <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ Panic attacks vs. heart attacks</a>
-                <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ What to do if you find a lump</a>
-                <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ Anxiety treatment options</a>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-xl border border-white/10 bg-gradient-to-br from-green-500/10 to-blue-500/10">
-              <h4 className="font-semibold text-white mb-3">Your Rights</h4>
-              <div className="space-y-2 text-sm">
-                <a href="#" className="block text-green-400 hover:text-green-300 transition">→ Confidential care for minors</a>
-                <a href="#" className="block text-green-400 hover:text-green-300 transition">→ Getting care without insurance</a>
-                <a href="#" className="block text-green-400 hover:text-green-300 transition">→ Privacy and medical records</a>
-                <a href="#" className="block text-green-400 hover:text-green-300 transition">→ Second opinions and advocacy</a>
-                <a href="#" className="block text-green-400 hover:text-green-300 transition">→ What to do if dismissed by doctors</a>
-              </div>
+      <div>
+        <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <span>📚</span>
+          Learn and understand
+        </h3>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="p-6 rounded-xl border border-white/10 bg-gradient-to-br from-blue-500/10 to-purple-500/10">
+            <h4 className="font-semibold text-white mb-3">Common Concerns</h4>
+            <div className="space-y-2 text-sm">
+              <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ What does a positive STI test mean?</a>
+              <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ Understanding pregnancy options</a>
+              <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ Panic attacks vs. heart attacks</a>
+              <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ What to do if you find a lump</a>
+              <a href="#" className="block text-blue-400 hover:text-blue-300 transition">→ Anxiety treatment options</a>
             </div>
           </div>
-        </div>
 
-        {/* Recent Entries */}
-        {sampleEntries.length > 0 && (
-          <div>
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <span>📝</span>
-              Your recent entries
-            </h3>
-            <div className="space-y-3">
-              {sampleEntries.map(entry => {
-                const scenario = scenarios.find(s => s.id === entry.scenarioId)!;
-                return (
-                  <div
-                    key={entry.id}
-                    onClick={() => setActiveEntry(entry.id)}
-                    className="p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-blue-500/30 transition cursor-pointer"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="text-2xl">{scenario.icon}</div>
-                      <div className="flex-1">
-                        <div className="font-semibold text-white mb-1">{scenario.title}</div>
-                        <div className="text-sm text-gray-400">
-                          {format(new Date(entry.createdAt), 'MMM d, yyyy · h:mm a')}
-                        </div>
-                      </div>
-                      <div className="text-blue-400">→</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Support Message */}
-        <div className="p-6 rounded-xl border border-blue-500/30 bg-blue-500/10">
-          <div className="flex items-start gap-4">
-            <div className="text-3xl">💙</div>
-            <div>
-              <h4 className="font-semibold text-white mb-2">You're not alone</h4>
-              <p className="text-gray-300 text-sm">
-                Millions of people face scary health moments every year. Having information, support, and a plan makes all the difference. 
-                Everything here is private by default—nothing is shared unless you choose to export it.
-              </p>
+          <div className="p-6 rounded-xl border border-white/10 bg-gradient-to-br from-green-500/10 to-blue-500/10">
+            <h4 className="font-semibold text-white mb-3">Your Rights</h4>
+            <div className="space-y-2 text-sm">
+              <a href="#" className="block text-green-400 hover:text-green-300 transition">→ Confidential care for minors</a>
+              <a href="#" className="block text-green-400 hover:text-green-300 transition">→ Getting care without insurance</a>
+              <a href="#" className="block text-green-400 hover:text-green-300 transition">→ Privacy and medical records</a>
+              <a href="#" className="block text-green-400 hover:text-green-300 transition">→ Second opinions and advocacy</a>
+              <a href="#" className="block text-green-400 hover:text-green-300 transition">→ What to do if dismissed by doctors</a>
             </div>
           </div>
         </div>
       </div>
-    );
-  };
+
+      {/* NPA Tools */}
+      <div>
+        <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <span>🧰</span>
+          NPA Tools to help you
+        </h3>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <a href="/vault/decoder" className="p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-green-500/30 transition">
+            <div className="text-3xl mb-2">🔍</div>
+            <div className="font-semibold text-white mb-1">Treatment Decoder</div>
+            <p className="text-sm text-gray-400">Decode scary lab results, prescriptions, or medical bills into plain English</p>
+          </a>
+          
+          <a href="/vault/ai-insights" className="p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-purple-500/30 transition">
+            <div className="text-3xl mb-2">🧠</div>
+            <div className="font-semibold text-white mb-1">AI Health Insights</div>
+            <p className="text-sm text-gray-400">Understand patterns, risks, and what your health data means</p>
+          </a>
+
+          <a href="/vault/documents" className="p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-blue-500/30 transition">
+            <div className="text-3xl mb-2">📄</div>
+            <div className="font-semibold text-white mb-1">Upload Documents</div>
+            <p className="text-sm text-gray-400">Upload test results, images, or records for AI analysis</p>
+          </a>
+
+          <a href="/chat" className="p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-pink-500/30 transition">
+            <div className="text-3xl mb-2">💬</div>
+            <div className="font-semibold text-white mb-1">Ask Beau-Tox</div>
+            <p className="text-sm text-gray-400">Get AI-powered guidance and answers to your questions</p>
+          </a>
+
+          <a href="/vault/care-team" className="p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-orange-500/30 transition">
+            <div className="text-3xl mb-2">👥</div>
+            <div className="font-semibold text-white mb-1">Find Providers</div>
+            <p className="text-sm text-gray-400">Connect with specialists who can help with your situation</p>
+          </a>
+
+          <a href="/vault/appointments" className="p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-yellow-500/30 transition">
+            <div className="text-3xl mb-2">📅</div>
+            <div className="font-semibold text-white mb-1">Book Appointment</div>
+            <p className="text-sm text-gray-400">Schedule urgent or routine care with available providers</p>
+          </a>
+        </div>
+      </div>
+
+      {/* Support Message */}
+      <div className="p-6 rounded-xl border border-purple-500/30 bg-purple-500/10">
+        <div className="flex items-start gap-4">
+          <div className="text-3xl">💙</div>
+          <div>
+            <h4 className="font-semibold text-white mb-2">You're not alone</h4>
+            <p className="text-gray-300 text-sm">
+              Millions of people face scary health moments every year. Having information, support, and a plan makes all the difference. 
+              Everything here is private by default—nothing is shared unless you choose to export it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderProvidersTab = () => (
+    <div className="space-y-6">
+      {/* Provider Search Header */}
+      <div className="rounded-xl border border-blue-500/30 bg-gradient-to-br from-blue-900/20 via-gray-900/50 to-black p-8">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-4xl">📍</span>
+          <h2 className="text-3xl font-bold text-white">Find Local Crisis Support</h2>
+        </div>
+        <p className="text-gray-300 mb-6">
+          Find providers near you who can help with urgent situations, mental health crises, pregnancy support, STI testing, and more.
+        </p>
+
+        {/* Zip Code Search */}
+        <div className="flex gap-3 mb-4">
+          <input
+            type="text"
+            placeholder="Enter ZIP code"
+            value={userZip}
+            onChange={(e) => setUserZip(e.target.value.replace(/\D/g, '').slice(0, 5))}
+            className="flex-1 px-4 py-3 bg-black/40 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+          />
+          <button className="px-6 py-3 bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-lg hover:bg-blue-500/30 transition font-semibold">
+            🔍 Search
+          </button>
+        </div>
+
+        {/* Quick Filters */}
+        <div className="flex flex-wrap gap-2">
+          <button className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 text-purple-400 rounded-lg hover:bg-purple-500/30 transition text-sm">
+            Crisis Centers
+          </button>
+          <button className="px-4 py-2 bg-pink-500/20 border border-pink-500/30 text-pink-400 rounded-lg hover:bg-pink-500/30 transition text-sm">
+            Mental Health
+          </button>
+          <button className="px-4 py-2 bg-green-500/20 border border-green-500/30 text-green-400 rounded-lg hover:bg-green-500/30 transition text-sm">
+            Pregnancy Support
+          </button>
+          <button className="px-4 py-2 bg-yellow-500/20 border border-yellow-500/30 text-yellow-400 rounded-lg hover:bg-yellow-500/30 transition text-sm">
+            STI Testing
+          </button>
+          <button className="px-4 py-2 bg-red-500/20 border border-red-500/30 text-red-400 rounded-lg hover:bg-red-500/30 transition text-sm">
+            Emergency Care
+          </button>
+        </div>
+      </div>
+
+      {/* Google Maps Embed */}
+      <div className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
+        <div className="relative w-full" style={{ height: '500px' }}>
+          {userZip.length === 5 ? (
+            <iframe
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              src={`https://www.google.com/maps/embed/v1/search?key=YOUR_API_KEY&q=crisis+center+near+${userZip}&zoom=12`}
+              className="rounded-xl"
+            />
+          ) : (
+            <div className="flex items-center justify-center h-full bg-gradient-to-br from-gray-900 to-black">
+              <div className="text-center">
+                <div className="text-6xl mb-4">🗺️</div>
+                <p className="text-gray-400 text-lg">Enter your ZIP code to find local providers</p>
+                <p className="text-gray-500 text-sm mt-2">Crisis centers, mental health services, urgent care</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Provider Categories */}
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="p-6 rounded-xl border border-white/10 bg-white/5">
+          <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+            <span>🆘</span>
+            24/7 Crisis Support
+          </h3>
+          <div className="space-y-3">
+            <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30">
+              <div className="font-semibold text-red-400 mb-1">988 Suicide & Crisis Lifeline</div>
+              <div className="text-sm text-gray-400">24/7 phone & chat support</div>
+              <a href="tel:988" className="text-sm text-blue-400 hover:text-blue-300 transition">Call 988</a>
+            </div>
+            <div className="p-4 rounded-lg bg-purple-500/10 border border-purple-500/30">
+              <div className="font-semibold text-purple-400 mb-1">Crisis Text Line</div>
+              <div className="text-sm text-gray-400">Text support 24/7</div>
+              <a href="sms:741741" className="text-sm text-blue-400 hover:text-blue-300 transition">Text HOME to 741741</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-6 rounded-xl border border-white/10 bg-white/5">
+          <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+            <span>🏥</span>
+            Find Specific Care
+          </h3>
+          <div className="space-y-2 text-sm">
+            <a href={`https://www.google.com/maps/search/planned+parenthood+near+${userZip || 'me'}`} target="_blank" rel="noopener noreferrer" className="block p-3 rounded-lg bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500/20 transition">
+              → Planned Parenthood locations
+            </a>
+            <a href={`https://www.google.com/maps/search/mental+health+clinic+near+${userZip || 'me'}`} target="_blank" rel="noopener noreferrer" className="block p-3 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20 transition">
+              → Mental health clinics
+            </a>
+            <a href={`https://www.google.com/maps/search/STI+testing+near+${userZip || 'me'}`} target="_blank" rel="noopener noreferrer" className="block p-3 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 transition">
+              → STI testing centers
+            </a>
+            <a href={`https://www.google.com/maps/search/urgent+care+near+${userZip || 'me'}`} target="_blank" rel="noopener noreferrer" className="block p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 hover:bg-yellow-500/20 transition">
+              → Urgent care facilities
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Important Note */}
+      <div className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
+        <p className="text-sm text-yellow-400">
+          <strong>Note:</strong> Google Maps integration requires an API key. The search links above will open Google Maps in a new tab to show nearby providers.
+        </p>
+      </div>
+    </div>
+  );
+
+  const renderResourcesTab = () => (
+    <div className="space-y-6">
+      {/* Resources Header */}
+      <div className="rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-900/20 via-gray-900/50 to-black p-8">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="text-4xl">📚</span>
+          <h2 className="text-3xl font-bold text-white">Resources & Your Rights</h2>
+        </div>
+        <p className="text-gray-300">
+          Educational resources and information about your healthcare rights in crisis situations.
+        </p>
+      </div>
+      
+      {/* Content from earlier replace - Learn, NPA Tools, Support */}
+    </div>
+  );
 
   return (
     <div className="text-white">

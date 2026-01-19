@@ -4,6 +4,7 @@ import { createSignedUrl } from "@/lib/storage/supabase";
 import { resolveDocumentIdentity } from "@/lib/documents/server";
 import { extractText } from "@/lib/decoder/text-extraction";
 import { decodeDocument } from "@/lib/decoder/ai-decoder";
+import { checkRateLimit } from "@/lib/decoder/rate-limit";
 
 const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
 
@@ -18,6 +19,28 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "Authentication required" },
         { status: 401 }
+      );
+    }
+
+    // Rate limiting: 10 decodes per hour per user/anon
+    const rateLimitId = identity.userId || identity.anonId || "unknown";
+    const rateLimit = checkRateLimit(rateLimitId, 10, 60 * 60 * 1000);
+    
+    if (!rateLimit.allowed) {
+      const resetIn = Math.ceil((rateLimit.resetAt - Date.now()) / 1000 / 60);
+      return NextResponse.json(
+        { 
+          error: `Rate limit exceeded. You can decode 10 documents per hour. Try again in ${resetIn} minutes.`,
+          resetAt: rateLimit.resetAt
+        },
+        { 
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': '10',
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': rateLimit.resetAt.toString()
+          }
+        }
       );
     }
 

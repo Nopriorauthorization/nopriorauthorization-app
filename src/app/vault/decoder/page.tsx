@@ -48,6 +48,9 @@ export default function TreatmentDecoderPage() {
   const [decodeResult, setDecodeResult] = useState<DecodeResult | null>(null);
   const [recentDocuments, setRecentDocuments] = useState<DecodedDocument[]>([]);
   const [isLoadingRecent, setIsLoadingRecent] = useState(true);
+  const [isSavingToBlueprint, setIsSavingToBlueprint] = useState(false);
+  const [isAddingToPacket, setIsAddingToPacket] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
@@ -142,6 +145,10 @@ export default function TreatmentDecoderPage() {
 
       if (!decodeResponse.ok) {
         const errorData = await decodeResponse.json();
+        // Special handling for rate limit errors
+        if (decodeResponse.status === 429) {
+          throw new Error(`⏱️ ${errorData.error || "Rate limit exceeded. Please try again later."}`);
+        }
         throw new Error(errorData.error || "Failed to decode document");
       }
 
@@ -188,14 +195,61 @@ export default function TreatmentDecoderPage() {
     }
   };
 
-  const handleSaveToBlueprint = async () => {
-    // TODO: Implement Blueprint integration
-    alert("Save to Blueprint coming soon!");
+const handleSaveToBlueprint = async () => {
+    if (!currentDocumentId || !decodeResult) return;
+    
+    setIsSavingToBlueprint(true);
+    setSuccessMessage(null);
+    try {
+      const res = await fetch("/api/decoder/save-to-blueprint", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          documentId: currentDocumentId,
+          decodeId: decodeResult.id,
+        }),
+      });
+      
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.error || "Failed to save to Blueprint");
+      }
+      
+      const data = await res.json();
+      setSuccessMessage("✅ Saved to your Blueprint successfully!");
+      setTimeout(() => setSuccessMessage(null), 5000);
+    } catch (err: any) {
+      alert(`Error: ${err.message}`);
+    } finally {
+      setIsSavingToBlueprint(false);
+    }
   };
 
   const handleAddToProviderPacket = async () => {
-    // TODO: Implement Provider Packet integration
-    alert("Add to Provider Packet coming soon!");
+    if (!currentDocumentId) return;
+    
+    setIsAddingToPacket(true);
+    setSuccessMessage(null);
+    try {
+      const res = await fetch("/api/decoder/add-to-packet", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ documentId: currentDocumentId }),
+      });
+      
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.error || "Failed to add to Provider Packet");
+      }
+      
+      const data = await res.json();
+      setSuccessMessage("✅ Added to your Provider Packet successfully!");
+      setTimeout(() => setSuccessMessage(null), 5000);
+    } catch (err: any) {
+      alert(`Error: ${err.message}`);
+    } finally {
+      setIsAddingToPacket(false);
+    }
   };
 
   return (
@@ -354,6 +408,24 @@ export default function TreatmentDecoderPage() {
         {/* Results */}
         {state === "results" && decodeResult && (
           <div className="space-y-6 mb-8">
+            {/* Success Message */}
+            {successMessage && (
+              <div className="bg-green-500/20 border border-green-500 rounded-lg p-4 mb-4">
+                <p className="text-green-200 font-semibold">{successMessage}</p>
+              </div>
+            )}
+
+            {/* Disclaimer */}
+            <div className="bg-red-500/20 border-2 border-red-500 rounded-xl p-6 mb-6">
+              <h3 className="text-xl font-bold text-red-300 mb-3">⚠️ Important Medical Disclaimer</h3>
+              <p className="text-gray-200 leading-relaxed mb-2">
+                <strong>This is educational information only, not medical advice.</strong> Always consult with your healthcare provider before making any medical decisions.
+              </p>
+              <p className="text-red-300 font-semibold">
+                🚨 If you are experiencing severe symptoms, chest pain, difficulty breathing, or a medical emergency, seek immediate emergency care or call 911.
+              </p>
+            </div>
+
             {/* Summary */}
             <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-xl border border-green-500/30 p-6">
               <h2 className="text-2xl font-semibold mb-4">📋 Plain-English Summary</h2>
@@ -416,15 +488,17 @@ export default function TreatmentDecoderPage() {
             <div className="flex gap-4">
               <button
                 onClick={handleSaveToBlueprint}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition"
+                disabled={isSavingToBlueprint}
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                💾 Save to Blueprint
+                {isSavingToBlueprint ? "Saving..." : "💾 Save to Blueprint"}
               </button>
               <button
                 onClick={handleAddToProviderPacket}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition"
+                disabled={isAddingToPacket}
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                📦 Add to Provider Packet
+                {isAddingToPacket ? "Adding..." : "📦 Add to Provider Packet"}
               </button>
             </div>
 

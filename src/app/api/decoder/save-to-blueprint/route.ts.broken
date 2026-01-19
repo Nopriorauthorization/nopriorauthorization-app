@@ -1,0 +1,108 @@
+import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/lib/db";
+import { resolveDocumentIdentity } from "@/lib/documents/server";
+
+/**
+ * POST /api/decoder/save-to-blueprint
+ * Saves decode results to user's Blueprint as an insight
+ */
+export async function POST(request: NextRequest) {
+  try {
+    const identity = await resolveDocumentIdentity(request);
+    if (!identity.userId && !identity.anonId) {
+      return NextResponse.json(
+        { error: "Authentication required" },
+        { status: 401 }
+      );
+    }
+
+    const body = await request.json();
+    const { documentId, decodeId } = body;
+
+    if (!documentId || !decodeId) {
+      return NextResponse.json(
+        { error: "documentId and decodeId are required" },
+        { status: 400 }
+      );
+    }
+
+    // Fetch the document and decode
+    const document = await prisma.document.findUnique({
+      where: { id: documentId },
+      include: { decode: true },
+    });
+
+    if (!document || !document.decode) {
+      return NextResponse.json(
+        { error: "Document or decode not found" },
+        { status: 404 }
+      );
+    }
+
+    // Verify ownership
+    if (
+      (identity.userId && document.userId !== identity.userId) ||
+      (identity.anonId && document.anonId !== identity.anonId)
+    ) {
+      return NextResponse.json(
+        { error: "Unauthorized" },
+        { status: 403 }
+      );
+    }
+
+    // Get or create UserMemory
+    const userMemory: any = await prisma.userMemory.upsert({
+      where: identity.userId 
+        ? { userId: identity.userId }
+        : { anonId: identity.anonId || undefined },
+      create: {
+        userId: identity.userId || undefined,
+        anonId: identity.anonId || undefined,
+        goals: {
+          insights: [
+            {
+              id: decodeId,
+              type: "decoded_document",
+              documentId,
+              documentTitle: document.title,
+              summary: document.decode.summary,
+              questions: document.decode.questions,
+              nextSteps: document.decode.nextSteps,
+              createdAt: new Date().toISOString(),
+            },
+          ],
+        },
+      },
+      update: {
+        goals: {
+          ...(typeof userMemory?.goals === 'object' && userMemory?.goals !== null ? userMemory.goals : {}),
+          insights: [
+            ...(Array.isArray((userMemory?.goals as any)?.insights) ? (userMemory.goals as any).insights : []),
+            {
+              id: decodeId,
+              type: "decoded_document",
+              documentId,
+              documentTitle: document.title,
+              summary: document.decode.summary,
+              questions: document.decode.questions,
+              nextSteps: document.decode.nextSteps,
+              createdAt: new Date().toISOString(),
+            },
+          ],
+        },
+      },
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: "Decode saved to Blueprint successfully",
+      insightId: decodeId,
+    });
+  } catch (error) {
+    console.error("Error saving to Blueprint:", error);
+    return NextResponse.json(
+      { error: "Failed to save to Blueprint" },
+      { status: 500 }
+    );
+  }
+}

@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const content = `"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -355,3 +358,8 @@ export default function SnapshotPage() {
     </main>
   );
 }
+`;
+
+const filePath = path.resolve(__dirname, '../src/app/vault/snapshot/page.tsx');
+fs.writeFileSync(filePath, content, 'utf8');
+console.log('✅ Snapshot page successfully written to:', filePath);

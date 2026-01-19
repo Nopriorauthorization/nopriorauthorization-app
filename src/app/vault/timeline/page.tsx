@@ -7,23 +7,40 @@ type TimelineEvent = {
   id: string;
   type: "document" | "chat" | "milestone";
   title: string;
-  category?: string;
+  category: string;
   date: string;
   description?: string;
+  metadata?: {
+    mimeType?: string;
+    sizeKB?: number;
+    downloadUrl?: string;
+    messageCount?: number;
+    chatUrl?: string;
+  };
+};
+
+type TimelineStats = {
+  total: number;
+  documents: number;
+  chats: number;
+  milestones: number;
 };
 
 export default function TimelinePage() {
   const [events, setEvents] = useState<TimelineEvent[]>([]);
+  const [stats, setStats] = useState<TimelineStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>("all");
 
   useEffect(() => {
     async function fetchTimeline() {
       try {
-        const res = await fetch("/api/vault/timeline");
+        const typeParam = filter === "all" ? "" : `?type=${filter}`;
+        const res = await fetch(`/api/vault/timeline${typeParam}`);
         if (res.ok) {
           const data = await res.json();
           setEvents(data.events || []);
+          setStats(data.stats || null);
         }
       } catch (error) {
         console.error("Failed to fetch timeline:", error);
@@ -33,43 +50,48 @@ export default function TimelinePage() {
     }
 
     fetchTimeline();
-  }, []);
+  }, [filter]);
 
-  const filteredEvents = filter === "all"
-    ? events
-    : events.filter((e) => e.category?.toLowerCase() === filter);
+  const filterOptions = [
+    { value: "all", label: "All Events", icon: "📚" },
+    { value: "documents", label: "Documents", icon: "📄" },
+    { value: "chats", label: "Conversations", icon: "💬" },
+    { value: "milestones", label: "Milestones", icon: "🏆" },
+  ];
 
-  const categories = ["all", "lab", "imaging", "visit_note", "other"];
-
-  const getCategoryIcon = (category?: string) => {
-    switch (category?.toLowerCase()) {
-      case "lab":
-        return "🧪";
-      case "imaging":
-        return "📷";
-      case "visit_note":
-        return "📋";
-      case "discharge":
-        return "🏥";
+  const getTypeIcon = (type: string) => {
+    switch (type) {
+      case "document":
+        return "📄";
+      case "chat":
+        return "💬";
+      case "milestone":
+        return "🏆";
       default:
         return "📄";
     }
   };
 
-  const getCategoryColor = (category?: string) => {
-    switch (category?.toLowerCase()) {
-      case "lab":
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case "document":
         return "bg-blue-400/10 text-blue-400 border-blue-400/20";
-      case "imaging":
+      case "chat":
         return "bg-purple-400/10 text-purple-400 border-purple-400/20";
-      case "visit_note":
-        return "bg-green-400/10 text-green-400 border-green-400/20";
-      case "discharge":
-        return "bg-orange-400/10 text-orange-400 border-orange-400/20";
-      default:
+      case "milestone":
         return "bg-pink-400/10 text-pink-400 border-pink-400/20";
+      default:
+        return "bg-gray-400/10 text-gray-400 border-gray-400/20";
     }
   };
+
+  function handleEventClick(event: TimelineEvent) {
+    if (event.type === "document" && event.metadata?.downloadUrl) {
+      window.open(event.metadata.downloadUrl, "_blank");
+    } else if (event.type === "chat" && event.metadata?.chatUrl) {
+      window.location.href = event.metadata.chatUrl;
+    }
+  }
 
   if (loading) {
     return (
@@ -112,70 +134,133 @@ export default function TimelinePage() {
           </p>
         </div>
 
+        {/* Stats Bar */}
+        {stats && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <div className="text-2xl font-bold text-white">{stats.total}</div>
+              <div className="text-xs text-gray-400 mt-1">Total Events</div>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <div className="text-2xl font-bold text-blue-400">{stats.documents}</div>
+              <div className="text-xs text-gray-400 mt-1">Documents</div>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <div className="text-2xl font-bold text-purple-400">{stats.chats}</div>
+              <div className="text-xs text-gray-400 mt-1">Conversations</div>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <div className="text-2xl font-bold text-pink-400">{stats.milestones}</div>
+              <div className="text-xs text-gray-400 mt-1">Milestones</div>
+            </div>
+          </div>
+        )}
+
         {/* Filter Tabs */}
         <div className="flex flex-wrap gap-2 mb-8">
-          {categories.map((cat) => (
+          {filterOptions.map((opt) => (
             <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
-                filter === cat
+              key={opt.value}
+              onClick={() => setFilter(opt.value)}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition flex items-center gap-2 ${
+                filter === opt.value
                   ? "bg-pink-400 text-black"
                   : "bg-white/5 text-white/70 hover:bg-white/10"
               }`}
             >
-              {cat === "all" ? "All Events" : cat.replace("_", " ").toUpperCase()}
+              <span>{opt.icon}</span>
+              <span>{opt.label}</span>
             </button>
           ))}
         </div>
 
         {/* Timeline */}
-        {filteredEvents.length > 0 ? (
+        {events.length > 0 ? (
           <div className="relative">
             {/* Timeline Line */}
             <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-white/10"></div>
 
             {/* Timeline Events */}
             <div className="space-y-6">
-              {filteredEvents.map((event, idx) => (
-                <div key={event.id} className="relative pl-16">
-                  {/* Timeline Dot */}
-                  <div className="absolute left-4 top-3 w-5 h-5 rounded-full bg-pink-400 border-4 border-black"></div>
+              {events.map((event) => {
+                const isClickable = event.type === "document" || event.type === "chat";
+                return (
+                  <div key={event.id} className="relative pl-16">
+                    {/* Timeline Dot */}
+                    <div
+                      className={`absolute left-4 top-3 w-5 h-5 rounded-full border-4 border-black ${
+                        event.type === "milestone"
+                          ? "bg-pink-400"
+                          : event.type === "chat"
+                          ? "bg-purple-400"
+                          : "bg-blue-400"
+                      }`}
+                    ></div>
 
-                  {/* Event Card */}
-                  <div className="rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 transition">
-                    <div className="flex items-start justify-between gap-4 mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">
-                          {getCategoryIcon(event.category)}
-                        </span>
-                        <div>
-                          <h3 className="text-lg font-semibold text-white">
-                            {event.title}
-                          </h3>
-                          <p className="text-xs text-gray-500 mt-1">
-                            {event.date}
-                          </p>
+                    {/* Event Card */}
+                    <div
+                      onClick={() => isClickable && handleEventClick(event)}
+                      className={`rounded-xl border border-white/10 bg-white/5 p-5 transition ${
+                        isClickable
+                          ? "hover:bg-white/10 cursor-pointer hover:border-pink-400/30"
+                          : ""
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-3">
+                        <div className="flex items-center gap-3 flex-1">
+                          <span className="text-2xl">
+                            {getTypeIcon(event.type)}
+                          </span>
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold text-white">
+                              {event.title}
+                            </h3>
+                            <p className="text-xs text-gray-500 mt-1">
+                              {event.date}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      {event.category && (
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-semibold border ${getCategoryColor(
-                            event.category
+                          className={`px-3 py-1 rounded-full text-xs font-semibold border ${getTypeColor(
+                            event.type
                           )}`}
                         >
-                          {event.category.replace("_", " ")}
+                          {event.type}
                         </span>
+                      </div>
+                      {event.description && (
+                        <p className="text-sm text-gray-400 leading-relaxed mb-2">
+                          {event.description}
+                        </p>
+                      )}
+                      {event.metadata && (
+                        <div className="flex flex-wrap gap-2 mt-3">
+                          {event.metadata.sizeKB && (
+                            <span className="text-xs bg-white/5 px-2 py-1 rounded">
+                              {event.metadata.sizeKB} KB
+                            </span>
+                          )}
+                          {event.metadata.mimeType && (
+                            <span className="text-xs bg-white/5 px-2 py-1 rounded">
+                              {event.metadata.mimeType.split("/")[1]?.toUpperCase()}
+                            </span>
+                          )}
+                          {event.metadata.messageCount && (
+                            <span className="text-xs bg-white/5 px-2 py-1 rounded">
+                              {event.metadata.messageCount} messages
+                            </span>
+                          )}
+                          {isClickable && (
+                            <span className="text-xs text-pink-400 ml-auto">
+                              Click to {event.type === "document" ? "download" : "view"} →
+                            </span>
+                          )}
+                        </div>
                       )}
                     </div>
-                    {event.description && (
-                      <p className="text-sm text-gray-400 leading-relaxed">
-                        {event.description}
-                      </p>
-                    )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         ) : (
@@ -184,19 +269,28 @@ export default function TimelinePage() {
             <p className="text-gray-500 text-lg mb-6">
               {filter === "all"
                 ? "Your timeline is empty. Start uploading documents or chatting to build your health journey."
-                : `No ${filter.replace("_", " ")} events found.`}
+                : `No ${filter} found. Try a different filter or upload content.`}
             </p>
-            <Link
-              href="/documents"
-              className="inline-block px-6 py-3 rounded-full bg-pink-400 text-black text-sm font-semibold hover:bg-pink-500 transition"
-            >
-              Upload Your First Document
-            </Link>
+            {filter === "documents" || filter === "all" ? (
+              <Link
+                href="/documents"
+                className="inline-block px-6 py-3 rounded-full bg-pink-400 text-black text-sm font-semibold hover:bg-pink-500 transition"
+              >
+                Upload Your First Document
+              </Link>
+            ) : (
+              <Link
+                href="/chat"
+                className="inline-block px-6 py-3 rounded-full bg-pink-400 text-black text-sm font-semibold hover:bg-pink-500 transition"
+              >
+                Start a Conversation
+              </Link>
+            )}
           </div>
         )}
 
         {/* Action Footer */}
-        {filteredEvents.length > 0 && (
+        {events.length > 0 && (
           <div className="mt-8 p-6 rounded-xl border border-white/10 bg-white/5">
             <p className="text-sm text-gray-400 mb-4">
               <strong className="text-white">Auto-assembled journey:</strong>{" "}

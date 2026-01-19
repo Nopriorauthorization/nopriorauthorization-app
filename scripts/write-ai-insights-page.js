@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const content = `"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -365,3 +368,8 @@ export default function AIInsightsPage() {
     </main>
   );
 }
+`;
+
+const filePath = path.resolve(__dirname, '../src/app/vault/ai-insights/page.tsx');
+fs.writeFileSync(filePath, content, 'utf8');
+console.log('✅ AI Insights page successfully written to:', filePath);

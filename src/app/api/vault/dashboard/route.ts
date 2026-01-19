@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
       }),
       prisma.documentDecode.count({
         where: {
-          document: where,
+          Document: where,
         },
       }),
     ]);

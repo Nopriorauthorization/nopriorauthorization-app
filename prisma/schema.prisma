@@ -24,12 +24,6 @@ model User {
   updatedAt    DateTime  @updatedAt
   lastAccessAt DateTime?
 
-  // Subscription & referrals
-  subscriptionTier String  @default("free")
-  referralCode     String? @unique
-  referredBy       String?
-  metadata         Json?
-
   // Privacy & Consent
   consentToShareClinicalSummary  Boolean @default(false)
   allowProviderToProviderSharing Boolean @default(false)
@@ -107,19 +101,9 @@ model UserMemory {
 
 enum DocumentCategory {
   LAB
-  LAB_RESULT
   IMAGING
   VISIT_NOTE
   DISCHARGE
-  PRESCRIPTION
-  REFERRAL
-  INSURANCE_CARD
-  GOVERNMENT_ID
-  LAB_ORDER
-  IMAGING_ORDER
-  PRIOR_AUTH
-  BENEFITS_SUMMARY
-  BILLING
   OTHER
 }
 
@@ -138,7 +122,7 @@ model Document {
   deletedAt              DateTime?
 
   shareLinks DocumentShareLink[]
-  decode     DocumentDecode?
+  decode     DocumentDecode?    @relation("DocumentDecode")
 
   @@index([userId])
   @@index([anonId])
@@ -154,7 +138,7 @@ model DocumentDecode {
   safetyNote String?  @db.Text
   createdAt  DateTime @default(now())
 
-  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  Document Document @relation("DocumentDecode", fields: [documentId], references: [id], onDelete: Cascade)
 
   @@index([documentId])
 }
@@ -355,65 +339,4 @@ model Provider {
 
   @@index([userId])
   @@index([anonId])
-}
-
-model CareTeamMember {
-  id              String   @id @default(cuid())
-  userId          String?
-  anonId          String?
-  name            String
-  role            String // e.g., "Primary Care", "Cardiologist", "Care Coordinator"
-  specialty       String?
-  organization    String?
-  phone           String?
-  email           String?
-  notes           String?
-  isPrimary       Boolean  @default(false)
-  linkedProviders String[] @default([]) // Array of Provider IDs
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-
-  @@index([userId])
-  @@index([anonId])
-}
-
-model CarePlan {
-  id                String   @id @default(cuid())
-  userId            String?
-  anonId            String?
-  title             String
-  goal              String // User-defined care goal
-  questionsToAsk    String[] @default([]) // Questions to prepare for provider visits
-  linkedDocuments   String[] @default([]) // Array of Document IDs
-  linkedAppointments String[] @default([]) // Array of Appointment IDs
-  notes             String?
-  targetDate        DateTime?
-  status            String   @default("active") // active, completed, on-hold
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-
-  @@index([userId])
-  @@index([anonId])
-  @@index([status])
-}
-model Priority {
-  id                 String   @id @default(cuid())
-  userId             String?
-  anonId             String?
-  title              String
-  description        String?
-  type               String // "question", "bring-item", "follow-up", "other"
-  status             String   @default("active") // active, completed
-  linkedAppointment  String? // Appointment ID
-  linkedCareTeam     String? // CareTeamMember ID
-  linkedCarePlan     String? // CarePlan ID
-  dueDate            DateTime?
-  completedAt        DateTime?
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-
-  @@index([userId])
-  @@index([anonId])
-  @@index([status])
-  @@index([type])
 }

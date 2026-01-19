@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
       prisma.appointment.count({ where }),
       prisma.documentDecode.count({
         where: {
-          document: where,
+          Document: where,
         },
       }),
       prisma.userMemory.findFirst({

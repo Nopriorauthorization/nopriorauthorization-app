@@ -31,6 +31,250 @@ type DecodedDocument = {
   actionItems?: string[];
 };
 
+// Health Directory Topic
+type HealthTopic = {
+  id: string;
+  category: string;
+  icon: string;
+  color: string;
+  topics: {
+    title: string;
+    description: string;
+    commonTerms: string[];
+    relatedTools: string[];
+  }[];
+};
+
+// Health Directory - WebMD style categories
+const healthDirectory: HealthTopic[] = [
+  {
+    id: 'womens-health',
+    category: "Women's Health",
+    icon: '👩',
+    color: 'pink',
+    topics: [
+      {
+        title: 'Birth Control & Contraception',
+        description: 'Understanding your options, side effects, and effectiveness',
+        commonTerms: ['IUD', 'Oral contraceptive', 'Depo-Provera', 'Nexplanon', 'Emergency contraception'],
+        relatedTools: ['Treatment Decoder', 'Provider Finder', 'AI Health Insights']
+      },
+      {
+        title: 'Pregnancy & Prenatal Care',
+        description: 'From conception through delivery and postpartum',
+        commonTerms: ['HCG levels', 'Prenatal vitamins', 'Ultrasound', 'Gestational diabetes', 'Preeclampsia'],
+        relatedTools: ['Treatment Decoder', 'Timeline Tracker', 'Document Analysis']
+      },
+      {
+        title: 'Menstrual Health & PCOS',
+        description: 'Period tracking, irregularities, and hormonal conditions',
+        commonTerms: ['Amenorrhea', 'Dysmenorrhea', 'PCOS', 'Endometriosis', 'Fibroids'],
+        relatedTools: ['Symptom Tracker', 'AI Health Insights', 'Provider Finder']
+      },
+      {
+        title: 'Menopause & Hormone Therapy',
+        description: 'Navigating perimenopause, menopause, and HRT options',
+        commonTerms: ['Hot flashes', 'HRT', 'Estrogen therapy', 'Bone density', 'Vaginal atrophy'],
+        relatedTools: ['Treatment Decoder', 'Medication Tracker', 'AI Insights']
+      }
+    ]
+  },
+  {
+    id: 'mens-health',
+    category: "Men's Health",
+    icon: '👨',
+    color: 'blue',
+    topics: [
+      {
+        title: 'Prostate Health',
+        description: 'Screening, enlargement, and prostate-specific concerns',
+        commonTerms: ['PSA test', 'BPH', 'Prostatitis', 'Digital rectal exam', 'Finasteride'],
+        relatedTools: ['Treatment Decoder', 'Lab Result Analyzer', 'Provider Finder']
+      },
+      {
+        title: 'Testosterone & Hormone Health',
+        description: 'Understanding low T, testing, and treatment options',
+        commonTerms: ['Total testosterone', 'Free testosterone', 'TRT', 'Hypogonadism', 'SHBG'],
+        relatedTools: ['Lab Decoder', 'AI Health Insights', 'Medication Guide']
+      },
+      {
+        title: 'Sexual Health & ED',
+        description: 'Erectile dysfunction, STI screening, and reproductive health',
+        commonTerms: ['Erectile dysfunction', 'Sildenafil', 'Tadalafil', 'STI panel', 'Viagra'],
+        relatedTools: ['Treatment Decoder', 'Provider Finder', 'Confidential Resources']
+      }
+    ]
+  },
+  {
+    id: 'mental-health',
+    category: 'Mental Health & Well-Being',
+    icon: '🧠',
+    color: 'purple',
+    topics: [
+      {
+        title: 'Anxiety & Panic Disorders',
+        description: 'Symptoms, medications, and coping strategies',
+        commonTerms: ['Generalized anxiety', 'Panic attack', 'SSRI', 'Benzodiazepine', 'CBT'],
+        relatedTools: ['Crisis Center', 'Medication Decoder', 'Provider Finder']
+      },
+      {
+        title: 'Depression & Mood Disorders',
+        description: 'Understanding depression, bipolar, and treatment options',
+        commonTerms: ['Major depressive disorder', 'Antidepressant', 'SNRI', 'Mood stabilizer', 'PHQ-9'],
+        relatedTools: ['Treatment Decoder', 'AI Health Insights', 'Crisis Resources']
+      },
+      {
+        title: 'ADHD & Focus',
+        description: 'Diagnosis, stimulant medications, and management',
+        commonTerms: ['ADHD', 'Adderall', 'Vyvanse', 'Methylphenidate', 'Strattera'],
+        relatedTools: ['Medication Guide', 'Provider Finder', 'Treatment Decoder']
+      },
+      {
+        title: 'Sleep Disorders',
+        description: 'Insomnia, sleep apnea, and sleep medication',
+        commonTerms: ['Insomnia', 'Sleep apnea', 'CPAP', 'Melatonin', 'Zolpidem'],
+        relatedTools: ['Treatment Decoder', 'Symptom Tracker', 'AI Insights']
+      }
+    ]
+  },
+  {
+    id: 'chronic-conditions',
+    category: 'Chronic Conditions',
+    icon: '💊',
+    color: 'red',
+    topics: [
+      {
+        title: 'Diabetes Management',
+        description: 'Type 1, Type 2, monitoring, and medications',
+        commonTerms: ['HbA1c', 'Fasting glucose', 'Metformin', 'Insulin', 'CGM', 'Diabetic retinopathy'],
+        relatedTools: ['Lab Decoder', 'Medication Tracker', 'AI Health Insights']
+      },
+      {
+        title: 'Heart Health & Blood Pressure',
+        description: 'Hypertension, cholesterol, and cardiovascular care',
+        commonTerms: ['Hypertension', 'LDL cholesterol', 'Statin', 'ACE inhibitor', 'Beta blocker'],
+        relatedTools: ['Treatment Decoder', 'Vital Signs Tracker', 'Provider Finder']
+      },
+      {
+        title: 'Thyroid Disorders',
+        description: 'Hypothyroid, hyperthyroid, and hormone replacement',
+        commonTerms: ['TSH', 'T4', 'Levothyroxine', 'Hashimoto', 'Graves disease'],
+        relatedTools: ['Lab Result Decoder', 'Medication Guide', 'AI Insights']
+      },
+      {
+        title: 'Autoimmune Conditions',
+        description: 'Lupus, RA, Crohn\'s, and immune system disorders',
+        commonTerms: ['Rheumatoid arthritis', 'Lupus', 'Crohn\'s', 'Biologics', 'Immunosuppressant'],
+        relatedTools: ['Treatment Decoder', 'Document Analysis', 'Provider Network']
+      }
+    ]
+  },
+  {
+    id: 'sexual-health',
+    category: 'Sexual Health',
+    icon: '❤️',
+    color: 'rose',
+    topics: [
+      {
+        title: 'STI Testing & Prevention',
+        description: 'Screening, treatment, and prevention strategies',
+        commonTerms: ['Chlamydia', 'Gonorrhea', 'HIV test', 'Syphilis', 'HPV vaccine', 'PrEP'],
+        relatedTools: ['Lab Decoder', 'Provider Finder', 'Confidential Resources']
+      },
+      {
+        title: 'Birth Control & Family Planning',
+        description: 'All contraceptive options explained clearly',
+        commonTerms: ['IUD insertion', 'Birth control pill', 'Nexplanon', 'Tubal ligation', 'Vasectomy'],
+        relatedTools: ['Treatment Decoder', 'Provider Finder', 'Cost Estimator']
+      },
+      {
+        title: 'Sexual Wellness',
+        description: 'Libido, function, and sexual health concerns',
+        commonTerms: ['Low libido', 'Painful intercourse', 'Erectile dysfunction', 'Hormone therapy'],
+        relatedTools: ['Provider Finder', 'Treatment Decoder', 'Confidential Chat']
+      }
+    ]
+  },
+  {
+    id: 'preventive-care',
+    category: 'Preventive Care & Screening',
+    icon: '🩺',
+    color: 'green',
+    topics: [
+      {
+        title: 'Cancer Screening',
+        description: 'Mammograms, colonoscopy, skin checks, and early detection',
+        commonTerms: ['Mammogram', 'Colonoscopy', 'PAP smear', 'PSA screening', 'Skin biopsy'],
+        relatedTools: ['Test Result Decoder', 'Provider Finder', 'Timeline Tracker']
+      },
+      {
+        title: 'Vaccinations & Immunizations',
+        description: 'Adult vaccines, travel immunizations, and boosters',
+        commonTerms: ['Flu shot', 'COVID vaccine', 'Tdap', 'HPV vaccine', 'Shingles vaccine'],
+        relatedTools: ['Immunization Record', 'Provider Finder', 'Travel Health']
+      },
+      {
+        title: 'Annual Wellness & Labs',
+        description: 'Understanding routine bloodwork and physical exams',
+        commonTerms: ['CBC', 'CMP', 'Lipid panel', 'Vitamin D', 'Annual physical'],
+        relatedTools: ['Lab Result Decoder', 'Health Timeline', 'AI Insights']
+      }
+    ]
+  },
+  {
+    id: 'diet-fitness',
+    category: 'Diet & Fitness',
+    icon: '🏃',
+    color: 'orange',
+    topics: [
+      {
+        title: 'Weight Management',
+        description: 'Medications, nutrition, and sustainable approaches',
+        commonTerms: ['GLP-1', 'Ozempic', 'Wegovy', 'Metformin', 'BMI', 'Bariatric surgery'],
+        relatedTools: ['Medication Decoder', 'Provider Finder', 'Cost Calculator']
+      },
+      {
+        title: 'Sports Medicine & Injuries',
+        description: 'Treating and preventing athletic injuries',
+        commonTerms: ['ACL tear', 'Rotator cuff', 'Stress fracture', 'Physical therapy', 'MRI'],
+        relatedTools: ['Imaging Decoder', 'Provider Finder', 'Recovery Tracker']
+      },
+      {
+        title: 'Nutrition & Supplements',
+        description: 'Vitamins, deficiencies, and dietary guidance',
+        commonTerms: ['Vitamin D deficiency', 'Iron deficiency', 'B12', 'Omega-3', 'Probiotics'],
+        relatedTools: ['Lab Decoder', 'Supplement Guide', 'AI Nutrition Insights']
+      }
+    ]
+  },
+  {
+    id: 'childrens-health',
+    category: "Children's Health",
+    icon: '👶',
+    color: 'yellow',
+    topics: [
+      {
+        title: 'Pediatric Vaccinations',
+        description: 'Childhood immunization schedules and safety',
+        commonTerms: ['DTaP', 'MMR', 'Varicella', 'HPV vaccine', 'Meningococcal'],
+        relatedTools: ['Vaccine Tracker', 'Provider Finder', 'Educational Resources']
+      },
+      {
+        title: 'Growth & Development',
+        description: 'Milestones, growth charts, and developmental screening',
+        commonTerms: ['Growth percentile', 'Developmental delay', 'Well-child visit', 'Autism screening'],
+        relatedTools: ['Growth Tracker', 'Pediatric Resources', 'Provider Network']
+      },
+      {
+        title: 'Common Childhood Conditions',
+        description: 'Ear infections, asthma, allergies, and pediatric care',
+        commonTerms: ['Otitis media', 'Pediatric asthma', 'Food allergy', 'Strep throat', 'RSV'],
+        relatedTools: ['Symptom Checker', 'Treatment Decoder', 'Provider Finder']
+      }
+    ]
+  }
+];
+
 // Medical dictionary
 const medicalDictionary: MedicalTerm[] = [
   {
@@ -309,10 +553,11 @@ const sampleDecodedDocs: DecodedDocument[] = [
 ];
 
 export default function TreatmentDecoder() {
-  const [activeTab, setActiveTab] = useState<'decoder' | 'dictionary' | 'documents'>('decoder');
+  const [activeTab, setActiveTab] = useState<'decoder' | 'dictionary' | 'documents' | 'directory'>('decoder');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDoc, setSelectedDoc] = useState<string | null>(null);
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
 
   const filteredDictionary = medicalDictionary.filter(term => {
     const matchesSearch = term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -633,6 +878,151 @@ export default function TreatmentDecoder() {
     </div>
   );
 
+  const renderDirectory = () => {
+    if (selectedTopic) {
+      const topic = healthDirectory.find(d => d.topics.some(t => t.title === selectedTopic));
+      const topicDetail = topic?.topics.find(t => t.title === selectedTopic);
+      
+      if (!topicDetail) return null;
+
+      return (
+        <div className="space-y-6">
+          <button
+            onClick={() => setSelectedTopic(null)}
+            className="text-blue-400 hover:text-blue-300 transition flex items-center gap-2"
+          >
+            ← Back to Health Directory
+          </button>
+
+          <div className="rounded-xl border border-white/10 bg-white/5 p-8">
+            <h2 className="text-3xl font-bold text-white mb-4">{topicDetail.title}</h2>
+            <p className="text-gray-300 text-lg mb-6">{topicDetail.description}</p>
+
+            {/* Common Terms */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-white mb-4">Common Medical Terms You'll See</h3>
+              <div className="flex flex-wrap gap-2">
+                {topicDetail.commonTerms.map((term, idx) => (
+                  <span key={idx} className="px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400">
+                    {term}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Related Tools */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-white mb-4">Tools That Can Help</h3>
+              <div className="grid gap-3 md:grid-cols-3">
+                {topicDetail.relatedTools.map((tool, idx) => (
+                  <div key={idx} className="p-4 rounded-lg bg-purple-500/10 border border-purple-500/30">
+                    <div className="font-semibold text-purple-400">{tool}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="grid gap-4 md:grid-cols-2">
+              <button className="p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 transition text-left">
+                <div className="text-2xl mb-2">🔍</div>
+                <div className="font-semibold mb-1">Decode a Document</div>
+                <div className="text-sm text-gray-400">Upload lab results or prescriptions related to this topic</div>
+              </button>
+              
+              <button className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20 transition text-left">
+                <div className="text-2xl mb-2">📍</div>
+                <div className="font-semibold mb-1">Find a Specialist</div>
+                <div className="text-sm text-gray-400">Locate providers who specialize in {topicDetail.title.toLowerCase()}</div>
+              </button>
+              
+              <button className="p-4 rounded-lg bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500/20 transition text-left">
+                <div className="text-2xl mb-2">💬</div>
+                <div className="font-semibold mb-1">Ask Beau-Tox AI</div>
+                <div className="text-sm text-gray-400">Get personalized guidance about this topic</div>
+              </button>
+              
+              <button className="p-4 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 hover:bg-orange-500/20 transition text-left">
+                <div className="text-2xl mb-2">📚</div>
+                <div className="font-semibold mb-1">Educational Resources</div>
+                <div className="text-sm text-gray-400">Learn more with plain-English articles</div>
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="rounded-xl border border-green-500/30 bg-gradient-to-br from-green-900/20 via-gray-900/50 to-black p-8">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-4xl">🏥</span>
+            <h2 className="text-3xl font-bold text-white">Health Directory</h2>
+          </div>
+          <p className="text-gray-300 text-lg">
+            Browse health topics organized like WebMD - find what you need, decode what you see, understand what it means.
+          </p>
+        </div>
+
+        {/* Directory Grid */}
+        <div className="grid gap-6">
+          {healthDirectory.map(directory => {
+            const colorClasses = {
+              pink: 'from-pink-500/10 to-pink-600/10 border-pink-500/30',
+              blue: 'from-blue-500/10 to-blue-600/10 border-blue-500/30',
+              purple: 'from-purple-500/10 to-purple-600/10 border-purple-500/30',
+              red: 'from-red-500/10 to-red-600/10 border-red-500/30',
+              rose: 'from-rose-500/10 to-rose-600/10 border-rose-500/30',
+              green: 'from-green-500/10 to-green-600/10 border-green-500/30',
+              orange: 'from-orange-500/10 to-orange-600/10 border-orange-500/30',
+              yellow: 'from-yellow-500/10 to-yellow-600/10 border-yellow-500/30'
+            };
+
+            return (
+              <div key={directory.id} className={`rounded-xl border bg-gradient-to-br p-6 ${colorClasses[directory.color as keyof typeof colorClasses]}`}>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-4xl">{directory.icon}</span>
+                  <h3 className="text-2xl font-bold text-white">{directory.category}</h3>
+                </div>
+
+                <div className="grid gap-3 md:grid-cols-2">
+                  {directory.topics.map(topic => (
+                    <button
+                      key={topic.title}
+                      onClick={() => setSelectedTopic(topic.title)}
+                      className="p-4 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/30 transition text-left"
+                    >
+                      <div className="font-semibold text-white mb-1">{topic.title}</div>
+                      <div className="text-sm text-gray-400">{topic.description}</div>
+                      <div className="mt-2 text-xs text-blue-400">
+                        {topic.commonTerms.length} common terms →
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Info Footer */}
+        <div className="p-6 rounded-xl border border-blue-500/30 bg-blue-500/10">
+          <div className="flex items-start gap-4">
+            <div className="text-3xl">💡</div>
+            <div>
+              <h4 className="font-semibold text-white mb-2">How to use the Health Directory</h4>
+              <p className="text-gray-300 text-sm">
+                Click any topic to see common medical terms, related tools, and quick actions. Upload documents, find specialists, or chat with Beau-Tox AI to get personalized help.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-black text-white p-6">
       <div className="max-w-6xl mx-auto">
@@ -651,6 +1041,7 @@ export default function TreatmentDecoder() {
         <div className="flex flex-wrap gap-2 mb-6 border-b border-white/10 pb-4">
           {[
             { id: 'decoder', label: 'Upload & Decode', icon: '📸' },
+            { id: 'directory', label: 'Health Directory', icon: '🏥' },
             { id: 'dictionary', label: 'Medical Dictionary', icon: '📚' },
             { id: 'documents', label: 'Your Documents', icon: '📄' }
           ].map(tab => (
@@ -671,6 +1062,7 @@ export default function TreatmentDecoder() {
 
         {/* Content */}
         {activeTab === 'decoder' && renderDecoder()}
+        {activeTab === 'directory' && renderDirectory()}
         {activeTab === 'dictionary' && renderDictionary()}
         {activeTab === 'documents' && renderDocuments()}
       </div>

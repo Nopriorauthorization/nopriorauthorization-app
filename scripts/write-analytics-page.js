@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const analyticsPageContent = `"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -151,7 +154,7 @@ export default function AnalyticsPage() {
           <div className="w-full bg-white/10 rounded-full h-2">
             <div
               className="bg-pink-400 h-2 rounded-full transition-all"
-              style={{ width: `${summary.activityScore}%` }}
+              style={{ width: \`\${summary.activityScore}%\` }}
             ></div>
           </div>
         </div>
@@ -215,7 +218,7 @@ export default function AnalyticsPage() {
                     <div className="w-full bg-white/10 rounded-full h-2">
                       <div
                         className="bg-blue-400 h-2 rounded-full"
-                        style={{ width: `${cat.percentage}%` }}
+                        style={{ width: \`\${cat.percentage}%\` }}
                       ></div>
                     </div>
                   </div>
@@ -238,7 +241,7 @@ export default function AnalyticsPage() {
                     <div className="w-full bg-white/10 rounded-full h-2">
                       <div
                         className="bg-purple-400 h-2 rounded-full"
-                        style={{ width: `${file.percentage}%` }}
+                        style={{ width: \`\${file.percentage}%\` }}
                       ></div>
                     </div>
                   </div>
@@ -260,8 +263,8 @@ export default function AnalyticsPage() {
                   <div key={idx} className="flex-1 flex flex-col items-center">
                     <div
                       className="w-full bg-blue-400 rounded-t transition-all hover:bg-blue-300"
-                      style={{ height: `${height}%`, minHeight: item.count > 0 ? "8px" : "0px" }}
-                      title={`${item.month}: ${item.count} documents`}
+                      style={{ height: \`\${height}%\`, minHeight: item.count > 0 ? "8px" : "0px" }}
+                      title={\`\${item.month}: \${item.count} documents\`}
                     ></div>
                     <div className="text-xs text-gray-500 mt-2 rotate-45 origin-left whitespace-nowrap">
                       {item.month}
@@ -285,8 +288,8 @@ export default function AnalyticsPage() {
                   <div key={idx} className="flex-1 flex flex-col items-center">
                     <div
                       className="w-full bg-purple-400 rounded-t transition-all hover:bg-purple-300"
-                      style={{ height: `${height}%`, minHeight: item.count > 0 ? "8px" : "0px" }}
-                      title={`${item.month}: ${item.count} chats`}
+                      style={{ height: \`\${height}%\`, minHeight: item.count > 0 ? "8px" : "0px" }}
+                      title={\`\${item.month}: \${item.count} chats\`}
                     ></div>
                     <div className="text-xs text-gray-500 mt-2 rotate-45 origin-left whitespace-nowrap">
                       {item.month}
@@ -388,3 +391,8 @@ export default function AnalyticsPage() {
     </main>
   );
 }
+`;
+
+const targetPath = path.join(process.cwd(), 'src/app/vault/analytics/page.tsx');
+fs.writeFileSync(targetPath, analyticsPageContent, 'utf8');
+console.log('✅ Analytics page successfully written to:', targetPath);

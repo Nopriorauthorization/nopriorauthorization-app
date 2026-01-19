@@ -1,5 +1,5 @@
-import EnhancedTimelineVisualization from '@/content/hero/EnhancedTimelineVisualization';
+import { redirect } from 'next/navigation';
 
 export default function TimelineEnhancedPage() {
-  return <EnhancedTimelineVisualization />;
+  redirect('/vault/timeline');
 }

@@ -119,71 +119,8 @@ const sampleEntries: PriorityEntry[] = [
 ];
 
 export default function PrioritySpace() {
-  const [hasNamedSpace, setHasNamedSpace] = useState(false);
-  const [spaceName, setSpaceName] = useState('Top Priority');
-  const [showNaming, setShowNaming] = useState(!hasNamedSpace);
   const [selectedScenario, setSelectedScenario] = useState<ScenarioId | null>(null);
   const [activeEntry, setActiveEntry] = useState<string | null>(null);
-
-  const suggestedNames = [
-    'Top Priority',
-    'I\'ve Had Better Days',
-    'The Hard Stuff',
-    'Private Notes',
-    'The Unsaid'
-  ];
-
-  const handleNameChoice = (name: string) => {
-    setSpaceName(name);
-    setHasNamedSpace(true);
-    setShowNaming(false);
-  };
-
-  const renderNamingModal = () => (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] flex items-center justify-center p-6">
-      <div className="max-w-2xl w-full bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-white/20 p-8">
-        <div className="text-center mb-8">
-          <div className="text-5xl mb-4">🛡️</div>
-          <h2 className="text-3xl font-bold text-white mb-3">
-            This is your private space for the hard stuff
-          </h2>
-          <p className="text-gray-400 text-lg">
-            What do you want to call it?
-          </p>
-        </div>
-
-        <div className="space-y-3 mb-6">
-          {suggestedNames.map(name => (
-            <button
-              key={name}
-              onClick={() => handleNameChoice(name)}
-              className="w-full p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-blue-500/30 transition text-left"
-            >
-              <div className="font-semibold text-white">{name}</div>
-            </button>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <button
-            onClick={() => {
-              const custom = prompt('Enter your custom name:');
-              if (custom) handleNameChoice(custom);
-            }}
-            className="text-blue-400 hover:text-blue-300 transition text-sm font-semibold"
-          >
-            + Use custom name
-          </button>
-        </div>
-
-        <div className="mt-8 p-4 rounded-lg bg-blue-500/10 border border-blue-500/30">
-          <p className="text-sm text-gray-300 text-center">
-            <strong className="text-blue-400">Private by default.</strong> Nothing from this space is included in exports unless you explicitly choose to share it.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
 
   const renderScenarioBuilder = () => {
     if (!selectedScenario) return null;
@@ -626,7 +563,7 @@ export default function PrioritySpace() {
           {/* Save and Export */}
           <div className="flex gap-4">
             <button className="flex-1 px-6 py-4 bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-lg hover:bg-blue-500/30 transition font-semibold">
-              💾 Save to {spaceName}
+              💾 Save Entry
             </button>
             <button className="px-6 py-4 bg-gray-500/20 border border-gray-500/30 text-gray-400 rounded-lg hover:bg-gray-500/30 transition font-semibold">
               📤 Add to Provider Packet
@@ -756,22 +693,14 @@ export default function PrioritySpace() {
       <div className="space-y-6">
         {/* Crisis Center Header */}
         <div className="rounded-xl border border-red-500/30 bg-gradient-to-br from-red-900/20 via-gray-900/50 to-black p-8">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-4xl">🛡️</span>
-                <h2 className="text-3xl font-bold text-white">{spaceName}</h2>
-              </div>
-              <p className="text-gray-300 text-lg mb-4">
-                Your private crisis center. When something feels urgent, scary, or life-changing—everything you need is here.
-              </p>
+          <div className="mb-4">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-4xl">🛡️</span>
+              <h2 className="text-3xl font-bold text-white">Life Changing Diagnosis</h2>
             </div>
-            <button
-              onClick={() => setShowNaming(true)}
-              className="text-sm text-blue-400 hover:text-blue-300 transition"
-            >
-              Rename
-            </button>
+            <p className="text-gray-300 text-lg mb-4">
+              Your private crisis center. When something feels urgent, scary, or life-changing—everything you need is here.
+            </p>
           </div>
           
           {/* Quick Crisis Resources */}
@@ -961,8 +890,6 @@ export default function PrioritySpace() {
 
   return (
     <div className="text-white">
-      {showNaming && renderNamingModal()}
-      
       <div className="max-w-6xl mx-auto">
         {/* Navigation breadcrumb */}
         <div className="mb-6 text-sm text-gray-400">

@@ -76,7 +76,8 @@ const VAULT_FEATURES: VaultFeature[] = [
     description: "Scan a prescription, lab result, or bill → get a plain-English explanation instantly.",
     tier: "capture",
     icon: "🔍",
-    status: "coming-soon",
+    status: "active",
+    href: "/vault/decoder"
   },
   {
     id: "voice",

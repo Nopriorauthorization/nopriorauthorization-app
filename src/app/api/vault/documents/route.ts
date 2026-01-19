@@ -39,13 +39,11 @@ export async function GET(req: NextRequest) {
         sizeBytes: true,
         docDate: true,
         createdAt: true,
-        updatedAt: true,
-        decodes: {
+        decode: {
           select: {
             id: true,
             createdAt: true,
           },
-          take: 1,
         },
       },
       orderBy: { createdAt: "desc" },

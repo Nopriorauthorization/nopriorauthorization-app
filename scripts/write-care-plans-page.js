@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const pageContent = `"use client";
 
 import { useState, useEffect } from "react";
 
@@ -64,7 +67,7 @@ export default function CarePlansPage() {
     e.preventDefault();
 
     const url = editingId
-      ? `/api/vault/care-plans/${editingId}`
+      ? \`/api/vault/care-plans/\${editingId}\`
       : "/api/vault/care-plans";
     const method = editingId ? "PUT" : "POST";
 
@@ -122,10 +125,10 @@ export default function CarePlansPage() {
   };
 
   const handleDelete = async (id: string, title: string) => {
-    if (!confirm(`Delete care plan "${title}"?`)) return;
+    if (!confirm(\`Delete care plan "\${title}"?\`)) return;
 
     try {
-      const res = await fetch(`/api/vault/care-plans/${id}`, {
+      const res = await fetch(\`/api/vault/care-plans/\${id}\`, {
         method: "DELETE",
       });
       if (res.ok) {
@@ -584,3 +587,14 @@ export default function CarePlansPage() {
     </div>
   );
 }
+`;
+
+const outputPath = path.join(__dirname, '../src/app/vault/care-plans/page.tsx');
+const dir = path.dirname(outputPath);
+
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir, { recursive: true });
+}
+
+fs.writeFileSync(outputPath, pageContent, 'utf8');
+console.log('✅ Care Plans page successfully written to', outputPath);

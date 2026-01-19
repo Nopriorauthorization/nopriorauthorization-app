@@ -340,3 +340,43 @@ model Provider {
   @@index([userId])
   @@index([anonId])
 }
+
+model CareTeamMember {
+  id              String   @id @default(cuid())
+  userId          String?
+  anonId          String?
+  name            String
+  role            String // e.g., "Primary Care", "Cardiologist", "Care Coordinator"
+  specialty       String?
+  organization    String?
+  phone           String?
+  email           String?
+  notes           String?
+  isPrimary       Boolean  @default(false)
+  linkedProviders String[] @default([]) // Array of Provider IDs
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+  @@index([anonId])
+}
+
+model CarePlan {
+  id                String   @id @default(cuid())
+  userId            String?
+  anonId            String?
+  title             String
+  goal              String // User-defined care goal
+  questionsToAsk    String[] @default([]) // Questions to prepare for provider visits
+  linkedDocuments   String[] @default([]) // Array of Document IDs
+  linkedAppointments String[] @default([]) // Array of Appointment IDs
+  notes             String?
+  targetDate        DateTime?
+  status            String   @default("active") // active, completed, on-hold
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([userId])
+  @@index([anonId])
+  @@index([status])
+}

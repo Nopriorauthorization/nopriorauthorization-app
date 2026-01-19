@@ -1,4 +1,7 @@
-"use client";
+const fs = require('fs');
+const path = require('path');
+
+const pageContent = `"use client";
 
 import { useState, useEffect } from "react";
 
@@ -72,7 +75,7 @@ export default function CareTeamPage() {
     e.preventDefault();
 
     const url = editingId
-      ? `/api/vault/care-team/${editingId}`
+      ? \`/api/vault/care-team/\${editingId}\`
       : "/api/vault/care-team";
     const method = editingId ? "PUT" : "POST";
 
@@ -119,10 +122,10 @@ export default function CareTeamPage() {
   };
 
   const handleDelete = async (id: string, name: string) => {
-    if (!confirm(`Remove ${name} from your care team?`)) return;
+    if (!confirm(\`Remove \${name} from your care team?\`)) return;
 
     try {
-      const res = await fetch(`/api/vault/care-team/${id}`, {
+      const res = await fetch(\`/api/vault/care-team/\${id}\`, {
         method: "DELETE",
       });
       if (res.ok) {
@@ -557,3 +560,14 @@ export default function CareTeamPage() {
     </div>
   );
 }
+`;
+
+const outputPath = path.join(__dirname, '../src/app/vault/care-team/page.tsx');
+const dir = path.dirname(outputPath);
+
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir, { recursive: true });
+}
+
+fs.writeFileSync(outputPath, pageContent, 'utf8');
+console.log('✅ Care Team page successfully written to', outputPath);

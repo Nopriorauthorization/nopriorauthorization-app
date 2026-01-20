@@ -32,6 +32,8 @@ type PriorityData = {
   };
 };
 
+export const dynamic = "force-dynamic";
+
 const PRIORITY_TYPES = [
   { value: "question", label: "Questions to Ask", icon: "❓", color: "blue" },
   { value: "bring-item", label: "Things to Bring", icon: "🎒", color: "green" },
@@ -55,9 +57,35 @@ export default function PriorityPage() {
     fetchPriorities();
   }, []);
 
+  const emptyPriorityData: PriorityData = {
+    priorities: [],
+    isEmpty: true,
+    stats: {
+      total: 0,
+      active: 0,
+      completed: 0,
+      byType: {
+        question: 0,
+        bringItem: 0,
+        followUp: 0,
+        other: 0,
+      },
+    },
+  };
+
   const fetchPriorities = async () => {
     try {
       const res = await fetch("/api/vault/priority");
+
+      if (res.status === 401 || res.status === 403) {
+        setData(emptyPriorityData);
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch");
+      }
+
       const json = await res.json();
       setData(json);
     } catch (error) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -12,6 +12,14 @@ type CalendarSettings = {
 };
 
 export default function CalendarSettingsPage() {
+  return (
+    <Suspense fallback={<CalendarSettingsLoading />}>
+      <CalendarSettingsContent />
+    </Suspense>
+  );
+}
+
+function CalendarSettingsContent() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -120,18 +128,7 @@ export default function CalendarSettingsPage() {
   };
 
   if (status === "loading" || loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white/5 rounded-lg p-8 border border-white/10">
-            <div className="animate-pulse space-y-4">
-              <div className="h-6 bg-white/10 rounded w-1/3"></div>
-              <div className="h-4 bg-white/10 rounded w-2/3"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <CalendarSettingsLoading />;
   }
 
   if (!session) {
@@ -285,6 +282,21 @@ export default function CalendarSettingsPage() {
             them in your Visit Prep. You can revoke access at any time through your Google Account
             settings or by disconnecting above.
           </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CalendarSettingsLoading() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white/5 rounded-lg p-8 border border-white/10">
+          <div className="animate-pulse space-y-4">
+            <div className="h-6 bg-white/10 rounded w-1/3"></div>
+            <div className="h-4 bg-white/10 rounded w-2/3"></div>
+          </div>
         </div>
       </div>
     </div>

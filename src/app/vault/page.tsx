@@ -46,7 +46,7 @@ export default function VaultPage() {
     setLoading(false);
 
     // Optional: Try to fetch real data in background
-    fetch("/api/public/vault-features")
+    fetch("/api/vault/features")
       .then(res => res.ok ? res.json() : null)
       .then(vaultData => {
         if (vaultData) {

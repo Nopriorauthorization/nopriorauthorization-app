@@ -32,7 +32,7 @@ export default withAuth(
           "/api/slim-t",
           "/api/harmony",
           "/api/auth",
-          "/api/public/vault-features",
+          "/api/vault/features",
           "/api/vault/red-flags",
           "/api/vault/before-after",
           "/api/vault/trusted-circle",
@@ -63,5 +63,5 @@ export default withAuth(
 
 // ✅ This makes sure it matches everything except Stripe webhook
 export const config = {
-  matcher: ["/((?!api/stripe/webhook).*)"],
+  matcher: ["/((?!api/).*)"],
 };

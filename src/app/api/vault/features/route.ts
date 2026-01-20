@@ -15,6 +15,8 @@ export async function GET(req: NextRequest) {
         isEmpty: true,
       });
     }
+
+    const { userId, anonId } = identity;
     const where = userId ? { userId } : { anonId };
 
     // Get user data counts to determine feature availability

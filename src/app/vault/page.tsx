@@ -6,15 +6,13 @@ import VaultClient, { type VaultData } from "./vault-client";
 import { authOptions } from "@/lib/auth/auth-options";
 
 export default async function VaultPage() {
-  const disableAuth = process.env.DISABLE_VAULT_AUTH === "true";
+  const session = await getServerSession(authOptions);
 
-  const session = disableAuth ? null : await getServerSession(authOptions);
-
-  if (!disableAuth && !session) {
+  if (!session) {
     redirect("/login?callbackUrl=/vault");
   }
 
-  const cookieHeader = disableAuth ? "" : cookies().toString();
+  const cookieHeader = cookies().toString();
   const origin =
     process.env.NEXTAUTH_URL ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
@@ -22,8 +20,7 @@ export default async function VaultPage() {
   let initialData: VaultData | null = null;
 
   try {
-    const endpoint = disableAuth ? "/api/public/vault-features" : "/api/vault/features";
-    const response = await fetch(`${origin}${endpoint}`, {
+    const response = await fetch(`${origin}/api/vault/features`, {
       cache: "no-store",
       headers: cookieHeader ? { cookie: cookieHeader } : undefined,
     });

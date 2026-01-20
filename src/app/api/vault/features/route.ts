@@ -4,10 +4,25 @@ import { resolveDocumentIdentity } from '@/lib/documents/server';
 
 export async function GET(req: NextRequest) {
   try {
-    const identity = await resolveDocumentIdentity(req);
+    console.log('[vault/features] Starting request...');
+    
+    let identity;
+    try {
+      identity = await resolveDocumentIdentity(req);
+      console.log('[vault/features] Identity resolved:', { userId: !!identity.userId, anonId: !!identity.anonId });
+    } catch (error) {
+      console.error('[vault/features] resolveDocumentIdentity failed:', error);
+      // Return empty vault data for unauthenticated users
+      return NextResponse.json({
+        features: [],
+        stats: { documents: 0, chats: 0, appointments: 0, decoded: 0 },
+        vaultName: null,
+        isEmpty: true,
+      });
+    }
     
     if (!identity.userId && !identity.anonId) {
-      // Return empty vault data for anonymous users  
+      console.log('[vault/features] No userId or anonId, returning empty data');
       return NextResponse.json({
         features: [],
         stats: { documents: 0, chats: 0, appointments: 0, decoded: 0 },

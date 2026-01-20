@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 
-export const runtime = "nodejs";
 
 export async function GET() {
   // Bypass authentication for this public route

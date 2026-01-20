@@ -16,6 +16,17 @@ type VaultFeature = {
 };
 
 const VAULT_FEATURES: VaultFeature[] = [
+  // THE HEART OF THE APP - PREMIUM FEATURE
+  {
+    id: "family-tree",
+    title: "Your Family Tree",
+    description: "The heart of your health story — interactive family connections with genetic insights and preventive care guidance. Premium feature.",
+    tier: "power",
+    icon: "🌳",
+    status: "active",
+    href: "/vault/family-tree",
+  },
+
   // INSTANT ACCESS (Zero Input)
   {
     id: "snapshot",
@@ -444,32 +455,53 @@ export default function VaultPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredFeatures.map((feature) => {
             const isActive = feature.status === "active" && feature.href;
+            const isFamilyTree = feature.id === "family-tree";
 
             return isActive ? (
               <Link
                 key={feature.id}
                 href={feature.href!}
-                className="relative rounded-2xl border p-6 transition border-white/10 bg-white/5 hover:border-pink-400/30 hover:bg-white/10 cursor-pointer"
+                className={`relative rounded-2xl border p-6 transition cursor-pointer ${
+                  isFamilyTree
+                    ? "border-purple-400/50 bg-gradient-to-br from-purple-500/10 to-blue-500/10 hover:border-purple-400 hover:from-purple-500/20 hover:to-blue-500/20 transform hover:scale-105"
+                    : "border-white/10 bg-white/5 hover:border-pink-400/30 hover:bg-white/10"
+                }`}
               >
+                {/* Premium Badge for Family Tree */}
+                {isFamilyTree && (
+                  <div className="absolute -top-2 -right-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-xs font-bold text-white shadow-lg">
+                    💎 PREMIUM
+                  </div>
+                )}
+
                 {/* Icon & Title */}
                 <div className="flex items-start gap-3 mb-3">
-                  <span className="text-3xl">{feature.icon}</span>
+                  <span className={`text-3xl ${isFamilyTree ? "animate-pulse" : ""}`}>{feature.icon}</span>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
-                    <p className="text-xs text-pink-400/70 uppercase tracking-wider">
-                      {tierLabels[feature.tier]}
+                    <h3 className={`text-lg font-semibold mb-1 ${isFamilyTree ? "text-purple-300" : ""}`}>
+                      {feature.title}
+                      {isFamilyTree && <span className="text-xs text-purple-400 ml-2">❤️</span>}
+                    </h3>
+                    <p className={`text-xs uppercase tracking-wider ${
+                      isFamilyTree ? "text-purple-400/70" : "text-pink-400/70"
+                    }`}>
+                      {isFamilyTree ? "The Heart of Your Health Story" : tierLabels[feature.tier]}
                     </p>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className={`text-sm leading-relaxed ${
+                  isFamilyTree ? "text-gray-300" : "text-gray-400"
+                }`}>
                   {feature.description}
                 </p>
 
                 {/* Action Arrow */}
-                <div className="mt-4 text-pink-400 text-sm font-semibold">
-                  Open →
+                <div className={`mt-4 text-sm font-semibold ${
+                  isFamilyTree ? "text-purple-400" : "text-pink-400"
+                }`}>
+                  {isFamilyTree ? "Discover Your Story →" : "Open →"}
                 </div>
               </Link>
             ) : (

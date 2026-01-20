@@ -74,7 +74,8 @@ export async function GET(req: NextRequest) {
         description: "AI-generated prep questions before appointments — based on your meds, treatments, and goals.",
         tier: "instant",
         icon: "❓",
-        status: "coming-soon",
+        status: "active",
+        href: "/vault/questions",
         hasData: false,
       },
 
@@ -95,7 +96,8 @@ export async function GET(req: NextRequest) {
         description: "AI compares progress photos, highlights changes, and tracks results over time.",
         tier: "capture",
         icon: "🖼️",
-        status: "coming-soon",
+        status: "active",
+        href: "/vault/before-after",
         hasData: false,
       },
       {
@@ -124,7 +126,8 @@ export async function GET(req: NextRequest) {
         description: "Post-appointment brain dump → transcribed, organized, and searchable. Just talk.",
         tier: "capture",
         icon: "🎙️",
-        status: "coming-soon",
+        status: "active",
+        href: "/vault/voice-memos",
         hasData: false,
       },
 
@@ -145,7 +148,8 @@ export async function GET(req: NextRequest) {
         description: "Rate and tag providers — trustworthy, pushy, amazing. Your private notes, always accessible.",
         tier: "power",
         icon: "⭐",
-        status: "coming-soon",
+        status: "active",
+        href: "/vault/provider-tracker",
         hasData: false,
       },
       {
@@ -154,7 +158,8 @@ export async function GET(req: NextRequest) {
         description: "AI watches for drug interactions, timing conflicts, and safety issues — before they become problems.",
         tier: "power",
         icon: "🚩",
-        status: "coming-soon",
+        status: "active",
+        href: "/vault/red-flags",
         hasData: false,
       },
       {
@@ -163,7 +168,8 @@ export async function GET(req: NextRequest) {
         description: "Share vault access with family or providers — with granular control over what they see.",
         tier: "power",
         icon: "🔐",
-        status: "coming-soon",
+        status: "active",
+        href: "/vault/trusted-circle",
         hasData: false,
       },
 

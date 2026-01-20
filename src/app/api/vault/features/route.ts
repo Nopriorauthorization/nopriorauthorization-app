@@ -3,6 +3,17 @@ import prisma from '@/lib/db';
 import { resolveDocumentIdentity } from '@/lib/documents/server';
 
 export async function GET(req: NextRequest) {
+  // Always return empty vault data for now - no authentication required
+  console.log('[vault/features] Returning empty vault data');
+  return NextResponse.json({
+    features: [],
+    stats: { documents: 0, chats: 0, appointments: 0, decoded: 0 },
+    vaultName: null,
+    isEmpty: true,
+  });
+  
+  // TODO: Re-enable auth logic later
+  /*
   try {
     console.log('[vault/features] Starting request...');
     
@@ -316,9 +327,12 @@ export async function GET(req: NextRequest) {
 
   } catch (error) {
     console.error('Error fetching vault features:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch vault features' },
-      { status: 500 }
-    );
+    // Always return empty data instead of error - never 401 or 500
+    return NextResponse.json({
+      features: [],
+      stats: { documents: 0, chats: 0, appointments: 0, decoded: 0 },
+      vaultName: null,
+      isEmpty: true,
+    });
   }
 }

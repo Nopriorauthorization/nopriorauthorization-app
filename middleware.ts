@@ -1,25 +1,16 @@
-// src/middleware.ts
 import { withAuth } from "next-auth/middleware";
-import { NextResponse } from "next/server";
 
-export default withAuth(
-  function middleware(req) {
-    return NextResponse.next();
+export default withAuth({
+  callbacks: {
+    authorized: ({ token }) => {
+      return !!token;
+    },
   },
-  {
-    callbacks: {
-      authorized: ({ token }) => {
-        if (process.env.INTERNAL_ACCESS_BYPASS === "true") return true;
-        return !!token;
-      },
-    },
-    pages: {
-      signIn: "/login",
-    },
-  }
-);
+});
 
-// ✅ Exclude ALL API routes from middleware
 export const config = {
-  matcher: ["/((?!api/).*)"],
+  matcher: [
+    // Protect UI routes only — NEVER APIs
+    "/((?!api|_next|favicon.ico).*)",
+  ],
 };

@@ -8,14 +8,13 @@ export async function GET(req: NextRequest) {
     
     if (!identity.userId && !identity.anonId) {
       // Return empty vault data for users without authentication
+      return NextResponse.json({
         features: [],
         stats: { documents: 0, chats: 0, appointments: 0, decoded: 0 },
         vaultName: null,
         isEmpty: true,
       });
     }
-
-    const { userId, anonId } = identity;
     const where = userId ? { userId } : { anonId };
 
     // Get user data counts to determine feature availability

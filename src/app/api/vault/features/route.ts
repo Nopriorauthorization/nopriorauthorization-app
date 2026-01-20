@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 
 
 export async function GET() {
+  console.log("🔍 Vault features API called");
+
   // Bypass authentication for this public route
   return NextResponse.json({
     features: [],

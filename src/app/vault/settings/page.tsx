@@ -11,6 +11,8 @@ type CalendarSettings = {
   email: string | null;
 };
 
+export const dynamic = "force-dynamic";
+
 export default function CalendarSettingsPage() {
   return (
     <Suspense fallback={<CalendarSettingsLoading />}>

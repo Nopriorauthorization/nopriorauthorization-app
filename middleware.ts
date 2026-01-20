@@ -1,16 +1,10 @@
-import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export default withAuth({
-  callbacks: {
-    authorized: ({ token }) => {
-      return !!token;
-    },
-  },
-});
+export function middleware(req: NextRequest) {
+  return NextResponse.next();
+}
 
 export const config = {
-  matcher: [
-    // Protect UI routes only — NEVER APIs
-    "/((?!api|_next|favicon.ico).*)",
-  ],
+  matcher: ["/((?!api|_next|favicon.ico).*)"],
 };

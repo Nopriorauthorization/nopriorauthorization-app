@@ -68,4 +68,9 @@ export const config = {
 // ✅ Exclude API routes from middleware entirely
 export const config = {
   matcher: ["/((?!api/).*)"],
+// ✅ Exclude API routes from middleware
+export const config = {
+  matcher: [
+    "/((?!api/).*)",
+  ],
 };

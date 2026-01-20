@@ -63,5 +63,5 @@ export default withAuth(
 
 // ✅ This makes sure it matches everything except Stripe webhook
 export const config = {
-  matcher: ["/((?!api/).*)"],
+  matcher: ["/((?!api/stripe/webhook).*)"],
 };

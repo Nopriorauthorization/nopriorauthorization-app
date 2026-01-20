@@ -78,7 +78,7 @@ const componentCategories: Category[] = [
       { id: 'behavioral-analytics', name: 'Behavioral Analytics Engine', icon: '📊', description: 'Usage patterns and predictions', path: '/vault/analytics', featured: true },
       { id: 'wellness-coach', name: 'AI Wellness Coach', icon: '🤖', description: 'Personalized wellness coaching with habit formation', path: '/vault/wellness-coach', featured: true },
       { id: 'advanced-analytics', name: 'Advanced Analytics Dashboard', icon: '📈', description: 'Comprehensive reporting', path: '/vault/advanced-analytics', featured: true },
-      { id: 'dynamic-ux', name: 'Dynamic UX Adaptation', icon: '✨', description: 'Intelligent interface customization', path: '/vault/dynamic-ux', comingSoon: true }
+      { id: 'dynamic-ux', name: 'Dynamic UX Adaptation', icon: '✨', description: 'Intelligent interface customization', path: '/vault/dynamic-ux-adaptation', featured: true }
     ]
   }
 ];

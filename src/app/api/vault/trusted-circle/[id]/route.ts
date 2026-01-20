@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
+import { resolveDocumentIdentity } from "@/lib/documents/server";
 
 type RouteContext = {
   params: Promise<{ id: string }>;
@@ -10,18 +9,19 @@ type RouteContext = {
 // DELETE - Revoke trusted circle access
 export async function DELETE(req: NextRequest, context: RouteContext) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
+    const identity = await resolveDocumentIdentity(req);
+    
+    if (!identity.userId && !identity.anonId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const { id } = await context.params;
 
     // TODO: Implement revoke logic
-    // await db.trustedCircleMember.delete({
+    // await prisma.trustedCircleMember.delete({
     //   where: { 
     //     id,
-    //     userId: session.user.id, // Ensure ownership
+    //     userId: identity.userId, // Ensure ownership
     //   },
     // });
 

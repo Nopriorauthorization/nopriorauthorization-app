@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
+import { resolveDocumentIdentity } from "@/lib/documents/server";
 
 // GET - Fetch all provider ratings for current user
 export async function GET(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
+    const identity = await resolveDocumentIdentity(req);
+    
+    if (!identity.userId && !identity.anonId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -26,8 +26,9 @@ export async function GET(req: NextRequest) {
 // POST - Submit a new provider rating
 export async function POST(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
+    const identity = await resolveDocumentIdentity(req);
+    
+    if (!identity.userId && !identity.anonId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -35,9 +36,9 @@ export async function POST(req: NextRequest) {
     const { providerId, rating, tags, notes, wouldRecommend } = body;
 
     // TODO: Create ProviderRating model and implement:
-    // const newRating = await db.providerRating.create({
+    // const newRating = await prisma.providerRating.create({
     //   data: {
-    //     userId: session.user.id,
+    //     userId: identity.userId,
     //     providerId,
     //     rating,
     //     tags,

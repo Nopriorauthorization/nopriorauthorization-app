@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
+import { resolveDocumentIdentity } from "@/lib/documents/server";
 
 type RouteContext = {
   params: Promise<{ id: string }>;
@@ -10,8 +9,9 @@ type RouteContext = {
 // PATCH - Dismiss a red flag
 export async function PATCH(req: NextRequest, context: RouteContext) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
+    const identity = await resolveDocumentIdentity(req);
+    
+    if (!identity.userId && !identity.anonId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -19,7 +19,7 @@ export async function PATCH(req: NextRequest, context: RouteContext) {
     const body = await req.json();
 
     // TODO: Implement dismiss logic
-    // await db.redFlag.update({
+    // await prisma.redFlag.update({
     //   where: { id },
     //   data: { dismissed: body.dismissed },
     // });

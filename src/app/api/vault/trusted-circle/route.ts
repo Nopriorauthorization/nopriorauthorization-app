@@ -1,19 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
+import { resolveDocumentIdentity } from "@/lib/documents/server";
 
 // GET - Fetch trusted circle members
 export async function GET(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
+    const identity = await resolveDocumentIdentity(req);
+    
+    if (!identity.userId && !identity.anonId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     // TODO: Create TrustedCircle model in Prisma
-    // const members = await db.trustedCircleMember.findMany({
-    //   where: { userId: session.user.id },
+    // const members = await prisma.trustedCircleMember.findMany({
+    //   where: { userId: identity.userId },
     // });
 
     return NextResponse.json({ members: [] });

@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
+import { resolveDocumentIdentity } from "@/lib/documents/server";
 
 // POST - Send invitation to join trusted circle
 export async function POST(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
+    const identity = await resolveDocumentIdentity(req);
+    
+    if (!identity.userId && !identity.anonId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -20,9 +20,9 @@ export async function POST(req: NextRequest) {
     // 3. Set expiration date
     // 4. Return invite details
 
-    // const invite = await db.trustedCircleInvite.create({
+    // const invite = await prisma.trustedCircleInvite.create({
     //   data: {
-    //     userId: session.user.id,
+    //     userId: identity.userId,
     //     inviteeName: name,
     //     inviteeEmail: email,
     //     relationship,

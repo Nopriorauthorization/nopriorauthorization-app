@@ -94,6 +94,15 @@ const VAULT_FEATURES: VaultFeature[] = [
     href: "/vault/decoder"
   },
   {
+    id: "lab-decoder",
+    title: "Lab Decoder",
+    description: "Clinical intelligence engine that understands labs over time, detects warning signs, and connects trends to family history. 🔴 Critical foundational feature.",
+    tier: "power",
+    icon: "🔬",
+    status: "active",
+    href: "/vault/lab-decoder"
+  },
+  {
     id: "priority",
     title: "Life Changing Diagnosis",
     description: "Your private crisis center—escape, learn, and access everything NPA offers when facing something urgent or life-changing",

@@ -10,10 +10,6 @@ export default withAuth(
     callbacks: {
       authorized: ({ token, req }) => {
         const { pathname } = req.nextUrl;
-        // 🔓 HARD BYPASS for public API routes - must happen before token checks
-        if (pathname === "/api/vault/features") {
-          return true;
-        }
         if (process.env.INTERNAL_ACCESS_BYPASS === "true") {
           return true;
         }
@@ -64,11 +60,9 @@ export default withAuth(
     },
   }
 );
+};
 
-// ✅ This makes sure it matches everything except Stripe webhook
+// ✅ Exclude public API routes from middleware entirely
 export const config = {
-  matcher: ["/((?!api/vault/features|api/stripe/webhook).*)"],
-// ✅ This makes sure it matches everything except stripe webhook
-export const config = {
-  matcher: ["/((?!api/stripe/webhook).*)"],
+  matcher: ["/((?!api/vault|api/stripe/webhook|_next|favicon.ico).*)"],
 };

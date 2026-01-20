@@ -9,3 +9,4 @@ export async function GET() {
     isEmpty: true,
   });
 }
+// Force redeploy

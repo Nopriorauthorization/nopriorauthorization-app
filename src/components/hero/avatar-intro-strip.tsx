@@ -18,25 +18,26 @@ export default function AvatarIntroStrip() {
   const activeAvatar = AVATAR_INTROS[activeIndex];
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setMuted(true);
-      setActiveIndex((prev) => (prev + 1) % AVATAR_INTROS.length);
-    }, 7000);
-    return () => window.clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
     AVATAR_INTROS.forEach((avatar, index) => {
       const video = videoRefs.current[avatar.id];
       if (!video) return;
+
+      const handleVideoEnd = () => {
+        setMuted(true);
+        setActiveIndex((prev) => (prev + 1) % AVATAR_INTROS.length);
+      };
+
       if (index === activeIndex) {
         video.muted = muted;
         video.currentTime = 0;
+        video.removeEventListener('ended', handleVideoEnd);
+        video.addEventListener('ended', handleVideoEnd);
         video.play().catch(() => null);
       } else {
         video.pause();
         video.currentTime = 0;
         video.muted = true;
+        video.removeEventListener('ended', handleVideoEnd);
       }
     });
   }, [activeIndex, muted]);
@@ -129,7 +130,6 @@ function AvatarCard({
           ref={videoRef}
           className="avatar-card__video"
           muted={muted}
-          loop
           playsInline
           preload="metadata"
           poster={avatar.poster}
@@ -138,16 +138,18 @@ function AvatarCard({
           <source src={`${AVATAR_MEDIA_BASE}/${avatar.id}-intro.mp4`} type="video/mp4" />
         </video>
         <div className="avatar-card__overlay" />
-        <div className="avatar-card__fallback">
-          <Image
-            src={avatar.poster}
-            alt={`${avatar.displayName} avatar`}
-            width={320}
-            height={320}
-            className="avatar-card__image"
-            style={{ objectPosition: avatar.objectPosition ?? "50% 20%" }}
-          />
-        </div>
+        {!active && (
+          <div className="avatar-card__fallback">
+            <Image
+              src={avatar.poster}
+              alt={`${avatar.displayName} avatar`}
+              width={320}
+              height={320}
+              className="avatar-card__image"
+              style={{ objectPosition: avatar.objectPosition ?? "50% 20%" }}
+            />
+          </div>
+        )}
       </div>
 
       <div className="avatar-card__body">

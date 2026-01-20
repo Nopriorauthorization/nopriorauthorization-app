@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 type FamilyMember = {
   id: string;
   name: string;
-  relationship: 'self' | 'parent' | 'child' | 'sibling' | 'grandparent' | 'grandchild' | 'aunt' | 'uncle' | 'cousin' | 'spouse' | 'other';
+  relationship: 'self' | 'parent' | 'child' | 'sibling' | 'grandparent' | 'spouse' | 'other';
   birthYear?: number;
   healthNotes?: string;
   photo?: string;
@@ -297,16 +297,16 @@ export default function FamilyTree() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm border-b border-purple-100">
+      <div className="bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 Your Family Tree
               </h1>
-              <p className="text-gray-600 mt-1">The heart of your health story</p>
+              <p className="text-gray-300 mt-1">The heart of your health story</p>
             </div>
             <button
               onClick={handleAddMember}
@@ -322,21 +322,21 @@ export default function FamilyTree() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Tree Canvas */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="p-4 border-b border-gray-100">
+            <div className="bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-800">
+              <div className="p-4 border-b border-gray-800">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-gray-800">Family Connections</h2>
+                  <h2 className="text-lg font-semibold text-white">Family Connections</h2>
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => handleZoom(-0.1)}
-                      className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                      className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors text-white"
                     >
                       🔍-
                     </button>
-                    <span className="text-sm text-gray-600">{Math.round(zoom * 100)}%</span>
+                    <span className="text-sm text-gray-300">{Math.round(zoom * 100)}%</span>
                     <button
                       onClick={() => handleZoom(0.1)}
-                      className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                      className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors text-white"
                     >
                       🔍+
                     </button>
@@ -358,7 +358,7 @@ export default function FamilyTree() {
                   {/* Background pattern */}
                   <defs>
                     <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f3f4f6" strokeWidth="1"/>
+                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#374151" strokeWidth="1"/>
                     </pattern>
                   </defs>
                   <rect width="100%" height="100%" fill="url(#grid)" />
@@ -408,7 +408,7 @@ export default function FamilyTree() {
                         x={member.position.x}
                         y={member.position.y + 55}
                         textAnchor="middle"
-                        className="text-sm font-medium fill-gray-700 pointer-events-none select-none"
+                        className="text-sm font-medium fill-gray-300 pointer-events-none select-none"
                       >
                         {member.name}
                       </text>
@@ -448,25 +448,25 @@ export default function FamilyTree() {
           {/* Member Details Panel */}
           <div className="lg:col-span-1">
             {selectedMember ? (
-              <div className="bg-white rounded-2xl shadow-xl p-6">
+              <div className="bg-gray-900 rounded-2xl shadow-xl p-6 border border-gray-800">
                 <div className="text-center mb-6">
                   <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-r ${relationshipColors[selectedMember.relationship]} flex items-center justify-center text-3xl mb-3`}>
                     {relationshipIcons[selectedMember.relationship]}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800">{selectedMember.name}</h3>
-                  <p className="text-gray-600 capitalize">{selectedMember.relationship}</p>
+                  <h3 className="text-xl font-bold text-white">{selectedMember.name}</h3>
+                  <p className="text-gray-300 capitalize">{selectedMember.relationship}</p>
                   {selectedMember.birthYear && (
-                    <p className="text-sm text-gray-500">Born {selectedMember.birthYear}</p>
+                    <p className="text-sm text-gray-400">Born {selectedMember.birthYear}</p>
                   )}
                 </div>
 
                 {selectedMember.healthInsights && (
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-semibold text-purple-700 mb-2">🧬 Genetic Insights</h4>
+                      <h4 className="font-semibold text-purple-400 mb-2">🧬 Genetic Insights</h4>
                       <div className="space-y-1">
                         {selectedMember.healthInsights.geneticRisks.map((risk, idx) => (
-                          <div key={idx} className="text-sm text-gray-600 bg-purple-50 rounded-lg p-2">
+                          <div key={idx} className="text-sm text-gray-300 bg-gray-800 rounded-lg p-2">
                             {risk}
                           </div>
                         ))}
@@ -474,10 +474,10 @@ export default function FamilyTree() {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-blue-700 mb-2">🛡️ Preventive Care</h4>
+                      <h4 className="font-semibold text-blue-400 mb-2">🛡️ Preventive Care</h4>
                       <div className="space-y-1">
                         {selectedMember.healthInsights.preventiveCare.map((care, idx) => (
-                          <div key={idx} className="text-sm text-gray-600 bg-blue-50 rounded-lg p-2">
+                          <div key={idx} className="text-sm text-gray-300 bg-gray-800 rounded-lg p-2">
                             {care}
                           </div>
                         ))}
@@ -485,10 +485,10 @@ export default function FamilyTree() {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-green-700 mb-2">📈 Family Patterns</h4>
+                      <h4 className="font-semibold text-green-400 mb-2">📈 Family Patterns</h4>
                       <div className="space-y-1">
                         {selectedMember.healthInsights.familyPatterns.map((pattern, idx) => (
-                          <div key={idx} className="text-sm text-gray-600 bg-green-50 rounded-lg p-2">
+                          <div key={idx} className="text-sm text-gray-300 bg-gray-800 rounded-lg p-2">
                             {pattern}
                           </div>
                         ))}
@@ -502,10 +502,10 @@ export default function FamilyTree() {
                 </button>
               </div>
             ) : (
-              <div className="bg-white rounded-2xl shadow-xl p-6 text-center">
+              <div className="bg-gray-900 rounded-2xl shadow-xl p-6 text-center border border-gray-800">
                 <div className="text-6xl mb-4">👆</div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Select a Family Member</h3>
-                <p className="text-gray-600 text-sm">
+                <h3 className="text-lg font-semibold text-white mb-2">Select a Family Member</h3>
+                <p className="text-gray-300 text-sm">
                   Click on anyone in your family tree to see their health insights and story.
                 </p>
               </div>
@@ -516,14 +516,14 @@ export default function FamilyTree() {
 
       {/* Add Member Modal */}
       {isAddingMember && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl max-w-md w-full">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
+          <div className="bg-gray-900 rounded-2xl max-w-md w-full border border-gray-800">
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-gray-800">Add Family Member</h2>
+                <h2 className="text-2xl font-bold text-white">Add Family Member</h2>
                 <button
                   onClick={() => setIsAddingMember(false)}
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-gray-400 hover:text-gray-200"
                 >
                   ✕
                 </button>
@@ -531,7 +531,7 @@ export default function FamilyTree() {
 
               {addMemberFlow.step === 'relationship' && (
                 <div>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-gray-300 mb-6">
                     Who would you like to add to your family tree? You can always come back later to add more details.
                   </p>
                   <div className="grid grid-cols-2 gap-3">
@@ -539,7 +539,7 @@ export default function FamilyTree() {
                       <button
                         key={relationship}
                         onClick={() => handleRelationshipSelect(relationship as FamilyMember['relationship'])}
-                        className="p-4 border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition-all duration-200"
+                        className="p-4 border-2 border-gray-700 rounded-xl hover:border-purple-400 hover:bg-gray-800 transition-all duration-200 text-white"
                       >
                         <div className="text-2xl mb-2">{icon}</div>
                         <div className="text-sm font-medium capitalize">{relationship}</div>
@@ -551,18 +551,18 @@ export default function FamilyTree() {
 
               {addMemberFlow.step === 'details' && addMemberFlow.tempMember && (
                 <div>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-gray-300 mb-6">
                     Tell us a bit about them. Even partial information helps build your health story.
                   </p>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-gray-200 mb-1">
                         Their Name
                       </label>
                       <input
                         type="text"
                         placeholder="First name or nickname"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none"
+                        className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:border-purple-400 focus:outline-none text-white placeholder-gray-400"
                         value={addMemberFlow.tempMember.name || ''}
                         onChange={(e) => setAddMemberFlow(prev => ({
                           ...prev,
@@ -572,13 +572,13 @@ export default function FamilyTree() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-gray-200 mb-1">
                         Birth Year (optional)
                       </label>
                       <input
                         type="number"
                         placeholder="e.g., 1985"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none"
+                        className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:border-purple-400 focus:outline-none text-white placeholder-gray-400"
                         value={addMemberFlow.tempMember.birthYear || ''}
                         onChange={(e) => setAddMemberFlow(prev => ({
                           ...prev,
@@ -588,12 +588,12 @@ export default function FamilyTree() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-gray-200 mb-1">
                         Any health notes? (optional)
                       </label>
                       <textarea
                         placeholder="Share what you know about their health journey..."
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none resize-none"
+                        className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:border-purple-400 focus:outline-none resize-none text-white placeholder-gray-400"
                         rows={3}
                         value={addMemberFlow.tempMember.healthNotes || ''}
                         onChange={(e) => setAddMemberFlow(prev => ({
@@ -607,7 +607,7 @@ export default function FamilyTree() {
                   <div className="flex space-x-3 mt-6">
                     <button
                       onClick={() => setAddMemberFlow({ step: 'relationship' })}
-                      className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                      className="flex-1 px-4 py-2 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition-colors"
                     >
                       Back
                     </button>

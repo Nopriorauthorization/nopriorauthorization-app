@@ -19,7 +19,7 @@ export async function DELETE(req: NextRequest, context: RouteContext) {
 
     const where = identity.userId
       ? { id, userId: identity.userId }
-      : { id, userId: identity.anonId };
+      : { id, userId: identity.anonId || "" };
 
     await prisma.trustedCircleMember.delete({ where });
 

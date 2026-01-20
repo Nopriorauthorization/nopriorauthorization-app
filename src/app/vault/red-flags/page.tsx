@@ -17,6 +17,7 @@ type RedFlag = {
 export default function RedFlagsPage() {
   const [flags, setFlags] = useState<RedFlag[]>([]);
   const [loading, setLoading] = useState(true);
+  const [scanning, setScanning] = useState(false);
 
   useEffect(() => {
     loadFlags();
@@ -33,6 +34,30 @@ export default function RedFlagsPage() {
       console.error("Failed to load flags:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const scanForInteractions = async () => {
+    setScanning(true);
+    try {
+      const res = await fetch("/api/vault/red-flags/scan", {
+        method: "POST",
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.newFlags > 0) {
+          await loadFlags(); // Reload to show new flags
+        }
+        alert(
+          `Scan complete!\n\nDocuments scanned: ${data.scannedDocuments}\nMedications found: ${data.medicationsFound}\nNew issues detected: ${data.newFlags}`
+        );
+      }
+    } catch (error) {
+      console.error("Failed to scan:", error);
+      alert("Failed to scan for interactions. Please try again.");
+    } finally {
+      setScanning(false);
     }
   };
 
@@ -106,17 +131,34 @@ export default function RedFlagsPage() {
         )}
 
         {!loading && activeFlags.length === 0 && (
-          <div className="bg-gradient-to-br from-white/5 to-white/0 rounded-2xl border border-white/10 p-8 text-center">
+          <div className="bg-gradient-to-br from-white/5 to-white/0 rounded-2xl border border-white/10 p-8 text-center mb-8">
             <div className="text-6xl mb-4">✓</div>
             <h2 className="text-2xl font-semibold mb-2">All Clear!</h2>
-            <p className="text-gray-400 max-w-md mx-auto">
+            <p className="text-gray-400 max-w-md mx-auto mb-6">
               No safety concerns detected based on your current health profile and medications.
             </p>
+            <button
+              onClick={scanForInteractions}
+              disabled={scanning}
+              className="px-6 py-3 bg-pink-500 hover:bg-pink-600 rounded-lg font-medium transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {scanning ? "Scanning..." : "🔍 Scan Documents for Interactions"}
+            </button>
           </div>
         )}
 
         {!loading && activeFlags.length > 0 && (
-          <div className="space-y-4">
+          <>
+            <div className="mb-4 flex justify-end">
+              <button
+                onClick={scanForInteractions}
+                disabled={scanning}
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-medium transition disabled:opacity-50"
+              >
+                {scanning ? "Scanning..." : "🔍 Scan Again"}
+              </button>
+            </div>
+            <div className="space-y-4">
             {activeFlags.map((flag) => (
               <div
                 key={flag.id}
@@ -164,6 +206,7 @@ export default function RedFlagsPage() {
               </div>
             ))}
           </div>
+          </>
         )}
 
         <div className="mt-8 bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">

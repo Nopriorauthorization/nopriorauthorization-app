@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const where = identity.userId ? { userId: identity.userId } : { userId: identity.anonId };
+    const where = identity.userId ? { userId: identity.userId } : { userId: identity.anonId || "" };
 
     const members = await prisma.trustedCircleMember.findMany({
       where,

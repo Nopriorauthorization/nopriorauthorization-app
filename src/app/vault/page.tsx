@@ -56,6 +56,13 @@ export default function VaultPage() {
         }
       } catch (error) {
         console.error("Failed to fetch vault data:", error);
+        // Set fallback empty data so page still renders
+        setData({
+          features: [],
+          stats: { documents: 0, chats: 0, appointments: 0, decoded: 0 },
+          vaultName: null,
+          isEmpty: true,
+        });
       } finally {
         setLoading(false);
       }

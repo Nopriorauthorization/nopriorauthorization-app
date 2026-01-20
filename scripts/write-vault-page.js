@@ -39,7 +39,7 @@ export default function VaultPage() {
   useEffect(() => {
     async function fetchVaultData() {
       try {
-        const res = await fetch("/api/vault/features");
+        const res = await fetch("/api/public/vault-features");
         if (res.ok) {
           const vaultData = await res.json();
           setData(vaultData);

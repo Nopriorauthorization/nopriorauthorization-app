@@ -36,7 +36,7 @@ export default function VaultPage() {
   useEffect(() => {
     async function fetchVaultData() {
       try {
-        const res = await fetch("/api/vault/features");
+        const res = await fetch("/api/public/vault-features");
         if (res.ok) {
           const vaultData = await res.json();
           setData(vaultData);
@@ -56,13 +56,6 @@ export default function VaultPage() {
         }
       } catch (error) {
         console.error("Failed to fetch vault data:", error);
-        // Set fallback empty data so page still renders
-        setData({
-          features: [],
-          stats: { documents: 0, chats: 0, appointments: 0, decoded: 0 },
-          vaultName: null,
-          isEmpty: true,
-        });
       } finally {
         setLoading(false);
       }

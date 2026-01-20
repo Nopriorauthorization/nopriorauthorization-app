@@ -33,6 +33,10 @@ export default withAuth(
           "/api/harmony",
           "/api/auth",
           "/api/vault/features",
+          "/api/vault/red-flags",
+          "/api/vault/before-after",
+          "/api/vault/trusted-circle",
+          "/api/vault/provider-tracker",
           "/vault",
           "/vault/priority",
         ];

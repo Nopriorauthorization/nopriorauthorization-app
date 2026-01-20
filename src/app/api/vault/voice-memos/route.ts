@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { resolveDocumentIdentity } from "@/lib/documents/server";
-import { uploadAudio, createSignedUrl } from "@/lib/storage/media";
 
-// GET - Fetch all voice memos with fresh signed URLs
+// GET - Fetch all voice memos
 export async function GET(req: NextRequest) {
   try {
     const identity = await resolveDocumentIdentity(req);
@@ -19,21 +18,7 @@ export async function GET(req: NextRequest) {
       orderBy: { createdAt: "desc" },
     });
 
-    // Generate fresh signed URLs for each memo
-    const memosWithUrls = await Promise.all(
-      memos.map(async (memo) => {
-        try {
-          // audioUrl field now stores the storage path, generate signed URL
-          const signedUrl = await createSignedUrl(memo.audioUrl, 900); // 15 min
-          return { ...memo, audioUrl: signedUrl };
-        } catch (error) {
-          console.error(`Failed to generate signed URL for memo ${memo.id}:`, error);
-          return memo; // Return original if URL generation fails
-        }
-      })
-    );
-
-    return NextResponse.json({ memos: memosWithUrls });
+    return NextResponse.json({ memos });
   } catch (error) {
     console.error("Error fetching voice memos:", error);
     return NextResponse.json(
@@ -43,7 +28,7 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// POST - Upload and create a voice memo
+// POST - Create a voice memo (audio URL is provided, transcription happens separately)
 export async function POST(req: NextRequest) {
   try {
     const identity = await resolveDocumentIdentity(req);
@@ -52,49 +37,31 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const formData = await req.formData();
-    const audioFile = formData.get("audio") as File | null;
-    const title = formData.get("title") as string | null;
-    const duration = formData.get("duration") as string | null;
+    const { audioUrl, title, duration } = await req.json();
 
-    if (!audioFile) {
+    if (!audioUrl) {
       return NextResponse.json(
-        { error: "Audio file is required" },
+        { error: "Audio URL is required" },
         { status: 400 }
       );
     }
 
-    // Upload audio to Supabase Storage
-    const userId = identity.userId || identity.anonId || "anonymous";
-    const audioBuffer = Buffer.from(await audioFile.arrayBuffer());
-    
-    const { path, url } = await uploadAudio({
-      userId,
-      file: audioBuffer,
-      mimeType: audioFile.type,
-    });
-
-    // Create database record with storage path
     const memo = await prisma.voiceMemo.create({
       data: {
         userId: identity.userId || null,
         anonId: identity.anonId || null,
-        audioUrl: path, // Store path, not signed URL
-        title: title || null,
-        duration: duration ? parseInt(duration) : null,
-        transcript: null,
+        audioUrl,
+        title,
+        duration,
+        transcript: null, // Will be added via transcribe endpoint
       },
     });
 
-    // Return memo with signed URL for immediate playback
-    return NextResponse.json({ 
-      success: true, 
-      memo: { ...memo, audioUrl: url } 
-    });
+    return NextResponse.json({ success: true, memo });
   } catch (error) {
     console.error("Error creating voice memo:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Failed to create voice memo" },
+      { error: "Failed to create voice memo" },
       { status: 500 }
     );
   }

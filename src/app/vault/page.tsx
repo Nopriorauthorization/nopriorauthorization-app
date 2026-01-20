@@ -34,34 +34,31 @@ export default function VaultPage() {
   const [filter, setFilter] = useState<"all" | "instant" | "capture" | "power">("all");
 
   useEffect(() => {
-    async function fetchVaultData() {
-      try {
-        const res = await fetch("/api/public/vault-features");
-        if (res.ok) {
-          const vaultData = await res.json();
+    // Initialize with empty vault data to show content immediately
+    const emptyData: VaultData = {
+      features: [],
+      stats: { documents: 0, chats: 0, appointments: 0, decoded: 0 },
+      vaultName: null,
+      isEmpty: true,
+    };
+    setData(emptyData);
+    setShowOnboarding(true);
+    setLoading(false);
+
+    // Optional: Try to fetch real data in background
+    fetch("/api/public/vault-features")
+      .then(res => res.ok ? res.json() : null)
+      .then(vaultData => {
+        if (vaultData) {
           setData(vaultData);
-          
           if (!vaultData.vaultName) {
             setShowOnboarding(true);
-            
-            await fetch("/api/analytics", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                event: "vault_onboarding_shown",
-                metadata: { timestamp: new Date().toISOString() },
-              }),
-            }).catch(console.error);
+          } else {
+            setShowOnboarding(false);
           }
         }
-      } catch (error) {
-        console.error("Failed to fetch vault data:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchVaultData();
+      })
+      .catch(console.error);
   }, []);
 
   const handleOnboardingComplete = (name: string) => {

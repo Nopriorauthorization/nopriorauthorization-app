@@ -17,13 +17,11 @@ export async function DELETE(req: NextRequest, context: RouteContext) {
 
     const { id } = await context.params;
 
-    // TODO: Implement revoke logic
-    // await prisma.trustedCircleMember.delete({
-    //   where: { 
-    //     id,
-    //     userId: identity.userId, // Ensure ownership
-    //   },
-    // });
+    const where = identity.userId
+      ? { id, userId: identity.userId }
+      : { id, userId: identity.anonId };
+
+    await prisma.trustedCircleMember.delete({ where });
 
     return NextResponse.json({ success: true });
   } catch (error) {

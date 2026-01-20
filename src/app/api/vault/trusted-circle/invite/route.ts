@@ -14,27 +14,27 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { name, email, relationship, permissions, expirationDays } = body;
 
-    // TODO: Implement invitation system
-    // 1. Create TrustedCircleInvite record
-    // 2. Send email invitation with secure link
-    // 3. Set expiration date
-    // 4. Return invite details
+    const invite = await prisma.trustedCircleInvite.create({
+      data: {
+        userId: identity.userId || identity.anonId || "",
+        inviteeName: name,
+        inviteeEmail: email,
+        relationship,
+        permissions,
+        expiresAt: expirationDays > 0 
+          ? new Date(Date.now() + expirationDays * 24 * 60 * 60 * 1000)
+          : null,
+        status: "pending",
+      },
+    });
 
-    // const invite = await prisma.trustedCircleInvite.create({
-    //   data: {
-    //     userId: identity.userId,
-    //     inviteeName: name,
-    //     inviteeEmail: email,
-    //     relationship,
-    //     permissions,
-    //     expiresAt: expirationDays > 0 
-    //       ? new Date(Date.now() + expirationDays * 24 * 60 * 60 * 1000)
-    //       : null,
-    //     status: 'pending',
-    //   },
-    // });
+    // TODO: Send email invitation
+    // 1. Generate secure invitation link with token
+    // 2. Send email using SendGrid/AWS SES
+    // 3. Include vault owner name, expiration date
+    // 4. Link should accept invite and create TrustedCircleMember
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, invite });
   } catch (error) {
     console.error("Error sending invite:", error);
     return NextResponse.json(

@@ -11,13 +11,22 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // TODO: Implement drug interaction detection
-    // 1. Parse medications from documents
-    // 2. Check interactions using FDA API or local database
-    // 3. Return array of flags
+    const where = identity.userId ? { userId: identity.userId } : { anonId: identity.anonId };
 
-    // Mock data for now
-    const flags: any[] = [];
+    const flags = await prisma.redFlag.findMany({
+      where: {
+        ...where,
+        dismissed: false,
+      },
+      orderBy: { detectedAt: "desc" },
+    });
+
+    // TODO: Implement real-time drug interaction detection
+    // 1. Query user's documents for medication references
+    // 2. Parse medication names from prescriptions/notes
+    // 3. Check interactions using FDA API or local drug database
+    // 4. Create new RedFlag entries for detected interactions
+    // 5. Update severity based on interaction level
 
     return NextResponse.json({ flags });
   } catch (error) {

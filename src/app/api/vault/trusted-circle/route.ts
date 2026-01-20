@@ -11,12 +11,14 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // TODO: Create TrustedCircle model in Prisma
-    // const members = await prisma.trustedCircleMember.findMany({
-    //   where: { userId: identity.userId },
-    // });
+    const where = identity.userId ? { userId: identity.userId } : { userId: identity.anonId };
 
-    return NextResponse.json({ members: [] });
+    const members = await prisma.trustedCircleMember.findMany({
+      where,
+      orderBy: { createdAt: "desc" },
+    });
+
+    return NextResponse.json({ members });
   } catch (error) {
     console.error("Error fetching members:", error);
     return NextResponse.json(

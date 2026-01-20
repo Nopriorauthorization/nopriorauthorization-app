@@ -13,12 +13,12 @@ export async function GET(req: NextRequest) {
     const { userId, anonId } = identity;
     const where = userId ? { userId } : { anonId };
 
-    // For now, return empty array since we need to create the PhotoComparison model
-    // This will be implemented once we add the Prisma schema
-    return NextResponse.json({
-      comparisons: [],
-      message: "Feature coming soon - Photo comparison model needs to be added to schema",
+    const comparisons = await prisma.photoComparison.findMany({
+      where,
+      orderBy: { createdAt: "desc" },
     });
+
+    return NextResponse.json({ comparisons });
   } catch (error) {
     console.error("Error loading comparisons:", error);
     return NextResponse.json(
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { beforePhotoId, afterPhotoId } = await req.json();
+    const { beforePhotoId, afterPhotoId, title, notes, category } = await req.json();
 
     if (!beforePhotoId || !afterPhotoId) {
       return NextResponse.json(
@@ -45,12 +45,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // TODO: Create PhotoComparison in database
-    // For now, return success message
-    return NextResponse.json({
-      success: true,
-      message: "Comparison created (schema update needed)",
+    const comparison = await prisma.photoComparison.create({
+      data: {
+        userId: identity.userId || null,
+        anonId: identity.anonId || null,
+        beforePhoto: beforePhotoId,
+        afterPhoto: afterPhotoId,
+        title,
+        notes,
+        category,
+        daysBetween: null, // Calculate from photo metadata later
+      },
     });
+
+    return NextResponse.json({ success: true, comparison });
   } catch (error) {
     console.error("Error creating comparison:", error);
     return NextResponse.json(

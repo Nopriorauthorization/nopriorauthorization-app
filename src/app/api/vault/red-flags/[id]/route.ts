@@ -18,11 +18,14 @@ export async function PATCH(req: NextRequest, context: RouteContext) {
     const { id } = await context.params;
     const body = await req.json();
 
-    // TODO: Implement dismiss logic
-    // await prisma.redFlag.update({
-    //   where: { id },
-    //   data: { dismissed: body.dismissed },
-    // });
+    const where = identity.userId 
+      ? { id, userId: identity.userId }
+      : { id, anonId: identity.anonId };
+
+    await prisma.redFlag.update({
+      where,
+      data: { dismissed: body.dismissed },
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {

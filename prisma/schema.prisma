@@ -337,6 +337,122 @@ model Provider {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  ratings ProviderRating[]
+
   @@index([userId])
   @@index([anonId])
+}
+
+model ProviderRating {
+  id             String   @id @default(cuid())
+  userId         String?
+  anonId         String?
+  providerId     String
+  providerName   String
+  specialty      String?
+  rating         Int // 1-5 stars
+  tags           String[] @default([])
+  notes          String?
+  wouldRecommend Boolean  @default(true)
+  lastVisit      DateTime @default(now())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  provider Provider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([anonId])
+  @@index([providerId])
+}
+
+model PhotoComparison {
+  id          String   @id @default(cuid())
+  userId      String?
+  anonId      String?
+  beforePhoto String // URL or path to before photo
+  afterPhoto  String // URL or path to after photo
+  title       String?
+  notes       String?
+  daysBetween Int? // Calculated days between photos
+  category    String? // "face", "body", "skin", etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([anonId])
+  @@index([category])
+}
+
+model VoiceMemo {
+  id         String   @id @default(cuid())
+  userId     String?
+  anonId     String?
+  audioUrl   String // URL to stored audio file
+  transcript String? // AI-generated transcription
+  title      String?
+  duration   Int? // Duration in seconds
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([userId])
+  @@index([anonId])
+  @@index([createdAt])
+}
+
+model RedFlag {
+  id          String   @id @default(cuid())
+  userId      String?
+  anonId      String?
+  type        String // "interaction", "contraindication", "timing", "safety"
+  severity    String // "critical", "warning", "info"
+  title       String
+  description String
+  medications String[] @default([])
+  dismissed   Boolean  @default(false)
+  detectedAt  DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([anonId])
+  @@index([dismissed])
+  @@index([severity])
+}
+
+model TrustedCircleMember {
+  id           String   @id @default(cuid())
+  userId       String // Owner of the vault
+  name         String
+  email        String
+  relationship String?
+  permissions  String[] @default([])
+  status       String   @default("pending") // "pending", "active", "expired"
+  invitedAt    DateTime @default(now())
+  expiresAt    DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([userId])
+  @@index([email])
+  @@index([status])
+}
+
+model TrustedCircleInvite {
+  id           String    @id @default(cuid())
+  userId       String // Owner sending the invite
+  inviteeName  String
+  inviteeEmail String
+  relationship String?
+  permissions  String[]  @default([])
+  token        String    @unique @default(cuid())
+  status       String    @default("pending") // "pending", "accepted", "expired"
+  expiresAt    DateTime?
+  acceptedAt   DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([token])
+  @@index([status])
+  @@index([inviteeEmail])
 }

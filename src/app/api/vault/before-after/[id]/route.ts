@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { resolveDocumentIdentity } from "@/lib/documents/server";
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+type RouteContext = {
+  params: Promise<{ id: string }>;
+};
+
+export async function DELETE(req: NextRequest, context: RouteContext) {
   try {
     const identity = await resolveDocumentIdentity(req);
 
@@ -13,8 +14,13 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // TODO: Delete PhotoComparison from database
-    // For now, return success
+    const { id } = await context.params;
+    const where = identity.userId 
+      ? { id, userId: identity.userId }
+      : { id, anonId: identity.anonId };
+
+    await prisma.photoComparison.delete({ where });
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Error deleting comparison:", error);

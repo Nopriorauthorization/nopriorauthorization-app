@@ -32,6 +32,9 @@ export default withAuth(
           "/api/slim-t",
           "/api/harmony",
           "/api/auth",
+          "/api/vault/features",
+          "/vault",
+          "/vault/priority",
         ];
 
         if (

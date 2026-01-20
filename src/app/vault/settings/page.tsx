@@ -39,6 +39,13 @@ function CalendarSettingsContent() {
 
     if (connected === "true") {
       setMessage({ type: "success", text: "Google Calendar connected successfully!" });
+  const isDemoMode = status !== "authenticated";
+  const demoCalendarSettings: CalendarSettings = {
+    enabled: false,
+    connected: false,
+    lastSync: null,
+    email: null,
+  };
       // Refresh calendar settings
       fetchCalendarSettings();
       // Clean URL
@@ -59,24 +66,31 @@ function CalendarSettingsContent() {
       return;
     }
 
+    async function fetchCalendarSettings() {
+      try {
+        const res = await fetch("/api/calendar/settings");
+        if (res.ok) {
+          const data = await res.json();
+          setCalendarSettings(data);
+        } else {
+          throw new Error("Failed to fetch");
+        }
+      } catch (error) {
+        console.error("Error fetching calendar settings:", error);
+        setMessage({ type: "error", text: "Failed to load calendar settings" });
+        setCalendarSettings(demoCalendarSettings);
+      } finally {
+        setLoading(false);
+      }
+    }
+
     if (status === "authenticated") {
       fetchCalendarSettings();
-    }
-  }, [status, router]);
-
-  const fetchCalendarSettings = async () => {
-    try {
-      const res = await fetch("/api/vault/calendar");
-      if (!res.ok) throw new Error("Failed to fetch");
-      const data = await res.json();
-      setCalendarSettings(data);
-    } catch (error) {
-      console.error("Error fetching calendar settings:", error);
-      setMessage({ type: "error", text: "Failed to load calendar settings" });
-    } finally {
+    } else {
+      setCalendarSettings(demoCalendarSettings);
       setLoading(false);
     }
-  };
+  }, [status]);
 
   const handleConnect = async () => {
     setConnecting(true);
@@ -88,6 +102,12 @@ function CalendarSettingsContent() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "connect" }),
       });
+
+    if (isDemoMode) {
+      setMessage({ type: "error", text: "Calendar connections require a signed-in account." });
+      setConnecting(false);
+      return;
+    }
 
       if (!res.ok) throw new Error("Failed to initiate OAuth");
       
@@ -109,6 +129,11 @@ function CalendarSettingsContent() {
 
     setDisconnecting(true);
     setMessage(null);
+
+    if (isDemoMode) {
+      setMessage({ type: "error", text: "Calendar management is disabled in demo mode." });
+      return;
+    }
 
     try {
       const res = await fetch("/api/vault/calendar", {

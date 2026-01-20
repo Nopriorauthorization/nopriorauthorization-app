@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import Button from "@/components/ui/button";
 
 type UserSettings = {
@@ -26,9 +25,21 @@ type ShareLink = {
   accessCount: number;
 };
 
+const demoSettings: UserSettings = {
+  role: "member",
+  name: "Guest User",
+  email: "guest@example.com",
+  lastAccessAt: null,
+  consentToShareClinicalSummary: false,
+  allowProviderToProviderSharing: false,
+  emailNotificationsEnabled: false,
+  defaultClinicalSummaryView: null,
+  includeProviderNotesInShares: false,
+  copyToEHRFormat: null,
+};
+
 export default function SettingsPage() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
+  const { status } = useSession();
   
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -43,14 +54,16 @@ export default function SettingsPage() {
 
   useEffect(() => {
     if (status === "unauthenticated") {
-      router.push("/login?callbackUrl=/settings");
+      setSettings(demoSettings);
+      setShareLinks([]);
+      setLoading(false);
       return;
     }
-    
+
     if (status === "authenticated") {
       loadSettings();
     }
-  }, [status, router]);
+  }, [status]);
 
   const loadSettings = async () => {
     try {
@@ -73,6 +86,11 @@ export default function SettingsPage() {
   };
 
   const saveSettings = async () => {
+    if (status !== "authenticated") {
+      showMessage("error", "Saving settings requires a signed-in account in production.");
+      return;
+    }
+
     if (!settings) return;
     
     setSaving(true);
@@ -94,6 +112,11 @@ export default function SettingsPage() {
   };
 
   const requestPasswordReset = async () => {
+    if (status !== "authenticated") {
+      showMessage("error", "Password reset is unavailable in demo mode.");
+      return;
+    }
+
     try {
       const response = await fetch("/api/settings/password-reset", {
         method: "POST",
@@ -109,6 +132,11 @@ export default function SettingsPage() {
   };
 
   const logOutAllSessions = async () => {
+    if (status !== "authenticated") {
+      showMessage("error", "Session management is disabled in demo mode.");
+      return;
+    }
+
     if (!confirm("This will log you out of all devices. Continue?")) return;
     
     try {
@@ -120,6 +148,11 @@ export default function SettingsPage() {
   };
 
   const revokeShareLink = async (token: string) => {
+    if (status !== "authenticated") {
+      showMessage("error", "Share link management is disabled in demo mode.");
+      return;
+    }
+
     if (!confirm("This will immediately revoke provider access. Continue?")) return;
     
     try {
@@ -137,6 +170,11 @@ export default function SettingsPage() {
   };
 
   const requestDataExport = async () => {
+    if (status !== "authenticated") {
+      showMessage("error", "Data export is unavailable in demo mode.");
+      return;
+    }
+
     if (!confirm("We'll prepare your complete data export and email it within 48 hours. Continue?")) return;
     
     try {
@@ -151,6 +189,11 @@ export default function SettingsPage() {
   };
 
   const requestAccountDeletion = async () => {
+    if (status !== "authenticated") {
+      showMessage("error", "Account deletion is unavailable in demo mode.");
+      return;
+    }
+
     if (!confirm("⚠️ This will permanently delete your account and all data within 30 days. This cannot be undone. Continue?")) return;
     
     try {

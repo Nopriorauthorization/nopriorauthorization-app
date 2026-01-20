@@ -37,12 +37,71 @@ type Pagination = {
   pages: number;
 };
 
+const demoLogs: AccessLog[] = [
+  {
+    id: "demo-log-1",
+    timestamp: new Date("2024-03-02T14:15:00Z").toISOString(),
+    actorId: "support-agent-1",
+    actorEmail: "support1@example.com",
+    actorName: "Support Agent",
+    subjectUserId: "demo-user-1",
+    subjectEmail: "guest.patient@example.com",
+    subjectName: "Guest Patient",
+    action: "VIEW",
+    resourceType: "vault_item",
+    resourceId: "vault-demo-1",
+    ipAddress: "203.0.113.42",
+    userAgent: "Mozilla/5.0",
+    metadata: { notes: "Viewed sacred vault overview" },
+  },
+  {
+    id: "demo-log-2",
+    timestamp: new Date("2024-03-01T09:30:00Z").toISOString(),
+    actorId: "support-agent-2",
+    actorEmail: "support2@example.com",
+    actorName: "Support Agent",
+    subjectUserId: "demo-user-2",
+    subjectEmail: "guest.provider@example.com",
+    subjectName: "Guest Provider",
+    action: "CONSENT_GRANTED",
+    resourceType: "consent",
+    resourceId: "consent-demo-1",
+    ipAddress: "198.51.100.24",
+    userAgent: "Mozilla/5.0",
+    metadata: { consentType: "providerSharing" },
+  },
+  {
+    id: "demo-log-3",
+    timestamp: new Date("2024-02-24T20:05:00Z").toISOString(),
+    actorId: "support-agent-1",
+    actorEmail: "support1@example.com",
+    actorName: "Support Agent",
+    subjectUserId: "demo-user-3",
+    subjectEmail: "guest.admin@example.com",
+    subjectName: "Guest Admin",
+    action: "USER_ENABLED",
+    resourceType: "user_account",
+    resourceId: "demo-user-3",
+    ipAddress: "192.0.2.55",
+    userAgent: "Mozilla/5.0",
+    metadata: { reason: "Security review completed" },
+  },
+];
+
+const demoPagination: Pagination = {
+  page: 1,
+  limit: 25,
+  total: demoLogs.length,
+  pages: 1,
+};
+
 export default function ActivityLogsPage() {
   const [logs, setLogs] = useState<AccessLog[]>([]);
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
+  const [isDemoMode, setIsDemoMode] = useState(false);
 
   // Filters
   const [action, setAction] = useState("ALL");
@@ -53,6 +112,7 @@ export default function ActivityLogsPage() {
   const fetchLogs = async () => {
     setLoading(true);
     setError(null);
+    setIsDemoMode(false);
 
     try {
       const params = new URLSearchParams({
@@ -64,8 +124,11 @@ export default function ActivityLogsPage() {
       const response = await fetch(`/api/admin/activity-logs?${params}`);
       
       if (!response.ok) {
-        if (response.status === 403) {
-          window.location.href = "/login?callbackUrl=/admin/activity-logs";
+        if (response.status === 401 || response.status === 403) {
+          setIsDemoMode(true);
+          setLogs(demoLogs);
+          setPagination(demoPagination);
+          setLoading(false);
           return;
         }
         throw new Error("Failed to fetch logs");
@@ -73,7 +136,7 @@ export default function ActivityLogsPage() {
 
       const data = await response.json();
       setLogs(data.logs);
-      setPagination(data.pagination);
+      setPagination(data.pagination || null);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");
     } finally {
@@ -88,6 +151,10 @@ export default function ActivityLogsPage() {
 
   // Export CSV
   const handleExport = () => {
+    if (isDemoMode) {
+      alert("Demo mode: exports are disabled.");
+      return;
+    }
     const params = new URLSearchParams({
       ...(action !== "ALL" && { action }),
       ...(search && { search }),
@@ -131,6 +198,11 @@ export default function ActivityLogsPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="mx-auto max-w-7xl px-6 py-12">
+        {isDemoMode && (
+          <div className="mb-6 rounded-2xl border border-blue-500/40 bg-blue-500/10 p-4 text-sm text-blue-200">
+            You are viewing demo audit logs. Exports and management actions are disabled in this public preview.
+          </div>
+        )}
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <div>
@@ -149,7 +221,9 @@ export default function ActivityLogsPage() {
           </div>
           <button
             onClick={handleExport}
-            className="rounded-lg bg-hot-pink px-4 py-2 text-sm font-semibold text-black transition hover:bg-pink-500"
+            disabled={isDemoMode}
+            className="rounded-lg bg-hot-pink px-4 py-2 text-sm font-semibold text-black transition hover:bg-pink-500 disabled:cursor-not-allowed disabled:opacity-50"
+            title={isDemoMode ? "Demo mode exports are disabled" : undefined}
           >
             Export CSV
           </button>

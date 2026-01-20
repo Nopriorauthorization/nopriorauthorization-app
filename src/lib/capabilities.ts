@@ -23,6 +23,15 @@ export function hasCapability(
 }
 
 /**
+ * Check if a user can edit blueprint (requires blueprint tier or higher)
+ */
+export async function canEditBlueprint(userId: string): Promise<boolean> {
+  // For now, allow all authenticated users to edit blueprint
+  // TODO: Implement proper subscription checking
+  return true;
+}
+
+/**
  * Get the upgrade message for a locked feature
  */
 export function getUpgradeMessage(capability: CapabilityKey): string {

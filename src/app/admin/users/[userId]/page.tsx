@@ -8,7 +8,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
 type UserDetail = {
   id: string;
@@ -41,6 +41,66 @@ type ConsentLog = {
   source: string;
 };
 
+const demoUserDetail: UserDetail = {
+  id: "demo-user",
+  email: "guest.admin@example.com",
+  name: "Guest Admin",
+  role: "ADMIN",
+  isDisabled: false,
+  createdAt: new Date("2022-06-01T12:00:00Z").toISOString(),
+  lastAccessAt: new Date("2024-03-04T16:30:00Z").toISOString(),
+};
+
+const demoConsent = {
+  clinicalSummarySharing: true,
+  providerToProviderSharing: true,
+  emailNotificationsEnabled: true,
+};
+
+const demoConsentHistory: ConsentLog[] = [
+  {
+    id: "demo-log-1",
+    consentType: "clinicalSummary",
+    oldValue: false,
+    newValue: true,
+    changedAt: new Date("2024-02-20T09:45:00Z").toISOString(),
+    changedBy: { id: "demo-staff", email: "team@example.com", name: "Support Team" },
+    source: "admin_portal",
+  },
+  {
+    id: "demo-log-2",
+    consentType: "emailNotifications",
+    oldValue: true,
+    newValue: true,
+    changedAt: new Date("2024-01-11T14:20:00Z").toISOString(),
+    changedBy: { id: "demo-staff", email: "team@example.com", name: "Support Team" },
+    source: "admin_portal",
+  },
+];
+
+const demoSummary = {
+  activeShareLinksCount: 2,
+  recentActivityCount: 8,
+};
+
+const demoDisableHistory: DisableEvent[] = [
+  {
+    id: "demo-disable-1",
+    disabledAt: new Date("2023-10-05T18:00:00Z").toISOString(),
+    disabledBy: "support-agent",
+    disabledByEmail: "guardian@example.com",
+    reason: "Security review",
+    resolvedAt: new Date("2023-10-06T09:15:00Z").toISOString(),
+    resolvedBy: "support-agent",
+    resolvedByEmail: "guardian@example.com",
+  },
+];
+
+const demoDataRequests = {
+  exportRequested: new Date("2024-01-15T10:30:00Z").toISOString(),
+  deletionRequested: null,
+};
+
 export default function UserDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -54,6 +114,7 @@ export default function UserDetailPage() {
   const [disableHistory, setDisableHistory] = useState<DisableEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isDemoMode, setIsDemoMode] = useState(false);
 
   // Disable/Enable state
   const [showDisableModal, setShowDisableModal] = useState(false);
@@ -64,13 +125,23 @@ export default function UserDetailPage() {
   const fetchUserDetail = async () => {
     setLoading(true);
     setError(null);
+    setIsDemoMode(false);
 
     try {
       const response = await fetch(`/api/admin/users/${userId}`);
       
       if (!response.ok) {
-        if (response.status === 403) {
-          window.location.href = "/login?callbackUrl=/admin/users";
+        if (response.status === 401 || response.status === 403) {
+          setIsDemoMode(true);
+          setUser({ ...demoUserDetail, id: userId });
+          setConsent(demoConsent);
+          setDataRequests(demoDataRequests);
+          setSummary(demoSummary);
+          setDisableHistory(demoDisableHistory);
+          setConsentHistory(demoConsentHistory);
+          setShowDisableModal(false);
+          setDisableReason("");
+          setLoading(false);
           return;
         }
         if (response.status === 404) {
@@ -81,11 +152,17 @@ export default function UserDetailPage() {
       }
 
       const data = await response.json();
+      const safeConsent =
+        data.consent || {
+          clinicalSummarySharing: false,
+          providerToProviderSharing: false,
+          emailNotificationsEnabled: false,
+        };
       setUser(data.user);
-      setConsent(data.consent);
-      setDataRequests(data.dataRequests);
-      setSummary(data.summary);
-      setDisableHistory(data.disableHistory);
+      setConsent(safeConsent);
+      setDataRequests(data.dataRequests || { exportRequested: null, deletionRequested: null });
+      setSummary(data.summary || { activeShareLinksCount: 0, recentActivityCount: 0 });
+      setDisableHistory(data.disableHistory || []);
 
       // Fetch consent history
       const consentResponse = await fetch(`/api/admin/users/${userId}/consent-history`);
@@ -106,6 +183,10 @@ export default function UserDetailPage() {
 
   // Handle disable
   const handleDisable = async () => {
+    if (isDemoMode) {
+      alert("Demo mode: actions are disabled.");
+      return;
+    }
     if (!confirm("This will immediately prevent login and all access. Continue?")) {
       return;
     }
@@ -136,6 +217,10 @@ export default function UserDetailPage() {
 
   // Handle enable
   const handleEnable = async () => {
+    if (isDemoMode) {
+      alert("Demo mode: actions are disabled.");
+      return;
+    }
     if (!confirm("This will restore login and access for this user. Continue?")) {
       return;
     }
@@ -181,9 +266,16 @@ export default function UserDetailPage() {
     );
   }
 
+  const hasDataRequests = Boolean(dataRequests?.exportRequested || dataRequests?.deletionRequested);
+
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="mx-auto max-w-4xl px-6 py-12">
+        {isDemoMode && (
+          <div className="mb-6 rounded-2xl border border-blue-500/40 bg-blue-500/10 p-4 text-sm text-blue-200">
+            You are viewing demo user data. Account management actions are disabled in this public preview.
+          </div>
+        )}
         {/* Header */}
         <div className="mb-8">
           <Link
@@ -219,18 +311,25 @@ export default function UserDetailPage() {
               {user.isDisabled ? (
                 <button
                   onClick={handleEnable}
-                  disabled={actionLoading}
-                  className="rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-700 disabled:opacity-50"
+                  disabled={isDemoMode || actionLoading}
+                  className="rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
+                  title={isDemoMode ? "Demo mode actions are disabled" : undefined}
                 >
-                  {actionLoading ? "Enabling..." : "Enable Account"}
+                  {isDemoMode ? "Enable Unavailable (Demo)" : actionLoading ? "Enabling..." : "Enable Account"}
                 </button>
               ) : (
                 <button
-                  onClick={() => setShowDisableModal(true)}
-                  disabled={actionLoading}
-                  className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700 disabled:opacity-50"
+                  onClick={() => {
+                    if (isDemoMode) {
+                      return;
+                    }
+                    setShowDisableModal(true);
+                  }}
+                  disabled={isDemoMode || actionLoading}
+                  className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
+                  title={isDemoMode ? "Demo mode actions are disabled" : undefined}
                 >
-                  Disable Account
+                  {isDemoMode ? "Disable Unavailable (Demo)" : "Disable Account"}
                 </button>
               )}
             </div>
@@ -418,16 +517,16 @@ export default function UserDetailPage() {
           )}
 
           {/* Data Requests */}
-          {(dataRequests.exportRequested || dataRequests.deletionRequested) && (
+          {hasDataRequests && (
             <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
               <h2 className="mb-4 text-lg font-semibold text-hot-pink">Data Requests</h2>
               <div className="space-y-2 text-sm">
-                {dataRequests.exportRequested && (
+                {dataRequests?.exportRequested && (
                   <div className="text-gray-300">
                     Export requested: {new Date(dataRequests.exportRequested).toLocaleDateString()}
                   </div>
                 )}
-                {dataRequests.deletionRequested && (
+                {dataRequests?.deletionRequested && (
                   <div className="text-red-400">
                     ⚠️ Deletion requested:{" "}
                     {new Date(dataRequests.deletionRequested).toLocaleDateString()}
@@ -439,7 +538,7 @@ export default function UserDetailPage() {
         </div>
 
         {/* Disable Modal */}
-        {showDisableModal && (
+        {showDisableModal && !isDemoMode && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
             <div className="w-full max-w-md rounded-2xl border border-white/10 bg-black p-6">
               <h3 className="text-xl font-semibold text-white mb-4">

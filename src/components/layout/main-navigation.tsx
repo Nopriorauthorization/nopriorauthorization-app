@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { useSession, signOut } from "next-auth/react";
+// import { useSession, signOut } from "next-auth/react";
 import Button from "@/components/ui/button";
 
 const marketingLinks = [
@@ -17,54 +17,16 @@ const marketingLinks = [
   { label: "Settings", href: "/settings" },
 ];
 
-const appLinks = [
-  { label: "Home", href: "/" },
-  { label: "Blueprint", href: "/blueprint" },
-  { label: "Treatments", href: "/treatments" },
-  { label: "Sacred Vault", href: "/vault", dynamic: true },
-  { label: "Health Decoder", href: "/vault/decoder", icon: "🏥" },
-  { label: "Life Changing Diagnosis", href: "/vault/priority", icon: "🛡️" },
-  { label: "Chat", href: "/chat" },
-  { label: "Settings", href: "/settings" },
-]
+// No appLinks: all navigation is public
 
 export default function MainNavigation() {
-  const { data: session } = useSession();
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [vaultName, setVaultName] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchVaultName() {
-      if (session?.user) {
-        try {
-          const res = await fetch("/api/vault/settings");
-          if (res.ok) {
-            const data = await res.json();
-            setVaultName(data.vaultName);
-          }
-        } catch (error) {
-          console.error("Failed to fetch vault name:", error);
-        }
-      }
-    }
-
-    fetchVaultName();
-  }, [session]);
 
   const directNavigate = (href: string) => {
     router.push(href);
     setOpen(false);
-  };
-
-  const isAppNav = Boolean(session);
-
-  const getDisplayLabel = (link: { label: string; dynamic?: boolean }) => {
-    if (link.dynamic && link.label === "Sacred Vault" && vaultName) {
-      return vaultName;
-    }
-    return link.label;
   };
 
   const renderLinks = (links: { label: string; href: string; dynamic?: boolean; icon?: string }[]) =>
@@ -77,7 +39,7 @@ export default function MainNavigation() {
         }`}
       >
         {link.icon && <span>{link.icon}</span>}
-        {getDisplayLabel(link)}
+        {link.label}
       </button>
     ));
 
@@ -91,40 +53,22 @@ export default function MainNavigation() {
           </div>
         </Link>
         <div className="hidden items-center gap-6 md:flex">
-          {!isAppNav && renderLinks(marketingLinks)}
-          {isAppNav && renderLinks(appLinks)}
+          {renderLinks(marketingLinks)}
         </div>
         <div className="hidden items-center gap-3 md:flex">
-          {!isAppNav && (
-            <Link
-              href="/subscribe"
-              className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              View Plans
-            </Link>
-          )}
+          <Link
+            href="/subscribe"
+            className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            View Plans
+          </Link>
           <button
             onClick={() => router.push("/blueprint")}
             className="rounded-full bg-hot-pink px-4 py-2 text-sm font-semibold text-black transition hover:bg-pink-500"
           >
             Open Blueprint
           </button>
-          {session && (
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-white"
-              onClick={() => signOut()}
-            >
-              Log out
-            </Button>
-          )}
         </div>
-        {session && (
-          <div className="hidden md:flex items-center justify-end text-xs text-white/70">
-            Upgrade to Blueprint to unlock exports, docs, and secure sharing.
-          </div>
-        )}
         <button
           className="ml-auto text-sm text-white md:hidden"
           onClick={() => setOpen((prev) => !prev)}
@@ -134,13 +78,7 @@ export default function MainNavigation() {
       </div>
       {open && (
         <div className="mt-3 flex flex-col gap-3 border-t border-white/5 pt-3 md:hidden">
-          {!isAppNav && renderLinks(marketingLinks)}
-          {isAppNav && renderLinks(appLinks)}
-          {session && (
-            <p className="text-xs text-center text-white/70">
-              Upgrade to Blueprint to unlock exports, docs, and secure sharing.
-            </p>
-          )}
+          {renderLinks(marketingLinks)}
         </div>
       )}
     </header>

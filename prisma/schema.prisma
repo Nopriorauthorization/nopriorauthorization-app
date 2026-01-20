@@ -41,6 +41,7 @@ model User {
   chatSessions        ChatSession[]
   subscription        Subscription?
   memory              UserMemory?
+  blueprint           Blueprint?
   disableEvents       UserDisableEvent[]
   passwordResetTokens PasswordResetToken[]
   consentChangeLogs   ConsentChangeLog[]
@@ -97,6 +98,26 @@ model UserMemory {
   user                   User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([anonId])
+}
+
+model Blueprint {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Blueprint Sections
+  identityContext      Json? // Personal identity, values, context
+  healthFoundations    Json? // Core health conditions, diagnoses
+  treatments           Json? // Current and past treatments, medications
+  timeline             Json? // Health journey timeline, milestones
+  documents            Json? // Key documents, media references
+  providers            Json? // Care team, providers, relationships
+  preparation          Json? // Advocacy prep, questions, goals
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 enum DocumentCategory {

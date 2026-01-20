@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 type VisitPrepData = {
   upcomingAppointments: any[];
@@ -18,23 +17,36 @@ type VisitPrepData = {
 };
 
 export default function VisitPrepPage() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
+  const { status } = useSession();
   const [data, setData] = useState<VisitPrepData | null>(null);
   const [loading, setLoading] = useState(true);
   const [calendarEvents, setCalendarEvents] = useState<any[]>([]);
   const [calendarConnected, setCalendarConnected] = useState(false);
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login");
-    }
-  }, [status, router]);
+  const demoVisitPrep: VisitPrepData = {
+    upcomingAppointments: [],
+    questionsToAsk: [],
+    thingsToBring: [],
+    pendingFollowUps: [],
+    recentChanges: [],
+    discussionItems: [],
+    careTeamContext: [],
+    isEmpty: true,
+    generatedAt: new Date().toISOString(),
+  };
 
   useEffect(() => {
     if (status === "authenticated") {
       fetchVisitPrep();
       fetchCalendarEvents();
+      return;
+    }
+
+    if (status === "unauthenticated") {
+      setData(demoVisitPrep);
+      setCalendarEvents([]);
+      setCalendarConnected(false);
+      setLoading(false);
     }
   }, [status]);
 

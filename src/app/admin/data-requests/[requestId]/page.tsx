@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
 interface DataRequestDetail {
   id: string;
@@ -35,14 +35,33 @@ const typeLabels: Record<string, string> = {
   deletion: "Account Deletion",
 };
 
+const demoDataRequest: DataRequestDetail = {
+  id: "demo-request",
+  user: {
+    id: "demo-user",
+    email: "guest@example.com",
+    name: "Guest User",
+    createdAt: new Date("2023-01-01T00:00:00Z").toISOString(),
+  },
+  requestType: "export",
+  status: "pending",
+  requestedAt: new Date("2024-01-15T12:00:00Z").toISOString(),
+  fulfilledAt: null,
+  fulfilledBy: null,
+  cancelledAt: null,
+  cancelledBy: null,
+  cancellationReason: null,
+  notes: "Demo showcase request for preview purposes.",
+};
+
 export default function DataRequestDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const requestId = params.requestId as string;
 
   const [request, setRequest] = useState<DataRequestDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isDemoMode, setIsDemoMode] = useState(false);
 
   // Action state
   const [showFulfillModal, setShowFulfillModal] = useState(false);
@@ -54,13 +73,17 @@ export default function DataRequestDetailPage() {
   const fetchRequest = async () => {
     setLoading(true);
     setError(null);
+    setIsDemoMode(false);
 
     try {
       const response = await fetch(`/api/admin/data-requests/${requestId}`);
       
       if (!response.ok) {
-        if (response.status === 403) {
-          window.location.href = "/login?callbackUrl=/admin/data-requests";
+        if (response.status === 401 || response.status === 403) {
+          setIsDemoMode(true);
+          const demoRequest = { ...demoDataRequest, id: requestId };
+          setRequest(demoRequest);
+          setFulfillNotes(demoRequest.notes || "");
           return;
         }
         if (response.status === 404) {
@@ -85,6 +108,10 @@ export default function DataRequestDetailPage() {
   }, [requestId]);
 
   const handleFulfill = async () => {
+    if (isDemoMode) {
+      alert("Demo mode: actions are disabled.");
+      return;
+    }
     setActionLoading(true);
 
     try {
@@ -109,6 +136,10 @@ export default function DataRequestDetailPage() {
   };
 
   const handleCancel = async () => {
+    if (isDemoMode) {
+      alert("Demo mode: actions are disabled.");
+      return;
+    }
     if (!cancelReason || cancelReason.trim().length < 5) {
       alert("Cancellation reason required (min 5 characters)");
       return;
@@ -177,6 +208,8 @@ export default function DataRequestDetailPage() {
   }
 
   const canTakeAction = request.status === "pending" || request.status === "in_progress";
+  const showActions = canTakeAction && !isDemoMode;
+  const requestTypeLabel = typeLabels[request.requestType] || request.requestType;
 
   return (
     <div className="p-6">
@@ -198,22 +231,32 @@ export default function DataRequestDetailPage() {
         </div>
       </div>
 
+      {isDemoMode && (
+        <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded mb-6">
+          You are viewing a demo data request. Administrative actions are disabled in this preview mode.
+        </div>
+      )}
+
       {/* Request Information */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
         <h2 className="text-xl font-semibold mb-4">Request Information</h2>
         <div className="grid grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-medium text-gray-600">User</label>
-            <Link
-              href={`/admin/users/${request.user.id}`}
-              className="text-blue-600 hover:text-blue-800 text-lg"
-            >
-              {request.user.email}
-            </Link>
+            {isDemoMode ? (
+              <span className="text-lg text-gray-700">{request.user.email}</span>
+            ) : (
+              <Link
+                href={`/admin/users/${request.user.id}`}
+                className="text-blue-600 hover:text-blue-800 text-lg"
+              >
+                {request.user.email}
+              </Link>
+            )}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-600">Request Type</label>
-            <p className="text-lg">{typeLabels[request.requestType] || request.requestType}</p>
+            <p className="text-lg">{requestTypeLabel}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-600">Requested Date</label>
@@ -268,7 +311,7 @@ export default function DataRequestDetailPage() {
       )}
 
       {/* Actions */}
-      {canTakeAction && (
+      {showActions && (
         <div className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-4">Actions</h2>
           <div className="flex gap-4">
@@ -294,7 +337,7 @@ export default function DataRequestDetailPage() {
           <div className="bg-white rounded-lg p-6 max-w-md w-full">
             <h3 className="text-xl font-semibold mb-4">Mark Request as Fulfilled</h3>
             <p className="text-gray-600 mb-4">
-              Confirm that this {typeLabels[request.requestType].toLowerCase()} request has been completed.
+              Confirm that this {requestTypeLabel.toLowerCase()} request has been completed.
             </p>
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2">Admin Notes (Optional)</label>

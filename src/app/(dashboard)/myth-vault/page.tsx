@@ -1,8 +1,5 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import Providers from "@/components/layout/providers";
 import Header from "@/components/layout/header";
 import DashboardNav from "@/components/layout/nav";
@@ -72,27 +69,6 @@ const myths = [
 ];
 
 export default function MythVaultPage() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login?callbackUrl=/myth-vault");
-    }
-  }, [status, router]);
-
-  if (status === "loading") {
-    return (
-      <Providers>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
-        </div>
-      </Providers>
-    );
-  }
-
-  if (!session) return null;
-
   return (
     <Providers>
       <div className="min-h-screen flex flex-col bg-gray-50">

@@ -30,11 +30,49 @@ type Pagination = {
   pages: number;
 };
 
+const demoUsers: User[] = [
+  {
+    id: "demo-user-1",
+    email: "guest.patient@example.com",
+    name: "Guest Patient",
+    role: "PATIENT",
+    isDisabled: false,
+    createdAt: new Date("2023-07-15T15:30:00Z").toISOString(),
+    lastAccessAt: new Date("2024-02-12T09:15:00Z").toISOString(),
+  },
+  {
+    id: "demo-user-2",
+    email: "guest.provider@example.com",
+    name: "Guest Provider",
+    role: "PROVIDER",
+    isDisabled: false,
+    createdAt: new Date("2022-11-03T10:00:00Z").toISOString(),
+    lastAccessAt: new Date("2024-03-01T18:45:00Z").toISOString(),
+  },
+  {
+    id: "demo-user-3",
+    email: "guest.admin@example.com",
+    name: "Guest Admin",
+    role: "ADMIN",
+    isDisabled: false,
+    createdAt: new Date("2021-05-22T20:00:00Z").toISOString(),
+    lastAccessAt: null,
+  },
+];
+
+const demoPagination: Pagination = {
+  page: 1,
+  limit: 10,
+  total: demoUsers.length,
+  pages: 1,
+};
+
 export default function UsersPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isDemoMode, setIsDemoMode] = useState(false);
 
   // Filters
   const [search, setSearch] = useState("");
@@ -46,6 +84,7 @@ export default function UsersPage() {
   const fetchUsers = async () => {
     setLoading(true);
     setError(null);
+    setIsDemoMode(false);
 
     try {
       const params = new URLSearchParams({
@@ -58,8 +97,10 @@ export default function UsersPage() {
       const response = await fetch(`/api/admin/users?${params}`);
       
       if (!response.ok) {
-        if (response.status === 403) {
-          window.location.href = "/login?callbackUrl=/admin/users";
+        if (response.status === 401 || response.status === 403) {
+          setIsDemoMode(true);
+          setUsers(demoUsers);
+          setPagination(demoPagination);
           return;
         }
         throw new Error("Failed to fetch users");
@@ -111,6 +152,12 @@ export default function UsersPage() {
             User lookup, role visibility, account status management
           </p>
         </div>
+
+        {isDemoMode && (
+          <div className="mb-6 rounded-2xl border border-blue-500/40 bg-blue-500/10 p-4 text-sm text-blue-200">
+            You are viewing demo user records. Account management actions are turned off in this public preview.
+          </div>
+        )}
 
         {/* Filters */}
         <div className="mb-6 flex gap-4">

@@ -50,7 +50,8 @@ const VAULT_FEATURES: VaultFeature[] = [
     description: "AI-generated prep questions before appointments — based on your meds, treatments, and goals.",
     tier: "instant",
     icon: "❓",
-    status: "coming-soon",
+    status: "active",
+    href: "/vault/questions-i-should-ask",
   },
 
   // SMART CAPTURE (One-Tap Magic)
@@ -69,7 +70,8 @@ const VAULT_FEATURES: VaultFeature[] = [
     description: "AI compares progress photos, highlights changes, and tracks results over time.",
     tier: "capture",
     icon: "🖼️",
-    status: "coming-soon",
+    status: "active",
+    href: "/vault/before-after-gallery",
   },
   {
     id: "decoder",
@@ -95,7 +97,8 @@ const VAULT_FEATURES: VaultFeature[] = [
     description: "Post-appointment brain dump → transcribed, organized, and searchable. Just talk.",
     tier: "capture",
     icon: "🎙️",
-    status: "coming-soon",
+    status: "active",
+    href: "/vault/voice-memos",
   },
 
   // MY RESOURCES (Always Ready)
@@ -114,7 +117,8 @@ const VAULT_FEATURES: VaultFeature[] = [
     description: "Rate and tag providers — trustworthy, pushy, amazing. Your private notes, always accessible.",
     tier: "power",
     icon: "⭐",
-    status: "coming-soon",
+    status: "active",
+    href: "/vault/provider-tracker",
   },
   {
     id: "red-flags",
@@ -122,7 +126,8 @@ const VAULT_FEATURES: VaultFeature[] = [
     description: "AI watches for drug interactions, timing conflicts, and safety issues — before they become problems.",
     tier: "power",
     icon: "🚩",
-    status: "coming-soon",
+    status: "active",
+    href: "/vault/red-flags-monitor",
   },
   {
     id: "trusted-circle",

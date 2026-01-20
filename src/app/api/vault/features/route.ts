@@ -7,7 +7,13 @@ export async function GET(req: NextRequest) {
     const identity = await resolveDocumentIdentity(req);
     
     if (!identity.userId && !identity.anonId) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      // Return empty vault data for anonymous users
+      return NextResponse.json({
+        features: [],
+        stats: { documents: 0, chats: 0, appointments: 0, decoded: 0 },
+        vaultName: null,
+        isEmpty: true,
+      });
     }
 
     const { userId, anonId } = identity;

@@ -87,19 +87,17 @@ export default function VoiceMemosPage() {
   const uploadAndTranscribe = async (audioBlob: Blob) => {
     setIsProcessing(true);
     try {
-      // TODO: Upload audio to storage (S3, Cloudinary, etc.)
-      // For now, we'll use a data URL as a placeholder
-      const audioUrl = URL.createObjectURL(audioBlob);
-      
-      // Create the memo first
+      // Upload audio file to Supabase Storage
+      const audioFile = new File([audioBlob], "memo.webm", { type: "audio/webm" });
+      const formData = new FormData();
+      formData.append("audio", audioFile);
+      formData.append("title", `Memo ${new Date().toLocaleDateString()}`);
+      formData.append("duration", recordingTime.toString());
+
+      // Create memo with audio upload
       const createRes = await fetch("/api/vault/voice-memos", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          audioUrl,
-          title: `Memo ${new Date().toLocaleDateString()}`,
-          duration: recordingTime,
-        }),
+        body: formData,
       });
 
       if (!createRes.ok) {
@@ -108,16 +106,14 @@ export default function VoiceMemosPage() {
 
       const { memo } = await createRes.json();
 
-      // Convert blob to File for transcription
-      const audioFile = new File([audioBlob], "memo.webm", { type: "audio/webm" });
-      const formData = new FormData();
-      formData.append("audio", audioFile);
-      formData.append("memoId", memo.id);
-
       // Transcribe the audio
+      const transcribeFormData = new FormData();
+      transcribeFormData.append("audio", audioFile);
+      transcribeFormData.append("memoId", memo.id);
+
       const transcribeRes = await fetch("/api/vault/voice-memos/transcribe", {
         method: "POST",
-        body: formData,
+        body: transcribeFormData,
       });
 
       if (transcribeRes.ok) {

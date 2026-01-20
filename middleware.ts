@@ -65,4 +65,7 @@ export default withAuth(
 // ✅ Exclude public API routes from middleware entirely
 export const config = {
   matcher: ["/((?!api/vault|api/stripe/webhook|_next|favicon.ico).*)"],
+// ✅ Exclude API routes from middleware entirely
+export const config = {
+  matcher: ["/((?!api/).*)"],
 };

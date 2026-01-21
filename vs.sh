@@ -1,0 +1,1 @@
+cat /Users/danid/ask-beau-tox/prisma/schema.prisma

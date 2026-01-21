@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/lib/db";
-import { resolveDocumentIdentity } from "@/lib/documents/server";
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/db";
+import { cookies } from "next/headers";
 import { Prisma } from "@prisma/client";
 
 interface ChatMessage {
@@ -61,6 +61,7 @@ function extractHealthTopics(chatSessions: any[]): HealthTopic[] {
     });
   });
 
+  // Convert to array and sort by count
   return Array.from(topicMap.entries())
     .map(([topic, data]) => ({
       topic,
@@ -76,26 +77,27 @@ function extractHealthTopics(chatSessions: any[]): HealthTopic[] {
     .slice(0, 8);
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
-    const identity = await resolveDocumentIdentity(req);
-    if (!identity.userId && !identity.anonId) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const cookieStore = await cookies();
+    const anonId = cookieStore.get("anon_id")?.value || cookieStore.get("npa_uid")?.value;
+
+    if (!anonId) {
+      return NextResponse.json(
+        { error: "No user identified" },
+        { status: 401 }
+      );
     }
 
-    const where = identity.userId 
-      ? { userId: identity.userId } 
-      : { anonId: identity.anonId };
+    // Get or create user memory
+    let userMemory = await prisma.userMemory.findFirst({
+      where: { anonId }
+    });
 
-    // Get user memory for goals/preferences
-    let userMemory = identity.anonId
-      ? await prisma.userMemory.findFirst({ where: { anonId: identity.anonId } })
-      : null;
-
-    if (!userMemory && identity.anonId) {
+    if (!userMemory) {
       userMemory = await prisma.userMemory.create({
         data: {
-          anonId: identity.anonId,
+          anonId,
           vaultName: null,
           goals: Prisma.JsonNull,
           preferences: Prisma.JsonNull,
@@ -104,62 +106,55 @@ export async function GET(req: NextRequest) {
       });
     }
 
-    // Fetch all user data in parallel
-    const [
-      chatSessions,
-      documents,
-      appointments,
-      providers,
-      decodedDocs
-    ] = await Promise.all([
-      prisma.chatSession.findMany({
-        where,
-        orderBy: { updatedAt: "desc" }
-      }),
-      prisma.document.findMany({
-        where,
-        orderBy: { docDate: "desc" },
-        take: 5
-      }),
-      prisma.appointment.findMany({
-        where: {
-          ...where,
-          appointmentDate: { gte: new Date() }
-        },
-        orderBy: { appointmentDate: "asc" },
-        take: 3
-      }),
-      prisma.provider.findMany({
-        where,
-        orderBy: { createdAt: "desc" }
-      }),
-      prisma.documentDecode.count({
-        where: {
-          document: where
-        }
-      })
-    ]);
+    // Find user by userMemory (if linked)
+    const user = userMemory.userId
+      ? await prisma.user.findUnique({
+          where: { id: userMemory.userId }
+        })
+      : null;
+
+    // Fetch chat sessions (only if user exists)
+    const chatSessions = user
+      ? await prisma.chatSession.findMany({
+          where: {
+            userId: user.id
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+      : [];
 
     // Extract health topics from chats
     const healthTopics = extractHealthTopics(chatSessions);
 
-    // Update topicsDiscussed in background (fire-and-forget)
-    if (healthTopics.length > 0 && userMemory) {
+    // Async update topicsDiscussed in background (fire-and-forget)
+    if (healthTopics.length > 0) {
       prisma.userMemory.update({
         where: { id: userMemory.id },
-        data: { topicsDiscussed: healthTopics as any }
+        data: {
+          topicsDiscussed: healthTopics as any
+        }
       }).catch((err) => console.error("Failed to update topics:", err));
     }
 
-    const isEmpty = documents.length === 0 && 
-                    chatSessions.length === 0 && 
-                    appointments.length === 0 &&
-                    providers.length === 0;
+    // Fetch documents (only if user exists)
+    const documents = user
+      ? await prisma.document.findMany({
+          where: {
+            userId: user.id
+          },
+          orderBy: {
+            docDate: "desc"
+          },
+          take: 5
+        })
+      : [];
 
     const snapshot = {
-      vaultName: userMemory?.vaultName || "My Sacred Vault",
-      goals: userMemory?.goals || [],
-      preferences: userMemory?.preferences || {},
+      vaultName: userMemory.vaultName || "My Sacred Vault",
+      goals: userMemory.goals,
+      preferences: userMemory.preferences,
       healthTopics,
       chatSummary: {
         totalChats: chatSessions.length,
@@ -169,41 +164,8 @@ export async function GET(req: NextRequest) {
         id: doc.id,
         title: doc.title,
         category: doc.category,
-        date: doc.docDate?.toLocaleDateString("en-US", {
-          month: "short",
-          day: "numeric",
-          year: "numeric"
-        }) || "No date"
-      })),
-      upcomingAppointments: appointments.map((apt) => ({
-        id: apt.id,
-        providerName: apt.providerName,
-        specialty: apt.providerSpecialty,
-        date: apt.appointmentDate.toLocaleDateString("en-US", {
-          month: "short",
-          day: "numeric",
-          year: "numeric"
-        }),
-        time: apt.appointmentDate.toLocaleTimeString("en-US", {
-          hour: "numeric",
-          minute: "2-digit",
-          hour12: true
-        }),
-        type: apt.appointmentType
-      })),
-      providers: providers.map((p) => ({
-        id: p.id,
-        name: p.name,
-        specialty: p.specialty
-      })),
-      stats: {
-        documents: documents.length,
-        chats: chatSessions.length,
-        appointments: appointments.length,
-        providers: providers.length,
-        decoded: decodedDocs
-      },
-      isEmpty
+        docDate: doc.docDate
+      }))
     };
 
     return NextResponse.json(snapshot);

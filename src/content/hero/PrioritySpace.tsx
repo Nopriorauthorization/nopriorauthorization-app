@@ -531,7 +531,7 @@ export default function PrioritySpace() {
                 <>
                   <li className="flex items-start gap-3">
                     <span className="flex items-center justify-center w-6 h-6 rounded-full bg-green-500/20 text-green-400 font-bold text-sm flex-shrink-0">1</span>
-                    <span className="text-gray-300">Schedule appointment with primary care or specialist within 1-2 weeks (don't wait months)</span>
+                    <span className="text-gray-300">Schedule appointment with primary care or specialist within 1-2 weeks (don&apos;t wait months)</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="flex items-center justify-center w-6 h-6 rounded-full bg-green-500/20 text-green-400 font-bold text-sm flex-shrink-0">2</span>
@@ -777,7 +777,7 @@ export default function PrioritySpace() {
         <div>
           <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
             <span>⚡</span>
-            What's happening right now?
+            What&apos;s happening right now?
           </h3>
           <div className="grid gap-4 md:grid-cols-2">
             {scenarios.map(scenario => (
@@ -932,7 +932,7 @@ export default function PrioritySpace() {
         <div className="flex items-start gap-4">
           <div className="text-3xl">💙</div>
           <div>
-            <h4 className="font-semibold text-white mb-2">You're not alone</h4>
+            <h4 className="font-semibold text-white mb-2">You&apos;re not alone</h4>
             <p className="text-gray-300 text-sm">
               Millions of people face scary health moments every year. Having information, support, and a plan makes all the difference. 
               Everything here is private by default—nothing is shared unless you choose to export it.

@@ -52,39 +52,28 @@ Return your response as a JSON object with this exact structure:
 }`;
 
 export async function decodeDocument(extractedText: string): Promise<DecodedResult> {
-  try {
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4-turbo-preview",
-      messages: [
-        {
-          role: "system",
-          content: DECODER_PROMPT,
-        },
-        {
-          role: "user",
-          content: `Please decode this medical document:\n\n${extractedText}`,
-        },
-      ],
-      response_format: { type: "json_object" },
-      temperature: 0.7,
-      max_tokens: 2000,
-    });
+  // 🚨 HIPAA COMPLIANCE: External AI processing disabled
+  // This function previously sent PHI to OpenAI without BAA
+  console.warn("🚨 HIPAA COMPLIANCE: External AI processing disabled. Document decoding is currently unavailable to prevent PHI transmission to third-party services.");
 
-    const content = completion.choices[0]?.message?.content;
-    if (!content) {
-      throw new Error("No response from AI");
-    }
-
-    const decoded = JSON.parse(content) as DecodedResult;
-    
-    // Validate the structure
-    if (!decoded.summary || !decoded.keyTerms || !decoded.questions || !decoded.nextSteps) {
-      throw new Error("Invalid response structure from AI");
-    }
-
-    return decoded;
-  } catch (error) {
-    console.error("Error decoding document with AI:", error);
-    throw new Error("Failed to decode document. Please try again.");
-  }
+  return {
+    summary: "⚠️ Document decoding is temporarily unavailable due to HIPAA compliance requirements. We are working to implement secure, client-side processing that protects your health information.",
+    keyTerms: [
+      {
+        term: "HIPAA Compliance",
+        definition: "Health Insurance Portability and Accountability Act - federal law protecting patient privacy",
+        category: "regulation"
+      }
+    ],
+    questions: [
+      "How can I access my health information securely?",
+      "What privacy protections are in place for my medical data?"
+    ],
+    nextSteps: [
+      "Contact your healthcare provider directly for document interpretation",
+      "Use our HIPAA-compliant lab decoder for test results",
+      "Review your documents manually or with trusted family members"
+    ],
+    safetyNote: "This is an educational tool. Always consult your healthcare provider for medical advice and document interpretation."
+  };
 }

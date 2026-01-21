@@ -48,7 +48,7 @@ export default function VisitPrepPage() {
       setCalendarConnected(false);
       setLoading(false);
     }
-  }, [status]);
+  }, [status, demoVisitPrep]);
 
   const fetchVisitPrep = async () => {
     try {
@@ -371,7 +371,7 @@ export default function VisitPrepPage() {
           <div className="bg-white/5 border border-white/10 rounded-lg p-6">
             <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
               <span>📝</span>
-              What's Changed Recently
+              WhatWhat's Changedapos;s Changed Recently
             </h2>
             <div className="space-y-3">
               {data.recentChanges.map((change: any, idx: number) => (

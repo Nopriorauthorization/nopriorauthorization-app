@@ -10,7 +10,7 @@
  * - Does NOT display: Clinical content, chat history, documents
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 type User = {
@@ -81,7 +81,7 @@ export default function UsersPage() {
   const [page, setPage] = useState(1);
 
   // Fetch users
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     setLoading(true);
     setError(null);
     setIsDemoMode(false);
@@ -114,12 +114,12 @@ export default function UsersPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, role, status, search]);
 
   // Fetch on mount and filter changes
   useEffect(() => {
     fetchUsers();
-  }, [page, role, status, search]);
+  }, [fetchUsers]);
 
   // Format timestamp
   const formatTimestamp = (timestamp: string | null) => {

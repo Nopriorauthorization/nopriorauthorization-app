@@ -356,7 +356,7 @@ export default function AIWellnessCoach() {
 
       {/* Today's Focus */}
       <div className="rounded-xl border border-white/10 bg-white/5 p-6">
-        <h3 className="text-lg font-semibold mb-4">Today's Wellness Focus</h3>
+        <h3 className="text-lg font-semibold mb-4">Today&apos;s Wellness Focus</h3>
         <div className="grid gap-4 md:grid-cols-2">
           <div className="rounded-lg bg-blue-500/10 border border-blue-500/30 p-4">
             <div className="flex items-center gap-2 mb-2">

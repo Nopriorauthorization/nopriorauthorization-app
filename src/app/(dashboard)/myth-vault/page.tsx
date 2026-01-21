@@ -96,7 +96,7 @@ export default function MythVaultPage() {
                         {item.category}
                       </span>
                       <h3 className="font-semibold text-lg mb-2 text-red-700">
-                        "{item.myth}"
+                        &quot;{item.myth}&quot;
                       </h3>
                       <div className="flex items-start gap-3 mt-4">
                         <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-sm">

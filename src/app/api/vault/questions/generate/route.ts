@@ -76,39 +76,36 @@ For each question provide:
 Return ONLY valid JSON array:
 [{"question":"...","category":"...","priority":"...","reasoning":"..."}]`;
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content: "You are a patient advocate. Generate helpful appointment questions. Always return valid JSON.",
-        },
-        { role: "user", content: promptText },
-      ],
-      temperature: 0.7,
-      max_tokens: 2000,
-    });
+    // 🚨 HIPAA COMPLIANCE: External AI processing disabled
+    // Previously sent health data to OpenAI without BAA
+    console.warn("🚨 HIPAA COMPLIANCE: AI question generation is temporarily unavailable to prevent PHI transmission to third-party services.");
 
-    const responseText = completion.choices[0]?.message?.content?.trim() || "[]";
-
-    // Parse AI response
-    let questionsData: Array<{
-      question: string;
-      category: string;
-      priority: "high" | "medium" | "low";
-      reasoning?: string;
-    }>;
-
-    try {
-      questionsData = JSON.parse(responseText);
-    } catch (parseError) {
-      const jsonMatch = responseText.match(/```(?:json)?\n?([\s\S]*?)\n?```/);
-      if (jsonMatch) {
-        questionsData = JSON.parse(jsonMatch[1]);
-      } else {
-        throw new Error("Failed to parse AI response");
+    const questionsData = [
+      {
+        question: "⚠️ AI question generation is currently disabled due to HIPAA compliance requirements.",
+        category: "compliance",
+        priority: "high" as const,
+        reasoning: "Protecting your health information privacy"
+      },
+      {
+        question: "What are the potential risks and benefits of my treatment options?",
+        category: "treatment",
+        priority: "high" as const,
+        reasoning: "Understanding treatment choices is essential for informed decision making"
+      },
+      {
+        question: "How will this affect my daily life and activities?",
+        category: "lifestyle",
+        priority: "medium" as const,
+        reasoning: "Practical impact assessment helps with planning and expectations"
+      },
+      {
+        question: "What should I monitor and when should I contact you?",
+        category: "followup",
+        priority: "high" as const,
+        reasoning: "Knowing warning signs ensures timely medical attention"
       }
-    }
+    ];
 
     // Add IDs
     const questions = questionsData.map((q, i) => ({

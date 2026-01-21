@@ -161,6 +161,31 @@ export default function AdvancedAnalyticsDashboard() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="max-w-7xl mx-auto p-6">
+        {/* Hero Video Section */}
+        <div className="mb-8">
+          <div className="relative rounded-xl overflow-hidden bg-gray-900">
+            <video
+              className="w-full h-auto max-h-96 object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="/hero-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">
+                No Prior Authorization
+              </h1>
+              <p className="text-gray-200 text-lg">
+                Revolutionizing healthcare with instant toxicology expertise
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">

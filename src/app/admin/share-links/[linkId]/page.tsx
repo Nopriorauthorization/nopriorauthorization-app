@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -37,11 +37,7 @@ export default function ShareLinkDetailPage({ params }: { params: { linkId: stri
   const [revokeReason, setRevokeReason] = useState("");
   const [revoking, setRevoking] = useState(false);
 
-  useEffect(() => {
-    fetchShareDetails();
-  }, []);
-
-  const fetchShareDetails = async () => {
+  const fetchShareDetails = useCallback(async () => {
     setLoading(true);
     try {
       const response = await fetch(`/api/admin/share-links/${params.linkId}`);
@@ -54,7 +50,11 @@ export default function ShareLinkDetailPage({ params }: { params: { linkId: stri
     } finally {
       setLoading(false);
     }
-  };
+  }, [params.linkId]);
+
+  useEffect(() => {
+    fetchShareDetails();
+  }, [fetchShareDetails]);
 
   const handleRevoke = async () => {
     setRevoking(true);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 interface Share {
@@ -31,11 +31,7 @@ export default function ShareLinksPage() {
   const [status, setStatus] = useState("all");
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    fetchShares();
-  }, [page, status]);
-
-  const fetchShares = async () => {
+  const fetchShares = useCallback(async () => {
     setLoading(true);
     try {
       const params = new URLSearchParams({
@@ -54,7 +50,11 @@ export default function ShareLinksPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, status, search]);
+
+  useEffect(() => {
+    fetchShares();
+  }, [fetchShares]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

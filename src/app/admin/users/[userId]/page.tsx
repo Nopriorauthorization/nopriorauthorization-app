@@ -6,7 +6,7 @@
  * PHASE 2A.2 — Individual user management with disable/enable
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -122,7 +122,7 @@ export default function UserDetailPage() {
   const [actionLoading, setActionLoading] = useState(false);
 
   // Fetch user detail
-  const fetchUserDetail = async () => {
+  const fetchUserDetail = useCallback(async () => {
     setLoading(true);
     setError(null);
     setIsDemoMode(false);
@@ -175,11 +175,11 @@ export default function UserDetailPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [userId]);
 
   useEffect(() => {
     fetchUserDetail();
-  }, [userId]);
+  }, [userId, fetchUserDetail]);
 
   // Handle disable
   const handleDisable = async () => {

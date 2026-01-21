@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 interface ConsentLog {
@@ -43,11 +43,7 @@ export default function ConsentHistoryPage() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  useEffect(() => {
-    fetchLogs();
-  }, [page, consentType, startDate, endDate]);
-
-  const fetchLogs = async () => {
+  const fetchLogs = useCallback(async () => {
     setLoading(true);
     setError("");
 
@@ -71,7 +67,11 @@ export default function ConsentHistoryPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, search, consentType, startDate, endDate]);
+
+  useEffect(() => {
+    fetchLogs();
+  }, [fetchLogs]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

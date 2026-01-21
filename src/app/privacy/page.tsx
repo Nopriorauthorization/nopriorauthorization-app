@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
             <p className="text-gray-700">
-              No Prior Authorization ("we," "our," or "us") is committed to
+              No Prior Authorization (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to
               protecting your privacy. This Privacy Policy explains how we collect,
               use, store, and protect information when you use our website and
               application.

@@ -98,7 +98,7 @@ export default function WhatNoOneTellsYouPage() {
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-2">What No One Tells You</h1>
             <p className="text-gray-600">
-              The honest, real-talk details about Botox that you won't find in most
+              The honest, real-talk details about Botox that you wonyou won't findapos;t find in most
               marketing materials.
             </p>
           </div>

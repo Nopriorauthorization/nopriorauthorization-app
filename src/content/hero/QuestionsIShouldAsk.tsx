@@ -548,7 +548,7 @@ export default function QuestionsIShouldAsk() {
                   <div className="p-4 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-500/20">
                     <h4 className="font-medium text-purple-400 mb-2">Next Best Question</h4>
                     <p className="text-sm text-gray-300 mb-3">
-                      "How has your energy level changed over the past month?"
+                      &ldquo;How has your energy level changed over the past month?&rdquo;
                     </p>
                     <button className="w-full px-3 py-2 bg-purple-500 hover:bg-purple-600 rounded text-sm font-medium transition">
                       Ask This Question

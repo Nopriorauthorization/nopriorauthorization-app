@@ -27,14 +27,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Transcribe using OpenAI Whisper
-    const transcription = await openai.audio.transcriptions.create({
-      file: audioFile,
-      model: "whisper-1",
-      language: "en", // Can be made dynamic based on user preference
-    });
+    // 🚨 HIPAA COMPLIANCE: External transcription disabled
+    // Previously sent audio PHI to OpenAI Whisper without BAA
+    console.warn("🚨 HIPAA COMPLIANCE: Voice transcription is temporarily unavailable to prevent PHI transmission to third-party services.");
 
-    const transcript = transcription.text;
+    const transcript = "⚠️ Voice transcription is currently disabled due to HIPAA compliance requirements. Audio files containing potential medical information cannot be processed by external services. Please type your notes manually or contact support for secure transcription options.";
 
     // If memoId is provided, update existing memo
     if (memoId) {

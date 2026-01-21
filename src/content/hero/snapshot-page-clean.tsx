@@ -103,7 +103,7 @@ export default function SnapshotPage() {
         {/* Health Topics Section */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-semibold">Health Topics I've Explored</h2>
+            <h2 className="text-2xl font-semibold">Health Topics I&apos;ve Explored</h2>
             {snapshot?.chatSummary && (
               <div className="text-sm text-white/60">
                 {snapshot.chatSummary.totalChats} conversations •{" "}

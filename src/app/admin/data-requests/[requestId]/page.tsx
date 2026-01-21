@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -70,7 +70,7 @@ export default function DataRequestDetailPage() {
   const [cancelReason, setCancelReason] = useState("");
   const [actionLoading, setActionLoading] = useState(false);
 
-  const fetchRequest = async () => {
+  const fetchRequest = useCallback(async () => {
     setLoading(true);
     setError(null);
     setIsDemoMode(false);
@@ -101,11 +101,11 @@ export default function DataRequestDetailPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [requestId]);
 
   useEffect(() => {
     fetchRequest();
-  }, [requestId]);
+  }, [fetchRequest]);
 
   const handleFulfill = async () => {
     if (isDemoMode) {

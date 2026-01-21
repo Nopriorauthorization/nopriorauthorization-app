@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 interface DataRequestItem {
@@ -51,11 +51,7 @@ export default function DataRequestsPage() {
   const [status, setStatus] = useState("all");
   const [requestType, setRequestType] = useState("all");
 
-  useEffect(() => {
-    fetchRequests();
-  }, [page, status, requestType]);
-
-  const fetchRequests = async () => {
+  const fetchRequests = useCallback(async () => {
     setLoading(true);
     setError("");
 
@@ -78,7 +74,11 @@ export default function DataRequestsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, search, status, requestType]);
+
+  useEffect(() => {
+    fetchRequests();
+  }, [fetchRequests]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

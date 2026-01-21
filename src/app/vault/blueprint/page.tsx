@@ -6,6 +6,7 @@ import TimelineSection from "./sections/TimelineSection";
 import DocumentsSection from "./sections/DocumentsSection";
 import ProvidersSection from "./sections/ProvidersSection";
 import PreparationSection from "./sections/PreparationSection";
+import ProviderPacketSection from "./sections/ProviderPacketSection";
 
 export default function BlueprintPage() {
   return (
@@ -21,6 +22,7 @@ export default function BlueprintPage() {
         <DocumentsSection />
         <ProvidersSection />
         <PreparationSection />
+        <ProviderPacketSection />
       </div>
     </main>
   );

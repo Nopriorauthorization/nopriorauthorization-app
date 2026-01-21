@@ -28,102 +28,42 @@ export async function detectDrugInteractions(
     return []; // Need at least 2 medications to check interactions
   }
 
-  try {
-    const medicationList = medications
-      .map((m) => `${m.name}${m.dosage ? ` (${m.dosage})` : ""}`)
-      .join(", ");
+  // 🚨 HIPAA COMPLIANCE: External AI processing disabled
+  // This function previously sent medication data to OpenAI without BAA
+  console.warn("🚨 HIPAA COMPLIANCE: AI drug interaction analysis is temporarily unavailable to prevent PHI transmission to third-party services.");
 
-    const prompt = `You are a medical safety AI. Analyze the following medications for potential drug interactions, contraindications, timing conflicts, and safety concerns.
+  // Return basic local interaction checking using common interactions database
+  const interactions: DrugInteraction[] = [];
+  const medNames = medications.map(m => m.name.toLowerCase());
 
-Medications: ${medicationList}
-
-Identify any:
-1. Drug-drug interactions (critical, warning, or info level)
-2. Contraindications
-3. Timing conflicts (should be taken at different times)
-4. Safety concerns (food interactions, etc.)
-
-Return a JSON array of issues. Each issue should have:
-- type: "interaction" | "contraindication" | "timing" | "safety"
-- severity: "critical" | "warning" | "info"
-- title: Brief title (e.g., "Ibuprofen + Aspirin Interaction")
-- description: Clear explanation of the concern
-- medications: Array of medication names involved
-
-Only include clinically significant interactions. Return empty array if no interactions found.`;
-
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are a medical safety AI specialized in drug interactions. Always provide accurate, evidence-based information. Format responses as JSON.",
-        },
-        { role: "user", content: prompt },
-      ],
-      temperature: 0.3, // Low temperature for medical accuracy
-      response_format: { type: "json_object" },
-    });
-
-    const content = response.choices[0]?.message?.content;
-    if (!content) {
-      return [];
-    }
-
-    const parsed = JSON.parse(content);
-    const interactions = parsed.interactions || parsed.issues || [];
-
-    return interactions;
-  } catch (error) {
-    console.error("Error detecting drug interactions:", error);
-    return [];
+  // Check for warfarin + NSAIDs
+  if (medNames.includes('warfarin') && medNames.some(name => ['ibuprofen', 'aspirin', 'naproxen'].includes(name))) {
+    interactions.push(COMMON_INTERACTIONS['warfarin-nsaids']);
   }
+
+  // Check for SSRI + NSAIDs
+  if (medNames.some(name => ['sertraline', 'fluoxetine', 'paroxetine'].includes(name)) &&
+      medNames.some(name => ['ibuprofen', 'aspirin', 'naproxen'].includes(name))) {
+    interactions.push(COMMON_INTERACTIONS['ssri-nsaids']);
+  }
+
+  // Check for statin + grapefruit (though this is lifestyle, not drug-drug)
+  if (medNames.some(name => ['atorvastatin', 'simvastatin', 'lovastatin'].includes(name))) {
+    interactions.push(COMMON_INTERACTIONS['statin-grapefruit']);
+  }
+
+  return interactions;
 }
 
-// Parse medications from document text using AI
+// 🚨 HIPAA COMPLIANCE: External AI processing disabled
+// This function previously sent medical document text to OpenAI without BAA
 export async function extractMedicationsFromText(
   text: string
 ): Promise<Medication[]> {
-  try {
-    const prompt = `Extract all medication names from the following medical document. Include dosage and frequency if mentioned.
+  console.warn("🚨 HIPAA COMPLIANCE: AI medication extraction is temporarily unavailable to prevent PHI transmission to third-party services.");
 
-Document text: ${text.substring(0, 3000)} // Limit text length
-
-Return a JSON array of medications. Each should have:
-- name: medication name
-- dosage: dosage if mentioned (e.g., "10mg", "500 units")
-- frequency: frequency if mentioned (e.g., "twice daily", "as needed")
-
-Only include actual medications (prescription or OTC drugs). Exclude procedures, conditions, or supplements unless they're important for interactions.`;
-
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are a medical document parser. Extract medication information accurately. Format as JSON.",
-        },
-        { role: "user", content: prompt },
-      ],
-      temperature: 0.2,
-      response_format: { type: "json_object" },
-    });
-
-    const content = response.choices[0]?.message?.content;
-    if (!content) {
-      return [];
-    }
-
-    const parsed = JSON.parse(content);
-    const medications = parsed.medications || [];
-
-    return medications;
-  } catch (error) {
-    console.error("Error extracting medications:", error);
-    return [];
-  }
+  // Return empty array - manual entry required for compliance
+  return [];
 }
 
 // Common drug interactions database (simplified)

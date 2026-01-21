@@ -10,7 +10,7 @@
  * - Does NOT display: Clinical content, chat transcripts, documents
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 type AccessLog = {
@@ -109,7 +109,7 @@ export default function ActivityLogsPage() {
   const [page, setPage] = useState(1);
 
   // Fetch logs
-  const fetchLogs = async () => {
+  const fetchLogs = useCallback(async () => {
     setLoading(true);
     setError(null);
     setIsDemoMode(false);
@@ -142,12 +142,12 @@ export default function ActivityLogsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, action, search]);
 
   // Fetch on mount and filter changes
   useEffect(() => {
     fetchLogs();
-  }, [page, action, search]);
+  }, [fetchLogs]);
 
   // Export CSV
   const handleExport = () => {

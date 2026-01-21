@@ -10,6 +10,8 @@ const marketingLinks = [
   { label: "Home", href: "/" },
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },
+  { label: "AI Concierge", href: "/ai-concierge", icon: "🤖" },
+  { label: "Provider Packet", href: "/provider-packet-interactive", icon: "📋" },
   { label: "Sacred Vault", href: "/vault", dynamic: true },
   { label: "Health Decoder", href: "/vault/decoder", icon: "🏥" },
   { label: "Life Changing Diagnosis", href: "/vault/priority", icon: "🛡️" },

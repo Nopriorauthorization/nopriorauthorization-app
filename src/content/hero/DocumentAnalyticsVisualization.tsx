@@ -378,7 +378,7 @@ export default function DocumentAnalyticsVisualization() {
             <div className="bg-black/20 rounded-lg p-4">
               <h4 className="font-medium text-purple-400 mb-2">💡 Recommendations</h4>
               <div className="space-y-2 text-sm text-gray-300">
-                <p>• Focus on 'Other' category accuracy improvement</p>
+                <p>• Focus on &apos;Other&apos; category accuracy improvement</p>
                 <p>• Consider sub-categories for Visit Notes</p>
                 <p>• Excellent progress on automated tagging!</p>
               </div>

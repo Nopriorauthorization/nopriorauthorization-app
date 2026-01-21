@@ -2519,7 +2519,7 @@ export default function TreatmentDecoder() {
 
             {/* Common Terms */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-white mb-4">Common Medical Terms You'll See</h3>
+              <h3 className="text-xl font-semibold text-white mb-4">Common Medical Terms You&apos;ll See</h3>
               <div className="flex flex-wrap gap-2">
                 {topicDetail.commonTerms.map((term, idx) => (
                   <span key={idx} className="px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400">

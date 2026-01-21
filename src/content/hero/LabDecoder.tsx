@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
+import LabDocumentUploader from '@/components/LabDocumentUploader';
+import { type LabProcessingResult } from '@/hooks/useLabDocumentProcessor';
 
 // Lab Result Data Types
 type LabResult = {
@@ -124,49 +126,21 @@ const mockTrends: TrendData[] = [
 export default function LabDecoder() {
   const [uploadedFiles, setUploadedFiles] = useState<LabDocument[]>([]);
   const [selectedResult, setSelectedResult] = useState<LabResult | null>(null);
-  const [isUploading, setIsUploading] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'trends' | 'insights' | 'brief'>('overview');
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFileUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (!files) return;
+  const handleResultsProcessed = useCallback((results: LabProcessingResult[]) => {
+    // Convert processing results to the component's LabDocument format
+    const newDocuments: LabDocument[] = results.map(result => ({
+      id: result.documentId,
+      fileName: result.fileName,
+      uploadDate: new Date().toISOString(),
+      labResults: result.labResults,
+      providerName: 'Client-Side Processed',
+      facilityName: 'HIPAA Compliant Processing',
+      summary: `Processed ${result.labResults.length} lab results with ${result.ocrConfidence > 0.8 ? 'high' : 'moderate'} confidence OCR.`
+    }));
 
-    setIsUploading(true);
-
-    try {
-      const formData = new FormData();
-      Array.from(files).forEach(file => {
-        formData.append('files', file);
-      });
-
-      const response = await fetch('/api/vault/lab-decoder', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to process lab documents');
-      }
-
-      const data = await response.json();
-      setUploadedFiles(prev => [...prev, ...data.documents]);
-    } catch (error) {
-      console.error('Upload error:', error);
-      // For demo purposes, fall back to mock data
-      const mockDocument: LabDocument = {
-        id: `doc-${Date.now()}`,
-        fileName: files[0].name,
-        uploadDate: new Date().toISOString(),
-        labResults: mockLabResults,
-        providerName: 'Metropolitan Lab Services',
-        facilityName: 'Metropolitan Lab Services',
-        summary: 'Processed lab results with clinical insights.'
-      };
-      setUploadedFiles(prev => [...prev, mockDocument]);
-    } finally {
-      setIsUploading(false);
-    }
+    setUploadedFiles(prev => [...prev, ...newDocuments]);
   }, []);
 
   const generateProviderBrief = useCallback(async () => {
@@ -241,28 +215,10 @@ export default function LabDecoder() {
     <div className="space-y-6">
       {/* Upload Section */}
       <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
-        <h3 className="text-xl font-semibold text-white mb-4">Upload Lab Results</h3>
-        <div className="border-2 border-dashed border-gray-700 rounded-xl p-8 text-center">
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept=".pdf,image/*"
-            onChange={handleFileUpload}
-            className="hidden"
-            multiple
-          />
-          <div className="text-4xl mb-4">📄</div>
-          <p className="text-gray-300 mb-4">
-            Drop PDF lab reports or photos here, or click to browse
-          </p>
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            disabled={isUploading}
-            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-full font-medium hover:from-purple-600 hover:to-blue-600 transition-all duration-300 disabled:opacity-50"
-          >
-            {isUploading ? 'Processing...' : 'Choose Files'}
-          </button>
-        </div>
+        <LabDocumentUploader
+          onResultsProcessed={handleResultsProcessed}
+          className="text-white"
+        />
       </div>
 
       {/* Recent Labs */}

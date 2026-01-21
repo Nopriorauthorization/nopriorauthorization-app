@@ -9,6 +9,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type UserDetail = {
   id: string;

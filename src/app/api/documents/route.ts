@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { randomUUID } from "node:crypto";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";

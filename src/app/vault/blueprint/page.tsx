@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import React from "react";
 import IdentitySection from "./sections/IdentitySection";
 import HealthFoundationsSection from "./sections/HealthFoundationsSection";

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import LabDecoder from '@/content/hero/LabDecoder';
 
 export default function LabDecoderPage() {

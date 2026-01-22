@@ -1,4 +1,5 @@
 "use client";
+export const runtime = "edge";
 
 import { Suspense, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
@@ -11,7 +12,6 @@ type CalendarSettings = {
   email: string | null;
 };
 
-export const dynamic = "force-dynamic";
 
 export default function CalendarSettingsPage() {
   return (

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import PeriodTracker from '@/content/period-tracker';
 
 export default function PeriodTrackerPage() {

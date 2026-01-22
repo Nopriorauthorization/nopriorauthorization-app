@@ -16,8 +16,8 @@ const LandingPage: React.FC = () => {
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/hero.png"
-            alt="Beau-Tox Healthcare Hero"
+            src="/heronew1.png"
+            alt="No Prior Authorization Hero"
             fill
             className="object-cover"
             priority
@@ -41,7 +41,7 @@ const LandingPage: React.FC = () => {
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Ask <span className="text-pink-500">Beau-Tox</span>
+            No Prior <span className="text-pink-500">Authorization</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
             Your AI-powered healthcare companion featuring expert mascots who tell you

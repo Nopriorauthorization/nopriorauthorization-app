@@ -1,5 +1,5 @@
 export const dynamic = "force-dynamic";
-import PeriodTracker from '@/content/period-tracker';
+import PeriodTracker from '@/content/hero/PeriodTracker';
 
 export default function PeriodTrackerPage() {
   return (

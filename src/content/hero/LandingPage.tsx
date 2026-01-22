@@ -11,43 +11,31 @@ const LandingPage: React.FC = () => {
       {/* Navigation Panel */}
       <MainNavigation />
 
-      {/* Hero Image Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Hero Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/heronew1.png"
-            alt="No Prior Authorization Hero"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-
-        {/* Hero Video Overlay (optional) */}
-        <div className="absolute inset-0 z-0 opacity-20">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </section>
-
       {/* Hero Content Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             No Prior <span className="text-pink-500">Authorization</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Your AI-powered healthcare companion featuring expert mascots who tell you
-            the truth about wellness, hormones, aesthetics, and more.
+          
+          {/* Hero Image Section - Desktop only, underneath heading */}
+          <div className="relative w-full max-w-5xl mx-auto mb-8">
+            <div className="relative h-[500px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/20 border border-pink-500/30">
+              <Image
+                src="/nopriorhero.png"
+                alt="No Prior Authorization Hero"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-transparent to-purple-500/10" />
+            </div>
+          </div>
+
+          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
+            Your AI-powered healthcare companion. Skip the bureaucracy and get direct access to
+            expert medical insights, personalized treatment plans, and AI-powered wellness guidance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
@@ -58,7 +46,7 @@ const LandingPage: React.FC = () => {
             </button>
             <button
               onClick={() => window.location.href = '/chat'}
-              className="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all"
+              className="border-2 border-pink-500/50 text-pink-400 hover:bg-pink-500/10 px-8 py-4 rounded-full text-lg font-semibold transition-all"
             >
               Chat with Experts
             </button>

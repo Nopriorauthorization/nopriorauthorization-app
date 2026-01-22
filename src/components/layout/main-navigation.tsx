@@ -8,11 +8,13 @@ import Button from "@/components/ui/button";
 
 const marketingLinks = [
   { label: "Home", href: "/" },
+  { label: "Family Health Hub", href: "/vault", icon: "🌳", featured: true },
+  { label: "Mascots", href: "/mascots", icon: "👥" },
+  { label: "Hormone Tracker", href: "/hormone-tracker", icon: "🌸" },
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },
   { label: "AI Concierge", href: "/ai-concierge", icon: "🤖" },
   { label: "Provider Packet", href: "/provider-packet-interactive", icon: "📋" },
-  { label: "Sacred Vault", href: "/vault", dynamic: true },
   { label: "Health Decoder", href: "/vault/decoder", icon: "🏥" },
   { label: "Life Changing Diagnosis", href: "/vault/priority", icon: "🛡️" },
   { label: "Settings", href: "/settings" },
@@ -38,13 +40,17 @@ export default function MainNavigation() {
     setOpen(false);
   };
 
-  const renderLinks = (links: { label: string; href: string; dynamic?: boolean; icon?: string }[]) =>
+  const renderLinks = (links: { label: string; href: string; dynamic?: boolean; icon?: string; featured?: boolean }[]) =>
     links.map((link) => (
       <button
         key={link.href}
         onClick={() => directNavigate(link.href)}
         className={`text-sm font-medium transition flex items-center gap-1.5 ${
-          pathname === link.href ? "text-hot-pink" : "text-white/70"
+          link.featured
+            ? 'text-white bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-3 py-2 rounded-full border border-purple-500/30 hover:from-purple-500/30 hover:to-pink-500/30'
+            : pathname === link.href
+            ? "text-hot-pink"
+            : "text-white/70 hover:text-white"
         }`}
       >
         {link.icon && <span>{link.icon}</span>}

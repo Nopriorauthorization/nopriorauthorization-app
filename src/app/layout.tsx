@@ -1,4 +1,5 @@
 import "./globals.css";
+import ErrorBoundary from "@/components/ui/ErrorBoundary";
 
 export const metadata = {
   title: "Ask Beau-Tox",
@@ -12,7 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black text-white">
-        <main>{children}</main>
+        <ErrorBoundary>
+          <main>{children}</main>
+        </ErrorBoundary>
       </body>
     </html>
   );

@@ -50,3 +50,45 @@ export async function GET(_request: NextRequest) {
     );
   }
 }
+
+export async function POST(request: NextRequest) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) {
+    return NextResponse.json(
+      { error: "Authentication required to save clinical summary." },
+      { status: 401 }
+    );
+  }
+  const userId = session.user.id;
+
+  try {
+    const body = await request.json();
+    const { providerNotes, ...packetData } = body;
+
+    // Save the clinical summary data to the database
+    const providerPacket = await prisma.providerPacket.create({
+      data: {
+        userId,
+        template: "PRIMARY",
+        payload: {
+          packetData,
+          providerNotes,
+          savedAt: new Date().toISOString(),
+          savedBy: session.user.email,
+        },
+      },
+    });
+
+    return NextResponse.json({
+      success: true,
+      packetId: providerPacket.id,
+      message: "Clinical summary saved successfully",
+    });
+  } catch (error) {
+    console.error("Failed to save clinical summary:", error);
+    return NextResponse.json(
+      { error: "Failed to save clinical summary" },
+      { status: 500 }
+    );
+  }
+}

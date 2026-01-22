@@ -1,6 +1,6 @@
 "use client";
 export const dynamic = 'force-dynamic';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "@/components/ui/button";
 
 type ViewMode = "provider" | "patient";
@@ -11,9 +11,6 @@ export default function ClinicalSummaryPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [providerNotes, setProviderNotes] = useState("");
-  const [aiSummary, setAiSummary] = useState<string>("");
-  const [generatingSummary, setGeneratingSummary] = useState(false);
-  const [summaryError, setSummaryError] = useState("");
   
   const [packetData, setPacketData] = useState({
     personalInfo: {
@@ -74,47 +71,6 @@ export default function ClinicalSummaryPage() {
       setSaving(false);
     }
   };
-
-  const generateSummary = async () => {
-    setGeneratingSummary(true);
-    setSummaryError("");
-
-    try {
-      const response = await fetch("/api/provider-packet/generate-summary", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ packetData, providerNotes }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to generate clinical summary");
-      }
-
-      const data = await response.json();
-      setAiSummary(data.summary);
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Failed to generate summary";
-      setSummaryError(errorMessage);
-      
-      // If it's a consent error, show a helpful message
-      if (errorMessage.includes("consent") || errorMessage.includes("HIPAA")) {
-        setSummaryError("AI clinical summary generation requires patient consent. Please update your privacy settings to enable PHI processing for AI features.");
-      }
-    } finally {
-      setGeneratingSummary(false);
-    }
-  };
-
-  // Auto-generate summary when patient data is available
-  useEffect(() => {
-    const hasSufficientData = packetData.chiefConcern || packetData.primaryConcerns || packetData.medicalHistory || packetData.currentMedications;
-    const shouldGenerate = hasSufficientData && !aiSummary && !generatingSummary && !summaryError;
-
-    if (shouldGenerate && !isEditMode) {
-      generateSummary();
-    }
-  }, [packetData, isEditMode]);
 
   const isEditMode = viewMode === "patient";
   const hasContent = (value: string) => value && value.trim().length > 0;
@@ -183,9 +139,9 @@ export default function ClinicalSummaryPage() {
             <div className="flex items-start gap-3">
               <div className="text-amber-400 mt-0.5">⚠️</div>
               <div className="text-sm text-amber-200">
-                <strong>HIPAA Compliance:</strong> AI clinical summary generation requires your explicit consent to process protected health information (PHI). 
-                This feature uses OpenAI's services and is only available if you've granted consent in your privacy settings. 
-                Your health information is never stored by third parties without your permission.
+                <strong>HIPAA Compliance:</strong> This clinical summary is generated from patient-submitted information. 
+                AI processing of protected health information (PHI) is currently disabled to maintain HIPAA compliance. 
+                All data remains secure within your controlled environment.
               </div>
             </div>
           </div>
@@ -194,32 +150,10 @@ export default function ClinicalSummaryPage() {
         {/* AI-GENERATED SUMMARY - Provider view only */}
         {!isEditMode && (
           <div className="mb-6 rounded-2xl border border-blue-500/40 bg-blue-500/5 p-6">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-blue-400">AI-Generated Clinical Summary</h2>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={generateSummary}
-                disabled={generatingSummary}
-                className="text-xs"
-              >
-                {generatingSummary ? "Generating..." : "Regenerate"}
-              </Button>
-            </div>
-            {summaryError && (
-              <div className="mb-3 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-400">
-                {summaryError}
-              </div>
-            )}
-            <div className="text-sm text-gray-300 leading-relaxed">
-              {aiSummary ? (
-                <div className="whitespace-pre-wrap">{aiSummary}</div>
-              ) : (
-                <div className="italic text-gray-400">
-                  Click "Regenerate" to generate an AI clinical summary based on the patient's submitted information.
-                </div>
-              )}
-            </div>
+            <h2 className="mb-3 text-lg font-semibold text-blue-400">Clinical Summary</h2>
+            <p className="text-sm italic text-gray-300">
+              [Placeholder] Based on the patient's submitted information, key clinical considerations include risk stratification for reported allergies, medication interactions review, and alignment of patient-stated goals with evidence-based treatment options. Recommend reviewing labs/vitals for baseline assessment.
+            </p>
           </div>
         )}
 

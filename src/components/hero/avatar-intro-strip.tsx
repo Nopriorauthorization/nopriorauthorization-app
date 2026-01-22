@@ -120,12 +120,12 @@ export default function AvatarIntroStrip() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Video/Image Display */}
             <div className="relative">
-              <div className="relative h-80 rounded-lg overflow-hidden bg-black">
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
                 {isPlaying ? (
                   <video
                     ref={videoRef}
                     src={currentMascot.video}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     muted
                     loop
                     playsInline

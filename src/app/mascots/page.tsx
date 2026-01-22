@@ -12,7 +12,7 @@ const mascots = [
     specialty: "Provider Translator",
     description: "I built No Prior Authorization because patients deserve clarity - not confusion.",
     image: "/characters/founder.png",
-    video: "/videos/founder-intro.mp4", // Add actual video files
+    video: "/hero/avatars/founder-intro.mp4", // Fixed path
     credentials: "OWNER | RN-S | CMAA",
     personality: "Direct, no-nonsense, patient advocate",
     chatPrompt: "Explain how providers really think and cut through medical jargon"
@@ -23,7 +23,7 @@ const mascots = [
     specialty: "Botox & Injectables",
     description: "Expert in cosmetic injectables, facial aesthetics, and non-surgical rejuvenation procedures.",
     image: "/characters/beau.png",
-    video: "/videos/beau-tox-intro.mp4",
+    video: "/hero/avatars/beau-tox-intro.mp4", // Fixed path
     credentials: "Certified Injector",
     personality: "Sassy, honest, tells it like it is",
     chatPrompt: "Get real talk about injectables and cosmetic procedures"
@@ -34,7 +34,7 @@ const mascots = [
     specialty: "General Wellness",
     description: "Your holistic health companion focused on nutrition, lifestyle, and preventive care.",
     image: "/characters/peppi.png",
-    video: "/videos/peppi-intro.mp4",
+    video: "/hero/avatars/peppi-intro.mp4", // Fixed path
     credentials: "Wellness Specialist",
     personality: "Friendly, knowledgeable, holistic approach",
     chatPrompt: "Discuss nutrition, lifestyle, and wellness strategies"
@@ -45,7 +45,7 @@ const mascots = [
     specialty: "Dermal Fillers",
     description: "Specialist in dermal filler treatments, facial contouring, and volume restoration.",
     image: "/characters/filla-grace.png",
-    video: "/videos/filla-grace-intro.mp4",
+    video: "/hero/avatars/filla-grace-intro.mp4", // Fixed path
     credentials: "Filler Expert",
     personality: "Graceful, detailed, anatomy-focused",
     chatPrompt: "Learn about fillers, facial anatomy, and realistic expectations"
@@ -56,7 +56,7 @@ const mascots = [
     specialty: "Nursing Care",
     description: "Registered nurse providing medical guidance, treatment coordination, and patient care.",
     image: "/characters/founder.png",
-    video: "/videos/harmony-intro.mp4",
+    video: "/hero/avatars/rn-lisa-grace-intro.mp4", // Fixed path
     credentials: "RN, BSN",
     personality: "Caring, safety-focused, ethical",
     chatPrompt: "Get nursing perspective on treatments and safety concerns"
@@ -67,7 +67,7 @@ const mascots = [
     specialty: "Metabolism & Weight",
     description: "Hormones and weight loss aren't magic. I'll tell you what actually moves the needle.",
     image: "/characters/slim-t.png",
-    video: "/videos/slim-t-intro.mp4",
+    video: "/hero/avatars/slim-t-intro.mp4", // Fixed path
     credentials: "Metabolism Expert",
     personality: "Straight-talking, evidence-based, no hype",
     chatPrompt: "Understand real metabolism science and weight management"
@@ -78,7 +78,7 @@ const mascots = [
     specialty: "Provider Translator",
     description: "I explain what providers really mean - and why 'it depends' isn't always a cop-out.",
     image: "/characters/ryan.png",
-    video: "/videos/ryan-intro.mp4",
+    video: "/hero/avatars/ryan-intro.mp4", // Fixed path
     credentials: "FNP-BC | Full Authority Nurse Practitioner",
     personality: "Clear communicator, bridge between providers and patients",
     chatPrompt: "Translate medical language and provider thinking"
@@ -88,6 +88,7 @@ const mascots = [
 export default function MascotsPage() {
   const [selectedMascot, setSelectedMascot] = useState(null);
   const [playingVideo, setPlayingVideo] = useState(null);
+  const [loadingChat, setLoadingChat] = useState(null);
   const videoRefs = useRef({});
 
   const handleVideoPlay = (mascotId) => {
@@ -101,7 +102,9 @@ export default function MascotsPage() {
     setPlayingVideo(playingVideo === mascotId ? null : mascotId);
   };
 
-  const startChat = (mascot) => {
+  const startChat = async (mascot) => {
+    setLoadingChat(mascot.id);
+
     // Store mascot info in localStorage for chat page
     localStorage.setItem('selectedMascot', JSON.stringify({
       id: mascot.id,
@@ -111,8 +114,11 @@ export default function MascotsPage() {
       image: mascot.image
     }));
 
-    // Navigate to chat with mascot parameter
-    window.location.href = `/chat?mascot=${mascot.id}`;
+    // Add small delay for loading state visibility
+    setTimeout(() => {
+      // Navigate to chat with mascot parameter
+      window.location.href = `/chat?mascot=${mascot.id}`;
+    }, 500);
   };
 
   return (
@@ -215,10 +221,20 @@ export default function MascotsPage() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => startChat(mascot)}
-                      className="flex-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-2 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition flex items-center justify-center gap-2"
+                      disabled={loadingChat === mascot.id}
+                      className="flex-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-2 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <FiMessageCircle className="w-4 h-4" />
-                      Chat
+                      {loadingChat === mascot.id ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                          Loading...
+                        </>
+                      ) : (
+                        <>
+                          <FiMessageCircle className="w-4 h-4" />
+                          Chat
+                        </>
+                      )}
                     </button>
                     <button
                       onClick={() => setSelectedMascot(mascot)}

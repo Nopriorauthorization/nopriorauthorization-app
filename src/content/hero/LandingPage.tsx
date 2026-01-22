@@ -144,12 +144,11 @@ const LandingPage: React.FC = () => {
           {/* Hero Image Section - Desktop only, underneath heading */}
           <div className="relative w-full max-w-5xl mx-auto mb-8">
             <div className="relative h-[500px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/20 border border-pink-500/30">
-              <Image
+              <img
                 src="/nopriorhero.png"
                 alt="No Prior Authorization Hero"
-                fill
-                className="object-cover object-center"
-                priority
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-transparent to-purple-500/10" />

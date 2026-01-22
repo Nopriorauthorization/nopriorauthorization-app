@@ -37,6 +37,7 @@ import {
   FiArrowDown,
   FiMinus as FiNeutral
 } from 'react-icons/fi';
+import Image from 'next/image';
 
 // Enhanced types for comprehensive lab analysis
 type LabValue = {
@@ -477,6 +478,23 @@ export default function InteractiveLabDecoder() {
           <p className="text-gray-400 text-lg">
             Upload medical documents, get AI-powered expert analysis, ask questions, and save insights to your health blueprint
           </p>
+
+          {/* Lab Decoder Mascot */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="mt-6 mb-8"
+          >
+            <Image
+              src="/laddecoder.png"
+              alt="Lab Decoder Mascot"
+              width={180}
+              height={180}
+              className="mx-auto rounded-full shadow-2xl"
+              priority
+            />
+          </motion.div>
         </motion.div>
 
         {/* Tab Navigation */}

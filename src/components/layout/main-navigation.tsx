@@ -10,7 +10,6 @@ import { FiSearch, FiX } from "react-icons/fi";
 const marketingLinks = [
   { label: "Home", href: "/" },
   { label: "Family Health Hub", href: "/vault", icon: "🌳", featured: true },
-  { label: "Mascots", href: "/mascots", icon: "👥" },
   { label: "Hormone Tracker", href: "/hormone-tracker", icon: "🌸" },
   { label: "Blueprint", href: "/blueprint" },
   { label: "Treatments", href: "/treatments" },

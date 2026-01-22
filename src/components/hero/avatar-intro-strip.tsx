@@ -72,13 +72,14 @@ const mascots = [
 
 export default function AvatarIntroStrip() {
   const [activeMascot, setActiveMascot] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true); // Start with videos playing
+  const [hoveredMascot, setHoveredMascot] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const currentMascot = mascots[activeMascot];
 
   useEffect(() => {
-    // Auto-start the first mascot's video when component mounts
+    // Auto-start videos when component mounts
     setIsPlaying(true);
   }, []);
 
@@ -87,15 +88,21 @@ export default function AvatarIntroStrip() {
       videoRef.current.load(); // Reload video source when mascot changes
       videoRef.current.play().catch((error) => {
         console.log('Video autoplay failed:', error);
-        // Fallback to showing image if video fails
-        setIsPlaying(false);
+        // Keep trying to play - don't fallback to image
+        setTimeout(() => {
+          if (videoRef.current) {
+            videoRef.current.play().catch(() => {
+              // Silent fail - videos should work
+            });
+          }
+        }, 1000);
       });
     }
   }, [isPlaying, activeMascot]);
 
   const handleMascotClick = (index: number) => {
     setActiveMascot(index);
-    setIsPlaying(true); // Auto-play when mascot is clicked
+    setIsPlaying(true); // Always play when mascot is clicked
   };
 
   const toggleVideo = () => {
@@ -106,102 +113,124 @@ export default function AvatarIntroStrip() {
     <div className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Meet Your <span className="text-pink-500">Expert Team</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Meet Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">Interactive Expert Team</span>
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Chat with our AI-powered healthcare specialists. Each mascot brings unique expertise
-            to guide your wellness journey.
+          <p className="text-xl text-white/80 max-w-3xl mx-auto mb-4">
+            Click any mascot below to see them come alive with personalized video introductions.
+            Each AI specialist brings unique expertise to guide your wellness journey.
           </p>
+          <div className="flex items-center justify-center gap-2 text-pink-300">
+            <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></div>
+            <span className="text-sm font-medium">Live & Interactive</span>
+            <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></div>
+          </div>
         </div>
 
-        {/* Featured Mascot Video Section */}
-        <div className="mb-12 bg-white/5 rounded-lg p-8 border border-white/10">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Video/Image Display */}
-            <div className="relative">
-              <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
-                {isPlaying ? (
-                  <video
-                    ref={videoRef}
-                    src={currentMascot.video}
-                    className="w-full h-full object-contain"
-                    controls
-                    loop
-                    playsInline
-                    preload="metadata"
-                    onError={() => {
-                      console.log('Video failed to load:', currentMascot.video);
-                      setIsPlaying(false);
-                    }}
-                  />
-                ) : (
-                  <Image
-                    src={currentMascot.image}
-                    alt={currentMascot.name}
-                    fill
-                    className="object-cover"
-                  />
-                )}
-                <div className="absolute inset-0 bg-black/20" />
+        {/* Featured Mascot Video Section - FRONT AND CENTER */}
+        <div className="mb-16 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-2xl p-8 border border-pink-500/20 shadow-2xl">
+          <div className="grid lg:grid-cols-3 gap-8 items-center">
+            {/* Large Video Display - FRONT AND CENTER */}
+            <div className="lg:col-span-2 relative">
+              <div className="relative aspect-video rounded-xl overflow-hidden bg-black shadow-2xl border-2 border-pink-500/30">
+                <video
+                  ref={videoRef}
+                  src={currentMascot.video}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  onError={(e) => {
+                    console.log('Video failed to load:', currentMascot.video);
+                    // Don't show fallback image - keep trying
+                    setTimeout(() => {
+                      if (videoRef.current) {
+                        videoRef.current.load();
+                        videoRef.current.play().catch(() => {});
+                      }
+                    }, 2000);
+                  }}
+                  onLoadedData={() => {
+                    console.log('Video loaded successfully:', currentMascot.video);
+                  }}
+                />
                 
-                {/* Play/Pause Button */}
+                {/* Interactive Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                
+                {/* Mascot Name Overlay */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-3xl font-bold text-white mb-2">{currentMascot.name}</h3>
+                  <p className="text-pink-300 font-medium text-lg">{currentMascot.specialty}</p>
+                </div>
+
+                {/* Play/Pause Button - More Prominent */}
                 <button
                   onClick={toggleVideo}
-                  className="absolute inset-0 flex items-center justify-center group"
+                  className="absolute top-4 right-4 bg-pink-500/90 hover:bg-pink-500 text-white rounded-full p-3 transition-all hover:scale-110 shadow-lg"
                 >
-                  <div className="bg-pink-500/90 hover:bg-pink-500 text-white rounded-full p-4 transition-all group-hover:scale-110">
-                    {isPlaying ? (
-                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M6 4h4v16H6V4zM14 4h4v16h-4V4z"/>
-                      </svg>
-                    ) : (
-                      <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    )}
-                  </div>
+                  {isPlaying ? (
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M6 4h4v16H6V4zM14 4h4v16h-4V4z"/>
+                    </svg>
+                  ) : (
+                    <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  )}
                 </button>
               </div>
             </div>
 
-            {/* Mascot Info */}
-            <div>
-              <h3 className="text-2xl font-bold mb-2">{currentMascot.name}</h3>
-              <p className="text-pink-400 font-medium mb-4">{currentMascot.specialty}</p>
-              <p className="text-white/80 mb-6">{currentMascot.intro}</p>
-              <div className="flex gap-4">
+            {/* Mascot Info & Actions */}
+            <div className="space-y-6">
+              <div>
+                <p className="text-white/90 text-lg leading-relaxed mb-6">{currentMascot.intro}</p>
+                <p className="text-white/70 text-sm">{currentMascot.description}</p>
+              </div>
+              
+              <div className="flex flex-col gap-3">
                 <Link
                   href={`/chat?mascot=${currentMascot.id}`}
-                  className="bg-gradient-to-r from-pink-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all"
+                  className="bg-gradient-to-r from-pink-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all text-center hover:scale-105"
                 >
-                  Chat Now
+                  💬 Chat with {currentMascot.name}
                 </Link>
                 <button
                   onClick={toggleVideo}
-                  className="border-2 border-white/30 text-white hover:bg-white/10 px-6 py-3 rounded-full font-semibold transition-all"
+                  className="border-2 border-white/40 text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition-all"
                 >
-                  {isPlaying ? 'Pause Intro' : 'Watch Intro'}
+                  {isPlaying ? '⏸️ Pause Video' : '▶️ Play Video'}
                 </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Mascot Grid */}
+        {/* Interactive Mascot Grid - ALIVE AND INTERACTIVE */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {mascots.map((mascot, index) => (
             <div
               key={mascot.id}
               onClick={() => handleMascotClick(index)}
-              className={`bg-white/5 rounded-lg p-6 border transition-all cursor-pointer ${
+              onMouseEnter={() => setHoveredMascot(index)}
+              onMouseLeave={() => setHoveredMascot(null)}
+              className={`bg-white/5 rounded-xl p-6 border-2 transition-all cursor-pointer transform hover:scale-105 hover:shadow-2xl ${
                 activeMascot === index
-                  ? "border-pink-500 bg-pink-500/10"
-                  : "border-white/10 hover:border-white/30"
+                  ? "border-pink-500 bg-pink-500/20 shadow-pink-500/20 shadow-lg scale-105"
+                  : "border-white/10 hover:border-pink-400/50"
               }`}
             >
-              <div className="mb-4">
-                <div className="h-20 w-20 rounded-full overflow-hidden border-2 border-pink-500/30 mx-auto">
+              <div className="mb-4 relative">
+                <div className={`h-20 w-20 rounded-full overflow-hidden border-2 mx-auto transition-all duration-300 ${
+                  activeMascot === index
+                    ? "border-pink-500 shadow-lg shadow-pink-500/30"
+                    : hoveredMascot === index
+                    ? "border-pink-400/70 shadow-md shadow-pink-400/20"
+                    : "border-pink-500/30"
+                }`}>
                   <Image
                     src={mascot.image}
                     alt={mascot.name}
@@ -209,13 +238,47 @@ export default function AvatarIntroStrip() {
                     height={80}
                     className="h-full w-full object-cover"
                   />
+                  {/* Active indicator */}
+                  {activeMascot === index && (
+                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
+                      <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                    </div>
+                  )}
                 </div>
+                
+                {/* Hover video preview hint */}
+                {hoveredMascot === index && activeMascot !== index && (
+                  <div className="absolute inset-0 bg-pink-500/10 rounded-full animate-pulse"></div>
+                )}
               </div>
-              <h3 className="text-lg font-semibold mb-1 text-center">{mascot.name}</h3>
-              <p className="text-pink-400 text-sm font-medium mb-2 text-center">{mascot.specialty}</p>
+              
+              <h3 className={`text-lg font-semibold mb-1 text-center transition-colors ${
+                activeMascot === index ? "text-pink-300" : "text-white"
+              }`}>
+                {mascot.name}
+              </h3>
+              <p className={`text-sm font-medium mb-2 text-center transition-colors ${
+                activeMascot === index ? "text-pink-400" : "text-pink-400/80"
+              }`}>
+                {mascot.specialty}
+              </p>
               <p className="text-white/70 text-sm leading-relaxed text-center">
                 {mascot.description}
               </p>
+              
+              {/* Interactive indicator */}
+              <div className="mt-3 flex justify-center">
+                {activeMascot === index ? (
+                  <div className="flex items-center gap-1 text-pink-400 text-xs font-medium">
+                    <div className="w-2 h-2 bg-pink-500 rounded-full animate-ping"></div>
+                    ACTIVE
+                  </div>
+                ) : (
+                  <div className="text-white/40 text-xs">
+                    Click to activate
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>

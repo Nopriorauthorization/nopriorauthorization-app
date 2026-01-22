@@ -88,20 +88,27 @@ const mascots = [
 
 const LandingPage: React.FC = () => {
   const [selectedMascot, setSelectedMascot] = useState(null);
-  const [playingVideo, setPlayingVideo] = useState(null);
   const [loadingChat, setLoadingChat] = useState(null);
   const videoRefs = useRef({});
 
-  const handleVideoPlay = (mascotId) => {
-    // Pause any currently playing video
-    if (playingVideo && playingVideo !== mascotId) {
-      const prevVideo = videoRefs.current[playingVideo];
-      if (prevVideo) {
-        prevVideo.pause();
+  useEffect(() => {
+    // Auto-start all videos when component mounts
+    const startVideos = async () => {
+      for (const mascot of mascots) {
+        const video = videoRefs.current[mascot.id];
+        if (video) {
+          try {
+            await video.play();
+          } catch (error) {
+            console.log('Video autoplay failed for:', mascot.name, error);
+          }
+        }
       }
-    }
-    setPlayingVideo(playingVideo === mascotId ? null : mascotId);
-  };
+    };
+
+    // Small delay to ensure videos are loaded
+    setTimeout(startVideos, 1000);
+  }, []);
 
   const startChat = async (mascot) => {
     setLoadingChat(mascot.id);
@@ -196,49 +203,49 @@ const LandingPage: React.FC = () => {
                 key={mascot.id}
                 className="bg-white/5 rounded-xl p-6 border-2 border-white/10 hover:border-pink-500/50 transition-all group hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/20"
               >
-                {/* Video/Image Section */}
+                {/* FULL PICTURE VIDEO - ALWAYS VISIBLE */}
                 <div className="relative mb-6 rounded-xl overflow-hidden bg-gray-800 shadow-lg">
                   <div className="aspect-video relative">
+                    {/* Video that autoplays */}
+                    <video
+                      ref={(el) => (videoRefs.current[mascot.id] = el)}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      src={mascot.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="auto"
+                      onError={(e) => {
+                        console.log('Video failed to load:', mascot.video);
+                        // Fallback to image if video fails
+                      }}
+                      onLoadedData={() => {
+                        console.log('Video loaded successfully:', mascot.video);
+                      }}
+                    />
+
+                    {/* Fallback Image (shown if video fails) */}
                     <Image
                       src={mascot.image}
                       alt={mascot.name}
                       fill
-                      className="object-cover"
+                      className="object-cover opacity-0" // Hidden by default, shown if video fails
                     />
 
-                    {/* Video Overlay */}
-                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center group-hover:bg-black/40 transition-all">
-                      <button
-                        onClick={() => handleVideoPlay(mascot.id)}
-                        className="bg-pink-500/90 hover:bg-pink-500 text-white p-4 rounded-full transition-all transform hover:scale-110 shadow-lg"
-                      >
-                        {playingVideo === mascot.id ? (
-                          <FiPause className="w-6 h-6" />
-                        ) : (
-                          <FiPlay className="w-6 h-6 ml-1" />
-                        )}
-                      </button>
+                    {/* Subtle overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+                    {/* Mascot name overlay */}
+                    <div className="absolute bottom-2 left-2 right-2">
+                      <h3 className="text-lg font-bold text-white drop-shadow-lg">{mascot.name}</h3>
+                      <p className="text-pink-300 text-sm drop-shadow-lg">{mascot.specialty}</p>
                     </div>
-
-                    {/* Hidden Video Element */}
-                    <video
-                      ref={(el) => (videoRefs.current[mascot.id] = el)}
-                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                        playingVideo === mascot.id ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      src={mascot.video}
-                      onEnded={() => setPlayingVideo(null)}
-                      playsInline
-                      controls
-                      preload="metadata"
-                    />
                   </div>
                 </div>
 
                 {/* Mascot Info */}
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-1">{mascot.name}</h3>
-                  <p className="text-pink-400 font-medium mb-2">{mascot.specialty}</p>
                   {mascot.credentials && (
                     <p className="text-sm text-white/60 mb-3">{mascot.credentials}</p>
                   )}

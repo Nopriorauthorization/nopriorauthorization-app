@@ -41,7 +41,6 @@ export function Breadcrumb({ items, className = "" }: BreadcrumbProps) {
       // Special cases for common routes
       const routeLabels: Record<string, string> = {
         'vault': 'Sacred Vault',
-        'mascots': 'Expert Mascots',
         'chat': 'AI Chat',
         'blueprint': 'Health Blueprint',
         'settings': 'Settings',

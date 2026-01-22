@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 // import { useSession, signOut } from "next-auth/react";
 import Button from "@/components/ui/button";
+import { FiSearch, FiX } from "react-icons/fi";
 
 const marketingLinks = [
   { label: "Home", href: "/" },
@@ -34,10 +35,27 @@ export default function MainNavigation() {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSearch, setShowSearch] = useState(false);
 
   const directNavigate = (href: string) => {
     router.push(href);
     setOpen(false);
+    setShowSearch(false);
+    setSearchQuery('');
+  };
+
+  // Search functionality
+  const searchResults = marketingLinks.filter(link =>
+    link.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (link.icon && link.icon.includes(searchQuery.toLowerCase()))
+  );
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchResults.length > 0) {
+      directNavigate(searchResults[0].href);
+    }
   };
 
   const renderLinks = (links: { label: string; href: string; dynamic?: boolean; icon?: string; featured?: boolean }[]) =>
@@ -90,6 +108,13 @@ export default function MainNavigation() {
           {renderLinks(marketingLinks)}
         </div>
         <div className="hidden items-center gap-3 md:flex">
+          <button
+            onClick={() => setShowSearch(!showSearch)}
+            className="p-2 text-white/70 hover:text-white transition-colors"
+            aria-label="Search"
+          >
+            <FiSearch size={18} />
+          </button>
           <Link
             href="/subscribe"
             className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
@@ -103,6 +128,52 @@ export default function MainNavigation() {
             Open Blueprint
           </button>
         </div>
+
+        {/* Search Overlay */}
+        {showSearch && (
+          <div className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur border-b border-white/10 p-4">
+            <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
+              <div className="relative">
+                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50" size={18} />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search pages and features..."
+                  className="w-full pl-10 pr-10 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-hot-pink focus:ring-1 focus:ring-hot-pink"
+                  autoFocus
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowSearch(false);
+                    setSearchQuery('');
+                  }}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50 hover:text-white"
+                >
+                  <FiX size={18} />
+                </button>
+              </div>
+              {searchQuery && searchResults.length > 0 && (
+                <div className="mt-3 space-y-2">
+                  {searchResults.slice(0, 5).map((result) => (
+                    <button
+                      key={result.href}
+                      onClick={() => directNavigate(result.href)}
+                      className="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors flex items-center gap-3"
+                    >
+                      {result.icon && <span className="text-lg">{result.icon}</span>}
+                      <div>
+                        <div className="text-white font-medium">{result.label}</div>
+                        <div className="text-white/50 text-sm">{result.href}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </form>
+          </div>
+        )}
         <button
           className="ml-auto text-sm text-white md:hidden"
           onClick={() => setOpen((prev) => !prev)}
@@ -114,6 +185,34 @@ export default function MainNavigation() {
       {/* Mobile Chat Section */}
       {open && (
         <div className="mt-3 border-t border-white/5 pt-3 md:hidden">
+          {/* Mobile Search */}
+          <div className="mb-4">
+            <form onSubmit={handleSearch} className="relative">
+              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50" size={16} />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search pages..."
+                className="w-full pl-9 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-hot-pink text-sm"
+              />
+            </form>
+            {searchQuery && searchResults.length > 0 && (
+              <div className="mt-2 space-y-1">
+                {searchResults.slice(0, 3).map((result) => (
+                  <button
+                    key={result.href}
+                    onClick={() => directNavigate(result.href)}
+                    className="w-full text-left p-2 rounded bg-white/5 hover:bg-white/10 transition-colors flex items-center gap-2"
+                  >
+                    {result.icon && <span>{result.icon}</span>}
+                    <span className="text-white text-sm">{result.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <div className="mb-4 p-4 rounded-lg bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20">
             <button 
               onClick={() => directNavigate(chatSection.href)}

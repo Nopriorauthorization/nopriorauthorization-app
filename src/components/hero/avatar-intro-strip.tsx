@@ -126,9 +126,10 @@ export default function AvatarIntroStrip() {
                     ref={videoRef}
                     src={currentMascot.video}
                     className="w-full h-full object-contain"
-                    muted
+                    controls
                     loop
                     playsInline
+                    preload="metadata"
                     onError={() => {
                       console.log('Video failed to load:', currentMascot.video);
                       setIsPlaying(false);

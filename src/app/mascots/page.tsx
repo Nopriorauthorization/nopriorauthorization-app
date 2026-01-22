@@ -195,6 +195,8 @@ export default function MascotsPage() {
                       src={mascot.video}
                       onEnded={() => setPlayingVideo(null)}
                       playsInline
+                      controls
+                      preload="metadata"
                     />
                   </div>
                 </div>

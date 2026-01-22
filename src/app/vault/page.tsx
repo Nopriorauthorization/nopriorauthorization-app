@@ -1,6 +1,6 @@
 "use client";
 export const dynamic = 'force-dynamic';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -11,85 +11,74 @@ import {
   FiTrendingUp,
   FiUsers,
   FiShield,
-  FiArrowRight
+  FiArrowRight,
+  FiClock,
+  FiCheckCircle
 } from 'react-icons/fi';
-
-interface VaultFeature {
-  id: string;
-  name: string;
-  description: string;
-  icon: React.ReactNode;
-  path: string;
-  color: string;
-  isLive: boolean;
-  category: 'documents' | 'health' | 'collaboration' | 'analytics';
-}
-
-const vaultFeatures: VaultFeature[] = [
-  {
-    id: 'personal-documents',
-    name: 'Personal Documents Vault',
-    description: 'Securely store and share insurance cards, IDs, medical records, and important personal documents',
-    icon: <FiLock className="w-8 h-8" />,
-    path: '/vault/personal-documents',
-    color: 'from-red-500 to-pink-500',
-    isLive: true,
-    category: 'documents'
-  },
-  {
-    id: 'rich-health-timeline',
-    name: 'Rich Health Timeline',
-    description: 'Upload photos, record voice notes, and attach documents to your health journey',
-    icon: <FiTrendingUp className="w-8 h-8" />,
-    path: '/rich-health-timeline',
-    color: 'from-blue-500 to-cyan-500',
-    isLive: true,
-    category: 'health'
-  },
-  {
-    id: 'lab-decoder',
-    name: 'Interactive Lab Decoder',
-    description: 'AI-powered analysis of medical documents with expert chat assistance',
-    icon: <FiFile className="w-8 h-8" />,
-    path: '/lab-decoder',
-    color: 'from-purple-500 to-indigo-500',
-    isLive: true,
-    category: 'health'
-  },
-  {
-    id: 'family-tree',
-    name: 'Family Health Tree',
-    description: 'Connect your health data with family medical history and insights',
-    icon: <FiUsers className="w-8 h-8" />,
-    path: '/vault/family-tree',
-    color: 'from-green-500 to-emerald-500',
-    isLive: true,
-    category: 'health'
-  },
-  {
-    id: 'provider-portal',
-    name: 'Provider Data Sharing',
-    description: 'Securely share documents and health data with healthcare providers',
-    icon: <FiShare2 className="w-8 h-8" />,
-    path: '/vault/provider-portal',
-    color: 'from-orange-500 to-yellow-500',
-    isLive: true,
-    category: 'collaboration'
-  },
-  {
-    id: 'ai-insights',
-    name: 'AI Health Insights',
-    description: 'Predictive analytics and personalized health recommendations',
-    icon: <FiShield className="w-8 h-8" />,
-    path: '/vault/ai-insights',
-    color: 'from-pink-500 to-rose-500',
-    isLive: true,
-    category: 'analytics'
-  }
-];
+import { getProgressiveFeatures, ProgressiveFeature } from '@/lib/progressive-disclosure';
+import OnboardingFlow from '@/components/OnboardingFlow';
+import { FeatureTooltip } from '@/components/Tooltip';
+import { Breadcrumb } from '@/components/ui/breadcrumb';
+import { ProgressIndicator } from '@/components/ui/progress-indicator';
+import { ContextualHelp } from '@/components/ui/contextual-help';
 
 export default function VaultPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [userData, setUserData] = useState({
+    hasDocuments: false,
+    hasTimelineEntries: false,
+    hasFamilyData: false,
+    hasSharedWithProviders: false,
+    hasAIInsights: false,
+  });
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
+
+  // Simulate checking user progress (in real app, this would check database/localStorage)
+  useEffect(() => {
+    // For demo purposes, we'll start with minimal data
+    // In production, this would check actual user data
+    const checkUserProgress = async () => {
+      try {
+        // Check if user has completed onboarding
+        const onboardingCompleted = localStorage.getItem('vault-onboarding-completed');
+        setHasCompletedOnboarding(onboardingCompleted === 'true');
+
+        // Simulate API call to check user data
+        // For now, we'll assume new users start with no data
+        setUserData({
+          hasDocuments: false, // Would check if user has uploaded documents
+          hasTimelineEntries: false, // Would check if user has timeline entries
+          hasFamilyData: false, // Would check if user has family tree data
+          hasSharedWithProviders: false, // Would check if user has shared with providers
+          hasAIInsights: false, // Would check if user has generated insights
+        });
+
+        // Show onboarding for new users who haven't completed it
+        if (!onboardingCompleted) {
+          setShowOnboarding(true);
+        }
+      } catch (error) {
+        console.error('Error checking user progress:', error);
+      }
+    };
+
+    checkUserProgress();
+  }, []);
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false);
+    setHasCompletedOnboarding(true);
+    localStorage.setItem('vault-onboarding-completed', 'true');
+  };
+
+  const handleOnboardingDismiss = () => {
+    setShowOnboarding(false);
+    // Don't mark as completed if dismissed, so it can show again later
+  };
+
+  // Get progressive features based on user data
+  const vaultFeatures = getProgressiveFeatures(userData);
 
   const filteredFeatures = selectedCategory === 'all'
     ? vaultFeatures
@@ -108,6 +97,7 @@ export default function VaultPage() {
       <div className="max-w-7xl mx-auto p-6">
         {/* Header */}
         <div className="mb-12">
+          <Breadcrumb className="mb-6" />
           <div className="flex items-center justify-between mb-6">
             <div>
               <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent mb-3">
@@ -132,8 +122,8 @@ export default function VaultPage() {
             <div className="bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-xl border border-pink-500/20 p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-pink-400 text-sm font-medium">Live Features</p>
-                  <p className="text-3xl font-bold text-white">{vaultFeatures.filter(f => f.isLive).length}</p>
+                  <p className="text-pink-400 text-sm font-medium">Available Now</p>
+                  <p className="text-3xl font-bold text-white">{vaultFeatures.filter(f => f.state === 'available').length}</p>
                 </div>
                 <div className="text-3xl">🚀</div>
               </div>
@@ -142,10 +132,10 @@ export default function VaultPage() {
             <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl border border-blue-500/20 p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-blue-400 text-sm font-medium">Documents Stored</p>
-                  <p className="text-3xl font-bold text-white">∞</p>
+                  <p className="text-blue-400 text-sm font-medium">Coming Soon</p>
+                  <p className="text-3xl font-bold text-white">{vaultFeatures.filter(f => f.state === 'coming-soon').length}</p>
                 </div>
-                <div className="text-3xl">📄</div>
+                <div className="text-3xl">⏳</div>
               </div>
             </div>
 
@@ -171,6 +161,44 @@ export default function VaultPage() {
           </div>
         </div>
 
+        {/* Progress Indicator */}
+        <ProgressIndicator
+          title="Your Health Journey Progress"
+          items={[
+            {
+              id: 'documents',
+              label: 'Upload Health Documents',
+              completed: userData.hasDocuments,
+              description: 'Insurance cards, medical records, test results'
+            },
+            {
+              id: 'timeline',
+              label: 'Build Health Timeline',
+              completed: userData.hasTimelineEntries,
+              description: 'Track appointments, treatments, and milestones'
+            },
+            {
+              id: 'family',
+              label: 'Add Family Health Data',
+              completed: userData.hasFamilyData,
+              description: 'Connect family members and health history'
+            },
+            {
+              id: 'providers',
+              label: 'Share with Care Team',
+              completed: userData.hasSharedWithProviders,
+              description: 'Securely share data with healthcare providers'
+            },
+            {
+              id: 'insights',
+              label: 'Generate AI Insights',
+              completed: userData.hasAIInsights,
+              description: 'Get personalized health recommendations'
+            }
+          ]}
+          className="mb-8"
+        />
+
         {/* Category Filter */}
         <div className="flex flex-wrap gap-3 mb-8">
           {categories.map((category) => (
@@ -190,47 +218,214 @@ export default function VaultPage() {
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredFeatures.map((feature, index) => (
-            <motion.div
-              key={feature.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 p-6 hover:border-pink-500/50 transition-all hover:scale-105"
-            >
-              {feature.isLive && (
-                <div className="absolute top-4 right-4">
-                  <span className="px-2 py-1 bg-green-500/20 border border-green-500/30 text-green-400 rounded-full text-xs font-medium">
-                    LIVE
+          {filteredFeatures.map((feature, index) => {
+            const getStateIcon = () => {
+              switch (feature.state) {
+                case 'available':
+                  return <FiCheckCircle className="w-4 h-4 text-green-400" />;
+                case 'coming-soon':
+                  return <FiClock className="w-4 h-4 text-yellow-400" />;
+                case 'locked':
+                  return <FiLock className="w-4 h-4 text-gray-400" />;
+                default:
+                  return null;
+              }
+            };
+
+            const getStateColor = () => {
+              switch (feature.state) {
+                case 'available':
+                  return 'border-green-500/30 bg-green-500/10';
+                case 'coming-soon':
+                  return 'border-yellow-500/30 bg-yellow-500/10';
+                case 'locked':
+                  return 'border-gray-500/30 bg-gray-500/10 opacity-60';
+                default:
+                  return 'border-gray-700';
+              }
+            };
+
+            const getStateText = () => {
+              switch (feature.state) {
+                case 'available':
+                  return 'AVAILABLE';
+                case 'coming-soon':
+                  return 'COMING SOON';
+                case 'locked':
+                  return 'LOCKED';
+                default:
+                  return '';
+              }
+            };
+
+            const getIcon = () => {
+              switch (feature.id) {
+                case 'personal-documents':
+                  return <FiLock className="w-8 h-8" />;
+                case 'rich-health-timeline':
+                  return <FiTrendingUp className="w-8 h-8" />;
+                case 'lab-decoder':
+                  return <FiFile className="w-8 h-8" />;
+                case 'family-tree':
+                  return <FiUsers className="w-8 h-8" />;
+                case 'provider-portal':
+                  return <FiShare2 className="w-8 h-8" />;
+                case 'ai-insights':
+                  return <FiShield className="w-8 h-8" />;
+                default:
+                  return <FiFile className="w-8 h-8" />;
+              }
+            };
+
+            return (
+              <FeatureTooltip key={feature.id} featureId={feature.id}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border p-6 transition-all hover:scale-105 cursor-pointer ${getStateColor()}`}
+                >
+                <div className="absolute top-4 right-4 flex items-center gap-2">
+                  {getStateIcon()}
+                  <span className={`px-2 py-1 border rounded-full text-xs font-medium ${
+                    feature.state === 'available'
+                      ? 'bg-green-500/20 border-green-500/30 text-green-400'
+                      : feature.state === 'coming-soon'
+                      ? 'bg-yellow-500/20 border-yellow-500/30 text-yellow-400'
+                      : 'bg-gray-500/20 border-gray-500/30 text-gray-400'
+                  }`}>
+                    {getStateText()}
                   </span>
                 </div>
-              )}
 
-              <div className="flex items-start gap-4 mb-4">
-                <div className={`p-3 rounded-lg bg-gradient-to-br ${feature.color} text-white`}>
-                  {feature.icon}
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`p-3 rounded-lg bg-gradient-to-br ${feature.color} text-white`}>
+                    {getIcon()}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className={`text-xl font-semibold mb-2 transition ${
+                      feature.state === 'available'
+                        ? 'text-white group-hover:text-pink-400'
+                        : 'text-gray-300'
+                    }`}>
+                      {feature.name}
+                    </h3>
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      {feature.description}
+                    </p>
+                    {feature.state === 'coming-soon' && feature.unlockCondition && (
+                      <p className="text-xs text-yellow-400 mt-2 italic">
+                        💡 {feature.unlockCondition}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-pink-400 transition">
-                    {feature.name}
-                  </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
-                    {feature.description}
-                  </p>
+
+                {feature.state === 'available' ? (
+                  <Link
+                    href={feature.path}
+                    className="block w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white text-center px-4 py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition group-hover:shadow-lg"
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      Launch Feature
+                      <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
+                    </span>
+                  </Link>
+                ) : feature.state === 'coming-soon' ? (
+                  <div className="w-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 text-yellow-400 text-center px-4 py-3 rounded-lg font-semibold cursor-not-allowed">
+                    <span className="flex items-center justify-center gap-2">
+                      <FiClock className="w-4 h-4" />
+                      Coming Soon
+                    </span>
+                  </div>
+                ) : (
+                  <div className="w-full bg-gradient-to-r from-gray-500/20 to-gray-600/20 border border-gray-500/30 text-gray-400 text-center px-4 py-3 rounded-lg font-semibold cursor-not-allowed">
+                    <span className="flex items-center justify-center gap-2">
+                      <FiLock className="w-4 h-4" />
+                      Feature Locked
+                    </span>
+                  </div>
+                )}
+              </motion.div>
+              </FeatureTooltip>
+            );
+          })}
+        </div>
+
+        {/* Next Steps / Recommendations */}
+        <div className="mt-12 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl border border-blue-500/20 p-8">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold text-white mb-2">🎯 Your Next Step</h2>
+            <p className="text-gray-300">Unlock more features by building your health foundation</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {vaultFeatures
+              .filter(f => f.state === 'available')
+              .sort((a, b) => a.priority - b.priority)
+              .slice(0, 2)
+              .map((feature) => (
+                <Link
+                  key={feature.id}
+                  href={feature.path}
+                  className="group bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400/50 transition hover:scale-105"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`p-3 rounded-lg bg-gradient-to-br ${feature.color} text-white`}>
+                      {(() => {
+                        switch (feature.id) {
+                          case 'personal-documents':
+                            return <FiLock className="w-8 h-8" />;
+                          case 'rich-health-timeline':
+                            return <FiTrendingUp className="w-8 h-8" />;
+                          case 'lab-decoder':
+                            return <FiFile className="w-8 h-8" />;
+                          case 'family-tree':
+                            return <FiUsers className="w-8 h-8" />;
+                          case 'provider-portal':
+                            return <FiShare2 className="w-8 h-8" />;
+                          case 'ai-insights':
+                            return <FiShield className="w-8 h-8" />;
+                          default:
+                            return <FiFile className="w-8 h-8" />;
+                        }
+                      })()}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-white mb-1 group-hover:text-blue-400 transition">
+                        {feature.name}
+                      </h3>
+                      <p className="text-gray-300 text-sm mb-3">
+                        {feature.description}
+                      </p>
+                      <div className="flex items-center gap-2 text-blue-400 text-sm font-medium">
+                        <span>Get Started</span>
+                        <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+
+            {vaultFeatures.filter(f => f.state === 'coming-soon').length > 0 && (
+              <div className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-xl p-6">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-lg bg-gradient-to-br from-yellow-500 to-orange-500 text-white">
+                    <FiClock className="w-8 h-8" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-white mb-1">More Features Coming</h3>
+                    <p className="text-gray-300 text-sm mb-3">
+                      {vaultFeatures.filter(f => f.state === 'coming-soon').length} features unlock as you add more health data
+                    </p>
+                    <div className="text-yellow-400 text-sm font-medium">
+                      Keep building your health foundation! 🚀
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <Link
-                href={feature.path}
-                className="block w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white text-center px-4 py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition group-hover:shadow-lg"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Launch Feature
-                  <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
-                </span>
-              </Link>
-            </motion.div>
-          ))}
+            )}
+          </div>
         </div>
 
         {/* Quick Actions */}
@@ -289,6 +484,21 @@ export default function VaultPage() {
           </p>
         </div>
       </div>
+
+      {/* Onboarding Flow */}
+      <OnboardingFlow
+        isVisible={showOnboarding}
+        onComplete={handleOnboardingComplete}
+        onDismiss={handleOnboardingDismiss}
+        userProgress={{
+          hasDocuments: userData.hasDocuments,
+          hasTimelineEntries: userData.hasTimelineEntries,
+          hasFamilyData: userData.hasFamilyData,
+        }}
+      />
+
+      {/* Contextual Help */}
+      <ContextualHelp page="vault" />
     </div>
   );
 }

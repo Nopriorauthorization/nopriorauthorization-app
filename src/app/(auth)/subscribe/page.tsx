@@ -1,8 +1,7 @@
 "use client";
 export const dynamic = 'force-dynamic';
 import { useState } from "react";
-import { TIERS } from "@/lib/tiers";
-import Button from "@/components/ui/button";
+import EnhancedPricingSection from "@/components/pricing/EnhancedPricingSection";
 
 const faqs = [
   {
@@ -26,15 +25,6 @@ const faqs = [
 export default function SubscribePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const handleSubscribe = (tierId: string) => {
-    if (tierId === "starter") {
-      window.location.href = "/signup";
-    } else {
-      // TODO: Stripe checkout integration (P3)
-      alert(`Stripe checkout for ${tierId} coming soon!`);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="mx-auto max-w-7xl px-4 py-16">
@@ -49,46 +39,8 @@ export default function SubscribePage() {
           </p>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="mb-20 grid gap-8 md:grid-cols-3">
-          {Object.values(TIERS).map((tier) => (
-            <div
-              key={tier.id}
-              className={`rounded-2xl border p-8 ${
-                tier.id === "blueprint"
-                  ? "border-hot-pink bg-hot-pink/5"
-                  : "border-white/20 bg-white/5"
-              }`}
-            >
-              <div className="mb-6">
-                <h2 className="mb-2 text-2xl font-bold">{tier.displayName}</h2>
-                <div className="mb-4 flex items-baseline gap-2">
-                  <span className="text-4xl font-bold">${tier.price}</span>
-                  <span className="text-gray-400">/month</span>
-                </div>
-                <p className="text-sm text-gray-300">{tier.description}</p>
-              </div>
-
-              <ul className="mb-8 space-y-3">
-                {tier.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="mt-0.5 text-hot-pink">✓</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                variant={tier.id === "blueprint" ? "primary" : "secondary"}
-                size="lg"
-                className="w-full"
-                onClick={() => handleSubscribe(tier.id)}
-              >
-                {tier.cta}
-              </Button>
-            </div>
-          ))}
-        </div>
+        {/* Enhanced Pricing Section */}
+        <EnhancedPricingSection />
 
         {/* FAQ Section */}
         <div className="mx-auto max-w-3xl">

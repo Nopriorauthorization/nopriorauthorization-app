@@ -16,7 +16,6 @@ import {
   FiShare2,
   FiUser,
   FiUsers,
-  FiCpu,
   FiZap,
   FiTarget,
   FiCalendar,
@@ -25,7 +24,7 @@ import {
   FiMinus,
   FiActivity,
   FiHeart,
-  FiBrain,
+  FiCpu,
   FiDroplet,
   FiThermometer,
   FiBarChart3,
@@ -485,7 +484,7 @@ export default function InteractiveLabDecoder() {
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-1">
             {[
               { id: 'upload', label: 'Upload Documents', icon: FiUpload },
-              { id: 'decode', label: 'AI Analysis', icon: FiBrain },
+              { id: 'decode', label: 'AI Analysis', icon: FiCpu },
               { id: 'chat', label: 'Ask Expert', icon: FiMessageSquare },
               { id: 'save', label: 'Saved Insights', icon: FiSave }
             ].map((tab) => (
@@ -608,7 +607,7 @@ export default function InteractiveLabDecoder() {
             >
               {decodedResults.length === 0 ? (
                 <div className="text-center py-12">
-                  <FiBrain className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <FiCpu className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-white mb-2">No Results to Decode</h3>
                   <p className="text-gray-400">Upload medical documents first to get AI-powered analysis</p>
                 </div>

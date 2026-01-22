@@ -16,6 +16,7 @@ export interface TierDefinition {
   name: string;
   displayName: string;
   price: number; // Monthly price in dollars
+  annualPrice?: number; // Annual price in dollars (optional)
   description: string;
   features: string[];
   capabilities: TierCapabilities;
@@ -56,6 +57,7 @@ export const TIERS: Record<TierType, TierDefinition> = {
     name: "Blueprint",
     displayName: "Blueprint",
     price: 29,
+    annualPrice: 278, // 29 * 12 * 0.8 = 278.4, rounded down
     description: "Full health authority with Blueprint, documents, and exports",
     cta: "Build My Blueprint",
     features: [
@@ -84,6 +86,7 @@ export const TIERS: Record<TierType, TierDefinition> = {
     name: "Family Blueprint",
     displayName: "Family Blueprint",
     price: 49,
+    annualPrice: 470, // 49 * 12 * 0.8 = 470.4, rounded down
     description: "Manage health for your whole family in one place",
     cta: "Cover My Family",
     features: [
@@ -128,6 +131,28 @@ export function calculateFamilyPrice(memberCount: number): number {
   const additionalMembers = Math.max(0, memberCount - includedSeats);
   
   return familyTier.price + (additionalMembers * additionalSeatPrice);
+}
+
+export function calculateAnnualSavings(tier: TierDefinition): { annualPrice: number; monthlyEquivalent: number; savings: number; savingsPercent: number } {
+  if (!tier.annualPrice) {
+    return {
+      annualPrice: tier.price * 12,
+      monthlyEquivalent: tier.price,
+      savings: 0,
+      savingsPercent: 0
+    };
+  }
+
+  const monthlyEquivalent = tier.annualPrice / 12;
+  const savings = (tier.price * 12) - tier.annualPrice;
+  const savingsPercent = Math.round((savings / (tier.price * 12)) * 100);
+
+  return {
+    annualPrice: tier.annualPrice,
+    monthlyEquivalent: Math.round(monthlyEquivalent * 100) / 100,
+    savings,
+    savingsPercent
+  };
 }
 
 export function isTierUpgrade(currentTier: TierType, targetTier: TierType): boolean {

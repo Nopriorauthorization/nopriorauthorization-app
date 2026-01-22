@@ -1,4 +1,5 @@
 "use client";
+import React, { useState, useEffect } from "react";
 export const dynamic = 'force-dynamic';
 import Link from "next/link";
 
@@ -54,6 +55,7 @@ type SnapshotData = {
   isEmpty: boolean;
 };
 
+export default function SnapshotPage() {
   const [snapshot, setSnapshot] = useState<SnapshotData | null>(null);
   const [loading, setLoading] = useState(true);
 

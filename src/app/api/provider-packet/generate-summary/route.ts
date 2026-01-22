@@ -1,6 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/auth-options";
+import prisma from "@/lib/db";
+import { logAccess } from "@/lib/audit-log";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -15,6 +17,7 @@ export async function POST(request: NextRequest) {
       { status: 401 }
     );
   }
+  const userId = session.user.id;
 
   try {
     const body = await request.json();
@@ -26,6 +29,41 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // 🚨 HIPAA COMPLIANCE: Check user consent before AI processing
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { consentToShareClinicalSummary: true, email: true },
+    });
+
+    if (!user?.consentToShareClinicalSummary) {
+      // Log the denied access attempt
+      await logAccess({
+        actorId: userId,
+        action: "AI_SUMMARY_DENIED",
+        resourceType: "CLINICAL_SUMMARY",
+        resourceId: "ai-generation",
+        metadata: { reason: "consent_not_granted" },
+      });
+
+      return NextResponse.json({
+        error: "AI clinical summary generation requires patient consent for PHI processing. Please update your privacy settings to enable this feature."
+      }, { status: 403 });
+    }
+
+    // Log the AI processing access
+    await logAccess({
+      actorId: userId,
+      action: "AI_SUMMARY_GENERATED",
+      resourceType: "CLINICAL_SUMMARY",
+      resourceId: "ai-generation",
+      metadata: {
+        hasChiefConcern: !!packetData.chiefConcern,
+        hasMedicalHistory: !!packetData.medicalHistory,
+        hasMedications: !!packetData.currentMedications,
+        hasProviderNotes: !!providerNotes,
+      },
+    });
 
     // Generate AI clinical summary
     const clinicalSummary = await generateClinicalSummary(packetData, providerNotes);

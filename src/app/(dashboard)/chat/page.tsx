@@ -1,5 +1,5 @@
 "use client";
-export const runtime = "edge";
+export const dynamic = 'force-dynamic';export const runtime = "edge";
 
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";

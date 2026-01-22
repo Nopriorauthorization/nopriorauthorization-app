@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import Link from "next/link";
 import Providers from "@/components/layout/providers";
 import Header from "@/components/layout/header";

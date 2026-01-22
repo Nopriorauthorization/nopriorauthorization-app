@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import SmartCareRecommendations from '@/content/hero/SmartCareRecommendations';
 
 export default function RecommendationsPage() {

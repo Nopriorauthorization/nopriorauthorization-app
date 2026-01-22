@@ -1,0 +1,119 @@
+
+> ask-beau-tox@1.0.0 build
+> prisma generate && next build
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v5.22.0) to ./node_modules/@prisma/client in 73ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+  ▲ Next.js 14.2.35
+  - Environments: .env.local, .env.production, .env
+
+   Creating an optimized production build ...
+ ⚠ Compiled with warnings
+
+./src/app/period-tracker/page.tsx
+Attempted import error: '@/content/period-tracker' does not contain a default export (imported as 'PeriodTracker').
+
+Import trace for requested module:
+./src/app/period-tracker/page.tsx
+
+ ✓ Compiled successfully
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+ ⚠ Using edge runtime on a page currently disables static generation for that page
+   Generating static pages (0/131) ...
+   Generating static pages (32/131) 
+Error fetching timeline: n [Error]: Dynamic server usage: Route /api/vault/timeline couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at l (/Users/danid/ask-beau-tox/.next/server/chunks/8948.js:1:37220)
+    at d (/Users/danid/ask-beau-tox/.next/server/chunks/2857.js:25:29895)
+    at s (/Users/danid/ask-beau-tox/.next/server/chunks/2857.js:25:19584)
+    at p (/Users/danid/ask-beau-tox/.next/server/app/api/vault/timeline/route.js:1:1538)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:38417
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/trace/tracer.js:140:36
+    at NoopContextManager.with (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854) {
+  description: "Route /api/vault/timeline couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+Error generating visit prep: n [Error]: Dynamic server usage: Route /api/vault/visit-prep couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at l (/Users/danid/ask-beau-tox/.next/server/chunks/8948.js:1:37220)
+    at l (/Users/danid/ask-beau-tox/.next/server/app/api/stripe/webhook/route.js:1:5432)
+    at s (/Users/danid/ask-beau-tox/.next/server/chunks/2857.js:25:19584)
+    at i (/Users/danid/ask-beau-tox/.next/server/app/api/documents/[id]/decode/route.js:1:5767)
+    at d (/Users/danid/ask-beau-tox/.next/server/app/api/vault/visit-prep/route.js:1:1281)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:38417
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/trace/tracer.js:140:36
+    at NoopContextManager.with (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093) {
+  description: "Route /api/vault/visit-prep couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+Error fetching members: n [Error]: Dynamic server usage: Route /api/vault/trusted-circle couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at l (/Users/danid/ask-beau-tox/.next/server/chunks/8948.js:1:37220)
+    at d (/Users/danid/ask-beau-tox/.next/server/chunks/2857.js:25:29895)
+    at s (/Users/danid/ask-beau-tox/.next/server/chunks/2857.js:25:19584)
+    at a (/Users/danid/ask-beau-tox/.next/server/app/api/vault/provider-tracker/route.js:1:5916)
+    at c (/Users/danid/ask-beau-tox/.next/server/app/api/vault/trusted-circle/route.js:1:1281)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:38417
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/trace/tracer.js:140:36
+    at NoopContextManager.with (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093) {
+  description: "Route /api/vault/trusted-circle couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+Error fetching flags: n [Error]: Dynamic server usage: Route /api/vault/red-flags couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at l (/Users/danid/ask-beau-tox/.next/server/chunks/8948.js:1:37220)
+    at d (/Users/danid/ask-beau-tox/.next/server/chunks/2857.js:25:29895)
+    at s (/Users/danid/ask-beau-tox/.next/server/chunks/2857.js:25:19584)
+    at s (/Users/danid/ask-beau-tox/.next/server/app/api/decoder/add-to-packet/route.js:1:6391)
+    at d (/Users/danid/ask-beau-tox/.next/server/app/api/vault/red-flags/route.js:1:1281)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:38417
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/trace/tracer.js:140:36
+    at NoopContextManager.with (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093) {
+  description: "Route /api/vault/red-flags couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+   Generating static pages (65/131) 
+TypeError: Cannot read properties of null (reading 'useContext')
+    at t.useContext (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:109421)
+    at c (/Users/danid/ask-beau-tox/.next/server/chunks/9734.js:1:21737)
+    at 95572 (/Users/danid/ask-beau-tox/.next/server/app/vault/snapshot/page.js:1:12956)
+    at Object.t [as require] (/Users/danid/ask-beau-tox/.next/server/webpack-runtime.js:1:143)
+    at require (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:17:18811)
+    at s (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:88330)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:98875
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:98962
+    at t (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:99165) {
+  digest: '2031186527'
+}
+
+Error occurred prerendering page "/vault/snapshot". Read more: https://nextjs.org/docs/messages/prerender-error
+
+TypeError: Cannot read properties of null (reading 'useContext')
+    at t.useContext (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:109421)
+    at c (/Users/danid/ask-beau-tox/.next/server/chunks/9734.js:1:21737)
+    at 95572 (/Users/danid/ask-beau-tox/.next/server/app/vault/snapshot/page.js:1:12956)
+    at Object.t [as require] (/Users/danid/ask-beau-tox/.next/server/webpack-runtime.js:1:143)
+    at require (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:17:18811)
+    at s (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:88330)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:98875
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:98962
+    at t (/Users/danid/ask-beau-tox/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:99165)
+   Generating static pages (98/131) 
+ ✓ Generating static pages (131/131)
+
+> Export encountered errors on following paths:
+	/vault/snapshot/page: /vault/snapshot

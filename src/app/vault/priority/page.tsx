@@ -1,5 +1,5 @@
 "use client";
-
+export const dynamic = 'force-dynamic';
 import { useState, useEffect } from "react";
 
 type Priority = {
@@ -32,7 +32,6 @@ type PriorityData = {
   };
 };
 
-export const dynamic = "force-dynamic";
 
 const PRIORITY_TYPES = [
   { value: "question", label: "Questions to Ask", icon: "❓", color: "blue" },

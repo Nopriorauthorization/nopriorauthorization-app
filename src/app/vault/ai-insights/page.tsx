@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import AIHealthInsightsEngine from '@/content/hero/AIHealthInsightsEngine';
 
 export default function AIInsightsPage() {

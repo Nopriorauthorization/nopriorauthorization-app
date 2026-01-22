@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import EmbedGenerator from "@/components/provider/embed-generator";
 import Link from "next/link";
 

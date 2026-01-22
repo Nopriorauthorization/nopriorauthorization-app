@@ -1,5 +1,5 @@
 "use client";
-export const runtime = "edge";
+export const dynamic = 'force-dynamic';export const runtime = "edge";
 
 import { useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";

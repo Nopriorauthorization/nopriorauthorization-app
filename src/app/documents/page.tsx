@@ -1,5 +1,5 @@
 "use client";
-
+export const dynamic = 'force-dynamic';
 import DocumentsVault from "@/components/documents/DocumentsVault";
 
 export default function DocumentsPage() {

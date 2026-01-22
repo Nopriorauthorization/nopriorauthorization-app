@@ -22,11 +22,11 @@ const LandingPage: React.FC = () => {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
         {/* Hero Video Overlay (optional) */}
-        <div className="absolute inset-0 z-0 opacity-30">
+        <div className="absolute inset-0 z-0 opacity-20">
           <video
             autoPlay
             muted
@@ -37,9 +37,11 @@ const LandingPage: React.FC = () => {
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
         </div>
+      </section>
 
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      {/* Hero Content Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
+        <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             No Prior <span className="text-pink-500">Authorization</span>
           </h1>

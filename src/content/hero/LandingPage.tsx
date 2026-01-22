@@ -33,6 +33,20 @@ const LandingPage: React.FC = () => {
             </div>
           </div>
 
+          {/* Mascots Link - Front and Center */}
+          <div className="mb-8">
+            <a
+              href="https://nopriorauthorization.com/mascots"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-600/20 to-purple-600/20 hover:from-pink-600/30 hover:to-purple-600/30 border border-pink-500/30 hover:border-pink-500/50 rounded-full px-8 py-4 text-white font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25"
+            >
+              <span>🎭</span>
+              <span>Meet Your Mascots</span>
+              <span>→</span>
+            </a>
+          </div>
+
           <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
             Your AI-powered healthcare companion. Skip the bureaucracy and get direct access to
             expert medical insights, personalized treatment plans, and AI-powered wellness guidance.

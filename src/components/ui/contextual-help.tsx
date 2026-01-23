@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiHelpCircle, FiX, FiLightbulb } from 'react-icons/fi';
+import { FiHelpCircle, FiX, FiZap } from 'react-icons/fi';
 
 interface ContextualHelpProps {
   page: string;
@@ -108,7 +108,7 @@ export function ContextualHelp({ page, className = "" }: ContextualHelpProps) {
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <FiLightbulb className="w-5 h-5 text-yellow-400" />
+                <FiZap className="w-5 h-5 text-yellow-400" />
                 <h3 className="text-lg font-semibold text-white">{helpData.title}</h3>
               </div>
               <button

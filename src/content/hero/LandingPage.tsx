@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainNavigation from '@/components/layout/main-navigation';
@@ -46,7 +46,7 @@ const mascots = [
     specialty: "Dermal Fillers",
     description: "Specialist in dermal filler treatments, facial contouring, and volume restoration.",
     image: "/characters/filla-grace.png",
-    video: "/hero/avatars/filla-grace-intro.mp4",
+    video: "/hero/avatars/f-ill-intro.mp4",
     credentials: "Filler Expert",
     personality: "Graceful, detailed, anatomy-focused",
     chatPrompt: "Learn about fillers, facial anatomy, and realistic expectations"
@@ -91,14 +91,19 @@ const LandingPage: React.FC = () => {
   const [loadingChat, setLoadingChat] = useState(null);
   const videoRefs = useRef({});
 
+  const [videosMuted, setVideosMuted] = useState(true);
+
   useEffect(() => {
-    // Auto-start all videos when component mounts
+    console.log('LandingPage mounted, videosMuted:', videosMuted);
+    // Auto-start all videos when component mounts (muted initially)
     const startVideos = async () => {
       for (const mascot of mascots) {
         const video = videoRefs.current[mascot.id];
         if (video) {
           try {
+            video.muted = true; // Start muted to allow autoplay
             await video.play();
+            console.log('Video started for:', mascot.name, 'muted:', video.muted);
           } catch (error) {
             console.log('Video autoplay failed for:', mascot.name, error);
           }
@@ -109,6 +114,18 @@ const LandingPage: React.FC = () => {
     // Small delay to ensure videos are loaded
     setTimeout(startVideos, 1000);
   }, []);
+
+  const unmuteVideos = () => {
+    console.log('Unmuting videos');
+    setVideosMuted(false);
+    for (const mascot of mascots) {
+      const video = videoRefs.current[mascot.id];
+      if (video) {
+        video.muted = false;
+        console.log('Unmuted video for:', mascot.name);
+      }
+    }
+  };
 
   const startChat = async (mascot) => {
     setLoadingChat(mascot.id);
@@ -188,10 +205,23 @@ const LandingPage: React.FC = () => {
               Watch intro videos and chat with our AI-powered healthcare specialists.
               Each mascot brings unique expertise to guide your wellness journey.
             </p>
-            <div className="flex items-center justify-center gap-2 text-pink-300 mb-8">
-              <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium">Live & Interactive</span>
-              <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></div>
+            <div className="flex items-center justify-center gap-4 text-pink-300 mb-8">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">Live & Interactive</span>
+                <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></div>
+              </div>
+              {videosMuted && (
+                <button
+                  onClick={unmuteVideos}
+                  className="flex items-center gap-2 bg-pink-500/20 hover:bg-pink-500/30 px-3 py-1 rounded-full text-xs font-medium transition-all"
+                >
+                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" />
+                  </svg>
+                  Enable Sound
+                </button>
+              )}
             </div>
           </div>
 
@@ -212,9 +242,10 @@ const LandingPage: React.FC = () => {
                       src={mascot.video}
                       autoPlay
                       loop
-                      muted
                       playsInline
                       preload="auto"
+                      muted
+                      controls={false}
                       onError={(e) => {
                         console.log('Video failed to load:', mascot.video);
                         // Fallback to image if video fails
@@ -223,6 +254,19 @@ const LandingPage: React.FC = () => {
                         console.log('Video loaded successfully:', mascot.video);
                       }}
                     />
+
+                    {/* Unmute Button Overlay */}
+                    {videosMuted && (
+                      <button
+                        onClick={unmuteVideos}
+                        className="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-all z-20 shadow-lg border-2 border-white/20"
+                        title="Click to enable sound"
+                      >
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 011.414-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </button>
+                    )}
 
                     {/* Fallback Image (shown if video fails) */}
                     <Image

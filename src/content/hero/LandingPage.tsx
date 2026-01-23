@@ -189,14 +189,16 @@ const LandingPage: React.FC = () => {
             No Prior <span className="text-pink-500">Authorization</span>
           </h1>
 
-          {/* Hero Image Section - Desktop only, underneath heading */}
+          {/* Hero Image Section - Responsive across all devices */}
           <div className="relative w-full max-w-5xl mx-auto mb-8">
-            <div className="relative h-[500px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/20 border border-pink-500/30">
-              <img
-                src="/nopriorhero.png"
-                alt="No Prior Authorization Hero"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
+            <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/20 border border-pink-500/30">
+              <Image
+                src="/images/nopriorhero.png"
+                alt="No Prior Authorization healthcare access platform hero image"
+                fill
+                className="object-cover object-center"
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1200px) 80vw, 70vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-transparent to-purple-500/10" />

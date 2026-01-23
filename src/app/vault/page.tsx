@@ -34,24 +34,43 @@ export default function VaultPage() {
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
 
-  // Simulate checking user progress (in real app, this would check database/localStorage)
+  // Check real user progress from APIs
   useEffect(() => {
-    // For demo purposes, we'll start with minimal data
-    // In production, this would check actual user data
     const checkUserProgress = async () => {
       try {
         // Check if user has completed onboarding
         const onboardingCompleted = localStorage.getItem('vault-onboarding-completed');
         setHasCompletedOnboarding(onboardingCompleted === 'true');
 
-        // Simulate API call to check user data
-        // For now, we'll assume new users start with no data
+        // Check for documents
+        const documentsResponse = await fetch('/api/documents?limit=1');
+        const documentsData = await documentsResponse.json();
+        const hasDocuments = documentsData.documents && documentsData.documents.length > 0;
+
+        // Check for family data (trusted circle)
+        const familyResponse = await fetch('/api/vault/trusted-circle');
+        const familyData = await familyResponse.json();
+        const hasFamilyData = familyData.members && familyData.members.length > 0;
+
+        // Check for provider sharing
+        const providersResponse = await fetch('/api/vault/providers');
+        const providersData = await providersResponse.json();
+        const hasSharedWithProviders = providersData.providers && providersData.providers.some((p: any) => p.sharedData);
+
+        // Check for AI insights (this would need a real API endpoint)
+        // For now, we'll simulate based on other activity
+        const hasAIInsights = hasDocuments && (hasFamilyData || hasSharedWithProviders);
+
+        // Check for timeline entries (this would need a real API endpoint)
+        // For now, we'll simulate based on documents and family data
+        const hasTimelineEntries = hasDocuments || hasFamilyData;
+
         setUserData({
-          hasDocuments: false, // Would check if user has uploaded documents
-          hasTimelineEntries: false, // Would check if user has timeline entries
-          hasFamilyData: false, // Would check if user has family tree data
-          hasSharedWithProviders: false, // Would check if user has shared with providers
-          hasAIInsights: false, // Would check if user has generated insights
+          hasDocuments,
+          hasTimelineEntries,
+          hasFamilyData,
+          hasSharedWithProviders,
+          hasAIInsights,
         });
 
         // Show onboarding for new users who haven't completed it
@@ -60,11 +79,77 @@ export default function VaultPage() {
         }
       } catch (error) {
         console.error('Error checking user progress:', error);
+        // Fallback to default state
+        setUserData({
+          hasDocuments: false,
+          hasTimelineEntries: false,
+          hasFamilyData: false,
+          hasSharedWithProviders: false,
+          hasAIInsights: false,
+        });
       }
     };
 
     checkUserProgress();
   }, []);
+
+  // Function to refresh user progress after actions
+  const refreshUserProgress = async () => {
+    try {
+      // Check for documents
+      const documentsResponse = await fetch('/api/documents?limit=1');
+      const documentsData = await documentsResponse.json();
+      const hasDocuments = documentsData.documents && documentsData.documents.length > 0;
+
+      // Check for family data (trusted circle)
+      const familyResponse = await fetch('/api/vault/trusted-circle');
+      const familyData = await familyResponse.json();
+      const hasFamilyData = familyData.members && familyData.members.length > 0;
+
+      // Check for provider sharing
+      const providersResponse = await fetch('/api/vault/providers');
+      const providersData = await providersResponse.json();
+      const hasSharedWithProviders = providersData.providers && providersData.providers.some((p: any) => p.sharedData);
+
+      // Check for AI insights (simulate based on other activity)
+      const hasAIInsights = hasDocuments && (hasFamilyData || hasSharedWithProviders);
+
+      // Check for timeline entries (simulate based on documents and family data)
+      const hasTimelineEntries = hasDocuments || hasFamilyData;
+
+      const newUserData = {
+        hasDocuments,
+        hasTimelineEntries,
+        hasFamilyData,
+        hasSharedWithProviders,
+        hasAIInsights,
+      };
+
+      setUserData(newUserData);
+      return newUserData;
+    } catch (error) {
+      console.error('Error refreshing user progress:', error);
+      return userData;
+    }
+  };
+
+  // Get intelligent next step based on user progress
+  const getNextStep = () => {
+    const progressItems = [
+      { id: 'documents', completed: userData.hasDocuments, priority: 1, action: 'Upload Documents', path: '/vault/personal-documents' },
+      { id: 'timeline', completed: userData.hasTimelineEntries, priority: 2, action: 'Build Timeline', path: '/vault/timeline' },
+      { id: 'family', completed: userData.hasFamilyData, priority: 3, action: 'Add Family Data', path: '/vault/family-tree' },
+      { id: 'providers', completed: userData.hasSharedWithProviders, priority: 4, action: 'Share with Providers', path: '/vault/provider-portal' },
+      { id: 'insights', completed: userData.hasAIInsights, priority: 5, action: 'Get AI Insights', path: '/vault/ai-insights' }
+    ];
+
+    // Find the highest priority incomplete item
+    const nextItem = progressItems
+      .filter(item => !item.completed)
+      .sort((a, b) => a.priority - b.priority)[0];
+
+    return nextItem;
+  };
 
   const handleOnboardingComplete = () => {
     setShowOnboarding(false);
@@ -356,19 +441,55 @@ export default function VaultPage() {
         <div className="mt-12 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl border border-blue-500/20 p-8">
           <div className="text-center mb-6">
             <h2 className="text-3xl font-bold text-white mb-2">🎯 Your Next Step</h2>
-            <p className="text-gray-300">Unlock more features by building your health foundation</p>
+            <p className="text-gray-300">Complete this action to unlock more Sacred Vault features</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {(() => {
+              const nextStep = getNextStep();
+              if (nextStep) {
+                return (
+                  <Link
+                    href={nextStep.path}
+                    className="group bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400/50 transition hover:scale-105"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 text-white">
+                        <FiTrendingUp className="w-8 h-8" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold text-white mb-1 group-hover:text-blue-400 transition">
+                          {nextStep.action}
+                        </h3>
+                        <p className="text-gray-300 text-sm mb-3">
+                          {nextStep.id === 'documents' && "Upload your medical documents to get started with AI analysis"}
+                          {nextStep.id === 'timeline' && "Build your health timeline to track your medical journey"}
+                          {nextStep.id === 'family' && "Add family health data to unlock comprehensive insights"}
+                          {nextStep.id === 'providers' && "Share your data securely with healthcare providers"}
+                          {nextStep.id === 'insights' && "Generate personalized AI health recommendations"}
+                        </p>
+                        <div className="flex items-center gap-2 text-blue-400 text-sm font-medium">
+                          <span>Start Now</span>
+                          <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              }
+              return null;
+            })()}
+
+            {/* Show available features if next step is completed */}
             {vaultFeatures
               .filter(f => f.state === 'available')
               .sort((a, b) => a.priority - b.priority)
-              .slice(0, 2)
+              .slice(0, 1)
               .map((feature) => (
                 <Link
                   key={feature.id}
                   href={feature.path}
-                  className="group bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400/50 transition hover:scale-105"
+                  className="group bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-6 hover:border-green-400/50 transition hover:scale-105"
                 >
                   <div className="flex items-center gap-4">
                     <div className={`p-3 rounded-lg bg-gradient-to-br ${feature.color} text-white`}>
@@ -392,14 +513,14 @@ export default function VaultPage() {
                       })()}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-white mb-1 group-hover:text-blue-400 transition">
-                        {feature.name}
+                      <h3 className="text-xl font-semibold text-white mb-1 group-hover:text-green-400 transition">
+                        Explore {feature.name}
                       </h3>
                       <p className="text-gray-300 text-sm mb-3">
                         {feature.description}
                       </p>
-                      <div className="flex items-center gap-2 text-blue-400 text-sm font-medium">
-                        <span>Get Started</span>
+                      <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
+                        <span>Launch Feature</span>
                         <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
                       </div>
                     </div>

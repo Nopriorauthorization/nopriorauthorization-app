@@ -2,33 +2,71 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-// import { useSession, signOut } from "next-auth/react";
+import { useState, useEffect, useRef } from "react";
 import Button from "@/components/ui/button";
-import { FiSearch, FiX } from "react-icons/fi";
+import { FiSearch, FiX, FiChevronDown, FiChevronUp } from "react-icons/fi";
 
-const marketingLinks = [
-  { label: "Home", href: "/" },
-  { label: "Family Health Hub", href: "/vault", icon: "🌳", featured: true },
-  { label: "Hormone Tracker", href: "/hormone-tracker", icon: "🌸" },
-  { label: "Blueprint", href: "/blueprint" },
-  { label: "Treatments", href: "/treatments" },
-  { label: "AI Concierge", href: "/ai-concierge", icon: "🤖" },
-  { label: "Provider Packet", href: "/provider-packet-interactive", icon: "📋" },
-  { label: "Health Decoder", href: "/vault/decoder", icon: "🏥" },
-  { label: "Life Changing Diagnosis", href: "/vault/priority", icon: "🛡️" },
-  { label: "Settings", href: "/settings" },
+// Navigation structure with dropdowns
+const navigationItems = [
+  {
+    label: "Home",
+    href: "/",
+    hasDropdown: false
+  },
+  {
+    label: "Sacred Vault",
+    href: "/vault",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Sacred Vault", href: "/vault", icon: "🏰" },
+      { label: "Personal Documents Vault", href: "/vault/personal-documents", icon: "📄" },
+      { label: "Rich Health Timeline", href: "/vault/timeline", icon: "📅" },
+      { label: "Family Health Tree", href: "/vault/family-tree", icon: "🌳" },
+      { label: "Provider Data Sharing", href: "/vault/provider-portal", icon: "🔐" },
+      { label: "Interactive Lab Decoder", href: "/vault/decoder", icon: "🔍", comingSoon: true },
+      { label: "AI Health Insights", href: "/vault/ai-insights", icon: "🧠", comingSoon: true }
+    ]
+  },
+  {
+    label: "AI Concierge",
+    href: "/ai-concierge",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "AI Concierge", href: "/ai-concierge", icon: "🤖" },
+      { label: "Chat with Expert Mascots", href: "/chat", icon: "💬" }
+    ]
+  },
+  {
+    label: "Health Tools",
+    href: "/hormone-tracker",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Family Health Hub", href: "/vault", icon: "🌳" },
+      { label: "Hormone Tracker", href: "/hormone-tracker", icon: "🌸" },
+      { label: "Health Decoder", href: "/vault/decoder", icon: "🏥" },
+      { label: "Life Changing Diagnosis", href: "/vault/priority", icon: "🛡️" }
+    ]
+  },
+  {
+    label: "Blueprint",
+    href: "/blueprint",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "My Blueprint", href: "/blueprint", icon: "📋" },
+      { label: "Treatment Plans", href: "/blueprint", icon: "💊" },
+      { label: "Recommendations", href: "/blueprint", icon: "💡" }
+    ]
+  },
+  {
+    label: "Providers",
+    href: "/provider-packet-interactive",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Provider Packet", href: "/provider-packet-interactive", icon: "📋" },
+      { label: "Provider Resources", href: "/provider-packet-interactive", icon: "📚" }
+    ]
+  }
 ];
-
-// Interactive Chat Section - Our signature feature
-const chatSection = {
-  label: "💬 Chat with Expert Mascots",
-  description: "Ask any question to Beau-Tox, Peppi, Grace & 5+ specialists. All conversations saved to your blueprint.",
-  href: "/chat",
-  features: ["7 Expert Mascots", "Memory & Blueprint", "Real-time AI Responses"]
-};
-
-// No appLinks: all navigation is public
 
 export default function MainNavigation() {
   const router = useRouter();
@@ -36,18 +74,36 @@ export default function MainNavigation() {
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const directNavigate = (href: string) => {
     router.push(href);
     setOpen(false);
     setShowSearch(false);
     setSearchQuery('');
+    setOpenDropdown(null);
   };
 
-  // Search functionality
-  const searchResults = marketingLinks.filter(link =>
-    link.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (link.icon && link.icon.includes(searchQuery.toLowerCase()))
+  // Search functionality - search through all dropdown items
+  const allSearchableItems = navigationItems.flatMap(item => 
+    item.hasDropdown ? item.dropdownItems : [item]
+  );
+
+  const searchResults = allSearchableItems.filter(item =>
+    item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (item.icon && item.icon.includes(searchQuery.toLowerCase()))
   );
 
   const handleSearch = (e: React.FormEvent) => {
@@ -57,23 +113,123 @@ export default function MainNavigation() {
     }
   };
 
-  const renderLinks = (links: { label: string; href: string; dynamic?: boolean; icon?: string; featured?: boolean }[]) =>
-    links.map((link) => (
-      <button
-        key={link.href}
-        onClick={() => directNavigate(link.href)}
-        className={`text-sm font-medium transition flex items-center gap-1.5 ${
-          link.featured
-            ? 'text-white bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-3 py-2 rounded-full border border-purple-500/30 hover:from-purple-500/30 hover:to-pink-500/30'
-            : pathname === link.href
-            ? "text-hot-pink"
-            : "text-white/70 hover:text-white"
-        }`}
-      >
-        {link.icon && <span>{link.icon}</span>}
-        {link.label}
-      </button>
-    ));
+  const toggleDropdown = (label: string) => {
+    setOpenDropdown(openDropdown === label ? null : label);
+  };
+
+  const renderDesktopNavigation = () => (
+    <div className="hidden items-center gap-6 md:flex">
+      {navigationItems.map((item) => (
+        <div key={item.label} className="relative" ref={item.hasDropdown ? dropdownRef : null}>
+          {item.hasDropdown ? (
+            <>
+              <button
+                onClick={() => toggleDropdown(item.label)}
+                className={`flex items-center gap-1 text-sm font-medium transition ${
+                  pathname.startsWith(item.href) || item.dropdownItems.some(d => pathname === d.href)
+                    ? "text-hot-pink"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                {item.label}
+                {openDropdown === item.label ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
+              </button>
+              {openDropdown === item.label && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-black/95 backdrop-blur border border-white/20 rounded-lg shadow-xl z-50">
+                  <div className="p-2">
+                    {item.dropdownItems.map((dropdownItem) => (
+                      <button
+                        key={dropdownItem.href}
+                        onClick={() => directNavigate(dropdownItem.href)}
+                        className={`w-full text-left px-3 py-2 rounded-md transition-colors flex items-center gap-3 ${
+                          pathname === dropdownItem.href
+                            ? "bg-hot-pink/20 text-hot-pink"
+                            : "text-white/70 hover:text-white hover:bg-white/10"
+                        }`}
+                      >
+                        <span className="text-lg">{dropdownItem.icon}</span>
+                        <div className="flex-1">
+                          <div className="text-sm font-medium">{dropdownItem.label}</div>
+                          {dropdownItem.comingSoon && (
+                            <div className="text-xs text-yellow-400">Coming Soon</div>
+                          )}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <button
+              onClick={() => directNavigate(item.href)}
+              className={`text-sm font-medium transition ${
+                pathname === item.href ? "text-hot-pink" : "text-white/70 hover:text-white"
+              }`}
+            >
+              {item.label}
+            </button>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderMobileNavigation = () => (
+    <div className="flex flex-col gap-3 md:hidden">
+      {navigationItems.map((item) => (
+        <div key={item.label}>
+          {item.hasDropdown ? (
+            <>
+              <button
+                onClick={() => toggleDropdown(item.label)}
+                className={`w-full text-left flex items-center justify-between p-3 rounded-lg transition-colors ${
+                  pathname.startsWith(item.href) || item.dropdownItems.some(d => pathname === d.href)
+                    ? "bg-hot-pink/20 text-hot-pink"
+                    : "text-white/70 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                <span className="font-medium">{item.label}</span>
+                {openDropdown === item.label ? <FiChevronUp size={16} /> : <FiChevronDown size={16} />}
+              </button>
+              {openDropdown === item.label && (
+                <div className="ml-4 mt-2 space-y-1">
+                  {item.dropdownItems.map((dropdownItem) => (
+                    <button
+                      key={dropdownItem.href}
+                      onClick={() => directNavigate(dropdownItem.href)}
+                      className={`w-full text-left px-3 py-2 rounded-md transition-colors flex items-center gap-3 ${
+                        pathname === dropdownItem.href
+                          ? "bg-hot-pink/20 text-hot-pink"
+                          : "text-white/70 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      <span>{dropdownItem.icon}</span>
+                      <div>
+                        <div className="text-sm font-medium">{dropdownItem.label}</div>
+                        {dropdownItem.comingSoon && (
+                          <div className="text-xs text-yellow-400">Coming Soon</div>
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            <button
+              onClick={() => directNavigate(item.href)}
+              className={`w-full text-left p-3 rounded-lg transition-colors font-medium ${
+                pathname === item.href ? "bg-hot-pink/20 text-hot-pink" : "text-white/70 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              {item.label}
+            </button>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black px-4 py-3 shadow-sm backdrop-blur">
@@ -84,28 +240,10 @@ export default function MainNavigation() {
             <span>No Prior Authorization</span>
           </div>
         </Link>
-        
-        {/* Interactive Chat Section - Signature Feature */}
-        <div className="hidden items-center gap-4 md:flex">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/30 hover:from-pink-500/30 hover:to-purple-500/30 transition-all cursor-pointer" onClick={() => directNavigate(chatSection.href)}>
-            <span className="text-lg">{chatSection.label.split(' ')[0]}</span>
-            <div className="flex flex-col">
-              <span className="text-xs font-semibold text-white">Chat with</span>
-              <span className="text-xs text-pink-300">Expert Mascots</span>
-            </div>
-            <div className="ml-2 flex gap-1">
-              {chatSection.features.slice(0, 2).map((feature, idx) => (
-                <span key={idx} className="text-xs bg-pink-500/20 text-pink-300 px-1.5 py-0.5 rounded text-[10px]">
-                  {feature.split(' ')[0]}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
 
-        <div className="hidden items-center gap-6 md:flex">
-          {renderLinks(marketingLinks)}
-        </div>
+        {/* Desktop Navigation */}
+        {renderDesktopNavigation()}
+
         <div className="hidden items-center gap-3 md:flex">
           <button
             onClick={() => setShowSearch(!showSearch)}
@@ -173,6 +311,7 @@ export default function MainNavigation() {
             </form>
           </div>
         )}
+
         <button
           className="ml-auto text-sm text-white md:hidden"
           onClick={() => setOpen((prev) => !prev)}
@@ -180,8 +319,8 @@ export default function MainNavigation() {
           Menu
         </button>
       </div>
-      
-      {/* Mobile Chat Section */}
+
+      {/* Mobile Navigation */}
       {open && (
         <div className="mt-3 border-t border-white/5 pt-3 md:hidden">
           {/* Mobile Search */}
@@ -212,18 +351,19 @@ export default function MainNavigation() {
             )}
           </div>
 
+          {/* Mobile Chat Section - Signature Feature */}
           <div className="mb-4 p-4 rounded-lg bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20">
-            <button 
-              onClick={() => directNavigate(chatSection.href)}
+            <button
+              onClick={() => directNavigate("/chat")}
               className="w-full text-left"
             >
               <div className="flex items-start gap-3">
                 <span className="text-2xl">💬</span>
                 <div>
                   <div className="font-semibold text-white text-sm">Chat with Expert Mascots</div>
-                  <div className="text-xs text-gray-300 mt-1">{chatSection.description}</div>
+                  <div className="text-xs text-gray-300 mt-1">Ask any question to Beau-Tox, Peppi, Grace & 5+ specialists. All conversations saved to your blueprint.</div>
                   <div className="flex gap-1 mt-2">
-                    {chatSection.features.map((feature, idx) => (
+                    {["7 Expert Mascots", "Memory & Blueprint", "Real-time AI Responses"].map((feature, idx) => (
                       <span key={idx} className="text-xs bg-pink-500/20 text-pink-300 px-2 py-1 rounded">
                         {feature}
                       </span>
@@ -233,9 +373,8 @@ export default function MainNavigation() {
               </div>
             </button>
           </div>
-          <div className="flex flex-col gap-3">
-            {renderLinks(marketingLinks)}
-          </div>
+
+          {renderMobileNavigation()}
         </div>
       )}
     </header>

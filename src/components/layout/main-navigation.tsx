@@ -5,68 +5,13 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Button from "@/components/ui/button";
 import { FiSearch, FiX, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { getNavigationConfig, NavigationItem } from "@/components/shared/navigation-config";
 
-// Navigation structure with dropdowns
-const navigationItems = [
-  {
-    label: "Home",
-    href: "/",
-    hasDropdown: false
-  },
-  {
-    label: "Sacred Vault",
-    href: "/vault",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "Sacred Vault", href: "/vault", icon: "🏰" },
-      { label: "Personal Documents Vault", href: "/vault/personal-documents", icon: "📄" },
-      { label: "Rich Health Timeline", href: "/vault/timeline", icon: "📅" },
-      { label: "Family Health Tree", href: "/vault/family-tree", icon: "🌳" },
-      { label: "Provider Data Sharing", href: "/vault/provider-portal", icon: "🔐" },
-      { label: "Interactive Lab Decoder", href: "/vault/decoder", icon: "🔍", comingSoon: true },
-      { label: "AI Health Insights", href: "/vault/ai-insights", icon: "🧠", comingSoon: true }
-    ]
-  },
-  {
-    label: "AI Concierge",
-    href: "/ai-concierge",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "AI Concierge", href: "/ai-concierge", icon: "🤖" },
-      { label: "Chat with Expert Mascots", href: "/chat", icon: "💬" }
-    ]
-  },
-  {
-    label: "Health Tools",
-    href: "/hormone-tracker",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "Family Health Hub", href: "/vault", icon: "🌳" },
-      { label: "Hormone Tracker", href: "/hormone-tracker", icon: "🌸" },
-      { label: "Health Decoder", href: "/vault/decoder", icon: "🏥" },
-      { label: "Life Changing Diagnosis", href: "/vault/priority", icon: "🛡️" }
-    ]
-  },
-  {
-    label: "Blueprint",
-    href: "/blueprint",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "My Blueprint", href: "/blueprint", icon: "📋" },
-      { label: "Treatment Plans", href: "/blueprint", icon: "💊" },
-      { label: "Recommendations", href: "/blueprint", icon: "💡" }
-    ]
-  },
-  {
-    label: "Providers",
-    href: "/provider-packet-interactive",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "Provider Packet", href: "/provider-packet-interactive", icon: "📋" },
-      { label: "Provider Resources", href: "/provider-packet-interactive", icon: "📚" }
-    ]
-  }
-];
+// Get app mode from environment (set by Vercel configs)
+const APP_MODE = process.env.NEXT_PUBLIC_APP_MODE || 'app';
+
+// Navigation structure with dropdowns - SINGLE SOURCE OF TRUTH
+const navigationItems: NavigationItem[] = getNavigationConfig(APP_MODE as 'marketing' | 'app');
 
 export default function MainNavigation() {
   const router = useRouter();

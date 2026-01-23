@@ -40,3 +40,4 @@ prisma/*.db-journal
 # Mascot intro videos - deploy via CDN or manual upload
 public/hero/avatars/*.mp4
 service-account-key.json
+build.log

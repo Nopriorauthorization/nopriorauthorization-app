@@ -94,6 +94,8 @@ const LandingPage: React.FC = () => {
   const [videoStates, setVideoStates] = useState({});
   const [videosLoaded, setVideosLoaded] = useState(false);
 
+  // Individual video audio state management - each mascot video maintains its own mute/unmute state
+  // This ensures no global audio behavior and prevents multiple videos from playing simultaneously
   useEffect(() => {
     // Auto-start all videos when component mounts (muted initially)
     const startVideos = async () => {
@@ -135,6 +137,7 @@ const LandingPage: React.FC = () => {
     startVideos();
   }, []);
 
+  // Individual audio toggle function - manages per-video mute state independently
   const toggleVideoAudio = (mascotId) => {
     const video = videoRefs.current[mascotId];
     if (!video) return;
@@ -283,7 +286,8 @@ const LandingPage: React.FC = () => {
                             ? 'bg-red-600 hover:bg-red-700 animate-pulse'
                             : 'bg-green-600 hover:bg-green-700'
                         }`}
-                        title={videoStates[mascot.id]?.muted ? "Click to enable sound" : "Click to mute"}
+                        title={videoStates[mascot.id]?.muted ? "Unmute mascot audio" : "Mute mascot audio"}
+                        aria-label={videoStates[mascot.id]?.muted ? "Unmute mascot audio" : "Mute mascot audio"}
                       >
                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                           {videoStates[mascot.id]?.muted ? (

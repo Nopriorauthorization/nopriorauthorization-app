@@ -646,3 +646,54 @@ model SystemHealthCheck {
   @@index([status])
   @@index([checkedAt])
 }
+
+// PHASE 6G: CONTENT GOVERNANCE
+// Mascot script versioning and content control
+
+enum MascotScriptStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+model MascotScript {
+  id          String   @id @default(cuid())
+  mascotId    String   // e.g., "beau-tox", "peppi", "f-ill", "rn-lisa-grace"
+  version     String   // Semantic version like "1.0.0"
+  status      MascotScriptStatus @default(DRAFT)
+  title       String   // Human readable title
+  description String?  // Description of changes
+  scriptContent Json    // The actual script data (dialogues, behaviors, etc.)
+  audioEnabled Boolean @default(true)
+  autoplayEnabled Boolean @default(false)
+  createdBy   String   // Admin user ID
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Audit trail
+  scriptChanges MascotScriptChange[]
+
+  @@index([mascotId])
+  @@index([status])
+  @@index([version])
+  @@unique([mascotId, version])
+}
+
+model MascotScriptChange {
+  id         String   @id @default(cuid())
+  scriptId   String
+  changedBy  String   // Admin user ID
+  changeType String   // "created", "updated", "status_changed", "activated", "archived"
+  oldValue   Json?    // Previous state
+  newValue   Json?    // New state
+  reason     String?  // Reason for change
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  script MascotScript @relation(fields: [scriptId], references: [id], onDelete: Cascade)
+
+  @@index([scriptId])
+  @@index([changedBy])
+  @@index([createdAt])
+}

@@ -29,10 +29,10 @@ export const getNavigationConfig = (mode: 'marketing' | 'app' = 'app'): Navigati
       dropdownItems: [
         { label: "Sacred Vault", href: "/vault", icon: "🏰" },
         { label: "Personal Documents Vault", href: "/vault/personal-documents", icon: "📄" },
-        { label: "Rich Health Timeline", href: "/vault/timeline", icon: "📅" },
+        { label: "Rich Health Timeline", href: "/rich-health-timeline", icon: "📅" },
         { label: "Family Health Tree", href: "/vault/family-tree", icon: "🌳" },
         { label: "Provider Data Sharing", href: "/vault/provider-portal", icon: "🔐" },
-        { label: "Interactive Lab Decoder", href: "/vault/decoder", icon: "🔍", comingSoon: true },
+        { label: "Interactive Lab Decoder", href: "/lab-decoder", icon: "🔍" },
         { label: "AI Health Insights", href: "/vault/ai-insights", icon: "🧠", comingSoon: true }
       ]
     },

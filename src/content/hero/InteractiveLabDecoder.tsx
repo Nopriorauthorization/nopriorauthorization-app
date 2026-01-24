@@ -745,7 +745,7 @@ export default function InteractiveLabDecoder() {
                   onChange={(e) => setCurrentQuestion(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && sendQuestion()}
                   placeholder="Ask about your lab results, health conditions, or treatment options..."
-                  className="flex-1 px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none"
+                  className="flex-1 px-4 py-3 bg-black border border-gray-600 rounded-lg text-pink-400 placeholder-pink-300 focus:border-pink-500 focus:outline-none"
                 />
                 <button
                   onClick={sendQuestion}

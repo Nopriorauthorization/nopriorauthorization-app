@@ -272,7 +272,7 @@ export default function ChatInterface({
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={`Ask ${mascot.name}...`}
-            className="flex-1 resize-none rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent min-h-[44px] max-h-[150px]"
+            className="flex-1 resize-none rounded-lg border border-gray-600 bg-black px-4 py-2 text-pink-400 placeholder-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent min-h-[44px] max-h-[150px]"
             rows={1}
             disabled={isLoading}
             maxLength={2000}

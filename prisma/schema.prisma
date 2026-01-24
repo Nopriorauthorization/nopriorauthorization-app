@@ -93,6 +93,7 @@ model UserMemory {
   topicsDiscussed        Json?
   vaultName              String? // Personalized name for Sacred Vault
   disclaimerAcknowledged Boolean  @default(false)
+  onboardingCompleted    Boolean  @default(false) // Tracks if user completed Phase 4B onboarding
   optOut                 Boolean  @default(false)
   createdAt              DateTime @default(now())
   updatedAt              DateTime @updatedAt

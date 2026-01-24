@@ -373,6 +373,75 @@ const LandingPage: React.FC = () => {
               Watch intro videos and chat with our AI-powered healthcare specialists.
               Each mascot brings unique expertise to guide your wellness journey.
             </p>
+
+            {/* Audio Control Button - Positioned near mascots */}
+            <div className="flex justify-center mb-8">
+              <button
+                onClick={videosLoaded ? toggleAllVideoAudio : undefined}
+                disabled={!videosLoaded}
+                className={`px-6 py-3 rounded-full shadow-lg border-2 border-white/30 transition-all hover:scale-105 flex items-center gap-2 ${
+                  !videosLoaded
+                    ? 'bg-gray-600 animate-pulse'
+                    : allVideosMuted
+                    ? 'bg-red-600 hover:bg-red-700 animate-pulse'
+                    : soloMode
+                    ? 'bg-blue-600 hover:bg-blue-700'
+                    : 'bg-green-600 hover:bg-green-700'
+                }`}
+                title={
+                  !videosLoaded
+                    ? "Loading videos..."
+                    : allVideosMuted
+                    ? "Enable solo mode - click mascots to hear them individually"
+                    : "Mute all videos and exit solo mode"
+                }
+                aria-label={
+                  !videosLoaded
+                    ? "Loading videos..."
+                    : allVideosMuted
+                    ? "Enable solo mode - click mascots to hear them individually"
+                    : "Mute all videos and exit solo mode"
+                }
+              >
+                {!videosLoaded ? (
+                  <>
+                    <svg className="w-5 h-5 text-white animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Loading...
+                  </>
+                ) : allVideosMuted ? (
+                  <>
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 011.414-1.414z" clipRule="evenodd" />
+                    </svg>
+                    Enable Audio
+                  </>
+                ) : soloMode ? (
+                  <>
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                    </svg>
+                    Solo Mode Active
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.984 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" />
+                    </svg>
+                    Mute All
+                  </>
+                )}
+              </button>
+            </div>
+            {soloMode && (
+              <div className="bg-blue-600/20 border border-blue-500/30 rounded-lg p-4 mb-8 max-w-md mx-auto">
+                <p className="text-blue-300 text-sm">
+                  🎧 <strong>Solo Mode:</strong> Click on any mascot below to hear their introduction video individually.
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Interactive Mascots Grid */}
@@ -585,68 +654,7 @@ const LandingPage: React.FC = () => {
         </div>
       )}
 
-      {/* Floating Audio Control Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-          <button
-            onClick={videosLoaded ? toggleAllVideoAudio : undefined}
-            disabled={!videosLoaded}
-            className={`p-4 rounded-full shadow-lg border-2 border-white/30 transition-all hover:scale-110 ${
-              !videosLoaded
-                ? 'bg-gray-600 animate-pulse'
-                : allVideosMuted
-                ? 'bg-red-600 hover:bg-red-700 animate-pulse'
-                : soloMode
-                ? 'bg-blue-600 hover:bg-blue-700'
-                : 'bg-green-600 hover:bg-green-700'
-            }`}
-            title={
-              !videosLoaded
-                ? "Loading videos..."
-                : allVideosMuted
-                ? "Enable solo mode - click mascots to hear them individually"
-                : "Mute all videos and exit solo mode"
-            }
-            aria-label={
-              !videosLoaded
-                ? "Loading videos..."
-                : allVideosMuted
-                ? "Enable solo mode - click mascots to hear them individually"
-                : "Mute all videos and exit solo mode"
-            }
-          >
-            {!videosLoaded ? (
-              <svg className="w-6 h-6 text-white animate-spin" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            ) : (
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              {allVideosMuted ? (
-                // Muted icon (speaker with X)
-                <>
-                  <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 011.414-1.414z" clipRule="evenodd" />
-                </>
-              ) : soloMode ? (
-                // Solo mode icon (single person)
-                <>
-                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                </>
-              ) : (
-                // Unmuted icon (speaker with sound waves)
-                <>
-                  <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" />
-                </>
-              )}
-            </svg>
-            )}
-          </button>
-          {soloMode && (
-            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-              Click mascots to hear them
-            </div>
-          )}
-        </div>
-      </div>
+    </div>
   );
 };
 

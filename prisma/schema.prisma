@@ -477,3 +477,18 @@ model TrustedCircleInvite {
   @@index([status])
   @@index([inviteeEmail])
 }
+model FamilyMember {
+  id           String   @id @default(cuid())
+  userId       String
+  relationship String // "parent", "grandparent", "sibling", "child"
+  sex          String // "male", "female", "unknown"
+  age          Int?
+  ageAtDeath   Int?
+  conditions   String[] @default([])
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([userId])
+  @@index([relationship])
+}

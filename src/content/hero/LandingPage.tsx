@@ -116,13 +116,14 @@ const LandingPage: React.FC = () => {
       for (const mascot of mascots) {
         const video = videoRefs.current[mascot.id];
         if (video) {
-          initialStates[mascot.id] = { muted: true, loaded: false };
+          initialStates[mascot.id] = { muted: false, loaded: false };
 
           promises.push(
             new Promise((resolve) => {
               video.addEventListener('loadeddata', () => {
-                video.muted = true;
-                initialStates[mascot.id] = { muted: true, loaded: true };
+                video.muted = false;
+                video.volume = 0.3; // Set low volume initially
+                initialStates[mascot.id] = { muted: false, loaded: true };
                 video.play().then(() => {
                   console.log('Video started for:', mascot.name);
                   resolve();
@@ -133,7 +134,7 @@ const LandingPage: React.FC = () => {
               });
               video.addEventListener('error', () => {
                 console.log('Video failed to load:', mascot.video);
-                initialStates[mascot.id] = { muted: true, loaded: false };
+                initialStates[mascot.id] = { muted: false, loaded: false };
                 resolve();
               });
             })
@@ -153,7 +154,7 @@ const LandingPage: React.FC = () => {
     const video = videoRefs.current[mascotId];
     if (!video) return;
 
-    const currentState = videoStates[mascotId] || { muted: true, loaded: false };
+    const currentState = videoStates[mascotId] || { muted: false, loaded: false };
     const newMutedState = !currentState.muted;
 
     video.muted = newMutedState;
@@ -196,6 +197,22 @@ const LandingPage: React.FC = () => {
       {/* Hero Content Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black relative z-10">
         <div className="max-w-4xl mx-auto text-center">
+          {/* Hero Image Section - Responsive across all devices */}
+          <div className="relative w-full max-w-5xl mx-auto mb-8">
+            <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/20 border border-pink-500/30">
+              <Image
+                src="/images/nopriorhero.png"
+                alt="No Prior Authorization healthcare access platform hero image"
+                fill
+                className="object-cover object-center"
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1200px) 80vw, 70vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-transparent to-purple-500/10" />
+            </div>
+          </div>
+
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Your health.<br />
             Your family.<br />

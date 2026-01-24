@@ -37,6 +37,11 @@ export const getNavigationConfig = (mode: 'marketing' | 'app' = 'app'): Navigati
       ]
     },
     {
+      label: "Family Health Tree",
+      href: "/vault/family-tree",
+      hasDropdown: false
+    },
+    {
       label: "AI Concierge",
       href: "/ai-concierge",
       hasDropdown: true,

@@ -4,20 +4,9 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiPlay, FiPause, FiMessageCircle, FiX } from "react-icons/fi";
-import { useMascotController } from "@/context/MascotController";
+import { mascotVideoController } from "@/lib/mascotVideoController";
 
 const mascots = [
-  {
-    id: "founder",
-    name: "Founder",
-    specialty: "Provider Translator",
-    description: "I built No Prior Authorization because patients deserve clarity - not confusion.",
-    image: "/characters/founder.png",
-    video: "/hero/avatars/founder-intro.mp4",
-    credentials: "OWNER | RN-S | CMAA",
-    personality: "Direct, no-nonsense, patient advocate",
-    chatPrompt: "Explain how providers really think and cut through medical jargon"
-  },
   {
     id: "beau-tox",
     name: "Beau-Tox™",
@@ -46,13 +35,13 @@ const mascots = [
     specialty: "Dermal Fillers",
     description: "Specialist in dermal filler treatments, facial contouring, and volume restoration.",
     image: "/characters/filla-grace.png",
-    video: "/hero/avatars/filla-grace-intro.mp4",
+    video: "/hero/avatars/f-ill-intro.mp4",
     credentials: "Filler Expert",
     personality: "Graceful, detailed, anatomy-focused",
     chatPrompt: "Learn about fillers, facial anatomy, and realistic expectations"
   },
   {
-    id: "rn-lisa-grace",
+    id: "harmony",
     name: "Harmony",
     specialty: "Nursing Care",
     description: "Registered nurse providing medical guidance, treatment coordination, and patient care.",
@@ -61,28 +50,6 @@ const mascots = [
     credentials: "RN, BSN",
     personality: "Caring, safety-focused, ethical",
     chatPrompt: "Get nursing perspective on treatments and safety concerns"
-  },
-  {
-    id: "slim-t",
-    name: "Slim-T",
-    specialty: "Metabolism & Weight",
-    description: "Hormones and weight loss aren't magic. I'll tell you what actually moves the needle.",
-    image: "/characters/slim-t.png",
-    video: "/hero/avatars/slim-t-intro.mp4",
-    credentials: "Metabolism Expert",
-    personality: "Straight-talking, evidence-based, no hype",
-    chatPrompt: "Understand real metabolism science and weight management"
-  },
-  {
-    id: "ryan",
-    name: "Ryan",
-    specialty: "Provider Translator",
-    description: "I explain what providers really mean - and why 'it depends' isn't always a cop-out.",
-    image: "/characters/ryan.png",
-    video: "/hero/avatars/ryan-intro.mp4",
-    credentials: "FNP-BC | Full Authority Nurse Practitioner",
-    personality: "Clear communicator, bridge between providers and patients",
-    chatPrompt: "Translate medical language and provider thinking"
   }
 ];
 
@@ -91,20 +58,21 @@ export default function MascotsPage() {
   const [playingVideo, setPlayingVideo] = useState(null);
   const [loadingChat, setLoadingChat] = useState(null);
   const videoRefs = useRef({});
-  const { activeMascot, speak } = useMascotController();
 
   const handleVideoPlay = (mascotId) => {
     if (playingVideo === mascotId) {
+      // Stop the current video
+      mascotVideoController.stopActiveMascotVideo();
       setPlayingVideo(null);
     } else {
+      // Stop any currently playing video first
+      if (playingVideo) {
+        mascotVideoController.stopActiveMascotVideo();
+      }
+      // Play the new video
+      mascotVideoController.playMascotVideo(mascotId, videoRefs.current[mascotId]);
       setPlayingVideo(mascotId);
     }
-  };
-
-  const handleMascotAudioClick = (mascot) => {
-    // Get the mascot's description as speech text
-    const speechText = mascot.description || `${mascot.name} says hello! I'm here to help with ${mascot.specialty}.`;
-    speak(mascot.id, speechText);
   };
 
   const startChat = async (mascot) => {
@@ -198,26 +166,15 @@ export default function MascotsPage() {
                         playingVideo === mascot.id ? 'opacity-100' : 'opacity-0'
                       }`}
                       src={mascot.video}
-                      onEnded={() => setPlayingVideo(null)}
+                      onEnded={() => {
+                        mascotVideoController.stopActiveMascotVideo();
+                        setPlayingVideo(null);
+                      }}
                       playsInline
                       controls
                       preload="metadata"
                     />
                   </div>
-                </div>
-
-                {/* Audio Section */}
-                <div className="mb-4">
-                  <button
-                    onClick={() => handleMascotAudioClick(mascot)}
-                    className={`w-full py-2 px-4 rounded-lg font-semibold transition ${
-                      activeMascot === mascot.id
-                        ? 'bg-pink-600 text-white'
-                        : 'bg-pink-500/20 border border-pink-500/30 text-pink-400 hover:bg-pink-500/30'
-                    }`}
-                  >
-                    {activeMascot === mascot.id ? 'Speaking...' : 'Listen to Audio Intro'}
-                  </button>
                 </div>
 
                 {/* Mascot Info */}

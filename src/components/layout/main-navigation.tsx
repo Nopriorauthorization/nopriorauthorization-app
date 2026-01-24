@@ -62,7 +62,12 @@ export default function MainNavigation() {
     setOpenDropdown(openDropdown === label ? null : label);
   };
 
-  const renderDesktopNavigation = () => (
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderDesktopNavigationWithCTA = () => (
     <div className="hidden items-center gap-6 md:flex">
       {navigationItems.map((item) => (
         <div key={item.label} className="relative" ref={item.hasDropdown ? dropdownRef : null}>
@@ -117,6 +122,13 @@ export default function MainNavigation() {
           )}
         </div>
       ))}
+      {/* CTA Button */}
+      <a
+        href="/signup"
+        className="ml-6 px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/25 transition-all hover:scale-105"
+      >
+        Get Started
+      </a>
     </div>
   );
 
@@ -187,7 +199,7 @@ export default function MainNavigation() {
         </Link>
 
         {/* Desktop Navigation */}
-        {renderDesktopNavigation()}
+        {renderDesktopNavigationWithCTA()}
 
         <div className="hidden items-center gap-3 md:flex">
           <button
@@ -320,6 +332,16 @@ export default function MainNavigation() {
           </div>
 
           {renderMobileNavigation()}
+
+          {/* Mobile CTA Button */}
+          <div className="mt-4 pt-4 border-t border-white/10">
+            <a
+              href="/signup"
+              className="w-full block text-center px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:shadow-lg hover:shadow-pink-500/25 transition-all"
+            >
+              Get Started
+            </a>
+          </div>
         </div>
       )}
     </header>

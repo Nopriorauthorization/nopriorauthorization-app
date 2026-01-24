@@ -42,6 +42,7 @@ model User {
   subscription        Subscription?
   memory              UserMemory?
   blueprint           Blueprint?
+  vault               Vault?
   disableEvents       UserDisableEvent[]
   passwordResetTokens PasswordResetToken[]
   consentChangeLogs   ConsentChangeLog[]
@@ -479,16 +480,102 @@ model TrustedCircleInvite {
 }
 model FamilyMember {
   id           String   @id @default(cuid())
-  userId       String
-  relationship String // "parent", "grandparent", "sibling", "child"
-  sex          String // "male", "female", "unknown"
-  age          Int?
-  ageAtDeath   Int?
-  conditions   String[] @default([])
+  vaultId      String // Connects to Vault instead of userId directly
+  relationship String // "self" | "parent" | "child" | "sibling" | "spouse" | "grandparent" | "aunt" | "uncle" | "cousin" | "other"
+  conditionTags String[] @default([]) // Health conditions
   notes        String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  @@index([userId])
+  vault Vault @relation(fields: [vaultId], references: [id], onDelete: Cascade)
+
+  @@index([vaultId])
   @@index([relationship])
+}
+
+// P0 PHASE 2: VAULT + BLUEPRINT INTELLIGENCE FOUNDATION
+// Single source of truth for all health data
+
+model Vault {
+  id        String   @id @default(cuid())
+  userId    String   @unique // 1:1 relationship with User
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // All vault data connects here
+  vaultItems    VaultItem[]
+  familyMembers FamilyMember[]
+  blueprintInsights BlueprintInsight[]
+
+  @@index([userId])
+}
+
+enum VaultItemType {
+  DOCUMENT
+  LAB
+  NOTE
+  TOOL_OUTPUT
+}
+
+model VaultItem {
+  id        String   @id @default(cuid())
+  vaultId   String
+  type      VaultItemType
+  title     String
+  metadata  Json // Structured data based on type
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  vault Vault @relation(fields: [vaultId], references: [id], onDelete: Cascade)
+
+  // Specific data types
+  labResults LabResult[]
+
+  @@index([vaultId])
+  @@index([type])
+}
+
+model LabResult {
+  id          String   @id @default(cuid())
+  vaultItemId String
+  testName    String
+  flags       String[] @default([]) // "normal", "borderline", "abnormal"
+  parsedSummary String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  vaultItem VaultItem @relation(fields: [vaultItemId], references: [id], onDelete: Cascade)
+
+  @@index([vaultItemId])
+}
+
+enum InsightPriority {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum InsightSource {
+  LAB
+  FAMILY
+  TOOL
+  DOCUMENT
+}
+
+model BlueprintInsight {
+  id        String   @id @default(cuid())
+  vaultId   String
+  source    InsightSource
+  priority  InsightPriority
+  message   String // Plain language only
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  vault Vault @relation(fields: [vaultId], references: [id], onDelete: Cascade)
+
+  @@index([vaultId])
+  @@index([source])
+  @@index([priority])
 }

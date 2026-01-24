@@ -67,6 +67,7 @@ export default function FamilyHealthTree() {
   const [insights, setInsights] = useState<FamilyInsight[]>([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [selectedMember, setSelectedMember] = useState<FamilyMember | null>(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   // Load family data on mount
   useEffect(() => {
@@ -197,6 +198,9 @@ export default function FamilyHealthTree() {
       if (response.ok) {
         await loadFamilyData();
         setShowAddModal(false);
+        setShowConfirmation(true);
+        // Hide confirmation after 5 seconds
+        setTimeout(() => setShowConfirmation(false), 5000);
       }
     } catch (error) {
       console.error('Failed to add family member:', error);
@@ -259,6 +263,49 @@ export default function FamilyHealthTree() {
               Add Family Member
             </button>
           </div>
+
+          {/* Confirmation Message */}
+          <AnimatePresence>
+            {showConfirmation && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-2xl p-6 mb-6"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <FiCheck className="w-6 h-6 text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-2">
+                      Family Member Added
+                    </h3>
+                    <p className="text-white/80">
+                      Family history can help surface patterns earlier. This information has been added to your Blueprint.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Empty State Message */}
+          {familyMembers.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-8"
+            >
+              <div className="w-16 h-16 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FiUsers className="w-8 h-8 text-green-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Start Your Family Health Story</h3>
+              <p className="text-white/70 max-w-2xl mx-auto">
+                Adding even one family member can unlock helpful insights about inherited health patterns.
+              </p>
+            </motion.div>
+          )}
         </div>
 
         {/* Family Tree Visualization */}

@@ -62,11 +62,6 @@ export default function MainNavigation() {
     setOpenDropdown(openDropdown === label ? null : label);
   };
 
-        </div>
-      ))}
-    </div>
-  );
-
   const renderDesktopNavigationWithCTA = () => (
     <div className="hidden items-center gap-6 md:flex">
       {navigationItems.map((item) => (

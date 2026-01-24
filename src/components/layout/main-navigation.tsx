@@ -80,7 +80,7 @@ export default function MainNavigation() {
                 {openDropdown === item.label ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
               </button>
               {openDropdown === item.label && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-slate-900/95 backdrop-blur border border-purple-500/30 rounded-lg shadow-xl z-50">
+                <div className="absolute top-full left-0 mt-2 w-64 bg-black/95 backdrop-blur border border-white/20 rounded-lg shadow-xl z-50">
                   <div className="p-2">
                     {item.dropdownItems.map((dropdownItem) => (
                       <button
@@ -177,7 +177,7 @@ export default function MainNavigation() {
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-purple-500/20 bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 px-4 py-3 shadow-sm backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black px-4 py-3 shadow-sm backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
         <Link href="/" className="text-lg font-semibold text-white">
           <div className="flex items-center gap-2">
@@ -213,7 +213,7 @@ export default function MainNavigation() {
 
         {/* Search Overlay */}
         {showSearch && (
-          <div className="absolute top-full left-0 right-0 bg-gradient-to-r from-slate-900/95 via-purple-900/95 to-slate-900/95 backdrop-blur border-b border-purple-500/20 p-4">
+          <div className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur border-b border-white/10 p-4">
             <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
               <div className="relative">
                 <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50" size={18} />

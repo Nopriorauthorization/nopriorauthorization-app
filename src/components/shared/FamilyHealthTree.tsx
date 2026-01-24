@@ -15,6 +15,9 @@ import {
   FiArrowRight,
   FiActivity
 } from 'react-icons/fi';
+import { useSubscription } from '@/hooks/useSubscription';
+import { getMaxInsights } from '@/lib/subscription';
+import { UpgradePrompt } from '@/components/subscription/UpgradePrompt';
 
 export interface FamilyMember {
   id: string;
@@ -68,6 +71,8 @@ export default function FamilyHealthTree() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [selectedMember, setSelectedMember] = useState<FamilyMember | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const { tier, isLoading: subscriptionLoading } = useSubscription();
 
   // Load family data on mount
   useEffect(() => {
@@ -426,7 +431,7 @@ export default function FamilyHealthTree() {
               Health Insights
             </h2>
             <div className="grid gap-4">
-              {insights.map((insight) => (
+              {insights.slice(0, getMaxInsights(tier)).map((insight) => (
                 <motion.div
                   key={insight.id}
                   initial={{ opacity: 0, x: -20 }}
@@ -473,6 +478,9 @@ export default function FamilyHealthTree() {
                   </div>
                 </motion.div>
               ))}
+              {tier === 'FREE' && insights.length > getMaxInsights(tier) && (
+                <UpgradePrompt feature="family_patterns" />
+              )}
             </div>
           </motion.div>
         )}

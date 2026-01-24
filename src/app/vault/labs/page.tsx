@@ -15,6 +15,9 @@ import {
   FiActivity
 } from 'react-icons/fi';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
+import { useSubscription } from '@/hooks/useSubscription';
+import { getMaxLabHistory } from '@/lib/subscription';
+import { UpgradePrompt } from '@/components/subscription/UpgradePrompt';
 
 type LabResult = {
   id: string;
@@ -54,6 +57,8 @@ export default function LabsPage() {
   const [recentLabs, setRecentLabs] = useState<LabResult[]>([]);
   const [isLoadingRecent, setIsLoadingRecent] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const { tier, isLoading: subscriptionLoading } = useSubscription();
 
   // Load recent lab results
   useEffect(() => {
@@ -433,12 +438,15 @@ export default function LabsPage() {
                 </div>
               ) : recentLabs.length > 0 ? (
                 <div className="space-y-3">
-                  {recentLabs.slice(0, 3).map((lab) => (
+                  {recentLabs.slice(0, getMaxLabHistory(tier)).map((lab) => (
                     <div key={lab.id} className="bg-gray-800/50 rounded-lg p-3">
                       <p className="font-semibold text-sm">{lab.labType}</p>
                       <p className="text-xs text-gray-400">{new Date(lab.date).toLocaleDateString()}</p>
                     </div>
                   ))}
+                  {tier === 'FREE' && recentLabs.length > getMaxLabHistory(tier) && (
+                    <UpgradePrompt feature="lab_history" />
+                  )}
                 </div>
               ) : (
                 <p className="text-gray-400 text-sm">No recent lab results</p>

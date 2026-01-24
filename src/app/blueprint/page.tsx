@@ -8,6 +8,9 @@ import ExportModal from "@/components/export/ExportModal";
 import { StoryboardSnapshot, TreatmentItem } from "@/types/storyboard";
 import { motion } from "framer-motion";
 import { FiTrendingUp, FiHeart, FiActivity, FiUsers, FiTarget } from "react-icons/fi";
+import { useSubscription } from "@/hooks/useSubscription";
+import { getMaxInsights } from "@/lib/subscription";
+import { UpgradePrompt } from "@/components/subscription/UpgradePrompt";
 
 interface FamilyInsight {
   type: string;
@@ -30,6 +33,7 @@ const INITIAL_SNAPSHOT: StoryboardSnapshot = {
 export default function BlueprintPage() {
   const sessionResult = useSession();
   const session = sessionResult?.data;
+  const { tier, isLoading: subscriptionLoading } = useSubscription();
   const [snapshot, setSnapshot] = useState<StoryboardSnapshot>(INITIAL_SNAPSHOT);
   const [treatments, setTreatments] = useState<TreatmentItem[]>([]);
   const [isExportOpen, setIsExportOpen] = useState(false);
@@ -196,7 +200,7 @@ export default function BlueprintPage() {
                   Family Health Insights
                 </h2>
                 <div className="grid gap-4 md:grid-cols-2">
-                  {familyInsights.map((insight, index) => (
+                  {familyInsights.slice(0, getMaxInsights(tier)).map((insight, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
@@ -214,6 +218,18 @@ export default function BlueprintPage() {
                     </motion.div>
                   ))}
                 </div>
+
+                {/* Show upgrade prompt if user has more insights but is on free tier */}
+                {familyInsights.length > getMaxInsights(tier) && tier === 'FREE' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="mt-6"
+                  >
+                    <UpgradePrompt feature="blueprint_insights" />
+                  </motion.div>
+                )}
               </motion.div>
             )}
 
@@ -257,16 +273,30 @@ export default function BlueprintPage() {
               transition={{ delay: 0.5 }}
               className="text-center"
             >
-              <button
-                type="button"
-                onClick={() => setIsExportOpen(true)}
-                className="bg-gradient-to-r from-pink-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transition-all hover:scale-105"
-              >
-                Export My Blueprint
-              </button>
-              <p className="text-white/60 text-sm mt-3">
-                Generate a comprehensive health summary for providers
-              </p>
+              {tier === 'FREE' ? (
+                <div className="space-y-4">
+                  <div className="bg-gradient-to-r from-gray-500/20 to-gray-600/20 border border-gray-500/30 rounded-lg p-6">
+                    <h3 className="text-lg font-semibold text-white mb-2">Export Unlocked with Blueprint Intelligence</h3>
+                    <p className="text-gray-300 mb-4">
+                      Generate comprehensive PDF summaries of your health insights to share with providers.
+                    </p>
+                    <UpgradePrompt feature="blueprint_export" />
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setIsExportOpen(true)}
+                    className="bg-gradient-to-r from-pink-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transition-all hover:scale-105"
+                  >
+                    Export My Blueprint
+                  </button>
+                  <p className="text-white/60 text-sm mt-3">
+                    Generate a comprehensive health summary for providers
+                  </p>
+                </>
+              )}
             </motion.div>
           </div>
         </main>

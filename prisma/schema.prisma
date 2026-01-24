@@ -13,12 +13,19 @@ enum UserRole {
   ADMIN
 }
 
+enum SubscriptionTier {
+  FREE
+  CORE
+  PREMIUM
+}
+
 model User {
   id           String    @id @default(cuid())
   email        String    @unique
   passwordHash String
   name         String?
   role         UserRole  @default(PATIENT)
+  subscriptionTier SubscriptionTier @default(FREE)
   isDisabled   Boolean   @default(false)
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt

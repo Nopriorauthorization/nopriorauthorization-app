@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState, useRef, useCallback } from 
 
 interface MascotControllerContextType {
   activeMascot: string | null;
-  speak: (mascotId: string, audioSrc: string) => void;
+  speak: (mascotId: string, text: string) => void;
   stop: () => void;
 }
 
@@ -12,69 +12,65 @@ const MascotControllerContext = createContext<MascotControllerContextType | null
 
 export function MascotControllerProvider({ children }: { children: React.ReactNode }) {
   const [activeMascot, setActiveMascot] = useState<string | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
 
-  const speak = useCallback((mascotId: string, audioSrc: string) => {
+  const speak = useCallback((mascotId: string, text: string) => {
     try {
-      // Stop any current audio
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-        audioRef.current = null;
+      // Stop any current speech
+      if (speechRef.current) {
+        window.speechSynthesis.cancel();
+        speechRef.current = null;
       }
 
-      // Create new audio element
-      const audioEl = new Audio(audioSrc);
-      audioRef.current = audioEl;
+      // Create new speech utterance
+      const utterance = new SpeechSynthesisUtterance(text);
+      speechRef.current = utterance;
 
-      // Set properties synchronously
-      audioEl.muted = false;
-      audioEl.volume = 1;
+      // Configure voice settings
+      utterance.rate = 0.9;
+      utterance.pitch = 1;
+      utterance.volume = 1;
+
+      // Try to use a female voice if available
+      const voices = window.speechSynthesis.getVoices();
+      const preferredVoice = voices.find(voice =>
+        voice.name.toLowerCase().includes('female') ||
+        voice.name.toLowerCase().includes('samantha') ||
+        voice.name.toLowerCase().includes('susan')
+      ) || voices[0];
+
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      }
 
       // Set active mascot
       setActiveMascot(mascotId);
 
-      // Play immediately
-      const playPromise = audioEl.play();
-
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            // Audio started successfully
-            console.log(`Mascot ${mascotId} audio started`);
-          })
-          .catch((error) => {
-            console.error(`Mascot ${mascotId} audio failed:`, error);
-            setActiveMascot(null);
-            audioRef.current = null;
-          });
-      }
-
-      // Handle end
-      audioEl.addEventListener('ended', () => {
+      // Handle speech end
+      utterance.onend = () => {
         setActiveMascot(null);
-        audioRef.current = null;
-      });
+        speechRef.current = null;
+      };
 
-      // Handle errors
-      audioEl.addEventListener('error', (e) => {
-        console.error(`Mascot ${mascotId} audio error:`, e);
+      utterance.onerror = (error) => {
+        console.error(`Speech synthesis failed for ${mascotId}:`, error);
         setActiveMascot(null);
-        audioRef.current = null;
-      });
+        speechRef.current = null;
+      };
+
+      // Start speaking
+      window.speechSynthesis.speak(utterance);
 
     } catch (error) {
-      console.error(`Failed to initialize mascot ${mascotId} audio:`, error);
+      console.error(`Failed to initialize speech for ${mascotId}:`, error);
       setActiveMascot(null);
-      audioRef.current = null;
     }
   }, []);
 
   const stop = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      audioRef.current = null;
+    if (speechRef.current) {
+      window.speechSynthesis.cancel();
+      speechRef.current = null;
     }
     setActiveMascot(null);
   }, []);
@@ -89,7 +85,7 @@ export function MascotControllerProvider({ children }: { children: React.ReactNo
 export function useMascotController() {
   const context = useContext(MascotControllerContext);
   if (!context) {
-    throw new Error('useMascotController must be used within MascotControllerProvider');
+    throw new Error('useMascotController must be used within a MascotControllerProvider');
   }
   return context;
 }

@@ -7,12 +7,12 @@ import { useMascotController } from '@/context/MascotController';
 interface MascotCardProps {
   id: string;
   name: string;
-  audioSrc: string;
+  text: string;
   imageSrc: string;
   alt: string;
 }
 
-export default function MascotCard({ id, name, audioSrc, imageSrc, alt }: MascotCardProps) {
+export default function MascotCard({ id, name, text, imageSrc, alt }: MascotCardProps) {
   const { activeMascot, speak } = useMascotController();
   const isActive = activeMascot === id;
 
@@ -23,7 +23,7 @@ export default function MascotCard({ id, name, audioSrc, imageSrc, alt }: Mascot
     }
 
     // Speak immediately on click
-    speak(id, audioSrc);
+    speak(id, text);
   };
 
   return (

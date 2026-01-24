@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiUsers, FiHeart, FiTrendingUp, FiShield, FiZap, FiTarget, FiArrowRight, FiPlay, FiCheck, FiCpu } from 'react-icons/fi';
+import { FiUsers, FiHeart, FiTrendingUp, FiShield, FiZap, FiTarget, FiArrowRight, FiPlay, FiCheck, FiCpu, FiUpload, FiMessageSquare, FiSave } from 'react-icons/fi';
 import Link from 'next/link';
 
 export default function FamilyTreeLanding() {

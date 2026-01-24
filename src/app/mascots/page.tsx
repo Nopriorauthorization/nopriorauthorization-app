@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiPlay, FiPause, FiMessageCircle, FiX } from "react-icons/fi";
+import { useMascotController } from "@/context/MascotController";
 
 const mascots = [
   {
@@ -90,16 +91,11 @@ export default function MascotsPage() {
   const [playingVideo, setPlayingVideo] = useState(null);
   const [loadingChat, setLoadingChat] = useState(null);
   const videoRefs = useRef({});
+  const { activeMascot, speak } = useMascotController();
 
-  const handleVideoPlay = (mascotId) => {
-    // Pause any currently playing video
-    if (playingVideo && playingVideo !== mascotId) {
-      const prevVideo = videoRefs.current[playingVideo];
-      if (prevVideo) {
-        prevVideo.pause();
-      }
-    }
-    setPlayingVideo(playingVideo === mascotId ? null : mascotId);
+  const handleMascotAudioClick = (mascot) => {
+    // Play audio synchronously on click
+    speak(mascot.id, `/audio/${mascot.id}-intro.mp3`); // Assuming audio files exist
   };
 
   const startChat = async (mascot) => {
@@ -199,6 +195,20 @@ export default function MascotsPage() {
                       preload="metadata"
                     />
                   </div>
+                </div>
+
+                {/* Audio Section */}
+                <div className="mb-4">
+                  <button
+                    onClick={() => handleMascotAudioClick(mascot)}
+                    className={`w-full py-2 px-4 rounded-lg font-semibold transition ${
+                      activeMascot === mascot.id
+                        ? 'bg-pink-600 text-white'
+                        : 'bg-pink-500/20 border border-pink-500/30 text-pink-400 hover:bg-pink-500/30'
+                    }`}
+                  >
+                    {activeMascot === mascot.id ? 'Speaking...' : 'Listen to Audio Intro'}
+                  </button>
                 </div>
 
                 {/* Mascot Info */}

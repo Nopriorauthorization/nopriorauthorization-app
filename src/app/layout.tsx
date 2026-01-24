@@ -1,6 +1,7 @@
 import "./globals.css";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import MainNavigation from "@/components/layout/main-navigation";
+import { MascotControllerProvider } from "@/context/MascotController";
 
 export const metadata = {
   title: "Ask Beau-Tox - Family Health Operating System",
@@ -15,10 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black text-white min-h-screen">
-        <ErrorBoundary>
-          <MainNavigation />
-          <main className="pt-16">{children}</main>
-        </ErrorBoundary>
+        <MascotControllerProvider>
+          <ErrorBoundary>
+            <MainNavigation />
+            <main className="pt-16">{children}</main>
+          </ErrorBoundary>
+        </MascotControllerProvider>
       </body>
     </html>
   );

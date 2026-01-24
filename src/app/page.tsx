@@ -1,6 +1,6 @@
 import './globals.css';
-import FamilyTreeLanding from '@/content/hero/FamilyTreeLanding';
+import LandingPage from '@/content/hero/LandingPage';
 
 export default function HomePage() {
-  return <FamilyTreeLanding />;
+  return <LandingPage />;
 }

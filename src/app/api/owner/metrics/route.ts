@@ -55,13 +55,7 @@ export async function GET() {
       }),
 
       // Family members count (placeholder - if we have family member model)
-      prisma.user.count({
-        where: {
-          // Assuming family members are users with certain criteria
-          // For now, return 0 or count all users as placeholder
-          NOT: { id: null }, // All users
-        },
-      }),
+      prisma.user.count(), // For now, count all users as placeholder
     ]);
 
     return NextResponse.json({

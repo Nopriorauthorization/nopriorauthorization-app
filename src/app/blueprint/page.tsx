@@ -32,7 +32,7 @@ const INITIAL_SNAPSHOT: StoryboardSnapshot = {
 
 export default function BlueprintPage() {
   const sessionResult = useSession();
-  const session = sessionResult?.data;
+  const session = sessionResult?.data || null;
   const { tier, isLoading: subscriptionLoading } = useSubscription();
   const [snapshot, setSnapshot] = useState<StoryboardSnapshot>(INITIAL_SNAPSHOT);
   const [treatments, setTreatments] = useState<TreatmentItem[]>([]);

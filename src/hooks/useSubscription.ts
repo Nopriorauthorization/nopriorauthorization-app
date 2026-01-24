@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 import { SubscriptionTier } from '@prisma/client';
 
 export function useSubscription() {
-  const { data: session, status } = useSession();
+  const sessionResult = useSession();
+  const session = sessionResult?.data;
+  const status = sessionResult?.status || 'loading';
   const [tier, setTier] = useState<SubscriptionTier>('FREE');
   const [isLoading, setIsLoading] = useState(true);
 

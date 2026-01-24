@@ -587,3 +587,62 @@ model BlueprintInsight {
   @@index([source])
   @@index([priority])
 }
+
+// PHASE 6F: SYSTEM HEALTH & FEATURE FLAGS
+// Centralized feature toggles and system health monitoring
+
+enum FeatureFlagType {
+  EMERGENCY_TOGGLE
+  SYSTEM_CONTROL
+  MASCOT_CONTROL
+}
+
+model FeatureFlag {
+  id          String   @id @default(cuid())
+  key         String   @unique // e.g., "mascot-controls", "audio-modes", "exports", "signups", "read-only"
+  name        String   // Human readable name
+  description String?  // Description of what this flag controls
+  type        FeatureFlagType @default(EMERGENCY_TOGGLE)
+  enabled     Boolean  @default(true)
+  defaultValue Boolean @default(true) // What to default to if flag is missing
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Audit trail
+  flagChanges FeatureFlagChange[]
+
+  @@index([key])
+  @@index([type])
+  @@index([enabled])
+}
+
+model FeatureFlagChange {
+  id         String   @id @default(cuid())
+  flagId     String
+  changedBy  String   // Admin user ID who made the change
+  oldValue   Boolean
+  newValue   Boolean
+  reason     String?  // Reason for the change
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  flag FeatureFlag @relation(fields: [flagId], references: [id], onDelete: Cascade)
+
+  @@index([flagId])
+  @@index([changedBy])
+  @@index([createdAt])
+}
+
+model SystemHealthCheck {
+  id        String   @id @default(cuid())
+  service   String   // "api", "auth", "vault", "blueprint", "lab-decoder", "stripe"
+  status    String   // "healthy", "degraded", "unhealthy", "unknown"
+  message   String?  // Status message
+  latency   Int?     // Response time in ms
+  checkedAt DateTime @default(now())
+
+  @@index([service])
+  @@index([status])
+  @@index([checkedAt])
+}

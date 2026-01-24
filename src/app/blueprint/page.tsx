@@ -28,7 +28,8 @@ const INITIAL_SNAPSHOT: StoryboardSnapshot = {
 };
 
 export default function BlueprintPage() {
-  const { data: session } = useSession();
+  const sessionResult = useSession();
+  const session = sessionResult?.data;
   const [snapshot, setSnapshot] = useState<StoryboardSnapshot>(INITIAL_SNAPSHOT);
   const [treatments, setTreatments] = useState<TreatmentItem[]>([]);
   const [isExportOpen, setIsExportOpen] = useState(false);

@@ -108,7 +108,7 @@ const LandingPage: React.FC = () => {
   // Individual video audio state management - each mascot video maintains its own mute/unmute state
   // This ensures no global audio behavior and prevents multiple videos from playing simultaneously
   useEffect(() => {
-    // Auto-start all videos when component mounts (muted initially)
+    // Auto-start all videos when component mounts (muted initially for autoplay compliance)
     const startVideos = async () => {
       const promises = [];
       const initialStates = {};
@@ -116,16 +116,16 @@ const LandingPage: React.FC = () => {
       for (const mascot of mascots) {
         const video = videoRefs.current[mascot.id];
         if (video) {
-          initialStates[mascot.id] = { muted: false, loaded: false };
+          initialStates[mascot.id] = { muted: true, loaded: false };
 
           promises.push(
             new Promise((resolve) => {
               video.addEventListener('loadeddata', () => {
-                video.muted = false;
-                video.volume = 0.3; // Set low volume initially
-                initialStates[mascot.id] = { muted: false, loaded: true };
+                video.muted = true; // Start muted for autoplay compliance
+                video.volume = 0.7; // Set volume for when unmuted
+                initialStates[mascot.id] = { muted: true, loaded: true };
                 video.play().then(() => {
-                  console.log('Video started for:', mascot.name);
+                  console.log('Video started (muted) for:', mascot.name);
                   resolve();
                 }).catch((error) => {
                   console.log('Video autoplay failed for:', mascot.name, error);
@@ -134,7 +134,7 @@ const LandingPage: React.FC = () => {
               });
               video.addEventListener('error', () => {
                 console.log('Video failed to load:', mascot.video);
-                initialStates[mascot.id] = { muted: false, loaded: false };
+                initialStates[mascot.id] = { muted: true, loaded: false };
                 resolve();
               });
             })
@@ -154,7 +154,7 @@ const LandingPage: React.FC = () => {
     const video = videoRefs.current[mascotId];
     if (!video) return;
 
-    const currentState = videoStates[mascotId] || { muted: false, loaded: false };
+    const currentState = videoStates[mascotId] || { muted: true, loaded: false };
     const newMutedState = !currentState.muted;
 
     video.muted = newMutedState;
@@ -359,33 +359,40 @@ const LandingPage: React.FC = () => {
 
                     {/* Audio Toggle Button Overlay */}
                     {videosLoaded && videoStates[mascot.id]?.loaded && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleVideoAudio(mascot.id);
-                        }}
-                        className={`absolute top-4 right-4 p-4 rounded-full transition-all z-30 shadow-lg border-2 border-white/30 ${
-                          videoStates[mascot.id]?.muted
-                            ? 'bg-red-600 hover:bg-red-700 animate-pulse'
-                            : 'bg-green-600 hover:bg-green-700'
-                        }`}
-                        title={videoStates[mascot.id]?.muted ? "Unmute mascot audio" : "Mute mascot audio"}
-                        aria-label={videoStates[mascot.id]?.muted ? "Unmute mascot audio" : "Mute mascot audio"}
-                      >
-                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          {videoStates[mascot.id]?.muted ? (
-                            // Muted icon (speaker with X)
-                            <>
-                              <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 011.414-1.414z" clipRule="evenodd" />
-                            </>
-                          ) : (
-                            // Unmuted icon (speaker with sound waves)
-                            <>
-                              <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" />
-                            </>
-                          )}
-                        </svg>
-                      </button>
+                      <div className="absolute inset-0 flex items-center justify-center z-20">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleVideoAudio(mascot.id);
+                          }}
+                          className={`p-6 rounded-full transition-all shadow-lg border-4 border-white/50 text-center ${
+                            videoStates[mascot.id]?.muted
+                              ? 'bg-red-600 hover:bg-red-700 animate-pulse'
+                              : 'bg-green-600 hover:bg-green-700'
+                          }`}
+                          title={videoStates[mascot.id]?.muted ? "Click to enable audio" : "Click to mute audio"}
+                          aria-label={videoStates[mascot.id]?.muted ? "Click to enable audio" : "Click to mute audio"}
+                        >
+                          <div className="flex flex-col items-center gap-1">
+                            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              {videoStates[mascot.id]?.muted ? (
+                                // Muted icon (speaker with X)
+                                <>
+                                  <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 011.414-1.414z" clipRule="evenodd" />
+                                </>
+                              ) : (
+                                // Unmuted icon (speaker with sound waves)
+                                <>
+                                  <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.414 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.414l3.969-3.816a1 1 0 011.616.193zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" />
+                                </>
+                              )}
+                            </svg>
+                            <span className="text-xs font-bold text-white uppercase tracking-wide">
+                              {videoStates[mascot.id]?.muted ? 'Tap to Talk' : 'Mute'}
+                            </span>
+                          </div>
+                        </button>
+                      </div>
                     )}
 
                     {/* Fallback Image (shown if video fails) */}

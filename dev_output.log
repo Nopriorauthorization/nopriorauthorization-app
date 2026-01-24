@@ -1,11 +1,1 @@
-
-> ask-beau-tox@1.0.0 dev
-> next dev
-
-  ▲ Next.js 14.2.35
-  - Local:        http://localhost:3000
-  - Environments: .env.local, .env
-
- ✓ Starting...
- ✓ Ready in 995ms
-[?25h
+zsh: command not found: timeout

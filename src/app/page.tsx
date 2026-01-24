@@ -1,7 +1,7 @@
-import LandingPage from '@/content/hero/LandingPage';
+import FamilyTreeLanding from '@/content/hero/FamilyTreeLanding';
 
 export const dynamic = 'force-dynamic';
 
 export default function HomePage() {
-  return <LandingPage />;
+  return <FamilyTreeLanding />;
 }

@@ -201,7 +201,7 @@ const LandingPage: React.FC = () => {
           <div className="relative w-full max-w-5xl mx-auto mb-8">
             <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/20 border border-pink-500/30">
               <Image
-                src="/images/nopriorhero.png"
+                src="/heronew1.png"
                 alt="No Prior Authorization healthcare access platform hero image"
                 fill
                 className="object-cover object-center"

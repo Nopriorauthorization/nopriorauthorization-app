@@ -35,9 +35,9 @@ export default function VaultPage() {
             </p>
 
             <div className="flex items-center justify-center gap-6 mt-8">
-              <div className="flex items-center gap-2 px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-lg">
-                <FiShield className="w-5 h-5 text-green-400" />
-                <span className="text-green-400 text-sm font-medium">🔒 HIPAA Compliant</span>
+              <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-lg">
+                <FiShield className="w-5 h-5 text-purple-400" />
+                <span className="text-purple-400 text-sm font-medium">🔒 HIPAA Compliant</span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-lg">
                 <FiActivity className="w-5 h-5 text-blue-400" />
@@ -77,9 +77,9 @@ export default function VaultPage() {
                     <FiTrendingUp className="w-4 h-4 text-blue-400" />
                     <span className="text-blue-400 text-sm">Trend Analysis</span>
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full">
-                    <FiHeart className="w-4 h-4 text-green-400" />
-                    <span className="text-green-400 text-sm">Health Optimization</span>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full">
+                    <FiHeart className="w-4 h-4 text-purple-400" />
+                    <span className="text-purple-400 text-sm">Health Optimization</span>
                   </div>
                 </div>
 
@@ -111,21 +111,21 @@ export default function VaultPage() {
           </div>
         </motion.div>
 
-        {/* Family Health Tree Section */}
+        {/* Root Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           className="mb-16"
         >
-          <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-3xl p-8 lg:p-12">
+          <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-3xl p-8 lg:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div className="order-2 lg:order-1">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 text-white">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white">
                     <FiUsers className="w-8 h-8" />
                   </div>
-                  <h2 className="text-4xl font-bold text-white">Family Health Tree</h2>
+                  <h2 className="text-4xl font-bold text-white">Root</h2>
                 </div>
 
                 <p className="text-gray-300 text-lg leading-relaxed mb-6">
@@ -133,25 +133,25 @@ export default function VaultPage() {
                 </p>
 
                 <div className="flex flex-wrap gap-3 mb-8">
-                  <div className="flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full">
-                    <FiUsers className="w-4 h-4 text-green-400" />
-                    <span className="text-green-400 text-sm">Generational Patterns</span>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full">
+                    <FiUsers className="w-4 h-4 text-purple-400" />
+                    <span className="text-purple-400 text-sm">Generational Patterns</span>
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full">
-                    <FiHeart className="w-4 h-4 text-emerald-400" />
-                    <span className="text-emerald-400 text-sm">Genetic Insights</span>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-pink-500/20 border border-pink-500/30 rounded-full">
+                    <FiHeart className="w-4 h-4 text-pink-400" />
+                    <span className="text-pink-400 text-sm">Genetic Insights</span>
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-1 bg-teal-500/20 border border-teal-500/30 rounded-full">
-                    <FiShield className="w-4 h-4 text-teal-400" />
-                    <span className="text-teal-400 text-sm">Prevention Focus</span>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-indigo-500/20 border border-indigo-500/30 rounded-full">
+                    <FiShield className="w-4 h-4 text-indigo-400" />
+                    <span className="text-indigo-400 text-sm">Prevention Focus</span>
                   </div>
                 </div>
 
                 <Link
                   href="/vault/family-tree"
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-600 hover:to-emerald-600 transition-all hover:scale-105 hover:shadow-lg hover:shadow-green-500/25"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-purple-600 hover:to-pink-600 transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
                 >
-                  <span>View Your Family Health Tree</span>
+                  <span>View Your Root</span>
                   <FiArrowRight className="w-5 h-5" />
                 </Link>
               </div>
@@ -159,14 +159,14 @@ export default function VaultPage() {
               <div className="order-1 lg:order-2 flex justify-center lg:justify-start">
                 <div className="relative">
                   <Image
-                    src="/mascots/FAMILYTREEMASCOT.PNG"
-                    alt="Family Health Tree Mascot - Your generational health guide"
+                    src="/mascots/ROOTMASCOT.PNG"
+                    alt="Root Mascot - Your generational health guide"
                     width={400}
                     height={400}
                     className="rounded-2xl shadow-2xl"
                     priority
                   />
-                  <div className="absolute -bottom-4 -left-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-xl font-semibold shadow-lg">
+                  <div className="absolute -bottom-4 -left-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-xl font-semibold shadow-lg">
                     🌳 Family Guide
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export default function VaultPage() {
                       <p className="text-sm font-semibold text-blue-300">Assessments</p>
                     </div>
                     <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-4 text-center">
-                      <FiActivity className="w-8 h-8 text-green-400 mx-auto mb-2" />
+                      <FiActivity className="w-8 h-8 text-purple-400 mx-auto mb-2" />
                       <p className="text-sm font-semibold text-green-300">Trackers</p>
                     </div>
                     <div className="bg-gradient-to-br from-orange-500/20 to-yellow-500/20 border border-orange-500/30 rounded-xl p-4 text-center">
@@ -309,7 +309,7 @@ export default function VaultPage() {
         {/* Security Notice */}
         <div className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 p-6">
           <div className="flex items-center gap-3 mb-3">
-            <FiShield className="w-6 h-6 text-green-400" />
+            <FiShield className="w-6 h-6 text-purple-400" />
             <h3 className="text-lg font-semibold text-white">Your Data Security</h3>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed">

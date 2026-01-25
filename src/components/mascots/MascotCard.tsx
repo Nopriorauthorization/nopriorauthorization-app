@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
-import { playMascotVideo, stopActiveMascotVideo, isMascotActive } from '@/lib/mascotVideoController';
+import { mediaController } from '@/lib/mediaController';
 
 interface MascotCardProps {
   id: string;
@@ -15,24 +15,14 @@ interface MascotCardProps {
 
 export default function MascotCard({ id, name, text, imageSrc, alt, videoSrc }: MascotCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const isActive = isMascotActive(id);
 
   const handlePlay = () => {
-    if (isActive) {
-      // Stop the video
-      stopActiveMascotVideo();
-      setIsPlaying(false);
-    } else {
-      // Play the video
-      playMascotVideo(id, videoRef);
-      setIsPlaying(true);
-    }
+    if (!videoRef.current) return;
+    mediaController.play(videoRef.current, id);
   };
 
   const handleStop = () => {
-    stopActiveMascotVideo();
-    setIsPlaying(false);
+    mediaController.stopAll();
   };
 
   return (
@@ -42,14 +32,14 @@ export default function MascotCard({ id, name, text, imageSrc, alt, videoSrc }: 
         ref={videoRef}
         src={videoSrc}
         className="w-full h-48 object-cover rounded-xl mb-4"
-        style={{ display: isPlaying ? 'block' : 'none' }}
-        onEnded={() => setIsPlaying(false)}
+        style={{ display: mediaController.isPlaying(id) ? 'block' : 'none' }}
+        onEnded={() => mediaController.stopAll()}
         playsInline
         preload="metadata"
       />
 
       {/* Image Thumbnail - Shown when not playing */}
-      {!isPlaying && (
+      {!mediaController.isPlaying(id) && (
         <div className="w-full h-48 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition">
           <Image
             src={imageSrc}
@@ -66,7 +56,7 @@ export default function MascotCard({ id, name, text, imageSrc, alt, videoSrc }: 
 
       {/* Controls */}
       <div className="flex gap-2 justify-center">
-        {!isPlaying ? (
+        {!mediaController.isPlaying(id) ? (
           <button
             onClick={handlePlay}
             className="bg-gradient-to-r from-pink-600 to-purple-600 text-white px-4 py-2 rounded-full font-semibold hover:shadow-lg transition flex items-center gap-2"

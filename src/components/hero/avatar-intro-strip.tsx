@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { playMascotVideo, stopActiveMascotVideo, isMascotActive } from "@/lib/mascotVideoController";
+import { mediaController } from "@/lib/mediaController";
 
 const mascots = [
   {
@@ -12,7 +12,7 @@ const mascots = [
     specialty: "Provider Translator",
     image: "/characters/founder.png",
     description: "Explains how providers think - without defending bad medicine",
-    video: "/mascots/beau-tox.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/beau-tox.mp4",
     intro: "I built No Prior Authorization because patients deserve clarity - not confusion."
   },
   {
@@ -21,7 +21,7 @@ const mascots = [
     specialty: "Botox & Injectables",
     image: "/characters/beau.png",
     description: "Expert in cosmetic injectables and facial aesthetics",
-    video: "/mascots/beau-tox.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/beau-tox.mp4",
     intro: "Hey there! I'm Beau-Tox, your go-to expert for all things injectables. Ready to chat about your aesthetic goals?"
   },
   {
@@ -30,7 +30,7 @@ const mascots = [
     specialty: "Peptides & Wellness",
     image: "/characters/peppi.png",
     description: "Your holistic health companion",
-    video: "/mascots/peppi.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/peppi.mp4",
     intro: "Hi! I'm Peppi, your wellness guide. Let's talk about nutrition, lifestyle, and feeling your best!"
   },
   {
@@ -39,7 +39,7 @@ const mascots = [
     specialty: "Dermal Fillers",
     image: "/characters/filla-grace.png",
     description: "Specialist in dermal filler treatments",
-    video: "/mascots/filla-grace.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/filla-grace.mp4",
     intro: "Hello! I'm Filla-Grace, your dermal filler specialist. Let's discuss your facial enhancement goals!"
   },
   {
@@ -48,7 +48,7 @@ const mascots = [
     specialty: "Hormones & Safety",
     image: "/characters/harmony.png",
     description: "Safety, ethics, and stopping bad medicine",
-    video: "/mascots/harmony.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/harmony.mp4",
     intro: "I'm here for safety, ethics, and stopping bad medicine before it hurts someone."
   },
   {
@@ -57,7 +57,7 @@ const mascots = [
     specialty: "Metabolism & Weight",
     image: "/characters/slim-t.png",
     description: "Hormones and weight loss expert",
-    video: "/hero/avatars/slim-t-intro.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/slim-t.mp4",
     intro: "Hormones and weight loss aren't magic. I'll tell you what actually moves the needle."
   },
   {
@@ -66,7 +66,7 @@ const mascots = [
     specialty: "Provider Translator",
     image: "/characters/ryan.png",
     description: "Explains what providers really mean",
-    video: "/hero/avatars/ryan-intro.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/ryan.mp4",
     intro: "I explain what providers really mean - and why 'it depends' isn't always a cop-out."
   }
 ];
@@ -77,7 +77,7 @@ export default function AvatarIntroStrip() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const currentMascot = mascots[activeMascot];
-  const isPlaying = isMascotActive(currentMascot.id);
+  const isPlaying = mediaController.isPlaying(currentMascot.id);
 
   const handleMascotClick = (index: number) => {
     setActiveMascot(index);
@@ -85,15 +85,17 @@ export default function AvatarIntroStrip() {
   };
 
   const handlePlay = () => {
+    if (!videoRef.current) return;
+
     if (isPlaying) {
-      stopActiveMascotVideo();
+      mediaController.stopAll();
     } else {
-      playMascotVideo(currentMascot.id, videoRef);
+      mediaController.play(videoRef.current, currentMascot.id);
     }
   };
 
   const handleStop = () => {
-    stopActiveMascotVideo();
+    mediaController.stopAll();
   };
 
   return (

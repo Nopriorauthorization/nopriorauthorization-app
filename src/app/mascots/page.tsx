@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiPlay, FiPause, FiMessageCircle, FiX } from "react-icons/fi";
-import { mascotVideoController } from "@/lib/mascotVideoController";
+import { mediaController } from "@/lib/mediaController";
 
 const mascots = [
   {
@@ -60,17 +60,19 @@ export default function MascotsPage() {
   const videoRefs = useRef({});
 
   const handleVideoPlay = (mascotId) => {
-    if (playingVideo === mascotId) {
-      // Stop the current video
-      mascotVideoController.stopActiveMascotVideo();
+    const videoElement = videoRefs.current[mascotId]?.current;
+    if (!videoElement) return;
+
+    if (mediaController.isPlaying(mascotId)) {
+      mediaController.stopAll();
       setPlayingVideo(null);
     } else {
       // Stop any currently playing video first
       if (playingVideo) {
-        mascotVideoController.stopActiveMascotVideo();
+        mediaController.stopAll();
       }
       // Play the new video
-      mascotVideoController.playMascotVideo(mascotId, videoRefs.current[mascotId]);
+      mediaController.play(videoElement, mascotId);
       setPlayingVideo(mascotId);
     }
   };
@@ -167,7 +169,7 @@ export default function MascotsPage() {
                       }`}
                       src={mascot.video}
                       onEnded={() => {
-                        mascotVideoController.stopActiveMascotVideo();
+                        mediaController.stopAll();
                         setPlayingVideo(null);
                       }}
                       playsInline

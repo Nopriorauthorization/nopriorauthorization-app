@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiPlay, FiPause, FiMessageCircle, FiX, FiVolume2, FiVolumeX } from 'react-icons/fi';
-import { playMascotVideo, stopActiveMascotVideo, isMascotActive } from '@/lib/mascotVideoController';
+import { mediaController } from '@/lib/mediaController';
 
 const mascots = [
   {
@@ -13,7 +13,7 @@ const mascots = [
     specialty: "Provider Translator",
     description: "I built No Prior Authorization because patients deserve clarity - not confusion.",
     image: "/characters/founder.png",
-    video: "/mascots/founder.mp4",
+    video: "https://media.nopriorauthorization.comhttps://media.nopriorauthorization.com/mascots/founder.mp4",
     credentials: "OWNER | RN-S | CMAA",
     personality: "Direct, no-nonsense, patient advocate",
     chatPrompt: "Explain how providers really think and cut through medical jargon"
@@ -24,7 +24,7 @@ const mascots = [
     specialty: "Botox & Injectables",
     description: "Expert in cosmetic injectables, facial aesthetics, and non-surgical rejuvenation procedures.",
     image: "/characters/beau.png",
-    video: "/mascots/beau-tox.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/beau-tox.mp4",
     credentials: "Certified Injector",
     personality: "Sassy, honest, tells it like it is",
     chatPrompt: "Get real talk about injectables and cosmetic procedures"
@@ -35,7 +35,7 @@ const mascots = [
     specialty: "General Wellness",
     description: "Your holistic health companion focused on nutrition, lifestyle, and preventive care.",
     image: "/characters/peppi.png",
-    video: "/mascots/peppi.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/peppi.mp4",
     credentials: "Wellness Specialist",
     personality: "Friendly, knowledgeable, holistic approach",
     chatPrompt: "Discuss nutrition, lifestyle, and wellness strategies"
@@ -46,7 +46,7 @@ const mascots = [
     specialty: "Dermal Fillers",
     description: "Specialist in dermal filler treatments, facial contouring, and volume restoration.",
     image: "/characters/filla-grace.png",
-    video: "/mascots/filla-grace.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/filla-grace.mp4",
     credentials: "Filler Expert",
     personality: "Graceful, detailed, anatomy-focused",
     chatPrompt: "Learn about fillers, facial anatomy, and realistic expectations"
@@ -57,7 +57,7 @@ const mascots = [
     specialty: "Nursing Care",
     description: "Registered nurse providing medical guidance, treatment coordination, and patient care.",
     image: "/characters/founder.png",
-    video: "/mascots/harmony.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/harmony.mp4",
     credentials: "RN, BSN",
     personality: "Caring, safety-focused, ethical",
     chatPrompt: "Get nursing perspective on treatments and safety concerns"
@@ -68,7 +68,7 @@ const mascots = [
     specialty: "Metabolism & Weight",
     description: "Hormones and weight loss aren't magic. I'll tell you what actually moves the needle.",
     image: "/characters/slim-t.png",
-    video: "/mascots/slim-t.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/slim-t.mp4",
     credentials: "Metabolism Expert",
     personality: "Straight-talking, evidence-based, no hype",
     chatPrompt: "Understand real metabolism science and weight management"
@@ -79,7 +79,7 @@ const mascots = [
     specialty: "Provider Translator",
     description: "I explain what providers really mean - and why 'it depends' isn't always a cop-out.",
     image: "/characters/ryan.png",
-    video: "/mascots/ryan.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/ryan.mp4",
     credentials: "FNP-BC | Full Authority Nurse Practitioner",
     personality: "Clear communicator, bridge between providers and patients",
     chatPrompt: "Translate medical language and provider thinking"
@@ -92,24 +92,23 @@ export default function MascotsSection() {
   const videoRefs = useRef({});
 
   const handlePlayVideo = (mascotId) => {
-    if (isMascotActive(mascotId)) {
-      stopActiveMascotVideo();
+    const videoElement = videoRefs.current[mascotId]?.current;
+    if (!videoElement) return;
+
+    if (mediaController.isPlaying(mascotId)) {
+      mediaController.stopAll();
     } else {
-      playMascotVideo(mascotId, videoRefs.current[mascotId]);
+      mediaController.play(videoElement, mascotId);
     }
   };
 
   const handleStopVideo = () => {
-    stopActiveMascotVideo();
+    mediaController.stopAll();
   };
 
   const toggleGlobalMute = () => {
     setGlobalMuted(!globalMuted);
-    // Apply mute to currently playing video
-    const activeMascotId = Object.keys(videoRefs.current).find(id => isMascotActive(id));
-    if (activeMascotId && videoRefs.current[activeMascotId]?.current) {
-      videoRefs.current[activeMascotId].current.muted = !globalMuted;
-    }
+    mediaController.muteAll(!globalMuted);
   };
 
   const startChat = async (mascot) => {
@@ -185,11 +184,11 @@ export default function MascotsSection() {
                     playsInline
                     preload="metadata"
                     muted={globalMuted}
-                    onEnded={() => stopActiveMascotVideo()}
+                    onEnded={() => mediaController.stopAll()}
                   />
 
                   {/* Image Thumbnail - shown when video not playing */}
-                  {!isMascotActive(mascot.id) && (
+                  {!mediaController.isPlaying(mascot.id) && (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Image
                         src={mascot.image}
@@ -233,12 +232,12 @@ export default function MascotsSection() {
                   <button
                     onClick={() => handlePlayVideo(mascot.id)}
                     className={`flex-1 px-4 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2 ${
-                      isMascotActive(mascot.id)
+                      mediaController.isPlaying(mascot.id)
                         ? 'bg-red-600 hover:bg-red-700 text-white'
                         : 'bg-gradient-to-r from-pink-500 to-purple-500 text-white hover:from-pink-600 hover:to-purple-600'
                     }`}
                   >
-                    {isMascotActive(mascot.id) ? (
+                    {mediaController.isPlaying(mascot.id) ? (
                       <>
                         <FiPause className="w-4 h-4" />
                         Stop

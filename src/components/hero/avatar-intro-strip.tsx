@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { playMascotVideo, stopActiveMascotVideo, isMascotActive } from "@/lib/mascotVideoController";
 
 const mascots = [
   {
@@ -11,7 +12,7 @@ const mascots = [
     specialty: "Provider Translator",
     image: "/characters/founder.png",
     description: "Explains how providers think - without defending bad medicine",
-    video: "/hero/avatars/founder-intro.mp4",
+    video: "/mascots/beau-tox.mp4",
     intro: "I built No Prior Authorization because patients deserve clarity - not confusion."
   },
   {
@@ -20,7 +21,7 @@ const mascots = [
     specialty: "Botox & Injectables",
     image: "/characters/beau.png",
     description: "Expert in cosmetic injectables and facial aesthetics",
-    video: "/hero/avatars/beau-tox-intro.mp4",
+    video: "/mascots/beau-tox.mp4",
     intro: "Hey there! I'm Beau-Tox, your go-to expert for all things injectables. Ready to chat about your aesthetic goals?"
   },
   {
@@ -29,7 +30,7 @@ const mascots = [
     specialty: "Peptides & Wellness",
     image: "/characters/peppi.png",
     description: "Your holistic health companion",
-    video: "/hero/avatars/peppi-intro.mp4",
+    video: "/mascots/peppi.mp4",
     intro: "Hi! I'm Peppi, your wellness guide. Let's talk about nutrition, lifestyle, and feeling your best!"
   },
   {
@@ -38,7 +39,7 @@ const mascots = [
     specialty: "Dermal Fillers",
     image: "/characters/filla-grace.png",
     description: "Specialist in dermal filler treatments",
-    video: "/hero/avatars/f-ill-intro.mp4",
+    video: "/mascots/filla-grace.mp4",
     intro: "Hello! I'm Filla-Grace, your dermal filler specialist. Let's discuss your facial enhancement goals!"
   },
   {
@@ -47,7 +48,7 @@ const mascots = [
     specialty: "Hormones & Safety",
     image: "/characters/harmony.png",
     description: "Safety, ethics, and stopping bad medicine",
-    video: "/hero/avatars/rn-lisa-grace-intro.mp4",
+    video: "/mascots/harmony.mp4",
     intro: "I'm here for safety, ethics, and stopping bad medicine before it hurts someone."
   },
   {
@@ -72,41 +73,27 @@ const mascots = [
 
 export default function AvatarIntroStrip() {
   const [activeMascot, setActiveMascot] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true); // Start with videos playing
   const [hoveredMascot, setHoveredMascot] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const currentMascot = mascots[activeMascot];
-
-  useEffect(() => {
-    // Auto-start videos when component mounts
-    setIsPlaying(true);
-  }, []);
-
-  useEffect(() => {
-    if (videoRef.current && isPlaying) {
-      videoRef.current.load(); // Reload video source when mascot changes
-      videoRef.current.play().catch((error) => {
-        console.log('Video autoplay failed:', error);
-        // Keep trying to play - don't fallback to image
-        setTimeout(() => {
-          if (videoRef.current) {
-            videoRef.current.play().catch(() => {
-              // Silent fail - videos should work
-            });
-          }
-        }, 1000);
-      });
-    }
-  }, [isPlaying, activeMascot]);
+  const isPlaying = isMascotActive(currentMascot.id);
 
   const handleMascotClick = (index: number) => {
     setActiveMascot(index);
-    setIsPlaying(true); // Always play when mascot is clicked
+    // Don't auto-play - wait for user to click play button
   };
 
-  const toggleVideo = () => {
-    setIsPlaying(!isPlaying);
+  const handlePlay = () => {
+    if (isPlaying) {
+      stopActiveMascotVideo();
+    } else {
+      playMascotVideo(currentMascot.id, videoRef);
+    }
+  };
+
+  const handleStop = () => {
+    stopActiveMascotVideo();
   };
 
   return (
@@ -137,25 +124,27 @@ export default function AvatarIntroStrip() {
                   ref={videoRef}
                   src={currentMascot.video}
                   className="w-full h-full object-cover"
-                  autoPlay
-                  loop
-                  muted
                   playsInline
-                  preload="auto"
-                  onError={(e) => {
-                    console.log('Video failed to load:', currentMascot.video);
-                    // Don't show fallback image - keep trying
-                    setTimeout(() => {
-                      if (videoRef.current) {
-                        videoRef.current.load();
-                        videoRef.current.play().catch(() => {});
-                      }
-                    }, 2000);
+                  preload="metadata"
+                  onEnded={() => {
+                    // Reset state when video ends
+                    setIsPlaying(false);
                   }}
-                  onLoadedData={() => {
-                    console.log('Video loaded successfully:', currentMascot.video);
-                  }}
+                  style={{ display: isPlaying ? 'block' : 'none' }}
                 />
+
+                {/* Thumbnail when not playing */}
+                {!isPlaying && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center">
+                    <Image
+                      src={currentMascot.image}
+                      alt={currentMascot.name}
+                      width={200}
+                      height={200}
+                      className="rounded-full object-cover"
+                    />
+                  </div>
+                )}
                 
                 {/* Interactive Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -166,9 +155,9 @@ export default function AvatarIntroStrip() {
                   <p className="text-pink-300 font-medium text-lg">{currentMascot.specialty}</p>
                 </div>
 
-                {/* Play/Pause Button - More Prominent */}
+                {/* Play/Stop Button - More Prominent */}
                 <button
-                  onClick={toggleVideo}
+                  onClick={isPlaying ? handleStop : handlePlay}
                   className="absolute top-4 right-4 bg-pink-500/90 hover:bg-pink-500 text-white rounded-full p-3 transition-all hover:scale-110 shadow-lg"
                 >
                   {isPlaying ? (
@@ -199,10 +188,10 @@ export default function AvatarIntroStrip() {
                   💬 Chat with {currentMascot.name}
                 </Link>
                 <button
-                  onClick={toggleVideo}
+                  onClick={isPlaying ? handleStop : handlePlay}
                   className="border-2 border-white/40 text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition-all"
                 >
-                  {isPlaying ? '⏸️ Pause Video' : '▶️ Play Video'}
+                  {isPlaying ? '⏹ Stop Video' : '▶ Listen / Watch'}
                 </button>
               </div>
             </div>

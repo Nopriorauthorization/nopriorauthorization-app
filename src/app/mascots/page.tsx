@@ -13,7 +13,7 @@ const mascots = [
     specialty: "Botox & Injectables",
     description: "Expert in cosmetic injectables, facial aesthetics, and non-surgical rejuvenation procedures.",
     image: "/characters/beau.png",
-    video: "/mascots/beau-tox.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/beau-tox.mp4",
     credentials: "Certified Injector",
     personality: "Sassy, honest, tells it like it is",
     chatPrompt: "Get real talk about injectables and cosmetic procedures"
@@ -24,7 +24,7 @@ const mascots = [
     specialty: "General Wellness",
     description: "Your holistic health companion focused on nutrition, lifestyle, and preventive care.",
     image: "/characters/peppi.png",
-    video: "/mascots/peppi.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/peppi.mp4",
     credentials: "Wellness Specialist",
     personality: "Friendly, knowledgeable, holistic approach",
     chatPrompt: "Discuss nutrition, lifestyle, and wellness strategies"
@@ -35,7 +35,7 @@ const mascots = [
     specialty: "Dermal Fillers",
     description: "Specialist in dermal filler treatments, facial contouring, and volume restoration.",
     image: "/characters/filla-grace.png",
-    video: "/mascots/filla-grace.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/filla-grace.mp4",
     credentials: "Filler Expert",
     personality: "Graceful, detailed, anatomy-focused",
     chatPrompt: "Learn about fillers, facial anatomy, and realistic expectations"
@@ -46,7 +46,7 @@ const mascots = [
     specialty: "Nursing Care",
     description: "Registered nurse providing medical guidance, treatment coordination, and patient care.",
     image: "/characters/founder.png",
-    video: "/mascots/harmony.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/harmony.mp4",
     credentials: "RN, BSN",
     personality: "Caring, safety-focused, ethical",
     chatPrompt: "Get nursing perspective on treatments and safety concerns"

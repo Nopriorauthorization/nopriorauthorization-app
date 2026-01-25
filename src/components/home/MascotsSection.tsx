@@ -13,7 +13,7 @@ const mascots = [
     specialty: "Provider Translator",
     description: "I built No Prior Authorization because patients deserve clarity - not confusion.",
     image: "/characters/founder.png",
-    video: "https://media.nopriorauthorization.comhttps://media.nopriorauthorization.com/mascots/founder.mp4",
+    video: "https://media.nopriorauthorization.com/mascots/founder.mp4",
     credentials: "OWNER | RN-S | CMAA",
     personality: "Direct, no-nonsense, patient advocate",
     chatPrompt: "Explain how providers really think and cut through medical jargon"

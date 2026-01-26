@@ -656,3 +656,234 @@ Require stack:
  ✓ Compiled in 83ms (885 modules)
  ✓ Compiled in 76ms (885 modules)
  ✓ Compiled in 119ms (885 modules)
+ ✓ Compiled /_error in 212ms (1604 modules)
+ ⨯ Error: Cannot find module '/Users/danid/ask-beau-tox/.next/server/pages/_document.js'
+Require stack:
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at requirePage (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js:109:84)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ GET /?id=66b3d1ae-1f34-42cf-ad2b-7fcc1e169c90&vscodeBrowserReqId=1769442130385 500 in 661ms
+ ⨯ Error: Cannot find module '/Users/danid/ask-beau-tox/.next/server/pages/_document.js'
+Require stack:
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at requirePage (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js:109:84)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module '/Users/danid/ask-beau-tox/.next/server/pages/_document.js'
+Require stack:
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at requirePage (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js:109:84)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module '/Users/danid/ask-beau-tox/.next/server/pages/_document.js'
+Require stack:
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at requirePage (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js:109:84)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module '/Users/danid/ask-beau-tox/.next/server/pages/_document.js'
+Require stack:
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at requirePage (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js:109:84)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module '/Users/danid/ask-beau-tox/.next/server/pages/_document.js'
+Require stack:
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js
+- /Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1421:15)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:55:36
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at mod.require (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:152:16)
+    at requirePage (/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js:109:84)
+    at /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:72:65
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js:71:33)
+    at async DevServer.findPageComponentsImpl (/Users/danid/ask-beau-tox/node_modules/next/dist/server/next-server.js:714:36) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-middleware.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/danid/ask-beau-tox/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 11ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 6ms
+ GET /_next/static/chunks/fallback/main.js 500 in 6ms
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 7ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 6ms
+ ✓ Compiled in 125ms (885 modules)
+ ✓ Compiled in 170ms (885 modules)

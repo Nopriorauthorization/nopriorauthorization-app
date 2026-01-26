@@ -393,7 +393,7 @@ export default function FamilyTreeLanding() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
               className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:border-blue-500/50 transition group cursor-pointer"
-              onClick={() => window.location.href = '/lab-decoder'}
+              onClick={() => window.location.href = '/vault/lab-decoder'}
             >
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
                 <FiUpload className="w-8 h-8 text-white" />
@@ -409,7 +409,7 @@ export default function FamilyTreeLanding() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:border-blue-500/50 transition group cursor-pointer"
-              onClick={() => window.location.href = '/lab-decoder'}
+              onClick={() => window.location.href = '/vault/lab-decoder'}
             >
               <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
                 <FiCpu className="w-8 h-8 text-white" />
@@ -425,7 +425,7 @@ export default function FamilyTreeLanding() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
               className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:border-blue-500/50 transition group cursor-pointer"
-              onClick={() => window.location.href = '/lab-decoder'}
+              onClick={() => window.location.href = '/vault/lab-decoder'}
             >
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
                 <FiMessageSquare className="w-8 h-8 text-white" />

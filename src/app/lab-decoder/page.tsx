@@ -1,9 +1,5 @@
-import dynamic from 'next/dynamic';
-
-const InteractiveLabDecoder = dynamic(() => import('../../content/hero/InteractiveLabDecoder'), {
-  ssr: false
-});
+import { redirect } from 'next/navigation';
 
 export default function LabDecoderPage() {
-  return <InteractiveLabDecoder />;
+  redirect('/vault/lab-decoder');
 }

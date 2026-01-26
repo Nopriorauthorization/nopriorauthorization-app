@@ -36,7 +36,7 @@ export const getNavigationConfig = (mode: 'marketing' | 'app' = 'app'): Navigati
     },
     {
       label: "Labs",
-      href: "/lab-decoder",
+      href: "/vault/lab-decoder",
       hasDropdown: false
     },
     {

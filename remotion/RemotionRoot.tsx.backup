@@ -1,11 +1,22 @@
 import React from 'react';
 import { Composition, Folder } from 'remotion';
 import { NoPriorAuthVideo } from './NoPriorAuthVideo';
-import { HormoneHarmonyVideo } from './HormoneHarmonyVideo';
+import { FillaGraceVideo } from './FillaGraceVideo';import { HormoneHarmonyVideo } from './HormoneHarmonyVideo';
 import { FamilyHealthVideo } from './FamilyHealthVideo';
 import { BeauToxVideo } from './BeauToxVideo';
-import FillaGraceVideo from './FillaGraceVideo';
-
+      <Folder name="FillaGrace">
+        <Composition
+          id="FillaGraceVideo"
+          component={FillaGraceVideo}
+          durationInFrames={90 * 30} // 90 seconds at 30fps
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{
+            title: 'Filla-Grace Aesthetics',
+          }}
+        />
+      </Folder>
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -13,7 +24,7 @@ export const RemotionRoot: React.FC = () => {
         <Composition
           id="NoPriorAuthVideo"
           component={NoPriorAuthVideo}
-          durationInFrames={90 * 30}
+          durationInFrames={90 * 30} // 90 seconds at 30fps
           fps={30}
           width={1920}
           height={1080}
@@ -26,7 +37,7 @@ export const RemotionRoot: React.FC = () => {
         <Composition
           id="HormoneHarmonyVideo"
           component={HormoneHarmonyVideo}
-          durationInFrames={90 * 30}
+          durationInFrames={90 * 30} // 90 seconds at 30fps
           fps={30}
           width={1920}
           height={1080}
@@ -39,7 +50,7 @@ export const RemotionRoot: React.FC = () => {
         <Composition
           id="FamilyHealthVideo"
           component={FamilyHealthVideo}
-          durationInFrames={90 * 30}
+          durationInFrames={90 * 30} // 90 seconds at 30fps
           fps={30}
           width={1920}
           height={1080}
@@ -49,28 +60,51 @@ export const RemotionRoot: React.FC = () => {
         />
       </Folder>
       <Folder name="BeauTox">
-        <Composition
-          id="BeauToxVideo"
-          component={BeauToxVideo}
-          durationInFrames={90 * 30}
-          fps={30}
-          width={1920}
-          height={1080}
-          defaultProps={{
-            title: 'Beau-Tox Aesthetics',
-          }}
-        />
-      </Folder>
       <Folder name="FillaGrace">
         <Composition
           id="FillaGraceVideo"
           component={FillaGraceVideo}
-          durationInFrames={90 * 30}
+          durationInFrames={90 * 30} // 90 seconds at 30fps
           fps={30}
           width={1920}
           height={1080}
           defaultProps={{
             title: 'Filla-Grace Aesthetics',
+          }}
+        />
+      </Folder>        <Composition
+          id="BeauToxVideo"
+      <Folder name="FillaGrace">
+        <Composition
+          id="FillaGraceVideo"
+          component={FillaGraceVideo}
+          durationInFrames={90 * 30} // 90 seconds at 30fps
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{
+            title: 'Filla-Grace Aesthetics',
+          }}
+        />
+      </Folder>          component={BeauToxVideo}
+      <Folder name="FillaGrace">
+        <Composition
+          id="FillaGraceVideo"
+          component={FillaGraceVideo}
+          durationInFrames={90 * 30} // 90 seconds at 30fps
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{
+            title: 'Filla-Grace Aesthetics',
+          }}
+        />
+      </Folder>          durationInFrames={90 * 30} // 90 seconds at 30fps
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{
+            title: 'Beau-Tox Aesthetics',
           }}
         />
       </Folder>

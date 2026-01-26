@@ -43,6 +43,34 @@ export default function SciencePage() {
         />
       </div>
 
+      {/* No Prior Authorization Video */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Why No Prior Authorization Matters</h2>
+            <p className="text-xl text-purple-100 max-w-3xl mx-auto">
+              Experience healthcare without barriers. Direct access to toxicology expertise when you need it most.
+            </p>
+          </div>
+          <div className="relative rounded-xl overflow-hidden shadow-2xl">
+            <video
+              controls
+              className="w-full h-auto"
+              poster="/characters/peppi.png"
+              preload="metadata"
+            >
+              <source src="/videos/marketing/no-prior-auth.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div className="mt-6 text-center">
+            <p className="text-gray-300 text-sm">
+              Learn how eliminating prior authorization reduces bureaucracy and improves patient outcomes
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* What Peppi Helps With */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12">

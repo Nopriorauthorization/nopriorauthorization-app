@@ -21,6 +21,7 @@
     "@prisma/client": "^5.22.0",
     "@remotion/bundler": "^4.0.407",
     "@remotion/cli": "^4.0.407",
+    "@remotion/google-fonts": "^4.0.409",
     "@remotion/renderer": "^4.0.407",
     "@stripe/stripe-js": "^4.9.0",
     "@supabase/supabase-js": "^2.90.1",

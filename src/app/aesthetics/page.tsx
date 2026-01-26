@@ -12,7 +12,7 @@ const aestheticsMascots = [
     specialty: "Botox & Injectables",
     description: "Expert in cosmetic injectables, facial aesthetics, and non-surgical rejuvenation procedures.",
     image: "/characters/beau.png",
-    video: "/videos/mascots/beau-tox.mp4",
+    video: "/videos/marketing/beau-tox.mp4",
     credentials: "Certified Injector",
     personality: "Sassy, honest, tells it like it is",
     chatPrompt: "Get real talk about injectables and cosmetic procedures"
@@ -23,7 +23,7 @@ const aestheticsMascots = [
     specialty: "Dermal Fillers",
     description: "Specialist in dermal filler treatments, facial contouring, and volume restoration.",
     image: "/characters/filla-grace.png",
-    video: "/videos/mascots/filla-grace.mp4",
+    video: "/videos/marketing/filla-grace.mp4",
     credentials: "Filler Expert",
     personality: "Graceful, detailed, anatomy-focused",
     chatPrompt: "Learn about fillers, facial anatomy, and realistic expectations"
@@ -241,6 +241,34 @@ export default function AestheticsPage() {
             </div>
           </div>
         ))}
+
+        {/* Beau-Tox Marketing Video */}
+        <div className="mb-20">
+          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 rounded-2xl p-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-4">Discover Botox & Aesthetics</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Learn how Botox and aesthetic treatments can enhance your natural beauty with safe, effective procedures.
+              </p>
+            </div>
+            <div className="relative rounded-xl overflow-hidden shadow-2xl max-w-4xl mx-auto">
+              <video
+                controls
+                className="w-full h-auto"
+                poster="/characters/beau.png"
+                preload="metadata"
+              >
+                <source src="/videos/marketing/beau-tox.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div className="mt-6 text-center">
+              <p className="text-gray-400 text-sm">
+                Professional educational video about Botox treatments and aesthetic enhancement
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* Related Aesthetics Tools */}
         <div className="mt-16">

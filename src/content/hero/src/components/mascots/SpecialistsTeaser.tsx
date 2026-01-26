@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 const specialists = [
+  { name: "Peppi", role: "Science & Peptides", href: "/science" },
+  { name: "Harmony", role: "Hormones", href: "/hormones" },
   { name: "Beau-Tox", role: "Aesthetics", href: "/aesthetics" },
   { name: "Filla-Grace", role: "Aesthetics", href: "/aesthetics" },
   { name: "Slim-T", role: "Weight Management", href: "/weight-management" },

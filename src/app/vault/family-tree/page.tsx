@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 
-import FamilyHealthTree from '@/components/shared/FamilyHealthTree';
+import InteractiveRoot from '@/content/hero/InteractiveRoot';
 
 export default function FamilyTreePage() {
-  return <FamilyHealthTree />;
+  return <InteractiveRoot />;
 }

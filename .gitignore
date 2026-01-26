@@ -41,3 +41,4 @@ prisma/*.db-journal
 public/hero/avatars/*.mp4
 service-account-key.json
 build.log
+public/videos/roots-intro.mp4

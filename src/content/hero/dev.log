@@ -577,3 +577,54 @@ Require stack:
 <w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
 <w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
 <w>  at resolve commonjs /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/danid/ask-beau-tox/.next/server/vendor-chunks'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/react-icons' in /Users/danid/ask-beau-tox/.next/server for build dependencies doesn't lead to expected result '/Users/danid/ask-beau-tox/.next/server/vendor-chunks/react-icons.js', but to 'Error: Can't resolve './vendor-chunks/react-icons' in '/Users/danid/ask-beau-tox/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/react-icons (expected /Users/danid/ask-beau-tox/.next/server/vendor-chunks/react-icons.js)
+<w>  at file dependencies /Users/danid/ask-beau-tox/.next/server/webpack-runtime.js
+<w>  at file /Users/danid/ask-beau-tox/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/.next/server/app/_not-found/page.js
+<w>  at file /Users/danid/ask-beau-tox/.next/server/app/_not-found/page.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/@swc' in /Users/danid/ask-beau-tox/.next/server for build dependencies doesn't lead to expected result '/Users/danid/ask-beau-tox/.next/server/vendor-chunks/@swc.js', but to 'Error: Can't resolve './vendor-chunks/@swc' in '/Users/danid/ask-beau-tox/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/@swc (expected /Users/danid/ask-beau-tox/.next/server/vendor-chunks/@swc.js)
+<w>  at file dependencies /Users/danid/ask-beau-tox/.next/server/webpack-runtime.js
+<w>  at file /Users/danid/ask-beau-tox/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/.next/server/app/_not-found/page.js
+<w>  at file /Users/danid/ask-beau-tox/.next/server/app/_not-found/page.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/next' in /Users/danid/ask-beau-tox/.next/server for build dependencies doesn't lead to expected result '/Users/danid/ask-beau-tox/.next/server/vendor-chunks/next.js', but to 'Error: Can't resolve './vendor-chunks/next' in '/Users/danid/ask-beau-tox/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/next (expected /Users/danid/ask-beau-tox/.next/server/vendor-chunks/next.js)
+<w>  at file dependencies /Users/danid/ask-beau-tox/.next/server/webpack-runtime.js
+<w>  at file /Users/danid/ask-beau-tox/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/.next/server/app/_not-found/page.js
+<w>  at file /Users/danid/ask-beau-tox/.next/server/app/_not-found/page.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/danid/ask-beau-tox/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+ ✓ Compiled in 184ms (873 modules)
+ ✓ Compiled in 92ms (873 modules)
+ ✓ Compiled in 136ms (1588 modules)
+ ✓ Compiled in 92ms (873 modules)
+ ✓ Compiled in 147ms (1588 modules)

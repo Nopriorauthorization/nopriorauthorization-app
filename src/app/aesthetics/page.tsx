@@ -300,4 +300,4 @@ export default function AestheticsPage() {
       </div>
     </div>
   );
-}
+}// Force redeploy after LFS push

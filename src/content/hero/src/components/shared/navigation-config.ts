@@ -9,6 +9,7 @@ export function getNavigationConfig(mode: "marketing" | "app" = "marketing"): Na
     { label: "Vault", href: "/vault" },
     { label: "Aesthetics", href: "/aesthetics" },
     { label: "Weight Management", href: "/weight-management" },
+    { label: "Hormones & Peptides", href: "/hormones" },
     { label: "Experts", href: "/experts" },
     { label: "Chat", href: "/chat" },
   ];

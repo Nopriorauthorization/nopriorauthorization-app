@@ -14,6 +14,7 @@ type MascotDomainCardProps = {
   chatPersona: string;
   primaryCtaLabel?: string;
   chatCtaLabel?: string;
+  source?: string;
 };
 
 export default function MascotDomainCard({
@@ -26,6 +27,7 @@ export default function MascotDomainCard({
   chatPersona,
   primaryCtaLabel,
   chatCtaLabel,
+  source,
 }: MascotDomainCardProps) {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -65,7 +67,7 @@ export default function MascotDomainCard({
   };
 
   const onAsk = () => {
-    router.push(`/chat?persona=${encodeURIComponent(chatPersona)}&source=${encodeURIComponent(mascotId)}`);
+    router.push(`/chat?persona=${encodeURIComponent(chatPersona)}&source=${encodeURIComponent(source || mascotId)}`);
   };
 
   const onEnded = () => setIsPlaying(false);

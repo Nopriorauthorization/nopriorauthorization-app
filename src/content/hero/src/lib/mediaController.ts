@@ -1,4 +1,6 @@
 // src/lib/mediaController.ts
+import { MASCOT_MEDIA, MascotId } from './mascotMedia';
+
 type MediaEl = HTMLVideoElement | HTMLAudioElement;
 
 class MediaController {
@@ -24,6 +26,22 @@ class MediaController {
         // Swallow play errors from browser policies; UI should reflect "not playing"
       });
     }
+  }
+
+  // New method to play mascot videos by ID
+  playMascot(mascotId: MascotId, videoElement: HTMLVideoElement) {
+    const mascot = MASCOT_MEDIA[mascotId];
+    if (!mascot) {
+      console.error(`Mascot ${mascotId} not found in registry`);
+      return;
+    }
+
+    // Ensure the video element has the correct source
+    if (videoElement.src !== mascot.videoSrc) {
+      videoElement.src = mascot.videoSrc;
+    }
+
+    this.play(videoElement);
   }
 
   stopAll() {

@@ -1,0 +1,23 @@
+
+> ask-beau-tox@1.0.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3001
+  - Environments: .env.local, .env
+
+ ✓ Starting...
+ ✓ Ready in 932ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1279ms (578 modules)
+ GET / 200 in 1369ms
+ ✓ Compiled in 130ms (289 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 847ms (1365 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/010daf14df8810b1.webpack.hot-update.json 404 in 815ms
+ GET /?id=66b3d1ae-1f34-42cf-ad2b-7fcc1e169c90&vscodeBrowserReqId=1769432750657 200 in 91ms
+ GET / 200 in 16ms
+ GET /?id=66b3d1ae-1f34-42cf-ad2b-7fcc1e169c90&vscodeBrowserReqId=1769432948653 200 in 17ms
+ GET /?id=66b3d1ae-1f34-42cf-ad2b-7fcc1e169c90&vscodeBrowserReqId=1769434313321 200 in 180ms

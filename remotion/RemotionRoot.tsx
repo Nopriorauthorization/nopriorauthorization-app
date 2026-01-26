@@ -5,6 +5,7 @@ import { HormoneHarmonyVideo } from './HormoneHarmonyVideo';
 import { FamilyHealthVideo } from './FamilyHealthVideo';
 import { BeauToxVideo } from './BeauToxVideo';
 import FillaGraceVideo from './FillaGraceVideo';
+import { NPA_Homepage_Explainer_V1 } from './compositions/HomepageExplainer';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -19,6 +20,19 @@ export const RemotionRoot: React.FC = () => {
           height={1080}
           defaultProps={{
             title: 'No Prior Authorization',
+          }}
+        />
+      </Folder>
+      <Folder name="HomepageExplainer">
+        <Composition
+          id="NPA-Homepage-Explainer-V1"
+          component={NPA_Homepage_Explainer_V1}
+          durationInFrames={60 * 30}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{
+            title: 'Homepage Explainer',
           }}
         />
       </Folder>

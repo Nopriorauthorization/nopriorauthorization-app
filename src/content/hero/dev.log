@@ -628,3 +628,31 @@ Require stack:
  ✓ Compiled in 136ms (1588 modules)
  ✓ Compiled in 92ms (873 modules)
  ✓ Compiled in 147ms (1588 modules)
+ GET /?id=66b3d1ae-1f34-42cf-ad2b-7fcc1e169c90&vscodeBrowserReqId=1769439664907 200 in 72ms
+ ✓ Compiled /subscribe in 245ms (1600 modules)
+ ✓ Compiled /vault in 373ms (1616 modules)
+ ✓ Compiled /_not-found in 61ms (747 modules)
+ GET /_next/static/chunks/app-pages-internals.js 404 in 201ms
+ GET /vault 200 in 224ms
+ GET /_next/static/css/app/layout.css?v=1769439671841 404 in 44ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 46ms
+ GET /_next/static/chunks/app/layout.js 404 in 44ms
+ GET /_next/static/chunks/main-app.js?v=1769439671841 404 in 47ms
+ GET /_next/static/chunks/app/error.js 404 in 11ms
+ GET /_next/static/chunks/app/not-found.js 404 in 10ms
+ GET / 200 in 33ms
+ GET /_next/static/css/app/layout.css?v=1769439692070 404 in 25ms
+ GET /_next/static/chunks/app/not-found.js 404 in 26ms
+ GET /_next/static/chunks/app/page.js 404 in 27ms
+ GET /_next/static/chunks/app/layout.js 404 in 26ms
+ GET /_next/static/chunks/main-app.js?v=1769439692070 404 in 28ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 27ms
+ GET /_next/static/chunks/app/error.js 404 in 22ms
+ ✓ Compiled in 100ms (885 modules)
+ ✓ Compiled in 90ms (885 modules)
+ ✓ Compiled in 77ms (885 modules)
+ ✓ Compiled in 95ms (885 modules)
+ ✓ Compiled in 176ms (885 modules)
+ ✓ Compiled in 83ms (885 modules)
+ ✓ Compiled in 76ms (885 modules)
+ ✓ Compiled in 119ms (885 modules)

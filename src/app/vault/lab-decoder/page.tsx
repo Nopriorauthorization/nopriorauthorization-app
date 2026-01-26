@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 // Decode Lab Decoder Domain Page
 import React from "react";
 import { Metadata } from "next";
-import MascotDomainCard from "../../../content/hero/src/components/mascots/MascotDomainCard";
+import VaultStyleMascotSection from "../../../content/hero/src/components/mascots/VaultStyleMascotSection";
 
 export const metadata: Metadata = {
   title: "Lab Results & Biomarker Intelligence | Decode",
@@ -28,18 +28,40 @@ export default function LabDecoderPage() {
         </div>
       </div>
 
-      {/* Mascot Domain Card */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <MascotDomainCard
+      {/* Vault Style Mascot Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <VaultStyleMascotSection
           mascotId="decode"
           displayName="Decode"
-          title="Lab results and biomarker intelligence"
-          description="Decode transforms complex lab results into clear insights, helping you understand what your biomarkers mean and what actions to take."
-          posterSrc="/characters/decode.png"
-          mp4Src="/videos/mascots/decode.mp4"
+          tagline="Lab Intelligence & Biomarker Analysis"
+          description="Transform complex lab results into clear, actionable health insights. Decode explains what your biomarkers mean, identifies patterns, and guides you toward optimal health decisions."
+          imageSrc="/characters/decode.png"
+          videoSrc="/videos/mascots/decode.mp4"
           chatPersona="decode"
-          primaryCtaLabel="Learn with Decode"
-          chatCtaLabel="Ask Decode"
+          features={[
+            {
+              icon: "🔬",
+              title: "Biomarker Analysis",
+              description: "Decode complex lab values into understandable insights"
+            },
+            {
+              icon: "📊",
+              title: "Trend Detection",
+              description: "Track changes over time and identify patterns"
+            },
+            {
+              icon: "📤",
+              title: "Result Upload",
+              description: "Securely upload and analyze your lab results"
+            },
+            {
+              icon: "🧠",
+              title: "AI Insights",
+              description: "Get personalized recommendations based on your labs"
+            }
+          ]}
+          ctaText="Explore Lab Intelligence"
+          ctaHref="/vault/lab-decoder"
           source="lab-decoder"
         />
       </div>

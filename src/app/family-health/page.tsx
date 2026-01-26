@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 // Root Family Health Domain Page
 import React from "react";
 import { Metadata } from "next";
-import MascotDomainCard from "../../content/hero/src/components/mascots/MascotDomainCard";
+import VaultStyleMascotSection from "../../content/hero/src/components/mascots/VaultStyleMascotSection";
 
 export const metadata: Metadata = {
   title: "Family Health Patterns & Prevention | Root",
@@ -28,18 +28,41 @@ export default function FamilyHealthPage() {
         </div>
       </div>
 
-      {/* Mascot Domain Card */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <MascotDomainCard
+      {/* Vault Style Mascot Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <VaultStyleMascotSection
           mascotId="root"
           displayName="Root"
-          title="Family health patterns and inherited risks"
-          description="Root analyzes generational health connections, helping you understand inherited risks and create prevention strategies for your family's future."
-          posterSrc="/characters/root.png"
-          mp4Src="/videos/mascots/root.mp4"
+          tagline="Family Health Intelligence"
+          description="Discover generational health patterns, genetic predispositions, and family medical history. Build a comprehensive family health map that reveals insights for prevention and early intervention."
+          imageSrc="/characters/root.png"
+          videoSrc="/videos/mascots/root.mp4"
           chatPersona="root"
-          primaryCtaLabel="Learn with Root"
-          chatCtaLabel="Ask Root"
+          features={[
+            {
+              icon: "🌳",
+              title: "Generational Patterns",
+              description: "Map your family's health journey across generations"
+            },
+            {
+              icon: "🧬",
+              title: "Genetic Insights",
+              description: "Unlock DNA-powered wisdom for prevention"
+            },
+            {
+              icon: "🛡️",
+              title: "Prevention Focus",
+              description: "Stay ahead of health risks with early detection"
+            },
+            {
+              icon: "🧠",
+              title: "AI-Powered",
+              description: "Smart family health analysis and recommendations"
+            }
+          ]}
+          ctaText="Explore Your Root"
+          ctaHref="/vault/family-tree"
+          source="family-health"
         />
       </div>
 

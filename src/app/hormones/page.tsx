@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import React from "react";
 import { Metadata } from "next";
-import MascotDomainCard from "../../content/hero/src/components/mascots/MascotDomainCard";
+import VaultStyleMascotSection from "../../content/hero/src/components/mascots/VaultStyleMascotSection";
 
 export const metadata: Metadata = {
   title: "Hormones & Peptides | Harmony & Peppi",
@@ -22,83 +22,80 @@ export default function HormonesPage() {
         </p>
       </div>
 
-      {/* SPLIT MASCOT LAYOUT */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* LEFT CARD – HARMONY */}
-          <div className="bg-black/40 border border-purple-500/20 rounded-2xl p-8">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-white mb-2">Harmony</h2>
-              <p className="text-purple-400 text-sm font-medium">Women's Hormone Health</p>
-            </div>
+      {/* Harmony Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <VaultStyleMascotSection
+          mascotId="harmony"
+          displayName="Harmony"
+          tagline="Women's Hormone Health"
+          description="Understand your hormones without fear. Harmony helps you connect symptoms to patterns — safely and scientifically."
+          imageSrc="/characters/harmony.png"
+          videoSrc="/videos/mascots/harmony.mp4"
+          chatPersona="harmony"
+          features={[
+            {
+              icon: "🧬",
+              title: "Hormone Mapping",
+              description: "Connect symptoms to hormone patterns safely"
+            },
+            {
+              icon: "📅",
+              title: "Cycle Awareness",
+              description: "Track patterns and understand your body's rhythm"
+            },
+            {
+              icon: "🌸",
+              title: "Perimenopause Guide",
+              description: "Navigate changes with confidence and clarity"
+            },
+            {
+              icon: "🛡️",
+              title: "Safe Science",
+              description: "Evidence-based hormone education without fear"
+            }
+          ]}
+          ctaText="Explore Women's Hormones"
+          ctaHref="/vault/hormone-tracker"
+          source="hormones"
+        />
+      </div>
 
-            <MascotDomainCard
-              mascotId="harmony"
-              displayName="Harmony"
-              title="Women's hormones, safety, balance"
-              description="Understand your hormones without fear. Harmony helps you connect symptoms to patterns — safely."
-              posterSrc="/characters/harmony.png"
-              mp4Src="/videos/mascots/harmony.mp4"
-              chatPersona="harmony"
-              primaryCtaLabel="Learn With Harmony"
-              chatCtaLabel="Ask Harmony"
-              source="hormones"
-            />
-
-            {/* Interactive Tools Preview */}
-            <div className="mt-6 space-y-3">
-              <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4">
-                <h4 className="text-purple-300 font-semibold mb-2">🧬 Hormone symptom mapping</h4>
-                <p className="text-gray-300 text-sm">Connect how you feel to hormone patterns</p>
-              </div>
-              <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4">
-                <h4 className="text-purple-300 font-semibold mb-2">📅 Cycle awareness</h4>
-                <p className="text-gray-300 text-sm">Track patterns and understand your body</p>
-              </div>
-              <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4">
-                <h4 className="text-purple-300 font-semibold mb-2">🌸 Perimenopause education</h4>
-                <p className="text-gray-300 text-sm">Navigate changes with confidence</p>
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT CARD – PEPPI */}
-          <div className="bg-black/40 border border-cyan-500/20 rounded-2xl p-8">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-white mb-2">Peppi</h2>
-              <p className="text-cyan-400 text-sm font-medium">Men's Hormones & Peptide Science</p>
-            </div>
-
-            <MascotDomainCard
-              mascotId="peppi"
-              displayName="Peppi"
-              title="Men's hormones, peptides, science"
-              description="If TikTok sold it as a miracle, Peppi explains what actually works."
-              posterSrc="/characters/peppi.png"
-              mp4Src="/videos/mascots/peppi.mp4"
-              chatPersona="peppi"
-              primaryCtaLabel="Learn With Peppi"
-              chatCtaLabel="Ask Peppi"
-              source="hormones"
-            />
-
-            {/* Interactive Tools Preview */}
-            <div className="mt-6 space-y-3">
-              <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4">
-                <h4 className="text-cyan-300 font-semibold mb-2">🧪 Peptide education</h4>
-                <p className="text-gray-300 text-sm">What works vs hype in peptide science</p>
-              </div>
-              <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4">
-                <h4 className="text-cyan-300 font-semibold mb-2">⚡ Hormone optimization myths</h4>
-                <p className="text-gray-300 text-sm">Evidence-based clarity on men's health</p>
-              </div>
-              <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4">
-                <h4 className="text-cyan-300 font-semibold mb-2">🔬 Science-first explanations</h4>
-                <p className="text-gray-300 text-sm">Real research behind trending protocols</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Peppi Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <VaultStyleMascotSection
+          mascotId="peppi"
+          displayName="Peppi"
+          tagline="Men's Hormones & Peptide Science"
+          description="If TikTok sold it as a miracle, Peppi explains what actually works. Science-first clarity for men's health optimization."
+          imageSrc="/characters/peppi.png"
+          videoSrc="/videos/mascots/peppi.mp4"
+          chatPersona="peppi"
+          features={[
+            {
+              icon: "🧪",
+              title: "Peptide Science",
+              description: "What works vs hype in peptide research"
+            },
+            {
+              icon: "⚡",
+              title: "Hormone Myths",
+              description: "Evidence-based clarity on optimization"
+            },
+            {
+              icon: "🔬",
+              title: "Research-Backed",
+              description: "Real science behind trending protocols"
+            },
+            {
+              icon: "🎯",
+              title: "Precision Health",
+              description: "Targeted approaches that actually work"
+            }
+          ]}
+          ctaText="Explore Men's Hormones"
+          ctaHref="/vault/hormone-tracker"
+          source="hormones"
+        />
       </div>
 
       {/* "How This Fits Your Blueprint" Section */}

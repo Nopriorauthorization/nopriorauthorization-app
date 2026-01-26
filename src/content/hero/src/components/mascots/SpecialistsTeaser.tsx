@@ -5,7 +5,7 @@ const specialists = [
   { name: "Filla-Grace", role: "Aesthetics", href: "/aesthetics" },
   { name: "Slim-T", role: "Weight Management", href: "/weight-management" },
   { name: "Decode", role: "Labs", href: "/vault/lab-decoder" },
-  { name: "Roots", role: "Family Tree", href: "/vault/family-tree" },
+  { name: "Roots", role: "Family Health", href: "/family-health" },
 ];
 
 export default function SpecialistsTeaser() {

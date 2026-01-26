@@ -27,18 +27,6 @@ const mascots = [
     credentials: "Certified Injector",
     personality: "Sassy, honest, tells it like it is",
     chatPrompt: "Get real talk about injectables and cosmetic procedures"
-  },
-  {
-    id: "peppi",
-    name: "Peppi",
-    specialty: "General Wellness",
-    description: "Your holistic health companion focused on nutrition, lifestyle, and preventive care.",
-    image: "/characters/peppi.png",
-    video: "/hero/avatars/peppi-intro.mp4",
-    credentials: "Wellness Specialist",
-    personality: "Friendly, knowledgeable, holistic approach",
-    chatPrompt: "Discuss nutrition, lifestyle, and wellness strategies"
-  },
   {
     id: "filla-grace",
     name: "Filla-Grace",
@@ -48,18 +36,15 @@ const mascots = [
     video: "/hero/avatars/f-ill-intro.mp4",
     credentials: "Filler Expert",
     personality: "Graceful, detailed, anatomy-focused",
+    id: "filla-grace",
+    name: "Filla-Grace",
+    specialty: "Dermal Fillers",
+    description: "Specialist in dermal filler treatments, facial contouring, and volume restoration.",
+    image: "/characters/filla-grace.png",
+    video: "/hero/avatars/f-ill-intro.mp4",
+    credentials: "Filler Expert",
+    personality: "Graceful, detailed, anatomy-focused",
     chatPrompt: "Learn about fillers, facial anatomy, and realistic expectations"
-  },
-  {
-    id: "rn-lisa-grace",
-    name: "Harmony",
-    specialty: "Nursing Care",
-    description: "Registered nurse providing medical guidance, treatment coordination, and patient care.",
-    image: "/characters/founder.png",
-    video: "/hero/avatars/rn-lisa-grace-intro.mp4",
-    credentials: "RN, BSN",
-    personality: "Caring, safety-focused, ethical",
-    chatPrompt: "Get nursing perspective on treatments and safety concerns"
   },
   {
     id: "slim-t",

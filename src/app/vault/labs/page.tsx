@@ -233,7 +233,7 @@ export default function LabsPage() {
 
             <div className="hidden md:block">
               <Image
-                src="/mascots/LABDECODERMASCOT.PNG"
+                src="/mascots/FAMILYTREEMASCOT.PNG"
                 alt="Lab Decoder Mascot"
                 width={120}
                 height={120}
@@ -540,7 +540,7 @@ export default function LabsPage() {
           >
             <div className="flex items-start gap-4">
               <Image
-                src="/mascots/LABDECODERMASCOT.PNG"
+                src="/mascots/FAMILYTREEMASCOT.PNG"
                 alt="Lab Decoder Mascot"
                 width={48}
                 height={48}

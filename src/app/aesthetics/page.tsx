@@ -168,8 +168,9 @@ export default function AestheticsPage() {
                 onEnded={onBeauToxEnded}
                 muted={isBeauToxMuted}
                 playsInline
+                preload="metadata"
               >
-                <source src="/videos/mascots/beau-tox.mp4" type="video/mp4" />
+                <source src="/hero/avatars/beau-tox-intro.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
 
@@ -243,8 +244,9 @@ export default function AestheticsPage() {
                 onEnded={onFillaGraceEnded}
                 muted={isFillaGraceMuted}
                 playsInline
+                preload="metadata"
               >
-                <source src="/videos/mascots/filla-grace.mp4" type="video/mp4" />
+                <source src="/hero/avatars/f-ill-intro.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
 

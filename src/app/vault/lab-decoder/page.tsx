@@ -68,6 +68,7 @@ export default function LabDecoderPage() {
                 onEnded={onEnded}
                 muted={isMuted}
                 playsInline
+                preload="metadata"
               >
                 <source src="/videos/mascots/decode.mp4" type="video/mp4" />
                 Your browser does not support the video tag.

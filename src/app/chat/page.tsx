@@ -7,7 +7,8 @@ import WidgetTracker from "@/components/provider/widget-tracker";
 
 function ChatPageInner() {
   const searchParams = useSearchParams();
-  const mascotId = searchParams.get("mascot");
+  const persona = searchParams.get("persona");
+  const source = searchParams.get("source");
 
   return (
     <main className="min-h-screen bg-white">
@@ -19,7 +20,7 @@ function ChatPageInner() {
         <span className="text-gray-500">Educational only</span>
       </div>
       <div className="h-[calc(100vh-52px)]">
-        <ChatInterface mascotId={mascotId || undefined} />
+        <ChatInterface persona={persona || undefined} source={source || undefined} />
       </div>
     </main>
   );

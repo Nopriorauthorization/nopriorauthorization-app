@@ -101,12 +101,19 @@ export default function WeightManagementPage() {
               <video
                 ref={videoRef}
                 className="w-full rounded-2xl border border-red-500/20"
+                onLoadStart={() => console.log("Video load started")}
+                onLoadedData={() => console.log("Video data loaded")}
                 onCanPlay={() => setIsReady(true)}
+                onError={(e) => {
+                  console.error("Video error:", e);
+                  console.error("Video error details:", e.currentTarget?.error);
+                }}
                 onEnded={onEnded}
                 muted={isMuted}
                 playsInline
+                preload="metadata"
               >
-                <source src="/videos/mascots/slim-t.mp4" type="video/mp4" />
+                <source src="/hero/avatars/slim-t-intro.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
 

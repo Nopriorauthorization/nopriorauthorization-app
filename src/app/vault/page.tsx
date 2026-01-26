@@ -126,7 +126,7 @@ export default function VaultPage() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-green-400/10 rounded-3xl blur-xl scale-110"></div>
                   <Image
-                    src="/mascots/LABDECODERMASCOT.PNG"
+                    src="/mascots/FAMILYTREEMASCOT.PNG"
                     alt="Root - Your Family Health Intelligence Guide"
                     width={400}
                     height={400}

@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import React from "react";
 import { Metadata } from "next";
-import VaultStyleMascotSection from "../../content/hero/src/components/mascots/VaultStyleMascotSection";
+import MascotDomainShell from "@/components/mascots/MascotDomainShell";
 
 export const metadata: Metadata = {
   title: "Hormones & Peptides | Harmony & Peppi",
@@ -23,15 +23,14 @@ export default function HormonesPage() {
       </div>
 
       {/* Harmony Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <VaultStyleMascotSection
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <MascotDomainShell
           mascotId="harmony"
           displayName="Harmony"
           tagline="Women's Hormone Health"
           description="Understand your hormones without fear. Harmony helps you connect symptoms to patterns — safely and scientifically."
           imageSrc="/characters/harmony.png"
           videoSrc="/videos/mascots/harmony.mp4"
-          chatPersona="harmony"
           features={[
             {
               icon: "🧬",
@@ -61,15 +60,14 @@ export default function HormonesPage() {
       </div>
 
       {/* Peppi Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <VaultStyleMascotSection
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <MascotDomainShell
           mascotId="peppi"
           displayName="Peppi"
           tagline="Men's Hormones & Peptide Science"
           description="If TikTok sold it as a miracle, Peppi explains what actually works. Science-first clarity for men's health optimization."
           imageSrc="/characters/peppi.png"
           videoSrc="/videos/mascots/peppi.mp4"
-          chatPersona="peppi"
           features={[
             {
               icon: "🧪",
@@ -152,14 +150,14 @@ export default function HormonesPage() {
         </h3>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="/lab-decoder"
-            className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
+            href="/vault/lab-decoder"
+            className="bg-gradient-to-r from-purple-500 via-violet-500 to-indigo-500 hover:from-purple-600 hover:via-violet-600 hover:to-indigo-600 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
           >
             Go to Lab Decoder
           </a>
           <a
             href="/blueprint"
-            className="bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
+            className="bg-gradient-to-r from-cyan-500 via-blue-500 to-teal-500 hover:from-cyan-600 hover:via-blue-600 hover:to-teal-600 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
           >
             View Your Blueprint
           </a>

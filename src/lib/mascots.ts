@@ -1,3 +1,7 @@
+// =============================================================================
+// CANONICAL MASCOT DATA - Single Source of Truth
+// =============================================================================
+
 export type MascotId =
   | "beau-tox"
   | "peppi"
@@ -7,9 +11,12 @@ export type MascotId =
   | "slim-t"
   | "harmony"
   | "founder"
-  | "ryan";
+  | "ryan"
+  | "lab-decoder"
+  | "decode"
+  | "root";
 
-type MascotMeta = {
+export type MascotMeta = {
   id: MascotId;
   name: string;
   header: string;
@@ -20,6 +27,10 @@ type MascotMeta = {
   imageAlt: string;
   credentials?: string;
   suggestions: string[];
+  // Domain page routing
+  domainPage?: string;
+  // Video source for domain pages
+  videoSrc?: string;
 };
 
 const MASCOT_META: Record<MascotId, MascotMeta> = {
@@ -32,6 +43,8 @@ const MASCOT_META: Record<MascotId, MascotMeta> = {
     offer: "Myth-busting, safety basics, and consult prep",
     image: "/characters/beau.png",
     imageAlt: "Beau-Tox mascot",
+    domainPage: "/aesthetics",
+    videoSrc: "/hero/avatars/beau-tox-intro.mp4",
     suggestions: [
       "What exactly is Botox and how does it work?",
       "What should I ask during a consultation?",
@@ -63,6 +76,8 @@ const MASCOT_META: Record<MascotId, MascotMeta> = {
     offer: "Simple explanations of mechanisms and research",
     image: "/characters/peppi.png",
     imageAlt: "Peppi mascot",
+    domainPage: "/hormones",
+    videoSrc: "/videos/mascots/peppi.mp4",
     suggestions: [
       "What are peptides in simple terms?",
       "How do people use peptides in wellness routines?",
@@ -78,6 +93,8 @@ const MASCOT_META: Record<MascotId, MascotMeta> = {
     offer: "Natural-looking outcomes and consult questions",
     image: "/characters/filla-grace.png",
     imageAlt: "Filla Grace mascot",
+    domainPage: "/aesthetics",
+    videoSrc: "/hero/avatars/f-ill-intro.mp4",
     suggestions: [
       "What's the difference between filler types?",
       "How do providers think about facial balance?",
@@ -123,6 +140,8 @@ const MASCOT_META: Record<MascotId, MascotMeta> = {
     offer: "Realistic habits, mindset, and consistency",
     image: "/characters/slim-t.png",
     imageAlt: "Slim-T mascot",
+    domainPage: "/weight-management",
+    videoSrc: "/hero/avatars/slim-t-intro.mp4",
     suggestions: [
       "What actually impacts metabolism?",
       "How do I build sustainable weight-loss habits?",
@@ -138,6 +157,8 @@ const MASCOT_META: Record<MascotId, MascotMeta> = {
     offer: "Foundational education and consult prep",
     image: "/characters/harmony.png",
     imageAlt: "Harmony mascot",
+    domainPage: "/hormones",
+    videoSrc: "/videos/mascots/harmony.mp4",
     suggestions: [
       "What does hormone balance really mean?",
       "What are common signs people ask about?",
@@ -160,8 +181,62 @@ const MASCOT_META: Record<MascotId, MascotMeta> = {
       "How do insurance and cash-pay realities affect care?",
     ],
   },
+  "lab-decoder": {
+    id: "lab-decoder",
+    name: "Lab Decoder™",
+    header: "Chat with Lab Decoder™",
+    subheader: "Ask me about lab results, biomarkers, and medical data interpretation",
+    role: "Medical data analyst & lab result interpreter",
+    offer: "Plain-language explanations of blood work, trends, and clinical insights",
+    image: "/characters/lab-decoder.png",
+    imageAlt: "Lab Decoder mascot",
+    credentials: "Medical Data Specialist",
+    domainPage: "/vault/lab-decoder",
+    suggestions: [
+      "What does this lab value mean?",
+      "Are my results normal or concerning?",
+      "How do my labs compare to optimal ranges?",
+    ],
+  },
+  decode: {
+    id: "decode",
+    name: "Decode™",
+    header: "Chat with Decode™",
+    subheader: "Ask me about lab results and biomarker analysis",
+    role: "Lab Intelligence & Biomarker Analyst",
+    offer: "Transform complex lab results into clear, actionable health insights",
+    image: "/characters/decode.png",
+    imageAlt: "Decode mascot",
+    credentials: "Lab Intelligence Specialist",
+    domainPage: "/vault/lab-decoder",
+    videoSrc: "/videos/mascots/decode.mp4",
+    suggestions: [
+      "What do my lab results mean?",
+      "How do I track biomarker trends?",
+      "What questions should I ask about my labs?",
+    ],
+  },
+  root: {
+    id: "root",
+    name: "Root™",
+    header: "Chat with Root™",
+    subheader: "Ask me about family health patterns and inherited risks",
+    role: "Family health pattern analyst",
+    offer: "Understanding generational health connections and prevention awareness",
+    image: "/characters/root.png",
+    imageAlt: "Root mascot",
+    credentials: "Family Health Pattern Specialist",
+    domainPage: "/family-health",
+    videoSrc: "/videos/mascots/root.mp4",
+    suggestions: [
+      "How do family health patterns work?",
+      "What should I know about inherited risks?",
+      "How can I understand my family's health history?",
+    ],
+  },
 };
 
+// Primary mascot IDs for main navigation/display
 export const MASCOT_IDS: MascotId[] = [
   "founder",
   "beau-tox",
@@ -174,12 +249,37 @@ export const MASCOT_IDS: MascotId[] = [
   "ryan",
 ];
 
-export const MASCOT_LIST: MascotMeta[] = MASCOT_IDS.map(
-  (id) => MASCOT_META[id]
-);
+// Domain mascots (have dedicated pages with MascotDomainShell)
+export const DOMAIN_MASCOT_IDS: MascotId[] = [
+  "root",
+  "decode",
+  "slim-t",
+  "beau-tox",
+  "filla-grace",
+  "harmony",
+  "peppi",
+];
+
+// All mascots including domain-specific ones
+export const ALL_MASCOT_IDS: MascotId[] = [
+  ...MASCOT_IDS,
+  "lab-decoder",
+  "decode",
+  "root",
+];
+
+export const MASCOT_LIST: MascotMeta[] = MASCOT_IDS.map((id) => MASCOT_META[id]);
 
 export function getMascotList(): MascotMeta[] {
   return MASCOT_LIST;
+}
+
+export function getAllMascots(): MascotMeta[] {
+  return ALL_MASCOT_IDS.map((id) => MASCOT_META[id]);
+}
+
+export function getDomainMascots(): MascotMeta[] {
+  return DOMAIN_MASCOT_IDS.map((id) => MASCOT_META[id]);
 }
 
 export function getMascotMeta(mascotId?: string): MascotMeta {
@@ -188,4 +288,8 @@ export function getMascotMeta(mascotId?: string): MascotMeta {
     return MASCOT_META[mascotId as MascotId];
   }
   return MASCOT_META["beau-tox"];
+}
+
+export function getMascotById(mascotId: MascotId): MascotMeta | undefined {
+  return MASCOT_META[mascotId];
 }

@@ -1,9 +1,8 @@
 export const dynamic = "force-dynamic";
 
-// Decode Lab Decoder Domain Page
 import React from "react";
 import { Metadata } from "next";
-import VaultStyleMascotSection from "../../../content/hero/src/components/mascots/VaultStyleMascotSection";
+import MascotDomainShell from "@/components/mascots/MascotDomainShell";
 
 export const metadata: Metadata = {
   title: "Lab Results & Biomarker Intelligence | Decode",
@@ -28,16 +27,15 @@ export default function LabDecoderPage() {
         </div>
       </div>
 
-      {/* Vault Style Mascot Section */}
+      {/* Decode Mascot Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <VaultStyleMascotSection
+        <MascotDomainShell
           mascotId="decode"
           displayName="Decode"
           tagline="Lab Intelligence & Biomarker Analysis"
           description="Transform complex lab results into clear, actionable health insights. Decode explains what your biomarkers mean, identifies patterns, and guides you toward optimal health decisions."
           imageSrc="/characters/decode.png"
           videoSrc="/videos/mascots/decode.mp4"
-          chatPersona="decode"
           features={[
             {
               icon: "🔬",
@@ -61,7 +59,7 @@ export default function LabDecoderPage() {
             }
           ]}
           ctaText="Explore Lab Intelligence"
-          ctaHref="/vault/lab-decoder"
+          ctaHref="/vault/decoder"
           source="lab-decoder"
         />
       </div>

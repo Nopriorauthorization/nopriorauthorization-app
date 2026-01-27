@@ -1,9 +1,8 @@
 export const dynamic = "force-dynamic";
 
-// Root Family Health Domain Page
 import React from "react";
 import { Metadata } from "next";
-import VaultStyleMascotSection from "../../content/hero/src/components/mascots/VaultStyleMascotSection";
+import MascotDomainShell from "@/components/mascots/MascotDomainShell";
 
 export const metadata: Metadata = {
   title: "Family Health Patterns & Prevention | Root",
@@ -28,16 +27,15 @@ export default function FamilyHealthPage() {
         </div>
       </div>
 
-      {/* Vault Style Mascot Section */}
+      {/* Root Mascot Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <VaultStyleMascotSection
+        <MascotDomainShell
           mascotId="root"
           displayName="Root"
           tagline="Family Health Intelligence"
           description="Discover generational health patterns, genetic predispositions, and family medical history. Build a comprehensive family health map that reveals insights for prevention and early intervention."
           imageSrc="/characters/root.png"
           videoSrc="/videos/mascots/root.mp4"
-          chatPersona="root"
           features={[
             {
               icon: "🌳",

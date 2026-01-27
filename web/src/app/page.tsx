@@ -139,7 +139,14 @@ function HeroSection() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <Link
+              href={`${APP_URL}/subscribe`}
+              className="group px-8 py-4 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            >
+              Subscribe Today
+              <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </Link>
             <Link
               href={`${APP_URL}/vault`}
               className="group px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-pink-500/25 transition-all duration-300 hover:scale-105 flex items-center gap-2"
@@ -147,6 +154,8 @@ function HeroSection() {
               Enter Your Sacred Vault
               <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
+          </div>
+          <div className="flex justify-center mb-16">
             <Link
               href="#how-it-works"
               className="px-8 py-4 border border-white/20 rounded-full text-lg font-semibold hover:bg-white/5 transition-all duration-300"
@@ -901,8 +910,8 @@ function PricingSection() {
         "Provider packet generator",
         "Priority support",
       ],
-      cta: "Start 14-Day Trial",
-      href: `${APP_URL}/signup?plan=core`,
+      cta: "Subscribe Today",
+      href: `${APP_URL}/subscribe?plan=core`,
       highlighted: true,
       badge: "MOST POPULAR",
     },
@@ -920,8 +929,8 @@ function PricingSection() {
         "Caregiver dashboard",
         "Dedicated support",
       ],
-      cta: "Start Family Trial",
-      href: `${APP_URL}/signup?plan=family`,
+      cta: "Subscribe Today",
+      href: `${APP_URL}/subscribe?plan=family`,
       highlighted: false,
     },
   ];
@@ -1229,22 +1238,23 @@ function CTASection() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
+                href={`${APP_URL}/subscribe`}
+                className="group px-8 py-4 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+              >
+                Subscribe Today
+                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
                 href={`${APP_URL}/signup`}
                 className="group px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-white/25 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 Get Started Free
                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                href={`${APP_URL}/vault`}
-                className="px-8 py-4 border border-white/30 rounded-full text-lg font-semibold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                Explore the Vault
-              </Link>
             </div>
 
             <p className="text-sm text-gray-500 mt-8">
-              No credit card required. Start building your health picture in minutes.
+              Free tier available. Premium subscriptions unlock unlimited features.
             </p>
           </div>
         </motion.div>

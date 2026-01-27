@@ -41,14 +41,17 @@ export default function SiteHeader() {
         <nav className="hidden items-center gap-6 text-sm md:flex">
           {mode === "consumer" ? (
             <>
+              <Link className="text-white/70 hover:text-white" href="/family-health">
+                Family Health
+              </Link>
+              <Link className="text-white/70 hover:text-white" href="/vault/lab-decoder">
+                Lab Decoder
+              </Link>
               <Link className="text-white/70 hover:text-white" href="/experts">
                 Experts
               </Link>
               <Link className="text-white/70 hover:text-white" href="/pricing">
                 Pricing
-              </Link>
-              <Link className="text-white/70 hover:text-white" href="/about">
-                Philosophy
               </Link>
               <Link
                 className="rounded-full bg-hot-pink px-4 py-2 text-black font-semibold"

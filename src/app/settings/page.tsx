@@ -18,6 +18,11 @@ type UserSettings = {
   copyToEHRFormat: string | null;
 };
 
+type NpaIdentityData = {
+  npaNumber: string;
+  createdAt: string;
+};
+
 type ShareLink = {
   id: string;
   token: string;
@@ -52,6 +57,10 @@ export default function SettingsPage() {
   const [passwordResetSent, setPasswordResetSent] = useState(false);
   const [exportRequested, setExportRequested] = useState(false);
   const [deletionRequested, setDeletionRequested] = useState(false);
+  
+  // NPA Identity
+  const [npaIdentity, setNpaIdentity] = useState<NpaIdentityData | null>(null);
+  const [npaCopied, setNpaCopied] = useState(false);
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -68,12 +77,22 @@ export default function SettingsPage() {
 
   const loadSettings = async () => {
     try {
-      const response = await fetch("/api/settings");
-      if (!response.ok) throw new Error("Failed to load settings");
+      const [settingsResponse, npaResponse] = await Promise.all([
+        fetch("/api/settings"),
+        fetch("/api/user/npa-number"),
+      ]);
       
-      const data = await response.json();
+      if (!settingsResponse.ok) throw new Error("Failed to load settings");
+      
+      const data = await settingsResponse.json();
       setSettings(data.settings);
       setShareLinks(data.shareLinks || []);
+      
+      // Load NPA Identity (may not exist for older accounts)
+      if (npaResponse.ok) {
+        const npaData = await npaResponse.json();
+        setNpaIdentity(npaData);
+      }
     } catch (err) {
       showMessage("error", "Failed to load settings");
     } finally {
@@ -208,6 +227,18 @@ export default function SettingsPage() {
     }
   };
 
+  const copyNpaNumber = async () => {
+    if (!npaIdentity?.npaNumber) return;
+    
+    try {
+      await navigator.clipboard.writeText(npaIdentity.npaNumber);
+      setNpaCopied(true);
+      setTimeout(() => setNpaCopied(false), 2000);
+    } catch (err) {
+      showMessage("error", "Failed to copy NPA Number");
+    }
+  };
+
   if (status === "loading" || loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-black text-white">
@@ -319,7 +350,69 @@ export default function SettingsPage() {
             </div>
           </section>
 
-          {/* SECTION 2: PRIVACY & CONSENT (CRITICAL) */}
+          {/* SECTION 2: IDENTITY */}
+          {npaIdentity && (
+            <section className="rounded-2xl border border-indigo-500/40 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 p-6">
+              <h2 className="mb-2 text-xl font-semibold text-indigo-400">Identity</h2>
+              <p className="mb-6 text-xs text-gray-400">
+                Your private No Prior Authorization identity anchor
+              </p>
+              
+              <div className="space-y-6">
+                <div className="rounded-xl border border-indigo-500/20 bg-black/40 p-6">
+                  <div className="mb-4">
+                    <p className="text-xs uppercase tracking-wider text-indigo-400 mb-2">Your NPA Number</p>
+                    <div className="flex items-center gap-4">
+                      <span className="font-mono text-2xl font-bold text-white tracking-wider">
+                        {npaIdentity.npaNumber}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-sm text-gray-400 leading-relaxed mb-4">
+                    This is your private No Prior Authorization ID. It lets you identify yourself 
+                    without exposing your health data. You decide what is shared — and when.
+                  </p>
+                  
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={copyNpaNumber}
+                  >
+                    {npaCopied ? "✓ Copied" : "Copy NPA Number"}
+                  </Button>
+                  
+                  <p className="mt-4 text-xs text-gray-500">
+                    Issued: {new Date(npaIdentity.createdAt).toLocaleDateString()}
+                  </p>
+                </div>
+
+                <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
+                  <h3 className="text-sm font-semibold text-indigo-300 mb-2">What is my NPA Number?</h3>
+                  <ul className="space-y-2 text-xs text-gray-400">
+                    <li className="flex items-start gap-2">
+                      <span className="text-indigo-400">🔐</span>
+                      <span>Your unique, permanent identity within No Prior Authorization</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-indigo-400">🛡️</span>
+                      <span>Never exposes your health data by itself</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-indigo-400">✨</span>
+                      <span>Only you control what gets shared and when</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-indigo-400">♾️</span>
+                      <span>One per account, yours for life</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* SECTION 3: PRIVACY & CONSENT (CRITICAL) */}
           <section className="rounded-2xl border-2 border-hot-pink/40 bg-hot-pink/5 p-6">
             <h2 className="mb-2 text-xl font-semibold text-hot-pink">Privacy & Consent</h2>
             <p className="mb-6 text-xs text-gray-400">
@@ -413,7 +506,7 @@ export default function SettingsPage() {
             </div>
           </section>
 
-          {/* SECTION 3: DATA CONTROLS */}
+          {/* SECTION 4: DATA CONTROLS */}
           <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <h2 className="mb-6 text-xl font-semibold text-hot-pink">Data Controls</h2>
             
@@ -455,7 +548,7 @@ export default function SettingsPage() {
             </div>
           </section>
 
-          {/* SECTION 4: NOTIFICATIONS */}
+          {/* SECTION 5: NOTIFICATIONS */}
           <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <h2 className="mb-6 text-xl font-semibold text-hot-pink">Notifications</h2>
             

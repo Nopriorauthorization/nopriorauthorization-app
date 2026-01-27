@@ -30,6 +30,7 @@ export default function LabDecoderPage() {
           description="Transform complex lab results into clear, actionable health insights. Decode explains what your biomarkers mean, identifies patterns, and guides you toward optimal health decisions."
           imageSrc="/mascots/LABDECODERMASCOT.PNG"
           videoSrc="/videos/mascots/decode.mp4"
+          showVideo={true}
           features={[
             {
               icon: "🔬",

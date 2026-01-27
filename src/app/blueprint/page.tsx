@@ -11,6 +11,7 @@ import { FiTrendingUp, FiHeart, FiActivity, FiUsers, FiTarget } from "react-icon
 import { useSubscription } from "@/hooks/useSubscription";
 import { getMaxInsights } from "@/lib/subscription";
 import { UpgradePrompt } from "@/components/subscription/UpgradePrompt";
+import { SinceLastVisit } from "@/components/awareness";
 
 interface FamilyInsight {
   type: string;
@@ -147,6 +148,9 @@ export default function BlueprintPage() {
                 Your personalized health intelligence dashboard. See how your data connects to create actionable insights.
               </p>
             </motion.div>
+
+            {/* Since Your Last Visit - Awareness Component */}
+            <SinceLastVisit className="mb-8" />
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

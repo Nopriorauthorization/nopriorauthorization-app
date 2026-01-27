@@ -7,6 +7,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiArrowRight, FiPlay, FiPause, FiVolume2, FiVolumeX } from "react-icons/fi";
 import { mediaController } from "@/lib/mediaController";
+import { MascotMemory } from "@/components/awareness";
 
 // =============================================================================
 // MASCOT THEMES - Static Tailwind classes (no dynamic construction)
@@ -320,7 +321,10 @@ export default function MascotDomainShell({
             </div>
 
             {/* Description */}
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">{description}</p>
+            <p className="text-gray-300 text-lg leading-relaxed mb-6">{description}</p>
+
+            {/* Mascot Memory - Subtle context from prior activity */}
+            <MascotMemory mascotId={mascotId as any} className="mb-6" />
 
             {/* Feature cards (max 4) */}
             <div className="grid grid-cols-2 gap-3 mb-8">

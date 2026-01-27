@@ -697,3 +697,53 @@ model MascotScriptChange {
   @@index([changedBy])
   @@index([createdAt])
 }
+
+// =============================================================================
+// P0 RETENTION LAYER: USER AWARENESS SYSTEM
+// Tracks user actions to create emotional stickiness and show progress
+// =============================================================================
+
+enum UserEventType {
+  LAB_UPLOAD
+  LAB_DECODED
+  FAMILY_ADDED
+  FAMILY_UPDATED
+  CHAT_USED
+  INSIGHT_VIEWED
+  DOCUMENT_UPLOADED
+  DOCUMENT_DECODED
+  BLUEPRINT_UPDATED
+  MASCOT_VISITED
+  TOOL_USED
+  PROVIDER_ADDED
+  APPOINTMENT_ADDED
+}
+
+model UserEvent {
+  id        String        @id @default(cuid())
+  userId    String
+  type      UserEventType
+  source    String        // e.g., 'decode', 'roots', 'harmony', 'slim-t', 'beau-tox', 'vault'
+  metadata  Json?         // Optional additional context
+  createdAt DateTime      @default(now())
+
+  @@index([userId])
+  @@index([userId, createdAt])
+  @@index([type])
+  @@index([source])
+  @@index([createdAt])
+}
+
+// Tracks the last time a user visited (for "since your last visit" feature)
+model UserVisit {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  lastVisitAt   DateTime @default(now())
+  previousVisitAt DateTime? // Track the visit before current for delta calculation
+  totalVisits   Int      @default(1)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
+  @@index([lastVisitAt])
+}

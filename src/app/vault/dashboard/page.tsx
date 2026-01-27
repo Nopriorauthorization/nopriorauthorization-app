@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { DocumentCategory } from "@prisma/client";
+import { ProgressSnapshot, SinceLastVisit } from "@/components/awareness";
 
 type DashboardStats = {
   documents: number;
@@ -200,6 +201,12 @@ export default function DashboardPage() {
           <p className="text-xl text-gray-400">
             Your personal health intelligence at a glance
           </p>
+        </div>
+
+        {/* Awareness Components - Since Last Visit & Progress */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <SinceLastVisit />
+          <ProgressSnapshot variant="compact" />
         </div>
 
         <div className="grid md:grid-cols-4 gap-6 mb-8">

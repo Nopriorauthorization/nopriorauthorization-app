@@ -875,7 +875,7 @@ function PricingSection() {
     },
     {
       name: "Core",
-      price: "$9",
+      price: "$19",
       period: "/month",
       description: "For individuals taking control",
       features: [
@@ -894,7 +894,7 @@ function PricingSection() {
     },
     {
       name: "Family",
-      price: "$19",
+      price: "$49",
       period: "/month",
       description: "For families who care",
       features: [

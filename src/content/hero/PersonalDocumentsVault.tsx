@@ -21,7 +21,7 @@ import {
 interface PersonalDocument {
   id: string;
   name: string;
-  type: 'insurance' | 'license' | 'medical' | 'financial' | 'legal' | 'other';
+  type: 'insurance' | 'license' | 'vital' | 'medical' | 'financial' | 'legal' | 'emergency' | 'other';
   file: File | null;
   url?: string;
   isLocked: boolean;
@@ -55,6 +55,13 @@ const documentCategories: DocumentCategory[] = [
     description: 'Driver\'s license, passport, government ID'
   },
   {
+    id: 'vital',
+    name: 'Vital Records',
+    icon: '📜',
+    color: 'from-amber-500 to-yellow-500',
+    description: 'Birth certificates, marriage, Social Security'
+  },
+  {
     id: 'medical',
     name: 'Medical Records',
     icon: '🏥',
@@ -65,7 +72,7 @@ const documentCategories: DocumentCategory[] = [
     id: 'financial',
     name: 'Financial',
     icon: '💰',
-    color: 'from-yellow-500 to-orange-500',
+    color: 'from-emerald-500 to-teal-500',
     description: 'Banking info, payment methods, financial docs'
   },
   {
@@ -74,6 +81,13 @@ const documentCategories: DocumentCategory[] = [
     icon: '⚖️',
     color: 'from-purple-500 to-indigo-500',
     description: 'Wills, powers of attorney, legal agreements'
+  },
+  {
+    id: 'emergency',
+    name: 'Emergency Info',
+    icon: '🚨',
+    color: 'from-red-600 to-orange-500',
+    description: 'Emergency contacts, medical alerts, allergies'
   },
   {
     id: 'other',
@@ -179,11 +193,13 @@ export default function PersonalDocumentsVault() {
 
   const getDocumentType = (filename: string): PersonalDocument['type'] => {
     const lower = filename.toLowerCase();
-    if (lower.includes('insurance') || lower.includes('policy')) return 'insurance';
-    if (lower.includes('license') || lower.includes('id') || lower.includes('driver')) return 'license';
-    if (lower.includes('medical') || lower.includes('health') || lower.includes('record')) return 'medical';
-    if (lower.includes('bank') || lower.includes('financial') || lower.includes('payment')) return 'financial';
-    if (lower.includes('legal') || lower.includes('will') || lower.includes('attorney')) return 'legal';
+    if (lower.includes('insurance') || lower.includes('policy') || lower.includes('coverage')) return 'insurance';
+    if (lower.includes('license') || lower.includes('passport') || lower.includes('driver')) return 'license';
+    if (lower.includes('birth') || lower.includes('certificate') || lower.includes('marriage') || lower.includes('social security') || lower.includes('ssn')) return 'vital';
+    if (lower.includes('medical') || lower.includes('health') || lower.includes('record') || lower.includes('lab')) return 'medical';
+    if (lower.includes('bank') || lower.includes('financial') || lower.includes('payment') || lower.includes('tax')) return 'financial';
+    if (lower.includes('legal') || lower.includes('will') || lower.includes('attorney') || lower.includes('power of attorney')) return 'legal';
+    if (lower.includes('emergency') || lower.includes('allergy') || lower.includes('contact')) return 'emergency';
     return 'other';
   };
 

@@ -1,68 +1,153 @@
-// Single source of truth for navigation structure
-// This config is used by both marketing and app surfaces
+// =============================================================================
+// NAVIGATION CONFIGURATION - Single Source of Truth
+// Color-coordinated with mascot themes for visual consistency
+// =============================================================================
+
+export interface DropdownItem {
+  label: string;
+  href: string;
+  icon: string;
+  description?: string;
+  color?: string; // Tailwind color class for the icon
+  comingSoon?: boolean;
+}
 
 export interface NavigationItem {
   label: string;
   href: string;
+  icon?: string;
+  color?: string; // Mascot-coordinated color
   hasDropdown?: boolean;
-  dropdownItems?: {
-    label: string;
-    href: string;
-    icon: string;
-  }[];
+  dropdownItems?: DropdownItem[];
 }
+
+// Mascot color coordination mapping
+const MASCOT_COLORS = {
+  decode: "text-blue-400",      // Lab Decoder - Blue
+  root: "text-emerald-400",     // Family Health - Green
+  harmony: "text-purple-400",   // Women's Hormones - Purple
+  peppi: "text-cyan-400",       // Men's Hormones/Peptides - Cyan
+  slimT: "text-orange-400",     // Weight Management - Orange
+  beauTox: "text-amber-400",    // Aesthetics (Botox) - Amber
+  fillaGrace: "text-pink-400",  // Aesthetics (Fillers) - Pink
+  vault: "text-indigo-400",     // Sacred Vault - Indigo
+  blueprint: "text-violet-400", // Blueprint - Violet
+};
 
 export const getNavigationConfig = (mode: 'marketing' | 'app' = 'app'): NavigationItem[] => {
   return [
     {
       label: "Home",
       href: "/",
-      hasDropdown: false
+      icon: "🏠",
     },
     {
-      label: "How It Works",
-      href: "/how-it-works",
-      hasDropdown: false
+      label: "Hormones & Peptides",
+      href: "/hormones",
+      icon: "🧬",
+      color: MASCOT_COLORS.harmony,
     },
     {
       label: "Aesthetics",
       href: "/aesthetics",
-      hasDropdown: false
+      icon: "✨",
+      color: MASCOT_COLORS.beauTox,
     },
     {
       label: "Weight Management",
       href: "/weight-management",
-      hasDropdown: false
+      icon: "⚖️",
+      color: MASCOT_COLORS.slimT,
     },
     {
-      label: "Labs",
+      label: "Lab Decoder",
       href: "/vault/lab-decoder",
-      hasDropdown: false
+      icon: "🔬",
+      color: MASCOT_COLORS.decode,
     },
     {
-      label: "Family Tree",
-      href: "/vault/family-tree",
-      hasDropdown: false
-    },
-    {
-      label: "Blueprint",
-      href: "/blueprint",
-      hasDropdown: false
+      label: "Family Health",
+      href: "/family-health",
+      icon: "🌳",
+      color: MASCOT_COLORS.root,
     },
     {
       label: "Sacred Vault",
       href: "/vault",
+      icon: "🏰",
+      color: MASCOT_COLORS.vault,
       hasDropdown: true,
       dropdownItems: [
-        { label: "Vault Overview", href: "/vault", icon: "🏰" },
-        { label: "Your Blueprint", href: "/blueprint", icon: "📋" },
-        { label: "Family Health Tree", href: "/vault/family-tree", icon: "🌳" }
+        { 
+          label: "Vault Dashboard", 
+          href: "/vault/dashboard", 
+          icon: "📊",
+          color: MASCOT_COLORS.vault,
+          description: "Your health command center"
+        },
+        { 
+          label: "Documents", 
+          href: "/vault/documents", 
+          icon: "📄",
+          color: MASCOT_COLORS.vault,
+          description: "All your health records"
+        },
+        { 
+          label: "Personal Vault", 
+          href: "/vault/personal-documents", 
+          icon: "🔐",
+          color: MASCOT_COLORS.vault,
+          description: "IDs, insurance, birth certificates"
+        },
+        { 
+          label: "Lab Results", 
+          href: "/vault/labs", 
+          icon: "🧪",
+          color: MASCOT_COLORS.decode,
+          description: "All your lab work in one place"
+        },
+        { 
+          label: "Family Tree", 
+          href: "/vault/family-tree", 
+          icon: "🌳",
+          color: MASCOT_COLORS.root,
+          description: "Your family health history"
+        },
+        { 
+          label: "Health Tools", 
+          href: "/vault/tools", 
+          icon: "🛠️",
+          color: MASCOT_COLORS.blueprint,
+          description: "Calculators and trackers"
+        },
+        { 
+          label: "Trusted Circle", 
+          href: "/vault/trusted-circle", 
+          icon: "👥",
+          color: "text-green-400",
+          description: "Share with family & providers"
+        },
       ]
     },
     {
-      label: "Pricing",
-      href: "/pricing",
-      hasDropdown: false
-    }
+      label: "Blueprint",
+      href: "/blueprint",
+      icon: "📋",
+      color: MASCOT_COLORS.blueprint,
+    },
   ];
+};
+
+// Get color for a specific mascot/domain
+export const getMascotColor = (mascotId: string): string => {
+  const colorMap: Record<string, string> = {
+    decode: MASCOT_COLORS.decode,
+    root: MASCOT_COLORS.root,
+    harmony: MASCOT_COLORS.harmony,
+    peppi: MASCOT_COLORS.peppi,
+    "slim-t": MASCOT_COLORS.slimT,
+    "beau-tox": MASCOT_COLORS.beauTox,
+    "filla-grace": MASCOT_COLORS.fillaGrace,
+  };
+  return colorMap[mascotId] || "text-pink-400";
 };

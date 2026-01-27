@@ -3,7 +3,7 @@
 // Calculates awareness state from user events
 // =============================================================================
 
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/db";
 import {
   UserAwarenessState,
   UserEventType,

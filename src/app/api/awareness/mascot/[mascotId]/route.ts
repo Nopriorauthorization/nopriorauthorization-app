@@ -4,7 +4,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/lib/auth/auth-options";
 import { getMascotMemory } from "@/lib/awareness/service";
 import { MascotSource } from "@/lib/awareness/types";
 

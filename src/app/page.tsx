@@ -445,13 +445,13 @@ function FeaturesSection() {
 
 function MascotsSection() {
   const mascots = [
-    { id: "decode", name: "Decode", role: "Lab Intelligence", color: "from-blue-500 to-indigo-500", href: "/vault/lab-decoder" },
-    { id: "root", name: "Root", role: "Family Patterns", color: "from-green-500 to-emerald-500", href: "/family-health" },
-    { id: "harmony", name: "Harmony", role: "Hormone Health", color: "from-purple-500 to-violet-500", href: "/hormones" },
-    { id: "peppi", name: "Peppi", role: "Peptide Science", color: "from-cyan-500 to-blue-500", href: "/hormones" },
-    { id: "slim-t", name: "Slim-T", role: "Weight & Metabolism", color: "from-red-500 to-orange-500", href: "/weight-management" },
-    { id: "beau-tox", name: "Beau-Tox", role: "Aesthetics", color: "from-yellow-400 to-amber-500", href: "/aesthetics" },
-    { id: "filla-grace", name: "Filla-Grace", role: "Fillers & Beauty", color: "from-pink-500 to-rose-500", href: "/aesthetics" },
+    { id: "decode", name: "Decode", role: "Lab Intelligence", color: "from-blue-500 to-indigo-500", href: "/vault/lab-decoder", image: "/mascots/LABDECODERMASCOT.PNG" },
+    { id: "root", name: "Root", role: "Family Patterns", color: "from-green-500 to-emerald-500", href: "/family-health", image: "/mascots/FAMILYTREEMASCOT.PNG" },
+    { id: "harmony", name: "Harmony", role: "Hormone Health", color: "from-purple-500 to-violet-500", href: "/hormones", image: "/characters/harmony.png" },
+    { id: "peppi", name: "Peppi", role: "Peptide Science", color: "from-cyan-500 to-blue-500", href: "/hormones", image: "/characters/peppi.png" },
+    { id: "slim-t", name: "Slim-T", role: "Weight & Metabolism", color: "from-red-500 to-orange-500", href: "/weight-management", image: "/characters/slim-t.png" },
+    { id: "beau-tox", name: "Beau-Tox", role: "Aesthetics", color: "from-yellow-400 to-amber-500", href: "/aesthetics", image: "/characters/beau.png" },
+    { id: "filla-grace", name: "Filla-Grace", role: "Fillers & Beauty", color: "from-pink-500 to-rose-500", href: "/aesthetics", image: "/characters/filla-grace.png" },
   ];
 
   return (
@@ -468,7 +468,7 @@ function MascotsSection() {
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             7 specialized AI experts. Each one trained in a specific domain. 
-            Ask questions you'd never ask a doctor. Get answers that actually make sense.
+            Ask questions you&apos;d never ask a doctor. Get answers that actually make sense.
           </p>
         </motion.div>
 
@@ -485,8 +485,14 @@ function MascotsSection() {
                 href={mascot.href}
                 className="block text-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all hover:bg-white/[0.07] group"
               >
-                <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${mascot.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
-                  <span className="text-2xl">🤖</span>
+                <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-br ${mascot.color} p-1 mb-3 group-hover:scale-110 transition-transform overflow-hidden`}>
+                  <Image
+                    src={mascot.image}
+                    alt={mascot.name}
+                    width={80}
+                    height={80}
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 </div>
                 <h3 className="font-semibold text-white text-sm">{mascot.name}</h3>
                 <p className="text-xs text-gray-500 mt-1">{mascot.role}</p>

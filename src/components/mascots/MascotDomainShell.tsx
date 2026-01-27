@@ -389,10 +389,24 @@ export default function MascotDomainShell({
               </button>
             </div>
 
-            {/* Video element - visible or hidden based on showVideo prop */}
-            {videoSrc && (
-              <div className={showVideo ? "mb-6" : "hidden"}>
-                <div className="relative rounded-2xl overflow-hidden border border-white/10">
+            {/* CTA Link */}
+            <Link
+              href={ctaHref}
+              className={`inline-flex items-center gap-3 bg-gradient-to-r ${theme.buttonGradient} text-white px-8 py-4 rounded-xl font-semibold ${theme.buttonHover} transition-all duration-300 hover:scale-105 hover:shadow-xl ${theme.buttonShadow}`}
+            >
+              <span>{ctaText}</span>
+              <FiArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+
+          {/* RIGHT COLUMN - Mascot Image/Video (Single Media Display) */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-start">
+            <div className="relative">
+              <div className={`absolute inset-0 bg-gradient-to-br ${theme.glow} rounded-3xl blur-xl scale-110`} />
+              
+              {/* Show video when playing, otherwise show image */}
+              {isVideoPlaying && videoSrc ? (
+                <div className="relative rounded-3xl shadow-2xl border border-white/20 overflow-hidden bg-black">
                   <video
                     ref={videoRef}
                     src={videoSrc}
@@ -404,53 +418,35 @@ export default function MascotDomainShell({
                     onEnded={onVideoEnded}
                     onPlay={() => setIsVideoPlaying(true)}
                     onPause={() => setIsVideoPlaying(false)}
-                    className="w-full h-auto"
+                    className="w-full h-auto max-w-[400px] rounded-3xl"
+                    autoPlay
                   />
-                  {/* Video status indicator */}
-                  <div className="absolute bottom-2 left-2">
-                    <span className={`text-xs ${theme.accent} bg-black/60 px-2 py-1 rounded`}>
-                      {isVideoPlaying ? "Playing..." : isVideoReady ? "Ready" : "Loading..."}
-                    </span>
-                  </div>
                 </div>
-              </div>
-            )}
+              ) : (
+                <Image
+                  src={imageSrc}
+                  alt={`${displayName} - ${tagline}`}
+                  width={400}
+                  height={400}
+                  className="relative rounded-3xl shadow-2xl border border-white/20"
+                  priority
+                />
+              )}
 
-            {/* Hidden video for audio-only mode */}
-            {videoSrc && !showVideo && (
-              <video
-                ref={videoRef}
-                src={videoSrc}
-                preload="metadata"
-                playsInline
-                muted={isVideoMuted}
-                onEnded={onVideoEnded}
-                className="hidden"
-              />
-            )}
+              {/* Hidden video element for preloading when not playing */}
+              {videoSrc && !isVideoPlaying && (
+                <video
+                  ref={videoRef}
+                  src={videoSrc}
+                  preload="metadata"
+                  playsInline
+                  muted={isVideoMuted}
+                  onCanPlay={() => setIsVideoReady(true)}
+                  onEnded={onVideoEnded}
+                  className="hidden"
+                />
+              )}
 
-            {/* CTA Link */}
-            <Link
-              href={ctaHref}
-              className={`inline-flex items-center gap-3 bg-gradient-to-r ${theme.buttonGradient} text-white px-8 py-4 rounded-xl font-semibold ${theme.buttonHover} transition-all duration-300 hover:scale-105 hover:shadow-xl ${theme.buttonShadow}`}
-            >
-              <span>{ctaText}</span>
-              <FiArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-
-          {/* RIGHT COLUMN - Mascot Image */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-start">
-            <div className="relative">
-              <div className={`absolute inset-0 bg-gradient-to-br ${theme.glow} rounded-3xl blur-xl scale-110`} />
-              <Image
-                src={imageSrc}
-                alt={`${displayName} - ${tagline}`}
-                width={400}
-                height={400}
-                className="relative rounded-3xl shadow-2xl border border-white/20"
-                priority
-              />
               {/* Domain badge */}
               <div
                 className={`absolute -bottom-6 -left-6 bg-gradient-to-r ${theme.badge} text-white px-6 py-3 rounded-2xl font-semibold shadow-xl border border-white/10`}

@@ -25,7 +25,7 @@ export default function AestheticsPage() {
           tagline="Botox & Neuromodulators"
           description="Botox Without the BS. Beau-Tox explains neuromodulators — what they do, what they don't do, how long they last, and the myths that need to stop."
           imageSrc="/characters/beau.png"
-          videoSrc="/videos/mascots/beau-tox.mp4"
+          videoSrc="/hero/avatars/beau-tox-intro.mp4"
           showVideo={true}
           features={[
             {
@@ -63,7 +63,7 @@ export default function AestheticsPage() {
           tagline="Dermal Fillers & Facial Anatomy"
           description="Fillers Done Right. Filla-Grace teaches facial anatomy, the difference between structure and volume, why 'natural' is often misunderstood, and safety essentials."
           imageSrc="/characters/filla-grace.png"
-          videoSrc="/videos/mascots/filla-grace.mp4"
+          videoSrc="/hero/avatars/f-ill-intro.mp4"
           showVideo={true}
           features={[
             {

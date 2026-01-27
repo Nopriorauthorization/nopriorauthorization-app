@@ -1,20 +1,38 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import MascotDomainShell from "@/components/mascots/MascotDomainShell";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function HormonesPage() {
   return (
     <div className="min-h-screen bg-black">
       {/* Page Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-          Hormones & Peptides
-        </h1>
-        <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-          Clarity for women. Science for men. One system.{" "}
-          <span className="text-white font-medium">No confusion. No fear. Just understanding.</span>
-        </p>
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-cyan-900/10 to-black" />
+        <div className="absolute top-10 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-10 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl" />
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-purple-400 text-sm font-medium tracking-wider mb-4">
+              HORMONE INTELLIGENCE
+            </p>
+            <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+              Hormones & Peptides
+            </h1>
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Clarity for women. Science for men. One system.{" "}
+              <span className="text-white font-medium">No confusion. No fear. Just understanding.</span>
+            </p>
+          </motion.div>
+        </div>
       </div>
 
       {/* Harmony Section - Women's Hormones */}
@@ -93,35 +111,36 @@ export default function HormonesPage() {
         />
       </div>
 
-      {/* SAFETY & TRUST CALLOUT */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-purple-500/10 border border-purple-500/20 rounded-2xl p-8">
-          <h3 className="text-lg font-semibold text-purple-400 mb-4">Important:</h3>
-          <p className="text-white/90 leading-relaxed">
-            Harmony and Peppi do not replace licensed providers. They exist to help you understand treatments so you can make informed, safer decisions.
+      {/* CTA Section */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-3xl font-bold text-white mb-4">
+            Ready to decode your labs?
+          </h3>
+          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            Upload your hormone panel and get instant, personalized insights from Harmony or Peppi.
           </p>
-        </div>
-      </div>
-
-      {/* FINAL CTA SECTION */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h3 className="text-2xl font-semibold text-white mb-6">
-          Ready to understand your hormones?
-        </h3>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="https://app.nopriorauthorization.com/chat?mascot=harmony&source=hormones"
-            className="bg-gradient-to-r from-purple-500 via-violet-500 to-indigo-500 hover:from-purple-600 hover:via-violet-600 hover:to-indigo-600 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
-          >
-            Ask Harmony
-          </a>
-          <a
-            href="https://app.nopriorauthorization.com/chat?mascot=peppi&source=hormones"
-            className="bg-gradient-to-r from-cyan-500 via-blue-500 to-teal-500 hover:from-cyan-600 hover:via-blue-600 hover:to-teal-600 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
-          >
-            Ask Peppi
-          </a>
-        </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://app.nopriorauthorization.com/vault/lab-decoder"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 via-violet-500 to-indigo-500 hover:from-purple-600 hover:via-violet-600 hover:to-indigo-600 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25"
+            >
+              Go to Lab Decoder
+              <FiArrowRight className="w-5 h-5" />
+            </a>
+            <a
+              href="https://app.nopriorauthorization.com/blueprint"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-teal-500 hover:from-cyan-600 hover:via-blue-600 hover:to-teal-600 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/25"
+            >
+              View Your Blueprint
+              <FiArrowRight className="w-5 h-5" />
+            </a>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

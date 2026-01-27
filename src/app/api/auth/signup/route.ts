@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import prisma from "@/lib/db";
+import { generateNpaNumber } from "@/lib/npa-number";
 
 const signupSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -44,13 +45,48 @@ export async function POST(request: Request) {
     // Hash password
     const passwordHash = await bcrypt.hash(password, 12);
 
-    // Create user
-    const user = await prisma.user.create({
-      data: {
-        email: normalizedEmail,
-        passwordHash,
-        name,
-      },
+    // Generate unique NPA Number with collision handling
+    let npaNumber: string;
+    let attempts = 0;
+    const maxAttempts = 10;
+    
+    do {
+      npaNumber = generateNpaNumber();
+      const existing = await prisma.npaIdentity.findUnique({
+        where: { npaNumber },
+      });
+      if (!existing) break;
+      attempts++;
+    } while (attempts < maxAttempts);
+
+    if (attempts >= maxAttempts) {
+      console.error("Failed to generate unique NPA Number after max attempts");
+      return NextResponse.json(
+        { error: "Unable to create account. Please try again." },
+        { status: 500 }
+      );
+    }
+
+    // Create user and NPA identity in a transaction
+    const user = await prisma.$transaction(async (tx) => {
+      // Create user
+      const newUser = await tx.user.create({
+        data: {
+          email: normalizedEmail,
+          passwordHash,
+          name,
+        },
+      });
+
+      // Create NPA Identity (one per user, lifetime)
+      await tx.npaIdentity.create({
+        data: {
+          userId: newUser.id,
+          npaNumber,
+        },
+      });
+
+      return newUser;
     });
 
     // Track analytics

@@ -6,6 +6,7 @@ import { FamilyHealthVideo } from './FamilyHealthVideo';
 import { BeauToxVideo } from './BeauToxVideo';
 import FillaGraceVideo from './FillaGraceVideo';
 import { NPA_Homepage_Explainer_V1 } from './compositions/HomepageExplainer';
+import { NpaIdentityVideo } from './NpaIdentityVideo';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -86,6 +87,16 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{
             title: 'Filla-Grace Aesthetics',
           }}
+        />
+      </Folder>
+      <Folder name="NpaIdentity">
+        <Composition
+          id="NpaIdentityVideo"
+          component={NpaIdentityVideo}
+          durationInFrames={30 * 30}
+          fps={30}
+          width={1920}
+          height={1080}
         />
       </Folder>
     </>

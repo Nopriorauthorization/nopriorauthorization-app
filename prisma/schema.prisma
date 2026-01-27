@@ -55,6 +55,7 @@ model User {
   consentChangeLogs   ConsentChangeLog[]
   dataRequests        DataRequest[]
   appointments        Appointment[]
+  npaIdentity         NpaIdentity?
 }
 
 model Subscription {
@@ -746,4 +747,21 @@ model UserVisit {
 
   @@index([userId])
   @@index([lastVisitAt])
+}
+
+// =============================================================================
+// P0 PHASE 7A: NPA IDENTITY SYSTEM
+// User-owned identity anchor - NOT a medical record number
+// =============================================================================
+
+model NpaIdentity {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  npaNumber String   @unique // Format: NPA-XXXX-XXXX (immutable once issued)
+  createdAt DateTime @default(now())
+  revoked   Boolean  @default(false) // Revocation disables use, does not delete
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([npaNumber])
 }

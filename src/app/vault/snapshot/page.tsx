@@ -55,26 +55,41 @@ type SnapshotData = {
   isEmpty: boolean;
 };
 
+type NpaIdentityData = {
+  npaNumber: string;
+  createdAt: string;
+};
+
 export default function SnapshotPage() {
   const [snapshot, setSnapshot] = useState<SnapshotData | null>(null);
+  const [npaIdentity, setNpaIdentity] = useState<NpaIdentityData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchSnapshot() {
+    async function fetchData() {
       try {
-        const res = await fetch("/api/vault/snapshot");
-        if (res.ok) {
-          const data = await res.json();
+        const [snapshotRes, npaRes] = await Promise.all([
+          fetch("/api/vault/snapshot"),
+          fetch("/api/user/npa-number"),
+        ]);
+        
+        if (snapshotRes.ok) {
+          const data = await snapshotRes.json();
           setSnapshot(data);
         }
+        
+        if (npaRes.ok) {
+          const npaData = await npaRes.json();
+          setNpaIdentity(npaData);
+        }
       } catch (error) {
-        console.error("Failed to fetch snapshot:", error);
+        console.error("Failed to fetch data:", error);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchSnapshot();
+    fetchData();
   }, []);
 
   if (loading) {
@@ -159,6 +174,24 @@ export default function SnapshotPage() {
             Your health snapshot — updated automatically from your vault.
           </p>
         </div>
+
+        {/* NPA Identity Card */}
+        {npaIdentity && (
+          <div className="mb-8 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl p-5 border border-indigo-500/20">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-wider text-indigo-400 mb-1">Your NPA Number</p>
+                <p className="font-mono text-xl font-bold text-white tracking-wider">{npaIdentity.npaNumber}</p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-white/40">Your private identity anchor</p>
+                <Link href="/settings" className="text-xs text-indigo-400 hover:text-indigo-300">
+                  Manage in Settings →
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Quick Stats */}
         {snapshot && (

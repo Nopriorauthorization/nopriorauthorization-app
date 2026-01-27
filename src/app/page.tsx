@@ -29,11 +29,17 @@ export default function HomePage() {
       {/* HERO SECTION - The Hook */}
       <HeroSection />
 
+      {/* SOCIAL PROOF BAR - Quick credibility */}
+      <SocialProofBar />
+
       {/* PAIN SECTION - The Problem */}
       <PainSection />
 
       {/* SOLUTION SECTION - The Answer */}
       <SolutionSection />
+
+      {/* PRODUCT DEMO - Visual walkthrough */}
+      <ProductDemoSection />
 
       {/* FEATURES SECTION - What You Get */}
       <FeaturesSection />
@@ -41,8 +47,17 @@ export default function HomePage() {
       {/* MASCOTS SECTION - Your AI Team */}
       <MascotsSection />
 
+      {/* TESTIMONIALS - Real stories */}
+      <TestimonialsSection />
+
       {/* TRANSFORMATION SECTION - Before/After */}
       <TransformationSection />
+
+      {/* PRICING SECTION - Clear value */}
+      <PricingSection />
+
+      {/* FAQ SECTION - Handle objections */}
+      <FAQSection />
 
       {/* TRUST SECTION - Why Trust Us */}
       <TrustSection />
@@ -566,6 +581,529 @@ function TransformationSection() {
             </ul>
           </motion.div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+// =============================================================================
+// SOCIAL PROOF BAR - Quick credibility indicators
+// =============================================================================
+
+function SocialProofBar() {
+  return (
+    <section className="py-8 px-6 border-y border-white/5 bg-white/[0.02]">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-white">10,000+</div>
+            <div className="text-sm text-gray-500">Health Records Secured</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-white">50,000+</div>
+            <div className="text-sm text-gray-500">Labs Decoded</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-white">4.9/5</div>
+            <div className="text-sm text-gray-500">User Rating</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-white">HIPAA</div>
+            <div className="text-sm text-gray-500">Compliant</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// =============================================================================
+// PRODUCT DEMO SECTION - Visual walkthrough
+// =============================================================================
+
+function ProductDemoSection() {
+  const [activeStep, setActiveStep] = useState(0);
+  
+  const steps = [
+    {
+      title: "Upload Your Records",
+      description: "Drag and drop any medical document. We accept PDFs, images, and photos of paperwork.",
+      visual: "📤",
+      color: "from-blue-500 to-cyan-500",
+    },
+    {
+      title: "AI Decodes Everything",
+      description: "Our AI reads your documents, extracts key information, and explains it in plain English.",
+      visual: "🤖",
+      color: "from-purple-500 to-pink-500",
+    },
+    {
+      title: "Build Your Blueprint",
+      description: "Watch as your health picture comes together. See patterns. Spot connections.",
+      visual: "📊",
+      color: "from-green-500 to-emerald-500",
+    },
+    {
+      title: "Share With Anyone",
+      description: "Generate provider packets, share with family, or export everything—you're in control.",
+      visual: "🔗",
+      color: "from-orange-500 to-red-500",
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % steps.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="py-24 px-6 bg-gradient-to-b from-black via-blue-950/10 to-black">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            See How It Works
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            From scattered records to complete health picture in minutes.
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Steps list */}
+          <div className="space-y-4">
+            {steps.map((step, index) => (
+              <motion.button
+                key={step.title}
+                onClick={() => setActiveStep(index)}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${
+                  activeStep === index
+                    ? "bg-white/10 border-white/20"
+                    : "bg-white/5 border-white/10 hover:bg-white/[0.07]"
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center flex-shrink-0`}>
+                    <span className="text-white font-bold">{index + 1}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">{step.title}</h3>
+                    <p className="text-sm text-gray-400">{step.description}</p>
+                  </div>
+                </div>
+                {/* Progress bar */}
+                {activeStep === index && (
+                  <div className="mt-4 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: 4, ease: "linear" }}
+                      className={`h-full bg-gradient-to-r ${step.color}`}
+                    />
+                  </div>
+                )}
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Visual display */}
+          <motion.div
+            key={activeStep}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="relative"
+          >
+            <div className={`aspect-square max-w-md mx-auto rounded-3xl bg-gradient-to-br ${steps[activeStep].color} p-1`}>
+              <div className="w-full h-full rounded-3xl bg-black/90 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <span className="text-8xl mb-6 block">{steps[activeStep].visual}</span>
+                  <h3 className="text-2xl font-bold text-white mb-2">{steps[activeStep].title}</h3>
+                  <p className="text-gray-400">{steps[activeStep].description}</p>
+                </div>
+              </div>
+            </div>
+            {/* Decorative elements */}
+            <div className={`absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br ${steps[activeStep].color} rounded-full blur-2xl opacity-50`} />
+            <div className={`absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br ${steps[activeStep].color} rounded-full blur-2xl opacity-30`} />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// =============================================================================
+// TESTIMONIALS SECTION
+// =============================================================================
+
+function TestimonialsSection() {
+  const testimonials = [
+    {
+      quote: "I finally understand my lab results. For the first time in my life, I walked into my doctor's appointment knowing exactly what questions to ask.",
+      name: "Sarah M.",
+      title: "Mom of 3, Managing Thyroid Issues",
+      avatar: "👩",
+      rating: 5,
+    },
+    {
+      quote: "After my dad passed, I realized I had no idea about our family health history. This tool helped me map everything out for my kids' future.",
+      name: "Michael T.",
+      title: "Father, Building Family Health Tree",
+      avatar: "👨",
+      rating: 5,
+    },
+    {
+      quote: "The AI specialists don't judge. I asked questions I was too embarrassed to ask my doctor. Game changer for my weight journey.",
+      name: "Jennifer L.",
+      title: "Lost 45 lbs with Slim-T Guidance",
+      avatar: "👩‍🦰",
+      rating: 5,
+    },
+    {
+      quote: "I have records from 12 different providers over 20 years. Now they're all in one place, organized, and I can actually find things.",
+      name: "Robert K.",
+      title: "Retired, Managing Multiple Conditions",
+      avatar: "👴",
+      rating: 5,
+    },
+    {
+      quote: "My daughter uses this to track her hormone health. As her mom, I love that she's taking control of her health education.",
+      name: "Patricia D.",
+      title: "Mother Supporting Daughter's Health",
+      avatar: "👩‍🦳",
+      rating: 5,
+    },
+    {
+      quote: "The provider packet feature saved my life. New specialist had my complete history before I even walked in. No more repeating myself.",
+      name: "David W.",
+      title: "Chronic Illness Warrior",
+      avatar: "🧔",
+      rating: 5,
+    },
+  ];
+
+  return (
+    <section className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Real People.{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+              Real Results.
+            </span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Thousands of people have taken control of their health journey. Here's what they're saying.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-all"
+            >
+              {/* Stars */}
+              <div className="flex gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <FiStar key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                ))}
+              </div>
+              
+              {/* Quote */}
+              <p className="text-gray-300 mb-6 leading-relaxed">"{testimonial.quote}"</p>
+              
+              {/* Author */}
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-2xl">
+                  {testimonial.avatar}
+                </div>
+                <div>
+                  <div className="font-semibold text-white">{testimonial.name}</div>
+                  <div className="text-sm text-gray-500">{testimonial.title}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// =============================================================================
+// PRICING SECTION
+// =============================================================================
+
+function PricingSection() {
+  const plans = [
+    {
+      name: "Free",
+      price: "$0",
+      period: "forever",
+      description: "Get started with the basics",
+      features: [
+        "Secure document storage (up to 50)",
+        "Basic lab decoder (5/month)",
+        "Health timeline view",
+        "1 AI specialist chat",
+        "Family tree (up to 10 members)",
+      ],
+      cta: "Start Free",
+      href: "/signup",
+      highlighted: false,
+    },
+    {
+      name: "Core",
+      price: "$9",
+      period: "/month",
+      description: "For individuals taking control",
+      features: [
+        "Unlimited document storage",
+        "Unlimited lab decoding",
+        "Full health blueprint",
+        "All 7 AI specialists",
+        "Unlimited family tree",
+        "Provider packet generator",
+        "Priority support",
+      ],
+      cta: "Start 14-Day Trial",
+      href: "/signup?plan=core",
+      highlighted: true,
+      badge: "MOST POPULAR",
+    },
+    {
+      name: "Family",
+      price: "$19",
+      period: "/month",
+      description: "For families who care",
+      features: [
+        "Everything in Core",
+        "Up to 5 family accounts",
+        "Shared family health tree",
+        "Trusted circle access",
+        "Family health reports",
+        "Caregiver dashboard",
+        "Dedicated support",
+      ],
+      cta: "Start Family Trial",
+      href: "/signup?plan=family",
+      highlighted: false,
+    },
+  ];
+
+  return (
+    <section id="pricing" className="py-24 px-6 bg-gradient-to-b from-black via-purple-950/10 to-black">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Simple, Honest Pricing
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            No hidden fees. No surprise charges. Cancel anytime.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {plans.map((plan, index) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className={`relative rounded-3xl p-8 ${
+                plan.highlighted
+                  ? "bg-gradient-to-b from-purple-500/20 to-pink-500/20 border-2 border-purple-500/50"
+                  : "bg-white/5 border border-white/10"
+              }`}
+            >
+              {plan.badge && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-sm font-semibold">
+                  {plan.badge}
+                </div>
+              )}
+
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-5xl font-bold text-white">{plan.price}</span>
+                  <span className="text-gray-400">{plan.period}</span>
+                </div>
+                <p className="text-gray-400 mt-2">{plan.description}</p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <FiCheck className={`w-5 h-5 mt-0.5 flex-shrink-0 ${plan.highlighted ? "text-purple-400" : "text-green-400"}`} />
+                    <span className="text-gray-300">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href={plan.href}
+                className={`block w-full py-4 rounded-xl font-semibold text-center transition-all ${
+                  plan.highlighted
+                    ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:shadow-lg hover:shadow-purple-500/25"
+                    : "bg-white/10 text-white hover:bg-white/20"
+                }`}
+              >
+                {plan.cta}
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center text-gray-500 mt-12"
+        >
+          All plans include HIPAA-compliant security, data encryption, and the ability to export your data anytime.
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
+// =============================================================================
+// FAQ SECTION
+// =============================================================================
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const faqs = [
+    {
+      question: "Is my health data really private and secure?",
+      answer: "Absolutely. We use bank-level encryption (AES-256) for all data at rest and in transit. We're HIPAA-compliant, meaning we meet the strictest healthcare privacy standards. We never sell your data, never share it with third parties, and you can delete everything at any time. Your data is yours—period.",
+    },
+    {
+      question: "How is this different from my patient portal?",
+      answer: "Patient portals only show you records from ONE provider. No Prior Authorization brings ALL your records together—every doctor, every hospital, every lab—into one searchable, organized system. Plus, we give you AI tools to actually understand what your records mean.",
+    },
+    {
+      question: "What if I'm not tech-savvy?",
+      answer: "We designed this for real people, not engineers. Upload a document by taking a photo with your phone. Ask questions in plain English. Our AI explains everything like a friend would—no medical jargon, no confusing terms. If you can send a text, you can use No Prior Authorization.",
+    },
+    {
+      question: "Can I share my records with my doctor?",
+      answer: "Yes! Generate a professional 'Provider Packet' with one click. It creates a clean summary of your health history, current medications, family history, and any specific concerns—perfect for any appointment. You can share it via secure link or download as a PDF.",
+    },
+    {
+      question: "What about my family's health information?",
+      answer: "The Family Health Tree feature lets you map conditions across generations—parents, grandparents, siblings. This helps you and your doctors understand inherited risks. You can also invite family members to their own accounts and share relevant information through our Trusted Circle feature.",
+    },
+    {
+      question: "Are the AI specialists replacing real doctors?",
+      answer: "No, and that's important. Our AI specialists help you understand health topics, decode medical jargon, and prepare better questions for your real doctors. They provide education and awareness, not diagnoses or treatment plans. Think of them as health-literate friends who are always available.",
+    },
+    {
+      question: "Can I cancel anytime?",
+      answer: "Yes, with no penalties or hidden fees. Cancel your subscription anytime from your account settings. If you cancel, you'll keep access until the end of your billing period, and you can always export all your data before you go.",
+    },
+    {
+      question: "What happens to my data if I stop using the service?",
+      answer: "Your data remains secure and accessible even on the free plan. If you choose to delete your account, we permanently remove all your data within 30 days. Before deleting, you can export everything in standard formats (PDF, JSON) so you never lose your health history.",
+    },
+  ];
+
+  return (
+    <section className="py-24 px-6">
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Questions? We've Got{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+              Answers.
+            </span>
+          </h2>
+          <p className="text-xl text-gray-400">
+            Everything you need to know before getting started.
+          </p>
+        </motion.div>
+
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className="border border-white/10 rounded-2xl overflow-hidden"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+              >
+                <span className="font-semibold text-white pr-8">{faq.question}</span>
+                <span className={`text-2xl text-pink-400 transition-transform ${openIndex === index ? "rotate-45" : ""}`}>
+                  +
+                </span>
+              </button>
+              {openIndex === index && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  className="px-6 pb-6"
+                >
+                  <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
+                </motion.div>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
+          <p className="text-gray-400 mb-4">Still have questions?</p>
+          <Link
+            href="/chat"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 rounded-full font-semibold hover:bg-white/20 transition-all"
+          >
+            <FiMessageCircle className="w-5 h-5" />
+            Chat with our team
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

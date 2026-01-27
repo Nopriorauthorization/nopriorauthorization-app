@@ -30,6 +30,7 @@ export default function FamilyHealthPage() {
           description="Discover generational health patterns, genetic predispositions, and family medical history. Build a comprehensive family health map that reveals insights for prevention and early intervention."
           imageSrc="/mascots/FAMILYTREEMASCOT.PNG"
           videoSrc="/videos/mascots/roots.mp4"
+          showVideo={true}
           features={[
             {
               icon: "🌳",

@@ -80,7 +80,7 @@ export default function LabDecoderPage() {
               poster="/characters/decode.png"
               preload="metadata"
             >
-              <source src="/videos/marketing/lab-decoder-intro.mp4" type="video/mp4" />
+              <source src="/videos/mascots/decode.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

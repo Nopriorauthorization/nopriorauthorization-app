@@ -102,6 +102,15 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
+          {/* Logo */}
+          <div className="flex justify-center mb-8">
+            <img
+              src="/nopriornew.png"
+              alt="No Prior Authorization"
+              className="h-16 md:h-20 w-auto"
+            />
+          </div>
+
           {/* Pre-headline */}
           <p className="text-pink-400 text-lg md:text-xl font-medium mb-6 tracking-wide">
             THE HEALTHCARE SYSTEM WASN&apos;T BUILT FOR YOU

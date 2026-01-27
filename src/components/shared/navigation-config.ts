@@ -66,6 +66,12 @@ export const getNavigationConfig = (mode: 'marketing' | 'app' = 'app'): Navigati
       color: MASCOT_COLORS.decode,
     },
     {
+      label: "Medication Decoder",
+      href: "/vault/medications",
+      icon: "💊",
+      color: MASCOT_COLORS.harmony,
+    },
+    {
       label: "Family Health",
       href: "/family-health",
       icon: "🌳",
@@ -105,6 +111,13 @@ export const getNavigationConfig = (mode: 'marketing' | 'app' = 'app'): Navigati
           icon: "🧪",
           color: MASCOT_COLORS.decode,
           description: "All your lab work in one place"
+        },
+        { 
+          label: "Medication Decoder", 
+          href: "/vault/medications", 
+          icon: "💊",
+          color: MASCOT_COLORS.harmony,
+          description: "Understand your medications safely"
         },
         { 
           label: "Family Tree", 

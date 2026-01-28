@@ -93,6 +93,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Trust & transparency pages
+  const trustPages: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/how-our-intelligence-works`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+  ];
+
   // Legal pages
   const legalPages: MetadataRoute.Sitemap = [
     {
@@ -114,6 +124,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...featurePages,
     ...toolPages,
     ...providerPages,
+    ...trustPages,
     ...legalPages,
   ];
 }

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import MascotDomainShell from "@/components/mascots/MascotDomainShell";
+import { SourceTransparency } from "@/components/ui/SourceTransparency";
 import { 
   FiUsers, 
   FiPlus, 
@@ -50,6 +51,11 @@ export default function FamilyTreePage() {
             </p>
           </motion.div>
         </div>
+      </div>
+
+      {/* Source Transparency */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <SourceTransparency variant="compact" />
       </div>
 
       {/* Root Mascot Section */}

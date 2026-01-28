@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronDown, FiChevronUp, FiTrendingUp, FiAlertTriangle, FiInfo, FiCheckCircle } from 'react-icons/fi';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
+import { SourceTransparency } from '@/components/ui/SourceTransparency';
 
 interface BlueprintInsight {
   id: string;
@@ -137,6 +138,8 @@ export default function BlueprintPage() {
             AI-powered insights based on your health data
           </p>
         </motion.div>
+
+        <SourceTransparency variant="compact" className="mb-8" />
 
         {insights.length === 0 ? (
           <motion.div

@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic';
 import React, { useState, useEffect, useRef } from "react";
 import { DocumentCategory } from "@prisma/client";
+import { SourceTransparency } from "@/components/ui/SourceTransparency";
 
 type DecodedDocument = {
   id: string;
@@ -262,6 +263,9 @@ const handleSaveToBlueprint = async () => {
             Upload your medical documents and get them decoded into plain English
           </p>
         </div>
+
+        {/* Source Transparency */}
+        <SourceTransparency variant="compact" className="mb-6" />
 
         {/* Upload Section */}
         {(state === "idle" || state === "fileSelected" || state === "error") && (

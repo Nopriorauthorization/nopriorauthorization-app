@@ -20,7 +20,7 @@ export default function TermsOfUsePage() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
             <p className="text-gray-700">
-              By accessing or using Ask Beau-Tox™, you agree to be bound by these Terms
+              By accessing or using No Prior Authorization, you agree to be bound by these Terms
               of Use. If you do not agree to these terms, please do not use our service.
             </p>
           </section>
@@ -29,7 +29,7 @@ export default function TermsOfUsePage() {
             <h2 className="text-2xl font-semibold mb-4">2. Educational Purpose Only</h2>
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
               <p className="text-yellow-800 font-medium">
-                IMPORTANT: Ask Beau-Tox™ provides EDUCATIONAL INFORMATION ONLY.
+                IMPORTANT: No Prior Authorization provides EDUCATIONAL INFORMATION ONLY.
               </p>
             </div>
             <p className="text-gray-700 mb-4">
@@ -111,7 +111,7 @@ export default function TermsOfUsePage() {
             <h2 className="text-2xl font-semibold mb-4">9. Contact</h2>
             <p className="text-gray-700">
               For questions about these Terms, please contact us at
-              legal@askbeautox.com.
+              support@nopriorauthorization.com.
             </p>
           </section>
         </div>

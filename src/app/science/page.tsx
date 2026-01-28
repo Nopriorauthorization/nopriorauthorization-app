@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 // Peppi Science & Peptides Domain Page
 import React from "react";
 import { Metadata } from "next";
-import MascotDomainCard from "../../content/hero/src/components/mascots/MascotDomainCard";
+import MascotDomainCard from "@/components/mascots/MascotDomainCard";
 
 export const metadata: Metadata = {
   title: "Science & Peptide Intelligence | Peppi",

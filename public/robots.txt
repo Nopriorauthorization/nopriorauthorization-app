@@ -1,12 +1,38 @@
 # https://www.robotstxt.org/robotstxt.html
+# No Prior Authorization - Robots.txt
+
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://nopriorauthorization.com/sitemap.xml
+# Public pages - allow indexing
+Allow: /pricing
+Allow: /how-it-works
+Allow: /mascots
+Allow: /aesthetics
+Allow: /hormones
+Allow: /science
+Allow: /treatments
+Allow: /lab-decoder
+Allow: /family-health
+Allow: /provider
+Allow: /privacy
+Allow: /terms
 
-# Disallow admin and internal pages
+# Authenticated/private pages - disallow
+Disallow: /api/
 Disallow: /admin/
 Disallow: /owner/
-Disallow: /api/
+Disallow: /chat
+Disallow: /vault/
+Disallow: /settings
+Disallow: /dashboard
+Disallow: /storyboard
+Disallow: /documents
 Disallow: /direct-login
+Disallow: /subscribe
+Disallow: /login
+Disallow: /signup
+Disallow: /register
+
+# Sitemap location
+Sitemap: https://nopriorauthorization.com/sitemap.xml

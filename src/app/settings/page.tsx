@@ -53,18 +53,117 @@ export default function SettingsPage() {
   const [exportRequested, setExportRequested] = useState(false);
   const [deletionRequested, setDeletionRequested] = useState(false);
 
+  // Vault Passcode state
+  const [hasPasscode, setHasPasscode] = useState(false);
+  const [passcodeLoading, setPasscodeLoading] = useState(true);
+  const [showPasscodeModal, setShowPasscodeModal] = useState(false);
+  const [passcodeInput, setPasscodeInput] = useState("");
+  const [currentPasscodeInput, setCurrentPasscodeInput] = useState("");
+  const [passcodeError, setPasscodeError] = useState<string | null>(null);
+  const [passcodeSaving, setPasscodeSaving] = useState(false);
+
   useEffect(() => {
     if (status === "unauthenticated") {
       setSettings(demoSettings);
       setShareLinks([]);
       setLoading(false);
+      setPasscodeLoading(false);
       return;
     }
 
     if (status === "authenticated") {
       loadSettings();
+      loadPasscodeStatus();
     }
   }, [status]);
+
+  const loadPasscodeStatus = async () => {
+    try {
+      const response = await fetch("/api/vault/passcode");
+      if (response.ok) {
+        const data = await response.json();
+        setHasPasscode(data.hasPasscode);
+      }
+    } catch (err) {
+      console.error("Failed to load passcode status");
+    } finally {
+      setPasscodeLoading(false);
+    }
+  };
+
+  const handleSetPasscode = async () => {
+    if (!/^\d{6,8}$/.test(passcodeInput)) {
+      setPasscodeError("Passcode must be 6-8 digits");
+      return;
+    }
+
+    setPasscodeSaving(true);
+    setPasscodeError(null);
+
+    try {
+      const response = await fetch("/api/vault/passcode", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          passcode: passcodeInput,
+          currentPasscode: hasPasscode ? currentPasscodeInput : undefined,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setPasscodeError(data.error || "Failed to set passcode");
+        return;
+      }
+
+      setHasPasscode(true);
+      setShowPasscodeModal(false);
+      setPasscodeInput("");
+      setCurrentPasscodeInput("");
+      showMessage("success", "Vault passcode set successfully");
+    } catch (err) {
+      setPasscodeError("Failed to set passcode");
+    } finally {
+      setPasscodeSaving(false);
+    }
+  };
+
+  const handleRemovePasscode = async () => {
+    if (!currentPasscodeInput) {
+      setPasscodeError("Enter your current passcode to remove it");
+      return;
+    }
+
+    if (!confirm("Remove your vault passcode? You can set a new one anytime.")) return;
+
+    setPasscodeSaving(true);
+    setPasscodeError(null);
+
+    try {
+      const response = await fetch("/api/vault/passcode", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentPasscode: currentPasscodeInput }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setPasscodeError(data.error || "Failed to remove passcode");
+        return;
+      }
+
+      setHasPasscode(false);
+      setShowPasscodeModal(false);
+      setCurrentPasscodeInput("");
+      showMessage("success", "Vault passcode removed");
+    } catch (err) {
+      setPasscodeError("Failed to remove passcode");
+    } finally {
+      setPasscodeSaving(false);
+    }
+  };
 
   const loadSettings = async () => {
     try {
@@ -176,12 +275,35 @@ export default function SettingsPage() {
       return;
     }
 
+    // If passcode is set, require verification first
+    if (hasPasscode) {
+      const passcode = prompt("Enter your vault passcode to export data:");
+      if (!passcode) return;
+
+      try {
+        const verifyResponse = await fetch("/api/vault/passcode/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ passcode }),
+        });
+
+        if (!verifyResponse.ok) {
+          const data = await verifyResponse.json();
+          showMessage("error", data.error || "Incorrect passcode");
+          return;
+        }
+      } catch (err) {
+        showMessage("error", "Failed to verify passcode");
+        return;
+      }
+    }
+
     if (!confirm("We'll prepare your complete data export and email it within 48 hours. Continue?")) return;
-    
+
     try {
       const response = await fetch("/api/settings/export", { method: "POST" });
       if (!response.ok) throw new Error("Failed to request export");
-      
+
       setExportRequested(true);
       showMessage("success", "Data export requested - you'll receive an email within 48 hours");
     } catch (err) {
@@ -195,12 +317,35 @@ export default function SettingsPage() {
       return;
     }
 
+    // If passcode is set, require verification first
+    if (hasPasscode) {
+      const passcode = prompt("Enter your vault passcode to delete your account:");
+      if (!passcode) return;
+
+      try {
+        const verifyResponse = await fetch("/api/vault/passcode/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ passcode }),
+        });
+
+        if (!verifyResponse.ok) {
+          const data = await verifyResponse.json();
+          showMessage("error", data.error || "Incorrect passcode");
+          return;
+        }
+      } catch (err) {
+        showMessage("error", "Failed to verify passcode");
+        return;
+      }
+    }
+
     if (!confirm("⚠️ This will permanently delete your account and all data within 30 days. This cannot be undone. Continue?")) return;
-    
+
     try {
       const response = await fetch("/api/settings/delete-account", { method: "POST" });
       if (!response.ok) throw new Error("Failed to request deletion");
-      
+
       setDeletionRequested(true);
       showMessage("success", "Account deletion scheduled - you have 30 days to cancel");
     } catch (err) {
@@ -319,7 +464,141 @@ export default function SettingsPage() {
             </div>
           </section>
 
-          {/* SECTION 2: PRIVACY & CONSENT (CRITICAL) */}
+          {/* SECTION 2: VAULT PROTECTION */}
+          <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h2 className="mb-2 text-xl font-semibold text-hot-pink">Vault Protection</h2>
+            <p className="mb-6 text-xs text-gray-400">
+              Your Vault Passcode protects your most sensitive actions. Only you know it. We cannot recover it.
+            </p>
+
+            {passcodeLoading ? (
+              <div className="text-sm text-gray-400">Loading...</div>
+            ) : (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between rounded-xl border border-white/10 bg-black/30 p-4">
+                  <div>
+                    <p className="font-medium text-white">Vault Passcode</p>
+                    <p className="text-xs text-gray-400">
+                      {hasPasscode
+                        ? "Your vault is protected with a passcode"
+                        : "Add an extra layer of protection to your Sacred Vault"}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {hasPasscode && (
+                      <span className="rounded-full bg-green-500/20 px-3 py-1 text-xs font-medium text-green-400">
+                        Active
+                      </span>
+                    )}
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={() => {
+                        setShowPasscodeModal(true);
+                        setPasscodeError(null);
+                        setPasscodeInput("");
+                        setCurrentPasscodeInput("");
+                      }}
+                    >
+                      {hasPasscode ? "Change" : "Set Passcode"}
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Passcode Modal */}
+                {showPasscodeModal && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+                    <div className="w-full max-w-md rounded-2xl border border-white/10 bg-gray-900 p-6">
+                      <h3 className="mb-4 text-lg font-semibold text-white">
+                        {hasPasscode ? "Change Vault Passcode" : "Set Vault Passcode"}
+                      </h3>
+
+                      {passcodeError && (
+                        <div className="mb-4 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-400">
+                          {passcodeError}
+                        </div>
+                      )}
+
+                      <div className="space-y-4">
+                        {hasPasscode && (
+                          <div>
+                            <label className="mb-2 block text-sm text-gray-300">
+                              Current Passcode
+                            </label>
+                            <input
+                              type="password"
+                              inputMode="numeric"
+                              pattern="[0-9]*"
+                              maxLength={8}
+                              value={currentPasscodeInput}
+                              onChange={(e) => setCurrentPasscodeInput(e.target.value.replace(/\D/g, ""))}
+                              className="w-full rounded-xl border border-gray-700 bg-transparent px-4 py-3 text-center text-2xl tracking-widest text-white focus:border-hot-pink focus:outline-none"
+                              placeholder="••••••"
+                            />
+                          </div>
+                        )}
+
+                        <div>
+                          <label className="mb-2 block text-sm text-gray-300">
+                            {hasPasscode ? "New Passcode" : "Passcode"} (6-8 digits)
+                          </label>
+                          <input
+                            type="password"
+                            inputMode="numeric"
+                            pattern="[0-9]*"
+                            maxLength={8}
+                            value={passcodeInput}
+                            onChange={(e) => setPasscodeInput(e.target.value.replace(/\D/g, ""))}
+                            className="w-full rounded-xl border border-gray-700 bg-transparent px-4 py-3 text-center text-2xl tracking-widest text-white focus:border-hot-pink focus:outline-none"
+                            placeholder="••••••"
+                          />
+                          <p className="mt-2 text-xs text-gray-500">
+                            Choose a memorable 6-8 digit code. We cannot recover this for you.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 flex gap-3">
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          onClick={() => setShowPasscodeModal(false)}
+                          disabled={passcodeSaving}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          variant="primary"
+                          size="sm"
+                          onClick={handleSetPasscode}
+                          disabled={passcodeSaving || passcodeInput.length < 6}
+                          isLoading={passcodeSaving}
+                        >
+                          {hasPasscode ? "Update Passcode" : "Set Passcode"}
+                        </Button>
+                        {hasPasscode && (
+                          <Button
+                            variant="secondary"
+                            size="sm"
+                            onClick={handleRemovePasscode}
+                            disabled={passcodeSaving}
+                          >
+                            Remove
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <p className="text-xs text-gray-500">
+                  Your passcode is required for: exporting data, changing privacy settings, and viewing sensitive documents.
+                </p>
+              </div>
+            )}
+          </section>
+
+          {/* SECTION 3: PRIVACY & CONSENT (CRITICAL) */}
           <section className="rounded-2xl border-2 border-hot-pink/40 bg-hot-pink/5 p-6">
             <h2 className="mb-2 text-xl font-semibold text-hot-pink">Privacy & Consent</h2>
             <p className="mb-6 text-xs text-gray-400">

@@ -381,8 +381,22 @@ const handleSaveToBlueprint = async () => {
             )}
 
             {error && (
-              <div className="mt-4 p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300">
-                {error}
+              <div className="mt-4 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl">⚠️</span>
+                  <div className="flex-1">
+                    <p className="text-red-300 font-medium mb-2">{error}</p>
+                    <p className="text-gray-400 text-sm mb-3">
+                      This could be a temporary issue. You can try again or choose a different file.
+                    </p>
+                    <button
+                      onClick={handleReset}
+                      className="px-4 py-2 bg-red-500/30 hover:bg-red-500/40 rounded-lg text-red-200 text-sm font-medium transition"
+                    >
+                      🔄 Try Again
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>

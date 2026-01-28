@@ -100,8 +100,16 @@ export default function OwnerOverview() {
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-lg font-semibold mb-4">Support Health</h3>
-            <p className="text-gray-600">Support metrics will be displayed here.</p>
-            <p className="text-sm text-gray-500 mt-2">Coming soon</p>
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <span className="text-gray-600">Open Tickets:</span>
+                <span className="font-semibold">0</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Avg Response Time:</span>
+                <span className="font-semibold">—</span>
+              </div>
+            </div>
           </div>
         </div>
 

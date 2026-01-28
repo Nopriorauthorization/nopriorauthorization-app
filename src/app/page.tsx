@@ -614,16 +614,16 @@ function SocialProofBar() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
           <div className="text-center">
-            <div className="text-3xl font-bold text-white">10,000+</div>
-            <div className="text-sm text-gray-500">Health Records Secured</div>
+            <div className="text-3xl font-bold text-white">256-bit</div>
+            <div className="text-sm text-gray-500">AES Encryption</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-white">50,000+</div>
-            <div className="text-sm text-gray-500">Labs Decoded</div>
+            <div className="text-3xl font-bold text-white">7</div>
+            <div className="text-sm text-gray-500">AI Specialists</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-white">4.9/5</div>
-            <div className="text-sm text-gray-500">User Rating</div>
+            <div className="text-3xl font-bold text-white">RN</div>
+            <div className="text-sm text-gray-500">Founded</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-white">HIPAA</div>
@@ -766,48 +766,36 @@ function ProductDemoSection() {
 // =============================================================================
 
 function TestimonialsSection() {
-  const testimonials = [
+  const useCases = [
     {
-      quote: "I finally understand my lab results. For the first time in my life, I walked into my doctor's appointment knowing exactly what questions to ask.",
-      name: "Sarah M.",
-      title: "Mom of 3, Managing Thyroid Issues",
-      avatar: "👩",
-      rating: 5,
+      icon: "📋",
+      title: "Scattered Records",
+      description: "Bring together medical records from every provider into one secure, searchable vault.",
     },
     {
-      quote: "After my dad passed, I realized I had no idea about our family health history. This tool helped me map everything out for my kids' future.",
-      name: "Michael T.",
-      title: "Father, Building Family Health Tree",
-      avatar: "👨",
-      rating: 5,
+      icon: "🧬",
+      title: "Family Health Patterns",
+      description: "Map conditions across generations to understand inherited risks before they become problems.",
     },
     {
-      quote: "The AI specialists don't judge. I asked questions I was too embarrassed to ask my doctor. Game changer for my weight journey.",
-      name: "Jennifer L.",
-      title: "Lost 45 lbs with Slim-T Guidance",
-      avatar: "👩‍🦰",
-      rating: 5,
+      icon: "🔬",
+      title: "Confusing Lab Results",
+      description: "Get plain-English explanations of any lab test. Know what's normal and what to discuss with your doctor.",
     },
     {
-      quote: "I have records from 12 different providers over 20 years. Now they're all in one place, organized, and I can actually find things.",
-      name: "Robert K.",
-      title: "Retired, Managing Multiple Conditions",
-      avatar: "👴",
-      rating: 5,
+      icon: "💊",
+      title: "Medication Questions",
+      description: "Understand your medications, potential interactions, and what questions to ask your pharmacist.",
     },
     {
-      quote: "My daughter uses this to track her hormone health. As her mom, I love that she's taking control of her health education.",
-      name: "Patricia D.",
-      title: "Mother Supporting Daughter's Health",
-      avatar: "👩‍🦳",
-      rating: 5,
+      icon: "📝",
+      title: "Appointment Prep",
+      description: "Generate professional health summaries for any appointment. Walk in prepared.",
     },
     {
-      quote: "The provider packet feature saved my life. New specialist had my complete history before I even walked in. No more repeating myself.",
-      name: "David W.",
-      title: "Chronic Illness Warrior",
-      avatar: "🧔",
-      rating: 5,
+      icon: "👨‍👩‍👧‍👦",
+      title: "Family Caregiving",
+      description: "Help aging parents or children manage their health with shared access you control.",
     },
   ];
 
@@ -821,46 +809,30 @@ function TestimonialsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Real People.{" "}
+            Built For{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
-              Real Results.
+              Real Problems
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Thousands of people have taken control of their health journey. Here's what they're saying.
+            Whether you're managing your own health or caring for loved ones,
+            we've built tools for the challenges you actually face.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
+          {useCases.map((useCase, index) => (
             <motion.div
-              key={testimonial.name}
+              key={useCase.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-all"
             >
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <FiStar key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-              
-              {/* Quote */}
-              <p className="text-gray-300 mb-6 leading-relaxed">"{testimonial.quote}"</p>
-              
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-2xl">
-                  {testimonial.avatar}
-                </div>
-                <div>
-                  <div className="font-semibold text-white">{testimonial.name}</div>
-                  <div className="text-sm text-gray-500">{testimonial.title}</div>
-                </div>
-              </div>
+              <span className="text-4xl mb-4 block">{useCase.icon}</span>
+              <h3 className="text-xl font-semibold text-white mb-3">{useCase.title}</h3>
+              <p className="text-gray-400 leading-relaxed">{useCase.description}</p>
             </motion.div>
           ))}
         </div>

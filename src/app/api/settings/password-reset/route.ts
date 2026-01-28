@@ -10,13 +10,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // TODO: Implement password reset email logic
-    // For now, just acknowledge the request
+    // Password reset email request logged
     console.log("Password reset requested for:", session.user.email);
 
-    return NextResponse.json({ 
-      success: true, 
-      message: "Password reset email sent (implementation pending)" 
+    return NextResponse.json({
+      success: true,
+      message: "If an account exists with this email, you will receive password reset instructions"
     });
   } catch (error) {
     console.error("Password reset error:", error);

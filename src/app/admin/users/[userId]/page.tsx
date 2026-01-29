@@ -381,9 +381,9 @@ export default function UserDetailPage() {
               </Link>
               <Link
                 href={`/admin/share-links?userId=${user.id}`}
-                className="block text-sm text-gray-300 hover:text-hot-pink transition opacity-50 cursor-not-allowed"
+                className="block text-sm text-gray-300 hover:text-hot-pink transition"
               >
-                → View Active Share Links (Coming Soon)
+                → View Active Share Links
               </Link>
               <Link
                 href={`/admin/consent-history?search=${user.email}`}

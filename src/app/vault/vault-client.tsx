@@ -65,8 +65,10 @@ export default function VaultClient({ initialData }: VaultClientProps) {
   }
 
   const displayVaultName = data.vaultName || "Sacred Vault";
+  // Filter out coming-soon features for launch - only show active features
+  const activeFeatures = data.features.filter((feature) => feature.status === "active");
   const filteredFeatures =
-    filter === "all" ? data.features : data.features.filter((feature) => feature.tier === filter);
+    filter === "all" ? activeFeatures : activeFeatures.filter((feature) => feature.tier === filter);
 
   if (data.isEmpty) {
     return (
@@ -157,8 +159,7 @@ export default function VaultClient({ initialData }: VaultClientProps) {
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-4">All Available Features</h2>
             <p className="text-sm text-gray-400 mb-6">
-              Explore everything your vault has to offer. Features marked &quot;Coming Soon&quot; are being
-              developed.
+              Explore everything your vault has to offer.
             </p>
           </div>
 

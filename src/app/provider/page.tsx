@@ -77,11 +77,11 @@ export default function ProviderHubPage() {
                 Starter
               </p>
               <h3 className="mt-4 text-3xl font-semibold">$149–$299</h3>
-              <p className="text-sm text-gray-300">per month (placeholder)</p>
+              <p className="text-sm text-gray-300">per month</p>
               <ul className="mt-4 space-y-2 text-sm text-gray-300">
                 <li>Embed expert widget</li>
                 <li>Basic analytics</li>
-                <li>Verified badge placeholder</li>
+                <li>Verified clinic badge</li>
               </ul>
               <div className="mt-6 flex gap-3">
                 <Link
@@ -106,7 +106,7 @@ export default function ProviderHubPage() {
                 Verified by No Prior Authorization
               </h3>
               <p className="mt-3 text-sm text-gray-300">
-                Placeholder UI for V1. Verification workflow comes later.
+                Display a verified badge on your clinic website to build patient trust.
               </p>
               <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-hot-pink px-4 py-2 text-sm text-hot-pink">
                 Verified Badge

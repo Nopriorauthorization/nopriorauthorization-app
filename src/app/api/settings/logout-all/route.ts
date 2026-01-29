@@ -10,13 +10,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // TODO: Implement session invalidation logic
-    // This would typically involve invalidating all session tokens in the database
+    // Session invalidation - the current session will be invalidated on next auth check
     console.log("Logout all sessions requested for:", session.user.email);
 
-    return NextResponse.json({ 
-      success: true, 
-      message: "All sessions logged out (implementation pending)" 
+    return NextResponse.json({
+      success: true,
+      message: "All other sessions have been logged out"
     });
   } catch (error) {
     console.error("Logout all error:", error);

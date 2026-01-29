@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic';
 import React, { useState, useEffect, useRef } from "react";
 import { DocumentCategory } from "@prisma/client";
+import { SourceTransparency } from "@/components/ui/SourceTransparency";
 
 type DecodedDocument = {
   id: string;
@@ -263,6 +264,9 @@ const handleSaveToBlueprint = async () => {
           </p>
         </div>
 
+        {/* Source Transparency */}
+        <SourceTransparency variant="compact" className="mb-6" />
+
         {/* Upload Section */}
         {(state === "idle" || state === "fileSelected" || state === "error") && (
           <div className="bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-xl border border-white/20 p-8 mb-8">
@@ -381,8 +385,22 @@ const handleSaveToBlueprint = async () => {
             )}
 
             {error && (
-              <div className="mt-4 p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300">
-                {error}
+              <div className="mt-4 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl">⚠️</span>
+                  <div className="flex-1">
+                    <p className="text-red-300 font-medium mb-2">{error}</p>
+                    <p className="text-gray-400 text-sm mb-3">
+                      This could be a temporary issue. You can try again or choose a different file.
+                    </p>
+                    <button
+                      onClick={handleReset}
+                      className="px-4 py-2 bg-red-500/30 hover:bg-red-500/40 rounded-lg text-red-200 text-sm font-medium transition"
+                    >
+                      🔄 Try Again
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>

@@ -63,6 +63,7 @@ model User {
   appointments        Appointment[]
   identityAuditLogs   IdentityAuditLog[]
   npaVaultDocuments   NpaVaultDocument[]
+  shareSessions       NpaShareSession[]    // Phase 4: Sharing
 }
 
 model Subscription {
@@ -912,6 +913,10 @@ model NpaVaultDocument {
   user             User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
   auditLogs        NpaVaultAuditLog[]
   shareLinks       NpaVaultShareLink[]
+  
+  // Phase 4: Sharing relations
+  sharedIn         NpaShareDocument[]
+  providerContribution NpaProviderContribution?
 
   @@index([npaId])
   @@index([userId])
@@ -955,6 +960,7 @@ model NpaVaultAuditLog {
   @@index([createdAt])
 }
 
+// Legacy single-document share link (kept for backwards compatibility)
 model NpaVaultShareLink {
   id          String                    @id @default(cuid())
   documentId  String
@@ -986,4 +992,146 @@ model NpaVaultShareLinkAccess {
 
   @@index([shareLinkId])
   @@index([accessedAt])
+}
+
+// ============================================
+// NPA PHASE 4: CONSENT & PERMISSIONED SHARING
+// ============================================
+
+enum SharePermission {
+  READ_ONLY           // View documents only
+  READ_DOWNLOAD       // View and download
+  UPLOAD_ALLOWED      // Provider can contribute documents
+}
+
+enum ShareAccessAction {
+  LINK_VIEWED         // Share page was opened
+  DOCUMENT_VIEWED     // Specific document was viewed
+  DOCUMENT_DOWNLOADED // Document was downloaded
+  DOCUMENT_UPLOADED   // Provider contributed a document
+  ACCESS_DENIED       // Attempted access after revocation/expiry
+}
+
+// Share session - groups multiple documents into one shareable link
+model NpaShareSession {
+  id              String            @id @default(cuid())
+  npaId           String            // Owner's NPA ID
+  userId          String?           // Owner's user ID
+  token           String            @unique // Cryptographically secure share token
+  
+  // Share configuration
+  title           String?           // Optional name for the share (e.g., "Records for Dr. Smith")
+  permission      SharePermission   @default(READ_ONLY)
+  expiresAt       DateTime
+  maxUses         Int?              // Optional: limit number of accesses
+  useCount        Int               @default(0)
+  
+  // Patient info shown to provider (patient controls what's visible)
+  showPatientName Boolean           @default(true)
+  patientDisplayName String?        // What name to show (can be different from account name)
+  
+  // Status
+  isRevoked       Boolean           @default(false)
+  revokedAt       DateTime?
+  revokedReason   String?
+  
+  // Timestamps
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  lastAccessedAt  DateTime?
+  
+  // Relations
+  user            User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  documents       NpaShareDocument[]
+  accessLogs      NpaShareAccessLog[]
+  contributions   NpaProviderContribution[]
+
+  @@index([npaId])
+  @@index([userId])
+  @@index([token])
+  @@index([expiresAt])
+  @@index([isRevoked])
+}
+
+// Documents included in a share session
+model NpaShareDocument {
+  id              String            @id @default(cuid())
+  shareSessionId  String
+  documentId      String
+  
+  // Optional per-document overrides
+  customTitle     String?           // Override document title for this share
+  
+  createdAt       DateTime          @default(now())
+  
+  shareSession    NpaShareSession   @relation(fields: [shareSessionId], references: [id], onDelete: Cascade)
+  document        NpaVaultDocument  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@unique([shareSessionId, documentId])
+  @@index([shareSessionId])
+  @@index([documentId])
+}
+
+// Every access attempt is logged
+model NpaShareAccessLog {
+  id              String            @id @default(cuid())
+  shareSessionId  String
+  documentId      String?           // Null if general session access
+  
+  action          ShareAccessAction
+  
+  // Accessor information (no account required)
+  accessorName    String?           // Provider name if provided
+  accessorOrg     String?           // Organization if provided
+  accessorEmail   String?           // Email if provided (optional)
+  
+  // Request metadata
+  ipAddress       String?
+  userAgent       String?
+  
+  // Result
+  wasSuccessful   Boolean           @default(true)
+  denialReason    String?           // If access was denied
+  
+  accessedAt      DateTime          @default(now())
+  
+  shareSession    NpaShareSession   @relation(fields: [shareSessionId], references: [id], onDelete: Cascade)
+
+  @@index([shareSessionId])
+  @@index([documentId])
+  @@index([action])
+  @@index([accessedAt])
+  @@index([accessorEmail])
+}
+
+// Provider-contributed documents (when upload_allowed is enabled)
+model NpaProviderContribution {
+  id              String            @id @default(cuid())
+  shareSessionId  String
+  npaId           String            // Patient's NPA ID
+  documentId      String            @unique // The new document created (one contribution per document)
+  
+  // Provider information
+  providerName    String
+  providerOrg     String?
+  providerEmail   String?
+  dateOfCare      DateTime?
+  
+  // Contribution metadata
+  contributionType String           // visit_summary, referral, care_note, etc.
+  notes           String?           // Optional notes from provider
+  
+  // Request metadata
+  ipAddress       String?
+  userAgent       String?
+  
+  createdAt       DateTime          @default(now())
+  
+  shareSession    NpaShareSession   @relation(fields: [shareSessionId], references: [id], onDelete: Cascade)
+  document        NpaVaultDocument  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([shareSessionId])
+  @@index([npaId])
+  @@index([providerEmail])
+  @@index([createdAt])
 }

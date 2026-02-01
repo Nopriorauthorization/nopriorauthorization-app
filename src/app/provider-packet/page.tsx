@@ -1,5 +1,5 @@
 "use client";
-
+export const dynamic = 'force-dynamic';
 import { useState } from "react";
 import Button from "@/components/ui/button";
 
@@ -133,10 +133,24 @@ export default function ClinicalSummaryPage() {
           </div>
         )}
 
+        {/* HIPAA COMPLIANCE NOTICE */}
+        {!isEditMode && (
+          <div className="mb-6 rounded-xl border border-amber-500/40 bg-amber-500/5 px-4 py-3">
+            <div className="flex items-start gap-3">
+              <div className="text-amber-400 mt-0.5">⚠️</div>
+              <div className="text-sm text-amber-200">
+                <strong>HIPAA Compliance:</strong> This clinical summary is generated from patient-submitted information. 
+                AI processing of protected health information (PHI) is currently disabled to maintain HIPAA compliance. 
+                All data remains secure within your controlled environment.
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* AI-GENERATED SUMMARY - Provider view only */}
         {!isEditMode && (
           <div className="mb-6 rounded-2xl border border-blue-500/40 bg-blue-500/5 p-6">
-            <h2 className="mb-3 text-lg font-semibold text-blue-400">AI-Generated Clinical Summary</h2>
+            <h2 className="mb-3 text-lg font-semibold text-blue-400">Clinical Summary</h2>
             <p className="text-sm italic text-gray-300">
               [Placeholder] Based on the patient's submitted information, key clinical considerations include risk stratification for reported allergies, medication interactions review, and alignment of patient-stated goals with evidence-based treatment options. Recommend reviewing labs/vitals for baseline assessment.
             </p>

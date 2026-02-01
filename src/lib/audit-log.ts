@@ -12,7 +12,8 @@ export type AuditAction =
   | "UPDATE"
   | "USER_DISABLED"
   | "USER_ENABLED"
-  | "ADMIN_REVOKE";
+  | "ADMIN_REVOKE"
+  | "VIEW_FINANCIALS";
 
 export type ResourceType =
   | "CLINICAL_SUMMARY"
@@ -22,7 +23,8 @@ export type ResourceType =
   | "DOCUMENT_SHARE"
   | "CONSENT"
   | "USER_DATA"
-  | "USER";
+  | "USER"
+  | "FINANCIAL_DATA";
 
 interface LogAccessParams {
   actorId?: string | null;

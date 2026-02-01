@@ -7,44 +7,55 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  PATIENT
+  PROVIDER
+  ADMIN
+}
+
+enum SubscriptionTier {
+  FREE
+  CORE
+  PREMIUM
+}
+
 model User {
-  id                             String               @id @default(cuid())
-  email                          String               @unique
-  passwordHash                   String
-  name                           String?
-  createdAt                      DateTime             @default(now())
-  updatedAt                      DateTime             @updatedAt
-  accountDeletionRequestedAt     DateTime?
-  allowProviderToProviderSharing Boolean              @default(false)
-  consentToShareClinicalSummary  Boolean              @default(false)
-  copyToEHRFormat                String?              @default("plain_text")
-  dataExportRequestedAt          DateTime?
-  defaultClinicalSummaryView     String?              @default("provider")
-  emailNotificationsEnabled      Boolean              @default(true)
-  includeProviderNotesInShares   Boolean              @default(false)
-  lastAccessAt                   DateTime?
-  role                           UserRole             @default(PATIENT)
-  isDisabled                     Boolean              @default(false)
-  subscriptionTier               SubscriptionTier     @default(FREE)
-  
-  // NPA Health ID - Immutable patient identifier (Phase 1)
-  // Format: npa_xxxxxxxx_xxxx_xxxx_xxxx (96 bits entropy)
-  npaId                          String?              @unique
-  npaIdAlias                     String?              // Human-readable display alias
-  npaStatus                      NpaStatus            @default(ACTIVE)
-  
-  appointments                   Appointment[]
-  blueprint                      Blueprint?
-  chatSessions                   ChatSession[]
-  consentChangeLogs              ConsentChangeLog[]
-  dataRequests                   DataRequest[]
-  passwordResetTokens            PasswordResetToken[]
-  subscription                   Subscription?
-  disableEvents                  UserDisableEvent[]
-  memory                         UserMemory?
-  Vault                          Vault?
-  identityAuditLogs              IdentityAuditLog[]
-  npaVaultDocuments              NpaVaultDocument[]
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String?
+  role         UserRole  @default(PATIENT)
+  subscriptionTier SubscriptionTier @default(FREE)
+  isDisabled   Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  lastAccessAt DateTime?
+
+  // Privacy & Consent
+  consentToShareClinicalSummary  Boolean @default(false)
+  allowProviderToProviderSharing Boolean @default(false)
+  emailNotificationsEnabled      Boolean @default(true)
+
+  // Provider-only settings
+  defaultClinicalSummaryView   String? @default("provider")
+  includeProviderNotesInShares Boolean @default(false)
+  copyToEHRFormat              String? @default("plain_text")
+
+  // Data controls
+  dataExportRequestedAt      DateTime?
+  accountDeletionRequestedAt DateTime?
+
+  chatSessions        ChatSession[]
+  subscription        Subscription?
+  memory              UserMemory?
+  blueprint           Blueprint?
+  vault               Vault?
+  security            UserSecurity?
+  disableEvents       UserDisableEvent[]
+  passwordResetTokens PasswordResetToken[]
+  consentChangeLogs   ConsentChangeLog[]
+  dataRequests        DataRequest[]
+  appointments        Appointment[]
 }
 
 model Subscription {
@@ -88,49 +99,61 @@ model UserMemory {
   goals                  Json?
   preferences            Json?
   topicsDiscussed        Json?
+  vaultName              String? // Personalized name for Sacred Vault
   disclaimerAcknowledged Boolean  @default(false)
+  onboardingCompleted    Boolean  @default(false) // Tracks if user completed Phase 4B onboarding
   optOut                 Boolean  @default(false)
   createdAt              DateTime @default(now())
   updatedAt              DateTime @updatedAt
-  vaultName              String?
-  onboardingCompleted    Boolean  @default(false)
   user                   User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([anonId])
 }
 
 model Blueprint {
-  id                String   @id @default(cuid())
-  userId            String   @unique
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  identityContext   Json?
-  healthFoundations Json?
-  treatments        Json?
-  timeline          Json?
-  documents         Json?
-  providers         Json?
-  preparation       Json?
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Blueprint Sections
+  identityContext      Json? // Personal identity, values, context
+  healthFoundations    Json? // Core health conditions, diagnoses
+  treatments           Json? // Current and past treatments, medications
+  timeline             Json? // Health journey timeline, milestones
+  documents            Json? // Key documents, media references
+  providers            Json? // Care team, providers, relationships
+  preparation          Json? // Advocacy prep, questions, goals
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
 }
 
+enum DocumentCategory {
+  LAB
+  IMAGING
+  VISIT_NOTE
+  DISCHARGE
+  OTHER
+}
+
 model Document {
-  id                     String              @id @default(cuid())
+  id                     String           @id @default(cuid())
   userId                 String?
   anonId                 String?
   title                  String
-  category               DocumentCategory    @default(OTHER)
+  category               DocumentCategory @default(OTHER)
   docDate                DateTime?
   storagePath            String
   mimeType               String
   sizeBytes              Int
-  includeInPacketDefault Boolean             @default(false)
-  createdAt              DateTime            @default(now())
+  includeInPacketDefault Boolean          @default(false)
+  createdAt              DateTime         @default(now())
   deletedAt              DateTime?
-  decode                 DocumentDecode?     @relation("DocumentDecode")
-  shareLinks             DocumentShareLink[]
+
+  shareLinks DocumentShareLink[]
+  decode     DocumentDecode?    @relation("DocumentDecode")
 
   @@index([userId])
   @@index([anonId])
@@ -139,47 +162,57 @@ model Document {
 model DocumentDecode {
   id         String   @id @default(cuid())
   documentId String   @unique
-  summary    String
-  keyTerms   Json
-  questions  Json
-  nextSteps  Json
-  safetyNote String?
+  summary    String   @db.Text
+  keyTerms   Json // Array of {term, definition, category}
+  questions  Json // Array of strings
+  nextSteps  Json // Array of strings
+  safetyNote String?  @db.Text
   createdAt  DateTime @default(now())
-  Document   Document @relation("DocumentDecode", fields: [documentId], references: [id], onDelete: Cascade)
+
+  Document Document @relation("DocumentDecode", fields: [documentId], references: [id], onDelete: Cascade)
 
   @@index([documentId])
 }
 
 model DocumentShareLink {
-  id         String                    @id @default(cuid())
+  id         String    @id @default(cuid())
   documentId String
-  token      String                    @unique
+  token      String    @unique
   expiresAt  DateTime
   revokedAt  DateTime?
-  createdAt  DateTime                  @default(now())
   revokedBy  String?
-  document   Document                  @relation(fields: [documentId], references: [id], onDelete: Cascade)
-  accesses   DocumentShareLinkAccess[]
+  createdAt  DateTime  @default(now())
+
+  document Document                  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  accesses DocumentShareLinkAccess[]
 
   @@index([documentId])
 }
 
 model DocumentShareLinkAccess {
-  id          String            @id @default(cuid())
+  id          String   @id @default(cuid())
   shareLinkId String
-  accessedAt  DateTime          @default(now())
+  accessedAt  DateTime @default(now())
   ipAddress   String?
   userAgent   String?
-  shareLink   DocumentShareLink @relation(fields: [shareLinkId], references: [id], onDelete: Cascade)
+
+  shareLink DocumentShareLink @relation(fields: [shareLinkId], references: [id], onDelete: Cascade)
+}
+
+enum ProviderPacketTemplate {
+  PRIMARY
+  SPECIALIST
+  URGENT
 }
 
 model ProviderPacket {
-  id         String                 @id @default(cuid())
-  userId     String?
-  anonId     String?
-  template   ProviderPacketTemplate @default(PRIMARY)
-  payload    Json
-  createdAt  DateTime               @default(now())
+  id        String                 @id @default(cuid())
+  userId    String?
+  anonId    String?
+  template  ProviderPacketTemplate @default(PRIMARY)
+  payload   Json
+  createdAt DateTime               @default(now())
+
   shareLinks ProviderPacketLink[]
 
   @@index([userId])
@@ -187,37 +220,39 @@ model ProviderPacket {
 }
 
 model ProviderPacketLink {
-  id        String                    @id @default(cuid())
-  token     String                    @unique
+  id        String    @id @default(cuid())
+  token     String    @unique
   packetId  String
   expiresAt DateTime
   revokedAt DateTime?
-  createdAt DateTime                  @default(now())
-  accesses  ProviderPacketAccessLog[]
-  packet    ProviderPacket            @relation(fields: [packetId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+
+  packet   ProviderPacket            @relation(fields: [packetId], references: [id], onDelete: Cascade)
+  accesses ProviderPacketAccessLog[]
 
   @@index([packetId])
 }
 
 model ProviderPacketAccessLog {
-  id                   String             @id @default(cuid())
+  id                   String   @id @default(cuid())
   providerPacketLinkId String
-  accessedAt           DateTime           @default(now())
+  accessedAt           DateTime @default(now())
   ipAddress            String?
   userAgent            String?
-  link                 ProviderPacketLink @relation(fields: [providerPacketLinkId], references: [id], onDelete: Cascade)
+
+  link ProviderPacketLink @relation(fields: [providerPacketLinkId], references: [id], onDelete: Cascade)
 }
 
 model AccessLog {
   id            String   @id @default(cuid())
-  actorId       String?
-  subjectUserId String?
-  action        String
-  resourceType  String
+  actorId       String? // who performed the action
+  subjectUserId String? // whose PHI was accessed
+  action        String // VIEW, EXPORT, SHARE, REVOKE
+  resourceType  String // CLINICAL_SUMMARY, DOCUMENT, PROVIDER_PACKET
   resourceId    String
   ipAddress     String?
   userAgent     String?
-  metadata      Json?
+  metadata      Json? // additional context
   createdAt     DateTime @default(now())
 
   @@index([actorId, createdAt])
@@ -226,15 +261,17 @@ model AccessLog {
   @@index([createdAt])
 }
 
+// User Disable Events - Preserves history across multiple disable/enable cycles
 model UserDisableEvent {
   id         String    @id @default(cuid())
   userId     String
   disabledAt DateTime  @default(now())
-  disabledBy String
-  reason     String?
-  resolvedAt DateTime?
-  resolvedBy String?
-  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  disabledBy String // Admin user ID who performed the disable
+  reason     String? // Optional free text reason
+  resolvedAt DateTime? // When account was re-enabled (null = still disabled)
+  resolvedBy String? // Admin user ID who re-enabled
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([disabledAt])
@@ -248,7 +285,8 @@ model PasswordResetToken {
   expiresAt DateTime
   createdAt DateTime  @default(now())
   usedAt    DateTime?
-  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([token])
   @@index([userId])
@@ -258,13 +296,14 @@ model PasswordResetToken {
 model ConsentChangeLog {
   id          String   @id @default(cuid())
   userId      String
-  consentType String
+  consentType String // "clinicalSummary", "providerSharing", "emailNotifications"
   oldValue    Boolean
   newValue    Boolean
-  changedBy   String?
+  changedBy   String? // User ID who made the change (null = user themselves)
   changedAt   DateTime @default(now())
-  source      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  source      String // "user_settings", "admin_portal", "onboarding"
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, changedAt])
   @@index([consentType])
@@ -274,16 +313,17 @@ model ConsentChangeLog {
 model DataRequest {
   id                 String    @id @default(cuid())
   userId             String
-  requestType        String
-  status             String    @default("pending")
+  requestType        String // "export", "deletion"
+  status             String    @default("pending") // "pending", "in_progress", "completed", "cancelled"
   requestedAt        DateTime  @default(now())
   fulfilledAt        DateTime?
-  fulfilledBy        String?
+  fulfilledBy        String? // Admin user ID who fulfilled the request
   cancelledAt        DateTime?
-  cancelledBy        String?
+  cancelledBy        String? // Admin user ID who cancelled the request
   cancellationReason String?
-  notes              String?
-  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notes              String? // Admin notes about the request
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([status])
@@ -298,14 +338,15 @@ model Appointment {
   providerName      String
   providerSpecialty String?
   appointmentDate   DateTime
-  appointmentType   String
-  status            String   @default("scheduled")
-  location          String?
+  appointmentType   String // "checkup", "follow-up", "consultation", "procedure", "lab", "imaging", "other"
+  status            String   @default("scheduled") // "scheduled", "completed", "cancelled", "missed"
+  location          String? // Office name or address
   notes             String?
   reminderSent      Boolean  @default(false)
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
-  user              User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([anonId])
@@ -314,7 +355,7 @@ model Appointment {
 }
 
 model Provider {
-  id        String           @id @default(cuid())
+  id        String   @id @default(cuid())
   userId    String?
   anonId    String?
   name      String
@@ -323,10 +364,11 @@ model Provider {
   email     String?
   address   String?
   notes     String?
-  tags      String[]         @default([])
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
-  ratings   ProviderRating[]
+  tags      String[] @default([])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ratings ProviderRating[]
 
   @@index([userId])
   @@index([anonId])
@@ -339,14 +381,15 @@ model ProviderRating {
   providerId     String
   providerName   String
   specialty      String?
-  rating         Int
+  rating         Int // 1-5 stars
   tags           String[] @default([])
   notes          String?
   wouldRecommend Boolean  @default(true)
   lastVisit      DateTime @default(now())
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
-  provider       Provider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  provider Provider @relation(fields: [providerId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([anonId])
@@ -357,12 +400,12 @@ model PhotoComparison {
   id          String   @id @default(cuid())
   userId      String?
   anonId      String?
-  beforePhoto String
-  afterPhoto  String
+  beforePhoto String // URL or path to before photo
+  afterPhoto  String // URL or path to after photo
   title       String?
   notes       String?
-  daysBetween Int?
-  category    String?
+  daysBetween Int? // Calculated days between photos
+  category    String? // "face", "body", "skin", etc.
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -375,10 +418,10 @@ model VoiceMemo {
   id         String   @id @default(cuid())
   userId     String?
   anonId     String?
-  audioUrl   String
-  transcript String?
+  audioUrl   String // URL to stored audio file
+  transcript String? // AI-generated transcription
   title      String?
-  duration   Int?
+  duration   Int? // Duration in seconds
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
@@ -391,8 +434,8 @@ model RedFlag {
   id          String   @id @default(cuid())
   userId      String?
   anonId      String?
-  type        String
-  severity    String
+  type        String // "interaction", "contraindication", "timing", "safety"
+  severity    String // "critical", "warning", "info"
   title       String
   description String
   medications String[] @default([])
@@ -408,17 +451,17 @@ model RedFlag {
 }
 
 model TrustedCircleMember {
-  id           String    @id @default(cuid())
-  userId       String
+  id           String   @id @default(cuid())
+  userId       String // Owner of the vault
   name         String
   email        String
   relationship String?
-  permissions  String[]  @default([])
-  status       String    @default("pending")
-  invitedAt    DateTime  @default(now())
+  permissions  String[] @default([])
+  status       String   @default("pending") // "pending", "active", "expired"
+  invitedAt    DateTime @default(now())
   expiresAt    DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@index([userId])
   @@index([email])
@@ -427,13 +470,13 @@ model TrustedCircleMember {
 
 model TrustedCircleInvite {
   id           String    @id @default(cuid())
-  userId       String
+  userId       String // Owner sending the invite
   inviteeName  String
   inviteeEmail String
   relationship String?
   permissions  String[]  @default([])
   token        String    @unique @default(cuid())
-  status       String    @default("pending")
+  status       String    @default("pending") // "pending", "accepted", "expired"
   expiresAt    DateTime?
   acceptedAt   DateTime?
   createdAt    DateTime  @default(now())
@@ -444,187 +487,77 @@ model TrustedCircleInvite {
   @@index([status])
   @@index([inviteeEmail])
 }
-
-model BlueprintInsight {
-  id        String          @id
-  vaultId   String
-  source    InsightSource
-  priority  InsightPriority
-  message   String
-  createdAt DateTime        @default(now())
-  updatedAt DateTime
-  Vault     Vault           @relation(fields: [vaultId], references: [id], onDelete: Cascade)
-
-  @@index([priority])
-  @@index([source])
-  @@index([vaultId])
-}
-
 model FamilyMember {
-  id            String   @id
-  vaultId       String
-  relationship  String
-  conditionTags String[] @default([])
-  notes         String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime
-  Vault         Vault    @relation(fields: [vaultId], references: [id], onDelete: Cascade)
+  id           String   @id @default(cuid())
+  vaultId      String // Connects to Vault instead of userId directly
+  relationship String // "self" | "parent" | "child" | "sibling" | "spouse" | "grandparent" | "aunt" | "uncle" | "cousin" | "other"
+  conditionTags String[] @default([]) // Health conditions
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
-  @@index([relationship])
+  vault Vault @relation(fields: [vaultId], references: [id], onDelete: Cascade)
+
   @@index([vaultId])
+  @@index([relationship])
 }
 
-model FeatureFlag {
-  id                String              @id
-  key               String              @unique
-  name              String
-  description       String?
-  type              FeatureFlagType     @default(EMERGENCY_TOGGLE)
-  enabled           Boolean             @default(true)
-  defaultValue      Boolean             @default(true)
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime
-  FeatureFlagChange FeatureFlagChange[]
-
-  @@index([enabled])
-  @@index([key])
-  @@index([type])
-}
-
-model FeatureFlagChange {
-  id          String      @id
-  flagId      String
-  changedBy   String
-  oldValue    Boolean
-  newValue    Boolean
-  reason      String?
-  ipAddress   String?
-  userAgent   String?
-  createdAt   DateTime    @default(now())
-  FeatureFlag FeatureFlag @relation(fields: [flagId], references: [id], onDelete: Cascade)
-
-  @@index([changedBy])
-  @@index([createdAt])
-  @@index([flagId])
-}
-
-model LabResult {
-  id            String    @id
-  vaultItemId   String
-  testName      String
-  flags         String[]  @default([])
-  parsedSummary String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime
-  VaultItem     VaultItem @relation(fields: [vaultItemId], references: [id], onDelete: Cascade)
-
-  @@index([vaultItemId])
-}
-
-model MascotScript {
-  id                 String               @id
-  mascotId           String
-  version            String
-  status             MascotScriptStatus   @default(DRAFT)
-  title              String
-  description        String?
-  scriptContent      Json
-  audioEnabled       Boolean              @default(true)
-  autoplayEnabled    Boolean              @default(false)
-  createdBy          String
-  createdAt          DateTime             @default(now())
-  updatedAt          DateTime
-  MascotScriptChange MascotScriptChange[]
-
-  @@unique([mascotId, version])
-  @@index([mascotId])
-  @@index([status])
-  @@index([version])
-}
-
-model MascotScriptChange {
-  id           String       @id
-  scriptId     String
-  changedBy    String
-  changeType   String
-  oldValue     Json?
-  newValue     Json?
-  reason       String?
-  ipAddress    String?
-  userAgent    String?
-  createdAt    DateTime     @default(now())
-  MascotScript MascotScript @relation(fields: [scriptId], references: [id], onDelete: Cascade)
-
-  @@index([changedBy])
-  @@index([createdAt])
-  @@index([scriptId])
-}
-
-model SystemHealthCheck {
-  id        String   @id
-  service   String
-  status    String
-  message   String?
-  latency   Int?
-  checkedAt DateTime @default(now())
-
-  @@index([checkedAt])
-  @@index([service])
-  @@index([status])
-}
+// P0 PHASE 2: VAULT + BLUEPRINT INTELLIGENCE FOUNDATION
+// Single source of truth for all health data
 
 model Vault {
-  id               String             @id
-  userId           String             @unique
-  createdAt        DateTime           @default(now())
-  updatedAt        DateTime
-  BlueprintInsight BlueprintInsight[]
-  FamilyMember     FamilyMember[]
-  User             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  VaultItem        VaultItem[]
+  id        String   @id @default(cuid())
+  userId    String   @unique // 1:1 relationship with User
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // All vault data connects here
+  vaultItems    VaultItem[]
+  familyMembers FamilyMember[]
+  blueprintInsights BlueprintInsight[]
 
   @@index([userId])
 }
 
+enum VaultItemType {
+  DOCUMENT
+  LAB
+  NOTE
+  TOOL_OUTPUT
+}
+
 model VaultItem {
-  id        String        @id
+  id        String   @id @default(cuid())
   vaultId   String
   type      VaultItemType
   title     String
-  metadata  Json
-  createdAt DateTime      @default(now())
-  updatedAt DateTime
-  LabResult LabResult[]
-  Vault     Vault         @relation(fields: [vaultId], references: [id], onDelete: Cascade)
+  metadata  Json // Structured data based on type
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  @@index([type])
+  vault Vault @relation(fields: [vaultId], references: [id], onDelete: Cascade)
+
+  // Specific data types
+  labResults LabResult[]
+
   @@index([vaultId])
+  @@index([type])
 }
 
-enum UserRole {
-  PATIENT
-  PROVIDER
-  ADMIN
-}
+model LabResult {
+  id          String   @id @default(cuid())
+  vaultItemId String
+  testName    String
+  flags       String[] @default([]) // "normal", "borderline", "abnormal"
+  parsedSummary String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-enum DocumentCategory {
-  LAB
-  IMAGING
-  VISIT_NOTE
-  DISCHARGE
-  OTHER
-}
+  vaultItem VaultItem @relation(fields: [vaultItemId], references: [id], onDelete: Cascade)
 
-enum ProviderPacketTemplate {
-  PRIMARY
-  SPECIALIST
-  URGENT
-}
-
-enum FeatureFlagType {
-  EMERGENCY_TOGGLE
-  SYSTEM_CONTROL
-  MASCOT_CONTROL
+  @@index([vaultItemId])
 }
 
 enum InsightPriority {
@@ -640,202 +573,198 @@ enum InsightSource {
   DOCUMENT
 }
 
+model BlueprintInsight {
+  id        String   @id @default(cuid())
+  vaultId   String
+  source    InsightSource
+  priority  InsightPriority
+  message   String // Plain language only
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  vault Vault @relation(fields: [vaultId], references: [id], onDelete: Cascade)
+
+  @@index([vaultId])
+  @@index([source])
+  @@index([priority])
+}
+
+// PHASE 6F: SYSTEM HEALTH & FEATURE FLAGS
+// Centralized feature toggles and system health monitoring
+
+enum FeatureFlagType {
+  EMERGENCY_TOGGLE
+  SYSTEM_CONTROL
+  MASCOT_CONTROL
+}
+
+model FeatureFlag {
+  id          String   @id @default(cuid())
+  key         String   @unique // e.g., "mascot-controls", "audio-modes", "exports", "signups", "read-only"
+  name        String   // Human readable name
+  description String?  // Description of what this flag controls
+  type        FeatureFlagType @default(EMERGENCY_TOGGLE)
+  enabled     Boolean  @default(true)
+  defaultValue Boolean @default(true) // What to default to if flag is missing
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Audit trail
+  flagChanges FeatureFlagChange[]
+
+  @@index([key])
+  @@index([type])
+  @@index([enabled])
+}
+
+model FeatureFlagChange {
+  id         String   @id @default(cuid())
+  flagId     String
+  changedBy  String   // Admin user ID who made the change
+  oldValue   Boolean
+  newValue   Boolean
+  reason     String?  // Reason for the change
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  flag FeatureFlag @relation(fields: [flagId], references: [id], onDelete: Cascade)
+
+  @@index([flagId])
+  @@index([changedBy])
+  @@index([createdAt])
+}
+
+model SystemHealthCheck {
+  id        String   @id @default(cuid())
+  service   String   // "api", "auth", "vault", "blueprint", "lab-decoder", "stripe"
+  status    String   // "healthy", "degraded", "unhealthy", "unknown"
+  message   String?  // Status message
+  latency   Int?     // Response time in ms
+  checkedAt DateTime @default(now())
+
+  @@index([service])
+  @@index([status])
+  @@index([checkedAt])
+}
+
+// PHASE 6G: CONTENT GOVERNANCE
+// Mascot script versioning and content control
+
 enum MascotScriptStatus {
   DRAFT
   ACTIVE
   ARCHIVED
 }
 
-enum SubscriptionTier {
-  FREE
-  CORE
-  PREMIUM
+model MascotScript {
+  id          String   @id @default(cuid())
+  mascotId    String   // e.g., "beau-tox", "peppi", "f-ill", "rn-lisa-grace"
+  version     String   // Semantic version like "1.0.0"
+  status      MascotScriptStatus @default(DRAFT)
+  title       String   // Human readable title
+  description String?  // Description of changes
+  scriptContent Json    // The actual script data (dialogues, behaviors, etc.)
+  audioEnabled Boolean @default(true)
+  autoplayEnabled Boolean @default(false)
+  createdBy   String   // Admin user ID
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Audit trail
+  scriptChanges MascotScriptChange[]
+
+  @@index([mascotId])
+  @@index([status])
+  @@index([version])
+  @@unique([mascotId, version])
 }
 
-enum VaultItemType {
-  DOCUMENT
-  LAB
-  NOTE
-  TOOL_OUTPUT
-}
-
-// ============================================
-// NPA PHASE 1: IDENTITY FOUNDATION
-// ============================================
-
-enum NpaStatus {
-  ACTIVE
-  SUSPENDED
-  DELETED
-}
-
-enum IdentityAuditAction {
-  ACCOUNT_CREATED
-  NPA_ID_GENERATED
-  LOGIN
-  LOGIN_FAILED
-  LOGOUT
-  PASSWORD_CHANGED
-  PASSWORD_RESET_REQUESTED
-  PASSWORD_RESET_COMPLETED
-  PROFILE_UPDATED
-  ACCOUNT_SUSPENDED
-  ACCOUNT_REACTIVATED
-  ACCOUNT_DELETED
-}
-
-model IdentityAuditLog {
-  id        String              @id @default(cuid())
-  userId    String?
-  npaId     String?
-  action    IdentityAuditAction
-  ipAddress String?
-  userAgent String?
-  metadata  Json?
-  createdAt DateTime            @default(now())
-  user      User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
-
-  @@index([userId])
-  @@index([npaId])
-  @@index([action])
-  @@index([createdAt])
-}
-
-// ============================================
-// NPA PHASE 2: PATIENT-OWNED VAULT STORAGE
-// ============================================
-
-enum NpaDocumentSource {
-  EPIC_MYCHART
-  CERNER
-  ATHENA
-  ALLSCRIPTS
-  MEDITECH
-  NEXTGEN
-  ECW
-  PATIENT_UPLOAD
-  PROVIDER_UPLOAD
-  INSURANCE
-  LAB_DIRECT
-  IMAGING_CENTER
-  PHARMACY
-  OTHER
-}
-
-enum NpaDocumentCategory {
-  LAB_RESULT
-  IMAGING_REPORT
-  IMAGING_SCAN
-  VISIT_SUMMARY
-  DISCHARGE_SUMMARY
-  MEDICATION_LIST
-  ALLERGY_LIST
-  IMMUNIZATION_RECORD
-  PROCEDURE_NOTE
-  OPERATIVE_REPORT
-  PATHOLOGY_REPORT
-  REFERRAL
-  INSURANCE_CARD
-  INSURANCE_EOB
-  CCDA_CCD
-  CARE_PLAN
-  CONSENT_FORM
-  ADVANCE_DIRECTIVE
-  OTHER
-}
-
-model NpaVaultDocument {
-  id               String              @id @default(cuid())
-  npaId            String
-  userId           String?
-  title            String
-  category         NpaDocumentCategory @default(OTHER)
-  source           NpaDocumentSource   @default(PATIENT_UPLOAD)
-  sourceSystem     String?
-  dateOfCare       DateTime?
-  dateReceived     DateTime?
-  uploadedAt       DateTime            @default(now())
-  storagePath      String
-  originalFilename String
-  mimeType         String
-  sizeBytes        Int
-  extractedText    String?
-  isDeleted        Boolean             @default(false)
-  deletedAt        DateTime?
-  createdAt        DateTime            @default(now())
-  updatedAt        DateTime            @updatedAt
-  user             User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
-  auditLogs        NpaVaultAuditLog[]
-  shareLinks       NpaVaultShareLink[]
-
-  @@index([npaId])
-  @@index([userId])
-  @@index([category])
-  @@index([source])
-  @@index([dateOfCare])
-  @@index([uploadedAt])
-  @@index([isDeleted])
-}
-
-enum NpaVaultAction {
-  UPLOADED
-  VIEWED
-  DOWNLOADED
-  METADATA_UPDATED
-  DELETED
-  RESTORED
-  SHARED
-  SHARE_REVOKED
-}
-
-model NpaVaultAuditLog {
-  id         String           @id @default(cuid())
-  documentId String
-  npaId      String
-  action     NpaVaultAction
-  actorId    String?
-  actorNpaId String?
+model MascotScriptChange {
+  id         String   @id @default(cuid())
+  scriptId   String
+  changedBy  String   // Admin user ID
+  changeType String   // "created", "updated", "status_changed", "activated", "archived"
+  oldValue   Json?    // Previous state
+  newValue   Json?    // New state
+  reason     String?  // Reason for change
   ipAddress  String?
   userAgent  String?
-  metadata   Json?
-  createdAt  DateTime         @default(now())
-  document   NpaVaultDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
 
-  @@index([documentId])
-  @@index([npaId])
-  @@index([action])
+  script MascotScript @relation(fields: [scriptId], references: [id], onDelete: Cascade)
+
+  @@index([scriptId])
+  @@index([changedBy])
   @@index([createdAt])
 }
 
-model NpaVaultShareLink {
-  id          String                    @id @default(cuid())
-  documentId  String
-  npaId       String
-  token       String                    @unique
-  canDownload Boolean                   @default(false)
-  canUpload   Boolean                   @default(false)
-  expiresAt   DateTime
-  isRevoked   Boolean                   @default(false)
-  revokedAt   DateTime?
-  revokedBy   String?
-  createdAt   DateTime                  @default(now())
-  document    NpaVaultDocument          @relation(fields: [documentId], references: [id], onDelete: Cascade)
-  accesses    NpaVaultShareLinkAccess[]
+// =============================================================================
+// P0 RETENTION LAYER: USER AWARENESS SYSTEM
+// Tracks user actions to create emotional stickiness and show progress
+// =============================================================================
 
-  @@index([documentId])
-  @@index([npaId])
-  @@index([token])
-  @@index([expiresAt])
+enum UserEventType {
+  LAB_UPLOAD
+  LAB_DECODED
+  FAMILY_ADDED
+  FAMILY_UPDATED
+  CHAT_USED
+  INSIGHT_VIEWED
+  DOCUMENT_UPLOADED
+  DOCUMENT_DECODED
+  BLUEPRINT_UPDATED
+  MASCOT_VISITED
+  TOOL_USED
+  PROVIDER_ADDED
+  APPOINTMENT_ADDED
 }
 
-model NpaVaultShareLinkAccess {
-  id          String            @id @default(cuid())
-  shareLinkId String
-  accessedAt  DateTime          @default(now())
-  ipAddress   String?
-  userAgent   String?
-  shareLink   NpaVaultShareLink @relation(fields: [shareLinkId], references: [id], onDelete: Cascade)
+model UserEvent {
+  id        String        @id @default(cuid())
+  userId    String
+  type      UserEventType
+  source    String        // e.g., 'decode', 'roots', 'harmony', 'slim-t', 'beau-tox', 'vault'
+  metadata  Json?         // Optional additional context
+  createdAt DateTime      @default(now())
 
-  @@index([shareLinkId])
-  @@index([accessedAt])
+  @@index([userId])
+  @@index([userId, createdAt])
+  @@index([type])
+  @@index([source])
+  @@index([createdAt])
+}
+
+// Tracks the last time a user visited (for "since your last visit" feature)
+model UserVisit {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  lastVisitAt   DateTime @default(now())
+  previousVisitAt DateTime? // Track the visit before current for delta calculation
+  totalVisits   Int      @default(1)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
+  @@index([lastVisitAt])
+}
+
+// =============================================================================
+// VAULT PASSCODE: Extra protection layer for sensitive actions
+// User-chosen passcode, bcrypt hashed, NEVER stored in plain text
+// =============================================================================
+
+model UserSecurity {
+  id                  String    @id @default(cuid())
+  userId              String    @unique
+  vaultPasscodeHash   String?   // bcrypt hash of 6-8 digit passcode
+  passcodeSetAt       DateTime? // When passcode was last set
+  passcodeAttempts    Int       @default(0) // Failed attempts counter
+  passcodeLockedUntil DateTime? // Lockout until this time
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }

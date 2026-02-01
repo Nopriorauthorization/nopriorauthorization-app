@@ -1,5 +1,5 @@
 "use client";
-
+export const dynamic = 'force-dynamic';
 import { Suspense, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -124,7 +124,7 @@ function LoginPageInner() {
           </form>
 
           <div className="mt-6 text-center text-sm text-gray-600">
-            DonDon't have an account?apos;t have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link
               href="/signup"
               className="text-hot-pink hover:text-hot-pink-dark font-medium"

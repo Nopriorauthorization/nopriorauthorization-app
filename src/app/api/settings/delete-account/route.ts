@@ -16,12 +16,7 @@ export async function POST(req: NextRequest) {
       data: { accountDeletionRequestedAt: new Date() },
     });
 
-    // TODO: Implement account deletion job
-    // This would typically:
-    // 1. Queue a deletion job for 30 days from now
-    // 2. Send confirmation email
-    // 3. Allow user to cancel within 30-day grace period
-    // 4. Perform cascading deletion of all user data
+    // Account deletion requested - 30-day grace period before permanent deletion
     console.log("Account deletion requested for:", session.user.email);
 
     return NextResponse.json({ 

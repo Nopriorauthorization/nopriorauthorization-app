@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
 import { getAdminUser } from "@/lib/auth/admin-guard";
 import prisma from "@/lib/db";

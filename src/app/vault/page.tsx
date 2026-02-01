@@ -1,556 +1,294 @@
 "use client";
-
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import VaultOnboardingModal from "@/components/vault/vault-onboarding-modal";
-import VaultPhasesExplorer from "@/app/vault/vault-phases";
-
-type VaultFeature = {
-  id: string;
-  title: string;
-  description: string;
-  tier: "instant" | "capture" | "power";
-  icon: string;
-  status: "active" | "coming-soon";
-  href?: string;
-};
-
-const VAULT_FEATURES: VaultFeature[] = [
-  // THE HEART OF THE APP - PREMIUM FEATURE
-  {
-    id: "family-tree",
-    title: "Your Family Tree",
-    description: "The heart of your health story — interactive family connections with genetic insights and preventive care guidance. Premium feature.",
-    tier: "power",
-    icon: "🌳",
-    status: "active",
-    href: "/vault/family-tree",
-  },
-
-  // INSTANT ACCESS (Zero Input)
-  {
-    id: "snapshot",
-    title: "My Snapshot",
-    description: "Your complete health identity — auto-assembled from your Blueprint, treatments, and goals.",
-    tier: "instant",
-    icon: "📸",
-    status: "active",
-    href: "/vault/snapshot",
-  },
-  {
-    id: "timeline",
-    title: "My Treatment Timeline",
-    description: "Visual journey of every treatment, upload, and milestone — automatically organized by date.",
-    tier: "instant",
-    icon: "📅",
-    status: "active",
-    href: "/vault/timeline",
-  },
-  {
-    id: "providers",
-    title: "My Providers Hub",
-    description: "Timestamped directory of every provider you've seen, with visit history and quick contact info.",
-    tier: "instant",
-    icon: "👩‍⚕️",
-    status: "active",
-    href: "/vault/providers",
-  },
-  {
-    id: "questions",
-    title: "Questions I Should Ask",
-    description: "AI-generated prep questions before appointments — based on your meds, treatments, and goals.",
-    tier: "instant",
-    icon: "❓",
-    status: "active",
-    href: "/vault/questions-i-should-ask",
-  },
-
-  // SMART CAPTURE (One-Tap Magic)
-  {
-    id: "photos",
-    title: "Smart Photo Vault",
-    description: "Snap a photo → AI categorizes, timestamps, and encrypts it. No filing, no hassle.",
-    tier: "capture",
-    icon: "📷",
-    status: "active",
-    href: "/vault/photos",
-  },
-  {
-    id: "before-after",
-    title: "Before/After Gallery",
-    description: "AI compares progress photos, highlights changes, and tracks results over time.",
-    tier: "capture",
-    icon: "🖼️",
-    status: "active",
-    href: "/vault/before-after-gallery",
-  },
-  {
-    id: "decoder",
-    title: "Treatment Decoder",
-    description: "Scan a prescription, lab result, or bill → get a plain-English explanation instantly.",
-    tier: "capture",
-    icon: "🔍",
-    status: "active",
-    href: "/vault/decoder"
-  },
-  {
-    id: "lab-decoder",
-    title: "Lab Decoder",
-    description: "Clinical intelligence engine that understands labs over time, detects warning signs, and connects trends to family history. 🔴 Critical foundational feature.",
-    tier: "power",
-    icon: "🔬",
-    status: "active",
-    href: "/vault/lab-decoder"
-  },
-  {
-    id: "priority",
-    title: "Life Changing Diagnosis",
-    description: "Your private crisis center—escape, learn, and access everything NPA offers when facing something urgent or life-changing",
-    tier: "power",
-    icon: "🛡️",
-    status: "active",
-    href: "/vault/priority",
-  },
-  {
-    id: "voice",
-    title: "Voice Memos",
-    description: "Post-appointment brain dump → transcribed, organized, and searchable. Just talk.",
-    tier: "capture",
-    icon: "🎙️",
-    status: "active",
-    href: "/vault/voice-memos",
-  },
-
-  // MY RESOURCES (Always Ready)
-  {
-    id: "rewards",
-    title: "Rewards Tracker",
-    description: "All loyalty programs (Allē, Evolve, Aspire) in one place — with point balances and expiration alerts.",
-    tier: "power",
-    icon: "🎁",
-    status: "active",
-    href: "/vault/rewards",
-  },
-  {
-    id: "provider-tracker",
-    title: "Provider Tracker",
-    description: "Rate and tag providers — trustworthy, pushy, amazing. Your private notes, always accessible.",
-    tier: "power",
-    icon: "⭐",
-    status: "active",
-    href: "/vault/provider-tracker",
-  },
-  {
-    id: "red-flags",
-    title: "Red Flags Monitor",
-    description: "AI watches for drug interactions, timing conflicts, and safety issues — before they become problems.",
-    tier: "power",
-    icon: "🚩",
-    status: "active",
-    href: "/vault/red-flags-monitor",
-  },
-  {
-    id: "trusted-circle",
-    title: "Trusted Circle",
-    description: "Share vault access with family or providers — with granular control over what they see.",
-    tier: "power",
-    icon: "🔐",
-    status: "coming-soon",
-  },
-  
-  // SACRED VAULT - AI Intelligence
-  {
-    id: "ai-insights",
-    title: "AI Health Insights",
-    description: "Predictive health analytics with 94% confidence — risk assessment, pattern discovery, and AI-powered recommendations.",
-    tier: "power",
-    icon: "🧠",
-    status: "active",
-    href: "/vault/ai-insights",
-  },
-  {
-    id: "patterns",
-    title: "Pattern Recognition",
-    description: "Statistical pattern discovery with clinical rigor — correlation analysis, anomaly detection, and actionable insights.",
-    tier: "power",
-    icon: "📈",
-    status: "active",
-    href: "/vault/patterns",
-  },
-  {
-    id: "recommendations",
-    title: "Smart Recommendations",
-    description: "Hyper-personalized AI recommendations with 94% accuracy — evidence-based, provider-integrated, with implementation roadmaps.",
-    tier: "power",
-    icon: "💊",
-    status: "active",
-    href: "/vault/recommendations",
-  },
-  {
-    id: "alerts",
-    title: "Smart Alerts",
-    description: "Intelligent notifications with AI-optimized timing — 94% response rate, priority-based, with smart delivery.",
-    tier: "power",
-    icon: "🔔",
-    status: "active",
-    href: "/vault/alerts",
-  },
-  {
-    id: "document-analysis",
-    title: "Document Analysis",
-    description: "AI-powered document processing with 96% accuracy — automatic categorization, data extraction, and insight generation.",
-    tier: "power",
-    icon: "📄",
-    status: "active",
-    href: "/vault/documents",
-  },
-  {
-    id: "user-personalization",
-    title: "User Personalization",
-    description: "Advanced behavioral profiling with 98% accuracy — preference learning, health personality assessment, dynamic adaptation.",
-    tier: "power",
-    icon: "👤",
-    status: "active",
-    href: "/vault/personalization",
-  },
-  {
-    id: "behavioral-analytics",
-    title: "Behavioral Analytics",
-    description: "Comprehensive usage analytics with 93% prediction accuracy — engagement tracking, health goal monitoring, predictive modeling.",
-    tier: "power",
-    icon: "📊",
-    status: "active",
-    href: "/vault/analytics",
-  },
-  {
-    id: "health-metrics",
-    title: "Health Metrics",
-    description: "Complete health metrics dashboard — vital signs tracking, medication adherence, appointment history, comprehensive visualization.",
-    tier: "power",
-    icon: "💓",
-    status: "active",
-    href: "/vault/metrics",
-  },
-  {
-    id: "document-analytics",
-    title: "Document Analytics",
-    description: "Comprehensive document analysis with AI categorization, metrics, and quality scoring.",
-    tier: "power",
-    icon: "📑",
-    status: "active",
-    href: "/vault/document-analytics",
-  },
-  {
-    id: "timeline-enhanced",
-    title: "Enhanced Timeline",
-    description: "Advanced timeline with filtering, search, and interactive exploration.",
-    tier: "power",
-    icon: "⏳",
-    status: "active",
-    href: "/vault/timeline-enhanced",
-  },
-  {
-    id: "insights",
-    title: "Health Insights",
-    description: "AI-generated health insights cards with trends and recommendations.",
-    tier: "power",
-    icon: "💡",
-    status: "active",
-    href: "/vault/insights",
-  },
-  {
-    id: "journey",
-    title: "Health Journey",
-    description: "Interactive health journey map with milestones and progress tracking.",
-    tier: "power",
-    icon: "🗺️",
-    status: "active",
-    href: "/vault/journey",
-  },
-  {
-    id: "provider-portal",
-    title: "Provider Portal",
-    description: "Secure provider data sharing with granular access controls.",
-    tier: "power",
-    icon: "🔒",
-    status: "active",
-    href: "/vault/provider-portal",
-  },
-  {
-    id: "care-team",
-    title: "Care Team",
-    description: "Manage your healthcare team and coordinate care effectively.",
-    tier: "power",
-    icon: "👥",
-    status: "active",
-    href: "/vault/care-team",
-  },
-  {
-    id: "communication",
-    title: "Communication",
-    description: "Secure messaging platform for provider communication.",
-    tier: "power",
-    icon: "💬",
-    status: "active",
-    href: "/vault/communication",
-  },
-  {
-    id: "care-plans",
-    title: "Care Plans",
-    description: "Collaborative care planning with shared goals and monitoring.",
-    tier: "power",
-    icon: "📋",
-    status: "active",
-    href: "/vault/care-plans",
-  },
-  {
-    id: "appointments",
-    title: "Appointments",
-    description: "Smart appointment coordination with reminders and sync.",
-    tier: "power",
-    icon: "🗓️",
-    status: "active",
-    href: "/vault/appointments",
-  },
-  {
-    id: "dashboard",
-    title: "Vault Dashboard",
-    description: "Overview of all Sacred Vault features and quick access.",
-    tier: "power",
-    icon: "📊",
-    status: "active",
-    href: "/vault/dashboard",
-  },
-];
+export const dynamic = 'force-dynamic';
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import {
+  FiLock,
+  FiUpload,
+  FiFile,
+  FiUsers,
+  FiShield,
+  FiArrowRight,
+  FiTrendingUp,
+  FiClock,
+  FiCheckCircle,
+  FiHeart,
+  FiActivity
+} from 'react-icons/fi';
+import { Breadcrumb } from '@/components/ui/breadcrumb';
 
 export default function VaultPage() {
-  const [vaultName, setVaultName] = useState<string | null>(null);
-  const [showOnboarding, setShowOnboarding] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchVaultSettings() {
-      try {
-        const res = await fetch("/api/vault/settings");
-        if (res.ok) {
-          const data = await res.json();
-          setVaultName(data.vaultName);
-          
-          // Show onboarding if no vault name set
-          if (!data.vaultName) {
-            setShowOnboarding(true);
-            
-            // Log analytics: onboarding shown
-            await fetch("/api/analytics", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                event: "vault_onboarding_shown",
-                metadata: { timestamp: new Date().toISOString() },
-              }),
-            }).catch(console.error);
-          }
-        }
-      } catch (error) {
-        console.error("Failed to fetch vault settings:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchVaultSettings();
-  }, []);
-
-  const handleOnboardingComplete = (name: string) => {
-    setVaultName(name);
-    setShowOnboarding(false);
-  };
-
-  const displayVaultName = vaultName || "Sacred Vault";
-  const [filter, setFilter] = useState<"all" | "instant" | "capture" | "power">("all");
-
-  const filteredFeatures = filter === "all" 
-    ? VAULT_FEATURES 
-    : VAULT_FEATURES.filter(f => f.tier === filter);
-
-  const tierLabels = {
-    instant: "Instant Access",
-    capture: "Smart Capture",
-    power: "My Resources",
-  };
-
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-16">
-      <VaultOnboardingModal
-        open={showOnboarding}
-        onComplete={handleOnboardingComplete}
-        currentName={vaultName}
-      />
-      
-      <div className="max-w-6xl mx-auto">
-        {/* Hero Section */}
-        <div className="space-y-6 mb-12">
-          <div className="flex items-center gap-3">
-            <span className="text-4xl">🔐</span>
-            <p className="text-xs font-semibold tracking-[0.35em] text-pink-400 uppercase">
-              {displayVaultName}
+    <div className="min-h-screen bg-black text-white">
+      <div className="max-w-7xl mx-auto p-6">
+        {/* Vault Hero */}
+        <div className="mb-16">
+          <Breadcrumb className="mb-6" />
+          <div className="text-center">
+            <h1 className="text-6xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent mb-6">
+              Sacred Vault
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Your secure, intelligent command center for all health data. AI-powered insights, predictive analytics, and comprehensive care coordination in one HIPAA-compliant platform.
             </p>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
-            The vault only <span className="text-pink-400">you</span> hold the key to.
-          </h1>
-          <p className="text-gray-300 text-lg leading-relaxed max-w-3xl">
-            Your complete health journey — auto-populated, always accessible, and protected.
-            <br />
-            We remember like ChatGPT doesn't. We talk to you like MyChart won't.
-          </p>
-          {vaultName && (
-            <button
-              onClick={() => setShowOnboarding(true)}
-              className="text-sm text-pink-400 hover:text-pink-300 transition"
-            >
-              ✏️ Rename your vault
-            </button>
-          )}
-        </div>
 
-        <VaultPhasesExplorer />
-
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-3 mb-8 border-b border-white/10 pb-4">
-          <button
-            onClick={() => setFilter("all")}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
-              filter === "all"
-                ? "bg-pink-400 text-black"
-                : "bg-white/5 text-white/70 hover:bg-white/10"
-            }`}
-          >
-            All Features
-          </button>
-          <button
-            onClick={() => setFilter("instant")}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
-              filter === "instant"
-                ? "bg-pink-400 text-black"
-                : "bg-white/5 text-white/70 hover:bg-white/10"
-            }`}
-          >
-            ⚡ Instant Access
-          </button>
-          <button
-            onClick={() => setFilter("capture")}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
-              filter === "capture"
-                ? "bg-pink-400 text-black"
-                : "bg-white/5 text-white/70 hover:bg-white/10"
-            }`}
-          >
-            📸 Smart Capture
-          </button>
-          <button
-            onClick={() => setFilter("power")}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
-              filter === "power"
-                ? "bg-pink-400 text-black"
-                : "bg-white/5 text-white/70 hover:bg-white/10"
-            }`}
-          >
-            🎯 My Resources
-          </button>
-        </div>
-
-        {/* Feature Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredFeatures.map((feature) => {
-            const isActive = feature.status === "active" && feature.href;
-            const isFamilyTree = feature.id === "family-tree";
-
-            return isActive ? (
-              <Link
-                key={feature.id}
-                href={feature.href!}
-                className={`relative rounded-2xl border p-6 transition cursor-pointer ${
-                  isFamilyTree
-                    ? "border-purple-400/50 bg-gradient-to-br from-purple-500/10 to-blue-500/10 hover:border-purple-400 hover:from-purple-500/20 hover:to-blue-500/20 transform hover:scale-105"
-                    : "border-white/10 bg-white/5 hover:border-pink-400/30 hover:bg-white/10"
-                }`}
-              >
-                {/* Premium Badge for Family Tree */}
-                {isFamilyTree && (
-                  <div className="absolute -top-2 -right-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-xs font-bold text-white shadow-lg">
-                    💎 PREMIUM
-                  </div>
-                )}
-
-                {/* Icon & Title */}
-                <div className="flex items-start gap-3 mb-3">
-                  <span className={`text-3xl ${isFamilyTree ? "animate-pulse" : ""}`}>{feature.icon}</span>
-                  <div className="flex-1">
-                    <h3 className={`text-lg font-semibold mb-1 ${isFamilyTree ? "text-purple-300" : ""}`}>
-                      {feature.title}
-                      {isFamilyTree && <span className="text-xs text-purple-400 ml-2">❤️</span>}
-                    </h3>
-                    <p className={`text-xs uppercase tracking-wider ${
-                      isFamilyTree ? "text-purple-400/70" : "text-pink-400/70"
-                    }`}>
-                      {isFamilyTree ? "The Heart of Your Health Story" : tierLabels[feature.tier]}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className={`text-sm leading-relaxed ${
-                  isFamilyTree ? "text-gray-300" : "text-gray-400"
-                }`}>
-                  {feature.description}
-                </p>
-
-                {/* Action Arrow */}
-                <div className={`mt-4 text-sm font-semibold ${
-                  isFamilyTree ? "text-purple-400" : "text-pink-400"
-                }`}>
-                  {isFamilyTree ? "Discover Your Story →" : "Open →"}
-                </div>
-              </Link>
-            ) : (
-              <div
-                key={feature.id}
-                className="relative rounded-2xl border p-6 transition border-white/5 bg-white/[0.02] opacity-60"
-              >
-                {/* Status Badge */}
-                <div className="absolute top-4 right-4 px-2 py-1 rounded-full bg-white/10 text-xs font-semibold text-white/60">
-                  Coming Soon
-                </div>
-
-                {/* Icon & Title */}
-                <div className="flex items-start gap-3 mb-3">
-                  <span className="text-3xl">{feature.icon}</span>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
-                    <p className="text-xs text-pink-400/70 uppercase tracking-wider">
-                      {tierLabels[feature.tier]}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-sm text-gray-400 leading-relaxed">
-                  {feature.description}
-                </p>
+            <div className="flex items-center justify-center gap-6 mt-8">
+              <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-lg">
+                <FiShield className="w-5 h-5 text-purple-400" />
+                <span className="text-purple-400 text-sm font-medium">🔒 HIPAA Compliant</span>
               </div>
-            );
-          })}
+              <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-lg">
+                <FiActivity className="w-5 h-5 text-blue-400" />
+                <span className="text-blue-400 text-sm font-medium">🧠 AI-Powered Intelligence</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Footer Note */}
-        <div className="mt-12 rounded-xl border border-white/10 bg-white/5 p-6">
-          <p className="text-sm text-gray-400">
-            <strong className="text-white">Your data. Your control.</strong> Everything in your Sacred Vault is encrypted, private, and accessible only to you. 
-            Share access with providers or family on your terms — with granular control over what they see.
+        {/* Root Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-16"
+        >
+          <div className="relative bg-gradient-to-br from-emerald-500/10 via-green-500/5 to-teal-500/10 border border-emerald-500/30 rounded-3xl p-8 lg:p-12 overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-emerald-400/10 to-green-400/5 rounded-full blur-3xl -translate-y-32 translate-x-32"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-teal-400/10 to-emerald-400/5 rounded-full blur-2xl translate-y-24 -translate-x-24"></div>
+
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-lg shadow-emerald-500/25">
+                    <FiUsers className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h2 className="text-4xl font-bold text-white">Root</h2>
+                    <div className="flex items-center gap-2 mt-1">
+                      <div className="w-12 h-1 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full"></div>
+                      <span className="text-emerald-400 text-sm font-medium">Family Health Intelligence</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                  Discover generational health patterns, genetic predispositions, and family medical history. Build a comprehensive family health map that reveals insights for prevention and early intervention.
+                </p>
+
+                {/* Enhanced feature tabs */}
+                <div className="grid grid-cols-2 gap-3 mb-8">
+                  <div className="group bg-gradient-to-br from-emerald-500/20 to-green-500/10 border border-emerald-500/30 rounded-xl p-4 hover:from-emerald-500/30 hover:to-green-500/20 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
+                    <div className="flex items-center gap-3 mb-2">
+                      <FiUsers className="w-5 h-5 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
+                      <span className="text-emerald-400 font-semibold text-sm group-hover:text-emerald-300">Generational Patterns</span>
+                    </div>
+                    <p className="text-gray-400 text-xs leading-tight">Map your family's health journey</p>
+                  </div>
+
+                  <div className="group bg-gradient-to-br from-green-500/20 to-teal-500/10 border border-green-500/30 rounded-xl p-4 hover:from-green-500/30 hover:to-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/20">
+                    <div className="flex items-center gap-3 mb-2">
+                      <FiHeart className="w-5 h-5 text-green-400 group-hover:text-green-300 transition-colors" />
+                      <span className="text-green-400 font-semibold text-sm group-hover:text-green-300">Genetic Insights</span>
+                    </div>
+                    <p className="text-gray-400 text-xs leading-tight">Unlock DNA-powered wisdom</p>
+                  </div>
+
+                  <div className="group bg-gradient-to-br from-teal-500/20 to-emerald-500/10 border border-teal-500/30 rounded-xl p-4 hover:from-teal-500/30 hover:to-emerald-500/20 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/20">
+                    <div className="flex items-center gap-3 mb-2">
+                      <FiShield className="w-5 h-5 text-teal-400 group-hover:text-teal-300 transition-colors" />
+                      <span className="text-teal-400 font-semibold text-sm group-hover:text-teal-300">Prevention Focus</span>
+                    </div>
+                    <p className="text-gray-400 text-xs leading-tight">Stay ahead of health risks</p>
+                  </div>
+
+                  <div className="group bg-gradient-to-br from-emerald-500/20 to-cyan-500/10 border border-emerald-500/30 rounded-xl p-4 hover:from-emerald-500/30 hover:to-cyan-500/20 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
+                    <div className="flex items-center gap-3 mb-2">
+                      <FiActivity className="w-5 h-5 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
+                      <span className="text-emerald-400 font-semibold text-sm group-hover:text-emerald-300">AI-Powered</span>
+                    </div>
+                    <p className="text-gray-400 text-xs leading-tight">Smart family health analysis</p>
+                  </div>
+                </div>
+
+                <Link
+                  href="/vault/family-tree"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-emerald-600 hover:via-green-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/30"
+                >
+                  <span>Explore Your Root</span>
+                  <FiArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+
+              <div className="order-1 lg:order-2 flex justify-center lg:justify-start">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-green-400/10 rounded-3xl blur-xl scale-110"></div>
+                  <Image
+                    src="/mascots/FAMILYTREEMASCOT.PNG"
+                    alt="Root - Your Family Health Intelligence Guide"
+                    width={400}
+                    height={400}
+                    className="relative rounded-3xl shadow-2xl border border-emerald-500/20"
+                    priority
+                  />
+                  <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 text-white px-6 py-3 rounded-2xl font-semibold shadow-xl border border-white/10">
+                    🌳 Family Intelligence
+                  </div>
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-white text-sm">✨</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Health Tools Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
+          className="mb-16"
+        >
+          <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-3xl p-8 lg:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white">
+                    <FiTrendingUp className="w-8 h-8" />
+                  </div>
+                  <h2 className="text-4xl font-bold text-white">Health Tools</h2>
+                </div>
+
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  Interactive calculators, risk assessments, and health analyzers. Each tool reads from your vault data and saves results back for comprehensive insights.
+                </p>
+
+                <div className="flex flex-wrap gap-3 mb-8">
+                  <div className="flex items-center gap-2 px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full">
+                    <FiCheckCircle className="w-4 h-4 text-purple-400" />
+                    <span className="text-purple-400 text-sm">BMI Calculator</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-pink-500/20 border border-pink-500/30 rounded-full">
+                    <FiHeart className="w-4 h-4 text-pink-400" />
+                    <span className="text-pink-400 text-sm">Risk Assessments</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-indigo-500/20 border border-indigo-500/30 rounded-full">
+                    <FiActivity className="w-4 h-4 text-indigo-400" />
+                    <span className="text-indigo-400 text-sm">Health Trackers</span>
+                  </div>
+                </div>
+
+                <Link
+                  href="/vault/tools"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-purple-600 hover:to-pink-600 transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
+                >
+                  <span>Explore Health Tools</span>
+                  <FiArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+
+              <div className="order-1 lg:order-2 flex justify-center lg:justify-start">
+                <div className="relative">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-4 text-center">
+                      <FiTrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+                      <p className="text-sm font-semibold text-purple-300">Calculators</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-xl p-4 text-center">
+                      <FiHeart className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                      <p className="text-sm font-semibold text-blue-300">Assessments</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-4 text-center">
+                      <FiActivity className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+                      <p className="text-sm font-semibold text-green-300">Trackers</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-orange-500/20 to-yellow-500/20 border border-orange-500/30 rounded-xl p-4 text-center">
+                      <FiShield className="w-8 h-8 text-orange-400 mx-auto mb-2" />
+                      <p className="text-sm font-semibold text-orange-300">Analyzers</p>
+                    </div>
+                  </div>
+                  <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-xl font-semibold shadow-lg">
+                    🛠️ Health Tools
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Blueprint Tie-In */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-16"
+        >
+          <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-3xl p-8 lg:p-12 text-center">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white">
+                  <FiShield className="w-8 h-8" />
+                </div>
+                <h2 className="text-4xl font-bold text-white">Health Blueprint</h2>
+              </div>
+
+              <p className="text-gray-300 text-xl leading-relaxed mb-8">
+                All your Vault data feeds into your personal Health Blueprint - the AI-powered dashboard that analyzes patterns, predicts risks, and creates your optimized wellness roadmap.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-6">
+                  <div className="text-center">
+                    <FiTrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-3" />
+                    <h3 className="text-lg font-semibold text-white mb-2">Pattern Recognition</h3>
+                    <p className="text-gray-400 text-sm">Connects lab results, family history, and symptoms</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-6">
+                  <div className="text-center">
+                    <FiActivity className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+                    <h3 className="text-lg font-semibold text-white mb-2">Risk Prediction</h3>
+                    <p className="text-gray-400 text-sm">Identifies potential health concerns before they arise</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-pink-500/20 to-rose-500/20 border border-pink-500/30 rounded-xl p-6">
+                  <div className="text-center">
+                    <FiHeart className="w-8 h-8 text-pink-400 mx-auto mb-3" />
+                    <h3 className="text-lg font-semibold text-white mb-2">Personalized Action</h3>
+                    <p className="text-gray-400 text-sm">Creates your unique wellness and prevention plan</p>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                href="/vault/blueprint"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-10 py-5 rounded-xl font-semibold text-lg hover:from-purple-600 hover:to-pink-600 transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
+              >
+                <span>Launch Your Health Blueprint</span>
+                <FiArrowRight className="w-6 h-6" />
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Security Notice */}
+        <div className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 p-6">
+          <div className="flex items-center gap-3 mb-3">
+            <FiShield className="w-6 h-6 text-purple-400" />
+            <h3 className="text-lg font-semibold text-white">Your Data Security</h3>
+          </div>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            All data in your Sacred Vault is encrypted with 256-bit AES encryption, HIPAA compliant,
+            and stored securely. You control who can access your information, and all sharing is
+            logged and auditable. Your health data belongs to you - we just help you manage it.
           </p>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

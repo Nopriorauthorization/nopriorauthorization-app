@@ -1,0 +1,200 @@
+
+> ask-beau-tox@1.0.0 build
+> prisma generate && next build
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v5.22.0) to ./node_modules/@prisma/client in 72ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Curious about the SQL queries Prisma ORM generates? Optimize helps you enhance your visibility: https://pris.ly/tip-2-optimize
+
+  ▲ Next.js 14.2.35
+  - Environments: .env.local, .env.production, .env
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/app/(auth)/login/page.tsx
+Error: 
+  [31mx[0m The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/login/page.tsx[0m:1:1]
+ [2m1[0m | export const dynamic = 'force-dynamic';
+ [2m2[0m | "use client";
+   : [31;1m^^^^^^^^^^^^^[0m
+ [2m3[0m | 
+ [2m4[0m | import { Suspense, useState } from "react";
+ [2m5[0m | import { signIn } from "next-auth/react";
+   `----
+
+  [31mx[0m You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  [31m|[0m Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/login/page.tsx[0m:1:1]
+ [2m1[0m | export const dynamic = 'force-dynamic';
+ [2m2[0m | "use client";
+ [2m3[0m | 
+ [2m4[0m | import { Suspense, useState } from "react";
+   : [31;1m                   ^^^^^^^^[0m
+ [2m5[0m | import { signIn } from "next-auth/react";
+ [2m6[0m | import { useRouter, useSearchParams } from "next/navigation";
+ [2m7[0m | import Link from "next/link";
+   `----
+
+  [31mx[0m You're importing a component that needs useRouter. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  [31m|[0m Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/login/page.tsx[0m:3:1]
+ [2m3[0m | 
+ [2m4[0m | import { Suspense, useState } from "react";
+ [2m5[0m | import { signIn } from "next-auth/react";
+ [2m6[0m | import { useRouter, useSearchParams } from "next/navigation";
+   : [31;1m         ^^^^^^^^^[0m
+ [2m7[0m | import Link from "next/link";
+ [2m8[0m | import Button from "@/components/ui/button";
+ [2m9[0m | import Input from "@/components/ui/input";
+   `----
+
+  [31mx[0m You're importing a component that needs useSearchParams. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  [31m|[0m Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/login/page.tsx[0m:3:1]
+ [2m3[0m | 
+ [2m4[0m | import { Suspense, useState } from "react";
+ [2m5[0m | import { signIn } from "next-auth/react";
+ [2m6[0m | import { useRouter, useSearchParams } from "next/navigation";
+   : [31;1m                    ^^^^^^^^^^^^^^^[0m
+ [2m7[0m | import Link from "next/link";
+ [2m8[0m | import Button from "@/components/ui/button";
+ [2m9[0m | import Input from "@/components/ui/input";
+   `----
+
+Import trace for requested module:
+./src/app/(auth)/login/page.tsx
+
+./src/app/(auth)/reset-password/page.tsx
+Error: 
+  [31mx[0m The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/reset-password/page.tsx[0m:1:1]
+ [2m1[0m | export const dynamic = 'force-dynamic';
+ [2m2[0m | "use client";
+   : [31;1m^^^^^^^^^^^^^[0m
+ [2m3[0m | 
+ [2m4[0m | import { useState } from "react";
+ [2m5[0m | import Link from "next/link";
+   `----
+
+  [31mx[0m You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  [31m|[0m Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/reset-password/page.tsx[0m:1:1]
+ [2m1[0m | export const dynamic = 'force-dynamic';
+ [2m2[0m | "use client";
+ [2m3[0m | 
+ [2m4[0m | import { useState } from "react";
+   : [31;1m         ^^^^^^^^[0m
+ [2m5[0m | import Link from "next/link";
+ [2m6[0m | import Button from "@/components/ui/button";
+ [2m7[0m | import Input from "@/components/ui/input";
+   `----
+
+Import trace for requested module:
+./src/app/(auth)/reset-password/page.tsx
+
+./src/app/(auth)/signup/page.tsx
+Error: 
+  [31mx[0m The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/signup/page.tsx[0m:1:1]
+ [2m1[0m | export const dynamic = 'force-dynamic';
+ [2m2[0m | "use client";
+   : [31;1m^^^^^^^^^^^^^[0m
+ [2m3[0m | 
+ [2m4[0m | import { useState } from "react";
+ [2m5[0m | import { signIn } from "next-auth/react";
+   `----
+
+  [31mx[0m You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  [31m|[0m Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/signup/page.tsx[0m:1:1]
+ [2m1[0m | export const dynamic = 'force-dynamic';
+ [2m2[0m | "use client";
+ [2m3[0m | 
+ [2m4[0m | import { useState } from "react";
+   : [31;1m         ^^^^^^^^[0m
+ [2m5[0m | import { signIn } from "next-auth/react";
+ [2m6[0m | import { useRouter } from "next/navigation";
+ [2m7[0m | import Link from "next/link";
+   `----
+
+  [31mx[0m You're importing a component that needs useRouter. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  [31m|[0m Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/signup/page.tsx[0m:3:1]
+ [2m3[0m | 
+ [2m4[0m | import { useState } from "react";
+ [2m5[0m | import { signIn } from "next-auth/react";
+ [2m6[0m | import { useRouter } from "next/navigation";
+   : [31;1m         ^^^^^^^^^[0m
+ [2m7[0m | import Link from "next/link";
+ [2m8[0m | import Button from "@/components/ui/button";
+ [2m9[0m | import Input from "@/components/ui/input";
+   `----
+
+Import trace for requested module:
+./src/app/(auth)/signup/page.tsx
+
+./src/app/(auth)/subscribe/page.tsx
+Error: 
+  [31mx[0m The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/subscribe/page.tsx[0m:1:1]
+ [2m1[0m | export const dynamic = 'force-dynamic';
+ [2m2[0m | "use client";
+   : [31;1m^^^^^^^^^^^^^[0m
+ [2m3[0m | 
+ [2m4[0m | import { useState } from "react";
+ [2m5[0m | import { TIERS } from "@/lib/tiers";
+   `----
+
+  [31mx[0m You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  [31m|[0m Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(auth)/subscribe/page.tsx[0m:1:1]
+ [2m1[0m | export const dynamic = 'force-dynamic';
+ [2m2[0m | "use client";
+ [2m3[0m | 
+ [2m4[0m | import { useState } from "react";
+   : [31;1m         ^^^^^^^^[0m
+ [2m5[0m | import { TIERS } from "@/lib/tiers";
+ [2m6[0m | import Button from "@/components/ui/button";
+   `----
+
+Import trace for requested module:
+./src/app/(auth)/subscribe/page.tsx
+
+./src/app/(dashboard)/experts/page.tsx
+Error: 
+  [31mx[0m The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+   ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/(dashboard)/experts/page.tsx[0m:1:1]
+ [2m1[0m | export const dynamic = 'force-dynamic';
+ [2m2[0m | "use client";
+   : [31;1m^^^^^^^^^^^^^[0m
+ [2m3[0m | 
+ [2m4[0m | import Image from "next/image";
+ [2m5[0m | import Link from "next/link";
+   `----
+
+Import trace for requested module:
+./src/app/(dashboard)/experts/page.tsx
+
+
+> Build failed because of webpack errors

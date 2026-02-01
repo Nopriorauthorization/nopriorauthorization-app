@@ -4,7 +4,6 @@ import { authOptions } from "@/lib/auth/auth-options";
 import prisma from "@/lib/db";
 import { canEditBlueprint } from "@/lib/capabilities";
 
-export const dynamic = "force-dynamic";
 
 const VALID_SECTIONS = [
   "identityContext",

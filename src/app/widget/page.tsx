@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { Suspense } from "react";
 import ChatInterface from "@/components/chat/chat-interface";
 import WidgetTracker from "@/components/provider/widget-tracker";

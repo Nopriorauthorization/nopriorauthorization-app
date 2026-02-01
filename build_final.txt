@@ -1,0 +1,337 @@
+
+> ask-beau-tox@1.0.0 build
+> prisma generate && next build
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v5.22.0) to ./node_modules/@prisma/client in 72ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Curious about the SQL queries Prisma ORM generates? Optimize helps you enhance your visibility: https://pris.ly/tip-2-optimize
+
+  ▲ Next.js 14.2.35
+  - Environments: .env.local, .env.production, .env
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/app/vault/snapshot/page.tsx
+Error: 
+  [31mx[0m Return statement is not allowed here
+    ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/vault/snapshot/page.tsx[0m:76:1]
+ [2m76[0m |       }, []);
+ [2m77[0m |     
+ [2m78[0m |       if (loading) {
+ [2m79[0m | [31;1m,[0m[31;1m-[0m[31;1m>[0m     return (
+ [2m80[0m | [31;1m|[0m         <main className="min-h-screen bg-black text-white px-6 py-16">
+ [2m81[0m | [31;1m|[0m           <div className="max-w-4xl mx-auto">
+ [2m82[0m | [31;1m|[0m             <div className="animate-pulse">
+ [2m83[0m | [31;1m|[0m               <div className="h-8 bg-white/10 rounded w-1/3 mb-4"></div>
+ [2m84[0m | [31;1m|[0m               <div className="h-12 bg-white/10 rounded w-2/3 mb-8"></div>
+ [2m85[0m | [31;1m|[0m               <div className="space-y-4">
+ [2m86[0m | [31;1m|[0m                 <div className="h-32 bg-white/5 rounded"></div>
+ [2m87[0m | [31;1m|[0m                 <div className="h-32 bg-white/5 rounded"></div>
+ [2m88[0m | [31;1m|[0m                 <div className="h-32 bg-white/5 rounded"></div>
+ [2m89[0m | [31;1m|[0m               </div>
+ [2m90[0m | [31;1m|[0m             </div>
+ [2m91[0m | [31;1m|[0m           </div>
+ [2m92[0m | [31;1m|[0m         </main>
+ [2m93[0m | [31;1m`[0m[31;1m-[0m[31;1m>[0m     );
+ [2m94[0m |       }
+ [2m95[0m |     
+ [2m96[0m |       if (snapshot?.isEmpty) {
+    `----
+
+  [31mx[0m Return statement is not allowed here
+     ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/vault/snapshot/page.tsx[0m:94:1]
+ [2m 94[0m |       }
+ [2m 95[0m |     
+ [2m 96[0m |       if (snapshot?.isEmpty) {
+ [2m 97[0m | [31;1m,[0m[31;1m-[0m[31;1m>[0m     return (
+ [2m 98[0m | [31;1m|[0m         <main className="min-h-screen bg-black text-white px-6 py-16">
+ [2m 99[0m | [31;1m|[0m           <div className="max-w-4xl mx-auto">
+ [2m100[0m | [31;1m|[0m             <Link
+ [2m101[0m | [31;1m|[0m               href="/vault"
+ [2m102[0m | [31;1m|[0m               className="text-sm text-pink-400 hover:text-pink-300 transition mb-4 inline-block"
+ [2m103[0m | [31;1m|[0m             >
+ [2m104[0m | [31;1m|[0m               ← Back to Sacred Vault
+ [2m105[0m | [31;1m|[0m             </Link>
+ [2m106[0m | [31;1m|[0m             <h1 className="text-4xl font-bold mb-2">Your Sacred Snapshot</h1>
+ [2m107[0m | [31;1m|[0m             <p className="text-white/60 mb-8">
+ [2m108[0m | [31;1m|[0m               A living document of your health identity, auto-assembled from your vault.
+ [2m109[0m | [31;1m|[0m             </p>
+ [2m110[0m | [31;1m|[0m   
+ [2m111[0m | [31;1m|[0m             <div className="bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-xl p-8 border border-white/10 text-center">
+ [2m112[0m | [31;1m|[0m               <div className="text-6xl mb-4">📸</div>
+ [2m113[0m | [31;1m|[0m               <h2 className="text-2xl font-semibold mb-4">Your Snapshot is Empty</h2>
+ [2m114[0m | [31;1m|[0m               <p className="text-white/60 mb-6">
+ [2m115[0m | [31;1m|[0m                 Start building your health identity by uploading documents, chatting with Beau,
+ [2m116[0m | [31;1m|[0m                 or adding your first provider.
+ [2m117[0m | [31;1m|[0m               </p>
+ [2m118[0m | [31;1m|[0m               <div className="grid gap-4 sm:grid-cols-3 max-w-2xl mx-auto">
+ [2m119[0m | [31;1m|[0m                 <Link
+ [2m120[0m | [31;1m|[0m                   href="/vault/decoder"
+ [2m121[0m | [31;1m|[0m                   className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-lg hover:opacity-90 transition"
+ [2m122[0m | [31;1m|[0m                 >
+ [2m123[0m | [31;1m|[0m                   Decode Document
+ [2m124[0m | [31;1m|[0m                 </Link>
+ [2m125[0m | [31;1m|[0m                 <Link
+ [2m126[0m | [31;1m|[0m                   href="/chat"
+ [2m127[0m | [31;1m|[0m                   className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg hover:opacity-90 transition"
+ [2m128[0m | [31;1m|[0m                 >
+ [2m129[0m | [31;1m|[0m                   Start Chat
+ [2m130[0m | [31;1m|[0m                 </Link>
+ [2m131[0m | [31;1m|[0m                 <Link
+ [2m132[0m | [31;1m|[0m                   href="/vault/providers"
+ [2m133[0m | [31;1m|[0m                   className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg hover:opacity-90 transition"
+ [2m134[0m | [31;1m|[0m                 >
+ [2m135[0m | [31;1m|[0m                   Add Provider
+ [2m136[0m | [31;1m|[0m                 </Link>
+ [2m137[0m | [31;1m|[0m               </div>
+ [2m138[0m | [31;1m|[0m             </div>
+ [2m139[0m | [31;1m|[0m           </div>
+ [2m140[0m | [31;1m|[0m         </main>
+ [2m141[0m | [31;1m`[0m[31;1m-[0m[31;1m>[0m     );
+ [2m142[0m |       }
+ [2m143[0m |     
+ [2m144[0m |       return (
+     `----
+
+  [31mx[0m Return statement is not allowed here
+     ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/vault/snapshot/page.tsx[0m:141:1]
+ [2m141[0m |         );
+ [2m142[0m |       }
+ [2m143[0m |     
+ [2m144[0m | [31;1m,[0m[31;1m-[0m[31;1m>[0m   return (
+ [2m145[0m | [31;1m|[0m       <main className="min-h-screen bg-black text-white px-6 py-16">
+ [2m146[0m | [31;1m|[0m         <div className="max-w-4xl mx-auto">
+ [2m147[0m | [31;1m|[0m           {/* Header */}
+ [2m148[0m | [31;1m|[0m           <div className="mb-8">
+ [2m149[0m | [31;1m|[0m             <Link
+ [2m150[0m | [31;1m|[0m               href="/vault"
+ [2m151[0m | [31;1m|[0m               className="text-sm text-pink-400 hover:text-pink-300 transition mb-4 inline-block"
+ [2m152[0m | [31;1m|[0m             >
+ [2m153[0m | [31;1m|[0m               ← Back to Sacred Vault
+ [2m154[0m | [31;1m|[0m             </Link>
+ [2m155[0m | [31;1m|[0m             <h1 className="text-4xl font-bold mb-2">{snapshot?.vaultName}</h1>
+ [2m156[0m | [31;1m|[0m             <p className="text-white/60">
+ [2m157[0m | [31;1m|[0m               Your health snapshot — updated automatically from your vault.
+ [2m158[0m | [31;1m|[0m             </p>
+ [2m159[0m | [31;1m|[0m           </div>
+ [2m160[0m | [31;1m|[0m   
+ [2m161[0m | [31;1m|[0m           {/* Quick Stats */}
+ [2m162[0m | [31;1m|[0m           {snapshot && (
+ [2m163[0m | [31;1m|[0m             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+ [2m164[0m | [31;1m|[0m               <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-lg p-4 border border-white/10">
+ [2m165[0m | [31;1m|[0m                 <div className="text-2xl font-bold">{snapshot.stats.documents}</div>
+ [2m166[0m | [31;1m|[0m                 <div className="text-sm text-white/60">Documents</div>
+ [2m167[0m | [31;1m|[0m               </div>
+ [2m168[0m | [31;1m|[0m               <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg p-4 border border-white/10">
+ [2m169[0m | [31;1m|[0m                 <div className="text-2xl font-bold">{snapshot.stats.chats}</div>
+ [2m170[0m | [31;1m|[0m                 <div className="text-sm text-white/60">Conversations</div>
+ [2m171[0m | [31;1m|[0m               </div>
+ [2m172[0m | [31;1m|[0m               <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-lg p-4 border border-white/10">
+ [2m173[0m | [31;1m|[0m                 <div className="text-2xl font-bold">{snapshot.stats.appointments}</div>
+ [2m174[0m | [31;1m|[0m                 <div className="text-sm text-white/60">Appointments</div>
+ [2m175[0m | [31;1m|[0m               </div>
+ [2m176[0m | [31;1m|[0m               <div className="bg-gradient-to-br from-pink-500/10 to-red-500/10 rounded-lg p-4 border border-white/10">
+ [2m177[0m | [31;1m|[0m                 <div className="text-2xl font-bold">{snapshot.stats.providers}</div>
+ [2m178[0m | [31;1m|[0m                 <div className="text-sm text-white/60">Providers</div>
+ [2m179[0m | [31;1m|[0m               </div>
+ [2m180[0m | [31;1m|[0m               <div className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-lg p-4 border border-white/10">
+ [2m181[0m | [31;1m|[0m                 <div className="text-2xl font-bold">{snapshot.stats.decoded}</div>
+ [2m182[0m | [31;1m|[0m                 <div className="text-sm text-white/60">Decoded</div>
+ [2m183[0m | [31;1m|[0m               </div>
+ [2m184[0m | [31;1m|[0m             </div>
+ [2m185[0m | [31;1m|[0m           )}
+ [2m186[0m | [31;1m|[0m   
+ [2m187[0m | [31;1m|[0m           {/* Upcoming Appointments */}
+ [2m188[0m | [31;1m|[0m           {snapshot?.upcomingAppointments && snapshot.upcomingAppointments.length > 0 && (
+ [2m189[0m | [31;1m|[0m             <div className="mb-8">
+ [2m190[0m | [31;1m|[0m               <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+ [2m191[0m | [31;1m|[0m                 <span>📅</span> Upcoming Appointments
+ [2m192[0m | [31;1m|[0m               </h2>
+ [2m193[0m | [31;1m|[0m               <div className="space-y-3">
+ [2m194[0m | [31;1m|[0m                 {snapshot.upcomingAppointments.map((apt) => (
+ [2m195[0m | [31;1m|[0m                   <div
+ [2m196[0m | [31;1m|[0m                     key={apt.id}
+ [2m197[0m | [31;1m|[0m                     className="bg-gradient-to-br from-green-500/10 to-blue-500/10 rounded-lg p-4 border border-white/10 hover:border-green-400/30 transition"
+ [2m198[0m | [31;1m|[0m                   >
+ [2m199[0m | [31;1m|[0m                     <div className="flex items-start justify-between">
+ [2m200[0m | [31;1m|[0m                       <div>
+ [2m201[0m | [31;1m|[0m                         <h3 className="font-semibold">{apt.providerName}</h3>
+ [2m202[0m | [31;1m|[0m                         {apt.specialty && (
+ [2m203[0m | [31;1m|[0m                           <p className="text-sm text-white/60">{apt.specialty}</p>
+ [2m204[0m | [31;1m|[0m                         )}
+ [2m205[0m | [31;1m|[0m                       </div>
+ [2m206[0m | [31;1m|[0m                       <div className="text-right">
+ [2m207[0m | [31;1m|[0m                         <div className="font-medium">{apt.date}</div>
+ [2m208[0m | [31;1m|[0m                         <div className="text-sm text-white/60">{apt.time}</div>
+ [2m209[0m | [31;1m|[0m                       </div>
+ [2m210[0m | [31;1m|[0m                     </div>
+ [2m211[0m | [31;1m|[0m                     <div className="text-xs bg-white/5 rounded px-2 py-1 inline-block mt-2">
+ [2m212[0m | [31;1m|[0m                       {apt.type}
+ [2m213[0m | [31;1m|[0m                     </div>
+ [2m214[0m | [31;1m|[0m                   </div>
+ [2m215[0m | [31;1m|[0m                 ))}
+ [2m216[0m | [31;1m|[0m               </div>
+ [2m217[0m | [31;1m|[0m             </div>
+ [2m218[0m | [31;1m|[0m           )}
+ [2m219[0m | [31;1m|[0m   
+ [2m220[0m | [31;1m|[0m           {/* Providers */}
+ [2m221[0m | [31;1m|[0m           {snapshot?.providers && snapshot.providers.length > 0 && (
+ [2m222[0m | [31;1m|[0m             <div className="mb-8">
+ [2m223[0m | [31;1m|[0m               <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+ [2m224[0m | [31;1m|[0m                 <span>👩‍⚕️</span> Your Care Team
+ [2m225[0m | [31;1m|[0m               </h2>
+ [2m226[0m | [31;1m|[0m               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+ [2m227[0m | [31;1m|[0m                 {snapshot.providers.map((provider) => (
+ [2m228[0m | [31;1m|[0m                   <div
+ [2m229[0m | [31;1m|[0m                     key={provider.id}
+ [2m230[0m | [31;1m|[0m                     className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg p-4 border border-white/10"
+ [2m231[0m | [31;1m|[0m                   >
+ [2m232[0m | [31;1m|[0m                     <h3 className="font-semibold">{provider.name}</h3>
+ [2m233[0m | [31;1m|[0m                     {provider.specialty && (
+ [2m234[0m | [31;1m|[0m                       <p className="text-sm text-white/60">{provider.specialty}</p>
+ [2m235[0m | [31;1m|[0m                     )}
+ [2m236[0m | [31;1m|[0m                   </div>
+ [2m237[0m | [31;1m|[0m                 ))}
+ [2m238[0m | [31;1m|[0m               </div>
+ [2m239[0m | [31;1m|[0m             </div>
+ [2m240[0m | [31;1m|[0m           )}
+ [2m241[0m | [31;1m|[0m   
+ [2m242[0m | [31;1m|[0m           {/* Goals Section */}
+ [2m243[0m | [31;1m|[0m           {snapshot?.goals && Array.isArray(snapshot.goals) && snapshot.goals.length > 0 && (
+ [2m244[0m | [31;1m|[0m             <div className="bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-xl p-6 mb-6 border border-white/10">
+ [2m245[0m | [31;1m|[0m               <h2 className="text-2xl font-semibold mb-4">My Health Goals</h2>
+ [2m246[0m | [31;1m|[0m               <ul className="space-y-2">
+ [2m247[0m | [31;1m|[0m                 {snapshot.goals.map((goal, idx) => (
+ [2m248[0m | [31;1m|[0m                   <li key={idx} className="flex items-start">
+ [2m249[0m | [31;1m|[0m                     <span className="text-pink-400 mr-2">→</span>
+ [2m250[0m | [31;1m|[0m                     <span>{goal}</span>
+ [2m251[0m | [31;1m|[0m                   </li>
+ [2m252[0m | [31;1m|[0m                 ))}
+ [2m253[0m | [31;1m|[0m               </ul>
+ [2m254[0m | [31;1m|[0m             </div>
+ [2m255[0m | [31;1m|[0m           )}
+ [2m256[0m | [31;1m|[0m   
+ [2m257[0m | [31;1m|[0m           {/* Health Topics Section */}
+ [2m258[0m | [31;1m|[0m           <div className="mb-6">
+ [2m259[0m | [31;1m|[0m             <div className="flex items-center justify-between mb-4">
+ [2m260[0m | [31;1m|[0m               <h2 className="text-2xl font-semibold">Health Topics I've Explored</h2>
+ [2m261[0m | [31;1m|[0m               {snapshot?.chatSummary && (
+ [2m262[0m | [31;1m|[0m                 <div className="text-sm text-white/60">
+ [2m263[0m | [31;1m|[0m                   {snapshot.chatSummary.totalChats} conversations •{" "}
+ [2m264[0m | [31;1m|[0m                   {snapshot.chatSummary.topicsIdentified} topics identified
+ [2m265[0m | [31;1m|[0m                 </div>
+ [2m266[0m | [31;1m|[0m               )}
+ [2m267[0m | [31;1m|[0m             </div>
+ [2m268[0m | [31;1m|[0m   
+ [2m269[0m | [31;1m|[0m             {snapshot?.healthTopics && snapshot.healthTopics.length > 0 ? (
+ [2m270[0m | [31;1m|[0m               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ [2m271[0m | [31;1m|[0m                 {snapshot.healthTopics.map((topic, idx) => (
+ [2m272[0m | [31;1m|[0m                   <div
+ [2m273[0m | [31;1m|[0m                     key={idx}
+ [2m274[0m | [31;1m|[0m                     className="bg-gradient-to-br from-pink-500/5 to-purple-500/5 rounded-lg p-4 border border-white/10 hover:border-pink-400/30 transition"
+ [2m275[0m | [31;1m|[0m                   >
+ [2m276[0m | [31;1m|[0m                     <div className="flex items-start justify-between mb-2">
+ [2m277[0m | [31;1m|[0m                       <h3 className="font-semibold capitalize">{topic.topic}</h3>
+ [2m278[0m | [31;1m|[0m                       <span className="text-xs bg-pink-500/20 text-pink-300 px-2 py-1 rounded">
+ [2m279[0m | [31;1m|[0m                         {topic.chatCount} chat{topic.chatCount !== 1 ? "s" : ""}
+ [2m280[0m | [31;1m|[0m                       </span>
+ [2m281[0m | [31;1m|[0m                     </div>
+ [2m282[0m | [31;1m|[0m                     <div className="text-sm text-white/60 mb-2">{topic.category}</div>
+ [2m283[0m | [31;1m|[0m                     <div className="text-xs text-white/40">
+ [2m284[0m | [31;1m|[0m                       Last discussed: {topic.lastDiscussed}
+ [2m285[0m | [31;1m|[0m                     </div>
+ [2m286[0m | [31;1m|[0m                     <Link
+ [2m287[0m | [31;1m|[0m                       href="/chat"
+ [2m288[0m | [31;1m|[0m                       className="text-sm text-pink-400 hover:text-pink-300 transition mt-2 inline-block"
+ [2m289[0m | [31;1m|[0m                     >
+ [2m290[0m | [31;1m|[0m                       Continue discussion →
+ [2m291[0m | [31;1m|[0m                     </Link>
+ [2m292[0m | [31;1m|[0m                   </div>
+ [2m293[0m | [31;1m|[0m                 ))}
+ [2m294[0m | [31;1m|[0m               </div>
+ [2m295[0m | [31;1m|[0m             ) : (
+ [2m296[0m | [31;1m|[0m               <div className="bg-white/5 rounded-lg p-8 text-center">
+ [2m297[0m | [31;1m|[0m                 <p className="text-white/60 mb-4">
+ [2m298[0m | [31;1m|[0m                   No health topics identified yet. Start a conversation with Beau to explore your health concerns.
+ [2m299[0m | [31;1m|[0m                 </p>
+ [2m300[0m | [31;1m|[0m                 <Link
+ [2m301[0m | [31;1m|[0m                   href="/chat"
+ [2m302[0m | [31;1m|[0m                   className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-2 rounded-lg hover:opacity-90 transition"
+ [2m303[0m | [31;1m|[0m                 >
+ [2m304[0m | [31;1m|[0m                   Start Your First Chat
+ [2m305[0m | [31;1m|[0m                 </Link>
+ [2m306[0m | [31;1m|[0m               </div>
+ [2m307[0m | [31;1m|[0m             )}
+ [2m308[0m | [31;1m|[0m           </div>
+ [2m309[0m | [31;1m|[0m   
+ [2m310[0m | [31;1m|[0m           {/* Recent Documents */}
+ [2m311[0m | [31;1m|[0m           {snapshot?.recentDocuments && snapshot.recentDocuments.length > 0 && (
+ [2m312[0m | [31;1m|[0m             <div className="mb-6">
+ [2m313[0m | [31;1m|[0m               <h2 className="text-2xl font-semibold mb-4">Recent Documents</h2>
+ [2m314[0m | [31;1m|[0m               <div className="space-y-3">
+ [2m315[0m | [31;1m|[0m                 {snapshot.recentDocuments.map((doc) => (
+ [2m316[0m | [31;1m|[0m                   <div
+ [2m317[0m | [31;1m|[0m                     key={doc.id}
+ [2m318[0m | [31;1m|[0m                     className="bg-white/5 rounded-lg p-4 border border-white/10 hover:border-blue-400/30 transition"
+ [2m319[0m | [31;1m|[0m                   >
+ [2m320[0m | [31;1m|[0m                     <div className="flex items-center justify-between">
+ [2m321[0m | [31;1m|[0m                       <div>
+ [2m322[0m | [31;1m|[0m                         <h3 className="font-medium">{doc.title}</h3>
+ [2m323[0m | [31;1m|[0m                         <div className="text-sm text-white/60">
+ [2m324[0m | [31;1m|[0m                           {doc.category} • {doc.date}
+ [2m325[0m | [31;1m|[0m                         </div>
+ [2m326[0m | [31;1m|[0m                       </div>
+ [2m327[0m | [31;1m|[0m                     </div>
+ [2m328[0m | [31;1m|[0m                   </div>
+ [2m329[0m | [31;1m|[0m                 ))}
+ [2m330[0m | [31;1m|[0m               </div>
+ [2m331[0m | [31;1m|[0m             </div>
+ [2m332[0m | [31;1m|[0m           )}
+ [2m333[0m | [31;1m|[0m   
+ [2m334[0m | [31;1m|[0m           {/* Preferences Section */}
+ [2m335[0m | [31;1m|[0m           {snapshot?.preferences && Object.keys(snapshot.preferences).length > 0 && (
+ [2m336[0m | [31;1m|[0m             <div className="bg-white/5 rounded-lg p-6 border border-white/10">
+ [2m337[0m | [31;1m|[0m               <h2 className="text-2xl font-semibold mb-4">My Preferences</h2>
+ [2m338[0m | [31;1m|[0m               <div className="space-y-2">
+ [2m339[0m | [31;1m|[0m                 {snapshot.preferences.tone && (
+ [2m340[0m | [31;1m|[0m                   <div>
+ [2m341[0m | [31;1m|[0m                     <span className="text-white/60">Tone:</span> {snapshot.preferences.tone}
+ [2m342[0m | [31;1m|[0m                   </div>
+ [2m343[0m | [31;1m|[0m                 )}
+ [2m344[0m | [31;1m|[0m                 {snapshot.preferences.depth && (
+ [2m345[0m | [31;1m|[0m                   <div>
+ [2m346[0m | [31;1m|[0m                     <span className="text-white/60">Depth:</span> {snapshot.preferences.depth}
+ [2m347[0m | [31;1m|[0m                   </div>
+ [2m348[0m | [31;1m|[0m                 )}
+ [2m349[0m | [31;1m|[0m               </div>
+ [2m350[0m | [31;1m|[0m             </div>
+ [2m351[0m | [31;1m|[0m           )}
+ [2m352[0m | [31;1m|[0m         </div>
+ [2m353[0m | [31;1m|[0m       </main>
+ [2m354[0m | [31;1m`[0m[31;1m-[0m[31;1m>[0m   );
+ [2m355[0m |     }
+     `----
+
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/danid/ask-beau-tox/src/app/vault/snapshot/page.tsx[0m:352:1]
+ [2m352[0m |       </div>
+ [2m353[0m |     </main>
+ [2m354[0m |   );
+ [2m355[0m | }
+     : [31;1m^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/vault/snapshot/page.tsx
+
+
+> Build failed because of webpack errors

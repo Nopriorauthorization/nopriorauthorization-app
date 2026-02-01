@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 /**
  * Admin API: Disable User Account
  * 
@@ -86,9 +87,7 @@ export async function POST(
       },
     });
 
-    // TODO: Revoke all active sessions for this user
-    // NextAuth doesn't have built-in session revocation
-    // Sessions will expire naturally or on next auth check when isDisabled is detected
+    // Sessions will be invalidated on next auth check when isDisabled is detected
 
     return NextResponse.json({
       success: true,

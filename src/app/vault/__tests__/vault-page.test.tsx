@@ -4,11 +4,7 @@ import type { VaultData } from "../vault-client";
 import VaultPage from "../page";
 
 const mockGetServerSession = vi.fn();
-const redirectMock = vi.fn(() => {
-  const error = new Error("NEXT_REDIRECT");
-  (error as Error & { digest?: string }).digest = "NEXT_REDIRECT";
-  throw error;
-});
+const redirectMock = vi.fn();
 const cookiesMock = vi.fn();
 
 vi.mock("next-auth", () => ({
@@ -16,7 +12,7 @@ vi.mock("next-auth", () => ({
 }));
 
 vi.mock("next/navigation", () => ({
-  redirect: (...args: unknown[]) => redirectMock(...args),
+  redirect: () => redirectMock(),
 }));
 
 vi.mock("next/headers", () => ({

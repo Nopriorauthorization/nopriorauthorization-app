@@ -1105,6 +1105,238 @@ model NpaShareAccessLog {
 }
 
 // ============================================
+// NPA PHASE 6: TRUST, GOVERNANCE & EMERGENCY ACCESS
+// ============================================
+
+// Emergency Access Model - "Break-Glass Access"
+// Disabled by default, explicitly opt-in by patient
+enum EmergencyAccessScope {
+  CRITICAL_ONLY     // Allergies, medications, critical conditions only
+  MEDICATIONS_FULL  // Full medication list + allergies
+  SUMMARY_VIEW      // Critical + recent visit summaries
+  FULL_VAULT        // Complete vault access (rarely used)
+}
+
+// Patient's emergency access configuration (opt-in settings)
+model NpaEmergencyAccessSettings {
+  id                  String                @id @default(cuid())
+  npaId               String                @unique
+  userId              String?
+  
+  // CORE SETTING: Emergency access is DISABLED by default
+  isEnabled           Boolean               @default(false)
+  
+  // Scope of what's visible during emergency
+  allowedScope        EmergencyAccessScope  @default(CRITICAL_ONLY)
+  
+  // Duration configuration (1-4 hours typical)
+  maxDurationMinutes  Int                   @default(60)  // 1 hour default
+  
+  // Emergency contact information (displayed to emergency responders)
+  emergencyContactName    String?
+  emergencyContactPhone   String?
+  emergencyContactRelation String?
+  
+  // Critical health info displayed in emergency
+  knownAllergies      String?               // Text field, user-entered
+  currentMedications  String?               // Text field, user-entered
+  criticalConditions  String?               // Text field, user-entered
+  
+  // Patient acknowledgment of emergency access risks
+  disclaimerAcceptedAt DateTime?
+  
+  // Timestamps
+  enabledAt           DateTime?
+  disabledAt          DateTime?
+  lastUpdatedAt       DateTime              @default(now())
+  createdAt           DateTime              @default(now())
+  
+  // Audit relation
+  accessSessions      NpaEmergencyAccessSession[]
+
+  @@index([npaId])
+  @@index([userId])
+  @@index([isEnabled])
+}
+
+// Emergency access session - each "break-glass" event
+model NpaEmergencyAccessSession {
+  id                  String                @id @default(cuid())
+  settingsId          String
+  npaId               String
+  
+  // Session token for access
+  token               String                @unique
+  
+  // Access window
+  startedAt           DateTime              @default(now())
+  expiresAt           DateTime
+  endedAt             DateTime?             // Null if still active
+  
+  // Access scope granted
+  grantedScope        EmergencyAccessScope
+  
+  // Accessor information
+  accessorName        String?               // Name of person accessing
+  accessorRole        String?               // "Paramedic", "ER Nurse", "First Responder"
+  accessorOrg         String?               // "City Fire Dept", "General Hospital ER"
+  reasonEntered       String?               // Required reason for access
+  
+  // Request metadata
+  ipAddress           String?
+  userAgent           String?
+  
+  // Status
+  wasRevoked          Boolean               @default(false)
+  revokedAt           DateTime?
+  revokedBy           String?               // NPA ID of who revoked
+  revokedReason       String?
+  
+  // Timestamps
+  createdAt           DateTime              @default(now())
+  
+  // Relations
+  settings            NpaEmergencyAccessSettings @relation(fields: [settingsId], references: [id], onDelete: Cascade)
+  accessLogs          NpaEmergencyAccessLog[]
+
+  @@index([settingsId])
+  @@index([npaId])
+  @@index([token])
+  @@index([expiresAt])
+  @@index([startedAt])
+}
+
+// Detailed log of every action during emergency access
+model NpaEmergencyAccessLog {
+  id                  String                @id @default(cuid())
+  sessionId           String
+  npaId               String
+  
+  // What was accessed
+  action              String                // "session_started", "document_viewed", "summary_accessed", etc.
+  resourceType        String?               // "document", "medication_list", "allergy_list"
+  resourceId          String?               // ID of specific resource if applicable
+  
+  // Request metadata
+  ipAddress           String?
+  userAgent           String?
+  
+  // Timestamp
+  accessedAt          DateTime              @default(now())
+  
+  // Relations
+  session             NpaEmergencyAccessSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([npaId])
+  @@index([action])
+  @@index([accessedAt])
+}
+
+// Data export request tracking (for one-click export)
+model NpaDataExport {
+  id                  String                @id @default(cuid())
+  npaId               String
+  userId              String?
+  
+  // Export configuration
+  exportType          String                // "full", "documents_only", "audit_only", "metadata_only"
+  format              String                // "zip", "json"
+  
+  // Status
+  status              String                @default("pending") // "pending", "processing", "completed", "failed"
+  
+  // Result
+  downloadUrl         String?               // Signed URL for download
+  downloadExpiresAt   DateTime?
+  fileSizeBytes       Int?
+  
+  // Processing info
+  startedAt           DateTime?
+  completedAt         DateTime?
+  errorMessage        String?
+  
+  // Timestamps
+  requestedAt         DateTime              @default(now())
+  downloadedAt        DateTime?
+  
+  @@index([npaId])
+  @@index([userId])
+  @@index([status])
+  @@index([requestedAt])
+}
+
+// MFA enrollment for security hardening
+model NpaMfaEnrollment {
+  id                  String                @id @default(cuid())
+  userId              String                @unique
+  npaId               String?
+  
+  // MFA method
+  method              String                @default("totp") // "totp", "sms", "email"
+  
+  // TOTP-specific
+  totpSecret          String?               // Encrypted TOTP secret
+  totpVerifiedAt      DateTime?
+  
+  // Backup codes (hashed)
+  backupCodes         String[]              @default([])
+  backupCodesGeneratedAt DateTime?
+  
+  // Status
+  isEnabled           Boolean               @default(false)
+  
+  // Timestamps
+  enrolledAt          DateTime?
+  lastUsedAt          DateTime?
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+
+  @@index([userId])
+  @@index([npaId])
+  @@index([isEnabled])
+}
+
+// Active sessions tracking for device/session management
+model NpaUserSession {
+  id                  String                @id @default(cuid())
+  userId              String
+  npaId               String?
+  
+  // Session identification
+  sessionToken        String                @unique
+  
+  // Device info
+  deviceType          String?               // "desktop", "mobile", "tablet"
+  deviceName          String?               // "Chrome on MacOS", "Safari on iPhone"
+  browser             String?
+  os                  String?
+  
+  // Location
+  ipAddress           String?
+  location            String?               // Approximate location from IP
+  
+  // Status
+  isActive            Boolean               @default(true)
+  
+  // Security flags
+  isAnomaly           Boolean               @default(false) // Flagged for unusual activity
+  anomalyReason       String?
+  
+  // Timestamps
+  createdAt           DateTime              @default(now())
+  lastActiveAt        DateTime              @default(now())
+  expiresAt           DateTime
+  revokedAt           DateTime?
+  
+  @@index([userId])
+  @@index([npaId])
+  @@index([sessionToken])
+  @@index([isActive])
+  @@index([lastActiveAt])
+}
+
+// ============================================
 // NPA PHASE 5: PROVIDER CONTRIBUTION SYSTEM
 // ============================================
 

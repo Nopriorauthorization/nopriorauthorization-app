@@ -30,6 +30,15 @@ import Card, { CardContent, CardHeader } from "@/components/ui/card";
 
 type GovernanceSection = "overview" | "permissions" | "history" | "contributions" | "emergency" | "audit" | "export";
 
+// Safe hook wrapper for useSession that handles SSR
+function useSafeSession() {
+  const sessionData = useSession();
+  return {
+    session: sessionData?.data ?? null,
+    status: sessionData?.status ?? "loading",
+  };
+}
+
 interface OverviewData {
   npaId: string;
   memberSince: string;
@@ -50,7 +59,7 @@ interface OverviewData {
 }
 
 export default function GovernancePage() {
-  const { data: session, status } = useSession();
+  const { session, status } = useSafeSession();
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<GovernanceSection>("overview");
   const [data, setData] = useState<any>(null);

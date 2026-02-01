@@ -23,7 +23,9 @@ import Card, { CardContent } from "@/components/ui/card";
  */
 
 export default function WelcomePage() {
-  const { data: session, status } = useSession();
+  const sessionData = useSession();
+  const session = sessionData?.data;
+  const status = sessionData?.status || "loading";
   const router = useRouter();
   const [npaInfo, setNpaInfo] = useState<{
     npaIdAlias: string;

@@ -8,29 +8,53 @@ import {
   SHARE_COMPLIANCE_STATEMENT,
 } from "@/lib/sharing/share-service";
 import { uploadToSupabase } from "@/lib/storage/supabase";
+import type { ProviderRole } from "@prisma/client";
 
 /**
- * POST /api/share/[token]/upload - Provider contributes a document (requires UPLOAD_ALLOWED permission)
+ * NPA Phase 5: Provider Contribution Upload
  * 
- * COMPLIANCE STATEMENT:
- * "Access is granted by the patient and may be revoked at any time.
- * Shared information reflects records as provided and does not constitute medical advice."
+ * PROVIDER LEGAL STATEMENT (displayed on upload screen):
+ * "You are uploading information at the request of the patient.
+ * This system does not replace your medical record.
+ * Uploaded documents reflect your original documentation and remain unaltered."
+ * 
+ * PATIENT LEGAL STATEMENT:
+ * "Provider-added records are included for continuity and reference."
  * 
  * This endpoint allows providers to add documents to a patient's vault
  * when the patient has explicitly granted upload permission.
  * 
- * Required fields:
+ * Required fields (Phase 5 - MANDATORY):
  * - file: File (the document)
- * - providerName: string
+ * - providerName: string (full name)
+ * - providerRole: string (MD, DO, NP, PA, RN, etc.)
+ * - providerOrg: string (organization/clinic name)
+ * - dateOfCare: string (ISO date)
  * - contributionType: string (visit_summary, referral, care_note, etc.)
  * 
  * Optional fields:
- * - providerOrg: string
  * - providerEmail: string
- * - dateOfCare: string (ISO date)
+ * - providerNPI: string (National Provider Identifier)
+ * - specialty: string (e.g., Cardiology)
  * - title: string (document title)
  * - notes: string (provider notes about the contribution)
  */
+
+// Provider role validation
+const VALID_PROVIDER_ROLES: ProviderRole[] = [
+  "MD", "DO", "NP", "PA", "RN", "LPN", "PHARMD",
+  "PT", "OT", "LCSW", "PHD", "PSYD", "DMD", "DDS",
+  "DC", "OD", "DPM", "OTHER"
+];
+
+// Legal statements (REQUIRED to display)
+const PROVIDER_LEGAL_STATEMENT = 
+  "You are uploading information at the request of the patient. " +
+  "This system does not replace your medical record. " +
+  "Uploaded documents reflect your original documentation and remain unaltered.";
+
+const PATIENT_LEGAL_STATEMENT = 
+  "Provider-added records are included for continuity and reference.";
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ token: string }> }
@@ -76,14 +100,17 @@ export async function POST(
   const formData = await request.formData();
   const file = formData.get("file") as File | null;
   const providerName = formData.get("providerName") as string | null;
+  const providerRoleStr = formData.get("providerRole") as string | null;
   const providerOrg = formData.get("providerOrg") as string | null;
   const providerEmail = formData.get("providerEmail") as string | null;
+  const providerNPI = formData.get("providerNPI") as string | null;
+  const specialty = formData.get("specialty") as string | null;
   const contributionType = formData.get("contributionType") as string | null;
   const dateOfCareStr = formData.get("dateOfCare") as string | null;
   const title = formData.get("title") as string | null;
   const notes = formData.get("notes") as string | null;
 
-  // Validate required fields
+  // Validate required fields (Phase 5 - stricter requirements)
   if (!file) {
     return NextResponse.json(
       { error: "File is required" },
@@ -93,7 +120,44 @@ export async function POST(
 
   if (!providerName) {
     return NextResponse.json(
-      { error: "Provider name is required" },
+      { error: "Provider full name is required" },
+      { status: 400 }
+    );
+  }
+
+  if (!providerRoleStr) {
+    return NextResponse.json(
+      { 
+        error: "Provider role is required",
+        validRoles: VALID_PROVIDER_ROLES,
+        example: "MD, DO, NP, PA, RN, etc."
+      },
+      { status: 400 }
+    );
+  }
+
+  // Validate provider role
+  const providerRole = providerRoleStr.toUpperCase() as ProviderRole;
+  if (!VALID_PROVIDER_ROLES.includes(providerRole)) {
+    return NextResponse.json(
+      { 
+        error: `Invalid provider role: ${providerRoleStr}`,
+        validRoles: VALID_PROVIDER_ROLES
+      },
+      { status: 400 }
+    );
+  }
+
+  if (!providerOrg) {
+    return NextResponse.json(
+      { error: "Organization/clinic name is required" },
+      { status: 400 }
+    );
+  }
+
+  if (!dateOfCareStr) {
+    return NextResponse.json(
+      { error: "Date of care is required" },
       { status: 400 }
     );
   }
@@ -145,12 +209,17 @@ export async function POST(
     }
   }
 
-  // Generate document title if not provided
+  // Generate document title with clear attribution (Phase 5 requirement)
+  const roleDisplay = providerRole === "OTHER" ? "" : `, ${providerRole}`;
+  const specialtyDisplay = specialty ? ` — ${specialty}` : "";
+  const dateDisplay = dateOfCare ? ` — ${dateOfCare.toLocaleDateString()}` : "";
+  
   const documentTitle =
     title ||
-    `${contributionType.replace(/_/g, " ")} from ${providerName}${
-      dateOfCare ? ` - ${dateOfCare.toLocaleDateString()}` : ""
-    }`;
+    `${contributionType.replace(/_/g, " ")} from ${providerName}${roleDisplay}${specialtyDisplay}${dateDisplay}`;
+  
+  // Attribution label for timeline display
+  const attributionLabel = `Added by ${providerName}${roleDisplay}${specialtyDisplay}${dateDisplay}`;
 
   try {
     // Upload file to storage
@@ -172,14 +241,14 @@ export async function POST(
       other: "OTHER",
     };
 
-    // Create document in vault
+    // Create document in vault with clear provider attribution
     const document = await prisma.npaVaultDocument.create({
       data: {
         npaId: shareSession!.npaId,
         title: documentTitle,
         category: (categoryMap[contributionType] || "OTHER") as any,
         source: "PROVIDER_PORTAL",
-        sourceSystem: providerOrg || providerName,
+        sourceSystem: providerOrg,
         dateOfCare,
         dateReceived: new Date(),
         storagePath,
@@ -189,18 +258,22 @@ export async function POST(
         processingStatus: "PENDING",
         providerName,
         facilityName: providerOrg,
+        department: specialty || null,
       },
     });
 
-    // Create provider contribution record
+    // Create provider contribution record with full metadata (Phase 5)
     const contribution = await prisma.npaProviderContribution.create({
       data: {
         shareSessionId: shareSession!.id,
         npaId: shareSession!.npaId,
         documentId: document.id,
         providerName,
+        providerRole,
         providerOrg,
         providerEmail,
+        providerNPI,
+        specialty,
         dateOfCare,
         contributionType,
         notes,
@@ -230,11 +303,21 @@ export async function POST(
         id: contribution.id,
         documentId: document.id,
         title: documentTitle,
+        attributionLabel,
         contributionType,
-        providerName,
-        providerOrg,
+        provider: {
+          name: providerName,
+          role: providerRole,
+          organization: providerOrg,
+          specialty,
+          npi: providerNPI,
+        },
         dateOfCare,
         createdAt: contribution.createdAt,
+      },
+      legalStatements: {
+        provider: PROVIDER_LEGAL_STATEMENT,
+        patient: PATIENT_LEGAL_STATEMENT,
       },
       complianceStatement: SHARE_COMPLIANCE_STATEMENT,
     });
@@ -267,7 +350,10 @@ export async function POST(
 }
 
 /**
- * GET /api/share/[token]/upload - Check if upload is allowed
+ * GET /api/share/[token]/upload - Check if upload is allowed and get requirements
+ * 
+ * Returns the provider upload interface specification including
+ * required fields, legal statements, and contribution types.
  */
 export async function GET(
   request: NextRequest,
@@ -282,9 +368,19 @@ export async function GET(
     );
   }
 
-  // Find share session
+  // Find share session with patient display info
   const shareSession = await prisma.npaShareSession.findUnique({
     where: { token },
+    select: {
+      id: true,
+      permission: true,
+      expiresAt: true,
+      isRevoked: true,
+      useCount: true,
+      maxUses: true,
+      showPatientName: true,
+      patientDisplayName: true,
+    },
   });
 
   // Validate access
@@ -301,34 +397,67 @@ export async function GET(
   return NextResponse.json({
     uploadAllowed,
     message: uploadAllowed
-      ? "Upload is permitted. You may contribute documents."
+      ? "Upload is permitted. You may contribute documents to this patient's health record."
       : "Upload is not permitted for this share link.",
-    acceptedTypes: uploadAllowed
+    
+    // Patient context (for provider to verify correct patient)
+    patient: uploadAllowed && shareSession!.showPatientName
+      ? { displayName: shareSession!.patientDisplayName }
+      : null,
+    
+    // Phase 5: Required fields (MANDATORY)
+    requiredFields: uploadAllowed
       ? [
-          "application/pdf",
-          "image/jpeg",
-          "image/png",
-          "image/gif",
-          "application/xml",
+          { name: "file", description: "The document file (PDF, image, or XML)" },
+          { name: "providerName", description: "Your full name" },
+          { name: "providerRole", description: "Your credential (MD, DO, NP, PA, RN, etc.)" },
+          { name: "providerOrg", description: "Organization or clinic name" },
+          { name: "dateOfCare", description: "Date of the clinical encounter (ISO format)" },
+          { name: "contributionType", description: "Type of document being uploaded" },
         ]
       : [],
-    maxSizeBytes: uploadAllowed ? 25 * 1024 * 1024 : 0,
-    requiredFields: uploadAllowed
-      ? ["file", "providerName", "contributionType"]
-      : [],
+    
+    // Optional fields
     optionalFields: uploadAllowed
-      ? ["providerOrg", "providerEmail", "dateOfCare", "title", "notes"]
+      ? [
+          { name: "providerEmail", description: "Contact email (optional)" },
+          { name: "providerNPI", description: "National Provider Identifier (optional)" },
+          { name: "specialty", description: "Your specialty (e.g., Cardiology)" },
+          { name: "title", description: "Custom document title (optional)" },
+          { name: "notes", description: "Additional notes about this contribution" },
+        ]
       : [],
+    
+    // Valid provider roles
+    providerRoles: uploadAllowed ? VALID_PROVIDER_ROLES : [],
+    
+    // Contribution types
     contributionTypes: uploadAllowed
       ? [
-          "visit_summary",
-          "referral",
-          "care_note",
-          "lab_result",
-          "imaging",
-          "discharge",
-          "other",
+          { value: "visit_summary", label: "Visit Summary" },
+          { value: "referral", label: "Referral Letter" },
+          { value: "care_note", label: "Care Note" },
+          { value: "lab_result", label: "Lab Result" },
+          { value: "imaging", label: "Imaging Report" },
+          { value: "discharge", label: "Discharge Summary" },
+          { value: "other", label: "Other Document" },
         ]
       : [],
+    
+    // File constraints
+    acceptedTypes: uploadAllowed
+      ? ["application/pdf", "image/jpeg", "image/png", "image/gif", "application/xml"]
+      : [],
+    maxSizeBytes: uploadAllowed ? 25 * 1024 * 1024 : 0,
+    
+    // Legal statements (MUST be displayed to provider)
+    legalStatements: uploadAllowed
+      ? {
+          provider: PROVIDER_LEGAL_STATEMENT,
+          patient: PATIENT_LEGAL_STATEMENT,
+        }
+      : null,
+    
+    complianceStatement: SHARE_COMPLIANCE_STATEMENT,
   });
 }

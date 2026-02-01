@@ -1104,6 +1104,32 @@ model NpaShareAccessLog {
   @@index([accessorEmail])
 }
 
+// ============================================
+// NPA PHASE 5: PROVIDER CONTRIBUTION SYSTEM
+// ============================================
+
+// Provider role types
+enum ProviderRole {
+  MD          // Medical Doctor
+  DO          // Doctor of Osteopathic Medicine
+  NP          // Nurse Practitioner
+  PA          // Physician Assistant
+  RN          // Registered Nurse
+  LPN         // Licensed Practical Nurse
+  PHARMD      // Doctor of Pharmacy
+  PT          // Physical Therapist
+  OT          // Occupational Therapist
+  LCSW        // Licensed Clinical Social Worker
+  PHD         // Psychologist (PhD)
+  PSYD        // Psychologist (PsyD)
+  DMD         // Doctor of Dental Medicine
+  DDS         // Doctor of Dental Surgery
+  DC          // Doctor of Chiropractic
+  OD          // Doctor of Optometry
+  DPM         // Doctor of Podiatric Medicine
+  OTHER       // Other healthcare provider
+}
+
 // Provider-contributed documents (when upload_allowed is enabled)
 model NpaProviderContribution {
   id              String            @id @default(cuid())
@@ -1111,11 +1137,16 @@ model NpaProviderContribution {
   npaId           String            // Patient's NPA ID
   documentId      String            @unique // The new document created (one contribution per document)
   
-  // Provider information
-  providerName    String
-  providerOrg     String?
-  providerEmail   String?
-  dateOfCare      DateTime?
+  // Provider information (REQUIRED for Phase 5)
+  providerName    String            // Full name of provider
+  providerRole    ProviderRole      @default(OTHER) // MD, DO, NP, PA, RN, etc.
+  providerOrg     String?           // Organization / clinic name
+  providerEmail   String?           // Optional contact email
+  providerNPI     String?           // National Provider Identifier (optional)
+  specialty       String?           // e.g., Cardiology, Family Medicine
+  
+  // Encounter information
+  dateOfCare      DateTime?         // Date of the clinical encounter
   
   // Contribution metadata
   contributionType String           // visit_summary, referral, care_note, etc.
@@ -1125,13 +1156,17 @@ model NpaProviderContribution {
   ipAddress       String?
   userAgent       String?
   
+  // Timestamps
   createdAt       DateTime          @default(now())
   
+  // Relations
   shareSession    NpaShareSession   @relation(fields: [shareSessionId], references: [id], onDelete: Cascade)
   document        NpaVaultDocument  @relation(fields: [documentId], references: [id], onDelete: Cascade)
 
   @@index([shareSessionId])
   @@index([npaId])
   @@index([providerEmail])
+  @@index([providerRole])
+  @@index([specialty])
   @@index([createdAt])
 }

@@ -31,6 +31,11 @@ model User {
   updatedAt    DateTime  @updatedAt
   lastAccessAt DateTime?
 
+  // NPA Health ID - Immutable patient identifier (Phase 1)
+  npaId        String?   @unique
+  npaIdAlias   String?
+  npaStatus    NpaStatus @default(ACTIVE)
+
   // Privacy & Consent
   consentToShareClinicalSummary  Boolean @default(false)
   allowProviderToProviderSharing Boolean @default(false)
@@ -56,6 +61,8 @@ model User {
   consentChangeLogs   ConsentChangeLog[]
   dataRequests        DataRequest[]
   appointments        Appointment[]
+  identityAuditLogs   IdentityAuditLog[]
+  npaVaultDocuments   NpaVaultDocument[]
 }
 
 model Subscription {
@@ -767,4 +774,185 @@ model UserSecurity {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+// ============================================
+// NPA PHASE 1: IDENTITY FOUNDATION
+// ============================================
+
+enum NpaStatus {
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+enum IdentityAuditAction {
+  ACCOUNT_CREATED
+  NPA_ID_GENERATED
+  LOGIN
+  LOGIN_FAILED
+  LOGOUT
+  PASSWORD_CHANGED
+  PASSWORD_RESET_REQUESTED
+  PASSWORD_RESET_COMPLETED
+  PROFILE_UPDATED
+  ACCOUNT_SUSPENDED
+  ACCOUNT_REACTIVATED
+  ACCOUNT_DELETED
+}
+
+model IdentityAuditLog {
+  id        String              @id @default(cuid())
+  userId    String?
+  npaId     String?
+  action    IdentityAuditAction
+  ipAddress String?
+  userAgent String?
+  metadata  Json?
+  createdAt DateTime            @default(now())
+  user      User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([npaId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// ============================================
+// NPA PHASE 2: PATIENT-OWNED VAULT STORAGE
+// ============================================
+
+enum NpaDocumentSource {
+  EPIC_MYCHART
+  CERNER
+  ATHENA
+  ALLSCRIPTS
+  MEDITECH
+  NEXTGEN
+  ECW
+  PATIENT_UPLOAD
+  PROVIDER_UPLOAD
+  INSURANCE
+  LAB_DIRECT
+  IMAGING_CENTER
+  PHARMACY
+  OTHER
+}
+
+enum NpaDocumentCategory {
+  LAB_RESULT
+  IMAGING_REPORT
+  IMAGING_SCAN
+  VISIT_SUMMARY
+  DISCHARGE_SUMMARY
+  MEDICATION_LIST
+  ALLERGY_LIST
+  IMMUNIZATION_RECORD
+  PROCEDURE_NOTE
+  OPERATIVE_REPORT
+  PATHOLOGY_REPORT
+  REFERRAL
+  INSURANCE_CARD
+  INSURANCE_EOB
+  CCDA_CCD
+  CARE_PLAN
+  CONSENT_FORM
+  ADVANCE_DIRECTIVE
+  OTHER
+}
+
+model NpaVaultDocument {
+  id               String              @id @default(cuid())
+  npaId            String
+  userId           String?
+  title            String
+  category         NpaDocumentCategory @default(OTHER)
+  source           NpaDocumentSource   @default(PATIENT_UPLOAD)
+  sourceSystem     String?
+  dateOfCare       DateTime?
+  dateReceived     DateTime?
+  uploadedAt       DateTime            @default(now())
+  storagePath      String
+  originalFilename String
+  mimeType         String
+  sizeBytes        Int
+  extractedText    String?
+  isDeleted        Boolean             @default(false)
+  deletedAt        DateTime?
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  user             User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
+  auditLogs        NpaVaultAuditLog[]
+  shareLinks       NpaVaultShareLink[]
+
+  @@index([npaId])
+  @@index([userId])
+  @@index([category])
+  @@index([source])
+  @@index([dateOfCare])
+  @@index([uploadedAt])
+  @@index([isDeleted])
+}
+
+enum NpaVaultAction {
+  UPLOADED
+  VIEWED
+  DOWNLOADED
+  METADATA_UPDATED
+  DELETED
+  RESTORED
+  SHARED
+  SHARE_REVOKED
+}
+
+model NpaVaultAuditLog {
+  id         String           @id @default(cuid())
+  documentId String
+  npaId      String
+  action     NpaVaultAction
+  actorId    String?
+  actorNpaId String?
+  ipAddress  String?
+  userAgent  String?
+  metadata   Json?
+  createdAt  DateTime         @default(now())
+  document   NpaVaultDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+  @@index([npaId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+model NpaVaultShareLink {
+  id          String                    @id @default(cuid())
+  documentId  String
+  npaId       String
+  token       String                    @unique
+  canDownload Boolean                   @default(false)
+  canUpload   Boolean                   @default(false)
+  expiresAt   DateTime
+  isRevoked   Boolean                   @default(false)
+  revokedAt   DateTime?
+  revokedBy   String?
+  createdAt   DateTime                  @default(now())
+  document    NpaVaultDocument          @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  accesses    NpaVaultShareLinkAccess[]
+
+  @@index([documentId])
+  @@index([npaId])
+  @@index([token])
+  @@index([expiresAt])
+}
+
+model NpaVaultShareLinkAccess {
+  id          String            @id @default(cuid())
+  shareLinkId String
+  accessedAt  DateTime          @default(now())
+  ipAddress   String?
+  userAgent   String?
+  shareLink   NpaVaultShareLink @relation(fields: [shareLinkId], references: [id], onDelete: Cascade)
+
+  @@index([shareLinkId])
+  @@index([accessedAt])
 }

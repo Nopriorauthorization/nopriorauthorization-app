@@ -1,6 +1,7 @@
 import "./globals.css";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import MainNavigation from "@/components/layout/main-navigation";
+import Providers from "@/components/layout/providers";
 import { MascotControllerProvider } from "@/context/MascotController";
 import { Metadata } from "next";
 
@@ -102,12 +103,14 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-black text-white min-h-screen">
-        <MascotControllerProvider>
-          <ErrorBoundary>
-            <MainNavigation />
-            <main className="pt-16">{children}</main>
-          </ErrorBoundary>
-        </MascotControllerProvider>
+        <Providers>
+          <MascotControllerProvider>
+            <ErrorBoundary>
+              <MainNavigation />
+              <main className="pt-16">{children}</main>
+            </ErrorBoundary>
+          </MascotControllerProvider>
+        </Providers>
       </body>
     </html>
   );

@@ -40,7 +40,8 @@ const demoSettings: UserSettings = {
 };
 
 export default function SettingsPage() {
-  const { status } = useSession();
+  const sessionResult = useSession();
+  const status = sessionResult?.status || "loading";
   
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);

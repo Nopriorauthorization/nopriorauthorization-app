@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 
 export function useOnboarding() {
-  const { data: session, status } = useSession();
+  const sessionResult = useSession();
+  const session = sessionResult?.data;
+  const status = sessionResult?.status || "loading";
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 

@@ -18,7 +18,8 @@ type VisitPrepData = {
 };
 
 export default function VisitPrepPage() {
-  const { status } = useSession();
+  const sessionResult = useSession();
+  const status = sessionResult?.status || "loading";
   const [data, setData] = useState<VisitPrepData | null>(null);
   const [loading, setLoading] = useState(true);
   const [calendarEvents, setCalendarEvents] = useState<any[]>([]);

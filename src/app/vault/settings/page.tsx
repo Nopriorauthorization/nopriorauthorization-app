@@ -22,7 +22,9 @@ export default function CalendarSettingsPage() {
 }
 
 function CalendarSettingsContent() {
-  const { data: session, status } = useSession();
+  const sessionResult = useSession();
+  const session = sessionResult?.data;
+  const status = sessionResult?.status || "loading";
   const router = useRouter();
   const searchParams = useSearchParams();
   

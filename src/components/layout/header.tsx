@@ -7,7 +7,9 @@ import { BeauToxAvatar } from "@/lib/ai/beau-tox";
 import { useAppMode } from "./app-mode-provider";
 
 export default function Header() {
-  const { data: session, status } = useSession();
+  const sessionResult = useSession();
+  const session = sessionResult?.data;
+  const status = sessionResult?.status || "loading";
   const { mode, setMode } = useAppMode();
 
   return (

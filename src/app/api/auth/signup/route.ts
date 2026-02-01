@@ -1,7 +1,13 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import prisma from "@/lib/db";
+import { generateNpaId, generateDisplayAlias } from "@/lib/npa-id";
+import {
+  logAccountCreated,
+  logNpaIdGenerated,
+  getIdentityRequestMetadata,
+} from "@/lib/identity-audit";
 
 const signupSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -14,7 +20,7 @@ const signupSchema = z.object({
   name: z.string().optional(),
 });
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const validation = signupSchema.safeParse(body);
@@ -44,26 +50,46 @@ export async function POST(request: Request) {
     // Hash password
     const passwordHash = await bcrypt.hash(password, 12);
 
-    // Create user
+    // Generate NPA Health ID - the anchor for all future records
+    // This ID is immutable, non-sequential, and never recycled
+    const npaId = generateNpaId();
+    const npaIdAlias = generateDisplayAlias(npaId);
+
+    // Create user with NPA ID
     const user = await prisma.user.create({
       data: {
         email: normalizedEmail,
         passwordHash,
         name,
+        npaId,
+        npaIdAlias,
       },
     });
+
+    // Get request metadata for audit logging
+    const { ipAddress, userAgent } = getIdentityRequestMetadata(request);
+
+    // Log identity events (fire-and-forget, non-blocking)
+    await Promise.all([
+      logAccountCreated(user.id, npaId, ipAddress, userAgent),
+      logNpaIdGenerated(user.id, npaId, ipAddress, userAgent),
+    ]);
 
     // Track analytics
     await prisma.analytics.create({
       data: {
         event: "user_signup",
         userId: user.id,
-        metadata: { source: "web" },
+        metadata: { source: "web", hasNpaId: true },
       },
     });
 
     return NextResponse.json(
-      { message: "Account created successfully", userId: user.id },
+      {
+        message: "Account created successfully",
+        userId: user.id,
+        npaId: npaIdAlias, // Return human-readable alias for display
+      },
       { status: 201 }
     );
   } catch (error) {

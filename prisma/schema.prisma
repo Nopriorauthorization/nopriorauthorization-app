@@ -822,6 +822,14 @@ model IdentityAuditLog {
 // NPA PHASE 2: PATIENT-OWNED VAULT STORAGE
 // ============================================
 
+// Phase 3: Document Processing Status
+enum NpaProcessingStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
 enum NpaDocumentSource {
   EPIC_MYCHART
   CERNER
@@ -879,6 +887,26 @@ model NpaVaultDocument {
   extractedText    String?
   isDeleted        Boolean             @default(false)
   deletedAt        DateTime?
+  isHidden         Boolean             @default(false) // Phase 3: User can hide from timeline
+  hiddenAt         DateTime?
+  
+  // Phase 3: Document Intelligence - Processing Status
+  processingStatus NpaProcessingStatus @default(PENDING)
+  processedAt      DateTime?
+  processingError  String?
+  
+  // Phase 3: Document Intelligence - Classification
+  documentType     String?             // visit_summary, lab_report, imaging_report, etc.
+  classificationConfidence Float?      // 0.0 - 1.0
+  
+  // Phase 3: Document Intelligence - Extracted Sections (as-written, NO interpretation)
+  sections         Json?               // { medications, allergies, diagnoses, labResults, etc. }
+  
+  // Phase 3: Provider/Facility Info (extracted, not interpreted)
+  providerName     String?
+  facilityName     String?
+  department       String?
+  
   createdAt        DateTime            @default(now())
   updatedAt        DateTime            @updatedAt
   user             User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
@@ -892,6 +920,9 @@ model NpaVaultDocument {
   @@index([dateOfCare])
   @@index([uploadedAt])
   @@index([isDeleted])
+  @@index([isHidden])
+  @@index([processingStatus])
+  @@index([documentType])
 }
 
 enum NpaVaultAction {

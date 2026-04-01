@@ -51,6 +51,18 @@ export type BuildManifest = {
   steps: BuildStepResult[];
   outputDir: string;
   archivePath: string | null;
+  etsyDraft?: {
+    listingId: number;
+    state: string;
+    url: string;
+    createdAt: string;
+  };
+  canvaExports?: {
+    designId: string;
+    format: string;
+    status: string;
+    files?: string[];
+  }[];
 };
 
 export class ConfigError extends Error {

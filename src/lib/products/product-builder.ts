@@ -87,13 +87,54 @@ export async function buildProduct(
   });
   steps.push(instrResult);
 
-  // Step 3: Canva export (STUB — skip gracefully in P0)
-  const canvaResult = runStep("canva-export", () => {
-    log(config.slug, "Canva export: SKIPPED (P0 — no live export integration)");
-    return null;
+  // Step 3: Canva export — full pipeline when token + design IDs present
+  const canvaResult = await runStepAsync("canva-export", async () => {
+    const token = process.env.CANVA_ACCESS_TOKEN?.trim();
+    if (!token) {
+      return { status: "skipped" as const, message: "No CANVA_ACCESS_TOKEN set; skipping Canva step" };
+    }
+
+    if (!config.canvaDesignIds?.length) {
+      return { status: "skipped" as const, message: "No canvaDesignIds in config; export requires design IDs" };
+    }
+
+    const { CanvaService } = await import("@/lib/integrations/canva/canva.service");
+    const canva = new CanvaService(token);
+    const allFiles: string[] = [];
+    const canvaLinks: string[] = [];
+
+    for (const designId of config.canvaDesignIds) {
+      const design = await canva.getDesign(designId);
+      if (design) {
+        canvaLinks.push(`${design.id}: ${design.title}`);
+        log(config.slug, `  Canva design: ${design.title}`);
+      } else {
+        log(config.slug, `  Canva design ${designId}: NOT FOUND (skipping export)`);
+        continue;
+      }
+
+      for (const fmt of config.exportFormats) {
+        const job = await canva.exportDesign(designId, fmt, previewsDir);
+        if (job.status === "completed" && job.outputPaths?.length) {
+          allFiles.push(...job.outputPaths);
+          log(config.slug, `  Exported ${job.outputPaths.length} ${fmt} file(s)`);
+        } else if (job.status === "failed") {
+          log(config.slug, `  Export ${fmt} failed: ${job.error}`);
+        }
+      }
+    }
+
+    if (canvaLinks.length && config.deliveryFiles.includeCanvaLinks) {
+      const linksPath = path.join(deliveryDir, "canva-links.txt");
+      fs.writeFileSync(linksPath, canvaLinks.join("\n") + "\n");
+      allFiles.push(linksPath);
+    }
+
+    if (allFiles.length === 0) {
+      return { status: "skipped" as const, message: "Designs found but no exports completed (scope may not be enabled)" };
+    }
+    return { files: allFiles };
   });
-  canvaResult.status = "skipped";
-  canvaResult.message = "Canva export not implemented in P0; enable in P1 with CanvaService + scopes";
   steps.push(canvaResult);
 
   // Step 4: package ZIP
@@ -159,6 +200,31 @@ function runStep(
       status: files ? "ok" : "skipped",
       durationMs: Date.now() - start,
       files: files ?? undefined,
+    };
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    return {
+      step: name,
+      status: "error",
+      durationMs: Date.now() - start,
+      message: msg,
+    };
+  }
+}
+
+async function runStepAsync(
+  name: string,
+  fn: () => Promise<{ files?: string[]; status?: StepStatus; message?: string }>,
+): Promise<BuildStepResult> {
+  const start = Date.now();
+  try {
+    const result = await fn();
+    return {
+      step: name,
+      status: result.status || (result.files ? "ok" : "skipped"),
+      durationMs: Date.now() - start,
+      files: result.files,
+      message: result.message,
     };
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);

@@ -200,4 +200,12 @@ Avatar roles
 
 Must be approved before implementation.
 
+---
+
+## Internal: Digital product pipeline (Etsy + Canva)
+
+The **DEV ticket**, current implementation status, and gaps for the internal product automation engine (configs, Canva/Etsy services, ZIP packaging, CLI) live in:
+
+**[docs/PRODUCT_AUTOMATION_PIPELINE.md](./docs/PRODUCT_AUTOMATION_PIPELINE.md)**
+
 End of README

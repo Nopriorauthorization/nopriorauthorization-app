@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
 import { CheckoutButton } from "./CheckoutButton";
 
@@ -54,6 +55,31 @@ export default function ProductDetailPage({
           </div>
         </div>
 
+        {/* Preview Gallery */}
+        {product.previewImages.length > 0 && (
+          <div className="mb-10">
+            <h2 className="mb-5 font-serif text-2xl font-semibold">
+              Preview
+            </h2>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {product.previewImages.slice(0, 6).map((src, i) => (
+                <div
+                  key={i}
+                  className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]"
+                >
+                  <Image
+                    src={src}
+                    alt={`${product.title} preview ${i + 1}`}
+                    width={400}
+                    height={400}
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* What's Included */}
         <div className="mb-10">
           <h2 className="mb-5 font-serif text-2xl font-semibold">
@@ -71,6 +97,23 @@ export default function ProductDetailPage({
             ))}
           </div>
         </div>
+
+        {/* Perfect For */}
+        {product.audience.length > 0 && (
+          <div className="mb-10">
+            <h2 className="mb-5 font-serif text-2xl font-semibold">
+              Perfect For
+            </h2>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {product.audience.map((a, i) => (
+                <div key={i} className="flex items-center gap-3 text-sm text-gray-400">
+                  <span className="text-[#D4537E]">&#8594;</span>
+                  {a}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* How It Works */}
         <div className="mb-10">
@@ -106,6 +149,7 @@ export default function ProductDetailPage({
               { q: "Is this a physical product?", a: "No. This is a digital download — no physical item will be shipped." },
               { q: "Do I need Canva Pro?", a: "Some products include Canva template links (social media kits). Canva Free works for all of them." },
               { q: "Can I use these for multiple locations?", a: "Templates are licensed for use within your own practice. Redistribution or resale is not permitted." },
+              { q: "How do I get support?", a: "Reply to your delivery email or message us through the shop. We respond within 24 hours." },
             ].map((item) => (
               <div
                 key={item.q}
@@ -128,7 +172,7 @@ export default function ProductDetailPage({
           </p>
         </div>
 
-        {/* Sticky Buy */}
+        {/* Sticky Buy (mobile) */}
         <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#1A1A1A]/95 px-4 py-3 backdrop-blur sm:hidden">
           <div className="mx-auto flex max-w-4xl items-center justify-between">
             <div>

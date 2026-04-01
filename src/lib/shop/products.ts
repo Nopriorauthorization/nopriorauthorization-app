@@ -1,9 +1,12 @@
+import fs from "fs";
+import path from "path";
 import catalog from "@/lib/delivery/catalog.generated.json";
 
 export type ShopProduct = {
   slug: string;
   title: string;
   shortDescription: string;
+  longDescription: string;
   priceCents: number;
   priceDisplay: string;
   templateCount: number;
@@ -11,6 +14,8 @@ export type ShopProduct = {
   features: string[];
   featured: boolean;
   stripePriceId: string | null;
+  previewImages: string[];
+  audience: string[];
 };
 
 type CatalogProduct = {
@@ -84,6 +89,44 @@ const FEATURED_SLUGS = new Set([
 
 const STRIPE_PRICE_IDS: Record<string, string> = {};
 
+const AUDIENCE_MAP: Record<string, string[]> = {
+  "Clinical Forms": ["Nurse injectors", "Med spa owners", "Practice managers", "NPs and PAs"],
+  "Social Media": ["Aesthetic providers", "Med spa marketing teams", "Nurse practitioners", "Beauty entrepreneurs"],
+  "Legal": ["Med spa owners", "Practice managers", "Attorneys advising aesthetic practices", "Startup founders"],
+  "Compliance": ["Compliance officers", "Practice managers", "Med spa owners", "HIPAA coordinators"],
+  "Practice Management": ["Office managers", "New practice owners", "Front desk staff", "Practice administrators"],
+  "Bundles": ["Med spa owners", "Multi-service clinics", "Aesthetic suite providers"],
+};
+
+/** Map from slug to the asset subdirectory name in etsy-products/store-launch/assets/ */
+const ASSET_DIR_MAP: Record<string, string> = {
+  "botox-consent-bundle": "botox",
+  "botox-social-bundle": "botox",
+  "filler-consent-bundle": "filler",
+  "filler-social-bundle": "filler",
+  "combo-bundle": "combo-bundle",
+  "complete-injector-bundle": "complete-injector",
+  "iv-therapy-social-kit": "iv-therapy",
+  "iv-story-templates": "iv-therapy",
+  "lash-aftercare-kit": "lash",
+  "weight-loss-kit": "weight-loss",
+  "glp1-story-templates": "weight-loss",
+};
+
+function discoverPreviewImages(slug: string): string[] {
+  const assetDir = ASSET_DIR_MAP[slug];
+  if (!assetDir) return [];
+
+  const publicDir = path.join(process.cwd(), "public", "shop-previews", assetDir);
+  if (!fs.existsSync(publicDir)) return [];
+
+  return fs
+    .readdirSync(publicDir)
+    .filter((f) => /\.(png|jpg|jpeg|webp)$/i.test(f))
+    .sort()
+    .map((f) => `/shop-previews/${assetDir}/${f}`);
+}
+
 function buildFeatures(slug: string, count: number): string[] {
   const base = [`${count} editable templates`, "Instant digital delivery", "Print-ready format"];
   const cat = CATEGORY_MAP[slug] || "General";
@@ -92,6 +135,7 @@ function buildFeatures(slug: string, count: number): string[] {
   if (cat === "Legal") base.push("Attorney-review recommended");
   if (cat === "Compliance") base.push("Audit-ready documentation");
   if (cat === "Practice Management") base.push("Customizable for your practice");
+  if (cat === "Bundles") base.push("Best value — multiple categories");
   return base;
 }
 
@@ -99,7 +143,7 @@ function formatPrice(cents: number): string {
   return `$${(cents / 100).toFixed(cents % 100 === 0 ? 0 : 2)}`;
 }
 
-function buildShortDescription(slug: string, title: string, count: number): string {
+function buildShortDescription(slug: string, _title: string, count: number): string {
   const cat = CATEGORY_MAP[slug] || "General";
   switch (cat) {
     case "Clinical Forms":
@@ -119,6 +163,12 @@ function buildShortDescription(slug: string, title: string, count: number): stri
   }
 }
 
+function buildLongDescription(slug: string, title: string, count: number, cat: string): string {
+  const short = buildShortDescription(slug, title, count);
+  const audienceList = AUDIENCE_MAP[cat] || ["Aesthetic professionals"];
+  return `${short}\n\nDesigned for ${audienceList.join(", ").toLowerCase()}. All templates are fully editable — add your practice name, logo, and contact information. Print directly from your browser or save as PDF.\n\nIncludes ${count} templates with instant digital delivery. No physical product will be shipped.`;
+}
+
 let _products: ShopProduct[] | null = null;
 
 export function getShopProducts(): ShopProduct[] {
@@ -129,17 +179,21 @@ export function getShopProducts(): ShopProduct[] {
   _products = catalogProducts.map((cp) => {
     const slug = cp.productSlug;
     const priceCents = PRICE_MAP[slug] || 2700;
+    const category = CATEGORY_MAP[slug] || "General";
     return {
       slug,
       title: cp.productTitle,
       shortDescription: buildShortDescription(slug, cp.productTitle, cp.templateCount),
+      longDescription: buildLongDescription(slug, cp.productTitle, cp.templateCount, category),
       priceCents,
       priceDisplay: formatPrice(priceCents),
       templateCount: cp.templateCount,
-      category: CATEGORY_MAP[slug] || "General",
+      category,
       features: buildFeatures(slug, cp.templateCount),
       featured: FEATURED_SLUGS.has(slug),
       stripePriceId: STRIPE_PRICE_IDS[slug] || null,
+      previewImages: discoverPreviewImages(slug),
+      audience: AUDIENCE_MAP[category] || ["Aesthetic professionals"],
     };
   });
 

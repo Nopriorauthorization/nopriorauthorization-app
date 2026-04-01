@@ -32,8 +32,32 @@ export class CanvaService {
   }
 
   /**
+   * Create a CanvaService with automatic token resolution.
+   * Priority: explicit arg → DB lookup → env CANVA_ACCESS_TOKEN → error.
+   */
+  static async create(token?: string): Promise<CanvaService> {
+    if (token) return new CanvaService(token);
+
+    const dbToken = await CanvaService.tryLoadTokenFromDb();
+    if (dbToken) {
+      const ts = new Date().toISOString().slice(11, 23);
+      console.log(`[${ts}] [canva] Token loaded from database`);
+      return new CanvaService(dbToken);
+    }
+
+    const envToken = process.env.CANVA_ACCESS_TOKEN?.trim();
+    if (envToken) return new CanvaService(envToken);
+
+    throw new CanvaServiceError(
+      "No Canva access token found.\n" +
+        "  1. Re-authorize at http://127.0.0.1:3000/api/canva/auth (preferred)\n" +
+        "  2. Or set CANVA_ACCESS_TOKEN in .env.local",
+    );
+  }
+
+  /**
    * Try loading a Canva access token from the database.
-   * Useful for CLI scripts that don't have browser cookies.
+   * Returns null silently if DB is unavailable.
    */
   static async tryLoadTokenFromDb(): Promise<string | null> {
     try {
@@ -93,6 +117,12 @@ export class CanvaService {
 
       if (!res.ok) {
         const body = await res.text().catch(() => "");
+        if (res.status === 401) {
+          throw new CanvaServiceError(
+            "Canva token expired or invalid — re-authorize at http://127.0.0.1:3000/api/canva/auth",
+            401,
+          );
+        }
         throw new CanvaServiceError(
           `Canva API ${res.status}: ${body.slice(0, 200)}`,
           res.status,

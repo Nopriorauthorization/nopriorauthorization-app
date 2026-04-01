@@ -89,27 +89,19 @@ export async function buildProduct(
 
   // Step 3: Canva export — full pipeline when token + design IDs present
   const canvaResult = await runStepAsync("canva-export", async () => {
-    let token = process.env.CANVA_ACCESS_TOKEN?.trim() || "";
-
-    if (!token) {
-      const { CanvaService: CS } = await import("@/lib/integrations/canva/canva.service");
-      const dbToken = await CS.tryLoadTokenFromDb();
-      if (dbToken) {
-        token = dbToken;
-        log(config.slug, "  Loaded Canva token from database");
-      }
-    }
-
-    if (!token) {
-      return { status: "skipped" as const, message: "No CANVA_ACCESS_TOKEN set and none in DB; skipping Canva step" };
-    }
-
     if (!config.canvaDesignIds?.length) {
       return { status: "skipped" as const, message: "No canvaDesignIds in config; export requires design IDs" };
     }
 
     const { CanvaService } = await import("@/lib/integrations/canva/canva.service");
-    const canva = new CanvaService(token);
+
+    let canva: InstanceType<typeof CanvaService>;
+    try {
+      canva = await CanvaService.create();
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      return { status: "skipped" as const, message: msg };
+    }
     const allFiles: string[] = [];
     const canvaLinks: string[] = [];
 

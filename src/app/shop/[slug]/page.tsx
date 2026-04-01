@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
 import { CheckoutButton } from "./CheckoutButton";
 
@@ -67,11 +66,11 @@ export default function ProductDetailPage({
                   key={i}
                   className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]"
                 >
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src={src}
                     alt={`${product.title} preview ${i + 1}`}
-                    width={400}
-                    height={400}
+                    loading="lazy"
                     className="h-auto w-full object-cover"
                   />
                 </div>

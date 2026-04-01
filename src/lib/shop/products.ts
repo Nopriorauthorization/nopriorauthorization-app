@@ -113,18 +113,43 @@ const ASSET_DIR_MAP: Record<string, string> = {
   "glp1-story-templates": "weight-loss",
 };
 
-function discoverPreviewImages(slug: string): string[] {
+const CATEGORY_THUMBNAIL: Record<string, string> = {
+  "Social Media": "/shop-previews/default/default-thumbnail.png",
+  "Clinical Forms": "/shop-previews/default/clinical-forms.png",
+  "Legal": "/shop-previews/default/legal.png",
+  "Compliance": "/shop-previews/default/clinical-forms.png",
+  "Practice Management": "/shop-previews/default/clinical-forms.png",
+  "Bundles": "/shop-previews/default/default-thumbnail.png",
+};
+
+const NICHE_THUMBNAIL: Record<string, string> = {
+  "weight-loss": "/shop-previews/default/weight-loss.png",
+  "iv-therapy": "/shop-previews/default/iv-therapy.png",
+  "med-spa": "/shop-previews/default/default-thumbnail.png",
+};
+
+function discoverPreviewImages(slug: string, category: string): string[] {
   const assetDir = ASSET_DIR_MAP[slug];
-  if (!assetDir) return [];
+  if (assetDir) {
+    const publicDir = path.join(process.cwd(), "public", "shop-previews", assetDir);
+    if (fs.existsSync(publicDir)) {
+      const files = fs
+        .readdirSync(publicDir)
+        .filter((f) => /\.(png|jpg|jpeg|webp)$/i.test(f))
+        .sort()
+        .map((f) => `/shop-previews/${assetDir}/${f}`);
+      if (files.length > 0) return files;
+    }
+  }
 
-  const publicDir = path.join(process.cwd(), "public", "shop-previews", assetDir);
-  if (!fs.existsSync(publicDir)) return [];
+  const nichePrefix = slug.split("-").slice(0, 2).join("-");
+  const nicheFallback = NICHE_THUMBNAIL[nichePrefix];
+  if (nicheFallback) return [nicheFallback];
 
-  return fs
-    .readdirSync(publicDir)
-    .filter((f) => /\.(png|jpg|jpeg|webp)$/i.test(f))
-    .sort()
-    .map((f) => `/shop-previews/${assetDir}/${f}`);
+  const catFallback = CATEGORY_THUMBNAIL[category];
+  if (catFallback) return [catFallback];
+
+  return ["/shop-previews/default/default-thumbnail.png"];
 }
 
 function buildFeatures(slug: string, count: number): string[] {
@@ -192,7 +217,7 @@ export function getShopProducts(): ShopProduct[] {
       features: buildFeatures(slug, cp.templateCount),
       featured: FEATURED_SLUGS.has(slug),
       stripePriceId: STRIPE_PRICE_IDS[slug] || null,
-      previewImages: discoverPreviewImages(slug),
+      previewImages: discoverPreviewImages(slug, category),
       audience: AUDIENCE_MAP[category] || ["Aesthetic professionals"],
     };
   });

@@ -236,6 +236,18 @@ export default function ShopPage() {
                   data-category={p.category}
                   className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-[#D4537E]/40 hover:bg-white/[0.06]"
                 >
+                  {p.previewImages[0] && (
+                    <div className="mb-3 overflow-hidden rounded-lg">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={p.previewImages[0]}
+                        alt={p.title}
+                        loading="lazy"
+                        className="h-40 w-full object-cover object-top"
+                      />
+                    </div>
+                  )}
+
                   <div className="mb-3 flex items-center gap-2">
                     <span className="rounded-md bg-white/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-gray-400">
                       {p.category}

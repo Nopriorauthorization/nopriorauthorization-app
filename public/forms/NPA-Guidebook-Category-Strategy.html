@@ -1,0 +1,358 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 0 2rem}
+.npa-bar{background:#1A1A1A;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.npa-bar .brand{font-family:'Lato',sans-serif;font-weight:300;letter-spacing:.2em;font-size:13px;color:#fff;text-transform:uppercase}
+.npa-bar .sub{font-size:10px;color:#888;letter-spacing:.05em}
+.title-band{background:#D4537E;padding:16px 28px;text-align:center}
+.title-band h1{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700}
+.title-band p{font-size:11px;color:rgba(255,255,255,.8);margin-top:3px;letter-spacing:.08em;text-transform:uppercase}
+
+.section{padding:24px 28px 0}
+.section-label{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#D4537E;margin-bottom:14px}
+
+.stats-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:0 28px;margin-top:20px}
+.stat-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px 12px;text-align:center}
+.stat-card .num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#D4537E}
+.stat-card .lbl{font-size:11px;color:var(--color-text-secondary);margin-top:3px}
+
+.tiers{display:flex;flex-direction:column;gap:14px;padding:20px 28px 0}
+
+.tier-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.tier-card.featured{border:2px solid #D4537E}
+.tier-top{display:flex;align-items:stretch}
+.tier-num{background:#1A1A1A;width:52px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tier-num span{font-family:'Playfair Display',serif;font-size:26px;color:#D4537E;font-weight:700}
+.tier-head{padding:14px 18px;flex:1}
+.tier-head h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--color-text-primary);font-weight:700}
+.tier-head p{font-size:12px;color:var(--color-text-secondary);margin-top:3px;line-height:1.5}
+.tier-price{padding:14px 18px;text-align:right;display:flex;flex-direction:column;justify-content:center;flex-shrink:0}
+.tier-price .price{font-family:'Playfair Display',serif;font-size:22px;color:var(--color-text-primary);font-weight:700}
+.tier-price .price-sub{font-size:11px;color:var(--color-text-secondary)}
+.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:6px}
+.badge-pink{background:#FBEAF0;color:#993556}
+.badge-black{background:#1A1A1A;color:#fff}
+.badge-green{background:#EAF3DE;color:#3B6D11}
+
+.tier-body{border-top:0.5px solid var(--color-border-tertiary);padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tier-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-secondary);margin-bottom:8px}
+.tier-col ul{list-style:none;padding:0}
+.tier-col li{font-size:13px;color:var(--color-text-primary);padding:3px 0;display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.tier-col li::before{content:'';width:5px;height:5px;border-radius:50%;background:#D4537E;flex-shrink:0;margin-top:5px}
+.tier-col li.sub::before{background:#888}
+.tier-col li.sub{color:var(--color-text-secondary)}
+
+.moat-section{padding:20px 28px 0}
+.moat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.moat-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px}
+.moat-card h4{font-size:12px;font-weight:700;color:var(--color-text-primary);margin-bottom:5px}
+.moat-card p{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+
+.revenue-section{padding:20px 28px 0}
+.rev-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
+.rev-table th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary)}
+.rev-table td{padding:10px 12px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary)}
+.rev-table tr:last-child td{border-bottom:none;font-weight:700;color:#D4537E}
+.rev-table .muted{color:var(--color-text-secondary)}
+
+.roadmap{padding:20px 28px 0}
+.rm-steps{display:flex;flex-direction:column;gap:0;margin-top:12px}
+.rm-step{display:flex;gap:14px;align-items:stretch}
+.rm-line{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.rm-dot{width:14px;height:14px;border-radius:50%;background:#D4537E;flex-shrink:0;margin-top:3px}
+.rm-dot.done{background:#639922}
+.rm-dot.next{background:#D4537E}
+.rm-dot.future{background:var(--color-border-tertiary)}
+.rm-connector{width:2px;background:var(--color-border-tertiary);flex:1;margin:4px 0}
+.rm-content{padding:0 0 20px}
+.rm-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.rm-content p{font-size:12px;color:var(--color-text-secondary);margin-top:3px;line-height:1.5}
+.rm-tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:10px;display:inline-block;margin-top:5px}
+.tag-done{background:#EAF3DE;color:#3B6D11}
+.tag-next{background:#FBEAF0;color:#993556}
+.tag-future{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+
+.cta-row{padding:20px 28px 0;display:flex;gap:10px;flex-wrap:wrap}
+.cta-btn{font-family:'Lato',sans-serif;font-size:13px;font-weight:700;padding:11px 20px;border-radius:var(--border-radius-md);cursor:pointer;border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-primary);letter-spacing:.03em}
+.cta-btn.primary{background:#D4537E;border-color:#D4537E;color:#fff}
+.cta-btn:hover{opacity:.85}
+
+.npa-footer{background:#1A1A1A;padding:12px 28px;text-align:center;margin-top:24px}
+.npa-footer p{font-size:10px;color:#666;letter-spacing:.08em;text-transform:uppercase}
+</style>
+
+<div class="wrap">
+  <div class="npa-bar">
+    <div>
+      <div class="brand">No Prior Authorization</div>
+      <div class="sub">by Hello Gorgeous Med Spa &nbsp;|&nbsp; Danielle &amp; Ryan Kent, FNP-BC</div>
+    </div>
+    <div style="font-size:10px;color:#888;letter-spacing:.05em;text-transform:uppercase">Guidebooks &amp; Playbooks</div>
+  </div>
+
+  <div class="title-band">
+    <h1>NPA Education Category — Product Strategy</h1>
+    <p>3 tiers &nbsp;·&nbsp; 9 products &nbsp;·&nbsp; built to scale</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="num">3</div><div class="lbl">Product tiers</div></div>
+    <div class="stat-card"><div class="num">$37</div><div class="lbl">Entry price point</div></div>
+    <div class="stat-card"><div class="num">$297</div><div class="lbl">Top tier price</div></div>
+    <div class="stat-card"><div class="num">$2,090</div><div class="lbl">Catalog value total</div></div>
+  </div>
+
+  <div class="tiers">
+    <div class="section-label" style="margin-bottom:0;padding-bottom:2px">The three tiers</div>
+
+    <div class="tier-card">
+      <div class="tier-top">
+        <div class="tier-num"><span>1</span></div>
+        <div class="tier-head">
+          <span class="badge badge-pink">Guidebooks</span>
+          <h3>Clinical Reference Guides</h3>
+          <p>Deep clinical education in editable Canva + PDF. Buyers learn, brand, and use. Competes directly with Etsy market — but with Ryan's clinical voice behind it.</p>
+        </div>
+        <div class="tier-price">
+          <div class="price">$37–$57</div>
+          <div class="price-sub">per guide</div>
+        </div>
+      </div>
+      <div class="tier-body">
+        <div class="tier-col">
+          <h4>Products in this tier</h4>
+          <ul>
+            <li>Aesthetic Provider Guidebook (6 modules) — built ✓</li>
+            <li>Aesthetic Consult Mastery Guide</li>
+            <li>Injectables Fundamentals Guide</li>
+            <li>Clinical Skincare Provider Guide</li>
+          </ul>
+        </div>
+        <div class="tier-col">
+          <h4>What's included</h4>
+          <ul>
+            <li>Editable Canva template</li>
+            <li>Print-ready PDF</li>
+            <li>Test your knowledge quizzes</li>
+            <li>Branded with buyer's clinic name</li>
+            <li class="sub">No Ryan voice — just clean clinical content</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-card featured">
+      <div class="tier-top">
+        <div class="tier-num"><span>2</span></div>
+        <div class="tier-head">
+          <span class="badge badge-black">Playbooks — your moat</span>
+          <h3>Operational Practice Playbooks</h3>
+          <p>This is where ChatGPT cannot compete. Ryan's real protocols, consultation scripts, complication handling, documentation systems — the stuff you only know from doing it every day.</p>
+        </div>
+        <div class="tier-price">
+          <div class="price">$97–$157</div>
+          <div class="price-sub">per playbook</div>
+        </div>
+      </div>
+      <div class="tier-body">
+        <div class="tier-col">
+          <h4>Products in this tier</h4>
+          <ul>
+            <li>Botox &amp; Filler Practice Playbook</li>
+            <li>GLP-1 Program Playbook</li>
+            <li>IV Therapy Practice Playbook</li>
+          </ul>
+        </div>
+        <div class="tier-col">
+          <h4>What's included</h4>
+          <ul>
+            <li>Ryan's consultation scripts word-for-word</li>
+            <li>Complication protocols &amp; decision trees</li>
+            <li>Charting and documentation templates</li>
+            <li>Before/after photo consent + workflow</li>
+            <li>Pricing strategy framework</li>
+            <li class="sub">Ryan Kent FNP-BC voice = credibility no one else has</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-top">
+        <div class="tier-num"><span>3</span></div>
+        <div class="tier-head">
+          <span class="badge badge-green">Staff Training Kits</span>
+          <h3>Clinic Onboarding &amp; Training Systems</h3>
+          <p>Clinic owners pay premium for turnkey systems. Hand this to a new hire and they're oriented in a week. Front desk, injectors, estheticians — each gets their own kit.</p>
+        </div>
+        <div class="tier-price">
+          <div class="price">$147–$297</div>
+          <div class="price-sub">per kit</div>
+        </div>
+      </div>
+      <div class="tier-body">
+        <div class="tier-col">
+          <h4>Products in this tier</h4>
+          <ul>
+            <li>New Injector Onboarding Kit</li>
+            <li>Front Desk Med Spa Training Kit</li>
+            <li>Complete Clinic Onboarding Bundle</li>
+          </ul>
+        </div>
+        <div class="tier-col">
+          <h4>What's included</h4>
+          <ul>
+            <li>Week 1–4 onboarding checklist</li>
+            <li>Role-specific training modules</li>
+            <li>Scripts for common patient scenarios</li>
+            <li>Compliance &amp; HIPAA orientation</li>
+            <li>Performance review templates</li>
+            <li class="sub">Highest perceived value — owners buy, not individuals</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="moat-section">
+    <div class="section-label">Why NPA wins — the unfair advantages</div>
+    <div class="moat-grid">
+      <div class="moat-card">
+        <h4>Clinical credibility</h4>
+        <p>Ryan Kent FNP-BC is a practicing injector. Every word carries the weight of real clinical experience — not summarized textbooks.</p>
+      </div>
+      <div class="moat-card">
+        <h4>Operational reality</h4>
+        <p>Hello Gorgeous Med Spa runs these programs daily. The playbooks reflect actual workflows, not theoretical best practices.</p>
+      </div>
+      <div class="moat-card">
+        <h4>Brand system</h4>
+        <p>NPA has a recognizable brand. Buyers get something that looks like a premium product — not a Canva template from a stranger.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="revenue-section">
+    <div class="section-label">Revenue potential — conservative estimates</div>
+    <table class="rev-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>10 sales/mo</th>
+          <th>25 sales/mo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aesthetic Provider Guidebook</td>
+          <td>$47</td>
+          <td class="muted">$470</td>
+          <td>$1,175</td>
+        </tr>
+        <tr>
+          <td>Injectables Fundamentals Guide</td>
+          <td>$37</td>
+          <td class="muted">$370</td>
+          <td>$925</td>
+        </tr>
+        <tr>
+          <td>Botox &amp; Filler Practice Playbook</td>
+          <td>$127</td>
+          <td class="muted">$1,270</td>
+          <td>$3,175</td>
+        </tr>
+        <tr>
+          <td>GLP-1 Program Playbook</td>
+          <td>$97</td>
+          <td class="muted">$970</td>
+          <td>$2,425</td>
+        </tr>
+        <tr>
+          <td>New Injector Onboarding Kit</td>
+          <td>$197</td>
+          <td class="muted">$1,970</td>
+          <td>$4,925</td>
+        </tr>
+        <tr>
+          <td>Complete Clinic Bundle (all 3 tiers)</td>
+          <td>$397</td>
+          <td class="muted">$3,970</td>
+          <td>$9,925</td>
+        </tr>
+        <tr>
+          <td style="color:#D4537E;font-weight:700">Total category (conservative)</td>
+          <td></td>
+          <td style="color:#D4537E;font-weight:700">$9,020/mo</td>
+          <td style="color:#D4537E;font-weight:700">$22,550/mo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="roadmap">
+    <div class="section-label">Build order — what to do next</div>
+    <div class="rm-steps">
+
+      <div class="rm-step">
+        <div class="rm-line"><div class="rm-dot done"></div><div class="rm-connector"></div></div>
+        <div class="rm-content">
+          <h4>Aesthetic Provider Guidebook — interactive built</h4>
+          <p>6 modules, quizzes, NPA brand. Content source is live. Next: PDF + Canva template + shop listing.</p>
+          <span class="rm-tag tag-done">Done — content ready</span>
+        </div>
+      </div>
+
+      <div class="rm-step">
+        <div class="rm-line"><div class="rm-dot next"></div><div class="rm-connector"></div></div>
+        <div class="rm-content">
+          <h4>Botox &amp; Filler Practice Playbook — build first</h4>
+          <p>Ryan writes the consultation scripts and complication protocols. I build the structure, layout, and PDF. Highest margin, most differentiated product.</p>
+          <span class="rm-tag tag-next">Build next</span>
+        </div>
+      </div>
+
+      <div class="rm-step">
+        <div class="rm-line"><div class="rm-dot next"></div><div class="rm-connector"></div></div>
+        <div class="rm-content">
+          <h4>Guidebook PDF + Canva template</h4>
+          <p>Convert the interactive guidebook into a print-ready PDF and a fully editable Canva template buyers can brand as their own.</p>
+          <span class="rm-tag tag-next">Build next</span>
+        </div>
+      </div>
+
+      <div class="rm-step">
+        <div class="rm-line"><div class="rm-dot future"></div><div class="rm-connector"></div></div>
+        <div class="rm-content">
+          <h4>New Injector Onboarding Kit</h4>
+          <p>Week-by-week onboarding system for new injectors. Most appealing to clinic owners — highest price ceiling.</p>
+          <span class="rm-tag tag-future">Tier 3</span>
+        </div>
+      </div>
+
+      <div class="rm-step">
+        <div class="rm-line"><div class="rm-dot future"></div><div class="rm-connector"></div></div>
+        <div class="rm-content">
+          <h4>Complete Clinic Bundle — mega SKU</h4>
+          <p>Bundle all three tiers at a discount. One purchase gives a clinic everything: education, operations, and onboarding. $397 perceived as a bargain vs. individual prices.</p>
+          <span class="rm-tag tag-future">Phase 2</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <button class="cta-btn primary" onclick="sendPrompt('Build the Botox and Filler Practice Playbook — start with the consultation script section in Ryan\'s voice')">Build the Botox Playbook ↗</button>
+    <button class="cta-btn" onclick="sendPrompt('Convert the Aesthetic Provider Guidebook into a PDF download for the NPA shop')">Build the Guidebook PDF ↗</button>
+    <button class="cta-btn" onclick="sendPrompt('Write the Etsy and shop listing copy for the Aesthetic Provider Guidebook')">Write shop listing copy ↗</button>
+    <button class="cta-btn" onclick="sendPrompt('Build the New Injector Onboarding Kit structure and week 1 content')">Build Onboarding Kit ↗</button>
+  </div>
+
+  <div class="npa-footer">
+    <p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Internal product strategy doc</p>
+  </div>
+</div>

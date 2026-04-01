@@ -1,0 +1,431 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.pb{font-family:'Lato',sans-serif;max-width:860px;margin:0 auto;background:var(--color-background-primary)}
+
+.pb-header{background:#1A1A1A;padding:20px 32px 14px;text-align:center}
+.pb-header .ey{font-family:'Lato',sans-serif;font-weight:300;letter-spacing:.22em;font-size:10px;color:#888;text-transform:uppercase;margin-bottom:5px}
+.pb-header .br{font-family:'Lato',sans-serif;font-weight:300;letter-spacing:.22em;font-size:16px;color:#fff;text-transform:uppercase}
+.pb-header .su{font-size:10px;color:#666;margin-top:4px;letter-spacing:.05em}
+
+.pb-band{background:#D4537E;padding:16px 32px;text-align:center}
+.pb-band h1{font-family:'Playfair Display',serif;font-size:24px;color:#fff;font-weight:700}
+.pb-band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+
+.pb-nav{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 24px}
+.pb-nav::-webkit-scrollbar{display:none}
+.pn{font-size:12px;color:var(--color-text-secondary);padding:12px 14px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;transition:color .15s}
+.pn:hover{color:#D4537E}
+.pn.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+
+.pb-body{padding:28px 32px}
+.sec-hide{display:none}
+
+.module-hd{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;padding-bottom:18px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.mn{background:#D4537E;color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mht h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--color-text-primary);font-weight:700}
+.mht p{font-size:13px;color:var(--color-text-secondary);margin-top:3px}
+
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;color:#D4537E;font-weight:700;margin:22px 0 10px}
+
+.script-block{background:#1A1A1A;border-radius:var(--border-radius-lg);padding:18px 22px;margin-bottom:14px}
+.script-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.script-text{font-size:14px;color:#fff;line-height:1.8;font-style:italic}
+.script-note{font-size:12px;color:#888;margin-top:10px;font-style:normal;border-top:0.5px solid #333;padding-top:8px}
+
+.info-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:16px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.info-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:7px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}
+.info-card li{margin-bottom:3px}
+
+.warn-card{background:#FBEAF0;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.warn-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#993556;margin-bottom:6px}
+.warn-card p{font-size:13px;color:#72243E;line-height:1.6}
+
+.alert-card{background:#FCEBEB;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #E24B4A}
+.alert-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#A32D2D;margin-bottom:6px}
+.alert-card p,.alert-card li{font-size:13px;color:#791F1F;line-height:1.6}
+.alert-card ul{padding-left:16px}
+
+.ok-card{background:#EAF3DE;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:6px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+
+.dose-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+.dose-table th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary)}
+.dose-table td{padding:10px 12px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top}
+.dose-table tr:last-child td{border-bottom:none}
+.dose-table .note{font-size:11px;color:var(--color-text-secondary);display:block;margin-top:2px}
+
+.flow-step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.flow-num{background:#D4537E;color:#fff;font-size:12px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.flow-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.flow-content p{font-size:13px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px}
+
+.kpi-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px;text-align:center}
+.kpi .num{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#D4537E}
+.kpi .lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:20px 0}
+
+.pb-footer{background:#1A1A1A;padding:12px 32px;text-align:center}
+.pb-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+</style>
+
+<div class="pb">
+  <div class="pb-header">
+    <div class="ey">No Prior Authorization</div>
+    <div class="br">Botox &amp; Filler Practice Playbook</div>
+    <div class="su">Ryan Kent, FNP-BC &nbsp;|&nbsp; Hello Gorgeous Med Spa &nbsp;|&nbsp; Oswego, Illinois</div>
+  </div>
+  <div class="pb-band">
+    <h1>The Injector's Playbook</h1>
+    <p>Consultation scripts &nbsp;·&nbsp; Dosing protocols &nbsp;·&nbsp; Complication management &nbsp;·&nbsp; Real clinical systems</p>
+  </div>
+
+  <div class="pb-nav">
+    <button class="pn act" onclick="show(0)">01 &nbsp;The Consult</button>
+    <button class="pn" onclick="show(1)">02 &nbsp;Dosing System</button>
+    <button class="pn" onclick="show(2)">03 &nbsp;The Injection Day</button>
+    <button class="pn" onclick="show(3)">04 &nbsp;Complications</button>
+    <button class="pn" onclick="show(4)">05 &nbsp;The 2-Week Call</button>
+    <button class="pn" onclick="show(5)">06 &nbsp;Documentation</button>
+  </div>
+
+  <div class="pb-body">
+
+    <!-- SECTION 0: THE CONSULT -->
+    <div id="s0">
+      <div class="module-hd">
+        <div class="mn">1</div>
+        <div class="mht">
+          <h2>The Botox Consultation</h2>
+          <p>How to open, assess, set expectations, and close — in Ryan's words</p>
+        </div>
+      </div>
+
+      <div class="sec-title">The opening — let them talk first</div>
+      <div class="script-block">
+        <div class="script-label">Ryan's opening script</div>
+        <div class="script-text">"Tell me — what's been on your mind? What brought you in today?"</div>
+        <div class="script-note">Then stop talking. Let them finish completely before you say anything clinical. The answer to that question tells you everything: their self-image, their expectations, their emotional relationship with this treatment. You cannot assess a patient well if you haven't listened first.</div>
+      </div>
+
+      <div class="info-card">
+        <h4>Why this works</h4>
+        <p>Patients who feel heard are more compliant, more satisfied, and more likely to return. The consult is not just clinical — it is relational. A patient who talks for 3 minutes before you assess them is a patient who trusts you enough to be honest about what they actually want.</p>
+      </div>
+
+      <div class="sec-title">The facial assessment</div>
+      <div class="script-block">
+        <div class="script-label">Assessment script — before you touch them</div>
+        <div class="script-text">"I'm going to take a look at your face in a few different positions — resting, animated, and full expression. I want to see how your muscles move before I form any plan. Go ahead and raise your brows for me... now squint... now frown hard. Perfect."</div>
+        <div class="script-note">Watch for: asymmetric frontalis compensation, dominant depressors, brow position relative to orbital rim, lid ptosis baseline. Document everything before injection. This is your legal and clinical baseline.</div>
+      </div>
+
+      <div class="warn-card">
+        <h4>Red flag — manage this before you inject</h4>
+        <p>If a patient's brow is already at or below the orbital rim at rest, treating the forehead aggressively will cause brow drop. Set expectations before you pick up a syringe, or you will be managing a very unhappy patient at their 2-week follow-up.</p>
+      </div>
+
+      <div class="sec-title">Setting expectations — the most important 60 seconds</div>
+      <div class="script-block">
+        <div class="script-label">Expectation-setting script</div>
+        <div class="script-text">"I want to make sure we're on the same page before we start. Botox takes 3 to 7 days to start working, and you'll see the full result around day 14. In that window, it's completely normal to feel like nothing happened, or to notice it working unevenly before it evens out. That's not a problem — that's just the timeline. I'm going to have you back in two weeks so we can look at it together and make any fine adjustments. Sound good?"</div>
+        <div class="script-note">This script alone prevents the majority of 2-week panic calls. If they know what to expect, they won't be alarmed by it. Say this every single time — even with returning patients.</div>
+      </div>
+
+      <div class="ok-card">
+        <h4>Ryan's rule on returning patients</h4>
+        <p>Don't skip the expectation script just because someone has had Botox before. Each treatment is different. Their muscle mass changes, their dose may change, and their expectations evolve. A 30-second recap protects everyone.</p>
+      </div>
+
+      <div class="sec-title">Contraindication screening — the non-negotiables</div>
+      <div class="info-card">
+        <h4>Absolute contraindications — do not inject</h4>
+        <ul>
+          <li>Known hypersensitivity to botulinum toxin or albumin</li>
+          <li>Active infection at the injection site</li>
+          <li>Pregnancy or active breastfeeding</li>
+          <li>Allergy to cow's milk protein (Xeomin — not Botox or Dysport)</li>
+          <li>Neuromuscular disorders: myasthenia gravis, Lambert-Eaton, ALS</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Proceed with caution — document and discuss</h4>
+        <ul>
+          <li>Aminoglycoside antibiotics — may potentiate neurotoxin effect; reduce dose</li>
+          <li>Significant baseline asymmetry — document with photos before injecting</li>
+          <li>Prior brow lift or eyelid surgery — altered anatomy; treat conservatively</li>
+          <li>First-time patient with high expectations — more time, more education, lower dose</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION 1: DOSING -->
+    <div id="s1" class="sec-hide">
+      <div class="module-hd">
+        <div class="mn">2</div>
+        <div class="mht">
+          <h2>Ryan's Dosing System</h2>
+          <p>Conservative by default. Adjusted by muscle mass, gender, and patient history.</p>
+        </div>
+      </div>
+
+      <div class="warn-card">
+        <h4>The golden rule — say this out loud before every treatment</h4>
+        <p>"I can always add. I cannot take away." Start lower than you think you need to. A patient who comes back for a touch-up at two weeks is a happy patient. A patient who has brow ptosis for three months is not.</p>
+      </div>
+
+      <div class="sec-title">Standard dosing reference (Botox / onabotulinumtoxinA)</div>
+      <table class="dose-table">
+        <thead>
+          <tr><th>Treatment Area</th><th>Female Range</th><th>Male Range</th><th>Ryan's Start</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Glabella (11s)<span class="note">FDA-approved — treat this first</span></td><td>15–25u</td><td>25–40u</td><td>20u / 25u</td></tr>
+          <tr><td>Forehead<span class="note">Never treat without glabella</span></td><td>8–15u</td><td>15–20u</td><td>10u / 15u</td></tr>
+          <tr><td>Crow's feet<span class="note">Per side; 3-point technique</span></td><td>6–12u</td><td>10–15u</td><td>8u / 12u</td></tr>
+          <tr><td>Brow lift<span class="note">1–2 injection points lateral</span></td><td>2–4u</td><td>2–4u</td><td>2u</td></tr>
+          <tr><td>Lip flip<span class="note">4 points orbicularis oris</span></td><td>4–6u</td><td>4–6u</td><td>4u</td></tr>
+          <tr><td>Masseter<span class="note">Per side; palpate bulk</span></td><td>20–30u</td><td>30–50u</td><td>25u / 35u</td></tr>
+          <tr><td>Chin dimpling<span class="note">Mentalis — inject carefully</span></td><td>4–8u</td><td>6–10u</td><td>5u</td></tr>
+          <tr><td>Neck bands (platysma)<span class="note">Per band; experienced injectors only</span></td><td>20–40u total</td><td>30–50u total</td><td>25u</td></tr>
+        </tbody>
+      </table>
+
+      <div class="kpi-row">
+        <div class="kpi"><div class="num">2.5:1</div><div class="lbl">Dysport to Botox ratio</div></div>
+        <div class="kpi"><div class="num">1:1</div><div class="lbl">Jeuveau to Botox ratio</div></div>
+        <div class="kpi"><div class="num">~6mo</div><div class="lbl">Daxxify duration</div></div>
+      </div>
+
+      <div class="sec-title">Muscle mass assessment — how to dose beyond the chart</div>
+      <div class="info-card">
+        <h4>The palpation protocol</h4>
+        <ul>
+          <li>Ask the patient to animate the target area at full contraction</li>
+          <li>Palpate the muscle belly — note volume and bulk compared to average</li>
+          <li>Larger muscle bulk = higher end of range. Smaller = lower end.</li>
+          <li>Male patients almost always require 20–40% more units than female patients for equivalent effect</li>
+          <li>Athletes and patients who chew gum habitually often have hypertrophied masseters — confirm before dosing</li>
+        </ul>
+      </div>
+
+      <div class="script-block">
+        <div class="script-label">How Ryan explains dosing to patients</div>
+        <div class="script-text">"Everyone's muscles are a little different — some people have stronger muscles that need a bit more, others respond really well to a smaller amount. I'm going to start on the conservative side, because it's very easy to add a few more units at your touch-up if we want more relaxation. What I can't do is remove units once they're in — so starting thoughtfully protects you."</div>
+        <div class="script-note">Patients respond well to this framing. It positions conservatism as a feature, not a limitation.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: INJECTION DAY -->
+    <div id="s2" class="sec-hide">
+      <div class="module-hd">
+        <div class="mn">3</div>
+        <div class="mht">
+          <h2>Injection Day Protocol</h2>
+          <p>The exact workflow from room setup to patient checkout</p>
+        </div>
+      </div>
+
+      <div class="sec-title">Pre-treatment checklist</div>
+      <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Confirm consent is signed and witnessed</h4><p>Verbal AND written. Never inject without both. Check signature date — consents older than 12 months should be re-signed.</p></div></div>
+      <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Take baseline photos — every time</h4><p>Frontal, lateral both sides, oblique both sides. Animated and at rest. These are your legal protection and your clinical baseline. No photos = no injection.</p></div></div>
+      <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Confirm today's treatment plan out loud</h4><p>Repeat back to the patient exactly what areas you're treating and approximate units. Get verbal confirmation before you reconstitute.</p></div></div>
+      <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Reconstitute and document the vial</h4><p>Log: brand, lot number, reconstitution time, diluent volume, who reconstituted. This is HIPAA-adjacent documentation — required for any adverse event defense.</p></div></div>
+      <div class="flow-step"><div class="flow-num">5</div><div class="flow-content"><h4>Mark injection points before you inject</h4><p>Use a white or skin-tone pencil. Mapping before the needle goes in prevents drift and ensures symmetry. Do both sides before injecting either side.</p></div></div>
+
+      <div class="sec-title">During injection</div>
+      <div class="script-block">
+        <div class="script-label">What to say as you work</div>
+        <div class="script-text">"You're going to feel a small pinch — I'll let you know before each one. Take a slow breath in... and out. Perfect. Most people tell me it's much less than they expected."</div>
+        <div class="script-note">Keep talking between injections. Silence makes patients tense. A tense patient moves. A moving patient gets uneven results.</div>
+      </div>
+
+      <div class="info-card">
+        <h4>Injection technique non-negotiables</h4>
+        <ul>
+          <li>Inject into the muscle belly, not the skin — intradermal injection causes surface bumps and uneven diffusion</li>
+          <li>Bevel up, 30–45 degree angle for superficial muscles (frontalis, orbicularis)</li>
+          <li>Aspirate before injecting in high-risk vascular areas — platysma, masseter</li>
+          <li>Inject slowly — 5–10 seconds per injection point reduces spread and discomfort</li>
+          <li>Apply gentle pressure post-injection — but do NOT massage — massage spreads toxin</li>
+        </ul>
+      </div>
+
+      <div class="sec-title">Post-injection instructions — what to tell every patient</div>
+      <div class="script-block">
+        <div class="script-label">Checkout script</div>
+        <div class="script-text">"A few things for the next 24 hours: stay upright, no lying flat for 4 hours. Skip the gym today — elevated heart rate can affect where the toxin settles. No rubbing or massaging the treated areas. You might see some small bumps at the injection sites — those will be gone within 30 minutes. And remember what we talked about — days 3 through 7 is when you'll start to notice it working. I'll have my team reach out at the two-week mark to check in, and if you have any questions before then, just text us directly."</div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: COMPLICATIONS -->
+    <div id="s3" class="sec-hide">
+      <div class="module-hd">
+        <div class="mn">4</div>
+        <div class="mht">
+          <h2>Complication Management</h2>
+          <p>What to do when something goes wrong — and how to prevent it</p>
+        </div>
+      </div>
+
+      <div class="sec-title">Brow ptosis</div>
+      <div class="alert-card">
+        <h4>Signs — recognize early</h4>
+        <ul>
+          <li>Brow drops below orbital rim after forehead treatment</li>
+          <li>Patient reports "heavy" feeling or hooding of upper lids</li>
+          <li>Usually presents days 5–14 post-treatment</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Cause and prevention</h4>
+        <p>Almost always caused by treating the forehead too aggressively without treating the glabella first, or injecting too low on the frontalis (within 2cm of the brow). The frontalis is the only brow elevator — when you paralyze it, the depressors win.</p>
+      </div>
+      <div class="script-block">
+        <div class="script-label">What to say to the patient</div>
+        <div class="script-text">"I can see that the brow has settled a bit lower than we wanted — this is a known possibility with forehead treatment, especially on the first visit when we're learning how your muscles respond. The good news is it's completely temporary. In the meantime, I want to offer you a prescription for Iopidine eye drops — they stimulate a muscle that can lift the lid slightly and make you more comfortable while it resolves. And on your next visit, we'll adjust the approach based on how your muscles responded."</div>
+        <div class="script-note">Iopidine (apraclonidine) 0.5% — 1–2 drops in affected eye TID. Works on Müller's muscle. Lifts lid 1–2mm. Temporary but meaningful for patient comfort.</div>
+      </div>
+
+      <div class="sec-title">Asymmetry post-treatment</div>
+      <div class="info-card">
+        <h4>Asymmetry protocol</h4>
+        <ul>
+          <li>Wait until full onset — day 14 minimum before assessing asymmetry</li>
+          <li>Compare to baseline photos — was the asymmetry pre-existing?</li>
+          <li>If asymmetry is new: add small dose to the more animated side to balance</li>
+          <li>Document everything — photo, units added, date, patient acknowledgment</li>
+          <li>Never add toxin before day 14 — you are chasing a moving target</li>
+        </ul>
+      </div>
+
+      <div class="sec-title">Bruising</div>
+      <div class="info-card">
+        <h4>Prevention and management</h4>
+        <ul>
+          <li>Most bruising is from hitting a vessel — use a fresh needle for each injection point</li>
+          <li>Apply cold compress immediately if you see a bleb forming — for 2–3 minutes</li>
+          <li>Arnica gel or tablets — recommend immediately post-treatment</li>
+          <li>Reassure the patient: bruising does not affect results</li>
+          <li>If a patient bruises consistently, review their supplement list — fish oil, vitamin E, turmeric all increase risk</li>
+        </ul>
+      </div>
+
+      <div class="warn-card">
+        <h4>Rare but serious — when to refer immediately</h4>
+        <p>Dysphagia, dysphonia, or difficulty breathing after Botox treatment — especially neck or platysma injections — requires immediate evaluation. These are signs of toxin spread to swallowing or respiratory muscles. Call 911 and document everything.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 4: 2-WEEK CALL -->
+    <div id="s4" class="sec-hide">
+      <div class="module-hd">
+        <div class="mn">5</div>
+        <div class="mht">
+          <h2>The 2-Week Follow-Up System</h2>
+          <p>The most underused retention tool in aesthetic practice</p>
+        </div>
+      </div>
+
+      <div class="warn-card">
+        <h4>Ryan's most common challenge — and how to solve it before it starts</h4>
+        <p>The most common source of patient dissatisfaction isn't a bad outcome — it's a patient who sees partial onset at day 7, panics, and tells 5 people the Botox "didn't work." The 2-week system eliminates this entirely by turning a potential complaint into a scheduled touchpoint.</p>
+      </div>
+
+      <div class="sec-title">The 2-week outreach — who reaches out and what they say</div>
+      <div class="script-block">
+        <div class="script-label">Team text script — day 14</div>
+        <div class="script-text">"Hi [Name]! This is [Staff] from Hello Gorgeous — it's been 2 weeks since your Botox appointment and we wanted to check in. How are you feeling about your results? We'd love to see you back for a quick complimentary look — Ryan can fine-tune anything, add a touch-up if needed, and take your follow-up photos. Let us know what works for you!"</div>
+        <div class="script-note">This is a complimentary visit — no charge. The cost of a small touch-up is nothing compared to the lifetime value of a loyal patient and the referrals they generate.</div>
+      </div>
+
+      <div class="sec-title">At the 2-week appointment — what Ryan does</div>
+      <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Compare to baseline photos — together</h4><p>Show the patient their before and after side by side. Many patients forget what they looked like before and underestimate their results. The photo comparison is often the moment they say "wow."</p></div></div>
+      <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Assess for asymmetry or underdosing</h4><p>Ask them to animate. Check all treated areas. Note what's working and what could be adjusted.</p></div></div>
+      <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Offer a touch-up if needed — set the next appointment</h4><p>Small touch-ups are complimentary on the first visit. On return visits, a small touch-up fee is appropriate. Always book the next appointment before they leave.</p></div></div>
+      <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Ask for a review — the right way</h4><p>"If you're happy with your results, we would absolutely love a Google review — it helps other people find us who are looking for exactly what you just experienced." Say it in person. Text a link immediately after they leave.</p></div></div>
+
+      <div class="ok-card">
+        <h4>The rebooking script — before they walk out</h4>
+        <p>"Most patients find that Botox lasts them 3 to 4 months. I'd love to get you on the schedule now so you don't lose your results — would [month] work for you?" Patients who prebook retain their results better and are significantly more loyal.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 5: DOCUMENTATION -->
+    <div id="s5" class="sec-hide">
+      <div class="module-hd">
+        <div class="mn">6</div>
+        <div class="mht">
+          <h2>Documentation &amp; Charting System</h2>
+          <p>What to record, how to record it, and why it protects you</p>
+        </div>
+      </div>
+
+      <div class="sec-title">Required documentation — every visit</div>
+      <div class="info-card">
+        <h4>Pre-treatment record must include</h4>
+        <ul>
+          <li>Patient name, DOB, date of visit</li>
+          <li>Chief complaint / areas of concern in patient's own words</li>
+          <li>Medical history update — any changes since last visit?</li>
+          <li>Current medications and supplements reviewed</li>
+          <li>Allergies confirmed</li>
+          <li>Signed consent — form name, date, witness signature</li>
+          <li>Baseline photos taken — confirm with filename or timestamp</li>
+          <li>Fitzpatrick type documented for laser/skincare patients</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Treatment record must include</h4>
+        <ul>
+          <li>Product used: brand, lot number, expiration date</li>
+          <li>Reconstitution: diluent, volume, time, injector initials</li>
+          <li>Treatment areas and units injected per area</li>
+          <li>Injection technique notes (depth, technique, number of points)</li>
+          <li>Patient tolerance / any adverse events during treatment</li>
+          <li>Post-care instructions given — verbal and written</li>
+          <li>Next appointment scheduled</li>
+        </ul>
+      </div>
+
+      <div class="sec-title">The anatomy diagram — your most important documentation tool</div>
+      <div class="script-block">
+        <div class="script-label">Ryan's charting practice</div>
+        <div class="script-text">"I mark up a facial diagram for every patient showing exactly where I injected and how many units at each point. If I ever need to defend a treatment, recreate it, or hand the patient off to another provider — that diagram is worth more than any written note. It takes 60 seconds and it's saved me more than once."</div>
+        <div class="script-note">A facial injection diagram is included as a fillable template in your Canva bundle. Print one per patient per visit and file with the chart.</div>
+      </div>
+
+      <div class="warn-card">
+        <h4>HIPAA reminder — what cannot leave the chart</h4>
+        <p>Patient photos are PHI. They cannot be shared, posted, or used for marketing without a separate written photo release — distinct from the treatment consent. Keep releases on file. Never use a patient photo in social media without confirming a signed release is in their chart.</p>
+      </div>
+
+      <div class="sec-title">Your 90-day retention trigger system</div>
+      <div class="ok-card">
+        <h4>Set this up once — it runs itself</h4>
+        <p>Tag every Botox patient with their treatment date. At day 75, trigger an outreach: "It's almost time for your Botox refresh — you're coming up on 3 months and we want to make sure you don't lose your results. Want to get on the schedule?" Patients who receive this message rebook at a dramatically higher rate than those who don't.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pb-footer">
+    <p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Ryan Kent, FNP-BC &nbsp;·&nbsp; For licensed aesthetic providers only</p>
+  </div>
+</div>
+
+<script>
+function show(i){
+  for(let j=0;j<6;j++){
+    const el=document.getElementById('s'+j);
+    if(el)el.className=j===i?'':'sec-hide';
+  }
+  document.querySelectorAll('.pn').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+</script>

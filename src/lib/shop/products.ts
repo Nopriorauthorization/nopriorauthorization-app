@@ -38,6 +38,9 @@ const CATEGORY_MAP: Record<string, string> = {
   "medspa-startup-checklist": "Practice Management",
   "treatment-pricing-menu": "Practice Management",
   "med-spa-legal-startup-bundle": "Legal",
+  "injectors-playbook": "Playbooks",
+  "new-injector-onboarding-kit": "Playbooks",
+  "guidebook-category-strategy": "Playbooks",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
   "complete-injector-bundle": "Social Media",
@@ -76,9 +79,14 @@ const PRICE_MAP: Record<string, number> = {
   "seasonal-marketing-pack": 2700,
   "iv-story-templates": 2700,
   "glp1-story-templates": 2700,
+  "injectors-playbook": 9700,
+  "new-injector-onboarding-kit": 6700,
+  "guidebook-category-strategy": 4700,
 };
 
 const FEATURED_SLUGS = new Set([
+  "injectors-playbook",
+  "new-injector-onboarding-kit",
   "iv-therapy-social-kit",
   "weight-loss-kit",
   "combo-bundle",
@@ -96,6 +104,7 @@ const AUDIENCE_MAP: Record<string, string[]> = {
   "Compliance": ["Compliance officers", "Practice managers", "Med spa owners", "HIPAA coordinators"],
   "Practice Management": ["Office managers", "New practice owners", "Front desk staff", "Practice administrators"],
   "Bundles": ["Med spa owners", "Multi-service clinics", "Aesthetic suite providers"],
+  "Playbooks": ["Nurse injectors", "NPs starting aesthetic practice", "Med spa owners hiring injectors", "Practice managers"],
 };
 
 /** Map from slug to the asset subdirectory name in etsy-products/store-launch/assets/ */
@@ -111,6 +120,9 @@ const ASSET_DIR_MAP: Record<string, string> = {
   "lash-aftercare-kit": "lash",
   "weight-loss-kit": "weight-loss",
   "glp1-story-templates": "weight-loss",
+  "injectors-playbook": "playbooks",
+  "new-injector-onboarding-kit": "playbooks",
+  "guidebook-category-strategy": "playbooks",
 };
 
 const CATEGORY_THUMBNAIL: Record<string, string> = {
@@ -120,6 +132,7 @@ const CATEGORY_THUMBNAIL: Record<string, string> = {
   "Compliance": "/shop-previews/default/clinical-forms.png",
   "Practice Management": "/shop-previews/default/clinical-forms.png",
   "Bundles": "/shop-previews/default/default-thumbnail.png",
+  "Playbooks": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
 };
 
 const NICHE_THUMBNAIL: Record<string, string> = {
@@ -161,6 +174,15 @@ function buildFeatures(slug: string, count: number): string[] {
   if (cat === "Compliance") base.push("Audit-ready documentation");
   if (cat === "Practice Management") base.push("Customizable for your practice");
   if (cat === "Bundles") base.push("Best value — multiple categories");
+  if (cat === "Playbooks") {
+    return [
+      "Written by Ryan Kent, FNP-BC",
+      "Real consultation scripts — word for word",
+      "Clinical protocols you can use tomorrow",
+      "Interactive HTML — works on any device",
+      "Instant digital delivery",
+    ];
+  }
   return base;
 }
 
@@ -183,6 +205,8 @@ function buildShortDescription(slug: string, _title: string, count: number): str
       return `${count} professional templates to streamline your practice — from intake packets to pricing menus.`;
     case "Bundles":
       return `The ultimate value pack — ${count} templates spanning clinical forms, social media, and business essentials.`;
+    case "Playbooks":
+      return `Premium clinical education from Ryan Kent, FNP-BC. Real scripts, real protocols, real systems — not theory.`;
     default:
       return `${count} editable templates for aesthetic professionals. Instant download, fully customizable.`;
   }

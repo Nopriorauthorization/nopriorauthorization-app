@@ -1,0 +1,25 @@
+{
+  "productId": "guidebook-category-strategy",
+  "displayName": "NPA Education Category — Product Strategy Guide",
+  "description": "3-tier product strategy covering guidebooks, playbooks, and complete systems. Built to scale your digital education business.",
+  "version": "1.0.0",
+  "priceUSD": 47,
+  "etsySku": "NPA-PB-003",
+  "category": "playbooks",
+  "targetBuyer": "Nurse injectors, NPs, med spa owners, aesthetic practice managers",
+  "templates": [
+    {
+      "id": "guidebook-category-strategy-main",
+      "name": "NPA Education Category — Product Strategy Guide",
+      "description": "3-tier product strategy covering guidebooks, playbooks, and complete systems. Built to scale your digital education business.",
+      "canvaTemplateUrl": "/forms/NPA-Guidebook-Category-Strategy.html",
+      "_deliveryType": "html",
+      "format": "interactive",
+      "pages": 1,
+      "category": "playbook"
+    }
+  ],
+  "deliveryNote": "Interactive HTML playbook — open in any browser. Works on desktop, tablet, and phone.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-01T22:47:20Z"
+}

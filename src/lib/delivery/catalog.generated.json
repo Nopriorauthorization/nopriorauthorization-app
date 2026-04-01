@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-01T01:16:48.400Z",
+  "generatedAt": "2026-04-01T22:47:26.843Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -528,6 +528,21 @@
       ]
     },
     {
+      "productKey": "guidebook-category-strategy",
+      "productSlug": "guidebook-category-strategy",
+      "productTitle": "NPA Education Category — Product Strategy Guide",
+      "buildTimestamp": "2026-04-01T22:47:20Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "NPA Education Category — Product Strategy Guide",
+          "designId": "guidebook-category-strategy-main",
+          "editUrl": "/forms/NPA-Guidebook-Category-Strategy.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "hipaa-compliance-kit",
       "productSlug": "hipaa-compliance-kit",
       "productTitle": "HIPAA Compliance Kit for Med Spas",
@@ -568,6 +583,21 @@
           "title": "Business Associate Agreement Template",
           "designId": "hipaa-baa",
           "editUrl": "/forms/HIPAA-06-BAA-Template.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "injectors-playbook",
+      "productSlug": "injectors-playbook",
+      "productTitle": "The Injector's Playbook — Botox & Filler Practice Guide",
+      "buildTimestamp": "2026-04-01T22:47:20Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The Injector's Playbook — Botox & Filler Practice Guide",
+          "designId": "injectors-playbook-main",
+          "editUrl": "/forms/NPA-Botox-Filler-Playbook.html",
           "viewUrl": null
         }
       ]
@@ -1204,6 +1234,21 @@
           "title": "Save This Educational Post",
           "designId": "mvf-save-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..b7fyfh7_GhPwZ_1c.aBPqwebTSWdAl41FmBGiQpfaa8lOyS9ZqWPqsmUCOrs59HfqqACIXIgiH8cdZ1jsQRcn-vUMv5KFHrfUU08VneGt8XAt-Ct_A_zn2fIJxUJjND8.K6EeNbmMI5C38INNrPrUzA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a5e7e75-faf9-4419-8787-2240a8449512&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "new-injector-onboarding-kit",
+      "productSlug": "new-injector-onboarding-kit",
+      "productTitle": "New Injector Onboarding Kit — 30-Day Training System",
+      "buildTimestamp": "2026-04-01T22:47:20Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "New Injector Onboarding Kit — 30-Day Training System",
+          "designId": "new-injector-onboarding-kit-main",
+          "editUrl": "/forms/NPA-New-Injector-Onboarding-Kit.html",
           "viewUrl": null
         }
       ]

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getShopProducts, getShopCategories } from "@/lib/shop/products";
 import { ShopCategoryFilter } from "./ShopCategoryFilter";
 import { EmailCapture } from "./EmailCapture";
+import { PlaybookShowcase } from "./PlaybookShowcase";
 
 export const metadata = {
   title: "Digital Templates for Aesthetic Professionals | No Prior Authorization",
@@ -18,6 +19,9 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "med-spa-legal-startup-bundle": { label: "Essential", color: "bg-rose-500/20 text-rose-300" },
   "botox-consent-bundle": { label: "Top Rated", color: "bg-emerald-500/20 text-emerald-300" },
   "hipaa-compliance-kit": { label: "Required", color: "bg-red-500/20 text-red-300" },
+  "injectors-playbook": { label: "Premium", color: "bg-amber-500/20 text-amber-300" },
+  "new-injector-onboarding-kit": { label: "New", color: "bg-sky-500/20 text-sky-300" },
+  "guidebook-category-strategy": { label: "Strategy", color: "bg-violet-500/20 text-violet-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -29,6 +33,9 @@ const OUTCOME_MAP: Record<string, string> = {
   "med-spa-legal-startup-bundle": "Open your doors legally. 34 templates your attorney will thank you for.",
   "botox-consent-bundle": "Protect your practice and look professional from day one.",
   "hipaa-compliance-kit": "Be audit-ready tomorrow. Not next month.",
+  "injectors-playbook": "Ryan's exact consultation scripts, dosing protocols, and clinical systems — in your hands.",
+  "new-injector-onboarding-kit": "Train your next injector in 30 days. Not 6 months of trial and error.",
+  "guidebook-category-strategy": "Build a digital product business that earns while you sleep.",
 };
 
 const QUICK_CATEGORIES = [
@@ -39,6 +46,7 @@ const QUICK_CATEGORIES = [
   { label: "Social Media Kits", filter: "Social Media" },
   { label: "Legal & Compliance", filter: "Legal" },
   { label: "Mega Bundles", filter: "mega-bundle" },
+  { label: "Playbooks", filter: "Playbooks" },
 ];
 
 const START_HERE_SLUGS = [
@@ -127,6 +135,9 @@ export default function ShopPage() {
       </section>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        {/* PLAYBOOKS SHOWCASE */}
+        <PlaybookShowcase />
+
         {/* START HERE */}
         <section id="start-here" className="py-16">
           <div className="mb-8 text-center">

@@ -1,0 +1,357 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.pb{font-family:'Lato',sans-serif;max-width:860px;margin:0 auto;background:var(--color-background-primary)}
+.pb-header{background:#1A1A1A;padding:20px 32px 14px;text-align:center}
+.pb-header .ey{font-weight:300;letter-spacing:.22em;font-size:10px;color:#888;text-transform:uppercase;margin-bottom:5px}
+.pb-header .br{font-weight:300;letter-spacing:.22em;font-size:16px;color:#fff;text-transform:uppercase}
+.pb-header .su{font-size:10px;color:#666;margin-top:4px;letter-spacing:.05em}
+.pb-band{background:#D4537E;padding:16px 32px;text-align:center}
+.pb-band h1{font-family:'Playfair Display',serif;font-size:24px;color:#fff;font-weight:700}
+.pb-band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+.pb-nav{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 24px}
+.pb-nav::-webkit-scrollbar{display:none}
+.pn{font-size:12px;color:var(--color-text-secondary);padding:12px 14px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;transition:color .15s}
+.pn:hover{color:#D4537E}.pn.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+.pb-body{padding:28px 32px}.sec-hide{display:none}
+.module-hd{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;padding-bottom:18px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.mn{background:#D4537E;color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mht h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--color-text-primary);font-weight:700}
+.mht p{font-size:13px;color:var(--color-text-secondary);margin-top:3px}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;color:#D4537E;font-weight:700;margin:22px 0 10px}
+.script-block{background:#1A1A1A;border-radius:var(--border-radius-lg);padding:18px 22px;margin-bottom:14px}
+.script-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.script-text{font-size:14px;color:#fff;line-height:1.8;font-style:italic}
+.script-note{font-size:12px;color:#888;margin-top:10px;font-style:normal;border-top:0.5px solid #333;padding-top:8px}
+.info-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:16px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.info-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:7px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}.info-card li{margin-bottom:3px}
+.warn-card{background:#FBEAF0;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.warn-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#993556;margin-bottom:6px}
+.warn-card p{font-size:13px;color:#72243E;line-height:1.6}
+.ok-card{background:#EAF3DE;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:6px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+.week-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:14px;overflow:hidden}
+.week-head{background:var(--color-background-secondary);padding:12px 18px;display:flex;align-items:center;gap:12px}
+.week-badge{background:#D4537E;color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.week-head h4{font-size:14px;font-weight:700;color:var(--color-text-primary)}
+.week-body{padding:14px 18px}
+.week-body ul{padding-left:16px}
+.week-body li{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:3px}
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.check-item:last-child{border-bottom:none}
+.check-box{width:18px;height:18px;border:1.5px solid #D4537E;border-radius:3px;flex-shrink:0;margin-top:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.check-box.checked{background:#D4537E}
+.check-box.checked::after{content:'';width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translateY(-2px)}
+.check-text{font-size:13px;color:var(--color-text-primary);line-height:1.5}
+.check-text.done{text-decoration:line-through;color:var(--color-text-secondary)}
+.flow-step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.flow-num{background:#D4537E;color:#fff;font-size:12px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.flow-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.flow-content p{font-size:13px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px}
+.kpi-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px;text-align:center}
+.kpi .num{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#D4537E}
+.kpi .lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.progress-wrap{margin:16px 0}
+.progress-label{font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;display:flex;justify-content:space-between}
+.progress-bar{height:6px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:#D4537E;border-radius:3px;transition:width .3s}
+.pb-footer{background:#1A1A1A;padding:12px 32px;text-align:center}
+.pb-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+</style>
+
+<div class="pb">
+<div class="pb-header">
+  <div class="ey">No Prior Authorization</div>
+  <div class="br">New Injector Onboarding Kit</div>
+  <div class="su">Ryan Kent, FNP-BC &nbsp;|&nbsp; Hello Gorgeous Med Spa &nbsp;|&nbsp; Oswego, Illinois</div>
+</div>
+<div class="pb-band">
+  <h1>The New Injector Onboarding Kit</h1>
+  <p>30-day system &nbsp;·&nbsp; Week-by-week training &nbsp;·&nbsp; Clinical standards &nbsp;·&nbsp; Performance benchmarks</p>
+</div>
+<div class="pb-nav">
+  <button class="pn act" onclick="showO(0)">01 &nbsp;Before Day One</button>
+  <button class="pn" onclick="showO(1)">02 &nbsp;Week 1</button>
+  <button class="pn" onclick="showO(2)">03 &nbsp;Week 2</button>
+  <button class="pn" onclick="showO(3)">04 &nbsp;Week 3–4</button>
+  <button class="pn" onclick="showO(4)">05 &nbsp;Clinical Standards</button>
+  <button class="pn" onclick="showO(5)">06 &nbsp;30-Day Review</button>
+</div>
+<div class="pb-body">
+
+<div id="o0">
+  <div class="module-hd"><div class="mn">0</div><div class="mht"><h2>Before Day One</h2><p>What you do before they arrive sets the tone for everything that follows</p></div></div>
+
+  <div class="sec-title">Hiring right — what to look for beyond credentials</div>
+  <div class="info-card">
+    <h4>The non-negotiables beyond licensure</h4>
+    <ul>
+      <li>Emotional intelligence — do they listen before they speak?</li>
+      <li>Humility — are they willing to say "I don't know"?</li>
+      <li>Attention to detail — small mistakes in this field have real consequences</li>
+      <li>Patient rapport — watch how they interact with non-clinical staff during the interview</li>
+      <li>Coachability — do they receive feedback gracefully or defensively?</li>
+    </ul>
+  </div>
+
+  <div class="script-block">
+    <div class="script-label">Ryan's interview question</div>
+    <div class="script-text">"Tell me about a time you made a mistake with a patient. What happened, and what did you do?"</div>
+    <div class="script-note">The answer tells you everything. A candidate who can't recall a mistake hasn't been honest with themselves. A candidate who blames the patient, the system, or someone else won't be coachable. You want someone who owns it, learned from it, and changed.</div>
+  </div>
+
+  <div class="sec-title">Pre-arrival setup checklist</div>
+  <div id="preChecks">
+    <div class="check-item"><div class="check-box" onclick="toggle(this)"></div><div class="check-text">Credentials verified — license current, malpractice coverage confirmed</div></div>
+    <div class="check-item"><div class="check-box" onclick="toggle(this)"></div><div class="check-text">Employment agreement signed — include non-compete, confidentiality, IP ownership</div></div>
+    <div class="check-item"><div class="check-box" onclick="toggle(this)"></div><div class="check-text">HIPAA training scheduled — must be completed before first patient contact</div></div>
+    <div class="check-item"><div class="check-box" onclick="toggle(this)"></div><div class="check-text">EMR / booking system access created and tested</div></div>
+    <div class="check-item"><div class="check-box" onclick="toggle(this)"></div><div class="check-text">Workspace set up — supplies, forms, consent templates, injection diagrams</div></div>
+    <div class="check-item"><div class="check-box" onclick="toggle(this)"></div><div class="check-text">30-day schedule blocked — first 2 weeks shadow only, no solo patients</div></div>
+    <div class="check-item"><div class="check-box" onclick="toggle(this)"></div><div class="check-text">Welcome packet prepared — this playbook, clinic standards, org chart, emergency protocols</div></div>
+    <div class="check-item"><div class="check-box" onclick="toggle(this)"></div><div class="check-text">Mentor assigned — named person responsible for their first-month experience</div></div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">30</div><div class="lbl">Days to full competency</div></div>
+    <div class="kpi"><div class="num">2</div><div class="lbl">Weeks shadow before solo</div></div>
+    <div class="kpi"><div class="num">Week 4</div><div class="lbl">First solo patients</div></div>
+  </div>
+</div>
+
+<div id="o1" class="sec-hide">
+  <div class="module-hd"><div class="mn">1</div><div class="mht"><h2>Week One — Observe Everything, Touch Nothing</h2><p>The first week is about absorbing the culture, the systems, and the patients</p></div></div>
+
+  <div class="script-block">
+    <div class="script-label">What to say on day one</div>
+    <div class="script-text">"Welcome. This week, your only job is to watch and ask questions. You won't be touching a patient. You won't be charting independently. You're going to shadow every consultation, every injection, every follow-up call. The goal this week isn't to learn procedures — it's to understand how we think about patients here."</div>
+    <div class="script-note">New injectors who are eager to start injecting on day one are the ones who miss the culture piece. The clinical skills can be developed — the patient relationship philosophy has to be absorbed.</div>
+  </div>
+
+  <div class="week-card">
+    <div class="week-head"><span class="week-badge">Monday</span><h4>Orientation day</h4></div>
+    <div class="week-body"><ul>
+      <li>Facility tour — treatment rooms, emergency equipment locations, supply storage</li>
+      <li>Review emergency protocols — anaphylaxis, vasovagal, vascular occlusion</li>
+      <li>EMR walkthrough — how to access patient records, document a visit, pull consent forms</li>
+      <li>Meet the full team — understand every role and how they interact</li>
+      <li>Complete HIPAA training and sign acknowledgment</li>
+    </ul></div>
+  </div>
+
+  <div class="week-card">
+    <div class="week-head"><span class="week-badge">Tue–Wed</span><h4>Shadow consultations</h4></div>
+    <div class="week-body"><ul>
+      <li>Observe minimum 8–10 consultations across different treatment types</li>
+      <li>Note: how Ryan opens, how he handles hesitant patients, how he sets expectations</li>
+      <li>Review consent forms — understand every section and why it exists</li>
+      <li>After each consult: debrief with mentor — what did you notice? what would you have done differently?</li>
+    </ul></div>
+  </div>
+
+  <div class="week-card">
+    <div class="week-head"><span class="week-badge">Thu–Fri</span><h4>Shadow treatments</h4></div>
+    <div class="week-body"><ul>
+      <li>Observe minimum 10–15 injections — Botox and filler</li>
+      <li>Study injection mapping — where Ryan marks, why he marks there</li>
+      <li>Review post-treatment documentation — how a chart is completed correctly</li>
+      <li>End of week: written reflection — 3 things learned, 1 question still open, 1 thing that surprised you</li>
+    </ul></div>
+  </div>
+
+  <div class="ok-card">
+    <h4>End of week 1 — check-in conversation</h4>
+    <p>"How are you feeling? What's clicked? What feels overwhelming? What do you wish you knew before you started?" This conversation prevents small concerns from becoming week-4 problems. Do it in person, not via text, and take notes.</p>
+  </div>
+</div>
+
+<div id="o2" class="sec-hide">
+  <div class="module-hd"><div class="mn">2</div><div class="mht"><h2>Week Two — Participate, Don't Lead</h2><p>Hands on anatomy models, assisting on treatments, beginning to document</p></div></div>
+
+  <div class="week-card">
+    <div class="week-head"><span class="week-badge">Mon–Tue</span><h4>Anatomy and injection technique drills</h4></div>
+    <div class="week-body"><ul>
+      <li>Facial anatomy review — name every muscle, its action, its antagonist</li>
+      <li>Practice injection technique on training models or oranges — angle, depth, pressure control</li>
+      <li>Reconstitution drill — practice reconstituting vials to spec, labeling correctly</li>
+      <li>Quiz: dosing ranges for all standard Botox areas — must score 90%+ before proceeding</li>
+    </ul></div>
+  </div>
+
+  <div class="week-card">
+    <div class="week-head"><span class="week-badge">Wed–Thu</span><h4>Assisted patient care</h4></div>
+    <div class="week-body"><ul>
+      <li>Assist with patient prep — vitals, intake review, photo documentation</li>
+      <li>Observe injections at close range — note needle angle, depth, pace</li>
+      <li>Complete patient charts under mentor review — mentor checks and corrects before finalizing</li>
+      <li>Practice injection mapping on mentor before patient — mark placement, discuss rationale</li>
+    </ul></div>
+  </div>
+
+  <div class="week-card">
+    <div class="week-head"><span class="week-badge">Friday</span><h4>First supervised injection — glabella only</h4></div>
+    <div class="week-body"><ul>
+      <li>Mentor identifies appropriate patient — established, calm, good candidate for new injector</li>
+      <li>Full patient disclosure: "We have a new provider training with us — Ryan will be present the entire time"</li>
+      <li>New injector performs glabella injection under direct supervision</li>
+      <li>Immediate debrief — what went well, what to adjust</li>
+      <li>Mentor completes or co-signs the chart</li>
+    </ul></div>
+  </div>
+
+  <div class="warn-card">
+    <h4>If they're not ready — say it clearly and kindly</h4>
+    <p>"I want to give you a little more time before we move to patient injections — I've seen a few things this week that I want us to work through first. That's not a setback, that's me protecting you and our patients. Let's use Friday for more model practice and try patient injections next week." Rushing an underprepared injector is how you create a complication.</p>
+  </div>
+</div>
+
+<div id="o3" class="sec-hide">
+  <div class="module-hd"><div class="mn">3</div><div class="mht"><h2>Weeks Three &amp; Four — Graduated Independence</h2><p>Expanding treatment zones, increasing autonomy, building confidence safely</p></div></div>
+
+  <div class="sec-title">Week 3 — expanding the treatment map</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Add forehead and crow's feet — supervised</h4><p>Glabella mastered in week 2. Week 3 adds upper face treatment. Mentor present for all sessions. Debrief after every patient.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>First filler observation and assist</h4><p>Filler is not week-3 independent injection territory. Observe and assist only. Understand the anatomy, the product selection, the technique — hands come later.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Consultation practice — lead with mentor present</h4><p>New injector leads the consultation. Mentor observes and does not interrupt unless safety is a concern. Debrief privately after. Grade on: listening, assessment quality, expectation setting, contraindication screening.</p></div></div>
+  <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Handle a 2-week follow-up call — supervised</h4><p>Listen to how they communicate outcomes, handle concerns, and rebook. This is a skill that takes practice. Role-play difficult scenarios before they take a live call.</p></div></div>
+
+  <div class="sec-title">Week 4 — first solo patients</div>
+  <div class="info-card">
+    <h4>Criteria for solo clearance</h4>
+    <ul>
+      <li>Demonstrated safe, accurate glabella and forehead injection technique across 10+ supervised patients</li>
+      <li>Zero unaddressed documentation errors in week 3</li>
+      <li>Passed verbal complication protocol exam — can describe response to ptosis, vasovagal, vascular occlusion</li>
+      <li>Led 3+ consultations with mentor approval</li>
+      <li>Mentor signs off in writing before first solo session</li>
+    </ul>
+  </div>
+
+  <div class="script-block">
+    <div class="script-label">Clearing them for solo — what to say</div>
+    <div class="script-text">"You're ready. I've watched you carefully over the past four weeks and I'm confident in you. Here's what I want you to remember: you can always call me. If something doesn't look right, if a patient is reacting unexpectedly, if you're unsure about anything — stop and call. There's no scenario where calling me is the wrong move. I'm always a phone call away."</div>
+    <div class="script-note">This moment matters more than you think. How you hand off a new injector determines how they practice for the rest of their career. Make it intentional.</div>
+  </div>
+</div>
+
+<div id="o4" class="sec-hide">
+  <div class="module-hd"><div class="mn">4</div><div class="mht"><h2>Clinical Standards &amp; Non-Negotiables</h2><p>The rules every injector at this practice follows — no exceptions</p></div></div>
+
+  <div class="sec-title">The NPA standard of care</div>
+  <div class="info-card">
+    <h4>These are not suggestions — they are requirements</h4>
+    <ul>
+      <li>Photos before every treatment — no exceptions, no patient refusals accepted without documented informed declination</li>
+      <li>Signed consent before every treatment — even returning patients, even "quick" touch-ups</li>
+      <li>Medical history reviewed at every visit — not just new patients</li>
+      <li>Lot numbers documented for every injectable used</li>
+      <li>Never inject when you are uncertain — stop, call for support, never guess</li>
+      <li>Hyaluronidase must be on-site before any HA filler is injected</li>
+      <li>Anaphylaxis kit must be stocked and checked monthly</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Patient communication standards</div>
+  <div class="info-card">
+    <h4>How we talk to patients here</h4>
+    <ul>
+      <li>First name always — introduce yourself by first name, use the patient's first name</li>
+      <li>No rushing — a patient who feels hurried feels uncared for</li>
+      <li>Validate before you educate — acknowledge what they said before you respond clinically</li>
+      <li>Never dismiss a concern as "just anxiety" — investigate it</li>
+      <li>No phone at the treatment table — ever</li>
+      <li>If you make a mistake — own it to the patient immediately, report it internally the same day</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Social media and patient privacy</div>
+  <div class="warn-card">
+    <h4>What never happens here</h4>
+    <p>No patient photos are shared on any platform — personal or professional — without a signed photo release on file. No discussing patient outcomes in any identifiable way in public or on social media. No filming in treatment rooms without explicit consent. Violations of patient privacy are grounds for immediate termination.</p>
+  </div>
+
+  <div class="script-block">
+    <div class="script-label">The culture statement — read this to every new hire</div>
+    <div class="script-text">"We are a practice that puts patients before productivity, safety before speed, and honesty before approval. When something goes wrong — and eventually something will — we do not hide it, minimize it, or shift blame. We call the patient, we take responsibility, we fix it, and we learn from it. That's what separates a great practice from a mediocre one. Welcome to the team."</div>
+  </div>
+</div>
+
+<div id="o5" class="sec-hide">
+  <div class="module-hd"><div class="mn">5</div><div class="mht"><h2>The 30-Day Performance Review</h2><p>A structured conversation that sets up the next 60 days</p></div></div>
+
+  <div class="sec-title">Review framework — what to evaluate</div>
+  <div class="info-card">
+    <h4>Clinical performance</h4>
+    <ul>
+      <li>Documentation accuracy — are charts complete, timely, and compliant?</li>
+      <li>Technique consistency — are injection placements accurate and reproducible?</li>
+      <li>Complication awareness — can they identify and respond appropriately to adverse events?</li>
+      <li>Product knowledge — can they explain every product they're using to a patient clearly?</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Patient experience</h4>
+    <ul>
+      <li>Consultation quality — are patients leaving informed and confident?</li>
+      <li>Patient satisfaction — any complaints or compliments in the first 30 days?</li>
+      <li>Rebooking rate — are their patients scheduling return visits?</li>
+      <li>Review generation — have they asked patients for Google reviews?</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Team integration</h4>
+    <ul>
+      <li>Communication with staff — are they collaborative, respectful, clear?</li>
+      <li>Asking for help — do they know when to escalate vs. handle independently?</li>
+      <li>Culture fit — do they embody the practice values?</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">The conversation itself</div>
+  <div class="script-block">
+    <div class="script-label">How to open the 30-day review</div>
+    <div class="script-text">"Before I share any of my observations, I want to hear from you first. How do you feel like the first 30 days went? What are you proud of? What do you wish had gone differently? What do you need from me to set you up for a great month two?"</div>
+    <div class="script-note">Start with their perspective every time. It accomplishes three things: it shows respect, it surfaces issues you might not have seen, and it makes them more receptive to your feedback when you deliver it. This is not a performance improvement plan — it is a growth conversation.</div>
+  </div>
+
+  <div class="ok-card">
+    <h4>The 60-day roadmap — set it together</h4>
+    <p>End the 30-day review with a written agreement: 3 specific clinical goals for month two, 1 patient experience goal, and 1 personal development goal. Sign it together. Review it at 60 days. Injectors who have a clear roadmap perform better than those who are simply told to "keep doing what you're doing."</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>30-day onboarding complete</span><span id="pct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="pFill" style="width:0%"></div></div>
+  </div>
+  <div style="font-size:12px;color:var(--color-text-secondary);margin-top:8px">Check off items in the pre-arrival checklist (section 01) to track onboarding progress.</div>
+</div>
+
+</div>
+<div class="pb-footer"><p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Ryan Kent, FNP-BC &nbsp;·&nbsp; Internal clinic use</p></div>
+</div>
+
+<script>
+function showO(i){
+  for(let j=0;j<6;j++){const el=document.getElementById('o'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.pn').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function toggle(box){
+  box.classList.toggle('checked');
+  const txt=box.nextElementSibling;
+  txt.classList.toggle('done');
+  updateProgress();
+}
+function updateProgress(){
+  const all=document.querySelectorAll('#preChecks .check-box');
+  const done=document.querySelectorAll('#preChecks .check-box.checked');
+  const pct=all.length?Math.round((done.length/all.length)*100):0;
+  const fill=document.getElementById('pFill');
+  const label=document.getElementById('pct');
+  if(fill)fill.style.width=pct+'%';
+  if(label)label.textContent=pct+'%';
+}
+</script>

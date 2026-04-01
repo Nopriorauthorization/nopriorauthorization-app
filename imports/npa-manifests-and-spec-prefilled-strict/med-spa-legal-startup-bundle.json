@@ -1,0 +1,355 @@
+{
+  "productId": "med-spa-legal-startup-bundle",
+  "displayName": "Medical Spa Legal Startup Bundle",
+  "description": "34 editable med spa legal templates: hiring contracts (medical director, injector, laser tech, aesthetician, MA, front desk, office manager), collaborative practice agreement, training repayment, confidentiality, handbooks, good faith exam, treatment record, consents, releases, HIPAA and website policies. Attorney review required before use.",
+  "version": "1.0.0",
+  "priceUSD": 197,
+  "etsySku": "NPA-MSL-001",
+  "category": "legal",
+  "targetBuyer": "Med spa owners, practice managers, and attorneys assisting with aesthetic practice startup",
+  "templates": [
+    {
+      "id": "msl-md-employment",
+      "name": "Medical Director — Employment Agreement",
+      "description": "Employment · at-will / customize per state",
+      "canvaTemplateUrl": "/forms/MSL-01-Medical-Director-Employment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-md-ic",
+      "name": "Medical Director — Independent Contractor Agreement",
+      "description": "Contractor relationship · tax & insurance",
+      "canvaTemplateUrl": "/forms/MSL-02-Medical-Director-Independent-Contractor.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-ci-employment",
+      "name": "Cosmetic Injector — Employment Agreement",
+      "description": "NP / RN injectable provider",
+      "canvaTemplateUrl": "/forms/MSL-03-Cosmetic-Injector-Employment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-ci-ic",
+      "name": "Cosmetic Injector — Independent Contractor Agreement",
+      "description": "NP / RN · contractor",
+      "canvaTemplateUrl": "/forms/MSL-04-Cosmetic-Injector-Independent-Contractor.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-ci-room",
+      "name": "Cosmetic Injector — Room Rental Agreement",
+      "description": "Licensee use of treatment space",
+      "canvaTemplateUrl": "/forms/MSL-05-Cosmetic-Injector-Room-Rental.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-lt-employment",
+      "name": "Laser Technician — Employment Agreement",
+      "description": "Employment",
+      "canvaTemplateUrl": "/forms/MSL-06-Laser-Tech-Employment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-lt-ic",
+      "name": "Laser Technician — Independent Contractor Agreement",
+      "description": "Contractor",
+      "canvaTemplateUrl": "/forms/MSL-07-Laser-Tech-Independent-Contractor.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-lt-room",
+      "name": "Laser Technician — Room Rental Agreement",
+      "description": "Treatment space",
+      "canvaTemplateUrl": "/forms/MSL-08-Laser-Tech-Room-Rental.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-maes-employment",
+      "name": "Medical Aesthetician — Employment Agreement",
+      "description": "Employment",
+      "canvaTemplateUrl": "/forms/MSL-09-Medical-Aesthetician-Employment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-maes-ic",
+      "name": "Medical Aesthetician — Independent Contractor Agreement",
+      "description": "Contractor",
+      "canvaTemplateUrl": "/forms/MSL-10-Medical-Aesthetician-Independent-Contractor.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-ma-employment",
+      "name": "Medical Assistant — Employment Agreement",
+      "description": "Employment only",
+      "canvaTemplateUrl": "/forms/MSL-11-Medical-Assistant-Employment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-fd-employment",
+      "name": "Front Desk Associate — Employment Agreement",
+      "description": "Employment only",
+      "canvaTemplateUrl": "/forms/MSL-12-Front-Desk-Employment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-om-employment",
+      "name": "Office Manager — Employment Agreement",
+      "description": "Employment only",
+      "canvaTemplateUrl": "/forms/MSL-13-Office-Manager-Employment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-cpa",
+      "name": "Med Spa Collaborative Practice Agreement (NP & Physician)",
+      "description": "Nurse practitioner & supervising physician",
+      "canvaTemplateUrl": "/forms/MSL-14-Collaborative-Practice-Agreement.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-training-repay",
+      "name": "Medical Spa Training Repayment Agreement",
+      "description": "Education costs & retention",
+      "canvaTemplateUrl": "/forms/MSL-15-Training-Repayment-Agreement.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-confidentiality",
+      "name": "Medical Practice Confidentiality Agreement",
+      "description": "PHI, trade secrets, business information",
+      "canvaTemplateUrl": "/forms/MSL-16-Medical-Practice-Confidentiality.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-employee-handbook",
+      "name": "Med Spa Employee Handbook",
+      "description": "Policies & expectations — customize fully",
+      "canvaTemplateUrl": "/forms/MSL-17-Med-Spa-Employee-Handbook.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 4,
+      "category": "legal"
+    },
+    {
+      "id": "msl-ic-handbook",
+      "name": "Med Spa Independent Contractor Handbook",
+      "description": "Facility rules for IC providers",
+      "canvaTemplateUrl": "/forms/MSL-18-Med-Spa-IC-Handbook.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 4,
+      "category": "legal"
+    },
+    {
+      "id": "msl-gfe",
+      "name": "Med Spa Good Faith Exam Documentation",
+      "description": "Physician / APP encounter documentation",
+      "canvaTemplateUrl": "/forms/MSL-19-Med-Spa-Good-Faith-Exam.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-injectable-record",
+      "name": "Injectable Treatment Record Form",
+      "description": "Neuromodulator & filler documentation",
+      "canvaTemplateUrl": "/forms/MSL-20-Injectable-Treatment-Record.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-filler-consent",
+      "name": "Dermal Filler Informed Consent",
+      "description": "Risks, alternatives, acknowledgment",
+      "canvaTemplateUrl": "/forms/MSL-21-Dermal-Filler-Informed-Consent.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-neuro-consent",
+      "name": "Neurotoxin Informed Consent",
+      "description": "Botox / Dysport / Xeomin / Jeuveau",
+      "canvaTemplateUrl": "/forms/MSL-22-Neurotoxin-Informed-Consent.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-laser-consent",
+      "name": "Cosmetic Laser Resurfacing Informed Consent",
+      "description": "Ablative / fractional — edit for device",
+      "canvaTemplateUrl": "/forms/MSL-23-Laser-Resurfacing-Informed-Consent.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-esthetician-consent",
+      "name": "Esthetician Service Informed Consent",
+      "description": "Facials, peels (esthetician scope), etc.",
+      "canvaTemplateUrl": "/forms/MSL-24-Esthetician-Informed-Consent.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-photo-video-release",
+      "name": "Med Spa Photo &amp; Video Release",
+      "description": "Marketing & educational use",
+      "canvaTemplateUrl": "/forms/MSL-25-Photo-Video-Release.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-waiver-liability",
+      "name": "Med Spa Waiver &amp; Release of Liability",
+      "description": "Aesthetic services — enforceability varies by state",
+      "canvaTemplateUrl": "/forms/MSL-26-Waiver-Release-Liability.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-hipaa-ack-auth",
+      "name": "HIPAA Patient Acknowledgment &amp; Authorization",
+      "description": "NPP receipt & specific authorizations",
+      "canvaTemplateUrl": "/forms/MSL-27-HIPAA-Patient-Acknowledgment-Authorization.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-cancellation-policy",
+      "name": "Med Spa Appointments &amp; Cancellation Policy",
+      "description": "Patient-facing",
+      "canvaTemplateUrl": "/forms/MSL-28-Appointments-Cancellation-Policy.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-return-policy",
+      "name": "Med Spa Return Policy",
+      "description": "Retail / packages — customize",
+      "canvaTemplateUrl": "/forms/MSL-29-Return-Policy.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-financial-policy",
+      "name": "Med Spa Financial &amp; Payment Policy",
+      "description": "Patient-facing",
+      "canvaTemplateUrl": "/forms/MSL-30-Financial-Payment-Policy.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-privacy-policy-web",
+      "name": "Website Privacy Policy",
+      "description": "Online collection — supplement HIPAA NPP",
+      "canvaTemplateUrl": "/forms/MSL-31-Website-Privacy-Policy.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-terms-of-use",
+      "name": "Website Terms of Use",
+      "description": "Site access & limitations",
+      "canvaTemplateUrl": "/forms/MSL-32-Terms-of-Use.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-disclaimers",
+      "name": "Website Disclaimers",
+      "description": "Footer / educational content",
+      "canvaTemplateUrl": "/forms/MSL-33-Website-Disclaimers.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    },
+    {
+      "id": "msl-hipaa-npp",
+      "name": "HIPAA Notice of Privacy Practices",
+      "description": "HIPAA · clinic NPP",
+      "canvaTemplateUrl": "/forms/MSL-34-HIPAA-Notice-of-Privacy-Practices.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "legal"
+    }
+  ],
+  "deliveryNote": "Templates are for customization by a licensed attorney in your jurisdiction. Not legal advice.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-31T22:28:58.378Z"
+}

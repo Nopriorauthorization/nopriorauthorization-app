@@ -1,0 +1,1554 @@
+{
+  "generatedAt": "2026-04-01T01:16:48.400Z",
+  "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
+  "products": [
+    {
+      "productKey": "botox-consent-bundle",
+      "productSlug": "botox-consent-bundle",
+      "productTitle": "Botox & Neurotoxin Consent + Pre/Post Care Bundle",
+      "buildTimestamp": "2026-03-30T00:00:00Z",
+      "templateCount": 6,
+      "templates": [
+        {
+          "title": "Neurotoxin Consultation & Medical History Form",
+          "designId": "btx-consultation-form",
+          "editUrl": "/forms/BTX-01-Consultation-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Botox / Neurotoxin Informed Consent Form",
+          "designId": "btx-consent-form",
+          "editUrl": "/forms/BTX-02-Informed-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Pre-Treatment Instructions — Neurotoxin",
+          "designId": "btx-precare",
+          "editUrl": "/forms/BTX-03-Pre-Treatment-Neurotoxin.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Post-Treatment Aftercare Instructions — Neurotoxin",
+          "designId": "btx-postcare",
+          "editUrl": "/forms/BTX-04-Post-Treatment-Neurotoxin.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Neurotoxin Treatment Record & Dosing Log",
+          "designId": "btx-treatment-record",
+          "editUrl": "/forms/BTX-05-Treatment-Record.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Before/After Photography Consent",
+          "designId": "btx-photo-release",
+          "editUrl": "/forms/BTX-06-Photo-Release.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "botox-social-bundle",
+      "productSlug": "botox-social-bundle",
+      "productTitle": "Botox Social Media Bundle",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "Botox 101: How Neurotoxin Works",
+          "designId": "bsx-ed-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Forehead vs Frown Lines Guide",
+          "designId": "bsx-ed-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Myth vs Fact: Frozen Face",
+          "designId": "bsx-myth-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Myth vs Fact: Too Young for Botox",
+          "designId": "bsx-myth-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Botox Consultation Checklist",
+          "designId": "bsx-consult-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "What to Ask at Your First Visit",
+          "designId": "bsx-consult-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "New Patient Botox Offer",
+          "designId": "bsx-promo-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Limited Spots This Week",
+          "designId": "bsx-promo-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "When to Rebook Your Botox",
+          "designId": "bsx-retain-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..b7fyfh7_GhPwZ_1c.aBPqwebTSWdAl41FmBGiQpfaa8lOyS9ZqWPqsmUCOrs59HfqqACIXIgiH8cdZ1jsQRcn-vUMv5KFHrfUU08VneGt8XAt-Ct_A_zn2fIJxUJjND8.K6EeNbmMI5C38INNrPrUzA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a5e7e75-faf9-4419-8787-2240a8449512&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Book Your Botox Consultation",
+          "designId": "bsx-cta-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "chemical-peel-consent-bundle",
+      "productSlug": "chemical-peel-consent-bundle",
+      "productTitle": "Chemical Peel Consent & Documentation Bundle",
+      "buildTimestamp": "2026-03-31T22:04:05Z",
+      "templateCount": 6,
+      "templates": [
+        {
+          "title": "Chemical Peel Consultation & Skin Assessment",
+          "designId": "cp-consultation",
+          "editUrl": "/forms/CP-01-Consultation-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Chemical Peel Informed Consent Form",
+          "designId": "cp-consent",
+          "editUrl": "/forms/CP-02-Informed-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Pre-Treatment Instructions — Chemical Peel",
+          "designId": "cp-precare",
+          "editUrl": "/forms/CP-03-Pre-Treatment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Post-Treatment Aftercare — Chemical Peel",
+          "designId": "cp-postcare",
+          "editUrl": "/forms/CP-04-Post-Treatment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Chemical Peel Treatment Record",
+          "designId": "cp-treatment-record",
+          "editUrl": "/forms/CP-05-Treatment-Record.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Before/After Photography Consent — Skin Treatments",
+          "designId": "cp-photo-consent",
+          "editUrl": "/forms/CP-06-Photo-Consent.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "client-welcome-packet",
+      "productSlug": "client-welcome-packet",
+      "productTitle": "Client Welcome Packet for Med Spas",
+      "buildTimestamp": "2026-03-31T22:04:05Z",
+      "templateCount": 6,
+      "templates": [
+        {
+          "title": "Welcome to Our Med Spa",
+          "designId": "wp-welcome-letter",
+          "editUrl": "/forms/WP-01-Welcome-Letter.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Office Policies & Patient Agreement",
+          "designId": "wp-office-policies",
+          "editUrl": "/forms/WP-02-Office-Policies.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Financial Policy & Payment Agreement",
+          "designId": "wp-financial-policy",
+          "editUrl": "/forms/WP-03-Financial-Policy.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Notice of Privacy Practices — Patient Summary",
+          "designId": "wp-hipaa-summary",
+          "editUrl": "/forms/WP-04-HIPAA-Notice-Summary.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Communication & Marketing Consent Form",
+          "designId": "wp-communication-consent",
+          "editUrl": "/forms/WP-05-Communication-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "What to Expect at Your First Visit",
+          "designId": "wp-what-to-expect",
+          "editUrl": "/forms/WP-06-What-To-Expect.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "combo-bundle",
+      "productSlug": "combo-bundle",
+      "productTitle": "Complete Med Spa Digital Bundle — IV + Weight Loss + Social",
+      "buildTimestamp": "2026-03-30T00:00:00Z",
+      "templateCount": 9,
+      "templates": [
+        {
+          "title": "IV Therapy Intake & Consent Form",
+          "designId": "cb-iv-intake",
+          "editUrl": "/forms/WL-01-Intake-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "IV Drip Menu Template",
+          "designId": "cb-iv-menu",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..Ok1XDBbrSHMyC_xG.lwOetus9M4RlAIKHZKLerilfm2ZZHcS6JaMYDaxl56e9o13krHKHEwDNHbbGKgxJWIlgs3FNwT0YJTRMOXbFg2gTdQ_oG-9RtZAmKRZ5bJEeB2o.yv45mvvyeX33DdnQapjLbw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=744c6ef6-826f-4e32-a8da-55ab6ff6ff90&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "IV Therapy Aftercare Instructions",
+          "designId": "cb-iv-aftercare",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..TibPm2VN879cLzW7.c69ykieCEDKQv10fT_Rz2RSwhHPAjlogupe0iVfZhMurNEi3zrqlcjfr16AK9U_8irGsz5T34prRldJT5Xjo-9jwWYvmdWz1zjORpULOAHc7OEg.Qj8Vv84U3LqbVftYKPmvhQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=da96a307-cd82-431b-a6e9-7ca25944bc56&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "GLP-1 Patient Intake Form",
+          "designId": "cb-wl-intake",
+          "editUrl": "/forms/WL-01-Intake-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "GLP-1 Treatment Consent Form",
+          "designId": "cb-wl-consent",
+          "editUrl": "/forms/WL-02-Consent-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "What to Expect: Your GLP-1 Journey",
+          "designId": "cb-wl-guide",
+          "editUrl": "/forms/WL-03-GLP1-Journey-Guide.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Instagram Post Templates — 10-Pack",
+          "designId": "cb-social-ig-square",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..vdCsQBeynwAaVJha.basR8WINDjXocvABkuHPSdVPJlQJ39jupVMk147ZHZBRe3p5lDtIfcROaXtHEHI71aOgLUMJm3VIMpS4Yb-JfMLoMyuvYVVyTCWQ-9Ena3F0zE4.d-bUq2RAyE6E5Um9EyxQLw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=56bff9ce-21ce-4ccb-a9af-f31b2602405b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Instagram Story Templates — 6-Pack",
+          "designId": "cb-social-story",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..myq20TOsh4zT9tnE.3KyQlNdHA6ZotYISurwn_CQYbtaIeSfoRfJeZlKPokApidqFBjYI6cVNSAhLMQu3k7OUKSap2H6cuYRrVOqPATUb-aJBLGr-oXaquoLxIxJR4Hk.pQdHfre36-a4ttp2C1I9sg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=241e7c2a-b75d-4ce7-8b6f-9e1a820672ec&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "HIPAA Notice & Photo Release — Universal",
+          "designId": "cb-hipaa-release",
+          "editUrl": "/forms/WL-07-Photo-Release.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "complete-injector-bundle",
+      "productSlug": "complete-injector-bundle",
+      "productTitle": "Complete Injector Bundle",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "Complete Injector Service Menu",
+          "designId": "inj-overview-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Botox Education Spotlight",
+          "designId": "inj-botox-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Filler Education Spotlight",
+          "designId": "inj-filler-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Injectables Myth vs Fact Carousel Cover",
+          "designId": "inj-myth-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Before and After Policy Card",
+          "designId": "inj-beforeafter-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Injectables Consultation CTA",
+          "designId": "inj-consult-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "New Patient Injectables Offer",
+          "designId": "inj-promo-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Injectables Membership Highlight",
+          "designId": "inj-membership-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Botox + Filler Combo Value Post",
+          "designId": "inj-crosssell-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..b7fyfh7_GhPwZ_1c.aBPqwebTSWdAl41FmBGiQpfaa8lOyS9ZqWPqsmUCOrs59HfqqACIXIgiH8cdZ1jsQRcn-vUMv5KFHrfUU08VneGt8XAt-Ct_A_zn2fIJxUJjND8.K6EeNbmMI5C38INNrPrUzA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a5e7e75-faf9-4419-8787-2240a8449512&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Book Your Injector Appointment",
+          "designId": "inj-cta-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "filler-consent-bundle",
+      "productSlug": "filler-consent-bundle",
+      "productTitle": "Dermal Filler Consent + Pre/Post Care Bundle",
+      "buildTimestamp": "2026-03-30T00:00:00Z",
+      "templateCount": 7,
+      "templates": [
+        {
+          "title": "Dermal Filler Consultation & Medical History Form",
+          "designId": "flr-consultation-form",
+          "editUrl": "/forms/FLR-01-Consultation-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Dermal Filler Informed Consent Form",
+          "designId": "flr-consent-form",
+          "editUrl": "/forms/FLR-02-Informed-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Pre-Treatment Instructions — Dermal Filler",
+          "designId": "flr-precare",
+          "editUrl": "/forms/FLR-03-Pre-Treatment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Post-Treatment Aftercare Instructions — Dermal Filler",
+          "designId": "flr-postcare",
+          "editUrl": "/forms/FLR-04-Post-Treatment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Filler Treatment Record & Product Log",
+          "designId": "flr-treatment-record",
+          "editUrl": "/forms/FLR-05-Treatment-Record.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Hyaluronidase Dissolution Consent Form",
+          "designId": "flr-dissolving-consent",
+          "editUrl": "/forms/FLR-06-Dissolution-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Before/After Photography Consent",
+          "designId": "flr-photo-release",
+          "editUrl": "/forms/BTX-06-Photo-Release.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "filler-social-bundle",
+      "productSlug": "filler-social-bundle",
+      "productTitle": "Filler Social Media Bundle",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "Dermal Filler Basics",
+          "designId": "fsx-ed-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Lip Filler Expectations",
+          "designId": "fsx-ed-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Cheek and Chin Balancing Guide",
+          "designId": "fsx-ed-03",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Safety First: Who Is a Candidate?",
+          "designId": "fsx-safety-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Myth vs Fact: Filler Migration",
+          "designId": "fsx-myth-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Myth vs Fact: Filler Looks Fake",
+          "designId": "fsx-myth-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Filler Consultation Prep",
+          "designId": "fsx-consult-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Signature Lip Day Promo",
+          "designId": "fsx-promo-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Bundle and Save Filler Packages",
+          "designId": "fsx-promo-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..b7fyfh7_GhPwZ_1c.aBPqwebTSWdAl41FmBGiQpfaa8lOyS9ZqWPqsmUCOrs59HfqqACIXIgiH8cdZ1jsQRcn-vUMv5KFHrfUU08VneGt8XAt-Ct_A_zn2fIJxUJjND8.K6EeNbmMI5C38INNrPrUzA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a5e7e75-faf9-4419-8787-2240a8449512&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Book Your Filler Consultation",
+          "designId": "fsx-cta-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "glp1-story-templates",
+      "productSlug": "glp1-story-templates",
+      "productTitle": "GLP-1 Story Templates",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "How GLP-1 Works Story",
+          "designId": "gls-how-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..cjHZxldTC0GdAM0N.I5YvgNP81nEw9Z7lxHdpQhvcdPURzwcEouaYdRacErdxZPwz9xoCftYaNxegnyhX_qjEVXHiRsDW-g9GI8TuD-HmG-ZcjfQDA0kVdGEqI5MSoww.iyV2isPB9IDPOPQ74WCofQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=b5d56c5e-f828-40a3-999f-92da35bdc2fa&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Week 1 Expectations Story",
+          "designId": "gls-how-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..5TMqCdv9_I1GY6Ck.OclLScMhlN7-Hn5nL43q8UL_vz-M_MW7AY_-Fn30SvtlJjXex1LLJ-nSzZpmY8_b3lAc1vOusTJeDNsUKnMg4VOQ1iG9fTCnsdiZzxgu54CPzKs.bQC8-l-CWzZQnwUiy_T1mA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=46c8b882-e729-435a-9657-18e232030cc0&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "GLP-1 Myth vs Fact Story",
+          "designId": "gls-myth-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Weight Loss Timeline Reality Story",
+          "designId": "gls-myth-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Side Effect Support Story",
+          "designId": "gls-support-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Hydration and Protein Reminder Story",
+          "designId": "gls-support-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Progress Milestone Celebration Story",
+          "designId": "gls-milestone-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "GLP-1 Consultation Story CTA",
+          "designId": "gls-consult-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Program Offer Story",
+          "designId": "gls-promo-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Book Weight Loss Consult Story",
+          "designId": "gls-cta-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "hipaa-compliance-kit",
+      "productSlug": "hipaa-compliance-kit",
+      "productTitle": "HIPAA Compliance Kit for Med Spas",
+      "buildTimestamp": "2026-03-31T22:04:05Z",
+      "templateCount": 6,
+      "templates": [
+        {
+          "title": "HIPAA Privacy Policy & Notice of Privacy Practices",
+          "designId": "hipaa-privacy-policy",
+          "editUrl": "/forms/HIPAA-01-Privacy-Policy.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Patient Acknowledgment of Privacy Practices",
+          "designId": "hipaa-patient-ack",
+          "editUrl": "/forms/HIPAA-02-Patient-Acknowledgment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Authorization for Release of PHI",
+          "designId": "hipaa-auth-release",
+          "editUrl": "/forms/HIPAA-03-Authorization-Release.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Breach Notification Policy & Incident Report",
+          "designId": "hipaa-breach-notification",
+          "editUrl": "/forms/HIPAA-04-Breach-Notification.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Staff HIPAA Training & Confidentiality Agreement",
+          "designId": "hipaa-staff-ack",
+          "editUrl": "/forms/HIPAA-05-Staff-Acknowledgment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Business Associate Agreement Template",
+          "designId": "hipaa-baa",
+          "editUrl": "/forms/HIPAA-06-BAA-Template.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "iv-story-templates",
+      "productSlug": "iv-story-templates",
+      "productTitle": "IV Therapy Story Templates",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "Hydration Drip Spotlight Story",
+          "designId": "ivs-spot-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..zL9CciFK9ev2k16f.FIk8htznSRzEQMqK0FWH9kdBCwLjgGKwvgEPSrVbb25I51roGuQ8gTfMEh8baTT0MKvCFwPzPdc2ZYbRTVxUQBfO7ktEZ-RRqJSoaxIfON6bCC4.rSTsBDw0Mcj_m5m4ycx-9w/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=74a7ff54-4111-499a-bc14-2c270205a1e9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Immunity Drip Spotlight Story",
+          "designId": "ivs-spot-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Beauty Drip Spotlight Story",
+          "designId": "ivs-spot-03",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "IV FAQ: How Long Does It Take?",
+          "designId": "ivs-faq-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..cjHZxldTC0GdAM0N.I5YvgNP81nEw9Z7lxHdpQhvcdPURzwcEouaYdRacErdxZPwz9xoCftYaNxegnyhX_qjEVXHiRsDW-g9GI8TuD-HmG-ZcjfQDA0kVdGEqI5MSoww.iyV2isPB9IDPOPQ74WCofQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=b5d56c5e-f828-40a3-999f-92da35bdc2fa&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "IV FAQ: How Often Should I Come?",
+          "designId": "ivs-faq-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "How IV Therapy Works Story",
+          "designId": "ivs-edu-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Who Is a Good Candidate? Story",
+          "designId": "ivs-edu-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "IV Promo Story",
+          "designId": "ivs-promo-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..X3tcIJH_1Z1mFXTc.f_pt_HoUlXqEDSnxa8TVHTy08lxofEfvHUz6e50oZud_kZPnOC6HIiUwFPSWE6C2jKOH00MDkAENVE3Ja0VgzlKlsMPUPVbIpVFlzuJ_IE5tYP4.lUoz2IbOGQ00aQMb3b3aWQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=4caf62a4-c44f-471f-bdf7-e9621e85893c&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Limited Slots Story",
+          "designId": "ivs-promo-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Book IV Session Story CTA",
+          "designId": "ivs-cta-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "iv-therapy-social-kit",
+      "productSlug": "iv-therapy-social-kit",
+      "productTitle": "IV Therapy Social Media Kit",
+      "buildTimestamp": "2026-03-30T14:21:41.147Z",
+      "templateCount": 14,
+      "templates": [
+        {
+          "title": "IV-EC-01 How IV Therapy Works",
+          "designId": "DAHFWTdBraU",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDUxMjk5fQ..SwA2BUbVMjo69IWD.20sID61Qxk-vpyTsQGYETuGSK7ULB8Nr_0fKQBbNjbZL27NHgGvCNOmsHekORfGsbfGST-GiO_xIOzdGxhZjzmucVtd_r898WMX1PPRA22_XQVg.0ZsJI5COC94MN9jGTeALkQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=c4eb6afa-871f-457f-b84d-f60bd588f09f&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDUxMjk5fQ..SwA2BUbVMjo69IWD.20sID61Qxk-vpyTsQGYETuGSK7ULB8Nr_0fKQBbNjbZL27NHgGvCNOmsHekORfGsbfGST-GiO_xIOzdGxhZjzmucVtd_r898WMX1PPRA22_XQVg.0ZsJI5COC94MN9jGTeALkQ/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=31549832-c09d-4166-babe-000c75ad8e2b&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-EC-02 10 Reasons to Try IV",
+          "designId": "DAHFWa9HXbk",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDUxOTk4fQ..2RWVtFo-gLZy6Ntg.FuHWx7x468Ho6kPwWbCpjbb6GZiiDEW95WhgX3KcnRlOsuyagrnekq-EhFLzZJwtLD4nMx62_7Q1niEm3S1yJok8uzCpKiqrvjaItn3nGlqi_wA.oCppddEwLnTi8Fh9jofIxw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=082b1888-7e21-4803-bba0-3e6daee524ac&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDUxOTk4fQ..2RWVtFo-gLZy6Ntg.FuHWx7x468Ho6kPwWbCpjbb6GZiiDEW95WhgX3KcnRlOsuyagrnekq-EhFLzZJwtLD4nMx62_7Q1niEm3S1yJok8uzCpKiqrvjaItn3nGlqi_wA.oCppddEwLnTi8Fh9jofIxw/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fb080340-d2b5-46b8-ae24-c7e189940722&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-EC-03 Myers Cocktail Explained",
+          "designId": "DAHFWUbUKf0",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDUyNjczfQ..YCPgnQtU84CzyC8l.sSUV85bka0VU83IzmutYcvifNlcg3ASmV-wTIb3f-x1iIj15Kt5UgLj0vd8kTOALGGn6GuVIPMovYO2UFqRTykf-WgcvSj5XMo5bHilytQ754dE.g2RGtaYXYV6C9rGtj0eTXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=67ebcc59-ef1a-4278-b483-9cbb722f4f6b&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDUyNjczfQ..YCPgnQtU84CzyC8l.sSUV85bka0VU83IzmutYcvifNlcg3ASmV-wTIb3f-x1iIj15Kt5UgLj0vd8kTOALGGn6GuVIPMovYO2UFqRTykf-WgcvSj5XMo5bHilytQ754dE.g2RGtaYXYV6C9rGtj0eTXg/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=b2e3f317-7747-44a0-be00-fbd469f874cb&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-EC-04 IV for Athletes",
+          "designId": "DAHFWTL9kec",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDUzMzk3fQ..NQ85BIi9-cR1coDC.Pfkej68GOUlhjA7s0ZsdkPAup17P3YVoFCCFrapR83FHZkvf5Fgr2HALdGyAAs6HsYGeZkuA6cVg2Wn5BysBHwzSNXYWddUtQkX7K-qFpr4w0b8.hASmWIklZmZ9_-OXHpYgog/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=83b4e762-fc3f-481e-b841-ce101784f033&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDUzMzk3fQ..NQ85BIi9-cR1coDC.Pfkej68GOUlhjA7s0ZsdkPAup17P3YVoFCCFrapR83FHZkvf5Fgr2HALdGyAAs6HsYGeZkuA6cVg2Wn5BysBHwzSNXYWddUtQkX7K-qFpr4w0b8.hASmWIklZmZ9_-OXHpYgog/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=47fbf6bf-26de-4135-adee-274bd3375b17&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-EC-05 NAD+ Explained",
+          "designId": "DAHFWaF_blc",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU0MDU2fQ..FRxZFWmYADwT9RDv.H59neAgJBQvmIJhyIAWPB6cMn9LifhS7-gdXrmnSNqSesu1y_hlznDo4hk3qRAdfypFFVyd9IWyNB0fSHU8LWP-17BXbdeNUpawOJ781giMFKO0.qq16VKqlraCIAzeRNLsdPg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=6f2ac702-cee7-49df-94a5-8814ed00739c&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU0MDU2fQ..FRxZFWmYADwT9RDv.H59neAgJBQvmIJhyIAWPB6cMn9LifhS7-gdXrmnSNqSesu1y_hlznDo4hk3qRAdfypFFVyd9IWyNB0fSHU8LWP-17BXbdeNUpawOJ781giMFKO0.qq16VKqlraCIAzeRNLsdPg/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=f373e4fb-8d46-46bd-b096-ba9e485cd43c&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-SM-01 Hydration Drip",
+          "designId": "DAHFWTcNLV8",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU0NzA0fQ..DJ-yZch0qO_ZvFoO.YcXdQFakzSMdzrwU4_RCAvlCDMGBaAJZeSx7v51vagReqVDM7pIwIrFLLC0IMGQjZNjFQlvoE7YS98nXEYE0wMSUyhiQkd1IXplkCaqW3vqKRuo.__bMUDTc9fLvhKqC_rI4_g/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3fe430c5-cbdf-4b4c-b66a-7247ef52a996&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU0NzA0fQ..DJ-yZch0qO_ZvFoO.YcXdQFakzSMdzrwU4_RCAvlCDMGBaAJZeSx7v51vagReqVDM7pIwIrFLLC0IMGQjZNjFQlvoE7YS98nXEYE0wMSUyhiQkd1IXplkCaqW3vqKRuo.__bMUDTc9fLvhKqC_rI4_g/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5ab62e-1f8c-48bc-81b8-5f12d6620e41&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-SM-02 Myers Cocktail",
+          "designId": "DAHFWQFpQe8",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU1Mzc1fQ..r8ubPCUd5JxJfW1y.CQkZv3LjEP8DQC7dfcEmEPKj18SSC6PFLfQw0ErbpS6VaERLqu8whHtiOgUNMDAf39tYwWgIQ-SV8QfaC3c1hZ5cGbMktta6734wkWPJuvhRt5s.h4kveUgW-H6DYii2rCXPog/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=39939f87-e0c6-4b57-9aec-a5b807fbf31b&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU1Mzc1fQ..r8ubPCUd5JxJfW1y.CQkZv3LjEP8DQC7dfcEmEPKj18SSC6PFLfQw0ErbpS6VaERLqu8whHtiOgUNMDAf39tYwWgIQ-SV8QfaC3c1hZ5cGbMktta6734wkWPJuvhRt5s.h4kveUgW-H6DYii2rCXPog/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=84edb21a-e416-473e-82f4-8370ce3872de&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-SM-03 Immune Boost",
+          "designId": "DAHFWQ8BRMc",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU2MDQ5fQ..3dZqgD0J9THJrAHd.JIm0I0YOwnqgy8Up8tRh_xpjcs4eQ-0aM7tWF6w4YYIft8YGxkFXxlxPGjWQeIdLm3ZCEmbntQalfBAIpdzKR8vCyesDbsM63MAnAzTnKQ3hbhI.DYRsqx33n2EeH0jrZpoiNA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=7ced8392-9a41-4b4c-a3e1-ec38b76d91f5&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU2MDQ5fQ..3dZqgD0J9THJrAHd.JIm0I0YOwnqgy8Up8tRh_xpjcs4eQ-0aM7tWF6w4YYIft8YGxkFXxlxPGjWQeIdLm3ZCEmbntQalfBAIpdzKR8vCyesDbsM63MAnAzTnKQ3hbhI.DYRsqx33n2EeH0jrZpoiNA/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=99944861-c607-4a26-9d4a-af25e7a112c5&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-SM-04 Beauty IV",
+          "designId": "DAHFWY-9DzE",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU2NzE5fQ..d-WvSgWUFx-6-uge.QncxuEcr_N5AKcLvk5f-gq78M5eYtuZqbl5cHbc1qgNKZir7tEPXkhtJ4RP0AD6l16FL4pMimYruLTzr8tEQawp2RQRRJJLtSGEHHDsrroEFZWo.5p3UtSdA_hDmuamdaYDxig/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=48f7c67e-0db8-4050-803e-a8eb6644fa6a&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU2NzE5fQ..d-WvSgWUFx-6-uge.QncxuEcr_N5AKcLvk5f-gq78M5eYtuZqbl5cHbc1qgNKZir7tEPXkhtJ4RP0AD6l16FL4pMimYruLTzr8tEQawp2RQRRJJLtSGEHHDsrroEFZWo.5p3UtSdA_hDmuamdaYDxig/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=df2095f0-4237-42b6-bf56-49644f3d56f8&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-MF-01 Split Panel",
+          "designId": "DAHFWUByhfI",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU4MDY1fQ..CNBLAF2Frp9pihyZ.nEPsq1xxehYI00LwgZBpAzcACv1iYUsb7BnEvU7nC4R4J4StI34stbCZkSMWzOLlfyml4dcqht3ICYEhLUU6XqGMGAAIMQvxHvouWx2xxYF32e8.3Ypg2LOYWa59YQsu2yMczw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=849b07e0-c1b6-4c79-bfa5-411f0d589fd8&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU4MDY1fQ..CNBLAF2Frp9pihyZ.nEPsq1xxehYI00LwgZBpAzcACv1iYUsb7BnEvU7nC4R4J4StI34stbCZkSMWzOLlfyml4dcqht3ICYEhLUU6XqGMGAAIMQvxHvouWx2xxYF32e8.3Ypg2LOYWa59YQsu2yMczw/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=4b891b2c-5a72-4038-886f-8918a290a701&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-MF-02 Strikethrough",
+          "designId": "DAHFWaSQ8LM",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU4NzIyfQ..mZh-rklR_x37vzm7.6v8F2uJSrQPsZCPXDDa3F7s4pLVDXab2SHixlBThtXKqmBG-6cp8gaUu1kaxFCk-qBv6f5V5Fv1lePeo9Z1M_AH9jXZjoBclBXvOWKcxkFUMT_Q.RDoT7IGdCvcqJg5HVspFUA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=4cf604e4-8dd6-47c3-9c63-af59a1c9b59a&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU4NzIyfQ..mZh-rklR_x37vzm7.6v8F2uJSrQPsZCPXDDa3F7s4pLVDXab2SHixlBThtXKqmBG-6cp8gaUu1kaxFCk-qBv6f5V5Fv1lePeo9Z1M_AH9jXZjoBclBXvOWKcxkFUMT_Q.RDoT7IGdCvcqJg5HVspFUA/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=7dcc27a6-a104-4d35-8273-2d38db18eafd&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-MF-03 Badge Format",
+          "designId": "DAHFWSISAM4",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU5Mzg4fQ..JZzim23zoZThhYYr.Ogti5ue_BB825kIBnU8YkpDebLehBw9kKWEqxjvSrm0oINQH94p_Gyo0Be9g5pY3ccLPjNj7MqaIiCqmuqyHjzJxXv0U8dHzHrgfAfNQWrd15cE.Ej31gZzlQXG_MpwIJakYMA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=763adf97-5699-46b9-9e95-ebcfe8064d51&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDU5Mzg4fQ..JZzim23zoZThhYYr.Ogti5ue_BB825kIBnU8YkpDebLehBw9kKWEqxjvSrm0oINQH94p_Gyo0Be9g5pY3ccLPjNj7MqaIiCqmuqyHjzJxXv0U8dHzHrgfAfNQWrd15cE.Ej31gZzlQXG_MpwIJakYMA/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a0bc97d-761a-4ef1-bbb4-7f09d733b89c&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-PR-01 New Patient Offer",
+          "designId": "DAHFWYZGFTc",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDYwMDUwfQ..c9Ja9TU9_ekAaNUL.a0vRyofFchL1eTU-NzWvQRYt0HrE1TYlSFPQ2ZIjZFFpD8O2zG7vjahkr0fb-axv7IGos9DxRJFrUwKN3umSHmEpKo7aieW124_tezTjt0r9fS0.fddFScxHPLbchClLkoSFsQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=7789550d-d0f8-4e8d-b46a-5917bbea2579&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDYwMDUwfQ..c9Ja9TU9_ekAaNUL.a0vRyofFchL1eTU-NzWvQRYt0HrE1TYlSFPQ2ZIjZFFpD8O2zG7vjahkr0fb-axv7IGos9DxRJFrUwKN3umSHmEpKo7aieW124_tezTjt0r9fS0.fddFScxHPLbchClLkoSFsQ/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ea1d6407-3eb2-40de-923b-5119cf4d9d91&utm_campaign=public_api_create_design_clicked_hyperlink"
+        },
+        {
+          "title": "IV-PR-02 Membership",
+          "designId": "DAHFWZiO0B0",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDYwNzE5fQ..RCL-iqSPif1-1H2o.An1Hn0wv3cpV0TMnfvoV6sh8j1KDFrgAiFjiLBO-4ULdEJXLo75NxRBvzlV-eekCc7yDu2LOEAJwmo7hO3cfZNXIGqAIaK7gP7_Qc18zr_FweFg.gS-t7dN9YorunSHmrLEY3w/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=533c7c1b-c16d-46f0-9e0b-ec3941c1f13f&utm_campaign=public_api_create_design_clicked_hyperlink",
+          "viewUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3Mzk2NDYwNzE5fQ..RCL-iqSPif1-1H2o.An1Hn0wv3cpV0TMnfvoV6sh8j1KDFrgAiFjiLBO-4ULdEJXLo75NxRBvzlV-eekCc7yDu2LOEAJwmo7hO3cfZNXIGqAIaK7gP7_Qc18zr_FweFg.gS-t7dN9YorunSHmrLEY3w/view?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=c8810c0b-0a81-4f27-8fc8-0e058376fc76&utm_campaign=public_api_create_design_clicked_hyperlink"
+        }
+      ]
+    },
+    {
+      "productKey": "lash-aftercare-kit",
+      "productSlug": "lash-aftercare-kit",
+      "productTitle": "Lash Extension & Lash Lift Client Education Kit",
+      "buildTimestamp": "2026-03-30T00:00:00Z",
+      "templateCount": 5,
+      "templates": [
+        {
+          "title": "Lash Client Intake & Health History Form",
+          "designId": "lsh-intake-form",
+          "editUrl": "/forms/LSH-01-Intake-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Patch Test Waiver & Allergy Release",
+          "designId": "lsh-allergy-waiver",
+          "editUrl": "/forms/LSH-02-Allergy-Waiver.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Lash Extension Consent Form",
+          "designId": "lsh-extension-consent",
+          "editUrl": "/forms/LSH-03-Extension-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Lash Lift & Tint Consent Form",
+          "designId": "lsh-lift-consent",
+          "editUrl": "/forms/LSH-05-Lift-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Rebooking Reminder Card",
+          "designId": "lsh-rebook-card",
+          "editUrl": "/forms/LSH-07-Rebook-Card.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "med-spa-legal-startup-bundle",
+      "productSlug": "med-spa-legal-startup-bundle",
+      "productTitle": "Medical Spa Legal Startup Bundle",
+      "buildTimestamp": "2026-03-31T22:28:58.378Z",
+      "templateCount": 34,
+      "templates": [
+        {
+          "title": "Medical Director — Employment Agreement",
+          "designId": "msl-md-employment",
+          "editUrl": "/forms/MSL-01-Medical-Director-Employment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Medical Director — Independent Contractor Agreement",
+          "designId": "msl-md-ic",
+          "editUrl": "/forms/MSL-02-Medical-Director-Independent-Contractor.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Cosmetic Injector — Employment Agreement",
+          "designId": "msl-ci-employment",
+          "editUrl": "/forms/MSL-03-Cosmetic-Injector-Employment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Cosmetic Injector — Independent Contractor Agreement",
+          "designId": "msl-ci-ic",
+          "editUrl": "/forms/MSL-04-Cosmetic-Injector-Independent-Contractor.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Cosmetic Injector — Room Rental Agreement",
+          "designId": "msl-ci-room",
+          "editUrl": "/forms/MSL-05-Cosmetic-Injector-Room-Rental.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Laser Technician — Employment Agreement",
+          "designId": "msl-lt-employment",
+          "editUrl": "/forms/MSL-06-Laser-Tech-Employment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Laser Technician — Independent Contractor Agreement",
+          "designId": "msl-lt-ic",
+          "editUrl": "/forms/MSL-07-Laser-Tech-Independent-Contractor.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Laser Technician — Room Rental Agreement",
+          "designId": "msl-lt-room",
+          "editUrl": "/forms/MSL-08-Laser-Tech-Room-Rental.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Medical Aesthetician — Employment Agreement",
+          "designId": "msl-maes-employment",
+          "editUrl": "/forms/MSL-09-Medical-Aesthetician-Employment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Medical Aesthetician — Independent Contractor Agreement",
+          "designId": "msl-maes-ic",
+          "editUrl": "/forms/MSL-10-Medical-Aesthetician-Independent-Contractor.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Medical Assistant — Employment Agreement",
+          "designId": "msl-ma-employment",
+          "editUrl": "/forms/MSL-11-Medical-Assistant-Employment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Front Desk Associate — Employment Agreement",
+          "designId": "msl-fd-employment",
+          "editUrl": "/forms/MSL-12-Front-Desk-Employment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Office Manager — Employment Agreement",
+          "designId": "msl-om-employment",
+          "editUrl": "/forms/MSL-13-Office-Manager-Employment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Med Spa Collaborative Practice Agreement (NP & Physician)",
+          "designId": "msl-cpa",
+          "editUrl": "/forms/MSL-14-Collaborative-Practice-Agreement.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Medical Spa Training Repayment Agreement",
+          "designId": "msl-training-repay",
+          "editUrl": "/forms/MSL-15-Training-Repayment-Agreement.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Medical Practice Confidentiality Agreement",
+          "designId": "msl-confidentiality",
+          "editUrl": "/forms/MSL-16-Medical-Practice-Confidentiality.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Med Spa Employee Handbook",
+          "designId": "msl-employee-handbook",
+          "editUrl": "/forms/MSL-17-Med-Spa-Employee-Handbook.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Med Spa Independent Contractor Handbook",
+          "designId": "msl-ic-handbook",
+          "editUrl": "/forms/MSL-18-Med-Spa-IC-Handbook.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Med Spa Good Faith Exam Documentation",
+          "designId": "msl-gfe",
+          "editUrl": "/forms/MSL-19-Med-Spa-Good-Faith-Exam.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Injectable Treatment Record Form",
+          "designId": "msl-injectable-record",
+          "editUrl": "/forms/MSL-20-Injectable-Treatment-Record.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Dermal Filler Informed Consent",
+          "designId": "msl-filler-consent",
+          "editUrl": "/forms/MSL-21-Dermal-Filler-Informed-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Neurotoxin Informed Consent",
+          "designId": "msl-neuro-consent",
+          "editUrl": "/forms/MSL-22-Neurotoxin-Informed-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Cosmetic Laser Resurfacing Informed Consent",
+          "designId": "msl-laser-consent",
+          "editUrl": "/forms/MSL-23-Laser-Resurfacing-Informed-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Esthetician Service Informed Consent",
+          "designId": "msl-esthetician-consent",
+          "editUrl": "/forms/MSL-24-Esthetician-Informed-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Med Spa Photo &amp; Video Release",
+          "designId": "msl-photo-video-release",
+          "editUrl": "/forms/MSL-25-Photo-Video-Release.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Med Spa Waiver &amp; Release of Liability",
+          "designId": "msl-waiver-liability",
+          "editUrl": "/forms/MSL-26-Waiver-Release-Liability.html",
+          "viewUrl": null
+        },
+        {
+          "title": "HIPAA Patient Acknowledgment &amp; Authorization",
+          "designId": "msl-hipaa-ack-auth",
+          "editUrl": "/forms/MSL-27-HIPAA-Patient-Acknowledgment-Authorization.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Med Spa Appointments &amp; Cancellation Policy",
+          "designId": "msl-cancellation-policy",
+          "editUrl": "/forms/MSL-28-Appointments-Cancellation-Policy.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Med Spa Return Policy",
+          "designId": "msl-return-policy",
+          "editUrl": "/forms/MSL-29-Return-Policy.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Med Spa Financial &amp; Payment Policy",
+          "designId": "msl-financial-policy",
+          "editUrl": "/forms/MSL-30-Financial-Payment-Policy.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Website Privacy Policy",
+          "designId": "msl-privacy-policy-web",
+          "editUrl": "/forms/MSL-31-Website-Privacy-Policy.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Website Terms of Use",
+          "designId": "msl-terms-of-use",
+          "editUrl": "/forms/MSL-32-Terms-of-Use.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Website Disclaimers",
+          "designId": "msl-disclaimers",
+          "editUrl": "/forms/MSL-33-Website-Disclaimers.html",
+          "viewUrl": null
+        },
+        {
+          "title": "HIPAA Notice of Privacy Practices",
+          "designId": "msl-hipaa-npp",
+          "editUrl": "/forms/MSL-34-HIPAA-Notice-of-Privacy-Practices.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "medspa-promo-pack",
+      "productSlug": "medspa-promo-pack",
+      "productTitle": "Med Spa Promo Templates Pack",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "New Patient Offer Graphic",
+          "designId": "prm-offer-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Flash Sale Announcement",
+          "designId": "prm-offer-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "BOGO or Package Offer",
+          "designId": "prm-offer-03",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Limited Appointments This Week",
+          "designId": "prm-urgency-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Last Chance Promo Reminder",
+          "designId": "prm-urgency-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Free Consultation CTA",
+          "designId": "prm-consult-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Membership Savings Promo",
+          "designId": "prm-membership-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Referral Reward Graphic",
+          "designId": "prm-referral-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Seasonal Offer Spotlight",
+          "designId": "prm-seasonal-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..b7fyfh7_GhPwZ_1c.aBPqwebTSWdAl41FmBGiQpfaa8lOyS9ZqWPqsmUCOrs59HfqqACIXIgiH8cdZ1jsQRcn-vUMv5KFHrfUU08VneGt8XAt-Ct_A_zn2fIJxUJjND8.K6EeNbmMI5C38INNrPrUzA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a5e7e75-faf9-4419-8787-2240a8449512&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Book Now Action Post",
+          "designId": "prm-cta-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "medspa-startup-checklist",
+      "productSlug": "medspa-startup-checklist",
+      "productTitle": "Med Spa Business Startup Checklist",
+      "buildTimestamp": "2026-03-31T22:04:05Z",
+      "templateCount": 5,
+      "templates": [
+        {
+          "title": "Med Spa Business Formation Checklist",
+          "designId": "su-business-formation",
+          "editUrl": "/forms/SU-01-Business-Formation.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Licensing & Credentialing Checklist",
+          "designId": "su-licensing",
+          "editUrl": "/forms/SU-02-Licensing-Credentialing.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Vendor & Supplier Setup Checklist",
+          "designId": "su-vendor-setup",
+          "editUrl": "/forms/SU-03-Vendor-Setup.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Operations & Compliance Setup Checklist",
+          "designId": "su-operations",
+          "editUrl": "/forms/SU-04-Operations-Setup.html",
+          "viewUrl": null
+        },
+        {
+          "title": "90-Day Med Spa Launch Timeline",
+          "designId": "su-launch-timeline",
+          "editUrl": "/forms/SU-05-Launch-Timeline.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "microneedling-consent-bundle",
+      "productSlug": "microneedling-consent-bundle",
+      "productTitle": "Microneedling Consent & Documentation Bundle",
+      "buildTimestamp": "2026-03-31T22:04:05Z",
+      "templateCount": 6,
+      "templates": [
+        {
+          "title": "Microneedling Consultation & Skin Assessment",
+          "designId": "mn-consultation",
+          "editUrl": "/forms/MN-01-Consultation-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Microneedling Informed Consent Form",
+          "designId": "mn-consent",
+          "editUrl": "/forms/MN-02-Informed-Consent.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Pre-Treatment Instructions — Microneedling",
+          "designId": "mn-precare",
+          "editUrl": "/forms/MN-03-Pre-Treatment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Post-Treatment Aftercare — Microneedling",
+          "designId": "mn-postcare",
+          "editUrl": "/forms/MN-04-Post-Treatment.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Microneedling Treatment Record",
+          "designId": "mn-treatment-record",
+          "editUrl": "/forms/MN-05-Treatment-Record.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Microneedling Series Progress Tracker",
+          "designId": "mn-series-tracker",
+          "editUrl": "/forms/MN-06-Series-Tracker.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "myths-facts-injectors",
+      "productSlug": "myths-facts-injectors",
+      "productTitle": "Myths vs Facts for Injectors",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "Botox Myth vs Fact #1",
+          "designId": "mvf-btx-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Botox Myth vs Fact #2",
+          "designId": "mvf-btx-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Filler Myth vs Fact #1",
+          "designId": "mvf-flr-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Filler Myth vs Fact #2",
+          "designId": "mvf-flr-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "IV Therapy Myth vs Fact",
+          "designId": "mvf-iv-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..cjHZxldTC0GdAM0N.I5YvgNP81nEw9Z7lxHdpQhvcdPURzwcEouaYdRacErdxZPwz9xoCftYaNxegnyhX_qjEVXHiRsDW-g9GI8TuD-HmG-ZcjfQDA0kVdGEqI5MSoww.iyV2isPB9IDPOPQ74WCofQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=b5d56c5e-f828-40a3-999f-92da35bdc2fa&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "GLP-1 Myth vs Fact",
+          "designId": "mvf-glp1-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Injectables Safety Myth vs Fact",
+          "designId": "mvf-safety-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Consultation Myth vs Fact",
+          "designId": "mvf-consult-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Ask Us Anything Prompt",
+          "designId": "mvf-engage-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Save This Educational Post",
+          "designId": "mvf-save-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..b7fyfh7_GhPwZ_1c.aBPqwebTSWdAl41FmBGiQpfaa8lOyS9ZqWPqsmUCOrs59HfqqACIXIgiH8cdZ1jsQRcn-vUMv5KFHrfUU08VneGt8XAt-Ct_A_zn2fIJxUJjND8.K6EeNbmMI5C38INNrPrUzA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a5e7e75-faf9-4419-8787-2240a8449512&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "new-patient-membership-pack",
+      "productSlug": "new-patient-membership-pack",
+      "productTitle": "New Patient Offer and Membership Pack",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "New Patient Consultation Offer",
+          "designId": "npm-consult-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Consultation Promo Variant",
+          "designId": "npm-consult-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Membership Program Overview",
+          "designId": "npm-member-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Membership Savings Breakdown",
+          "designId": "npm-member-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Referral Bonus Graphic",
+          "designId": "npm-ref-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Bring-a-Friend Offer",
+          "designId": "npm-ref-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Package Comparison Chart",
+          "designId": "npm-package-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Book Your Consult Today",
+          "designId": "npm-cta-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Limited Membership Spots",
+          "designId": "npm-cta-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..b7fyfh7_GhPwZ_1c.aBPqwebTSWdAl41FmBGiQpfaa8lOyS9ZqWPqsmUCOrs59HfqqACIXIgiH8cdZ1jsQRcn-vUMv5KFHrfUU08VneGt8XAt-Ct_A_zn2fIJxUJjND8.K6EeNbmMI5C38INNrPrUzA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a5e7e75-faf9-4419-8787-2240a8449512&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Membership Story Promo",
+          "designId": "npm-story-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "peptide-patient-guide",
+      "productSlug": "peptide-patient-guide",
+      "productTitle": "Peptide Therapy & BHRT Patient Education Bundle",
+      "buildTimestamp": "2026-03-30T00:00:00Z",
+      "templateCount": 7,
+      "templates": [
+        {
+          "title": "What Are Peptides? Patient Education Guide",
+          "designId": "pep-what-are-peptides",
+          "editUrl": "/forms/PEP-01-What-Are-Peptides.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Understanding BHRT: A Patient's Guide",
+          "designId": "pep-bhrt-guide",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..oxZJ75SSB1QkBhTH.AsvjpJsvUO2DeNqniz1Vi7gDqQAmJKK8bKDQF0fQe9iJLrrjN1Q7J9uT7kP5s5_gdd5ZvLo_Y4R_FrClDBSdJQyzGAu2LbktO8j1k5H0bMDjAPk.zh6nRNLw5XDyO37eLQnThw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=b4488c77-0a1a-45a4-8bc3-f7870638e7de&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Peptide & Hormone Therapy Intake Form",
+          "designId": "pep-intake-form",
+          "editUrl": "/forms/PEP-03-Intake-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Peptide Therapy Informed Consent Form",
+          "designId": "pep-consent-form",
+          "editUrl": "/forms/PEP-04-Consent-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Self-Injection Training Guide",
+          "designId": "pep-self-injection-guide",
+          "editUrl": "/forms/PEP-05-Self-Injection-Guide.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Monthly Symptom & Progress Tracker",
+          "designId": "pep-symptom-tracker",
+          "editUrl": "/forms/PEP-06-Monthly-Tracker.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Peptide Therapy FAQ Card",
+          "designId": "pep-faq-card",
+          "editUrl": "/forms/PEP-07-FAQ-Card.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "review-testimonial-pack",
+      "productSlug": "review-testimonial-pack",
+      "productTitle": "Review and Testimonial Template Pack",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "Patient Quote Card #1",
+          "designId": "rvw-quote-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Patient Quote Card #2",
+          "designId": "rvw-quote-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "5-Star Review Highlight",
+          "designId": "rvw-review-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "What Patients Say About Us",
+          "designId": "rvw-review-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Patient Experience Timeline",
+          "designId": "rvw-experience-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Why Clients Keep Coming Back",
+          "designId": "rvw-experience-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Meet Your Provider Credibility Post",
+          "designId": "rvw-provider-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Training and Certification Spotlight",
+          "designId": "rvw-provider-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Results Story Framework",
+          "designId": "rvw-beforeafter-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..b7fyfh7_GhPwZ_1c.aBPqwebTSWdAl41FmBGiQpfaa8lOyS9ZqWPqsmUCOrs59HfqqACIXIgiH8cdZ1jsQRcn-vUMv5KFHrfUU08VneGt8XAt-Ct_A_zn2fIJxUJjND8.K6EeNbmMI5C38INNrPrUzA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a5e7e75-faf9-4419-8787-2240a8449512&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Book Your Consultation CTA",
+          "designId": "rvw-cta-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "seasonal-marketing-pack",
+      "productSlug": "seasonal-marketing-pack",
+      "productTitle": "Seasonal Med Spa Marketing Pack",
+      "buildTimestamp": "2026-03-31T06:00:16Z",
+      "templateCount": 10,
+      "templates": [
+        {
+          "title": "Spring Refresh Campaign Post",
+          "designId": "sea-spring-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..PCZLRIrbyGLrPztP.Kax1oI_yJjpgA0Ld5AFnlZ4XKpW4EjWdAf0wa3R-3BO-axLRW_0JJ4ddhvWgiS6WO9a9RK0LPox8y7IGdLSXzOy1eAlH7bolDIdh-Ymjwq094nk.UNXf9p7zAMnbr58EcgYQng/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3353c9df-6451-4228-b274-a8994987fec9&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Spring Consultation CTA",
+          "designId": "sea-spring-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..FeEDESEzgHgVTTnP.1y_H7gEzuRfC8Po1CbgsRmHDciKuu2hZshB0eYBaU7UYNXLrQGrZhZaMPiymcexjs5Yfvgxcj17rQfiVl9CVyR4IhWk8rsyuU9_mlCYx-kp5Fwo.Ug0mCH4JqPamZ3HRyQNpGg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ba5cdda1-fbf3-4bb0-901c-a0a9ba109313&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Summer Prep Treatment Promo",
+          "designId": "sea-summer-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..OZmd0b6LBYH_d24u.SBCuQQ9JFfOkqG4D9taOdFsJScAL7rs3CPRLhXiZ9alwlqIMVmT6zQTd0XAekow_e8Q1MmXfsD_Fy_8tvH5xBsIu_zu0UgDxcCvXy93AKRdW67c.OFBn58PRE7kyR5tWXvWlXg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9ae1f9d0-ecca-4aba-a359-908b9d9b3a40&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Hot Weather Skin Support Post",
+          "designId": "sea-summer-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..4BCOsi5vPbu02eOo.tCvW6TEaB5az57GpRKHJK8-9eJD-26zdt4Pq-Ft3QiFnN7zmC5gOddXKEJHBiXbpp73PWYos-KizwSH1RzbEilKPBHuNqyuMewT7OjTEB-y6XIk.rlMSUsSWsGVWB_EcRQFHRw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a06eaf24-c1a5-42f8-bdff-54515ea9786b&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Fall Reset Campaign Post",
+          "designId": "sea-fall-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..gct3JEwY22Y3EdOX.mCLgeg8kB0k-hlBriH6nw8lkXHi3gf3VKEHO-yDgXS3AAcl4aXwBa0C_fWWPyRDqIRfvejrVqlu3f6ifSkKvQm65Fk7V_1o_DffcfGrUgKvjOgc.QG_WF2IcuAXgmlQ3qwxtOQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=9c6dddb2-38c5-434c-bfc2-451344ef7f2a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Holiday Recovery Offer",
+          "designId": "sea-holiday-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aP99vHZ--BhPVhgv.D1bLtt_rfNWEQBK1eA9yqvd1e4OV7KEaNEKBug94ZLHYG8tZSOnUcQLBhgqTMTLexi_CIYvUAQooJxO-Jq5NvkHGtnu9kTi7O56nwhWPtgFsgPA.Kyg1C2_ah1qU-n1Uh09CoQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=3443f4b6-e60a-4eea-b6a4-11b721ed5266&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Gift Card and Membership Push",
+          "designId": "sea-holiday-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "New Year New You Campaign",
+          "designId": "sea-newyear-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "January Booking CTA",
+          "designId": "sea-newyear-02",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..b7fyfh7_GhPwZ_1c.aBPqwebTSWdAl41FmBGiQpfaa8lOyS9ZqWPqsmUCOrs59HfqqACIXIgiH8cdZ1jsQRcn-vUMv5KFHrfUU08VneGt8XAt-Ct_A_zn2fIJxUJjND8.K6EeNbmMI5C38INNrPrUzA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=0a5e7e75-faf9-4419-8787-2240a8449512&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        },
+        {
+          "title": "Limited-Time Seasonal Countdown",
+          "designId": "sea-limited-01",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "treatment-pricing-menu",
+      "productSlug": "treatment-pricing-menu",
+      "productTitle": "Treatment Menu & Pricing Guide Templates",
+      "buildTimestamp": "2026-03-31T22:04:05Z",
+      "templateCount": 4,
+      "templates": [
+        {
+          "title": "Treatment Menu & Service Guide",
+          "designId": "pm-full-menu",
+          "editUrl": "/forms/PM-01-Full-Service-Menu.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Injectable Treatment Menu",
+          "designId": "pm-injectable-menu",
+          "editUrl": "/forms/PM-02-Injectable-Menu.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Package & Membership Pricing Guide",
+          "designId": "pm-package-pricing",
+          "editUrl": "/forms/PM-03-Package-Pricing.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Consultation Preparation Guide",
+          "designId": "pm-consultation-guide",
+          "editUrl": "/forms/PM-04-Consultation-Guide.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "weight-loss-kit",
+      "productSlug": "weight-loss-kit",
+      "productTitle": "GLP-1 Weight Loss Patient Onboarding Kit",
+      "buildTimestamp": "2026-03-30T00:00:00Z",
+      "templateCount": 7,
+      "templates": [
+        {
+          "title": "GLP-1 Patient Intake Form",
+          "designId": "wl-intake-form",
+          "editUrl": "/forms/WL-01-Intake-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "GLP-1 Treatment Consent Form",
+          "designId": "wl-consent-form",
+          "editUrl": "/forms/WL-02-Consent-Form.html",
+          "viewUrl": null
+        },
+        {
+          "title": "What to Expect: Your GLP-1 Journey",
+          "designId": "wl-expectation-guide",
+          "editUrl": "/forms/WL-03-GLP1-Journey-Guide.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Weekly Nutrition & Symptom Tracker",
+          "designId": "wl-nutrition-tracker",
+          "editUrl": "/forms/WL-04-Nutrition-Tracker.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Side Effect Log & Action Guide",
+          "designId": "wl-side-effect-log",
+          "editUrl": "/forms/WL-05-Side-Effect-Log.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Injection Day Aftercare Card",
+          "designId": "wl-aftercare-card",
+          "editUrl": "/forms/WL-06-Injection-Card.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Progress Photo & Video Release Form",
+          "designId": "wl-progress-photo-release",
+          "editUrl": "/forms/WL-07-Photo-Release.html",
+          "viewUrl": null
+        }
+      ]
+    }
+  ]
+}

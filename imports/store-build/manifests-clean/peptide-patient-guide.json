@@ -1,0 +1,78 @@
+{
+  "productId": "peptide-patient-guide",
+  "displayName": "Peptide Therapy & BHRT Patient Education Bundle",
+  "description": "Clinically written patient education materials for med spas and wellness practices offering peptide therapy and bioidentical hormone replacement therapy (BHRT). Covers what peptides are, how BHRT works, patient intake, informed consent, and self-injection training guides. Written by a licensed esthetician and RN student with real clinical experience.",
+  "version": "1.0.0",
+  "priceUSD": 47,
+  "etsySku": "NPA-PEP-001",
+  "category": "clinical-education",
+  "targetBuyer": "Med spas, functional medicine clinics, and wellness practices offering peptide therapy or BHRT programs",
+  "templates": [
+    {
+      "id": "pep-what-are-peptides",
+      "name": "What Are Peptides? Patient Education Guide",
+      "description": "Plain-language explainer covering how peptides work, popular peptides (BPC-157, Sermorelin, Ipamorelin, CJC-1295), and what to expect — written for patients, not providers",
+      "canvaTemplateUrl": "/forms/PEP-01-What-Are-Peptides.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "education"
+    },
+    {
+      "id": "pep-bhrt-guide",
+      "name": "Understanding BHRT: A Patient's Guide",
+      "description": "BHRT overview covering hormone testing, pellet vs cream vs injection delivery, symptom timelines, and what labs to monitor",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..oxZJ75SSB1QkBhTH.AsvjpJsvUO2DeNqniz1Vi7gDqQAmJKK8bKDQF0fQe9iJLrrjN1Q7J9uT7kP5s5_gdd5ZvLo_Y4R_FrClDBSdJQyzGAu2LbktO8j1k5H0bMDjAPk.zh6nRNLw5XDyO37eLQnThw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=b4488c77-0a1a-45a4-8bc3-f7870638e7de&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "education"
+    },
+    {
+      "id": "pep-intake-form",
+      "name": "Peptide & Hormone Therapy Intake Form",
+      "description": "Comprehensive health history for peptide and hormone patients — symptoms checklist, goals, prior treatment history, and current medications",
+      "canvaTemplateUrl": "/forms/PEP-03-Intake-Form.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms"
+    },
+    {
+      "id": "pep-consent-form",
+      "name": "Peptide Therapy Informed Consent Form",
+      "description": "Consent covering off-label use disclosure, expected outcomes, risks, self-administration responsibilities, and lab monitoring requirements",
+      "canvaTemplateUrl": "/forms/PEP-04-Consent-Form.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms"
+    },
+    {
+      "id": "pep-self-injection-guide",
+      "name": "Self-Injection Training Guide",
+      "description": "Step-by-step illustrated guide for patients self-administering subcutaneous peptide injections — site rotation, needle disposal, and storage",
+      "canvaTemplateUrl": "/forms/PEP-05-Self-Injection-Guide.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "education"
+    },
+    {
+      "id": "pep-symptom-tracker",
+      "name": "Monthly Symptom & Progress Tracker",
+      "description": "Month-by-month tracking log for energy, sleep, mood, libido, body composition, and side effects — supports provider follow-up conversations",
+      "canvaTemplateUrl": "/forms/PEP-06-Monthly-Tracker.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "tracker"
+    },
+    {
+      "id": "pep-faq-card",
+      "name": "Peptide Therapy FAQ Card",
+      "description": "Double-sided quick-reference card answering the 10 most common patient questions about peptide storage, dosing schedules, and what to do if they miss a dose",
+      "canvaTemplateUrl": "/forms/PEP-07-FAQ-Card.html",
+      "format": "5x7",
+      "pages": 2,
+      "category": "education"
+    }
+  ],
+  "deliveryNote": "All templates open in Canva as your own editable copy. Written from real clinical experience — customize with your clinic name, provider credentials, and any program-specific protocols. Recommend medical director review of all consent forms prior to patient use.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-30T00:00:00Z"
+}

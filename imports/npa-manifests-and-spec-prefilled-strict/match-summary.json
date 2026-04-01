@@ -1,0 +1,54 @@
+{
+  "designsIndexed": 96,
+  "threshold": 0.45,
+  "products": [
+    {
+      "productId": "botox-consent-bundle",
+      "displayName": "Botox & Neurotoxin Consent + Pre/Post Care Bundle",
+      "templatesTotal": 6,
+      "templatesMatched": 0,
+      "outputFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/botox-consent-bundle.json",
+      "debugFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/botox-consent-bundle.match-debug.json"
+    },
+    {
+      "productId": "combo-bundle",
+      "displayName": "Complete Med Spa Digital Bundle \u2014 IV + Weight Loss + Social",
+      "templatesTotal": 10,
+      "templatesMatched": 4,
+      "outputFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/combo-bundle.json",
+      "debugFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/combo-bundle.match-debug.json"
+    },
+    {
+      "productId": "filler-consent-bundle",
+      "displayName": "Dermal Filler Consent + Pre/Post Care Bundle",
+      "templatesTotal": 7,
+      "templatesMatched": 0,
+      "outputFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/filler-consent-bundle.json",
+      "debugFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/filler-consent-bundle.match-debug.json"
+    },
+    {
+      "productId": "lash-aftercare-kit",
+      "displayName": "Lash Extension & Lash Lift Client Education Kit",
+      "templatesTotal": 7,
+      "templatesMatched": 0,
+      "outputFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/lash-aftercare-kit.json",
+      "debugFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/lash-aftercare-kit.match-debug.json"
+    },
+    {
+      "productId": "peptide-patient-guide",
+      "displayName": "Peptide Therapy & BHRT Patient Education Bundle",
+      "templatesTotal": 7,
+      "templatesMatched": 0,
+      "outputFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/peptide-patient-guide.json",
+      "debugFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/peptide-patient-guide.match-debug.json"
+    },
+    {
+      "productId": "weight-loss-kit",
+      "displayName": "GLP-1 Weight Loss Patient Onboarding Kit",
+      "templatesTotal": 7,
+      "templatesMatched": 0,
+      "outputFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/weight-loss-kit.json",
+      "debugFile": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict/weight-loss-kit.match-debug.json"
+    }
+  ]
+}

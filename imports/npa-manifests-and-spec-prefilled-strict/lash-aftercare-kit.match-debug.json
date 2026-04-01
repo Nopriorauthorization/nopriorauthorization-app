@@ -1,0 +1,95 @@
+[
+  {
+    "templateId": "lsh-intake-form",
+    "templateName": "Lash Client Intake & Health History Form",
+    "requiredKeywords": [
+      "aftercare",
+      "extension",
+      "instagram",
+      "lash",
+      "lift",
+      "post",
+      "social",
+      "story"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "lsh-allergy-waiver",
+    "templateName": "Patch Test Waiver & Allergy Release",
+    "requiredKeywords": [
+      "aftercare",
+      "drip",
+      "extension",
+      "hydration",
+      "iv",
+      "lash",
+      "lift",
+      "myers",
+      "nad"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "lsh-extension-consent",
+    "templateName": "Lash Extension Consent Form",
+    "requiredKeywords": [
+      "aftercare",
+      "extension",
+      "lash",
+      "lift"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "lsh-aftercare-extensions",
+    "templateName": "Lash Extension Aftercare Instructions",
+    "requiredKeywords": [
+      "aftercare",
+      "extension",
+      "lash",
+      "lift"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "lsh-lift-consent",
+    "templateName": "Lash Lift & Tint Consent Form",
+    "requiredKeywords": [
+      "aftercare",
+      "extension",
+      "lash",
+      "lift"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "lsh-aftercare-lift",
+    "templateName": "Lash Lift Aftercare Instructions",
+    "requiredKeywords": [
+      "aftercare",
+      "extension",
+      "lash",
+      "lift"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "lsh-rebook-card",
+    "templateName": "Rebooking Reminder Card",
+    "requiredKeywords": [
+      "aftercare",
+      "extension",
+      "lash",
+      "lift"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  }
+]

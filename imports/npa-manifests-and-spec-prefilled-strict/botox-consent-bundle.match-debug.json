@@ -1,0 +1,80 @@
+[
+  {
+    "templateId": "btx-consultation-form",
+    "templateName": "Neurotoxin Consultation & Medical History Form",
+    "requiredKeywords": [
+      "botox",
+      "instagram",
+      "neurotoxin",
+      "post",
+      "social",
+      "story",
+      "toxin"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "btx-consent-form",
+    "templateName": "Botox / Neurotoxin Informed Consent Form",
+    "requiredKeywords": [
+      "botox",
+      "neurotoxin",
+      "toxin"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "btx-precare",
+    "templateName": "Pre-Treatment Instructions \u2014 Neurotoxin",
+    "requiredKeywords": [
+      "botox",
+      "neurotoxin",
+      "toxin"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "btx-postcare",
+    "templateName": "Post-Treatment Aftercare Instructions \u2014 Neurotoxin",
+    "requiredKeywords": [
+      "aftercare",
+      "botox",
+      "extension",
+      "instagram",
+      "lash",
+      "lift",
+      "neurotoxin",
+      "post",
+      "social",
+      "story",
+      "toxin"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "btx-treatment-record",
+    "templateName": "Neurotoxin Treatment Record & Dosing Log",
+    "requiredKeywords": [
+      "botox",
+      "neurotoxin",
+      "toxin"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "btx-photo-release",
+    "templateName": "Before/After Photography Consent",
+    "requiredKeywords": [
+      "botox",
+      "neurotoxin",
+      "toxin"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  }
+]

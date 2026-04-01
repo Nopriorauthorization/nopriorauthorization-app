@@ -1,0 +1,91 @@
+[
+  {
+    "templateId": "flr-consultation-form",
+    "templateName": "Dermal Filler Consultation & Medical History Form",
+    "requiredKeywords": [
+      "dermal",
+      "filler",
+      "instagram",
+      "lip",
+      "post",
+      "social",
+      "story"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "flr-consent-form",
+    "templateName": "Dermal Filler Informed Consent Form",
+    "requiredKeywords": [
+      "dermal",
+      "filler",
+      "lip"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "flr-precare",
+    "templateName": "Pre-Treatment Instructions \u2014 Dermal Filler",
+    "requiredKeywords": [
+      "dermal",
+      "filler",
+      "lip"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "flr-postcare",
+    "templateName": "Post-Treatment Aftercare Instructions \u2014 Dermal Filler",
+    "requiredKeywords": [
+      "aftercare",
+      "dermal",
+      "extension",
+      "filler",
+      "instagram",
+      "lash",
+      "lift",
+      "lip",
+      "post",
+      "social",
+      "story"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "flr-treatment-record",
+    "templateName": "Filler Treatment Record & Product Log",
+    "requiredKeywords": [
+      "dermal",
+      "filler",
+      "lip"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "flr-dissolving-consent",
+    "templateName": "Hyaluronidase Dissolution Consent Form",
+    "requiredKeywords": [
+      "dermal",
+      "filler",
+      "lip"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "flr-photo-release",
+    "templateName": "Before/After Photography Consent",
+    "requiredKeywords": [
+      "dermal",
+      "filler",
+      "lip"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  }
+]

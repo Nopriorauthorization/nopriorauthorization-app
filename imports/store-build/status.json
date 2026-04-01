@@ -1,0 +1,161 @@
+{
+  "generatedAt": "2026-03-31T14:23:29.751Z",
+  "sources": {
+    "strictManifestDir": "/Users/danid/nopriorauthorization-app-1/imports/npa-manifests-and-spec-prefilled-strict",
+    "listDesignsPath": "/Users/danid/Desktop/list-designs.json",
+    "designCount": 96
+  },
+  "totals": {
+    "products": 16,
+    "templates": 144,
+    "matched": 105,
+    "missing": 3,
+    "completionPct": 72.9
+  },
+  "products": [
+    {
+      "productId": "botox-consent-bundle",
+      "displayName": "Botox & Neurotoxin Consent + Pre/Post Care Bundle",
+      "fileName": "botox-consent-bundle.json",
+      "templatesTotal": 6,
+      "templatesMatched": 0,
+      "templatesMissing": 0,
+      "completionPct": 0
+    },
+    {
+      "productId": "botox-social-bundle",
+      "displayName": "Botox Social Media Bundle",
+      "fileName": "botox-social-bundle.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "combo-bundle",
+      "displayName": "Complete Med Spa Digital Bundle — IV + Weight Loss + Social",
+      "fileName": "combo-bundle.json",
+      "templatesTotal": 10,
+      "templatesMatched": 4,
+      "templatesMissing": 1,
+      "completionPct": 40
+    },
+    {
+      "productId": "complete-injector-bundle",
+      "displayName": "Complete Injector Bundle",
+      "fileName": "complete-injector-bundle.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "filler-consent-bundle",
+      "displayName": "Dermal Filler Consent + Pre/Post Care Bundle",
+      "fileName": "filler-consent-bundle.json",
+      "templatesTotal": 7,
+      "templatesMatched": 0,
+      "templatesMissing": 0,
+      "completionPct": 0
+    },
+    {
+      "productId": "filler-social-bundle",
+      "displayName": "Filler Social Media Bundle",
+      "fileName": "filler-social-bundle.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "glp1-story-templates",
+      "displayName": "GLP-1 Story Templates",
+      "fileName": "glp1-story-templates.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "iv-story-templates",
+      "displayName": "IV Therapy Story Templates",
+      "fileName": "iv-story-templates.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "lash-aftercare-kit",
+      "displayName": "Lash Extension & Lash Lift Client Education Kit",
+      "fileName": "lash-aftercare-kit.json",
+      "templatesTotal": 7,
+      "templatesMatched": 0,
+      "templatesMissing": 2,
+      "completionPct": 0
+    },
+    {
+      "productId": "medspa-promo-pack",
+      "displayName": "Med Spa Promo Templates Pack",
+      "fileName": "medspa-promo-pack.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "myths-facts-injectors",
+      "displayName": "Myths vs Facts for Injectors",
+      "fileName": "myths-facts-injectors.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "new-patient-membership-pack",
+      "displayName": "New Patient Offer and Membership Pack",
+      "fileName": "new-patient-membership-pack.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "peptide-patient-guide",
+      "displayName": "Peptide Therapy & BHRT Patient Education Bundle",
+      "fileName": "peptide-patient-guide.json",
+      "templatesTotal": 7,
+      "templatesMatched": 1,
+      "templatesMissing": 0,
+      "completionPct": 14.3
+    },
+    {
+      "productId": "review-testimonial-pack",
+      "displayName": "Review and Testimonial Template Pack",
+      "fileName": "review-testimonial-pack.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "seasonal-marketing-pack",
+      "displayName": "Seasonal Med Spa Marketing Pack",
+      "fileName": "seasonal-marketing-pack.json",
+      "templatesTotal": 10,
+      "templatesMatched": 10,
+      "templatesMissing": 0,
+      "completionPct": 100
+    },
+    {
+      "productId": "weight-loss-kit",
+      "displayName": "GLP-1 Weight Loss Patient Onboarding Kit",
+      "fileName": "weight-loss-kit.json",
+      "templatesTotal": 7,
+      "templatesMatched": 0,
+      "templatesMissing": 0,
+      "completionPct": 0
+    }
+  ]
+}

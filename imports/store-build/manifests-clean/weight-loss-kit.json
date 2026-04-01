@@ -1,0 +1,78 @@
+{
+  "productId": "weight-loss-kit",
+  "displayName": "GLP-1 Weight Loss Patient Onboarding Kit",
+  "description": "Complete patient education and documentation bundle for med spas and wellness clinics offering GLP-1 / semaglutide weight loss programs. Includes intake forms, expectation guides, nutrition trackers, and side effect logs — all fully editable in Canva.",
+  "version": "1.0.0",
+  "priceUSD": 57,
+  "etsySku": "NPA-WL-001",
+  "category": "clinical-education",
+  "targetBuyer": "Med spa owners, nurse practitioners, wellness clinics offering GLP-1 programs",
+  "templates": [
+    {
+      "id": "wl-intake-form",
+      "name": "GLP-1 Patient Intake Form",
+      "description": "Comprehensive medical history and candidacy screening form for weight loss program enrollment",
+      "canvaTemplateUrl": "/forms/WL-01-Intake-Form.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms"
+    },
+    {
+      "id": "wl-consent-form",
+      "name": "GLP-1 Treatment Consent Form",
+      "description": "Informed consent covering risks, benefits, side effects, and off-label use disclosure",
+      "canvaTemplateUrl": "/forms/WL-02-Consent-Form.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms"
+    },
+    {
+      "id": "wl-expectation-guide",
+      "name": "What to Expect: Your GLP-1 Journey",
+      "description": "Month-by-month patient education guide covering what happens weeks 1-12 on semaglutide",
+      "canvaTemplateUrl": "/forms/WL-03-GLP1-Journey-Guide.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "education"
+    },
+    {
+      "id": "wl-nutrition-tracker",
+      "name": "Weekly Nutrition & Symptom Tracker",
+      "description": "Printable weekly log for food intake, hydration, energy levels, and side effect tracking",
+      "canvaTemplateUrl": "/forms/WL-04-Nutrition-Tracker.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "tracker"
+    },
+    {
+      "id": "wl-side-effect-log",
+      "name": "Side Effect Log & Action Guide",
+      "description": "Patient-facing log to record side effects with color-coded guidance on when to contact the clinic",
+      "canvaTemplateUrl": "/forms/WL-05-Side-Effect-Log.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms"
+    },
+    {
+      "id": "wl-aftercare-card",
+      "name": "Injection Day Aftercare Card",
+      "description": "Wallet-sized aftercare reminder card with do/do-not list and clinic contact info",
+      "canvaTemplateUrl": "/forms/WL-06-Injection-Card.html",
+      "format": "3.5x2",
+      "pages": 1,
+      "category": "education"
+    },
+    {
+      "id": "wl-progress-photo-release",
+      "name": "Progress Photo & Video Release Form",
+      "description": "HIPAA-compliant photo release for before/after documentation and optional marketing use",
+      "canvaTemplateUrl": "/forms/WL-07-Photo-Release.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms"
+    }
+  ],
+  "deliveryNote": "All templates open directly in Canva. Click any link to get your own editable copy. Customize with your logo, brand colors, and clinic information before printing or sharing digitally.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-30T00:00:00Z"
+}

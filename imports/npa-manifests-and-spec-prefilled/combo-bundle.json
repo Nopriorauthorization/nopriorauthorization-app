@@ -1,0 +1,142 @@
+{
+  "productId": "combo-bundle",
+  "displayName": "Complete Med Spa Digital Bundle \u2014 IV + Weight Loss + Social",
+  "description": "The all-in-one digital kit for med spa owners ready to launch or level up. Combines the full IV Therapy Social Kit, GLP-1 Weight Loss Onboarding Kit, and Bonus Social Media Templates into one discounted bundle. Best value in the store.",
+  "version": "1.0.0",
+  "priceUSD": 67,
+  "etsySku": "NPA-CB-001",
+  "category": "bundle",
+  "targetBuyer": "Med spa owners wanting complete coverage \u2014 clinical forms, patient education, and social marketing",
+  "bundleIncludes": [
+    "iv-therapy-social-kit",
+    "weight-loss-kit",
+    "bonus-social-templates"
+  ],
+  "templates": [
+    {
+      "id": "cb-iv-intake",
+      "name": "IV Therapy Intake & Consent Form",
+      "description": "Full IV therapy intake, medical history, and informed consent",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..BEohdF9KBYwFRcGD.h7OCg69XZkOv_k0outHZDBs1hiT_ZJfFK4zTnpiWOKLbfpOYMjk-CO_UZCeT3UB2XZSLNYYHWUlmbqnjwGeB-SOIXwudUcooHII_jmbguJ6Hgpc.WJUb9n6A4Fvtxuv52-HHzg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=8c698a5e-d370-4ebf-8b32-2fbecf047fed&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms",
+      "_suggestedDesignId": "DAHFWT95yVw",
+      "_suggestedDesignTitle": "IV-SM-06 NAD+ Therapy",
+      "_suggestedScore": 0.35
+    },
+    {
+      "id": "cb-iv-menu",
+      "name": "IV Drip Menu Template",
+      "description": "Editable service menu listing drip names, ingredients, benefits, and pricing",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..zL9CciFK9ev2k16f.FIk8htznSRzEQMqK0FWH9kdBCwLjgGKwvgEPSrVbb25I51roGuQ8gTfMEh8baTT0MKvCFwPzPdc2ZYbRTVxUQBfO7ktEZ-RRqJSoaxIfON6bCC4.rSTsBDw0Mcj_m5m4ycx-9w/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=74a7ff54-4111-499a-bc14-2c270205a1e9&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "marketing",
+      "_suggestedDesignId": "DAHFWYKzCs8",
+      "_suggestedDesignTitle": "IV-SM-01 Hydration Drip",
+      "_suggestedScore": 0.3857
+    },
+    {
+      "id": "cb-iv-aftercare",
+      "name": "IV Therapy Aftercare Instructions",
+      "description": "Post-treatment care guide for hydration, activity, and what to watch for",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..cjHZxldTC0GdAM0N.I5YvgNP81nEw9Z7lxHdpQhvcdPURzwcEouaYdRacErdxZPwz9xoCftYaNxegnyhX_qjEVXHiRsDW-g9GI8TuD-HmG-ZcjfQDA0kVdGEqI5MSoww.iyV2isPB9IDPOPQ74WCofQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=b5d56c5e-f828-40a3-999f-92da35bdc2fa&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education",
+      "_suggestedDesignId": "DAHFWTdBraU",
+      "_suggestedDesignTitle": "IV-EC-01 How IV Therapy Works",
+      "_suggestedScore": 0.35
+    },
+    {
+      "id": "cb-wl-intake",
+      "name": "GLP-1 Patient Intake Form",
+      "description": "Medical history and candidacy screening for weight loss programs",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "cb-wl-consent",
+      "name": "GLP-1 Treatment Consent Form",
+      "description": "Informed consent for semaglutide / GLP-1 weight loss treatment",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "cb-wl-guide",
+      "name": "What to Expect: Your GLP-1 Journey",
+      "description": "Patient education guide for weeks 1-12 on GLP-1 therapy",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "education",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "cb-social-ig-square",
+      "name": "Instagram Post Templates \u2014 10-Pack",
+      "description": "10 branded square post templates for IV, weight loss, and general medspa promotions",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..SOUKeu84T5VIRy6J.7pZymRaIRJeOkGM33ZzUG3-uw-mhSys0zxsUwgBvox2xCLDrz884bi_6v0etode5oZteEmJk8dpVPag_LqgKYPD0fsrA1Vy0QHf9zBk31pvLEKc.hM4RM9SOEsAJd-C-igg7dQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=88eb7c3f-6c0f-4282-a82f-ac473890c100&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "1080x1080",
+      "pages": 10,
+      "category": "social",
+      "_suggestedDesignId": "DAG98t6WbwA",
+      "_suggestedDesignTitle": "Instagram Post - Hormones, \nSimplified",
+      "_suggestedScore": 0.3857
+    },
+    {
+      "id": "cb-social-story",
+      "name": "Instagram Story Templates \u2014 6-Pack",
+      "description": "6 story templates for treatment promotions, tips, and before/after reveals",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..QiHPl2KkwbVpD_dT.6JHMNY4-DWUNf-GCqeg7unqdhWzTT92GhYE9cCjKrwRdM5mfWVf63DKBD0dyTrM0NAyT0zwc_12fWy_IaJP9EvCWr1X2jr9ZuFH1AsZ4S4fDJ_Y.zhhZS1qYOZOgKOPZnK3ogw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=e7d6685e-bbbe-49e2-a6ec-0d005b77a107&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "1080x1920",
+      "pages": 6,
+      "category": "social",
+      "_suggestedDesignId": "DAG98kRqJNA",
+      "_suggestedDesignTitle": "Instagram Post - Hormones, Simplified",
+      "_suggestedScore": 0.225
+    },
+    {
+      "id": "cb-hipaa-release",
+      "name": "HIPAA Notice & Photo Release \u2014 Universal",
+      "description": "One universal HIPAA notice and photo/video release form for all services",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "cb-cancellation-policy",
+      "name": "Cancellation & No-Show Policy",
+      "description": "Professional cancellation policy form patients sign at intake",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    }
+  ],
+  "deliveryNote": "You're getting the complete bundle \u2014 every template opens directly in Canva as your own editable copy. Add your logo, swap brand colors, and you're ready to print or share. This covers your clinical documentation AND your social marketing.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-30T00:00:00Z",
+  "_autoMatchNote": "Suggested URLs come from Canva list-designs edit URLs (temporary). Review before import.",
+  "_autoMatchedAt": "2026-03-31T05:43:04.519264Z"
+}

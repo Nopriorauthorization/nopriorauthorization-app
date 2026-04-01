@@ -1,0 +1,85 @@
+{
+  "productId": "filler-consent-bundle",
+  "displayName": "Dermal Filler Consent + Pre/Post Care Bundle",
+  "description": "Complete clinical documentation for dermal filler treatments — lips, cheeks, jawline, tear troughs, and full-face volumization. Includes consultation screening, informed consent, treatment records, and patient education handouts. Editable in Canva.",
+  "version": "1.0.0",
+  "priceUSD": 37,
+  "etsySku": "NPA-FLR-001",
+  "category": "injectables",
+  "targetBuyer": "Nurse injectors, NPs, PAs, and med spa owners offering HA fillers, Sculptra, Radiesse, or biostimulators",
+  "templates": [
+    {
+      "id": "flr-consultation-form",
+      "name": "Dermal Filler Consultation & Medical History Form",
+      "description": "Pre-treatment screening including Tyndall risk assessment, allergy history, prior filler disclosures, and vascular anatomy awareness",
+      "canvaTemplateUrl": "/forms/FLR-01-Consultation-Form.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms",
+      "_deliveryType": "html"
+    },
+    {
+      "id": "flr-consent-form",
+      "name": "Dermal Filler Informed Consent Form",
+      "description": "Comprehensive consent covering vascular occlusion risk, bruising, asymmetry, longevity, and dissolution options",
+      "canvaTemplateUrl": "/forms/FLR-02-Informed-Consent.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms",
+      "_deliveryType": "html"
+    },
+    {
+      "id": "flr-precare",
+      "name": "Pre-Treatment Instructions — Dermal Filler",
+      "description": "1-week and 24-hour pre-care instructions to minimize bruising and swelling",
+      "canvaTemplateUrl": "/forms/FLR-03-Pre-Treatment.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education",
+      "_deliveryType": "html"
+    },
+    {
+      "id": "flr-postcare",
+      "name": "Post-Treatment Aftercare Instructions — Dermal Filler",
+      "description": "Aftercare covering icing protocol, activity restrictions, massage guidance, and swelling timeline",
+      "canvaTemplateUrl": "/forms/FLR-04-Post-Treatment.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education",
+      "_deliveryType": "html"
+    },
+    {
+      "id": "flr-treatment-record",
+      "name": "Filler Treatment Record & Product Log",
+      "description": "Per-visit documentation with injection zone diagram, product name, lot number, syringe volume, and anatomical placement notes",
+      "canvaTemplateUrl": "/forms/FLR-05-Treatment-Record.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "clinical-record",
+      "_deliveryType": "html"
+    },
+    {
+      "id": "flr-dissolving-consent",
+      "name": "Hyaluronidase Dissolution Consent Form",
+      "description": "Separate consent for hyaluronidase (Hylenex) dissolution procedures covering risks, allergic reaction protocol, and re-treatment timeline",
+      "canvaTemplateUrl": "/forms/FLR-06-Dissolution-Consent.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms",
+      "_deliveryType": "html"
+    },
+    {
+      "id": "flr-photo-release",
+      "name": "Before/After Photography Consent",
+      "description": "HIPAA-compliant photo consent with tiered options: clinical only, marketing, and social media",
+      "canvaTemplateUrl": "/forms/BTX-06-Photo-Release.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms",
+      "_deliveryType": "html"
+    }
+  ],
+  "deliveryNote": "All templates open in Canva as your own editable copy. Customize with your clinic name, provider credentials, and any state-required disclosures. Have your medical director review consent language before clinical use.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-30T00:00:00Z"
+}

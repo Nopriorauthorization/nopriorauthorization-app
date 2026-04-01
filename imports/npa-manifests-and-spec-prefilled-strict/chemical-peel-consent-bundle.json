@@ -1,0 +1,75 @@
+{
+  "productId": "chemical-peel-consent-bundle",
+  "displayName": "Chemical Peel Consent & Documentation Bundle",
+  "description": "Complete chemical peel documentation including skin assessment, informed consent with peel-type specifics, pre/post treatment instructions, treatment record, and photography consent.",
+  "version": "1.0.0",
+  "priceUSD": 27,
+  "etsySku": "NPA-CP-001",
+  "category": "esthetics",
+  "targetBuyer": "Estheticians, dermatology practices, and med spas offering superficial to medium-depth chemical peels",
+  "templates": [
+    {
+      "id": "cp-consultation",
+      "name": "Chemical Peel Consultation & Skin Assessment",
+      "description": "Intake with Fitzpatrick type, product history, allergy screening, and sun exposure habits",
+      "canvaTemplateUrl": "/forms/CP-01-Consultation-Form.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms"
+    },
+    {
+      "id": "cp-consent",
+      "name": "Chemical Peel Informed Consent Form",
+      "description": "Consent covering peel types, active ingredients, risks including cold sore reactivation",
+      "canvaTemplateUrl": "/forms/CP-02-Informed-Consent.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms"
+    },
+    {
+      "id": "cp-precare",
+      "name": "Pre-Treatment Instructions — Chemical Peel",
+      "description": "2-week prep including retinoid cessation and antiviral guidance",
+      "canvaTemplateUrl": "/forms/CP-03-Pre-Treatment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education"
+    },
+    {
+      "id": "cp-postcare",
+      "name": "Post-Treatment Aftercare — Chemical Peel",
+      "description": "Day-by-day peeling timeline with do/do-not instructions",
+      "canvaTemplateUrl": "/forms/CP-04-Post-Treatment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education"
+    },
+    {
+      "id": "cp-treatment-record",
+      "name": "Chemical Peel Treatment Record",
+      "description": "Per-session record with peel type, concentration, layers, and skin response",
+      "canvaTemplateUrl": "/forms/CP-05-Treatment-Record.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "clinical-record"
+    },
+    {
+      "id": "cp-photo-consent",
+      "name": "Before/After Photography Consent — Skin Treatments",
+      "description": "Tiered photo consent for clinical, educational, and marketing use",
+      "canvaTemplateUrl": "/forms/CP-06-Photo-Consent.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms"
+    }
+  ],
+  "deliveryNote": "All templates are printable and editable. Have your medical director review consent language before patient use.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-31T22:04:05Z"
+}

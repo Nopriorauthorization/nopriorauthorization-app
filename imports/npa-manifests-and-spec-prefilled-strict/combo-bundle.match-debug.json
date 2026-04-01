@@ -1,0 +1,200 @@
+[
+  {
+    "templateId": "cb-iv-intake",
+    "templateName": "IV Therapy Intake & Consent Form",
+    "requiredKeywords": [
+      "drip",
+      "hydration",
+      "iv",
+      "myers",
+      "nad"
+    ],
+    "bestMatch": {
+      "designId": "DAHFWT95yVw",
+      "title": "IV-SM-06 NAD+ Therapy",
+      "score": 0.5
+    },
+    "topCandidates": [
+      {
+        "designId": "DAHFWT95yVw",
+        "title": "IV-SM-06 NAD+ Therapy",
+        "score": 0.5
+      },
+      {
+        "designId": "DAHFWTdBraU",
+        "title": "IV-EC-01 How IV Therapy Works",
+        "score": 0.4722
+      }
+    ]
+  },
+  {
+    "templateId": "cb-iv-menu",
+    "templateName": "IV Drip Menu Template",
+    "requiredKeywords": [
+      "drip",
+      "hydration",
+      "iv",
+      "myers",
+      "nad"
+    ],
+    "bestMatch": {
+      "designId": "DAHFWYKzCs8",
+      "title": "IV-SM-01 Hydration Drip",
+      "score": 0.5357
+    },
+    "topCandidates": [
+      {
+        "designId": "DAHFWYKzCs8",
+        "title": "IV-SM-01 Hydration Drip",
+        "score": 0.5357
+      },
+      {
+        "designId": "DAHFWQDl7wQ",
+        "title": "IV-SM-10 Full Service Menu",
+        "score": 0.5
+      }
+    ]
+  },
+  {
+    "templateId": "cb-iv-aftercare",
+    "templateName": "IV Therapy Aftercare Instructions",
+    "requiredKeywords": [
+      "aftercare",
+      "drip",
+      "extension",
+      "hydration",
+      "iv",
+      "lash",
+      "lift",
+      "myers",
+      "nad"
+    ],
+    "bestMatch": {
+      "designId": "DAHFWTdBraU",
+      "title": "IV-EC-01 How IV Therapy Works",
+      "score": 0.5
+    },
+    "topCandidates": [
+      {
+        "designId": "DAHFWT95yVw",
+        "title": "IV-SM-06 NAD+ Therapy",
+        "score": 0.5357
+      },
+      {
+        "designId": "DAHFWTdBraU",
+        "title": "IV-EC-01 How IV Therapy Works",
+        "score": 0.5
+      }
+    ]
+  },
+  {
+    "templateId": "cb-wl-intake",
+    "templateName": "GLP-1 Patient Intake Form",
+    "requiredKeywords": [
+      "glp",
+      "semaglutide",
+      "tirzepatide",
+      "weight"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "cb-wl-consent",
+    "templateName": "GLP-1 Treatment Consent Form",
+    "requiredKeywords": [
+      "glp",
+      "semaglutide",
+      "tirzepatide",
+      "weight"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "cb-wl-guide",
+    "templateName": "What to Expect: Your GLP-1 Journey",
+    "requiredKeywords": [
+      "glp",
+      "semaglutide",
+      "tirzepatide",
+      "weight"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "cb-social-ig-square",
+    "templateName": "Instagram Post Templates \u2014 10-Pack",
+    "requiredKeywords": [
+      "instagram",
+      "post",
+      "social",
+      "story"
+    ],
+    "bestMatch": {
+      "designId": "DAG98t6WbwA",
+      "title": "Instagram Post - Hormones, \nSimplified",
+      "score": 0.5357
+    },
+    "topCandidates": [
+      {
+        "designId": "DAG98t6WbwA",
+        "title": "Instagram Post - Hormones, \nSimplified",
+        "score": 0.5357
+      },
+      {
+        "designId": "DAG98kRqJNA",
+        "title": "Instagram Post - Hormones, Simplified",
+        "score": 0.5357
+      },
+      {
+        "designId": "DAHFa7dlk_M",
+        "title": "Instagram Post - IV Therapy Kit",
+        "score": 0.5
+      },
+      {
+        "designId": "DAHFayxE7NM",
+        "title": "Instagram Post - IV Therapy Kit",
+        "score": 0.5
+      },
+      {
+        "designId": "DAHFa20YqKM",
+        "title": "Instagram Post - IV Therapy Essentials",
+        "score": 0.5
+      }
+    ]
+  },
+  {
+    "templateId": "cb-social-story",
+    "templateName": "Instagram Story Templates \u2014 6-Pack",
+    "requiredKeywords": [
+      "instagram",
+      "post",
+      "social",
+      "story"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "cb-hipaa-release",
+    "templateName": "HIPAA Notice & Photo Release \u2014 Universal",
+    "requiredKeywords": [
+      "drip",
+      "hydration",
+      "iv",
+      "myers",
+      "nad"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "cb-cancellation-policy",
+    "templateName": "Cancellation & No-Show Policy",
+    "requiredKeywords": [],
+    "bestMatch": null,
+    "topCandidates": []
+  }
+]

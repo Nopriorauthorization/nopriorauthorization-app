@@ -1,0 +1,75 @@
+{
+  "productId": "hipaa-compliance-kit",
+  "displayName": "HIPAA Compliance Kit for Med Spas",
+  "description": "Complete HIPAA documentation package including privacy policy, patient acknowledgment, PHI release authorization, breach notification protocol, staff training agreement, and business associate agreement template.",
+  "version": "1.0.0",
+  "priceUSD": 47,
+  "etsySku": "NPA-HIP-001",
+  "category": "compliance",
+  "targetBuyer": "Med spa owners, practice managers, and compliance officers setting up or auditing HIPAA documentation",
+  "templates": [
+    {
+      "id": "hipaa-privacy-policy",
+      "name": "HIPAA Privacy Policy & Notice of Privacy Practices",
+      "description": "Comprehensive NPP covering PHI use, patient rights, and clinic responsibilities",
+      "canvaTemplateUrl": "/forms/HIPAA-01-Privacy-Policy.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "compliance"
+    },
+    {
+      "id": "hipaa-patient-ack",
+      "name": "Patient Acknowledgment of Privacy Practices",
+      "description": "Patient signature form confirming receipt of NPP",
+      "canvaTemplateUrl": "/forms/HIPAA-02-Patient-Acknowledgment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "compliance"
+    },
+    {
+      "id": "hipaa-auth-release",
+      "name": "Authorization for Release of PHI",
+      "description": "Patient authorization for specific disclosure of protected health information",
+      "canvaTemplateUrl": "/forms/HIPAA-03-Authorization-Release.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "compliance"
+    },
+    {
+      "id": "hipaa-breach-notification",
+      "name": "Breach Notification Policy & Incident Report",
+      "description": "Breach protocol with risk assessment steps and incident documentation template",
+      "canvaTemplateUrl": "/forms/HIPAA-04-Breach-Notification.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "compliance"
+    },
+    {
+      "id": "hipaa-staff-ack",
+      "name": "Staff HIPAA Training & Confidentiality Agreement",
+      "description": "Employee acknowledgment of training with confidentiality pledge and annual tracking",
+      "canvaTemplateUrl": "/forms/HIPAA-05-Staff-Acknowledgment.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "compliance"
+    },
+    {
+      "id": "hipaa-baa",
+      "name": "Business Associate Agreement Template",
+      "description": "BAA template covering safeguards, breach notification, and termination provisions",
+      "canvaTemplateUrl": "/forms/HIPAA-06-BAA-Template.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "compliance"
+    }
+  ],
+  "deliveryNote": "These templates cover essential HIPAA requirements but must be reviewed by your healthcare attorney for state-specific compliance before use.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-31T22:04:05Z"
+}

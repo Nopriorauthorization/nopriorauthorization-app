@@ -1,0 +1,93 @@
+[
+  {
+    "templateId": "pep-what-are-peptides",
+    "templateName": "What Are Peptides? Patient Education Guide",
+    "requiredKeywords": [
+      "bhrt",
+      "hormone",
+      "peptide",
+      "vitamin",
+      "wellness"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "pep-bhrt-guide",
+    "templateName": "Understanding BHRT: A Patient's Guide",
+    "requiredKeywords": [
+      "bhrt",
+      "hormone",
+      "peptide",
+      "vitamin",
+      "wellness"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "pep-intake-form",
+    "templateName": "Peptide & Hormone Therapy Intake Form",
+    "requiredKeywords": [
+      "bhrt",
+      "hormone",
+      "peptide",
+      "vitamin",
+      "wellness"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "pep-consent-form",
+    "templateName": "Peptide Therapy Informed Consent Form",
+    "requiredKeywords": [
+      "bhrt",
+      "hormone",
+      "peptide",
+      "vitamin",
+      "wellness"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "pep-self-injection-guide",
+    "templateName": "Self-Injection Training Guide",
+    "requiredKeywords": [
+      "bhrt",
+      "hormone",
+      "peptide",
+      "vitamin",
+      "wellness"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "pep-symptom-tracker",
+    "templateName": "Monthly Symptom & Progress Tracker",
+    "requiredKeywords": [
+      "bhrt",
+      "hormone",
+      "peptide",
+      "vitamin",
+      "wellness"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "pep-faq-card",
+    "templateName": "Peptide Therapy FAQ Card",
+    "requiredKeywords": [
+      "bhrt",
+      "hormone",
+      "peptide",
+      "vitamin",
+      "wellness"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  }
+]

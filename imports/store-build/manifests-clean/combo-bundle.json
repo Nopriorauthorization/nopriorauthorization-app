@@ -1,0 +1,110 @@
+{
+  "productId": "combo-bundle",
+  "displayName": "Complete Med Spa Digital Bundle — IV + Weight Loss + Social",
+  "description": "The all-in-one digital kit for med spa owners ready to launch or level up. Combines the full IV Therapy Social Kit, GLP-1 Weight Loss Onboarding Kit, and Bonus Social Media Templates into one discounted bundle. Best value in the store.",
+  "version": "1.0.0",
+  "priceUSD": 67,
+  "etsySku": "NPA-CB-001",
+  "category": "bundle",
+  "targetBuyer": "Med spa owners wanting complete coverage — clinical forms, patient education, and social marketing",
+  "bundleIncludes": [
+    "iv-therapy-social-kit",
+    "weight-loss-kit",
+    "bonus-social-templates"
+  ],
+  "templates": [
+    {
+      "id": "cb-iv-intake",
+      "name": "IV Therapy Intake & Consent Form",
+      "description": "Full IV therapy intake, medical history, and informed consent",
+      "canvaTemplateUrl": "/forms/WL-01-Intake-Form.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms"
+    },
+    {
+      "id": "cb-iv-menu",
+      "name": "IV Drip Menu Template",
+      "description": "Editable service menu listing drip names, ingredients, benefits, and pricing",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..Ok1XDBbrSHMyC_xG.lwOetus9M4RlAIKHZKLerilfm2ZZHcS6JaMYDaxl56e9o13krHKHEwDNHbbGKgxJWIlgs3FNwT0YJTRMOXbFg2gTdQ_oG-9RtZAmKRZ5bJEeB2o.yv45mvvyeX33DdnQapjLbw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=744c6ef6-826f-4e32-a8da-55ab6ff6ff90&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "marketing"
+    },
+    {
+      "id": "cb-iv-aftercare",
+      "name": "IV Therapy Aftercare Instructions",
+      "description": "Post-treatment care guide for hydration, activity, and what to watch for",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..TibPm2VN879cLzW7.c69ykieCEDKQv10fT_Rz2RSwhHPAjlogupe0iVfZhMurNEi3zrqlcjfr16AK9U_8irGsz5T34prRldJT5Xjo-9jwWYvmdWz1zjORpULOAHc7OEg.Qj8Vv84U3LqbVftYKPmvhQ/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=da96a307-cd82-431b-a6e9-7ca25944bc56&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education"
+    },
+    {
+      "id": "cb-wl-intake",
+      "name": "GLP-1 Patient Intake Form",
+      "description": "Medical history and candidacy screening for weight loss programs",
+      "canvaTemplateUrl": "/forms/WL-01-Intake-Form.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms"
+    },
+    {
+      "id": "cb-wl-consent",
+      "name": "GLP-1 Treatment Consent Form",
+      "description": "Informed consent for semaglutide / GLP-1 weight loss treatment",
+      "canvaTemplateUrl": "/forms/WL-02-Consent-Form.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms"
+    },
+    {
+      "id": "cb-wl-guide",
+      "name": "What to Expect: Your GLP-1 Journey",
+      "description": "Patient education guide for weeks 1-12 on GLP-1 therapy",
+      "canvaTemplateUrl": "/forms/WL-03-GLP1-Journey-Guide.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "education"
+    },
+    {
+      "id": "cb-social-ig-square",
+      "name": "Instagram Post Templates — 10-Pack",
+      "description": "10 branded square post templates for IV, weight loss, and general medspa promotions",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..vdCsQBeynwAaVJha.basR8WINDjXocvABkuHPSdVPJlQJ39jupVMk147ZHZBRe3p5lDtIfcROaXtHEHI71aOgLUMJm3VIMpS4Yb-JfMLoMyuvYVVyTCWQ-9Ena3F0zE4.d-bUq2RAyE6E5Um9EyxQLw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=56bff9ce-21ce-4ccb-a9af-f31b2602405b&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "1080x1080",
+      "pages": 10,
+      "category": "social"
+    },
+    {
+      "id": "cb-social-story",
+      "name": "Instagram Story Templates — 6-Pack",
+      "description": "6 story templates for treatment promotions, tips, and before/after reveals",
+      "canvaTemplateUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..myq20TOsh4zT9tnE.3KyQlNdHA6ZotYISurwn_CQYbtaIeSfoRfJeZlKPokApidqFBjYI6cVNSAhLMQu3k7OUKSap2H6cuYRrVOqPATUb-aJBLGr-oXaquoLxIxJR4Hk.pQdHfre36-a4ttp2C1I9sg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=241e7c2a-b75d-4ce7-8b6f-9e1a820672ec&utm_campaign=public_api_list_design_clicked_hyperlink",
+      "format": "1080x1920",
+      "pages": 6,
+      "category": "social"
+    },
+    {
+      "id": "cb-hipaa-release",
+      "name": "HIPAA Notice & Photo Release — Universal",
+      "description": "One universal HIPAA notice and photo/video release form for all services",
+      "canvaTemplateUrl": "/forms/WL-07-Photo-Release.html",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms"
+    },
+    {
+      "id": "cb-cancellation-policy",
+      "name": "Cancellation & No-Show Policy",
+      "description": "Professional cancellation policy form patients sign at intake",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms"
+    }
+  ],
+  "deliveryNote": "You're getting the complete bundle — every template opens directly in Canva as your own editable copy. Add your logo, swap brand colors, and you're ready to print or share. This covers your clinical documentation AND your social marketing.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-30T00:00:00Z"
+}

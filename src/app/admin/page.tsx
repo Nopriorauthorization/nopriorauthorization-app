@@ -43,6 +43,13 @@ export default async function AdminPage() {
       description: "Export/deletion queue management",
       icon: "📦",
     },
+    {
+      title: "Template library",
+      href: "/admin/library",
+      description:
+        "Browse all digital products, SKUs, and every HTML / Canva template in one place",
+      icon: "📁",
+    },
   ];
 
   return (

@@ -1,0 +1,89 @@
+{
+  "productId": "botox-consent-bundle",
+  "displayName": "Botox & Neurotoxin Consent + Pre/Post Care Bundle",
+  "description": "Everything a nurse injector, NP, or med spa needs to document Botox and neurotoxin treatments professionally. Includes consent forms, pre-treatment screening, post-care instructions, and a treatment record tracker \u2014 all HIPAA-aware and fully editable in Canva.",
+  "version": "1.0.0",
+  "priceUSD": 37,
+  "etsySku": "NPA-BTX-001",
+  "category": "injectables",
+  "targetBuyer": "Nurse injectors, NPs, PAs, and med spa owners offering Botox, Dysport, Xeomin, or Daxxify",
+  "templates": [
+    {
+      "id": "btx-consultation-form",
+      "name": "Neurotoxin Consultation & Medical History Form",
+      "description": "Full pre-treatment consultation capturing medical history, medications, contraindications, and aesthetic goals",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "btx-consent-form",
+      "name": "Botox / Neurotoxin Informed Consent Form",
+      "description": "Comprehensive consent covering risks, benefits, alternatives, realistic outcomes, and longevity expectations",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 2,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "btx-precare",
+      "name": "Pre-Treatment Instructions \u2014 Neurotoxin",
+      "description": "Patient handout with 72-hour pre-treatment dos and don'ts to reduce bruising and optimize results",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "btx-postcare",
+      "name": "Post-Treatment Aftercare Instructions \u2014 Neurotoxin",
+      "description": "Detailed post-injection care including activity restrictions, positioning, and when to expect results",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "btx-treatment-record",
+      "name": "Neurotoxin Treatment Record & Dosing Log",
+      "description": "Per-visit documentation form with injection site diagram, units per area, lot number, and provider signature",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "clinical-record",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "btx-photo-release",
+      "name": "Before/After Photography Consent",
+      "description": "HIPAA-compliant photo consent with options for clinical use, marketing use, and social media use",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    }
+  ],
+  "deliveryNote": "All templates open in Canva as your own editable copy. Add your clinic name, logo, provider credentials, and state-specific language. We recommend having your medical director review all consent forms before clinical use.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-30T00:00:00Z",
+  "_autoMatchNote": "Suggested URLs come from Canva list-designs edit URLs (temporary). Review before import.",
+  "_autoMatchedAt": "2026-03-31T05:43:04.512922Z"
+}

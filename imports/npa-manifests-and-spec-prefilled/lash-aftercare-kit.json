@@ -1,0 +1,101 @@
+{
+  "productId": "lash-aftercare-kit",
+  "displayName": "Lash Extension & Lash Lift Client Education Kit",
+  "description": "Professional client education and business documentation bundle for lash artists and estheticians. Covers lash extensions, lash lifts, and lash tints with intake forms, aftercare instructions, allergy patch test waivers, and rebooking cards. All editable in Canva.",
+  "version": "1.0.0",
+  "priceUSD": 27,
+  "etsySku": "NPA-LSH-001",
+  "category": "esthetics",
+  "targetBuyer": "Licensed estheticians, lash artists, and beauty suite owners offering lash services",
+  "templates": [
+    {
+      "id": "lsh-intake-form",
+      "name": "Lash Client Intake & Health History Form",
+      "description": "New client intake capturing eye health history, contact lens use, allergies, and prior lash service history",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "lsh-allergy-waiver",
+      "name": "Patch Test Waiver & Allergy Release",
+      "description": "Waiver for clients who decline patch testing and acknowledgment of adhesive sensitivity risks",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "lsh-extension-consent",
+      "name": "Lash Extension Consent Form",
+      "description": "Service consent covering adhesive use, retention expectations, fill schedule, and removal procedures",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "lsh-aftercare-extensions",
+      "name": "Lash Extension Aftercare Instructions",
+      "description": "First 24-48 hour care plus ongoing maintenance tips \u2014 oil-free products, no rubbing, cleaning routine",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "lsh-lift-consent",
+      "name": "Lash Lift & Tint Consent Form",
+      "description": "Consent for lash lift / brow lamination covering chemical process, over-processing risk, and patch test requirements",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "lsh-aftercare-lift",
+      "name": "Lash Lift Aftercare Instructions",
+      "description": "48-hour strict aftercare guide and long-term maintenance tips to preserve curl and tint",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    },
+    {
+      "id": "lsh-rebook-card",
+      "name": "Rebooking Reminder Card",
+      "description": "Branded business-card sized reminder with recommended fill interval and booking link or QR code placeholder",
+      "canvaTemplateUrl": "PLACEHOLDER_CANVA_URL",
+      "format": "3.5x2",
+      "pages": 1,
+      "category": "marketing",
+      "_suggestedDesignId": null,
+      "_suggestedDesignTitle": null,
+      "_suggestedScore": null
+    }
+  ],
+  "deliveryNote": "Every template opens directly in Canva as your own editable copy. Add your business name, logo, pricing, and contact info. Print at home or send to your local print shop.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-30T00:00:00Z",
+  "_autoMatchNote": "Suggested URLs come from Canva list-designs edit URLs (temporary). Review before import.",
+  "_autoMatchedAt": "2026-03-31T05:43:04.528817Z"
+}

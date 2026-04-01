@@ -1,0 +1,97 @@
+[
+  {
+    "templateId": "wl-intake-form",
+    "templateName": "GLP-1 Patient Intake Form",
+    "requiredKeywords": [
+      "glp",
+      "semaglutide",
+      "tirzepatide",
+      "weight",
+      "wl"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "wl-consent-form",
+    "templateName": "GLP-1 Treatment Consent Form",
+    "requiredKeywords": [
+      "glp",
+      "semaglutide",
+      "tirzepatide",
+      "weight",
+      "wl"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "wl-expectation-guide",
+    "templateName": "What to Expect: Your GLP-1 Journey",
+    "requiredKeywords": [
+      "glp",
+      "semaglutide",
+      "tirzepatide",
+      "weight",
+      "wl"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "wl-nutrition-tracker",
+    "templateName": "Weekly Nutrition & Symptom Tracker",
+    "requiredKeywords": [
+      "glp",
+      "semaglutide",
+      "tirzepatide",
+      "weight",
+      "wl"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "wl-side-effect-log",
+    "templateName": "Side Effect Log & Action Guide",
+    "requiredKeywords": [
+      "glp",
+      "semaglutide",
+      "tirzepatide",
+      "weight",
+      "wl"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "wl-aftercare-card",
+    "templateName": "Injection Day Aftercare Card",
+    "requiredKeywords": [
+      "aftercare",
+      "extension",
+      "glp",
+      "lash",
+      "lift",
+      "semaglutide",
+      "tirzepatide",
+      "weight",
+      "wl"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  },
+  {
+    "templateId": "wl-progress-photo-release",
+    "templateName": "Progress Photo & Video Release Form",
+    "requiredKeywords": [
+      "glp",
+      "semaglutide",
+      "tirzepatide",
+      "weight",
+      "wl"
+    ],
+    "bestMatch": null,
+    "topCandidates": []
+  }
+]

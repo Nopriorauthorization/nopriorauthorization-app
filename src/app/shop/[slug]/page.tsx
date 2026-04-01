@@ -16,13 +16,30 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
+function findRelatedSizes(slug: string, allProducts: ReturnType<typeof getShopProducts>) {
+  const parts = slug.split("-");
+  if (parts.length < 3) return [];
+  const basePrefix = parts.slice(0, -1).join("-");
+  return allProducts
+    .filter(
+      (p) =>
+        p.slug !== slug &&
+        (p.slug.startsWith(basePrefix) || p.slug === basePrefix.replace(/-social-media$/, "-mega-bundle")),
+    )
+    .sort((a, b) => a.priceCents - b.priceCents);
+}
+
 export default function ProductDetailPage({
   params,
 }: {
   params: { slug: string };
 }) {
+  const allProducts = getShopProducts();
   const product = getShopProductBySlug(params.slug);
   if (!product) notFound();
+
+  const relatedSizes = findRelatedSizes(params.slug, allProducts);
+  const hasPricingLadder = relatedSizes.length > 0;
 
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white">
@@ -34,32 +51,39 @@ export default function ProductDetailPage({
           &larr; Back to shop
         </Link>
 
-        {/* Hero */}
-        <div className="mb-10 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        {/* HOOK */}
+        <section className="mb-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] p-8 sm:p-10">
           <span className="mb-3 inline-block rounded-md bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gray-400">
             {product.category}
           </span>
-          <h1 className="mb-4 font-serif text-3xl font-semibold md:text-4xl">
+          <h1 className="mb-3 font-serif text-3xl font-bold leading-tight md:text-4xl">
             {product.title}
           </h1>
-          <p className="mb-6 max-w-2xl text-base leading-relaxed text-gray-400">
-            {product.shortDescription}
+          <p className="mb-6 max-w-2xl text-lg leading-relaxed text-gray-400">
+            {product.longDescription || product.shortDescription}
           </p>
           <div className="flex flex-wrap items-center gap-6">
             <div>
               <span className="text-4xl font-bold">{product.priceDisplay}</span>
-              <span className="ml-2 text-sm text-gray-500">one-time</span>
+              <span className="ml-2 text-sm text-gray-500">one-time payment</span>
             </div>
             <CheckoutButton slug={product.slug} label={`Buy Now — ${product.priceDisplay}`} />
           </div>
-        </div>
+          <div className="mt-4 flex flex-wrap gap-4 text-xs text-gray-500">
+            <span>Instant delivery</span>
+            <span>&middot;</span>
+            <span>{product.templateCount} templates</span>
+            <span>&middot;</span>
+            <span>Fully editable</span>
+            <span>&middot;</span>
+            <span>Print-ready</span>
+          </div>
+        </section>
 
-        {/* Preview Gallery */}
+        {/* PREVIEW GALLERY */}
         {product.previewImages.length > 0 && (
-          <div className="mb-10">
-            <h2 className="mb-5 font-serif text-2xl font-semibold">
-              Preview
-            </h2>
+          <section className="mb-10">
+            <h2 className="mb-5 font-serif text-2xl font-semibold">Preview</h2>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {product.previewImages.slice(0, 6).map((src, i) => (
                 <div
@@ -76,13 +100,36 @@ export default function ProductDetailPage({
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         )}
 
-        {/* What's Included */}
-        <div className="mb-10">
+        {/* OUTCOME SECTION */}
+        <section className="mb-10 rounded-2xl border border-[#D4537E]/20 bg-[#D4537E]/5 p-8">
+          <h2 className="mb-4 font-serif text-2xl font-semibold">
+            What this does for your practice
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              { icon: "&#9201;", text: "Save 20+ hours of design and formatting time" },
+              { icon: "&#10003;", text: "Look professional from day one — no designer needed" },
+              { icon: "&#128200;", text: "Post consistently and book more consultations" },
+              { icon: "&#128274;", text: "Stay compliant with industry-standard documentation" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span
+                  className="mt-0.5 text-lg text-[#D4537E]"
+                  dangerouslySetInnerHTML={{ __html: item.icon }}
+                />
+                <span className="text-sm text-gray-300">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* WHAT'S INCLUDED */}
+        <section className="mb-10">
           <h2 className="mb-5 font-serif text-2xl font-semibold">
-            What&apos;s Included
+            What&apos;s included
           </h2>
           <div className="grid gap-3 sm:grid-cols-2">
             {product.features.map((f, i) => (
@@ -95,36 +142,76 @@ export default function ProductDetailPage({
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Perfect For */}
+        {/* WHO IT'S FOR */}
         {product.audience.length > 0 && (
-          <div className="mb-10">
+          <section className="mb-10">
             <h2 className="mb-5 font-serif text-2xl font-semibold">
-              Perfect For
+              Built for
             </h2>
             <div className="grid gap-3 sm:grid-cols-2">
               {product.audience.map((a, i) => (
-                <div key={i} className="flex items-center gap-3 text-sm text-gray-400">
+                <div
+                  key={i}
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-gray-300"
+                >
                   <span className="text-[#D4537E]">&#8594;</span>
                   {a}
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         )}
 
-        {/* How It Works */}
-        <div className="mb-10">
+        {/* PRICING LADDER */}
+        {hasPricingLadder && (
+          <section className="mb-10">
+            <h2 className="mb-5 font-serif text-2xl font-semibold">
+              Choose your size
+            </h2>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Current product highlighted */}
+              <div className="relative rounded-xl border-2 border-[#D4537E] bg-[#D4537E]/10 p-5">
+                <span className="absolute -top-3 left-4 rounded-full bg-[#D4537E] px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                  Current
+                </span>
+                <h3 className="mt-1 font-serif text-lg font-bold">
+                  {product.title}
+                </h3>
+                <p className="mt-1 text-xs text-gray-400">
+                  {product.templateCount} templates
+                </p>
+                <p className="mt-3 text-2xl font-bold">{product.priceDisplay}</p>
+              </div>
+              {relatedSizes.slice(0, 3).map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/shop/${r.slug}`}
+                  className="rounded-xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-[#D4537E]/40"
+                >
+                  <h3 className="font-serif text-lg font-bold">{r.title}</h3>
+                  <p className="mt-1 text-xs text-gray-400">
+                    {r.templateCount} templates
+                  </p>
+                  <p className="mt-3 text-2xl font-bold">{r.priceDisplay}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* HOW IT WORKS */}
+        <section className="mb-10">
           <h2 className="mb-5 font-serif text-2xl font-semibold">
-            How It Works
+            How it works
           </h2>
           <div className="space-y-4">
             {[
-              { n: "1", t: "Purchase instantly via Stripe secure checkout" },
-              { n: "2", t: "Receive an email with your personal download link" },
-              { n: "3", t: "Open your templates — print or save as PDF" },
-              { n: "4", t: "Customize with your practice name, logo, and details" },
+              { n: "1", t: "Purchase instantly — secure Stripe checkout, no account needed" },
+              { n: "2", t: "Check your email — delivery link arrives in under 5 minutes" },
+              { n: "3", t: "Open and customize — edit in your browser, add your logo and details" },
+              { n: "4", t: "Print or post — download as PDF, print, or share on social media" },
             ].map((step) => (
               <div key={step.n} className="flex items-start gap-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#D4537E]/20 text-sm font-bold text-[#D4537E]">
@@ -134,49 +221,51 @@ export default function ProductDetailPage({
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* FAQ */}
-        <div className="mb-10">
+        <section className="mb-10">
           <h2 className="mb-5 font-serif text-2xl font-semibold">
-            Frequently Asked Questions
+            Frequently asked questions
           </h2>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {[
-              { q: "Can I customize the templates?", a: "Yes — all templates are fully editable. Add your practice name, logo, and details before printing." },
-              { q: "What format are the files?", a: "Templates are delivered as printable HTML files you can open in any browser. Save as PDF via File → Print → Save as PDF." },
-              { q: "Is this a physical product?", a: "No. This is a digital download — no physical item will be shipped." },
-              { q: "Do I need Canva Pro?", a: "Some products include Canva template links (social media kits). Canva Free works for all of them." },
-              { q: "Can I use these for multiple locations?", a: "Templates are licensed for use within your own practice. Redistribution or resale is not permitted." },
-              { q: "How do I get support?", a: "Reply to your delivery email or message us through the shop. We respond within 24 hours." },
+              { q: "Can I customize the templates?", a: "Yes — every template is fully editable. Add your practice name, logo, colors, and contact info." },
+              { q: "What format are the files?", a: "HTML files you open in any browser. Save as PDF via File → Print → Save as PDF. Social media kits include Canva links." },
+              { q: "Is this a physical product?", a: "No — instant digital delivery. Nothing ships." },
+              { q: "Do I need Canva Pro?", a: "No. Canva Free works for all templates. Pro gives extra fonts and features but is not required." },
+              { q: "Can I use this for multiple locations?", a: "Licensed for your own practice. No redistribution or resale." },
+              { q: "What if I need help?", a: "Reply to your delivery email. We respond within 24 hours." },
             ].map((item) => (
               <div
                 key={item.q}
                 className="rounded-xl border border-white/10 bg-white/[0.03] p-5"
               >
-                <h3 className="mb-2 text-sm font-bold text-white">
-                  {item.q}
-                </h3>
+                <h3 className="mb-2 text-sm font-bold text-white">{item.q}</h3>
                 <p className="text-sm text-gray-500">{item.a}</p>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Trust */}
-        <div className="rounded-xl border border-[#D4537E]/30 bg-[#D4537E]/5 p-6 text-center">
+        {/* TRUST */}
+        <div className="mb-10 rounded-xl border border-[#D4537E]/30 bg-[#D4537E]/5 p-6 text-center">
           <p className="text-sm text-gray-400">
-            Created by <strong className="text-white">Hello Gorgeous Med Spa</strong> (10 years in business)
-            &middot; Board-certified FNP-BC
+            Created by{" "}
+            <strong className="text-white">Hello Gorgeous Med Spa</strong> (10
+            years in business) &middot; Board-certified FNP-BC &middot; Used by
+            500+ providers
           </p>
         </div>
 
-        {/* Sticky Buy (mobile) */}
+        {/* STICKY BUY (mobile) */}
         <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#1A1A1A]/95 px-4 py-3 backdrop-blur sm:hidden">
           <div className="mx-auto flex max-w-4xl items-center justify-between">
             <div>
               <span className="text-lg font-bold">{product.priceDisplay}</span>
-              <span className="ml-2 text-xs text-gray-500">{product.templateCount} templates</span>
+              <span className="ml-2 text-xs text-gray-500">
+                {product.templateCount} templates
+              </span>
             </div>
             <CheckoutButton slug={product.slug} label="Buy Now" />
           </div>

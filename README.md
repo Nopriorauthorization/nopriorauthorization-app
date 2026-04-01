@@ -204,8 +204,12 @@ Must be approved before implementation.
 
 ## Internal: Digital product pipeline (Etsy + Canva)
 
-The **DEV ticket**, current implementation status, and gaps for the internal product automation engine (configs, Canva/Etsy services, ZIP packaging, CLI) live in:
+The **gap analysis** and what is already built vs missing:
 
 **[docs/PRODUCT_AUTOMATION_PIPELINE.md](./docs/PRODUCT_AUTOMATION_PIPELINE.md)**
+
+The **next implementation ticket** (file tree, `DigitalProductConfig`, services, scripts, acceptance criteria):
+
+**[docs/TICKET-PIPELINE-IMPLEMENTATION-NEXT.md](./docs/TICKET-PIPELINE-IMPLEMENTATION-NEXT.md)**
 
 End of README

@@ -43,4 +43,7 @@ service-account-key.json
 build.log
 public/videos/roots-intro.mp4
 
+# Internal product pipeline CLI output (see docs/TICKET-PIPELINE-IMPLEMENTATION-NEXT.md)
+/output/
+
 build

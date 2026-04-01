@@ -3,7 +3,20 @@
 **Status:** Spec + gap analysis (this document)  
 **Last updated:** 2026-04-01  
 
+**Next implementation ticket (build-ready):** [TICKET-PIPELINE-IMPLEMENTATION-NEXT.md](./TICKET-PIPELINE-IMPLEMENTATION-NEXT.md)
+
 This file stores the original internal ticket and records **what the repo already implements** versus **what is still to build** for the unified “product automation engine.”
+
+---
+
+## At a glance
+
+| Topic | Answer |
+|-------|--------|
+| **What already exists** | Canva OAuth + list/match designs; Etsy OAuth + DB tokens + draft script; JSON manifests + `catalog.generated.json`; HTML `/public/forms` delivery; admin import/library/sync; scattered npm scripts (`delivery:import`, `store:*`, etc.). See **Full ticket: deliverables checklist** and **What we already have**. |
+| **What is still missing** | Unified `DigitalProductConfig`; `canva.service` / `etsy.service` modules; single `product-builder` writing `/output/{slug}/`; metadata generator (13 tags + guardrails); instructions + ZIP packager; `pnpm product:build*`. See **Gap summary**. |
+| **Exact gap to the one-command pipeline** | One orchestrator (`product-builder`) + CLI that: loads a **typed config** → writes **listing.json** + **instructions** → (optional) Canva **exports** → **ZIP** → optional **Etsy draft** — with a **build manifest** per run. Today those steps exist only as **separate** scripts and JSON files, not one command or one output folder contract. |
+| **Definition of done (target pipeline)** | From a seed config: `pnpm product:build <slug>` produces `output/{slug}/manifest.json`, `listing.json`, `delivery/*`, `archives/{slug}.zip`, and logs per-step success/failure; optional `product:create-draft` does not wipe artifacts on Etsy errors. |
 
 ---
 

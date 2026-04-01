@@ -4,6 +4,10 @@
  * Usage: tsx scripts/products/build-all-products.ts
  *        pnpm product:build-all
  */
+import { loadEnvLocal } from "./load-env";
+
+loadEnvLocal();
+
 async function main() {
   const { getAllProductSlugs, getProductConfig } = await import(
     "../../content/products/index"

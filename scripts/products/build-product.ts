@@ -5,6 +5,9 @@
  *        pnpm product:build <slug>
  */
 import path from "path";
+import { loadEnvLocal } from "./load-env";
+
+loadEnvLocal();
 
 async function main() {
   const slug = process.argv[2];

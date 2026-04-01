@@ -31,6 +31,36 @@ export class CanvaService {
     this.token = resolved;
   }
 
+  /**
+   * Try loading a Canva access token from the database.
+   * Useful for CLI scripts that don't have browser cookies.
+   */
+  static async tryLoadTokenFromDb(): Promise<string | null> {
+    try {
+      const dbUrl = process.env.DATABASE_URL;
+      if (!dbUrl) return null;
+
+      const { default: pg } = await import("pg");
+      const client = new pg.Client({
+        connectionString: dbUrl,
+        ssl: { rejectUnauthorized: false },
+      });
+      await client.connect();
+      const result = await client.query(
+        `SELECT metadata FROM "Analytics" WHERE event = 'canva_oauth_token' ORDER BY "createdAt" DESC LIMIT 1`,
+      );
+      await client.end();
+
+      if (result.rows.length && result.rows[0].metadata) {
+        return (result.rows[0].metadata as Record<string, unknown>)
+          .accessToken as string || null;
+      }
+    } catch {
+      // Silently skip in non-server contexts
+    }
+    return null;
+  }
+
   private headers(): Record<string, string> {
     return {
       Authorization: `Bearer ${this.token}`,
@@ -206,8 +236,8 @@ export class CanvaService {
       const status = json.job?.status || "unknown";
       this.log(`  poll ${exportId}: ${status} (attempt ${attempt + 1})`);
 
-      if (status === "completed") {
-        return { status, urls: json.job?.urls || [] };
+      if (status === "success" || status === "completed") {
+        return { status: "success", urls: json.job?.urls || [] };
       }
       if (status === "failed") {
         const errMsg =

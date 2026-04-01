@@ -12,7 +12,7 @@ export type CanvaExportFormat = "png" | "pdf";
 export type CanvaExportJob = {
   designId: string;
   format: CanvaExportFormat;
-  status: "pending" | "completed" | "failed" | "skipped";
+  status: "pending" | "success" | "completed" | "failed" | "skipped";
   outputPaths?: string[];
   error?: string;
   httpStatus?: number;

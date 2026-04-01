@@ -8,6 +8,9 @@
  */
 import fs from "fs";
 import path from "path";
+import { loadEnvLocal } from "./load-env";
+
+loadEnvLocal();
 
 async function main() {
   const slug = process.argv[2];

@@ -43,8 +43,9 @@ const config: DigitalProductConfig = {
   ],
   descriptionSeed:
     "Stop losing revenue to insurance denials. This appeal letter kit gives your office editable, ready-to-send templates for the most common prior authorization denial scenarios — peer-to-peer request letters, medical necessity appeals, expedited review requests, and more. Designed for medical offices, billing teams, and independent practitioners who need professional appeal documentation without starting from scratch every time.",
-  canvaDesignStrategy: "use-existing-template",
-  exportFormats: ["pdf"],
+  canvaDesignIds: ["DAHFWTdBraU"],
+  canvaDesignStrategy: "export-existing-design",
+  exportFormats: ["png"],
   deliveryFiles: {
     includeInstructions: true,
     includeCanvaLinks: false,

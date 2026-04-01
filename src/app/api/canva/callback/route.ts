@@ -80,6 +80,32 @@ export async function GET(req: NextRequest) {
     if (!accessToken) {
       return fail("No access_token in Canva response");
     }
+
+    // Persist to DB so CLI scripts can use the token without cookies
+    try {
+      const { default: prisma } = await import("@/lib/db");
+      await prisma.analytics.create({
+        data: {
+          event: "canva_oauth_token",
+          metadata: {
+            accessToken,
+            refreshToken,
+            scope,
+            expiresIn,
+            obtainedAt: new Date().toISOString(),
+          },
+        },
+      });
+      console.log("[canva/callback] Token persisted to database");
+    } catch (dbErr) {
+      console.warn("[canva/callback] DB persist failed (non-blocking):", dbErr);
+    }
+
+    // Log token for CLI validation (remove in production hardening)
+    console.log("[canva/callback] === CANVA ACCESS TOKEN (for CLI .env.local) ===");
+    console.log(`CANVA_ACCESS_TOKEN=${accessToken}`);
+    console.log("[canva/callback] === END TOKEN ===");
+    console.log(`[canva/callback] Scope: ${scope}`);
   } catch (error) {
     console.error(error);
     return fail("Token request failed");

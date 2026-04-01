@@ -139,7 +139,32 @@ export async function buildProduct(
   });
   steps.push(canvaResult);
 
-  // Step 4: package ZIP
+  // Step 4: generate thumbnail
+  const thumbResult = await runStepAsync("generate-thumbnail", async () => {
+    const { generateProductThumbnail } = await import("./thumbnail-generator");
+    const result = await generateProductThumbnail({
+      slug: config.slug,
+      title: config.listingTitleSeed,
+      templateCount:
+        config.etsy.priceUsd >= 90
+          ? 300
+          : config.etsy.priceUsd >= 40
+            ? 120
+            : config.etsy.priceUsd >= 25
+              ? 60
+              : 30,
+      category: config.category,
+      outputDir: previewsDir,
+    });
+    if (result) {
+      log(config.slug, `  Thumbnail → ${path.basename(result)}`);
+      return { files: [result] };
+    }
+    return { status: "skipped" as const, message: "Puppeteer not available" };
+  });
+  steps.push(thumbResult);
+
+  // Step 5: package ZIP
   let archivePath: string | null = null;
   const zipResult = runStep("package-zip", () => {
     const deliveryFiles = fs

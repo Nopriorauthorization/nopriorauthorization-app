@@ -50,6 +50,13 @@ export default async function AdminPage() {
         "Browse all digital products, SKUs, and every HTML / Canva template in one place",
       icon: "📁",
     },
+    {
+      title: "Purchases",
+      href: "/admin/purchases",
+      description:
+        "Digital product orders, revenue, delivery status, and resend controls",
+      icon: "💰",
+    },
   ];
 
   return (

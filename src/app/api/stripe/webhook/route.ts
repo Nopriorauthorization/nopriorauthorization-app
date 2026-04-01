@@ -38,7 +38,11 @@ export async function POST(request: Request) {
     switch (event.type) {
       case "checkout.session.completed": {
         const session = event.data.object as Stripe.Checkout.Session;
-        await handleCheckoutComplete(session);
+        if (session.metadata?.purchase_type === "digital_product") {
+          await handleDigitalProductPurchase(session);
+        } else {
+          await handleCheckoutComplete(session);
+        }
         break;
       }
 
@@ -169,6 +173,101 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
       },
     });
   }
+}
+
+async function handleDigitalProductPurchase(session: Stripe.Checkout.Session) {
+  const slug = session.metadata?.product_slug;
+  const title = session.metadata?.product_title || slug || "Digital Product";
+  const email = session.customer_details?.email || session.customer_email || "";
+  const name = session.customer_details?.name || undefined;
+  const amountPaid = session.amount_total || 0;
+  const paymentIntentId =
+    typeof session.payment_intent === "string"
+      ? session.payment_intent
+      : session.payment_intent?.id;
+
+  if (!slug || !email) {
+    console.error("[webhook] Digital product purchase missing slug or email", {
+      slug,
+      email,
+      sessionId: session.id,
+    });
+    return;
+  }
+
+  const existing = await prisma.purchase.findUnique({
+    where: { stripeSessionId: session.id },
+  });
+  if (existing) {
+    console.log(`[webhook] Duplicate session ${session.id} — skipping`);
+    return;
+  }
+
+  const { issueDeliveryToken } = await import("@/lib/delivery/token");
+  const token = issueDeliveryToken({
+    productSlug: slug,
+    buyerEmail: email,
+    orderRef: session.id,
+    expiresInDays: 365,
+  });
+
+  const origin = process.env.NEXTAUTH_URL || "https://nopriorauthorization.com";
+  const deliveryUrl = `${origin}/delivery/${token}`;
+
+  const purchase = await prisma.purchase.create({
+    data: {
+      stripeSessionId: session.id,
+      stripePaymentId: paymentIntentId,
+      customerEmail: email,
+      customerName: name,
+      productSlug: slug,
+      productTitle: title,
+      amountPaid,
+      deliveryToken: token,
+    },
+  });
+
+  const { sendEmail } = await import("@/lib/email");
+  const { generateDeliveryEmail } = await import("@/lib/email/delivery-email");
+  const priceDisplay = `$${(amountPaid / 100).toFixed(amountPaid % 100 === 0 ? 0 : 2)}`;
+  const html = generateDeliveryEmail({
+    customerName: name,
+    productTitle: title,
+    deliveryUrl,
+    price: priceDisplay,
+  });
+
+  const emailResult = await sendEmail({
+    to: email,
+    subject: `Your ${title} is ready! 🎉`,
+    html,
+  });
+
+  if (emailResult.success) {
+    await prisma.purchase.update({
+      where: { id: purchase.id },
+      data: { deliveryEmailSent: true, deliveryEmailAt: new Date() },
+    });
+    console.log(`[webhook] Delivery email sent to ${email} for ${slug}`);
+  } else {
+    console.error(`[webhook] Delivery email FAILED for ${email}:`, emailResult.message);
+  }
+
+  await prisma.analytics.create({
+    data: {
+      event: "digital_product_purchased",
+      metadata: {
+        productSlug: slug,
+        productTitle: title,
+        customerEmail: email,
+        amountPaid,
+        stripeSessionId: session.id,
+        deliveryUrl,
+      },
+    },
+  });
+
+  console.log(`[webhook] Digital product purchase complete: ${slug} → ${email}`);
 }
 
 async function handlePaymentFailed(invoice: Stripe.Invoice) {

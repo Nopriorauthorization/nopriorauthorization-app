@@ -148,6 +148,12 @@ export const getNavigationConfig = (mode: 'marketing' | 'app' = 'app'): Navigati
       icon: "📋",
       color: MASCOT_COLORS.blueprint,
     },
+    {
+      label: "Shop",
+      href: "/shop",
+      icon: "🛍️",
+      color: MASCOT_COLORS.fillaGrace,
+    },
   ];
 };
 

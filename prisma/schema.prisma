@@ -66,6 +66,27 @@ model User {
   shareSessions       NpaShareSession[]    // Phase 4: Sharing
 }
 
+model Purchase {
+  id                String    @id @default(cuid())
+  stripeSessionId   String    @unique
+  stripePaymentId   String?
+  customerEmail     String
+  customerName      String?
+  productSlug       String
+  productTitle      String
+  amountPaid        Int
+  currency          String    @default("usd")
+  deliveryToken     String?
+  deliveryEmailSent Boolean   @default(false)
+  deliveryEmailAt   DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([customerEmail])
+  @@index([productSlug])
+  @@index([createdAt(sort: Desc)])
+}
+
 model Subscription {
   id               String    @id @default(cuid())
   userId           String    @unique

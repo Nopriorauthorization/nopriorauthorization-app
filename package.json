@@ -17,6 +17,7 @@
     "product:build": "tsx scripts/products/build-product.ts",
     "product:build-all": "tsx scripts/products/build-all-products.ts",
     "product:create-draft": "tsx scripts/products/create-draft.ts",
+    "shop:seed-stripe": "tsx scripts/shop/seed-stripe-products.ts",
     "delivery:import": "node scripts/import-canva-delivery-manifests.mjs",
     "delivery:sync-db": "node scripts/sync-manifests-to-db.mjs",
     "delivery:issue": "node scripts/issue-delivery-link.mjs",

@@ -229,16 +229,16 @@ export default function MainNavigation() {
             {/* Desktop CTA Buttons */}
             <div className="hidden md:flex items-center gap-2">
               <Link
-                href="/subscribe"
+                href="/shop"
                 className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
               >
-                Pricing
+                Shop
               </Link>
               <Link
-                href="/blueprint"
+                href="/membership"
                 className="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-pink-500/25 transition-all hover:scale-105"
               >
-                Open Blueprint
+                Pro Membership
               </Link>
             </div>
 
@@ -339,16 +339,16 @@ export default function MainNavigation() {
             {/* Mobile CTA */}
             <div className="pt-4 border-t border-white/10 space-y-2">
               <Link
-                href="/subscribe"
+                href="/shop"
                 className="w-full block text-center px-6 py-3 border border-white/20 text-white text-sm font-medium rounded-xl hover:bg-white/5 transition-all"
               >
-                View Pricing
+                Browse Shop
               </Link>
               <Link
-                href="/signup"
+                href="/membership"
                 className="w-full block text-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-pink-500/25 transition-all"
               >
-                Get Started Free
+                Pro Membership
               </Link>
             </div>
           </div>

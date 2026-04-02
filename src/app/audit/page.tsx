@@ -6,11 +6,11 @@ export const metadata = {
 
 export default function AuditPage() {
   return (
-    <div className="min-h-screen bg-[#1A1A1A]">
+    <div className="min-h-screen bg-[#FAF7F5]">
       <iframe
         src="/forms/NPA-Digital-Audit.html"
         className="mx-auto block w-full max-w-[860px] border-0"
-        style={{ minHeight: "100vh" }}
+        style={{ minHeight: "100vh", background: "#FAF7F5" }}
         title="Med Spa Digital Audit"
       />
     </div>

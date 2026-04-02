@@ -34,119 +34,12 @@ const MASCOT_COLORS = {
   blueprint: "text-violet-400", // Blueprint - Violet
 };
 
-export const getNavigationConfig = (mode: 'marketing' | 'app' = 'app'): NavigationItem[] => {
+export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): NavigationItem[] => {
   return [
     {
       label: "Home",
       href: "/",
       icon: "🏠",
-    },
-    {
-      label: "Hormones & Peptides",
-      href: "/hormones",
-      icon: "🧬",
-      color: MASCOT_COLORS.harmony,
-    },
-    {
-      label: "Aesthetics",
-      href: "/aesthetics",
-      icon: "✨",
-      color: MASCOT_COLORS.beauTox,
-    },
-    {
-      label: "Weight Management",
-      href: "/weight-management",
-      icon: "⚖️",
-      color: MASCOT_COLORS.slimT,
-    },
-    {
-      label: "Lab Decoder",
-      href: "/vault/lab-decoder",
-      icon: "🔬",
-      color: MASCOT_COLORS.decode,
-    },
-    {
-      label: "Medication Decoder",
-      href: "/vault/medications",
-      icon: "💊",
-      color: MASCOT_COLORS.harmony,
-    },
-    {
-      label: "Family Health",
-      href: "/family-health",
-      icon: "🌳",
-      color: MASCOT_COLORS.root,
-    },
-    {
-      label: "Sacred Vault",
-      href: "/vault",
-      icon: "🏰",
-      color: MASCOT_COLORS.vault,
-      hasDropdown: true,
-      dropdownItems: [
-        { 
-          label: "Vault Dashboard", 
-          href: "/vault/dashboard", 
-          icon: "📊",
-          color: MASCOT_COLORS.vault,
-          description: "Your health command center"
-        },
-        { 
-          label: "Documents", 
-          href: "/vault/documents", 
-          icon: "📄",
-          color: MASCOT_COLORS.vault,
-          description: "All your health records"
-        },
-        { 
-          label: "Personal Vault", 
-          href: "/vault/personal-documents", 
-          icon: "🔐",
-          color: MASCOT_COLORS.vault,
-          description: "IDs, insurance, birth certificates"
-        },
-        { 
-          label: "Lab Results", 
-          href: "/vault/labs", 
-          icon: "🧪",
-          color: MASCOT_COLORS.decode,
-          description: "All your lab work in one place"
-        },
-        { 
-          label: "Medication Decoder", 
-          href: "/vault/medications", 
-          icon: "💊",
-          color: MASCOT_COLORS.harmony,
-          description: "Understand your medications safely"
-        },
-        { 
-          label: "Family Tree", 
-          href: "/vault/family-tree", 
-          icon: "🌳",
-          color: MASCOT_COLORS.root,
-          description: "Your family health history"
-        },
-        { 
-          label: "Health Tools", 
-          href: "/vault/tools", 
-          icon: "🛠️",
-          color: MASCOT_COLORS.blueprint,
-          description: "Calculators and trackers"
-        },
-        { 
-          label: "Trusted Circle", 
-          href: "/vault/trusted-circle", 
-          icon: "👥",
-          color: "text-green-400",
-          description: "Share with family & providers"
-        },
-      ]
-    },
-    {
-      label: "Blueprint",
-      href: "/blueprint",
-      icon: "📋",
-      color: MASCOT_COLORS.blueprint,
     },
     {
       label: "Free Audit",

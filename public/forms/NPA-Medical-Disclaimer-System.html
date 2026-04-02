@@ -1,0 +1,449 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{font-family:'Lato',sans-serif;max-width:900px;margin:0 auto;background:var(--color-background-primary)}
+.top{background:#1A1A1A;padding:20px 32px;text-align:center}
+.top .brand{font-weight:300;letter-spacing:.22em;font-size:13px;color:#fff;text-transform:uppercase}
+.top .sub{font-size:10px;color:#666;margin-top:3px}
+.band{background:#D4537E;padding:14px 32px;text-align:center}
+.band h1{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700}
+.band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.08em}
+
+.pb-nav{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 24px}
+.pb-nav::-webkit-scrollbar{display:none}
+.pn{font-size:12px;color:var(--color-text-secondary);padding:12px 14px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;transition:color .15s}
+.pn:hover{color:#D4537E}.pn.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+.body{padding:28px 32px}.sec-hide{display:none}
+
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;color:#D4537E;font-weight:700;margin:22px 0 10px}
+.sec-title:first-child{margin-top:0}
+.info-card{background:var(--color-background-secondary);border-radius:8px;padding:16px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.info-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:7px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}.info-card li{margin-bottom:3px}
+.alert-card{background:#FCEBEB;border-radius:8px;padding:14px 18px;margin-bottom:12px;border-left:3px solid #E24B4A}
+.alert-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#A32D2D;margin-bottom:6px}
+.alert-card p{font-size:13px;color:#791F1F;line-height:1.6}
+.ok-card{background:#EAF3DE;border-radius:8px;padding:14px 18px;margin-bottom:12px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:5px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+
+.disclaimer-box{background:var(--color-background-secondary);border-radius:12px;padding:24px 28px;margin-bottom:14px;position:relative;border:0.5px solid var(--color-border-tertiary)}
+.disclaimer-box.featured{border:2px solid #D4537E}
+.disc-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.disc-location{font-size:10px;font-weight:700;background:#1A1A1A;color:#D4537E;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:12px;letter-spacing:.06em}
+.disc-text{font-size:14px;color:var(--color-text-primary);line-height:1.9}
+.disc-text p{margin-bottom:10px}
+.disc-text p:last-child{margin-bottom:0}
+.copy-btn{position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:4px 10px;border-radius:5px;cursor:pointer;font-family:'Lato',sans-serif}
+.copy-btn:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+
+.placement-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:14px}
+.placement-table th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.placement-table td{padding:10px 12px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top;font-size:13px}
+.placement-table tr:last-child td{border-bottom:none}
+.placement-table .muted{color:var(--color-text-secondary);font-size:12px}
+.req{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+.req-yes{background:#FCEBEB;color:#A32D2D}
+.req-rec{background:#FBEAF0;color:#993556}
+
+.scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.scope-card{border-radius:8px;padding:14px 16px}
+.scope-card.da{background:#FBEAF0;border:0.5px solid #ED93B1}
+.scope-card.not{background:#FCEBEB;border:0.5px solid #F09595}
+.scope-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.scope-card.da h4{color:#993556}
+.scope-card.not h4{color:#A32D2D}
+.scope-card li{font-size:13px;line-height:1.7;list-style:none;padding:2px 0;display:flex;gap:7px}
+.scope-card.da li::before{content:'✓';color:#D4537E;font-weight:700;flex-shrink:0}
+.scope-card.not li::before{content:'✗';color:#E24B4A;font-weight:700;flex-shrink:0}
+.scope-card.da li{color:#72243E}
+.scope-card.not li{color:#791F1F}
+
+.footer-bar{background:#1A1A1A;border-radius:10px;padding:16px 20px;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.footer-bar .fb-icon{width:36px;height:36px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.footer-bar .fb-content h4{font-size:12px;font-weight:700;color:#fff;margin-bottom:3px}
+.footer-bar .fb-content p{font-size:12px;color:#888;line-height:1.5}
+
+.pb-footer{background:#1A1A1A;padding:12px 32px;text-align:center}
+.pb-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Lato',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+</style>
+
+<div class="wrap">
+<div class="top">
+  <div class="brand">No Prior Authorization &nbsp;·&nbsp; Danielle Alcala</div>
+  <div class="sub">Legal Protection System — Medical Disclaimers</div>
+</div>
+<div class="band">
+  <h1>Your Medical Disclaimer System</h1>
+  <p>Every disclaimer you need &nbsp;·&nbsp; Every page it belongs on &nbsp;·&nbsp; Copy-paste ready for Anthony</p>
+</div>
+
+<div class="pb-nav">
+  <button class="pn act" onclick="show(0)">Why You Need This</button>
+  <button class="pn" onclick="show(1)">Site-Wide Disclaimer</button>
+  <button class="pn" onclick="show(2)">Clinical Products</button>
+  <button class="pn" onclick="show(3)">Footer + Banner</button>
+  <button class="pn" onclick="show(4)">Where to Place Each</button>
+  <button class="pn" onclick="show(5)">Anthony's Dev Spec</button>
+</div>
+
+<div class="body">
+
+<!-- TAB 1: WHY -->
+<div id="m0">
+  <div class="alert-card">
+    <h4>Read this first — why this matters for Danielle specifically</h4>
+    <p>You are a licensed esthetician and medical student. You are NOT a licensed physician, nurse practitioner, or prescribing provider in your own right at this time. Ryan Kent, FNP-BC, is a collaborating clinical partner. NPA publishes clinical content — hormone therapy, peptide therapy, GLP-1 protocols, consent forms — that is educational in nature. Without proper disclaimers, a buyer could attempt to claim they relied on NPA content as a substitute for professional medical advice and suffered harm. The disclaimers below create a clear legal boundary: NPA is educational. It is not medical advice. It does not create a provider-patient relationship. Every clinical product, every playbook, and every page on the site must carry appropriate language.</p>
+  </div>
+
+  <div class="sec-title">What disclaimers protect you from</div>
+  <div class="scope-grid">
+    <div class="scope-card da">
+      <h4>What NPA is — protected</h4>
+      <ul>
+        <li>Educational content for licensed providers</li>
+        <li>Operational business systems and templates</li>
+        <li>Clinical frameworks for providers to adapt with their own judgment</li>
+        <li>Digital products — not medical services</li>
+        <li>General information — not individualized medical advice</li>
+      </ul>
+    </div>
+    <div class="scope-card not">
+      <h4>What NPA is NOT — disclaim clearly</h4>
+      <ul>
+        <li>A licensed medical practice</li>
+        <li>A substitute for provider-patient consultation</li>
+        <li>Legal, regulatory, or compliance advice</li>
+        <li>A guarantee of clinical outcomes</li>
+        <li>A replacement for state-specific scope verification</li>
+        <li>FDA-approved clinical guidance</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec-title">The three layers of protection you need</div>
+  <div class="info-card">
+    <h4>Layer 1 — Site-wide disclaimer</h4>
+    <p>Covers the entire website. Lives in the footer on every page. Sets the global expectation that NPA is educational, not medical advice.</p>
+  </div>
+  <div class="info-card">
+    <h4>Layer 2 — Clinical product disclaimers</h4>
+    <p>Specific to hormone therapy, peptide therapy, GLP-1, and other clinical playbooks. States clearly that content is for licensed prescribing providers only and does not replace clinical judgment.</p>
+  </div>
+  <div class="info-card">
+    <h4>Layer 3 — Consent form disclaimers</h4>
+    <p>On every consent form template — states these are template frameworks requiring attorney review and provider customization before clinical use. Not legal documents as-is.</p>
+  </div>
+
+  <div class="ok-card">
+    <h4>Attorney review — what to do after building this</h4>
+    <p>These disclaimers are written to cover the primary legal risks for a digital health education platform. Before launch, have a healthcare or digital business attorney in Illinois review the site-wide disclaimer and the clinical product disclaimers. This is a one-time cost of $300–$800 and is worth every dollar. Ask specifically about: scope of practice language, FTC compliance for digital health products, and the consent form template disclaimer language.</p>
+  </div>
+</div>
+
+<!-- TAB 2: SITE-WIDE -->
+<div id="m1" class="sec-hide">
+  <div class="sec-title">The site-wide disclaimer — lives in footer, every page</div>
+
+  <div class="disclaimer-box featured">
+    <div class="disc-label">Site-Wide Medical Disclaimer</div>
+    <div class="disc-location">Footer — every page &nbsp;·&nbsp; /disclaimer page (full version)</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text">
+      <p><strong>Medical Disclaimer</strong></p>
+      <p>The content published on No Prior Authorization (nopriorauthorization.com) — including all playbooks, templates, guides, tools, and digital products — is intended for educational and informational purposes only. It is designed for licensed healthcare and aesthetic providers and does not constitute medical advice, clinical guidance, legal advice, or regulatory guidance of any kind.</p>
+      <p>No Prior Authorization is a digital education and business resource platform. It is not a licensed medical practice, does not provide patient care, and does not establish a provider-patient relationship with any individual who accesses this site or purchases any product.</p>
+      <p>All clinical content — including but not limited to playbooks covering hormone therapy, peptide therapy, GLP-1 medications, injectables, and other medical aesthetic services — is intended as a general educational framework for licensed providers. Providers are solely responsible for exercising independent clinical judgment, verifying scope of practice in their jurisdiction, staying current with applicable regulations, and obtaining appropriate supervision or collaboration as required by their license and state law.</p>
+      <p>Consent form templates provided by No Prior Authorization are educational frameworks only. They are not legal documents and must be reviewed and approved by a licensed healthcare attorney in the provider's jurisdiction before clinical use. No Prior Authorization makes no representation that these templates satisfy any specific legal, regulatory, or accreditation requirement.</p>
+      <p>Results described or implied in any NPA product are not guaranteed and will vary based on individual circumstances, clinical skill, patient population, and other factors outside NPA's control.</p>
+      <p>If you are a patient seeking medical advice, please consult a licensed healthcare provider. NPA content is not intended for patient use.</p>
+      <p>© 2026 No Prior Authorization &nbsp;·&nbsp; Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Oswego, Illinois</p>
+    </div>
+  </div>
+
+  <div class="sec-title">Short version — for footer bar (below nav links)</div>
+  <div class="disclaimer-box">
+    <div class="disc-label">Footer Short Disclaimer</div>
+    <div class="disc-location">Footer — condensed single line</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text">
+      <p>NPA content is for educational purposes only and is not medical, legal, or regulatory advice. Clinical content is intended for licensed providers only. Consent form templates require attorney review before clinical use. <a href="/disclaimer" style="color:#D4537E;text-decoration:none;font-weight:700">Full disclaimer →</a></p>
+    </div>
+  </div>
+
+  <div class="sec-title">Popup / banner — for first-time visitors</div>
+  <div class="disclaimer-box">
+    <div class="disc-label">First-Visit Acknowledgment Banner</div>
+    <div class="disc-location">Cookie banner style — first visit only, dismissed and stored</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text">
+      <p>⚕️ &nbsp;<strong>For licensed providers.</strong> No Prior Authorization publishes educational content for aesthetic and wellness providers. Nothing on this site is medical advice or intended for patient use. Clinical playbooks are frameworks — not substitutes for professional clinical judgment. &nbsp;<strong style="color:#D4537E;cursor:pointer">I understand — continue to site →</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3: CLINICAL -->
+<div id="m2" class="sec-hide">
+  <div class="sec-title">Clinical playbook disclaimer — top of every clinical product</div>
+
+  <div class="disclaimer-box featured">
+    <div class="disc-label">Clinical Playbook Disclaimer</div>
+    <div class="disc-location">Top of every clinical playbook — Hormone, Peptide, GLP-1, IV, Botox, PMU</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text">
+      <p><strong>⚕️ For Licensed Prescribing Providers Only</strong></p>
+      <p>This playbook is an educational resource designed for licensed healthcare providers — including physicians, nurse practitioners, physician assistants, and other providers operating within their authorized scope of practice. It is not intended for patient use and should not be shared with patients as medical guidance.</p>
+      <p>The clinical content in this playbook — including dosing frameworks, screening criteria, protocol suggestions, and vendor information — represents general educational information only. It does not constitute individualized medical advice, a clinical protocol, or a standard of care. Every patient situation is unique and requires independent clinical judgment from the treating provider.</p>
+      <p>Scope of practice for the services described in this playbook varies significantly by state, license type, and collaborative agreement requirements. Providers are solely responsible for verifying their prescribing authority and scope of practice before implementing any service described herein.</p>
+      <p>Regulatory status of compounded medications — including peptides and compounded hormones — changes frequently. Providers are responsible for verifying the current FDA and DEA status of any medication before prescribing. No Prior Authorization makes no representation regarding the current legal status of any compounded product.</p>
+      <p>No Prior Authorization is not a licensed medical practice, does not provide medical advice, and assumes no liability for clinical outcomes. The use of this educational content in clinical practice is entirely at the provider's discretion and professional responsibility.</p>
+      <p><em>Have questions about scope or regulatory compliance? Consult a healthcare attorney licensed in your state.</em></p>
+    </div>
+  </div>
+
+  <div class="sec-title">Consent form template disclaimer — on every consent form</div>
+  <div class="disclaimer-box">
+    <div class="disc-label">Consent Form Template Disclaimer</div>
+    <div class="disc-location">Top of every consent form document — before the form content begins</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text">
+      <p><strong>⚠️ Template Framework — Not a Legal Document</strong></p>
+      <p>This document is an educational consent form template provided by No Prior Authorization for informational and illustrative purposes. It is designed to help licensed providers understand the key elements of informed consent for the treatment described.</p>
+      <p>This template is NOT a finished legal document and must NOT be used in clinical practice without review and approval by a licensed healthcare attorney in your jurisdiction. Requirements for informed consent — including specific language, required disclosures, witness requirements, and documentation standards — vary significantly by state, by license type, and by the specific treatment being performed.</p>
+      <p>By using this template as a starting point, you acknowledge that: (1) you will have this document reviewed by a qualified attorney before clinical use; (2) you will customize the content to reflect your specific practice, services, and jurisdiction; (3) No Prior Authorization assumes no responsibility for the legal adequacy of this template in any jurisdiction or clinical context.</p>
+      <p><em>No Prior Authorization is not a law firm and this document does not constitute legal advice.</em></p>
+    </div>
+  </div>
+
+  <div class="sec-title">Audit tool disclaimer — on the free Digital Audit report</div>
+  <div class="disclaimer-box">
+    <div class="disc-label">Digital Audit Tool Disclaimer</div>
+    <div class="disc-location">Bottom of every generated audit report</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text">
+      <p><strong>About This Report</strong></p>
+      <p>This Digital Audit report is generated based on self-reported information you provided. It is an educational tool designed to help you identify potential areas of improvement in your med spa's digital presence. It is not a professional SEO audit, a legal compliance assessment, or a guarantee of any specific outcome.</p>
+      <p>Scores and findings are based on general best practices and may not reflect the specific competitive landscape in your market. Results will vary. No Prior Authorization assumes no responsibility for decisions made based on this report.</p>
+      <p>For a comprehensive SEO or marketing strategy, consult a licensed digital marketing professional with experience in the healthcare and aesthetics industry.</p>
+    </div>
+  </div>
+
+  <div class="sec-title">Social media content disclaimer — in the Social Media System</div>
+  <div class="disclaimer-box">
+    <div class="disc-label">Social Media Content Disclaimer</div>
+    <div class="disc-location">Module 1 of the Social Media System playbook + product page</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text">
+      <p><strong>Before You Post — Compliance Notice</strong></p>
+      <p>Caption templates and social media content provided by No Prior Authorization are educational frameworks. They must be reviewed and customized by the provider before posting. Providers are responsible for ensuring all social media content complies with FTC advertising guidelines, FDA regulations on medical claims, state medical board advertising rules, and HIPAA requirements regarding patient information.</p>
+      <p>No caption template substitutes for independent review. Never post before-and-after photos without written patient consent. Never make claims of guaranteed results. Never use testimonials that imply typical results without appropriate qualification. No Prior Authorization assumes no responsibility for compliance violations arising from unmodified use of any template.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4: FOOTER BANNER -->
+<div id="m3" class="sec-hide">
+  <div class="sec-title">The site footer — what it must contain</div>
+
+  <div class="footer-bar">
+    <div class="fb-icon">⚕️</div>
+    <div class="fb-content">
+      <h4>Footer design requirement for Anthony</h4>
+      <p>The footer must contain: (1) the short disclaimer text, (2) a link to /disclaimer for the full version, (3) a "For licensed providers only" badge. The disclaimer text must be visible — not hidden in tiny grey text. It must be legible on both light and dark backgrounds.</p>
+    </div>
+  </div>
+
+  <div class="sec-title">Full footer disclaimer copy — ready for Anthony</div>
+  <div class="disclaimer-box">
+    <div class="disc-label">Complete Footer Block — copy this into the site footer component</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text">
+      <p style="font-size:12px;margin-bottom:8px"><strong>No Prior Authorization &nbsp;·&nbsp; Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com</strong></p>
+      <p style="font-size:12px;margin-bottom:8px">Built inside Hello Gorgeous Med Spa, Oswego, Illinois. Educational content for licensed aesthetic and wellness providers.</p>
+      <p style="font-size:11px;color:#888;line-height:1.8">All content on this site is for educational purposes only and does not constitute medical, legal, or regulatory advice. Clinical playbooks and protocols are educational frameworks intended for licensed providers operating within their authorized scope of practice. Consent form templates require review by a licensed healthcare attorney before clinical use. No Prior Authorization is not a licensed medical practice and assumes no liability for clinical outcomes. Results described are not guaranteed and will vary. For patient medical advice, consult a licensed healthcare provider.</p>
+      <p style="font-size:11px;color:#888;margin-top:8px">© 2026 No Prior Authorization &nbsp;·&nbsp; <a href="/disclaimer" style="color:#D4537E;text-decoration:none">Full Medical Disclaimer</a> &nbsp;·&nbsp; <a href="/privacy" style="color:#D4537E;text-decoration:none">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms" style="color:#D4537E;text-decoration:none">Terms of Use</a></p>
+    </div>
+  </div>
+
+  <div class="sec-title">First-visit acknowledgment banner — how it works</div>
+  <div class="info-card">
+    <h4>How Anthony builds this</h4>
+    <p>A sticky banner at the bottom of the screen on first visit — similar to a cookie consent bar. Black background, white text, pink CTA. When the user clicks "I understand — continue to site" the banner dismisses and a flag is set in localStorage so it never appears again for that browser. Simple. Non-intrusive. Legally important.</p>
+  </div>
+
+  <div class="sec-title">/disclaimer — the full standalone page</div>
+  <div class="info-card">
+    <h4>This page must exist before launch</h4>
+    <p>Anthony creates a static page at <strong>/disclaimer</strong> containing the full site-wide disclaimer text from Tab 2. This page is linked from the footer on every page. It is also what Google sees when indexing — having a dedicated disclaimer page is a professional and legal standard for health-adjacent digital platforms. Add it to the sitemap.</p>
+  </div>
+</div>
+
+<!-- TAB 5: PLACEMENT -->
+<div id="m4" class="sec-hide">
+  <div class="sec-title">Where every disclaimer lives — the complete placement map</div>
+
+  <table class="placement-table">
+    <thead><tr><th>Page / Product</th><th>Disclaimer Type</th><th>Placement</th><th>Required?</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Every page</strong></td>
+        <td>Short footer disclaimer + link to /disclaimer</td>
+        <td>Footer — visible, not hidden</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>First visit — any page</strong></td>
+        <td>First-visit acknowledgment banner</td>
+        <td>Sticky bottom bar — dismisses on click</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>/disclaimer</strong></td>
+        <td>Full site-wide medical disclaimer</td>
+        <td>Full page — linked from every footer</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>Hormone Therapy Playbook</strong></td>
+        <td>Clinical playbook disclaimer</td>
+        <td>Module 1 — before any content</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>Peptide Therapy Playbook</strong></td>
+        <td>Clinical playbook disclaimer</td>
+        <td>Module 1 — before any content</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>GLP-1 Weight Loss Playbook</strong></td>
+        <td>Clinical playbook disclaimer</td>
+        <td>Module 1 — before any content</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>All other clinical playbooks</strong></td>
+        <td>Clinical playbook disclaimer (short version)</td>
+        <td>Top of Module 1</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>All consent form templates</strong></td>
+        <td>Consent form template disclaimer</td>
+        <td>Page 1 — before form content</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>Digital Audit report</strong></td>
+        <td>Audit tool disclaimer</td>
+        <td>Bottom of every generated report</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>Social Media System</strong></td>
+        <td>Social media compliance notice</td>
+        <td>Module 1 — before strategy content</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>Every product page (shop)</strong></td>
+        <td>"For licensed providers" badge + short note</td>
+        <td>Below product title on clinical products</td>
+        <td><span class="req req-rec">Recommended</span></td>
+      </tr>
+      <tr>
+        <td><strong>Homepage</strong></td>
+        <td>Footer disclaimer only</td>
+        <td>Footer</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+      <tr>
+        <td><strong>Email sequences (Mailchimp)</strong></td>
+        <td>Short disclaimer in email footer</td>
+        <td>Every automated email — footer</td>
+        <td><span class="req req-yes">Required</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title">Email footer disclaimer — for every Mailchimp email</div>
+  <div class="disclaimer-box">
+    <div class="disc-label">Email Footer — paste into every Mailchimp template</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text">
+      <p style="font-size:12px">No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Danielle Alcala, Founder</p>
+      <p style="font-size:11px;color:#888;margin-top:6px;line-height:1.7">Content in this email is for educational purposes only and is not medical, legal, or regulatory advice. Clinical content is intended for licensed providers only. Nothing in this email constitutes individualized medical advice or establishes a provider-patient relationship.</p>
+      <p style="font-size:11px;color:#888;margin-top:4px">You're receiving this because you signed up at nopriorauthorization.com. <a href="*|UNSUB|*" style="color:#D4537E">Unsubscribe</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6: ANTHONY SPEC -->
+<div id="m5" class="sec-hide">
+  <div class="sec-title">Anthony's complete dev spec — everything to build</div>
+
+  <div class="info-card">
+    <h4>5 things Anthony builds for the disclaimer system</h4>
+    <ul>
+      <li><strong>1. /disclaimer page</strong> — static page, full disclaimer text, linked from footer. Add to sitemap. Estimated: 30 minutes.</li>
+      <li><strong>2. /privacy page</strong> — privacy policy (use a generator like Termly or Iubenda for $10/mo — then customize). Estimated: 1 hour.</li>
+      <li><strong>3. /terms page</strong> — terms of use (same generator). Estimated: 1 hour.</li>
+      <li><strong>4. Footer update</strong> — add disclaimer text block, three links (/disclaimer, /privacy, /terms), and "For licensed providers only" badge. Estimated: 1 hour.</li>
+      <li><strong>5. First-visit banner</strong> — sticky bottom bar, dismisses on click, localStorage flag so it never shows again. Estimated: 1 hour.</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">The "For Licensed Providers" badge — design spec</div>
+  <div class="disclaimer-box">
+    <div class="disc-label">Badge component — add to all clinical product cards and pages</div>
+    <button class="copy-btn" onclick="copyDisc(this)">Copy</button>
+    <div class="disc-text" style="font-family:monospace;font-size:13px;background:#1A1A1A;color:#D4537E;padding:12px;border-radius:6px;margin-top:4px">
+&lt;div style="display:inline-flex;align-items:center;gap:6px;background:#FCEBEB;border:0.5px solid #F09595;border-radius:6px;padding:4px 12px;font-size:11px;font-weight:700;color:#A32D2D;margin-bottom:10px"&gt;
+  ⚕️ &nbsp;For licensed providers only
+&lt;/div&gt;
+    </div>
+  </div>
+
+  <div class="sec-title">The privacy policy and terms — what to use</div>
+  <div class="info-card">
+    <h4>Recommended approach for /privacy and /terms</h4>
+    <ul>
+      <li><strong>Termly (termly.io)</strong> — $10/month, generates GDPR and CCPA compliant privacy policy and terms of use. Paste the embed code. Most digital businesses use this. Covers data collection, cookies, email list, purchases.</li>
+      <li><strong>Iubenda (iubenda.com)</strong> — similar, also generates cookie policy. Good alternative.</li>
+      <li><strong>Must include:</strong> what data NPA collects (email, purchase history), how it's used (Mailchimp, Supabase, Stripe), cookies, third-party processors, user rights (delete account, unsubscribe), contact information.</li>
+      <li><strong>Attorney note:</strong> Privacy policy and terms of use should also be reviewed by an attorney before launch — especially the limitation of liability clause in the terms.</li>
+    </ul>
+  </div>
+
+  <div class="ok-card">
+    <h4>Total build time for disclaimer system — 4–5 hours for Anthony</h4>
+    <p>/disclaimer + /privacy + /terms pages: 2.5 hrs &nbsp;·&nbsp; Footer update: 1 hr &nbsp;·&nbsp; First-visit banner: 1 hr &nbsp;·&nbsp; Licensed provider badges on clinical products: 30 min. Add to NPA-DEV-001 as a parallel ticket or sub-tasks. Everything must be live before the first product is sold.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="pb-footer"><p>No Prior Authorization &nbsp;·&nbsp; Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Legal Protection System</p></div>
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+
+<script>
+function show(i){
+  for(let j=0;j<6;j++){const el=document.getElementById('m'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.pn').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function copyDisc(btn){
+  const box=btn.closest('.disclaimer-box');
+  const text=box.querySelector('.disc-text').innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>

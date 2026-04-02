@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T03:41:40.543Z",
+  "generatedAt": "2026-04-02T04:11:54.731Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1072,6 +1072,21 @@
           "title": "HIPAA Notice of Privacy Practices",
           "designId": "msl-hipaa-npp",
           "editUrl": "/forms/MSL-34-HIPAA-Notice-of-Privacy-Practices.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "medical-disclaimer-system",
+      "productSlug": "medical-disclaimer-system",
+      "productTitle": "Medical Disclaimer System for Digital Product Sellers",
+      "buildTimestamp": "2026-04-02T05:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Medical Disclaimer System",
+          "designId": "medical-disclaimer-system-main",
+          "editUrl": "/forms/NPA-Medical-Disclaimer-System.html",
           "viewUrl": null
         }
       ]

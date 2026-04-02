@@ -35,6 +35,7 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "hormone-therapy-playbook": { label: "New", color: "bg-violet-500/20 text-violet-300" },
   "peptide-therapy-playbook": { label: "Hot", color: "bg-orange-500/20 text-orange-300" },
   "google-domination-playbook": { label: "Hot", color: "bg-orange-500/20 text-orange-300" },
+  "medical-disclaimer-system": { label: "Essential", color: "bg-red-500/20 text-red-300" },
   "diy-google-setup-kit": { label: "Best Value", color: "bg-emerald-500/20 text-emerald-300" },
 };
 
@@ -59,6 +60,7 @@ const OUTCOME_MAP: Record<string, string> = {
   "hormone-therapy-playbook": "Add BHRT to your practice. Screening, protocols, vendors, consent — the complete system.",
   "peptide-therapy-playbook": "The hottest niche in wellness. BPC-157, semaglutide, NAD+ — protocols your patients are already asking about.",
   "google-domination-playbook": "87% of patients Google you before booking. This playbook makes sure they find YOU.",
+  "medical-disclaimer-system": "Selling clinical content without disclaimers? That's a lawsuit waiting to happen. Fix it in 10 minutes.",
   "diy-google-setup-kit": "Everything an agency charges $797 for — in one $297 download. Set up your own Google presence.",
 };
 

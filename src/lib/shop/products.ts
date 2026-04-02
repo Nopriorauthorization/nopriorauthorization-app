@@ -50,6 +50,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "medspa-content-strategy-system": "Playbooks",
   "hormone-therapy-playbook": "Playbooks",
   "peptide-therapy-playbook": "Playbooks",
+  "medical-disclaimer-system": "Legal",
   "diy-google-setup-kit": "Bundles",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
@@ -101,6 +102,7 @@ const PRICE_MAP: Record<string, number> = {
   "medspa-content-strategy-system": 14700,
   "hormone-therapy-playbook": 12700,
   "peptide-therapy-playbook": 12700,
+  "medical-disclaimer-system": 4700,
   "diy-google-setup-kit": 29700,
 };
 
@@ -158,6 +160,7 @@ const ASSET_DIR_MAP: Record<string, string> = {
   "medspa-content-strategy-system": "playbooks",
   "hormone-therapy-playbook": "playbooks",
   "peptide-therapy-playbook": "playbooks",
+  "medical-disclaimer-system": "kits",
   "diy-google-setup-kit": "kits",
 };
 

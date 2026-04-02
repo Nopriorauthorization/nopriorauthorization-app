@@ -63,6 +63,23 @@ const PLAYBOOKS: PlaybookData[] = [
       "Build a digital product business that earns while you sleep.",
   },
   {
+    slug: "medspa-social-media-system",
+    title: "The Social Media System",
+    subtitle: "90 Days of Content — Done",
+    price: "$147",
+    image: "/shop-previews/playbooks/npa-thumbnail-social-media-system.png",
+    peekItems: [
+      "The 5-pillar content strategy that converts followers to patients",
+      "Full 30-day content calendar — what to post every single day",
+      "Copy-paste caption templates for education, promos, and engagement",
+      "50+ scroll-stopping hooks — tested and ready to use",
+      "Compliance cheat sheet — what you CAN'T say on social media",
+      "The batching system — create a month of content in one afternoon",
+    ],
+    outcome:
+      "Stop staring at a blank screen every Monday. Post with confidence, stay compliant, book more patients.",
+  },
+  {
     slug: "microblading-pmu-playbook",
     title: "Microblading & PMU Playbook",
     subtitle: "The Complete PMU Business System",

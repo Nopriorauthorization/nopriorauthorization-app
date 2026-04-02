@@ -26,6 +26,7 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "treatment-menu-signage-kit": { label: "New", color: "bg-sky-500/20 text-sky-300" },
   "aftercare-card-kit": { label: "Must Have", color: "bg-emerald-500/20 text-emerald-300" },
   "patient-communication-kit": { label: "New", color: "bg-sky-500/20 text-sky-300" },
+  "medspa-social-media-system": { label: "Best Seller", color: "bg-emerald-500/20 text-emerald-300" },
   "google-domination-playbook": { label: "Hot", color: "bg-orange-500/20 text-orange-300" },
   "diy-google-setup-kit": { label: "Best Value", color: "bg-emerald-500/20 text-emerald-300" },
 };
@@ -46,6 +47,7 @@ const OUTCOME_MAP: Record<string, string> = {
   "treatment-menu-signage-kit": "Your lobby looks professional in 10 minutes. Print and display.",
   "aftercare-card-kit": "Hand patients a card after every treatment. Fewer callbacks, better outcomes.",
   "patient-communication-kit": "Copy, paste, send. Every patient message you'll ever need.",
+  "medspa-social-media-system": "90 days of content — done. Stop staring at a blank screen every Monday morning.",
   "google-domination-playbook": "87% of patients Google you before booking. This playbook makes sure they find YOU.",
   "diy-google-setup-kit": "Everything an agency charges $797 for — in one $297 download. Set up your own Google presence.",
 };

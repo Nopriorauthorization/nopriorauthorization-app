@@ -1,0 +1,584 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;400i&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.pb{font-family:'Lato',sans-serif;max-width:880px;margin:0 auto;background:var(--color-background-primary)}
+.pb-header{background:#1A1A1A;padding:20px 32px 14px;text-align:center}
+.pb-header .ey{font-weight:300;letter-spacing:.22em;font-size:10px;color:#888;text-transform:uppercase;margin-bottom:5px}
+.pb-header .br{font-weight:300;letter-spacing:.22em;font-size:16px;color:#fff;text-transform:uppercase}
+.pb-header .su{font-size:10px;color:#666;margin-top:4px}
+.pb-band{background:#D4537E;padding:16px 32px;text-align:center}
+.pb-band h1{font-family:'Playfair Display',serif;font-size:24px;color:#fff;font-weight:700}
+.pb-band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+.pb-nav{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 24px}
+.pb-nav::-webkit-scrollbar{display:none}
+.pn{font-size:12px;color:var(--color-text-secondary);padding:12px 14px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;transition:color .15s}
+.pn:hover{color:#D4537E}.pn.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+.pb-body{padding:28px 32px}.sec-hide{display:none}
+.module-hd{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;padding-bottom:18px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.mn{background:#D4537E;color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mht h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--color-text-primary);font-weight:700}
+.mht p{font-size:13px;color:var(--color-text-secondary);margin-top:3px}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;color:#D4537E;font-weight:700;margin:22px 0 10px}
+.info-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:16px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.info-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:7px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}.info-card li{margin-bottom:3px}
+.warn-card{background:#FBEAF0;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.warn-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#993556;margin-bottom:6px}
+.warn-card p{font-size:13px;color:#72243E;line-height:1.6}
+.ok-card{background:#EAF3DE;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:5px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+.alert-card{background:#FCEBEB;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #E24B4A}
+.alert-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#A32D2D;margin-bottom:6px}
+.alert-card p,.alert-card li{font-size:13px;color:#791F1F;line-height:1.6}
+.alert-card ul{padding-left:16px}
+.script-block{background:#1A1A1A;border-radius:var(--border-radius-lg);padding:18px 22px;margin-bottom:14px;position:relative}
+.script-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.script-text{font-size:14px;color:#fff;line-height:1.8;white-space:pre-wrap}
+.script-note{font-size:12px;color:#888;margin-top:10px;border-top:0.5px solid #333;padding-top:8px;line-height:1.6}
+.copy-btn{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:0.5px solid #444;color:#888;padding:4px 10px;border-radius:5px;cursor:pointer;font-family:'Lato',sans-serif}
+.copy-btn:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+.flow-step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.flow-num{background:#D4537E;color:#fff;font-size:12px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.flow-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.flow-content p{font-size:13px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px}
+.kpi-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px;text-align:center}
+.kpi .num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#D4537E}
+.kpi .lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin:14px 0}
+.cal-day-label{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-secondary);text-align:center;padding:4px 2px}
+.cal-cell{border-radius:6px;padding:8px 6px;border:0.5px solid var(--color-border-tertiary);min-height:70px;background:var(--color-background-primary)}
+.cal-cell.post{border-color:#D4537E;background:#FBEAF0}
+.cal-cell.story{border-color:#639922;background:#EAF3DE}
+.cal-cell.reel{border-color:#185FA5;background:#E6F1FB}
+.cal-cell.rest{background:var(--color-background-secondary);border-color:var(--color-border-tertiary)}
+.cal-date{font-size:10px;font-weight:700;color:var(--color-text-secondary);margin-bottom:3px}
+.cal-type{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.cal-cell.post .cal-type{color:#D4537E}
+.cal-cell.story .cal-type{color:#3B6D11}
+.cal-cell.reel .cal-type{color:#185FA5}
+.cal-content{font-size:10px;color:var(--color-text-secondary);line-height:1.4}
+
+.type-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--color-text-secondary)}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.legend-dot.post{background:#D4537E}
+.legend-dot.story{background:#639922}
+.legend-dot.reel{background:#185FA5}
+.legend-dot.rest{background:var(--color-border-tertiary)}
+
+.caption-block{background:var(--color-background-secondary);border-radius:8px;padding:14px 16px;margin-bottom:10px;position:relative}
+.caption-block .cap-type{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:5px}
+.caption-block p{font-size:13px;color:var(--color-text-primary);line-height:1.7}
+.caption-block .cap-note{font-size:11px;color:var(--color-text-secondary);margin-top:6px;font-style:italic}
+.cap-copy{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:transparent;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:3px 8px;border-radius:4px;cursor:pointer;font-family:'Lato',sans-serif}
+.cap-copy:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+
+.compliance-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+.compliance-table th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary)}
+.compliance-table td{padding:10px 12px;border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:top}
+.compliance-table tr:last-child td{border-bottom:none}
+.compliance-table .bad{color:#E24B4A;font-weight:700}
+.compliance-table .good{color:#639922;font-weight:700}
+.compliance-table .rule{color:var(--color-text-secondary);font-size:12px}
+
+.hook-grid{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.hook-item{background:var(--color-background-secondary);border-radius:8px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;position:relative}
+.hook-type{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:2px 8px;border-radius:10px;flex-shrink:0;margin-top:2px}
+.hook-type.edu{background:#E6F1FB;color:#185FA5}
+.hook-type.myth{background:#FCEBEB;color:#A32D2D}
+.hook-type.social{background:#EAF3DE;color:#27500A}
+.hook-type.promo{background:#FBEAF0;color:#993556}
+.hook-type.bts{background:#FAEEDA;color:#633806}
+.hook-text{font-size:13px;color:var(--color-text-primary);line-height:1.5;flex:1}
+.hook-copy{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:transparent;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:3px 8px;border-radius:4px;cursor:pointer;font-family:'Lato',sans-serif;flex-shrink:0;margin-top:1px}
+.hook-copy:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+
+.pb-footer{background:#1A1A1A;padding:12px 32px;text-align:center}
+.pb-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Lato',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+</style>
+
+<div class="pb">
+<div class="pb-header">
+  <div class="ey">No Prior Authorization &nbsp;·&nbsp; Danielle Alcala</div>
+  <div class="br">The Med Spa Social Media System</div>
+  <div class="su">Strategy &nbsp;·&nbsp; Content Calendar &nbsp;·&nbsp; Caption Templates &nbsp;·&nbsp; Compliance &nbsp;·&nbsp; Hooks</div>
+</div>
+<div class="pb-band">
+  <h1>The Med Spa Social Media System</h1>
+  <p>Stop posting randomly &nbsp;·&nbsp; Start showing up strategically &nbsp;·&nbsp; Convert followers to patients</p>
+</div>
+
+<div class="pb-nav">
+  <button class="pn act" onclick="show(0)">01 &nbsp;The Strategy</button>
+  <button class="pn" onclick="show(1)">02 &nbsp;Content Calendar</button>
+  <button class="pn" onclick="show(2)">03 &nbsp;Caption Templates</button>
+  <button class="pn" onclick="show(3)">04 &nbsp;Hooks That Work</button>
+  <button class="pn" onclick="show(4)">05 &nbsp;Compliance Rules</button>
+  <button class="pn" onclick="show(5)">06 &nbsp;The Batching System</button>
+</div>
+
+<div class="pb-body">
+
+<!-- MODULE 1: STRATEGY -->
+<div id="m0">
+  <div class="module-hd">
+    <div class="mn">1</div>
+    <div class="mht">
+      <h2>The Med Spa Social Media Strategy</h2>
+      <p>Why consistency beats virality — and the exact framework that converts followers to patients</p>
+    </div>
+  </div>
+
+  <div class="warn-card">
+    <h4>The brutal truth about med spa social media</h4>
+    <p>Most providers post when they feel like it, stop when they get busy, and wonder why Instagram isn't bringing them patients. The algorithm does not reward talent. It rewards consistency. A provider who posts mediocre content three times a week beats a provider who posts perfect content once a month — every single time.</p>
+  </div>
+
+  <div class="sec-title">The one metric that actually matters</div>
+  <div class="info-card">
+    <h4>Stop chasing followers. Start tracking this.</h4>
+    <p>The only number that matters on your med spa Instagram is <strong>profile visits to booking page clicks.</strong> Not follower count. Not likes. Not reach. If 1,000 people see your post and zero click to book — that post failed regardless of how many hearts it got. Every caption, every graphic, every story should have one job: move someone one step closer to booking.</p>
+  </div>
+
+  <div class="sec-title">The 4 content types — your entire strategy in one framework</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Educational — 40% of your content</h4><p>Teach something. Answer a question patients Google. Explain how a treatment works. Bust a myth. This builds trust and Google findability simultaneously. Educational content is shared more than any other type — which grows your audience for free.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Social proof — 30% of your content</h4><p>Before/afters with consent. Patient testimonials. Review highlights. Results. This is what converts a follower who's been watching you for 3 weeks into someone who finally books. Never skip this category — it's your sales team working 24/7.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Behind the scenes — 20% of your content</h4><p>Your face. Your team. Your space. Your day. People book providers they feel like they know. BTS content builds the relationship that converts. This is also the hardest content for competitors to copy because it requires you to actually show up as a human being.</p></div></div>
+  <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Promotional — 10% of your content</h4><p>Direct offers. Specials. New services. Open appointment slots. This should be the smallest percentage — but providers who never promote leave money on the table. One direct CTA post per week is appropriate. More than that and followers tune you out.</p></div></div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">3–5x</div><div class="lbl">Posts per week — the consistency sweet spot</div></div>
+    <div class="kpi"><div class="num">7–9pm</div><div class="lbl">Best posting time for med spa audiences</div></div>
+    <div class="kpi"><div class="num">First 3 lines</div><div class="lbl">Of your caption decide if they read the rest</div></div>
+  </div>
+
+  <div class="ok-card">
+    <h4>The ChatGPT problem — and your advantage</h4>
+    <p>Anyone can generate a generic "Botox is amazing!" caption with AI. What they cannot generate: a caption that sounds like a real provider, references the specific experience of sitting in your chair, uses your city name naturally, stays compliant with FTC medical advertising rules, and ends with a CTA that actually converts. That specificity is what separates your content from everyone else's — and it's exactly what this system delivers.</p>
+  </div>
+</div>
+
+<!-- MODULE 2: CALENDAR -->
+<div id="m1" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">2</div>
+    <div class="mht">
+      <h2>The 4-Week Content Calendar</h2>
+      <p>What to post every single day — copy this exactly or adapt it to your services</p>
+    </div>
+  </div>
+
+  <div class="type-legend">
+    <div class="legend-item"><div class="legend-dot post"></div>Feed Post</div>
+    <div class="legend-item"><div class="legend-dot story"></div>Story</div>
+    <div class="legend-item"><div class="legend-dot reel"></div>Reel</div>
+    <div class="legend-item"><div class="legend-dot rest"></div>Rest day</div>
+  </div>
+
+  <div class="sec-title">Week 1 — Foundation week</div>
+  <div class="calendar-grid">
+    <div class="cal-day-label">Mon</div>
+    <div class="cal-day-label">Tue</div>
+    <div class="cal-day-label">Wed</div>
+    <div class="cal-day-label">Thu</div>
+    <div class="cal-day-label">Fri</div>
+    <div class="cal-day-label">Sat</div>
+    <div class="cal-day-label">Sun</div>
+
+    <div class="cal-cell post"><div class="cal-date">Day 1</div><div class="cal-type">Feed Post</div><div class="cal-content">Educational: "What Botox actually feels like" — demystify for first-timers</div></div>
+    <div class="cal-cell story"><div class="cal-date">Day 2</div><div class="cal-type">Story</div><div class="cal-content">Poll: "Have you ever had Botox?" — engagement + audience research</div></div>
+    <div class="cal-cell reel"><div class="cal-date">Day 3</div><div class="cal-type">Reel</div><div class="cal-content">Before/after transformation — show the result, not the needle</div></div>
+    <div class="cal-cell rest"><div class="cal-date">Day 4</div><div class="cal-content" style="color:var(--color-text-secondary);font-style:italic">Rest — engage with comments and DMs</div></div>
+    <div class="cal-cell post"><div class="cal-date">Day 5</div><div class="cal-type">Feed Post</div><div class="cal-content">Promotional: "Friday spots open this week" — link in bio CTA</div></div>
+    <div class="cal-cell story"><div class="cal-date">Day 6</div><div class="cal-type">Story</div><div class="cal-content">BTS: Day in the practice — treatment room, team, real moments</div></div>
+    <div class="cal-cell rest"><div class="cal-date">Day 7</div><div class="cal-content" style="color:var(--color-text-secondary);font-style:italic">Rest</div></div>
+  </div>
+
+  <div class="sec-title">Week 2 — Trust building week</div>
+  <div class="calendar-grid">
+    <div class="cal-day-label">Mon</div>
+    <div class="cal-day-label">Tue</div>
+    <div class="cal-day-label">Wed</div>
+    <div class="cal-day-label">Thu</div>
+    <div class="cal-day-label">Fri</div>
+    <div class="cal-day-label">Sat</div>
+    <div class="cal-day-label">Sun</div>
+    <div class="cal-cell post"><div class="cal-date">Day 8</div><div class="cal-type">Feed Post</div><div class="cal-content">Myth bust: "Botox makes you look frozen" — false. Here's the truth.</div></div>
+    <div class="cal-cell reel"><div class="cal-date">Day 9</div><div class="cal-type">Reel</div><div class="cal-content">Meet the provider — your face, your credentials, your why</div></div>
+    <div class="cal-cell story"><div class="cal-date">Day 10</div><div class="cal-type">Story</div><div class="cal-content">FAQ box: "Ask me anything about [service]" — answer in stories</div></div>
+    <div class="cal-cell post"><div class="cal-date">Day 11</div><div class="cal-type">Feed Post</div><div class="cal-content">Social proof: Patient review highlight — screenshot or graphic</div></div>
+    <div class="cal-cell rest"><div class="cal-date">Day 12</div><div class="cal-content" style="color:var(--color-text-secondary);font-style:italic">Rest — respond to story replies</div></div>
+    <div class="cal-cell reel"><div class="cal-date">Day 13</div><div class="cal-type">Reel</div><div class="cal-content">Educational: "The difference between Botox and filler" — explainer</div></div>
+    <div class="cal-cell rest"><div class="cal-date">Day 14</div><div class="cal-content" style="color:var(--color-text-secondary);font-style:italic">Rest</div></div>
+  </div>
+
+  <div class="sec-title">Week 3 — Conversion week</div>
+  <div class="calendar-grid">
+    <div class="cal-day-label">Mon</div><div class="cal-day-label">Tue</div><div class="cal-day-label">Wed</div><div class="cal-day-label">Thu</div><div class="cal-day-label">Fri</div><div class="cal-day-label">Sat</div><div class="cal-day-label">Sun</div>
+    <div class="cal-cell post"><div class="cal-date">Day 15</div><div class="cal-type">Feed Post</div><div class="cal-content">Educational: "What to expect at your first Botox appointment" — reduce anxiety</div></div>
+    <div class="cal-cell story"><div class="cal-date">Day 16</div><div class="cal-type">Story</div><div class="cal-content">Countdown: "3 spots left this week" — urgency + booking link</div></div>
+    <div class="cal-cell reel"><div class="cal-date">Day 17</div><div class="cal-type">Reel</div><div class="cal-content">Before/after + patient reaction — emotional, real, shareable</div></div>
+    <div class="cal-cell post"><div class="cal-date">Day 18</div><div class="cal-type">Feed Post</div><div class="cal-content">Promotional: New service or package announcement — clear pricing</div></div>
+    <div class="cal-cell story"><div class="cal-date">Day 19</div><div class="cal-type">Story</div><div class="cal-content">BTS: Consultation day — show the consultation process</div></div>
+    <div class="cal-cell rest"><div class="cal-date">Day 20</div><div class="cal-content" style="color:var(--color-text-secondary);font-style:italic">Rest</div></div>
+    <div class="cal-cell rest"><div class="cal-date">Day 21</div><div class="cal-content" style="color:var(--color-text-secondary);font-style:italic">Rest</div></div>
+  </div>
+
+  <div class="sec-title">Week 4 — Community week</div>
+  <div class="calendar-grid">
+    <div class="cal-day-label">Mon</div><div class="cal-day-label">Tue</div><div class="cal-day-label">Wed</div><div class="cal-day-label">Thu</div><div class="cal-day-label">Fri</div><div class="cal-day-label">Sat</div><div class="cal-day-label">Sun</div>
+    <div class="cal-cell post"><div class="cal-date">Day 22</div><div class="cal-type">Feed Post</div><div class="cal-content">Social proof: Multiple review highlights — carousel post</div></div>
+    <div class="cal-cell reel"><div class="cal-date">Day 23</div><div class="cal-type">Reel</div><div class="cal-content">Team or practice culture — who you are, not just what you do</div></div>
+    <div class="cal-cell story"><div class="cal-date">Day 24</div><div class="cal-type">Story</div><div class="cal-content">This or That: "Natural vs. defined brows" — fun engagement</div></div>
+    <div class="cal-cell post"><div class="cal-date">Day 25</div><div class="cal-type">Feed Post</div><div class="cal-content">Educational: Seasonal content — "Summer skin prep" or "Holiday glow"</div></div>
+    <div class="cal-cell story"><div class="cal-date">Day 26</div><div class="cal-type">Story</div><div class="cal-content">Booking link push: "Last spots for the month" — direct CTA</div></div>
+    <div class="cal-cell rest"><div class="cal-date">Day 27</div><div class="cal-content" style="color:var(--color-text-secondary);font-style:italic">Rest</div></div>
+    <div class="cal-cell rest"><div class="cal-date">Day 28</div><div class="cal-content" style="color:var(--color-text-secondary);font-style:italic">Rest — plan next month</div></div>
+  </div>
+
+  <div class="ok-card">
+    <h4>The 28-day system repeats — just swap the topics</h4>
+    <p>The structure stays the same every month. What changes is the topic within each content type. Month 2: same framework, different service focus (GLP-1, IV therapy, skincare). The Canva templates in this kit match every content type so you're never designing from scratch — just swapping text and photos.</p>
+  </div>
+</div>
+
+<!-- MODULE 3: CAPTIONS -->
+<div id="m2" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">3</div>
+    <div class="mht">
+      <h2>30 Caption Templates — Copy, Customize, Post</h2>
+      <p>Every caption is compliant, conversion-focused, and written in a real provider voice</p>
+    </div>
+  </div>
+
+  <div class="sec-title">Educational captions — build trust and Google findability</div>
+
+  <div class="caption-block">
+    <div class="cap-type">Educational — Botox timing</div>
+    <button class="cap-copy" onclick="copyCaption(this)">Copy</button>
+    <p>Here's something nobody tells you before your first Botox appointment 👇
+
+Results don't show up immediately. Days 1–3, nothing. Days 3–7, you start to notice it. Day 14 is when you see the full result.
+
+If you're in that first week wondering if it worked — it did. Give it time.
+
+This is exactly why I include a complimentary 2-week follow-up with every appointment. We look at your results together and fine-tune if needed.
+
+Ready to book? Link in bio 🤍
+
+#botox #medspa #aesthetics #botoxresults #injector</p>
+    <div class="cap-note">Why it works: answers a real anxiety, educates without selling, ends with a soft CTA</div>
+  </div>
+
+  <div class="caption-block">
+    <div class="cap-type">Educational — Filler myth bust</div>
+    <button class="cap-copy" onclick="copyCaption(this)">Copy</button>
+    <p>The filler look you're afraid of? That's not filler. That's too much filler in the wrong places.
+
+When done correctly, filler restores volume you've naturally lost over time — so you look like yourself, just more rested.
+
+My approach: conservative, intentional, and always reversible. You will never leave looking overdone.
+
+Complimentary consultations available. Link in bio to book yours 🤍
+
+#fillerinjections #dermalfiller #lipfiller #naturalfiller #medspa</p>
+    <div class="cap-note">Why it works: addresses the #1 objection to filler before the patient even raises it</div>
+  </div>
+
+  <div class="caption-block">
+    <div class="cap-type">Educational — GLP-1 honest</div>
+    <button class="cap-copy" onclick="copyCaption(this)">Copy</button>
+    <p>Honest talk about GLP-1 medications (because you deserve the full picture) 👇
+
+✅ They work. Clinically proven 10–15% average body weight loss.
+✅ They're medically supervised — this isn't a quick fix, it's a program.
+✅ The first month is about tolerance, not results. Stick with it.
+
+⚠️ They're not for everyone. We screen carefully before prescribing.
+⚠️ Side effects are real. We manage them with you.
+⚠️ Stopping without a maintenance plan often leads to regain.
+
+If you're curious whether you're a candidate — DM me or link in bio for a complimentary consultation.
+
+#glp1 #semaglutide #weightloss #medicatedweightloss #medspa</p>
+    <div class="cap-note">Compliant — no guaranteed results claim, no exaggerated promises. Honest builds trust.</div>
+  </div>
+
+  <div class="sec-title">Social proof captions</div>
+
+  <div class="caption-block">
+    <div class="cap-type">Social proof — review highlight</div>
+    <button class="cap-copy" onclick="copyCaption(this)">Copy</button>
+    <p>"I was so nervous for my first Botox appointment but [Provider] made me feel so comfortable. She explained everything, checked in the whole time, and my results are so natural. I'll never go anywhere else." ⭐⭐⭐⭐⭐
+
+This message makes everything worth it 🤍
+
+If you've been thinking about your first appointment and nerves are holding you back — that's exactly why I built my practice the way I did. First-timers are my favorite.
+
+Book your complimentary consultation: link in bio
+
+#medspa #botox #firsttimebotox #aesthetics #patientlove</p>
+    <div class="cap-note">Always get written consent before sharing any patient quote or photo</div>
+  </div>
+
+  <div class="sec-title">Behind the scenes captions</div>
+
+  <div class="caption-block">
+    <div class="cap-type">Behind the scenes — provider story</div>
+    <button class="cap-copy" onclick="copyCaption(this)">Copy</button>
+    <p>A day in the life looked a little different for me than I imagined when I started this practice 🤍
+
+I thought I'd spend my days doing treatments. What I actually do: treatments + team management + marketing + patient communication + medical school + building [Practice Name] into something I'm genuinely proud of.
+
+Some days are hard. Most days I can't believe this is my life.
+
+If you're building your own practice and wondering if it's worth it — it is. Keep going.
+
+To my patients: thank you for trusting me with your care. It never gets old.
+
+#medspa #medspabusiness #aestheticprovider #medspaboss #hellogorgeous</p>
+    <div class="cap-note">Personal, real, relatable — this is the content that builds loyal followers who become loyal patients</div>
+  </div>
+
+  <div class="sec-title">Promotional captions</div>
+
+  <div class="caption-block">
+    <div class="cap-type">Promotional — open spots</div>
+    <button class="cap-copy" onclick="copyCaption(this)">Copy</button>
+    <p>A few spots opened up this week and I wanted you to see them first 👇
+
+📅 [Day]: [Time] — [Service]
+📅 [Day]: [Time] — [Service]
+📅 [Day]: [Time] — [Service]
+
+If you've been thinking about [Service] — this is your sign.
+
+Book directly: link in bio (spots go fast, first come first served)
+
+Questions? DM me — I respond personally 🤍
+
+#botox #medspa #[yourcity] #openappointments #aesthetics</p>
+    <div class="cap-note">Fill in your actual open slots — this posts in 2 minutes and books appointments the same day</div>
+  </div>
+</div>
+
+<!-- MODULE 4: HOOKS -->
+<div id="m3" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">4</div>
+    <div class="mht">
+      <h2>Hooks That Stop the Scroll</h2>
+      <p>The first line of every caption decides if they read the rest — these 30 hooks work for med spas</p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h4>The hook rule — say the most interesting thing first</h4>
+    <p>Instagram shows 2–3 lines of your caption before "more." Those lines are your entire pitch. If the first line doesn't stop the scroll, the rest doesn't exist. Every hook below is designed to create curiosity, challenge an assumption, or promise a specific payoff that makes the reader want to keep going.</p>
+  </div>
+
+  <div class="sec-title">Educational hooks</div>
+  <div class="hook-grid">
+    <div class="hook-item"><span class="hook-type edu">Edu</span><div class="hook-text">Here's something nobody tells you before your first Botox appointment 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type edu">Edu</span><div class="hook-text">The reason your filler isn't lasting as long as you expected (it's not what you think)</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type edu">Edu</span><div class="hook-text">I'm going to explain exactly what happens to your face between ages 25 and 45 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type edu">Edu</span><div class="hook-text">Botox takes 14 days to fully work. Here's what to expect every single day in between.</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type edu">Edu</span><div class="hook-text">The difference between a $200 Botox appointment and a $600 one (it's not the units)</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type edu">Edu</span><div class="hook-text">Asking for "natural" filler means something very different depending on who you ask 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+  </div>
+
+  <div class="sec-title">Myth-busting hooks</div>
+  <div class="hook-grid">
+    <div class="hook-item"><span class="hook-type myth">Myth</span><div class="hook-text">The filler look you're scared of? That's not what filler looks like when it's done right.</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type myth">Myth</span><div class="hook-text">Botox is addictive. False. Here's what's actually happening when patients "can't stop."</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type myth">Myth</span><div class="hook-text">You're too young for Botox. Also false — and here's the science behind why.</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type myth">Myth</span><div class="hook-text">Skincare can replace injectables. I love skincare. But let me be honest with you 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+  </div>
+
+  <div class="sec-title">Social proof hooks</div>
+  <div class="hook-grid">
+    <div class="hook-item"><span class="hook-type social">Social</span><div class="hook-text">She cried happy tears when she saw her results. I'll never get used to this. 🤍</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type social">Social</span><div class="hook-text">"I've been going to injectors for 10 years and this is the first time I felt truly heard." 🤍</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type social">Social</span><div class="hook-text">She was nervous. She almost cancelled. This is what happened instead. 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type social">Social</span><div class="hook-text">Before and after this treatment — same person, same lighting, 4 weeks apart. 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+  </div>
+
+  <div class="sec-title">Promotional hooks</div>
+  <div class="hook-grid">
+    <div class="hook-item"><span class="hook-type promo">Promo</span><div class="hook-text">A few spots opened up this week. First to DM gets them. 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type promo">Promo</span><div class="hook-text">If [your city] is on your list this season — I have something for you. 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type promo">Promo</span><div class="hook-text">We don't do a lot of specials. This is one of the rare ones. 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+  </div>
+
+  <div class="sec-title">Behind the scenes hooks</div>
+  <div class="hook-grid">
+    <div class="hook-item"><span class="hook-type bts">BTS</span><div class="hook-text">What a Tuesday in a med spa actually looks like (it's not what Instagram shows you)</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type bts">BTS</span><div class="hook-text">I've been building this practice for [X] years. Here's what I wish I'd known on day one.</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+    <div class="hook-item"><span class="hook-type bts">BTS</span><div class="hook-text">The part of running a med spa nobody shows on Instagram 👇</div><button class="hook-copy" onclick="copyHook(this)">Copy</button></div>
+  </div>
+</div>
+
+<!-- MODULE 5: COMPLIANCE -->
+<div id="m4" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">5</div>
+    <div class="mht">
+      <h2>Compliance Rules for Med Spa Social Media</h2>
+      <p>The FTC and FDA rules ChatGPT doesn't know — that protect your license and your business</p>
+    </div>
+  </div>
+
+  <div class="alert-card">
+    <h4>This is your legal protection — read before you post anything</h4>
+    <p>Medical aesthetic providers are held to stricter advertising standards than general businesses. Violating FTC or FDA advertising guidelines can result in warning letters, fines, and in serious cases, license implications. Every caption template in this system was written with these rules in mind. Here's what you need to know.</p>
+  </div>
+
+  <div class="sec-title">The non-negotiable rules</div>
+  <table class="compliance-table">
+    <thead><tr><th>Rule</th><th class="bad">❌ Never say this</th><th class="good">✓ Say this instead</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="rule">No guaranteed results</td>
+        <td class="bad">"Botox will eliminate your wrinkles"</td>
+        <td class="good">"Botox softens the appearance of wrinkles for most patients"</td>
+      </tr>
+      <tr>
+        <td class="rule">No cure or permanent claims</td>
+        <td class="bad">"Permanently remove fat with cryolipolysis"</td>
+        <td class="good">"Reduce targeted fat cells — results are long-lasting with a healthy lifestyle"</td>
+      </tr>
+      <tr>
+        <td class="rule">Before/after photo rules</td>
+        <td class="bad">Unequal lighting, makeup, or angle between photos</td>
+        <td class="good">Same lighting, angle, no makeup — add: "Individual results may vary"</td>
+      </tr>
+      <tr>
+        <td class="rule">Testimonial rules</td>
+        <td class="bad">"My patients always see amazing results"</td>
+        <td class="good">Real patient quote + "Results vary. This patient's experience is her own."</td>
+      </tr>
+      <tr>
+        <td class="rule">Off-label claims</td>
+        <td class="bad">"Botox cures migraines" (unless FDA-approved for that)</td>
+        <td class="good">Only claim FDA-approved indications in marketing materials</td>
+      </tr>
+      <tr>
+        <td class="rule">Pricing transparency</td>
+        <td class="bad">Advertising "starting at $X" if nobody actually qualifies for that price</td>
+        <td class="good">"Starting at $X for [specific service or unit count]" — be specific</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title">Before/after photo consent — required every time</div>
+  <div class="info-card">
+    <h4>Your photo release must cover</h4>
+    <ul>
+      <li>Explicit permission to use the photo on social media — not just "I consent to treatment"</li>
+      <li>Which platforms: Instagram, Facebook, website, Google</li>
+      <li>Whether you can tag the patient or keep them anonymous</li>
+      <li>Duration of consent and right to revoke in writing</li>
+      <li>Keep a signed copy in the patient chart — not just a digital checkbox</li>
+    </ul>
+  </div>
+
+  <div class="ok-card">
+    <h4>The disclaimer that protects you — add to every before/after post</h4>
+    <p>"Individual results may vary. [Treatment] results depend on individual factors including age, skin type, lifestyle, and treatment plan. This patient's results are her own and are not guaranteed for all patients. Complimentary consultations available to discuss what's right for you."</p>
+  </div>
+</div>
+
+<!-- MODULE 6: BATCHING -->
+<div id="m5" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">6</div>
+    <div class="mht">
+      <h2>The Batching System — One Day a Month, Done</h2>
+      <p>How to create an entire month of content in 3 hours so you never post under pressure again</p>
+    </div>
+  </div>
+
+  <div class="warn-card">
+    <h4>Why you're inconsistent — and it's not your fault</h4>
+    <p>Providers don't fail at social media because they're lazy. They fail because they try to create content the same day they post it — when they're tired, between patients, with no ideas and no time. The batching system removes all of that. You create everything once a month in a focused session. Then you execute daily in under 5 minutes.</p>
+  </div>
+
+  <div class="sec-title">The monthly batching session — 3 hours, once a month</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Hour 1 — Content planning (30 min) + Photo collection (30 min)</h4><p>Open the 4-week calendar template. Fill in your specific topics for this month. Collect all photos you've taken this month — before/afters (consented), BTS shots, team photos, product photos. Drop them into a Canva folder.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Hour 2 — Caption writing (60 min)</h4><p>Open this playbook. Pick the caption templates that match your content plan. Customize each one — add your city, your service name, your specific offer. 12 captions × 5 minutes each = 60 minutes. You now have two weeks of content written.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Hour 3 — Graphic creation (60 min)</h4><p>Open your Canva template pack. Drop your photos into the pre-designed templates. Update the text. Export. 12 graphics × 5 minutes each = 60 minutes. Done.</p></div></div>
+  <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Schedule everything — 20 minutes</h4><p>Load all content into Later, Buffer, or Meta Business Suite (free). Schedule to post at 7–9pm on posting days. Turn on auto-publish. Walk away. Your content posts itself for the next 28 days.</p></div></div>
+
+  <div class="sec-title">Daily execution — 5 minutes per day</div>
+  <div class="info-card">
+    <h4>What you do each day after batching</h4>
+    <ul>
+      <li><strong>Morning (2 min):</strong> Check comments from yesterday — respond to every one. Comments boost algorithm visibility significantly.</li>
+      <li><strong>Midday (1 min):</strong> Post one story — a quick poll, a question box, or a photo from the day. Stories don't need to be perfect. They need to be real.</li>
+      <li><strong>Evening (2 min):</strong> Engage with 5 other accounts in your niche — comment something real on their posts. This signals to Instagram that you're an active community member and boosts your own visibility.</li>
+    </ul>
+  </div>
+
+  <div class="ok-card">
+    <h4>The tool stack — all free or nearly free</h4>
+    <p><strong>Canva (free):</strong> design all graphics. <strong>Later (free up to 30 posts/mo):</strong> schedule posts. <strong>Meta Business Suite (free):</strong> schedule to Instagram and Facebook simultaneously. <strong>Google Sheets (free):</strong> your content calendar lives here. <strong>Total cost: $0.</strong> The only investment is 3 hours once a month.</p>
+  </div>
+
+  <div class="script-block">
+    <div class="script-label">The caption that sells this system to your audience</div>
+    <div class="script-text">I used to post when I felt inspired.
+
+Which meant I posted maybe twice a month, always felt guilty, and never saw real growth.
+
+Now I batch my entire month of content in one Sunday afternoon and schedule everything in advance.
+
+3 hours. 28 days of content. Done.
+
+The difference it's made in my practice? Consistent inquiries. Consistent bookings. Consistent growth.
+
+I put the exact system I use — the calendar, the caption templates, the Canva workflow — into a complete guide. Link in bio if you want it.
+
+#medspa #medspabusiness #socialmediatips #aestheticprovider #contentcreator</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="script-note">Use this caption to sell the Social Media System product itself — Danielle posts this as herself, talking about her own batching practice</div>
+  </div>
+</div>
+
+</div>
+<div class="pb-footer"><p>No Prior Authorization &nbsp;·&nbsp; Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; The Med Spa Social Media System</p></div>
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+
+<script>
+function show(i){
+  for(let j=0;j<6;j++){const el=document.getElementById('m'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.pn').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function copyCaption(btn){
+  const text=btn.nextElementSibling.innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>showToast());
+}
+function copyHook(btn){
+  const text=btn.previousElementSibling.innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>showToast());
+}
+function copyBlock(btn){
+  const block=btn.closest('.script-block');
+  const text=block.querySelector('.script-text').innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>showToast());
+}
+function showToast(){
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+</script>

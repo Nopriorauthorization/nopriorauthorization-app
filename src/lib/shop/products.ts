@@ -46,6 +46,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "aftercare-card-kit": "Clinical Forms",
   "patient-communication-kit": "Practice Management",
   "google-domination-playbook": "Playbooks",
+  "medspa-social-media-system": "Playbooks",
   "diy-google-setup-kit": "Bundles",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
@@ -93,10 +94,12 @@ const PRICE_MAP: Record<string, number> = {
   "aftercare-card-kit": 3700,
   "patient-communication-kit": 4700,
   "google-domination-playbook": 12700,
+  "medspa-social-media-system": 14700,
   "diy-google-setup-kit": 29700,
 };
 
 const FEATURED_SLUGS = new Set([
+  "medspa-social-media-system",
   "diy-google-setup-kit",
   "injectors-playbook",
   "new-injector-onboarding-kit",
@@ -142,6 +145,7 @@ const ASSET_DIR_MAP: Record<string, string> = {
   "aftercare-card-kit": "kits",
   "patient-communication-kit": "kits",
   "google-domination-playbook": "playbooks",
+  "medspa-social-media-system": "playbooks",
   "diy-google-setup-kit": "kits",
 };
 
@@ -156,6 +160,7 @@ const CATEGORY_THUMBNAIL: Record<string, string> = {
 };
 
 const SLUG_THUMBNAIL: Record<string, string> = {
+  "medspa-social-media-system": "/shop-previews/playbooks/npa-thumbnail-social-media-system.png",
   "diy-google-setup-kit": "/shop-previews/kits/npa-thumbnail-diy-google-kit.png",
   "treatment-menu-signage-kit": "/shop-previews/kits/npa-thumbnail-treatment-menu-kit.png",
   "aftercare-card-kit": "/shop-previews/kits/npa-thumbnail-aftercare-cards.png",

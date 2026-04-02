@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T02:45:56.877Z",
+  "generatedAt": "2026-04-02T03:21:29.705Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1126,6 +1126,21 @@
           "title": "Book Now Action Post",
           "designId": "prm-cta-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "medspa-social-media-system",
+      "productSlug": "medspa-social-media-system",
+      "productTitle": "The Med Spa Social Media System",
+      "buildTimestamp": "2026-04-02T03:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The Med Spa Social Media System",
+          "designId": "medspa-social-media-system-main",
+          "editUrl": "/forms/NPA-Social-Media-System.html",
           "viewUrl": null
         }
       ]

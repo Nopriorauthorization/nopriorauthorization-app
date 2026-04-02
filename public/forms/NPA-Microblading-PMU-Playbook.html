@@ -1,0 +1,295 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.pb{font-family:'Lato',sans-serif;max-width:860px;margin:0 auto;background:var(--color-background-primary)}
+.pb-header{background:#1A1A1A;padding:20px 32px 14px;text-align:center}
+.pb-header .ey{font-weight:300;letter-spacing:.22em;font-size:10px;color:#888;text-transform:uppercase;margin-bottom:5px}
+.pb-header .br{font-weight:300;letter-spacing:.22em;font-size:16px;color:#fff;text-transform:uppercase}
+.pb-header .su{font-size:10px;color:#666;margin-top:4px;letter-spacing:.05em}
+.pb-band{background:#D4537E;padding:16px 32px;text-align:center}
+.pb-band h1{font-family:'Playfair Display',serif;font-size:24px;color:#fff;font-weight:700}
+.pb-band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+.pb-nav{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 24px}
+.pb-nav::-webkit-scrollbar{display:none}
+.pn{font-size:12px;color:var(--color-text-secondary);padding:12px 14px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;transition:color .15s}
+.pn:hover{color:#D4537E}.pn.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+.pb-body{padding:28px 32px}.sec-hide{display:none}
+.module-hd{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;padding-bottom:18px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.mn{background:#D4537E;color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mht h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--color-text-primary);font-weight:700}
+.mht p{font-size:13px;color:var(--color-text-secondary);margin-top:3px}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;color:#D4537E;font-weight:700;margin:22px 0 10px}
+.script-block{background:#1A1A1A;border-radius:var(--border-radius-lg);padding:18px 22px;margin-bottom:14px}
+.script-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.script-text{font-size:14px;color:#fff;line-height:1.8;font-style:italic}
+.script-note{font-size:12px;color:#888;margin-top:10px;font-style:normal;border-top:0.5px solid #333;padding-top:8px}
+.info-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:16px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.info-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:7px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}.info-card li{margin-bottom:3px}
+.warn-card{background:#FBEAF0;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.warn-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#993556;margin-bottom:6px}
+.warn-card p{font-size:13px;color:#72243E;line-height:1.6}
+.alert-card{background:#FCEBEB;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #E24B4A}
+.alert-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#A32D2D;margin-bottom:6px}
+.alert-card p,.alert-card li{font-size:13px;color:#791F1F;line-height:1.6}
+.alert-card ul{padding-left:16px}
+.ok-card{background:#EAF3DE;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:6px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+.timeline{display:flex;flex-direction:column;gap:0;margin:16px 0}
+.tl-item{display:flex;gap:14px;align-items:stretch}
+.tl-line{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.tl-dot{width:16px;height:16px;border-radius:50%;background:#D4537E;flex-shrink:0;margin-top:2px}
+.tl-connector{width:2px;background:var(--color-border-tertiary);flex:1;margin:3px 0}
+.tl-content{padding:0 0 18px}
+.tl-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.tl-content p{font-size:13px;color:var(--color-text-secondary);margin-top:2px;line-height:1.5}
+.tl-tag{font-size:10px;font-weight:700;background:#FBEAF0;color:#993556;padding:2px 8px;border-radius:10px;display:inline-block;margin-top:4px}
+.dose-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+.dose-table th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary)}
+.dose-table td{padding:10px 12px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top}
+.dose-table tr:last-child td{border-bottom:none}
+.dose-table .note{font-size:11px;color:var(--color-text-secondary);display:block;margin-top:2px}
+.flow-step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.flow-num{background:#D4537E;color:#fff;font-size:12px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.flow-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.flow-content p{font-size:13px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px}
+.kpi-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px;text-align:center}
+.kpi .num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#D4537E}
+.kpi .lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.pb-footer{background:#1A1A1A;padding:12px 32px;text-align:center}
+.pb-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+</style>
+
+<div class="pb">
+<div class="pb-header">
+  <div class="ey">No Prior Authorization</div>
+  <div class="br">Microblading &amp; Permanent Makeup Playbook</div>
+  <div class="su">Danielle &amp; Ryan Kent, FNP-BC &nbsp;|&nbsp; Hello Gorgeous Med Spa &nbsp;|&nbsp; Oswego, Illinois</div>
+</div>
+<div class="pb-band">
+  <h1>The PMU Artist's Playbook</h1>
+  <p>Client screening &nbsp;·&nbsp; Brow mapping &nbsp;·&nbsp; Healing timelines &nbsp;·&nbsp; Color theory &nbsp;·&nbsp; Retention systems</p>
+</div>
+<div class="pb-nav">
+  <button class="pn act" onclick="showM(0)">01 &nbsp;The Consultation</button>
+  <button class="pn" onclick="showM(1)">02 &nbsp;Brow Mapping</button>
+  <button class="pn" onclick="showM(2)">03 &nbsp;Techniques &amp; Color</button>
+  <button class="pn" onclick="showM(3)">04 &nbsp;Healing Timeline</button>
+  <button class="pn" onclick="showM(4)">05 &nbsp;Touch-Up System</button>
+  <button class="pn" onclick="showM(5)">06 &nbsp;PMU Menu &amp; Revenue</button>
+</div>
+<div class="pb-body">
+
+<div id="m0">
+  <div class="module-hd"><div class="mn">1</div><div class="mht"><h2>The PMU Consultation</h2><p>The healing process conversation is everything — this is where retention is won or lost</p></div></div>
+  <div class="script-block">
+    <div class="script-label">Opening script — every consultation</div>
+    <div class="script-text">"Before we talk about what we're going to create, I want to walk you through the entire process — especially the healing. Because honestly, the healing phase is where most people get surprised, and I don't want you to be surprised. I want you to know exactly what to expect so that when day 5 comes and your brows look patchy, you remember that I told you that was going to happen — and you trust the process."</div>
+    <div class="script-note">This single opening prevents the majority of negative reviews in PMU. Clients who are surprised by the healing process blame the artist. Clients who were prepared for it trust the artist. Set the expectation before you pick up a tool.</div>
+  </div>
+  <div class="sec-title">Contraindication screening — who cannot be treated</div>
+  <div class="alert-card">
+    <h4>Absolute contraindications — do not proceed</h4>
+    <ul>
+      <li>Pregnancy or breastfeeding — pigment absorption risk, pain medication limitations</li>
+      <li>Active skin conditions in treatment area: eczema, psoriasis, dermatitis, active acne</li>
+      <li>Keloid scarring history — high risk of raised, thick scar tissue in brow area</li>
+      <li>Blood thinners or anticoagulants — uncontrolled bleeding compromises pigment retention</li>
+      <li>Isotretinoin (Accutane) use within 12 months — skin cell turnover too rapid, pigment won't retain</li>
+      <li>Chemotherapy — immune-compromised skin; defer until cleared by oncologist</li>
+      <li>Hemophilia or bleeding disorders — cannot control blood flow during procedure</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Proceed with caution — document and adjust</h4>
+    <ul>
+      <li>Diabetes — healing is slower; pigment retention may be poor; physician clearance recommended</li>
+      <li>Thyroid conditions — can affect pigment color shift over time</li>
+      <li>Oily skin — strokes may heal softer and powdery; discuss powder brow or combo instead</li>
+      <li>Previous permanent makeup — assess existing pigment, color, depth before adding new work</li>
+      <li>Recent Botox in brow area — wait 2 weeks before mapping; brow position is altered</li>
+    </ul>
+  </div>
+  <div class="sec-title">The style consultation — nail this before you map</div>
+  <div class="script-block">
+    <div class="script-label">Style consultation script</div>
+    <div class="script-text">"I want to show you a few different brow styles — from very natural, hair-stroke brows to a more defined, fuller look. I also want to see the brows you love and the ones that make you say 'not for me.' Can you show me a few inspo photos on your phone? And then I'll show you what I think would work beautifully with your face shape."</div>
+    <div class="script-note">Always see their inspo photos before you design anything. A client's idea of "natural" and your idea of "natural" may be completely different. Inspo photos eliminate guesswork and protect you from misaligned expectations.</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">2–3 hr</div><div class="lbl">Initial appointment time</div></div>
+    <div class="kpi"><div class="num">6–8 wk</div><div class="lbl">Touch-up window</div></div>
+    <div class="kpi"><div class="num">12–18 mo</div><div class="lbl">Average retention period</div></div>
+  </div>
+</div>
+
+<div id="m1" class="sec-hide">
+  <div class="module-hd"><div class="mn">2</div><div class="mht"><h2>Brow Mapping &amp; Design</h2><p>Symmetry is not sameness — faces are not symmetric and neither are perfect brows</p></div></div>
+  <div class="script-block">
+    <div class="script-label">What to say before you map</div>
+    <div class="script-text">"I'm going to map your brows now — I'll mark everything out and show you before I do anything permanent. We'll look at it together, make any adjustments, and when you love what you see, then we start. You're in complete control of this step."</div>
+    <div class="script-note">Client approval of the mapping is not optional. Show them in a handheld mirror before you begin. Take a photo with your device. Document their verbal approval in your chart. This protects you.</div>
+  </div>
+  <div class="sec-title">The golden ratio mapping method</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Head: straight up from the alar base</h4><p>The brow head begins directly above the outer edge of the nostril. Mark both sides. Assess symmetry — if asymmetric, note which eye sits higher or which brow naturally sits further in.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Arch: above the outer limbus of the iris</h4><p>When looking straight ahead, the arch falls above the outer edge of the iris. The arch height depends on the client's natural brow bone and their desired look — higher arch = more lifted appearance.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Tail: from the alar base through the outer canthus</h4><p>Draw an imaginary line from the outer edge of the nostril through the outer corner of the eye — the tail ends where this line meets the brow plane. The tail should never drop below the head.</p></div></div>
+  <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Map, photograph, adjust, approve</h4><p>Map in white pencil first. Take a photo in good lighting. Have the client look in the mirror standing up — gravity changes brow position when lying down. Only proceed after explicit verbal approval.</p></div></div>
+  <div class="warn-card">
+    <h4>The symmetry conversation — say this every time</h4>
+    <p>"I want to show you something — your face, like every face, is naturally asymmetric. Your left eye sits slightly higher than your right. What I'm going to do is create brows that look balanced and beautiful together, not brows that are mathematically identical — because mathematically identical brows on an asymmetric face actually look more uneven. Does that make sense?"</p>
+  </div>
+  <div class="sec-title">Face shape guide — adjust the design accordingly</div>
+  <table class="dose-table">
+    <thead><tr><th>Face Shape</th><th>Brow Recommendation</th><th>What to Avoid</th></tr></thead>
+    <tbody>
+      <tr><td>Oval</td><td>Soft angled arch — nearly any shape works</td><td>Overly dramatic arch looks harsh</td></tr>
+      <tr><td>Round</td><td>Higher arch, longer tail — elongates face</td><td>Flat, rounded brows amplify roundness</td></tr>
+      <tr><td>Square</td><td>Soft, curved arch — softens strong jaw</td><td>Sharp high arches add severity</td></tr>
+      <tr><td>Heart</td><td>Low, soft arch with rounded shape</td><td>High arches widen already-wide forehead</td></tr>
+      <tr><td>Long / oblong</td><td>Flat arch, extended tails — adds width</td><td>High arches elongate the face further</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="m2" class="sec-hide">
+  <div class="module-hd"><div class="mn">3</div><div class="mht"><h2>Techniques &amp; Color Theory</h2><p>The right technique for the right skin type — and color choices that heal beautifully</p></div></div>
+  <div class="sec-title">Technique selection guide</div>
+  <table class="dose-table">
+    <thead><tr><th>Technique</th><th>Best For</th><th>Not Ideal For</th><th>Retention</th></tr></thead>
+    <tbody>
+      <tr><td>Microblading<span class="note">Hair-stroke, manual hand tool</span></td><td>Normal to dry skin, sparse brows, natural look</td><td>Oily skin, large pores, mature skin</td><td>12–18 months</td></tr>
+      <tr><td>Powder / Ombre Brow<span class="note">Machine shading, soft to defined</span></td><td>All skin types esp. oily, fuller defined look</td><td>Clients wanting ultra-natural hair strokes</td><td>2–3 years</td></tr>
+      <tr><td>Combo Brow<span class="note">Microblading front + shading tail</span></td><td>Most clients — best of both techniques</td><td>Very oily or very mature skin</td><td>15–24 months</td></tr>
+      <tr><td>Nano Brows<span class="note">Machine hair strokes — finer than blade</span></td><td>Sensitive skin, clients who want strokes but can't microblade</td><td>Budget-conscious clients (higher artist skill required)</td><td>18–24 months</td></tr>
+    </tbody>
+  </table>
+  <div class="sec-title">Color theory — the healed result is what matters, not the fresh result</div>
+  <div class="warn-card">
+    <h4>The most important color truth in PMU</h4>
+    <p>The color you place is not the color they'll have in 6 weeks. Every pigment shifts during healing. Iron oxide pigments can shift warm (orange, red) or cool (grey, blue) depending on skin undertone, depth of implantation, and the client's metabolism. Always select color for the healed result — not the fresh application.</p>
+  </div>
+  <div class="info-card">
+    <h4>Color selection by skin undertone</h4>
+    <ul>
+      <li><strong>Cool/pink undertone:</strong> use a slightly warm pigment to counteract — cool pigment on cool skin heals ashy and gray</li>
+      <li><strong>Warm/yellow undertone:</strong> use a slightly cool or neutral pigment — warm pigment on warm skin heals orange</li>
+      <li><strong>Olive undertone:</strong> neutral-warm pigments work best — avoid anything with red base</li>
+      <li><strong>Deep/dark skin:</strong> cooler pigments heal more true — warm pigments can look muddy on deeper skin tones</li>
+      <li><strong>Mature skin:</strong> go slightly lighter than target color — pigment appears more saturated in thinner skin</li>
+    </ul>
+  </div>
+  <div class="script-block">
+    <div class="script-label">The color conversation with the client</div>
+    <div class="script-text">"The color I put on today is going to look darker and more intense than your healed result — that's completely normal and expected. Over the next 4 weeks, it's going to lighten by about 30–40%. I'm choosing a color that's going to heal to the shade you love — not necessarily the shade that looks perfect right now fresh off the table. So if you look in the mirror today and think 'that's too dark' — hold that thought for 6 weeks."</div>
+  </div>
+</div>
+
+<div id="m3" class="sec-hide">
+  <div class="module-hd"><div class="mn">4</div><div class="mht"><h2>The Healing Timeline</h2><p>What actually happens day by day — and exactly what to tell your client</p></div></div>
+  <div class="script-block">
+    <div class="script-label">The healing education script — day of appointment</div>
+    <div class="script-text">"I'm going to walk you through what the next 6 weeks look like because this is the part most artists don't prepare their clients for — and it's the part that causes the most panic. Write this down or screenshot my aftercare card: Days 1–3, they'll look dark and bold. Days 4–7, they'll start to flake and peel — do not pick. Days 8–14, they'll look patchy and too light, maybe even like they're disappearing. That is completely normal — it's called the ghost phase. By week 6, the color resurfaces and settles. Week 8 is when we reassess and do your touch-up. Do you have any questions before I let you go?"</div>
+    <div class="script-note">The ghost phase is the #1 cause of panic calls and negative reviews. A client who knows it's coming trusts you through it. A client who wasn't warned thinks you did a bad job.</div>
+  </div>
+  <div class="sec-title">Day-by-day healing reference</div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div><div class="tl-content"><h4>Days 1–3: Dark and bold</h4><p>Brows appear 30–50% darker than final result. Slight swelling and redness normal. Some lymph fluid weeping is normal — blot gently, do not wipe. Client may be self-conscious — reassure them this is temporary.</p><span class="tl-tag">Normal healing</span></div></div>
+    <div class="tl-item"><div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div><div class="tl-content"><h4>Days 4–7: Flaking and peeling</h4><p>Skin begins shedding — this is the outer layer of skin releasing, not the pigment. Do NOT pick, scratch, or peel. Picking removes pigment with the flaking skin and causes patchy results and scarring.</p><span class="tl-tag">Critical phase — no picking</span></div></div>
+    <div class="tl-item"><div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div><div class="tl-content"><h4>Days 8–21: The ghost phase</h4><p>Brows appear light, patchy, or nearly invisible. Pigment is present — it is temporarily hidden under a layer of new skin forming over the treated area. This is the phase that causes the most concern. Every client needs to know it's coming.</p><span class="tl-tag">Ghost phase — totally normal</span></div></div>
+    <div class="tl-item"><div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div><div class="tl-content"><h4>Weeks 4–6: Color resurfaces</h4><p>Pigment gradually resurfaces as the new skin thins and becomes translucent. Color will appear softer and more natural than the initial application. This is the result beginning to show.</p><span class="tl-tag">Results emerging</span></div></div>
+    <div class="tl-item"><div class="tl-line"><div class="tl-dot"></div></div><div class="tl-content"><h4>Week 6–8: Healed result — touch-up assessment</h4><p>True healed result is visible. Assess: pigment retention, symmetry, color accuracy, stroke definition. This is when the touch-up appointment happens — not before.</p><span class="tl-tag">Touch-up window</span></div></div>
+  </div>
+  <div class="sec-title">Aftercare instructions — given in writing</div>
+  <div class="info-card">
+    <h4>Days 1–14: The non-negotiables</h4>
+    <ul>
+      <li>Blot lymph fluid with clean tissue — do not rub or wipe</li>
+      <li>Apply thin layer of aftercare ointment (Aquaphor or provided balm) 2–3x daily</li>
+      <li>Do not get brows wet for 7–10 days — no swimming, steam, excessive sweating</li>
+      <li>Do not apply makeup over brow area until fully healed</li>
+      <li>No sun exposure on brows — UV fades pigment and inflames healing skin</li>
+      <li>Do not pick, scratch, peel, or rub — this is the most important rule</li>
+      <li>Sleep on a clean pillowcase — preferably satin to reduce friction</li>
+    </ul>
+  </div>
+</div>
+
+<div id="m4" class="sec-hide">
+  <div class="module-hd"><div class="mn">5</div><div class="mht"><h2>The Touch-Up System — Your Retention Engine</h2><p>Every PMU client needs a touch-up. The ones who come back become your most loyal clients.</p></div></div>
+  <div class="warn-card">
+    <h4>The #1 retention mistake — not building the touch-up into the original sale</h4>
+    <p>Artists who sell a single session and "offer" a touch-up as an add-on lose clients after appointment one. Artists who sell a two-session package as the standard experience retain nearly every client into annual refreshes. The touch-up is not optional — it is part of the process. Price accordingly and present it that way from day one.</p>
+  </div>
+  <div class="sec-title">Touch-up pricing and positioning</div>
+  <div class="info-card">
+    <h4>How to structure the two-session model</h4>
+    <ul>
+      <li><strong>Initial session:</strong> Full price ($400–$700 depending on market and technique)</li>
+      <li><strong>Perfecting touch-up (6–8 wks):</strong> Included in initial price OR $75–$150 add-on clearly stated at booking</li>
+      <li><strong>Annual refresh (12–18 months):</strong> 50–60% of initial price — brows are partially faded, less work than starting fresh</li>
+      <li><strong>Color boost (6–12 months):</strong> $150–$250 — pigment refresh without full rework</li>
+    </ul>
+  </div>
+  <div class="script-block">
+    <div class="script-label">How to present the two-session model at booking</div>
+    <div class="script-text">"I want you to know upfront that microblading is always a two-session process. The first session is where we build the foundation and the second session — which we schedule 6 to 8 weeks later — is where we perfect it. After your brows heal and we can see exactly how your skin took the pigment, that's when I fine-tune everything. The two sessions together are what give you the finished result. So when you book today, we'll go ahead and get both appointments on the calendar."</div>
+    <div class="script-note">Book the touch-up at the initial appointment — before they leave. Clients who leave without a touch-up appointment booked have a 40–50% lower show rate for that follow-up.</div>
+  </div>
+  <div class="sec-title">The touch-up assessment — what to evaluate at 6–8 weeks</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Pigment retention mapping</h4><p>Which areas retained well? Which faded? Areas with poor retention indicate shallow implantation or oily skin in that zone — adjust depth or technique for the touch-up.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Color accuracy</h4><p>Has the color shifted warm, cool, or healed true? Assess against the target and adjust pigment selection for the touch-up session accordingly.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Symmetry check</h4><p>Compare to before photos. Any asymmetry that emerged during healing? Fill gaps, add definition where needed, correct any strokes that healed with unwanted softness.</p></div></div>
+  <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Client satisfaction check</h4><p>"How do you feel about them?" before you assess. Their answer shapes what you fix. A client who says "I love them but wish the arch was a tiny bit higher" gives you a very different job than one who says "they look great."</p></div></div>
+  <div class="ok-card">
+    <h4>Annual refresh — the rebooking script</h4>
+    <p>"Your brows are going to stay beautiful for another 6 to 12 months — and then you'll start to notice the color softening and some strokes fading. When that happens, it's time for your annual refresh. I'll have my team reach out to you around the 12-month mark to get you on the calendar before they fade too much. Does that sound good?" Set the expectation now. The 12-month outreach then feels like care, not a sales call.</p>
+  </div>
+</div>
+
+<div id="m5" class="sec-hide">
+  <div class="module-hd"><div class="mn">6</div><div class="mht"><h2>PMU Menu &amp; Revenue Strategy</h2><p>Building a full PMU service menu that serves clients at every stage</p></div></div>
+  <div class="sec-title">Full PMU service menu</div>
+  <table class="dose-table">
+    <thead><tr><th>Service</th><th>Technique</th><th>Time</th><th>Price Range</th></tr></thead>
+    <tbody>
+      <tr><td>Microblading<span class="note">Includes perfecting touch-up</span></td><td>Manual blade</td><td>2.5–3 hrs</td><td>$450–$700</td></tr>
+      <tr><td>Powder / Ombre Brows<span class="note">Machine — longer lasting</span></td><td>Machine shading</td><td>2–2.5 hrs</td><td>$400–$650</td></tr>
+      <tr><td>Combination Brows<span class="note">Most popular service</span></td><td>Blade + machine</td><td>3–3.5 hrs</td><td>$500–$750</td></tr>
+      <tr><td>Nano Brows<span class="note">Machine hair strokes</span></td><td>Machine</td><td>2.5–3 hrs</td><td>$500–$800</td></tr>
+      <tr><td>Lip Blush<span class="note">Natural wash of color</span></td><td>Machine</td><td>2.5–3 hrs</td><td>$450–$700</td></tr>
+      <tr><td>Eyeliner PMU<span class="note">Lash line enhancement</span></td><td>Machine</td><td>2–2.5 hrs</td><td>$350–$550</td></tr>
+      <tr><td>Annual Refresh<span class="note">Returning clients only</span></td><td>Match original</td><td>1.5–2 hrs</td><td>$200–$350</td></tr>
+    </tbody>
+  </table>
+  <div class="sec-title">Revenue model — PMU as a predictable income stream</div>
+  <div class="ok-card">
+    <h4>The math on a full PMU book</h4>
+    <p>At 3 new microblading clients per week at $550 average = $1,650/week in new client revenue. Plus annual refreshes: 50 returning clients per year at $275 average = $13,750 in annual refresh revenue. A fully booked PMU artist doing combo brows 4 days per week generates $85,000–$120,000+ annually before any add-on services. The key is retention — every new client is a recurring annual revenue stream if you build the relationship correctly.</p>
+  </div>
+  <div class="sec-title">Upsell and cross-sell for PMU clients</div>
+  <div class="info-card">
+    <h4>Natural service add-ons</h4>
+    <ul>
+      <li>Lash lift + tint — same visit or separate — PMU clients are already comfort with permanent enhancement</li>
+      <li>Brow lamination — for clients not ready for PMU yet; keeps them in your chair</li>
+      <li>Skincare consult — post-PMU skin prep and SPF retail is a natural conversation</li>
+      <li>Lip blush after brow microblading — they already trust you; the upsell is organic</li>
+      <li>Referral program — "Send a friend, get $50 off your next refresh"</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+<div class="pb-footer"><p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Danielle &amp; Ryan Kent, FNP-BC &nbsp;·&nbsp; For licensed PMU artists</p></div>
+</div>
+<script>
+function showM(i){
+  for(let j=0;j<6;j++){const el=document.getElementById('m'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.pn').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+</script>

@@ -41,6 +41,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "injectors-playbook": "Playbooks",
   "new-injector-onboarding-kit": "Playbooks",
   "guidebook-category-strategy": "Playbooks",
+  "microblading-pmu-playbook": "Playbooks",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
   "complete-injector-bundle": "Social Media",
@@ -79,9 +80,10 @@ const PRICE_MAP: Record<string, number> = {
   "seasonal-marketing-pack": 2700,
   "iv-story-templates": 2700,
   "glp1-story-templates": 2700,
-  "injectors-playbook": 9700,
+  "injectors-playbook": 12700,
   "new-injector-onboarding-kit": 6700,
   "guidebook-category-strategy": 4700,
+  "microblading-pmu-playbook": 12700,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -123,6 +125,7 @@ const ASSET_DIR_MAP: Record<string, string> = {
   "injectors-playbook": "playbooks",
   "new-injector-onboarding-kit": "playbooks",
   "guidebook-category-strategy": "playbooks",
+  "microblading-pmu-playbook": "playbooks",
 };
 
 const CATEGORY_THUMBNAIL: Record<string, string> = {

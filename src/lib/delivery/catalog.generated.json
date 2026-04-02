@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-01T22:47:26.843Z",
+  "generatedAt": "2026-04-02T00:45:11.992Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1120,6 +1120,21 @@
           "title": "90-Day Med Spa Launch Timeline",
           "designId": "su-launch-timeline",
           "editUrl": "/forms/SU-05-Launch-Timeline.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "microblading-pmu-playbook",
+      "productSlug": "microblading-pmu-playbook",
+      "productTitle": "Microblading & PMU Business Playbook",
+      "buildTimestamp": "2026-04-01T23:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Microblading & PMU Business Playbook",
+          "designId": "microblading-pmu-playbook-main",
+          "editUrl": "/forms/NPA-Microblading-PMU-Playbook.html",
           "viewUrl": null
         }
       ]

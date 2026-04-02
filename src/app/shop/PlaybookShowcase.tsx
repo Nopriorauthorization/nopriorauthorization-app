@@ -18,7 +18,7 @@ const PLAYBOOKS: PlaybookData[] = [
     slug: "injectors-playbook",
     title: "The Injector's Playbook",
     subtitle: "Botox & Filler Practice Guide",
-    price: "$97",
+    price: "$127",
     image: "/shop-previews/playbooks/npa-playbook-botox-filler.png",
     peekItems: [
       "Ryan's word-for-word consultation opening script",
@@ -61,6 +61,22 @@ const PLAYBOOKS: PlaybookData[] = [
     ],
     outcome:
       "Build a digital product business that earns while you sleep.",
+  },
+  {
+    slug: "microblading-pmu-playbook",
+    title: "Microblading & PMU Playbook",
+    subtitle: "The Complete PMU Business System",
+    price: "$127",
+    image: "/shop-previews/playbooks/npa-playbook-microblading-pmu.png",
+    peekItems: [
+      "Consultation script — how to set expectations before you touch a brow",
+      "Contraindication screening that protects you legally",
+      "Pricing system with cost-per-service breakdown",
+      "Aftercare protocol that prevents callbacks and bad reviews",
+      "Touch-up management — when to charge, when to fix for free",
+    ],
+    outcome:
+      "Run your PMU business like a clinic, not a side hustle.",
   },
 ];
 

@@ -22,6 +22,7 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "injectors-playbook": { label: "Premium", color: "bg-amber-500/20 text-amber-300" },
   "new-injector-onboarding-kit": { label: "New", color: "bg-sky-500/20 text-sky-300" },
   "guidebook-category-strategy": { label: "Strategy", color: "bg-violet-500/20 text-violet-300" },
+  "microblading-pmu-playbook": { label: "Premium", color: "bg-amber-500/20 text-amber-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -36,6 +37,7 @@ const OUTCOME_MAP: Record<string, string> = {
   "injectors-playbook": "Ryan's exact consultation scripts, dosing protocols, and clinical systems — in your hands.",
   "new-injector-onboarding-kit": "Train your next injector in 30 days. Not 6 months of trial and error.",
   "guidebook-category-strategy": "Build a digital product business that earns while you sleep.",
+  "microblading-pmu-playbook": "Run your PMU business like a clinic, not a side hustle.",
 };
 
 const QUICK_CATEGORIES = [

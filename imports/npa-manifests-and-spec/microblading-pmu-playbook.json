@@ -1,0 +1,25 @@
+{
+  "productId": "microblading-pmu-playbook",
+  "displayName": "Microblading & PMU Business Playbook",
+  "description": "Complete operational system for microblading and permanent makeup providers — consultation scripts, contraindication screening, pricing systems, aftercare protocols, and touch-up management from practicing providers.",
+  "version": "1.0.0",
+  "priceUSD": 127,
+  "etsySku": "NPA-PB-004",
+  "category": "playbooks",
+  "targetBuyer": "PMU artists, microblading providers, brow technicians, aesthetic entrepreneurs",
+  "templates": [
+    {
+      "id": "microblading-pmu-playbook-main",
+      "name": "Microblading & PMU Business Playbook",
+      "description": "Consultation to touch-up — the complete PMU business system",
+      "canvaTemplateUrl": "/forms/NPA-Microblading-PMU-Playbook.html",
+      "_deliveryType": "html",
+      "format": "interactive",
+      "pages": 1,
+      "category": "playbook"
+    }
+  ],
+  "deliveryNote": "Interactive HTML playbook — open in any browser.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-01T23:00:00Z"
+}

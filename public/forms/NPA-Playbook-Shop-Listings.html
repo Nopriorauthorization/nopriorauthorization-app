@@ -1,0 +1,489 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{font-family:'Lato',sans-serif;max-width:900px;margin:0 auto;background:var(--color-background-primary)}
+.top-bar{background:#1A1A1A;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.top-bar .brand{font-weight:300;letter-spacing:.22em;font-size:13px;color:#fff;text-transform:uppercase}
+.top-bar .sub{font-size:10px;color:#666;letter-spacing:.05em}
+.title-band{background:#D4537E;padding:14px 28px;text-align:center}
+.title-band h1{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700}
+.title-band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:2px;letter-spacing:.1em;text-transform:uppercase}
+
+.filter-bar{padding:16px 28px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.filter-btn{font-size:12px;font-family:'Lato',sans-serif;padding:6px 14px;border-radius:20px;border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary);cursor:pointer;transition:all .15s}
+.filter-btn:hover{color:#D4537E;border-color:#D4537E}
+.filter-btn.act{background:#D4537E;border-color:#D4537E;color:#fff;font-weight:700}
+
+.listings{padding:20px 28px;display:flex;flex-direction:column;gap:20px}
+
+.listing-card{border:0.5px solid var(--color-border-tertiary);border-radius:12px;overflow:hidden;background:var(--color-background-primary)}
+.listing-card.bundle{border:2px solid #D4537E}
+
+.card-header{background:#1A1A1A;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.card-header-left{display:flex;align-items:center;gap:12px}
+.tier-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.tier-1{background:#D4537E}
+.tier-2{background:#fff}
+.tier-3{background:#639922}
+.bundle-dot{background:#FAC775}
+.card-title{font-family:'Playfair Display',serif;font-size:15px;color:#fff;font-weight:700;line-height:1.3}
+.card-price{font-family:'Playfair Display',serif;font-size:20px;color:#D4537E;font-weight:700;flex-shrink:0}
+
+.card-body{padding:18px 20px}
+
+.field-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:6px;margin-top:14px}
+.field-label:first-child{margin-top:0}
+
+.listing-title-box{background:var(--color-background-secondary);border-radius:6px;padding:10px 14px;font-size:13px;color:var(--color-text-primary);line-height:1.5;font-weight:700;position:relative}
+.listing-title-box .copy-btn{position:absolute;top:8px;right:10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#D4537E;color:#fff;border:none;border-radius:4px;padding:3px 8px;cursor:pointer;opacity:0;transition:opacity .15s}
+.listing-title-box:hover .copy-btn{opacity:1}
+
+.desc-box{background:var(--color-background-secondary);border-radius:6px;padding:12px 14px;font-size:13px;color:var(--color-text-secondary);line-height:1.7;white-space:pre-wrap;position:relative}
+.desc-box .copy-btn{position:absolute;top:8px;right:10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#D4537E;color:#fff;border:none;border-radius:4px;padding:3px 8px;cursor:pointer;opacity:0;transition:opacity .15s}
+.desc-box:hover .copy-btn{opacity:1}
+
+.tags-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-size:11px;background:#FBEAF0;color:#993556;padding:4px 10px;border-radius:20px;font-weight:700}
+
+.meta-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.meta-chip{font-size:11px;padding:4px 12px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.meta-chip strong{color:var(--color-text-primary)}
+
+.bundle-banner{background:#FBEAF0;padding:10px 20px;border-top:0.5px solid #F4C0D1;font-size:12px;color:#993556;font-weight:700;text-align:center;letter-spacing:.04em}
+
+.footer-bar{background:#1A1A1A;padding:12px 28px;text-align:center;margin-top:8px}
+.footer-bar p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+
+.copied-msg{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Lato',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.copied-msg.show{opacity:1}
+</style>
+
+<div class="wrap">
+<div class="top-bar">
+  <div><div class="brand">No Prior Authorization</div><div class="sub">by Hello Gorgeous Med Spa &nbsp;|&nbsp; Danielle &amp; Ryan Kent, FNP-BC</div></div>
+  <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.08em">Shop Listing Copy — All 7 Products</div>
+</div>
+<div class="title-band">
+  <h1>Playbook Shop Listings — Copy &amp; Paste Ready</h1>
+  <p>Titles &nbsp;·&nbsp; Descriptions &nbsp;·&nbsp; Tags &nbsp;·&nbsp; Pricing &nbsp;·&nbsp; All 7 products</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn act" onclick="filterCards('all',this)">All 7 products</button>
+  <button class="filter-btn" onclick="filterCards('tier1',this)">Tier 1 — Guidebooks</button>
+  <button class="filter-btn" onclick="filterCards('tier2',this)">Tier 2 — Playbooks</button>
+  <button class="filter-btn" onclick="filterCards('tier3',this)">Tier 3 — Onboarding</button>
+  <button class="filter-btn" onclick="filterCards('bundle',this)">Bundle</button>
+</div>
+
+<div class="listings" id="listings">
+
+<!-- LISTING 1 -->
+<div class="listing-card" data-tier="tier1">
+  <div class="card-header">
+    <div class="card-header-left"><div class="tier-dot tier-1"></div><div class="card-title">Aesthetic Provider Guidebook — 6 Clinical Modules</div></div>
+    <div class="card-price">$47</div>
+  </div>
+  <div class="card-body">
+    <div class="field-label">Etsy / Shop Title</div>
+    <div class="listing-title-box">Aesthetic Nurse Specialist Guidebook | Editable Canva Template | 6 Clinical Modules | Med Spa Provider Training Manual | Botox Filler Laser Skincare<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">Product Description</div>
+    <div class="desc-box">⬇️ INSTANT DOWNLOAD — The clinical reference guide every aesthetic provider needs.
+
+Created by Ryan Kent, FNP-BC and Danielle Kent, licensed esthetician — providers who perform these treatments daily at Hello Gorgeous Med Spa in Oswego, Illinois. This isn't a textbook repackaged in Canva. This is what we actually teach.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 6 COMPLETE CLINICAL MODULES:
+
+✅ The Aesthetic Consult — medical history, BDD screening, medications, Fitzpatrick typing
+✅ Dermal Fillers &amp; Volume Enhancers — anatomy, FDA indications, product selection, vascular occlusion response
+✅ Botulinum Toxin Type A — mechanism, dosing, reconstitution, FDA compounds
+✅ Lasers, Light &amp; Energy Devices — selective photothermolysis, device categories, patient selection, safety
+✅ Clinical Skincare — skin anatomy, retinoids, peeling agents, Fitzpatrick protocols
+✅ Sclerotherapy &amp; Telangiectasia — venous anatomy, sclerosing agents, treatment protocols
+
+Each module includes: clinical content, key concepts, and Test Your Knowledge questions.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📦 WHAT YOU GET:
+• Fully editable Canva template (free Canva account works)
+• Print-ready PDF
+• Test Your Knowledge quiz sections
+• Add your clinic name and logo
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+👩‍⚕️ PERFECT FOR:
+• Aesthetic nurses and NPs building their knowledge base
+• Med spa owners training new staff
+• Estheticians expanding into clinical services
+• PMU and advanced aesthetics providers
+
+Created by Danielle &amp; Ryan Kent, FNP-BC
+NO PRIOR AUTHORIZATION | by Hello Gorgeous Med Spa<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">13 Etsy Tags</div>
+    <div class="tags-wrap">
+      <span class="tag">aesthetic nurse guide</span><span class="tag">med spa training</span><span class="tag">injector training manual</span><span class="tag">botox filler guide</span><span class="tag">canva template provider</span><span class="tag">aesthetic provider education</span><span class="tag">nurse practitioner aesthetics</span><span class="tag">med spa staff training</span><span class="tag">clinical skincare guide</span><span class="tag">laser training manual</span><span class="tag">medspa guidebook</span><span class="tag">aesthetic training template</span><span class="tag">filler training resource</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-chip"><strong>Price:</strong> $47</div>
+      <div class="meta-chip"><strong>Tier:</strong> 1 — Guidebook</div>
+      <div class="meta-chip"><strong>Format:</strong> PDF + Canva</div>
+      <div class="meta-chip"><strong>Delivery:</strong> Instant download</div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTING 2 -->
+<div class="listing-card" data-tier="tier2">
+  <div class="card-header">
+    <div class="card-header-left"><div class="tier-dot tier-2"></div><div class="card-title">Botox &amp; Filler Practice Playbook</div></div>
+    <div class="card-price">$127</div>
+  </div>
+  <div class="card-body">
+    <div class="field-label">Etsy / Shop Title</div>
+    <div class="listing-title-box">Botox &amp; Filler Practice Playbook | Injector Consultation Scripts | Dosing Protocols | Complication Management | Med Spa Operations Guide | FNP-BC Created<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">Product Description</div>
+    <div class="desc-box">⬇️ INSTANT DOWNLOAD — The operational playbook ChatGPT cannot write.
+
+This is Ryan Kent, FNP-BC's actual practice system — the consultation scripts, dosing philosophy, complication protocols, and 2-week follow-up system he uses every single day at Hello Gorgeous Med Spa. Not theory. Not a textbook. The real thing.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 6 OPERATIONAL MODULES:
+
+✅ The Botox Consultation — Ryan's word-for-word opening script, facial assessment protocol, expectation-setting, contraindication screening
+✅ Ryan's Dosing System — conservative-first philosophy, muscle mass assessment, full dosing table by area and gender
+✅ Injection Day Protocol — pre-treatment checklist, technique non-negotiables, checkout scripts
+✅ Complication Management — brow ptosis, asymmetry, bruising, rare emergencies — what to do and what to say
+✅ The 2-Week Follow-Up System — the most underused retention tool in aesthetics (and the #1 reason patients panic unnecessarily)
+✅ Documentation &amp; Charting — required records, lot number logging, HIPAA reminders, 90-day retention trigger system
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+🔑 WHAT MAKES THIS DIFFERENT:
+This is not content that can be generated by AI. It comes from years of daily clinical practice. The 2-week follow-up system alone has prevented more negative reviews than any other single protocol we teach.
+
+Created by Danielle &amp; Ryan Kent, FNP-BC
+NO PRIOR AUTHORIZATION | by Hello Gorgeous Med Spa<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">13 Etsy Tags</div>
+    <div class="tags-wrap">
+      <span class="tag">botox injector playbook</span><span class="tag">filler consultation scripts</span><span class="tag">injector protocols</span><span class="tag">med spa operations</span><span class="tag">botox dosing guide</span><span class="tag">aesthetic provider scripts</span><span class="tag">complication management</span><span class="tag">nurse injector training</span><span class="tag">medspa business system</span><span class="tag">botox practice guide</span><span class="tag">filler training resource</span><span class="tag">aesthetic business playbook</span><span class="tag">injector business guide</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-chip"><strong>Price:</strong> $127</div>
+      <div class="meta-chip"><strong>Tier:</strong> 2 — Playbook</div>
+      <div class="meta-chip"><strong>Format:</strong> PDF + Canva</div>
+      <div class="meta-chip"><strong>Delivery:</strong> Instant download</div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTING 3 -->
+<div class="listing-card" data-tier="tier2">
+  <div class="card-header">
+    <div class="card-header-left"><div class="tier-dot tier-2"></div><div class="card-title">GLP-1 Weight Loss Program Playbook</div></div>
+    <div class="card-price">$127</div>
+  </div>
+  <div class="card-body">
+    <div class="field-label">Etsy / Shop Title</div>
+    <div class="listing-title-box">GLP-1 Weight Loss Program Playbook | Semaglutide Tirzepatide Protocols | Patient Consultation Scripts | Med Spa Operations Guide | NP Provider Created<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">Product Description</div>
+    <div class="desc-box">⬇️ INSTANT DOWNLOAD — Launch or level up your GLP-1 program with Ryan Kent, FNP-BC's complete operational system.
+
+Everything from candidate screening to monthly follow-up to membership revenue modeling — built by a practicing FNP-BC who runs a GLP-1 program daily.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 6 OPERATIONAL MODULES:
+
+✅ Candidate Screening — clinical criteria, absolute contraindications, baseline labs, empathy-first opening scripts
+✅ Medications &amp; Titration — semaglutide, tirzepatide, Wegovy, Zepbound — dosing schedules, brand comparisons, titration philosophy
+✅ The First Visit Protocol — 60-minute agenda, injection training, protein conversation, expectation scripts
+✅ Side Effect Management — nausea, constipation, PAH, "GLP-1 face" — what to do and what to say
+✅ Monthly Follow-Up System — measurement tracking, dose decisions, the celebration script that builds loyalty
+✅ Retention &amp; Revenue — membership tiers, cross-sell strategy, the math on a full GLP-1 book
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 INCLUDES: The natural filler cross-sell conversation for GLP-1 face volume loss — a genuine patient care opportunity that also grows your aesthetic revenue.
+
+Created by Danielle &amp; Ryan Kent, FNP-BC
+NO PRIOR AUTHORIZATION | by Hello Gorgeous Med Spa<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">13 Etsy Tags</div>
+    <div class="tags-wrap">
+      <span class="tag">glp1 program playbook</span><span class="tag">semaglutide protocol</span><span class="tag">weight loss med spa</span><span class="tag">tirzepatide guide</span><span class="tag">nurse practitioner weight loss</span><span class="tag">glp1 consultation scripts</span><span class="tag">med spa weight loss program</span><span class="tag">ozempic provider guide</span><span class="tag">wegovy program template</span><span class="tag">weight loss clinic system</span><span class="tag">aesthetic weight loss</span><span class="tag">medspa glp1 operations</span><span class="tag">weight loss provider playbook</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-chip"><strong>Price:</strong> $127</div>
+      <div class="meta-chip"><strong>Tier:</strong> 2 — Playbook</div>
+      <div class="meta-chip"><strong>Format:</strong> PDF + Canva</div>
+      <div class="meta-chip"><strong>Delivery:</strong> Instant download</div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTING 4 -->
+<div class="listing-card" data-tier="tier2">
+  <div class="card-header">
+    <div class="card-header-left"><div class="tier-dot tier-2"></div><div class="card-title">IV Therapy Practice Playbook</div></div>
+    <div class="card-price">$97</div>
+  </div>
+  <div class="card-body">
+    <div class="field-label">Etsy / Shop Title</div>
+    <div class="listing-title-box">IV Therapy Practice Playbook | Drip Menu Protocols | Patient Screening Scripts | Myers Cocktail NAD+ | Med Spa IV Program Operations | FNP-BC Created<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">Product Description</div>
+    <div class="desc-box">⬇️ INSTANT DOWNLOAD — Everything you need to run a profitable, safe IV therapy program — from menu design to membership model.
+
+Built by Ryan Kent, FNP-BC from the actual IV therapy program at Hello Gorgeous Med Spa. Includes drip formulas, screening protocols, complication management, and the upsell scripts that increase average ticket value.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 6 OPERATIONAL MODULES:
+
+✅ Patient Screening — contraindications, intake scripts, clinical history framework
+✅ The Drip Menu — 6 core formulas with pricing, IM add-ons, upsell scripts
+✅ Infusion Protocol — step-by-step from IV start to discharge, monitoring standards
+✅ Complication Management — infiltration, vasovagal, anaphylaxis, NAD+ flush response
+✅ Add-Ons &amp; IM Shots — glutathione IV push, B12, MIC/Lipo-B, Toradol, Zofran protocols
+✅ Building the Program — 3-tier membership model, event IV marketing, rebooking scripts
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 INCLUDES: Full drip menu with price ranges, IM injection protocols, and the membership math that shows how 30 members = $4,470/month in predictable floor revenue.
+
+Created by Danielle &amp; Ryan Kent, FNP-BC
+NO PRIOR AUTHORIZATION | by Hello Gorgeous Med Spa<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">13 Etsy Tags</div>
+    <div class="tags-wrap">
+      <span class="tag">iv therapy playbook</span><span class="tag">iv drip menu template</span><span class="tag">myers cocktail protocol</span><span class="tag">iv therapy med spa</span><span class="tag">nad+ iv therapy guide</span><span class="tag">iv infusion protocols</span><span class="tag">nurse practitioner iv therapy</span><span class="tag">iv therapy business</span><span class="tag">drip bar operations</span><span class="tag">iv therapy membership</span><span class="tag">medspa iv program</span><span class="tag">vitamin drip protocols</span><span class="tag">iv therapy scripts</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-chip"><strong>Price:</strong> $97</div>
+      <div class="meta-chip"><strong>Tier:</strong> 2 — Playbook</div>
+      <div class="meta-chip"><strong>Format:</strong> PDF + Canva</div>
+      <div class="meta-chip"><strong>Delivery:</strong> Instant download</div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTING 5 -->
+<div class="listing-card" data-tier="tier2">
+  <div class="card-header">
+    <div class="card-header-left"><div class="tier-dot tier-2"></div><div class="card-title">Clinical Skincare &amp; Esthetics Playbook</div></div>
+    <div class="card-price">$97</div>
+  </div>
+  <div class="card-body">
+    <div class="field-label">Etsy / Shop Title</div>
+    <div class="listing-title-box">Clinical Skincare Esthetics Playbook | Chemical Peel Protocols | Fitzpatrick Typing Guide | Facial Treatment System | Esthetician Operations | Med Spa Skincare<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">Product Description</div>
+    <div class="desc-box">⬇️ INSTANT DOWNLOAD — The clinical esthetician's complete operational system. Built by Danielle Kent, licensed esthetician and founder of Hello Gorgeous Med Spa.
+
+The #1 truth in clinical esthetics: Fitzpatrick typing is everything. Get it wrong and you hurt someone. This playbook teaches you to get it right — every single time.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 6 OPERATIONAL MODULES:
+
+✅ The Clinical Skin Assessment — Fitzpatrick typing table, intake questions that change your treatment plan, contraindication screening
+✅ Chemical Peels — the Danielle Standard: less is more, always. Peel selection, pre-prep protocols, application steps, post-care instructions
+✅ Facial Protocols — the Hello Gorgeous signature facial, add-on treatment scripts, how to offer one add-on without it feeling like a sales pitch
+✅ Home Care Systems — the 3-product rule for new clients, the home care framing script, how to make retail feel like care
+✅ Complications — PIH prevention and treatment, over-exfoliation recovery, purging vs. reaction
+✅ Retail &amp; Retention — membership tiers, series selling, the 48-hour follow-up text that reduces no-shows
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+🧴 INCLUDES: Full Fitzpatrick phototyping reference, chemical peel selection guide, and complete pre/post care instruction templates ready to hand to clients.
+
+Created by Danielle &amp; Ryan Kent, FNP-BC
+NO PRIOR AUTHORIZATION | by Hello Gorgeous Med Spa<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">13 Etsy Tags</div>
+    <div class="tags-wrap">
+      <span class="tag">esthetician playbook</span><span class="tag">chemical peel protocols</span><span class="tag">fitzpatrick typing guide</span><span class="tag">clinical skincare system</span><span class="tag">facial treatment protocols</span><span class="tag">med spa esthetics</span><span class="tag">esthetician training guide</span><span class="tag">skin assessment template</span><span class="tag">chemical peel guide</span><span class="tag">esthetics business system</span><span class="tag">skincare retail scripts</span><span class="tag">esthetician operations</span><span class="tag">facial protocol template</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-chip"><strong>Price:</strong> $97</div>
+      <div class="meta-chip"><strong>Tier:</strong> 2 — Playbook</div>
+      <div class="meta-chip"><strong>Format:</strong> PDF + Canva</div>
+      <div class="meta-chip"><strong>Delivery:</strong> Instant download</div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTING 6 -->
+<div class="listing-card" data-tier="tier2">
+  <div class="card-header">
+    <div class="card-header-left"><div class="tier-dot tier-2"></div><div class="card-title">Microblading &amp; PMU Artist Playbook</div></div>
+    <div class="card-price">$97</div>
+  </div>
+  <div class="card-body">
+    <div class="field-label">Etsy / Shop Title</div>
+    <div class="listing-title-box">Microblading PMU Artist Playbook | Consultation Scripts | Healing Timeline System | Brow Mapping Guide | Color Theory | Touch-Up Retention System | Artist Business<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">Product Description</div>
+    <div class="desc-box">⬇️ INSTANT DOWNLOAD — The PMU retention system that most artists learn the hard way. Built so you don't have to.
+
+The #1 reason PMU artists lose clients: they don't explain the healing process honestly enough upfront. This playbook fixes that — with exact scripts for every phase of the client journey, from consultation to annual refresh.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 6 OPERATIONAL MODULES:
+
+✅ The Consultation — the healing education script every new client hears, contraindication screening, style consultation with inspo photo system
+✅ Brow Mapping &amp; Design — golden ratio mapping method, face shape guide, the symmetry conversation clients need to hear
+✅ Techniques &amp; Color Theory — microblading vs. powder vs. combo vs. nano, color selection by skin undertone, the healed result truth
+✅ The Healing Timeline — day-by-day reference through the ghost phase, aftercare instructions, what to say when clients panic
+✅ The Touch-Up System — the 2-session model, how to book the touch-up at the initial appointment, the annual refresh rebooking script
+✅ PMU Menu &amp; Revenue — full service pricing guide, the retention math on a full book, natural cross-sell services
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+🖊️ INCLUDES: The ghost phase education script — the single piece of client communication that prevents the majority of negative PMU reviews.
+
+Created by Danielle &amp; Ryan Kent, FNP-BC
+NO PRIOR AUTHORIZATION | by Hello Gorgeous Med Spa<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">13 Etsy Tags</div>
+    <div class="tags-wrap">
+      <span class="tag">microblading artist playbook</span><span class="tag">pmu business system</span><span class="tag">brow mapping guide</span><span class="tag">microblading consultation scripts</span><span class="tag">pmu healing timeline</span><span class="tag">permanent makeup artist</span><span class="tag">microblading retention system</span><span class="tag">brow artist training</span><span class="tag">pmu color theory</span><span class="tag">microblading touch up system</span><span class="tag">permanent makeup guide</span><span class="tag">pmu business playbook</span><span class="tag">brow lamination ombre</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-chip"><strong>Price:</strong> $97</div>
+      <div class="meta-chip"><strong>Tier:</strong> 2 — Playbook</div>
+      <div class="meta-chip"><strong>Format:</strong> PDF + Canva</div>
+      <div class="meta-chip"><strong>Delivery:</strong> Instant download</div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTING 7 -->
+<div class="listing-card" data-tier="tier2">
+  <div class="card-header">
+    <div class="card-header-left"><div class="tier-dot tier-2"></div><div class="card-title">Advanced Aesthetics Playbook</div></div>
+    <div class="card-price">$127</div>
+  </div>
+  <div class="card-body">
+    <div class="field-label">Etsy / Shop Title</div>
+    <div class="listing-title-box">Advanced Aesthetics Playbook | Microneedling RF Body Contouring Laser | Treatment Series Protocols | Patient Expectation Scripts | Med Spa Operations | FNP-BC Created<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">Product Description</div>
+    <div class="desc-box">⬇️ INSTANT DOWNLOAD — The advanced aesthetics operations guide for providers who want to stop losing clients after session one.
+
+The most common mistake in advanced aesthetics: not managing session expectations upfront. This playbook gives you the exact scripts that keep clients committed to their full treatment series — and the results that come with it.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 6 OPERATIONAL MODULES:
+
+✅ Microneedling — mechanism education scripts, depth/settings guide by concern, full treatment protocol, post-care instructions
+✅ RF Microneedling — vs. standard comparison, when to recommend the upgrade, parameter guidance, precautions
+✅ Body Contouring — cryolipolysis, RF body, HIFU, EMS — modality selection guide, the PAH complication disclosure, fat vs. tightening conversation
+✅ Laser Treatments — IPL photorejuvenation, laser hair removal, Fitzpatrick-matched settings, the darkening response script
+✅ Expectations &amp; Series Selling — the universal expectations script, session number guide for every treatment, the before/after photo retention moment
+✅ Advanced Aesthetics Menu &amp; Revenue — full pricing guide, series discount model, cross-sell map
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 INCLUDES: The progress photo moment script — the single most powerful retention tool in advanced aesthetics, and the one most providers never use intentionally.
+
+Created by Danielle &amp; Ryan Kent, FNP-BC
+NO PRIOR AUTHORIZATION | by Hello Gorgeous Med Spa<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">13 Etsy Tags</div>
+    <div class="tags-wrap">
+      <span class="tag">microneedling playbook</span><span class="tag">body contouring protocols</span><span class="tag">laser treatment guide</span><span class="tag">rf microneedling system</span><span class="tag">advanced aesthetics training</span><span class="tag">cryolipolysis protocols</span><span class="tag">med spa advanced services</span><span class="tag">ipl treatment guide</span><span class="tag">laser hair removal protocols</span><span class="tag">aesthetic series selling</span><span class="tag">microneedling consultation</span><span class="tag">body sculpting playbook</span><span class="tag">medspa treatment protocols</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-chip"><strong>Price:</strong> $127</div>
+      <div class="meta-chip"><strong>Tier:</strong> 2 — Playbook</div>
+      <div class="meta-chip"><strong>Format:</strong> PDF + Canva</div>
+      <div class="meta-chip"><strong>Delivery:</strong> Instant download</div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTING 8 — BUNDLE -->
+<div class="listing-card bundle" data-tier="bundle">
+  <div class="bundle-banner">★ RECOMMENDED — Highest conversion product in the catalog ★</div>
+  <div class="card-header">
+    <div class="card-header-left"><div class="tier-dot bundle-dot"></div><div class="card-title">Complete Aesthetic Provider Library — All 7 Products</div></div>
+    <div class="card-price">$397</div>
+  </div>
+  <div class="card-body">
+    <div class="field-label">Etsy / Shop Title</div>
+    <div class="listing-title-box">Complete Aesthetic Provider Library | 7 Playbooks + Guidebook | Botox Filler GLP-1 IV Therapy Skincare PMU Microneedling | Med Spa Operations Bundle | FNP-BC<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">Product Description</div>
+    <div class="desc-box">⬇️ INSTANT DOWNLOAD — Every operational system, consultation script, clinical protocol, and retention tool we use at Hello Gorgeous Med Spa. In one bundle.
+
+Built by Ryan Kent, FNP-BC and Danielle Kent — real providers who built a real practice. This is not content created for content's sake. This is the playbook we wish we'd had when we started.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📦 EVERYTHING INCLUDED ($722 value):
+
+✅ Aesthetic Provider Guidebook — 6 clinical modules, quizzes, Fitzpatrick reference ($47)
+✅ Botox &amp; Filler Practice Playbook — consultation scripts, dosing system, complication protocols ($127)
+✅ GLP-1 Weight Loss Program Playbook — candidate screening, titration, side effect management, membership model ($127)
+✅ IV Therapy Practice Playbook — drip menu, infusion protocols, add-on scripts, program building ($97)
+✅ Clinical Skincare &amp; Esthetics Playbook — chemical peel system, Fitzpatrick protocols, retail scripts ($97)
+✅ Microblading &amp; PMU Playbook — healing timeline scripts, brow mapping, color theory, touch-up system ($97)
+✅ Advanced Aesthetics Playbook — microneedling, body contouring, laser, series selling system ($127)
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+💰 TOTAL VALUE: $722 &nbsp;|&nbsp; YOUR PRICE: $397 (save $325)
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+🔑 WHO THIS IS FOR:
+• Med spa owners who want every service line running with a real system
+• New injectors or providers building their practice from the ground up
+• Experienced providers who are tired of winging the business side
+• Anyone who wants to stop losing clients after session one
+
+This is the complete operating system for an aesthetic practice. Not a template pack. Not a PDF of generic tips. The actual playbook.
+
+Created by Danielle &amp; Ryan Kent, FNP-BC
+NO PRIOR AUTHORIZATION | nopriorauthorization.com<button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+    <div class="field-label">13 Etsy Tags</div>
+    <div class="tags-wrap">
+      <span class="tag">med spa operations bundle</span><span class="tag">aesthetic provider library</span><span class="tag">medspa business system</span><span class="tag">botox filler glp1 bundle</span><span class="tag">aesthetic practice playbook</span><span class="tag">injector business bundle</span><span class="tag">med spa training bundle</span><span class="tag">complete aesthetics guide</span><span class="tag">aesthetic nurse bundle</span><span class="tag">medspa startup bundle</span><span class="tag">iv therapy skincare bundle</span><span class="tag">aesthetic operations system</span><span class="tag">provider education bundle</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-chip"><strong>Price:</strong> $397</div>
+      <div class="meta-chip"><strong>Regular value:</strong> $722</div>
+      <div class="meta-chip"><strong>Savings:</strong> $325 (45% off)</div>
+      <div class="meta-chip"><strong>Delivery:</strong> Instant download</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer-bar">
+  <p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; All listings ready to copy and paste</p>
+</div>
+</div>
+
+<div class="copied-msg" id="copiedMsg">Copied to clipboard</div>
+
+<script>
+function filterCards(tier, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('act'));
+  btn.classList.add('act');
+  document.querySelectorAll('.listing-card').forEach(card=>{
+    if(tier==='all') card.style.display='';
+    else card.style.display=card.dataset.tier===tier?'':'none';
+  });
+}
+
+function copyText(btn){
+  const box=btn.parentElement;
+  const text=box.innerText.replace('Copy','').trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const msg=document.getElementById('copiedMsg');
+    msg.classList.add('show');
+    setTimeout(()=>msg.classList.remove('show'),2000);
+  });
+}
+</script>

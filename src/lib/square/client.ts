@@ -1,25 +1,15 @@
-import { Client, Environment } from "square";
 import crypto from "crypto";
 
-let _client: Client | null = null;
+const SQUARE_BASE = "https://connect.squareup.com/v2";
 
-export function getSquareClient(): Client {
-  if (_client) return _client;
-
-  const accessToken = process.env.SQUARE_ACCESS_TOKEN?.trim();
-  if (!accessToken) {
+function getAccessToken(): string {
+  const token = process.env.SQUARE_ACCESS_TOKEN?.trim();
+  if (!token) {
     throw new Error(
       "SQUARE_ACCESS_TOKEN not set. Add your production access token to .env.local",
     );
   }
-
-  const env =
-    process.env.SQUARE_ENVIRONMENT === "sandbox"
-      ? Environment.Sandbox
-      : Environment.Production;
-
-  _client = new Client({ accessToken, environment: env });
-  return _client;
+  return token;
 }
 
 function getLocationId(): string {
@@ -32,6 +22,14 @@ function getLocationId(): string {
   return id;
 }
 
+function headers(): Record<string, string> {
+  return {
+    Authorization: `Bearer ${getAccessToken()}`,
+    "Content-Type": "application/json",
+    "Square-Version": "2024-01-18",
+  };
+}
+
 export type CheckoutProduct = {
   slug: string;
   title: string;
@@ -40,41 +38,51 @@ export type CheckoutProduct = {
 };
 
 /**
- * Create a Square hosted checkout payment link.
- * Returns the checkout URL for redirect.
+ * Create a Square hosted checkout payment link via REST API.
  */
 export async function createCheckoutLink(
   product: CheckoutProduct,
   redirectUrl: string,
 ): Promise<{ url: string; paymentLinkId: string }> {
-  const client = getSquareClient();
   const locationId = getLocationId();
 
-  const response = await client.checkoutApi.createPaymentLink({
-    idempotencyKey: crypto.randomUUID(),
-    quickPay: {
-      name: product.title,
-      priceMoney: {
-        amount: BigInt(product.priceCents),
-        currency: "USD",
+  const res = await fetch(`${SQUARE_BASE}/online-checkout/payment-links`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify({
+      idempotency_key: crypto.randomUUID(),
+      quick_pay: {
+        name: product.title,
+        price_money: {
+          amount: product.priceCents,
+          currency: "USD",
+        },
+        location_id: locationId,
       },
-      locationId,
-    },
-    checkoutOptions: {
-      redirectUrl,
-      askForShippingAddress: false,
-    },
-    paymentNote: `npa:${product.slug}`,
+      checkout_options: {
+        redirect_url: redirectUrl,
+      },
+      payment_note: `npa:${product.slug}`,
+    }),
   });
 
-  const link = response.result.paymentLink;
-  if (!link?.url || !link.id) {
-    throw new Error(
-      `Square createPaymentLink failed: ${JSON.stringify(response.result.errors || "no link returned")}`,
-    );
+  const json = (await res.json()) as {
+    payment_link?: { url?: string; id?: string };
+    errors?: Array<{ code?: string; detail?: string }>;
+  };
+
+  if (!res.ok || !json.payment_link?.url) {
+    const errMsg = json.errors
+      ? json.errors.map((e) => `${e.code}: ${e.detail}`).join("; ")
+      : `HTTP ${res.status}`;
+    console.error("[square] createCheckoutLink failed:", errMsg);
+    throw new Error(`Square checkout failed: ${errMsg}`);
   }
 
-  return { url: link.url, paymentLinkId: link.id };
+  return {
+    url: json.payment_link.url,
+    paymentLinkId: json.payment_link.id || "",
+  };
 }
 
 /**

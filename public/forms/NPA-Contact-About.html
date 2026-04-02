@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;background:#f5f3f1;color:#1A1A1A}
+.wrap{max-width:900px;margin:0 auto;background:#fff}
+.page-nav{background:#1A1A1A;padding:14px 32px;display:flex;gap:0}
+.pn{font-size:12px;font-weight:700;color:rgba(255,255,255,.4);padding:8px 18px;cursor:pointer;border:none;background:none;font-family:'Lato',sans-serif;letter-spacing:.04em;border-bottom:2px solid transparent;transition:all .15s}
+.pn:hover{color:#fff}
+.pn.act{color:#D4537E;border-bottom-color:#D4537E}
+.panel{display:none;animation:fadeIn .3s ease}
+.panel.show{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== CONTACT ===== */
+.contact-hero{background:#1A1A1A;padding:56px 40px;position:relative;overflow:hidden}
+.contact-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(212,83,126,0.15) 0%,transparent 60%)}
+.ch-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:12px;position:relative}
+.ch-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:10px;position:relative}
+.ch-title em{font-style:italic;color:#D4537E}
+.ch-sub{font-size:14px;color:rgba(255,255,255,.55);max-width:500px;line-height:1.8;position:relative}
+
+.contact-body{display:grid;grid-template-columns:1.4fr 1fr;gap:0}
+
+.contact-form-side{padding:40px}
+.form-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:20px;display:block}
+.form-group{margin-bottom:16px}
+.form-group label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#888;display:block;margin-bottom:6px}
+.form-input{width:100%;background:#f5f3f1;border:1px solid #e8e4e0;border-radius:7px;padding:12px 14px;font-family:'Lato',sans-serif;font-size:14px;color:#1A1A1A;transition:border .15s;outline:none}
+.form-input:focus{border-color:#D4537E;background:#fff}
+.form-textarea{width:100%;background:#f5f3f1;border:1px solid #e8e4e0;border-radius:7px;padding:12px 14px;font-family:'Lato',sans-serif;font-size:14px;color:#1A1A1A;resize:vertical;min-height:130px;transition:border .15s;outline:none}
+.form-textarea:focus{border-color:#D4537E;background:#fff}
+.form-select{width:100%;background:#f5f3f1;border:1px solid #e8e4e0;border-radius:7px;padding:12px 14px;font-family:'Lato',sans-serif;font-size:14px;color:#1A1A1A;outline:none;cursor:pointer}
+.submit-btn{width:100%;background:#D4537E;color:#fff;font-family:'Lato',sans-serif;font-size:14px;font-weight:700;padding:14px;border-radius:7px;border:none;cursor:pointer;letter-spacing:.05em;margin-top:4px;transition:all .2s}
+.submit-btn:hover{opacity:.88}
+
+.contact-right-side{background:#FBEAF0;padding:40px;display:flex;flex-direction:column;gap:28px}
+.cr-intro h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:8px;line-height:1.3}
+.cr-intro p{font-size:13px;color:#72243E;line-height:1.8}
+
+.reach-items{display:flex;flex-direction:column;gap:14px}
+.reach-item{display:flex;gap:14px;align-items:flex-start}
+.ri-icon{width:40px;height:40px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ri-text h4{font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:2px}
+.ri-text p{font-size:12px;color:#993556;line-height:1.5}
+
+.response-note{background:#fff;border-radius:10px;padding:16px;border-left:3px solid #D4537E}
+.response-note p{font-size:12px;color:#72243E;line-height:1.7}
+.response-note strong{font-weight:700;color:#993556}
+
+.danielle-note{display:flex;gap:12px;align-items:flex-start;padding-top:20px;border-top:1px solid rgba(212,83,126,.2)}
+.dn-avatar{width:44px;height:44px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.dn-text h4{font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:3px}
+.dn-text p{font-size:12px;color:#72243E;line-height:1.6;font-style:italic}
+
+/* ===== ABOUT ===== */
+.about-hero{background:#1A1A1A;padding:64px 40px;position:relative;overflow:hidden}
+.about-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(212,83,126,0.12) 0%,transparent 60%)}
+.about-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#D4537E,transparent)}
+.ah-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:14px;position:relative}
+.ah-title{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px;position:relative}
+.ah-title em{font-style:italic;color:#D4537E}
+.ah-quote{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,.6);max-width:560px;line-height:1.6;position:relative;padding-left:20px;border-left:2px solid #D4537E}
+
+.about-story{padding:48px 40px;background:#fff}
+.story-block{max-width:680px;margin:0 auto}
+.story-block p{font-size:16px;color:#444;line-height:2;margin-bottom:24px}
+.story-block p strong{color:#1A1A1A;font-weight:700}
+.story-block p em{color:#D4537E;font-style:normal;font-weight:700}
+.story-pull{background:#FBEAF0;border-radius:12px;padding:28px 32px;margin:32px 0;border-left:3px solid #D4537E}
+.story-pull p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:#72243E;line-height:1.6;margin:0}
+.story-credentials{background:#1A1A1A;border-radius:12px;padding:28px 32px;margin:32px 0}
+.sc-title{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:18px}
+.sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.sc-item{display:flex;gap:12px;align-items:flex-start}
+.sc-dot{width:8px;height:8px;border-radius:50%;background:#D4537E;flex-shrink:0;margin-top:5px}
+.sc-text h4{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px}
+.sc-text p{font-size:12px;color:#888;line-height:1.5}
+.ryan-block{background:#f5f3f1;border-radius:12px;padding:28px 32px;margin:32px 0;display:flex;gap:20px;align-items:flex-start}
+.ryan-icon{width:48px;height:48px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ryan-content h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1A1A1A;margin-bottom:4px}
+.ryan-content .ryan-title{font-size:11px;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.ryan-content p{font-size:13px;color:#555;line-height:1.7}
+.about-mission{background:#D4537E;padding:48px 40px;text-align:center}
+.am-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:12px}
+.am-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px}
+.am-sub{font-size:15px;color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 28px;line-height:1.8}
+.am-cta{background:#fff;color:#D4537E;font-family:'Lato',sans-serif;font-size:14px;font-weight:700;padding:14px 32px;border-radius:7px;border:none;cursor:pointer;letter-spacing:.05em;margin-right:10px;transition:opacity .2s}
+.am-cta:hover{opacity:.9}
+.am-cta2{background:transparent;color:#fff;font-family:'Lato',sans-serif;font-size:14px;font-weight:400;padding:14px 32px;border-radius:7px;border:1px solid rgba(255,255,255,.4);cursor:pointer;transition:all .2s}
+.am-cta2:hover{border-color:#fff}
+.footer-bar{background:#1A1A1A;padding:16px 40px;display:flex;align-items:center;justify-content:space-between}
+.footer-bar p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.footer-bar strong{color:#D4537E}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="page-nav">
+  <button class="pn act" onclick="show('contact')">📬 Contact Section</button>
+  <button class="pn" onclick="show('about')">👩‍⚕️ About Page</button>
+</div>
+
+<!-- CONTACT -->
+<div class="panel show" id="contact">
+  <div class="contact-hero">
+    <div class="ch-eyebrow">No Prior Authorization &nbsp;·&nbsp; Get in Touch</div>
+    <div class="ch-title">Let's talk about<br><em>your practice.</em></div>
+    <div class="ch-sub">Whether you have a question about a product, want to explore Pro Membership, or just want to talk through where you're stuck — we're here. Real answers from someone who actually runs a med spa.</div>
+  </div>
+
+  <div class="contact-body">
+    <div class="contact-form-side">
+      <span class="form-label">Send us a message</span>
+      <div class="form-group">
+        <label>Your name</label>
+        <input class="form-input" type="text" placeholder="Dr. Sarah Johnson">
+      </div>
+      <div class="form-group">
+        <label>Your email</label>
+        <input class="form-input" type="email" placeholder="sarah@yourmedspa.com">
+      </div>
+      <div class="form-group">
+        <label>Your practice</label>
+        <input class="form-input" type="text" placeholder="Glow Med Spa — Austin, TX">
+      </div>
+      <div class="form-group">
+        <label>What can we help with?</label>
+        <select class="form-select">
+          <option value="">Select a topic...</option>
+          <option>Question about a product</option>
+          <option>Pro Membership inquiry</option>
+          <option>I'm not sure where to start</option>
+          <option>Something isn't working</option>
+          <option>Partnership or collaboration</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell us more</label>
+        <textarea class="form-textarea" placeholder="What's going on in your practice? What are you trying to figure out? The more context the better — we give real answers, not canned responses."></textarea>
+      </div>
+      <button class="submit-btn" onclick="this.textContent='Message sent ✓';this.style.background='#639922'">Send Message →</button>
+    </div>
+
+    <div class="contact-right-side">
+      <div class="cr-intro">
+        <h3>We read every message personally.</h3>
+        <p>This isn't a support ticket queue. When you reach out to NPA, Danielle reads it. You get a real answer from someone who has been exactly where you are.</p>
+      </div>
+
+      <div class="reach-items">
+        <div class="reach-item">
+          <div class="ri-icon">📧</div>
+          <div class="ri-text">
+            <h4>Email us directly</h4>
+            <p>hello@nopriorauthorization.com</p>
+          </div>
+        </div>
+        <div class="reach-item">
+          <div class="ri-icon">📱</div>
+          <div class="ri-text">
+            <h4>Instagram DM</h4>
+            <p>@nopriorauthorization — fastest response</p>
+          </div>
+        </div>
+        <div class="reach-item">
+          <div class="ri-icon">👥</div>
+          <div class="ri-text">
+            <h4>Find us in the groups</h4>
+            <p>Medical Spa Owners &amp; Professionals — look for Danielle Alcala</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-note">
+        <p><strong>Response time:</strong> Within 24 hours, Monday through Friday. If you send a DM on Instagram you'll usually hear back same day.</p>
+      </div>
+
+      <div class="danielle-note">
+        <div class="dn-avatar">👩‍⚕️</div>
+        <div class="dn-text">
+          <h4>Danielle Alcala — Founder</h4>
+          <p>"I answer every message myself. If you're stuck, tell me where — I've probably been there too."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <p>No Prior Authorization &nbsp;·&nbsp; <strong>Danielle Alcala</strong> &nbsp;·&nbsp; nopriorauthorization.com</p>
+    <p>Built inside Hello Gorgeous Med Spa &nbsp;·&nbsp; Oswego, IL</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="panel" id="about">
+  <div class="about-hero">
+    <div class="ah-eyebrow">About Danielle Alcala &nbsp;·&nbsp; No Prior Authorization</div>
+    <div class="ah-title">I built the playbook<br>nobody gave <em>me.</em></div>
+    <div class="ah-quote">"The business side of aesthetics doesn't come with instructions. I wrote mine the hard way — and then I decided nobody else should have to."</div>
+  </div>
+
+  <div class="about-story">
+    <div class="story-block">
+      <p>I didn't grow up knowing I'd own a med spa. I grew up knowing I wanted to help people feel better about themselves — and that I wasn't afraid of hard work.</p>
+      <p>I became a <strong>licensed esthetician</strong> and spent years in the treatment room, learning the craft from the inside out. I saw what worked for patients. I saw what didn't. And I saw how much the business side — the systems, the paperwork, the Google presence, the patient retention, the staff training — was completely invisible in every licensing program I'd ever been through.</p>
+      <p>Nobody teaches you how to build a med spa. They teach you how to perform treatments. The rest, you figure out by <em>making expensive mistakes.</em></p>
+
+      <div class="story-pull">
+        <p>"I opened Hello Gorgeous Med Spa in Oswego, Illinois and spent the first two years building what I wish had existed when I started — the systems, the forms, the patient communication, the Google strategy, the content calendar. All of it."</p>
+      </div>
+
+      <p>Meanwhile, I kept going to school. <strong>I'm currently in nursing school</strong> — because I believe the best aesthetic providers understand both the business and the clinical side deeply. The combination of real clinical knowledge and real operational experience is exactly what NPA is built on.</p>
+      <p>I started No Prior Authorization because I kept seeing the same thing in every Facebook group, every industry conference, every DM from a new injector: <em>talented, licensed, hardworking providers who had no idea how to run the business side of their practice.</em></p>
+      <p>Not because they weren't smart. Because nobody built them a real system. So I built one.</p>
+      <p><strong>Everything in NPA runs inside Hello Gorgeous first.</strong> If it doesn't work in my real practice with my real patients, it doesn't get published here. That's the standard. That's the promise.</p>
+
+      <div class="story-credentials">
+        <div class="sc-title">Credentials &amp; Background</div>
+        <div class="sc-grid">
+          <div class="sc-item"><div class="sc-dot"></div><div class="sc-text"><h4>Licensed Esthetician</h4><p>Illinois licensed — clinical background in aesthetic treatments</p></div></div>
+          <div class="sc-item"><div class="sc-dot"></div><div class="sc-text"><h4>Nursing Student</h4><p>Currently in RN program — bridging clinical and business knowledge</p></div></div>
+          <div class="sc-item"><div class="sc-dot"></div><div class="sc-text"><h4>Founder, Hello Gorgeous Med Spa</h4><p>Oswego, Illinois — operating med spa, real patients, real systems</p></div></div>
+          <div class="sc-item"><div class="sc-dot"></div><div class="sc-text"><h4>Creator, No Prior Authorization</h4><p>Digital platform serving aesthetic entrepreneurs nationwide</p></div></div>
+        </div>
+      </div>
+
+      <p>NPA exists because I believe every aesthetic provider deserves access to real, tested, clinical-grade business systems — not generic templates from someone who's never been in a treatment room.</p>
+      <p>This is the platform I needed when I started. I hope it's the one you've been looking for.</p>
+
+      <div class="ryan-block">
+        <div class="ryan-icon">🩺</div>
+        <div class="ryan-content">
+          <h3>Ryan Kent, FNP-BC</h3>
+          <div class="ryan-title">Clinical Partner &amp; Collaborating Provider</div>
+          <p>Ryan Kent is a board-certified Family Nurse Practitioner and Danielle's clinical partner at Hello Gorgeous Med Spa. All NPA clinical playbooks — including hormone therapy, peptide therapy, and GLP-1 programs — are developed with Ryan's clinical oversight. His active practice ensures every clinical product reflects real-world prescribing experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-mission">
+    <div class="am-eyebrow">The mission</div>
+    <div class="am-title">Every aesthetic provider deserves a real system — not just a license.</div>
+    <div class="am-sub">NPA exists to give you the operational foundation, the clinical frameworks, and the business systems that licensing school never taught you. Built by someone who's been exactly where you are.</div>
+    <button class="am-cta" onclick="show('contact')">Get in Touch →</button>
+    <button class="am-cta2">Browse the Shop</button>
+  </div>
+
+  <div class="footer-bar">
+    <p>No Prior Authorization &nbsp;·&nbsp; <strong>Danielle Alcala</strong> &nbsp;·&nbsp; nopriorauthorization.com</p>
+    <p>Hello Gorgeous Med Spa &nbsp;·&nbsp; Oswego, Illinois</p>
+  </div>
+</div>
+
+</div>
+<script>
+function show(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('show'));
+  document.getElementById(id).classList.add('show');
+  document.querySelectorAll('.pn').forEach((b,i)=>{
+    b.classList.toggle('act',(id==='contact'&&i===0)||(id==='about'&&i===1));
+  });
+}
+</script>
+</body>
+</html>

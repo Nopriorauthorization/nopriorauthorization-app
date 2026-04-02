@@ -1,7 +1,11 @@
 export const metadata = {
-  title: "NPA Pro Membership | $47/mo — All Products, New Monthly Drops",
+  title: "NPA Pro Membership | Every Med Spa Product for $47/month",
   description:
-    "Get access to every playbook, kit, and template. New content drops monthly. $47/mo or $397/year. The operating system for the modern med spa.",
+    "Access all 22+ playbooks, kits, and templates. New products added monthly. Cancel anytime. Built by a med spa founder who actually runs one.",
+  openGraph: {
+    title: "NPA Pro Membership | $47/month",
+    description: "Every playbook, kit, and template. New monthly drops. Cancel anytime.",
+  },
 };
 
 export default function MembershipPage() {

@@ -1,7 +1,11 @@
 export const metadata = {
-  title: "Free Med Spa Digital Audit | No Prior Authorization",
+  title: "Free Med Spa Digital Audit | Score Your Online Presence — NPA",
   description:
-    "Get your free personalized digital audit — scored report showing what's costing you patients and what to fix first. Enter your practice details, get results instantly.",
+    "Find out exactly what's costing you patients on Google. Free scored report in 60 seconds. No credit card required.",
+  openGraph: {
+    title: "Free Med Spa Digital Audit",
+    description: "Score your online presence in 60 seconds. Free — no credit card required.",
+  },
 };
 
 export default function AuditPage() {

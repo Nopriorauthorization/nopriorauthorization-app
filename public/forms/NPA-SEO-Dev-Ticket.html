@@ -1,0 +1,639 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{font-family:'Lato',sans-serif;max-width:920px;margin:0 auto;background:var(--color-background-primary)}
+
+.ticket-header{background:#1A1A1A;padding:24px 32px}
+.ticket-header .ticket-id{font-family:'JetBrains Mono',monospace;font-size:11px;color:#D4537E;margin-bottom:6px}
+.ticket-header h1{font-family:'Playfair Display',serif;font-size:26px;color:#fff;font-weight:700;margin-bottom:6px}
+.ticket-header .meta{display:flex;gap:20px;flex-wrap:wrap}
+.ticket-header .meta span{font-size:11px;color:#666;display:flex;align-items:center;gap:5px}
+.ticket-header .meta strong{color:#888}
+
+.priority-bar{background:#D4537E;padding:10px 32px;display:flex;align-items:center;justify-content:space-between}
+.priority-bar .p-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.priority-bar .p-tags{display:flex;gap:8px}
+.priority-bar .p-tag{font-size:10px;font-weight:700;background:rgba(255,255,255,.2);color:#fff;padding:3px 10px;border-radius:20px;letter-spacing:.05em}
+
+.body{padding:28px 32px}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:14px;margin-top:28px;padding-top:28px;border-top:0.5px solid var(--color-border-tertiary)}
+.sec-label:first-child{margin-top:0;padding-top:0;border-top:none}
+
+.overview-block{background:#1A1A1A;border-radius:10px;padding:20px 24px;margin-bottom:4px}
+.overview-block p{font-size:14px;color:#888;line-height:1.9}
+.overview-block strong{color:#D4537E}
+
+.task-group{display:flex;flex-direction:column;gap:8px;margin-bottom:4px}
+.task{border-radius:8px;overflow:hidden;border:0.5px solid var(--color-border-tertiary)}
+.task.priority{border-color:#D4537E}
+.task-head{padding:12px 16px;display:flex;align-items:center;gap:12px;background:var(--color-background-secondary);cursor:pointer}
+.task-head:hover{background:var(--color-background-primary)}
+.task-check{width:18px;height:18px;border:1.5px solid var(--color-border-secondary);border-radius:4px;flex-shrink:0}
+.task.priority .task-check{border-color:#D4537E}
+.task-title{font-size:13px;font-weight:700;color:var(--color-text-primary);flex:1}
+.task-tag{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.tag-seo{background:#EAF3DE;color:#27500A}
+.tag-code{background:#E6F1FB;color:#185FA5}
+.tag-content{background:#FBEAF0;color:#993556}
+.tag-brand{background:#1A1A1A;color:#D4537E}
+.tag-analytics{background:#FAEEDA;color:#633806}
+.task-effort{font-size:10px;color:var(--color-text-secondary);flex-shrink:0;white-space:nowrap}
+.task-body{padding:14px 16px;background:var(--color-background-primary);display:none;border-top:0.5px solid var(--color-border-tertiary)}
+.task-body.open{display:block}
+.task-body p{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:8px}
+.task-body p:last-child{margin-bottom:0}
+.task-body strong{color:var(--color-text-primary)}
+.code-block{background:#1A1A1A;border-radius:6px;padding:12px 14px;margin:8px 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#D4537E;line-height:1.6;overflow-x:auto}
+.code-block .comment{color:#555}
+
+.copy-code{font-size:10px;font-weight:700;background:transparent;border:0.5px solid #444;color:#666;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:'Lato',sans-serif;float:right;margin-top:-4px}
+.copy-code:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+
+.phase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:4px}
+.phase-card{border-radius:8px;padding:16px;border:0.5px solid var(--color-border-tertiary)}
+.phase-card.p1{border-left:3px solid #E24B4A;background:#FCEBEB}
+.phase-card.p2{border-left:3px solid #D4537E;background:#FBEAF0}
+.phase-card.p3{border-left:3px solid #639922;background:#EAF3DE}
+.phase-card h4{font-size:12px;font-weight:700;margin-bottom:6px}
+.phase-card.p1 h4{color:#A32D2D}
+.phase-card.p2 h4{color:#993556}
+.phase-card.p3 h4{color:#27500A}
+.phase-card .phase-week{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
+.phase-card.p1 .phase-week{color:#E24B4A}
+.phase-card.p2 .phase-week{color:#D4537E}
+.phase-card.p3 .phase-week{color:#639922}
+.phase-card li{font-size:12px;line-height:1.6;list-style:none;padding:2px 0;display:flex;gap:6px}
+.phase-card.p1 li{color:#791F1F}
+.phase-card.p2 li{color:#72243E}
+.phase-card.p3 li{color:#27500A}
+.phase-card li::before{content:'→';font-weight:700;flex-shrink:0}
+
+.keyword-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:4px}
+.keyword-table th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.keyword-table td{padding:10px 12px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top}
+.keyword-table tr:last-child td{border-bottom:none}
+.keyword-table .vol{color:#D4537E;font-weight:700;font-size:12px}
+.keyword-table .diff{font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px}
+.diff-easy{background:#EAF3DE;color:#27500A}
+.diff-med{background:#FAEEDA;color:#633806}
+.keyword-table .intent{font-size:11px;color:var(--color-text-secondary)}
+
+.danielle-section{background:var(--color-background-secondary);border-radius:12px;padding:20px 24px;margin-bottom:4px}
+.danielle-section h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--color-text-primary);font-weight:700;margin-bottom:14px}
+.danielle-item{display:flex;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary);align-items:flex-start}
+.danielle-item:last-child{border-bottom:none}
+.d-icon{width:28px;height:28px;border-radius:50%;background:#D4537E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.d-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.d-content p{font-size:12px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px}
+.d-effort{font-size:10px;font-weight:700;background:#FBEAF0;color:#D4537E;padding:2px 8px;border-radius:10px;margin-top:5px;display:inline-block}
+
+.acceptance-list{display:flex;flex-direction:column;gap:6px}
+.ac-item{display:flex;gap:10px;align-items:flex-start;padding:8px 12px;background:var(--color-background-secondary);border-radius:6px;font-size:13px;color:var(--color-text-secondary)}
+.ac-item::before{content:'☐';color:#D4537E;font-size:14px;flex-shrink:0;margin-top:-1px}
+
+.footer{background:#1A1A1A;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+.footer p{font-size:10px;color:#555;letter-spacing:.08em;text-transform:uppercase}
+.footer strong{color:#D4537E}
+
+.toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+</style>
+
+<div class="wrap">
+
+<div class="ticket-header">
+  <div class="ticket-id">NPA-DEV-001 &nbsp;·&nbsp; Assigned to: Anthony &nbsp;·&nbsp; April 2026</div>
+  <h1>SEO, Google Visibility & Brand Authority — Full Build</h1>
+  <div class="meta">
+    <span><strong>Priority:</strong> P0 — Launch blocker</span>
+    <span><strong>Estimated:</strong> 2–3 weeks</span>
+    <span><strong>Owner:</strong> Anthony (dev) + Danielle (content)</span>
+    <span><strong>Goal:</strong> nopriorauthorization.com ranks for med spa business keywords nationally</span>
+  </div>
+</div>
+
+<div class="priority-bar">
+  <span class="p-label">P0 — Do this before anything else goes live</span>
+  <div class="p-tags">
+    <span class="p-tag">Technical SEO</span>
+    <span class="p-tag">Schema Markup</span>
+    <span class="p-tag">Google Search Console</span>
+    <span class="p-tag">Meta Tags</span>
+    <span class="p-tag">Sitemap</span>
+    <span class="p-tag">Brand PR</span>
+  </div>
+</div>
+
+<div class="body">
+
+<div class="sec-label">Why this ticket exists</div>
+<div class="overview-block">
+  <p>nopriorauthorization.com is launching with a full product catalog, a lead gen audit tool, and a membership product. <strong>None of that matters if nobody finds the site.</strong> This ticket covers everything Anthony needs to build technically, plus everything Danielle needs to do in parallel for brand visibility — so that within 90 days NPA is appearing in Google search results for the keywords med spa owners are actually typing. The goal is <strong>organic traffic that compounds every month without paid ads.</strong></p>
+</div>
+
+<div class="sec-label">Phase overview — what gets built when</div>
+<div class="phase-grid">
+  <div class="phase-card p1">
+    <div class="phase-week">Week 1 — Foundation</div>
+    <h4>Technical SEO (Anthony)</h4>
+    <ul>
+      <li>Meta tags on every page</li>
+      <li>Schema markup — LocalBusiness + Person</li>
+      <li>Sitemap.xml generated</li>
+      <li>Robots.txt configured</li>
+      <li>Google Search Console verified</li>
+      <li>OG tags for social sharing</li>
+      <li>Page speed optimized</li>
+      <li>Canonical URLs set</li>
+    </ul>
+  </div>
+  <div class="phase-card p2">
+    <div class="phase-week">Week 2 — Content SEO</div>
+    <h4>Pages + Keywords (Both)</h4>
+    <ul>
+      <li>Service pages — one per product category</li>
+      <li>About page — Danielle's story</li>
+      <li>Blog/resources section set up</li>
+      <li>First 4 blog posts written</li>
+      <li>FAQ page live with 40 questions</li>
+      <li>Google Business Profile — NPA listed</li>
+      <li>All image alt text written</li>
+    </ul>
+  </div>
+  <div class="phase-card p3">
+    <div class="phase-week">Week 3 — Authority</div>
+    <h4>Brand Visibility (Danielle)</h4>
+    <ul>
+      <li>Yelp, Healthgrades listings</li>
+      <li>LinkedIn profile updated</li>
+      <li>Instagram bio link updated</li>
+      <li>Guest post pitch sent × 3</li>
+      <li>Podcast outreach × 5</li>
+      <li>Press page on site</li>
+      <li>Email list welcome sequence</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec-label">Anthony's tasks — technical SEO (click to expand each)</div>
+<div class="task-group">
+
+  <div class="task priority">
+    <div class="task-head" onclick="toggle(this)">
+      <div class="task-check"></div>
+      <div class="task-title">1. Meta tags — every page needs a unique title and description</div>
+      <span class="task-tag tag-code">Code</span>
+      <span class="task-effort">2 hrs</span>
+    </div>
+    <div class="task-body">
+      <p>Every page needs a unique <code>&lt;title&gt;</code> tag and <code>&lt;meta name="description"&gt;</code>. These are what appear in Google search results. Generic or missing tags = invisible to Google. Use this exact pattern:</p>
+      <div class="code-block">
+        <button class="copy-code" onclick="copyCode(this)">Copy</button>
+<span class="comment">// Homepage</span>
+title: "No Prior Authorization | Med Spa Business Systems by Danielle Alcala"
+description: "Playbooks, templates, and tools built inside a real med spa — so you don't spend years figuring out what nobody taught you. Free digital audit included."
+
+<span class="comment">// /playbooks</span>
+title: "Med Spa Playbooks | Clinical & Business Systems — NPA"
+description: "Complete playbooks for Botox, GLP-1, IV therapy, hormone therapy, peptides, and more. Built by a med spa founder. Instant download."
+
+<span class="comment">// /audit</span>
+title: "Free Med Spa Digital Audit | Score Your Online Presence — NPA"
+description: "Find out exactly what's costing you patients on Google. Free scored report in 60 seconds. No credit card required."
+
+<span class="comment">// /shop</span>
+title: "Med Spa Templates & Consent Forms | NPA Shop"
+description: "Clinical consent forms, patient communication kits, aftercare cards, and social media templates. Instant download. Built for aesthetic providers."
+
+<span class="comment">// /membership</span>
+title: "NPA Pro Membership | Every Med Spa Product for $47/month"
+description: "Access all 22+ playbooks, kits, and templates. New products added monthly. Cancel anytime. Built by a med spa founder who actually runs one."
+      </div>
+      <p><strong>Character limits:</strong> Title = 50–60 characters max. Description = 150–160 characters max. Every page. No exceptions.</p>
+    </div>
+  </div>
+
+  <div class="task priority">
+    <div class="task-head" onclick="toggle(this)">
+      <div class="task-check"></div>
+      <div class="task-title">2. Schema markup — tell Google exactly what NPA is and who Danielle is</div>
+      <span class="task-tag tag-code">Code</span>
+      <span class="task-effort">3 hrs</span>
+    </div>
+    <div class="task-body">
+      <p>Schema is structured data that Google reads to understand your business. Without it Google guesses. With it Google knows. Add both blocks to the homepage <code>&lt;head&gt;</code>:</p>
+      <div class="code-block">
+        <button class="copy-code" onclick="copyCode(this)">Copy</button>
+<span class="comment">// LocalBusiness + Person Schema — paste in &lt;head&gt; as JSON-LD</span>
+&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "No Prior Authorization",
+      "url": "https://nopriorauthorization.com",
+      "logo": "https://nopriorauthorization.com/logo.png",
+      "description": "Med spa business systems, playbooks, and tools built by Danielle Alcala, founder of Hello Gorgeous Med Spa.",
+      "founder": {
+        "@type": "Person",
+        "name": "Danielle Alcala",
+        "jobTitle": "Founder, Licensed Esthetician",
+        "worksFor": "Hello Gorgeous Med Spa"
+      },
+      "sameAs": [
+        "https://instagram.com/nopriorauthorization",
+        "https://linkedin.com/in/daniellealcala",
+        "https://etsy.com/shop/nopriorauthorization"
+      ]
+    },
+    {
+      "@type": "Person",
+      "name": "Danielle Alcala",
+      "jobTitle": "Med Spa Founder & Business Educator",
+      "url": "https://nopriorauthorization.com/about",
+      "image": "https://nopriorauthorization.com/danielle-alcala.jpg",
+      "description": "Danielle Alcala is the founder of Hello Gorgeous Med Spa in Oswego, Illinois and creator of No Prior Authorization — the business platform for aesthetic providers.",
+      "sameAs": [
+        "https://instagram.com/daniellealcala",
+        "https://linkedin.com/in/daniellealcala"
+      ]
+    }
+  ]
+}
+&lt;/script&gt;
+      </div>
+      <p>Also add <strong>Product schema</strong> to every product page — this enables Google to show star ratings and prices directly in search results (rich results). Use the <code>Product</code> type with <code>name</code>, <code>description</code>, <code>offers</code>, and <code>aggregateRating</code>.</p>
+    </div>
+  </div>
+
+  <div class="task priority">
+    <div class="task-head" onclick="toggle(this)">
+      <div class="task-check"></div>
+      <div class="task-title">3. Sitemap.xml + robots.txt — make every page crawlable</div>
+      <span class="task-tag tag-code">Code</span>
+      <span class="task-effort">1 hr</span>
+    </div>
+    <div class="task-body">
+      <p>The sitemap tells Google every page that exists. Robots.txt tells Google what it can and can't crawl. Both are required before submitting to Google Search Console.</p>
+      <div class="code-block">
+        <button class="copy-code" onclick="copyCode(this)">Copy</button>
+<span class="comment">// Next.js — add to next.config.js or use next-sitemap package</span>
+npm install next-sitemap
+
+<span class="comment">// next-sitemap.config.js</span>
+module.exports = {
+  siteUrl: 'https://nopriorauthorization.com',
+  generateRobotsTxt: true,
+  sitemapSize: 7000,
+  exclude: ['/admin/*', '/api/*', '/delivery/*'],
+  robotsTxtOptions: {
+    additionalSitemaps: [
+      'https://nopriorauthorization.com/sitemap.xml',
+    ],
+  },
+}
+
+<span class="comment">// package.json — add to postbuild</span>
+"postbuild": "next-sitemap"
+      </div>
+      <p>After deploying — submit the sitemap URL to Google Search Console: <strong>https://nopriorauthorization.com/sitemap.xml</strong></p>
+    </div>
+  </div>
+
+  <div class="task priority">
+    <div class="task-head" onclick="toggle(this)">
+      <div class="task-check"></div>
+      <div class="task-title">4. Google Search Console + Google Analytics 4 — the monitoring layer</div>
+      <span class="task-tag tag-analytics">Analytics</span>
+      <span class="task-effort">2 hrs</span>
+    </div>
+    <div class="task-body">
+      <p>Without these two tools you're flying blind. Search Console shows what searches bring people to the site, which pages are indexed, and any errors Google finds. GA4 shows traffic, conversions, and user behavior.</p>
+      <div class="code-block">
+        <button class="copy-code" onclick="copyCode(this)">Copy</button>
+<span class="comment">// Step 1: Google Search Console</span>
+1. Go to search.google.com/search-console
+2. Add property: nopriorauthorization.com
+3. Verify via DNS TXT record (add to GoDaddy/Vercel DNS)
+4. Submit sitemap once verified
+5. Check "Coverage" report weekly for indexing errors
+
+<span class="comment">// Step 2: GA4 — add to Next.js layout.tsx</span>
+npm install @next/third-parties
+
+<span class="comment">// app/layout.tsx</span>
+import { GoogleAnalytics } from '@next/third-parties/google'
+
+export default function RootLayout({ children }) {
+  return (
+    &lt;html&gt;
+      &lt;body&gt;{children}&lt;/body&gt;
+      &lt;GoogleAnalytics gaId="G-XXXXXXXXXX" /&gt;
+    &lt;/html&gt;
+  )
+}
+
+<span class="comment">// Track these events in GA4:</span>
+- audit_started (user begins audit form)
+- audit_completed (report generated)
+- email_captured (audit gate email submitted)
+- product_viewed (/shop/[slug])
+- checkout_started
+- membership_signup
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head" onclick="toggle(this)">
+      <div class="task-check"></div>
+      <div class="task-title">5. Open Graph + Twitter Card tags — control how NPA looks when shared</div>
+      <span class="task-tag tag-code">Code</span>
+      <span class="task-effort">1 hr</span>
+    </div>
+    <div class="task-body">
+      <p>When someone shares the NPA homepage or a product page on Instagram, LinkedIn, or iMessage — these tags control the preview image, title, and description that appears. Without them it looks broken and unprofessional.</p>
+      <div class="code-block">
+        <button class="copy-code" onclick="copyCode(this)">Copy</button>
+<span class="comment">// Next.js metadata — app/layout.tsx or per-page</span>
+export const metadata = {
+  openGraph: {
+    title: 'No Prior Authorization | Med Spa Business Systems',
+    description: 'Playbooks and tools built inside a real med spa by Danielle Alcala.',
+    url: 'https://nopriorauthorization.com',
+    siteName: 'No Prior Authorization',
+    images: [{
+      url: 'https://nopriorauthorization.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'No Prior Authorization — by Danielle Alcala',
+    }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'No Prior Authorization | Med Spa Business Systems',
+    description: 'Built by a med spa founder who actually runs one.',
+    images: ['https://nopriorauthorization.com/og-image.jpg'],
+  },
+}
+      </div>
+      <p><strong>Design task for Danielle:</strong> Create one 1200×630px OG image — black background, NPA brand, your tagline. This is the image that appears every time someone shares the site. Make it on brand.</p>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head" onclick="toggle(this)">
+      <div class="task-check"></div>
+      <div class="task-title">6. Page speed — Core Web Vitals must pass before launch</div>
+      <span class="task-tag tag-code">Code</span>
+      <span class="task-effort">3 hrs</span>
+    </div>
+    <div class="task-body">
+      <p>Google uses page speed as a direct ranking factor. Sites that fail Core Web Vitals rank lower, period. Test at <strong>pagespeed.web.dev</strong> and fix until you hit 90+ on mobile.</p>
+      <div class="code-block">
+        <button class="copy-code" onclick="copyCode(this)">Copy</button>
+<span class="comment">// Priority fixes for Next.js sites:</span>
+
+<span class="comment">// 1. Image optimization — replace all &lt;img&gt; with Next.js Image</span>
+import Image from 'next/image'
+&lt;Image src="/hero.jpg" width={1200} height={600} alt="..." priority /&gt;
+
+<span class="comment">// 2. Font optimization — already using Google Fonts, add display=swap</span>
+import { Playfair_Display, Lato } from 'next/font/google'
+const playfair = Playfair_Display({ subsets: ['latin'], display: 'swap' })
+
+<span class="comment">// 3. Lazy load below-fold components</span>
+import dynamic from 'next/dynamic'
+const AuditWidget = dynamic(() =&gt; import('./AuditWidget'), { ssr: false })
+
+<span class="comment">// 4. Target scores — test before launch</span>
+LCP (Largest Contentful Paint): under 2.5s
+FID (First Input Delay): under 100ms
+CLS (Cumulative Layout Shift): under 0.1
+Mobile score: 90+
+Desktop score: 95+
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head" onclick="toggle(this)">
+      <div class="task-check"></div>
+      <div class="task-title">7. Blog / Resources section — the SEO content engine</div>
+      <span class="task-tag tag-code">Code</span>
+      <span class="task-tag tag-content">Content</span>
+      <span class="task-effort">4 hrs</span>
+    </div>
+    <div class="task-body">
+      <p>Blog posts are how NPA ranks for long-tail keywords — specific searches that product pages don't target. Each post is a new Google ranking opportunity. Build the infrastructure first, then Danielle populates it with content.</p>
+      <div class="code-block">
+        <button class="copy-code" onclick="copyCode(this)">Copy</button>
+<span class="comment">// Route: /blog or /resources</span>
+<span class="comment">// Use MDX or a headless CMS (Contentlayer, Sanity, or even plain MDX files)</span>
+
+<span class="comment">// Folder structure:</span>
+/app/blog/
+  page.tsx          — blog index with all posts
+  [slug]/
+    page.tsx        — individual post
+/content/blog/
+  post-1.mdx        — Danielle writes these
+  post-2.mdx
+
+<span class="comment">// Each post metadata (frontmatter):</span>
+---
+title: "How to Get Your Med Spa on Page One of Google"
+description: "The exact steps I used at Hello Gorgeous to rank above practices open twice as long."
+date: "2026-04-01"
+author: "Danielle Alcala"
+tags: ["seo", "google", "med spa"]
+image: "/blog/google-ranking.jpg"
+---
+      </div>
+      <p><strong>First 4 posts Danielle writes (see below) should be live at launch.</strong> Google indexes new sites faster when there's already meaningful content to crawl.</p>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head" onclick="toggle(this)">
+      <div class="task-check"></div>
+      <div class="task-title">8. FAQ page with structured data — 40 questions, Google rich results</div>
+      <span class="task-tag tag-seo">SEO</span>
+      <span class="task-effort">2 hrs</span>
+    </div>
+    <div class="task-body">
+      <p>The FAQ page is already built in the Google Domination Playbook. Anthony needs to build a static FAQ page at <strong>/faq</strong> with all 40 questions and add FAQPage schema so Google can show the answers directly in search results.</p>
+      <div class="code-block">
+        <button class="copy-code" onclick="copyCode(this)">Copy</button>
+<span class="comment">// FAQPage Schema — add to /faq page</span>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does Botox last?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most patients, Botox lasts 3 to 4 months..."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Botox and filler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Botox relaxes muscles to reduce dynamic wrinkles..."
+      }
+    }
+    // ... repeat for all 40 questions
+  ]
+}
+      </div>
+      <p>FAQ schema can trigger <strong>Google rich results</strong> — your FAQ answers appearing directly under the NPA search result. This significantly increases click-through rate without any paid advertising.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="sec-label">Target keywords — what NPA needs to rank for</div>
+<table class="keyword-table">
+  <thead><tr><th>Keyword</th><th>Monthly Searches</th><th>Difficulty</th><th>Target Page</th><th>Intent</th></tr></thead>
+  <tbody>
+    <tr><td><strong>med spa business playbook</strong></td><td class="vol">High</td><td><span class="diff diff-easy">Easy</span></td><td>/playbooks</td><td class="intent">Buying — ready to purchase</td></tr>
+    <tr><td><strong>med spa consent forms templates</strong></td><td class="vol">High</td><td><span class="diff diff-easy">Easy</span></td><td>/shop</td><td class="intent">Buying — looking for product</td></tr>
+    <tr><td><strong>how to get my med spa on Google</strong></td><td class="vol">High</td><td><span class="diff diff-easy">Easy</span></td><td>/blog post 1</td><td class="intent">Educational — blog content</td></tr>
+    <tr><td><strong>med spa Google Business Profile setup</strong></td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td><td>/blog post 2</td><td class="intent">Educational — how-to</td></tr>
+    <tr><td><strong>med spa social media strategy</strong></td><td class="vol">High</td><td><span class="diff diff-med">Medium</span></td><td>/shop/social-media-system</td><td class="intent">Buying + research</td></tr>
+    <tr><td><strong>Danielle Alcala med spa</strong></td><td class="vol">Growing</td><td><span class="diff diff-easy">Easy</span></td><td>/about</td><td class="intent">Brand — your name</td></tr>
+    <tr><td><strong>no prior authorization NPA</strong></td><td class="vol">Growing</td><td><span class="diff diff-easy">Easy</span></td><td>Homepage</td><td class="intent">Brand — direct</td></tr>
+    <tr><td><strong>hormone therapy playbook for providers</strong></td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td><td>/playbooks/hormone-therapy</td><td class="intent">Buying</td></tr>
+    <tr><td><strong>how to incorporate peptide therapy in med spa</strong></td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td><td>/blog post 3</td><td class="intent">Educational</td></tr>
+    <tr><td><strong>med spa intake forms free</strong></td><td class="vol">High</td><td><span class="diff diff-med">Medium</span></td><td>/audit (free tool)</td><td class="intent">Free tool — lead gen</td></tr>
+    <tr><td><strong>med spa business systems</strong></td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td><td>Homepage</td><td class="intent">Research + buying</td></tr>
+    <tr><td><strong>med spa staff training materials</strong></td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td><td>/shop/onboarding-kit</td><td class="intent">Buying</td></tr>
+  </tbody>
+</table>
+
+<div class="sec-label">Danielle's tasks — getting your name out there (parallel to Anthony's build)</div>
+<div class="danielle-section">
+  <h3>What Danielle does while Anthony builds</h3>
+
+  <div class="danielle-item">
+    <div class="d-icon">1</div>
+    <div class="d-content">
+      <h4>Write 4 blog posts — publish at launch</h4>
+      <p><strong>Post 1:</strong> "How I Got Hello Gorgeous Med Spa to Rank on Page One of Google (Without Paying for Ads)" — your personal story + the system<br>
+      <strong>Post 2:</strong> "The 40 Questions Every Med Spa Website Needs to Answer — And Why" — FAQ strategy, links to the FAQ product<br>
+      <strong>Post 3:</strong> "Peptide Therapy in an Aesthetic Practice — What You Need to Know Before You Start" — clinical + business angle, links to playbook<br>
+      <strong>Post 4:</strong> "Why Inconsistent Instagram Posting Is Costing Your Med Spa Bookings" — leads directly to the Social Media System</p>
+      <span class="d-effort">Your time: 4 hrs total — 1 hr per post</span>
+    </div>
+  </div>
+
+  <div class="danielle-item">
+    <div class="d-icon">2</div>
+    <div class="d-content">
+      <h4>Set up your Google Business Profile for NPA</h4>
+      <p>Create a GBP listing for <strong>No Prior Authorization</strong> as a business — category: "Educational Institution" or "Business Consultant." Add the website, hours, description using your tagline. Post weekly using your own Google Post templates. This creates a second Google presence beyond just the website.</p>
+      <span class="d-effort">30 minutes to set up — 5 minutes per week to maintain</span>
+    </div>
+  </div>
+
+  <div class="danielle-item">
+    <div class="d-icon">3</div>
+    <div class="d-content">
+      <h4>Update every social media bio to point to NPA</h4>
+      <p>Instagram: "Founder @hellogorgeousmedspa &nbsp;·&nbsp; Creator of No Prior Authorization — med spa business systems ↓"<br>
+      LinkedIn: Full profile update — headline "Med Spa Founder + Creator of No Prior Authorization | Business Systems for Aesthetic Providers"<br>
+      TikTok if applicable: same positioning<br>
+      Every link in bio goes to nopriorauthorization.com — not Hello Gorgeous.</p>
+      <span class="d-effort">1 hour — do this today</span>
+    </div>
+  </div>
+
+  <div class="danielle-item">
+    <div class="d-icon">4</div>
+    <div class="d-content">
+      <h4>Pitch 5 aesthetic industry podcasts — your story is the hook</html>
+      <p>The hook: "Med spa founder who built a digital product company in one day and mapped out a $62K/month platform while in medical school." That is a compelling story. Podcasts to target: The Aesthetic Injector, Med Spa CEO, Esthetic Energist, Spa Business Mastery, The Business of Aesthetics. One podcast appearance = 10,000 potential new customers hearing your name and going to Google to find you.</p>
+      <span class="d-effort">1 hour to write the pitch — Anthony sets up /press page</span>
+    </div>
+  </div>
+
+  <div class="danielle-item">
+    <div class="d-icon">5</div>
+    <div class="d-content">
+      <h4>Submit NPA to med spa industry directories and communities</h4>
+      <p>AmSpa (American Med Spa Association) resource directory. Aesthetic Record partner network. Medical Spa MD community. RealSelf provider resources. Each directory listing is a backlink — backlinks are how Google measures authority. Every quality backlink from a relevant industry site improves your ranking across all keywords.</p>
+      <span class="d-effort">2 hours total — submit to 5 directories</span>
+    </div>
+  </div>
+
+  <div class="danielle-item">
+    <div class="d-icon">6</div>
+    <div class="d-content">
+      <h4>Post the launch content on Instagram — your story drives search</h4>
+      <p>When you post about NPA on Instagram and people Google "Danielle Alcala med spa" or "no prior authorization med spa" — Google needs to find the website. The more people search your name after seeing you on Instagram, the more Google treats your site as authoritative for those searches. Your social media and your SEO are connected — every post that drives a Google search improves your ranking.</p>
+      <span class="d-effort">The launch caption is already written — Module 6 of the Social Media System</span>
+    </div>
+  </div>
+
+  <div class="danielle-item">
+    <div class="d-icon">7</div>
+    <div class="d-content">
+      <h4>Design 1 OG image and 1 "link in bio" graphic</h4>
+      <p><strong>OG image (1200×630px):</strong> Black background. "NO PRIOR AUTHORIZATION" in your thin Lato header font. "The business side of aesthetics — built by someone who actually runs one." in Playfair italic. "by Danielle Alcala" small at bottom. Pink accent. This appears every time anyone shares the site.<br><strong>Link in bio graphic:</strong> A simple visual showing the 3 layers — Free Audit / Shop / Pro Membership — with pricing. Post to Instagram stories pinned.</p>
+      <span class="d-effort">Canva — 1 hour</span>
+    </div>
+  </div>
+</div>
+
+<div class="sec-label">Acceptance criteria — done means all of these pass</div>
+<div class="acceptance-list">
+  <div class="ac-item">nopriorauthorization.com returns a 90+ score on PageSpeed Insights (mobile)</div>
+  <div class="ac-item">Every page has a unique title tag (50–60 chars) and meta description (150–160 chars)</div>
+  <div class="ac-item">Schema markup validates at schema.org/SchemaValidator — no errors</div>
+  <div class="ac-item">sitemap.xml is live and submitted to Google Search Console</div>
+  <div class="ac-item">Google Search Console shows 0 coverage errors on all main pages</div>
+  <div class="ac-item">GA4 is firing events: audit_started, email_captured, product_viewed, membership_signup</div>
+  <div class="ac-item">OG image appears correctly when site URL is shared on iMessage and LinkedIn</div>
+  <div class="ac-item">/faq page is live with FAQPage schema — test at Google's Rich Results Test tool</div>
+  <div class="ac-item">/blog is live with at least 4 published posts at launch</div>
+  <div class="ac-item">All images have descriptive alt text including relevant keywords</div>
+  <div class="ac-item">Danielle's Instagram bio links to nopriorauthorization.com</div>
+  <div class="ac-item">NPA Google Business Profile is live and verified</div>
+  <div class="ac-item">5 podcast pitches sent — track in a shared Notion or Google Sheet</div>
+  <div class="ac-item">"Danielle Alcala" returns nopriorauthorization.com on Google page 1 within 30 days</div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>NPA-DEV-001 &nbsp;·&nbsp; <strong>Priority: P0</strong> &nbsp;·&nbsp; Assigned: Anthony + Danielle &nbsp;·&nbsp; nopriorauthorization.com</p>
+  <p>No Prior Authorization &nbsp;·&nbsp; <strong>Danielle Alcala</strong></p>
+</div>
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+
+<script>
+function toggle(head){
+  const body=head.nextElementSibling;
+  body.classList.toggle('open');
+}
+function copyCode(btn){
+  const block=btn.closest('.code-block');
+  const text=Array.from(block.childNodes)
+    .filter(n=>n.nodeType===3||(n.nodeType===1&&n.tagName!=='BUTTON'))
+    .map(n=>n.textContent).join('').trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>

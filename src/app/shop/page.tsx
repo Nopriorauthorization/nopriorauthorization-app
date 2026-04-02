@@ -5,9 +5,13 @@ import { EmailCapture } from "./EmailCapture";
 import { PlaybookShowcase } from "./PlaybookShowcase";
 
 export const metadata = {
-  title: "Digital Templates for Aesthetic Professionals | No Prior Authorization",
+  title: "Med Spa Templates & Consent Forms | NPA Shop",
   description:
-    "Done-for-you templates for med spas, injectors, and aesthetic entrepreneurs. Consent forms, social media kits, legal bundles, and more — instant download.",
+    "Clinical consent forms, patient communication kits, aftercare cards, and social media templates. Instant download. Built for aesthetic providers.",
+  openGraph: {
+    title: "Med Spa Templates & Consent Forms | NPA Shop",
+    description: "Done-for-you templates for med spas, injectors, and aesthetic entrepreneurs. Instant download.",
+  },
 };
 
 const BADGE_MAP: Record<string, { label: string; color: string }> = {

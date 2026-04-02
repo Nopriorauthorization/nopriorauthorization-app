@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;background:#FBEAF0;color:#1A1A1A}
+
+/* ===== SHELL ===== */
+.kit{max-width:900px;margin:0 auto;background:#fff}
+
+/* ===== HEADER ===== */
+.kit-header{background:#1A1A1A;padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
+.kit-brand{font-weight:300;letter-spacing:.22em;font-size:11px;color:#fff;text-transform:uppercase}
+.kit-sub{font-size:10px;color:#D4537E;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+/* ===== HERO BAND ===== */
+.kit-band{background:#D4537E;padding:28px 32px;position:relative;overflow:hidden}
+.kit-band::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.1)}
+.kit-band::after{content:'';position:absolute;bottom:-60px;right:20px;width:240px;height:240px;border-radius:50%;border:1px solid rgba(255,255,255,.06)}
+.kb-eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+.kb-title{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,38px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:6px}
+.kb-title em{font-style:italic;font-weight:400}
+.kb-sub{font-size:13px;color:rgba(255,255,255,.8);max-width:480px;line-height:1.6}
+.kb-badges{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.kb-badge{background:rgba(255,255,255,.15);border:0.5px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 12px;font-size:10px;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase}
+
+/* ===== TABS ===== */
+.kit-tabs{background:#f5f3f1;border-bottom:1px solid #e8e4e0;display:flex;overflow-x:auto;scrollbar-width:none}
+.kit-tabs::-webkit-scrollbar{display:none}
+.kt{font-size:12px;color:#666;padding:14px 20px;cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;font-weight:700;transition:all .15s;letter-spacing:.03em}
+.kt:hover{color:#D4537E}
+.kt.act{color:#D4537E;border-bottom-color:#D4537E;background:#fff}
+
+/* ===== BODY ===== */
+.kit-body{padding:0}
+.tab-panel{display:none;padding:32px}
+.tab-panel.show{display:block}
+.sec-hide{display:none}
+
+/* ===== DOCUMENT STYLES ===== */
+.doc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid #1A1A1A}
+.doc-header-left h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:#1A1A1A;line-height:1.2;margin-bottom:4px}
+.doc-header-left p{font-size:12px;color:#D4537E;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.doc-header-right{text-align:right;flex-shrink:0}
+.doc-header-right .practice-name{font-size:13px;font-weight:700;color:#1A1A1A}
+.doc-header-right .practice-sub{font-size:11px;color:#888;margin-top:2px}
+.doc-header-right .npa-credit{font-size:9px;color:#D4537E;margin-top:6px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+
+.doc-intro{background:#FBEAF0;border-radius:8px;padding:16px 18px;margin-bottom:24px;border-left:3px solid #D4537E}
+.doc-intro p{font-size:13px;color:#72243E;line-height:1.7}
+.doc-intro strong{font-weight:700}
+
+.section-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1A1A1A;margin:28px 0 14px;padding-bottom:8px;border-bottom:1px solid #e8e4e0;display:flex;align-items:center;gap:10px}
+.section-title .st-num{width:28px;height:28px;border-radius:50%;background:#D4537E;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Lato',sans-serif}
+.section-title:first-of-type{margin-top:0}
+
+.instruction-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.instr{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border-radius:6px;background:#f9f8f7}
+.instr.important{background:#FBEAF0;border-left:3px solid #D4537E}
+.instr.warning{background:#FFF8E6;border-left:3px solid #F5B731}
+.instr.never{background:#FCEBEB;border-left:3px solid #E24B4A}
+.instr-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.instr-text{font-size:13px;color:#333;line-height:1.6}
+.instr-text strong{color:#1A1A1A;font-weight:700}
+.instr-text em{color:#D4537E;font-style:normal;font-weight:700}
+
+.timeline{display:flex;flex-direction:column;gap:0;margin-bottom:20px}
+.tl-item{display:flex;gap:0}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:80px;flex-shrink:0}
+.tl-time{background:#1A1A1A;color:#fff;font-size:10px;font-weight:700;padding:4px 8px;border-radius:4px;text-align:center;white-space:nowrap;letter-spacing:.04em}
+.tl-connector{width:2px;background:#e8e4e0;flex:1;margin:4px auto}
+.tl-content{padding:0 0 20px 16px;flex:1}
+.tl-content h4{font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:4px}
+.tl-content p{font-size:13px;color:#555;line-height:1.6}
+.tl-content .tl-tag{display:inline-block;font-size:10px;font-weight:700;background:#FBEAF0;color:#D4537E;padding:2px 8px;border-radius:10px;margin-top:5px;letter-spacing:.05em;text-transform:uppercase}
+.tl-content .tl-tag.warn{background:#FFF8E6;color:#B8860B}
+.tl-content .tl-tag.good{background:#EAF3DE;color:#27500A}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.col-card{border-radius:8px;padding:16px;border:1px solid #e8e4e0}
+.col-card.do{background:#f0f7e8;border-color:#97C459}
+.col-card.dont{background:#FCEBEB;border-color:#F09595}
+.col-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.col-card.do h4{color:#27500A}
+.col-card.dont h4{color:#A32D2D}
+.col-card li{font-size:12px;line-height:1.6;list-style:none;padding:3px 0;display:flex;gap:6px}
+.col-card.do li::before{content:'✓';color:#639922;font-weight:700;flex-shrink:0}
+.col-card.dont li::before{content:'✗';color:#E24B4A;font-weight:700;flex-shrink:0}
+.col-card.do li{color:#27500A}
+.col-card.dont li{color:#791F1F}
+
+.sign-off{background:#1A1A1A;border-radius:10px;padding:20px 24px;margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.so-left h4{font-family:'Playfair Display',serif;font-size:16px;color:#fff;font-weight:700;margin-bottom:3px}
+.so-left p{font-size:12px;color:#888}
+.so-right{text-align:right;flex-shrink:0}
+.so-right .so-label{font-size:10px;color:#D4537E;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.so-line{border-top:1px solid #444;padding-top:6px;font-size:10px;color:#555;width:160px}
+
+.callout-box{background:#FBEAF0;border-radius:8px;padding:16px 18px;margin:16px 0;border-left:3px solid #D4537E}
+.callout-box p{font-size:13px;color:#72243E;line-height:1.7}
+.callout-box strong{font-weight:700;color:#993556}
+
+.faq-list{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+.faq-item{border:0.5px solid #e8e4e0;border-radius:8px;overflow:hidden}
+.faq-q{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:#f9f8f7;font-size:13px;font-weight:700;color:#1A1A1A;gap:10px}
+.faq-q .arr{color:#D4537E;font-size:12px;transition:transform .2s;flex-shrink:0}
+.faq-q.open .arr{transform:rotate(180deg)}
+.faq-a{padding:12px 16px;font-size:13px;color:#555;line-height:1.7;display:none;border-top:0.5px solid #e8e4e0;background:#fff}
+.faq-a.show{display:block}
+
+.consent-field{border-bottom:1px solid #1A1A1A;margin-bottom:20px;padding-bottom:4px;display:flex;align-items:flex-end;justify-content:space-between}
+.consent-field label{font-size:11px;color:#888;letter-spacing:.06em;text-transform:uppercase}
+.consent-field .cf-line{flex:1;border-bottom:1px solid #ccc;margin:0 12px;height:20px}
+.consent-section{margin-bottom:20px}
+.consent-section h4{font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}
+.consent-section p{font-size:13px;color:#444;line-height:1.8}
+.consent-section ul{padding-left:18px;margin-top:6px}
+.consent-section li{font-size:13px;color:#444;line-height:1.8}
+.consent-check{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:0.5px solid #e8e4e0}
+.consent-check:last-child{border-bottom:none}
+.cc-box{width:16px;height:16px;border:1.5px solid #1A1A1A;border-radius:2px;flex-shrink:0;margin-top:2px}
+.cc-text{font-size:12px;color:#444;line-height:1.6}
+
+.copy-doc-btn{background:#1A1A1A;color:#fff;font-family:'Lato',sans-serif;font-size:11px;font-weight:700;padding:8px 18px;border-radius:6px;border:none;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;margin-top:24px;display:inline-flex;align-items:center;gap:6px}
+.copy-doc-btn:hover{background:#D4537E}
+
+/* ===== OVERVIEW TAB ===== */
+.overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.ov-card{border-radius:10px;padding:18px;border:0.5px solid #e8e4e0;text-align:center;cursor:pointer;transition:all .2s}
+.ov-card:hover{border-color:#D4537E;transform:translateY(-2px);box-shadow:0 4px 20px rgba(212,83,126,0.1)}
+.ov-card .ov-icon{font-size:28px;margin-bottom:10px}
+.ov-card h3{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#1A1A1A;margin-bottom:5px}
+.ov-card p{font-size:12px;color:#888;line-height:1.5;margin-bottom:10px}
+.ov-card .ov-btn{font-size:10px;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.08em}
+.kit-value{background:#1A1A1A;border-radius:12px;padding:24px 28px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.kv-left h3{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:900;margin-bottom:5px}
+.kv-left p{font-size:13px;color:#888;line-height:1.6}
+.kv-right{text-align:right;flex-shrink:0}
+.kv-price{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:#D4537E}
+.kv-note{font-size:11px;color:#666;margin-top:3px}
+.customize-note{background:#FBEAF0;border-radius:8px;padding:16px 18px;border-left:3px solid #D4537E}
+.customize-note h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#993556;margin-bottom:6px}
+.customize-note p{font-size:13px;color:#72243E;line-height:1.7}
+
+.kit-footer{background:#1A1A1A;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+.kit-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.kit-footer strong{color:#D4537E}
+
+.toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="kit">
+
+<!-- HEADER -->
+<div class="kit-header">
+  <div class="kit-brand">No Prior Authorization &nbsp;·&nbsp; Danielle Alcala</div>
+  <div class="kit-sub">Patient Journey Kit</div>
+</div>
+
+<!-- BAND -->
+<div class="kit-band">
+  <div class="kb-eyebrow">Botox &amp; Neurotoxin · Complete Patient Kit</div>
+  <div class="kb-title">The Botox Patient<br><em>Journey Kit</em></div>
+  <div class="kb-sub">Three documents. One complete patient experience — from the moment they book to 14 days post-treatment. Pre-care instructions, informed consent, and post-care guide. All in your brand.</div>
+  <div class="kb-badges">
+    <span class="kb-badge">Pre-Care Instructions</span>
+    <span class="kb-badge">Informed Consent</span>
+    <span class="kb-badge">Post-Care Guide</span>
+    <span class="kb-badge">Fully Editable</span>
+    <span class="kb-badge">For Licensed Providers</span>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="kit-tabs">
+  <button class="kt act" onclick="showTab(0)">📋 Kit Overview</button>
+  <button class="kt" onclick="showTab(1)">⬅️ Pre-Care Instructions</button>
+  <button class="kt" onclick="showTab(2)">📝 Informed Consent</button>
+  <button class="kt" onclick="showTab(3)">➡️ Post-Care Guide</button>
+  <button class="kt" onclick="showTab(4)">❓ Patient FAQs</button>
+</div>
+
+<!-- TAB 0: OVERVIEW -->
+<div class="tab-panel show" id="t0">
+  <div class="overview-grid">
+    <div class="ov-card" onclick="showTab(1)">
+      <div class="ov-icon">⬅️</div>
+      <h3>Pre-Care Instructions</h3>
+      <p>What patients must do — and avoid — in the 24–48 hours before their appointment</p>
+      <div class="ov-btn">View Document →</div>
+    </div>
+    <div class="ov-card" onclick="showTab(2)">
+      <div class="ov-icon">📝</div>
+      <h3>Informed Consent</h3>
+      <p>Complete consent form covering risks, alternatives, patient acknowledgments, and provider attestation</p>
+      <div class="ov-btn">View Document →</div>
+    </div>
+    <div class="ov-card" onclick="showTab(3)">
+      <div class="ov-icon">➡️</div>
+      <h3>Post-Care Guide</h3>
+      <p>The 14-day timeline, do's and don'ts, what's normal vs. what's not, and when to call</p>
+      <div class="ov-btn">View Document →</div>
+    </div>
+  </div>
+
+  <div class="kit-value">
+    <div class="kv-left">
+      <h3>Botox Patient Journey Kit</h3>
+      <p>Three professionally designed, clinically accurate documents — pre-care, consent, and post-care — ready to customize with your practice name and brand. Instant download. Fully editable.</p>
+    </div>
+    <div class="kv-right">
+      <div class="kv-price">$57</div>
+      <div class="kv-note">Instant download · 3 documents</div>
+    </div>
+  </div>
+
+  <div class="customize-note">
+    <h4>How to use this kit</h4>
+    <p>Each document is a template framework. Replace <strong>[Practice Name]</strong>, <strong>[Provider Name]</strong>, <strong>[City, State]</strong>, and <strong>[Phone Number]</strong> with your practice details. The consent form must be reviewed by a licensed healthcare attorney in your jurisdiction before clinical use — it is an educational template, not a finished legal document. Pre-care and post-care instructions may be used as-is or customized to reflect your specific protocols.</p>
+  </div>
+</div>
+
+<!-- TAB 1: PRE-CARE -->
+<div class="tab-panel" id="t1">
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h2>Botox Pre-Care Instructions</h2>
+      <p>To be sent to patient 48 hours before appointment</p>
+    </div>
+    <div class="doc-header-right">
+      <div class="practice-name">[Practice Name]</div>
+      <div class="practice-sub">[City, State] · [Phone]</div>
+      <div class="npa-credit">NPA Patient Journey Kit</div>
+    </div>
+  </div>
+
+  <div class="doc-intro">
+    <p>Dear <strong>[Patient Name]</strong>,<br><br>We're looking forward to seeing you for your Botox appointment. To help you get the best possible results and the smoothest experience, please review the following instructions carefully before your visit. These guidelines are designed to minimize bruising, optimize results, and ensure your comfort.</p>
+  </div>
+
+  <div class="section-title"><div class="st-num">1</div>48 Hours Before Your Appointment</div>
+  <div class="instruction-list">
+    <div class="instr important">
+      <div class="instr-icon">🚫</div>
+      <div class="instr-text"><strong>Avoid blood thinners.</strong> Hold aspirin, ibuprofen (Advil, Motrin), naproxen (Aleve), and other NSAIDs for 48 hours prior — unless prescribed by your physician for a medical condition. Do not stop prescribed medications without consulting your doctor.</div>
+    </div>
+    <div class="instr important">
+      <div class="instr-icon">🚫</div>
+      <div class="instr-text"><strong>Pause these supplements.</strong> Fish oil, vitamin E, flaxseed oil, garlic, ginger, turmeric, and high-dose vitamin C can increase bleeding and bruising risk. Hold these for 48 hours prior if possible.</div>
+    </div>
+    <div class="instr important">
+      <div class="instr-icon">🍷</div>
+      <div class="instr-text"><strong>No alcohol 24 hours before.</strong> Alcohol is a vasodilator and increases bruising risk significantly. Avoid all alcohol the evening before and day of your appointment.</div>
+    </div>
+    <div class="instr">
+      <div class="instr-icon">☀️</div>
+      <div class="instr-text"><strong>Avoid excessive sun exposure.</strong> Do not get a sunburn in the 24 hours before your appointment. Sunburned skin is contraindicated for injection.</div>
+    </div>
+    <div class="instr">
+      <div class="instr-icon">💉</div>
+      <div class="instr-text"><strong>No other facial treatments.</strong> Avoid chemical peels, laser treatments, microneedling, or other facial procedures for 2 weeks before your Botox appointment.</div>
+    </div>
+  </div>
+
+  <div class="section-title"><div class="st-num">2</div>Day of Your Appointment</div>
+  <div class="instruction-list">
+    <div class="instr important">
+      <div class="instr-icon">🧴</div>
+      <div class="instr-text"><strong>Arrive with a clean face.</strong> Please arrive without makeup, moisturizer, or sunscreen on the treatment areas. A clean face allows us to work efficiently and maintain sterility.</div>
+    </div>
+    <div class="instr">
+      <div class="instr-icon">🥗</div>
+      <div class="instr-text"><strong>Eat a light meal before your appointment.</strong> Having food in your stomach helps prevent lightheadedness. Do not come fasting.</div>
+    </div>
+    <div class="instr">
+      <div class="instr-icon">💧</div>
+      <div class="instr-text"><strong>Stay well hydrated.</strong> Drink plenty of water the day of your appointment. Good hydration supports optimal skin condition.</div>
+    </div>
+    <div class="instr">
+      <div class="instr-icon">👗</div>
+      <div class="instr-text"><strong>Wear comfortable clothing.</strong> Loose, comfortable clothing you don't mind creasing is ideal. Avoid tight collars or tops that are difficult to remove if needed.</div>
+    </div>
+    <div class="instr warning">
+      <div class="instr-icon">⚠️</div>
+      <div class="instr-text"><strong>Let us know if you have any active skin infections, cold sores, or rashes</strong> near the planned treatment area. We may need to reschedule for your safety.</div>
+    </div>
+  </div>
+
+  <div class="section-title"><div class="st-num">3</div>Helpful to Know Before You Arrive</div>
+  <div class="two-col">
+    <div class="col-card do">
+      <h4>✓ Good to do</h4>
+      <ul>
+        <li>Drink extra water the day before</li>
+        <li>Get a full night of sleep</li>
+        <li>Take arnica supplements (optional, may reduce bruising)</li>
+        <li>Apply ice to treatment area 10 min before if anxious about discomfort</li>
+        <li>Bring a list of all medications and supplements</li>
+        <li>Tell us about any recent illness or fever</li>
+      </ul>
+    </div>
+    <div class="col-card dont">
+      <h4>✗ Please avoid</h4>
+      <ul>
+        <li>Blood thinning medications or supplements</li>
+        <li>Alcohol the night before</li>
+        <li>Tanning or sunburning</li>
+        <li>Strenuous exercise the morning of</li>
+        <li>Arriving with a full face of makeup</li>
+        <li>Scheduling within 2 weeks of a facial event</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-box">
+    <p><strong>Questions before your appointment?</strong> Please don't hesitate to reach out to us at <strong>[Phone Number]</strong> or <strong>[Email]</strong>. We want you to feel completely prepared and at ease before you arrive. We can't wait to see you!</p>
+  </div>
+
+  <div class="sign-off">
+    <div class="so-left">
+      <h4>[Practice Name]</h4>
+      <p>[Provider Name], [Credentials] · [City, State]</p>
+    </div>
+    <div class="so-right">
+      <div class="so-label">Prepared by NPA · nopriorauthorization.com</div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: CONSENT -->
+<div class="tab-panel" id="t2">
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h2>Informed Consent — Botox / Neurotoxin</h2>
+      <p>⚠️ Template framework — attorney review required before clinical use</p>
+    </div>
+    <div class="doc-header-right">
+      <div class="practice-name">[Practice Name]</div>
+      <div class="practice-sub">[City, State] · [Phone]</div>
+      <div class="npa-credit">NPA Patient Journey Kit</div>
+    </div>
+  </div>
+
+  <div class="doc-intro">
+    <p><strong>Important:</strong> This is an educational template. It must be reviewed and approved by a licensed healthcare attorney in your jurisdiction before clinical use. Requirements for informed consent vary by state and license type.</p>
+  </div>
+
+  <div class="consent-section">
+    <div class="consent-field">
+      <label>Patient Name</label><div class="cf-line"></div>
+      <label>Date of Birth</label><div class="cf-line"></div>
+      <label>Date</label><div class="cf-line"></div>
+    </div>
+    <div class="consent-field">
+      <label>Provider Name</label><div class="cf-line"></div>
+      <label>Treatment Areas</label><div class="cf-line"></div>
+    </div>
+  </div>
+
+  <div class="consent-section">
+    <h4>Description of Treatment</h4>
+    <p>Botulinum toxin type A (Botox, Dysport, Xeomin, Jeuveau, or Daxxify) is a prescription medication injected into specific muscles to temporarily reduce the appearance of dynamic wrinkles caused by repetitive facial movement. Results typically appear within 3–7 days and last approximately 3–4 months. Individual results may vary.</p>
+  </div>
+
+  <div class="consent-section">
+    <h4>Risks and Potential Complications</h4>
+    <p>I understand that this procedure carries risks, which may include but are not limited to:</p>
+    <ul>
+      <li>Temporary bruising, swelling, redness, or tenderness at injection sites</li>
+      <li>Headache — typically resolving within 24–48 hours</li>
+      <li>Temporary drooping of the eyelid (ptosis) or brow — rare, resolves as product metabolizes</li>
+      <li>Temporary asymmetry — may require touch-up treatment</li>
+      <li>Spread of toxin effect beyond injection site — rare</li>
+      <li>Allergic reaction — rare</li>
+      <li>Failure to achieve desired results</li>
+      <li>Results lasting shorter or longer than expected</li>
+    </ul>
+  </div>
+
+  <div class="consent-section">
+    <h4>Patient Acknowledgments</h4>
+    <div class="faq-list">
+      <div class="consent-check"><div class="cc-box"></div><div class="cc-text">I understand that Botox is a temporary treatment and results will fade over time, requiring repeat treatments to maintain results.</div></div>
+      <div class="consent-check"><div class="cc-box"></div><div class="cc-text">I have disclosed all medications, supplements, and medical conditions to my provider and understand that withholding this information may increase my risk of complications.</div></div>
+      <div class="consent-check"><div class="cc-box"></div><div class="cc-text">I am not pregnant, breastfeeding, or planning to become pregnant in the near future.</div></div>
+      <div class="consent-check"><div class="cc-box"></div><div class="cc-text">I have not had Botox or any neurotoxin in the past 3 months unless disclosed to my provider.</div></div>
+      <div class="consent-check"><div class="cc-box"></div><div class="cc-text">I understand that no guarantee of results has been made and that individual outcomes vary based on anatomy, muscle strength, metabolism, and other factors.</div></div>
+      <div class="consent-check"><div class="cc-box"></div><div class="cc-text">I have been given the opportunity to ask questions and all of my questions have been answered to my satisfaction.</div></div>
+      <div class="consent-check"><div class="cc-box"></div><div class="cc-text">I have read and understood the pre-care and post-care instructions provided by this practice.</div></div>
+      <div class="consent-check"><div class="cc-box"></div><div class="cc-text">I consent to photographs being taken for medical record purposes. (Check if photos may also be used for marketing with patient permission — add separate photo release.)</div></div>
+    </div>
+  </div>
+
+  <div class="consent-section">
+    <div class="consent-field" style="margin-top:20px">
+      <label>Patient Signature</label><div class="cf-line"></div>
+      <label>Date</label><div class="cf-line"></div>
+    </div>
+    <div class="consent-field">
+      <label>Provider Signature</label><div class="cf-line"></div>
+      <label>Credentials</label><div class="cf-line"></div>
+    </div>
+  </div>
+
+  <div class="callout-box">
+    <p><strong>Attorney review required.</strong> This consent form template is for educational purposes only. Have a licensed healthcare attorney in your state review and approve this document before clinical use. Requirements vary significantly by state and license type.</p>
+  </div>
+</div>
+
+<!-- TAB 3: POST-CARE -->
+<div class="tab-panel" id="t3">
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h2>Botox Post-Care Instructions</h2>
+      <p>To be sent immediately after treatment — save to your phone</p>
+    </div>
+    <div class="doc-header-right">
+      <div class="practice-name">[Practice Name]</div>
+      <div class="practice-sub">[City, State] · [Phone]</div>
+      <div class="npa-credit">NPA Patient Journey Kit</div>
+    </div>
+  </div>
+
+  <div class="doc-intro">
+    <p>Thank you for trusting us with your treatment today! 🤍 You're going to love your results. Please follow these post-care instructions carefully to protect your investment and get the best possible outcome. Text or call us anytime at <strong>[Phone Number]</strong> if you have questions.</p>
+  </div>
+
+  <div class="section-title"><div class="st-num">1</div>The First 4 Hours — Most Important</div>
+  <div class="instruction-list">
+    <div class="instr never">
+      <div class="instr-icon">🚫</div>
+      <div class="instr-text"><strong>Do NOT lie down for 4 hours.</strong> Remain upright — sitting or standing. Lying down too soon may cause the product to migrate to unintended areas.</div>
+    </div>
+    <div class="instr never">
+      <div class="instr-icon">🚫</div>
+      <div class="instr-text"><strong>Do NOT touch, rub, or massage the treated areas.</strong> This means no facials, no face washing with pressure, and no resting your face in your hands.</div>
+    </div>
+    <div class="instr never">
+      <div class="instr-icon">🏃</div>
+      <div class="instr-text"><strong>No strenuous exercise today.</strong> Increased blood flow and heart rate can spread the product and increase bruising. Light walking is fine. Skip the gym today.</div>
+    </div>
+    <div class="instr important">
+      <div class="instr-icon">🍷</div>
+      <div class="instr-text"><strong>No alcohol for 24 hours.</strong> Alcohol increases bruising risk. Give yourself the best chance at a clean result.</div>
+    </div>
+    <div class="instr important">
+      <div class="instr-icon">🌡️</div>
+      <div class="instr-text"><strong>Avoid heat today.</strong> No saunas, steam rooms, hot tubs, hot yoga, or direct sun exposure for 24 hours post-treatment.</div>
+    </div>
+  </div>
+
+  <div class="section-title"><div class="st-num">2</div>Your Day-by-Day Timeline</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-time">Day 1</div><div class="tl-connector"></div></div>
+      <div class="tl-content"><h4>Treatment day — minimal activity</h4><p>Stay upright, skip the gym, avoid alcohol and heat. You may have minor redness or small bumps at injection sites — this is completely normal and resolves within 1–2 hours.</p><div class="tl-tag">Normal: tiny bumps, mild redness</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-time">Days 2–3</div><div class="tl-connector"></div></div>
+      <div class="tl-content"><h4>Early onset — you may start to notice it working</h4><p>Some patients notice the first signs of the product working — a feeling of heaviness or mild tightness in the treated muscles. You may also have mild bruising. This is normal.</p><div class="tl-tag warn">Possible: mild bruising, heaviness</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-time">Days 4–7</div><div class="tl-connector"></div></div>
+      <div class="tl-content"><h4>The product is settling in</h4><p>You'll see more visible results during this window. The treated muscles are relaxing. Don't panic if results feel uneven — the full effect takes until day 14.</p><div class="tl-tag warn">Be patient — not fully settled yet</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-time">Day 14</div><div class="tl-connector"></div></div>
+      <div class="tl-content"><h4>Full results — your follow-up appointment</h4><p>This is when you see your complete results. We schedule all Botox follow-ups at the 2-week mark to assess your results and make any small adjustments at no additional charge.</p><div class="tl-tag good">Your complimentary follow-up appointment</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-time">Months 3–4</div><div class="tl-connector"></div></div>
+      <div class="tl-content"><h4>Time to rebook</h4><p>Most patients begin to notice the product wearing off around months 3–4. We'll send you a rebook reminder. Consistent treatment schedules lead to longer-lasting results over time.</p><div class="tl-tag good">We'll remind you — no need to track it</div></div>
+    </div>
+  </div>
+
+  <div class="section-title"><div class="st-num">3</div>What's Normal vs. What's Not</div>
+  <div class="two-col">
+    <div class="col-card do">
+      <h4>✓ Completely normal</h4>
+      <ul>
+        <li>Mild redness at injection sites</li>
+        <li>Small bumps that resolve in 1–2 hrs</li>
+        <li>Minor bruising lasting 3–5 days</li>
+        <li>Mild headache day of treatment</li>
+        <li>Feeling of heaviness or tightness</li>
+        <li>Slight asymmetry before day 14</li>
+        <li>Results appearing gradually over 7–14 days</li>
+      </ul>
+    </div>
+    <div class="col-card dont">
+      <h4>✗ Contact us if you experience</h4>
+      <ul>
+        <li>Significant eyelid drooping</li>
+        <li>Difficulty swallowing or breathing</li>
+        <li>Spreading weakness beyond treated area</li>
+        <li>Signs of allergic reaction — hives, swelling</li>
+        <li>Vision changes</li>
+        <li>Bruising that worsens after day 3</li>
+        <li>Any concern that doesn't feel right</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-box">
+    <p><strong>When in doubt, reach out.</strong> We would always rather you text us with a question than worry alone. Our number is <strong>[Phone Number]</strong>. We're here for you through the entire healing process — not just during your appointment.</p>
+  </div>
+
+  <div class="sign-off">
+    <div class="so-left">
+      <h4>We can't wait to see your results at your 2-week follow-up. 🤍</h4>
+      <p>[Practice Name] · [Provider Name], [Credentials] · [City, State]</p>
+    </div>
+    <div class="so-right">
+      <div class="so-label">Prepared by NPA · nopriorauthorization.com</div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4: FAQs -->
+<div class="tab-panel" id="t4">
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h2>Botox Patient FAQs</h2>
+      <p>Add these to your website or send after appointment</p>
+    </div>
+    <div class="doc-header-right">
+      <div class="practice-name">[Practice Name]</div>
+      <div class="npa-credit">NPA Patient Journey Kit</div>
+    </div>
+  </div>
+
+  <div class="doc-intro">
+    <p>These are the questions your patients are Googling at 11pm. Put them on your website FAQ page and you'll rank for every single one while saving your staff 20 minutes of phone calls per day.</p>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">When will I see my Botox results?<span class="arr">▾</span></div><div class="faq-a">Botox begins working within 3–7 days and reaches its full effect at day 14. We include a complimentary 2-week follow-up with every Botox appointment so we can assess your results and make any fine adjustments.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Does Botox hurt?<span class="arr">▾</span></div><div class="faq-a">Most patients describe Botox as a quick, small pinch — far less uncomfortable than expected. We use very fine needles and work efficiently. If you're anxious, let us know and we can apply numbing cream before your appointment.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How long does Botox last?<span class="arr">▾</span></div><div class="faq-a">For most patients, Botox lasts 3–4 months. With consistent treatment over time, many patients find their results last longer as the treated muscles gradually soften.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Can I exercise after Botox?<span class="arr">▾</span></div><div class="faq-a">Please skip strenuous exercise the day of your treatment. Light walking is fine. You can return to your normal workout routine the following day.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Can I wear makeup after Botox?<span class="arr">▾</span></div><div class="faq-a">We recommend waiting at least 4 hours before applying makeup to the treated areas. When you do apply makeup, use a gentle touch — no rubbing or pressing on the injection sites.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What if my results look uneven?<span class="arr">▾</span></div><div class="faq-a">Slight asymmetry before day 14 is completely normal — the product settles at different rates in different muscles. Always wait until day 14 before assessing your results. That's exactly why we schedule your complimentary follow-up at 2 weeks.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Will Botox make me look frozen?<span class="arr">▾</span></div><div class="faq-a">Not when done correctly. We are a conservative practice. Our goal is results that make you look refreshed — not done. You will never leave our practice looking overdone.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">When should I rebook?<span class="arr">▾</span></div><div class="faq-a">We'll send you a rebook reminder at 10–12 weeks. Most patients book their next appointment at their 2-week follow-up so they always have a spot reserved. Consistent scheduling leads to longer-lasting results.</div></div>
+  </div>
+
+  <div class="callout-box">
+    <p><strong>Pro tip from Danielle:</strong> Add every single one of these FAQs to your website. Each question is a search term your future patients are Googling right now. Answer them on your site and you'll rank for all of them — for free — forever.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="kit-footer">
+  <p>No Prior Authorization &nbsp;·&nbsp; <strong>Danielle Alcala</strong> &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Botox Patient Journey Kit</p>
+  <p>For licensed providers only &nbsp;·&nbsp; Educational template — not legal advice</p>
+</div>
+
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+
+<script>
+function showTab(i){
+  document.querySelectorAll('.tab-panel').forEach((p,j)=>p.classList.toggle('show',j===i));
+  document.querySelectorAll('.kt').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function tog(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('show');
+}
+</script>
+</body>
+</html>

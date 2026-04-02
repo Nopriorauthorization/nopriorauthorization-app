@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T04:11:54.731Z",
+  "generatedAt": "2026-04-02T15:04:04.142Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -58,6 +58,21 @@
           "title": "Before/After Photography Consent",
           "designId": "btx-photo-release",
           "editUrl": "/forms/BTX-06-Photo-Release.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "botox-patient-journey-kit",
+      "productSlug": "botox-patient-journey-kit",
+      "productTitle": "Botox Patient Journey Kit — Complete Treatment Lifecycle",
+      "buildTimestamp": "2026-04-02T06:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Botox Patient Journey Kit",
+          "designId": "botox-patient-journey-kit-main",
+          "editUrl": "/forms/NPA-Botox-Patient-Journey-Kit.html",
           "viewUrl": null
         }
       ]

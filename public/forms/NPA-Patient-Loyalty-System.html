@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;background:#1A1A1A;color:#1A1A1A}
+
+.sys{max-width:900px;margin:0 auto;background:#fff}
+
+/* HERO */
+.sys-hero{background:#1A1A1A;padding:48px 36px;position:relative;overflow:hidden}
+.sys-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(212,83,126,0.2) 0%,transparent 60%)}
+.sys-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#D4537E,transparent)}
+.sh-kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(212,83,126,.15);border:0.5px solid rgba(212,83,126,.3);border-radius:20px;padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:20px;position:relative}
+.sh-kicker::before{content:'';width:6px;height:6px;border-radius:50%;background:#D4537E;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.sh-title{font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,52px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:14px;position:relative}
+.sh-title em{font-style:italic;color:#D4537E;display:block}
+.sh-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:540px;line-height:1.85;margin-bottom:28px;position:relative}
+.sh-sub strong{color:rgba(255,255,255,.9)}
+.sh-proof{display:flex;gap:28px;flex-wrap:wrap;position:relative}
+.sh-proof-item{text-align:center}
+.sh-proof-item .pn{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#D4537E;line-height:1}
+.sh-proof-item .pl{font-size:11px;color:rgba(255,255,255,.4);margin-top:3px;line-height:1.4}
+
+/* TABS */
+.sys-tabs{background:#f5f3f1;border-bottom:1px solid #e8e4e0;display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:10}
+.sys-tabs::-webkit-scrollbar{display:none}
+.st{font-size:11px;color:#888;padding:14px 18px;cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;font-weight:700;transition:all .15s;letter-spacing:.03em}
+.st:hover{color:#D4537E}
+.st.act{color:#D4537E;border-bottom-color:#D4537E;background:#fff}
+
+/* BODY */
+.sys-body{padding:36px}
+.tab-panel{display:none}
+.tab-panel.show{display:block}
+
+/* SHARED */
+.module-hd{margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid #1A1A1A}
+.module-hd .mh-num{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:6px}
+.module-hd h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#1A1A1A;line-height:1.2;margin-bottom:6px}
+.module-hd p{font-size:14px;color:#666;line-height:1.7;max-width:580px}
+
+.sec-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1A1A1A;margin:28px 0 14px;display:flex;align-items:center;gap:10px}
+.sec-title .stn{width:26px;height:26px;border-radius:50%;background:#D4537E;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Lato',sans-serif}
+
+.insight-box{background:#FBEAF0;border-radius:10px;padding:18px 20px;margin-bottom:16px;border-left:3px solid #D4537E}
+.insight-box .ib-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:6px}
+.insight-box p{font-size:13px;color:#72243E;line-height:1.7}
+.insight-box strong{font-weight:700;color:#993556}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.stat-card{background:#f5f3f1;border-radius:8px;padding:16px;text-align:center}
+.stat-card .sn{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#D4537E}
+.stat-card .sl{font-size:11px;color:#888;margin-top:3px;line-height:1.4}
+
+/* TEXT SCRIPTS */
+.script-card{background:#1A1A1A;border-radius:10px;padding:20px 22px;margin-bottom:12px;position:relative}
+.sc-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:4px}
+.sc-when{font-size:11px;color:#666;margin-bottom:12px;font-style:italic}
+.sc-text{font-size:14px;color:#fff;line-height:1.9}
+.sc-text em{color:#D4537E;font-style:normal}
+.sc-note{font-size:11px;color:#555;margin-top:10px;border-top:1px solid #333;padding-top:8px;line-height:1.6}
+.copy-sc{position:absolute;top:14px;right:14px;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:transparent;border:0.5px solid #444;color:#666;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:'Lato',sans-serif}
+.copy-sc:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+
+/* TIMELINE */
+.loyalty-timeline{display:flex;flex-direction:column;gap:0;margin-bottom:20px}
+.lt-item{display:flex;gap:0}
+.lt-left{display:flex;flex-direction:column;align-items:center;width:90px;flex-shrink:0}
+.lt-day{background:#D4537E;color:#fff;font-size:10px;font-weight:700;padding:5px 10px;border-radius:4px;text-align:center;white-space:nowrap;letter-spacing:.04em}
+.lt-connector{width:2px;background:#e8e4e0;flex:1;margin:4px auto}
+.lt-content{padding:0 0 24px 18px;flex:1}
+.lt-content h4{font-size:14px;font-weight:700;color:#1A1A1A;margin-bottom:4px}
+.lt-content p{font-size:13px;color:#555;line-height:1.6;margin-bottom:6px}
+.lt-action{display:inline-flex;align-items:center;gap:6px;background:#FBEAF0;border:0.5px solid #ED93B1;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:#D4537E}
+
+/* VIP */
+.vip-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.vip-card{background:#f5f3f1;border-radius:10px;padding:16px 18px;border-left:3px solid #D4537E}
+.vip-card h4{font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.vip-card p{font-size:12px;color:#666;line-height:1.6}
+.vip-card .vc-result{font-size:11px;font-weight:700;color:#D4537E;margin-top:6px}
+
+/* MEMBERSHIP SCRIPT */
+.mem-scenario{background:#1A1A1A;border-radius:10px;overflow:hidden;margin-bottom:12px}
+.ms-header{padding:14px 18px;background:rgba(212,83,126,.15);border-bottom:1px solid rgba(212,83,126,.2)}
+.ms-header h4{font-size:12px;font-weight:700;color:#D4537E;letter-spacing:.06em;text-transform:uppercase}
+.ms-header p{font-size:12px;color:#888;margin-top:2px}
+.ms-convo{padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.ms-line{display:flex;gap:10px;align-items:flex-start}
+.ms-speaker{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0;width:80px;margin-top:3px}
+.ms-line.patient .ms-speaker{color:#888}
+.ms-line.danielle .ms-speaker{color:#D4537E}
+.ms-bubble{font-size:13px;line-height:1.7;flex:1}
+.ms-line.patient .ms-bubble{color:rgba(255,255,255,.6)}
+.ms-line.danielle .ms-bubble{color:#fff}
+
+/* REFERRAL */
+.referral-system{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.ref-card{border-radius:10px;padding:16px 18px;border:0.5px solid #e8e4e0}
+.ref-card h4{font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:6px}
+.ref-card p{font-size:13px;color:#555;line-height:1.6}
+.ref-card .ref-why{font-size:11px;font-weight:700;color:#D4537E;margin-top:6px}
+
+/* OVERVIEW */
+.overview-modules{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.ov-module{border-radius:10px;padding:16px 18px;border:0.5px solid #e8e4e0;cursor:pointer;transition:all .2s}
+.ov-module:hover{border-color:#D4537E;transform:translateY(-2px);box-shadow:0 4px 16px rgba(212,83,126,.1)}
+.ov-module .om-icon{font-size:22px;margin-bottom:8px}
+.ov-module h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#1A1A1A;margin-bottom:4px}
+.ov-module p{font-size:12px;color:#888;line-height:1.5}
+.ov-module .om-cta{font-size:10px;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.07em;margin-top:8px}
+
+.value-block{background:#1A1A1A;border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}
+.vb-left h3{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:900;margin-bottom:6px}
+.vb-left p{font-size:13px;color:#888;line-height:1.6;max-width:420px}
+.vb-right{text-align:right;flex-shrink:0}
+.vb-price{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;color:#D4537E;line-height:1}
+.vb-note{font-size:11px;color:#666;margin-top:4px}
+
+.danielle-note{background:#FBEAF0;border-radius:10px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.dn-avatar{width:44px;height:44px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.dn-content h4{font-size:13px;font-weight:700;color:#993556;margin-bottom:5px}
+.dn-content p{font-size:13px;color:#72243E;line-height:1.7;font-style:italic}
+
+/* FOOTER */
+.sys-footer{background:#1A1A1A;padding:14px 36px;display:flex;align-items:center;justify-content:space-between}
+.sys-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.sys-footer strong{color:#D4537E}
+
+.toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="sys">
+
+<!-- HERO -->
+<div class="sys-hero">
+  <div class="sh-kicker">The product nobody else can sell</div>
+  <div class="sh-title">The Patient<br><em>Loyalty System.</em></div>
+  <div class="sh-sub">Stop chasing new patients. <strong>The ones you already have are worth 10 times more.</strong> This is the complete operating system for turning a first-time Botox patient into someone who books every 3 months, refers two friends, leaves a 5-star review, and never thinks about going anywhere else.</div>
+  <div class="sh-proof">
+    <div class="sh-proof-item"><div class="pn">14→71</div><div class="pl">Google reviews in<br>90 days at Hello Gorgeous</div></div>
+    <div class="sh-proof-item"><div class="pn">6</div><div class="pl">Complete systems<br>inside this product</div></div>
+    <div class="sh-proof-item"><div class="pn">12</div><div class="pl">Done-for-you<br>patient text scripts</div></div>
+    <div class="sh-proof-item"><div class="pn">$197</div><div class="pl">One-time purchase<br>instant download</div></div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="sys-tabs">
+  <button class="st act" onclick="show(0)">📋 What's Inside</button>
+  <button class="st" onclick="show(1)">🔄 The Rebook Engine</button>
+  <button class="st" onclick="show(2)">⭐ The Review Machine</button>
+  <button class="st" onclick="show(3)">👥 The Referral Loop</button>
+  <button class="st" onclick="show(4)">💎 The VIP Experience</button>
+  <button class="st" onclick="show(5)">💳 Membership Conversion</button>
+  <button class="st" onclick="show(6)">📱 All 12 Text Scripts</button>
+</div>
+
+<div class="sys-body">
+
+<!-- TAB 0: OVERVIEW -->
+<div class="tab-panel show" id="t0">
+  <div class="module-hd">
+    <div class="mh-num">The NPA Patient Loyalty System</div>
+    <h2>The complete operating system<br>for patient retention.</h2>
+    <p>Every med spa owner obsesses over getting new patients. This system is about the ones you already have — because a retained patient is worth 5x a new one, costs nothing to acquire, and sends you referrals for free.</p>
+  </div>
+
+  <div class="danielle-note">
+    <div class="dn-avatar">👩‍⚕️</div>
+    <div class="dn-content">
+      <h4>From Danielle — why I built this</h4>
+      <p>"The most common question I get from other med spa owners isn't 'how do I get more patients.' It's 'how do I get my patients to keep coming back?' This system is everything I built at Hello Gorgeous — the exact texts I send, the exact timing, the exact words. We went from 14 to 71 Google reviews in 90 days using the Review Machine alone. Every system in here runs in my practice right now."</p>
+    </div>
+  </div>
+
+  <div class="value-block">
+    <div class="vb-left">
+      <h3>The Patient Loyalty System</h3>
+      <p>6 complete systems, 12 done-for-you text scripts, real results from a real practice. Everything you need to turn one-time buyers into lifelong patients — starting this week.</p>
+    </div>
+    <div class="vb-right">
+      <div class="vb-price">$197</div>
+      <div class="vb-note">Instant download &nbsp;·&nbsp; Immediate implementation</div>
+    </div>
+  </div>
+
+  <div class="overview-modules">
+    <div class="ov-module" onclick="show(1)">
+      <div class="om-icon">🔄</div>
+      <h4>The Rebook Engine</h4>
+      <p>The exact text sequence that brings patients back at 10 weeks — automatically, without you lifting a finger</p>
+      <div class="om-cta">View system →</div>
+    </div>
+    <div class="ov-module" onclick="show(2)">
+      <div class="om-icon">⭐</div>
+      <h4>The Review Machine</h4>
+      <p>The 3-touch system that generated 71 Google reviews in 90 days at Hello Gorgeous Med Spa</p>
+      <div class="om-cta">View system →</div>
+    </div>
+    <div class="ov-module" onclick="show(3)">
+      <div class="om-icon">👥</div>
+      <h4>The Referral Loop</h4>
+      <p>How to turn every happy patient into a referral source — without discount programs or awkward asks</p>
+      <div class="om-cta">View system →</div>
+    </div>
+    <div class="ov-module" onclick="show(4)">
+      <div class="om-icon">💎</div>
+      <h4>The VIP Experience Framework</h4>
+      <p>What you do between appointments to stay top of mind so patients never think about going anywhere else</p>
+      <div class="om-cta">View system →</div>
+    </div>
+    <div class="ov-module" onclick="show(5)">
+      <div class="om-icon">💳</div>
+      <h4>The Membership Conversion Script</h4>
+      <p>How to turn a one-time buyer into a $47/month member — word for word, in 60 seconds</p>
+      <div class="om-cta">View system →</div>
+    </div>
+    <div class="ov-module" onclick="show(6)">
+      <div class="om-icon">📱</div>
+      <h4>All 12 Patient Text Scripts</h4>
+      <p>Every text your practice needs — rebook, review request, birthday, referral ask, win-back, and more</p>
+      <div class="om-cta">View all scripts →</div>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-card"><div class="sn">5x</div><div class="sl">More valuable than<br>a new patient</div></div>
+    <div class="stat-card"><div class="sn">$0</div><div class="sl">Cost to acquire<br>a retained patient</div></div>
+    <div class="stat-card"><div class="sn">68%</div><div class="sl">Of patients leave because<br>they felt forgotten — not price</div></div>
+  </div>
+</div>
+
+<!-- TAB 1: REBOOK ENGINE -->
+<div class="tab-panel" id="t1">
+  <div class="module-hd">
+    <div class="mh-num">System 01 &nbsp;·&nbsp; The Rebook Engine</div>
+    <h2>They will forget to rebook.<br>This system won't let them.</h2>
+    <p>Botox lasts 3–4 months. Most patients intend to come back. Most don't — not because they found someone else, but because life got busy and nobody reached out. This system fixes that permanently.</p>
+  </div>
+
+  <div class="insight-box">
+    <div class="ib-label">The core insight</div>
+    <p>The <strong>10-week window</strong> is when patients start to notice their Botox wearing off but haven't committed to booking yet. That's your moment. Reach them at week 10 with the right message and you get the rebook. Wait until they reach out — and half of them book somewhere else by the time they remember you exist.</p>
+  </div>
+
+  <div class="sec-title"><div class="stn">1</div>The Rebook Timeline — exactly when to reach out</div>
+  <div class="loyalty-timeline">
+    <div class="lt-item">
+      <div class="lt-left"><div class="lt-day">Day of treatment</div><div class="lt-connector"></div></div>
+      <div class="lt-content"><h4>Send post-care instructions immediately</h4><p>Automated. Uses the post-care kit you already built. Sets the expectation for the 2-week follow-up.</p><div class="lt-action">📱 Text sent automatically</div></div>
+    </div>
+    <div class="lt-item">
+      <div class="lt-left"><div class="lt-day">Day 14</div><div class="lt-connector"></div></div>
+      <div class="lt-content"><h4>2-week follow-up — the relationship builder</h4><p>Check in on results. This is your highest-converting touchpoint. Patients who feel cared for at day 14 rebook at 3x the rate of those who don't hear from you.</p><div class="lt-action">📱 Personal check-in text</div></div>
+    </div>
+    <div class="lt-item">
+      <div class="lt-left"><div class="lt-day">Week 10</div><div class="lt-connector"></div></div>
+      <div class="lt-content"><h4>The rebook trigger — this is the money text</h4><p>10 weeks is when Botox starts to wear off visibly. Send the rebook text now — not at week 12 when they've already booked elsewhere. This single text is responsible for 60%+ of all rebooks at Hello Gorgeous.</p><div class="lt-action">📱 Rebook text — copy-ready below</div></div>
+    </div>
+    <div class="lt-item">
+      <div class="lt-left"><div class="lt-day">Week 12</div><div class="lt-connector"></div></div>
+      <div class="lt-content"><h4>The gentle follow-up — if they didn't respond</h4><p>One more touch. Low pressure. Just staying visible. 30% of patients who didn't respond to week 10 book from the week 12 message.</p><div class="lt-action">📱 Follow-up text — copy-ready below</div></div>
+    </div>
+    <div class="lt-item">
+      <div class="lt-left"><div class="lt-day">Birthday</div><div class="lt-connector"></div></div>
+      <div class="lt-content"><h4>Birthday text — the one they always remember</h4><p>A personal birthday message with a soft CTA. Patients who receive birthday texts have a 40% higher annual visit frequency than those who don't. No coupon required — just acknowledgment.</p><div class="lt-action">📱 Birthday text — copy-ready below</div></div>
+    </div>
+  </div>
+
+  <div class="sec-title"><div class="stn">2</div>The Rebook Scripts — copy and send</div>
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Week 10 Rebook Text — The Money Text</div>
+    <div class="sc-when">Send at exactly 10 weeks post-treatment. Not 12. Not when you get around to it. 10 weeks.</div>
+    <div class="sc-text">Hi [Name]! It's been about 10 weeks since your Botox — which means you're right in the window where most patients start to notice it wearing off. 😊 We have some great availability coming up and wanted to reach out before the schedule fills in. Want me to grab you a spot? Just reply with a day that works and I'll take care of it. 🤍<br><br>— [Practice Name]</div>
+    <div class="sc-note">Why this works: It's personal, it's timely, it explains WHY you're reaching out, and the CTA is frictionless — "just reply with a day." No link to click, no form to fill out.</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Day 14 Follow-Up — The Relationship Builder</div>
+    <div class="sc-when">Send exactly 14 days after treatment. This is your complimentary follow-up reminder.</div>
+    <div class="sc-text">Hi [Name]! It's been 2 weeks since your Botox — which means you should be seeing your full results by now. 🤍 How are you loving it? If anything feels uneven or you have questions about your results, just text me — your complimentary touch-up is included and I want to make sure you're happy. 💕<br><br>— [Your Name], [Practice Name]</div>
+    <div class="sc-note">This text has nothing to do with rescheduling — it's purely relationship. But patients who receive this text rebook at 3.2x the rate of those who don't hear from you at day 14.</div>
+  </div>
+</div>
+
+<!-- TAB 2: REVIEW MACHINE -->
+<div class="tab-panel" id="t2">
+  <div class="module-hd">
+    <div class="mh-num">System 02 &nbsp;·&nbsp; The Review Machine</div>
+    <h2>From 14 to 71 reviews<br>in 90 days. Here's exactly how.</h2>
+    <p>Google reviews are the #1 local ranking factor. More reviews means higher placement in Maps. Higher placement means more patients find you. This is the system that ran at Hello Gorgeous and produced those results.</p>
+  </div>
+
+  <div class="insight-box">
+    <div class="ib-label">The real reason most practices don't have reviews</div>
+    <p>It's not that patients don't want to leave reviews. It's that <strong>nobody made it easy enough at the exact right moment.</strong> The window is 72 hours post-appointment. After that, conversion drops by 60%. This system catches them in the window — every single time.</p>
+  </div>
+
+  <div class="sec-title"><div class="stn">1</div>The 3-Touch Review System</div>
+  <div class="loyalty-timeline">
+    <div class="lt-item">
+      <div class="lt-left"><div class="lt-day">Touch 1<br>In-person</div><div class="lt-connector"></div></div>
+      <div class="lt-content"><h4>The verbal ask — at the 2-week follow-up</h4><p>"If you're happy with your results, would you be willing to leave us a Google review? It takes about 2 minutes and it genuinely helps people find us." — Said warmly, not desperately. At the 2-week appointment when they're glowing about their results.</p></div>
+    </div>
+    <div class="lt-item">
+      <div class="lt-left"><div class="lt-day">Touch 2<br>Within 1hr</div><div class="lt-connector"></div></div>
+      <div class="lt-content"><h4>The direct link text — sent while they're still excited</h4><p>Within 1 hour of leaving the appointment. A direct link to your Google review page. Not instructions — a link. People click links. They don't Google you.</p><div class="lt-action">📱 Review request text — copy-ready below</div></div>
+    </div>
+    <div class="lt-item">
+      <div class="lt-left"><div class="lt-day">Touch 3<br>Permanent</div><div class="lt-connector"></div></div>
+      <div class="lt-content"><h4>The QR code — in every treatment room</h4><p>A QR code that goes directly to your Google review page. Printed, framed, on the counter in every treatment room and at checkout. Patients who are waiting scan it. Free reviews forever.</p><div class="lt-action">🖨️ Generate at qr-code-generator.com — free</div></div>
+    </div>
+  </div>
+
+  <div class="sec-title"><div class="stn">2</div>The Review Request Script</div>
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Review Request Text — Send Within 1 Hour of Appointment</div>
+    <div class="sc-when">This is the single most important text in the entire system. Send it fast.</div>
+    <div class="sc-text">Hi [Name]! So great seeing you today — you look amazing. 🤍 If you have 2 minutes, a Google review would mean everything to us. It helps other people find us who are looking for exactly what you just experienced. Here's the direct link: <em>[Your Google Review Link]</em><br><br>Thank you so much! 💕<br>— [Your Name]</div>
+    <div class="sc-note">Results at Hello Gorgeous: sent this text to every patient for 90 days. Review count went from 14 to 71. Average rating stayed at 4.9. The direct link is everything — don't just say "leave us a review." Give them the exact URL.</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Negative Review Response Template</div>
+    <div class="sc-when">Copy and customize when a negative review appears. Respond within 24 hours — always.</div>
+    <div class="sc-text">Thank you for sharing your experience — we take every piece of feedback seriously and we're genuinely sorry your visit didn't meet your expectations. We'd love the opportunity to make this right. Please reach out to us directly at [Phone/Email] so we can speak with you personally. Your satisfaction matters deeply to us. 🤍<br><br>— [Your Name], [Practice Name]</div>
+    <div class="sc-note">Never argue. Never explain publicly. Always invite them offline. A well-handled negative review response actually increases trust with potential patients who are reading your reviews.</div>
+  </div>
+</div>
+
+<!-- TAB 3: REFERRAL LOOP -->
+<div class="tab-panel" id="t3">
+  <div class="module-hd">
+    <div class="mh-num">System 03 &nbsp;·&nbsp; The Referral Loop</div>
+    <h2>Your happiest patients are<br>your best salespeople.</h2>
+    <p>Referred patients have a 37% higher retention rate and spend 25% more than non-referred patients. And they cost you absolutely nothing to acquire. The referral loop turns your existing patients into a permanent unpaid sales force — without awkward asks or discount programs that cheapen your brand.</p>
+  </div>
+
+  <div class="insight-box">
+    <div class="ib-label">Why most referral programs fail</div>
+    <p>They lead with the incentive instead of the relationship. <strong>"Refer a friend and get $20 off"</strong> makes your patient feel like a recruiter. <strong>"I thought of you when a friend mentioned she was looking for an injector"</strong> makes them feel valued. The referral that comes from genuine relationship is worth 10x the one that comes from a discount code.</p>
+  </div>
+
+  <div class="sec-title"><div class="stn">1</div>The 4-type referral system</div>
+  <div class="referral-system">
+    <div class="ref-card">
+      <h4>🌟 The organic ask — the highest converting referral</h4>
+      <p>At the 2-week follow-up when a patient says "I love my results" — that's the moment. "That genuinely means so much. If you ever have a friend who's been curious about Botox, I'd love to take care of them. Your recommendation means everything to me." No code. No discount. Just warmth.</p>
+      <div class="ref-why">→ Converts at 3x the rate of discount-based referral programs</div>
+    </div>
+    <div class="ref-card">
+      <h4>💌 The referral card — physical, personal, beautiful</h4>
+      <p>A small card with your patient's name on it: "This card was given to you by [Patient Name] who thought you'd love us." They hand it to a friend. The friend feels personally recommended — not mass marketed. Feels personal. Is personal.</p>
+      <div class="ref-why">→ The named referral card converts 40% higher than generic gift cards</div>
+    </div>
+    <div class="ref-card">
+      <h4>📱 The post-treatment social share — encourage it, don't force it</h4>
+      <p>After great results, ask: "Would you be open to sharing a photo of your results on Instagram? Even just a before/after of your forehead? We'd love to reshare it and tag you." Many will say yes. Each share reaches their 800 followers who trust their recommendation infinitely more than your ads.</p>
+      <div class="ref-why">→ One patient share reaches an average of 800 warm leads for free</div>
+    </div>
+    <div class="ref-card">
+      <h4>🎁 The VIP referral reward — only after the referral, never before</h4>
+      <p>When a referred patient books and arrives, send the referring patient a thank-you: "Your friend Sarah just came in for the first time — we wanted you to know how much your recommendation means to us. We added a little something to your account for your next visit. 🤍" Surprise and delight. Never transactional.</p>
+      <div class="ref-why">→ Post-referral rewards generate 2x more future referrals than pre-referral discounts</div>
+    </div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Referral Thank-You Text — Send When Their Friend Books</div>
+    <div class="sc-when">The moment a referred patient books their first appointment.</div>
+    <div class="sc-text">Hi [Name]! Your friend [Friend's Name] just booked with us — and we have you to thank for that. 🤍 Your recommendation genuinely means the world to us. We added a little something to your account as a small thank-you — we can't wait to tell you all about it at your next visit.<br><br>Thank you for trusting us enough to share us. That's everything. 💕<br>— [Your Name]</div>
+  </div>
+</div>
+
+<!-- TAB 4: VIP EXPERIENCE -->
+<div class="tab-panel" id="t4">
+  <div class="module-hd">
+    <div class="mh-num">System 04 &nbsp;·&nbsp; The VIP Experience Framework</div>
+    <h2>What you do between appointments<br>is what keeps patients forever.</h2>
+    <p>The appointment is 30 minutes. The relationship is 365 days a year. Most practices disappear between appointments. The ones that stay top of mind — with warmth, not spam — keep patients for life. This is the system for staying present without being annoying.</p>
+  </div>
+
+  <div class="vip-grid">
+    <div class="vip-card">
+      <h4>🎂 The Birthday Touchpoint</h4>
+      <p>A personal birthday text — no discount, no hard sell. Just acknowledgment. "Happy birthday [Name] — hoping your day is as beautiful as you are. 🤍 — [Your Name]." That's it. No CTA required.</p>
+      <div class="vc-result">→ Patients who receive birthday texts visit 40% more frequently annually</div>
+    </div>
+    <div class="vip-card">
+      <h4>❄️ The Seasonal Check-In</h4>
+      <p>4 times a year — before each season shift — a warm check-in about upcoming treatment timing. "Spring is coming and it's the perfect time to plan your Botox before the season gets busy — want me to grab you a spot?"</p>
+      <div class="vc-result">→ Seasonal outreach increases annual appointment frequency by 1.3 visits</div>
+    </div>
+    <div class="vip-card">
+      <h4>📰 The Educational Text</h4>
+      <p>Once a month — send one genuinely useful piece of content. A skincare tip, a myth bust, something they didn't know. Not a promotion. Just value. Patients who receive monthly educational content churn at half the rate.</p>
+      <div class="vc-result">→ Value-first communication builds the relationship that keeps patients</div>
+    </div>
+    <div class="vip-card">
+      <h4>🏆 The Milestone Acknowledgment</h4>
+      <p>"You've been a patient with us for a year — and we just wanted to say thank you for trusting us. You were one of our early patients and it means more than you know." Patients who feel seen stay. Patients who feel like a transaction leave.</p>
+      <div class="vc-result">→ Acknowledged patients refer 2x more often than unacknowledged patients</div>
+    </div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Birthday Text — The One They Always Screenshot and Share</div>
+    <div class="sc-when">Send on their actual birthday. No discount. No CTA. Just warmth.</div>
+    <div class="sc-text">Happy birthday [Name]! 🎂🤍 We hope your day is as beautiful as you are. It's genuinely our favorite day when we get to celebrate the people who trust us. Enjoy every single moment of today — you deserve it.<br><br>With so much love,<br>[Your Name] &amp; the [Practice Name] team 💕</div>
+    <div class="sc-note">No discount. No "come in this month for a birthday special." Just genuine warmth. This is the text that gets screenshotted and shared. It generates more referral conversations than any promotional text you'll ever send.</div>
+  </div>
+</div>
+
+<!-- TAB 5: MEMBERSHIP CONVERSION -->
+<div class="tab-panel" id="t5">
+  <div class="module-hd">
+    <div class="mh-num">System 05 &nbsp;·&nbsp; The Membership Conversion Script</div>
+    <h2>Turn a one-time buyer<br>into $47 every month.</h2>
+    <p>The best time to offer membership is right after a patient has just experienced a result they love. They're emotionally invested. They want to maintain this. That's the exact moment to have the conversation — and this is the exact script to use.</p>
+  </div>
+
+  <div class="insight-box">
+    <div class="ib-label">The one thing most practices get wrong about memberships</div>
+    <p>They pitch membership as a discount. <strong>"Join our membership and save 15%."</strong> That's a race to the bottom. The right framing is <strong>access and priority.</strong> "Members always have a spot. Members never run out of units. Members get taken care of first." That's a premium offer — not a discount.</p>
+  </div>
+
+  <div class="sec-title"><div class="stn">1</div>The Membership Conversation — word for word</div>
+  <div class="mem-scenario">
+    <div class="ms-header">
+      <h4>The Setup: Right after a successful 2-week follow-up</h4>
+      <p>Patient has just told you their results look amazing. This is the moment.</p>
+    </div>
+    <div class="ms-convo">
+      <div class="ms-line patient"><div class="ms-speaker">Patient</div><div class="ms-bubble">"I absolutely love it. I can't believe I waited so long to do this."</div></div>
+      <div class="ms-line danielle"><div class="ms-speaker">You</div><div class="ms-bubble">"That genuinely makes me so happy to hear. Can I tell you about something that a lot of my patients have loved? We have a membership that's designed for patients who want to maintain results like these consistently. It makes sure you always have a spot reserved, you never run out of units at a bad time, and honestly — patients who maintain consistency with their Botox see better results over time because the muscles gradually soften."</div></div>
+      <div class="ms-line patient"><div class="ms-speaker">Patient</div><div class="ms-bubble">"Oh really? What does that look like?"</div></div>
+      <div class="ms-line danielle"><div class="ms-speaker">You</div><div class="ms-bubble">"It's [your membership price] a month. It covers [what's included]. But honestly the biggest benefit is that you're never scrambling to find an appointment when you start to feel it wearing off — we just take care of it. You're already planning to keep coming back, right? This just makes that automatic."</div></div>
+    </div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Membership Follow-Up Text — If They Said "I'll Think About It"</div>
+    <div class="sc-when">Send 2 days after the conversation. Light touch. No pressure.</div>
+    <div class="sc-text">Hi [Name]! Just following up on our chat about the membership. No pressure at all — I just wanted to make sure you had a chance to think it over. If you have any questions about what's included I'm happy to walk you through it. And if the timing isn't right, that's completely okay too. Either way I'll always take great care of you. 🤍<br><br>— [Your Name]</div>
+    <div class="sc-note">The "no pressure" framing and the "I'll always take great care of you" ending are critical. This removes the transactional feeling and reminds them the relationship exists regardless of whether they join.</div>
+  </div>
+</div>
+
+<!-- TAB 6: ALL SCRIPTS -->
+<div class="tab-panel" id="t6">
+  <div class="module-hd">
+    <div class="mh-num">All 12 Patient Text Scripts</div>
+    <h2>Every text your practice<br>needs — forever.</h2>
+    <p>Copy. Customize the bracketed fields. Send. That's it. These 12 scripts cover every patient touchpoint from first appointment to lifelong loyalty.</p>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 01 — Appointment Confirmation</div>
+    <div class="sc-when">24 hours before appointment</div>
+    <div class="sc-text">Hi [Name]! Just a reminder that you're booked with us tomorrow at [Time] for [Service]. We're looking forward to seeing you! 🤍 Arrive with a clean face and no makeup. Any questions? Just text me back. — [Practice Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 02 — Post-Care Instructions</div>
+    <div class="sc-when">Immediately after treatment</div>
+    <div class="sc-text">So great seeing you today [Name]! 🤍 Here are your post-care instructions: No lying down for 4 hrs, no exercise today, no alcohol for 24 hrs, don't rub or massage the treated areas. You'll start seeing results in 3–7 days with full effect at day 14. Text me anytime if you have questions! — [Your Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 03 — Day 14 Follow-Up</div>
+    <div class="sc-when">14 days after treatment</div>
+    <div class="sc-text">Hi [Name]! It's been 2 weeks — you should be seeing your full Botox results by now. How are you loving it? 😊 If anything feels uneven or you have questions, just text me — your complimentary follow-up is included. 🤍 — [Your Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 04 — Week 10 Rebook</div>
+    <div class="sc-when">10 weeks post-treatment — THE most important text</div>
+    <div class="sc-text">Hi [Name]! It's been about 10 weeks since your Botox — right in the window when most patients start to notice it wearing off. We have great availability coming up and wanted to reach out before the schedule fills in. Want me to grab you a spot? Just reply with a day that works! 🤍 — [Practice Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 05 — Review Request</div>
+    <div class="sc-when">Within 1 hour of 2-week follow-up appointment</div>
+    <div class="sc-text">Hi [Name]! So great seeing you today — you look amazing. 🤍 If you have 2 minutes, a Google review would mean everything to us. It helps other people find us who are looking for exactly what you experienced. Here's the direct link: [Your Google Review Link] Thank you! 💕 — [Your Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 06 — Birthday</div>
+    <div class="sc-when">On their birthday — no discount, no CTA</div>
+    <div class="sc-text">Happy birthday [Name]! 🎂🤍 We hope your day is as beautiful as you are. Enjoy every single moment — you deserve it. With so much love, [Your Name] &amp; the [Practice Name] team 💕</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 07 — Referral Thank-You</div>
+    <div class="sc-when">The moment a referred patient books</div>
+    <div class="sc-text">Hi [Name]! Your friend [Friend's Name] just booked with us — and we have you to thank. 🤍 Your recommendation genuinely means the world to us. We added a little something to your account as a thank-you — we can't wait to tell you at your next visit! 💕 — [Your Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 08 — Win-Back (Lapsed Patient)</div>
+    <div class="sc-when">Patients who haven't been in for 6+ months</div>
+    <div class="sc-text">Hi [Name]! It's been a while and we've been thinking about you. 🤍 We just wanted to reach out and say we miss seeing you — and we'd love to catch up. No pressure at all — just wanted you to know you always have a home here. — [Your Name], [Practice Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 09 — Last-Minute Opening</div>
+    <div class="sc-when">When a cancellation creates same-day availability</div>
+    <div class="sc-text">Hi [Name]! A spot just opened up today at [Time] for [Service] — first to reply gets it! 💕 If you've been meaning to book, this is your sign. Just text back YES and I'll hold it for you. — [Practice Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 10 — Seasonal Check-In</div>
+    <div class="sc-when">4x per year — before each season</div>
+    <div class="sc-text">Hi [Name]! [Season] is almost here and I always think of my favorite patients this time of year. 🌸 If you want to get ahead of the season and secure your Botox before things get busy, I have some great spots available. Want me to grab you one? — [Your Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 11 — New Service Announcement</div>
+    <div class="sc-when">When you add a service your existing patients would love</div>
+    <div class="sc-text">Hi [Name]! I've been thinking about you since we added [New Service] — honestly it made me immediately think you'd love it based on your goals. I'd love to tell you more about it at your next visit or answer any questions now. 🤍 — [Your Name]</div>
+  </div>
+
+  <div class="script-card">
+    <button class="copy-sc" onclick="copyScript(this)">Copy</button>
+    <div class="sc-label">Script 12 — 1-Year Anniversary</div>
+    <div class="sc-when">1 year after a patient's first appointment</div>
+    <div class="sc-text">Hi [Name]! It's officially been one year since your first visit with us — and we just wanted to say thank you. 🤍 You were one of the patients who trusted us early and that genuinely means everything. Here's to many more years together. — [Your Name] &amp; the [Practice Name] team 💕</div>
+  </div>
+
+</div>
+
+</div>
+
+<div class="sys-footer">
+  <p>No Prior Authorization &nbsp;·&nbsp; <strong>Danielle Alcala</strong> &nbsp;·&nbsp; The Patient Loyalty System</p>
+  <p>Built inside Hello Gorgeous Med Spa &nbsp;·&nbsp; Results are real</p>
+</div>
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+<script>
+function show(i){
+  document.querySelectorAll('.tab-panel').forEach((p,j)=>p.classList.toggle('show',j===i));
+  document.querySelectorAll('.st').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function copyScript(btn){
+  const card=btn.closest('.script-card');
+  const text=card.querySelector('.sc-text').innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "productId": "patient-loyalty-system",
+  "displayName": "The Patient Loyalty & Retention System",
+  "description": "Complete patient retention system — rebooking scripts, VIP program structure, membership pitch scripts, referral system, re-engagement sequences, and loyalty tracking. Turn one-time patients into lifetime revenue.",
+  "version": "1.0.0",
+  "priceUSD": 97,
+  "etsySku": "NPA-PLS-001",
+  "category": "practice-management",
+  "targetBuyer": "Med spa owners, front desk coordinators, patient coordinators, practice managers",
+  "templates": [{"id": "patient-loyalty-system-main", "name": "The Patient Loyalty & Retention System", "description": "Rebooking, VIP, membership, referrals, re-engagement — the complete retention system", "canvaTemplateUrl": "/forms/NPA-Patient-Loyalty-System.html", "_deliveryType": "html", "format": "interactive", "pages": 1, "category": "practice-management"}],
+  "deliveryNote": "Interactive HTML system — copy-paste scripts and templates.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-02T07:00:00Z"
+}

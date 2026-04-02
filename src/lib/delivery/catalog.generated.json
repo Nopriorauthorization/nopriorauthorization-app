@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T15:18:08.319Z",
+  "generatedAt": "2026-04-02T19:23:41.943Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1558,6 +1558,21 @@
           "title": "Botox & Filler Patient Communication Kit",
           "designId": "patient-communication-kit-main",
           "editUrl": "/forms/NPA-Patient-Communication-Kit.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "patient-loyalty-system",
+      "productSlug": "patient-loyalty-system",
+      "productTitle": "The Patient Loyalty & Retention System",
+      "buildTimestamp": "2026-04-02T07:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The Patient Loyalty & Retention System",
+          "designId": "patient-loyalty-system-main",
+          "editUrl": "/forms/NPA-Patient-Loyalty-System.html",
           "viewUrl": null
         }
       ]

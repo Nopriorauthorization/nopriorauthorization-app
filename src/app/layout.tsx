@@ -1,6 +1,7 @@
 import "./globals.css";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import MainNavigation from "@/components/layout/main-navigation";
+import { StickyEmailBar } from "@/components/shop/StickyEmailBar";
 import Providers from "@/components/layout/providers";
 import { MascotControllerProvider } from "@/context/MascotController";
 import { Metadata } from "next";
@@ -147,6 +148,7 @@ export default function RootLayout({
             <ErrorBoundary>
               <MainNavigation />
               <main className="pt-16">{children}</main>
+              <StickyEmailBar />
             </ErrorBoundary>
           </MascotControllerProvider>
         </Providers>

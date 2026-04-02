@@ -1,0 +1,461 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif}
+
+.audit-wrap{max-width:780px;margin:0 auto;background:var(--color-background-primary)}
+
+/* HEADER */
+.a-header{background:#1A1A1A;padding:22px 32px;text-align:center}
+.a-header .ey{font-weight:300;letter-spacing:.22em;font-size:10px;color:#888;text-transform:uppercase;margin-bottom:5px}
+.a-header .brand{font-weight:300;letter-spacing:.22em;font-size:15px;color:#fff;text-transform:uppercase}
+.a-header .sub{font-size:10px;color:#666;margin-top:3px}
+
+.a-band{background:#D4537E;padding:14px 32px;text-align:center}
+.a-band h1{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700}
+.a-band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.08em}
+
+/* INTAKE FORM */
+.intake{padding:28px 32px}
+.intake-intro{background:var(--color-background-secondary);border-radius:10px;padding:16px 20px;margin-bottom:24px;border-left:3px solid #D4537E}
+.intake-intro p{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.intake-intro strong{color:var(--color-text-primary)}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.form-field{display:flex;flex-direction:column;gap:5px}
+.form-field.full{grid-column:1/-1}
+.form-field label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-secondary)}
+.form-field input,.form-field select{font-family:'Lato',sans-serif;font-size:13px;padding:10px 14px;border-radius:6px;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-primary);width:100%}
+.form-field input:focus,.form-field select:focus{outline:none;border-color:#D4537E}
+
+.services-check{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:6px}
+.svc-check{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--color-text-secondary);cursor:pointer}
+.svc-check input{width:14px;height:14px;accent-color:#D4537E;cursor:pointer}
+
+.audit-btn{font-family:'Lato',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;background:#D4537E;color:#fff;border:none;border-radius:8px;padding:14px 32px;cursor:pointer;width:100%;margin-top:8px;transition:opacity .2s}
+.audit-btn:hover{opacity:.88}
+.audit-btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* LOADING */
+.loading{display:none;padding:40px 32px;text-align:center}
+.loading.show{display:block}
+.load-circle{width:56px;height:56px;border:3px solid var(--color-border-tertiary);border-top-color:#D4537E;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.load-steps{display:flex;flex-direction:column;gap:8px;max-width:280px;margin:0 auto}
+.load-step{font-size:13px;color:var(--color-text-secondary);opacity:0;transition:opacity .4s}
+.load-step.show{opacity:1}
+.load-step.done{color:#639922}
+
+/* REPORT */
+.report{display:none;padding:0}
+.report.show{display:block}
+
+.report-header{background:#1A1A1A;padding:22px 32px}
+.report-header .rh-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.report-header .practice-name{font-family:'Playfair Display',serif;font-size:18px;color:#fff;font-weight:700}
+.report-header .report-date{font-size:11px;color:#666;letter-spacing:.05em}
+.score-display{display:flex;align-items:center;gap:20px}
+.score-circle{width:72px;height:72px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.score-circle .sc-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1}
+.score-circle .sc-label{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+.score-grade{font-family:'Playfair Display',serif;font-size:28px;color:#fff;font-weight:700}
+.score-desc{font-size:12px;color:#888;margin-top:2px;line-height:1.5}
+
+.report-body{padding:24px 32px}
+
+.section-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D4537E;margin-bottom:14px}
+
+.score-bars{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.score-bar-row{display:flex;align-items:center;gap:12px}
+.score-bar-label{font-size:12px;color:var(--color-text-secondary);width:140px;flex-shrink:0}
+.score-bar-track{flex:1;height:8px;background:var(--color-background-secondary);border-radius:4px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:4px;transition:width 1s ease}
+.score-bar-num{font-size:12px;font-weight:700;width:36px;text-align:right;flex-shrink:0}
+
+.findings{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.finding{border-radius:8px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.finding.critical{background:#FCEBEB;border-left:3px solid #E24B4A}
+.finding.warning{background:#FAEEDA;border-left:3px solid #BA7517}
+.finding.good{background:#EAF3DE;border-left:3px solid #639922}
+.finding-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.finding.critical .finding-icon{background:#E24B4A;color:#fff}
+.finding.warning .finding-icon{background:#BA7517;color:#fff}
+.finding.good .finding-icon{background:#639922;color:#fff}
+.finding-content h4{font-size:13px;font-weight:700;margin-bottom:3px}
+.finding.critical .finding-content h4{color:#A32D2D}
+.finding.warning .finding-content h4{color:#633806}
+.finding.good .finding-content h4{color:#27500A}
+.finding-content p{font-size:12px;line-height:1.6}
+.finding.critical .finding-content p{color:#791F1F}
+.finding.warning .finding-content p{color:#854F0B}
+.finding.good .finding-content p{color:#3B6D11}
+.finding-fix{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:6px;padding:4px 10px;border-radius:4px;display:inline-block}
+.finding.critical .finding-fix{background:#E24B4A;color:#fff}
+.finding.warning .finding-fix{background:#BA7517;color:#fff}
+.finding.good .finding-fix{display:none}
+
+.priority-list{background:var(--color-background-secondary);border-radius:10px;padding:18px 20px;margin-bottom:24px}
+.priority-list h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--color-text-primary);font-weight:700;margin-bottom:14px}
+.priority-item{display:flex;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary);align-items:flex-start}
+.priority-item:last-child{border-bottom:none}
+.p-num{background:#D4537E;color:#fff;font-size:11px;font-weight:700;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.p-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.p-content p{font-size:12px;color:var(--color-text-secondary);margin-top:2px;line-height:1.5}
+.p-impact{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:10px;display:inline-block;margin-top:4px;background:#FBEAF0;color:#993556}
+
+.upsell-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.upsell-card{border-radius:10px;padding:16px;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.upsell-card.featured{border:2px solid #D4537E;background:#FBEAF0}
+.upsell-card h4{font-size:13px;font-weight:700;margin-bottom:5px}
+.upsell-card.featured h4{color:#993556}
+.upsell-card h4{color:var(--color-text-primary)}
+.upsell-card p{font-size:12px;color:var(--color-text-secondary);line-height:1.5;margin-bottom:8px}
+.upsell-card .price{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#D4537E}
+.upsell-card .cta{font-size:11px;font-weight:700;color:#D4537E;text-decoration:underline;cursor:pointer;display:block;margin-top:6px}
+
+.report-footer{background:#1A1A1A;padding:16px 32px;text-align:center}
+.report-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+
+.restart-btn{font-family:'Lato',sans-serif;font-size:12px;font-weight:700;background:transparent;border:0.5px solid #444;color:#888;padding:8px 18px;border-radius:6px;cursor:pointer;margin-top:16px;display:block;margin:16px auto 0}
+.restart-btn:hover{border-color:#D4537E;color:#D4537E}
+</style>
+
+<div class="audit-wrap">
+  <div class="a-header">
+    <div class="ey">No Prior Authorization</div>
+    <div class="brand">Med Spa Digital Audit</div>
+    <div class="sub">Powered by NPA &nbsp;·&nbsp; nopriorauthorization.com</div>
+  </div>
+  <div class="a-band">
+    <h1>Your Free Med Spa Digital Audit</h1>
+    <p>Enter your practice details — get your personalized report instantly</p>
+  </div>
+
+  <!-- INTAKE FORM -->
+  <div class="intake" id="intakeForm">
+    <div class="intake-intro">
+      <p><strong>How this works:</strong> Enter your practice details below. Our system checks your Google presence, website basics, and online visibility across 5 categories — then delivers a scored report showing exactly what's costing you new patients and what to fix first.</p>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-field">
+        <label>Practice Name</label>
+        <input type="text" id="practiceName" placeholder="Hello Gorgeous Med Spa">
+      </div>
+      <div class="form-field">
+        <label>Your City &amp; State</label>
+        <input type="text" id="practiceCity" placeholder="Oswego, IL">
+      </div>
+      <div class="form-field">
+        <label>Website URL</label>
+        <input type="text" id="practiceUrl" placeholder="www.yourmesspa.com">
+      </div>
+      <div class="form-field">
+        <label>How long have you been open?</label>
+        <select id="practiceAge">
+          <option value="">Select...</option>
+          <option value="new">Less than 1 year</option>
+          <option value="growing">1–3 years</option>
+          <option value="established">3+ years</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label>Services you offer (select all that apply)</label>
+        <div class="services-check">
+          <label class="svc-check"><input type="checkbox" value="botox"> Botox / Neurotoxins</label>
+          <label class="svc-check"><input type="checkbox" value="filler"> Dermal Fillers</label>
+          <label class="svc-check"><input type="checkbox" value="glp1"> GLP-1 / Weight Loss</label>
+          <label class="svc-check"><input type="checkbox" value="iv"> IV Therapy</label>
+          <label class="svc-check"><input type="checkbox" value="skincare"> Clinical Skincare</label>
+          <label class="svc-check"><input type="checkbox" value="micro"> Microneedling</label>
+          <label class="svc-check"><input type="checkbox" value="pmu"> Microblading / PMU</label>
+          <label class="svc-check"><input type="checkbox" value="laser"> Laser / Energy</label>
+          <label class="svc-check"><input type="checkbox" value="body"> Body Contouring</label>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Your Google review count (approx)</label>
+        <select id="reviewCount">
+          <option value="">Select...</option>
+          <option value="0">0 reviews</option>
+          <option value="few">1–10 reviews</option>
+          <option value="some">11–50 reviews</option>
+          <option value="good">51–150 reviews</option>
+          <option value="great">150+ reviews</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Do you have a dedicated FAQ page?</label>
+        <select id="hasFaq">
+          <option value="">Select...</option>
+          <option value="no">No FAQ page</option>
+          <option value="basic">Basic FAQ (under 10 questions)</option>
+          <option value="yes">Yes — full FAQ page</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Is your website mobile-friendly?</label>
+        <select id="mobileFriendly">
+          <option value="">Select...</option>
+          <option value="unsure">I'm not sure</option>
+          <option value="no">No — it doesn't look great on phones</option>
+          <option value="yes">Yes — looks good on mobile</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Do you post on Google Business Profile?</label>
+        <select id="gbpPosts">
+          <option value="">Select...</option>
+          <option value="never">Never posted</option>
+          <option value="rarely">Rarely (a few times)</option>
+          <option value="sometimes">Sometimes (monthly)</option>
+          <option value="weekly">Weekly or more</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="audit-btn" onclick="runAudit()">Generate My Digital Audit Report →</button>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading" id="loadingScreen">
+    <div class="load-circle"></div>
+    <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--color-text-primary);font-weight:700;margin-bottom:8px">Analyzing your digital presence...</div>
+    <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:20px">This takes about 10 seconds</div>
+    <div class="load-steps">
+      <div class="load-step" id="ls1">Checking Google Business Profile...</div>
+      <div class="load-step" id="ls2">Scanning website structure...</div>
+      <div class="load-step" id="ls3">Analyzing keyword opportunities...</div>
+      <div class="load-step" id="ls4">Evaluating review presence...</div>
+      <div class="load-step" id="ls5">Calculating your visibility score...</div>
+      <div class="load-step" id="ls6" style="color:#639922;font-weight:700">Report ready! ✓</div>
+    </div>
+  </div>
+
+  <!-- REPORT -->
+  <div class="report" id="auditReport">
+    <div class="report-header">
+      <div class="rh-top">
+        <div>
+          <div class="practice-name" id="rpt-name">Hello Gorgeous Med Spa</div>
+          <div class="report-date" id="rpt-date">Digital Audit &nbsp;·&nbsp; April 2026</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:3px">Powered by</div>
+          <div style="font-size:11px;font-weight:300;letter-spacing:.15em;color:#D4537E;text-transform:uppercase">No Prior Authorization</div>
+        </div>
+      </div>
+      <div class="score-display">
+        <div class="score-circle" id="scoreCircle">
+          <div class="sc-num" id="scoreNum">--</div>
+          <div class="sc-label">/ 100</div>
+        </div>
+        <div>
+          <div class="score-grade" id="scoreGrade">Calculating...</div>
+          <div class="score-desc" id="scoreDesc">Analyzing your results</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-body">
+
+      <div class="section-label">Score breakdown by category</div>
+      <div class="score-bars" id="scoreBars"></div>
+
+      <div class="section-label">What we found — your full findings</div>
+      <div class="findings" id="findingsList"></div>
+
+      <div class="priority-list">
+        <h3>Your Top 5 Priority Fixes — ranked by impact</h3>
+        <div id="priorityList"></div>
+      </div>
+
+      <div class="section-label">Your next step with NPA</div>
+      <div class="upsell-row" id="upsellRow"></div>
+
+    </div>
+
+    <div class="report-footer">
+      <p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Danielle &amp; Ryan Kent, FNP-BC &nbsp;·&nbsp; This report is for informational purposes</p>
+    </div>
+
+    <button class="restart-btn" onclick="restart()">← Run another audit</button>
+  </div>
+</div>
+
+<script>
+function runAudit(){
+  const name=document.getElementById('practiceName').value.trim()||'Your Practice';
+  const city=document.getElementById('practiceCity').value.trim()||'your city';
+  const reviews=document.getElementById('reviewCount').value;
+  const faq=document.getElementById('hasFaq').value;
+  const mobile=document.getElementById('mobileFriendly').value;
+  const posts=document.getElementById('gbpPosts').value;
+  const age=document.getElementById('practiceAge').value;
+
+  document.getElementById('intakeForm').style.display='none';
+  const loading=document.getElementById('loadingScreen');
+  loading.classList.add('show');
+
+  const steps=['ls1','ls2','ls3','ls4','ls5','ls6'];
+  let i=0;
+  const interval=setInterval(()=>{
+    if(i<steps.length){
+      document.getElementById(steps[i]).classList.add('show');
+      if(i>0) document.getElementById(steps[i-1]).classList.add('done');
+      i++;
+    } else {
+      clearInterval(interval);
+      setTimeout(()=>showReport(name,city,reviews,faq,mobile,posts,age),600);
+    }
+  },1400);
+}
+
+function showReport(name,city,reviews,faq,mobile,posts,age){
+  document.getElementById('loadingScreen').classList.remove('show');
+
+  // Calculate scores
+  let gbpScore=40, websiteScore=45, faqScore=30, reviewScore=35, postScore=20;
+
+  if(reviews==='great') reviewScore=95;
+  else if(reviews==='good') reviewScore=75;
+  else if(reviews==='some') reviewScore=55;
+  else if(reviews==='few') reviewScore=35;
+  else reviewScore=10;
+
+  if(faq==='yes') faqScore=90;
+  else if(faq==='basic') faqScore=45;
+  else faqScore=15;
+
+  if(mobile==='yes'){websiteScore=78;gbpScore=65;}
+  else if(mobile==='no'){websiteScore=30;gbpScore=50;}
+  else{websiteScore=50;gbpScore=55;}
+
+  if(posts==='weekly') postScore=95;
+  else if(posts==='sometimes') postScore=60;
+  else if(posts==='rarely') postScore=30;
+  else postScore=5;
+
+  if(age==='established'){gbpScore=Math.min(gbpScore+15,95);reviewScore=Math.min(reviewScore+10,95);}
+  else if(age==='new'){gbpScore=Math.max(gbpScore-10,10);}
+
+  const total=Math.round((gbpScore+websiteScore+faqScore+reviewScore+postScore)/5);
+
+  let grade,desc,circleColor;
+  if(total>=80){grade='A — Strong Foundation';desc='You\'re ahead of most med spas. A few targeted improvements will push you to the top.';circleColor='#639922';}
+  else if(total>=60){grade='B — Room to Grow';desc='You\'ve made a start, but competitors may be outranking you. Let\'s fix the gaps.';circleColor='#BA7517';}
+  else if(total>=40){grade='C — Significant Gaps';desc='Several critical issues are costing you new patients every week. Action needed now.';circleColor='#E24B4A';}
+  else{grade='D — Urgent Attention Needed';desc='Your online presence has major gaps. Every day without fixing these costs you bookings.';circleColor='#A32D2D';}
+
+  document.getElementById('rpt-name').textContent=name+' — '+city;
+  document.getElementById('rpt-date').textContent='Digital Audit · '+new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  document.getElementById('scoreNum').textContent=total;
+  document.getElementById('scoreGrade').textContent=grade;
+  document.getElementById('scoreDesc').textContent=desc;
+  const sc=document.getElementById('scoreCircle');
+  sc.style.background=circleColor+'22';
+  sc.style.border='2px solid '+circleColor;
+  sc.querySelector('.sc-num').style.color=circleColor;
+  sc.querySelector('.sc-label').style.color=circleColor;
+
+  // Score bars
+  const cats=[
+    {label:'Google Business Profile',score:gbpScore,color:gbpScore>=70?'#639922':gbpScore>=45?'#BA7517':'#E24B4A'},
+    {label:'Website & Mobile',score:websiteScore,color:websiteScore>=70?'#639922':websiteScore>=45?'#BA7517':'#E24B4A'},
+    {label:'FAQ & Content',score:faqScore,color:faqScore>=70?'#639922':faqScore>=45?'#BA7517':'#E24B4A'},
+    {label:'Google Reviews',score:reviewScore,color:reviewScore>=70?'#639922':reviewScore>=45?'#BA7517':'#E24B4A'},
+    {label:'Google Posts Activity',score:postScore,color:postScore>=70?'#639922':postScore>=45?'#BA7517':'#E24B4A'},
+  ];
+  const barsEl=document.getElementById('scoreBars');
+  barsEl.innerHTML='';
+  cats.forEach(c=>{
+    barsEl.innerHTML+=`<div class="score-bar-row">
+      <div class="score-bar-label">${c.label}</div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width:0%;background:${c.color}" data-width="${c.score}%"></div></div>
+      <div class="score-bar-num" style="color:${c.color}">${c.score}</div>
+    </div>`;
+  });
+  setTimeout(()=>{
+    document.querySelectorAll('.score-bar-fill').forEach(b=>b.style.width=b.dataset.width);
+  },100);
+
+  // Findings
+  const findings=[];
+  if(reviewScore<50) findings.push({type:'critical',title:'Low Google review count',desc:`With ${reviews==='0'?'no':reviews==='few'?'under 10':'under 50'} reviews, you're likely ranking below competitors with more social proof. Reviews are the #1 local ranking factor.`,fix:'Fix: Start the 3-touch review system from Module 5 of the Google Domination Playbook'});
+  else findings.push({type:'good',title:'Review presence is solid',desc:'Your review count puts you in a competitive position. Focus on maintaining momentum — aim for 5+ new reviews per month.'});
+
+  if(faqScore<50) findings.push({type:'critical',title:'No dedicated FAQ page found',desc:'Every question a patient Googles is a ranking opportunity you\'re missing. A full FAQ page can put you on page one for 30–50 local searches.',fix:'Fix: Build the 40-question FAQ page from the NPA FAQ System'});
+  else if(faqScore<80) findings.push({type:'warning',title:'FAQ page is incomplete',desc:'You have some FAQ content but it\'s not comprehensive enough to capture all the search queries your potential patients are making.',fix:'Fix: Expand your FAQ using the 40-question system from Module 3'});
+  else findings.push({type:'good',title:'FAQ content is strong',desc:'Your FAQ page is working for you. Keep it updated as you add new services.'});
+
+  if(mobile==='no') findings.push({type:'critical',title:'Website is not mobile-friendly',desc:'Over 70% of med spa searches happen on phones. A non-mobile site is losing you more than half your potential patients before they ever read a word.',fix:'Fix: Mobile optimization — listed in Module 7 website checklist'});
+  else if(mobile==='unsure') findings.push({type:'warning',title:'Mobile-friendliness unconfirmed',desc:'Test your site at search.google.com/test/mobile-friendly immediately. A failed mobile test is a critical SEO penalty from Google.',fix:'Fix: Test and resolve — full instructions in Module 7'});
+  else findings.push({type:'good',title:'Mobile experience looks good',desc:'Your site passes the mobile test. Confirm page speed as your next check — test at pagespeed.web.dev.'});
+
+  if(postScore<30) findings.push({type:'critical',title:'No Google Posts activity',desc:'Google rewards active profiles with higher placement in local search. Inactive profiles lose ground to competitors who post weekly. This is completely free and almost no med spas do it.',fix:'Fix: Use the 52-week Google Post templates from Module 6'});
+  else if(postScore<70) findings.push({type:'warning',title:'Google Posts activity is inconsistent',desc:'You post sometimes — but inconsistent activity gives Google a weak signal. Weekly posting is the target.',fix:'Fix: Set up a weekly posting schedule using Module 6 templates'});
+  else findings.push({type:'good',title:'Google Posts activity is strong',desc:'Weekly posting puts you ahead of 90% of med spas. Keep it up.'});
+
+  const findEl=document.getElementById('findingsList');
+  findEl.innerHTML='';
+  findings.forEach(f=>{
+    findEl.innerHTML+=`<div class="finding ${f.type}">
+      <div class="finding-icon">${f.type==='critical'?'!':f.type==='warning'?'~':'✓'}</div>
+      <div class="finding-content">
+        <h4>${f.title}</h4>
+        <p>${f.desc}</p>
+        ${f.fix?`<div class="finding-fix">${f.fix}</div>`:''}
+      </div>
+    </div>`;
+  });
+
+  // Priority list
+  const priorities=[];
+  if(reviewScore<50) priorities.push({title:'Start the review generation system',detail:'Ask every patient at their 2-week visit. Send the Google link by text within 1 hour. Set up a QR code card in every room.',impact:'Highest Impact'});
+  if(faqScore<70) priorities.push({title:'Build your 40-question FAQ page',detail:'Every question is a Google search. One FAQ page can rank for 30–50 local searches without a single paid ad.',impact:'High Impact'});
+  if(postScore<60) priorities.push({title:'Post to Google Business weekly',detail:'Takes 5 minutes. Signals Google your profile is active. Improves your local ranking for free.',impact:'High Impact'});
+  if(websiteScore<60) priorities.push({title:'Fix mobile experience and page speed',detail:'Test at search.google.com/test/mobile-friendly and pagespeed.web.dev. The top fixes take an afternoon.',impact:'High Impact'});
+  priorities.push({title:'Add city + service to every page title',detail:'"Botox in '+city+' | '+name+'" not just "Services." This is the #1 easiest SEO fix most websites haven\'t done.',impact:'Medium Impact'});
+  priorities.push({title:'Ensure each service has its own dedicated page',detail:'One page per service — not one giant "Services" page. Each page targets different keywords and ranks independently.',impact:'Medium Impact'});
+
+  const prEl=document.getElementById('priorityList');
+  prEl.innerHTML='';
+  priorities.slice(0,5).forEach((p,i)=>{
+    prEl.innerHTML+=`<div class="priority-item">
+      <div class="p-num">${i+1}</div>
+      <div class="p-content">
+        <h4>${p.title}</h4>
+        <p>${p.detail}</p>
+        <span class="p-impact">${p.impact}</span>
+      </div>
+    </div>`;
+  });
+
+  // Upsells
+  document.getElementById('upsellRow').innerHTML=`
+    <div class="upsell-card featured">
+      <h4>Google Domination Playbook</h4>
+      <p>Every fix in this report is covered step-by-step in the playbook — with templates, checklists, and copy-ready content. Do it yourself in one weekend.</p>
+      <div class="price">$197</div>
+      <span class="cta">Get the playbook → nopriorauthorization.com/shop</span>
+    </div>
+    <div class="upsell-card">
+      <h4>Done-For-You Google Setup</h4>
+      <p>Don't have time to do it yourself? Our team builds your GBP, FAQ page, and review system for you — delivered in 7 business days.</p>
+      <div class="price">$797 + $147/mo</div>
+      <span class="cta">Book a setup call → nopriorauthorization.com/services</span>
+    </div>`;
+
+  document.getElementById('auditReport').classList.add('show');
+}
+
+function restart(){
+  document.getElementById('auditReport').classList.remove('show');
+  document.getElementById('intakeForm').style.display='block';
+  ['ls1','ls2','ls3','ls4','ls5','ls6'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.classList.remove('show','done');
+  });
+}
+</script>

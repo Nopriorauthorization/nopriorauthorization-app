@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T01:34:03.622Z",
+  "generatedAt": "2026-04-02T02:45:56.877Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -354,6 +354,21 @@
       ]
     },
     {
+      "productKey": "diy-google-setup-kit",
+      "productSlug": "diy-google-setup-kit",
+      "productTitle": "Complete DIY Google Setup Kit",
+      "buildTimestamp": "2026-04-02T02:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Complete DIY Google Setup Kit",
+          "designId": "diy-google-setup-kit-main",
+          "editUrl": "/forms/NPA-DIY-Google-Setup-Kit.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "filler-consent-bundle",
       "productSlug": "filler-consent-bundle",
       "productTitle": "Dermal Filler Consent + Pre/Post Care Bundle",
@@ -538,6 +553,21 @@
           "title": "Book Weight Loss Consult Story",
           "designId": "gls-cta-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..aDrMOozsJ7Z9fwvJ.RyX_eNkL7Y0j8U0IrPxBWEZurWSOyRU-6GvAhaDCsgLr9zz-XLQHfquxsN3c0dG_TWltafp3NtCar4wGFgDAi2usYmQATx87zPbFXNqEzTA2sok.I4DEO4G9d-vOckkJ5z2njA/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=ee647431-8936-419f-b8a8-976b80260d06&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "google-domination-playbook",
+      "productSlug": "google-domination-playbook",
+      "productTitle": "The Med Spa Google Domination Playbook",
+      "buildTimestamp": "2026-04-02T02:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The Med Spa Google Domination Playbook",
+          "designId": "google-domination-playbook-main",
+          "editUrl": "/forms/NPA-Google-Domination-Playbook.html",
           "viewUrl": null
         }
       ]

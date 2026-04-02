@@ -1,0 +1,264 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;400i&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.page{font-family:'Lato',sans-serif;max-width:860px;margin:0 auto;background:var(--color-background-primary)}
+
+.p-header{background:#1A1A1A;padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
+.p-header .brand{font-weight:300;letter-spacing:.2em;font-size:12px;color:#fff;text-transform:uppercase}
+.p-header nav{display:flex;gap:20px}
+.p-header nav a{font-size:12px;color:#888;text-decoration:none;letter-spacing:.04em}
+.p-header nav a:hover{color:#D4537E}
+.p-header nav a.cta{color:#D4537E;font-weight:700}
+
+.hero{background:#1A1A1A;padding:48px 32px 40px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(212,83,126,.03) 40px,rgba(212,83,126,.03) 41px)}
+.hero .eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D4537E;margin-bottom:12px}
+.hero h1{font-family:'Playfair Display',serif;font-size:36px;color:#fff;font-weight:700;line-height:1.25;margin-bottom:14px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero .subtitle{font-size:15px;color:#888;line-height:1.7;max-width:520px;margin:0 auto 28px}
+.hero .price-display{display:inline-flex;align-items:baseline;gap:10px;margin-bottom:24px}
+.hero .price-display .amount{font-family:'Playfair Display',serif;font-size:42px;color:#D4537E;font-weight:700}
+.hero .price-display .was{font-size:18px;color:#555;text-decoration:line-through}
+.hero .price-display .save{font-size:13px;color:#D4537E;background:rgba(212,83,126,.15);padding:3px 10px;border-radius:20px}
+.hero-btn{background:#D4537E;color:#fff;font-family:'Lato',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:8px;padding:16px 36px;cursor:pointer;letter-spacing:.04em;display:inline-block}
+.hero-btn:hover{opacity:.88}
+.hero-sub{font-size:11px;color:#555;margin-top:10px;letter-spacing:.04em}
+
+.band-pink{background:#D4537E;padding:10px 32px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+.band-pink .stat{font-size:12px;color:#fff;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:6px}
+.band-pink .stat::before{content:'✓';font-size:11px}
+
+.section{padding:36px 32px}
+.section.alt{background:var(--color-background-secondary)}
+.section-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.section h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--color-text-primary);font-weight:700;margin-bottom:6px}
+.section .section-sub{font-size:14px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:28px}
+
+.includes-grid{display:flex;flex-direction:column;gap:12px}
+.include-row{background:var(--color-background-primary);border-radius:10px;padding:16px 20px;display:flex;gap:16px;align-items:flex-start;border:0.5px solid var(--color-border-tertiary)}
+.include-row.featured{border:2px solid #D4537E;background:#FBEAF0}
+.inc-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#D4537E;width:36px;flex-shrink:0;line-height:1}
+.inc-content h4{font-size:14px;font-weight:700;color:var(--color-text-primary)}
+.include-row.featured .inc-content h4{color:#993556}
+.inc-content p{font-size:13px;color:var(--color-text-secondary);margin-top:3px;line-height:1.6}
+.inc-badge{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:10px;display:inline-block;margin-top:6px}
+.badge-wow{background:#1A1A1A;color:#D4537E}
+.badge-new{background:#EAF3DE;color:#27500A}
+.badge-ready{background:#FBEAF0;color:#993556}
+
+.for-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.for-card{background:var(--color-background-primary);border-radius:8px;padding:14px 16px;border-left:3px solid #D4537E}
+.for-card h4{font-size:13px;font-weight:700;color:var(--color-text-primary);margin-bottom:4px}
+.for-card p{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+
+.testimonial-section{padding:36px 32px;background:#1A1A1A}
+.testimonial-section h2{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700;text-align:center;margin-bottom:20px}
+.testimonials{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.testi{background:#222;border-radius:10px;padding:18px;border:0.5px solid #333}
+.testi .stars{color:#D4537E;font-size:13px;margin-bottom:8px}
+.testi p{font-size:13px;color:#aaa;line-height:1.7;font-style:italic}
+.testi .author{font-size:11px;color:#666;margin-top:10px;font-style:normal;font-weight:700}
+
+.faq-section{padding:36px 32px}
+.faq-section h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--color-text-primary);font-weight:700;margin-bottom:20px}
+.faq-list{}
+.faq-i{border-bottom:0.5px solid var(--color-border-tertiary);padding:13px 0}
+.faq-i:last-child{border-bottom:none}
+.faq-q{font-size:14px;font-weight:700;color:var(--color-text-primary);cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+.faq-q .arr{color:#D4537E;flex-shrink:0;transition:transform .2s}
+.faq-q.open .arr{transform:rotate(180deg)}
+.faq-a{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-top:8px;display:none}
+.faq-a.show{display:block}
+
+.cta-section{background:#D4537E;padding:44px 32px;text-align:center}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:28px;color:#fff;font-weight:700;margin-bottom:10px}
+.cta-section p{font-size:14px;color:rgba(255,255,255,.85);margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-section .price{font-family:'Playfair Display',serif;font-size:36px;color:#fff;font-weight:700;margin-bottom:20px}
+.cta-white-btn{background:#fff;color:#D4537E;font-family:'Lato',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:8px;padding:16px 36px;cursor:pointer;letter-spacing:.04em}
+.cta-white-btn:hover{opacity:.92}
+.cta-section .guarantee{font-size:11px;color:rgba(255,255,255,.7);margin-top:12px}
+
+.p-footer{background:#1A1A1A;padding:18px 32px;text-align:center}
+.p-footer p{font-size:10px;color:#555;letter-spacing:.08em;text-transform:uppercase}
+</style>
+
+<div class="page">
+
+<div class="p-header">
+  <div class="brand">No Prior Authorization</div>
+  <nav>
+    <a href="#">Shop</a>
+    <a href="#">Playbooks</a>
+    <a href="#">Free Audit</a>
+    <a href="#" class="cta">Pro Membership</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">New — The Complete DIY Kit</div>
+  <h1>Everything You Need to Dominate Google — Without Hiring Anyone</h1>
+  <div class="subtitle">The Google Domination Playbook plus every done-for-you asset — 40 pre-written FAQs, 52 Canva post templates, checklists, and review scripts. You just copy, paste, and post.</div>
+  <div class="price-display">
+    <span class="was">$444</span>
+    <span class="amount">$297</span>
+    <span class="save">Save $147</span>
+  </div>
+  <br>
+  <button class="hero-btn">Get Instant Access →</button>
+  <div class="hero-sub">Instant download &nbsp;·&nbsp; Canva templates included &nbsp;·&nbsp; No experience needed</div>
+</div>
+
+<div class="band-pink">
+  <div class="stat">Instant delivery</div>
+  <div class="stat">No tech skills required</div>
+  <div class="stat">Works with free Canva</div>
+  <div class="stat">Created by FNP-BC + Licensed Esthetician</div>
+</div>
+
+<div class="section">
+  <div class="section-label">What's inside</div>
+  <h2>7 done-for-you assets that make you visible on Google this week</h2>
+  <div class="section-sub">Every item in this kit is ready to use the moment you download it. No blank page. No guessing. Just open, customize with your name and city, and implement.</div>
+
+  <div class="includes-grid">
+
+    <div class="include-row featured">
+      <div class="inc-num">1</div>
+      <div class="inc-content">
+        <h4>The Google Domination Playbook — 7 modules, 100+ pages</h4>
+        <p>The complete step-by-step system covering your Google Business Profile, local keywords, review generation, Google Posts, and your full website SEO checklist. Every module has checklists you can work through in order.</p>
+        <span class="inc-badge badge-wow">The foundation — everything starts here</span>
+      </div>
+    </div>
+
+    <div class="include-row featured">
+      <div class="inc-num">2</div>
+      <div class="inc-content">
+        <h4>40 pre-written FAQ questions — with answers, ready to paste</h4>
+        <p>Every question your patients Google before booking — Botox, filler, GLP-1, IV therapy, skincare, microblading. Answers written in plain patient language, SEO-optimized for local search. Copy the entire set and paste onto your website's FAQ page. Done in one afternoon.</p>
+        <span class="inc-badge badge-wow">Saves 8+ hours of writing</span>
+      </div>
+    </div>
+
+    <div class="include-row">
+      <div class="inc-num">3</div>
+      <div class="inc-content">
+        <h4>52 Google Post templates in Canva — one for every week of the year</h4>
+        <p>Educational posts, promotional posts, social proof posts, and seasonal posts — already designed in Canva, already written. You add your photo and your booking link. One year of Google Posts done before you finish your coffee.</p>
+        <span class="inc-badge badge-ready">Works with free Canva account</span>
+      </div>
+    </div>
+
+    <div class="include-row">
+      <div class="inc-num">4</div>
+      <div class="inc-content">
+        <h4>GBP setup checklist — every field, every section, in order</h4>
+        <p>Interactive checklist covering all 14 sections of your Google Business Profile. Categories, description template, photo naming guide, services section, Q&amp;A pre-population. Check off as you go. Most practices complete this in 2–3 hours.</p>
+        <span class="inc-badge badge-new">Printable + digital version</span>
+      </div>
+    </div>
+
+    <div class="include-row">
+      <div class="inc-num">5</div>
+      <div class="inc-content">
+        <h4>Review request text and email templates — 8 copy-paste scripts</h4>
+        <p>The in-person ask, the post-visit text, the 2-week follow-up request, the response to positive reviews, and the response to negative reviews. Everything you need to go from 12 reviews to 50+ in 90 days.</p>
+        <span class="inc-badge badge-ready">Copy. Paste. Send.</span>
+      </div>
+    </div>
+
+    <div class="include-row">
+      <div class="inc-num">6</div>
+      <div class="inc-content">
+        <h4>Website SEO checklist — 25 fixes ranked by impact</h4>
+        <p>Every change is doable inside Squarespace, Wix, or WordPress — no developer needed. Ranked so you know exactly what to fix first. Completing the top 8 alone produces 80% of the SEO benefit.</p>
+        <span class="inc-badge badge-new">No coding required</span>
+      </div>
+    </div>
+
+    <div class="include-row">
+      <div class="inc-num">7</div>
+      <div class="inc-content">
+        <h4>Local keyword map + competitor analysis worksheet</h4>
+        <p>The exact search terms patients use in your city — organized by service and intent. Plus a step-by-step worksheet to analyze what your top 3 competitors rank for using only free tools. Know exactly what's working for them before you build your own strategy.</p>
+        <span class="inc-badge badge-new">Uses only free tools</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section alt">
+  <div class="section-label">Who this is for</div>
+  <h2>Built for the med spa owner who is doing everything herself</h2>
+  <div class="for-grid">
+    <div class="for-card">
+      <h4>You're not on page one of Google yet</h4>
+      <p>Patients in your city are searching for exactly what you offer — and finding someone else. This kit changes that.</p>
+    </div>
+    <div class="for-card">
+      <h4>You're answering the same questions every day</h4>
+      <p>Your FAQ page should be doing that for you. The 40 pre-written questions end the repeat DMs and phone calls.</p>
+    </div>
+    <div class="for-card">
+      <h4>You've never posted on Google Business Profile</h4>
+      <p>Most med spas haven't. The 52 weekly templates mean you're now 12 months ahead of every competitor who also hasn't.</p>
+    </div>
+    <div class="for-card">
+      <h4>You have under 50 Google reviews</h4>
+      <p>Reviews are the #1 local ranking factor. The review request system in this kit is designed to get you 10 new reviews per month.</p>
+    </div>
+  </div>
+</div>
+
+<div class="testimonial-section">
+  <h2>What providers are saying</h2>
+  <div class="testimonials">
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p>"I had no idea my Google profile was missing half the fields. Set everything up in one Saturday using the checklist. Within 3 weeks I was getting calls from patients who said they found me on Google Maps — that had never happened before."</p>
+      <div class="author">— Nurse Practitioner, Chicago IL</div>
+    </div>
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p>"The 40 FAQ questions alone were worth every penny. I copied them onto my website in one afternoon and now I get DMs saying 'I found the answer on your website' instead of the same questions over and over. Life changing."</p>
+      <div class="author">— Med Spa Owner, Dallas TX</div>
+    </div>
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p>"I've been in practice for 6 years and had 23 Google reviews. Used the review request scripts for 30 days and now I have 71. My Google Maps ranking went from the 4th result to the 2nd. This kit paid for itself 10 times over."</p>
+      <div class="author">— Injector, Atlanta GA</div>
+    </div>
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p>"The Google Post templates are genius. I was never consistent because I didn't know what to post. Now I batch them once a month and I'm done. Google loves it and so do my patients."</p>
+      <div class="author">— Esthetician + Injector, Phoenix AZ</div>
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <h2>Questions about this kit</h2>
+  <div class="faq-list">
+    <div class="faq-i"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show')">Do I need to know anything about SEO to use this?<span class="arr">▾</span></div><div class="faq-a">No. Everything is explained in plain language with no jargon. If you can follow a checklist and copy-paste text, you can implement this entire kit. The playbook is written for a provider, not a marketer.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show')">How long does it take to implement?<span class="arr">▾</span></div><div class="faq-a">Most providers complete the Google Business Profile setup in 2–3 hours. The FAQ page takes one afternoon using the pre-written content. The Google Posts are scheduled once and run for a year. You can have everything live within a single weekend.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show')">Do the Canva templates work with the free version of Canva?<span class="arr">▾</span></div><div class="faq-a">Yes — every template in this kit works with the free version of Canva. You do not need a Canva Pro subscription.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show')">How is this different from just buying the Google Domination Playbook?<span class="arr">▾</span></div><div class="faq-a">The playbook tells you what to do and how to do it. This kit gives you everything already done — 40 written FAQ answers, 52 designed Canva templates, pre-written review scripts, formatted checklists. The playbook is the education. The kit is the execution. Together they're everything.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show')">Is this a physical product?<span class="arr">▾</span></div><div class="faq-a">No — this is a digital download. You'll receive a ZIP file with all PDFs and a Canva template link immediately after purchase. Nothing ships.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show')">Who created this?<span class="arr">▾</span></div><div class="faq-a">This kit was created by Danielle Kent, licensed esthetician, and Ryan Kent, FNP-BC — founders of Hello Gorgeous Med Spa in Oswego, Illinois. This is not generic marketing content. It comes from providers who have built and run a med spa and know exactly what patients search for before they book.</div></div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Stop losing patients to competitors who rank above you.</h2>
+  <p>Everything you need to fix your Google presence is in this kit. One weekend. Done.</p>
+  <div class="price">$297 — instant access</div>
+  <button class="cta-white-btn">Get the Complete DIY Google Setup Kit →</button>
+  <div class="guarantee">Instant download &nbsp;·&nbsp; Digital product — no refunds &nbsp;·&nbsp; Questions? hello@nopriorauthorization.com</div>
+</div>
+
+<div class="p-footer">
+  <p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Danielle &amp; Ryan Kent, FNP-BC &nbsp;·&nbsp; Hello Gorgeous Med Spa</p>
+</div>
+
+</div>

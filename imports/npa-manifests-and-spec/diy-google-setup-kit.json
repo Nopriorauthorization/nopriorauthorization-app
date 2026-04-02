@@ -1,0 +1,14 @@
+{
+  "productId": "diy-google-setup-kit",
+  "displayName": "Complete DIY Google Setup Kit",
+  "description": "Everything you need to set up your Google presence — the Google Domination Playbook, 40 pre-written FAQ answers, 52 Google Post Canva templates, GBP setup checklist, review request templates, website SEO checklist, and competitor analysis worksheet. Zero guesswork, zero hiring.",
+  "version": "1.0.0",
+  "priceUSD": 297,
+  "etsySku": "NPA-GSK-001",
+  "category": "bundles",
+  "targetBuyer": "Med spa owners doing their own marketing, new practices, budget-conscious clinics",
+  "templates": [{"id": "diy-google-setup-kit-main", "name": "Complete DIY Google Setup Kit", "description": "Playbook + 40 FAQs + 52 templates + checklists — all in one bundle", "canvaTemplateUrl": "/forms/NPA-DIY-Google-Setup-Kit.html", "_deliveryType": "html", "format": "interactive", "pages": 1, "category": "bundle"}],
+  "deliveryNote": "Interactive product page with full bundle details.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-02T02:00:00Z"
+}

@@ -149,10 +149,28 @@ export const getNavigationConfig = (mode: 'marketing' | 'app' = 'app'): Navigati
       color: MASCOT_COLORS.blueprint,
     },
     {
+      label: "Free Audit",
+      href: "/audit",
+      icon: "📊",
+      color: "text-emerald-400",
+    },
+    {
+      label: "Playbooks",
+      href: "/shop#start-here",
+      icon: "📕",
+      color: "text-amber-400",
+    },
+    {
       label: "Shop",
       href: "/shop",
       icon: "🛍️",
       color: MASCOT_COLORS.fillaGrace,
+    },
+    {
+      label: "Membership",
+      href: "/membership",
+      icon: "⭐",
+      color: "text-yellow-400",
     },
   ];
 };

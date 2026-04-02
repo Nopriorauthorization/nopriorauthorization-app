@@ -1,0 +1,526 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.pb{font-family:'Lato',sans-serif;max-width:860px;margin:0 auto;background:var(--color-background-primary)}
+.pb-header{background:#1A1A1A;padding:20px 32px 14px;text-align:center}
+.pb-header .ey{font-weight:300;letter-spacing:.22em;font-size:10px;color:#888;text-transform:uppercase;margin-bottom:5px}
+.pb-header .br{font-weight:300;letter-spacing:.22em;font-size:16px;color:#fff;text-transform:uppercase}
+.pb-header .su{font-size:10px;color:#666;margin-top:4px;letter-spacing:.05em}
+.pb-band{background:#D4537E;padding:16px 32px;text-align:center}
+.pb-band h1{font-family:'Playfair Display',serif;font-size:24px;color:#fff;font-weight:700}
+.pb-band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+.pb-nav{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 24px}
+.pb-nav::-webkit-scrollbar{display:none}
+.pn{font-size:12px;color:var(--color-text-secondary);padding:12px 14px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;transition:color .15s}
+.pn:hover{color:#D4537E}.pn.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+.pb-body{padding:28px 32px}.sec-hide{display:none}
+.module-hd{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;padding-bottom:18px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.mn{background:#D4537E;color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mht h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--color-text-primary);font-weight:700}
+.mht p{font-size:13px;color:var(--color-text-secondary);margin-top:3px}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;color:#D4537E;font-weight:700;margin:22px 0 10px}
+.script-block{background:#1A1A1A;border-radius:var(--border-radius-lg);padding:18px 22px;margin-bottom:14px;position:relative}
+.script-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.script-text{font-size:14px;color:#fff;line-height:1.8}
+.script-note{font-size:12px;color:#888;margin-top:10px;border-top:0.5px solid #333;padding-top:8px;line-height:1.6}
+.copy-btn{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:0.5px solid #444;color:#888;padding:4px 10px;border-radius:5px;cursor:pointer;font-family:'Lato',sans-serif}
+.copy-btn:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+.info-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:16px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.info-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:7px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}.info-card li{margin-bottom:3px}
+.ok-card{background:#EAF3DE;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:5px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+.warn-card{background:#FBEAF0;border-radius:var(--border-radius-md);padding:14px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.warn-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#993556;margin-bottom:5px}
+.warn-card p{font-size:13px;color:#72243E;line-height:1.6}
+.flow-step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.flow-num{background:#D4537E;color:#fff;font-size:12px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.flow-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.flow-content p{font-size:13px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px}
+.kpi-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px;text-align:center}
+.kpi .num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#D4537E}
+.kpi .lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.faq-item{border-bottom:0.5px solid var(--color-border-tertiary);padding:10px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:13px;font-weight:700;color:var(--color-text-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.faq-q .arr{color:#D4537E;font-size:14px;flex-shrink:0;transition:transform .2s}
+.faq-q.open .arr{transform:rotate(180deg)}
+.faq-a{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-top:8px;padding:10px 14px;background:var(--color-background-secondary);border-radius:6px;display:none}
+.faq-a.show{display:block}
+.keyword-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+.keyword-table th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary)}
+.keyword-table td{padding:9px 12px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top}
+.keyword-table tr:last-child td{border-bottom:none}
+.keyword-table .vol{font-size:11px;color:#D4537E;font-weight:700}
+.keyword-table .diff{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700}
+.diff-easy{background:#EAF3DE;color:#3B6D11}
+.diff-med{background:#FAEEDA;color:#633806}
+.checklist-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.checklist-item:last-child{border-bottom:none}
+.check-box{width:18px;height:18px;border:1.5px solid #D4537E;border-radius:3px;flex-shrink:0;margin-top:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.check-box.checked{background:#D4537E}
+.check-box.checked::after{content:'';width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translateY(-2px)}
+.check-text{font-size:13px;color:var(--color-text-primary);line-height:1.5}
+.check-text.done{text-decoration:line-through;color:var(--color-text-secondary)}
+.post-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.post-card{background:var(--color-background-secondary);border-radius:8px;padding:12px 14px;border-left:3px solid #D4537E}
+.post-card .post-type{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:5px}
+.post-card p{font-size:12px;color:var(--color-text-secondary);line-height:1.6}
+.pb-footer{background:#1A1A1A;padding:12px 32px;text-align:center}
+.pb-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Lato',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+</style>
+
+<div class="pb">
+<div class="pb-header">
+  <div class="ey">No Prior Authorization</div>
+  <div class="br">The Med Spa Google Domination Playbook</div>
+  <div class="su">Danielle &amp; Ryan Kent, FNP-BC &nbsp;|&nbsp; Hello Gorgeous Med Spa &nbsp;|&nbsp; Oswego, Illinois</div>
+</div>
+<div class="pb-band">
+  <h1>Google Domination Playbook</h1>
+  <p>7 modules &nbsp;·&nbsp; Local SEO &nbsp;·&nbsp; Google Business Profile &nbsp;·&nbsp; 40 FAQs &nbsp;·&nbsp; Reviews &nbsp;·&nbsp; Keywords &nbsp;·&nbsp; Done-for-you templates</p>
+</div>
+
+<div class="pb-nav">
+  <button class="pn act" onclick="show(0)">01 &nbsp;Why Google</button>
+  <button class="pn" onclick="show(1)">02 &nbsp;Google Profile</button>
+  <button class="pn" onclick="show(2)">03 &nbsp;The 40 FAQs</button>
+  <button class="pn" onclick="show(3)">04 &nbsp;Keywords</button>
+  <button class="pn" onclick="show(4)">05 &nbsp;Review System</button>
+  <button class="pn" onclick="show(5)">06 &nbsp;Google Posts</button>
+  <button class="pn" onclick="show(6)">07 &nbsp;Website Checklist</button>
+</div>
+
+<div class="pb-body">
+
+<!-- MODULE 1 -->
+<div id="m0">
+  <div class="module-hd">
+    <div class="mn">1</div>
+    <div class="mht">
+      <h2>Why Google Is Your Most Valuable Employee</h2>
+      <p>The patient journey always starts with a search — here's how to be what they find</p>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">87%</div><div class="lbl">of patients Google a med spa before booking</div></div>
+    <div class="kpi"><div class="num">73%</div><div class="lbl">never click past page one of results</div></div>
+    <div class="kpi"><div class="num">$0</div><div class="lbl">cost of organic Google traffic once you rank</div></div>
+  </div>
+
+  <div class="sec-title">The local search moment — what's actually happening</div>
+  <div class="info-card">
+    <h4>What patients search right before they book</h4>
+    <ul>
+      <li>"Botox near me" — high intent, ready to book, goes to Google Maps first</li>
+      <li>"Med spa [your city]" — comparison shopping, reading reviews, looking at photos</li>
+      <li>"How much does Botox cost in [city]" — price-checking, will book the one that answers this clearly</li>
+      <li>"Best injector [city]" — trust-based search, reviews and credentials matter most here</li>
+      <li>"Is Botox safe" — education search, your FAQ page captures this patient before they even know you exist</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">The three Google assets every med spa needs</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Google Business Profile</h4><p>Your free local listing — the first thing patients see. Most spas have this at 40% completion. The other 60% is free traffic they're giving to competitors.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>FAQ page on your website</h4><p>Every question a patient Googles is a chance to rank. A well-built FAQ page can put you on page one for 30–50 different searches without a single paid ad.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Google reviews</h4><p>Reviews are the #1 local ranking factor. More reviews + higher rating = higher placement in Google Maps. This is the single highest-ROI activity in local SEO.</p></div></div>
+
+  <div class="warn-card">
+    <h4>The honest truth about paid ads vs. organic</h4>
+    <p>Google Ads stop working the moment you stop paying. Organic SEO — your profile, your FAQ page, your reviews — keeps working forever. A med spa that invests 3 months in SEO has permanent free traffic. A med spa that only runs ads has a bill every month and nothing to show for it when they stop.</p>
+  </div>
+</div>
+
+<!-- MODULE 2 -->
+<div id="m1" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">2</div>
+    <div class="mht">
+      <h2>Google Business Profile — Your Free Superpower</h2>
+      <p>The complete setup guide — every field, every section, exactly what to put</p>
+    </div>
+  </div>
+
+  <div class="sec-title">The GBP setup checklist — check off as you go</div>
+  <div id="gbp-checklist">
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Business name — exactly as it appears on your signage, no keyword stuffing</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Primary category: "Medical Spa" — this is the most important field on the entire profile</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Secondary categories: add "Skin Care Clinic," "Beauty Salon," "Weight Loss Service" as applicable</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Address — must match exactly what's on your website and every other online listing</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Phone number — local number preferred over 800 numbers for local SEO</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Website URL — link to your homepage, not your booking page</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Hours — complete and accurate, including holidays</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Booking link — add your scheduling URL directly to the profile</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Business description — 750 characters, include your city, top 3 services, and what makes you different</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Services section — list every service with a description and price range</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Photos — minimum 20 photos: exterior, interior, team, before/afters, treatments in progress</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Q&amp;A section — add your own questions and answers before patients do (see Module 3)</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Attributes — select all applicable: "Women-owned," "Wheelchair accessible," "Online appointments"</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text">Products section — add your top services as "products" with photos and prices</div></div>
+  </div>
+
+  <div class="sec-title">The business description — write it like this</div>
+  <div class="script-block">
+    <div class="script-label">GBP Description Template</div>
+    <div class="script-text">[Your Practice Name] is a medical spa in [City, State] offering Botox, dermal fillers, [your top services], and [additional services]. Led by [Provider Name], [credentials], we specialize in natural-looking results tailored to your unique anatomy and goals.
+
+We are a conservative, patient-first practice. Every treatment starts with a thorough consultation and ends with a complimentary follow-up. We don't believe in the overdone look — we believe in you, refreshed.
+
+Serving [City] and the surrounding [area/communities]. Complimentary consultations available. Book online or call us today.</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="script-note">This description is keyword-rich (city, services, credentials) without feeling spammy. It also communicates your philosophy — which is what makes patients choose you over the competitor two blocks away.</div>
+  </div>
+
+  <div class="sec-title">Photos — what to upload and why each one matters</div>
+  <div class="info-card">
+    <h4>The 20-photo minimum — what to include</h4>
+    <ul>
+      <li><strong>Exterior (3 photos):</strong> front of building, signage, parking — patients use these to find you</li>
+      <li><strong>Interior (4 photos):</strong> reception, treatment room, waiting area — builds comfort before arrival</li>
+      <li><strong>Team (3 photos):</strong> provider headshots, team photo — faces build trust more than anything</li>
+      <li><strong>Before/afters (6 photos):</strong> your best results — these are what patients actually click on</li>
+      <li><strong>Treatment in progress (2 photos):</strong> normalizes the experience, reduces anxiety for first-timers</li>
+      <li><strong>Products/menu (2 photos):</strong> service menu, featured treatments — helps patients know what to expect</li>
+    </ul>
+  </div>
+
+  <div class="ok-card">
+    <h4>Name your photo files before uploading</h4>
+    <p>Google reads photo file names. Before uploading, rename every file with descriptive keywords: "botox-injector-chicago-il.jpg" or "med-spa-oswego-illinois-reception.jpg." This is free SEO that 99% of med spas skip entirely.</p>
+  </div>
+</div>
+
+<!-- MODULE 3: 40 FAQs -->
+<div id="m2" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">3</div>
+    <div class="mht">
+      <h2>The 40 FAQ System — Stop Answering the Same Questions</h2>
+      <p>Every question below is a Google search someone in your city is making right now</p>
+    </div>
+  </div>
+
+  <div class="warn-card">
+    <h4>How to use these FAQs — two ways</h4>
+    <p>First: Build a dedicated FAQ page on your website with all 40 questions — organized by service. Google indexes every question as a potential ranking opportunity. Second: Add the top 10 to your Google Business Profile Q&amp;A section. Click "Ask a question" on your own profile and answer it yourself before a stranger does.</p>
+  </div>
+
+  <div class="sec-title">Botox &amp; Neurotoxins — 10 questions</div>
+  <div id="faq-botox">
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How long does Botox last?<span class="arr">▾</span></div><div class="faq-a">For most patients, Botox lasts 3 to 4 months. With consistent treatment over time, many patients find their results last longer as the treated muscles gradually soften. We'll help you build a maintenance schedule that keeps your results continuous and your appearance natural.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Does Botox hurt?<span class="arr">▾</span></div><div class="faq-a">Most patients describe Botox as a small, quick pinch — far less uncomfortable than they expected. We use very fine needles and work efficiently. If you're anxious about discomfort, let us know and we can discuss options to make you more comfortable.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How much does Botox cost?<span class="arr">▾</span></div><div class="faq-a">Botox is typically priced per unit or per area. At [Practice Name], we charge [your pricing]. During your consultation, we'll let you know exactly how many units we recommend for your goals so there are no surprises. We always provide a clear treatment plan before we begin.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">When will I see results from Botox?<span class="arr">▾</span></div><div class="faq-a">Botox begins working within 3 to 7 days and reaches its full effect around day 14. It's completely normal for results to appear gradually or unevenly at first — this is part of the natural process. We include a complimentary 2-week follow-up with every Botox appointment to assess your results and make any fine adjustments.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What should I avoid before Botox?<span class="arr">▾</span></div><div class="faq-a">For 24 hours before your appointment: avoid alcohol, hold aspirin and ibuprofen if possible, skip fish oil and vitamin E supplements, and arrive with a clean face. We'll send you a personalized prep text 48 hours before your appointment with everything you need to know.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What's the difference between Botox and Dysport?<span class="arr">▾</span></div><div class="faq-a">Both are FDA-approved botulinum toxin type A products that relax muscles to reduce wrinkles. The main differences are in their unit measurements, diffusion radius, and onset time. Dysport tends to spread slightly more and may kick in a day or two faster. Your provider will recommend the best option based on your anatomy and treatment areas.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Can I get Botox if I'm pregnant or breastfeeding?<span class="arr">▾</span></div><div class="faq-a">No — Botox is not recommended during pregnancy or breastfeeding. This is a standard contraindication we screen for at every appointment. We're happy to schedule your treatment after this period and will plan ahead with you.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Will Botox make me look frozen or unnatural?<span class="arr">▾</span></div><div class="faq-a">Not when done correctly. We are a conservative practice — we believe in natural results that make you look refreshed, not done. We always start with a thoughtful dose and assess at your 2-week follow-up. You will never leave our practice looking overdone.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How many units of Botox do I need?<span class="arr">▾</span></div><div class="faq-a">The number of units varies by area and individual muscle mass. On average: forehead 10–20 units, glabella (11s) 20–25 units, crow's feet 6–12 units per side. Your provider will assess your muscles during the consultation and give you an exact recommendation before anything is injected.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What can't I do after Botox?<span class="arr">▾</span></div><div class="faq-a">For the first 24 hours: stay upright (no lying flat for 4 hours), skip the gym, avoid alcohol, and don't rub or massage the treated areas. We'll send you a detailed aftercare text immediately after your appointment so you have everything in writing.</div></div>
+  </div>
+
+  <div class="sec-title">Dermal Fillers — 8 questions</div>
+  <div id="faq-filler">
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How long does filler last?<span class="arr">▾</span></div><div class="faq-a">Depending on the area and product used, filler typically lasts 6 to 18 months. Lip filler tends to dissolve faster (6–12 months) while cheek and jawline filler can last 12–18 months or longer. Lifestyle factors like metabolism and sun exposure also affect longevity.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Does filler hurt?<span class="arr">▾</span></div><div class="faq-a">Most dermal fillers contain lidocaine, which numbs the area as the product is injected. We also apply topical numbing cream 20–30 minutes before treatment. Most patients rate the discomfort as very manageable — lips tend to be the most sensitive area.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How much does lip filler cost?<span class="arr">▾</span></div><div class="faq-a">Lip filler is typically priced per syringe. At [Practice Name], lip filler starts at [your price] per syringe. Most patients start with half to one syringe for a natural enhancement. We'll show you what we recommend during your consultation before we begin.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Can filler be reversed?<span class="arr">▾</span></div><div class="faq-a">Yes — hyaluronic acid fillers (the most commonly used type) can be dissolved with an enzyme called hyaluronidase. This is one of the reasons we use HA fillers as our primary choice — the reversibility adds an important safety layer. If you're ever unhappy with a result, we have options.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How soon can I see filler results?<span class="arr">▾</span></div><div class="faq-a">You'll see results immediately, but swelling and bruising in the first 1–2 weeks can affect the appearance. Final results are visible at 4 weeks once all swelling has fully resolved. We schedule a follow-up assessment at this point to evaluate and fine-tune if needed.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What should I avoid after filler?<span class="arr">▾</span></div><div class="faq-a">For the first 24–48 hours: no alcohol, no strenuous exercise, no heat exposure (saunas, steam rooms), no pressure or massage on treated areas, and no dental procedures. Apply cold compress gently if swelling occurs. We'll send you detailed aftercare instructions immediately after your appointment.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What is the difference between Botox and filler?<span class="arr">▾</span></div><div class="faq-a">Botox relaxes muscles to reduce dynamic wrinkles (lines from movement). Filler adds volume to areas that have lost fullness or to enhance features. They treat different concerns and are frequently used together for comprehensive results. Your provider will explain which is appropriate for your goals during your consultation.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Is filler safe?<span class="arr">▾</span></div><div class="faq-a">When performed by a trained, licensed provider, HA filler is very safe. Risks include bruising, swelling, asymmetry, and in rare cases vascular complications. We take every precaution — including mapping injection points before we begin and keeping hyaluronidase on-site at all times. Safety is never an afterthought here.</div></div>
+  </div>
+
+  <div class="sec-title">GLP-1 / Weight Loss — 6 questions</div>
+  <div id="faq-glp">
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Do you offer semaglutide or Ozempic for weight loss?<span class="arr">▾</span></div><div class="faq-a">Yes — we offer a medically supervised GLP-1 weight loss program including semaglutide and tirzepatide. Our program is led by [Provider Name], FNP-BC, and includes monthly provider visits, dose management, and ongoing support. Complimentary consultations are available to determine if you're a candidate.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How much weight can I lose on semaglutide?<span class="arr">▾</span></div><div class="faq-a">Clinical studies show an average of 10–15% body weight loss with semaglutide over 68 weeks. Results vary based on starting weight, dose, diet, and activity level. We'll set realistic expectations with you at your consultation and track your progress at every monthly visit.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What are the side effects of GLP-1 medications?<span class="arr">▾</span></div><div class="faq-a">The most common side effects are nausea, constipation, and fatigue — primarily during the first 4–8 weeks as your body adjusts. We start at the lowest dose and titrate slowly to minimize side effects. Most patients find them very manageable, and our team is available to help you through any difficult periods.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Do I qualify for GLP-1 weight loss medication?<span class="arr">▾</span></div><div class="faq-a">FDA criteria include a BMI of 30 or above, or a BMI of 27 or above with at least one weight-related health condition such as high blood pressure, type 2 diabetes, or high cholesterol. The best way to find out is a complimentary consultation — we'll review your history and let you know exactly what we can offer.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How much does the weight loss program cost?<span class="arr">▾</span></div><div class="faq-a">Our GLP-1 program begins with an initiation visit at [price], which includes your full consultation, labs review, and injection training. Monthly membership is [price] and covers your monthly provider visit, dose management, and direct messaging support. Medication is billed separately through your pharmacy.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What happens when I stop taking GLP-1 medication?<span class="arr">▾</span></div><div class="faq-a">Most patients regain weight when they stop GLP-1 medication without a maintenance plan. This is why we discuss long-term strategy from the start — including lower maintenance doses, lifestyle habits, and ongoing support. We're not here for a quick fix. We're here for lasting results.</div></div>
+  </div>
+
+  <div class="sec-title">IV Therapy, Skincare &amp; General — 16 questions</div>
+  <div id="faq-general">
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What is IV therapy and what are the benefits?<span class="arr">▾</span></div><div class="faq-a">IV therapy delivers vitamins, minerals, and hydration directly into your bloodstream — bypassing the digestive system for 100% absorption. Benefits depend on the formula chosen and can include improved energy, immune support, enhanced hydration, skin brightening, and faster recovery. We customize every drip to your goals.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How often should I get IV therapy?<span class="arr">▾</span></div><div class="faq-a">Most patients start with weekly sessions for the first month, then move to biweekly or monthly maintenance. Our membership program makes regular IV therapy affordable — ask us about it at your visit.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What is microneedling and does it work?<span class="arr">▾</span></div><div class="faq-a">Microneedling creates tiny, controlled micro-injuries in the skin that trigger your body's natural collagen production. It is clinically proven to improve skin texture, reduce acne scarring, minimize pores, and improve overall skin quality. Results are cumulative — most patients see the best results after a series of 3–6 treatments.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How long does microneedling take to work?<span class="arr">▾</span></div><div class="faq-a">You may notice an initial glow within the first week, but the real results — collagen remodeling — develop over 3 to 6 months after your last session. This is why we recommend a series and take before photos — so you can see your full transformation over time.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What is a chemical peel?<span class="arr">▾</span></div><div class="faq-a">A chemical peel uses an acidic solution to exfoliate the outer layers of skin, revealing smoother, brighter skin underneath. Peels range from superficial (no downtime) to medium-depth (5–7 days of peeling). We select the appropriate peel for your Fitzpatrick skin type and concerns — safety is our first priority.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Do you accept insurance?<span class="arr">▾</span></div><div class="faq-a">Most aesthetic services are elective and not covered by insurance. However, some medically necessary treatments may be partially covered — ask us at your consultation. We accept all major credit cards, HSA/FSA accounts, and offer financing through [your financing partner].</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">How do I book a consultation?<span class="arr">▾</span></div><div class="faq-a">You can book directly online at [your booking link], call or text us at [your phone], or send us a DM on Instagram @[handle]. Consultations are complimentary and available in person or virtually. We typically have availability within [timeframe] — reach out and we'll find you a time.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What should I expect at my first appointment?<span class="arr">▾</span></div><div class="faq-a">Plan for 45–60 minutes. We'll start with a thorough consultation — reviewing your goals, health history, and any questions you have. We take baseline photos before any treatment begins. Nothing happens without your full understanding and explicit agreement. You'll leave with written aftercare instructions and a follow-up appointment scheduled.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Are your providers licensed and certified?<span class="arr">▾</span></div><div class="faq-a">Yes. [Provider Name] is a [credentials] licensed in [state] with specialized training in aesthetic medicine. All providers at [Practice Name] are licensed in their scope of practice and maintain current certifications. We're happy to share our credentials — just ask.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Do you offer a membership or loyalty program?<span class="arr">▾</span></div><div class="faq-a">Yes — our membership program starts at [price]/month and includes [benefits]. Members save on every visit, get priority scheduling, and receive exclusive access to new services and events. Ask us about membership at your next appointment or visit our website to learn more.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What is microblading?<span class="arr">▾</span></div><div class="faq-a">Microblading is a semi-permanent cosmetic procedure that uses a manual blade to create hair-like strokes of pigment in the brow area — giving the appearance of fuller, more defined brows. Results last 12–18 months. Every microblading service includes a perfecting touch-up at 6–8 weeks.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Is there downtime after microblading?<span class="arr">▾</span></div><div class="faq-a">There is a healing process — not traditional "downtime." Your brows will be darker for the first 3 days, then begin to flake and peel (do not pick). Between days 8 and 21, brows may look patchy or faded — this is called the ghost phase and is completely normal. Your healed result appears at 6–8 weeks.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Can I bring a friend to my appointment?<span class="arr">▾</span></div><div class="faq-a">Of course — especially for your first visit! Many patients feel more comfortable with a support person. We just ask that guests wait in our reception area during the treatment itself to keep the environment calm and focused for you.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What is your cancellation policy?<span class="arr">▾</span></div><div class="faq-a">We ask for [24/48]-hour notice for cancellations or rescheduling. Late cancellations or no-shows may be subject to a [amount] fee, which is applied toward your next appointment. We understand life happens — just communicate with us and we'll always work with you.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">Do you offer gift cards?<span class="arr">▾</span></div><div class="faq-a">Yes! Gift cards are available in any amount and make a thoughtful gift for any occasion. You can purchase them in person or [online at your website]. They're valid for any service or retail product and never expire.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tog(this)">What makes your med spa different from others?<span class="arr">▾</span></div><div class="faq-a">We are a provider-owned, patient-first practice. Every treatment plan is built by [Provider Name], [credentials] — not a salesperson. We start conservatively, follow up with every patient, and never do more than what you actually need. Our results speak for themselves — but so do our reviews. We invite you to come in and feel the difference.</div></div>
+  </div>
+</div>
+
+<!-- MODULE 4: KEYWORDS -->
+<div id="m3" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">4</div>
+    <div class="mht">
+      <h2>Local Keyword Map</h2>
+      <p>The exact search terms patients use — and where to put them on your website</p>
+    </div>
+  </div>
+
+  <div class="sec-title">How to use this keyword map</div>
+  <div class="info-card">
+    <h4>The simple rule</h4>
+    <p>Replace [City] with your actual city name everywhere you see it. Use these phrases naturally in your website page titles, first paragraph of each page, image file names, and Google Business Profile description. Do NOT stuff keywords — use each phrase once or twice per page, naturally in a sentence.</p>
+  </div>
+
+  <div class="sec-title">High-intent booking keywords — put on your homepage and service pages</div>
+  <table class="keyword-table">
+    <thead><tr><th>Keyword</th><th>Search Intent</th><th>Volume</th><th>Difficulty</th></tr></thead>
+    <tbody>
+      <tr><td>med spa [city]</td><td>Ready to book — looking for options</td><td class="vol">High</td><td><span class="diff diff-med">Medium</span></td></tr>
+      <tr><td>Botox [city]</td><td>Ready to book Botox specifically</td><td class="vol">High</td><td><span class="diff diff-med">Medium</span></td></tr>
+      <tr><td>lip filler [city]</td><td>Ready to book lip filler</td><td class="vol">High</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>medical spa near me</td><td>Highest intent — mobile search, ready now</td><td class="vol">Very High</td><td><span class="diff diff-med">Medium</span></td></tr>
+      <tr><td>Botox near me</td><td>Highest intent — mobile, ready now</td><td class="vol">Very High</td><td><span class="diff diff-med">Medium</span></td></tr>
+      <tr><td>best med spa [city]</td><td>Comparison shopping — reviews matter</td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>dermal filler [city]</td><td>Ready to book filler</td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>weight loss clinic [city]</td><td>GLP-1 / medical weight loss intent</td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>IV therapy [city]</td><td>Ready to book IV</td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>microblading [city]</td><td>Ready to book PMU</td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title">Educational keywords — put on your FAQ and blog pages</div>
+  <table class="keyword-table">
+    <thead><tr><th>Keyword</th><th>Page to Target</th><th>Volume</th><th>Difficulty</th></tr></thead>
+    <tbody>
+      <tr><td>how long does Botox last</td><td>FAQ page — Botox section</td><td class="vol">Very High</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>how much does Botox cost</td><td>Botox service page + FAQ</td><td class="vol">Very High</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>does Botox hurt</td><td>FAQ page — Botox section</td><td class="vol">High</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>Botox vs filler difference</td><td>FAQ page — comparison question</td><td class="vol">High</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>how much does lip filler cost</td><td>Filler service page + FAQ</td><td class="vol">High</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>semaglutide weight loss near me</td><td>GLP-1 service page</td><td class="vol">High</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>what is microneedling</td><td>FAQ page — advanced section</td><td class="vol">High</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>microblading healing process</td><td>PMU FAQ + aftercare page</td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>what is IV therapy benefits</td><td>IV therapy service page + FAQ</td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td></tr>
+      <tr><td>chemical peel before and after</td><td>Gallery page + before/after</td><td class="vol">Medium</td><td><span class="diff diff-easy">Easy</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ok-card">
+    <h4>The secret weapon — educational keywords are easier to rank for</h4>
+    <p>"Botox near me" is competitive. "How long does Botox last" is much easier to rank for — and the patient searching it is just as likely to book with you once they land on your page and trust you. Your FAQ page is your educational keyword goldmine. Build it, optimize it, and it will bring you patients for years without a single paid ad.</p>
+  </div>
+</div>
+
+<!-- MODULE 5: REVIEWS -->
+<div id="m4" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">5</div>
+    <div class="mht">
+      <h2>The Review Generation System</h2>
+      <p>How to get 10 new Google reviews every month — without begging or bribing</p>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">#1</div><div class="lbl">Reviews are the top local SEO ranking factor</div></div>
+    <div class="kpi"><div class="num">4.5+</div><div class="lbl">Star rating needed to compete in most markets</div></div>
+    <div class="kpi"><div class="num">72hrs</div><div class="lbl">Window to ask — after that conversion drops 60%</div></div>
+  </div>
+
+  <div class="sec-title">The 3-touch review system</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>The in-person ask — day of 2-week visit</h4><p>Look them in the eye and say it out loud: "If you're happy with your results, would you be willing to leave us a Google review? It takes about 2 minutes and it genuinely helps people find us." Ask it in person before they leave. This is the most powerful moment.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>The text link — within 1 hour of leaving</h4><p>Send your Google review link by text immediately after the appointment while the experience is fresh. Use the template below. Include a direct link — not just instructions to "find us on Google."</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>The QR code — in every room</h4><p>Create a QR code that goes directly to your Google review page (free at qr-code-generator.com). Print it on a small card. Put one on the counter in every treatment room and at checkout. Patients who are happy will scan it on the spot.</p></div></div>
+
+  <div class="sec-title">Review request text templates</div>
+  <div class="script-block">
+    <div class="script-label">After 2-week visit — happy patient</div>
+    <div class="script-text">Hi [Name]! So great seeing you today — you look amazing. 🤍 If you have 2 minutes, a Google review would mean everything to us. It helps other people find us who are looking for exactly what you just experienced. Here's the direct link: [Your Google Review Link] Thank you so much! 💕</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+
+  <div class="script-block">
+    <div class="script-label">Negative review response template</div>
+    <div class="script-text">Thank you for sharing your experience — we take every piece of feedback seriously. We're sorry your visit didn't meet your expectations. We'd love the opportunity to make this right. Please contact us directly at [phone/email] so we can speak with you personally. Your satisfaction matters to us and we want to resolve this.</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="script-note">Always respond to negative reviews within 24 hours. Never argue. Never get defensive. A calm, professional response to a negative review often impresses potential patients more than the negative review harms you.</div>
+  </div>
+
+  <div class="sec-title">How to get your Google review link</div>
+  <div class="info-card">
+    <h4>3 steps — takes 2 minutes</h4>
+    <ul>
+      <li>Go to Google and search your business name</li>
+      <li>Click "Ask for reviews" on your Google Business Profile panel</li>
+      <li>Copy the short link — share it in texts, on cards, in emails, and as a QR code</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MODULE 6: GOOGLE POSTS -->
+<div id="m5" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">6</div>
+    <div class="mht">
+      <h2>Google Posts — The Feature Nobody Uses</h2>
+      <p>52 done-for-you post templates — one for every week of the year</p>
+    </div>
+  </div>
+
+  <div class="warn-card">
+    <h4>Why Google Posts matter for your ranking</h4>
+    <p>Google rewards active profiles. Profiles that post regularly appear higher in local search results than inactive ones. Posts expire after 7 days — which means weekly posting is required to keep your profile "active" in Google's eyes. Most med spas never post. This is a free ranking advantage hiding in plain sight.</p>
+  </div>
+
+  <div class="sec-title">The 4 post types — rotate weekly</div>
+  <div class="post-grid">
+    <div class="post-card">
+      <div class="post-type">Week 1 — Educational</div>
+      <p>Teach something about one of your services. Answers a question patients commonly ask. Builds trust and authority.</p>
+    </div>
+    <div class="post-card">
+      <div class="post-type">Week 2 — Promotional</div>
+      <p>Feature a service, highlight a special offer, or spotlight a package. Include a "Book Now" button.</p>
+    </div>
+    <div class="post-card">
+      <div class="post-type">Week 3 — Social proof</div>
+      <p>Share a patient result (with consent), highlight a review, or showcase a before/after. Let results speak.</p>
+    </div>
+    <div class="post-card">
+      <div class="post-type">Week 4 — Behind the scenes</div>
+      <p>Team photo, clinic moment, new product arrival, event announcement. Humanizes the practice.</p>
+    </div>
+  </div>
+
+  <div class="sec-title">12 ready-to-post Google Post templates</div>
+  <div class="script-block">
+    <div class="script-label">Educational — Botox timing</div>
+    <div class="script-text">Did you know Botox takes 3–7 days to start working and reaches its full effect at day 14? If you've had Botox and you're not seeing results yet — be patient. The full picture reveals itself at the 2-week mark. That's exactly why we include a complimentary follow-up with every appointment. 📍 Book your consultation: [your link]</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+  <div class="script-block">
+    <div class="script-label">Educational — Filler myths</div>
+    <div class="script-text">Myth: filler makes you look fake. Fact: poorly placed filler does. In the right hands, filler restores volume you've lost naturally — so you look like yourself, just more rested. We start conservatively, follow up at 4 weeks, and never do more than what you actually need. 📍 Complimentary consultations available: [your link]</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+  <div class="script-block">
+    <div class="script-label">Promotional — Spring special</div>
+    <div class="script-text">Spring is here — and so is your glow. ✨ Book your Botox or filler appointment this month and receive [your offer]. Limited spots available — we fill up fast in spring. 📍 Book now: [your link]</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+  <div class="script-block">
+    <div class="script-label">Educational — GLP-1</div>
+    <div class="script-text">GLP-1 medications like semaglutide and tirzepatide are changing the conversation around medical weight loss. Our program includes a full consultation with [Provider], monthly provider visits, dose management, and real support — not just a prescription. 📍 Complimentary consultations: [your link]</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+  <div class="script-block">
+    <div class="script-label">Social proof — review highlight</div>
+    <div class="script-text">"[Patient first name] shared: '[excerpt from a real 5-star review]'" — This is why we do what we do. 🤍 Thank you to every patient who trusts us with their care. If you've had a great experience with us, we'd love a Google review — it helps other people find us. Link in bio. 📍 Book: [your link]</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+  <div class="script-block">
+    <div class="script-label">Educational — IV Therapy</div>
+    <div class="script-text">IV therapy delivers vitamins and hydration directly into your bloodstream — 100% absorption, no digestive system involved. Our most popular formula? The Myers' Cocktail — magnesium, B vitamins, vitamin C, and more. Most patients notice a difference within 2 hours. 📍 Book your drip: [your link]</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+
+  <div class="ok-card">
+    <h4>The full 52-week template library</h4>
+    <p>This playbook includes the framework and 12 sample posts. Your Canva template pack includes all 52 Google Post designs — one per week, already designed, just add your photo and link. Post once a week and Google will reward your activity with higher placement in local search results.</p>
+  </div>
+</div>
+
+<!-- MODULE 7: WEBSITE CHECKLIST -->
+<div id="m6" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">7</div>
+    <div class="mht">
+      <h2>Website SEO Checklist</h2>
+      <p>25 fixes ranked by impact — all doable inside your existing website platform</p>
+    </div>
+  </div>
+
+  <div class="sec-title">Critical fixes — do these first</div>
+  <div id="web-checklist">
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Page titles include your city and service</strong> — e.g. "Botox in Oswego IL | Hello Gorgeous Med Spa" — not just "Home" or your practice name</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Every service has its own dedicated page</strong> — Botox, filler, IV therapy, GLP-1, skincare — each gets a separate URL, not one giant "Services" page</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Your city name appears in the first paragraph of your homepage</strong> — Google needs to know where you are</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Your NAP is consistent</strong> — Name, Address, Phone number must be identical on your website, Google profile, and every directory listing</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Your website is mobile-friendly</strong> — test at search.google.com/test/mobile-friendly — over 70% of med spa searches happen on phones</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Your website loads in under 3 seconds</strong> — test at pagespeed.web.dev — slow sites lose patients before the page loads</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>You have an SSL certificate (https://)</strong> — your website URL should start with https, not http. Google penalizes non-secure sites.</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Your booking button is visible above the fold</strong> — patients should never have to scroll to find how to book</div></div>
+  </div>
+
+  <div class="sec-title">High-impact content fixes</div>
+  <div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Build a dedicated FAQ page</strong> — using the 40 questions in Module 3 — organized by service category</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Add an "About" page with provider credentials</strong> — full name, license type, state, training, and a real photo. Patients check credentials before booking.</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Add before/after photos to every service page</strong> — not just a gallery page — inline photos on the service page convert significantly better</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Embed your Google reviews on your homepage</strong> — use Elfsight or your website platform's review widget — social proof on the homepage increases conversions</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Write meta descriptions for every page</strong> — 150–160 characters that include your service and city — this is the text that appears under your link in Google results</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Add alt text to every image</strong> — describe what's in the photo plus your city — "Botox injection treatment at med spa in Oswego Illinois"</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Create a blog or resources section</strong> — even 4–6 articles per year significantly boosts SEO — topics: "How to prepare for Botox," "What is the Myers' Cocktail," etc.</div></div>
+  </div>
+
+  <div class="sec-title">Local SEO extras — done once, works forever</div>
+  <div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Submit to local directories</strong> — Yelp, Healthgrades, RealSelf, ZocDoc, and your local Chamber of Commerce. Each listing is a backlink that boosts your authority.</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Add Schema markup to your website</strong> — tell your web developer to add LocalBusiness schema — this helps Google understand exactly what you are and where you're located</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Embed a Google Map on your contact page</strong> — boosts local relevance signals and helps patients find you</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Add an Instagram feed to your website</strong> — keeps your site fresh with new content automatically and shows social proof</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Set up Google Search Console</strong> — free tool that shows you which searches bring people to your site, and what pages Google has indexed</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Set up Google Analytics 4</strong> — free tool that shows how many people visit your site, where they come from, and what pages they look at</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Add a "Book Now" button to your website header that's visible on mobile</strong> — the single highest-converting change most med spa websites can make</div></div>
+    <div class="checklist-item"><div class="check-box" onclick="chk(this)"></div><div class="check-text"><strong>Compress all images before uploading</strong> — use tinypng.com — large images are the #1 cause of slow websites</div></div>
+  </div>
+
+  <div class="ok-card">
+    <h4>Start with the top 8 — this week</h4>
+    <p>Don't try to fix all 25 at once. The top 8 critical fixes — page titles, individual service pages, your city in the homepage, consistent NAP, mobile-friendly, fast loading, HTTPS, and a visible booking button — will produce 80% of your SEO improvement. Do those first. Then work through the rest over 30 days.</p>
+  </div>
+</div>
+
+</div>
+<div class="pb-footer"><p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Danielle &amp; Ryan Kent, FNP-BC &nbsp;·&nbsp; The Med Spa Google Domination Playbook</p></div>
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+
+<script>
+function show(i){
+  for(let j=0;j<7;j++){const el=document.getElementById('m'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.pn').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function tog(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('show');
+}
+function chk(box){
+  box.classList.toggle('checked');
+  box.nextElementSibling.classList.toggle('done');
+}
+function copyBlock(btn){
+  const block=btn.closest('.script-block');
+  const text=block.querySelector('.script-text').innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>

@@ -71,6 +71,16 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
       icon: "⭐",
       color: "text-yellow-400",
     },
+    {
+      label: "About",
+      href: "/about",
+      icon: "👩‍⚕️",
+    },
+    {
+      label: "Contact",
+      href: "/contact",
+      icon: "📬",
+    },
   ];
 };
 

@@ -1,0 +1,14 @@
+{
+  "productId": "hormone-therapy-playbook",
+  "displayName": "The Hormone Therapy Playbook — BHRT for Aesthetic Practices",
+  "description": "7-module system for incorporating bioidentical hormone replacement therapy into your aesthetic practice. Patient screening, hormone protocols, vendor and lab setup, consent forms, do's and don'ts, and patient FAQs. By Ryan Kent, FNP-BC.",
+  "version": "1.0.0",
+  "priceUSD": 127,
+  "etsySku": "NPA-HTP-001",
+  "category": "playbooks",
+  "targetBuyer": "NPs adding hormone therapy, med spa owners expanding services, PAs with prescriptive authority, aesthetic practice managers",
+  "templates": [{"id": "hormone-therapy-playbook-main", "name": "The Hormone Therapy Playbook", "description": "7-module BHRT system — screening, protocols, vendors, consent, FAQs", "canvaTemplateUrl": "/forms/NPA-Hormone-Therapy-Playbook.html", "_deliveryType": "html", "format": "interactive", "pages": 1, "category": "playbook"}],
+  "deliveryNote": "Interactive HTML playbook — works on any device.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-02T04:00:00Z"
+}

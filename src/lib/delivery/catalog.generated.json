@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T03:28:35.451Z",
+  "generatedAt": "2026-04-02T03:35:18.686Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -628,6 +628,21 @@
           "title": "Business Associate Agreement Template",
           "designId": "hipaa-baa",
           "editUrl": "/forms/HIPAA-06-BAA-Template.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "hormone-therapy-playbook",
+      "productSlug": "hormone-therapy-playbook",
+      "productTitle": "The Hormone Therapy Playbook — BHRT for Aesthetic Practices",
+      "buildTimestamp": "2026-04-02T04:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The Hormone Therapy Playbook",
+          "designId": "hormone-therapy-playbook-main",
+          "editUrl": "/forms/NPA-Hormone-Therapy-Playbook.html",
           "viewUrl": null
         }
       ]

@@ -63,6 +63,23 @@ const PLAYBOOKS: PlaybookData[] = [
       "Build a digital product business that earns while you sleep.",
   },
   {
+    slug: "hormone-therapy-playbook",
+    title: "Hormone Therapy Playbook",
+    subtitle: "BHRT for Aesthetic Practices",
+    price: "$127",
+    image: "/shop-previews/playbooks/npa-playbook-hormone-therapy.png",
+    peekItems: [
+      "Scope of practice breakdown — who can prescribe, what you need to start",
+      "Patient screening protocol — labs, contraindications, candidacy criteria",
+      "Hormone protocols — estradiol, testosterone, progesterone, DHEA dosing",
+      "Vendor and compounding pharmacy setup — who to use and why",
+      "Consent form templates — informed consent specific to BHRT",
+      "Patient FAQs — answers to the 15 questions every HRT patient asks",
+    ],
+    outcome:
+      "Add hormone therapy to your practice this month. Not next quarter.",
+  },
+  {
     slug: "medspa-social-media-system",
     title: "The Social Media System",
     subtitle: "90 Days of Content — Done",

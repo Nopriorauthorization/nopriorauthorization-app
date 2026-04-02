@@ -1,0 +1,552 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.pb{font-family:'Lato',sans-serif;max-width:880px;margin:0 auto;background:var(--color-background-primary)}
+.pb-header{background:#1A1A1A;padding:20px 32px 14px;text-align:center}
+.pb-header .ey{font-weight:300;letter-spacing:.22em;font-size:10px;color:#888;text-transform:uppercase;margin-bottom:5px}
+.pb-header .br{font-weight:300;letter-spacing:.22em;font-size:16px;color:#fff;text-transform:uppercase}
+.pb-header .su{font-size:10px;color:#666;margin-top:4px}
+.pb-band{background:#D4537E;padding:16px 32px;text-align:center}
+.pb-band h1{font-family:'Playfair Display',serif;font-size:24px;color:#fff;font-weight:700}
+.pb-band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+.pb-nav{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 24px}
+.pb-nav::-webkit-scrollbar{display:none}
+.pn{font-size:12px;color:var(--color-text-secondary);padding:12px 14px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;transition:color .15s}
+.pn:hover{color:#D4537E}.pn.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+.pb-body{padding:28px 32px}.sec-hide{display:none}
+.module-hd{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;padding-bottom:18px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.mn{background:#D4537E;color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mht h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--color-text-primary);font-weight:700}
+.mht p{font-size:13px;color:var(--color-text-secondary);margin-top:3px}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;color:#D4537E;font-weight:700;margin:22px 0 10px}
+.info-card{background:var(--color-background-secondary);border-radius:8px;padding:16px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.info-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:7px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}.info-card li{margin-bottom:3px}
+.warn-card{background:#FBEAF0;border-radius:8px;padding:14px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.warn-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#993556;margin-bottom:6px}
+.warn-card p{font-size:13px;color:#72243E;line-height:1.6}
+.alert-card{background:#FCEBEB;border-radius:8px;padding:14px 18px;margin-bottom:12px;border-left:3px solid #E24B4A}
+.alert-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#A32D2D;margin-bottom:6px}
+.alert-card p,.alert-card li{font-size:13px;color:#791F1F;line-height:1.7}
+.alert-card ul{padding-left:16px}.alert-card li{margin-bottom:3px}
+.ok-card{background:#EAF3DE;border-radius:8px;padding:14px 18px;margin-bottom:12px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:5px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+.script-block{background:#1A1A1A;border-radius:10px;padding:18px 22px;margin-bottom:14px;position:relative}
+.script-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.script-text{font-size:14px;color:#fff;line-height:1.8;white-space:pre-wrap}
+.script-note{font-size:12px;color:#888;margin-top:10px;border-top:0.5px solid #333;padding-top:8px;line-height:1.6}
+.copy-btn{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:0.5px solid #444;color:#888;padding:4px 10px;border-radius:5px;cursor:pointer;font-family:'Lato',sans-serif}
+.copy-btn:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+.flow-step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.flow-num{background:#D4537E;color:#fff;font-size:12px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.flow-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.flow-content p{font-size:13px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px}
+.kpi-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--color-background-secondary);border-radius:8px;padding:14px;text-align:center}
+.kpi .num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#D4537E}
+.kpi .lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px;line-height:1.4}
+.dose-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+.dose-table th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.dose-table td{padding:10px 12px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top;font-size:13px}
+.dose-table tr:last-child td{border-bottom:none}
+.dose-table .note{font-size:11px;color:var(--color-text-secondary);display:block;margin-top:2px}
+.vendor-card{border-radius:10px;padding:16px 18px;margin-bottom:10px;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.vendor-card h4{font-size:14px;font-weight:700;color:var(--color-text-primary);margin-bottom:4px}
+.vendor-card .v-tag{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:6px}
+.tag-compound{background:#FBEAF0;color:#993556}
+.tag-fda{background:#EAF3DE;color:#27500A}
+.tag-lab{background:#E6F1FB;color:#185FA5}
+.vendor-card p{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.vendor-card .v-note{font-size:11px;color:#D4537E;font-weight:700;margin-top:6px}
+.consent-section{background:var(--color-background-secondary);border-radius:12px;padding:20px 24px;margin:14px 0}
+.consent-section h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--color-text-primary);font-weight:700;margin-bottom:4px}
+.consent-section .cs-sub{font-size:12px;color:var(--color-text-secondary);margin-bottom:14px;font-style:italic}
+.consent-field{padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.consent-field:last-child{border-bottom:none}
+.consent-field strong{color:var(--color-text-primary)}
+.faq-item{border-bottom:0.5px solid var(--color-border-tertiary);padding:12px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:13px;font-weight:700;color:var(--color-text-primary);cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+.faq-q .arr{color:#D4537E;flex-shrink:0;transition:transform .2s}
+.faq-q.open .arr{transform:rotate(180deg)}
+.faq-a{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-top:8px;padding:10px 14px;background:var(--color-background-primary);border-radius:6px;border-left:3px solid #D4537E;display:none}
+.faq-a.show{display:block}
+.dos-donts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.dd-card{border-radius:8px;padding:14px 16px}
+.dd-card.do{background:#EAF3DE;border:0.5px solid #97C459}
+.dd-card.dont{background:#FCEBEB;border:0.5px solid #F09595}
+.dd-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.dd-card.do h4{color:#27500A}
+.dd-card.dont h4{color:#A32D2D}
+.dd-card li{font-size:13px;line-height:1.7;list-style:none;padding:2px 0;display:flex;gap:7px}
+.dd-card.do li::before{content:'✓';color:#639922;font-weight:700;flex-shrink:0}
+.dd-card.dont li::before{content:'✗';color:#E24B4A;font-weight:700;flex-shrink:0}
+.dd-card.do li{color:#27500A}
+.dd-card.dont li{color:#791F1F}
+.pb-footer{background:#1A1A1A;padding:12px 32px;text-align:center}
+.pb-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Lato',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+</style>
+
+<div class="pb">
+<div class="pb-header">
+  <div class="ey">No Prior Authorization &nbsp;·&nbsp; Danielle Alcala</div>
+  <div class="br">Hormone Therapy Practice Playbook</div>
+  <div class="su">BHRT &amp; HRT &nbsp;·&nbsp; For licensed aesthetic and wellness providers</div>
+</div>
+<div class="pb-band">
+  <h1>The Hormone Therapy Playbook</h1>
+  <p>Incorporating BHRT &nbsp;·&nbsp; Patient screening &nbsp;·&nbsp; Protocols &nbsp;·&nbsp; Vendors &nbsp;·&nbsp; Consent forms &nbsp;·&nbsp; FAQs</p>
+</div>
+
+<div class="pb-nav">
+  <button class="pn act" onclick="show(0)">01 &nbsp;Overview &amp; Scope</button>
+  <button class="pn" onclick="show(1)">02 &nbsp;Patient Screening</button>
+  <button class="pn" onclick="show(2)">03 &nbsp;Hormones &amp; Protocols</button>
+  <button class="pn" onclick="show(3)">04 &nbsp;Vendors &amp; Labs</button>
+  <button class="pn" onclick="show(4)">05 &nbsp;Consent Forms</button>
+  <button class="pn" onclick="show(5)">06 &nbsp;Do's &amp; Don'ts</button>
+  <button class="pn" onclick="show(6)">07 &nbsp;Patient FAQs</button>
+</div>
+
+<div class="pb-body">
+
+<!-- MODULE 1: OVERVIEW -->
+<div id="m0">
+  <div class="module-hd">
+    <div class="mn">1</div>
+    <div class="mht">
+      <h2>Hormone Therapy — Overview &amp; Scope of Practice</h2>
+      <p>What BHRT is, who can prescribe it, and why it belongs in your aesthetic practice</p>
+    </div>
+  </div>
+
+  <div class="alert-card">
+    <h4>Read this first — scope of practice is everything</h4>
+    <p>Hormone therapy prescribing scope varies significantly by state and by license type. NPs and PAs can prescribe in most states independently or with a collaborative agreement. MDs and DOs prescribe independently. Estheticians and non-prescribers cannot prescribe hormones — ever. Before building a hormone program, verify your state's prescribing authority and collaborative agreement requirements. This playbook is an operational guide — not a substitute for legal and regulatory review of your specific license and state.</p>
+  </div>
+
+  <div class="sec-title">What BHRT is — and why patients are seeking it</div>
+  <div class="info-card">
+    <h4>Bioidentical Hormone Replacement Therapy (BHRT)</h4>
+    <p>BHRT uses hormones that are chemically identical to those naturally produced by the human body — estradiol, progesterone, testosterone, DHEA, and others. Unlike synthetic hormones, bioidentical hormones are derived from plant sources and compounded or manufactured to match the body's natural molecular structure. Patients seek BHRT for: perimenopause and menopause symptoms, fatigue, weight gain, low libido, brain fog, mood instability, sleep disruption, and loss of muscle mass.</p>
+  </div>
+
+  <div class="sec-title">Why this belongs in your aesthetic practice</div>
+  <div class="info-card">
+    <h4>The natural connection to aesthetics</h4>
+    <ul>
+      <li>Hormonal decline directly causes skin thinning, collagen loss, hair thinning, and weight redistribution — the same concerns aesthetic patients present with</li>
+      <li>A patient on optimized hormones responds better to aesthetic treatments — better skin quality, better healing, better filler retention</li>
+      <li>Hormone patients are high-retention — monthly visits, quarterly labs, ongoing management</li>
+      <li>Average hormone patient LTV: $2,400–$4,800/year before any aesthetic services</li>
+      <li>Natural cross-sell: hormone patients are already invested in their wellness and open to aesthetic services</li>
+    </ul>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">$4.2B</div><div class="lbl">US hormone therapy market — growing 7% annually</div></div>
+    <div class="kpi"><div class="num">6,000+</div><div class="lbl">Women enter menopause daily in the US</div></div>
+    <div class="kpi"><div class="num">$200–$400</div><div class="lbl">Average monthly revenue per hormone patient</div></div>
+  </div>
+
+  <div class="sec-title">How to incorporate — the three models</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>In-house prescribing (NP/PA/MD)</h4><p>You prescribe, manage, and monitor. Highest revenue. Highest responsibility. Requires prescribing authority, collaborative agreement if required, lab ordering capability, and a compounding pharmacy relationship. Full clinical accountability stays with your practice.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Collaborative model — partner with a hormone specialist</h4><p>You identify and refer, the specialist prescribes, you administer (if within scope) and co-manage the aesthetic component. Revenue share or referral arrangement. Lower liability, lower revenue. Good starting point.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Telehealth platform integration</h4><p>Partner with a telehealth hormone platform (Biote, Evexias, Winona, Midi Health). They handle prescribing. You administer pellets or injections if applicable and earn a facility fee. Simplest entry point — least infrastructure required.</p></div></div>
+</div>
+
+<!-- MODULE 2: PATIENT SCREENING -->
+<div id="m1" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">2</div>
+    <div class="mht">
+      <h2>Patient Screening &amp; Consultation</h2>
+      <p>Who is a candidate, who isn't, and how to open the conversation</p>
+    </div>
+  </div>
+
+  <div class="script-block">
+    <div class="script-label">Opening consultation script</div>
+    <div class="script-text">"Tell me how you've been feeling — not just physically, but overall. Energy, mood, sleep, your relationship with your body. I want the full picture before we talk about any options."</div>
+    <div class="script-note">Hormone consultations are emotional. Women have often been dismissed by other providers for years before arriving at your door. Lead with listening. The clinical assessment comes after they feel heard.</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+
+  <div class="sec-title">Ideal hormone therapy candidates</div>
+  <div class="info-card">
+    <h4>Symptoms that indicate hormone evaluation</h4>
+    <ul>
+      <li>Perimenopause or menopause — hot flashes, night sweats, irregular cycles, vaginal dryness</li>
+      <li>Fatigue that doesn't resolve with sleep — especially mid-afternoon crashes</li>
+      <li>Low libido or sexual dysfunction — in both women and men</li>
+      <li>Brain fog, difficulty concentrating, memory concerns</li>
+      <li>Mood instability — anxiety, irritability, depression not fully explained by other causes</li>
+      <li>Unexplained weight gain — especially abdominal, despite diet and exercise</li>
+      <li>Loss of muscle mass or difficulty building muscle despite training</li>
+      <li>Hair thinning or loss beyond normal shedding</li>
+      <li>Sleep disruption — difficulty falling or staying asleep</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Contraindications — absolute and relative</div>
+  <div class="alert-card">
+    <h4>Absolute contraindications — do not prescribe estrogen</h4>
+    <ul>
+      <li>Personal history of estrogen receptor-positive breast cancer</li>
+      <li>Undiagnosed abnormal vaginal bleeding</li>
+      <li>Active or recent DVT, PE, or arterial thromboembolic disease</li>
+      <li>Active liver disease or liver failure</li>
+      <li>Known or suspected pregnancy</li>
+      <li>Endometrial cancer (estrogen without progestogen)</li>
+    </ul>
+  </div>
+
+  <div class="warn-card">
+    <h4>Relative contraindications — discuss risk/benefit carefully and document</h4>
+    <p>History of migraines with aura, hypertriglyceridemia, active gallbladder disease, uterine fibroids (size-dependent), history of clotting disorders, strong family history of hormone-sensitive cancers. These require individualized risk-benefit discussion, shared decision-making, and thorough documentation.</p>
+  </div>
+
+  <div class="sec-title">Baseline labs — required before prescribing</div>
+  <div class="info-card">
+    <h4>Female hormone panel — minimum baseline</h4>
+    <ul>
+      <li>Estradiol (E2) — baseline level, guides dosing</li>
+      <li>Progesterone — especially important in perimenopausal patients</li>
+      <li>Total and free testosterone — often deficient in women; impacts libido, energy, muscle</li>
+      <li>FSH and LH — confirm menopausal status</li>
+      <li>DHEA-S — adrenal hormone, often declines with age</li>
+      <li>SHBG (sex hormone binding globulin) — affects free hormone availability</li>
+      <li>TSH, free T3, free T4 — thyroid function; overlapping symptoms with hormone imbalance</li>
+      <li>Complete metabolic panel — liver function, kidney function, glucose</li>
+      <li>CBC — baseline blood counts</li>
+      <li>Lipid panel — cardiovascular baseline</li>
+      <li>Fasting insulin — metabolic health indicator</li>
+      <li>Vitamin D, B12 — commonly deficient; affect similar symptoms</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Male hormone panel — testosterone optimization</h4>
+    <ul>
+      <li>Total testosterone — baseline; low T defined as &lt;300 ng/dL by most guidelines</li>
+      <li>Free testosterone — more clinically relevant than total in symptomatic patients</li>
+      <li>Estradiol (sensitive assay) — men convert testosterone to estrogen; monitor to prevent excess</li>
+      <li>LH and FSH — differentiate primary vs. secondary hypogonadism</li>
+      <li>PSA — baseline and monitoring for men on testosterone therapy</li>
+      <li>Hematocrit/CBC — testosterone increases RBC production; monitor for polycythemia</li>
+      <li>CMP, lipids, thyroid — full metabolic baseline</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MODULE 3: HORMONES & PROTOCOLS -->
+<div id="m2" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">3</div>
+    <div class="mht">
+      <h2>Hormones, Delivery Methods &amp; Dosing Protocols</h2>
+      <p>The major hormones, how they're delivered, and general dosing frameworks</p>
+    </div>
+  </div>
+
+  <div class="warn-card">
+    <h4>Important — dosing is individualized</h4>
+    <p>Hormone dosing is not a one-size-fits-all protocol. Every dose should be based on the patient's labs, symptoms, body weight, age, and clinical response. The ranges below are general starting frameworks — not fixed protocols. Always dose to symptom resolution and optimal lab values, not to a number on a chart.</p>
+  </div>
+
+  <div class="sec-title">Estrogen — women's foundational hormone</div>
+  <table class="dose-table">
+    <thead><tr><th>Delivery Method</th><th>Starting Range</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Transdermal patch<span class="note">Avoids first-pass liver metabolism — preferred for clot risk</span></td><td>0.025–0.05mg/day</td><td>Change twice weekly or weekly depending on product. Lower clot risk than oral.</td></tr>
+      <tr><td>Transdermal gel/cream<span class="note">Good absorption, flexible dosing</span></td><td>0.5–1.5g/day</td><td>Apply to inner arm or thigh. Avoid breast tissue. Wash hands after application.</td></tr>
+      <tr><td>Vaginal estrogen<span class="note">Local effect — minimal systemic absorption</span></td><td>Per product guidelines</td><td>Does not require progestogen in most cases. Excellent for GSM symptoms.</td></tr>
+      <tr><td>Pellet therapy<span class="note">Subcutaneous — sustained release 3–6 months</span></td><td>6–12.5mg (varies by weight/labs)</td><td>Inserted subcutaneously — typically gluteal area. Requires training and insertion certification.</td></tr>
+      <tr><td>Oral estradiol<span class="note">Convenient — higher clot risk</span></td><td>0.5–2mg/day</td><td>Higher VTE risk than transdermal. Avoid in patients with clotting history.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title">Progesterone — essential with uterus intact</div>
+  <div class="info-card">
+    <h4>Clinical rule — always prescribe progestogen with systemic estrogen if uterus is present</h4>
+    <ul>
+      <li>Micronized progesterone (Prometrium) — bioidentical, preferred over synthetic progestins</li>
+      <li>Typical dose: 100–200mg nightly (cyclic or continuous depending on menopausal status)</li>
+      <li>Compounded progesterone cream: commonly used but limited systemic absorption — not adequate for endometrial protection</li>
+      <li>Benefits beyond uterine protection: improved sleep, mood stabilization, anxiety reduction</li>
+      <li>Women without a uterus: progestogen not required but may be used for symptomatic benefit</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Testosterone — for women AND men</div>
+  <table class="dose-table">
+    <thead><tr><th>Patient</th><th>Delivery</th><th>Starting Range</th><th>Monitor</th></tr></thead>
+    <tbody>
+      <tr><td>Women</td><td>Compounded cream/gel (off-label)</td><td>0.5–2mg/day topically</td><td>Total T, free T, SHBG, hematocrit at 6–8 weeks</td></tr>
+      <tr><td>Women</td><td>Pellet (off-label)</td><td>50–100mg per insertion</td><td>Labs at 4–6 weeks post-insertion</td></tr>
+      <tr><td>Men — TRT</td><td>Testosterone cypionate IM</td><td>50–100mg weekly or 100–200mg biweekly</td><td>Total T, free T, E2, hematocrit, PSA at 6–8 weeks</td></tr>
+      <tr><td>Men — TRT</td><td>Topical gel (AndroGel, compounded)</td><td>Per product; 50mg/day starting</td><td>Same as above. Transfer risk to partners/children.</td></tr>
+      <tr><td>Men — TRT</td><td>Pellet</td><td>900–1200mg per insertion (weight-based)</td><td>Labs at 4–6 weeks. PSA monitoring essential.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title">DHEA — the adrenal androgen precursor</div>
+  <div class="info-card">
+    <h4>Clinical overview</h4>
+    <ul>
+      <li>Available OTC as a supplement — also compounded for specific dosing</li>
+      <li>Typical dose: 25–50mg daily oral; 10–25mg for women (lower doses)</li>
+      <li>Prasterone (Intrarosa) — FDA-approved vaginal DHEA for dyspareunia in menopause</li>
+      <li>Baseline DHEA-S required before supplementing — check adrenal status</li>
+      <li>Caution: can convert to androgens — monitor for androgenic side effects in women</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Follow-up and monitoring schedule</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>6–8 weeks post-initiation</h4><p>Repeat hormone panel. Assess symptom response. Adjust dosing based on labs AND symptoms — not labs alone. Some patients need levels at high-normal range for symptom resolution.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>3 months</h4><p>Full repeat panel. Assess tolerability. Check for androgenic side effects if testosterone prescribed. PSA in men. Hematocrit for testosterone patients.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Every 6 months (stable patients)</h4><p>Maintenance labs. Reassess need for continued therapy. Annual mammogram reminder for estrogen patients. Continued PSA monitoring for men.</p></div></div>
+</div>
+
+<!-- MODULE 4: VENDORS & LABS -->
+<div id="m3" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">4</div>
+    <div class="mht">
+      <h2>Vendors, Compounding Pharmacies &amp; Lab Partners</h2>
+      <p>Who to work with, what to look for, and how to vet your partners</p>
+    </div>
+  </div>
+
+  <div class="alert-card">
+    <h4>Vendor vetting is a patient safety responsibility</h4>
+    <p>Compounded hormones are not FDA-approved finished drug products. Quality, potency, and sterility vary between compounding pharmacies. You are responsible for the quality of what you prescribe. Always use PCAB-accredited compounding pharmacies and verify 503A or 503B status depending on your practice model.</p>
+  </div>
+
+  <div class="sec-title">Compounding pharmacy partners — what to look for</div>
+  <div class="vendor-card">
+    <h4>Belmar Pharmacy</h4>
+    <span class="v-tag tag-compound">Compounding &nbsp;·&nbsp; PCAB Accredited</span>
+    <p>Specializes in hormone replacement therapy. Offers broad BHRT compounding including pellets, creams, troches, and injectables. Strong prescriber support and educational resources. PCAB accredited — high quality standard.</p>
+    <div class="v-note">→ Good for practices starting a full BHRT program</div>
+  </div>
+
+  <div class="vendor-card">
+    <h4>Empower Pharmacy</h4>
+    <span class="v-tag tag-compound">Compounding &nbsp;·&nbsp; 503B Outsourcing</span>
+    <p>Large 503B outsourcing facility. FDA-registered. Sterile and non-sterile compounding. Competitive pricing. Wide formulary including testosterone cypionate, estradiol, progesterone. Ships nationwide. Good for high-volume practices.</p>
+    <div class="v-note">→ Strong option for injectable testosterone programs</div>
+  </div>
+
+  <div class="vendor-card">
+    <h4>Women's International Pharmacy</h4>
+    <span class="v-tag tag-compound">Compounding &nbsp;·&nbsp; Women-Focused</span>
+    <p>Specializes exclusively in women's health compounding. BHRT creams, troches, capsules, vaginal preparations. Excellent patient education materials. Prescriber support line available.</p>
+    <div class="v-note">→ Best for women-only hormone programs</div>
+  </div>
+
+  <div class="vendor-card">
+    <h4>Biote Medical</h4>
+    <span class="v-tag tag-fda">Pellet Program &nbsp;·&nbsp; Training Included</span>
+    <p>Turnkey pellet therapy program. Includes prescriber training, insertion certification, patient management software, and compounding pharmacy network. Revenue-sharing model. Strong brand recognition — many patients ask for "Biote" specifically.</p>
+    <div class="v-note">→ Best entry point for practices new to hormone pellets</div>
+  </div>
+
+  <div class="vendor-card">
+    <h4>Evexias Medical Centers / EvexiPEL</h4>
+    <span class="v-tag tag-fda">Pellet Program &nbsp;·&nbsp; Training Included</span>
+    <p>Pellet training and certification program. Ongoing clinical support. Patient management platform. Compounding through affiliated pharmacies. Competitive alternative to Biote.</p>
+    <div class="v-note">→ Good Biote alternative — compare pricing and support before choosing</div>
+  </div>
+
+  <div class="sec-title">Lab partners — for in-house or send-out testing</div>
+  <div class="vendor-card">
+    <h4>LabCorp / Quest Diagnostics</h4>
+    <span class="v-tag tag-lab">Reference Lab</span>
+    <p>Standard reference labs. Widely accepted by insurance. Broad hormone panel availability. Most patients already familiar. Order through your EMR or paper requisition. Results in 24–72 hours typically.</p>
+    <div class="v-note">→ Default choice for most practices — familiar to patients, insurance-friendly</div>
+  </div>
+
+  <div class="vendor-card">
+    <h4>ZRT Laboratory</h4>
+    <span class="v-tag tag-lab">Specialty Lab &nbsp;·&nbsp; Saliva/Blood Spot</span>
+    <p>Specialty hormone testing including saliva, dried blood spot, and urine. Particularly useful for monitoring topical hormone absorption (saliva reflects tissue levels better than serum for transdermal). Good for functional medicine approach.</p>
+    <div class="v-note">→ Use when serum testing doesn't correlate with symptoms</div>
+  </div>
+
+  <div class="vendor-card">
+    <h4>Dutch Test (Precision Analytical)</h4>
+    <span class="v-tag tag-lab">Specialty &nbsp;·&nbsp; Urine Hormone Metabolites</span>
+    <p>Dried urine testing for comprehensive hormone panel including metabolites. Shows how the body is processing and breaking down hormones — information serum tests miss. More expensive but clinically valuable for complex cases.</p>
+    <div class="v-note">→ Best for complex or refractory hormone cases — not needed for routine monitoring</div>
+  </div>
+
+  <div class="sec-title">Telehealth platform partners — for collaborative models</div>
+  <div class="vendor-card">
+    <h4>Midi Health / Winona / Alloy</h4>
+    <span class="v-tag tag-fda">Telehealth Prescribing</span>
+    <p>Telehealth platforms prescribing menopause and hormone therapy. Option to refer patients who need prescribing but your scope or model doesn't support it. Some allow affiliate/referral arrangements. Patients receive pharmacy-direct medications.</p>
+    <div class="v-note">→ Referral option if you're not prescribing yet — keeps patients in your ecosystem</div>
+  </div>
+</div>
+
+<!-- MODULE 5: CONSENT FORMS -->
+<div id="m4" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">5</div>
+    <div class="mht">
+      <h2>Pre &amp; Post Consent Forms</h2>
+      <p>What must be in every hormone therapy consent — and the post-initiation acknowledgment</p>
+    </div>
+  </div>
+
+  <div class="warn-card">
+    <h4>Legal note — have your consent forms reviewed by a healthcare attorney</h4>
+    <p>These templates cover the required clinical elements of hormone therapy informed consent. Before using in your practice, have a licensed healthcare attorney in your state review and approve your consent documents. State-specific requirements vary. This is an educational framework, not legal advice.</p>
+  </div>
+
+  <div class="consent-section">
+    <h3>PRE-TREATMENT Informed Consent — Hormone Replacement Therapy</h3>
+    <div class="cs-sub">Patient reads, initials each section, signs at the bottom. Provider co-signs. Witness signature recommended.</div>
+
+    <div class="consent-field"><strong>1. Nature of treatment:</strong> I understand that I am being offered hormone replacement therapy (HRT/BHRT) to address symptoms of hormonal imbalance or deficiency. I understand this is a medical treatment that requires ongoing monitoring and follow-up.</div>
+    <div class="consent-field"><strong>2. Medications to be used:</strong> I have been informed of the specific hormone(s) to be prescribed, the delivery method, dosing, and frequency. These have been explained to me in terms I understand. _______initials</div>
+    <div class="consent-field"><strong>3. Expected benefits:</strong> I understand that potential benefits may include improvement in energy, sleep, mood, libido, hot flashes, vaginal symptoms, mental clarity, and body composition. I understand results vary and are not guaranteed. _______initials</div>
+    <div class="consent-field"><strong>4. Known risks — estrogen therapy:</strong> I have been informed of the following potential risks: increased risk of blood clots (DVT/PE), stroke, breast tenderness, spotting or bleeding, headache, nausea, and a possible increased risk of breast cancer with long-term combined HRT use. I understand the evidence on breast cancer risk is complex and has been discussed with my provider. _______initials</div>
+    <div class="consent-field"><strong>5. Known risks — testosterone therapy:</strong> I have been informed of: acne, oily skin, hair thinning or loss, clitoral/penile enlargement (dose-dependent), mood changes, increased red blood cell production (polycythemia), voice changes (rare in women at physiologic doses), and in men — testicular atrophy, fertility impact, and PSA elevation. _______initials</div>
+    <div class="consent-field"><strong>6. Compounded medications:</strong> If applicable — I understand that compounded hormones are not FDA-approved finished drug products. They are prepared by a licensed compounding pharmacy and are not subject to the same pre-approval process as FDA-approved medications. I accept this and consent to receiving compounded hormones. _______initials</div>
+    <div class="consent-field"><strong>7. Monitoring requirements:</strong> I agree to follow the recommended lab monitoring schedule, including repeat labs at 6–8 weeks after initiation and every 3–6 months thereafter. I understand that my treatment may be adjusted or discontinued based on lab results or symptom response. _______initials</div>
+    <div class="consent-field"><strong>8. Alternatives:</strong> I have been informed that non-hormonal alternatives exist for my symptoms and have been given the opportunity to discuss these. I am choosing hormone therapy after understanding these alternatives. _______initials</div>
+    <div class="consent-field"><strong>9. Right to withdraw:</strong> I understand that I may discontinue hormone therapy at any time. I understand the potential effects of stopping therapy and will discuss discontinuation with my provider. _______initials</div>
+    <div class="consent-field"><strong>10. Pregnancy and contraception:</strong> I confirm I am not pregnant. If I am of childbearing age, I understand that hormone therapy is contraindicated in pregnancy and I will use appropriate contraception. I will notify my provider immediately if I become pregnant. _______initials</div>
+
+    <div class="consent-field" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--color-border-tertiary)">
+      <strong>Patient signature:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________<br><br>
+      <strong>Provider signature:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________<br><br>
+      <strong>Witness:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________
+    </div>
+  </div>
+
+  <div class="consent-section" style="margin-top:20px">
+    <h3>POST-INITIATION Acknowledgment — 6-Week Follow-Up</h3>
+    <div class="cs-sub">Completed at the 6–8 week follow-up visit after labs are reviewed</div>
+    <div class="consent-field"><strong>Lab results reviewed:</strong> I confirm that my provider has reviewed my follow-up hormone labs with me and explained the results. I understand my current levels and how they relate to my symptoms. _______initials</div>
+    <div class="consent-field"><strong>Dose adjustment:</strong> My dosing has been: ☐ Continued as prescribed &nbsp; ☐ Increased &nbsp; ☐ Decreased &nbsp; ☐ Changed delivery method. The reason for any change has been explained to me. _______initials</div>
+    <div class="consent-field"><strong>Side effects experienced:</strong> I have reported the following side effects since starting therapy (if none, write "none"): _______________________________________ These have been addressed by my provider. _______initials</div>
+    <div class="consent-field"><strong>Ongoing monitoring agreement:</strong> I agree to continue with the recommended monitoring schedule. I understand that ongoing monitoring is required for safe long-term hormone therapy. _______initials</div>
+    <div class="consent-field" style="margin-top:14px">
+      <strong>Patient signature:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________<br><br>
+      <strong>Provider signature:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 6: DOS AND DONTS -->
+<div id="m5" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">6</div>
+    <div class="mht">
+      <h2>Do's &amp; Don'ts — Hormone Therapy in Practice</h2>
+      <p>The operational rules that protect your patients and your license</p>
+    </div>
+  </div>
+
+  <div class="dos-donts">
+    <div class="dd-card do">
+      <h4>Do — always</h4>
+      <ul>
+        <li>Obtain and review baseline labs before prescribing any hormone</li>
+        <li>Document the clinical indication for every prescription</li>
+        <li>Use shared decision-making — document that alternatives were discussed</li>
+        <li>Schedule follow-up labs at 6–8 weeks after any initiation or dose change</li>
+        <li>Prescribe progestogen with systemic estrogen in patients with a uterus</li>
+        <li>Monitor PSA in all men on testosterone therapy</li>
+        <li>Monitor hematocrit in all testosterone patients — men and women</li>
+        <li>Use PCAB-accredited compounding pharmacies only</li>
+        <li>Document patient symptoms at every visit — not just labs</li>
+        <li>Maintain a collaborative agreement if required by your state</li>
+        <li>Recommend annual mammograms for women on estrogen therapy</li>
+        <li>Keep consent forms current and reviewed by a healthcare attorney</li>
+      </ul>
+    </div>
+    <div class="dd-card dont">
+      <h4>Don't — never</h4>
+      <ul>
+        <li>Prescribe hormones without a clinical indication and documented labs</li>
+        <li>Dose to a number — dose to symptom resolution within safe lab ranges</li>
+        <li>Use synthetic progestins (medroxyprogesterone) when bioidentical progesterone is appropriate and available</li>
+        <li>Prescribe without a follow-up plan — abandonment is a liability</li>
+        <li>Use unaccredited compounding pharmacies or unverified online pharmacies</li>
+        <li>Prescribe estrogen without addressing progestogen need</li>
+        <li>Market hormone therapy with unsubstantiated cure or anti-aging claims</li>
+        <li>Prescribe outside your scope of practice or state prescribing authority</li>
+        <li>Ignore patient symptoms even if labs are "within range"</li>
+        <li>Miss PSA monitoring in men — malpractice exposure is significant</li>
+        <li>Prescribe to pregnant patients or those trying to conceive without specialist co-management</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec-title">Incorporating into your aesthetic practice — the smart workflow</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Add hormone symptom screening to your aesthetic intake form</h4><p>Ask every patient about energy, sleep, libido, mood, and weight — even if they came in for Botox. This surfaces hormone candidates you'd otherwise miss. "Have you noticed changes in your energy, weight, or mood in the last year?" opens the door.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Offer a hormone consultation as a standalone appointment</h4><p>45–60 minutes. $150–$250 consultation fee (may apply toward first month of care). Covers symptom history, lab orders, and treatment plan discussion. Separate from aesthetic appointments — this is a medical visit.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Build the monthly management visit</h4><p>$150–$200/month. Labs every 3–6 months at additional cost. This is your recurring revenue engine. A hormone patient who stays with you is worth $1,800–$2,400/year before any aesthetic services.</p></div></div>
+  <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Cross-sell naturally — not aggressively</h4><p>"Your skin quality will actually improve as your hormones optimize — estrogen directly supports collagen production. A lot of my hormone patients see a noticeable difference in their skin texture over the first 3–6 months." That's education, not sales.</p></div></div>
+</div>
+
+<!-- MODULE 7: FAQs -->
+<div id="m6" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">7</div>
+    <div class="mht">
+      <h2>Patient FAQs — Hormone Therapy</h2>
+      <p>The questions every hormone patient asks — answered clearly and compliantly</p>
+    </div>
+  </div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">What is the difference between BHRT and traditional HRT?<span class="arr">▾</span></div><div class="faq-a">Traditional HRT often uses synthetic hormones that are similar but not chemically identical to the body's natural hormones. Bioidentical hormone replacement therapy (BHRT) uses hormones that are chemically identical to what your body naturally produces — estradiol, progesterone, and testosterone in their natural molecular form. Many patients and providers prefer BHRT because of this molecular similarity, though it's important to understand that "natural" and "safe" are not the same thing — all hormone therapy carries risks that we discuss thoroughly before starting.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Does hormone therapy cause breast cancer?<span class="arr">▾</span></div><div class="faq-a">This is the question I get most often, and it deserves a thorough answer. The evidence is nuanced. The 2002 WHI study raised concerns about combined estrogen-progestin HRT and breast cancer risk — however, this study used synthetic progestins, not bioidentical progesterone, and oral conjugated equine estrogen rather than bioidentical estradiol. More recent data, including the E3N cohort study, suggests that bioidentical progesterone combined with estradiol does not carry the same risk as synthetic progestins. The risk profile is not zero, but it is meaningfully different from what the original headlines suggested. We discuss this in full at your consultation and weigh it against the known risks of untreated menopause.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">How long does it take to feel a difference?<span class="arr">▾</span></div><div class="faq-a">Most patients notice improvement in sleep and hot flashes within 2–4 weeks. Energy and mood improvements typically follow at 4–8 weeks. Libido and physical changes — muscle, body composition, skin quality — take longer, often 3–6 months of consistent therapy. Hormone optimization is not a quick fix. It's a process of finding the right dose and delivery method for your body, and that takes time. We monitor closely in the first 3 months to get your levels and symptoms dialed in.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Do I have to take hormones forever?<span class="arr">▾</span></div><div class="faq-a">Not necessarily — but for many patients, hormone therapy is a long-term choice. Menopause is permanent. The symptoms and health implications of hormone deficiency — bone loss, cardiovascular risk, cognitive changes, vaginal atrophy — don't resolve on their own. Many patients choose to continue therapy indefinitely because the quality-of-life benefits outweigh the risks for them personally. We reassess annually and the decision to continue is always yours. If you choose to stop, we discuss how to taper safely.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Can women take testosterone?<span class="arr">▾</span></div><div class="faq-a">Yes — and this is one of the most underutilized treatments in women's health. Women naturally produce testosterone in the ovaries and adrenal glands, and levels decline significantly with age and at menopause. Low testosterone in women contributes to fatigue, low libido, difficulty building muscle, brain fog, and mood changes. We prescribe testosterone for women at much lower doses than for men — the goal is restoring physiologic levels, not creating male hormone levels. It is prescribed off-label in the US, which we discuss fully in your consent.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">What will my labs cost?<span class="arr">▾</span></div><div class="faq-a">Initial hormone panels typically run $200–$500 depending on the breadth of testing, whether you use insurance, and the lab we use. We'll discuss your options at your consultation. Some panels are covered by insurance if ordered for specific diagnoses — we can help you navigate this. Follow-up monitoring labs are typically less extensive and less expensive than the initial panel.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Is compounded hormone therapy safe?<span class="arr">▾</span></div><div class="faq-a">Compounded hormones are prepared by licensed, accredited pharmacies under rigorous quality standards. We use only PCAB-accredited compounding pharmacies, which meet the highest quality standards in the industry. The main difference from FDA-approved products is that compounded medications go through a different quality oversight process. For many patients — especially those needing customized doses or delivery methods not available in commercial products — compounded hormones are the most appropriate choice. We discuss this at your consultation.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Can hormone therapy help my skin?<span class="arr">▾</span></div><div class="faq-a">Yes — and this is a genuine, clinically supported benefit, not just a marketing claim. Estrogen directly stimulates collagen production, maintains skin thickness and hydration, and supports wound healing. As estrogen declines in perimenopause and menopause, skin thins, loses collagen, and becomes drier — often by 30% in the first 5 years after menopause. Restoring estrogen can meaningfully slow this process. Testosterone also supports collagen and elastin. Patients on optimized hormone therapy often notice improved skin texture and firmness within 3–6 months. It's one of my favorite benefits to see.</div></div>
+</div>
+
+</div>
+<div class="pb-footer"><p>No Prior Authorization &nbsp;·&nbsp; Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; For licensed prescribing providers only</p></div>
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+
+<script>
+function show(i){
+  for(let j=0;j<7;j++){const el=document.getElementById('m'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.pn').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function tog(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('show');
+}
+function copyBlock(btn){
+  const block=btn.closest('.script-block');
+  const text=block.querySelector('.script-text').innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>

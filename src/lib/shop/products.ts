@@ -42,6 +42,9 @@ const CATEGORY_MAP: Record<string, string> = {
   "new-injector-onboarding-kit": "Playbooks",
   "guidebook-category-strategy": "Playbooks",
   "microblading-pmu-playbook": "Playbooks",
+  "treatment-menu-signage-kit": "Practice Management",
+  "aftercare-card-kit": "Clinical Forms",
+  "patient-communication-kit": "Practice Management",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
   "complete-injector-bundle": "Social Media",
@@ -84,6 +87,9 @@ const PRICE_MAP: Record<string, number> = {
   "new-injector-onboarding-kit": 6700,
   "guidebook-category-strategy": 4700,
   "microblading-pmu-playbook": 12700,
+  "treatment-menu-signage-kit": 4700,
+  "aftercare-card-kit": 3700,
+  "patient-communication-kit": 4700,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -126,6 +132,9 @@ const ASSET_DIR_MAP: Record<string, string> = {
   "new-injector-onboarding-kit": "playbooks",
   "guidebook-category-strategy": "playbooks",
   "microblading-pmu-playbook": "playbooks",
+  "treatment-menu-signage-kit": "kits",
+  "aftercare-card-kit": "kits",
+  "patient-communication-kit": "kits",
 };
 
 const CATEGORY_THUMBNAIL: Record<string, string> = {
@@ -136,6 +145,12 @@ const CATEGORY_THUMBNAIL: Record<string, string> = {
   "Practice Management": "/shop-previews/default/clinical-forms.png",
   "Bundles": "/shop-previews/default/default-thumbnail.png",
   "Playbooks": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
+};
+
+const SLUG_THUMBNAIL: Record<string, string> = {
+  "treatment-menu-signage-kit": "/shop-previews/kits/npa-thumbnail-treatment-menu-kit.png",
+  "aftercare-card-kit": "/shop-previews/kits/npa-thumbnail-aftercare-cards.png",
+  "patient-communication-kit": "/shop-previews/kits/npa-thumbnail-patient-communication.png",
 };
 
 const NICHE_THUMBNAIL: Record<string, string> = {
@@ -157,6 +172,9 @@ function discoverPreviewImages(slug: string, category: string): string[] {
       if (files.length > 0) return files;
     }
   }
+
+  const slugFallback = SLUG_THUMBNAIL[slug];
+  if (slugFallback) return [slugFallback];
 
   const nichePrefix = slug.split("-").slice(0, 2).join("-");
   const nicheFallback = NICHE_THUMBNAIL[nichePrefix];

@@ -23,6 +23,9 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "new-injector-onboarding-kit": { label: "New", color: "bg-sky-500/20 text-sky-300" },
   "guidebook-category-strategy": { label: "Strategy", color: "bg-violet-500/20 text-violet-300" },
   "microblading-pmu-playbook": { label: "Premium", color: "bg-amber-500/20 text-amber-300" },
+  "treatment-menu-signage-kit": { label: "New", color: "bg-sky-500/20 text-sky-300" },
+  "aftercare-card-kit": { label: "Must Have", color: "bg-emerald-500/20 text-emerald-300" },
+  "patient-communication-kit": { label: "New", color: "bg-sky-500/20 text-sky-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -38,6 +41,9 @@ const OUTCOME_MAP: Record<string, string> = {
   "new-injector-onboarding-kit": "Train your next injector in 30 days. Not 6 months of trial and error.",
   "guidebook-category-strategy": "Build a digital product business that earns while you sleep.",
   "microblading-pmu-playbook": "Run your PMU business like a clinic, not a side hustle.",
+  "treatment-menu-signage-kit": "Your lobby looks professional in 10 minutes. Print and display.",
+  "aftercare-card-kit": "Hand patients a card after every treatment. Fewer callbacks, better outcomes.",
+  "patient-communication-kit": "Copy, paste, send. Every patient message you'll ever need.",
 };
 
 const QUICK_CATEGORIES = [

@@ -1,0 +1,14 @@
+{
+  "productId": "treatment-menu-signage-kit",
+  "displayName": "Treatment Menu & Signage Kit",
+  "description": "Complete treatment menu system with lobby signage, service cards, and pricing displays for med spas. Includes injectables menu, skin treatment menu, body contouring menu, IV therapy menu, and membership pricing cards.",
+  "version": "1.0.0",
+  "priceUSD": 47,
+  "etsySku": "NPA-TMK-001",
+  "category": "practice-management",
+  "targetBuyer": "Med spa owners, office managers, front desk coordinators",
+  "templates": [{"id": "treatment-menu-signage-main", "name": "Treatment Menu & Signage Kit", "description": "Complete menu system for med spa lobbies and consultation rooms", "canvaTemplateUrl": "/forms/NPA-Treatment-Menu-Signage-Kit.html", "_deliveryType": "html", "format": "interactive", "pages": 1, "category": "practice-management"}],
+  "deliveryNote": "Interactive HTML — open in any browser, print individual menus.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-02T01:30:00Z"
+}

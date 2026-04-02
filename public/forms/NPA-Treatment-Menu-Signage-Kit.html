@@ -1,0 +1,516 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;400i&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{font-family:'Lato',sans-serif;max-width:900px;margin:0 auto;background:var(--color-background-primary)}
+.top{background:#1A1A1A;padding:18px 28px;text-align:center}
+.top .brand{font-weight:300;letter-spacing:.22em;font-size:13px;color:#fff;text-transform:uppercase}
+.top .sub{font-size:10px;color:#666;margin-top:3px}
+.band{background:#D4537E;padding:14px 28px;text-align:center}
+.band h1{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700}
+.band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+
+.tab-bar{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px}
+.tab-bar::-webkit-scrollbar{display:none}
+.tb{font-size:12px;color:var(--color-text-secondary);padding:12px 16px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif}
+.tb:hover{color:#D4537E}.tb.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+
+.body{padding:26px 28px}.sec-hide{display:none}
+.phase-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D4537E;margin-bottom:16px}
+
+.menu-card{border-radius:14px;overflow:hidden;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);margin-bottom:20px}
+.menu-top{background:#1A1A1A;padding:20px 24px;text-align:center}
+.menu-top .eyebrow{font-weight:300;letter-spacing:.22em;font-size:9px;color:#888;text-transform:uppercase;margin-bottom:5px}
+.menu-top h2{font-family:'Playfair Display',serif;font-size:20px;color:#fff;font-weight:700}
+.menu-top .tagline{font-size:10px;color:#D4537E;margin-top:3px;letter-spacing:.08em;text-transform:uppercase}
+.menu-band{background:#D4537E;height:4px}
+.menu-body{padding:20px 24px}
+.menu-section{margin-bottom:18px}
+.menu-section h3{font-family:'Playfair Display',serif;font-size:14px;color:var(--color-text-primary);font-weight:700;padding-bottom:6px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:10px}
+.menu-item{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.menu-item:last-child{border-bottom:none}
+.menu-item-left{}
+.menu-item-name{font-size:13px;color:var(--color-text-primary);font-weight:700}
+.menu-item-desc{font-size:11px;color:var(--color-text-secondary);margin-top:1px}
+.menu-item-price{font-size:13px;color:#D4537E;font-weight:700;flex-shrink:0;margin-left:12px}
+.menu-footer-band{background:#1A1A1A;padding:10px 24px;text-align:center}
+.menu-footer-band p{font-size:9px;color:#666;letter-spacing:.1em;text-transform:uppercase}
+
+.signage-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+
+.sign-card{border-radius:12px;overflow:hidden;border:0.5px solid var(--color-border-tertiary)}
+.sign-top{background:#1A1A1A;padding:14px 18px}
+.sign-top .eyebrow{font-size:8px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:4px}
+.sign-top h3{font-family:'Playfair Display',serif;font-size:15px;color:#fff;font-weight:700}
+.sign-band{background:#D4537E;height:3px}
+.sign-body{padding:14px 18px;background:var(--color-background-primary)}
+.sign-body p{font-size:12px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:8px}
+.sign-body p:last-child{margin-bottom:0}
+.sign-body ul{list-style:none;padding:0}
+.sign-body li{font-size:12px;color:var(--color-text-secondary);padding:3px 0;display:flex;gap:7px;line-height:1.5}
+.sign-body li::before{content:'—';color:#D4537E;flex-shrink:0}
+.sign-footer{background:var(--color-background-secondary);padding:8px 18px;border-top:0.5px solid var(--color-border-tertiary)}
+.sign-footer p{font-size:9px;color:var(--color-text-secondary);letter-spacing:.06em}
+
+.tent-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:20px}
+.tent-card{border-radius:10px;overflow:hidden;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.tent-top{background:#D4537E;padding:10px 14px;text-align:center}
+.tent-top h4{font-family:'Playfair Display',serif;font-size:13px;color:#fff;font-weight:700;line-height:1.3}
+.tent-body{padding:12px 14px}
+.tent-body p{font-size:11px;color:var(--color-text-secondary);line-height:1.6;text-align:center}
+.tent-cta{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D4537E;text-align:center;margin-top:8px;border-top:0.5px solid var(--color-border-tertiary);padding-top:8px}
+
+.membership-display{border-radius:14px;overflow:hidden;border:2px solid #D4537E;margin-bottom:20px}
+.md-top{background:#1A1A1A;padding:18px 24px;text-align:center}
+.md-top .eyebrow{font-size:9px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:#D4537E;margin-bottom:5px}
+.md-top h2{font-family:'Playfair Display',serif;font-size:18px;color:#fff;font-weight:700}
+.md-top p{font-size:11px;color:#888;margin-top:4px;line-height:1.6}
+.md-tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.md-tier{padding:16px 18px;border-right:0.5px solid var(--color-border-tertiary)}
+.md-tier:last-child{border-right:none}
+.md-tier.featured{background:#FBEAF0}
+.md-tier h4{font-family:'Playfair Display',serif;font-size:14px;color:var(--color-text-primary);font-weight:700}
+.md-tier .price{font-size:20px;font-weight:700;color:#D4537E;margin:5px 0}
+.md-tier ul{list-style:none;padding:0}
+.md-tier li{font-size:11px;color:var(--color-text-secondary);padding:2px 0;display:flex;gap:5px;line-height:1.5}
+.md-tier li::before{content:'✓';color:#D4537E;font-weight:700;font-size:9px;margin-top:2px;flex-shrink:0}
+.md-footer{background:#D4537E;padding:10px 24px;text-align:center}
+.md-footer p{font-size:11px;color:#fff;font-weight:700;letter-spacing:.06em}
+
+.consent-display{border-radius:12px;overflow:hidden;border:0.5px solid var(--color-border-tertiary);margin-bottom:20px}
+.cd-top{background:#1A1A1A;padding:14px 20px;text-align:center}
+.cd-top h3{font-family:'Playfair Display',serif;font-size:16px;color:#fff;font-weight:700}
+.cd-top p{font-size:11px;color:#888;margin-top:3px}
+.cd-body{padding:16px 20px;background:var(--color-background-primary)}
+.cd-body p{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:10px}
+.cd-body p:last-child{margin-bottom:0}
+.cd-sig-line{border-top:0.5px solid var(--color-text-primary);margin:16px 0 4px;width:60%}
+.cd-sig-label{font-size:10px;color:var(--color-text-secondary);letter-spacing:.05em}
+
+.info-card{background:var(--color-background-secondary);border-radius:8px;padding:14px 18px;margin-bottom:14px;border-left:3px solid #D4537E}
+.info-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:6px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}.info-card li{margin-bottom:3px}
+.ok-card{background:#EAF3DE;border-radius:8px;padding:12px 16px;margin-bottom:14px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:5px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+
+.copy-full-btn{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#1A1A1A;color:#fff;border:none;padding:9px 20px;border-radius:7px;cursor:pointer;display:block;width:100%;text-align:center;margin-bottom:16px}
+.copy-full-btn:hover{background:#D4537E}
+
+.footer{background:#1A1A1A;padding:12px 28px;text-align:center}
+.footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.copied-toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Lato',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.copied-toast.show{opacity:1}
+</style>
+
+<div class="wrap">
+<div class="top">
+  <div class="brand">No Prior Authorization</div>
+  <div class="sub">Danielle &amp; Ryan Kent, FNP-BC &nbsp;|&nbsp; Hello Gorgeous Med Spa</div>
+</div>
+<div class="band">
+  <h1>Treatment Menu &amp; Room Signage Kit</h1>
+  <p>Full menu &nbsp;·&nbsp; Room signs &nbsp;·&nbsp; Table tents &nbsp;·&nbsp; Membership display &nbsp;·&nbsp; Photo consent sign</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tb act" onclick="showK(0)">Full Service Menu</button>
+  <button class="tb" onclick="showK(1)">Room Signage</button>
+  <button class="tb" onclick="showK(2)">Table Tents</button>
+  <button class="tb" onclick="showK(3)">Membership Display</button>
+  <button class="tb" onclick="showK(4)">Photo Consent Sign</button>
+  <button class="tb" onclick="showK(5)">Print &amp; Display Guide</button>
+</div>
+
+<div class="body">
+
+<!-- FULL MENU -->
+<div id="k0">
+  <div class="phase-label">Full service menu — print, frame, or display digitally</div>
+  <div class="menu-card">
+    <div class="menu-top">
+      <div class="eyebrow">No Prior Authorization &nbsp;·&nbsp; Your Clinic Name</div>
+      <h2>Our Services</h2>
+      <div class="tagline">by Danielle &amp; Ryan Kent, FNP-BC &nbsp;·&nbsp; Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="menu-band"></div>
+    <div class="menu-body">
+
+      <div class="menu-section">
+        <h3>Injectables</h3>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Botox / Neurotoxin</div><div class="menu-item-desc">Per area &nbsp;·&nbsp; Complimentary 2-week follow-up included</div></div><div class="menu-item-price">From $[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Dermal Filler</div><div class="menu-item-desc">Per syringe &nbsp;·&nbsp; HA filler, FDA-approved</div></div><div class="menu-item-price">From $[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Lip Filler</div><div class="menu-item-desc">Natural enhancement &nbsp;·&nbsp; Touch-up included</div></div><div class="menu-item-price">From $[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Lip Flip</div><div class="menu-item-desc">4–6 units neurotoxin &nbsp;·&nbsp; Subtle upper lip enhancement</div></div><div class="menu-item-price">$[X]</div></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Medical Weight Loss</h3>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">GLP-1 Program — Initiation</div><div class="menu-item-desc">Full consult, labs review, injection training, first month supply</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Monthly Membership</div><div class="menu-item-desc">Provider visit, dose management, unlimited messaging support</div></div><div class="menu-item-price">$[X]/mo</div></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>IV Therapy &amp; Wellness</h3>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">The Myers' Cocktail</div><div class="menu-item-desc">Magnesium, B-complex, B12, Vitamin C, Calcium &nbsp;·&nbsp; 250mL NS</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Hydration Drip</div><div class="menu-item-desc">1000mL LR &nbsp;·&nbsp; Electrolytes &nbsp;·&nbsp; Recovery &amp; hydration</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Beauty Drip</div><div class="menu-item-desc">Biotin, Vitamin C, Glutathione push, B-complex</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">NAD+ Infusion</div><div class="menu-item-desc">250–500mg &nbsp;·&nbsp; Energy, cognition, longevity</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">B12 IM Shot</div><div class="menu-item-desc">Methylcobalamin &nbsp;·&nbsp; Energy &amp; mood support</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Glutathione Push</div><div class="menu-item-desc">600–2400mg &nbsp;·&nbsp; Antioxidant, skin brightening</div></div><div class="menu-item-price">$[X]</div></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Clinical Skincare &amp; Facials</h3>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Signature Clinical Facial</div><div class="menu-item-desc">60 min &nbsp;·&nbsp; Double cleanse, exfoliation, extractions, masking, SPF</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Chemical Peel</div><div class="menu-item-desc">Superficial to medium-depth &nbsp;·&nbsp; Fitzpatrick-matched</div></div><div class="menu-item-price">From $[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">LED Light Therapy</div><div class="menu-item-desc">Anti-inflammatory &amp; collagen stimulating &nbsp;·&nbsp; Add-on or standalone</div></div><div class="menu-item-price">$[X]</div></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Advanced Aesthetics</h3>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Microneedling</div><div class="menu-item-desc">Collagen induction &nbsp;·&nbsp; Series of 3–6 recommended</div></div><div class="menu-item-price">$[X] / Series $[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">RF Microneedling</div><div class="menu-item-desc">Skin tightening &amp; collagen &nbsp;·&nbsp; All skin types safe</div></div><div class="menu-item-price">$[X] / Series $[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Body Contouring</div><div class="menu-item-desc">Non-surgical fat reduction &amp; tightening &nbsp;·&nbsp; Complimentary consult</div></div><div class="menu-item-price">From $[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Laser Hair Removal</div><div class="menu-item-desc">All skin types &nbsp;·&nbsp; Series of 6–8 for permanent reduction</div></div><div class="menu-item-price">From $[X]</div></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Microblading &amp; PMU</h3>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Microblading</div><div class="menu-item-desc">Hair-stroke brows &nbsp;·&nbsp; Perfecting touch-up included</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Ombre / Powder Brows</div><div class="menu-item-desc">Soft-defined machine shading &nbsp;·&nbsp; Touch-up included</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Combination Brows</div><div class="menu-item-desc">Microblading + shading &nbsp;·&nbsp; Most popular &nbsp;·&nbsp; Touch-up included</div></div><div class="menu-item-price">$[X]</div></div>
+        <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Lip Blush</div><div class="menu-item-desc">Natural color &amp; definition &nbsp;·&nbsp; Touch-up included</div></div><div class="menu-item-price">$[X]</div></div>
+      </div>
+
+    </div>
+    <div class="menu-footer-band">
+      <p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; [Your Address] &nbsp;·&nbsp; [Your Phone] &nbsp;·&nbsp; Prices subject to change &nbsp;·&nbsp; Complimentary consultations available</p>
+    </div>
+  </div>
+
+  <div class="ok-card">
+    <h4>How to display this menu</h4>
+    <p>Print at 8.5×11 or 11×17 and frame for the reception desk or treatment room. Export as a PDF and display on an iPad at the front desk. Send digitally to patients before their first visit alongside the welcome packet. The Canva template lets you fill in your exact pricing, hide services you don't offer, and add your logo and photo.</p>
+  </div>
+</div>
+
+<!-- ROOM SIGNAGE -->
+<div id="k1" class="sec-hide">
+  <div class="phase-label">Treatment room signage — 4 signs, print and frame</div>
+  <div class="signage-grid">
+
+    <div class="sign-card">
+      <div class="sign-top">
+        <div class="eyebrow">No Prior Authorization</div>
+        <h3>Before We Begin</h3>
+      </div>
+      <div class="sign-band"></div>
+      <div class="sign-body">
+        <p>A few things we always do before your treatment — because you deserve to know exactly what's happening and why.</p>
+        <ul>
+          <li>We'll review your health history and any changes since your last visit</li>
+          <li>We'll take photos — your before is the proof your after works</li>
+          <li>We'll map or mark before we inject — no guessing</li>
+          <li>We'll confirm the plan together before we start</li>
+          <li>You can stop, pause, or ask questions at any time</li>
+        </ul>
+      </div>
+      <div class="sign-footer"><p>No Prior Authorization &nbsp;·&nbsp; Ryan Kent, FNP-BC</p></div>
+    </div>
+
+    <div class="sign-card">
+      <div class="sign-top">
+        <div class="eyebrow">No Prior Authorization</div>
+        <h3>Our Promise to You</h3>
+      </div>
+      <div class="sign-band"></div>
+      <div class="sign-body">
+        <p>We built this practice on a few beliefs that don't change regardless of trends, volume, or pressure.</p>
+        <ul>
+          <li>We will always tell you the truth — even when it's not what you hoped to hear</li>
+          <li>We will never do more than what you need</li>
+          <li>We will always start conservatively and build with you over time</li>
+          <li>If something goes wrong, we will own it and fix it</li>
+          <li>You will always leave knowing exactly what was done and why</li>
+        </ul>
+      </div>
+      <div class="sign-footer"><p>Danielle &amp; Ryan Kent &nbsp;·&nbsp; Hello Gorgeous Med Spa</p></div>
+    </div>
+
+    <div class="sign-card">
+      <div class="sign-top">
+        <div class="eyebrow">No Prior Authorization</div>
+        <h3>What to Expect After</h3>
+      </div>
+      <div class="sign-band"></div>
+      <div class="sign-body">
+        <p>Results in aesthetic medicine take time — and that's not a flaw, it's how it works.</p>
+        <ul>
+          <li>Botox: visible in 3–7 days, full result at day 14</li>
+          <li>Filler: swelling resolves over 1–2 weeks, final result at 4 weeks</li>
+          <li>Microneedling: collagen builds over 3–6 months post-series</li>
+          <li>Chemical peels: visible improvement begins at week 2</li>
+          <li>GLP-1: therapeutic weight loss begins weeks 4–8</li>
+        </ul>
+        <p style="margin-top:8px">We'll follow up with you — you're never on your own after you leave.</p>
+      </div>
+      <div class="sign-footer"><p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com</p></div>
+    </div>
+
+    <div class="sign-card">
+      <div class="sign-top">
+        <div class="eyebrow">No Prior Authorization</div>
+        <h3>Ask Us About</h3>
+      </div>
+      <div class="sign-band"></div>
+      <div class="sign-body">
+        <p>Services our patients love that they didn't know we offered until they asked.</p>
+        <ul>
+          <li>GLP-1 medical weight loss program — supervised, monthly follow-up</li>
+          <li>IV therapy &amp; vitamin infusions — memberships available</li>
+          <li>RF microneedling — skin tightening for face and neck</li>
+          <li>Body contouring — non-surgical, no downtime</li>
+          <li>Microblading &amp; combination brows — touch-up included</li>
+          <li>Our membership program — save every visit</li>
+        </ul>
+        <p style="margin-top:8px">Complimentary consultations always available — just ask.</p>
+      </div>
+      <div class="sign-footer"><p>No Prior Authorization &nbsp;·&nbsp; [Your Phone Number]</p></div>
+    </div>
+
+  </div>
+
+  <div class="info-card">
+    <h4>Print specs and display recommendations</h4>
+    <ul>
+      <li>Print size: 5×7 or 4×6 — fits standard frames from any home store</li>
+      <li>Frame in black or white to match your NPA brand palette</li>
+      <li>Place "Before We Begin" and "Our Promise to You" in the treatment room where patients wait during numbing</li>
+      <li>Place "What to Expect After" and "Ask Us About" in the checkout area</li>
+      <li>Patients who read these signs while waiting ask better questions and have higher treatment satisfaction scores</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TABLE TENTS -->
+<div id="k2" class="sec-hide">
+  <div class="phase-label">Table tents — 6 designs, for reception desk and treatment rooms</div>
+  <div class="tent-grid">
+
+    <div class="tent-card">
+      <div class="tent-top"><h4>First time here?</h4></div>
+      <div class="tent-body">
+        <p>Ask us about our New Patient Special — and grab a copy of our Welcome Packet at the front desk.</p>
+        <div class="tent-cta">Just ask at checkout</div>
+      </div>
+    </div>
+
+    <div class="tent-card">
+      <div class="tent-top"><h4>Have you tried our IV Therapy?</h4></div>
+      <div class="tent-body">
+        <p>Most patients say they feel the difference within 2 hours. Ask about our Wellness Membership — members save on every drip.</p>
+        <div class="tent-cta">Starting at $[X] &nbsp;·&nbsp; Ask us today</div>
+      </div>
+    </div>
+
+    <div class="tent-card">
+      <div class="tent-top"><h4>Thinking about GLP-1?</h4></div>
+      <div class="tent-body">
+        <p>Ryan Kent, FNP-BC runs our medical weight loss program. Complimentary consultations available — no commitment required.</p>
+        <div class="tent-cta">Ask for a consult today</div>
+      </div>
+    </div>
+
+    <div class="tent-card">
+      <div class="tent-top"><h4>When did you last get your brows done?</h4></div>
+      <div class="tent-body">
+        <p>Microblading, ombre, and combination brows available — each includes a perfecting touch-up. Results last 12–18 months.</p>
+        <div class="tent-cta">Consultations complimentary</div>
+      </div>
+    </div>
+
+    <div class="tent-card">
+      <div class="tent-top"><h4>Have you seen our Membership?</h4></div>
+      <div class="tent-body">
+        <p>Members save on every visit, get priority scheduling, and never have to think about rebooking. Starting at $99/month.</p>
+        <div class="tent-cta">Ask about it today</div>
+      </div>
+    </div>
+
+    <div class="tent-card">
+      <div class="tent-top"><h4>Refer a friend.</h4></div>
+      <div class="tent-body">
+        <p>When you refer someone who books with us, you both receive a credit toward your next visit. Because the best compliment is a referral.</p>
+        <div class="tent-cta">Ask for referral cards</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="info-card">
+    <h4>Table tent print specs</h4>
+    <ul>
+      <li>Standard table tent size: 4×6 inches folded — prints on a single 4×8.5 sheet</li>
+      <li>Laminate for durability — these get handled daily</li>
+      <li>Place 1–2 on the reception desk, 1 in each treatment room</li>
+      <li>Rotate them quarterly — change the featured service based on what you're promoting</li>
+      <li>The "Refer a Friend" tent consistently drives the highest new patient volume of any passive marketing piece</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MEMBERSHIP DISPLAY -->
+<div id="k3" class="sec-hide">
+  <div class="phase-label">Membership display — hang in reception or place at checkout</div>
+  <div class="membership-display">
+    <div class="md-top">
+      <div class="eyebrow">No Prior Authorization &nbsp;·&nbsp; Hello Gorgeous Med Spa</div>
+      <h2>Belong to Something Beautiful</h2>
+      <p>Our membership program is built for patients who are committed to their results<br>and want consistent, joyful self-care — not occasional splurges.</p>
+    </div>
+    <div class="md-tiers">
+      <div class="md-tier">
+        <h4>Glow</h4>
+        <div class="price">$99/mo</div>
+        <ul>
+          <li>1 signature facial per month</li>
+          <li>10% off all retail products</li>
+          <li>Priority booking access</li>
+          <li>Member-only promotions</li>
+          <li>No contracts — cancel anytime</li>
+        </ul>
+      </div>
+      <div class="md-tier featured">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:5px">★ Most Popular</div>
+        <h4>Radiance</h4>
+        <div class="price">$149/mo</div>
+        <ul>
+          <li>1 facial + 1 add-on per month</li>
+          <li>15% off all retail products</li>
+          <li>Priority booking access</li>
+          <li>1 complimentary IV drip/quarter</li>
+          <li>Member-only events</li>
+          <li>No contracts — cancel anytime</li>
+        </ul>
+      </div>
+      <div class="md-tier">
+        <h4>VIP</h4>
+        <div class="price">$249/mo</div>
+        <ul>
+          <li>2 facials per month</li>
+          <li>All add-ons included</li>
+          <li>20% off all services &amp; retail</li>
+          <li>First access to new services</li>
+          <li>Dedicated provider line</li>
+          <li>No contracts — cancel anytime</li>
+        </ul>
+      </div>
+    </div>
+    <div class="md-footer"><p>Ask us about membership today &nbsp;·&nbsp; [Your Phone] &nbsp;·&nbsp; nopriorauthorization.com</p></div>
+  </div>
+
+  <div class="ok-card">
+    <h4>The membership display changes checkout behavior</h4>
+    <p>Patients who see the membership display while waiting at checkout are 3× more likely to ask about it than patients who are only told about it verbally. Put this where people stand and wait. The "No contracts — cancel anytime" line is the single most important phrase on this display — it removes the biggest objection before it's voiced.</p>
+  </div>
+</div>
+
+<!-- PHOTO CONSENT SIGN -->
+<div id="k4" class="sec-hide">
+  <div class="phase-label">Photo consent display — in every treatment room</div>
+  <div class="consent-display">
+    <div class="cd-top">
+      <h3>A Note About Photos</h3>
+      <p>We take before and after photos at every visit — here's why, and what that means for you</p>
+    </div>
+    <div class="cd-body">
+      <p>Before-and-after photos are one of the most important parts of your care here. They give us a clinical baseline, allow us to track your progress over time, and help you see what we see — which is often more than you notice on your own.</p>
+      <p>Your photos are stored securely in your patient record and are never shared, posted, or used in any way without your explicit written consent. We take your privacy as seriously as we take your results.</p>
+      <p>If you would like your photos used for educational or marketing purposes, we will ask you to sign a separate photo release — and we will always show you the photo before it goes anywhere. Your comfort and consent are not optional steps. They are the starting point.</p>
+      <p>If you have any questions about how your photos are stored or used, please ask us — we are always happy to explain.</p>
+      <div class="cd-sig-line"></div>
+      <div class="cd-sig-label">No Prior Authorization &nbsp;·&nbsp; Hello Gorgeous Med Spa &nbsp;·&nbsp; Ryan Kent, FNP-BC</div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h4>Why this sign matters clinically and legally</h4>
+    <ul>
+      <li>Patients who understand why photos are taken are more cooperative and less anxious about the process</li>
+      <li>This sign communicates your HIPAA compliance posture before any conversation happens</li>
+      <li>Patients who see this sign trust you more — it signals that you take their privacy seriously</li>
+      <li>Include a separate printed photo release form in your intake packet — this sign explains the policy, the form captures consent</li>
+    </ul>
+  </div>
+
+  <div class="ok-card">
+    <h4>The marketing photo release — a separate document</h4>
+    <p>Your Canva kit includes a photo release template. It covers: permission to use photos on social media, website, and marketing materials; permission to tag or not tag the patient; duration of consent; and the patient's right to revoke consent in writing. Keep a signed copy in every patient chart. This is the document that lets you post your best before/afters legally and confidently.</p>
+  </div>
+</div>
+
+<!-- PRINT & DISPLAY GUIDE -->
+<div id="k5" class="sec-hide">
+  <div class="phase-label">Print &amp; display guide — the complete kit at a glance</div>
+
+  <div class="info-card">
+    <h4>What's in this kit — complete list</h4>
+    <ul>
+      <li><strong>Full service menu</strong> — 8.5×11 or 11×17 &nbsp;·&nbsp; Frame at reception desk or display on iPad</li>
+      <li><strong>Room sign 1: Before We Begin</strong> — 5×7 &nbsp;·&nbsp; Treatment room wall or counter</li>
+      <li><strong>Room sign 2: Our Promise to You</strong> — 5×7 &nbsp;·&nbsp; Treatment room wall</li>
+      <li><strong>Room sign 3: What to Expect After</strong> — 5×7 &nbsp;·&nbsp; Checkout area</li>
+      <li><strong>Room sign 4: Ask Us About</strong> — 5×7 &nbsp;·&nbsp; Reception or checkout</li>
+      <li><strong>Table tent 1: First Time Here?</strong> — 4×6 folded &nbsp;·&nbsp; Reception desk</li>
+      <li><strong>Table tent 2: Have You Tried IV Therapy?</strong> — 4×6 folded &nbsp;·&nbsp; Reception or treatment room</li>
+      <li><strong>Table tent 3: Thinking About GLP-1?</strong> — 4×6 folded &nbsp;·&nbsp; Reception desk</li>
+      <li><strong>Table tent 4: When Did You Last Get Your Brows Done?</strong> — 4×6 folded &nbsp;·&nbsp; Reception or waiting area</li>
+      <li><strong>Table tent 5: Have You Seen Our Membership?</strong> — 4×6 folded &nbsp;·&nbsp; Checkout counter</li>
+      <li><strong>Table tent 6: Refer a Friend</strong> — 4×6 folded &nbsp;·&nbsp; Reception desk + treatment room</li>
+      <li><strong>Membership display</strong> — 8×10 &nbsp;·&nbsp; Checkout counter or wall-mounted near reception</li>
+      <li><strong>Photo consent sign</strong> — 5×7 &nbsp;·&nbsp; Every treatment room</li>
+      <li><strong>Photo release form</strong> — 8.5×11 &nbsp;·&nbsp; In intake packet and at checkout</li>
+    </ul>
+  </div>
+
+  <div class="info-card">
+    <h4>Total pieces: 14 &nbsp;·&nbsp; Total print cost estimate</h4>
+    <ul>
+      <li>Signs and menus (Canva print or local print shop): $15–$40 for a full set</li>
+      <li>Frames (Amazon or HomeGoods): $3–$8 per frame &nbsp;·&nbsp; $40–$80 for full set</li>
+      <li>Lamination for table tents: $5–$10 at any office supply store</li>
+      <li><strong>Total investment: $60–$130</strong> to completely brand your physical space</li>
+      <li>Passive revenue generated by "Ask Us About" signs and table tents: significantly more than $130 in the first month alone</li>
+    </ul>
+  </div>
+
+  <div class="info-card">
+    <h4>Digital display option</h4>
+    <ul>
+      <li>Export all designs as PNGs from Canva</li>
+      <li>Load onto a tablet in a stand at the reception desk or checkout</li>
+      <li>Use a simple slideshow app to rotate through the menu, membership display, and table tent messages</li>
+      <li>Digital display allows you to update pricing without reprinting — ideal for practices that adjust pricing seasonally</li>
+    </ul>
+  </div>
+
+  <div class="ok-card">
+    <h4>The room tells the story before you say a word</h4>
+    <p>A provider with beautiful, branded signage in their space communicates professionalism, intentionality, and trust before the patient says hello. A provider with bare walls communicates that the business is still figuring itself out. This kit turns any treatment space — rented suite, shared space, or dedicated clinic — into a branded environment that sells your services passively, every single day.</p>
+  </div>
+</div>
+
+</div>
+<div class="footer"><p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; 14 pieces &nbsp;·&nbsp; Print-ready Canva templates</p></div>
+</div>
+
+<div class="copied-toast" id="toastK">Copied ✓</div>
+
+<script>
+function showK(i){
+  for(let j=0;j<6;j++){const el=document.getElementById('k'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.tb').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+</script>

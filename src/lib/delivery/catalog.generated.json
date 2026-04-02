@@ -1,7 +1,22 @@
 {
-  "generatedAt": "2026-04-02T00:45:11.992Z",
+  "generatedAt": "2026-04-02T01:34:03.622Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
+    {
+      "productKey": "aftercare-card-kit",
+      "productSlug": "aftercare-card-kit",
+      "productTitle": "Aftercare Card Kit — 12 Treatment Cards",
+      "buildTimestamp": "2026-04-02T01:30:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Aftercare Card Kit — 12 Treatment Cards",
+          "designId": "aftercare-card-kit-main",
+          "editUrl": "/forms/NPA-Aftercare-Card-Kit.html",
+          "viewUrl": null
+        }
+      ]
+    },
     {
       "productKey": "botox-consent-bundle",
       "productSlug": "botox-consent-bundle",
@@ -1338,6 +1353,21 @@
       ]
     },
     {
+      "productKey": "patient-communication-kit",
+      "productSlug": "patient-communication-kit",
+      "productTitle": "Botox & Filler Patient Communication Kit",
+      "buildTimestamp": "2026-04-02T01:30:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Botox & Filler Patient Communication Kit",
+          "designId": "patient-communication-kit-main",
+          "editUrl": "/forms/NPA-Patient-Communication-Kit.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "peptide-patient-guide",
       "productSlug": "peptide-patient-guide",
       "productTitle": "Peptide Therapy & BHRT Patient Education Bundle",
@@ -1522,6 +1552,21 @@
           "title": "Limited-Time Seasonal Countdown",
           "designId": "sea-limited-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "treatment-menu-signage-kit",
+      "productSlug": "treatment-menu-signage-kit",
+      "productTitle": "Treatment Menu & Signage Kit",
+      "buildTimestamp": "2026-04-02T01:30:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Treatment Menu & Signage Kit",
+          "designId": "treatment-menu-signage-main",
+          "editUrl": "/forms/NPA-Treatment-Menu-Signage-Kit.html",
           "viewUrl": null
         }
       ]

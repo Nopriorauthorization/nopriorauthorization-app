@@ -1,0 +1,479 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{font-family:'Lato',sans-serif;max-width:880px;margin:0 auto;background:var(--color-background-primary)}
+.top{background:#1A1A1A;padding:18px 28px;text-align:center}
+.top .brand{font-weight:300;letter-spacing:.22em;font-size:13px;color:#fff;text-transform:uppercase}
+.top .sub{font-size:10px;color:#666;margin-top:3px}
+.band{background:#D4537E;padding:14px 28px;text-align:center}
+.band h1{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700}
+.band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+
+.tab-bar{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px}
+.tab-bar::-webkit-scrollbar{display:none}
+.tb{font-size:12px;color:var(--color-text-secondary);padding:12px 16px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif}
+.tb:hover{color:#D4537E}.tb.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+
+.body{padding:26px 28px}
+.sec-hide{display:none}
+
+.phase-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D4537E;margin-bottom:16px}
+
+.msg-block{margin-bottom:20px}
+.msg-meta{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.msg-timing{background:#1A1A1A;color:#D4537E;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px}
+.msg-channel{font-size:11px;color:var(--color-text-secondary);letter-spacing:.05em}
+.msg-purpose{font-size:11px;color:var(--color-text-secondary);font-style:italic}
+
+.phone-wrap{background:var(--color-background-secondary);border-radius:12px;padding:16px 18px;position:relative}
+.phone-bubble{background:#D4537E;color:#fff;border-radius:16px 16px 4px 16px;padding:12px 16px;font-size:14px;line-height:1.7;white-space:pre-wrap;max-width:85%;margin-left:auto}
+.phone-bubble.inbound{background:var(--color-background-primary);color:var(--color-text-primary);border-radius:16px 16px 16px 4px;margin-left:0;border:0.5px solid var(--color-border-tertiary)}
+.phone-sender{font-size:11px;color:var(--color-text-secondary);text-align:right;margin-top:5px}
+.phone-sender.left{text-align:left}
+
+.copy-bar{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.copy-btn{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:5px 14px;border-radius:6px;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s}
+.copy-btn:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+.copy-note{font-size:11px;color:var(--color-text-tertiary);font-style:italic}
+
+.info-card{background:var(--color-background-secondary);border-radius:8px;padding:14px 18px;margin-bottom:14px;border-left:3px solid #D4537E}
+.info-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:6px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}
+.info-card li{margin-bottom:3px}
+
+.warn-card{background:#FBEAF0;border-radius:8px;padding:12px 16px;margin-bottom:14px;border-left:3px solid #D4537E}
+.warn-card p{font-size:13px;color:#72243E;line-height:1.6}
+
+.ok-card{background:#EAF3DE;border-radius:8px;padding:12px 16px;margin-bottom:14px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:5px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+
+.sequence-map{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.seq-chip{padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .15s}
+.seq-chip:hover{border-color:#D4537E;color:#D4537E}
+.seq-chip.act{background:#D4537E;border-color:#D4537E;color:#fff}
+
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:20px 0}
+
+.footer{background:#1A1A1A;padding:12px 28px;text-align:center}
+.footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+
+.copied-toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Lato',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.copied-toast.show{opacity:1}
+</style>
+
+<div class="wrap">
+<div class="top">
+  <div class="brand">No Prior Authorization</div>
+  <div class="sub">Ryan Kent, FNP-BC &nbsp;|&nbsp; Hello Gorgeous Med Spa</div>
+</div>
+<div class="band">
+  <h1>Botox &amp; Filler Patient Communication Kit</h1>
+  <p>Pre-appointment &nbsp;·&nbsp; Post-treatment &nbsp;·&nbsp; Follow-up &nbsp;·&nbsp; Review &amp; Rebook</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tb act" onclick="showTab(0)">Before Appointment</button>
+  <button class="tb" onclick="showTab(1)">Day Of</button>
+  <button class="tb" onclick="showTab(2)">Days 1–3</button>
+  <button class="tb" onclick="showTab(3)">Day 14 Follow-Up</button>
+  <button class="tb" onclick="showTab(4)">Review Request</button>
+  <button class="tb" onclick="showTab(5)">Rebook Sequence</button>
+  <button class="tb" onclick="showTab(6)">Usage Guide</button>
+</div>
+
+<div class="body">
+
+<!-- TAB 0: BEFORE -->
+<div id="t0">
+  <div class="phase-label">Phase 1 — Before the appointment</div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">48 hours before</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Confirmation + prep instructions</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! This is [Name] from Hello Gorgeous Med Spa — just confirming your Botox appointment on [Day] at [Time] with Ryan Kent, FNP-BC. 💉
+
+A few quick things to help you prepare:
+• Avoid blood thinners (aspirin, ibuprofen, fish oil) for 24 hours if possible
+• No alcohol the night before
+• Come with a clean face — no heavy makeup needed
+• Eat something before you come in
+
+Any questions before you arrive? Just reply here — we're happy to help. See you soon! 🤍</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Replace [ ] with patient details</span>
+    </div>
+  </div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Morning of appointment</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Day-of excitement + parking/arrival info</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Good morning [First Name]! We're so excited to see you today at [Time]. 🌸
+
+📍 We're at [Address] — there's parking right out front.
+
+A reminder: plan to be with us for about [45–60] minutes. Ryan will take care of everything and make sure you feel completely comfortable before we start.
+
+See you soon! ✨</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Replace [ ] with patient details</span>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h4>Why two pre-appointment texts?</h4>
+    <p>The 48-hour text handles logistics and prep — it reduces no-shows and prepares the patient clinically. The morning-of text builds emotional excitement and reduces anxiety. Patients who arrive calm and prepared have better treatment experiences and better outcomes. Both texts together reduce no-shows by approximately 30–40% compared to no outreach.</p>
+  </div>
+</div>
+
+<!-- TAB 1: DAY OF -->
+<div id="t1" class="sec-hide">
+  <div class="phase-label">Phase 2 — Day of treatment</div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Immediately after appointment</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Post-care recap + sets expectations for next 14 days</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! So great seeing you today — you did amazing. 🤍
+
+Here's your quick post-Botox reminder:
+
+✅ Stay upright for 4 hours — no lying flat
+✅ Skip the gym and anything strenuous today
+✅ No rubbing or massaging the treated areas
+✅ You may see small bumps at injection sites — totally normal and gone within 30 min
+
+⏱ What to expect: Days 3–7 you'll start to notice it kicking in. Full results show up around day 14 — so if it feels like nothing happened yet, that's completely normal.
+
+We'll check in with you at the 2-week mark. In the meantime, reply here anytime with questions — we're always here. 💕</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Send within 30 minutes of patient leaving</span>
+    </div>
+  </div>
+
+  <div class="warn-card">
+    <p><strong>This text is the most important one in the entire sequence.</strong> Patients who receive post-care instructions immediately after the appointment follow them. Patients who don't receive them Google "is it normal that my Botox isn't working on day 3" — and end up anxious and calling. Send this within 30 minutes of them leaving.</p>
+  </div>
+</div>
+
+<!-- TAB 2: DAYS 1-3 -->
+<div id="t2" class="sec-hide">
+  <div class="phase-label">Phase 3 — Days 1 through 7</div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Day 3</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Proactive check-in before the "is it working?" panic hits</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! Checking in — it's been 3 days since your appointment. You might be starting to notice the Botox kicking in, or it might still feel the same. Both are totally normal at this point! 
+
+Full results take 7–14 days, so just sit tight. 😊
+
+Any questions or anything feeling off? Just reply here — Ryan is always happy to answer. 🤍</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Schedule to send automatically at day 3</span>
+    </div>
+  </div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Day 7</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Pre-empt the week-one worry window</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! Week one check-in from Hello Gorgeous 🌸
+
+By now you should be starting to see your Botox working — but if it still feels uneven or patchy, don't worry. That's completely normal at day 7. Some areas take longer than others to fully settle.
+
+Your 2-week follow-up is where we really assess everything together and fine-tune if needed. We'll reach out to schedule that soon!
+
+Feeling good? Any concerns? Just text us. 💕</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">This text alone prevents the majority of panic calls</span>
+    </div>
+  </div>
+
+  <div class="ok-card">
+    <h4>The week-one window — why this matters</h4>
+    <p>Days 5–10 are when patients are most likely to panic, call, and leave a negative review before their results have even fully developed. Sending the day-7 text pre-empts that window. A patient who gets this text doesn't panic — they wait. And when they see their results at day 14, they're delighted instead of relieved.</p>
+  </div>
+</div>
+
+<!-- TAB 3: DAY 14 -->
+<div id="t3" class="sec-hide">
+  <div class="phase-label">Phase 4 — The 2-week follow-up</div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Day 14</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Check-in + book the complimentary assessment</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! It's been 2 weeks since your Botox appointment — which means you should be seeing your full results now! 🎉
+
+How are you feeling about them? We'd love to have you back for a quick complimentary look so Ryan can assess everything in person, take your follow-up photos, and make any small tweaks if needed.
+
+It only takes about 15 minutes and it's completely complimentary. When works for you this week or next? 🤍</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">This visit is complimentary — built into the service</span>
+    </div>
+  </div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Day 14 — If no response after 48 hours</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Gentle follow-up — don't let them slip away</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hey [First Name]! Just wanted to make sure you got our message 🌸 We really want to make sure you're loving your results. 
+
+Even if everything looks perfect — come in! We'll take your before/after photos side by side and you'll get to see how far you've come. Most patients say that moment is their favorite part. 
+
+Reply anytime to book — we'll make it easy. 💕</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Send only if no reply to first day-14 text</span>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h4>At the 2-week appointment — what to do</h4>
+    <ul>
+      <li>Show the patient their before/after photos side by side — let them react before you say anything</li>
+      <li>Ask: "How do you feel about them?" — their answer tells you everything</li>
+      <li>Assess for asymmetry, underdosing, or any areas they want adjusted</li>
+      <li>Book the next appointment before they leave — this is the rebooking moment</li>
+      <li>Ask for a Google review — in person, right now, while they're happy</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TAB 4: REVIEW REQUEST -->
+<div id="t4" class="sec-hide">
+  <div class="phase-label">Phase 5 — The review request</div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Same day as 2-week visit</span>
+      <span class="msg-channel">Text / SMS — send within 1 hour of leaving</span>
+      <span class="msg-purpose">Strike while the delight is fresh</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! So great seeing you today — you look amazing and we're so happy you're loving your results! 🤍
+
+If you have 2 minutes, a Google review would mean the world to us. It helps other people find us who are looking for exactly what you just experienced. Here's the direct link:
+
+👉 [Google Review Link]
+
+Thank you so much — truly. See you in a few months! 💕</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Add your Google Business review link</span>
+    </div>
+  </div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Alternative — if patient couldn't come in for 2-week visit</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Review request for happy remote patients</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! So glad to hear your Botox is looking great 🎉 
+
+If you're happy with your experience, we'd be so grateful for a Google review — it only takes 2 minutes and it genuinely helps us reach people who are looking for a provider they can trust.
+
+👉 [Google Review Link]
+
+Thank you so much — it means everything to us. 🤍</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Use when patient confirms happy results via text</span>
+    </div>
+  </div>
+
+  <div class="ok-card">
+    <h4>The review timing rule</h4>
+    <p>Ask for the review in person first — look them in the eye and say "if you're happy with your experience, would you be willing to leave us a Google review?" Then send the link by text within an hour. In-person ask + immediate link = highest conversion rate. Waiting more than 24 hours drops conversion by more than half.</p>
+  </div>
+</div>
+
+<!-- TAB 5: REBOOK -->
+<div id="t5" class="sec-hide">
+  <div class="phase-label">Phase 6 — The rebooking sequence</div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Day 75 (10.5 weeks post-treatment)</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">First rebook touchpoint — before they notice fading</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! It's been about 10 weeks since your Botox with Ryan — which means you're coming up on that window where results start to soften. 
+
+We want to make sure you don't lose your results! Ryan has some availability coming up — want us to get you on the calendar before it fills up? 🤍
+
+Just reply here and we'll find you a time. 💕</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Day 75 — before visible fading begins</span>
+    </div>
+  </div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Day 90 — if no response to day 75 text</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Urgency without pressure</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! Gentle reminder from Hello Gorgeous 🌸 
+
+It's been 3 months since your last Botox — right on schedule for a refresh! Ryan's calendar is filling up fast and we'd love to hold a spot for you before you lose too much of your result.
+
+Want to grab a time? Just reply here — takes 30 seconds. 💕</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Day 90 follow-up if no reply to day 75</span>
+    </div>
+  </div>
+
+  <div class="msg-block">
+    <div class="msg-meta">
+      <span class="msg-timing">Special occasion / seasonal</span>
+      <span class="msg-channel">Text / SMS</span>
+      <span class="msg-purpose">Occasion-based rebooking — highest conversion rate</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-bubble">Hi [First Name]! With [Holiday / Season] coming up, we're already getting busy — and we'd love to make sure you look and feel your best for it. 🌸
+
+If you've been thinking about refreshing your Botox, now is the time to grab a spot before we fill up. 
+
+Reply here and we'll find you something perfect. 💕</div>
+      <div class="phone-sender">Hello Gorgeous Med Spa</div>
+    </div>
+    <div class="copy-bar">
+      <button class="copy-btn" onclick="copyMsg(this)">Copy this text</button>
+      <span class="copy-note">Fill in the occasion — Valentine's, summer, holiday season</span>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h4>The rebooking math</h4>
+    <ul>
+      <li>Patients who prebook at the 2-week visit return at 85%+ rate</li>
+      <li>Patients who receive the day-75 text return at 60–70% rate</li>
+      <li>Patients who receive no outreach return at 30–40% rate</li>
+      <li>The difference between those rates is the difference between a thriving practice and one that constantly chases new clients</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TAB 6: USAGE GUIDE -->
+<div id="t6" class="sec-hide">
+  <div class="phase-label">How to use this kit</div>
+
+  <div class="info-card">
+    <h4>The complete sequence at a glance</h4>
+    <ul>
+      <li><strong>48 hours before:</strong> Confirmation + prep instructions</li>
+      <li><strong>Morning of:</strong> Day-of excitement text</li>
+      <li><strong>Same day (post-appointment):</strong> Post-care recap + expectations</li>
+      <li><strong>Day 3:</strong> Proactive check-in</li>
+      <li><strong>Day 7:</strong> Week-one reassurance</li>
+      <li><strong>Day 14:</strong> 2-week follow-up + book complimentary assessment</li>
+      <li><strong>Day 14 + 48hrs:</strong> Follow-up if no response</li>
+      <li><strong>After 2-week visit:</strong> Review request (same day)</li>
+      <li><strong>Day 75:</strong> First rebook touchpoint</li>
+      <li><strong>Day 90:</strong> Rebook follow-up if no response</li>
+      <li><strong>Seasonal:</strong> Occasion-based rebooking</li>
+    </ul>
+  </div>
+
+  <div class="info-card">
+    <h4>How to set this up in your practice</h4>
+    <ul>
+      <li>Load all texts into your EMR or CRM system with automated triggers by date</li>
+      <li>Popular tools: Vagaro, Jane App, Mindbody, Spruce Health, or even a simple Google Sheet + manual send</li>
+      <li>Personalize every text with the patient's first name — never send a mass blast</li>
+      <li>Save each message as a template in your phone or CRM so it takes 15 seconds to send</li>
+      <li>Assign one team member as the "communication owner" — one person sends all texts, every time</li>
+    </ul>
+  </div>
+
+  <div class="ok-card">
+    <h4>Adapt for filler — same sequence, minor edits</h4>
+    <p>Replace "Botox" with "filler" and adjust the timeline: filler check-in at day 14 for swelling assessment, with the understanding that final results settle at 4 weeks. The rebooking window for filler is 9–12 months rather than 3–4 months. All other texts remain identical.</p>
+  </div>
+
+  <div class="warn-card" style="background:#FBEAF0;border-left:3px solid #D4537E;padding:12px 16px;border-radius:8px">
+    <p><strong>HIPAA reminder:</strong> Text messaging with patients requires their written consent to receive SMS communications. Include an SMS consent field in your intake form. Keep consent records in the patient chart. Standard text is not HIPAA-secure — use a HIPAA-compliant messaging platform (Spruce, Klara, or your EMR's messaging feature) for clinical discussions.</p>
+  </div>
+</div>
+
+</div>
+<div class="footer"><p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Ryan Kent, FNP-BC &nbsp;·&nbsp; Patient communication templates</p></div>
+</div>
+
+<div class="copied-toast" id="toast">Copied to clipboard ✓</div>
+
+<script>
+function showTab(i){
+  for(let j=0;j<7;j++){const el=document.getElementById('t'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.tb').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function copyMsg(btn){
+  const bubble=btn.closest('.phone-wrap').querySelector('.phone-bubble');
+  navigator.clipboard.writeText(bubble.innerText.trim()).then(()=>{
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>

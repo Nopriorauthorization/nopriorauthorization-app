@@ -1,0 +1,643 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;400i&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{font-family:'Lato',sans-serif;max-width:880px;margin:0 auto;background:var(--color-background-primary)}
+.top{background:#1A1A1A;padding:18px 28px;text-align:center}
+.top .brand{font-weight:300;letter-spacing:.22em;font-size:13px;color:#fff;text-transform:uppercase}
+.top .sub{font-size:10px;color:#666;margin-top:3px}
+.band{background:#D4537E;padding:14px 28px;text-align:center}
+.band h1{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700}
+.band p{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+
+.card-picker{padding:16px 24px;background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;gap:8px;flex-wrap:wrap}
+.pick-btn{font-size:12px;font-family:'Lato',sans-serif;padding:7px 16px;border-radius:20px;border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary);cursor:pointer;transition:all .15s}
+.pick-btn:hover{border-color:#D4537E;color:#D4537E}
+.pick-btn.act{background:#D4537E;border-color:#D4537E;color:#fff;font-weight:700}
+
+.body{padding:26px 24px}
+.sec-hide{display:none}
+
+.card-preview-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+
+.aftercare-card{border-radius:12px;overflow:hidden;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.ac-header{background:#1A1A1A;padding:14px 18px}
+.ac-header .brand-line{font-weight:300;letter-spacing:.2em;font-size:9px;color:#888;text-transform:uppercase;margin-bottom:4px}
+.ac-header h2{font-family:'Playfair Display',serif;font-size:16px;color:#fff;font-weight:700}
+.ac-header .subtitle{font-size:10px;color:#D4537E;margin-top:3px;letter-spacing:.06em;text-transform:uppercase}
+.ac-band{background:#D4537E;height:3px}
+.ac-body{padding:14px 18px}
+.ac-section{margin-bottom:12px}
+.ac-section h4{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4537E;margin-bottom:6px;border-bottom:0.5px solid #FBEAF0;padding-bottom:4px}
+.ac-section ul{list-style:none;padding:0}
+.ac-section li{font-size:11px;color:var(--color-text-secondary);line-height:1.6;padding:1px 0;display:flex;gap:6px;align-items:flex-start}
+.ac-section li::before{content:'✓';color:#D4537E;font-weight:700;flex-shrink:0;font-size:10px;margin-top:1px}
+.ac-section li.no::before{content:'✗';color:#E24B4A}
+.ac-footer{background:#1A1A1A;padding:8px 18px;text-align:center}
+.ac-footer p{font-size:9px;color:#666;letter-spacing:.08em;text-transform:uppercase}
+
+.timeline-card{border-radius:12px;overflow:hidden;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.tl-days{display:flex;flex-direction:column;gap:0}
+.tl-day{display:flex;gap:10px;align-items:stretch;padding:8px 18px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.tl-day:last-child{border-bottom:none}
+.tl-day-num{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#D4537E;width:52px;flex-shrink:0;line-height:1.3}
+.tl-day-text h5{font-size:11px;font-weight:700;color:var(--color-text-primary);margin-bottom:2px}
+.tl-day-text p{font-size:11px;color:var(--color-text-secondary);line-height:1.5}
+
+.print-note{background:var(--color-background-secondary);border-radius:8px;padding:14px 18px;margin-bottom:20px;border-left:3px solid #D4537E}
+.print-note h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:6px}
+.print-note p{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+
+.copy-full-btn{font-family:'Lato',sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#1A1A1A;color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;margin-top:8px;display:block;width:100%;text-align:center}
+.copy-full-btn:hover{background:#D4537E}
+
+.info-card{background:var(--color-background-secondary);border-radius:8px;padding:14px 18px;margin-bottom:14px;border-left:3px solid #D4537E}
+.info-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:6px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}.info-card li{margin-bottom:3px}
+
+.footer{background:#1A1A1A;padding:12px 28px;text-align:center}
+.footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.copied-toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Lato',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.copied-toast.show{opacity:1}
+</style>
+
+<div class="wrap">
+<div class="top">
+  <div class="brand">No Prior Authorization</div>
+  <div class="sub">Danielle &amp; Ryan Kent, FNP-BC &nbsp;|&nbsp; Hello Gorgeous Med Spa</div>
+</div>
+<div class="band">
+  <h1>Patient Aftercare Card Kit</h1>
+  <p>Botox &nbsp;·&nbsp; Dermal Filler &nbsp;·&nbsp; Microneedling &nbsp;·&nbsp; Chemical Peel &nbsp;·&nbsp; PMU Healing &nbsp;·&nbsp; IV Therapy</p>
+</div>
+
+<div class="card-picker">
+  <button class="pick-btn act" onclick="showCard(0)">Botox</button>
+  <button class="pick-btn" onclick="showCard(1)">Dermal Filler</button>
+  <button class="pick-btn" onclick="showCard(2)">Microneedling</button>
+  <button class="pick-btn" onclick="showCard(3)">Chemical Peel</button>
+  <button class="pick-btn" onclick="showCard(4)">PMU Healing</button>
+  <button class="pick-btn" onclick="showCard(5)">IV Therapy</button>
+</div>
+
+<div class="body">
+
+<!-- BOTOX CARD -->
+<div id="c0">
+  <div class="print-note">
+    <h4>Card details — Botox Aftercare</h4>
+    <p>Designed as a printable 4×6 card. Print double-sided: instructions on front, contact info and rebook reminder on back. Add your logo and clinic colors in Canva. Print 50 at a time — hand one to every Botox patient at checkout.</p>
+  </div>
+  <div class="card-preview-wrap">
+    <div class="aftercare-card">
+      <div class="ac-header">
+        <div class="brand-line">No Prior Authorization &nbsp;·&nbsp; Your Clinic Name</div>
+        <h2>Botox Aftercare</h2>
+        <div class="subtitle">Your guide to the next 14 days</div>
+      </div>
+      <div class="ac-band"></div>
+      <div class="ac-body">
+        <div class="ac-section">
+          <h4>First 4 hours</h4>
+          <ul>
+            <li>Stay upright — no lying flat</li>
+            <li>No rubbing or massaging treated areas</li>
+            <li>Avoid touching your face</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>First 24 hours — avoid</h4>
+          <ul>
+            <li class="no">Strenuous exercise or gym</li>
+            <li class="no">Alcohol</li>
+            <li class="no">Heat — saunas, hot showers, hot yoga</li>
+            <li class="no">Makeup on injection sites</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>What to expect</h4>
+          <ul>
+            <li>Small bumps at sites — gone in 30 min</li>
+            <li>Results begin: days 3–7</li>
+            <li>Full result: day 14</li>
+            <li>Uneven onset is completely normal</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>Questions? We're here</h4>
+          <ul>
+            <li>Text or call: [Your Phone Number]</li>
+            <li>2-week follow-up: complimentary</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ac-footer"><p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Ryan Kent, FNP-BC</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="info-card">
+        <h4>Print specs</h4>
+        <p>4×6 inches, 300 DPI, CMYK color mode. Works at any print shop or Canva print. Order 50 at a time — roughly $0.15–0.25 per card at a print shop. A stack of 50 costs less than $15 and replaces generic aftercare PDFs forever.</p>
+      </div>
+      <div class="info-card">
+        <h4>Digital version</h4>
+        <p>Export as PNG or PDF from Canva. Send as an image in the post-appointment text. Patients screenshot it and have it forever. This is your most-shared piece of content — make it beautiful and branded.</p>
+      </div>
+      <div class="info-card">
+        <h4>Back of card (editable)</h4>
+        <p>Your clinic name, address, phone, Instagram handle, QR code linking to your booking page, and a simple message: "Ready to rebook? Scan here." Turns a care card into a marketing tool.</p>
+      </div>
+    </div>
+  </div>
+  <button class="copy-full-btn" onclick="copyCard('botox')">Copy Botox Aftercare Instructions (full text)</button>
+  <div id="botox-text" style="display:none">BOTOX AFTERCARE — Hello Gorgeous Med Spa | No Prior Authorization
+
+FIRST 4 HOURS:
+✓ Stay upright — no lying flat
+✓ No rubbing or massaging treated areas
+✓ Avoid touching your face unnecessarily
+
+FIRST 24 HOURS — AVOID:
+✗ Strenuous exercise or the gym
+✗ Alcohol
+✗ Heat exposure — saunas, hot showers, hot yoga, steam rooms
+✗ Makeup directly over injection sites
+
+WHAT TO EXPECT:
+✓ Small bumps or redness at injection sites — normal, resolves within 30 minutes
+✓ Results begin to appear: Days 3–7
+✓ Full result visible: Day 14
+✓ Uneven onset between sides is completely normal — do not judge results before day 14
+✓ Some areas kick in faster than others — this is expected
+
+QUESTIONS OR CONCERNS?
+Text or call us anytime: [Your Phone Number]
+Your 2-week follow-up assessment is complimentary — we'll reach out to schedule.
+
+No Prior Authorization | by Hello Gorgeous Med Spa | Ryan Kent, FNP-BC</div>
+</div>
+
+<!-- FILLER CARD -->
+<div id="c1" class="sec-hide">
+  <div class="print-note">
+    <h4>Card details — Dermal Filler Aftercare</h4>
+    <p>Filler aftercare is more involved than Botox — more instructions, longer recovery window. Consider a slightly longer card (5×7) or a folded card. Print on card stock for durability. Always include the vascular occlusion warning — this is your legal protection.</p>
+  </div>
+  <div class="card-preview-wrap">
+    <div class="aftercare-card">
+      <div class="ac-header">
+        <div class="brand-line">No Prior Authorization &nbsp;·&nbsp; Your Clinic Name</div>
+        <h2>Filler Aftercare</h2>
+        <div class="subtitle">What to expect in the next 4 weeks</div>
+      </div>
+      <div class="ac-band"></div>
+      <div class="ac-body">
+        <div class="ac-section">
+          <h4>First 24 hours</h4>
+          <ul>
+            <li>Apply cold compress 10 min on/off for swelling</li>
+            <li>Sleep elevated — extra pillow under head</li>
+            <li>No makeup over treated areas</li>
+            <li class="no">No alcohol — increases swelling and bruising</li>
+            <li class="no">No blood thinners (aspirin, ibuprofen)</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>First 2 weeks — avoid</h4>
+          <ul>
+            <li class="no">Facials, massage, or pressure on face</li>
+            <li class="no">Dental procedures</li>
+            <li class="no">Extreme heat or cold — saunas, skiing</li>
+            <li class="no">High-intensity exercise first 24–48 hrs</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>What to expect</h4>
+          <ul>
+            <li>Swelling and bruising: normal 3–7 days</li>
+            <li>Final result visible: 2–4 weeks</li>
+            <li>Lips may feel firm initially — softens</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>⚠️ Contact us immediately if you notice</h4>
+          <ul>
+            <li class="no">Blanching (white skin) near injection site</li>
+            <li class="no">Severe pain, mottled or blue-gray skin</li>
+            <li class="no">Vision changes of any kind</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ac-footer"><p>No Prior Authorization &nbsp;·&nbsp; Ryan Kent, FNP-BC &nbsp;·&nbsp; [Your Phone]</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="info-card">
+        <h4>The vascular occlusion warning</h4>
+        <p>The "contact us immediately" section on this card is not optional. It is your clinical and legal protection. A patient who experiences blanching post-filler and doesn't know what it means may wait hours before calling. This card tells them to call immediately — which is what makes the difference between a manageable complication and a catastrophic one.</p>
+      </div>
+      <div class="info-card">
+        <h4>Lips-specific note</h4>
+        <p>Lip filler patients need extra reassurance in the first 72 hours — lips swell more dramatically than other areas and patients frequently panic. Consider a separate "Lip Filler" card variant with a lips-specific swelling timeline. The Canva template includes both.</p>
+      </div>
+    </div>
+  </div>
+  <button class="copy-full-btn" onclick="copyCard('filler')">Copy Filler Aftercare Instructions (full text)</button>
+  <div id="filler-text" style="display:none">DERMAL FILLER AFTERCARE — Hello Gorgeous Med Spa | No Prior Authorization
+
+FIRST 24 HOURS:
+✓ Apply cold compress 10 minutes on / 10 minutes off to reduce swelling
+✓ Sleep with head elevated — an extra pillow helps
+✓ No makeup directly over treated areas
+✗ No alcohol — increases swelling and bruising risk significantly
+✗ Avoid blood thinners: aspirin, ibuprofen, naproxen
+
+FIRST 2 WEEKS — AVOID:
+✗ Facials, massage, or any pressure on the treated area
+✗ Dental procedures
+✗ Extreme heat or cold — saunas, steam rooms, skiing, very cold weather
+✗ High-intensity exercise for the first 24–48 hours
+
+WHAT TO EXPECT:
+✓ Swelling and bruising: completely normal for 3–7 days
+✓ Final result visible at 2–4 weeks once swelling fully resolves
+✓ Lip filler may feel firm initially — softens significantly over 2 weeks
+✓ Slight asymmetry in the first week is normal as swelling resolves unevenly
+
+⚠️ CONTACT US IMMEDIATELY IF YOU NOTICE:
+✗ Blanching (white or pale skin) near the injection site
+✗ Severe pain, mottled skin, or blue-gray discoloration
+✗ Any vision changes whatsoever
+
+These are signs of a vascular complication requiring immediate attention.
+Call/text: [Your Phone Number] — available 24 hours for our patients.
+
+No Prior Authorization | by Hello Gorgeous Med Spa | Ryan Kent, FNP-BC</div>
+</div>
+
+<!-- MICRONEEDLING CARD -->
+<div id="c2" class="sec-hide">
+  <div class="print-note">
+    <h4>Card details — Microneedling Aftercare</h4>
+    <p>Microneedling patients need the most aftercare education of any service — the "don't use anything active" window is critical and often violated. This card is slightly more text-heavy than others. Consider a folded 4×6 or a 5×7 single card.</p>
+  </div>
+  <div class="card-preview-wrap">
+    <div class="aftercare-card">
+      <div class="ac-header">
+        <div class="brand-line">No Prior Authorization &nbsp;·&nbsp; Your Clinic Name</div>
+        <h2>Microneedling Aftercare</h2>
+        <div class="subtitle">Protect your results in the next 72 hours</div>
+      </div>
+      <div class="ac-band"></div>
+      <div class="ac-body">
+        <div class="ac-section">
+          <h4>Today and tomorrow</h4>
+          <ul>
+            <li>Cleanse gently with lukewarm water only</li>
+            <li>Apply barrier cream (Aquaphor) as needed</li>
+            <li>Mineral SPF 30+ — no chemical sunscreen yet</li>
+            <li class="no">No makeup for 24 hours</li>
+            <li class="no">No gym or sweating for 48 hours</li>
+            <li class="no">No hot showers or steam rooms</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>First 72 hours — NO actives</h4>
+          <ul>
+            <li class="no">No retinoids or retinol</li>
+            <li class="no">No AHAs or BHAs (glycolic, salicylic)</li>
+            <li class="no">No vitamin C serum</li>
+            <li class="no">No niacinamide or strong actives</li>
+            <li class="no">No exfoliation of any kind</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>What to expect</h4>
+          <ul>
+            <li>Redness and warmth: 24–48 hours normal</li>
+            <li>Tightness and mild flaking: days 3–5</li>
+            <li>Visible improvement: begins week 2–4</li>
+            <li>Full collagen result: 3–6 months</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ac-footer"><p>No Prior Authorization &nbsp;·&nbsp; [Your Phone] &nbsp;·&nbsp; Ryan Kent, FNP-BC</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="info-card">
+        <h4>The active ingredients window</h4>
+        <p>The most common microneedling complication is patients going home and applying their full skincare routine — retinol, vitamin C, acids — onto freshly needled skin. The card makes this explicit and impossible to miss. Every patient who reads it knows exactly what not to do.</p>
+      </div>
+      <div class="info-card">
+        <h4>The collagen timeline conversation</h4>
+        <p>Include this verbally and on the card: results continue improving for 3–6 months after the last session. Patients who understand this don't expect dramatic transformation after one treatment and are consistently more satisfied with their outcomes.</p>
+      </div>
+    </div>
+  </div>
+  <button class="copy-full-btn" onclick="copyCard('micro')">Copy Microneedling Aftercare Instructions (full text)</button>
+  <div id="micro-text" style="display:none">MICRONEEDLING AFTERCARE — Hello Gorgeous Med Spa | No Prior Authorization
+
+TODAY AND TOMORROW:
+✓ Cleanse gently with lukewarm water and your fingertips only — no washcloths or brushes
+✓ Apply barrier cream (Aquaphor or CeraVe Healing Ointment) as needed for dryness
+✓ Mineral SPF 30+ every morning — no chemical sunscreen for the first 72 hours
+✗ No makeup for at least 24 hours
+✗ No gym, exercise, or activities that cause significant sweating for 48 hours
+✗ No hot showers, steam rooms, saunas, or hot tubs
+
+FIRST 72 HOURS — ABSOLUTELY NO ACTIVE INGREDIENTS:
+✗ No retinoids or retinol of any kind
+✗ No AHAs or BHAs — glycolic acid, lactic acid, salicylic acid
+✗ No vitamin C serum
+✗ No niacinamide at high concentrations
+✗ No physical or chemical exfoliation
+✗ Stick to gentle cleanser, barrier cream, and SPF only
+
+WHAT TO EXPECT:
+✓ Redness and warmth: normal for 24–48 hours — like a mild sunburn
+✓ Tightness and mild flaking: normal days 3–5
+✓ Pinkness may persist up to 5 days for deeper treatments
+✓ Visible skin improvement begins: weeks 2–4
+✓ Full collagen remodeling result: 3–6 months post-series
+
+Questions? We're always here.
+Call/text: [Your Phone Number]
+
+No Prior Authorization | by Hello Gorgeous Med Spa | Ryan Kent, FNP-BC</div>
+</div>
+
+<!-- CHEMICAL PEEL CARD -->
+<div id="c3" class="sec-hide">
+  <div class="print-note">
+    <h4>Card details — Chemical Peel Aftercare</h4>
+    <p>Chemical peel patients have the most anxiety post-treatment — especially medium-depth peels. The card needs to normalize the peeling process and prevent picking. Bold the "do not pick" instruction — it is the most important thing on this card.</p>
+  </div>
+  <div class="card-preview-wrap">
+    <div class="aftercare-card">
+      <div class="ac-header">
+        <div class="brand-line">No Prior Authorization &nbsp;·&nbsp; Your Clinic Name</div>
+        <h2>Chemical Peel Aftercare</h2>
+        <div class="subtitle">Days 1–14 — what to expect and what to do</div>
+      </div>
+      <div class="ac-band"></div>
+      <div class="ac-body">
+        <div class="ac-section">
+          <h4>Days 1–3</h4>
+          <ul>
+            <li>Cleanse gently — non-foaming, fragrance-free only</li>
+            <li>Apply barrier cream frequently (Aquaphor)</li>
+            <li>SPF 50 every morning — reapply if outside</li>
+            <li class="no">No makeup</li>
+            <li class="no">No retinoids, AHAs, BHAs, vitamin C</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>Days 3–7 — the peeling phase</h4>
+          <ul>
+            <li>Skin will flake and peel — this is normal</li>
+            <li class="no">DO NOT PICK, PULL, OR PEEL the skin</li>
+            <li class="no">Do not force flaking — let it shed naturally</li>
+            <li>Moisturize more frequently to ease tightness</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>Always avoid</h4>
+          <ul>
+            <li class="no">Sun exposure — wear a hat outdoors</li>
+            <li class="no">Steam rooms, saunas, hot baths</li>
+            <li class="no">Strenuous exercise until fully healed</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>Your result</h4>
+          <ul>
+            <li>Visible improvement: week 2</li>
+            <li>Next peel: 4–6 weeks minimum</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ac-footer"><p>No Prior Authorization &nbsp;·&nbsp; Danielle Kent &nbsp;·&nbsp; [Your Phone]</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="info-card">
+        <h4>The picking warning — make it unmissable</h4>
+        <p>In the Canva template, "DO NOT PICK, PULL, OR PEEL" is in a larger font and a contrasting color. This instruction is broken more than any other peel aftercare instruction — and when it is, it causes scarring and hyperpigmentation. Make it visually impossible to miss.</p>
+      </div>
+      <div class="info-card">
+        <h4>Sun protection is the result protector</h4>
+        <p>A patient who skips SPF after a chemical peel undoes a significant portion of their result. The card includes this twice — in the daily instructions and in the "always avoid" section. Reinforce it verbally at checkout as well.</p>
+      </div>
+    </div>
+  </div>
+  <button class="copy-full-btn" onclick="copyCard('peel')">Copy Chemical Peel Aftercare Instructions (full text)</button>
+  <div id="peel-text" style="display:none">CHEMICAL PEEL AFTERCARE — Hello Gorgeous Med Spa | No Prior Authorization
+
+DAYS 1–3:
+✓ Cleanse gently twice daily with a non-foaming, fragrance-free cleanser
+✓ Apply barrier cream (Aquaphor or CeraVe Healing Ointment) frequently
+✓ SPF 50 every single morning — reapply every 2 hours if outdoors
+✗ No makeup until skin has fully healed
+✗ No retinoids, AHAs, BHAs, vitamin C, or any active ingredients
+
+DAYS 3–7 — THE PEELING PHASE:
+✓ Skin will begin to flake and peel — this is normal and means the peel is working
+✗ DO NOT PICK, PULL, OR PEEL the flaking skin under any circumstances
+✗ Do not force or speed up the shedding — let it happen naturally
+✓ Moisturize more frequently to ease tightness and support the healing process
+
+ALWAYS AVOID DURING HEALING:
+✗ Direct sun exposure — wear SPF 50 and a wide-brim hat outdoors
+✗ Steam rooms, saunas, hot baths, or steam showers
+✗ Strenuous exercise until skin has fully healed and stopped peeling
+✗ Picking or touching the face unnecessarily
+
+YOUR RESULT TIMELINE:
+✓ Visible improvement begins: end of week 2
+✓ Minimum time before next peel: 4–6 weeks
+✓ For best results: series of 3–6 peels spaced 4–6 weeks apart
+
+Questions? Text or call us anytime: [Your Phone Number]
+
+No Prior Authorization | by Hello Gorgeous Med Spa | Danielle Kent</div>
+</div>
+
+<!-- PMU HEALING CARD -->
+<div id="c4" class="sec-hide">
+  <div class="print-note">
+    <h4>Card details — PMU Healing Timeline Card</h4>
+    <p>This is your most important aftercare card. The ghost phase is the #1 cause of panic and negative reviews in PMU. The card makes the entire healing journey visual and expected. Consider a folded card with the timeline on one side and aftercare on the other.</p>
+  </div>
+  <div class="card-preview-wrap">
+    <div class="aftercare-card timeline-card">
+      <div class="ac-header">
+        <div class="brand-line">No Prior Authorization &nbsp;·&nbsp; Your Clinic Name</div>
+        <h2>Your PMU Healing Journey</h2>
+        <div class="subtitle">What to expect — day by day</div>
+      </div>
+      <div class="ac-band"></div>
+      <div class="tl-days">
+        <div class="tl-day"><div class="tl-day-num">Days 1–3</div><div class="tl-day-text"><h5>Dark &amp; Bold</h5><p>Brows appear 30–50% darker than final result. Slight swelling normal. Blot gently — do not rub.</p></div></div>
+        <div class="tl-day"><div class="tl-day-num">Days 4–7</div><div class="tl-day-text"><h5>Flaking &amp; Peeling</h5><p>Skin begins shedding. DO NOT PICK. Picking removes pigment and causes scarring.</p></div></div>
+        <div class="tl-day"><div class="tl-day-num">Days 8–21</div><div class="tl-day-text"><h5>The Ghost Phase</h5><p>Brows may look patchy, faded, or nearly invisible. THIS IS NORMAL. Pigment is still there — hidden under new skin forming. Do not panic.</p></div></div>
+        <div class="tl-day"><div class="tl-day-num">Weeks 4–6</div><div class="tl-day-text"><h5>Color Resurfaces</h5><p>Pigment gradually reappears as new skin thins. Your result begins to show.</p></div></div>
+        <div class="tl-day"><div class="tl-day-num">Week 6–8</div><div class="tl-day-text"><h5>Healed Result</h5><p>True result is visible. Your touch-up appointment is scheduled for this window.</p></div></div>
+      </div>
+      <div class="ac-footer"><p>No Prior Authorization &nbsp;·&nbsp; [Your Phone] &nbsp;·&nbsp; Danielle Kent</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="info-card">
+        <h4>The ghost phase — say it out loud and put it on the card</h4>
+        <p>"Days 8–21 your brows may look patchy or nearly invisible. This is completely normal — it's called the ghost phase." When clients see this printed on a card they received on day one, they trust the process instead of calling you in a panic on day 12.</p>
+      </div>
+      <div class="info-card">
+        <h4>Back of card</h4>
+        <p>Aftercare instructions: blot lymph fluid, apply provided balm 2–3x daily, no water on brows for 7–10 days, no makeup over brows, no sun exposure, no picking. Plus your touch-up appointment date pre-filled.</p>
+      </div>
+    </div>
+  </div>
+  <button class="copy-full-btn" onclick="copyCard('pmu')">Copy PMU Healing Timeline (full text)</button>
+  <div id="pmu-text" style="display:none">PMU HEALING TIMELINE — Hello Gorgeous Med Spa | No Prior Authorization
+
+YOUR BROW HEALING JOURNEY — WHAT TO EXPECT:
+
+DAYS 1–3: DARK AND BOLD
+Your brows will appear 30–50% darker than your final healed result. Some swelling and redness is normal. Blot any weeping lymph fluid gently with a clean tissue — do not rub or wipe.
+
+DAYS 4–7: FLAKING AND PEELING
+Skin will begin to shed and flake. This is completely normal. DO NOT PICK, SCRATCH, OR PEEL the flaking skin — this removes pigment with the skin and causes patchy results and scarring.
+
+DAYS 8–21: THE GHOST PHASE
+Your brows may look patchy, faded, or nearly invisible during this phase. THIS IS COMPLETELY NORMAL. The pigment is still present — it is temporarily hidden under a layer of new skin forming over the treated area. Do not panic. This resolves.
+
+WEEKS 4–6: COLOR RESURFACES
+Pigment gradually reappears as the new skin thins and becomes translucent. Your result will begin to show in its true healed form.
+
+WEEK 6–8: YOUR HEALED RESULT
+Your true healed result is now visible. Your touch-up appointment is scheduled for this window — this is when we assess retention and perfect the result.
+
+AFTERCARE — THE NON-NEGOTIABLES:
+✓ Apply provided aftercare balm 2–3 times daily with a clean fingertip
+✓ Blot — never rub — any weeping in the first 3 days
+✗ No water on brows for 7–10 days — no swimming, sweating, steam
+✗ No makeup over brow area until fully healed
+✗ No sun exposure on brows during healing
+✗ No picking, scratching, rubbing, or touching unnecessarily
+
+Your touch-up appointment: [Date / Time]
+Questions? Call or text: [Your Phone Number]
+
+No Prior Authorization | by Hello Gorgeous Med Spa | Danielle Kent</div>
+</div>
+
+<!-- IV THERAPY CARD -->
+<div id="c5" class="sec-hide">
+  <div class="print-note">
+    <h4>Card details — IV Therapy Aftercare</h4>
+    <p>IV aftercare is simpler than other treatments — but the hydration and activity instructions are important. This card doubles as a follow-up booking prompt. Include your membership offer on the back.</p>
+  </div>
+  <div class="card-preview-wrap">
+    <div class="aftercare-card">
+      <div class="ac-header">
+        <div class="brand-line">No Prior Authorization &nbsp;·&nbsp; Your Clinic Name</div>
+        <h2>IV Therapy Aftercare</h2>
+        <div class="subtitle">How to maximize your results today</div>
+      </div>
+      <div class="ac-band"></div>
+      <div class="ac-body">
+        <div class="ac-section">
+          <h4>Right now — today</h4>
+          <ul>
+            <li>Drink at least 64oz of water today</li>
+            <li>Keep bandage on IV site for 1 hour</li>
+            <li>Eat a light meal if you haven't already</li>
+            <li class="no">No alcohol for 24 hours</li>
+            <li class="no">No strenuous exercise today</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>Watch for and contact us if you notice</h4>
+          <ul>
+            <li class="no">Redness, swelling, or warmth at IV site after 24 hrs</li>
+            <li class="no">Fever or chills developing within 24 hours</li>
+            <li class="no">Hardness or a cord-like feeling at the IV site</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>What you may notice</h4>
+          <ul>
+            <li>Bright yellow urine — normal with B vitamins</li>
+            <li>Energy increase within 1–4 hours</li>
+            <li>Small bruise at IV site — resolves in a few days</li>
+            <li>Slight taste of vitamins — normal during infusion</li>
+          </ul>
+        </div>
+        <div class="ac-section">
+          <h4>Ready for your next drip?</h4>
+          <ul>
+            <li>Most clients: weekly or biweekly to start</li>
+            <li>Ask about our membership — save every visit</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ac-footer"><p>No Prior Authorization &nbsp;·&nbsp; [Your Phone] &nbsp;·&nbsp; Ryan Kent, FNP-BC</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="info-card">
+        <h4>The membership prompt</h4>
+        <p>The bottom of this card mentions your membership program. Every IV client holds this card. The membership mention turns an aftercare card into a passive marketing tool — without feeling pushy. Include your membership pricing or a QR code to your membership page on the back.</p>
+      </div>
+      <div class="info-card">
+        <h4>The bright urine warning</h4>
+        <p>B vitamins turn urine bright yellow-orange. Without warning, patients are alarmed. With warning, they laugh about it. This one sentence on the card prevents unnecessary anxiety and creates a memorable, humanizing moment with your practice.</p>
+      </div>
+    </div>
+  </div>
+  <button class="copy-full-btn" onclick="copyCard('iv')">Copy IV Therapy Aftercare Instructions (full text)</button>
+  <div id="iv-text" style="display:none">IV THERAPY AFTERCARE — Hello Gorgeous Med Spa | No Prior Authorization
+
+RIGHT NOW — TODAY:
+✓ Drink at least 64 ounces of water today to support hydration
+✓ Keep the bandage on your IV site for at least 1 hour
+✓ Eat a light meal if you haven't already — food helps your body process the nutrients
+✗ No alcohol for 24 hours
+✗ No strenuous exercise today — let your body absorb the infusion
+
+CONTACT US IF YOU NOTICE AFTER 24 HOURS:
+✗ Increasing redness, swelling, or warmth at the IV site
+✗ Fever or chills developing within 24 hours of your infusion
+✗ A hard, cord-like feeling along the vein (possible phlebitis)
+
+WHAT YOU MAY NOTICE — ALL NORMAL:
+✓ Bright yellow or orange urine — this is the B vitamins and is completely harmless
+✓ Increased energy, mental clarity, or improved mood within 1–4 hours
+✓ A small bruise at the IV site — resolves within a few days
+✓ Slight vitamin taste during the infusion — normal with B-complex formulas
+
+READY FOR YOUR NEXT DRIP?
+Most clients feel their best with weekly or biweekly sessions initially, then monthly for maintenance. Ask us about our membership program — members save on every visit and never have to think about rebooking.
+
+Questions or concerns? Call or text: [Your Phone Number]
+
+No Prior Authorization | by Hello Gorgeous Med Spa | Ryan Kent, FNP-BC</div>
+</div>
+
+</div>
+<div class="footer"><p>No Prior Authorization &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; All 6 aftercare cards included in this kit</p></div>
+</div>
+
+<div class="copied-toast" id="toast2">Copied to clipboard ✓</div>
+
+<script>
+function showCard(i){
+  for(let j=0;j<6;j++){const el=document.getElementById('c'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.pick-btn').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function copyCard(type){
+  const el=document.getElementById(type+'-text');
+  if(!el)return;
+  navigator.clipboard.writeText(el.innerText.trim()).then(()=>{
+    const t=document.getElementById('toast2');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>

@@ -1,0 +1,14 @@
+{
+  "productId": "patient-communication-kit",
+  "displayName": "Botox & Filler Patient Communication Kit",
+  "description": "Complete patient messaging system — pre-treatment reminders, day-of instructions, post-treatment check-ins, follow-up scheduling, and review requests. Copy-paste ready text messages and emails for every stage of the treatment cycle.",
+  "version": "1.0.0",
+  "priceUSD": 47,
+  "etsySku": "NPA-PCK-001",
+  "category": "practice-management",
+  "targetBuyer": "Med spa owners, patient coordinators, front desk staff, nurse injectors",
+  "templates": [{"id": "patient-communication-kit-main", "name": "Botox & Filler Patient Communication Kit", "description": "Copy-paste patient messages for every treatment stage", "canvaTemplateUrl": "/forms/NPA-Patient-Communication-Kit.html", "_deliveryType": "html", "format": "interactive", "pages": 1, "category": "practice-management"}],
+  "deliveryNote": "Interactive HTML — copy messages directly, works on any device.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-02T01:30:00Z"
+}

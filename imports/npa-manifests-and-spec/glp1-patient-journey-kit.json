@@ -1,0 +1,14 @@
+{
+  "productId": "glp1-patient-journey-kit",
+  "displayName": "GLP-1 Weight Loss Patient Journey Kit",
+  "description": "Complete GLP-1 program lifecycle — lab requirements, self-injection guide, nausea management, monthly check-in protocol, and patient FAQs. Semaglutide and tirzepatide.",
+  "version": "1.0.0",
+  "priceUSD": 67,
+  "etsySku": "NPA-GPJ-001",
+  "category": "clinical-kits",
+  "targetBuyer": "Nurse injectors, med spa front desk staff, NPs, estheticians, practice managers",
+  "templates": [{"id": "glp1-patient-journey-kit-main", "name": "GLP-1 Weight Loss Patient Journey Kit", "description": "Complete GLP-1 program lifecycle — lab requirements, self-injection guide, nausea management, monthly check-in protocol, and patient FAQs. Semaglutide and tirzepatide.", "canvaTemplateUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html", "_deliveryType": "html", "format": "interactive", "pages": 1, "category": "clinical-kit"}],
+  "deliveryNote": "Interactive HTML kit — complete patient journey documents.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-02T15:17:06Z"
+}

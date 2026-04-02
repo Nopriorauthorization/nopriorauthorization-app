@@ -1,0 +1,14 @@
+{
+  "productId": "chemical-peel-patient-journey-kit",
+  "displayName": "Chemical Peel Patient Journey Kit",
+  "description": "Complete peel lifecycle — Fitzpatrick screening, prep protocol, consent, peeling timeline days 1-7, sun avoidance guide, and FAQs.",
+  "version": "1.0.0",
+  "priceUSD": 57,
+  "etsySku": "NPA-CPJ-001",
+  "category": "clinical-kits",
+  "targetBuyer": "Nurse injectors, med spa front desk staff, NPs, estheticians, practice managers",
+  "templates": [{"id": "chemical-peel-patient-journey-kit-main", "name": "Chemical Peel Patient Journey Kit", "description": "Complete peel lifecycle — Fitzpatrick screening, prep protocol, consent, peeling timeline days 1-7, sun avoidance guide, and FAQs.", "canvaTemplateUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html", "_deliveryType": "html", "format": "interactive", "pages": 1, "category": "clinical-kit"}],
+  "deliveryNote": "Interactive HTML kit — complete patient journey documents.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-02T15:17:06Z"
+}

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T15:04:04.142Z",
+  "generatedAt": "2026-04-02T15:18:08.319Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -187,6 +187,21 @@
           "title": "Before/After Photography Consent — Skin Treatments",
           "designId": "cp-photo-consent",
           "editUrl": "/forms/CP-06-Photo-Consent.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "chemical-peel-patient-journey-kit",
+      "productSlug": "chemical-peel-patient-journey-kit",
+      "productTitle": "Chemical Peel Patient Journey Kit",
+      "buildTimestamp": "2026-04-02T15:17:06Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Chemical Peel Patient Journey Kit",
+          "designId": "chemical-peel-patient-journey-kit-main",
+          "editUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html",
           "viewUrl": null
         }
       ]
@@ -435,6 +450,21 @@
       ]
     },
     {
+      "productKey": "filler-patient-journey-kit",
+      "productSlug": "filler-patient-journey-kit",
+      "productTitle": "Dermal Filler Patient Journey Kit",
+      "buildTimestamp": "2026-04-02T15:17:06Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Dermal Filler Patient Journey Kit",
+          "designId": "filler-patient-journey-kit-main",
+          "editUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "filler-social-bundle",
       "productSlug": "filler-social-bundle",
       "productTitle": "Filler Social Media Bundle",
@@ -499,6 +529,21 @@
           "title": "Book Your Filler Consultation",
           "designId": "fsx-cta-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "glp1-patient-journey-kit",
+      "productSlug": "glp1-patient-journey-kit",
+      "productTitle": "GLP-1 Weight Loss Patient Journey Kit",
+      "buildTimestamp": "2026-04-02T15:17:06Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "GLP-1 Weight Loss Patient Journey Kit",
+          "designId": "glp1-patient-journey-kit-main",
+          "editUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html",
           "viewUrl": null
         }
       ]
@@ -648,6 +693,21 @@
       ]
     },
     {
+      "productKey": "hormone-patient-journey-kit",
+      "productSlug": "hormone-patient-journey-kit",
+      "productTitle": "Hormone Therapy Patient Journey Kit",
+      "buildTimestamp": "2026-04-02T15:17:06Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Hormone Therapy Patient Journey Kit",
+          "designId": "hormone-patient-journey-kit-main",
+          "editUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "hormone-therapy-playbook",
       "productSlug": "hormone-therapy-playbook",
       "productTitle": "The Hormone Therapy Playbook — BHRT for Aesthetic Practices",
@@ -742,6 +802,21 @@
           "title": "Book IV Session Story CTA",
           "designId": "ivs-cta-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "iv-therapy-patient-journey-kit",
+      "productSlug": "iv-therapy-patient-journey-kit",
+      "productTitle": "IV Therapy Patient Journey Kit",
+      "buildTimestamp": "2026-04-02T15:17:06Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "IV Therapy Patient Journey Kit",
+          "designId": "iv-therapy-patient-journey-kit-main",
+          "editUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html",
           "viewUrl": null
         }
       ]
@@ -1305,6 +1380,21 @@
       ]
     },
     {
+      "productKey": "microneedling-patient-journey-kit",
+      "productSlug": "microneedling-patient-journey-kit",
+      "productTitle": "Microneedling Patient Journey Kit",
+      "buildTimestamp": "2026-04-02T15:17:06Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Microneedling Patient Journey Kit",
+          "designId": "microneedling-patient-journey-kit-main",
+          "editUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "myths-facts-injectors",
       "productSlug": "myths-facts-injectors",
       "productTitle": "Myths vs Facts for Injectors",
@@ -1519,6 +1609,21 @@
           "title": "Peptide Therapy FAQ Card",
           "designId": "pep-faq-card",
           "editUrl": "/forms/PEP-07-FAQ-Card.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "peptide-patient-journey-kit",
+      "productSlug": "peptide-patient-journey-kit",
+      "productTitle": "Peptide Therapy Patient Journey Kit",
+      "buildTimestamp": "2026-04-02T15:17:06Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Peptide Therapy Patient Journey Kit",
+          "designId": "peptide-patient-journey-kit-main",
+          "editUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html",
           "viewUrl": null
         }
       ]

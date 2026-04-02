@@ -1,0 +1,14 @@
+{
+  "productId": "peptide-patient-journey-kit",
+  "displayName": "Peptide Therapy Patient Journey Kit",
+  "description": "Complete peptide program lifecycle — candidacy screening, reconstitution guide, injection technique, storage instructions, and goal-based protocols.",
+  "version": "1.0.0",
+  "priceUSD": 67,
+  "etsySku": "NPA-PPJ-001",
+  "category": "clinical-kits",
+  "targetBuyer": "Nurse injectors, med spa front desk staff, NPs, estheticians, practice managers",
+  "templates": [{"id": "peptide-patient-journey-kit-main", "name": "Peptide Therapy Patient Journey Kit", "description": "Complete peptide program lifecycle — candidacy screening, reconstitution guide, injection technique, storage instructions, and goal-based protocols.", "canvaTemplateUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html", "_deliveryType": "html", "format": "interactive", "pages": 1, "category": "clinical-kit"}],
+  "deliveryNote": "Interactive HTML kit — complete patient journey documents.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-02T15:17:06Z"
+}

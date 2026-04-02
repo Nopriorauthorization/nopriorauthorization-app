@@ -1,0 +1,490 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;background:#0f0f0f;color:#fff}
+.wrap{max-width:900px;margin:0 auto}
+.top{background:#1A1A1A;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.top .brand{font-weight:300;letter-spacing:.2em;font-size:12px;color:#fff;text-transform:uppercase}
+.top .sub{font-size:10px;color:#D4537E;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.band{background:#D4537E;padding:24px 28px}
+.band h1{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:6px}
+.band h1 em{font-style:italic;font-weight:400}
+.band p{font-size:13px;color:rgba(255,255,255,.85);max-width:560px;line-height:1.6}
+.kits{padding:24px 28px;display:flex;flex-direction:column;gap:16px;background:#111}
+
+.kit-card{border-radius:12px;overflow:hidden;border:0.5px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+.kit-card.done{border-color:rgba(99,153,34,.4);background:rgba(99,153,34,.05)}
+.kit-head{padding:18px 22px;display:flex;align-items:flex-start;gap:16px;cursor:pointer}
+.kit-head:hover{background:rgba(255,255,255,.02)}
+.kit-icon{font-size:28px;flex-shrink:0;margin-top:2px}
+.kit-info{flex:1}
+.kit-info h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.2}
+.kit-info .kit-slug{font-family:'JetBrains Mono',monospace;font-size:11px;color:#D4537E;margin-bottom:6px;display:block}
+.kit-info p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5}
+.kit-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.kit-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#D4537E}
+.kit-badge{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+.badge-new{background:rgba(212,83,126,.2);color:#D4537E;border:0.5px solid rgba(212,83,126,.3)}
+.badge-done{background:rgba(99,153,34,.2);color:#639922;border:0.5px solid rgba(99,153,34,.3)}
+.kit-body{padding:0 22px 18px;display:none;border-top:0.5px solid rgba(255,255,255,.06)}
+.kit-body.open{display:block;padding-top:16px}
+
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.spec-col h4{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.spec-col li{font-size:12px;color:rgba(255,255,255,.6);line-height:1.6;list-style:none;padding:2px 0;display:flex;gap:6px}
+.spec-col li::before{content:'→';color:#D4537E;font-size:11px;flex-shrink:0}
+
+.key-content{background:#1A1A1A;border-radius:8px;padding:14px 16px;margin-bottom:12px}
+.key-content h4{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:8px}
+.key-item{display:flex;gap:10px;padding:5px 0;border-bottom:0.5px solid rgba(255,255,255,.05);font-size:12px}
+.key-item:last-child{border-bottom:none}
+.key-tab{font-weight:700;color:#fff;width:120px;flex-shrink:0}
+.key-detail{color:rgba(255,255,255,.5);line-height:1.5}
+
+.fb-comment{background:#1A1A1A;border-radius:8px;padding:14px 16px;margin-bottom:12px;border-left:2px solid #D4537E;position:relative}
+.fb-comment .fc-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:6px}
+.fb-comment p{font-size:12px;color:rgba(255,255,255,.7);line-height:1.7}
+.fb-comment p em{color:#D4537E;font-style:normal;font-weight:700}
+.copy-fc{position:absolute;top:10px;right:10px;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:transparent;border:0.5px solid #333;color:#555;padding:3px 7px;border-radius:4px;cursor:pointer;font-family:'Lato',sans-serif}
+.copy-fc:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+
+.progress{padding:24px 28px;background:#0f0f0f}
+.prog-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.prog-header h2{font-family:'Playfair Display',serif;font-size:20px;color:#fff;font-weight:700}
+.prog-header .prog-count{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#D4537E}
+.prog-bar-wrap{background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;height:8px;margin-bottom:20px}
+.prog-bar{height:100%;background:linear-gradient(90deg,#D4537E,#ff8fab);border-radius:10px;transition:width .4s ease}
+.prog-kits{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.prog-kit{background:rgba(255,255,255,.04);border:0.5px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;text-align:center}
+.prog-kit.live{background:rgba(99,153,34,.08);border-color:rgba(99,153,34,.3)}
+.prog-kit.building{background:rgba(212,83,126,.08);border-color:rgba(212,83,126,.3)}
+.prog-kit h4{font-size:11px;font-weight:700;color:#fff;margin-bottom:3px;line-height:1.3}
+.prog-kit .pk-status{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.prog-kit.live .pk-status{color:#639922}
+.prog-kit.building .pk-status{color:#D4537E}
+.prog-kit:not(.live):not(.building) .pk-status{color:#555}
+.prog-kit .pk-price{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#D4537E;margin-top:3px}
+
+.bundle-cta{background:#D4537E;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.bc-left h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#fff;margin-bottom:4px}
+.bc-left p{font-size:13px;color:rgba(255,255,255,.85)}
+.bc-right{text-align:right;flex-shrink:0}
+.bc-price{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff}
+.bc-note{font-size:11px;color:rgba(255,255,255,.7);margin-top:3px}
+
+.toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+</style>
+
+<div class="wrap">
+
+<div class="top">
+  <div class="brand">No Prior Authorization &nbsp;·&nbsp; Danielle Alcala</div>
+  <div class="sub">Patient Journey Kit — Full Batch Build</div>
+</div>
+
+<div class="band">
+  <h1>7 More Kits. <em>Same format.</em><br>Every service line covered.</h1>
+  <p>Eric builds each one using the Botox kit as the template. Same 5-tab structure, different clinical content. Every kit ships as its own product and rolls into the Complete Bundle.</p>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress">
+  <div class="prog-header">
+    <h2>Patient Journey Kit Progress</h2>
+    <div class="prog-count">1 / 8</div>
+  </div>
+  <div class="prog-bar-wrap"><div class="prog-bar" style="width:12.5%"></div></div>
+  <div class="prog-kits">
+    <div class="prog-kit live"><h4>Botox Kit</h4><div class="pk-status">✓ Live</div><div class="pk-price">$67</div></div>
+    <div class="prog-kit building"><h4>Filler Kit</h4><div class="pk-status">→ Build next</div><div class="pk-price">$67</div></div>
+    <div class="prog-kit"><h4>GLP-1 Kit</h4><div class="pk-status">Queued</div><div class="pk-price">$67</div></div>
+    <div class="prog-kit"><h4>IV Therapy Kit</h4><div class="pk-status">Queued</div><div class="pk-price">$57</div></div>
+    <div class="prog-kit"><h4>Microneedling Kit</h4><div class="pk-status">Queued</div><div class="pk-price">$57</div></div>
+    <div class="prog-kit"><h4>Chemical Peel Kit</h4><div class="pk-status">Queued</div><div class="pk-price">$57</div></div>
+    <div class="prog-kit"><h4>Hormone Therapy Kit</h4><div class="pk-status">Queued</div><div class="pk-price">$67</div></div>
+    <div class="prog-kit"><h4>Peptide Kit</h4><div class="pk-status">Queued</div><div class="pk-price">$67</div></div>
+  </div>
+</div>
+
+<!-- KITS -->
+<div class="kits">
+
+  <!-- KIT 2: FILLER -->
+  <div class="kit-card">
+    <div class="kit-head" onclick="tog(this)">
+      <div class="kit-icon">💉</div>
+      <div class="kit-info">
+        <h3>Dermal Filler Patient Journey Kit</h3>
+        <span class="kit-slug">NPA-Filler-Patient-Journey-Kit</span>
+        <p>Hyaluronic acid fillers — lips, cheeks, jawline, tear troughs. Swelling timeline is the hero content. Includes dissolving option explanation.</p>
+      </div>
+      <div class="kit-meta">
+        <div class="kit-price">$67</div>
+        <span class="kit-badge badge-new">Build next</span>
+      </div>
+    </div>
+    <div class="kit-body">
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h4>Pre-Care key content</h4>
+          <ul>
+            <li>No blood thinners 48hrs — same as Botox</li>
+            <li>No dental work 2 weeks before</li>
+            <li>No lip treatments before lip filler</li>
+            <li>Arrive hydrated — affects filler longevity</li>
+            <li>Cold sore history — must disclose for lip filler</li>
+            <li>Avoid NSAIDs, alcohol, fish oil</li>
+          </ul>
+        </div>
+        <div class="spec-col">
+          <h4>Post-Care key content</h4>
+          <ul>
+            <li>Swelling timeline — peaks at 48hrs, resolves day 5–7</li>
+            <li>No massaging — product needs to integrate</li>
+            <li>No extreme heat for 2 weeks</li>
+            <li>No dental work for 2 weeks post</li>
+            <li>Tyndall effect explanation — for tear troughs</li>
+            <li>Dissolving option — if unhappy after day 14</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-content">
+        <h4>The 5-tab structure for this kit</h4>
+        <div class="key-item"><div class="key-tab">📋 Overview</div><div class="key-detail">Kit intro, $67 value block, customize instructions</div></div>
+        <div class="key-item"><div class="key-tab">⬅️ Pre-Care</div><div class="key-detail">48hr prep, dental timing, cold sore disclosure for lips</div></div>
+        <div class="key-item"><div class="key-tab">📝 Consent</div><div class="key-detail">HA filler risks, vascular occlusion disclosure, reversibility</div></div>
+        <div class="key-item"><div class="key-tab">➡️ Post-Care</div><div class="key-detail">Swelling timeline days 1–14, massage warning, heat avoidance</div></div>
+        <div class="key-item"><div class="key-tab">❓ FAQs</div><div class="key-detail">"Will my lips look overdone?" "Can filler be reversed?" "How long does it last?" "Why is one side more swollen?"</div></div>
+      </div>
+      <div class="fb-comment">
+        <button class="copy-fc" onclick="copyFC(this)">Copy</button>
+        <div class="fc-label">FB Group comment for this kit</div>
+        <p>The swelling timeline after filler is the #1 thing patients panic about — and it's 100% preventable panic if they're properly prepared. Lips peak at 48 hours and can look very full before they settle. Cheeks do the same. We send a day-by-day guide that starts with "Day 2: You will look more swollen than you want to. This is normal. Do not text us in a panic." Patients actually love that honesty. We have pre and post care templates for filler if anyone wants them. <em>— Danielle, Hello Gorgeous Med Spa</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KIT 3: GLP-1 -->
+  <div class="kit-card">
+    <div class="kit-head" onclick="tog(this)">
+      <div class="kit-icon">⚖️</div>
+      <div class="kit-info">
+        <h3>GLP-1 Weight Loss Patient Journey Kit</h3>
+        <span class="kit-slug">NPA-GLP1-Patient-Journey-Kit</span>
+        <p>Semaglutide, tirzepatide, and compounded GLP-1 programs. Nausea management, injection technique, and realistic expectations are the critical content.</p>
+      </div>
+      <div class="kit-meta">
+        <div class="kit-price">$67</div>
+        <span class="kit-badge badge-new">Queued</span>
+      </div>
+    </div>
+    <div class="kit-body">
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h4>Pre-Care key content</h4>
+          <ul>
+            <li>Lab requirements before starting</li>
+            <li>Baseline weight and measurements</li>
+            <li>Medication interactions to disclose</li>
+            <li>History of pancreatitis or thyroid cancer</li>
+            <li>Nutrition prep — protein targets before starting</li>
+            <li>What to expect month 1 — realistic framing</li>
+          </ul>
+        </div>
+        <div class="spec-col">
+          <h4>Post-injection key content</h4>
+          <ul>
+            <li>Injection site rotation guide</li>
+            <li>Nausea management — ginger, small meals, timing</li>
+            <li>The protein priority rule — muscle preservation</li>
+            <li>What a plateau means and what to do</li>
+            <li>Storage — refrigerated, never frozen</li>
+            <li>Monthly check-in expectations</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-content">
+        <h4>The 5-tab structure for this kit</h4>
+        <div class="key-item"><div class="key-tab">📋 Overview</div><div class="key-detail">Program intro, what's included, how to use all documents</div></div>
+        <div class="key-item"><div class="key-tab">⬅️ Pre-Start Guide</div><div class="key-detail">Lab requirements, medication disclosures, nutrition prep</div></div>
+        <div class="key-item"><div class="key-tab">📝 Consent</div><div class="key-detail">GLP-1 risks, compounded medication disclosure, REMS awareness</div></div>
+        <div class="key-item"><div class="key-tab">➡️ Injection Guide</div><div class="key-detail">Self-injection technique, site rotation, storage, nausea management</div></div>
+        <div class="key-item"><div class="key-tab">❓ FAQs</div><div class="key-detail">"Why am I nauseous?" "What if I miss a dose?" "When will I see results?" "What happens if I stop?"</div></div>
+      </div>
+      <div class="fb-comment">
+        <button class="copy-fc" onclick="copyFC(this)">Copy</button>
+        <div class="fc-label">FB Group comment for this kit</div>
+        <p>The #1 reason GLP-1 patients drop off in month 2 is unmanaged nausea and unrealistic expectations — not the medication. We give every patient a detailed month-by-month expectations guide before they start their first injection. Month 1 is about tolerating the medication. Month 2 is when the weight starts moving. Month 3 is when patients start telling their friends. Managing the expectation gap in month 1 is everything. Happy to share the patient guide we use. <em>— Danielle, Hello Gorgeous Med Spa</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KIT 4: IV THERAPY -->
+  <div class="kit-card">
+    <div class="kit-head" onclick="tog(this)">
+      <div class="kit-icon">💧</div>
+      <div class="kit-info">
+        <h3>IV Therapy Patient Journey Kit</h3>
+        <span class="kit-slug">NPA-IV-Therapy-Patient-Journey-Kit</span>
+        <p>Myers cocktail, NAD+, hydration drips, vitamin infusions. Eat before, hydrate before, what to expect during and after. The shortest post-care of the series — fastest recovery.</p>
+      </div>
+      <div class="kit-meta">
+        <div class="kit-price">$57</div>
+        <span class="kit-badge badge-new">Queued</span>
+      </div>
+    </div>
+    <div class="kit-body">
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h4>Pre-Care key content</h4>
+          <ul>
+            <li>Eat a meal before — critical for NAD+</li>
+            <li>Drink 16oz water before arriving</li>
+            <li>Wear loose comfortable clothing</li>
+            <li>Disclose all medications and allergies</li>
+            <li>History of kidney disease or CHF — must disclose</li>
+            <li>No IV if fever or active infection</li>
+          </ul>
+        </div>
+        <div class="spec-col">
+          <h4>Post-Care key content</h4>
+          <ul>
+            <li>Mild bruising at insertion site — normal</li>
+            <li>Continue hydrating the rest of the day</li>
+            <li>NAD+ — flu-like feeling is normal and temporary</li>
+            <li>Energy benefits may take 24hrs to feel</li>
+            <li>How often to come back per goal</li>
+            <li>When to call — extravasation signs</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fb-comment">
+        <button class="copy-fc" onclick="copyFC(this)">Copy</button>
+        <div class="fc-label">FB Group comment for this kit</div>
+        <p>IV therapy patients who aren't prepped properly are your most anxious patients — they didn't eat, they're dehydrated, and they don't know what the dripping sensation means. We send a pre-care guide 24 hours before every IV appointment that ends with "eat a real meal, drink a full water bottle, and wear a shirt you can roll the sleeve up on." Sounds simple but it eliminates 80% of the anxiety calls. We have patient journey kits for IV therapy if anyone wants them. <em>— Danielle, Hello Gorgeous Med Spa</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KIT 5: MICRONEEDLING -->
+  <div class="kit-card">
+    <div class="kit-head" onclick="tog(this)">
+      <div class="kit-icon">🔬</div>
+      <div class="kit-info">
+        <h3>Microneedling Patient Journey Kit</h3>
+        <span class="kit-slug">NPA-Microneedling-Patient-Journey-Kit</span>
+        <p>RF microneedling and traditional. The "no actives" rule and the redness timeline are everything. Patients need to know day 3 will look worse before it looks better.</p>
+      </div>
+      <div class="kit-meta">
+        <div class="kit-price">$57</div>
+        <span class="kit-badge badge-new">Queued</span>
+      </div>
+    </div>
+    <div class="kit-body">
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h4>Pre-Care key content</h4>
+          <ul>
+            <li>Stop retinoids 5 days before</li>
+            <li>Stop actives — AHAs, BHAs, vitamin C — 3 days before</li>
+            <li>No sun exposure 1 week prior</li>
+            <li>No Accutane within 6 months</li>
+            <li>No active acne lesions in treatment area</li>
+            <li>Arrive with clean skin — no makeup</li>
+          </ul>
+        </div>
+        <div class="spec-col">
+          <h4>Post-Care key content</h4>
+          <ul>
+            <li>Redness timeline — day 1 red, day 3 sandpaper, day 5 peeling</li>
+            <li>No actives for 5 days post</li>
+            <li>Only gentle cleanser and barrier cream</li>
+            <li>No sun for 2 weeks — SPF is non-negotiable</li>
+            <li>No makeup for 24hrs minimum</li>
+            <li>Series of 3–6 for optimal collagen remodeling</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fb-comment">
+        <button class="copy-fc" onclick="copyFC(this)">Copy</button>
+        <div class="fc-label">FB Group comment for this kit</div>
+        <p>Microneedling patients who weren't warned about day 3 are your panicked callers. Day 3 looks like sandpaper — that's the skin doing exactly what it's supposed to. We send a day-by-day redness and texture guide with every microneedling appointment: Day 1 red, Day 2 tight, Day 3 rough texture (this is normal!), Day 5 starting to peel, Day 7 glowing. When patients know the roadmap they stop panicking and start trusting. We have full pre and post care kits for microneedling. <em>— Danielle, Hello Gorgeous Med Spa</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KIT 6: CHEMICAL PEEL -->
+  <div class="kit-card">
+    <div class="kit-head" onclick="tog(this)">
+      <div class="kit-icon">✨</div>
+      <div class="kit-info">
+        <h3>Chemical Peel Patient Journey Kit</h3>
+        <span class="kit-slug">NPA-Chemical-Peel-Patient-Journey-Kit</span>
+        <p>Superficial, medium, and deep peels. The peeling timeline days 3–7 is the most important content. Sun avoidance is the #1 post-care rule.</p>
+      </div>
+      <div class="kit-meta">
+        <div class="kit-price">$57</div>
+        <span class="kit-badge badge-new">Queued</span>
+      </div>
+    </div>
+    <div class="kit-body">
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h4>Pre-Care key content</h4>
+          <ul>
+            <li>Stop retinoids 5–7 days prior</li>
+            <li>No waxing or hair removal 1 week prior</li>
+            <li>No sun exposure 2 weeks prior</li>
+            <li>Prep skin with gentle cleanser only week of</li>
+            <li>Disclose all medications — especially Accutane</li>
+            <li>Plan social downtime for days 3–7</li>
+          </ul>
+        </div>
+        <div class="spec-col">
+          <h4>Post-Care key content</h4>
+          <ul>
+            <li>Peeling timeline — starts day 2–3, peaks day 4–5</li>
+            <li>Never pick or pull peeling skin</li>
+            <li>Only provider-approved gentle moisturizer</li>
+            <li>SPF 30+ every single day — no exceptions</li>
+            <li>No active ingredients for 2 weeks</li>
+            <li>Results visible at day 10–14</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fb-comment">
+        <button class="copy-fc" onclick="copyFC(this)">Copy</button>
+        <div class="fc-label">FB Group comment for this kit</div>
+        <p>Chemical peel patients who pick at their peeling skin are your hyperpigmentation callbacks. The instruction sheet we give says it three different ways: do not pick, do not peel, do not touch. But also — we always tell patients to plan their social calendar around the peel. "Day 4 and 5 you will look like a snake shedding its skin. Plan accordingly." Honesty upfront prevents callbacks. We have pre and post care kits for chemical peels if helpful. <em>— Danielle, Hello Gorgeous Med Spa</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KIT 7: HORMONE THERAPY -->
+  <div class="kit-card">
+    <div class="kit-head" onclick="tog(this)">
+      <div class="kit-icon">🧬</div>
+      <div class="kit-info">
+        <h3>Hormone Therapy Patient Journey Kit</h3>
+        <span class="kit-slug">NPA-Hormone-Therapy-Patient-Journey-Kit</span>
+        <p>BHRT initiation — pellets, patches, creams, gels. Lab timing, symptom tracking, and the 6-week window before patients feel a difference are the critical education pieces.</p>
+      </div>
+      <div class="kit-meta">
+        <div class="kit-price">$67</div>
+        <span class="kit-badge badge-new">Queued</span>
+      </div>
+    </div>
+    <div class="kit-body">
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h4>Pre-Start key content</h4>
+          <ul>
+            <li>Baseline labs required — full hormone panel</li>
+            <li>Symptom diary — start tracking before first dose</li>
+            <li>Medication and supplement disclosures</li>
+            <li>History of hormone-sensitive cancers</li>
+            <li>Current contraception status</li>
+            <li>Realistic timeline — 6–8 weeks for full effect</li>
+          </ul>
+        </div>
+        <div class="spec-col">
+          <h4>Post-initiation key content</h4>
+          <ul>
+            <li>Pellet insertion site care — 4-day activity restriction</li>
+            <li>Week 1–2 — may feel nothing yet, this is normal</li>
+            <li>Week 3–4 — early improvements in sleep and mood</li>
+            <li>Week 6–8 — full effect, follow-up labs</li>
+            <li>Symptom log — track what's improving</li>
+            <li>When to call — signs to watch for</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fb-comment">
+        <button class="copy-fc" onclick="copyFC(this)">Copy</button>
+        <div class="fc-label">FB Group comment for this kit</div>
+        <p>BHRT patients who weren't told to expect 6–8 weeks before full effect will call you at week 2 saying it isn't working. We give every new hormone patient a week-by-week expectation guide: Week 1 — your body is adjusting. Week 3 — sleep usually improves first. Week 6 — most patients feel the full benefit. Week 8 — labs to confirm levels. When patients know the timeline they stop second-guessing the therapy and stick with the program. We have full patient journey kits for hormone therapy. <em>— Danielle, Hello Gorgeous Med Spa</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KIT 8: PEPTIDE -->
+  <div class="kit-card">
+    <div class="kit-head" onclick="tog(this)">
+      <div class="kit-icon">💊</div>
+      <div class="kit-info">
+        <h3>Peptide Therapy Patient Journey Kit</h3>
+        <span class="kit-slug">NPA-Peptide-Therapy-Patient-Journey-Kit</span>
+        <p>Self-injection peptides — Sermorelin, BPC-157, GHK-Cu, PT-141. Injection technique, reconstitution, storage, and rotation sites are the technical content patients need.</p>
+      </div>
+      <div class="kit-meta">
+        <div class="kit-price">$67</div>
+        <span class="kit-badge badge-new">Queued</span>
+      </div>
+    </div>
+    <div class="kit-body">
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h4>Pre-Start key content</h4>
+          <ul>
+            <li>Baseline labs before starting</li>
+            <li>Medication and condition disclosures</li>
+            <li>Regulatory status acknowledgment</li>
+            <li>Storage requirements — refrigerated, light-sensitive</li>
+            <li>Reconstitution instructions if lyophilized</li>
+            <li>Injection supply checklist</li>
+          </ul>
+        </div>
+        <div class="spec-col">
+          <h4>Ongoing self-injection content</h4>
+          <ul>
+            <li>Step-by-step subcutaneous injection technique</li>
+            <li>Site rotation map — abdomen, thigh, arm</li>
+            <li>Timing guidance — Sermorelin before bed</li>
+            <li>Mild injection site redness — normal</li>
+            <li>Storage after reconstitution — 30-day window</li>
+            <li>Monthly check-in with provider required</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fb-comment">
+        <button class="copy-fc" onclick="copyFC(this)">Copy</button>
+        <div class="fc-label">FB Group comment for this kit</div>
+        <p>Peptide patients doing self-injection for the first time are intimidated — even if they're nurses or providers themselves. The first injection at home is different from the clinical setting. We give every peptide patient a step-by-step injection guide with a site rotation diagram, storage checklist, and what to do if they forget a dose. The guide ends with "text us a photo of your first injection site if you want feedback on your technique." They love that. We have patient journey kits for peptide therapy. <em>— Danielle, Hello Gorgeous Med Spa</em></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BUNDLE CTA -->
+<div class="bundle-cta">
+  <div class="bc-left">
+    <h2>Complete Patient Journey Bundle — all 8 kits</h2>
+    <p>Every pre-care, consent, post-care, and FAQ kit for every service. Hand it to your front desk. Never miss a step.</p>
+  </div>
+  <div class="bc-right">
+    <div class="bc-price">$197</div>
+    <div class="bc-note">vs $496 individually · instant download</div>
+  </div>
+</div>
+
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+<script>
+function tog(head){
+  const body=head.nextElementSibling;
+  body.classList.toggle('open');
+}
+function copyFC(btn){
+  const card=btn.closest('.fb-comment');
+  const text=card.querySelector('p').innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>

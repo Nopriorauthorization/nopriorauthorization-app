@@ -29,6 +29,7 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "medspa-social-media-system": { label: "Best Seller", color: "bg-emerald-500/20 text-emerald-300" },
   "medspa-content-strategy-system": { label: "New", color: "bg-sky-500/20 text-sky-300" },
   "hormone-therapy-playbook": { label: "New", color: "bg-violet-500/20 text-violet-300" },
+  "peptide-therapy-playbook": { label: "Hot", color: "bg-orange-500/20 text-orange-300" },
   "google-domination-playbook": { label: "Hot", color: "bg-orange-500/20 text-orange-300" },
   "diy-google-setup-kit": { label: "Best Value", color: "bg-emerald-500/20 text-emerald-300" },
 };
@@ -52,6 +53,7 @@ const OUTCOME_MAP: Record<string, string> = {
   "medspa-social-media-system": "90 days of content — done. Stop staring at a blank screen every Monday morning.",
   "medspa-content-strategy-system": "For established spas who post inconsistently. Every decision already made.",
   "hormone-therapy-playbook": "Add BHRT to your practice. Screening, protocols, vendors, consent — the complete system.",
+  "peptide-therapy-playbook": "The hottest niche in wellness. BPC-157, semaglutide, NAD+ — protocols your patients are already asking about.",
   "google-domination-playbook": "87% of patients Google you before booking. This playbook makes sure they find YOU.",
   "diy-google-setup-kit": "Everything an agency charges $797 for — in one $297 download. Set up your own Google presence.",
 };

@@ -63,6 +63,23 @@ const PLAYBOOKS: PlaybookData[] = [
       "Build a digital product business that earns while you sleep.",
   },
   {
+    slug: "peptide-therapy-playbook",
+    title: "Peptide Therapy Playbook",
+    subtitle: "For Prescribing Providers",
+    price: "$127",
+    image: "/shop-previews/playbooks/npa-playbook-peptide-therapy.png",
+    peekItems: [
+      "Key peptides covered: BPC-157, semaglutide, tirzepatide, NAD+, PT-141, CJC-1295/Ipamorelin",
+      "Patient screening — candidacy criteria, contraindications, lab requirements",
+      "Protocols and dosing — reconstitution, administration routes, titration schedules",
+      "Vendor sourcing — compounding pharmacies, quality verification, regulatory compliance",
+      "Consent form templates specific to peptide therapy",
+      "Patient FAQs — answers to the questions every peptide patient asks before starting",
+    ],
+    outcome:
+      "Your patients are already Googling peptides. Be the provider who answers.",
+  },
+  {
     slug: "hormone-therapy-playbook",
     title: "Hormone Therapy Playbook",
     subtitle: "BHRT for Aesthetic Practices",

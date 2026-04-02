@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T03:35:18.686Z",
+  "generatedAt": "2026-04-02T03:41:40.543Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1489,6 +1489,21 @@
           "title": "Peptide Therapy FAQ Card",
           "designId": "pep-faq-card",
           "editUrl": "/forms/PEP-07-FAQ-Card.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "peptide-therapy-playbook",
+      "productSlug": "peptide-therapy-playbook",
+      "productTitle": "The Peptide Therapy Playbook — For Prescribing Providers",
+      "buildTimestamp": "2026-04-02T04:30:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The Peptide Therapy Playbook",
+          "designId": "peptide-therapy-playbook-main",
+          "editUrl": "/forms/NPA-Peptide-Therapy-Playbook.html",
           "viewUrl": null
         }
       ]

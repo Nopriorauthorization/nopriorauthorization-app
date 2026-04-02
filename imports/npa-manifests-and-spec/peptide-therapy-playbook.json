@@ -1,0 +1,14 @@
+{
+  "productId": "peptide-therapy-playbook",
+  "displayName": "The Peptide Therapy Playbook — For Prescribing Providers",
+  "description": "7-module system for adding peptide therapy to your aesthetic or wellness practice. Covers BPC-157, semaglutide, tirzepatide, NAD+, PT-141, CJC-1295/Ipamorelin, and more. Patient screening, protocols, vendor sourcing, consent forms, do's and don'ts, and patient FAQs. By Danielle Alcala.",
+  "version": "1.0.0",
+  "priceUSD": 127,
+  "etsySku": "NPA-PTP-001",
+  "category": "playbooks",
+  "targetBuyer": "NPs adding peptide services, med spa owners, functional medicine providers, wellness clinic operators",
+  "templates": [{"id": "peptide-therapy-playbook-main", "name": "The Peptide Therapy Playbook", "description": "7-module peptide system — screening, protocols, vendors, consent, FAQs", "canvaTemplateUrl": "/forms/NPA-Peptide-Therapy-Playbook.html", "_deliveryType": "html", "format": "interactive", "pages": 1, "category": "playbook"}],
+  "deliveryNote": "Interactive HTML playbook — works on any device.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-02T04:30:00Z"
+}

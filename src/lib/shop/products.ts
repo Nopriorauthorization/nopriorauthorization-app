@@ -49,6 +49,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "medspa-social-media-system": "Playbooks",
   "medspa-content-strategy-system": "Playbooks",
   "hormone-therapy-playbook": "Playbooks",
+  "peptide-therapy-playbook": "Playbooks",
   "diy-google-setup-kit": "Bundles",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
@@ -99,6 +100,7 @@ const PRICE_MAP: Record<string, number> = {
   "medspa-social-media-system": 14700,
   "medspa-content-strategy-system": 14700,
   "hormone-therapy-playbook": 12700,
+  "peptide-therapy-playbook": 12700,
   "diy-google-setup-kit": 29700,
 };
 
@@ -106,6 +108,7 @@ const FEATURED_SLUGS = new Set([
   "medspa-social-media-system",
   "medspa-content-strategy-system",
   "hormone-therapy-playbook",
+  "peptide-therapy-playbook",
   "diy-google-setup-kit",
   "injectors-playbook",
   "new-injector-onboarding-kit",
@@ -154,6 +157,7 @@ const ASSET_DIR_MAP: Record<string, string> = {
   "medspa-social-media-system": "playbooks",
   "medspa-content-strategy-system": "playbooks",
   "hormone-therapy-playbook": "playbooks",
+  "peptide-therapy-playbook": "playbooks",
   "diy-google-setup-kit": "kits",
 };
 
@@ -171,6 +175,7 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "medspa-social-media-system": "/shop-previews/playbooks/npa-thumbnail-social-media-system.png",
   "medspa-content-strategy-system": "/shop-previews/playbooks/npa-thumbnail-content-strategy.png",
   "hormone-therapy-playbook": "/shop-previews/playbooks/npa-playbook-hormone-therapy.png",
+  "peptide-therapy-playbook": "/shop-previews/playbooks/npa-playbook-peptide-therapy.png",
   "diy-google-setup-kit": "/shop-previews/kits/npa-thumbnail-diy-google-kit.png",
   "treatment-menu-signage-kit": "/shop-previews/kits/npa-thumbnail-treatment-menu-kit.png",
   "aftercare-card-kit": "/shop-previews/kits/npa-thumbnail-aftercare-cards.png",

@@ -1,0 +1,712 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.pb{font-family:'Lato',sans-serif;max-width:880px;margin:0 auto;background:var(--color-background-primary)}
+.pb-header{background:#1A1A1A;padding:20px 32px 14px;text-align:center}
+.pb-header .ey{font-weight:300;letter-spacing:.22em;font-size:10px;color:#888;text-transform:uppercase;margin-bottom:5px}
+.pb-header .br{font-weight:300;letter-spacing:.22em;font-size:16px;color:#fff;text-transform:uppercase}
+.pb-header .su{font-size:10px;color:#666;margin-top:4px}
+.pb-band{background:#1A1A1A;padding:16px 32px;text-align:center;border-bottom:3px solid #D4537E}
+.pb-band h1{font-family:'Playfair Display',serif;font-size:24px;color:#fff;font-weight:700}
+.pb-band p{font-size:11px;color:#888;margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+.pb-nav{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 24px}
+.pb-nav::-webkit-scrollbar{display:none}
+.pn{font-size:12px;color:var(--color-text-secondary);padding:12px 14px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Lato',sans-serif;transition:color .15s}
+.pn:hover{color:#D4537E}.pn.act{color:#D4537E;border-bottom-color:#D4537E;font-weight:700}
+.pb-body{padding:28px 32px}.sec-hide{display:none}
+.module-hd{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;padding-bottom:18px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.mn{background:#D4537E;color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mht h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--color-text-primary);font-weight:700}
+.mht p{font-size:13px;color:var(--color-text-secondary);margin-top:3px}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;color:#D4537E;font-weight:700;margin:22px 0 10px}
+.info-card{background:var(--color-background-secondary);border-radius:8px;padding:16px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.info-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-primary);margin-bottom:7px}
+.info-card p,.info-card li{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.info-card ul{padding-left:16px}.info-card li{margin-bottom:3px}
+.warn-card{background:#FBEAF0;border-radius:8px;padding:14px 18px;margin-bottom:12px;border-left:3px solid #D4537E}
+.warn-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#993556;margin-bottom:6px}
+.warn-card p{font-size:13px;color:#72243E;line-height:1.6}
+.alert-card{background:#FCEBEB;border-radius:8px;padding:14px 18px;margin-bottom:12px;border-left:3px solid #E24B4A}
+.alert-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#A32D2D;margin-bottom:6px}
+.alert-card p,.alert-card li{font-size:13px;color:#791F1F;line-height:1.7}
+.alert-card ul{padding-left:16px}.alert-card li{margin-bottom:3px}
+.ok-card{background:#EAF3DE;border-radius:8px;padding:14px 18px;margin-bottom:12px;border-left:3px solid #639922}
+.ok-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#3B6D11;margin-bottom:5px}
+.ok-card p{font-size:13px;color:#27500A;line-height:1.6}
+.peptide-card{border-radius:12px;overflow:hidden;margin-bottom:14px;border:0.5px solid var(--color-border-tertiary)}
+.pc-head{padding:14px 18px;background:#1A1A1A;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pc-head h3{font-size:15px;font-weight:700;color:#fff}
+.pc-head p{font-size:11px;color:#888;margin-top:2px}
+.pc-tags{display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0}
+.pc-tag{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:10px}
+.tag-rx{background:#FBEAF0;color:#993556}
+.tag-otc{background:#EAF3DE;color:#27500A}
+.tag-research{background:#FAEEDA;color:#633806}
+.tag-fda{background:#E6F1FB;color:#185FA5}
+.pc-body{padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:14px;background:var(--color-background-primary)}
+.pc-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-secondary);margin-bottom:7px}
+.pc-col li{font-size:13px;color:var(--color-text-secondary);line-height:1.6;list-style:none;padding:2px 0;display:flex;gap:6px;align-items:flex-start}
+.pc-col li::before{content:'';width:5px;height:5px;border-radius:50%;background:#D4537E;flex-shrink:0;margin-top:5px}
+.script-block{background:#1A1A1A;border-radius:10px;padding:18px 22px;margin-bottom:14px;position:relative}
+.script-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.script-text{font-size:14px;color:#fff;line-height:1.8;white-space:pre-wrap}
+.script-note{font-size:12px;color:#888;margin-top:10px;border-top:0.5px solid #333;padding-top:8px;line-height:1.6}
+.copy-btn{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:0.5px solid #444;color:#888;padding:4px 10px;border-radius:5px;cursor:pointer;font-family:'Lato',sans-serif}
+.copy-btn:hover{background:#D4537E;border-color:#D4537E;color:#fff}
+.flow-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.flow-num{background:#D4537E;color:#fff;font-size:12px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.flow-content h4{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.flow-content p{font-size:13px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px}
+.kpi-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--color-background-secondary);border-radius:8px;padding:14px;text-align:center}
+.kpi .num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#D4537E}
+.kpi .lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px;line-height:1.4}
+.vendor-card{border-radius:10px;padding:16px 18px;margin-bottom:10px;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.vendor-card h4{font-size:14px;font-weight:700;color:var(--color-text-primary);margin-bottom:4px}
+.v-tag{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:6px}
+.tag-compound{background:#FBEAF0;color:#993556}
+.tag-platform{background:#E6F1FB;color:#185FA5}
+.tag-wholesale{background:#FAEEDA;color:#633806}
+.vendor-card p{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.vendor-card .v-note{font-size:11px;color:#D4537E;font-weight:700;margin-top:6px}
+.consent-section{background:var(--color-background-secondary);border-radius:12px;padding:20px 24px;margin:14px 0}
+.consent-section h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--color-text-primary);font-weight:700;margin-bottom:4px}
+.consent-section .cs-sub{font-size:12px;color:var(--color-text-secondary);margin-bottom:14px;font-style:italic}
+.consent-field{padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.consent-field:last-child{border-bottom:none}
+.consent-field strong{color:var(--color-text-primary)}
+.faq-item{border-bottom:0.5px solid var(--color-border-tertiary);padding:12px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:13px;font-weight:700;color:var(--color-text-primary);cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+.faq-q .arr{color:#D4537E;flex-shrink:0;transition:transform .2s}
+.faq-q.open .arr{transform:rotate(180deg)}
+.faq-a{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-top:8px;padding:10px 14px;background:var(--color-background-primary);border-radius:6px;border-left:3px solid #D4537E;display:none}
+.faq-a.show{display:block}
+.dos-donts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.dd-card{border-radius:8px;padding:14px 16px}
+.dd-card.do{background:#EAF3DE;border:0.5px solid #97C459}
+.dd-card.dont{background:#FCEBEB;border:0.5px solid #F09595}
+.dd-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.dd-card.do h4{color:#27500A}
+.dd-card.dont h4{color:#A32D2D}
+.dd-card li{font-size:13px;line-height:1.7;list-style:none;padding:2px 0;display:flex;gap:7px}
+.dd-card.do li::before{content:'✓';color:#639922;font-weight:700;flex-shrink:0}
+.dd-card.dont li::before{content:'✗';color:#E24B4A;font-weight:700;flex-shrink:0}
+.dd-card.do li{color:#27500A}
+.dd-card.dont li{color:#791F1F}
+.pb-footer{background:#1A1A1A;padding:12px 32px;text-align:center}
+.pb-footer p{font-size:10px;color:#555;letter-spacing:.1em;text-transform:uppercase}
+.toast{position:fixed;bottom:20px;right:20px;background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'Lato',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+</style>
+
+<div class="pb">
+<div class="pb-header">
+  <div class="ey">No Prior Authorization &nbsp;·&nbsp; Danielle Alcala</div>
+  <div class="br">Peptide Therapy Practice Playbook</div>
+  <div class="su">For licensed prescribing providers in aesthetic &amp; wellness practices</div>
+</div>
+<div class="pb-band">
+  <h1>The Peptide Therapy Playbook</h1>
+  <p>Key peptides &nbsp;·&nbsp; Patient screening &nbsp;·&nbsp; Protocols &nbsp;·&nbsp; Vendors &nbsp;·&nbsp; Consent forms &nbsp;·&nbsp; FAQs</p>
+</div>
+
+<div class="pb-nav">
+  <button class="pn act" onclick="show(0)">01 &nbsp;Overview &amp; Scope</button>
+  <button class="pn" onclick="show(1)">02 &nbsp;Patient Screening</button>
+  <button class="pn" onclick="show(2)">03 &nbsp;Key Peptides</button>
+  <button class="pn" onclick="show(3)">04 &nbsp;Vendors &amp; Sourcing</button>
+  <button class="pn" onclick="show(4)">05 &nbsp;Consent Forms</button>
+  <button class="pn" onclick="show(5)">06 &nbsp;Do's &amp; Don'ts</button>
+  <button class="pn" onclick="show(6)">07 &nbsp;Patient FAQs</button>
+</div>
+
+<div class="pb-body">
+
+<!-- MODULE 1 -->
+<div id="m0">
+  <div class="module-hd">
+    <div class="mn">1</div>
+    <div class="mht">
+      <h2>Peptide Therapy — Overview &amp; Scope of Practice</h2>
+      <p>What peptides are, who can prescribe them, and why this is the fastest-growing category in wellness</p>
+    </div>
+  </div>
+
+  <div class="alert-card">
+    <h4>Critical — the regulatory landscape is actively shifting</h4>
+    <p>Peptide therapy exists in a complex and rapidly evolving regulatory space. Several peptides previously available through compounding pharmacies have been reclassified or restricted by the FDA in recent years — including BPC-157, TB-500, and others. Before building a peptide program, verify the current FDA and DEA status of every peptide you intend to prescribe. The status of compounded peptides changes frequently. This playbook reflects the general landscape as of 2025 — always verify current status with your compounding pharmacy and legal counsel before prescribing.</p>
+  </div>
+
+  <div class="sec-title">What peptides are — and why patients want them</div>
+  <div class="info-card">
+    <h4>Peptides — the basics</h4>
+    <p>Peptides are short chains of amino acids — the building blocks of proteins — that act as signaling molecules in the body. Unlike hormones that replace a deficient hormone directly, peptides work by signaling the body to increase its own production of hormones, growth factors, or repair proteins. They are used therapeutically to support: growth hormone optimization, fat loss, muscle preservation, injury recovery, immune modulation, cognitive function, sleep quality, skin regeneration, and sexual function. The specificity of peptide signaling — acting on targeted receptors — is what makes them clinically interesting and commercially appealing.</p>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">$48B</div><div class="lbl">Global peptide therapeutics market — growing rapidly</div></div>
+    <div class="kpi"><div class="num">7,000+</div><div class="lbl">Known naturally occurring peptides in the human body</div></div>
+    <div class="kpi"><div class="num">$300–$600</div><div class="lbl">Average monthly peptide program revenue per patient</div></div>
+  </div>
+
+  <div class="sec-title">Scope of practice — who can prescribe</div>
+  <div class="info-card">
+    <h4>Prescribing authority for peptides</h4>
+    <ul>
+      <li>MDs, DOs — full prescribing authority in all states</li>
+      <li>NPs — independent prescribing authority in full-practice states; collaborative agreement required in others</li>
+      <li>PAs — prescribing authority varies by state; collaborative agreement typically required</li>
+      <li>Estheticians, RNs without prescriptive authority, medical assistants — cannot prescribe peptides</li>
+      <li>Peptides that are compounded require a valid patient-provider relationship and a legitimate clinical indication — not cosmetic use alone</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Why peptides belong in an aesthetic practice</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Your patients are already asking</h4><p>Aesthetic patients are wellness-forward. They're already reading about peptides on social media and asking their providers about them. Being the practice that can answer intelligently and offer a supervised program builds immediate trust and loyalty.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Direct aesthetic benefits</h4><p>Several peptides — GHK-Cu, BPC-157, GH secretagogues — have documented effects on skin quality, collagen production, healing, and body composition. These outcomes are deeply aligned with what aesthetic patients seek.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>High-retention recurring revenue</h4><p>Peptide programs are monthly. Patients on GH secretagogues or healing peptides commit to 3–6 month cycles minimum. Average monthly revenue $300–$600 per patient. High lifetime value, low churn when results are good.</p></div></div>
+  <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Natural complement to hormones and GLP-1</h4><p>Patients already on your hormone or GLP-1 program are ideal peptide candidates. The concerns overlap: body composition, energy, recovery, skin quality. One patient. Multiple revenue streams.</p></div></div>
+</div>
+
+<!-- MODULE 2: SCREENING -->
+<div id="m1" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">2</div>
+    <div class="mht">
+      <h2>Patient Screening &amp; Candidate Selection</h2>
+      <p>Who is right for peptide therapy — and how to open the conversation</p>
+    </div>
+  </div>
+
+  <div class="script-block">
+    <div class="script-label">Opening consultation script — peptide inquiry</div>
+    <div class="script-text">"Tell me what's driving your interest in peptides — what are you hoping to feel or achieve that you're not experiencing right now?"</div>
+    <div class="script-note">Peptide patients often arrive with significant self-research. Meet them where they are. Understand their goals before recommending anything. This question surfaces the right peptide category — body composition, recovery, skin, sleep, or cognitive function — without leading them.</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+
+  <div class="sec-title">Ideal peptide therapy candidates — by goal</div>
+  <div class="info-card">
+    <h4>Body composition and anti-aging</h4>
+    <ul>
+      <li>Adults 35+ experiencing gradual muscle loss, increasing body fat despite stable lifestyle</li>
+      <li>Athletes and active patients seeking improved recovery and lean mass</li>
+      <li>Patients with documented low IGF-1 levels — growth hormone secretagogues most indicated here</li>
+      <li>GLP-1 patients looking to preserve muscle mass during weight loss — peptides complement well</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Recovery and healing</h4>
+    <ul>
+      <li>Patients with chronic musculoskeletal injuries not responding to standard treatment</li>
+      <li>Post-surgical patients (with surgical team awareness and approval)</li>
+      <li>Athletes with overuse injuries or slow recovery</li>
+      <li>Patients with gut dysfunction or inflammatory conditions (BPC-157 historically used — check current FDA status)</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Skin, hair, and aesthetic enhancement</h4>
+    <ul>
+      <li>Patients seeking collagen support beyond topical skincare</li>
+      <li>Post-procedure patients wanting enhanced healing and skin quality</li>
+      <li>Hair loss patients — GHK-Cu has shown promise in hair follicle stimulation</li>
+      <li>Patients wanting systemic skin benefits alongside their injectable aesthetic treatments</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Sleep, cognition, and stress</h4>
+    <ul>
+      <li>Patients with sleep disruption not fully addressed by hormone optimization</li>
+      <li>Patients with stress-related fatigue, brain fog, and burnout</li>
+      <li>Patients seeking cognitive enhancement and neuroprotection</li>
+      <li>Patients interested in mood support alongside conventional care</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Baseline evaluation — what to assess before prescribing</div>
+  <div class="info-card">
+    <h4>Recommended baseline labs for GH secretagogue programs</h4>
+    <ul>
+      <li>IGF-1 — the primary marker of growth hormone status; guides indication and monitors response</li>
+      <li>Fasting glucose and HbA1c — GH secretagogues can affect insulin sensitivity; baseline essential</li>
+      <li>Fasting insulin — metabolic baseline</li>
+      <li>CBC and CMP — general health baseline</li>
+      <li>TSH — thyroid function; overlapping symptoms and GH affects thyroid axis</li>
+      <li>Lipid panel — GH optimization can affect lipids; baseline and monitoring</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Contraindications to consider</div>
+  <div class="alert-card">
+    <h4>Use with caution or avoid</h4>
+    <ul>
+      <li>Active malignancy — growth-promoting peptides are generally contraindicated; consult oncology</li>
+      <li>Proliferative diabetic retinopathy — GH secretagogues may worsen</li>
+      <li>Uncontrolled diabetes — GH affects glucose; optimize diabetes first</li>
+      <li>Pregnancy and breastfeeding — no safety data; avoid</li>
+      <li>Known hypersensitivity to peptide components</li>
+      <li>Active carpal tunnel syndrome — GH-related fluid retention can worsen</li>
+      <li>History of hormone-sensitive cancers — individualized risk discussion required</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MODULE 3: PEPTIDES -->
+<div id="m2" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">3</div>
+    <div class="mht">
+      <h2>Key Peptides — Clinical Overview &amp; Protocols</h2>
+      <p>The most clinically relevant peptides for aesthetic and wellness practices</p>
+    </div>
+  </div>
+
+  <div class="warn-card">
+    <h4>Always verify current FDA status before prescribing any compounded peptide</h4>
+    <p>The FDA has reclassified several peptides as bulk drug substances that cannot be compounded. Status changes with little warning. Verify with your compounding pharmacy before building a protocol around any specific peptide.</p>
+  </div>
+
+  <div class="sec-title">Growth Hormone Secretagogues — body composition and anti-aging</div>
+
+  <div class="peptide-card">
+    <div class="pc-head">
+      <div><h3>Sermorelin</h3><p>GHRH analog — stimulates pituitary GH release</p></div>
+      <div class="pc-tags"><span class="pc-tag tag-rx">Prescription</span><span class="pc-tag tag-fda">FDA History</span></div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-col">
+        <h4>Clinical use and dosing</h4>
+        <ul>
+          <li>Stimulates pituitary to release natural GH — pulsatile, physiologic</li>
+          <li>Typical dose: 200–500mcg subcutaneously at bedtime</li>
+          <li>Cycle: 3–6 months minimum; often continued long-term</li>
+          <li>Results: improved sleep quality (often first), then body composition, energy</li>
+          <li>Well-tolerated — side effects generally mild (flushing, tingling)</li>
+        </ul>
+      </div>
+      <div class="pc-col">
+        <h4>Clinical pearls</h4>
+        <ul>
+          <li>Works best when combined with adequate sleep — GH releases during deep sleep</li>
+          <li>Inject at bedtime on empty stomach for best response</li>
+          <li>Monitor IGF-1 at baseline and 3 months</li>
+          <li>Do not inject with meals — insulin blunts GH release</li>
+          <li>Historically FDA-approved for pediatric GH deficiency — compounded for adults</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="peptide-card">
+    <div class="pc-head">
+      <div><h3>Ipamorelin + CJC-1295</h3><p>GHRP + GHRH combination — the most commonly prescribed GH secretagogue stack</p></div>
+      <div class="pc-tags"><span class="pc-tag tag-rx">Prescription</span><span class="pc-tag tag-compound">Compounded</span></div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-col">
+        <h4>Clinical use and dosing</h4>
+        <ul>
+          <li>Ipamorelin: selective GHRP — stimulates GH release without significant cortisol or prolactin spike</li>
+          <li>CJC-1295 (without DAC): short-acting GHRH analog — synergistic with Ipamorelin</li>
+          <li>Combined dose: Ipamorelin 200–300mcg + CJC-1295 100–200mcg subcutaneous</li>
+          <li>Timing: at bedtime, 3–5x per week or daily</li>
+          <li>Cycle: 3–6 months; reassess IGF-1 before continuing</li>
+        </ul>
+      </div>
+      <div class="pc-col">
+        <h4>Expected outcomes timeline</h4>
+        <ul>
+          <li>Week 1–2: improved sleep depth and quality — most common first result</li>
+          <li>Week 3–4: increased energy, mild fat loss beginning</li>
+          <li>Month 2–3: body composition changes visible — lean mass, reduced visceral fat</li>
+          <li>Month 3–6: skin quality improvement, hair quality, recovery enhancement</li>
+          <li>Monitor: IGF-1 at 3 months. Fasting glucose quarterly.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="peptide-card">
+    <div class="pc-head">
+      <div><h3>Tesamorelin</h3><p>FDA-approved GHRH analog — strongest evidence base</p></div>
+      <div class="pc-tags"><span class="pc-tag tag-fda">FDA Approved</span><span class="pc-tag tag-rx">Prescription</span></div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-col">
+        <h4>Clinical use</h4>
+        <ul>
+          <li>Only FDA-approved GHRH analog currently available</li>
+          <li>FDA-approved for HIV-related lipodystrophy; prescribed off-label for body composition</li>
+          <li>Dose: 1–2mg subcutaneous daily</li>
+          <li>Strongest clinical evidence for visceral fat reduction of all GH secretagogues</li>
+          <li>Available commercially (Egrifta) — expensive without insurance</li>
+        </ul>
+      </div>
+      <div class="pc-col">
+        <h4>Why it matters</h4>
+        <ul>
+          <li>Most robust evidence base — ideal for evidence-conscious patients</li>
+          <li>Documented visceral fat reduction — appeals to metabolic health focus</li>
+          <li>Monitor glucose — can reduce insulin sensitivity</li>
+          <li>Good alternative when compounded CJC/Ipamorelin availability is limited</li>
+          <li>Pairs well with GLP-1 programs for enhanced body composition</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">Healing and repair peptides</div>
+
+  <div class="peptide-card">
+    <div class="pc-head">
+      <div><h3>BPC-157 (Body Protection Compound)</h3><p>Systemic healing peptide — gut, tendon, ligament, nerve repair</p></div>
+      <div class="pc-tags"><span class="pc-tag tag-research">Verify FDA Status</span><span class="pc-tag tag-compound">Compounded</span></div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-col">
+        <h4>Documented benefits</h4>
+        <ul>
+          <li>Accelerated tendon and ligament healing — strong animal data</li>
+          <li>Gut mucosal healing — inflammatory bowel, leaky gut support</li>
+          <li>Nerve regeneration support</li>
+          <li>Anti-inflammatory — systemic and localized</li>
+          <li>Routes: oral capsule (gut-focused), sublingual, or subcutaneous injection</li>
+        </ul>
+      </div>
+      <div class="pc-col">
+        <h4>Important regulatory note</h4>
+        <ul>
+          <li>FDA reclassified BPC-157 as a bulk drug substance — compounding status has been restricted</li>
+          <li>Verify current legal compounding status before prescribing</li>
+          <li>Some pharmacies continue to compound — ensure pharmacy is aware of and compliant with current guidance</li>
+          <li>Human clinical trial data is limited — most evidence from animal models</li>
+          <li>Do not make efficacy claims beyond what evidence supports</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">Skin, hair, and aesthetic peptides</div>
+
+  <div class="peptide-card">
+    <div class="pc-head">
+      <div><h3>GHK-Cu (Copper Peptide)</h3><p>Collagen stimulation, wound healing, hair follicle support</p></div>
+      <div class="pc-tags"><span class="pc-tag tag-otc">Topical OTC</span><span class="pc-tag tag-rx">Injectable Rx</span></div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-col">
+        <h4>Clinical applications</h4>
+        <ul>
+          <li>Collagen and elastin stimulation — well-documented</li>
+          <li>Skin remodeling and wound healing — strong human data</li>
+          <li>Hair follicle stimulation — emerging evidence for androgenic alopecia</li>
+          <li>Anti-inflammatory and antioxidant properties</li>
+          <li>Available as topical serum (cosmetic) or compounded injectable/subcutaneous</li>
+          <li>Best aesthetic application: post-procedure healing acceleration</li>
+        </ul>
+      </div>
+      <div class="pc-col">
+        <h4>How to incorporate in aesthetics</h4>
+        <ul>
+          <li>Topical GHK-Cu serum: recommend post-microneedling, post-peel for enhanced healing</li>
+          <li>Pairs perfectly with existing aesthetic treatments — natural extension of your current offering</li>
+          <li>Compounded injectable for systemic skin benefits — prescribing provider required</li>
+          <li>Hair loss protocol: topical + PRP + microneedling to scalp — comprehensive program</li>
+          <li>Retail opportunity: high-quality topical GHK-Cu serum for home use</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">Sexual health peptides</div>
+
+  <div class="peptide-card">
+    <div class="pc-head">
+      <div><h3>PT-141 (Bremelanotide)</h3><p>FDA-approved melanocortin receptor agonist for female sexual dysfunction</p></div>
+      <div class="pc-tags"><span class="pc-tag tag-fda">FDA Approved — Vyleesi</span><span class="pc-tag tag-rx">Prescription</span></div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-col">
+        <h4>Clinical use</h4>
+        <ul>
+          <li>FDA-approved (Vyleesi) for hypoactive sexual desire disorder (HSDD) in premenopausal women</li>
+          <li>Dose: 1.75mg subcutaneous injection 45 minutes before anticipated sexual activity</li>
+          <li>Mechanism: acts centrally on melanocortin receptors — not vascular like PDE5 inhibitors</li>
+          <li>Also prescribed off-label for men with erectile dysfunction and low desire</li>
+          <li>Available commercially and through compounding pharmacies</li>
+        </ul>
+      </div>
+      <div class="pc-col">
+        <h4>Patient selection and counseling</h4>
+        <ul>
+          <li>Ideal for patients where low libido persists despite hormone optimization</li>
+          <li>Common side effects: nausea (most common), flushing, headache — transient</li>
+          <li>Avoid in patients with cardiovascular disease or uncontrolled hypertension</li>
+          <li>Monitor blood pressure — can transiently decrease BP then increase</li>
+          <li>Pairs naturally with testosterone optimization for women with HSDD</li>
+          <li>High satisfaction rates when patient is properly selected and counseled</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">Sleep and cognitive peptides</div>
+
+  <div class="peptide-card">
+    <div class="pc-head">
+      <div><h3>Epitalon (Epithalamin)</h3><p>Pineal peptide — sleep quality, telomere support, anti-aging</p></div>
+      <div class="pc-tags"><span class="pc-tag tag-compound">Compounded</span><span class="pc-tag tag-research">Verify Status</span></div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-col">
+        <h4>Proposed mechanisms and uses</h4>
+        <ul>
+          <li>Tetrapeptide derived from pineal gland extract</li>
+          <li>Proposed to regulate melatonin production and circadian rhythm</li>
+          <li>Telomere lengthening claims — animal data only</li>
+          <li>Typical protocol: 5–10mg daily subcutaneous for 10–20 day cycles</li>
+          <li>Used for sleep optimization, longevity programs, anti-aging protocols</li>
+        </ul>
+      </div>
+      <div class="pc-col">
+        <h4>Clinical reality check</h4>
+        <ul>
+          <li>Human clinical evidence is limited — primarily Russian research</li>
+          <li>Patient demand is growing — driven by longevity content online</li>
+          <li>Be honest with patients about the evidence base</li>
+          <li>Verify compounding availability and regulatory status before offering</li>
+          <li>If offering, present as an emerging area with limited but promising early data</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 4: VENDORS -->
+<div id="m3" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">4</div>
+    <div class="mht">
+      <h2>Vendors, Sourcing &amp; Quality Control</h2>
+      <p>Where to source peptides, how to vet pharmacies, and what to avoid</p>
+    </div>
+  </div>
+
+  <div class="alert-card">
+    <h4>Never source peptides from research chemical suppliers</h4>
+    <p>A significant portion of peptides sold online are marketed as "research chemicals" and are not intended for human use. These products have no quality oversight, no purity testing, no sterility assurance, and no regulatory accountability. Prescribing or recommending these products to patients is both dangerous and potentially illegal. Only source from licensed compounding pharmacies with verifiable accreditation.</p>
+  </div>
+
+  <div class="sec-title">Compounding pharmacy partners for peptides</div>
+
+  <div class="vendor-card">
+    <h4>Empower Pharmacy</h4>
+    <span class="v-tag tag-compound">503B Outsourcing &nbsp;·&nbsp; FDA Registered</span>
+    <p>One of the largest and most reputable 503B compounding outsourcing facilities in the US. FDA-registered. Sterile compounding capabilities. Broad peptide formulary — verify current peptide availability as formulary changes with regulatory updates. Competitive pricing. Ships nationwide. Prescriber account setup available.</p>
+    <div class="v-note">→ Top choice for high-volume practices — institutional quality standards</div>
+  </div>
+
+  <div class="vendor-card">
+    <h4>Tailor Made Compounding</h4>
+    <span class="v-tag tag-compound">PCAB Accredited &nbsp;·&nbsp; Peptide Specialist</span>
+    <p>Specialty compounding pharmacy with a strong peptide formulary. PCAB accredited. Known for quality and prescriber support. Offers GH secretagogues, PT-141, GHK-Cu, and others. Good prescriber education resources. Verify current formulary and regulatory compliance at time of ordering.</p>
+    <div class="v-note">→ Strong choice for peptide-focused programs — good prescriber support</div>
+  </div>
+
+  <div class="vendor-card">
+    <h4>Carie Boyd's Prescription Shop / College Pharmacy</h4>
+    <span class="v-tag tag-compound">PCAB Accredited</span>
+    <p>Long-standing accredited compounding pharmacies with peptide capabilities. College Pharmacy in Colorado Springs has a strong reputation in the functional medicine and peptide community. Verify current formulary. Good option for practices in states where larger outsourcing facilities don't ship.</p>
+    <div class="v-note">→ Established reputation in functional medicine community</div>
+  </div>
+
+  <div class="vendor-card">
+    <h4>Defy Medical</h4>
+    <span class="v-tag tag-platform">Telehealth + Compounding Platform</span>
+    <p>Telehealth and compounding platform specializing in hormone optimization and peptide therapy. Option for collaborative arrangements — they prescribe, you refer. Good for practices not yet ready to prescribe peptides independently. Also a model to learn from — study their patient education approach.</p>
+    <div class="v-note">→ Referral option if not prescribing peptides yet</div>
+  </div>
+
+  <div class="sec-title">Vetting your compounding pharmacy — the checklist</div>
+  <div class="info-card">
+    <h4>Before you prescribe a single peptide — verify all of the following</h4>
+    <ul>
+      <li>PCAB accreditation or 503B FDA registration — non-negotiable</li>
+      <li>Certificate of analysis (COA) available for each batch — purity and potency verified by independent third-party testing</li>
+      <li>Sterility testing documentation for all injectable preparations</li>
+      <li>Endotoxin (pyrogen) testing for injectables</li>
+      <li>Current regulatory compliance — confirm each peptide you're prescribing is on their approved formulary and legally compoundable</li>
+      <li>Cold chain shipping capability — peptides are temperature-sensitive</li>
+      <li>Prescriber support line — you need to be able to reach a pharmacist with clinical questions</li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Patient sourcing — what to tell them</div>
+  <div class="script-block">
+    <div class="script-label">What to say when a patient asks about buying peptides online</div>
+    <div class="script-text">"I understand the appeal — the internet is full of peptide sources that look legitimate. But the reality is that without a licensed compounding pharmacy, there's no way to verify what's actually in the vial. Purity, potency, sterility — none of that is guaranteed. The risk is real and it's not worth it. When we prescribe through an accredited pharmacy, you know exactly what you're getting and you have a provider supervising your care. That's not just a legal formality — it's the difference between a program that works safely and one that may not work at all."</div>
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+  </div>
+</div>
+
+<!-- MODULE 5: CONSENT -->
+<div id="m4" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">5</div>
+    <div class="mht">
+      <h2>Pre &amp; Post Consent Forms — Peptide Therapy</h2>
+      <p>Informed consent for peptide programs — what must be documented</p>
+    </div>
+  </div>
+
+  <div class="warn-card">
+    <h4>Attorney review required before clinical use</h4>
+    <p>Peptide therapy carries unique regulatory complexity. Consent forms for compounded off-label peptides require careful legal review. Have a healthcare attorney in your state review all consent documents before using with patients. This template covers required clinical elements — not legal advice.</p>
+  </div>
+
+  <div class="consent-section">
+    <h3>PRE-TREATMENT Informed Consent — Peptide Therapy</h3>
+    <div class="cs-sub">Patient reads, initials each section, signs at bottom. Provider co-signs. Keep in patient chart.</div>
+
+    <div class="consent-field"><strong>1. Nature of treatment:</strong> I understand I am being offered peptide therapy — a treatment involving short-chain amino acid signaling molecules — as part of a supervised wellness or medical program. My provider has explained the specific peptide(s) to be used and their intended purpose. _______initials</div>
+    <div class="consent-field"><strong>2. Off-label and compounded status:</strong> I understand that the peptide(s) prescribed to me may be: (a) compounded by a licensed compounding pharmacy and not FDA-approved as a finished drug product, and/or (b) prescribed for uses not specifically FDA-approved (off-label use). The use of compounded and off-label therapies is a legal and common medical practice. I accept this and consent to treatment. _______initials</div>
+    <div class="consent-field"><strong>3. Evidence base:</strong> I understand that some peptides have robust clinical evidence supporting their use, while others have more limited human data and are used based on emerging research, mechanism of action, and clinical experience. My provider has discussed the evidence level for the specific peptide(s) I am receiving. _______initials</div>
+    <div class="consent-field"><strong>4. Potential benefits:</strong> Potential benefits may include improvements in body composition, energy, recovery, sleep quality, skin and hair quality, sexual function, and/or cognitive function depending on the peptide(s) prescribed. I understand results vary and are not guaranteed. _______initials</div>
+    <div class="consent-field"><strong>5. Known risks and side effects:</strong> I have been informed of the following potential side effects specific to my prescribed peptide(s): injection site reactions (redness, swelling, bruising), water retention, fatigue, flushing, nausea, headache, tingling or numbness, changes in blood glucose, and changes in appetite. Additional peptide-specific risks have been discussed and are documented in my chart. _______initials</div>
+    <div class="consent-field"><strong>6. Cancer precaution:</strong> I understand that growth-promoting peptides (GH secretagogues) should not be used in the presence of active malignancy, as growth-promoting effects may theoretically stimulate tumor growth. I confirm I have no known active malignancy. I agree to notify my provider immediately if I receive a cancer diagnosis while on therapy. _______initials</div>
+    <div class="consent-field"><strong>7. Injection training:</strong> If self-administering injections, I confirm that I have received training on proper subcutaneous injection technique, sharps disposal, storage requirements, and signs of injection site infection. I understand when to contact my provider with concerns. _______initials</div>
+    <div class="consent-field"><strong>8. Monitoring and follow-up:</strong> I agree to attend follow-up appointments and complete requested lab work as scheduled. I understand that ongoing monitoring is required for safe peptide therapy and that my prescription may be discontinued if I do not comply with monitoring requirements. _______initials</div>
+    <div class="consent-field"><strong>9. Regulatory environment:</strong> I understand that the regulatory status of compounded peptides is subject to change by the FDA, and that my provider may need to adjust, substitute, or discontinue my prescription based on changes in regulatory guidance. _______initials</div>
+    <div class="consent-field"><strong>10. Pregnancy:</strong> I confirm I am not pregnant or planning pregnancy during the course of this therapy. I understand peptide therapy is generally contraindicated in pregnancy. I will notify my provider immediately if I become pregnant. _______initials</div>
+
+    <div class="consent-field" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--color-border-tertiary)">
+      <strong>Patient signature:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________<br><br>
+      <strong>Provider signature:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________<br><br>
+      <strong>Witness:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________
+    </div>
+  </div>
+
+  <div class="consent-section" style="margin-top:20px">
+    <h3>POST-INITIATION Check-In — 4-Week Follow-Up</h3>
+    <div class="cs-sub">Completed at the 4-week follow-up — in person or via telehealth</div>
+    <div class="consent-field"><strong>Symptom response:</strong> I have discussed my response to peptide therapy with my provider. My primary goal symptom(s) have: ☐ Improved &nbsp; ☐ Partially improved &nbsp; ☐ No change yet &nbsp; ☐ Worsened. Notes: _______________________</div>
+    <div class="consent-field"><strong>Side effects experienced:</strong> Side effects since starting therapy (write "none" if none): _______________________. My provider has reviewed these with me. _______initials</div>
+    <div class="consent-field"><strong>Injection technique:</strong> ☐ Comfortable with self-injection &nbsp; ☐ Requires additional instruction &nbsp; ☐ Provider-administered only</div>
+    <div class="consent-field"><strong>Protocol adjustment:</strong> My protocol has been: ☐ Continued as prescribed &nbsp; ☐ Dose adjusted &nbsp; ☐ Frequency adjusted &nbsp; ☐ Peptide changed. Reason: _______________________</div>
+    <div class="consent-field"><strong>Continued consent:</strong> I have reviewed my progress with my provider and consent to continue peptide therapy as currently prescribed. _______initials</div>
+    <div class="consent-field" style="margin-top:14px">
+      <strong>Patient signature:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________<br><br>
+      <strong>Provider signature:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> ____________
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 6: DOS AND DONTS -->
+<div id="m5" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">6</div>
+    <div class="mht">
+      <h2>Do's &amp; Don'ts — Peptide Therapy in Practice</h2>
+      <p>The clinical, operational, and legal rules that protect your patients and your practice</p>
+    </div>
+  </div>
+
+  <div class="dos-donts">
+    <div class="dd-card do">
+      <h4>Do — always</h4>
+      <ul>
+        <li>Verify the current FDA compounding status of every peptide before prescribing</li>
+        <li>Use only PCAB-accredited or 503B FDA-registered compounding pharmacies</li>
+        <li>Request and review COA (certificate of analysis) for each batch</li>
+        <li>Obtain written informed consent before initiating any peptide program</li>
+        <li>Document the clinical indication for every prescription clearly</li>
+        <li>Obtain baseline labs appropriate for the peptide category being prescribed</li>
+        <li>Schedule 4-week follow-up and monitor for side effects and response</li>
+        <li>Train patients on proper injection technique if self-administering</li>
+        <li>Teach patients proper sharps disposal — OSHA compliance</li>
+        <li>Be honest with patients about evidence levels — emerging vs. established</li>
+        <li>Stay current on regulatory updates — FDA reclassifications happen without warning</li>
+        <li>Have consent forms reviewed by a healthcare attorney in your state</li>
+      </ul>
+    </div>
+    <div class="dd-card dont">
+      <h4>Don't — never</h4>
+      <ul>
+        <li>Source peptides from research chemical suppliers or unverified online sources</li>
+        <li>Prescribe or recommend peptides from sources without verified pharmacy accreditation</li>
+        <li>Make efficacy claims beyond what the evidence supports</li>
+        <li>Prescribe GH secretagogues to patients with active malignancy</li>
+        <li>Skip baseline labs to "save the patient money" — this is clinical and legal risk</li>
+        <li>Prescribe without a follow-up plan — abandonment liability</li>
+        <li>Continue prescribing a peptide whose compounding status has changed without verifying legality</li>
+        <li>Allow patients to self-source peptides and then "supervise" the program</li>
+        <li>Market peptide therapy as anti-aging cures or guaranteed fat loss</li>
+        <li>Prescribe outside your scope of practice or without required prescribing authority</li>
+        <li>Ignore patient-reported side effects — document every concern and your response</li>
+        <li>Stack multiple peptides without understanding interaction profiles</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec-title">Building the peptide program into your practice — step by step</div>
+  <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h4>Start with one peptide category — not the entire formulary</h4><p>Choose one area: body composition (GH secretagogues) OR healing (BPC-157 if available) OR skin (GHK-Cu). Master one category first. Build your protocols, consent forms, and patient education. Expand from a position of confidence, not overwhelm.</p></div></div>
+  <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h4>Establish your pharmacy relationship first</h4><p>Before you see your first peptide patient, have your compounding pharmacy relationship established, your prescriber account set up, and your formulary confirmed. Nothing is more professionally embarrassing than promising a patient a protocol you can't yet deliver.</p></div></div>
+  <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h4>Add peptide screening to your existing intake forms</h4><p>"Are you interested in peptide therapy for body composition, recovery, or anti-aging?" — one question surfaces interested patients from your existing base. You likely have patients right now who would sign up immediately.</p></div></div>
+  <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h4>Price it as a program, not a product</h4><p>Monthly program fee ($200–$400) covers provider management. Peptide cost billed separately through pharmacy. Labs billed separately. This creates three revenue streams from one patient relationship and makes the ongoing monitoring feel included rather than additional.</p></div></div>
+  <div class="flow-step"><div class="flow-num">5</div><div class="flow-content"><h4>Cross-sell deliberately — not aggressively</h4><p>"Your GH secretagogue program is going to improve your body composition and skin quality over the next 3–6 months. A lot of patients doing this program love combining it with microneedling or filler — the skin responds better when the foundation is optimized." That's clinical, not sales.</p></div></div>
+</div>
+
+<!-- MODULE 7: FAQs -->
+<div id="m6" class="sec-hide">
+  <div class="module-hd">
+    <div class="mn">7</div>
+    <div class="mht">
+      <h2>Patient FAQs — Peptide Therapy</h2>
+      <p>The questions every peptide patient asks — answered clearly and compliantly</p>
+    </div>
+  </div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">What exactly are peptides and how are they different from hormones?<span class="arr">▾</span></div><div class="faq-a">Peptides are short chains of amino acids — the building blocks proteins are made from. Your body naturally produces thousands of peptides that act as signaling molecules, telling cells and organs what to do. Unlike hormones, which replace a deficient hormone directly, therapeutic peptides work by signaling your body to increase its own production of hormones, growth factors, or repair proteins. Think of hormones as a replacement part and peptides as instructions that help your body make more of what it needs on its own. This signaling approach is one of the reasons peptides are so interesting therapeutically — they work with your body's existing mechanisms rather than replacing them.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Are peptides safe?<span class="arr">▾</span></div><div class="faq-a">When prescribed by a licensed provider, sourced from an accredited compounding pharmacy, and used at appropriate doses with proper monitoring — peptides have a generally favorable safety profile. The risk increases significantly when peptides are sourced from unverified online suppliers with no quality controls. This is why we only prescribe through accredited pharmacies where every batch has a certificate of analysis confirming purity and potency. Like any medical treatment, peptides carry risks that we discuss fully before starting, and we monitor you throughout the program to catch any concerns early.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Do I have to inject peptides? Is there another option?<span class="arr">▾</span></div><div class="faq-a">It depends on the peptide. Some peptides — like GH secretagogues — are most effective when injected subcutaneously because they're broken down in the digestive system before reaching the bloodstream. Others, like BPC-157 and GHK-Cu in some formulations, can be taken orally or applied topically with reasonable efficacy for certain indications. We'll discuss delivery options for your specific protocol at your consultation. If you're uncomfortable with injections, we'll find the most effective option that works for you — and if injection is the best route, we'll make sure you feel completely confident with the technique before you leave our office.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">How long until I see results?<span class="arr">▾</span></div><div class="faq-a">This varies significantly by peptide and by goal. GH secretagogues typically produce improved sleep quality within the first 1–2 weeks — often the first thing patients notice. Energy improvements typically follow in weeks 2–4. Body composition changes — actual changes in lean mass and fat — require 2–3 months minimum of consistent use. Skin and hair quality improvements from GH secretagogues or GHK-Cu tend to appear at 3–6 months. Healing peptides for injury often show results faster — 4–8 weeks in many cases. The honest answer is that peptides reward patience and consistency. We'll set realistic expectations based on your specific protocol at your consultation.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Can I take peptides if I'm already on hormone therapy?<span class="arr">▾</span></div><div class="faq-a">In most cases, yes — and for many patients, combining hormone optimization with peptide therapy produces better results than either alone. Growth hormone secretagogues, testosterone, and estrogen each work through different mechanisms and often complement each other. For example, optimized testosterone levels improve the body composition response to GH secretagogues, and optimal estrogen levels support the skin benefits of GHK-Cu. We review your complete medication and supplement list before prescribing any peptide and flag any interactions or timing considerations. No combination is started without that thorough review.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Why can't I just buy peptides online? They're cheaper.<span class="arr">▾</span></div><div class="faq-a">I understand the appeal — the price difference can be significant. But here's the reality: peptides sold as "research chemicals" online have no quality oversight. No purity testing. No sterility testing. No verification that what's in the vial is what the label says. Studies of unregulated peptide sources have found products that are mislabeled, underdosed, overdosed, or contaminated. You're injecting this into your body. The risk of infection, allergic reaction, or simply a product that doesn't work because it's not what it claims to be — that's not a risk worth taking to save money. When we prescribe through an accredited pharmacy, you have documentation of exactly what's in your vial. That's worth the difference in cost.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">Will peptides help me lose weight?<span class="arr">▾</span></div><div class="faq-a">Some peptides support body composition improvement — meaning they can help reduce body fat and preserve or build lean muscle — but this is different from the significant weight loss produced by GLP-1 medications. GH secretagogues like Ipamorelin/CJC-1295 improve the ratio of lean mass to fat, increase metabolic rate, and can reduce visceral fat over 3–6 months. This is most noticeable in patients who are already active and eating well. Peptides are not a replacement for GLP-1 therapy if significant weight loss is the goal — but they're an excellent complement, particularly for preserving muscle during GLP-1-induced weight loss. We'll discuss what's right for your specific goals at your consultation.</div></div>
+
+  <div class="faq-item"><div class="faq-q" onclick="tog(this)">What does a peptide program cost?<span class="arr">▾</span></div><div class="faq-a">Our peptide programs are structured as monthly management fees covering your provider visits, protocol adjustments, and ongoing support. The peptide itself is billed separately through our pharmacy partner. Labs are billed separately at initiation and monitoring visits. Total monthly investment typically ranges from $200–$600 depending on the peptide(s) prescribed and your monitoring needs. We'll give you a complete cost breakdown at your consultation before you commit to anything. Our goal is a program that delivers real results at a cost that makes sense for the long term — we want you to be able to sustain this.</div></div>
+</div>
+
+</div>
+<div class="pb-footer"><p>No Prior Authorization &nbsp;·&nbsp; Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; For licensed prescribing providers only</p></div>
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+
+<script>
+function show(i){
+  for(let j=0;j<7;j++){const el=document.getElementById('m'+j);if(el)el.className=j===i?'':'sec-hide';}
+  document.querySelectorAll('.pn').forEach((b,j)=>b.classList.toggle('act',j===i));
+}
+function tog(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('show');
+}
+function copyBlock(btn){
+  const block=btn.closest('.script-block');
+  const text=block.querySelector('.script-text').innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>

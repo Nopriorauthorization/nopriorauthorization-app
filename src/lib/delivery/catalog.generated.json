@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T03:21:29.705Z",
+  "generatedAt": "2026-04-02T03:28:35.451Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1057,6 +1057,21 @@
           "title": "HIPAA Notice of Privacy Practices",
           "designId": "msl-hipaa-npp",
           "editUrl": "/forms/MSL-34-HIPAA-Notice-of-Privacy-Practices.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "medspa-content-strategy-system",
+      "productSlug": "medspa-content-strategy-system",
+      "productTitle": "The Med Spa Content Strategy System",
+      "buildTimestamp": "2026-04-02T03:30:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The Med Spa Content Strategy System",
+          "designId": "medspa-content-strategy-main",
+          "editUrl": "/forms/NPA-Content-Strategy-System.html",
           "viewUrl": null
         }
       ]

@@ -1,0 +1,544 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;background:#0f0f0f;color:#fff;overflow-x:hidden}
+
+/* ===== HERO SECTION ===== */
+.hero{background:#0f0f0f;padding:48px 32px 32px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,83,126,0.18) 0%,transparent 65%)}
+.hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#D4537E;margin-bottom:14px;opacity:0;animation:fadeUp .6s ease .1s both}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:12px;opacity:0;animation:fadeUp .7s ease .25s both}
+.hero h1 em{font-style:italic;color:#D4537E}
+.hero p{font-size:15px;color:rgba(255,255,255,.5);max-width:500px;margin:0 auto;line-height:1.7;opacity:0;animation:fadeUp .7s ease .4s both}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== BOOK SHOWCASE ===== */
+.showcase{padding:40px 32px;display:flex;gap:32px;justify-content:center;align-items:flex-end;flex-wrap:wrap;perspective:1200px}
+
+.book-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0;animation:fadeUp .8s ease both}
+.book-wrap:nth-child(1){animation-delay:.1s}
+.book-wrap:nth-child(2){animation-delay:.2s}
+.book-wrap:nth-child(3){animation-delay:.3s}
+.book-wrap:nth-child(4){animation-delay:.4s}
+.book-wrap:nth-child(5){animation-delay:.5s}
+
+.book{position:relative;cursor:pointer;transition:transform .3s ease;transform-style:preserve-3d}
+.book:hover{transform:translateY(-8px) rotateY(-8deg)}
+
+/* Book 3D effect */
+.book-cover{
+  border-radius:3px 8px 8px 3px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:
+    -4px 0 0 rgba(0,0,0,0.3),
+    -8px 4px 16px rgba(0,0,0,0.5),
+    -12px 8px 32px rgba(0,0,0,0.4),
+    4px 4px 20px rgba(0,0,0,0.3);
+}
+
+.book-cover::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:20px;
+  background:linear-gradient(90deg,rgba(0,0,0,0.4),rgba(255,255,255,0.08),rgba(0,0,0,0.2));
+  z-index:10;
+  border-radius:3px 0 0 3px;
+}
+
+.book-cover::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.12) 0%,transparent 40%,rgba(0,0,0,0.1) 100%);
+  z-index:5;
+  pointer-events:none;
+}
+
+/* Individual book sizes */
+.book-lg .book-cover{width:180px;height:240px}
+.book-md .book-cover{width:160px;height:213px}
+.book-sm .book-cover{width:140px;height:187px}
+
+/* ===== BOOK COVER DESIGNS ===== */
+
+/* Cover 1 — Google Domination — Black + Pink geometric */
+.cover-google{
+  background:#1A1A1A;
+  display:flex;flex-direction:column;
+  padding:20px 16px 16px;
+  position:relative;
+  overflow:hidden;
+}
+.cover-google::before{
+  content:'';position:absolute;
+  bottom:-20px;right:-20px;
+  width:120px;height:120px;
+  border-radius:50%;
+  background:rgba(212,83,126,0.15);
+}
+.cover-google::after{
+  content:'';position:absolute;
+  top:0;right:0;
+  width:0;height:0;
+  border-left:60px solid transparent;
+  border-top:60px solid rgba(212,83,126,0.25);
+}
+.cg-tag{font-size:7px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:10px}
+.cg-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#fff;line-height:1.1;flex:1;margin-bottom:8px}
+.cg-title em{font-style:italic;color:#D4537E;display:block;font-size:16px}
+.cg-sub{font-size:7px;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.cg-bar{height:2px;background:linear-gradient(90deg,#D4537E,transparent);width:70%;margin-bottom:8px}
+.cg-author{font-size:7px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase}
+.cg-pages{position:absolute;top:12px;right:24px;font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:rgba(212,83,126,0.3);z-index:3}
+
+/* Cover 2 — Botox Playbook — Dark luxury */
+.cover-botox{
+  background:linear-gradient(145deg,#1A1A1A 0%,#2a1520 100%);
+  display:flex;flex-direction:column;
+  padding:20px 16px 16px;
+  position:relative;
+  overflow:hidden;
+}
+.cover-botox::before{
+  content:'';position:absolute;
+  top:40px;left:-20px;
+  width:80px;height:80px;
+  border-radius:50%;
+  border:1px solid rgba(212,83,126,0.2);
+}
+.cover-botox::after{
+  content:'';position:absolute;
+  top:50px;left:-10px;
+  width:100px;height:100px;
+  border-radius:50%;
+  border:1px solid rgba(212,83,126,0.1);
+}
+.cb-accent{width:24px;height:2px;background:#D4537E;margin-bottom:14px}
+.cb-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#fff;line-height:1.15;flex:1}
+.cb-title span{display:block;font-style:italic;color:#D4537E;font-size:14px}
+.cb-divider{height:1px;background:rgba(212,83,126,0.3);margin:10px 0}
+.cb-sub{font-size:6.5px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;line-height:1.6;margin-bottom:8px}
+.cb-author{font-size:7px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase}
+.cb-npa{position:absolute;bottom:14px;right:14px;font-size:6px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,83,126,0.4)}
+
+/* Cover 3 — Hormone Therapy — Elegant blush/dark */
+.cover-hormone{
+  background:#1A1A1A;
+  display:flex;flex-direction:column;
+  padding:22px 16px 16px;
+  position:relative;
+  overflow:hidden;
+}
+.ch-pattern{
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(212,83,126,0.04) 8px,rgba(212,83,126,0.04) 9px);
+}
+.ch-top{position:relative;z-index:2;margin-bottom:auto}
+.ch-label{font-size:6.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.ch-line{width:100%;height:0.5px;background:rgba(212,83,126,0.3);margin-bottom:10px}
+.ch-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:900;color:#fff;line-height:1.15}
+.ch-title em{font-style:italic;color:#D4537E;display:block}
+.ch-bottom{position:relative;z-index:2}
+.ch-tag{display:inline-block;background:rgba(212,83,126,0.15);border:0.5px solid rgba(212,83,126,0.3);border-radius:20px;padding:3px 8px;font-size:6px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:8px}
+.ch-author{font-size:6.5px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase}
+
+/* Cover 4 — Peptide Therapy */
+.cover-peptide{
+  background:linear-gradient(160deg,#1A1A1A 60%,#1f1028 100%);
+  display:flex;flex-direction:column;
+  padding:18px 14px 14px;
+  position:relative;
+  overflow:hidden;
+}
+.cp-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,83,126,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(212,83,126,0.05) 1px,transparent 1px);background-size:20px 20px}
+.cp-num{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:rgba(212,83,126,0.08);position:absolute;bottom:-8px;right:4px;line-height:1}
+.cp-top{position:relative;z-index:2}
+.cp-eyebrow{font-size:6px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D4537E;margin-bottom:10px}
+.cp-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:4px}
+.cp-subtitle{font-size:8px;color:rgba(255,255,255,.4);line-height:1.5;margin-bottom:auto}
+.cp-bottom{position:relative;z-index:2;margin-top:auto}
+.cp-dots{display:flex;gap:4px;margin-bottom:8px}
+.cp-dot{width:4px;height:4px;border-radius:50%;background:#D4537E}
+.cp-dot:nth-child(2){background:rgba(212,83,126,.5)}
+.cp-dot:nth-child(3){background:rgba(212,83,126,.25)}
+.cp-author{font-size:6.5px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
+
+/* Cover 5 — Social Media System */
+.cover-social{
+  background:#1A1A1A;
+  display:flex;flex-direction:column;
+  padding:18px 14px 14px;
+  position:relative;
+  overflow:hidden;
+}
+.cs-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D4537E,#ff8fab,#D4537E)}
+.cs-circle{position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;border-radius:50%;border:1px solid rgba(212,83,126,0.2)}
+.cs-circle2{position:absolute;bottom:-15px;right:-15px;width:60px;height:60px;border-radius:50%;background:rgba(212,83,126,0.08)}
+.cs-top{position:relative;z-index:2;padding-top:4px}
+.cs-icon{font-size:18px;margin-bottom:8px;display:block}
+.cs-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:4px}
+.cs-title em{font-style:italic;color:#D4537E}
+.cs-line{height:1px;background:rgba(212,83,126,0.25);margin:10px 0}
+.cs-features{display:flex;flex-direction:column;gap:3px;margin-bottom:auto}
+.cs-feature{font-size:6px;color:rgba(255,255,255,.4);display:flex;gap:4px;align-items:center}
+.cs-feature::before{content:'→';color:#D4537E;font-size:7px;flex-shrink:0}
+.cs-bottom{position:relative;z-index:2;margin-top:10px}
+.cs-author{font-size:6.5px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
+
+/* Book metadata below */
+.book-meta{text-align:center}
+.book-meta .bm-title{font-size:12px;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3}
+.book-meta .bm-price{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#D4537E}
+.book-meta .bm-pages{font-size:10px;color:rgba(255,255,255,.35);margin-top:1px}
+
+/* ===== INTERIOR PREVIEW ===== */
+.interior-section{padding:48px 32px;background:#111;position:relative}
+.interior-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,83,126,0.4),transparent)}
+.int-header{text-align:center;margin-bottom:40px}
+.int-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:10px}
+.int-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff;margin-bottom:8px}
+.int-sub{font-size:14px;color:rgba(255,255,255,.4);max-width:440px;margin:0 auto}
+
+.pages-preview{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:860px;margin:0 auto}
+
+/* Interior page mockups */
+.page-mock{
+  background:#fff;
+  border-radius:4px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 8px 32px rgba(0,0,0,0.5);
+  opacity:0;
+  animation:fadeUp .8s ease both;
+}
+.page-mock:nth-child(1){animation-delay:.1s}
+.page-mock:nth-child(2){animation-delay:.2s}
+.page-mock:nth-child(3){animation-delay:.3s}
+
+.pm-header{background:#1A1A1A;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+.pm-chapter{font-size:7px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4537E}
+.pm-book{font-size:7px;color:rgba(255,255,255,.3);letter-spacing:.06em}
+
+.pm-body{padding:14px;background:#fff}
+.pm-page-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:900;color:#1A1A1A;margin-bottom:3px;line-height:1.2}
+.pm-page-sub{font-size:7px;color:#D4537E;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.pm-divider{height:1.5px;background:linear-gradient(90deg,#D4537E,transparent);width:40%;margin-bottom:12px}
+.pm-text{font-size:7.5px;color:#444;line-height:1.7;margin-bottom:10px}
+.pm-callout{background:#FBEAF0;border-left:2px solid #D4537E;padding:8px 10px;border-radius:0 4px 4px 0;margin-bottom:10px}
+.pm-callout p{font-size:7px;color:#72243E;line-height:1.6;font-style:italic}
+.pm-step-list{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.pm-step{display:flex;gap:7px;align-items:flex-start}
+.pm-step-num{width:14px;height:14px;border-radius:50%;background:#D4537E;color:#fff;font-size:7px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.pm-step-text{font-size:7.5px;color:#333;line-height:1.5}
+.pm-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
+.pm-stat{background:#f5f3f1;border-radius:4px;padding:6px 4px;text-align:center}
+.pm-stat .s-num{font-family:'Playfair Display',serif;font-size:14px;font-weight:900;color:#D4537E}
+.pm-stat .s-lbl{font-size:6px;color:#888;margin-top:1px;line-height:1.3}
+.pm-table{width:100%;border-collapse:collapse;margin-bottom:10px}
+.pm-table th{font-size:6px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#888;padding:4px 6px;text-align:left;border-bottom:0.5px solid #e8e4e0;background:#f5f3f1}
+.pm-table td{font-size:7px;color:#444;padding:4px 6px;border-bottom:0.5px solid #f0ebe6;line-height:1.5}
+.pm-img-placeholder{background:linear-gradient(135deg,#f5f3f1,#ebe7e3);border-radius:4px;height:50px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.pm-img-placeholder span{font-size:7px;color:#bbb;font-style:italic}
+.pm-footer{background:#f5f3f1;padding:6px 14px;display:flex;align-items:center;justify-content:space-between}
+.pm-footer-brand{font-size:6px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E}
+.pm-footer-pg{font-size:6px;color:#bbb}
+
+/* ===== COLLECTION GRID ===== */
+.collection-section{padding:48px 32px;background:#0f0f0f}
+.coll-header{text-align:center;margin-bottom:40px}
+.coll-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:10px}
+.coll-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff;margin-bottom:8px}
+.coll-sub{font-size:14px;color:rgba(255,255,255,.4)}
+
+.ebook-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:860px;margin:0 auto}
+.eg-item{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;align-items:center;gap:12px;transition:all .2s;cursor:pointer}
+.eg-item:hover{background:rgba(212,83,126,0.08);border-color:rgba(212,83,126,0.3);transform:translateY(-2px)}
+.eg-cover{width:32px;height:42px;border-radius:2px 4px 4px 2px;flex-shrink:0;background:#1A1A1A;border-left:3px solid #D4537E;display:flex;align-items:center;justify-content:center}
+.eg-cover span{font-size:8px;font-weight:900;color:#D4537E;writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.06em}
+.eg-info h4{font-size:11px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:2px}
+.eg-info .eg-price{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#D4537E}
+
+/* ===== BUNDLE CTA ===== */
+.bundle-cta{padding:48px 32px;background:linear-gradient(135deg,#1A1A1A 0%,#2a0f1a 100%);text-align:center;position:relative;overflow:hidden}
+.bundle-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(212,83,126,0.15) 0%,transparent 70%)}
+.bc-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:12px;position:relative}
+.bc-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:900;color:#fff;margin-bottom:8px;position:relative;line-height:1.2}
+.bc-title em{font-style:italic;color:#D4537E}
+.bc-sub{font-size:14px;color:rgba(255,255,255,.5);max-width:440px;margin:0 auto 28px;line-height:1.7;position:relative}
+.bc-price-row{display:flex;align-items:baseline;gap:12px;justify-content:center;margin-bottom:24px;position:relative}
+.bc-was{font-size:20px;color:rgba(255,255,255,.25);text-decoration:line-through}
+.bc-price{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:#fff}
+.bc-each{font-size:14px;color:rgba(255,255,255,.4)}
+.bc-btn{background:#D4537E;color:#fff;font-family:'Lato',sans-serif;font-size:14px;font-weight:700;padding:16px 40px;border-radius:8px;border:none;cursor:pointer;letter-spacing:.06em;transition:all .2s;position:relative}
+.bc-btn:hover{opacity:.88;transform:translateY(-2px)}
+.bc-note{font-size:11px;color:rgba(255,255,255,.3);margin-top:12px;position:relative}
+
+/* ===== ETSY BADGE ===== */
+.etsy-section{background:#1A1A1A;padding:20px 32px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.etsy-badge{display:flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.1);border-radius:8px}
+.etsy-badge span{font-size:12px;color:rgba(255,255,255,.5);font-weight:700;letter-spacing:.06em}
+.etsy-badge .badge-dot{width:6px;height:6px;border-radius:50%;background:#D4537E}
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">No Prior Authorization &nbsp;·&nbsp; Danielle Alcala &nbsp;·&nbsp; Digital Ebook Collection</div>
+  <h1>The Med Spa <em>Ebook Library.</em></h1>
+  <p>Professional ebooks built for aesthetic providers — beautifully designed, instantly downloadable, and built from a real med spa practice.</p>
+</div>
+
+<!-- BOOK COVERS SHOWCASE -->
+<div class="showcase">
+
+  <!-- Book 1: Google Domination -->
+  <div class="book-wrap book-lg">
+    <div class="book">
+      <div class="book-cover cover-google">
+        <div class="cg-pages">SEO</div>
+        <div class="cg-tag">No Prior Authorization</div>
+        <div class="cg-title">Google<br>Domination<br><em>Playbook</em></div>
+        <div class="cg-sub">The Med Spa Local SEO System</div>
+        <div class="cg-bar"></div>
+        <div class="cg-author">Danielle Alcala</div>
+      </div>
+    </div>
+    <div class="book-meta">
+      <div class="bm-title">Google Domination<br>Playbook</div>
+      <div class="bm-price">$197</div>
+      <div class="bm-pages">7 Modules · 120+ Pages</div>
+    </div>
+  </div>
+
+  <!-- Book 2: Botox & Filler -->
+  <div class="book-wrap book-md">
+    <div class="book">
+      <div class="book-cover cover-botox">
+        <div class="cb-accent"></div>
+        <div class="cb-title">Botox &amp; Filler<br><span>Practice Playbook</span></div>
+        <div class="cb-divider"></div>
+        <div class="cb-sub">Consultation scripts · Dosing frameworks<br>Complication protocols · Retention systems</div>
+        <div class="cb-author">Danielle Alcala · NPA</div>
+        <div class="cb-npa">No Prior Authorization™</div>
+      </div>
+    </div>
+    <div class="book-meta">
+      <div class="bm-title">Botox &amp; Filler<br>Practice Playbook</div>
+      <div class="bm-price">$127</div>
+      <div class="bm-pages">6 Modules · 90+ Pages</div>
+    </div>
+  </div>
+
+  <!-- Book 3: Hormone Therapy — FEATURED CENTER -->
+  <div class="book-wrap book-lg" style="transform:translateY(-16px)">
+    <div class="book">
+      <div class="book-cover cover-hormone" style="height:260px">
+        <div class="ch-pattern"></div>
+        <div class="ch-top">
+          <div class="ch-label">Clinical Series · No Prior Authorization</div>
+          <div class="ch-line"></div>
+          <div class="ch-title">Hormone<br>Therapy<br><em>Playbook</em></div>
+        </div>
+        <div class="ch-bottom">
+          <div class="ch-tag">For Licensed Prescribers</div>
+          <div class="ch-author">Danielle Alcala · NPA</div>
+        </div>
+      </div>
+    </div>
+    <div class="book-meta">
+      <div class="bm-title">Hormone Therapy<br>Playbook</div>
+      <div class="bm-price">$197</div>
+      <div class="bm-pages">7 Modules · 140+ Pages</div>
+    </div>
+  </div>
+
+  <!-- Book 4: Peptide Therapy -->
+  <div class="book-wrap book-md">
+    <div class="book">
+      <div class="book-cover cover-peptide">
+        <div class="cp-grid"></div>
+        <div class="cp-num">Rx</div>
+        <div class="cp-top">
+          <div class="cp-eyebrow">No Prior Authorization · Clinical Series</div>
+          <div class="cp-title">Peptide<br>Therapy<br>Playbook</div>
+          <div class="cp-subtitle">GH Secretagogues · BPC-157 · GHK-Cu · PT-141 · Vendors · Consent Forms · FAQs</div>
+        </div>
+        <div class="cp-bottom">
+          <div class="cp-dots"><div class="cp-dot"></div><div class="cp-dot"></div><div class="cp-dot"></div></div>
+          <div class="cp-author">Danielle Alcala</div>
+        </div>
+      </div>
+    </div>
+    <div class="book-meta">
+      <div class="bm-title">Peptide Therapy<br>Playbook</div>
+      <div class="bm-price">$197</div>
+      <div class="bm-pages">7 Modules · 130+ Pages</div>
+    </div>
+  </div>
+
+  <!-- Book 5: Social Media -->
+  <div class="book-wrap book-sm">
+    <div class="book">
+      <div class="book-cover cover-social">
+        <div class="cs-stripe"></div>
+        <div class="cs-circle"></div>
+        <div class="cs-circle2"></div>
+        <div class="cs-top">
+          <span class="cs-icon">📱</span>
+          <div class="cs-title">Content<br>Strategy<br><em>System</em></div>
+          <div class="cs-line"></div>
+          <div class="cs-features">
+            <div class="cs-feature">Weekly posting framework</div>
+            <div class="cs-feature">Annual theme calendar</div>
+            <div class="cs-feature">90-day content runway</div>
+            <div class="cs-feature">30 caption templates</div>
+          </div>
+        </div>
+        <div class="cs-bottom">
+          <div class="cs-author">Danielle Alcala · NPA</div>
+        </div>
+      </div>
+    </div>
+    <div class="book-meta">
+      <div class="bm-title">Content Strategy<br>System</div>
+      <div class="bm-price">$147</div>
+      <div class="bm-pages">6 Modules · 80+ Pages</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- INTERIOR PREVIEW -->
+<div class="interior-section">
+  <div class="int-header">
+    <div class="int-eyebrow">What's inside</div>
+    <h2 class="int-title">Every page is designed like a real published book.</h2>
+    <p class="int-sub">Professional interior layout, clinical callouts, step-by-step systems, data tables, and space for notes.</p>
+  </div>
+
+  <div class="pages-preview">
+
+    <!-- Interior Page 1: Chapter opener -->
+    <div class="page-mock">
+      <div class="pm-header">
+        <div class="pm-chapter">Module 01 · Google Domination</div>
+        <div class="pm-book">No Prior Authorization</div>
+      </div>
+      <div class="pm-body">
+        <div class="pm-page-title">Why Google Is Your Most Valuable Employee</div>
+        <div class="pm-page-sub">The patient journey always starts with a search</div>
+        <div class="pm-divider"></div>
+        <div class="pm-stat-row">
+          <div class="pm-stat"><div class="s-num">87%</div><div class="s-lbl">Patients Google before booking</div></div>
+          <div class="pm-stat"><div class="s-num">73%</div><div class="s-lbl">Never click past page one</div></div>
+          <div class="pm-stat"><div class="s-num">$0</div><div class="s-lbl">Cost of organic traffic once ranked</div></div>
+        </div>
+        <div class="pm-text">The moment a patient decides they want Botox, filler, or any aesthetic treatment — they open Google. What they find in the next 30 seconds determines who gets the appointment. This module shows you exactly how to be what they find.</div>
+        <div class="pm-callout"><p>"A med spa that invests 3 months in SEO has permanent free traffic. A med spa that only runs ads has a bill every month and nothing to show for it when they stop."</p></div>
+      </div>
+      <div class="pm-footer"><div class="pm-footer-brand">NPA · Google Domination Playbook</div><div class="pm-footer-pg">12</div></div>
+    </div>
+
+    <!-- Interior Page 2: Protocol page -->
+    <div class="page-mock">
+      <div class="pm-header">
+        <div class="pm-chapter">Module 03 · Hormone Therapy Protocols</div>
+        <div class="pm-book">No Prior Authorization</div>
+      </div>
+      <div class="pm-body">
+        <div class="pm-page-title">Estrogen Delivery Methods &amp; Starting Ranges</div>
+        <div class="pm-page-sub">Dosing frameworks for prescribing providers</div>
+        <div class="pm-divider"></div>
+        <div class="pm-table">
+          <thead><tr><th>Delivery</th><th>Starting Range</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Transdermal patch</td><td>0.025–0.05mg/day</td><td>Lower clot risk</td></tr>
+            <tr><td>Gel / cream</td><td>0.5–1.5g/day</td><td>Flexible dosing</td></tr>
+            <tr><td>Pellet therapy</td><td>6–12.5mg</td><td>3–6 month release</td></tr>
+            <tr><td>Oral estradiol</td><td>0.5–2mg/day</td><td>Higher VTE risk</td></tr>
+          </tbody>
+        </div>
+        <div class="pm-callout"><p>Always baseline labs before prescribing. Dose to symptom resolution — not just numbers on a chart.</p></div>
+        <div class="pm-text">Monitoring schedule: repeat labs at 6–8 weeks post-initiation, then every 3–6 months for stable patients. Annual mammogram reminder for all estrogen patients.</div>
+      </div>
+      <div class="pm-footer"><div class="pm-footer-brand">NPA · Hormone Therapy Playbook</div><div class="pm-footer-pg">67</div></div>
+    </div>
+
+    <!-- Interior Page 3: Strategy page -->
+    <div class="page-mock">
+      <div class="pm-header">
+        <div class="pm-chapter">Module 02 · The Weekly System</div>
+        <div class="pm-book">No Prior Authorization</div>
+      </div>
+      <div class="pm-body">
+        <div class="pm-page-title">The Permanent Weekly Posting Schedule</div>
+        <div class="pm-page-sub">Locked in forever — format never changes</div>
+        <div class="pm-divider"></div>
+        <div class="pm-step-list">
+          <div class="pm-step"><div class="pm-step-num">M</div><div class="pm-step-text"><strong>Monday — Educational Feed Post.</strong> Teach something. Answer a question. Build trust and Google findability simultaneously.</div></div>
+          <div class="pm-step"><div class="pm-step-num">T</div><div class="pm-step-text"><strong>Tuesday — Story Only.</strong> Poll, quiz, or question box. 30 seconds of work. Signals algorithm you're active.</div></div>
+          <div class="pm-step"><div class="pm-step-num">W</div><div class="pm-step-text"><strong>Wednesday — Social Proof Reel.</strong> Before/after, result, or patient reaction. Your highest-converting content type.</div></div>
+          <div class="pm-step"><div class="pm-step-num">F</div><div class="pm-step-text"><strong>Friday — Promotional or BTS.</strong> Open slots, special offer, or a real moment from the week.</div></div>
+        </div>
+        <div class="pm-callout"><p>"The structure is fixed. The content rotates. The consistency is automatic. You never decide the format again — only the topic."</p></div>
+      </div>
+      <div class="pm-footer"><div class="pm-footer-brand">NPA · Content Strategy System</div><div class="pm-footer-pg">34</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FULL COLLECTION -->
+<div class="collection-section">
+  <div class="coll-header">
+    <div class="coll-eyebrow">The full library</div>
+    <h2 class="coll-title">8 Ebooks. Every service line covered.</h2>
+    <p class="coll-sub">Buy individually or get everything in the Complete Library Bundle</p>
+  </div>
+
+  <div class="ebook-grid">
+    <a href="/shop/google-domination-playbook" class="eg-item" style="text-decoration:none;color:inherit;cursor:pointer"><div class="eg-cover"><span>SEO</span></div><div class="eg-info"><h4>Google Domination Playbook</h4><div class="eg-price">$127</div></div></a>
+    <a href="/shop/injectors-playbook" class="eg-item" style="text-decoration:none;color:inherit;cursor:pointer"><div class="eg-cover"><span>BTX</span></div><div class="eg-info"><h4>Botox &amp; Filler Playbook</h4><div class="eg-price">$127</div></div></a>
+    <a href="/shop/hormone-therapy-playbook" class="eg-item" style="text-decoration:none;color:inherit;cursor:pointer"><div class="eg-cover"><span>HRT</span></div><div class="eg-info"><h4>Hormone Therapy Playbook</h4><div class="eg-price">$127</div></div></a>
+    <a href="/shop/peptide-therapy-playbook" class="eg-item" style="text-decoration:none;color:inherit;cursor:pointer"><div class="eg-cover"><span>PEP</span></div><div class="eg-info"><h4>Peptide Therapy Playbook</h4><div class="eg-price">$127</div></div></a>
+    <a href="/shop/medspa-social-media-system" class="eg-item" style="text-decoration:none;color:inherit;cursor:pointer"><div class="eg-cover"><span>SOC</span></div><div class="eg-info"><h4>Social Media System</h4><div class="eg-price">$147</div></div></a>
+    <a href="/shop/medspa-content-strategy-system" class="eg-item" style="text-decoration:none;color:inherit;cursor:pointer"><div class="eg-cover"><span>CST</span></div><div class="eg-info"><h4>Content Strategy System</h4><div class="eg-price">$147</div></div></a>
+    <a href="/shop/microblading-pmu-playbook" class="eg-item" style="text-decoration:none;color:inherit;cursor:pointer"><div class="eg-cover"><span>PMU</span></div><div class="eg-info"><h4>Microblading &amp; PMU Playbook</h4><div class="eg-price">$127</div></div></a>
+    <a href="/shop/new-injector-onboarding-kit" class="eg-item" style="text-decoration:none;color:inherit;cursor:pointer"><div class="eg-cover"><span>ONB</span></div><div class="eg-info"><h4>New Injector Onboarding Kit</h4><div class="eg-price">$67</div></div></a>
+  </div>
+</div>
+
+<!-- BUNDLE CTA -->
+<div class="bundle-cta">
+  <div class="bc-eyebrow">The Complete Library Bundle</div>
+  <h2 class="bc-title">All 8 Ebooks.<br><em>One price. Instant access.</em></h2>
+  <p class="bc-sub">Every playbook, every system, every clinical guide — beautifully designed PDFs delivered to your inbox the moment you purchase.</p>
+  <div class="bc-price-row">
+    <div class="bc-was">$1,186</div>
+    <div class="bc-price">$597</div>
+    <div class="bc-each">instant download</div>
+  </div>
+  <a href="/shop" class="bc-btn" style="text-decoration:none;display:inline-block">Get the Complete Library →</a>
+  <div class="bc-note">Digital download &nbsp;·&nbsp; Immediate access &nbsp;·&nbsp; For licensed aesthetic providers</div>
+</div>
+
+<!-- ETSY BADGE -->
+<div class="etsy-section">
+  <div class="etsy-badge"><div class="badge-dot"></div><span>Available on Etsy</span></div>
+  <div class="etsy-badge"><div class="badge-dot"></div><span>nopriorauthorization.com/shop</span></div>
+  <div class="etsy-badge"><div class="badge-dot"></div><span>Instant Digital Download</span></div>
+  <div class="etsy-badge"><div class="badge-dot"></div><span>By Danielle Alcala</span></div>
+</div>
+
+</body>
+</html>

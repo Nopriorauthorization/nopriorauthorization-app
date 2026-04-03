@@ -3,6 +3,7 @@ import {
   getDeliveryCatalogGeneratedAt,
   getDeliveryProductBySlugAsync,
 } from "@/lib/delivery/catalog";
+import { isGatedFormPath } from "@/lib/delivery/gated-forms";
 import { maskEmail, verifyDeliveryToken } from "@/lib/delivery/token";
 
 export const dynamic = "force-dynamic";
@@ -116,6 +117,11 @@ export default async function DeliveryPage({ params }: Props) {
               const isCanva = template.editUrl?.startsWith(
                 "https://www.canva.com/"
               );
+              const gated = isHtml && isGatedFormPath(template.editUrl);
+              const htmlHref =
+                gated && template.editUrl
+                  ? `/api/delivery/html?token=${encodeURIComponent(params.token)}&i=${index}`
+                  : template.editUrl || "";
 
               return (
                 <div
@@ -139,7 +145,7 @@ export default async function DeliveryPage({ params }: Props) {
                   <div className="flex gap-3">
                     {isHtml && template.editUrl ? (
                       <a
-                        href={template.editUrl}
+                        href={htmlHref}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"

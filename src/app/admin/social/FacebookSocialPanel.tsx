@@ -13,6 +13,8 @@ type ScheduledRow = {
   createdAt: string;
 };
 
+type Banner = { text: string; tone: "info" | "error" | "success" };
+
 export function FacebookSocialPanel(props: {
   fbReady: boolean;
   pageIdSuffix: string | null;
@@ -23,9 +25,12 @@ export function FacebookSocialPanel(props: {
   const [scheduleAt, setScheduleAt] = useState("");
   const [busy, setBusy] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
+  const [banner, setBanner] = useState<Banner | null>(null);
+  const [testingGraph, setTestingGraph] = useState(false);
   const [posts, setPosts] = useState<ScheduledRow[]>([]);
   const [loadingList, setLoadingList] = useState(true);
+  const [fbReady, setFbReady] = useState(props.fbReady);
+  const [pageIdSuffix, setPageIdSuffix] = useState(props.pageIdSuffix);
 
   const loadPosts = useCallback(async () => {
     setLoadingList(true);
@@ -42,9 +47,42 @@ export function FacebookSocialPanel(props: {
     loadPosts();
   }, [loadPosts]);
 
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/admin/social/posting-status");
+        const data = (await res.json()) as {
+          fbReady?: boolean;
+          pageIdSuffix?: string | null;
+        };
+        if (!cancelled && res.ok && typeof data.fbReady === "boolean") {
+          setFbReady(data.fbReady);
+          setPageIdSuffix(data.pageIdSuffix ?? null);
+        }
+      } catch {
+        /* keep SSR props */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const hasPostContent =
+    caption.trim().length > 0 || imageUrl.trim().length > 0;
+  const canPostNow =
+    fbReady && hasPostContent && !busy && !uploading;
+  const canSchedule =
+    fbReady &&
+    hasPostContent &&
+    Boolean(scheduleAt) &&
+    !busy &&
+    !uploading;
+
   async function postNow() {
     setBusy(true);
-    setMessage(null);
+    setBanner(null);
     try {
       const res = await fetch("/api/social/post-facebook", {
         method: "POST",
@@ -54,12 +92,36 @@ export function FacebookSocialPanel(props: {
           imageUrl: imageUrl.trim() || null,
         }),
       });
-      const data = await res.json();
-      if (!res.ok) {
-        setMessage(data.error ?? "Post failed");
+      let data: {
+        error?: string;
+        result?: { id?: string; post_id?: string };
+      };
+      try {
+        data = await res.json();
+      } catch {
+        setBanner({
+          tone: "error",
+          text: `Bad response from server (HTTP ${res.status}). Check Vercel logs for /api/social/post-facebook.`,
+        });
         return;
       }
-      setMessage("Posted to Hello Gorgeous Facebook Page.");
+      if (!res.ok) {
+        setBanner({
+          tone: "error",
+          text: data.error ?? `Post failed (HTTP ${res.status})`,
+        });
+        return;
+      }
+      const postId =
+        (typeof data.result?.id === "string" && data.result.id) ||
+        (typeof data.result?.post_id === "string" && data.result.post_id) ||
+        null;
+      setBanner({
+        tone: "success",
+        text: postId
+          ? `Facebook accepted the post. Post ID: ${postId}. If it does not appear on the Page, open Meta Business Suite → your Page → Posts (sometimes there is a short delay or moderation).`
+          : "Facebook accepted the post. Check the Page’s Posts tab if you do not see it in the feed.",
+      });
       setCaption("");
       setImageUrl("");
       loadPosts();
@@ -68,17 +130,49 @@ export function FacebookSocialPanel(props: {
     }
   }
 
+  async function testGraphConnection() {
+    setTestingGraph(true);
+    setBanner(null);
+    try {
+      const res = await fetch("/api/admin/social/facebook-debug");
+      const data = (await res.json()) as {
+        ok?: boolean;
+        page?: { id?: string; name?: string };
+        error?: string;
+        hint?: string;
+      };
+      if (data.ok && data.page?.name) {
+        setBanner({
+          tone: "success",
+          text: `Graph API OK — token can read Page “${data.page.name}” (id ${data.page.id}).`,
+        });
+      } else {
+        setBanner({
+          tone: "error",
+          text: [data.error, data.hint].filter(Boolean).join(" "),
+        });
+      }
+    } catch {
+      setBanner({ tone: "error", text: "Could not reach debug endpoint." });
+    } finally {
+      setTestingGraph(false);
+    }
+  }
+
   async function schedulePost() {
     if (!scheduleAt) {
-      setMessage("Pick a date and time for the schedule.");
+      setBanner({
+        tone: "info",
+        text: "Pick a date and time for the schedule.",
+      });
       return;
     }
     setBusy(true);
-    setMessage(null);
+    setBanner(null);
     try {
       const scheduledAt = new Date(scheduleAt);
       if (Number.isNaN(scheduledAt.getTime())) {
-        setMessage("Invalid schedule time.");
+        setBanner({ tone: "error", text: "Invalid schedule time." });
         return;
       }
       const res = await fetch("/api/admin/scheduled-posts", {
@@ -92,10 +186,13 @@ export function FacebookSocialPanel(props: {
       });
       const data = await res.json();
       if (!res.ok) {
-        setMessage(data.error ?? "Schedule failed");
+        setBanner({
+          tone: "error",
+          text: data.error ?? "Schedule failed",
+        });
         return;
       }
-      setMessage("Scheduled.");
+      setBanner({ tone: "success", text: "Scheduled." });
       setScheduleAt("");
       loadPosts();
     } finally {
@@ -113,7 +210,7 @@ export function FacebookSocialPanel(props: {
 
   async function onPickImage(file: File | null) {
     if (!file) return;
-    setMessage(null);
+    setBanner(null);
     setUploading(true);
     try {
       const fd = new FormData();
@@ -124,12 +221,15 @@ export function FacebookSocialPanel(props: {
       });
       const data = await res.json();
       if (!res.ok) {
-        setMessage(data.error ?? "Upload failed");
+        setBanner({ tone: "error", text: data.error ?? "Upload failed" });
         return;
       }
       if (typeof data.publicUrl === "string") {
         setImageUrl(data.publicUrl);
-        setMessage("Image uploaded — ready to post or schedule.");
+        setBanner({
+          tone: "success",
+          text: "Image uploaded — ready to post or schedule.",
+        });
       }
     } finally {
       setUploading(false);
@@ -140,7 +240,7 @@ export function FacebookSocialPanel(props: {
     <div className="space-y-10">
       <div
         className={`rounded-xl border p-5 ${
-          props.fbReady
+          fbReady
             ? "border-emerald-500/40 bg-emerald-500/5"
             : "border-amber-500/40 bg-amber-500/5"
         }`}
@@ -148,22 +248,50 @@ export function FacebookSocialPanel(props: {
         <h2 className="text-sm font-bold uppercase tracking-wider text-gray-400">
           Facebook connection
         </h2>
-        {props.fbReady ? (
-          <p className="mt-2 text-sm text-white">
-            Hello Gorgeous Page credentials loaded{" "}
-            {props.pageIdSuffix ? (
-              <span className="text-gray-400">
-                (Page ID …{props.pageIdSuffix})
-              </span>
-            ) : null}
-          </p>
+        {fbReady ? (
+          <div className="mt-2 space-y-3">
+            <p className="text-sm text-white">
+              Hello Gorgeous Page credentials loaded{" "}
+              {pageIdSuffix ? (
+                <span className="text-gray-400">
+                  (Page ID …{pageIdSuffix})
+                </span>
+              ) : null}
+            </p>
+            <button
+              type="button"
+              disabled={testingGraph}
+              onClick={() => void testGraphConnection()}
+              className="rounded-lg border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white hover:border-emerald-400/50 disabled:opacity-50"
+            >
+              {testingGraph ? "Testing…" : "Test Graph API (token + Page ID)"}
+            </button>
+            <p className="text-xs text-gray-500">
+              If posts “succeed” but never show on Facebook, run this test — wrong
+              Page ID or an expired user token instead of a Page token is the usual cause.
+            </p>
+          </div>
         ) : (
-          <p className="mt-2 text-sm text-amber-200/90">
-            Set <code className="text-hot-pink">FB_PAGE_ID</code> and{" "}
-            <code className="text-hot-pink">FB_PAGE_ACCESS_TOKEN</code> in
-            Vercel (or <code className="text-hot-pink">.env.local</code>) to
-            enable posting.
-          </p>
+          <div className="mt-2 space-y-2 text-sm text-amber-200/90">
+            <p>
+              <strong className="text-white">Post now stays off</strong> until
+              the server sees both variables. Typing a caption alone does not
+              enable it.
+            </p>
+            <p>
+              Add to <code className="text-hot-pink">.env.local</code> (local)
+              or Vercel → Project → Settings → Environment Variables (Production
+              <span className="text-amber-200/70"> + Preview if you use preview URLs</span>):
+            </p>
+            <pre className="overflow-x-auto rounded-lg bg-black/50 p-3 text-xs text-gray-300">
+              {`FB_PAGE_ID="your_page_id"
+FB_PAGE_ACCESS_TOKEN="your_long_lived_page_token"`}
+            </pre>
+            <p className="text-xs text-amber-200/70">
+              After saving locally, restart <code className="text-hot-pink">npm run dev</code>{" "}
+              so Next.js reloads env. Then refresh this page.
+            </p>
+          </div>
         )}
       </div>
 
@@ -192,7 +320,7 @@ export function FacebookSocialPanel(props: {
               type="file"
               accept="image/jpeg,image/png,image/webp,image/gif"
               className="sr-only"
-              disabled={!props.storageReady || uploading}
+              disabled={!props.storageReady || uploading || !fbReady}
               onChange={(e) => {
                 const f = e.target.files?.[0] ?? null;
                 e.target.value = "";
@@ -214,12 +342,28 @@ export function FacebookSocialPanel(props: {
           onChange={(e) => setImageUrl(e.target.value)}
           placeholder="https://… (or use upload above)"
         />
+        {fbReady && !hasPostContent ? (
+          <p className="mt-3 text-xs text-gray-500">
+            Add a caption and/or an image URL to enable Post now.
+          </p>
+        ) : null}
         <div className="mt-4 flex flex-wrap gap-3">
           <button
             type="button"
-            disabled={busy || uploading || !props.fbReady}
+            disabled={!canPostNow}
             onClick={postNow}
-            className="rounded-lg bg-hot-pink px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
+            title={
+              !fbReady
+                ? "Set FB_PAGE_ID and FB_PAGE_ACCESS_TOKEN first"
+                : !hasPostContent
+                  ? "Add caption or image"
+                  : undefined
+            }
+            className={`rounded-lg px-4 py-2 text-sm font-semibold text-white transition ${
+              canPostNow
+                ? "bg-hot-pink shadow-lg shadow-hot-pink/30 ring-2 ring-white/25 hover:brightness-110"
+                : "bg-hot-pink/40 opacity-50"
+            }`}
           >
             Post now
           </button>
@@ -234,15 +378,38 @@ export function FacebookSocialPanel(props: {
           />
           <button
             type="button"
-            disabled={busy || uploading || !props.fbReady}
+            disabled={!canSchedule}
             onClick={schedulePost}
-            className="ml-3 rounded-lg border border-hot-pink/50 px-4 py-2 text-sm font-semibold text-hot-pink disabled:opacity-40"
+            title={
+              !fbReady
+                ? "Set Facebook env vars first"
+                : !hasPostContent
+                  ? "Add caption or image"
+                  : !scheduleAt
+                    ? "Pick date and time"
+                    : undefined
+            }
+            className={`ml-3 rounded-lg border px-4 py-2 text-sm font-semibold transition ${
+              canSchedule
+                ? "border-hot-pink bg-hot-pink/15 text-hot-pink ring-2 ring-hot-pink/30 hover:bg-hot-pink/25"
+                : "border-hot-pink/30 text-hot-pink/50 opacity-60"
+            }`}
           >
             Add to queue
           </button>
         </div>
-        {message ? (
-          <p className="mt-4 text-sm text-gray-300">{message}</p>
+        {banner ? (
+          <p
+            className={`mt-4 rounded-lg border px-3 py-2 text-sm ${
+              banner.tone === "error"
+                ? "border-red-500/50 bg-red-950/40 text-red-100"
+                : banner.tone === "success"
+                  ? "border-emerald-500/40 bg-emerald-950/30 text-emerald-100"
+                  : "border-white/15 bg-white/5 text-gray-300"
+            }`}
+          >
+            {banner.text}
+          </p>
         ) : null}
       </div>
 

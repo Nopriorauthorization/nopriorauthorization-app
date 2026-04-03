@@ -1,14 +1,15 @@
 export const dynamic = "force-dynamic";
 
 import { requireAdmin } from "@/lib/auth/admin-guard";
+import { readFacebookEnv } from "@/lib/facebook/post-to-page";
 import Link from "next/link";
 import { FacebookSocialPanel } from "./FacebookSocialPanel";
 
 export default async function AdminSocialPage() {
   await requireAdmin("/admin/social");
 
-  const pageId = process.env.FB_PAGE_ID?.trim() ?? "";
-  const token = process.env.FB_PAGE_ACCESS_TOKEN?.trim() ?? "";
+  const pageId = readFacebookEnv("FB_PAGE_ID");
+  const token = readFacebookEnv("FB_PAGE_ACCESS_TOKEN");
   const fbReady = Boolean(pageId && token);
   const pageIdSuffix =
     pageId.length > 4 ? pageId.slice(-4) : pageId || null;

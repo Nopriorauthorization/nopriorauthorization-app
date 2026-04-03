@@ -1,0 +1,59 @@
+export const dynamic = "force-dynamic";
+
+import { NextResponse } from "next/server";
+import { getAdminUser } from "@/lib/auth/admin-guard";
+import { readFacebookEnv } from "@/lib/facebook/post-to-page";
+
+const GRAPH_VERSION = "v21.0";
+
+/**
+ * GET — verify Page token can read the configured Page (no token in response).
+ */
+export async function GET() {
+  const admin = await getAdminUser();
+  if (!admin) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+  }
+
+  const pageId = readFacebookEnv("FB_PAGE_ID");
+  const token = readFacebookEnv("FB_PAGE_ACCESS_TOKEN");
+  if (!pageId || !token) {
+    return NextResponse.json(
+      { ok: false, error: "FB_PAGE_ID or FB_PAGE_ACCESS_TOKEN missing" },
+      { status: 400 }
+    );
+  }
+
+  const url = new URL(
+    `https://graph.facebook.com/${GRAPH_VERSION}/${pageId}`
+  );
+  url.searchParams.set("fields", "id,name");
+  url.searchParams.set("access_token", token);
+
+  try {
+    const res = await fetch(url.toString(), { method: "GET" });
+    const data = (await res.json()) as {
+      id?: string;
+      name?: string;
+      error?: { message?: string; code?: number };
+    };
+
+    if (data.error) {
+      return NextResponse.json({
+        ok: false,
+        error: data.error.message ?? "Graph error",
+        code: data.error.code,
+        hint:
+          "Token may be expired, not a Page token, or Page ID does not match this token. Re-copy from Meta / Vercel (Hello Gorgeous project).",
+      });
+    }
+
+    return NextResponse.json({
+      ok: true,
+      page: { id: data.id, name: data.name },
+    });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "Request failed";
+    return NextResponse.json({ ok: false, error: msg }, { status: 502 });
+  }
+}

@@ -66,6 +66,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "difficult-client-scripts": "Business Systems",
   "before-after-photo-system": "Business Systems",
   "vendor-supplier-directory": "Business Systems",
+  "facial-anatomy-nurse-injector": "Business Systems",
   "botox-clinical-cheat-sheet": "Cheat Sheets",
   "iv-therapy-clinical-cheat-sheet": "Cheat Sheets",
   "peptide-therapy-clinical-cheat-sheet": "Cheat Sheets",
@@ -158,6 +159,7 @@ const PRICE_MAP: Record<string, number> = {
   "difficult-client-scripts": 4700,
   "before-after-photo-system": 4700,
   "vendor-supplier-directory": 4700,
+  "facial-anatomy-nurse-injector": 6700,
   "botox-clinical-cheat-sheet": 1000,
   "iv-therapy-clinical-cheat-sheet": 1000,
   "peptide-therapy-clinical-cheat-sheet": 1000,
@@ -199,6 +201,7 @@ const FEATURED_SLUGS = new Set([
   "med-spa-legal-startup-bundle",
   "complete-injector-bundle",
   "botox-consent-bundle",
+  "facial-anatomy-nurse-injector",
 ]);
 
 const STRIPE_PRICE_IDS: Record<string, string> = {};
@@ -218,6 +221,7 @@ const AUDIENCE_MAP: Record<string, string[]> = {
     "Busy treatment rooms",
   ],
   "Business Systems": [
+    "Nurse injectors",
     "Med spa owners",
     "Esthetic entrepreneurs",
     "Solo providers scaling up",
@@ -314,6 +318,7 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "difficult-client-scripts": "/shop-previews/business-systems/difficult-client-scripts.png",
   "before-after-photo-system": "/shop-previews/business-systems/before-after-photo-system.png",
   "vendor-supplier-directory": "/shop-previews/business-systems/vendor-supplier-directory.png",
+  "facial-anatomy-nurse-injector": "/shop-previews/business-systems/facial-anatomy-nurse-injector.png",
 };
 
 const NICHE_THUMBNAIL: Record<string, string> = {
@@ -385,6 +390,15 @@ function buildFeatures(slug: string, count: number): string[] {
         "Instant digital delivery",
       ];
     }
+    if (slug === "facial-anatomy-nurse-injector") {
+      return [
+        "Facial anatomy built for nurse injectors — layers, vectors, danger zones",
+        "Danielle Alcala — clinical voice from the treatment room",
+        "Interactive HTML — print or save as PDF",
+        "Educational reference — not a substitute for supervised training",
+        "Instant digital delivery",
+      ];
+    }
     return [
       "Operations and systems content for med spa & esthetic businesses",
       "Interactive HTML — print or save as PDF from your browser",
@@ -422,6 +436,9 @@ function buildShortDescription(slug: string, _title: string, count: number): str
       if (slug === "insurance-legal-compliance-guide") {
         return `Insurance, legal, and compliance roadmap for med spa and esthetic entrepreneurs — practical checklists and framing, not a substitute for an attorney.`;
       }
+      if (slug === "facial-anatomy-nurse-injector") {
+        return `Full facial anatomy framework for nurse injectors — danger zones, depth cues, and confidence at the needle. Educational reference, not a replacement for supervised training.`;
+      }
       return `Operations and systems guide for med spa and esthetic businesses — interactive HTML you can customize, print, or keep on screen.`;
     default:
       return `${count} editable templates for aesthetic professionals. Instant download, fully customizable.`;
@@ -437,6 +454,9 @@ function buildLongDescription(slug: string, title: string, count: number, cat: s
   if (cat === "Business Systems") {
     if (slug === "insurance-legal-compliance-guide") {
       return `${short}\n\nNot legal advice — consult a licensed attorney for your state and situation. The full guide includes disclaimers on the cover and in the footer of every page.\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, add your branding where appropriate, print or save as PDF.\n\n${count} interactive guide file. Instant digital delivery. No physical product will be shipped.`;
+    }
+    if (slug === "facial-anatomy-nurse-injector") {
+      return `${short}\n\nEducational use only — follow your scope of practice, supervision requirements, and facility protocols. The full guide includes disclaimers appropriate for clinical reference.\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, print or save as PDF.\n\n${count} interactive guide file. Instant digital delivery. No physical product will be shipped.`;
     }
     return `${short}\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, customize for your practice, print or save as PDF.\n\n${count} interactive guide file. Instant digital delivery. No physical product will be shipped.`;
   }

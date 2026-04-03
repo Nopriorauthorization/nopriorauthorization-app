@@ -76,6 +76,10 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "before-after-photo-system": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
   "vendor-supplier-directory": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
   "31-day-social-media-content-calendar": { label: "$47 · Calendar", color: "bg-fuchsia-500/20 text-fuchsia-300" },
+  "facial-anatomy-nurse-injector": {
+    label: "Top pick · Most popular",
+    color: "bg-emerald-500/20 text-emerald-300",
+  },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -142,6 +146,8 @@ const OUTCOME_MAP: Record<string, string> = {
   "vendor-supplier-directory": "Track vendors, reps, and reorders in one place — a directory framework you fill with your real suppliers.",
   "31-day-social-media-content-calendar":
     "A full month of med-spa-friendly post themes and prompts — stop staring at a blank grid; follow the calendar and adapt to your brand.",
+  "facial-anatomy-nurse-injector":
+    "The anatomy guide injectors actually use — danger zones, depth, and vectors with Danielle's clinical voice. Top pick for new and returning injectors.",
 };
 
 const QUICK_CATEGORIES = [
@@ -158,6 +164,7 @@ const QUICK_CATEGORIES = [
 ];
 
 const START_HERE_SLUGS = [
+  "facial-anatomy-nurse-injector",
   "med-spa-mega-bundle",
   "botox-consent-bundle",
   "weight-loss-mega-bundle",
@@ -253,10 +260,10 @@ export default function ShopPage() {
               Start here
             </p>
             <h2 className="mt-2 font-serif text-3xl font-semibold">
-              Most popular bundles
+              Top picks &amp; best sellers
             </h2>
           </div>
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {startHereProducts.map((p) =>
               p ? (
                 <Link

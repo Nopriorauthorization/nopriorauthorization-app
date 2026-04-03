@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T04:36:26.307Z",
+  "generatedAt": "2026-04-03T04:54:34.784Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -634,6 +634,21 @@
           "title": "Complete DIY Google Setup Kit",
           "designId": "diy-google-setup-kit-main",
           "editUrl": "/forms/NPA-DIY-Google-Setup-Kit.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "facial-anatomy-nurse-injector",
+      "productSlug": "facial-anatomy-nurse-injector",
+      "productTitle": "Facial Anatomy for the Nurse Injector",
+      "buildTimestamp": "2026-04-03T17:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Facial Anatomy for the Nurse Injector",
+          "designId": "facial-anatomy-nurse-injector-main",
+          "editUrl": "/forms/NPA-Facial-Anatomy-Nurse-Injector.html",
           "viewUrl": null
         }
       ]

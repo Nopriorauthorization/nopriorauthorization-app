@@ -1,0 +1,25 @@
+{
+  "productId": "facial-anatomy-nurse-injector",
+  "displayName": "Facial Anatomy for the Nurse Injector",
+  "description": "Interactive facial anatomy guide built for nurse injectors — layers, danger zones, vectors, and chair-side reminders. Educational reference; not a substitute for supervised clinical training or medical advice.",
+  "version": "1.0.0",
+  "priceUSD": 67,
+  "etsySku": "NPA-BSG-FAN-001",
+  "category": "business-systems",
+  "targetBuyer": "Nurse injectors, NPs, PAs, and aesthetic providers building confidence at the needle",
+  "templates": [
+    {
+      "id": "facial-anatomy-nurse-injector-main",
+      "name": "Facial Anatomy for the Nurse Injector",
+      "description": "Interactive facial anatomy guide for injectors",
+      "canvaTemplateUrl": "/forms/NPA-Facial-Anatomy-Nurse-Injector.html",
+      "_deliveryType": "html",
+      "format": "guide",
+      "pages": 1,
+      "category": "business-systems"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — print from browser or save as PDF.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T17:00:00Z"
+}

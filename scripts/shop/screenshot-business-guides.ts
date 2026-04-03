@@ -19,6 +19,7 @@ const ENTRIES: { slug: string; html: string }[] = [
   { slug: "difficult-client-scripts", html: "NPA-Difficult-Client-Scripts.html" },
   { slug: "before-after-photo-system", html: "NPA-Before-After-Photo-System.html" },
   { slug: "vendor-supplier-directory", html: "NPA-Vendor-Supplier-Directory.html" },
+  { slug: "facial-anatomy-nurse-injector", html: "NPA-Facial-Anatomy-Nurse-Injector.html" },
 ];
 
 async function main() {

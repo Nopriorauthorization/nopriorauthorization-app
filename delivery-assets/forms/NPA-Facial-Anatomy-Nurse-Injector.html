@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Facial Anatomy for the Nurse Injector</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;font-size:10pt;color:#1A1A1A;background:#f0eeed;line-height:1.6}
+.page{width:8.5in;background:white;margin:.25in auto;padding:.6in .7in;box-shadow:0 4px 32px rgba(0,0,0,.14);}
+
+/* COVER */
+.cover{min-height:10in;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;}
+.npa-eyebrow{font-size:7.5pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;}
+.cover-title{font-family:'Playfair Display',serif;font-size:36pt;font-weight:900;color:#1A1A1A;line-height:1.06;margin-bottom:14px;padding-bottom:16px;border-bottom:3px solid #1A1A1A;}
+.cover-title em{font-style:italic;color:#D4537E;display:block;}
+.cover-sub{font-size:12pt;color:#555;line-height:1.75;margin:14px 0 18px;}
+.author-strip{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:0.5px solid #ddd;border-bottom:0.5px solid #ddd;margin:14px 0;}
+.avatar{width:44px;height:44px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18pt;color:#fff;font-weight:700;flex-shrink:0;}
+.author-info h3{font-size:11pt;font-weight:700;color:#1A1A1A;}
+.author-info p{font-size:8.5pt;color:#666;line-height:1.5;}
+.cover-toc{background:#f9f5f3;border-radius:6px;padding:16px 20px;margin:16px 0;border:0.5px solid #e0d8d4;}
+.cover-toc h4{font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px 20px;}
+.toc-item{font-size:9.5pt;color:#444;padding:3px 0;border-bottom:0.5px solid #ede8e5;display:flex;gap:8px;}
+.toc-item:last-child{border-bottom:none;}
+.toc-num{color:#D4537E;font-weight:700;flex-shrink:0;width:20px;}
+.cover-disclaimer{background:#1A1A1A;padding:14px 18px;border-radius:4px;margin-top:14px;}
+.cover-disclaimer p{font-size:8.5pt;color:rgba(255,255,255,.75);line-height:1.65;}
+.cover-disclaimer strong{color:#D4537E;}
+
+/* SECTION HEADERS */
+.sec-header{background:#1A1A1A;margin:0 -.7in;padding:16px .7in;margin-bottom:20px;}
+.sh-num{font-size:7.5pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:3px;}
+.sh-title{font-family:'Playfair Display',serif;font-size:20pt;font-weight:900;color:#fff;line-height:1.15;}
+.sh-sub{font-size:9pt;color:rgba(255,255,255,.5);margin-top:3px;}
+
+/* DANIELLE VOICE */
+.db{background:#FBEAF0;border-left:4px solid #D4537E;padding:10px 14px;border-radius:0 5px 5px 0;margin:12px 0;}
+.db-label{font-size:7pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;}
+.db-text{font-size:9.5pt;color:#72243E;line-height:1.65;font-style:italic;}
+
+/* BODY */
+.body-text{font-size:10pt;color:#333;line-height:1.7;margin-bottom:12px;}
+.body-text strong{color:#1A1A1A;font-weight:700;}
+.h2{font-family:'Playfair Display',serif;font-size:15pt;font-weight:700;color:#1A1A1A;margin:18px 0 10px;}
+.h3{font-size:11pt;font-weight:700;color:#1A1A1A;margin:14px 0 7px;}
+.h4{font-size:10pt;font-weight:700;color:#D4537E;margin:10px 0 5px;text-transform:uppercase;letter-spacing:.06em;font-size:8.5pt;}
+.divider{height:1px;background:#e8e4e0;margin:16px 0;}
+
+/* ANATOMY TABLES */
+.anatomy-table{width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:9pt;}
+.anatomy-table th{background:#1A1A1A;color:white;padding:6px 10px;text-align:left;font-size:8.5pt;font-weight:700;letter-spacing:.04em;}
+.anatomy-table th.pink{background:#D4537E;}
+.anatomy-table th.navy{background:#1a2940;}
+.anatomy-table th.teal{background:#1a7a6e;}
+.anatomy-table th.red{background:#c0392b;}
+.anatomy-table th.gold{background:#b8760a;}
+.anatomy-table th.purple{background:#6c3483;}
+.anatomy-table td{padding:6px 10px;border-bottom:0.5px solid #ede8e5;vertical-align:top;line-height:1.5;color:#333;}
+.anatomy-table tr:nth-child(even) td{background:#fdf9f7;}
+.anatomy-table td.label{font-weight:700;color:#1A1A1A;}
+.anatomy-table td.danger{color:#c0392b;font-weight:700;}
+.anatomy-table td.safe{color:#1a7a6e;font-weight:700;}
+.anatomy-table td.caution{color:#b8760a;font-weight:700;}
+
+/* ZONE DIAGRAM — SVG-STYLE TEXT MAP */
+.zone-map{border:0.5px solid #e0d8d4;border-radius:6px;padding:14px;margin:12px 0;background:#fdfbfa;}
+.zone-map-title{font-size:8pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;text-align:center;}
+.face-diagram{width:100%;max-width:500px;margin:0 auto;display:block;}
+
+/* DANGER ZONE CARDS */
+.danger-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;}
+.dz-card{border-radius:5px;overflow:hidden;border:0.5px solid #e8c4cc;}
+.dz-head{background:#c0392b;padding:7px 12px;}
+.dz-head h4{font-size:9.5pt;font-weight:700;color:#fff;}
+.dz-head span{font-size:7.5pt;color:rgba(255,255,255,.75);font-weight:400;}
+.dz-body{padding:10px 12px;background:white;}
+.dz-row{display:flex;gap:8px;margin-bottom:5px;align-items:flex-start;font-size:9pt;color:#333;line-height:1.5;}
+.dz-row:last-child{margin-bottom:0;}
+.dz-tag{font-size:7pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;border-radius:2px;flex-shrink:0;margin-top:1px;}
+.dz-tag.v{background:#c0392b;color:#fff;}
+.dz-tag.n{background:#1a2940;color:#fff;}
+.dz-tag.s{background:#1a7a6e;color:#fff;}
+.dz-tag.t{background:#b8760a;color:#fff;}
+
+/* MUSCLE CARDS */
+.muscle-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;}
+.mc{border-radius:5px;border:0.5px solid #e0d8d4;overflow:hidden;}
+.mc-head{padding:6px 10px;background:#1a2940;}
+.mc-head h4{font-size:9.5pt;font-weight:700;color:#fff;}
+.mc-head span{font-size:7.5pt;color:#D4537E;font-weight:700;}
+.mc-body{padding:8px 10px;background:white;}
+.mc-row{font-size:8.5pt;color:#444;line-height:1.55;margin-bottom:3px;display:flex;gap:6px;}
+.mc-row:last-child{margin-bottom:0;}
+.mc-label{font-weight:700;color:#1a2940;flex-shrink:0;min-width:58px;}
+
+/* INFO CARDS */
+.info-card{background:#f9f6f4;border-radius:5px;padding:12px 16px;margin:10px 0;border:0.5px solid #e0d8d4;}
+.info-card h4{font-size:9.5pt;font-weight:700;color:#1A1A1A;margin-bottom:6px;}
+.info-card p{font-size:9.5pt;color:#555;line-height:1.65;}
+.info-card ul{margin:5px 0 0 14px;}
+.info-card ul li{font-size:9pt;color:#555;line-height:1.55;margin-bottom:3px;}
+
+/* WARN */
+.warn{background:#fff5f7;border:1px solid #e8c4cc;border-left:4px solid #D4537E;padding:10px 14px;border-radius:0 5px 5px 0;margin:12px 0;}
+.warn h4{font-size:9.5pt;font-weight:700;color:#72243E;margin-bottom:4px;}
+.warn p{font-size:9.5pt;color:#72243E;line-height:1.65;}
+.critical{background:#1A1A1A;padding:12px 16px;border-radius:4px;margin:12px 0;}
+.critical p{font-size:9.5pt;color:#fff;line-height:1.65;}
+.critical strong{color:#D4537E;}
+
+/* PEARL LIST */
+.pearl-list{display:flex;flex-direction:column;gap:6px;margin:10px 0;}
+.pearl{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#333;line-height:1.6;}
+.pearl-star{color:#D4537E;font-weight:900;flex-shrink:0;font-size:11pt;margin-top:-1px;}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:10px 0;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0;}
+.flow-box{background:#1A1A1A;color:#fff;padding:4px 10px;border-radius:3px;font-size:8.5pt;font-weight:600;}
+.flow-box.pink{background:#D4537E;}
+.flow-box.teal{background:#1a7a6e;}
+.flow-box.gold{background:#b8760a;}
+.flow-box.red{background:#c0392b;}
+.flow-box.navy{background:#1a2940;}
+.flow-box.purple{background:#6c3483;}
+.flow-box.lt{background:#f5eff2;color:#1A1A1A;border:0.5px solid #ddd;}
+.arrow{font-size:10pt;color:#D4537E;font-weight:900;}
+
+/* LAYER STACK */
+.layer-stack{display:flex;flex-direction:column;gap:0;margin:12px 0;border-radius:6px;overflow:hidden;border:0.5px solid #e0d8d4;}
+.layer{padding:10px 16px;border-bottom:0.5px solid rgba(255,255,255,.2);}
+.layer:last-child{border-bottom:none;}
+.layer h4{font-size:10pt;font-weight:700;color:#fff;margin-bottom:2px;}
+.layer p{font-size:9pt;color:rgba(255,255,255,.8);line-height:1.55;}
+.layer .layer-depth{font-size:7.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:3px;}
+.l1{background:#2c5f8a;}
+.l2{background:#3a7a6e;}
+.l3{background:#D4537E;}
+.l4{background:#b8760a;}
+.l5{background:#1A1A1A;}
+
+/* EMERGENCY PROTOCOL */
+.protocol-step{display:flex;gap:0;margin-bottom:0;}
+.ps-left{display:flex;flex-direction:column;align-items:center;width:60px;flex-shrink:0;}
+.ps-num{width:26px;height:26px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-size:11pt;font-weight:700;color:#fff;flex-shrink:0;}
+.ps-line{width:2px;background:#e8d8dc;flex:1;margin:4px auto;}
+.ps-content{padding:0 0 16px 12px;flex:1;}
+.ps-content h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:3px;}
+.ps-content p{font-size:9.5pt;color:#555;line-height:1.6;}
+.ps-content .ps-time{font-size:8pt;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.06em;}
+
+.page-break{page-break-before:always;padding-top:0;}
+.doc-footer{margin-top:24px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:7pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+
+@media print{
+body{background:white;}
+.page{margin:0;box-shadow:none;padding:.5in .6in;}
+@page{size:8.5in 11in portrait;margin:0;}
+.page-break{page-break-before:always;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div>
+    <div class="npa-eyebrow">No Prior Authorization &nbsp;·&nbsp; Clinical Reference Series</div>
+    <div class="cover-title">Facial Anatomy<br>for the<br><em>Nurse Injector.</em></div>
+    <div class="cover-sub">The complete clinical reference for aesthetic injectors — every layer of the face, every muscle, every vessel, every danger zone, and every injection plane mapped and explained. Written for the provider who wants to inject with confidence, precision, and safety.</div>
+    <div class="author-strip">
+      <div class="avatar">D</div>
+      <div class="author-info">
+        <h3>Danielle Alcala — No Prior Authorization</h3>
+        <p>Licensed Esthetician · Phlebotomist · CNA · CMAA · RN Student · Founder, Hello Gorgeous Med Spa · Oswego, IL<br>Built for the aesthetic provider who wants to understand the face — not just inject it.</p>
+      </div>
+    </div>
+    <div class="cover-toc">
+      <h4>12 Sections — Complete Contents</h4>
+      <div class="toc-grid">
+        <div class="toc-item"><span class="toc-num">01</span>The 5 Layers of the Face</div>
+        <div class="toc-item"><span class="toc-num">07</span>Facial Aging — The Complete Map</div>
+        <div class="toc-item"><span class="toc-num">02</span>Facial Muscles — Full Reference</div>
+        <div class="toc-item"><span class="toc-num">08</span>Injection Mapping by Zone</div>
+        <div class="toc-item"><span class="toc-num">03</span>Vascular Anatomy</div>
+        <div class="toc-item"><span class="toc-num">09</span>Forehead &amp; Glabella Deep Dive</div>
+        <div class="toc-item"><span class="toc-num">04</span>Danger Zones — Every One Mapped</div>
+        <div class="toc-item"><span class="toc-num">10</span>Periorbital &amp; Mid-Face</div>
+        <div class="toc-item"><span class="toc-num">05</span>Nerve Anatomy</div>
+        <div class="toc-item"><span class="toc-num">11</span>Lower Face &amp; Neck</div>
+        <div class="toc-item"><span class="toc-num">06</span>Facial Fat Compartments</div>
+        <div class="toc-item"><span class="toc-num">12</span>Emergency Recognition &amp; Response</div>
+      </div>
+    </div>
+    <div class="cover-disclaimer">
+      <p><strong>Educational Reference Notice:</strong> This guide is an educational clinical reference compiled for licensed aesthetic providers. It is not a substitute for formal anatomical training, hands-on cadaver lab experience, or direct supervision by a qualified trainer. All injection techniques should be learned and practiced under appropriate clinical supervision before independent use. Anatomy varies between individuals — this guide represents common anatomical patterns, not universal anatomy.</p>
+    </div>
+  </div>
+  <div style="border-top:1px solid #ddd;padding-top:12px;display:flex;justify-content:space-between;margin-top:14px;">
+    <div style="font-size:7.5pt;color:#888;letter-spacing:.1em;text-transform:uppercase;"><span style="color:#D4537E;font-weight:700;">No Prior Authorization</span> &nbsp;·&nbsp; nopriorauthorization.com</div>
+    <div style="font-size:7.5pt;color:#888;">$47 &nbsp;·&nbsp; Instant Download &nbsp;·&nbsp; Print-Ready</div>
+  </div>
+</div>
+
+<!-- ===== SECTION 1: 5 LAYERS ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 01</div><div class="sh-title">The 5 Layers of the Face</div><div class="sh-sub">Understanding depth is understanding safety — every injection decision starts here</div></div>
+
+<div class="body-text">The face is organized into five distinct anatomical layers. Understanding which structures live at which depth — and what you risk hitting at each level — is the foundation of safe injection practice. Every decision about needle angle, injection depth, and product placement depends on your ability to mentally visualize these layers in three dimensions.</div>
+
+<div class="layer-stack">
+  <div class="layer l1">
+    <div class="layer-depth">Layer 1 &nbsp;·&nbsp; Superficial</div>
+    <h4>Skin (Epidermis + Dermis)</h4>
+    <p>Epidermis: stratified squamous epithelium. Dermis: collagen, elastin, sensory nerves, dermal vessels. Thickness varies significantly by region — eyelid skin is ~0.5mm; forehead skin ~2mm. Intradermal injections (skinboosters, superficial HA) target this layer.</p>
+  </div>
+  <div class="layer l2">
+    <div class="layer-depth">Layer 2 &nbsp;·&nbsp; Subcutaneous</div>
+    <h4>Subcutaneous Fat (Hypodermis)</h4>
+    <p>Divided into discrete compartments separated by fibrous septa. Contains the superficial fat compartments — malar, nasolabial, periorbital, jowl, chin. This is where most HA filler is placed for volume restoration. Superficial facial artery branches run here in some zones.</p>
+  </div>
+  <div class="layer l3">
+    <div class="layer-depth">Layer 3 &nbsp;·&nbsp; Intermediate</div>
+    <h4>SMAS / Muscles of Facial Expression</h4>
+    <p>Superficial Musculo-Aponeurotic System (SMAS) is a fibromuscular layer connecting facial muscles. The 22 muscles of facial expression live in and below this layer. Botulinum toxin targets this layer — intramuscular injection. Main facial artery runs deep to SMAS in some zones, superficial in others.</p>
+  </div>
+  <div class="layer l4">
+    <div class="layer-depth">Layer 4 &nbsp;·&nbsp; Deep</div>
+    <h4>Loose Areolar Tissue</h4>
+    <p>The "gliding plane" between muscle and periosteum. Contains deep fat compartments (SOOF, ROOF, buccal fat pad). Also contains the retaining ligaments — zygomatic, masseteric-cutaneous, mandibular ligaments. Deep filler placement (supraperiosteal) passes through this layer. Danger: facial nerve branches travel here.</p>
+  </div>
+  <div class="layer l5">
+    <div class="layer-depth">Layer 5 &nbsp;·&nbsp; Deepest</div>
+    <h4>Periosteum &amp; Bone</h4>
+    <p>Dense fibrous membrane covering facial bones. Supraperiosteal injections — for deep structural support (cheek, chin, jawline) — are placed just above this layer. Key foramina at this level: supraorbital, infraorbital, and mental foramina where neurovascular bundles exit. These are fixed landmarks.</p>
+  </div>
+</div>
+
+<div class="h3">Safe Injection Planes — Quick Reference</div>
+<table class="anatomy-table">
+  <thead><tr><th>Plane / Depth</th><th class="pink">Safest Zones</th><th>Products Placed Here</th><th>Main Risk</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Intradermal</td><td>Anywhere on face</td><td>Skinboosters, superficial HA, dilute toxin</td><td>Bruising, skin necrosis if vascular</td></tr>
+    <tr><td class="label">Subcutaneous</td><td>Cheeks, NLFs, temples (lateral), lips</td><td>HA filler for volume, soft lift</td><td>Vascular injection where arteries run superficially</td></tr>
+    <tr><td class="label">Intramuscular</td><td>Forehead, glabella, crow's feet, DAO, masseter</td><td>Botulinum toxin</td><td>Spread to adjacent muscles, ptosis</td></tr>
+    <tr><td class="label">Supraperiosteal</td><td>Cheeks (malar), chin, jawline, nose tip</td><td>High-G-prime HA filler, Radiesse</td><td>Inadvertent intravascular if foramen nearby</td></tr>
+    <tr><td class="label">Sub-SMAS</td><td>Cheeks, deep mid-face</td><td>Deep structural filler</td><td>Facial nerve branches — avoid unless trained</td></tr>
+  </tbody>
+</table>
+
+<div class="critical"><p><strong>The Injector's Rule:</strong> Know your depth at all times. Needle angle, product viscosity, and injection technique must match the intended plane. A high-G-prime filler injected intradermally causes nodules and Tyndall effect. A soft lip filler injected supraperiosteally provides no result. Depth precision is clinical skill — not guesswork.</p></div>
+</div>
+
+<!-- ===== SECTION 2: MUSCLES ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 02</div><div class="sh-title">Facial Muscles — Complete Reference</div><div class="sh-sub">All 22 muscles of facial expression · Origin, insertion, action, and Botox relevance</div></div>
+
+<div class="body-text">Botulinum toxin works by blocking acetylcholine release at the neuromuscular junction — temporarily paralyzing the targeted muscle. To inject precisely, you must know exactly where each muscle originates, where it inserts, and what it does. Injecting the wrong muscle — or the right muscle at the wrong point — produces compensatory changes that can be difficult to manage.</div>
+
+<div class="h3">Upper Face Muscles</div>
+<div class="muscle-grid">
+  <div class="mc">
+    <div class="mc-head"><h4>Frontalis</h4><span>Primary Botox target — forehead lines</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Galea aponeurotica (epicranial aponeurosis)</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Skin of eyebrows + forehead skin</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Elevates eyebrows, wrinkles forehead horizontally</div>
+      <div class="mc-row"><span class="mc-label">Innervation:</span>Facial nerve (CN VII) — temporal branch</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>Only brow ELEVATOR — treat conservatively. Injecting too low or too much = brow ptosis. Leave 2–3cm above orbital rim untreated laterally.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Corrugator Supercilii</h4><span>Primary Botox target — glabellar lines (11s)</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Superciliary arch of frontal bone (medial)</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Skin over medial eyebrow</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Pulls brow medially and inferiorly — creates vertical glabellar lines</div>
+      <div class="mc-row"><span class="mc-label">Innervation:</span>CN VII — temporal + zygomatic branches</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>Deep muscle — inject deep to subcutaneous fat. 2 injection points per side. Palpate bulk when patient frowns.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Procerus</h4><span>Botox target — horizontal nasal root lines</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Nasal bone and upper lateral nasal cartilage</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Skin between eyebrows</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Pulls medial brow inferiorly — creates horizontal lines at nasal root</div>
+      <div class="mc-row"><span class="mc-label">Innervation:</span>CN VII — buccal branch</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>1 midline injection point. Superficial — subcutaneous depth. Part of standard glabella complex treatment.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Depressor Supercilii</h4><span>Botox target — brow lifting</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Medial orbital rim / frontal process of maxilla</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Medial eyebrow skin</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Depresses medial eyebrow — often treated with corrugator</div>
+      <div class="mc-row"><span class="mc-label">Innervation:</span>CN VII — temporal branch</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>Often considered part of corrugator complex. Targeted in medial glabella injection.</div>
+    </div>
+  </div>
+</div>
+
+<div class="h3">Periorbital Muscles</div>
+<div class="muscle-grid">
+  <div class="mc">
+    <div class="mc-head"><h4>Orbicularis Oculi</h4><span>Botox target — crow's feet + lower lid</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Parts:</span>Orbital (outer), Preseptal (lid), Pretarsal (lid margin)</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Closes eye, squints — orbital portion creates crow's feet</div>
+      <div class="mc-row"><span class="mc-label">Innervation:</span>CN VII — temporal + zygomatic branches</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>Treat orbital portion for crow's feet (3–4 points lateral to orbital rim). Never inject preseptal — risk of ectropion and lagophthalmos. Stay ≥1cm from orbital rim.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Levator Palpebrae Superioris</h4><span>NOT a treatment target — avoid</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Lesser wing of sphenoid (deep orbit)</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Superior tarsal plate + upper eyelid skin</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Elevates upper eyelid — opens eye</div>
+      <div class="mc-row"><span class="mc-label">Innervation:</span>CN III (oculomotor)</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span><span style="color:#c0392b;font-weight:700;">NEVER inject near this muscle.</span> Inadvertent toxin spread = lid ptosis. This is the muscle affected in Botox-induced ptosis — treated with Apraclonidine eye drops.</div>
+    </div>
+  </div>
+</div>
+
+<div class="h3">Mid-Face &amp; Nasal Muscles</div>
+<div class="muscle-grid">
+  <div class="mc">
+    <div class="mc-head"><h4>Zygomaticus Major</h4><span>Rarely targeted — smile muscle</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Zygomatic bone (lateral surface)</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Corner of mouth / modiolus</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Pulls corner of mouth superolaterally — smile</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>Targeted only for gummy smile (in combination with levator labii). Avoid inadvertent treatment — creates smile asymmetry.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Levator Labii Superioris Alaeque Nasi</h4><span>Botox — gummy smile</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Frontal process of maxilla (medial)</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Upper lip + alar cartilage</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Elevates upper lip and nostril — gummy smile when overactive</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>2–4 units per side at nasolabial fold junction. Conservative — over-treatment causes upper lip droop, difficulty pronouncing bilabial consonants.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Nasalis</h4><span>Botox — bunny lines</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Parts:</span>Transverse (compressor naris) + Alar (dilator naris)</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Compresses and flares nostrils — transverse portion creates bunny lines (diagonal nasal lines)</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>2–4 units per side on lateral nasal wall. Superficial injection. Target the transverse portion visible when patient scrunches nose.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Depressor Septi Nasi</h4><span>Botox — nasal tip droop</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Incisive fossa of maxilla</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Mobile part of nasal septum</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Pulls nasal tip inferiorly with animation</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>2–4 units injected at columellar base (below nose, above lip). Lifts tip during animation — especially effective in patients whose tip drops when smiling.</div>
+    </div>
+  </div>
+</div>
+
+<div class="h3">Lower Face Muscles</div>
+<div class="muscle-grid">
+  <div class="mc">
+    <div class="mc-head"><h4>Orbicularis Oris</h4><span>Botox — lip flip · filler target</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>No bony origin — forms a muscular ring around mouth</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Into skin and mucosa of lips</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Closes lips, protrudes lips, purses — "kissing muscle"</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>Lip flip: 4–6 units total at upper vermilion border (2 central + 2 lateral). Small doses only — over-treatment impairs speech, eating, kissing.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Depressor Anguli Oris (DAO)</h4><span>Botox — downturned corners</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Oblique line of mandible</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Angle of mouth / modiolus</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Depresses corners of mouth — creates downturned appearance, sad look</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>3–5 units per side. Inject at mandible, not the modiolus — risk of spreading to zygomaticus (smile asymmetry). Palpate mandibular border before injecting.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Mentalis</h4><span>Botox — chin dimpling / peau d'orange</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Incisive fossa of mandible</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Skin of chin</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Elevates and wrinkles chin skin — creates cobblestone/orange peel texture</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>4–8 units into chin bulk — 1–2 injection points midline. Can be combined with chin filler for chin augmentation + smoothing.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Masseter</h4><span>Botox — bruxism, jaw slimming</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Zygomatic arch (superficial head) + deep surface of zygomatic arch (deep head)</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Angle and ramus of mandible</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Closes jaw — primary muscle of mastication</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>20–30 units per side into muscle bulk (have patient clench). 3–5 injection points. Avoid parotid gland (anterior to masseter). Full slimming effect at 3 months — multiple sessions needed.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Platysma</h4><span>Botox — neck bands / Nefertiti lift</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Fascia over pectoralis major and deltoid</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Skin of lower face, mandible, and modiolus</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Depresses lower face, tenses neck skin, draws mandible inferiorly</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>Pinch platysmal band, inject intramuscularly along visible cord. 25–50 total units. Avoid deep injection — carotid, jugular, and thyroid are deep to platysma.</div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-head"><h4>Depressor Labii Inferioris</h4><span>Botox — lower lip symmetry</span></div>
+    <div class="mc-body">
+      <div class="mc-row"><span class="mc-label">Origin:</span>Oblique line of mandible</div>
+      <div class="mc-row"><span class="mc-label">Insertion:</span>Lower lip skin + orbicularis oris</div>
+      <div class="mc-row"><span class="mc-label">Action:</span>Depresses and everts lower lip</div>
+      <div class="mc-row"><span class="mc-label">Botox note:</span>Used to correct lip asymmetry or evert lower lip. 2–4 units per side. Careful — over-treatment impairs lip closure and speech.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== SECTION 3: VASCULAR ANATOMY ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 03</div><div class="sh-title">Vascular Anatomy</div><div class="sh-sub">The vessels every injector must know — course, depth, anastomoses, and what happens when you hit them</div></div>
+
+<div class="critical"><p><strong>Why vascular anatomy is the most important thing in this guide:</strong> Intravascular injection of filler can cause vascular occlusion leading to skin necrosis, stroke, and in the most severe cases — blindness. These outcomes are irreversible. Every injection decision must be made with a three-dimensional mental map of where the vessels are, at what depth they run, and how they connect to each other and to the eye.</p></div>
+
+<div class="h3">The Facial Artery — Master Vessel</div>
+<div class="body-text">The facial artery is a branch of the external carotid artery. It enters the face at the inferior border of the mandible at the anterior border of the masseter, then travels superiorly and medially toward the nose and medial canthus. Its course is tortuous, variable, and crosses through multiple tissue planes — making it the most important vessel to understand for filler safety.</div>
+
+<table class="anatomy-table">
+  <thead><tr><th>Location</th><th class="pink">Depth at This Point</th><th>Clinical Relevance</th><th>Risk Level</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Mandibular border (entry)</td><td>Superficial to masseter</td><td>Enters face here — palpable pulse in some patients</td><td class="caution">Low</td></tr>
+    <tr><td class="label">Inferior cheek</td><td>Deep to SMAS / risorius</td><td>Runs deep in lower face — safer for superficial injections here</td><td class="safe">Low-Mod</td></tr>
+    <tr><td class="label">Nasolabial fold (NLF)</td><td>Variable — superficial to deep</td><td>Crosses plane at NLF midpoint — most dangerous section of NLF</td><td class="danger">HIGH</td></tr>
+    <tr><td class="label">Superior NLF / alar base</td><td>Superficial — subcutaneous</td><td>Runs superficially here — cannula preferred, needle highest risk</td><td class="danger">VERY HIGH</td></tr>
+    <tr><td class="label">Columellar / nasal tip</td><td>Very superficial</td><td>Columellar artery — direct branch. Nose tip injections highest risk area</td><td class="danger">EXTREME</td></tr>
+    <tr><td class="label">Angular artery (terminal branch)</td><td>Subcutaneous, medial canthus</td><td>Anastomoses with ophthalmic artery — direct connection to eye</td><td class="danger">EXTREME</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Ophthalmic Artery Territory — The Blindness Zone</div>
+<div class="warn">
+  <h4>The most critical anatomical fact in aesthetic injection</h4>
+  <p>The ophthalmic artery is a branch of the internal carotid artery. Its terminal branch — the central retinal artery — is the sole blood supply to the retina. Retrograde embolization of filler from the facial artery → angular artery → ophthalmic artery → central retinal artery causes irreversible blindness within minutes of injection. This is why the glabella, nose, and nasal tip carry the highest risk for vision loss.</p>
+</div>
+
+<table class="anatomy-table">
+  <thead><tr><th>Ophthalmic Artery Branch</th><th class="red">Territory</th><th>Danger Injection Zone</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Central retinal artery</td><td>Entire retina — vision</td><td>All glabellar + nasal injections carry retrograde risk</td></tr>
+    <tr><td class="label">Supratrochlear artery</td><td>Medial forehead + scalp</td><td>Glabella — exits supratrochlear notch medial to supraorbital</td></tr>
+    <tr><td class="label">Supraorbital artery</td><td>Forehead + scalp</td><td>Supraorbital notch — palpable landmark. 2.7cm from midline avg.</td></tr>
+    <tr><td class="label">Dorsal nasal artery</td><td>Nasal dorsum</td><td>Nasal dorsum injections — connects to angular → ophthalmic</td></tr>
+    <tr><td class="label">Angular artery</td><td>Medial canthus area</td><td>Facial artery terminal branch — anastomoses with ophthalmic territory</td></tr>
+    <tr><td class="label">Posterior ciliary arteries</td><td>Choroid + optic nerve</td><td>Adjacent branches — also at risk in retrograde embolization</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Other Key Vessels</div>
+<table class="anatomy-table">
+  <thead><tr><th>Vessel</th><th class="navy">Course</th><th>Injection Risk Zone</th><th>Risk</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Superficial temporal artery</td><td>Exits preauricular, runs superiorly to temporal scalp</td><td>Temple — lateral to orbital rim. Palpable in thin patients.</td><td class="danger">High</td></tr>
+    <tr><td class="label">Inferior labial artery</td><td>Branch of facial artery, runs within lower lip</td><td>Lower lip body injections — subcutaneous to orbicularis</td><td class="caution">Moderate</td></tr>
+    <tr><td class="label">Superior labial artery</td><td>Branch of facial artery, runs within upper lip</td><td>Upper lip body injections — most common lip bruising source</td><td class="caution">Moderate</td></tr>
+    <tr><td class="label">Infraorbital artery</td><td>Exits infraorbital foramen ~1cm below orbital rim, midpupillary</td><td>Mid-cheek, lower eyelid, NLF superior</td><td class="caution">Moderate</td></tr>
+    <tr><td class="label">Mental artery</td><td>Exits mental foramen lateral to chin midline</td><td>Chin and lower lip injections lateral to midline</td><td class="caution">Moderate</td></tr>
+    <tr><td class="label">Zygomatico-orbital artery</td><td>Branch of superficial temporal, crosses temporal region</td><td>Temple and lateral periorbital filler</td><td class="caution">Moderate</td></tr>
+    <tr><td class="label">Transverse facial artery</td><td>Branch of superficial temporal, runs horizontally across cheek</td><td>Horizontal cheek injections, parotid region</td><td class="caution">Low-Mod</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SECTION 4: DANGER ZONES ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 04</div><div class="sh-title">Danger Zones — Every One Mapped</div><div class="sh-sub">The anatomical locations where intravascular injection risk is highest — and what to do differently in each</div></div>
+
+<div class="db"><div class="db-label">The Injector's Mindset</div><div class="db-text">"Every time I pick up a needle, I'm thinking about where the vessels are. Not as fear — as awareness. An injector who knows the danger zones doesn't avoid them. They treat them differently — smaller volumes, slower injection, cannula where appropriate, and the ability to recognize a problem the instant it begins."</div></div>
+
+<div class="danger-grid">
+  <div class="dz-card">
+    <div class="dz-head"><h4>Zone 1 — Glabella</h4><span>Highest blindness risk in the face</span></div>
+    <div class="dz-body">
+      <div class="dz-row"><div class="dz-tag v">VESSEL</div>Supratrochlear and supraorbital arteries — exit their foramina and run superiorly within the glabella. Anastomose with ophthalmic artery territory.</div>
+      <div class="dz-row"><div class="dz-tag n">NERVE</div>Supratrochlear and supraorbital nerves — sensory. Exit at medial and lateral supraorbital rim.</div>
+      <div class="dz-row"><div class="dz-tag s">SAFE</div>Botox injection here is low risk — small volumes, intramuscular, minimal filler indication. Avoid filler in glabella unless highly experienced — retrograde embolization risk is highest in this zone.</div>
+      <div class="dz-row"><div class="dz-tag t">TECHNIQUE</div>If treating: small volumes (&lt;0.1mL per point), slow injection, aspiration, awareness of vessel depth. Avoid in patients with prior ischemic events.</div>
+    </div>
+  </div>
+
+  <div class="dz-card">
+    <div class="dz-head"><h4>Zone 2 — Nasal Dorsum &amp; Tip</h4><span>Extreme risk — vessels directly connected to eye</span></div>
+    <div class="dz-body">
+      <div class="dz-row"><div class="dz-tag v">VESSEL</div>Dorsal nasal artery (ophthalmic branch) + angular artery (facial artery terminal). These anastomose — connecting nasal injections directly to the ophthalmic vascular territory.</div>
+      <div class="dz-row"><div class="dz-tag s">SAFE</div>Tip: small bolus at midline periosteum, single point. Dorsum: linear threading only, deep, slow. Very small volumes (&lt;0.2mL total per session).</div>
+      <div class="dz-row"><div class="dz-tag t">TECHNIQUE</div>Non-surgical rhinoplasty requires cadaver lab training + advanced injector experience. Not a beginner zone. Cannula reduces but does not eliminate risk here.</div>
+    </div>
+  </div>
+
+  <div class="dz-card">
+    <div class="dz-head"><h4>Zone 3 — Temple</h4><span>Superficial temporal artery — palpable risk</span></div>
+    <div class="dz-body">
+      <div class="dz-row"><div class="dz-tag v">VESSEL</div>Superficial temporal artery runs from preauricular region superiorly. Often visible and palpable in thin patients. Frontal branch crosses to forehead.</div>
+      <div class="dz-row"><div class="dz-tag s">SAFE</div>Deep supraperiosteal injection medial to the temporal fusion line. Or very superficial subcutaneous medial to the vessel. Avoid the lateral zone where the vessel is most superficial.</div>
+      <div class="dz-row"><div class="dz-tag t">TECHNIQUE</div>Palpate for the pulse before injecting. Cannula strongly preferred. Single entry point, fan technique medially. Aspirate if using needle.</div>
+    </div>
+  </div>
+
+  <div class="dz-card">
+    <div class="dz-head"><h4>Zone 4 — Nasolabial Fold (NLF)</h4><span>Facial artery depth changes — highest variability</span></div>
+    <div class="dz-body">
+      <div class="dz-row"><div class="dz-tag v">VESSEL</div>Facial artery crosses the NLF at varying depths — deep inferiorly, superficial superiorly. Most dangerous at the mid-NLF where depth transition occurs.</div>
+      <div class="dz-row"><div class="dz-tag s">SAFE</div>Deep injection (supraperiosteal) is safer than subcutaneous at the NLF. Inject inferior and deep. Avoid superficial mid-NLF where artery is closest to skin.</div>
+      <div class="dz-row"><div class="dz-tag t">TECHNIQUE</div>Cannula via a single entry point at the inferior NLF is the gold standard for safety. Linear threading retrograde, deep to the SMAS.</div>
+    </div>
+  </div>
+
+  <div class="dz-card">
+    <div class="dz-head"><h4>Zone 5 — Lips</h4><span>Superior and inferior labial arteries</span></div>
+    <div class="dz-body">
+      <div class="dz-row"><div class="dz-tag v">VESSEL</div>Superior and inferior labial arteries run within the substance of the lip — typically at the submucosal level within orbicularis oris. Location varies significantly between individuals.</div>
+      <div class="dz-row"><div class="dz-tag s">SAFE</div>Vermilion border injection is lower risk than central body injection. Dry mucosa injection (inner lip surface) targets submucosal plane safely.</div>
+      <div class="dz-row"><div class="dz-tag t">TECHNIQUE</div>Anterograde injection at the wet-dry border. Serial puncture with small aliquots. Aspirate before each deposit (debated but prudent). Avoid central philtrum columns — labial artery runs here.</div>
+    </div>
+  </div>
+
+  <div class="dz-card">
+    <div class="dz-head"><h4>Zone 6 — Infraorbital / Tear Trough</h4><span>Infraorbital artery + thin skin = high risk</span></div>
+    <div class="dz-body">
+      <div class="dz-row"><div class="dz-tag v">VESSEL</div>Infraorbital artery exits the infraorbital foramen approximately 6–8mm below the infraorbital rim at the midpupillary line. Tears trough vessels are small but numerous.</div>
+      <div class="dz-row"><div class="dz-tag s">SAFE</div>Supraperiosteal injection medial and inferior to the foramen. Small volumes — 0.1–0.3mL per side maximum. Softest HA fillers only.</div>
+      <div class="dz-row"><div class="dz-tag t">TECHNIQUE</div>Cannula strongly preferred — reduces Tyndall risk and vascular risk. Serial puncture with 0.01–0.02mL deposits. Never inject lateral to midpupillary line at the infraorbital level.</div>
+    </div>
+  </div>
+
+  <div class="dz-card">
+    <div class="dz-head"><h4>Zone 7 — Forehead Midline</h4><span>Frontal branch — forehead artery</span></div>
+    <div class="dz-body">
+      <div class="dz-row"><div class="dz-tag v">VESSEL</div>Supratrochlear artery branches run vertically within the frontalis muscle. Supraorbital artery runs laterally. Both anastomose with each other and with contralateral vessels.</div>
+      <div class="dz-row"><div class="dz-tag s">SAFE</div>Filler in forehead is high-risk — reserve for experienced injectors only. If treating: deep supraperiosteal, single point, small volume, midline and lateral paramedian only.</div>
+      <div class="dz-row"><div class="dz-tag t">TECHNIQUE</div>Botox in forehead is safe — intramuscular, small volumes. Filler: cannula only, deep plane, very experienced hands. Most providers should not filler the forehead.</div>
+    </div>
+  </div>
+
+  <div class="dz-card">
+    <div class="dz-head"><h4>Zone 8 — Mental Foramen / Chin Lateral</h4><span>Mental artery and nerve exit point</span></div>
+    <div class="dz-body">
+      <div class="dz-row"><div class="dz-tag v">VESSEL</div>Mental artery exits mental foramen — located approximately 2.5cm lateral to chin midline, between premolar roots. Variable position. Mental nerve exits at same foramen.</div>
+      <div class="dz-row"><div class="dz-tag n">NERVE</div>Mental nerve provides sensation to chin and lower lip. Injury causes temporary or permanent numbness.</div>
+      <div class="dz-row"><div class="dz-tag s">SAFE</div>Chin midline supraperiosteal bolus injection is safest. Avoid lateral chin injections near premolar region where foramen is located.</div>
+      <div class="dz-row"><div class="dz-tag t">TECHNIQUE</div>Palpate chin bone. Single point midline. Stay on periosteum. Slow injection — &lt;0.1mL per deposit.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== SECTION 5: NERVE ANATOMY ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 05</div><div class="sh-title">Nerve Anatomy</div><div class="sh-sub">Facial nerve (CN VII) · Trigeminal nerve (CN V) · Sensory zones · Motor consequences</div></div>
+
+<div class="body-text">The face is served by two major cranial nerves relevant to injectors: CN VII (facial nerve — motor) and CN V (trigeminal nerve — sensory). Understanding both is essential for two reasons: (1) knowing which motor branches you risk affecting with toxin spread, and (2) identifying sensory nerve exit points that serve as anatomical landmarks for filler placement.</div>
+
+<div class="h3">Facial Nerve (CN VII) — Motor Branches</div>
+<div class="body-text">The facial nerve exits the skull at the stylomastoid foramen, passes through the parotid gland, then divides into five major branches. These motor branches travel deep to the SMAS in most of the face — which is why deep injections below the SMAS carry higher nerve risk than superficial injections.</div>
+
+<table class="anatomy-table">
+  <thead><tr><th>Branch</th><th class="pink">Muscles Innervated</th><th>Clinical Consequence if Damaged</th><th>Injection Risk Zone</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Temporal branch</td><td>Frontalis, corrugator, procerus, upper orbicularis oculi, anterior auricular</td><td>Brow ptosis, inability to raise forehead, upper eyelid lagophthalmos</td><td>Temple, lateral forehead — runs superficially over zygomatic arch</td></tr>
+    <tr><td class="label">Zygomatic branch</td><td>Lower orbicularis oculi, zygomatic muscles</td><td>Lower eyelid weakness, ectropion, smile asymmetry</td><td>Lateral mid-face, below orbital rim</td></tr>
+    <tr><td class="label">Buccal branch</td><td>Buccinator, upper lip elevators, nasalis, orbicularis oris (upper)</td><td>Smile asymmetry, lip elevation weakness, nasal flaring loss</td><td>Cheek, parotid region — most redundant branch, best recovery</td></tr>
+    <tr><td class="label">Marginal mandibular branch</td><td>Lower lip depressors (DLI, DAO), mentalis</td><td>Lower lip droop, inability to depress lower lip, chin weakness</td><td>Along mandibular border — most at risk in neck/jaw injections, least redundancy</td></tr>
+    <tr><td class="label">Cervical branch</td><td>Platysma</td><td>Neck band animation loss</td><td>Neck — runs in subplatysmal plane inferiorly</td></tr>
+  </tbody>
+</table>
+
+<div class="warn"><h4>The Marginal Mandibular Branch — Special Warning</h4><p>The marginal mandibular branch has the least collateral innervation of all facial nerve branches. Injury here causes the most persistent and most visible functional deficit — lower lip droop that does not recover well. When injecting DAO, DLI, or mentalis, stay at the mandibular border and inject into muscle confirmed by palpation — not guesswork.</p></div>
+
+<div class="h3">Trigeminal Nerve (CN V) — Sensory Landmarks</div>
+<div class="body-text">The three divisions of CN V provide sensory innervation to the entire face. Their exit foramina — supraorbital, infraorbital, and mental — fall on a vertical line passing through the midpupillary line on each side. These foramina are critical landmarks for safe filler placement.</div>
+
+<table class="anatomy-table">
+  <thead><tr><th>Division</th><th class="teal">Exit Foramen</th><th>Location</th><th>Sensory Territory</th><th>Clinical Note</th></tr></thead>
+  <tbody>
+    <tr><td class="label">V1 Ophthalmic</td><td>Supraorbital notch/foramen</td><td>Superior orbital rim, ~2.7cm from midline</td><td>Forehead, upper eyelid, nasal dorsum</td><td>Palpable in most patients — landmark for forehead injection superior limit</td></tr>
+    <tr><td class="label">V2 Maxillary</td><td>Infraorbital foramen</td><td>~6–8mm below inferior orbital rim, midpupillary line</td><td>Lower eyelid, cheek, upper lip, upper teeth</td><td>Direct injection here risks nerve injury + infraorbital artery. Mark it before cheek/NLF work.</td></tr>
+    <tr><td class="label">V3 Mandibular</td><td>Mental foramen</td><td>~2.5cm lateral to chin midline, between premolars</td><td>Lower lip, chin, lower teeth and gum</td><td>Highly variable position. Numbness of lower lip/chin = mental nerve compression or injury.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">The Midpupillary Line — Your Navigation Landmark</div>
+<div class="info-card">
+  <h4>All three foramina align vertically on the midpupillary line</h4>
+  <p>When the patient looks straight ahead, draw an imaginary vertical line through the center of the pupil on each side. The supraorbital foramen (or notch), the infraorbital foramen, and the mental foramen all fall on this line. Before any mid-face or lower face filler — mentally locate this line on your patient. Injections lateral to this line in the mid-face zone are generally safer from a neural perspective; injections directly on this line require depth awareness of the foramen locations.</p>
+</div>
+</div>
+
+<!-- ===== SECTION 6: FAT COMPARTMENTS ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 06</div><div class="sh-title">Facial Fat Compartments</div><div class="sh-sub">Superficial and deep compartments · Volume loss patterns · Filler target planes</div></div>
+
+<div class="body-text">The subcutaneous fat of the face is not a uniform layer — it is organized into discrete compartments separated by fibrous septa. These compartments lose volume independently with aging, which is why the face develops a characteristic pattern of hollowing rather than an even deflation. Understanding the compartments tells you where to place filler for the most natural result.</div>
+
+<div class="h3">Superficial Fat Compartments</div>
+<table class="anatomy-table">
+  <thead><tr><th>Compartment</th><th class="pink">Location</th><th>Aging Change</th><th>Filler Approach</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Medial cheek</td><td>Medial mid-face, below infraorbital rim</td><td>Descends and deflates — creates NLF deepening and tear trough</td><td>Lift with deep cheek filler; augmenting superficial here overcrowds</td></tr>
+    <tr><td class="label">Middle cheek</td><td>Central cheek, over zygoma</td><td>Volume loss + ptosis — creates midface hollowing</td><td>Subcutaneous or supraperiosteal — lateral cheek augmentation</td></tr>
+    <tr><td class="label">Lateral temporal-cheek</td><td>Lateral cheek, below temporal region</td><td>Hollows significantly — accentuates skeletal appearance</td><td>Subcutaneous threading, moderate volumes</td></tr>
+    <tr><td class="label">Nasolabial (NLF fat)</td><td>Just lateral to nasolabial fold</td><td>Descends inferiorly — pushes against stationary NLF fat creating fold</td><td>Do NOT fill NLF superficially — treat the cause (medial cheek) not the fold</td></tr>
+    <tr><td class="label">Jowl fat</td><td>Pre-jowl, above mandibular border</td><td>Descends over mandibular border — creates jowl</td><td>Pre-jowl filler (supraperiosteal) + jaw angle filler can improve contour</td></tr>
+    <tr><td class="label">Inferior orbital fat</td><td>Lower eyelid / tear trough</td><td>Atrophies — creates tear trough and skeletonized appearance</td><td>Supraperiosteal, medial — small volumes only, softest HA</td></tr>
+    <tr><td class="label">Chin</td><td>Anterior chin</td><td>Atrophies and descends — reduces chin projection</td><td>Supraperiosteal bolus midline — good for chin augmentation</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Deep Fat Compartments</div>
+<table class="anatomy-table">
+  <thead><tr><th>Compartment</th><th class="navy">Location / Depth</th><th>Clinical Significance</th></tr></thead>
+  <tbody>
+    <tr><td class="label">SOOF (Suborbicularis Oculi Fat)</td><td>Deep to orbicularis oculi, inferior to orbital rim</td><td>Ptosis of SOOF creates malar mound and accentuates tear trough. Supporting it with deep malar filler improves the entire mid-face.</td></tr>
+    <tr><td class="label">ROOF (Retroorbicularis Oculi Fat)</td><td>Deep to orbicularis oculi, upper eyelid / brow</td><td>Atrophy creates brow ptosis and hollow upper eyelid appearance. Deep brow filler can compensate when appropriate.</td></tr>
+    <tr><td class="label">Deep medial cheek fat (DMCF)</td><td>Deep to zygomaticus major, above buccal fat</td><td>Most important deep fat compartment for mid-face volume. Deflation creates the mid-face hollow seen in aging. Deep malar bolus targets this compartment.</td></tr>
+    <tr><td class="label">Buccal fat pad</td><td>Deep cheek, between masseter and buccinator</td><td>Decreases with age — creates gaunt, skeletal appearance in 40s–60s. Some patients elect surgical buccal fat removal — injectors should know its location for cheek injection depth awareness.</td></tr>
+    <tr><td class="label">Pre-pyriform fat</td><td>Adjacent to piriform aperture (nasal opening)</td><td>Key deep compartment — deflation creates NLF and loss of perioral support. Deep perioral filler targets this compartment.</td></tr>
+  </tbody>
+</table>
+
+<div class="db"><div class="db-label">The fat compartment principle</div><div class="db-text">"When I see a patient with deep nasolabial folds, my first instinct isn't to fill the fold — it's to look up. The fold is usually caused by the medial cheek fat descending. Restore the cheek, and the fold improves without touching it. Understanding fat compartments changed how I think about the entire face."</div></div>
+</div>
+
+<!-- ===== SECTION 7: AGING ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 07</div><div class="sh-title">Facial Aging — The Complete Map</div><div class="sh-sub">Bone resorption · Fat atrophy · Ligament laxity · Skin changes · Treatment implications by decade</div></div>
+
+<div class="body-text">Facial aging is not a single process — it is the simultaneous deterioration of every tissue layer. Understanding what happens at each layer, and when, allows you to treat the cause of aging rather than just the visible symptoms. This is the difference between looking refreshed and looking "worked on."</div>
+
+<div class="h3">The Four Drivers of Facial Aging</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>1. Bone Resorption</h4>
+    <p>The facial skeleton shrinks with age. Key areas of bone loss:</p>
+    <ul>
+      <li><strong>Orbital rim:</strong> Expands — increases eye socket size, contributes to tear trough and brow descent</li>
+      <li><strong>Midface (maxilla):</strong> Retrudes — loses anterior projection, deepening NLFs</li>
+      <li><strong>Mandible:</strong> Loses height and width — jawline becomes less defined, chin projects less</li>
+      <li><strong>Pyriform aperture:</strong> Widens — reduces perioral support, deepens nasolabial folds</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>2. Fat Atrophy &amp; Descent</h4>
+    <p>Subcutaneous fat compartments atrophy at different rates and simultaneously descend due to ligament laxity:</p>
+    <ul>
+      <li>Deep fat (DMCF, SOOF) atrophies first — mid-face deflation</li>
+      <li>Superficial fat descends over retaining ligaments</li>
+      <li>NLF fat is relatively immobile — surrounding fat descends against it</li>
+      <li>Jowl formation = descent of cheek and pre-jowl fat over mandibular border</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>3. Ligament Laxity</h4>
+    <p>Retaining ligaments anchor skin to underlying bone. As they elongate:</p>
+    <ul>
+      <li><strong>Zygomatic ligament:</strong> Releases — allows cheek fat to descend</li>
+      <li><strong>Mandibular ligament:</strong> Elongates — contributes to jowl formation</li>
+      <li><strong>Orbital retaining ligament:</strong> Weakens — contributes to lower eyelid laxity</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>4. Skin Changes</h4>
+    <p>Changes at the skin level compound structural changes below:</p>
+    <ul>
+      <li>Collagen loss: 1% per year after age 25 → thinning, laxity</li>
+      <li>Elastin degradation → loss of recoil</li>
+      <li>Dermal thinning → dynamic lines become static lines</li>
+      <li>UV damage → dyschromia, texture, telangectasias</li>
+      <li>Reduced hyaluronic acid → dryness, volume reduction</li>
+    </ul>
+  </div>
+</div>
+
+<div class="h3">Aging Changes by Decade — Treatment Implications</div>
+<table class="anatomy-table">
+  <thead><tr><th>Decade</th><th class="pink">Primary Changes</th><th>Primary Treatment Focus</th></tr></thead>
+  <tbody>
+    <tr><td class="label">20s</td><td>Early dynamic lines (forehead, glabella, crow's feet with expression). Minimal volume change. Skin quality peak then begins UV accumulation.</td><td>Preventative Botox. SPF + medical-grade skincare. Educate on sun protection. No filler typically needed.</td></tr>
+    <tr><td class="label">30s</td><td>Dynamic lines persist at rest. Early NLF development from fat compartment descent beginning. Possible early tear trough. Lip volume begins to decrease.</td><td>Botox for dynamic lines + prevention. First filler discussion — lip, NLF, early cheek. Skin resurfacing for texture.</td></tr>
+    <tr><td class="label">40s</td><td>Significant mid-face volume loss. NLFs deepened. Jowl formation begins. Brow ptosis from frontalis overcompensation. Lower face heaviness. Tear trough established.</td><td>Full face Botox. Cheek + NLF filler. Jawline definition filler. Consider Morpheus8/RF for skin tightening. Tear trough.</td></tr>
+    <tr><td class="label">50s</td><td>Substantial bone resorption changes visible. Significant fat descent and atrophy. Jowling prominent. Perioral lines. Neck platysmal banding. Vertical lip lines.</td><td>Structural deep filler (cheek, chin, jaw). Perioral filler. Nefertiti lift. RF/laser resurfacing. Consider thread lifts for adjunct lifting.</td></tr>
+    <tr><td class="label">60s+</td><td>Advanced skeletal changes. Severe volume loss. Skin laxity requiring non-injectable interventions. Over-filling risk highest in this decade — creates "pillow face."</td><td>Conservative filler — focus on quality not quantity. Laser resurfacing. Refer surgical consultation when appropriate. Neck treatments.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SECTION 8: INJECTION MAPPING ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 08</div><div class="sh-title">Injection Mapping by Zone</div><div class="sh-sub">Upper face · Mid-face · Lower face · Neck · Safe depths, volumes, and product selection per zone</div></div>
+
+<div class="h3">Upper Face Injection Map</div>
+<table class="anatomy-table">
+  <thead><tr><th>Zone</th><th class="pink">Treatment</th><th>Product</th><th>Depth</th><th>Volume / Units</th><th>Key Precaution</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Forehead</td><td>Botox — horizontal lines</td><td>OnaBotulinumA</td><td>Intramuscular — mid-frontalis</td><td>10–20 units; 4–8 points</td><td>Stay ≥3cm above brow. Never treat lateral brow depressors without treating medial — Spock brow risk.</td></tr>
+    <tr><td class="label">Glabella (11s)</td><td>Botox — vertical glabellar lines</td><td>OnaBotulinumA</td><td>Deep intramuscular — corrugator</td><td>20–25 units; 5 standard points</td><td>Palpate corrugator. Do not inject above periosteum — vessel risk. Always include procerus point.</td></tr>
+    <tr><td class="label">Brow lift</td><td>Botox — lateral brow elevation</td><td>OnaBotulinumA</td><td>Superficial intradermal / subcut</td><td>2–4 units lateral brow; 1–2 points</td><td>Target lateral orbicularis depressor — not frontalis. Never inject the brow elevator to lift the brow.</td></tr>
+    <tr><td class="label">Temples</td><td>Filler — volume restoration</td><td>High-G-prime HA (Voluma)</td><td>Supraperiosteal deep OR very superficial subcutaneous medial</td><td>0.5–2mL per side</td><td>Palpate temporal artery first. Cannula preferred. Avoid lateral zone where artery is superficial.</td></tr>
+    <tr><td class="label">Forehead filler</td><td>Filler — structural smoothing</td><td>Soft–medium HA</td><td>Deep supraperiosteal ONLY</td><td>0.5–1mL total; very conservative</td><td>Advanced technique only. Vessel risk from supratrochlear branches. Not for beginner injectors.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Mid-Face Injection Map</div>
+<table class="anatomy-table">
+  <thead><tr><th>Zone</th><th class="teal">Treatment</th><th>Product</th><th>Depth</th><th>Volume / Units</th><th>Key Precaution</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Crow's feet</td><td>Botox — lateral orbital lines</td><td>OnaBotulinumA</td><td>Subcutaneous — superficial</td><td>6–15 units per side; 3–4 points</td><td>Stay ≥1cm from orbital rim. Never inject pretarsal orbicularis. Fan technique lateral to rim only.</td></tr>
+    <tr><td class="label">Tear trough</td><td>Filler — periorbital volume</td><td>Softest HA (Volbella, Belotero)</td><td>Supraperiosteal — medial</td><td>0.1–0.5mL per side</td><td>Cannula preferred. Small aliquots only. Never overcorrect — Tyndall + swelling amplified here. Assess in upright position.</td></tr>
+    <tr><td class="label">Cheeks (malar)</td><td>Filler — volume + lift</td><td>High-G-prime HA (Voluma, Lyft)</td><td>Supraperiosteal OR deep subcutaneous</td><td>0.5–2mL per side</td><td>Mark infraorbital foramen before injecting. Bolus technique deep. Avoid superficial mid-cheek — creates lateral cheek heaviness.</td></tr>
+    <tr><td class="label">NLF</td><td>Filler — fold correction</td><td>Medium-G-prime HA (Vollure, Defyne)</td><td>Deep subcutaneous / supraperiosteal</td><td>0.5–1.5mL per side</td><td>Treat the cause (medial cheek) first. If treating directly: cannula from inferior entry, deep threading retrograde. Avoid superficial mid-NLF — facial artery risk.</td></tr>
+    <tr><td class="label">Bunny lines</td><td>Botox — transverse nasal lines</td><td>OnaBotulinumA</td><td>Superficial intramuscular — nasalis</td><td>4–8 units total; 2 points per side</td><td>Small doses — avoid inferiorly near angular artery. Stay on lateral nasal wall.</td></tr>
+    <tr><td class="label">Gummy smile</td><td>Botox — upper lip elevation</td><td>OnaBotulinumA</td><td>Superficial intramuscular — LLSAN</td><td>2–4 units per side; 2 points</td><td>Most conservative area in the face for Botox. Over-treatment = upper lip droop, speech difficulty. Start at 2 units per side.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Lower Face &amp; Neck Injection Map</div>
+<table class="anatomy-table">
+  <thead><tr><th>Zone</th><th class="gold">Treatment</th><th>Product</th><th>Depth</th><th>Volume / Units</th><th>Key Precaution</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Lips — body</td><td>Filler — volume</td><td>Soft HA (Ultra, Kysse, Volbella)</td><td>Submucosal / intramuscular vermilion</td><td>0.5–1.5mL total</td><td>Small aliquots. Serial puncture or linear threading. Anterograde on dry mucosa side. Aspirate before each deposit. Avoid philtrum column deep injection — superior labial artery runs here.</td></tr>
+    <tr><td class="label">Lips — border</td><td>Filler — definition</td><td>Softest HA (Volbella)</td><td>Intradermal — vermilion border</td><td>0.1–0.3mL</td><td>Linear threading along border. Maintain natural white roll. Over-definition looks unnatural. Cannot correct lip asymmetry with border filler alone.</td></tr>
+    <tr><td class="label">Lip flip</td><td>Botox — upper lip eversion</td><td>OnaBotulinumA</td><td>Superficial intramuscular — orbicularis oris</td><td>4–6 units; 4–6 points upper lip</td><td>Warn patient: 2 weeks to see result, temporary difficulty with straws and wind instruments. Not a volume replacement — education critical.</td></tr>
+    <tr><td class="label">DAO / corners</td><td>Botox — downturned corners</td><td>OnaBotulinumA</td><td>Intramuscular — at mandibular border</td><td>3–6 units per side</td><td>Inject AT mandibular border, not at modiolus. Accidental zygomaticus spread = smile asymmetry. Palpate mandibular border before injecting.</td></tr>
+    <tr><td class="label">Mentalis</td><td>Botox — chin dimpling</td><td>OnaBotulinumA</td><td>Intramuscular — chin bulk</td><td>4–8 units; 1–2 midline points</td><td>Avoid going too deep or lateral — DLI risk. Assess during animation — chin cobblestoning should be visible to confirm target.</td></tr>
+    <tr><td class="label">Jawline</td><td>Filler — definition</td><td>High-G-prime HA (Voluma, Lyft)</td><td>Supraperiosteal — along mandibular body</td><td>0.5–2mL per side</td><td>Bolus technique along mandible. Avoid anterior to masseter where facial vessels cross. Stay on bone. Cannula from one posterior entry point.</td></tr>
+    <tr><td class="label">Chin</td><td>Filler — projection</td><td>High-G-prime HA or Radiesse</td><td>Supraperiosteal — midline</td><td>0.5–1.5mL</td><td>Single midline point. Mark mental foramina before injecting — stay medial. Bolus on periosteum. Assess projection in profile throughout injection.</td></tr>
+    <tr><td class="label">Masseter</td><td>Botox — bruxism / slimming</td><td>OnaBotulinumA</td><td>Intramuscular — muscle bulk</td><td>20–30 units per side; 3–5 points</td><td>Have patient clench to identify bulk. Avoid parotid (anterior masseter border). Avoid too superior (zygomaticus). Full slimming at 3 months — multiple sessions needed.</td></tr>
+    <tr><td class="label">Platysma / neck</td><td>Botox — bands / Nefertiti</td><td>OnaBotulinumA</td><td>Intramuscular — superficial</td><td>25–50 units; multiple points per band</td><td>Pinch band and inject. Avoid deep — carotid, jugular, thyroid are deep to platysma. Do not inject into the neck midline below thyroid cartilage.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SECTIONS 9-10: DEEP DIVES ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Sections 09 &amp; 10</div><div class="sh-title">Regional Deep Dives</div><div class="sh-sub">Forehead &amp; glabella · Periorbital &amp; mid-face — the anatomy that matters most</div></div>
+
+<div class="h2">Section 09 — Forehead &amp; Glabella Deep Dive</div>
+
+<div class="h3">Brow Position Mathematics</div>
+<div class="body-text">The ideal brow position differs by gender and is a critical consideration for every upper face treatment. Botox in the wrong location changes brow position — intentionally or not.</div>
+<table class="anatomy-table">
+  <thead><tr><th>Measurement</th><th class="pink">Female Ideal</th><th>Male Ideal</th><th>Clinical Implication</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Brow position relative to orbital rim</td><td>2–4mm above orbital rim (medial); arch 5–7mm above (lateral peak)</td><td>At orbital rim or 1–2mm above — straighter, horizontal</td><td>Over-treating frontalis in women = brow descent. Under-treating lateral depressors in women = no lift.</td></tr>
+    <tr><td class="label">Medial brow</td><td>Aligns with medial canthus vertically</td><td>Same</td><td>Medial brow descent from over-corrugator treatment = angry or sad appearance</td></tr>
+    <tr><td class="label">Peak of brow arch (women)</td><td>Above lateral limbus (outer iris)</td><td>No arch — straight or slight lateral elevation only</td><td>Creating arch in male patients = feminization. Plan every treatment gender-specifically.</td></tr>
+    <tr><td class="label">Lateral brow tail</td><td>At or above medial brow level</td><td>At medial brow level or slightly below</td><td>Lateral frontalis treatment that causes lateral brow descent = aged, tired appearance</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">The Glabella Complex — Standard 5-Point Protocol</div>
+<div class="info-card">
+  <h4>Standard glabella injection pattern — 20–25 units Botox</h4>
+  <ul>
+    <li><strong>Point 1 (midline / procerus):</strong> 4–5 units into procerus muscle belly — midline, between brows, superficial subcut/intramuscular</li>
+    <li><strong>Points 2 &amp; 3 (bilateral corrugator medial heads):</strong> 5–7 units each — deep intramuscular into corrugator bulk palpated with patient frowning; aim perpendicular to muscle fibers</li>
+    <li><strong>Points 4 &amp; 5 (bilateral corrugator lateral heads):</strong> 3–5 units each — slightly more lateral and superior; inject deep, angled toward the lateral head</li>
+    <li><strong>Adjustment:</strong> Add depressor supercilii points if medial brow descent present; add lateral orbicularis point for lateral eyebrow depressor if indicated</li>
+    <li><strong>Female caveat:</strong> Leave lateral frontalis relatively free — allows compensatory brow arch elevation from corrugator treatment</li>
+    <li><strong>Male caveat:</strong> Treat more aggressively in males — thicker muscle, more units typically needed for equivalent effect</li>
+  </ul>
+</div>
+
+<div class="h3">Ptosis Prevention Rules — Non-Negotiable</div>
+<div class="pearl-list">
+  <div class="pearl"><div class="pearl-star">★</div>Never inject forehead Botox within 2–3cm of the orbital rim medially or 1.5cm laterally.</div>
+  <div class="pearl"><div class="pearl-star">★</div>Never treat the lateral frontalis in isolation without treating the medial brow depressors — creates Spock brow (lateral brow elevation with medial brow unchanged).</div>
+  <div class="pearl"><div class="pearl-star">★</div>Always leave some frontalis action — a completely paralyzed frontalis in a patient with pre-existing brow ptosis will cause severe brow and eyelid descent.</div>
+  <div class="pearl"><div class="pearl-star">★</div>Assess brow position before every treatment — document with photo. Pre-existing brow ptosis must be noted and patient must acknowledge it on consent.</div>
+  <div class="pearl"><div class="pearl-star">★</div>Apraclonidine 0.5% eye drops (Iopidine) stimulates Müller's muscle to provide 1–2mm of lid lift — first-line treatment for Botox-induced lid ptosis. Start 1–2 drops TID immediately.</div>
+</div>
+
+<div class="divider"></div>
+<div class="h2">Section 10 — Periorbital &amp; Mid-Face</div>
+
+<div class="h3">Tear Trough Anatomy — The Most Complex Zone for Filler</div>
+<div class="body-text">The tear trough (nasojugal groove) is formed by the orbital retaining ligament — a fibrous attachment from the periosteum to the skin that resists the descent of the overlying fat. Volume loss in the inferior orbit and SOOF, combined with descent of the medial cheek fat, creates the characteristic shadowing and hollowing seen with age.</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>What creates the tear trough</h4>
+    <ul>
+      <li>Orbital retaining ligament: fibrous band holds skin down while fat above descends</li>
+      <li>SOOF atrophy: reduces support to lower orbital area</li>
+      <li>Medial cheek fat descent: creates shadow beneath the ligament fixation point</li>
+      <li>Infraorbital bone resorption: increases apparent depth</li>
+      <li>Thin lower eyelid skin: makes orbital fat herniation (bags) more visible</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Safe tear trough injection technique</h4>
+    <ul>
+      <li>Patient: slightly reclined or sitting — assess in both positions</li>
+      <li>Product: softest available HA — Volbella, Belotero Balance preferred</li>
+      <li>Depth: supraperiosteal — on bone, medial to midpupillary line</li>
+      <li>Cannula: 25–27g blunt cannula from lateral entry point — preferred over needle</li>
+      <li>Volume: maximum 0.3mL per side — reassess before adding more</li>
+      <li>Never inject with bright overhead light — shadows disappear under light and you will overcorrect</li>
+    </ul>
+  </div>
+</div>
+
+<div class="h3">Cheek Filler — Deep vs. Superficial Planes</div>
+<table class="anatomy-table">
+  <thead><tr><th>Approach</th><th class="teal">Target</th><th>Best For</th><th>Risk Profile</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Supraperiosteal bolus (malar)</td><td>Over zygomatic bone — deep</td><td>Structural lifting, cheekbone projection, significant volume restoration</td><td>Low — away from superficial vessels; close to infraorbital foramen laterally</td></tr>
+    <tr><td class="label">Submalar deep subcutaneous</td><td>Deep to SMAS, above periosteum</td><td>Submalar hollowing, soft mid-face augmentation</td><td>Moderate — facial nerve branches deeper here; stay on periosteum</td></tr>
+    <tr><td class="label">Superficial subcutaneous</td><td>Subcutaneous fat layer</td><td>Fine-tuning, minor volume addition</td><td>Higher — transverse facial artery, zygomatico-orbital artery in this zone; cannula preferred</td></tr>
+    <tr><td class="label">SOOF augmentation</td><td>Below orbicularis, above periosteum</td><td>Lower eyelid support, improving tear trough indirectly</td><td>Moderate — infraorbital artery proximity; requires precise depth control</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SECTION 11: LOWER FACE & NECK ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 11</div><div class="sh-title">Lower Face &amp; Neck Deep Dive</div><div class="sh-sub">Lip anatomy · Oral commissures · Chin · Masseter · Platysma · Nefertiti lift</div></div>
+
+<div class="h3">Lip Anatomy — Layers &amp; Landmarks</div>
+<table class="anatomy-table">
+  <thead><tr><th>Structure</th><th class="pink">Description</th><th>Clinical Relevance</th></tr></thead>
+  <tbody>
+    <tr><td class="label">White roll</td><td>The pale line at the cutaneous-vermilion junction</td><td>Must be preserved or enhanced with border filler — loss creates unnatural appearance</td></tr>
+    <tr><td class="label">Vermilion border</td><td>Junction between skin and lip mucosa</td><td>Primary target for lip definition filler — intradermal linear threading</td></tr>
+    <tr><td class="label">Dry mucosa (vermilion proper)</td><td>Visible pink part of lip — modified mucosa</td><td>Target for lip body filler — submucosal plane, serial puncture technique</td></tr>
+    <tr><td class="label">Wet mucosa</td><td>Inner lip surface — always moist</td><td>Injection here achieves submucosal placement — useful for subtle body enhancement</td></tr>
+    <tr><td class="label">Philtrum columns</td><td>Vertical ridges between Cupid's bow peaks and nose</td><td>Light filler can enhance — do NOT inject deep at the midline here, superior labial artery runs here</td></tr>
+    <tr><td class="label">Cupid's bow</td><td>Central M-shaped upper lip border</td><td>Defining or enhancing Cupid's bow peaks with small filler deposits creates the most aesthetically impactful result with least volume</td></tr>
+    <tr><td class="label">Oral commissures</td><td>Corners of the mouth</td><td>Modiolus — complex anatomical point where multiple muscles converge. Filler here softens downturning. Botox to DAO improves further.</td></tr>
+    <tr><td class="label">Superior labial artery</td><td>Runs within upper lip substance — variable depth</td><td>Risk vessel for upper lip injection — position varies. Aspirate with needle, use cannula when possible.</td></tr>
+    <tr><td class="label">Inferior labial artery</td><td>Runs within lower lip substance — variable depth</td><td>Same precautions as superior labial artery. Lower lip body injections require same care.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Nefertiti Lift — Anatomy &amp; Technique</div>
+<div class="body-text">The Nefertiti lift combines platysmal band treatment with lower face border Botox to create a subtle lifting effect on the lower jaw and neck. The mechanism: relaxing the platysma (a facial depressor) reduces its downward pull on the lower face, allowing the facial elevators to dominate — effectively lifting the lower face border.</div>
+<div class="info-card">
+  <h4>Nefertiti lift injection protocol</h4>
+  <ul>
+    <li><strong>Step 1 — Platysmal bands:</strong> Identify bands by having patient tense neck. Pinch each band. 4–6 injection points per band, spaced 1–2cm apart along the full length of the band. 2–4 units per point. Inject intramuscularly into the band — not deep to it.</li>
+    <li><strong>Step 2 — Mandibular border:</strong> Series of injections along the inferior border of the mandible from angle to mentum. Targets the platysma where it inserts at the mandible. 2–3 units per point, 4–6 points per side.</li>
+    <li><strong>Step 3 — DAO (optional adjunct):</strong> Adding DAO treatment enhances the lower face lifting effect by removing downward pull at the oral commissure.</li>
+    <li><strong>Total dose:</strong> 25–50 units typically. Women often need less; men need more due to muscle bulk.</li>
+    <li><strong>Key safety rule:</strong> Never inject deep in the neck — carotid artery, internal jugular vein, and thyroid are immediately deep to the platysma. Pinch, confirm muscle, inject superficially.</li>
+  </ul>
+</div>
+
+<div class="h3">Masseter Anatomy for Safe Injection</div>
+<div class="info-card">
+  <h4>Masseter — landmark identification for safe injection</h4>
+  <ul>
+    <li><strong>Anterior border:</strong> Palpable when patient clenches — this is the anterior boundary. The parotid gland lies ANTERIOR to this border. Never inject anterior to the anterior masseter border.</li>
+    <li><strong>Superior border:</strong> Zygomatic arch. Never inject above this — zygomaticus muscle risk, creating smile asymmetry.</li>
+    <li><strong>Inferior border:</strong> Mandibular angle. Injection points should stay within the lower 2/3 of the muscle between these borders.</li>
+    <li><strong>Safe zone:</strong> Lower 2/3 of the muscle, posterior 2/3 width. 3–5 injection points in a grid pattern within this zone. Inject while patient clenches to confirm intramuscular placement.</li>
+    <li><strong>What to avoid:</strong> Parotid gland (anterior), zygomaticus (superior), masseter aponeurosis only (will not diffuse into muscle sufficiently).</li>
+  </ul>
+</div>
+</div>
+
+<!-- ===== SECTION 12: EMERGENCY ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 12</div><div class="sh-title">Emergency Recognition &amp; Response</div><div class="sh-sub">Vascular occlusion · Retinal artery occlusion · Anaphylaxis · Nerve injury · What to document</div></div>
+
+<div class="critical"><p><strong>The most important section in this guide.</strong> Every injector who practices long enough will encounter a complication. The providers who achieve the best outcomes in these situations are not the ones who never have complications — they are the ones who recognize the problem immediately and respond without hesitation. This section is your emergency playbook. Know it before you need it.</p></div>
+
+<div class="h3">Vascular Occlusion — Recognition &amp; Emergency Protocol</div>
+<div class="body-text">Vascular occlusion occurs when filler is injected intravascularly and blocks blood flow to a region of skin, causing ischemia that progresses to necrosis if untreated. It may also occur when extravascular filler compresses a vessel. The window for successful treatment is narrow — minutes to hours. Recognition must be immediate.</div>
+
+<div class="h4">Signs of Vascular Occlusion — Know All of Them</div>
+<table class="anatomy-table">
+  <thead><tr><th>Sign</th><th class="red">Timing</th><th>Description</th><th>Severity Indicator</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Immediate blanching</td><td>During injection</td><td>Sudden white discoloration of skin — loss of blood flow. Most alarming sign. Stop immediately.</td><td class="danger">CRITICAL — Stop injecting NOW</td></tr>
+    <tr><td class="label">Severe pain out of proportion</td><td>During or immediately after</td><td>Pain significantly beyond expected injection discomfort — especially sharp, burning, or throbbing in distribution</td><td class="danger">HIGH — reassess immediately</td></tr>
+    <tr><td class="label">Dusky discoloration</td><td>Minutes to hours after</td><td>Grayish-purple discoloration replacing blanching as ischemia progresses — progressing necrosis</td><td class="danger">URGENT — treat immediately</td></tr>
+    <tr><td class="label">Livedo reticularis pattern</td><td>Minutes after</td><td>Mottled, net-like pattern of discoloration following vascular territories</td><td class="danger">HIGH — strong indicator of vascular event</td></tr>
+    <tr><td class="label">Skin temperature change</td><td>Minutes after</td><td>Affected area feels colder than surrounding skin — reduced perfusion</td><td class="caution">MODERATE — supports diagnosis</td></tr>
+    <tr><td class="label">Delayed onset</td><td>Hours to days after</td><td>Progressive darkening, eschar formation, skin breakdown — late-presenting occlusion, harder to treat</td><td class="danger">HIGH — treat aggressively even late</td></tr>
+  </tbody>
+</table>
+
+<div class="h4">Vascular Occlusion Emergency Protocol</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">1</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Immediately — within seconds</div><h4>STOP injecting</h4><p>Put down the syringe immediately. Do not inject another drop. Do not "finish the syringe." Assess the patient and the skin now.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">2</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Within 1–2 minutes</div><h4>Hyaluronidase — aggressive and immediate</h4><p>Inject hyaluronidase 150–300 units (Hylenex preferred) throughout the affected zone and along the course of the obstructed vessel. Do not wait to see if blanching resolves. Do not wait for a physician. Use it now. This is why hyaluronidase must be in the treatment room at all times — not in a cabinet down the hall.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">3</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Simultaneously</div><h4>Vigorous massage + warm compress</h4><p>Massage firmly over the affected area to help disperse the filler and encourage vasodilatation. Apply warm compress immediately — heat promotes vasodilation and may help restore perfusion. Continue massage throughout the treatment process.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">4</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Immediately</div><h4>Aspirin 325mg — chewed</h4><p>Have the patient chew (not swallow whole) 325mg aspirin immediately. Antiplatelet effect helps prevent clot extension. Ensure no aspirin allergy or contraindication first.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">5</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Within 5 minutes</div><h4>Assess vision — if any change, call 911</h4><p>Ask the patient: "Is your vision normal? Any blurring, darkening, or change in either eye?" Any visual symptom = retinal artery occlusion protocol (below). Call 911 immediately. Do not delay.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">6</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Ongoing — every 60 minutes</div><h4>Repeat hyaluronidase PRN</h4><p>If blanching or discoloration is not improving after 30–60 minutes, repeat hyaluronidase at 150u intervals. Follow up every 24 hours until completely resolved. Photograph at every assessment. Consider topical nitroglycerin paste (off-label) as adjunct vasodilator.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">7</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Immediately</div><h4>Contact your malpractice carrier</h4><p>Call your professional liability carrier and document this event as soon as the patient is stabilized. Document everything — product used, lot number, volume, injection points, sequence of events, your response. This protects you legally and is required by most policies.</p></div>
+</div>
+
+<div class="warn"><h4>If the patient is NOT using HA filler — Sculptra or Radiesse</h4><p>Hyaluronidase does NOT dissolve Sculptra (PLLA) or Radiesse (CaHA). If occlusion occurs with these products, the mechanical occlusion cannot be dissolved. Hyaluronidase will not help. Manage with massage, warm compress, aspirin, and emergency referral. This is one of the primary reasons to confirm your product before every injection.</p></div>
+
+<div class="h3">Retinal Artery Occlusion — Vision Loss Protocol</div>
+<div class="critical"><p><strong>Retinal artery occlusion is an ophthalmic emergency.</strong> Irreversible blindness occurs within 90–120 minutes of complete retinal artery occlusion. Any visual symptom during or after injection = call 911 immediately. Do not drive the patient yourself. Do not wait to see if it resolves. Do not administer more treatment. Call 911 and stay on the line.</p></div>
+<div class="info-card">
+  <h4>Symptoms of retinal artery occlusion — any one of these = 911</h4>
+  <ul>
+    <li>Sudden loss of vision in one eye — partial or complete</li>
+    <li>Sudden blurring of vision in one eye</li>
+    <li>Sudden appearance of dark spot or shadow in visual field</li>
+    <li>Eye pain associated with visual change</li>
+    <li>Diplopia (double vision) — may indicate embolization to other cranial vessels</li>
+  </ul>
+</div>
+
+<div class="h3">Anaphylaxis Recognition &amp; Response</div>
+<table class="anatomy-table">
+  <thead><tr><th>Symptom Category</th><th class="red">Signs</th><th>Response</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Skin</td><td>Urticaria, flushing, angioedema, pruritus</td><td>May progress to anaphylaxis — monitor closely, administer Benadryl, have epi ready</td></tr>
+    <tr><td class="label">Respiratory</td><td>Wheezing, bronchospasm, stridor, shortness of breath</td><td>Epinephrine 0.3mg IM anterolateral thigh IMMEDIATELY — call 911</td></tr>
+    <tr><td class="label">Cardiovascular</td><td>Hypotension, tachycardia, dizziness, syncope</td><td>Epinephrine 0.3mg IM — supine position — call 911</td></tr>
+    <tr><td class="label">Anaphylaxis (2+ systems)</td><td>Any combination of above affecting ≥2 organ systems</td><td>Epinephrine 0.3mg IM FIRST — always. Then Benadryl 50mg IM. Call 911. Do not delay epinephrine for any reason.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Post-Incident Documentation — What to Record</div>
+<div class="pearl-list">
+  <div class="pearl"><div class="pearl-star">★</div><strong>Product details:</strong> Exact product name, lot number, expiration date, volume injected, injection points, depths used.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Timeline:</strong> Time of injection, time of first symptom, time of each intervention, time of each assessment.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Photos:</strong> Photograph at time of event, at each treatment interval, at 24-hour follow-up, and at resolution or referral.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Treatment administered:</strong> Hyaluronidase doses and timing, aspirin, warm compress, massage, any other interventions.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Patient communication:</strong> What you told the patient, what instructions you gave, referrals made, whether emergency services were contacted.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Provider actions:</strong> Your clinical assessment at each point, your decision-making rationale, when you contacted your malpractice carrier.</div>
+</div>
+
+<div class="divider"></div>
+<div class="h3">High-Yield Clinical Pearls — The Anatomy That Saves You</div>
+<div class="pearl-list">
+  <div class="pearl"><div class="pearl-star">★</div><strong>Hyaluronidase in the room — always.</strong> Not in a cabinet. Not down the hall. In the treatment room. Every injection session. No exceptions.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>The facial artery changes depth at the NLF midpoint.</strong> It is deep inferiorly and superficial superiorly. Treat the superior NLF with a cannula every time.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>The angular artery connects to the ophthalmic artery.</strong> Every injection in the nasal and periorbital territory has a direct anatomical pathway to the central retinal artery.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Blanching during injection = stop immediately.</strong> Not after you finish the current syringe. Not after you check one more time. Immediately. This is your only rule in this moment.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>The midpupillary line is your map.</strong> All three foramina — supraorbital, infraorbital, mental — align on this vertical line. Mark it mentally on every patient before you inject.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Treat the cause of aging, not the symptom.</strong> Deep NLFs come from medial cheek fat descent — fill the cheek. Tear troughs come from SOOF atrophy and ligament laxity — support the mid-face. The fold and the trough are symptoms.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>The marginal mandibular nerve has the least redundancy of any facial nerve branch.</strong> Injury here is the most persistent and most visible. Confirm muscle identity by palpation before every lower face Botox injection.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Slow injection reduces intravascular pressure.</strong> If filler enters a vessel, a slow injection gives a lower-pressure bolus with less retrograde travel potential than a fast injection. Inject all filler slowly — always.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Aspiration does not reliably prevent intravascular injection.</strong> Vessels are compressible — a negative aspiration does not confirm extravascular placement. Use aspiration as one tool, not as confirmation. Small volumes + slow injection + anatomical knowledge are your true protection.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Know before you go.</strong> Study the anatomy before you pick up a needle. The patient who is in your chair deserves a provider who visualized the three-dimensional anatomy of their face before the first injection — not one who is trying to remember it mid-treatment.</div>
+</div>
+
+<div class="doc-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · Facial Anatomy for the Nurse Injector · $47 · Educational reference — not a substitute for formal anatomical training</div>
+  <div class="footer-npa">For licensed aesthetic providers · Study it. Know it. Inject with confidence.</div>
+</div>
+
+</div>
+</body>
+</html>

@@ -101,6 +101,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "iv-therapy-social-kit": "Social Media",
   "iv-story-templates": "Social Media",
   "glp1-story-templates": "Social Media",
+  "31-day-social-media-content-calendar": "Social Media",
 };
 
 const PRICE_MAP: Record<string, number> = {
@@ -128,6 +129,7 @@ const PRICE_MAP: Record<string, number> = {
   "seasonal-marketing-pack": 2700,
   "iv-story-templates": 2700,
   "glp1-story-templates": 2700,
+  "31-day-social-media-content-calendar": 4700,
   "injectors-playbook": 12700,
   "new-injector-onboarding-kit": 6700,
   "guidebook-category-strategy": 4700,
@@ -306,6 +308,7 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "consent-waxing": "/shop-previews/standalone-consents/consent-waxing.png",
   "consent-microneedling-rf": "/shop-previews/standalone-consents/consent-microneedling-rf.png",
   "consent-photography-hipaa": "/shop-previews/standalone-consents/consent-photography-hipaa.png",
+  "31-day-social-media-content-calendar": "/shop-previews/social-media/31-day-social-media-content-calendar.png",
   "insurance-legal-compliance-guide": "/shop-previews/business-systems/insurance-legal-compliance-guide.png",
   "phase-2-business-bundle": "/shop-previews/business-systems/phase-2-business-bundle.png",
   "difficult-client-scripts": "/shop-previews/business-systems/difficult-client-scripts.png",

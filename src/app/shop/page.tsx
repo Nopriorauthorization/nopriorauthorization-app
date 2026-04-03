@@ -75,6 +75,7 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "difficult-client-scripts": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
   "before-after-photo-system": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
   "vendor-supplier-directory": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
+  "31-day-social-media-content-calendar": { label: "$47 · Calendar", color: "bg-fuchsia-500/20 text-fuchsia-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -139,6 +140,8 @@ const OUTCOME_MAP: Record<string, string> = {
   "difficult-client-scripts": "Scripts and framing for tense moments — complaints, refunds, boundaries — so your team sounds calm and consistent.",
   "before-after-photo-system": "Repeatable before/after workflow — consistency, storage, and alignment with your consent and marketing rules.",
   "vendor-supplier-directory": "Track vendors, reps, and reorders in one place — a directory framework you fill with your real suppliers.",
+  "31-day-social-media-content-calendar":
+    "A full month of med-spa-friendly post themes and prompts — stop staring at a blank grid; follow the calendar and adapt to your brand.",
 };
 
 const QUICK_CATEGORIES = [

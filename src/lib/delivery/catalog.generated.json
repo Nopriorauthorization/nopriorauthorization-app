@@ -1,7 +1,22 @@
 {
-  "generatedAt": "2026-04-03T04:20:04.007Z",
+  "generatedAt": "2026-04-03T04:36:26.307Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
+    {
+      "productKey": "31-day-social-media-content-calendar",
+      "productSlug": "31-day-social-media-content-calendar",
+      "productTitle": "31-Day Social Media Content Calendar for Med Spas & Esthetic Practices",
+      "buildTimestamp": "2026-04-03T16:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "31-Day Social Media Content Calendar",
+          "designId": "31-day-social-media-content-calendar-main",
+          "editUrl": "/forms/NPA-31-Day-Social-Media-Content-Calendar.html",
+          "viewUrl": null
+        }
+      ]
+    },
     {
       "productKey": "aftercare-card-kit",
       "productSlug": "aftercare-card-kit",

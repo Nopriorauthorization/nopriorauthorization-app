@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — 31-Day Social Media Content Calendar for Med Spas & Esthetic Practices</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;font-size:10pt;color:#1A1A1A;background:#f5f0ed;line-height:1.55}
+.page{width:8.5in;background:white;margin:.25in auto;padding:.55in .65in;box-shadow:0 4px 32px rgba(0,0,0,.12);}
+
+/* COVER */
+.cover{min-height:9.5in;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;}
+.npa-eyebrow{font-size:7.5pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:8px;}
+.cover-title{font-family:'Playfair Display',serif;font-size:34pt;font-weight:900;color:#1A1A1A;line-height:1.08;margin-bottom:12px;padding-bottom:16px;border-bottom:3px solid #1A1A1A;}
+.cover-title em{font-style:italic;color:#D4537E;display:block;}
+.cover-sub{font-size:11.5pt;color:#555;line-height:1.75;margin:14px 0;}
+.author-strip{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:0.5px solid #ddd;border-bottom:0.5px solid #ddd;margin:14px 0;}
+.avatar{width:42px;height:42px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16pt;color:#fff;font-weight:700;flex-shrink:0;}
+.author-info h3{font-size:10.5pt;font-weight:700;} .author-info p{font-size:8.5pt;color:#666;}
+.pillars-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:16px 0;}
+.pillar{border-radius:5px;padding:10px 8px;text-align:center;}
+.pillar h4{font-size:8pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px;}
+.pillar p{font-size:7.5pt;line-height:1.4;}
+.p1{background:#FBEAF0;border:0.5px solid #e8c4cc;} .p1 h4{color:#D4537E;}
+.p2{background:#f0f5ff;border:0.5px solid #c4d4e8;} .p2 h4{color:#1a3a6b;}
+.p3{background:#f0faf5;border:0.5px solid #c4ddd2;} .p3 h4{color:#1a7a6e;}
+.p4{background:#fffbf0;border:0.5px solid #e8d8b0;} .p4 h4{color:#b8760a;}
+.p5{background:#f7f0ff;border:0.5px solid #d4c4e8;} .p5 h4{color:#6c3483;}
+.cover-disclaimer{background:#1A1A1A;padding:12px 16px;border-radius:4px;margin-top:14px;}
+.cover-disclaimer p{font-size:8pt;color:rgba(255,255,255,.7);line-height:1.6;}
+.cover-disclaimer strong{color:#D4537E;}
+
+/* SECTION HEADERS */
+.sec-header{background:#1A1A1A;margin:0 -.65in;padding:14px .65in;margin-bottom:18px;}
+.sh-num{font-size:7.5pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:2px;}
+.sh-title{font-family:'Playfair Display',serif;font-size:17pt;font-weight:900;color:#fff;}
+.sh-sub{font-size:9pt;color:rgba(255,255,255,.5);margin-top:2px;}
+
+/* DANIELLE VOICE */
+.db{background:#FBEAF0;border-left:4px solid #D4537E;padding:10px 14px;border-radius:0 5px 5px 0;margin:12px 0;}
+.db-label{font-size:7pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;}
+.db-text{font-size:9.5pt;color:#72243E;line-height:1.65;font-style:italic;}
+
+/* WEEK HEADERS */
+.week-header{background:#D4537E;padding:8px 14px;border-radius:4px;margin:16px 0 10px;}
+.wh-title{font-size:9pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;}
+.wh-theme{font-family:'Playfair Display',serif;font-size:14pt;font-weight:700;color:#fff;margin-top:1px;}
+
+/* DAY CARDS */
+.day-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+.day-card{border-radius:5px;overflow:hidden;border:0.5px solid #e0d8d4;}
+.dc-head{padding:5px 10px;display:flex;justify-content:space-between;align-items:center;}
+.dc-day{font-size:7.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;}
+.dc-type{font-size:7pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.2);padding:1px 6px;border-radius:2px;color:#fff;}
+.dc-body{padding:8px 10px;background:white;}
+.dc-pillar{font-size:6.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;}
+.dc-hook{font-size:9.5pt;font-weight:700;color:#1A1A1A;line-height:1.3;margin-bottom:5px;}
+.dc-caption{font-size:8.5pt;color:#555;line-height:1.55;margin-bottom:5px;}
+.dc-caption em{color:#D4537E;font-style:normal;font-weight:700;}
+.dc-tags{font-size:7pt;color:#888;line-height:1.5;}
+.dc-cta{font-size:7.5pt;font-weight:700;color:#D4537E;margin-top:4px;border-top:0.5px solid #eee;padding-top:4px;}
+
+/* PILLAR COLORS */
+.p1h .dc-head{background:#D4537E;}
+.p2h .dc-head{background:#1a3a6b;}
+.p3h .dc-head{background:#1a7a6e;}
+.p4h .dc-head{background:#b8760a;}
+.p5h .dc-head{background:#6c3483;}
+.p1h .dc-pillar{color:#D4537E;}
+.p2h .dc-pillar{color:#1a3a6b;}
+.p3h .dc-pillar{color:#1a7a6e;}
+.p4h .dc-pillar{color:#b8760a;}
+.p5h .dc-pillar{color:#6c3483;}
+
+/* HASHTAG SECTION */
+.hashtag-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:10px 0;}
+.ht-card{background:#f9f5f3;border-radius:5px;padding:10px 12px;border:0.5px solid #e0d8d4;}
+.ht-card h4{font-size:8pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#D4537E;margin-bottom:6px;}
+.ht-card p{font-size:8pt;color:#555;line-height:1.65;}
+
+/* POSTING SCHEDULE */
+.sched-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:10px 0;}
+.sched-day{border-radius:4px;overflow:hidden;}
+.sd-head{background:#1A1A1A;padding:4px;text-align:center;font-size:7pt;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;}
+.sd-body{padding:6px 4px;text-align:center;border:0.5px solid #e0d8d4;background:white;}
+.sd-body p{font-size:7pt;color:#555;line-height:1.5;}
+.sd-body .sd-type{font-size:7pt;font-weight:700;color:#D4537E;display:block;}
+
+/* INFO CARD */
+.info-card{background:#f9f6f4;border-radius:5px;padding:12px 16px;margin:10px 0;border:0.5px solid #e0d8d4;}
+.info-card h4{font-size:9.5pt;font-weight:700;color:#1A1A1A;margin-bottom:5px;}
+.info-card p{font-size:9pt;color:#555;line-height:1.6;}
+.info-card ul{margin:5px 0 0 14px;}
+.info-card ul li{font-size:9pt;color:#555;line-height:1.55;margin-bottom:2px;}
+
+.page-break{page-break-before:always;padding-top:0;}
+.body-text{font-size:9.5pt;color:#444;line-height:1.7;margin-bottom:10px;}
+.h3{font-size:10.5pt;font-weight:700;color:#1A1A1A;margin:14px 0 7px;}
+.divider{height:1px;background:#e8e4e0;margin:14px 0;}
+
+.doc-footer{margin-top:22px;padding-top:8px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:7pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+
+@media print{
+body{background:white;}
+.page{margin:0;box-shadow:none;padding:.45in .55in;}
+@page{size:8.5in 11in portrait;margin:0;}
+.page-break{page-break-before:always;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div class="npa-eyebrow">No Prior Authorization &nbsp;·&nbsp; Social Media Series</div>
+    <div class="cover-title">31-Day Social Media<br>Content Calendar<br><em>for Med Spas &amp; Esthetic Practices.</em></div>
+    <div class="cover-sub">31 days of content ideas, hooks, captions, and hashtags — written specifically for med spa and esthetic providers. Not generic wellness content. Real Botox education, treatment storytelling, behind-the-scenes, and patient-building content from someone who actually runs a practice.</div>
+    <div class="author-strip">
+      <div class="avatar">D</div>
+      <div class="author-info"><h3>Danielle Alcala — Founder, Hello Gorgeous Med Spa</h3><p>Licensed Esthetician · 10+ years · Oswego, Illinois · nopriorauthorization.com</p></div>
+    </div>
+
+    <div class="h3" style="margin-top:14px;">Your 5 Content Pillars</div>
+    <div class="pillars-strip">
+      <div class="pillar p1"><h4>Educate</h4><p>Clinical truth your audience doesn't know yet</p></div>
+      <div class="pillar p2"><h4>Trust</h4><p>Behind the scenes, your story, your credentials</p></div>
+      <div class="pillar p3"><h4>Results</h4><p>Before/afters, transformations, patient wins</p></div>
+      <div class="pillar p4"><h4>Engage</h4><p>Questions, polls, myth-busting, relatable humor</p></div>
+      <div class="pillar p5"><h4>Sell</h4><p>Services, offers, CTAs — without feeling salesy</p></div>
+    </div>
+
+    <div class="cover-disclaimer">
+      <p><strong>How to use this calendar:</strong> Each day has a hook (your opening line or caption starter), a full caption draft, suggested hashtags, and a CTA. Customize names, pronouns, and your specific services. Replace [Practice Name] with yours. Add your city. The content is written to work for any med spa or esthetic practice — make it yours by adding your voice and your specific results.</p>
+    </div>
+  </div>
+  <div style="border-top:1px solid #ddd;padding-top:10px;display:flex;justify-content:space-between;margin-top:14px;">
+    <div style="font-size:7.5pt;color:#888;letter-spacing:.1em;text-transform:uppercase;"><span style="color:#D4537E;font-weight:700;">No Prior Authorization</span> &nbsp;·&nbsp; nopriorauthorization.com</div>
+    <div style="font-size:7.5pt;color:#888;">$37 &nbsp;·&nbsp; Instant Download &nbsp;·&nbsp; Print-Ready</div>
+  </div>
+</div>
+
+<!-- POSTING STRATEGY PAGE -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Before You Start</div><div class="sh-title">Your Posting Strategy</div><div class="sh-sub">Platforms, frequency, timing, and the mindset behind every post</div></div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"I used to post randomly and wonder why nothing worked. Then I realized: consistency beats quality every single time when you're building an audience. An average post published on schedule beats a perfect post you overthought for two weeks. This calendar gives you the plan. Your job is to show up."</div></div>
+
+<div class="h3">Recommended Posting Schedule</div>
+<div class="sched-grid">
+  <div class="sched-day"><div class="sd-head">Mon</div><div class="sd-body"><span class="sd-type">Educate</span><p>Clinical tip or myth-bust</p></div></div>
+  <div class="sched-day"><div class="sd-head">Tue</div><div class="sd-body"><span class="sd-type">Results</span><p>Before/after or transformation</p></div></div>
+  <div class="sched-day"><div class="sd-head">Wed</div><div class="sd-body"><span class="sd-type">Trust</span><p>Behind the scenes or your story</p></div></div>
+  <div class="sched-day"><div class="sd-head">Thu</div><div class="sd-body"><span class="sd-type">Engage</span><p>Question, poll, or relatable post</p></div></div>
+  <div class="sched-day"><div class="sd-head">Fri</div><div class="sd-body"><span class="sd-type">Sell</span><p>Service spotlight or offer</p></div></div>
+  <div class="sched-day"><div class="sd-head">Sat</div><div class="sd-body"><span class="sd-type">Wildcard</span><p>Trending audio, reel, or client story</p></div></div>
+  <div class="sched-day"><div class="sd-head">Sun</div><div class="sd-body"><span class="sd-type">Rest</span><p>Optional: Stories only</p></div></div>
+</div>
+
+<div class="h3">Best Posting Times for Med Spa &amp; Esthetic Audiences</div>
+<div class="info-card">
+  <h4>When your audience is most active</h4>
+  <ul>
+    <li><strong>Instagram:</strong> Tuesday–Friday, 9–11am and 6–8pm local time. Reels perform best when posted between 9am–12pm.</li>
+    <li><strong>Facebook:</strong> Tuesday–Thursday, 10am–2pm. Facebook groups: anytime — post when you have something genuine to add.</li>
+    <li><strong>TikTok:</strong> Tuesday, Thursday, Friday — 7–9am, 12–3pm, 7–11pm. Algorithm rewards completion rate over timing.</li>
+    <li><strong>Google Business Profile:</strong> Post weekly — any day. These posts help local SEO regardless of engagement.</li>
+    <li><strong>General rule:</strong> Post at the same times consistently. Your audience learns when to expect you — and the algorithm rewards predictability.</li>
+  </ul>
+</div>
+
+<div class="h3">Your Master Hashtag Banks</div>
+<div class="hashtag-grid">
+  <div class="ht-card">
+    <h4>Med Spa / Injectable</h4>
+    <p>#medspa #medspabotox #botox #botoxinjections #dermalfillers #lipfiller #antiaging #aestheticmedicine #injectables #aestheticnurse #medspagirl #botoxbeforeandafter #fillerbeforeandafter #aestheticpractice #medicalesthetic #botoxresults</p>
+  </div>
+  <div class="ht-card">
+    <h4>Esthetic / Skin</h4>
+    <p>#esthetician #licensedesthetician #skincare #skincarespecialist #facialist #glow #skingoals #healthyskin #clearskin #skincareroutine #estheticianlife #aestheticgoals #laserhairremoval #microneedling #chemicalpeel #ipl</p>
+  </div>
+  <div class="ht-card">
+    <h4>Lash / Brow / Wax</h4>
+    <p>#lashextensions #lashlift #lashtechnician #browsonfleek #browhenna #browlamination #waxing #brazilianwax #lashandbrownation #lashartist #brows #lashtech #lashbiz #waxspecialist #bodywaxing</p>
+  </div>
+  <div class="ht-card">
+    <h4>Wellness / Weight Loss</h4>
+    <p>#glp1 #semaglutide #weightloss #weightlossjourney #hormonehealth #bhrt #trt #ivtherapy #peptidetherapy #nad #wellness #medspawellness #hormonetherapy #functionalmedicine #wellnessjourney</p>
+  </div>
+  <div class="ht-card">
+    <h4>Local / Community</h4>
+    <p>#[yourcity]medspa #[yourcity]botox #[yourcity]esthetician #[yourcity]skincare #[yourcity]lashes #[yourcity]smallbusiness #supportlocal #[yourstate]medspa #[yourcity] — always include your city and state</p>
+  </div>
+  <div class="ht-card">
+    <h4>Business / Entrepreneur</h4>
+    <p>#medspabusiness #aestheticbusiness #smallbusiness #entrepreneur #businessowner #womeninbusiness #medspaowner #estheticianbusiness #aestheticentrepreneur #nopriorauthorization</p>
+  </div>
+</div>
+
+<div class="db"><div class="db-label">Hashtag strategy</div><div class="db-text">"Use 5–10 hashtags per post — not 30. Instagram's own data shows that 3–10 targeted hashtags outperform hashtag-stuffed posts. Mix 2–3 large hashtags (1M+ posts), 3–4 medium (100K–500K), and 2–3 local hashtags every time. And always include your city."</div></div>
+</div>
+
+<!-- WEEK 1 -->
+<div class="page-break">
+<div class="week-header"><div class="wh-title">Week 1 &nbsp;·&nbsp; Days 1–7</div><div class="wh-theme">Introduce Who You Are &amp; Why You Do This</div></div>
+
+<div class="db"><div class="db-label">Week 1 strategy</div><div class="db-text">"Week 1 is about planting your flag. Who are you, why do you do this, what do you stand for? New followers need to understand your story before they trust your expertise. Don't skip the personal posts this week — they are the foundation everything else is built on."</div></div>
+
+<div class="day-grid">
+  <div class="day-card p2h">
+    <div class="dc-head"><span class="dc-day">Day 1 — Monday</span><span class="dc-type">Trust</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Your Origin Story</div>
+      <div class="dc-hook">I didn't plan to open a med spa. Here's what happened instead.</div>
+      <div class="dc-caption">Ten years ago I was [your starting point] and had no idea I'd one day be the person helping people feel beautiful for a living. I started [Practice Name] because I believed everyone deserves to feel confident in their skin — not just people who could afford a fancy zip code. <em>That belief hasn't changed.</em> What has changed is the space, the equipment, the team — and the hundreds of clients who've trusted us with their skin, their confidence, and their goals. If you're new here — hi. I'm [Name]. This is [Practice Name]. And I'm so glad you found us. 🤍</div>
+      <div class="dc-tags">#medspa #[yourcity]medspa #smallbusiness #medspabusiness #mywhystory</div>
+      <div class="dc-cta">CTA: "Drop a 🤍 in the comments if you're new here — I want to say hi."</div>
+    </div>
+  </div>
+
+  <div class="day-card p3h">
+    <div class="dc-head"><span class="dc-day">Day 2 — Tuesday</span><span class="dc-type">Results</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">First Before/After</div>
+      <div class="dc-hook">This is what 2 weeks post-Botox looks like. No filter. No editing.</div>
+      <div class="dc-caption">Before: forehead lines that bothered this client every time she looked in the mirror. After: same face — same smile — just relaxed. That's the goal. Not frozen. Not fake. Just refreshed. <em>This is what we do at [Practice Name].</em> Results like this take about 14 days to fully develop and last approximately 3–4 months. Want to know if Botox is right for you? Link in bio to book your complimentary consultation. 💕</div>
+      <div class="dc-tags">#botoxbeforeandafter #botoxresults #medspa #[yourcity]botox #naturalresults</div>
+      <div class="dc-cta">CTA: "Save this post if you've been thinking about Botox."</div>
+    </div>
+  </div>
+
+  <div class="day-card p1h">
+    <div class="dc-head"><span class="dc-day">Day 3 — Wednesday</span><span class="dc-type">Educate</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Myth Bust — Botox Basics</div>
+      <div class="dc-hook">Botox makes you look frozen. FALSE. Here's the truth.</div>
+      <div class="dc-caption">The "frozen face" look people fear? That's the result of too much product placed incorrectly. <em>It is not what good Botox looks like.</em> Good Botox lets you still raise your eyebrows. Still smile. Still look like YOU — just rested. At [Practice Name], we always start conservative and assess at 14 days. The goal is never to erase your face. It's to let your face relax. Any questions about what Botox can and can't do? Drop them below — I answer every one. 👇</div>
+      <div class="dc-tags">#botoxmyths #botoxfacts #medspa #botoxeducation #aestheticmedicine</div>
+      <div class="dc-cta">CTA: "Comment your biggest Botox question below."</div>
+    </div>
+  </div>
+
+  <div class="day-card p4h">
+    <div class="dc-head"><span class="dc-day">Day 4 — Thursday</span><span class="dc-type">Engage</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">This or That Poll</div>
+      <div class="dc-hook">Lip filler OR Lip flip? Which are you curious about?</div>
+      <div class="dc-caption">Two very different treatments. Two very different results. <em>Lip flip:</em> A tiny amount of Botox in the upper lip that gives a subtle curl — no volume added. <em>Lip filler:</em> HA filler that adds actual volume and shape. Which one are you more curious about? Vote in the poll — and if you want me to do a full breakdown of both, let me know in the comments. 👇</div>
+      <div class="dc-tags">#lipflip #lipfiller #medspa #lipaugmentation #aestheticmedicine</div>
+      <div class="dc-cta">CTA: Poll: "Lip flip" vs "Lip filler" — then "Tell me which and I'll do a full breakdown!"</div>
+    </div>
+  </div>
+
+  <div class="day-card p5h">
+    <div class="dc-head"><span class="dc-day">Day 5 — Friday</span><span class="dc-type">Sell</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Service Spotlight</div>
+      <div class="dc-hook">Our most booked service — and why clients keep coming back every 3 months.</div>
+      <div class="dc-caption">Botox at [Practice Name] is not a one-size-fits-all treatment. Every face is assessed individually. Every dose is chosen for your specific muscles, your specific goals, and your specific anatomy. We photograph every patient before we start and review at 14 days — because your result matters to us, not just in the chair but two weeks later. <em>This is how we've built a 4.9-star practice.</em> Book your appointment — link in bio. 🤍</div>
+      <div class="dc-tags">#[yourcity]medspa #botox #medspa #aestheticmedicine #bookwithus</div>
+      <div class="dc-cta">CTA: "Link in bio to book — new patient consultations are complimentary."</div>
+    </div>
+  </div>
+
+  <div class="day-card p2h">
+    <div class="dc-head"><span class="dc-day">Day 6 — Saturday</span><span class="dc-type">Trust</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Behind the Scenes</div>
+      <div class="dc-hook">What a full day at [Practice Name] actually looks like.</div>
+      <div class="dc-caption">6am: coffee before anyone arrives. 8am: first patient in the chair. Between patients: charting, replying to DMs, making sure our supplies are stocked and our protocols are current. <em>This is not glamorous work.</em> It is meaningful work. Every day I get to help someone feel more like themselves — and on the days when I remember that, it doesn't feel like work at all. Here's a peek at our day. 🤍</div>
+      <div class="dc-tags">#medspabehindthescenes #medspabusiness #medspaowner #aestheticlife #smallbusiness</div>
+      <div class="dc-cta">CTA: "What would you want to see more of behind the scenes?"</div>
+    </div>
+  </div>
+
+  <div class="day-card p4h">
+    <div class="dc-head"><span class="dc-day">Day 7 — Sunday</span><span class="dc-type">Engage</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Relatable / Lighter</div>
+      <div class="dc-hook">The face every esthetician makes when a client says they've been using a bar of Dove on their face. 😂</div>
+      <div class="dc-caption">We love you. We want the best for your skin. Please — <em>please</em> — stop washing your face with bar soap. That squeaky clean feeling? That's your skin's moisture barrier crying. Your face deserves better. (Come see us. We'll fix it.) 💕</div>
+      <div class="dc-tags">#estheticianhumor #skincare #esthetician #skincareadvice #medspa</div>
+      <div class="dc-cta">CTA: "Tag someone who needs to hear this 😂"</div>
+    </div>
+  </div>
+</div>
+
+<!-- WEEK 2 -->
+<div class="page-break">
+<div class="week-header"><div class="wh-title">Week 2 &nbsp;·&nbsp; Days 8–14</div><div class="wh-theme">Build Clinical Authority &amp; Educate Your Audience</div></div>
+
+<div class="db"><div class="db-label">Week 2 strategy</div><div class="db-text">"This week we go deeper on education. People follow providers who teach them something. Not providers who just post before/afters. When your audience learns from you every week, they begin to trust you as an expert before they've ever met you in person."</div></div>
+
+<div class="day-grid">
+  <div class="day-card p1h">
+    <div class="dc-head"><span class="dc-day">Day 8 — Monday</span><span class="dc-type">Educate</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Skin Education</div>
+      <div class="dc-hook">Your skin has 3 layers. Most skincare only reaches the first one. Here's what that means.</div>
+      <div class="dc-caption">The epidermis (outer layer) is where most OTC skincare products work. The dermis is where collagen, elastin, and the real anti-aging action happen — and where medical-grade treatments reach. This is why a $300 department store serum often can't do what a $120 medical-grade retinol can. <em>It's about penetration, not price.</em> Want to know which products are actually doing something for your skin? Book a skin consultation — we'll build you a routine that works. Link in bio. 🤍</div>
+      <div class="dc-tags">#skincareeducation #medicalgradeskincare #esthetician #skincarefacts #medspa</div>
+      <div class="dc-cta">CTA: "Save this — it's one of the most important things to understand about your skincare."</div>
+    </div>
+  </div>
+
+  <div class="day-card p3h">
+    <div class="dc-head"><span class="dc-day">Day 9 — Tuesday</span><span class="dc-type">Results</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Filler Before/After</div>
+      <div class="dc-hook">She wanted her jawline back. We gave it to her — no surgery required.</div>
+      <div class="dc-caption">As we age, we lose bone density and volume in the face — which is why the jawline and chin become less defined over time. Dermal filler placed strategically along the jawline can restore that definition without a single incision. <em>This client saw results immediately.</em> Final results assessed at 14 days once swelling resolves. Duration: 12–18 months depending on product. Questions about jawline filler? Drop them below. 👇</div>
+      <div class="dc-tags">#jawlinefiller #dermalfillers #fillerresults #medspa #[yourcity]filler</div>
+      <div class="dc-cta">CTA: "Book your filler consultation — link in bio. Complimentary for new patients."</div>
+    </div>
+  </div>
+
+  <div class="day-card p2h">
+    <div class="dc-head"><span class="dc-day">Day 10 — Wednesday</span><span class="dc-type">Trust</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Your Credentials / Training</div>
+      <div class="dc-hook">Who is actually injecting your face? It matters more than you think.</div>
+      <div class="dc-caption">Not all injectors are created equal. Your results — and your safety — depend entirely on the training, credentials, and experience of the person holding the needle. At [Practice Name], every injection is performed by [credentials]. We use only FDA-approved products sourced directly from authorized distributors. We photograph every patient before we treat. <em>We take your safety as seriously as we take your results.</em> You deserve to know who is caring for you. 🤍</div>
+      <div class="dc-tags">#medspasafety #chooseyourinjector #credentials #medspa #aestheticmedicine</div>
+      <div class="dc-cta">CTA: "Questions about our training or products? Ask in the comments — we're an open book."</div>
+    </div>
+  </div>
+
+  <div class="day-card p4h">
+    <div class="dc-head"><span class="dc-day">Day 11 — Thursday</span><span class="dc-type">Engage</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Myth Bust / Poll</div>
+      <div class="dc-hook">TRUE or FALSE: If you start Botox young, you'll need more of it as you age.</div>
+      <div class="dc-caption">FALSE — and actually the opposite is often true. Starting Botox in your late 20s or 30s as a preventative measure can reduce the amount you need later because the repeated muscle relaxation prevents deep lines from forming. <em>The patients who wait until lines are deeply set often need more product to see results than those who started earlier.</em> Drop your age range in the comments — I'm curious when people are starting their Botox journey in 2026. 👇</div>
+      <div class="dc-tags">#preventativebotox #botoxinmy20s #botoxfacts #medspa #antiaging</div>
+      <div class="dc-cta">CTA: "Drop your age range in the comments — let's see the data 👇"</div>
+    </div>
+  </div>
+
+  <div class="day-card p5h">
+    <div class="dc-head"><span class="dc-day">Day 12 — Friday</span><span class="dc-type">Sell</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">GLP-1 / Weight Loss Spotlight</div>
+      <div class="dc-hook">We've helped [X] patients lose weight this year. Here's what actually works.</div>
+      <div class="dc-caption">Weight loss isn't about willpower. It's about biology. GLP-1 medications work by reducing appetite, slowing gastric emptying, and addressing the hormonal drivers of weight gain that diet and exercise alone can't fix. At [Practice Name], our weight loss program includes medical supervision, regular check-ins, nutritional guidance, and the support you need to actually sustain your results. <em>This isn't a quick fix. It's a real solution.</em> Ready to learn more? Link in bio. 🤍</div>
+      <div class="dc-tags">#glp1 #semaglutide #weightloss #medicalweightloss #medspa #[yourcity]weightloss</div>
+      <div class="dc-cta">CTA: "DM us 'READY' to get information about our weight loss program."</div>
+    </div>
+  </div>
+
+  <div class="day-card p1h">
+    <div class="dc-head"><span class="dc-day">Day 13 — Saturday</span><span class="dc-type">Educate</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">SPF Education</div>
+      <div class="dc-hook">The one skincare product that outperforms every anti-aging treatment. And it costs $30.</div>
+      <div class="dc-caption">SPF is not optional. It is the single most evidence-based anti-aging intervention that exists. UV radiation is responsible for approximately 90% of visible skin aging — the wrinkles, the dark spots, the texture. Every laser treatment, every Botox appointment, every skincare product you invest in is undermined if you skip sunscreen. <em>SPF 50+ broad-spectrum, every single day.</em> Even in winter. Even when it's cloudy. Non-negotiable. 💕</div>
+      <div class="dc-tags">#sunscreen #spf #skincareeducation #antiaging #esthetician #medspa</div>
+      <div class="dc-cta">CTA: "What SPF are you using? Drop it below and I'll tell you if it's actually protecting you."</div>
+    </div>
+  </div>
+
+  <div class="day-card p4h">
+    <div class="dc-head"><span class="dc-day">Day 14 — Sunday</span><span class="dc-type">Engage</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Fun / Relatable</div>
+      <div class="dc-hook">Things I hear every week as a med spa provider: a thread.</div>
+      <div class="dc-caption">"I don't want to look done." — I promise, neither do I. "Does it hurt?" — Less than waxing. "Will it last forever?" — No, but your good mood afterward might. "My friend said it's bad for you." — Your friend also thinks vitamin C cures everything. 😂 <em>We love all of you.</em> Even the skeptics. Especially the skeptics — because they always become our most loyal patients once they see their results. 🤍</div>
+      <div class="dc-tags">#medspabotox #medspahumor #estheticianlife #botox #medspa</div>
+      <div class="dc-cta">CTA: "Which one sounds like something you've said? 😂 Tag someone who needs to hear this."</div>
+    </div>
+  </div>
+</div>
+
+<!-- WEEK 3 -->
+<div class="page-break">
+<div class="week-header"><div class="wh-title">Week 3 &nbsp;·&nbsp; Days 15–21</div><div class="wh-theme">Share Results, Stories &amp; Social Proof</div></div>
+
+<div class="db"><div class="db-label">Week 3 strategy</div><div class="db-text">"Social proof is the most powerful marketing tool you have. Real results from real patients — with their permission — convert followers to bookings faster than any ad you could run. This week leans into results, patient stories, and reviews."</div></div>
+
+<div class="day-grid">
+  <div class="day-card p3h">
+    <div class="dc-head"><span class="dc-day">Day 15 — Monday</span><span class="dc-type">Results</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Patient Transformation Story</div>
+      <div class="dc-hook">She came in wanting to feel like herself again. Here's what happened.</div>
+      <div class="dc-caption">After having kids, this patient said she looked in the mirror and didn't recognize herself anymore. Not in a dramatic way — just a quiet, tired way. We started with Botox in her forehead and crow's feet. Added a little filler to restore volume in her cheeks. <em>She texted us two weeks later and said: "I feel like ME again."</em> That text is why we do this. Results vary. This patient's results are her own. But the feeling she described? We hear it every week. 🤍</div>
+      <div class="dc-tags">#medspastory #botoxresults #fillerresults #medspa #feellikeyourself</div>
+      <div class="dc-cta">CTA: "If this sounds like you — let's talk. Link in bio to book your consultation."</div>
+    </div>
+  </div>
+
+  <div class="day-card p1h">
+    <div class="dc-head"><span class="dc-day">Day 16 — Tuesday</span><span class="dc-type">Educate</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Laser / IPL Education</div>
+      <div class="dc-hook">Sun spots, redness, and uneven tone — cleared in one treatment. Here's how IPL works.</div>
+      <div class="dc-caption">IPL (Intense Pulsed Light) uses targeted light energy to break up pigmentation and reduce redness without damaging surrounding skin. The pigmented spots darken for 7–10 days before shedding — which can look worse before it looks better. <em>This is normal and expected.</em> After the shedding: clearer, more even skin. Most patients need 3–5 sessions for full correction with maintenance 1–2x/year. Want to know if IPL is right for your skin? Book a consultation — link in bio. 🤍</div>
+      <div class="dc-tags">#ipl #photofacial #sunspots #medspa #skincaretreatment #[yourcity]medspa</div>
+      <div class="dc-cta">CTA: "Save this post if you've been wondering about IPL."</div>
+    </div>
+  </div>
+
+  <div class="day-card p2h">
+    <div class="dc-head"><span class="dc-day">Day 17 — Wednesday</span><span class="dc-type">Trust</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Google Review Spotlight</div>
+      <div class="dc-hook">She left us this review last week and we're still smiling about it.</div>
+      <div class="dc-caption">[Share a real patient review — with permission or fully anonymized.] Reviews like this are the reason we come in every day. We don't just want you to look better — we want you to feel better. To leave your appointment with a little more confidence than you walked in with. <em>If you've been a patient with us and haven't left us a review yet, your words mean the world to our small practice.</em> Link in bio — takes 2 minutes. 💕</div>
+      <div class="dc-tags">#googlereview #medspa #patientlove #[yourcity]medspa #smallbusiness</div>
+      <div class="dc-cta">CTA: "Drop a ⭐ in the comments if you've been a patient with us. We love you!"</div>
+    </div>
+  </div>
+
+  <div class="day-card p4h">
+    <div class="dc-head"><span class="dc-day">Day 18 — Thursday</span><span class="dc-type">Engage</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Controversial / Conversation Starter</div>
+      <div class="dc-hook">Hot take: The cheapest Botox in town is usually the most expensive decision you'll make.</div>
+      <div class="dc-caption">I see it every week. Patients who went somewhere cheaper — wrong product, wrong placement, bad result — who come to us to fix it. Corrections cost more than doing it right the first time. A $9/unit Botox deal sounds amazing until you're paying $500 to correct a drooping brow or an uneven result. <em>Your face is not a Groupon category.</em> Find a provider you trust. Pay for the skill. It is worth it. 💕</div>
+      <div class="dc-tags">#botoxadvice #chooseyourinjector #medspa #botoxprice #aestheticmedicine</div>
+      <div class="dc-cta">CTA: "Have you ever had a treatment you needed to get corrected? Tell me in the comments."</div>
+    </div>
+  </div>
+
+  <div class="day-card p5h">
+    <div class="dc-head"><span class="dc-day">Day 19 — Friday</span><span class="dc-type">Sell</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Membership / Loyalty Offer</div>
+      <div class="dc-hook">Our members pay less, age better, and never scramble to find an appointment. Here's why.</div>
+      <div class="dc-caption">Consistency is the secret to great aesthetic results. Patients who maintain regular Botox appointments (every 3–4 months) see better results over time as muscles naturally soften. Our membership makes consistency automatic — and more affordable. <em>[List your membership benefits and price.]</em> No scrambling. No gaps in results. Just you, looking and feeling your best — month after month. Ready to join? DM us or use the link in bio. 🤍</div>
+      <div class="dc-tags">#medspa #medspamembership #botoxmembership #[yourcity]medspa #skincaremembership</div>
+      <div class="dc-cta">CTA: "DM us 'MEMBERSHIP' for all the details."</div>
+    </div>
+  </div>
+
+  <div class="day-card p3h">
+    <div class="dc-head"><span class="dc-day">Day 20 — Saturday</span><span class="dc-type">Results</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Lash / Brow Results</div>
+      <div class="dc-hook">She came in with no brows. She left with architecture.</div>
+      <div class="dc-caption">Brow henna is one of our most underrated services. It tints both the brow hairs AND the skin underneath — giving a full, defined brow that lasts 2–4 weeks on the skin and 4–6 weeks on the hair. <em>No pencil. No powder. Just waking up with brows.</em> This transformation took 45 minutes and completely changed how her face reads. Brow shaping included. Book yours — link in bio. 💕</div>
+      <div class="dc-tags">#browhenna #browgoals #browsonfleek #esthetician #[yourcity]esthetician</div>
+      <div class="dc-cta">CTA: "Tag someone who needs this 👆"</div>
+    </div>
+  </div>
+
+  <div class="day-card p1h">
+    <div class="dc-head"><span class="dc-day">Day 21 — Sunday</span><span class="dc-type">Educate</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Hormone Health</div>
+      <div class="dc-hook">Tired. No libido. Weight won't move. Brain fog. Sound familiar?</div>
+      <div class="dc-caption">These symptoms are so common that most women are told they're "just part of getting older." But they're often signs of hormonal imbalance — and they're treatable. Hormone therapy isn't just for women in full menopause. It's for anyone experiencing these symptoms at any stage of life. <em>At [Practice Name], we test first and treat to symptom resolution</em> — not just to lab numbers. Want to learn more? DM us "HORMONES" and we'll send you everything you need. 🤍</div>
+      <div class="dc-tags">#hormonehealth #bhrt #hormonetherapy #womenshealth #medspa #[yourcity]wellness</div>
+      <div class="dc-cta">CTA: "DM us 'HORMONES' if any of these symptoms sound familiar."</div>
+    </div>
+  </div>
+</div>
+
+<!-- WEEK 4 + FINAL DAYS -->
+<div class="page-break">
+<div class="week-header"><div class="wh-title">Week 4 &nbsp;·&nbsp; Days 22–28</div><div class="wh-theme">Drive Bookings &amp; Deepen Community</div></div>
+
+<div class="db"><div class="db-label">Week 4 strategy</div><div class="db-text">"By Week 4, your audience knows who you are and what you do. Now we drive action. More CTAs, more urgency, more direct asks — because people who have been following you for 3 weeks are warm leads. Give them a reason to book."</div></div>
+
+<div class="day-grid">
+  <div class="day-card p4h">
+    <div class="dc-head"><span class="dc-day">Day 22 — Monday</span><span class="dc-type">Engage</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Q&amp;A Invitation</div>
+      <div class="dc-hook">Ask me anything. Seriously. About Botox, fillers, skin, hormones — anything.</div>
+      <div class="dc-caption">I'm doing a Q&amp;A this week. Drop your question in the comments — no question is too basic or too specific. I'll answer every one. This is the same advice I give patients in the consultation room. <em>You deserve real answers — not Google rabbit holes.</em> What have you always wanted to know? 👇</div>
+      <div class="dc-tags">#askme #medspaqa #botoxquestions #skincarequestions #medspa</div>
+      <div class="dc-cta">CTA: "Drop your question below — I answer every one. 👇"</div>
+    </div>
+  </div>
+
+  <div class="day-card p3h">
+    <div class="dc-head"><span class="dc-day">Day 23 — Tuesday</span><span class="dc-type">Results</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Skin Resurfacing / Laser Result</div>
+      <div class="dc-hook">3 months post-laser. No filter. No facetune. Just her skin.</div>
+      <div class="dc-caption">This patient came in with significant sun damage, uneven texture, and discoloration she'd been dealing with for years. After a series of laser treatments, this is where she is today — 3 months later. <em>Texture smoother. Pigmentation faded. Confidence through the roof.</em> Laser resurfacing results develop over 3–6 months as collagen remodels. This is not an overnight treatment — it is a skin investment. Book your skin consultation at the link in bio. 🤍</div>
+      <div class="dc-tags">#laserresurfacing #skinresurfacing #medspa #glowskin #[yourcity]medspa</div>
+      <div class="dc-cta">CTA: "DM us 'SKIN' to get information on our laser treatments."</div>
+    </div>
+  </div>
+
+  <div class="day-card p2h">
+    <div class="dc-head"><span class="dc-day">Day 24 — Wednesday</span><span class="dc-type">Trust</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">What Separates Us</div>
+      <div class="dc-hook">What's different about [Practice Name]? Here's the honest answer.</div>
+      <div class="dc-caption">We are not the cheapest option in [City]. We are not the biggest. What we are is consistent, careful, and genuinely invested in every patient we see. <em>The person who started this practice is still here.</em> Still learning. Still investing. Still showing up. That doesn't scale easily — but it means every patient gets cared for like family. If that's what you're looking for, we'd love to have you. 🤍</div>
+      <div class="dc-tags">#medspa #[yourcity]medspa #smallbusiness #whyus #medspafamily</div>
+      <div class="dc-cta">CTA: "What made you choose your current provider? Tell me in the comments."</div>
+    </div>
+  </div>
+
+  <div class="day-card p5h">
+    <div class="dc-head"><span class="dc-day">Day 25 — Thursday</span><span class="dc-type">Sell</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">IV Therapy Spotlight</div>
+      <div class="dc-hook">You've been exhausted for months. What if it wasn't just "being busy"?</div>
+      <div class="dc-caption">Low energy, poor sleep, sluggish recovery — these are symptoms, not personality traits. IV therapy delivers vitamins, minerals, and nutrients directly into your bloodstream — bypassing the absorption limitations of oral supplements. Faster. More effective. <em>Most patients feel the difference within hours.</em> Our most popular drip: [Your most popular drip + what's in it]. Ready to feel like yourself again? Book your IV session — link in bio. 💕</div>
+      <div class="dc-tags">#ivtherapy #ivdrip #nad #medspa #wellnessinfusion #[yourcity]wellness</div>
+      <div class="dc-cta">CTA: "Link in bio to book your IV session — or DM us 'IV' for our full drip menu."</div>
+    </div>
+  </div>
+
+  <div class="day-card p1h">
+    <div class="dc-head"><span class="dc-day">Day 26 — Friday</span><span class="dc-type">Educate</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Retinol Education</div>
+      <div class="dc-hook">Retinol vs Tretinoin. What's the difference and which one do you actually need?</div>
+      <div class="dc-caption">Retinol: OTC, slower, gentler. Works but takes longer to show results. Great starting point. Tretinoin: Prescription-strength retinoic acid. Direct — no conversion needed by your skin. More effective, more powerful, more side effects when misused. <em>Which one is right for you depends on your skin, your tolerance, and your goals.</em> This is exactly what a skin consultation is for. Book yours — link in bio. Complimentary for new patients. 🤍</div>
+      <div class="dc-tags">#retinol #tretinoin #skincare #skincareenducation #esthetician #medspa</div>
+      <div class="dc-cta">CTA: "Save this post — and book your skin consultation to find out which is right for you."</div>
+    </div>
+  </div>
+
+  <div class="day-card p4h">
+    <div class="dc-head"><span class="dc-day">Day 27 — Saturday</span><span class="dc-type">Engage</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Seasonal / Timely</div>
+      <div class="dc-hook">If you've been putting off your [season] treatment, this is your sign.</div>
+      <div class="dc-caption">[Spring]: Spring is the perfect time for laser treatments — you've had months away from heavy sun exposure and you have time to heal before summer. [Summer]: Lip filler, lash extensions, and body treatments are our most booked summer services — and for good reason. [Fall]: Fall is the best time to start Botox before the holidays. [Winter]: The best skin of your life starts with a winter treatment plan. Whatever season you're in — <em>now is always the right time to start.</em> Book at the link in bio. 💕</div>
+      <div class="dc-tags">#medspa #seasonalskincare #[yourcity]medspa #nowisthetimeGo #skincaregoals</div>
+      <div class="dc-cta">CTA: "What treatment have you been putting off? Tell me in the comments."</div>
+    </div>
+  </div>
+
+  <div class="day-card p2h">
+    <div class="dc-head"><span class="dc-day">Day 28 — Sunday</span><span class="dc-type">Trust</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Thank You / Gratitude Post</div>
+      <div class="dc-hook">To every patient who has trusted us — thank you. This one's for you.</div>
+      <div class="dc-caption">I started [Practice Name] because I believed people deserved to feel beautiful without apology. Ten years later, I still believe that — more than ever. Every patient who has walked through our doors has trusted us with something deeply personal. <em>We don't take that lightly.</em> We never have. Thank you for choosing us. Thank you for your reviews, your referrals, your kind words on your way out the door. This practice exists because of you. 🤍</div>
+      <div class="dc-tags">#gratitude #medspa #patientappreciation #[yourcity]medspa #smallbusiness</div>
+      <div class="dc-cta">CTA: "Drop a 🤍 if you've been a patient with us. We love and appreciate every one of you."</div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL 3 DAYS -->
+<div class="page-break">
+<div class="week-header"><div class="wh-title">Final Days &nbsp;·&nbsp; Days 29–31</div><div class="wh-theme">Close Strong &amp; Set Up Next Month</div></div>
+
+<div class="day-grid">
+  <div class="day-card p5h">
+    <div class="dc-head"><span class="dc-day">Day 29</span><span class="dc-type">Sell</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">New Patient CTA</div>
+      <div class="dc-hook">If you've been following us but haven't booked yet — here's what's stopping you. And here's why it shouldn't.</div>
+      <div class="dc-caption">"I'm nervous." — Every first-time patient is. We'll walk you through everything before we start anything. "I don't know what I need." — That's exactly what a consultation is for. "I can't afford it." — We offer financing through [CareCredit/Cherry]. "I'll do it next month." — You've said that for a while now. 😊 <em>Come in. Meet us. Let us take care of you.</em> New patient consultations are complimentary. Link in bio. 🤍</div>
+      <div class="dc-tags">#newpatient #firsttimebotox #medspa #[yourcity]medspa #booknow</div>
+      <div class="dc-cta">CTA: "Link in bio — book your complimentary new patient consultation today."</div>
+    </div>
+  </div>
+
+  <div class="day-card p3h">
+    <div class="dc-head"><span class="dc-day">Day 30</span><span class="dc-type">Results</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">Month Recap / Best Results</div>
+      <div class="dc-hook">A month of results at [Practice Name]. Here's what we've been doing.</div>
+      <div class="dc-caption">This month at [Practice Name] we treated [X] patients, celebrated [X] new faces, and helped [X] people feel more like themselves than they have in years. <em>These are some of our favorite results this month</em> — shared with our patients' permission and gratitude. If you want results like these, we have availability next month. Link in bio to book. We'd love to see you. 🤍</div>
+      <div class="dc-tags">#monthlyresults #medspa #[yourcity]medspa #beforeandafter #aestheticresults</div>
+      <div class="dc-cta">CTA: "Save your spot for next month — link in bio."</div>
+    </div>
+  </div>
+
+  <div class="day-card p4h">
+    <div class="dc-head"><span class="dc-day">Day 31</span><span class="dc-type">Engage</span></div>
+    <div class="dc-body">
+      <div class="dc-pillar">What's Coming Next Month</div>
+      <div class="dc-hook">Next month at [Practice Name]: here's what we have planned.</div>
+      <div class="dc-caption">Next month we're sharing [teaser: new treatment / seasonal content / educational series / patient stories]. We're also [any specials, events, open house, new product launch]. <em>Make sure you're following us so you don't miss it.</em> And if there's something specific you want to learn about or see more of — drop it in the comments. I read every single one and it genuinely shapes what we post. 👇 See you next month. 🤍</div>
+      <div class="dc-tags">#medspa #[yourcity]medspa #comingsoon #followusformore #medspalife</div>
+      <div class="dc-cta">CTA: "What do you want to see more of next month? Tell me below. 👇"</div>
+    </div>
+  </div>
+</div>
+
+<!-- BONUS SECTION -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Bonus</div><div class="sh-title">Reels, Stories &amp; Repurposing Guide</div><div class="sh-sub">How to get 3x the content from every post you create</div></div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"Every piece of content I create gets used at least three times. A feed post becomes a Story. A Story becomes a Reel with trending audio. A Reel becomes a Google Business Profile post. You don't need 31 completely different ideas — you need 10 great ideas used strategically."</div></div>
+
+<div class="h3">The Content Repurposing Formula</div>
+<div class="info-card">
+  <h4>One post → 4 pieces of content</h4>
+  <ul>
+    <li><strong>Feed post (static or carousel):</strong> The full caption with all the detail. This is your anchor content.</li>
+    <li><strong>Stories:</strong> Share the feed post to Stories + add a poll or question sticker to drive engagement. "Did you know this? Yes / No" works every time.</li>
+    <li><strong>Reel:</strong> Take the hook from your feed post and turn it into a talking head Reel (30–60 seconds). Same information, different format. Reels reach new audiences. Feed posts reach existing followers.</li>
+    <li><strong>Google Business Profile post:</strong> Shorten the caption to 2–3 sentences + your booking link. Post weekly on GBP. This helps local SEO regardless of engagement. Takes 3 minutes.</li>
+  </ul>
+</div>
+
+<div class="h3">10 Evergreen Reel Hooks for Med Spas</div>
+<div class="info-card">
+  <h4>Copy, film, post — these work year-round</h4>
+  <ul>
+    <li>"Things I wish I knew before my first Botox appointment [as a provider]..."</li>
+    <li>"Watch me explain the difference between Botox and filler in 60 seconds."</li>
+    <li>"Come with me to [Practice Name] for a behind-the-scenes day."</li>
+    <li>"The skin tip my patients pay me to tell them — I'm giving it away for free."</li>
+    <li>"What actually happens to your face if you stop Botox after years of use."</li>
+    <li>"Red flags when choosing a med spa — from someone who sees the corrections."</li>
+    <li>"Grwm — getting my own Botox done today. Here's what I chose and why."</li>
+    <li>"The most common skincare mistake I see every single week."</li>
+    <li>"Answering the most asked questions about [service] — no filter."</li>
+    <li>"POV: you're a new patient at [Practice Name] for the first time."</li>
+  </ul>
+</div>
+
+<div class="h3">Stories Content Ideas — Quick Wins Every Day</div>
+<div class="info-card">
+  <h4>10 story ideas that take less than 5 minutes each</h4>
+  <ul>
+    <li>Poll: "Botox or filler — which are you more curious about?" (drives DMs)</li>
+    <li>Countdown sticker to an upcoming availability opening or event</li>
+    <li>Before/after swipe — "Swipe to see the after 👉"</li>
+    <li>Question box: "Ask me anything about [service] — I'll answer in stories"</li>
+    <li>Product of the week — hold up a retail product and say why you love it</li>
+    <li>Day in the life — 3–5 stories throughout the day, candid</li>
+    <li>Shoutout to a patient (with consent) — "This is what we did today 🤍"</li>
+    <li>Availability alert — "We just had a cancellation at [time] today — DM us"</li>
+    <li>Educational slide — one tip, white background, big text, no overthinking</li>
+    <li>Gratitude — "Just want to say thank you to everyone who booked this month 🤍"</li>
+  </ul>
+</div>
+
+<div class="db"><div class="db-label">Final note from Danielle</div><div class="db-text">"The providers who win on social media are not the ones with the most followers. They're the ones who show up consistently, educate their audience genuinely, and make people feel something — trust, curiosity, relatability, hope. You have all of that in you. This calendar gives you the structure. Your voice and your story are what make it work. Now go post. 🤍"</div></div>
+
+<div class="doc-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · 31-Day Med Spa Content Calendar · $37</div>
+  <div class="footer-npa">For med spa &amp; esthetic providers · Customize for your practice · Consistency wins</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

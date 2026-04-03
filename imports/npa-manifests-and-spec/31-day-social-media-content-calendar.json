@@ -1,0 +1,25 @@
+{
+  "productId": "31-day-social-media-content-calendar",
+  "displayName": "31-Day Social Media Content Calendar for Med Spas & Esthetic Practices",
+  "description": "A full month of post ideas, themes, and prompts tailored for med spas and esthetic practices — interactive HTML you can open in any browser, customize, print, or save as PDF.",
+  "version": "1.0.0",
+  "priceUSD": 47,
+  "etsySku": "NPA-SOC-CAL-001",
+  "category": "social-media",
+  "targetBuyer": "Med spa owners, injectors, and marketing leads who want a structured posting rhythm",
+  "templates": [
+    {
+      "id": "31-day-social-media-content-calendar-main",
+      "name": "31-Day Social Media Content Calendar",
+      "description": "Interactive HTML calendar — 31 days of content guidance for aesthetic practices",
+      "canvaTemplateUrl": "/forms/NPA-31-Day-Social-Media-Content-Calendar.html",
+      "_deliveryType": "html",
+      "format": "guide",
+      "pages": 1,
+      "category": "social-media"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — print from browser or save as PDF.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T16:00:00Z"
+}

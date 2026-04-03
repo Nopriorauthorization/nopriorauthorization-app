@@ -10,9 +10,9 @@ import { pathToFileURL } from "url";
 
 const ROOT = process.cwd();
 const FORMS_DIR = path.join(ROOT, "delivery-assets", "forms");
-const OUT_DIR = path.join(ROOT, "public", "shop-previews", "cheat-sheets");
+const DEFAULT_OUT_DIR = path.join(ROOT, "public", "shop-previews", "cheat-sheets");
 
-const ENTRIES: { slug: string; html: string }[] = [
+const ENTRIES: { slug: string; html: string; outSubdir?: string }[] = [
   { slug: "botox-clinical-cheat-sheet", html: "NPA-Botox-Clinical-Cheat-Sheet.html" },
   { slug: "iv-therapy-clinical-cheat-sheet", html: "NPA-IV-Therapy-Clinical-Cheat-Sheet.html" },
   { slug: "peptide-therapy-clinical-cheat-sheet", html: "NPA-Peptide-Therapy-Clinical-Cheat-Sheet.html" },
@@ -27,11 +27,16 @@ const ENTRIES: { slug: string; html: string }[] = [
   { slug: "brow-henna-clinical-cheat-sheet", html: "NPA-Brow-Henna-Cheat-Sheet.html" },
   { slug: "waxing-clinical-cheat-sheet", html: "NPA-Waxing-Cheat-Sheet.html" },
   { slug: "ipl-laser-clinical-cheat-sheet", html: "NPA-IPL-Laser-Cheat-Sheet.html" },
+  {
+    slug: "31-day-social-media-content-calendar",
+    html: "NPA-31-Day-Social-Media-Content-Calendar.html",
+    outSubdir: "social-media",
+  },
 ];
 
 async function main() {
   const puppeteer = await import("puppeteer");
-  fs.mkdirSync(OUT_DIR, { recursive: true });
+  fs.mkdirSync(DEFAULT_OUT_DIR, { recursive: true });
 
   const browser = await puppeteer.default.launch({
     headless: true,
@@ -39,13 +44,18 @@ async function main() {
   });
 
   try {
-    for (const { slug, html } of ENTRIES) {
+    for (const { slug, html, outSubdir } of ENTRIES) {
       const filePath = path.join(FORMS_DIR, html);
       if (!fs.existsSync(filePath)) {
         console.error(`[cheat-sheet-thumb] missing: ${filePath}`);
         process.exitCode = 1;
         continue;
       }
+
+      const outDir = outSubdir
+        ? path.join(ROOT, "public", "shop-previews", outSubdir)
+        : DEFAULT_OUT_DIR;
+      fs.mkdirSync(outDir, { recursive: true });
 
       const page = await browser.newPage();
       await page.setViewport({
@@ -68,7 +78,7 @@ async function main() {
         continue;
       }
 
-      const outPath = path.join(OUT_DIR, `${slug}.png`);
+      const outPath = path.join(outDir, `${slug}.png`);
       await firstPage.screenshot({ path: outPath, type: "png" });
       await page.close();
       console.log(`[cheat-sheet-thumb] wrote ${path.relative(ROOT, outPath)}`);

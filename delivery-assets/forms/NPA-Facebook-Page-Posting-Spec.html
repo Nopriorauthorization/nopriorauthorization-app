@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Facebook Page Posting Spec (Facebook only)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700;900&family=Source+Code+Pro:wght@400;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;font-size:10pt;color:#1A1A1A;background:#f0eeed;line-height:1.6}
+.page{width:8.5in;background:white;margin:.25in auto;padding:.6in .7in;box-shadow:0 4px 32px rgba(0,0,0,.14);}
+
+.doc-header{border-bottom:3px solid #1A1A1A;padding-bottom:14px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:flex-end;}
+.doc-header h1{font-family:'Playfair Display',serif;font-size:22pt;font-weight:900;color:#1A1A1A;line-height:1.1;}
+.doc-header h1 em{font-style:italic;color:#D4537E;}
+.doc-meta{text-align:right;}
+.doc-meta p{font-size:8pt;color:#888;letter-spacing:.06em;text-transform:uppercase;}
+.doc-meta strong{color:#D4537E;}
+
+.sec-header{background:#1A1A1A;margin:0 -.7in;padding:12px .7in;margin-bottom:16px;margin-top:24px;}
+.sh-num{font-size:7.5pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:2px;}
+.sh-title{font-family:'Playfair Display',serif;font-size:15pt;font-weight:900;color:#fff;}
+
+.body-text{font-size:10pt;color:#333;line-height:1.7;margin-bottom:10px;}
+.h3{font-size:11pt;font-weight:700;color:#1A1A1A;margin:14px 0 7px;}
+
+.code-block{background:#1A1A1A;border-radius:5px;padding:12px 16px;margin:10px 0;font-family:'Source Code Pro',monospace;font-size:8.5pt;color:#f0f0f0;line-height:1.7;overflow-x:auto;}
+.code-block .comment{color:#888;}
+.code-block .key{color:#D4537E;}
+.code-block .val{color:#7ec8a0;}
+.code-block .fn{color:#79b8ff;}
+
+.info-card{background:#f9f6f4;border-radius:5px;padding:12px 16px;margin:10px 0;border:0.5px solid #e0d8d4;}
+.info-card h4{font-size:9.5pt;font-weight:700;color:#1A1A1A;margin-bottom:6px;}
+.info-card p,.info-card li{font-size:9.5pt;color:#555;line-height:1.65;}
+.info-card ul{margin:5px 0 0 14px;}
+
+.critical{background:#1A1A1A;padding:12px 16px;border-radius:4px;margin:10px 0;}
+.critical p{font-size:9.5pt;color:#fff;line-height:1.65;}
+.critical strong{color:#D4537E;}
+
+.checklist{display:flex;flex-direction:column;gap:6px;margin:10px 0;}
+.cl-item{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#333;line-height:1.55;padding:6px 10px;border:0.5px solid #e8e4e0;border-radius:4px;}
+.cl-box{width:13px;height:13px;border:1.5px solid #D4537E;border-radius:2px;flex-shrink:0;margin-top:2px;}
+
+.env-table{width:100%;border-collapse:collapse;font-size:9pt;margin:10px 0;}
+.env-table th{background:#1A1A1A;color:#fff;padding:6px 10px;text-align:left;font-size:8.5pt;}
+.env-table th.pink{background:#D4537E;}
+.env-table td{padding:6px 10px;border-bottom:0.5px solid #ede8e5;font-family:'Source Code Pro',monospace;vertical-align:top;}
+.env-table tr:nth-child(even) td{background:#fdf9f7;}
+.env-table td.var{font-weight:700;color:#D4537E;}
+.env-table td.desc{font-family:'Lato',sans-serif;color:#555;font-size:8.5pt;}
+.env-table td.ok{font-family:'Lato',sans-serif;color:#2d6a4f;font-size:8.5pt;font-weight:700;}
+
+.doc-footer{margin-top:24px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.footer-npa{font-size:7pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+
+@media print{
+body{background:white;}
+.page{margin:0;box-shadow:none;padding:.5in .6in;}
+@page{size:8.5in 11in portrait;margin:0;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="doc-header">
+  <div>
+    <h1>Facebook Page Posting<br><em>Hello Gorgeous Page · NPA dashboard</em></h1>
+    <p style="font-size:9pt;color:#555;margin-top:6px;">Hello Gorgeous Med Spa · Oswego, IL — posts go to HG Facebook Page · composer at nopriorauthorization.com</p>
+  </div>
+  <div class="doc-meta">
+    <p>Prepared by <strong>Danielle Alcala</strong></p>
+    <p>Founder, Hello Gorgeous Med Spa</p>
+    <p>No Prior Authorization</p>
+    <p style="margin-top:4px;">Ship in a day scope</p>
+  </div>
+</div>
+
+<div class="critical">
+  <p><strong>One line for engineering:</strong> Keep the Facebook credentials as-is. The NPA social posting system posts to the <strong>Hello Gorgeous Facebook Page</strong>. No new account needed. <code style="background:#333;padding:2px 6px;border-radius:3px;">FB_PAGE_ID</code> and <code style="background:#333;padding:2px 6px;border-radius:3px;">FB_PAGE_ACCESS_TOKEN</code> already in Vercel are correct — do not change them.</p>
+</div>
+
+<div class="body-text"><strong>Goal:</strong> Post text and images to the <strong>Hello Gorgeous</strong> Facebook Page on demand or on a schedule, from the NPA admin dashboard at nopriorauthorization.com — same Vercel env discipline as other Hello Gorgeous integrations.</div>
+
+<!-- ENV -->
+<div class="sec-header"><div class="sh-num">01</div><div class="sh-title">Vercel environment variables</div></div>
+
+<table class="env-table">
+  <thead><tr><th>Variable</th><th class="pink">Status</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td class="var">FB_PAGE_ID</td><td class="ok">Already in Vercel ✓</td><td class="desc">Hello Gorgeous Facebook Page ID — leave as-is</td></tr>
+    <tr><td class="var">FB_PAGE_ACCESS_TOKEN</td><td class="ok">Already in Vercel ✓</td><td class="desc">Hello Gorgeous Page token — leave as-is</td></tr>
+    <tr><td class="var">FB_APP_ID</td><td class="desc">Add</td><td class="desc">developers.facebook.com → your app → Settings → Basic</td></tr>
+    <tr><td class="var">FB_APP_SECRET</td><td class="desc">Add</td><td class="desc">Same place (keep secret)</td></tr>
+    <tr><td class="var">CRON_SECRET</td><td class="desc">Add</td><td class="desc">Run: <code style="font-family:'Source Code Pro',monospace">openssl rand -base64 32</code> — protects the cron route</td></tr>
+  </tbody>
+</table>
+
+<p class="body-text" style="margin-top:12px;">That is the full env surface for this slice: <strong>five</strong> variables total; only <strong>three</strong> new ones if Page ID and token are already set.</p>
+
+<!-- NO OAUTH -->
+<div class="sec-header"><div class="sh-num">02</div><div class="sh-title">OAuth</div></div>
+<div class="body-text"><strong>Not required.</strong> Do not build Facebook Login or callback routes for this phase. Publishing uses the existing Page Access Token only.</div>
+
+<!-- API -->
+<div class="sec-header"><div class="sh-num">03</div><div class="sh-title">Post to Facebook Page — API route</div></div>
+<div class="body-text">Implement <code style="font-family:'Source Code Pro',monospace;background:#f0eeed;padding:1px 6px;border-radius:2px;">/api/social/post-facebook</code> — text-only posts (feed) and image posts (photos). Use Graph API v21.0 (or current project version).</div>
+
+<div class="code-block">
+<span class="comment">// app/api/social/post-facebook/route.ts</span>
+<span class="fn">export async function</span> POST(request: Request) {
+  const { message, imageUrl, scheduledTime } = <span class="fn">await</span> request.<span class="fn">json</span>()
+  const pageToken = process.env.<span class="key">FB_PAGE_ACCESS_TOKEN</span>
+  const pageId = process.env.<span class="key">FB_PAGE_ID</span>
+
+  const body: Record&lt;string, unknown&gt; = { message, access_token: pageToken }
+
+  <span class="fn">if</span> (scheduledTime) {
+    body.published = <span class="val">false</span>
+    body.scheduled_publish_time = Math.<span class="fn">floor</span>(<span class="fn">new</span> Date(scheduledTime).<span class="fn">getTime</span>() / 1000)
+  }
+
+  const endpoint = imageUrl
+    ? `https://graph.facebook.com/v21.0/${pageId}/photos`
+    : `https://graph.facebook.com/v21.0/${pageId}/feed`
+
+  <span class="fn">if</span> (imageUrl) (body as { url?: string }).url = imageUrl
+
+  const res = <span class="fn">await fetch</span>(endpoint, {
+    method: <span class="val">'POST'</span>,
+    headers: { <span class="val">'Content-Type'</span>: <span class="val">'application/json'</span> },
+    body: <span class="fn">JSON.stringify</span>(body)
+  })
+
+  const data = <span class="fn">await</span> res.<span class="fn">json</span>()
+  <span class="fn">return</span> Response.<span class="fn">json</span>(data)
+}
+</div>
+
+<!-- DATABASE -->
+<div class="sec-header"><div class="sh-num">04</div><div class="sh-title">Postgres — Prisma <code style="font-family:'Source Code Pro',monospace;color:#fff">ScheduledPost</code></div></div>
+<div class="body-text"><strong>DB:</strong> Prisma model <code style="font-family:'Source Code Pro',monospace">ScheduledPost</code>. <strong>New databases:</strong> <code style="font-family:'Source Code Pro',monospace">npx prisma migrate deploy</code> (single baseline <code style="font-family:'Source Code Pro',monospace">20260403120000_baseline</code> from schema). <strong>Existing Supabase:</strong> run <code style="font-family:'Source Code Pro',monospace">prisma/baseline-truncate-migrations.sql</code> then <code style="font-family:'Source Code Pro',monospace">npx prisma migrate resolve --applied &quot;20260403120000_baseline&quot;</code> — see <code style="font-family:'Source Code Pro',monospace">scripts/prisma-baseline-existing-database.sh</code>. Old migration folders live in <code style="font-family:'Source Code Pro',monospace">prisma/migrations_archive/</code>.</div>
+
+<!-- CRON -->
+<div class="sec-header"><div class="sh-num">05</div><div class="sh-title">Vercel Cron — every minute</div></div>
+<div class="body-text">Cron fires every minute, loads due <code style="font-family:'Source Code Pro',monospace">pending</code> rows, publishes to Facebook only, sets <code style="font-family:'Source Code Pro',monospace">published</code> or <code style="font-family:'Source Code Pro',monospace">failed</code>.</div>
+
+<div class="code-block">
+<span class="comment">// vercel.json</span>
+{
+  <span class="key">"crons"</span>: [
+    { <span class="key">"path"</span>: <span class="val">"/api/cron/publish-scheduled-posts"</span>, <span class="key">"schedule"</span>: <span class="val">"* * * * *"</span> }
+  ]
+}
+</div>
+
+<div class="code-block">
+<span class="comment">// Implemented: GET /api/cron/publish-scheduled-posts — Authorization: Bearer CRON_SECRET</span>
+<span class="comment">// Prisma: findMany ScheduledPost where status=pending AND scheduledAt &lt;= now()</span>
+<span class="comment">// publishToFacebookPage() then update status + fbPostId or errorMsg</span>
+</div>
+
+<!-- UI -->
+<div class="sec-header"><div class="sh-num">06</div><div class="sh-title">Dashboard UI</div></div>
+<div class="body-text">Live at <code style="font-family:'Source Code Pro',monospace">/admin/social</code> (linked from Admin control plane).</div>
+
+<div class="info-card">
+  <h4>Composer</h4>
+  <ul>
+    <li>Caption</li>
+    <li>Image: <code style="font-family:'Source Code Pro',monospace">POST /api/admin/social/upload-image</code> (multipart <code style="font-family:'Source Code Pro',monospace">file</code>) → public Supabase URL, or paste HTTPS URL</li>
+    <li>Schedule → <code style="font-family:'Source Code Pro',monospace">POST /api/admin/scheduled-posts</code> · Post now → <code style="font-family:'Source Code Pro',monospace">POST /api/social/post-facebook</code></li>
+  </ul>
+</div>
+<div class="info-card">
+  <h4>Queue</h4>
+  <ul>
+    <li>List pending / published / failed</li>
+    <li>Show caption preview, time, status, FB post id when published</li>
+  </ul>
+</div>
+<div class="info-card">
+  <h4>Connection status</h4>
+  <p>Simple card: Hello Gorgeous Page connected (Page name + <code style="font-family:'Source Code Pro',monospace">FB_PAGE_ID</code> from env). No Instagram fields.</p>
+</div>
+
+<!-- TEST -->
+<div class="sec-header"><div class="sh-num">07</div><div class="sh-title">Testing checklist</div></div>
+<div class="checklist">
+  <div class="cl-item"><div class="cl-box"></div>Text post appears on Hello Gorgeous Facebook Page</div>
+  <div class="cl-item"><div class="cl-box"></div>Image post appears correctly</div>
+  <div class="cl-item"><div class="cl-box"></div>Scheduled row becomes published with <code style="font-family:'Source Code Pro',monospace">fb_post_id</code></div>
+  <div class="cl-item"><div class="cl-box"></div>Failures set <code style="font-family:'Source Code Pro',monospace">failed</code> + <code style="font-family:'Source Code Pro',monospace">error_msg</code></div>
+  <div class="cl-item"><div class="cl-box"></div>Cron secured with <code style="font-family:'Source Code Pro',monospace">CRON_SECRET</code> in Production on Vercel</div>
+</div>
+
+<div class="doc-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · Hello Gorgeous Med Spa · Oswego, IL</div>
+  <div class="footer-npa">Facebook Page Posting Spec · Facebook only</div>
+</div>
+
+</div>
+</body>
+</html>

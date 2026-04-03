@@ -1423,3 +1423,20 @@ model NpaProviderContribution {
   @@index([specialty])
   @@index([createdAt])
 }
+
+/// Queued / published Facebook Page posts (NPA admin social composer)
+model ScheduledPost {
+  id          String   @id @default(cuid())
+  platform    String   @default("facebook")
+  caption     String   @db.Text
+  imageUrl    String?
+  videoUrl    String?
+  postType    String   @default("text")
+  scheduledAt DateTime
+  status      String   @default("pending")
+  fbPostId    String?
+  errorMsg    String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  @@index([status, scheduledAt])
+}

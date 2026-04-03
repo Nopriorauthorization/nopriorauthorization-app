@@ -57,6 +57,13 @@ export default async function AdminPage() {
         "Digital product orders, revenue, delivery status, and resend controls",
       icon: "💰",
     },
+    {
+      title: "Facebook (Hello Gorgeous)",
+      href: "/admin/social",
+      description:
+        "Composer, queue, and cron — posts to the Hello Gorgeous Facebook Page (existing Vercel credentials)",
+      icon: "📣",
+    },
   ];
 
   return (

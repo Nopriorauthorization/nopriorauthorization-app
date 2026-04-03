@@ -1,0 +1,25 @@
+{
+  "productId": "npa-49-star-system",
+  "displayName": "The 4.9 Star System",
+  "description": "Build, protect, and recover your online reputation as a med spa or esthetic provider — review asks, 24-hour bad-review protocol, HIPAA-safe response scripts, fake-review reporting, platform strategy, and a 30-day review sprint. From Danielle Alcala (Hello Gorgeous Med Spa), 10+ years at 4.9 stars.",
+  "version": "1.0.0",
+  "priceUSD": 57,
+  "etsySku": "NPA-BSG-49-001",
+  "category": "business-systems",
+  "targetBuyer": "Med spa owners, esthetic providers, and practice managers who live or die by Google reviews",
+  "templates": [
+    {
+      "id": "npa-49-star-system-main",
+      "name": "The 4.9 Star System — full guide",
+      "description": "Print-ready interactive HTML — 9 sections plus 30-day sprint bonus",
+      "canvaTemplateUrl": "/forms/NPA-49-Star-System.html",
+      "_deliveryType": "html",
+      "format": "guide",
+      "pages": 1,
+      "category": "business-systems"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — open in any browser, print or save as PDF.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T20:00:00Z"
+}

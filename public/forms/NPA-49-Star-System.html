@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — The 4.9 Star System</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;font-size:10pt;color:#1A1A1A;background:#f0eeed;line-height:1.6}
+.page{width:8.5in;background:white;margin:.25in auto;padding:.6in .7in;box-shadow:0 4px 32px rgba(0,0,0,.14);}
+
+/* COVER */
+.cover{min-height:10in;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;}
+.npa-eyebrow{font-size:7.5pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;}
+.star-row{display:flex;gap:4px;margin-bottom:14px;}
+.star{color:#D4537E;font-size:28pt;line-height:1;}
+.cover-title{font-family:'Playfair Display',serif;font-size:52pt;font-weight:900;color:#1A1A1A;line-height:.95;margin-bottom:6px;}
+.cover-title em{font-style:italic;color:#D4537E;}
+.cover-title .small{font-size:28pt;display:block;margin-top:4px;}
+.cover-rule{height:3px;background:#1A1A1A;margin:16px 0;}
+.cover-sub{font-size:12pt;color:#555;line-height:1.75;margin:14px 0;}
+.author-strip{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:0.5px solid #ddd;border-bottom:0.5px solid #ddd;margin:16px 0;}
+.avatar{width:46px;height:46px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18pt;color:#fff;font-weight:700;flex-shrink:0;}
+.author-info h3{font-size:11pt;font-weight:700;color:#1A1A1A;}
+.author-info p{font-size:8.5pt;color:#666;line-height:1.5;}
+.proof-strip{background:#1A1A1A;border-radius:6px;padding:14px 20px;margin:16px 0;display:flex;align-items:center;justify-content:space-between;}
+.proof-stat{text-align:center;}
+.proof-stat .num{font-family:'Playfair Display',serif;font-size:22pt;font-weight:900;color:#D4537E;line-height:1;}
+.proof-stat .label{font-size:7.5pt;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;}
+.proof-divider{width:1px;height:40px;background:rgba(255,255,255,.15);}
+.cover-toc{background:#f9f5f3;border-radius:6px;padding:14px 18px;margin:14px 0;border:0.5px solid #e0d8d4;}
+.cover-toc h4{font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px 20px;}
+.toc-item{font-size:9.5pt;color:#444;padding:3px 0;border-bottom:0.5px solid #ede8e5;display:flex;gap:8px;}
+.toc-num{color:#D4537E;font-weight:700;flex-shrink:0;width:20px;}
+
+/* SECTION HEADERS */
+.sec-header{background:#1A1A1A;margin:0 -.7in;padding:14px .7in;margin-bottom:18px;}
+.sh-num{font-size:7.5pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:2px;}
+.sh-title{font-family:'Playfair Display',serif;font-size:19pt;font-weight:900;color:#fff;line-height:1.15;}
+.sh-sub{font-size:9pt;color:rgba(255,255,255,.5);margin-top:3px;}
+
+/* DANIELLE VOICE */
+.db{background:#FBEAF0;border-left:4px solid #D4537E;padding:11px 15px;border-radius:0 5px 5px 0;margin:12px 0;}
+.db-label{font-size:7pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;}
+.db-text{font-size:9.5pt;color:#72243E;line-height:1.7;font-style:italic;}
+
+/* BODY */
+.body-text{font-size:10pt;color:#333;line-height:1.7;margin-bottom:10px;}
+.h2{font-family:'Playfair Display',serif;font-size:15pt;font-weight:700;color:#1A1A1A;margin:18px 0 10px;}
+.h3{font-size:11pt;font-weight:700;color:#1A1A1A;margin:14px 0 7px;}
+.h4{font-size:8.5pt;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.08em;margin:10px 0 5px;}
+
+/* SCRIPT CARDS */
+.script-card{border-radius:5px;overflow:hidden;border:0.5px solid #e0d8d4;margin-bottom:12px;}
+.sc-head{background:#1A1A1A;padding:8px 14px;display:flex;justify-content:space-between;align-items:center;}
+.sc-head h4{font-size:10pt;font-weight:700;color:#fff;}
+.sc-tag{font-size:7pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#D4537E;color:#fff;padding:2px 7px;border-radius:2px;}
+.sc-situation{font-size:9pt;color:#666;line-height:1.6;padding:8px 12px;background:#f9f6f4;border-bottom:0.5px solid #ede8e5;font-style:italic;}
+.sc-body{padding:10px 14px;background:white;}
+.script-label{font-size:7.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:5px;}
+.script-text{font-size:9.5pt;color:#1A1A1A;line-height:1.75;background:#fff8f9;border:0.5px solid #e8c4cc;border-radius:4px;padding:10px 14px;margin-bottom:8px;}
+.script-text em{color:#D4537E;font-style:normal;font-weight:700;}
+.why-note{font-size:8.5pt;color:#888;line-height:1.6;font-style:italic;border-top:0.5px solid #eee;padding-top:7px;}
+
+/* REVIEW TYPES */
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+.rv-card{border-radius:5px;overflow:hidden;border:0.5px solid #e0d8d4;}
+.rv-head{padding:7px 12px;}
+.rv-head h4{font-size:10pt;font-weight:700;color:#fff;}
+.rv-head span{font-size:7.5pt;color:rgba(255,255,255,.7);}
+.rv-body{padding:10px 12px;background:white;}
+.rv-body p{font-size:9pt;color:#444;line-height:1.6;}
+.rh1{background:#c0392b;}
+.rh2{background:#e67e22;}
+.rh3{background:#1a2940;}
+.rh4{background:#1a7a6e;}
+.rh5{background:#6c3483;}
+.rh6{background:#D4537E;}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:6px;margin:10px 0;}
+.cl-item{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#333;line-height:1.55;padding:7px 10px;border:0.5px solid #e8e4e0;border-radius:4px;}
+.cl-item.priority{border-color:#e8c4cc;background:#fff8f9;}
+.cl-box{width:13px;height:13px;border:1.5px solid #1A1A1A;border-radius:2px;flex-shrink:0;margin-top:2px;}
+.cl-item.priority .cl-box{border-color:#D4537E;}
+.cl-content h4{font-size:9.5pt;font-weight:700;color:#1A1A1A;margin-bottom:2px;}
+.cl-content p{font-size:8.5pt;color:#666;line-height:1.5;}
+
+/* INFO CARDS */
+.info-card{background:#f9f6f4;border-radius:5px;padding:12px 16px;margin:10px 0;border:0.5px solid #e0d8d4;}
+.info-card h4{font-size:9.5pt;font-weight:700;color:#1A1A1A;margin-bottom:6px;}
+.info-card p{font-size:9.5pt;color:#555;line-height:1.65;}
+.info-card ul{margin:5px 0 0 14px;}
+.info-card ul li{font-size:9pt;color:#555;line-height:1.55;margin-bottom:3px;}
+
+.warn{background:#fff5f7;border-left:4px solid #D4537E;padding:10px 14px;border-radius:0 5px 5px 0;margin:10px 0;}
+.warn h4{font-size:9.5pt;font-weight:700;color:#72243E;margin-bottom:4px;}
+.warn p{font-size:9.5pt;color:#72243E;line-height:1.65;}
+
+.critical{background:#1A1A1A;padding:12px 16px;border-radius:4px;margin:10px 0;}
+.critical p{font-size:9.5pt;color:#fff;line-height:1.65;}
+.critical strong{color:#D4537E;}
+
+/* PEARL */
+.pearl-list{display:flex;flex-direction:column;gap:6px;margin:10px 0;}
+.pearl{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#333;line-height:1.6;}
+.pearl-star{color:#D4537E;font-weight:900;flex-shrink:0;font-size:12pt;margin-top:-2px;}
+
+/* PROTOCOL STEPS */
+.protocol-step{display:flex;gap:0;margin-bottom:0;}
+.ps-left{display:flex;flex-direction:column;align-items:center;width:46px;flex-shrink:0;}
+.ps-num{width:24px;height:24px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-size:10pt;font-weight:700;color:#fff;flex-shrink:0;}
+.ps-line{width:2px;background:#e8d8dc;flex:1;margin:3px auto;}
+.ps-content{padding:0 0 16px 10px;flex:1;}
+.ps-content h4{font-size:10.5pt;font-weight:700;color:#1A1A1A;margin-bottom:3px;}
+.ps-content p{font-size:9.5pt;color:#555;line-height:1.65;}
+.ps-content .ps-time{font-size:8pt;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.06em;}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;}
+.divider{height:1px;background:#e8e4e0;margin:16px 0;}
+.page-break{page-break-before:always;padding-top:0;}
+
+.platform-table{width:100%;border-collapse:collapse;font-size:9pt;margin:10px 0;}
+.platform-table th{background:#1A1A1A;color:#fff;padding:6px 10px;text-align:left;font-size:8.5pt;font-weight:700;}
+.platform-table th.pink{background:#D4537E;}
+.platform-table td{padding:6px 10px;border-bottom:0.5px solid #ede8e5;vertical-align:top;line-height:1.55;color:#333;}
+.platform-table tr:nth-child(even) td{background:#fdf9f7;}
+.platform-table td.label{font-weight:700;color:#1A1A1A;}
+
+.doc-footer{margin-top:22px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:7pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+
+@media print{
+body{background:white;}
+.page{margin:0;box-shadow:none;padding:.5in .6in;}
+@page{size:8.5in 11in portrait;margin:0;}
+.page-break{page-break-before:always;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div class="npa-eyebrow">No Prior Authorization &nbsp;·&nbsp; Business Systems Series</div>
+    <div class="star-row">★★★★★</div>
+    <div class="cover-title">The 4.9<br><em>Star</em><br><span class="small">System.</span></div>
+    <div class="cover-rule"></div>
+    <div class="cover-sub">How to build, protect, and recover your online reputation as a med spa or esthetic provider. Written by someone who actually has a 4.9 — after 10 years, hundreds of reviews, and every kind of difficult situation you can imagine.</div>
+
+    <div class="proof-strip">
+      <div class="proof-stat"><div class="num">4.9</div><div class="label">Google Rating</div></div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat"><div class="num">10+</div><div class="label">Years in Business</div></div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat"><div class="num">#1</div><div class="label">Best Med Spa Oswego</div></div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat"><div class="num">Real</div><div class="label">Not Theory</div></div>
+    </div>
+
+    <div class="author-strip">
+      <div class="avatar">D</div>
+      <div class="author-info">
+        <h3>Danielle Alcala — Founder, Hello Gorgeous Med Spa</h3>
+        <p>Licensed Esthetician · Phlebotomist · CNA · CMAA · RN Student · Oswego, IL<br>10+ years building and protecting a 4.9-star reputation from scratch</p>
+      </div>
+    </div>
+
+    <div class="cover-toc">
+      <h4>9 Sections — Complete Contents</h4>
+      <div class="toc-grid">
+        <div class="toc-item"><span class="toc-num">01</span>Why Your Rating Is Your Revenue</div>
+        <div class="toc-item"><span class="toc-num">06</span>The HIPAA Line — What You Can Never Say</div>
+        <div class="toc-item"><span class="toc-num">02</span>The Review Ask — Timing, Words &amp; System</div>
+        <div class="toc-item"><span class="toc-num">07</span>Fake &amp; Competitor Reviews — How to Fight Back</div>
+        <div class="toc-item"><span class="toc-num">03</span>The 24-Hour Bad Review Protocol</div>
+        <div class="toc-item"><span class="toc-num">08</span>The Review Moat — Volume as Your Defense</div>
+        <div class="toc-item"><span class="toc-num">04</span>Word-for-Word Response Scripts</div>
+        <div class="toc-item"><span class="toc-num">09</span>Platform-by-Platform Strategy</div>
+        <div class="toc-item"><span class="toc-num">05</span>Turning a 1-Star Into a Loyal Patient</div>
+        <div class="toc-item"><span class="toc-num">★</span>Bonus: 30-Day Review Sprint Plan</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #ddd;padding-top:12px;display:flex;justify-content:space-between;margin-top:14px;">
+    <div style="font-size:7.5pt;color:#888;letter-spacing:.1em;text-transform:uppercase;"><span style="color:#D4537E;font-weight:700;">No Prior Authorization</span> &nbsp;·&nbsp; nopriorauthorization.com</div>
+    <div style="font-size:7.5pt;color:#888;">$57 &nbsp;·&nbsp; Instant Download &nbsp;·&nbsp; Print-Ready</div>
+  </div>
+</div>
+
+<!-- SECTION 1: WHY YOUR RATING IS YOUR REVENUE -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 01</div><div class="sh-title">Why Your Rating Is Your Revenue</div><div class="sh-sub">The math behind your stars — and why one bad review feels like the end of the world</div></div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"I remember the first bad review I ever got. I was devastated. I cried. I called my aunt. I refreshed the page every five minutes hoping it would disappear. It didn't. What I know now that I didn't know then is that one bad review doesn't ruin you — but how you respond to it absolutely can. This guide is everything I've learned in 10 years of earning, protecting, and occasionally fighting for my 4.9."</div></div>
+
+<div class="h3">The Numbers Every Provider Needs to Know</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>How reviews affect your bookings</h4>
+    <ul>
+      <li>94% of consumers say a negative review has convinced them to avoid a business</li>
+      <li>A one-star increase in rating correlates with a 5–9% increase in revenue</li>
+      <li>Patients trust online reviews as much as personal recommendations from friends</li>
+      <li>The average consumer reads 10 reviews before feeling they can trust a business</li>
+      <li>53% of patients will not book a provider with less than a 4-star rating</li>
+      <li>Responding to reviews increases the likelihood of a booking by 18%</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>How Google ranks your business</h4>
+    <ul>
+      <li>Google uses your rating, review volume, and review recency as local ranking signals</li>
+      <li>A practice with 200 reviews at 4.8 outranks one with 20 reviews at 5.0 — volume matters</li>
+      <li>Review recency matters — a practice getting reviews consistently ranks higher than one with all old reviews</li>
+      <li>Responding to reviews is a ranking signal — Google rewards engagement</li>
+      <li>Keywords in reviews help you rank for those terms — patients who write "Botox" help you rank for Botox</li>
+    </ul>
+  </div>
+</div>
+
+<div class="h3">The Rating Cliff — What Each Star Level Means for Your Business</div>
+<table class="platform-table">
+  <thead><tr><th>Rating</th><th class="pink">What Patients Think</th><th>Booking Impact</th><th>What to Do</th></tr></thead>
+  <tbody>
+    <tr><td class="label">4.9 – 5.0 ★★★★★</td><td>Elite. Trusted. Worth the price.</td><td>Maximum. Patients choose you without comparing.</td><td>Protect it. Volume is your defense.</td></tr>
+    <tr><td class="label">4.7 – 4.8 ★★★★½</td><td>Excellent. Reads reviews before booking.</td><td>Strong. May still compare to competitors.</td><td>Aggressive review getting to push toward 4.9.</td></tr>
+    <tr><td class="label">4.5 – 4.6 ★★★★½</td><td>Good but not exceptional.</td><td>Moderate. Will absolutely compare competitors.</td><td>Immediate review sprint. Address negatives fast.</td></tr>
+    <tr><td class="label">4.0 – 4.4 ★★★★</td><td>Hesitant. Reads every negative review carefully.</td><td>Significantly reduced. Price shoppers only.</td><td>Crisis mode — review sprint + negative response strategy.</td></tr>
+    <tr><td class="label">Below 4.0 ★★★</td><td>Actively avoided by most patients.</td><td>Severely impacted. Only the most price-sensitive book.</td><td>Full reputation rebuild strategy required.</td></tr>
+  </tbody>
+</table>
+
+<div class="db"><div class="db-label">The truth about 5.0 ratings</div><div class="db-text">"A perfect 5.0 actually makes some patients suspicious — it looks like you've deleted bad reviews or only have friends reviewing you. A 4.9 with hundreds of reviews is more trustworthy than a 5.0 with twelve. You don't need perfect. You need consistent, high-volume, and recent."</div></div>
+</div>
+
+<!-- SECTION 2: THE REVIEW ASK -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 02</div><div class="sh-title">The Review Ask</div><div class="sh-sub">Timing, exact words, and the system that gets reviews consistently without feeling like begging</div></div>
+
+<div class="body-text">Most providers either never ask for reviews or ask in a way that feels awkward and gets ignored. The review ask is a skill — and like every skill, it gets easier and more effective with practice and the right system behind it.</div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"The single biggest thing that built my review count was simply asking. Out loud. In person. While the patient was still in the chair. Not a text link two days later — in the moment, when they're looking in the mirror and they love what they see. That moment is gold. Don't waste it."</div></div>
+
+<div class="h3">The 3 Rules of the Review Ask</div>
+<div class="pearl-list">
+  <div class="pearl"><div class="pearl-star">★</div><strong>Ask in the moment — not after.</strong> The best time to ask is when the patient is still in your chair, looking in the mirror, and happy. That emotional high is when they're most likely to follow through. A text link 48 hours later hits them when they're distracted and the feeling is gone.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Make it personal, not transactional.</strong> "It would really help our small practice" lands differently than "Please leave us a Google review." You're not a corporation asking for a rating. You're a person asking for a favor.</div>
+  <div class="pearl"><div class="pearl-star">★</div><strong>Remove every obstacle.</strong> The easier you make it, the more reviews you get. Text them the direct link. Walk them through opening Google if they're in the office. Make the path from "yes" to "done" as short as possible.</div>
+</div>
+
+<div class="h3">The In-Person Ask — Word for Word</div>
+<div class="script-card">
+  <div class="sc-head"><h4>While patient is looking in the mirror — post-treatment</h4><span class="sc-tag">In Person</span></div>
+  <div class="sc-body">
+    <div class="script-label">What to say</div>
+    <div class="script-text">"I'm so glad you love it — that genuinely makes my day. Can I ask you a favor? <em>If you have 60 seconds before you leave</em>, a Google review means the world to a small practice like ours. It's literally how people find us. I'll text you the link right now so you don't have to search for it — would that be okay?"</div>
+    <div class="why-note">Why this works: You asked for a favor, not a rating. You gave them a time frame (60 seconds — feels manageable). You removed the obstacle by offering to text the link. You explained why it matters to a small business. And you asked for permission before sending — which makes the text feel welcomed, not spammy.</div>
+  </div>
+</div>
+
+<div class="script-card">
+  <div class="sc-head"><h4>The follow-up text — send within 5 minutes of them leaving</h4><span class="sc-tag">Text Message</span></div>
+  <div class="sc-body">
+    <div class="script-label">Text script</div>
+    <div class="script-text">"Hi [Name]! It was so great seeing you today 🤍 Here's that Google review link I mentioned — takes about 60 seconds and means everything to us: [YOUR GOOGLE REVIEW LINK]. Thank you so much! — [Your name], [Practice Name]"</div>
+    <div class="why-note">Send this while they're still in the parking lot. Response rate drops dramatically after 30 minutes. The link should go directly to your Google review page — not your homepage. Get your direct review link at: business.google.com → your profile → Get more reviews → Share review form.</div>
+  </div>
+</div>
+
+<div class="script-card">
+  <div class="sc-head"><h4>The email follow-up — 24 hours later if no review yet</h4><span class="sc-tag">Email</span></div>
+  <div class="sc-body">
+    <div class="script-label">Email script</div>
+    <div class="script-text">"Hi [Name] — just wanted to check in and make sure you're loving your results! If you have a moment, we'd be so grateful for a Google review — it's the #1 way new patients find us and it takes less than a minute. <em>Here's the link:</em> [LINK]. Thank you for trusting us with your care — we can't wait to see you next time. 🤍"</div>
+    <div class="why-note">One follow-up only. Sending more than one follow-up after the initial ask feels pushy and can damage the relationship. If they haven't reviewed after the text and one email — let it go.</div>
+  </div>
+</div>
+
+<div class="h3">Building the Review System — So It Runs Automatically</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Create a saved text on your phone with the review link</h4><p>Go to your phone's keyboard shortcuts. Create a shortcut — type "rev" → expands to your full review text with the Google link. You can send it in 3 taps from any appointment.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Set up an automated post-appointment text in your booking system</h4><p>Fresha and most booking platforms allow automated follow-up messages. Set one to fire 2–4 hours post-appointment with your review link. This runs on autopilot for every single booking.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Create a QR code for your front desk</h4><p>Generate a QR code from your Google review link (free at qr-code-generator.com). Print it on a small card at checkout. "Scan here to leave us a review" — takes 10 seconds.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Add your review link to every email signature</h4><p>"Love your results? ⭐ Leave us a Google review: [link]" at the bottom of every email you send. Passive review generation at zero effort.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Track your review count weekly</h4><p>Every Monday, check your Google Business Profile. How many new reviews this week? What's the trend? Treat it like a business metric — because it is one.</p></div></div>
+</div>
+</div>
+
+<!-- SECTION 3: BAD REVIEW PROTOCOL -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 03</div><div class="sh-title">The 24-Hour Bad Review Protocol</div><div class="sh-sub">Exactly what to do in the first 24 hours after a negative review drops — step by step</div></div>
+
+<div class="critical"><p><strong>The most important rule:</strong> Do NOT respond to a bad review while you are emotional. Screenshot it, close the tab, give yourself at least one hour before you touch it. Responses written in anger, defensiveness, or panic always make things worse. Always.</p></div>
+
+<div class="h3">The Protocol — Hour by Hour</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">1</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">0–5 minutes</div><h4>Screenshot and document everything</h4><p>Screenshot the review with the date, star rating, reviewer name, and full text visible. Save it. If this escalates legally later, you need the original documentation. Do not respond yet.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">2</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">0–60 minutes</div><h4>Identify the reviewer</h4><p>Do you recognize the name? Can you match it to a patient record? Was this person actually a patient? If you cannot identify them at all — this may be a fake review (see Section 7). If you can identify them — pull their chart and review their visit notes before you respond to anything.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">3</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">1–6 hours</div><h4>Attempt private outreach before public response</h4><p>If you can identify the patient, reach out privately first — by phone or text. A private conversation has a much higher chance of resolution than a public one. Many bad reviews get updated or removed once the patient feels heard. Use the scripts in Section 5.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">4</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Within 24 hours</div><h4>Post your public response</h4><p>Whether or not the private outreach worked, respond publicly within 24 hours. A review with no response looks worse than a review with a professional response. Use the scripts in Section 4. Keep it brief, warm, and never defensive. See Section 6 for HIPAA rules before you write a single word.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">5</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">24–72 hours</div><h4>Request a review from your next 5 happy patients</h4><p>The best response to a bad review is burying it with good ones. The moment a negative review drops, activate your review-getting system immediately. Five new 5-star reviews push the negative one down the page and dilute its impact on your overall rating.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">6</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">If applicable</div><h4>Flag for removal if it violates Google's policies</h4><p>Not every bad review can be removed — but some can. See Section 7 for the exact conditions under which Google will remove a review and how to report it. Do not assume all bad reviews are permanent.</p></div>
+</div>
+</div>
+
+<!-- SECTION 4: RESPONSE SCRIPTS -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 04</div><div class="sh-title">Word-for-Word Response Scripts</div><div class="sh-sub">Every type of negative review — and exactly what to say publicly</div></div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"Your public response isn't for the person who left the review. They've already decided how they feel. Your response is for every potential patient who reads it afterward. That shift in thinking changed everything about how I write responses."</div></div>
+
+<div class="warn"><h4>Read Section 6 before writing any response</h4><p>HIPAA prohibits confirming or denying that someone is a patient, disclosing any treatment details, or sharing any health information in a public response — even to correct a false claim. Violating HIPAA in a Google response has resulted in federal investigations. Read Section 6 first.</p></div>
+
+<div class="script-card">
+  <div class="sc-head"><h4>The Unhappy With Results Review</h4><span class="sc-tag">Most Common</span></div>
+  <div class="sc-situation">Patient leaves 1–2 stars saying they're unhappy with their results, don't see a difference, or feel it wasn't worth the money.</div>
+  <div class="sc-body">
+    <div class="script-label">Public response</div>
+    <div class="script-text">"Thank you for sharing your experience — I'm genuinely sorry to hear you're feeling this way. <em>Your satisfaction matters deeply to us</em> and we'd love the opportunity to make this right. Please reach out to us directly at [phone/email] so we can connect with you personally. We take every piece of feedback seriously and want to ensure you feel taken care of."</div>
+    <div class="why-note">What you never say: specific treatment details, that you did everything correctly, that results vary. What you always say: acknowledgment, invitation to connect offline, genuine care.</div>
+  </div>
+</div>
+
+<div class="script-card">
+  <div class="sc-head"><h4>The False or Inaccurate Review</h4><span class="sc-tag">High Stakes</span></div>
+  <div class="sc-situation">Review contains information that is factually incorrect — wrong date, wrong service, claims something happened that didn't, or describes a situation that doesn't match your records.</div>
+  <div class="sc-body">
+    <div class="script-label">Public response</div>
+    <div class="script-text">"Thank you for your feedback. We take every review seriously and want to make sure every experience at our practice is a positive one. We weren't able to match this review to a visit in our records — <em>if you'd be willing to reach out to us directly at [phone/email]</em>, we'd genuinely appreciate the chance to connect and understand your experience better. We're always here."</div>
+    <div class="why-note">You are not confirming or denying they were a patient. You are not calling them a liar publicly. You are inviting them to connect — which signals to readers that you are professional and open. Never say "we have no record of you" — that's a HIPAA issue.</div>
+  </div>
+</div>
+
+<div class="script-card">
+  <div class="sc-head"><h4>The Rude / Aggressive Review</h4><span class="sc-tag">Emotionally Hardest</span></div>
+  <div class="sc-situation">Review uses aggressive, threatening, or personally attacking language toward you or your staff.</div>
+  <div class="sc-body">
+    <div class="script-label">Public response</div>
+    <div class="script-text">"We're sorry to hear about your experience and we understand you're frustrated. <em>We always strive to provide compassionate, professional care</em> to everyone who walks through our doors and we take this feedback seriously. We'd welcome the opportunity to speak with you directly — please reach out at [phone/email] if you'd like to connect."</div>
+    <div class="why-note">Do not match their energy. Do not defend yourself against specific accusations publicly. The more aggressive their review and the calmer your response — the better you look to every person reading. Readers can see who the professional is.</div>
+  </div>
+</div>
+
+<div class="script-card">
+  <div class="sc-head"><h4>The Pricing Complaint</h4><span class="sc-tag">Common</span></div>
+  <div class="sc-situation">Review complains that your prices are too high, that they felt overcharged, or that they can get the same service cheaper elsewhere.</div>
+  <div class="sc-body">
+    <div class="script-label">Public response</div>
+    <div class="script-text">"Thank you for your feedback. We understand that price is an important factor and we always want our patients to feel that the value they receive reflects the quality of care we provide. <em>We'd love to chat with you more</em> about your experience — please feel free to reach out to us at [phone/email]. We appreciate you taking the time to share your thoughts."</div>
+    <div class="why-note">Never justify your prices in a public response. Never compare yourself to cheaper options. The patients reading your response who pay your prices don't want to see you apologize for them. Stay confident and warm.</div>
+  </div>
+</div>
+
+<div class="script-card">
+  <div class="sc-head"><h4>The Wait Time / Scheduling Complaint</h4><span class="sc-tag">Operational</span></div>
+  <div class="sc-situation">Review complains about waiting too long, scheduling difficulty, or feeling rushed during their appointment.</div>
+  <div class="sc-body">
+    <div class="script-label">Public response</div>
+    <div class="script-text">"Thank you so much for this feedback — this is exactly the kind of thing we need to hear. Your time is valuable and we never want anyone to feel like their appointment wasn't given the attention it deserved. <em>We're actively working to improve</em> and your feedback directly helps us do that. Please reach out at [phone/email] — we'd love to make this right."</div>
+    <div class="why-note">Operational complaints are actually the easiest to respond to because you can genuinely commit to improvement. Readers respect humility and accountability far more than defensiveness.</div>
+  </div>
+</div>
+
+<div class="script-card">
+  <div class="sc-head"><h4>The Partially Valid Complaint</h4><span class="sc-tag">Hardest to Write</span></div>
+  <div class="sc-situation">Review describes something that was partially your fault — a miscommunication, a wait, a staff interaction that could have gone better.</div>
+  <div class="sc-body">
+    <div class="script-label">Public response</div>
+    <div class="script-text">"Thank you for being honest with us — this feedback matters. <em>We hold ourselves to a high standard</em> and when we fall short of that, we want to know. We're sorry your experience wasn't what it should have been and we'd genuinely love the chance to make it right. Please reach out at [phone/email] — we're listening."</div>
+    <div class="why-note">This is the response that builds the most trust with potential patients. Accountability without over-apologizing. You're not admitting legal liability — you're showing that you're the kind of practice that takes feedback seriously and does something about it.</div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 5: TURNING 1-STAR INTO LOYAL PATIENT -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 05</div><div class="sh-title">Turning a 1-Star Into a Loyal Patient</div><div class="sh-sub">The private outreach scripts that resolve complaints before they become permanent</div></div>
+
+<div class="body-text">A patient who complains loudly is a patient who cares enough to say something. In 10 years of practice, some of Danielle's most loyal long-term patients started as unhappy ones. The difference was a phone call.</div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"I've called patients after bad reviews more times than I can count. Most of the time they're shocked that I personally called. Not a staff member. Me. And that one call — where I listened and didn't defend — turned the situation around more often than you'd believe. Two of those patients are still coming to see me today."</div></div>
+
+<div class="h3">The Private Outreach — Phone Call Script</div>
+<div class="script-card">
+  <div class="sc-head"><h4>The personal phone call — within 6 hours of the review</h4><span class="sc-tag">Highest Impact</span></div>
+  <div class="sc-body">
+    <div class="script-label">What to say when they pick up</div>
+    <div class="script-text">"Hi [Name], this is [Your name] calling from [Practice Name]. I saw your review and I wanted to call you personally — not have a staff member reach out, me. <em>I'm genuinely sorry</em> that your experience wasn't what it should have been. Can you tell me a little more about what happened? I really want to understand."</div>
+    <div class="script-label" style="margin-top:10px;">Then — just listen. Don't defend. Don't explain. Don't justify. After they've finished:</div>
+    <div class="script-text">"Thank you for telling me that. That's not the experience I want anyone to have here. Here's what I'd like to do — [offer: complimentary follow-up / partial credit / whatever is appropriate]. Would you be open to coming back so I can personally make sure you leave happy? That's genuinely what I want."</div>
+    <div class="why-note">The call itself — regardless of outcome — often results in a review update or removal. Even if it doesn't, you've done the right thing. Document the call in their chart.</div>
+  </div>
+</div>
+
+<div class="script-card">
+  <div class="sc-head"><h4>The text outreach — if phone call goes to voicemail</h4><span class="sc-tag">Text</span></div>
+  <div class="sc-body">
+    <div class="script-label">Text script</div>
+    <div class="script-text">"Hi [Name] — this is [Your name] from [Practice Name]. I saw your review and wanted to reach out personally. I'm sorry your experience wasn't what it should have been. <em>Would you be open to a quick call?</em> I'd really like to hear more and see how I can make this right. You can reach me directly at this number. — [Name]"</div>
+    <div class="why-note">Personal. Direct. Not a template. The fact that it's you texting — not an automated system — matters enormously. Keep it short. Don't over-explain in a text.</div>
+  </div>
+</div>
+
+<div class="h3">How to Ask for a Review Update — Without Demanding It</div>
+<div class="script-card">
+  <div class="sc-head"><h4>After resolution — asking them to update their review</h4><span class="sc-tag">Optional — Only If Resolution Was Genuine</span></div>
+  <div class="sc-body">
+    <div class="script-label">What to say</div>
+    <div class="script-text">"I'm so glad we got to connect and that we were able to make this right. If you ever feel moved to update your Google review to reflect your full experience — including how we handled things — I would be incredibly grateful. But there's absolutely no pressure. What mattered most to me was that you left feeling taken care of."</div>
+    <div class="why-note">Never demand a review update as a condition of resolution. Never offer something of value in exchange for a review update — that violates Google's policies. Ask once, genuinely, and drop it. An updated review that goes from 1 star to 4 or 5 is one of the most powerful things on your profile — it shows future patients that you fix problems.</div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 6: HIPAA -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 06</div><div class="sh-title">The HIPAA Line</div><div class="sh-sub">What you can never say in a public review response — and what has gotten providers investigated</div></div>
+
+<div class="critical"><p><strong>This is not optional reading.</strong> Providers have faced federal HIPAA investigations for disclosing patient information in Google review responses. The Office for Civil Rights takes these complaints seriously. One wrong sentence in a public response can cost far more than the review ever would have.</p></div>
+
+<div class="h3">What HIPAA Prohibits in Public Review Responses</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Confirming the person was a patient</h4><p>"We remember your visit on..." or "When you came in for your Botox..." — even if what you say is positive, confirming someone is a patient discloses PHI.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Mentioning any treatment details</h4><p>Any reference to what service they received, what product was used, what their skin concern was — all PHI. Even "the treatment you received" is problematic if it confirms a medical relationship.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Contradicting their medical claims publicly</h4><p>A patient says "the Botox didn't work." You cannot say "actually your results were excellent based on your follow-up photos." You cannot reference their chart, their photos, or any clinical finding.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Disclosing why they were declined treatment</h4><p>"We were unable to treat you because..." — if the reason relates to any health condition, medication, or contraindication, it is PHI.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Sharing information to defend yourself against a false claim</h4><p>Even if a patient is lying publicly about what happened — you cannot use their medical information to prove they're wrong. Your protection is your documentation and your attorney — not a public response.</p></div></div>
+</div>
+
+<div class="h3">The Safe Framework for Every Public Response</div>
+<div class="info-card">
+  <h4>Every public response must follow this pattern</h4>
+  <ul>
+    <li><strong>Acknowledge the feeling</strong> — never the facts of the visit</li>
+    <li><strong>Express genuine care</strong> — without confirming a treatment relationship</li>
+    <li><strong>Invite them offline</strong> — phone number or email, move it out of public</li>
+    <li><strong>Never reference</strong> — specific dates, services, products, clinical outcomes, or chart information</li>
+    <li><strong>Never deny</strong> — that they were a patient or that something happened</li>
+    <li><strong>Keep it short</strong> — 3–5 sentences maximum. Every additional sentence is another opportunity to make a mistake.</li>
+  </ul>
+</div>
+
+<div class="warn"><h4>When to call your attorney instead of responding</h4><p>If a review contains defamatory statements (false statements of fact, not just negative opinions), threatens legal action, or describes a serious clinical allegation — contact your malpractice carrier and a healthcare attorney before you respond to anything publicly. Some situations require legal guidance before any public statement is made.</p></div>
+</div>
+
+<!-- SECTION 7: FAKE REVIEWS -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 07</div><div class="sh-title">Fake &amp; Competitor Reviews</div><div class="sh-sub">How to identify them, report them to Google, and fight back the right way</div></div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"I've had fake reviews. Reviews from people who were never my patients. Reviews that described treatments I don't even offer. It's infuriating — and the process for getting them removed is slow and imperfect. But it works if you know how to do it correctly. This section is that process."</div></div>
+
+<div class="h3">How to Identify a Fake Review</div>
+<div class="review-grid">
+  <div class="rv-card"><div class="rv-head rh1"><h4>No match in your records</h4><span>Strong indicator</span></div><div class="rv-body"><p>You cannot identify the reviewer's name, profile photo, or any detail that matches a patient record. Cannot be matched to any appointment in your system.</p></div></div>
+  <div class="rv-card"><div class="rv-head rh2"><h4>Describes services you don't offer</h4><span>Very strong indicator</span></div><div class="rv-body"><p>Review mentions a treatment, product, or experience that isn't part of your service menu. This is almost always a fake or misdirected review.</p></div></div>
+  <div class="rv-card"><div class="rv-head rh3"><h4>Reviewer profile is new or empty</h4><span>Moderate indicator</span></div><div class="rv-body"><p>Click the reviewer's profile. One review total, created recently, no photo, no other activity. Not definitive — but combined with other indicators, suspicious.</p></div></div>
+  <div class="rv-card"><div class="rv-head rh4"><h4>Similar language to competitor reviews</h4><span>Moderate indicator</span></div><div class="rv-body"><p>The phrasing, specific complaints, or language pattern matches negative reviews on competitor profiles. Coordinated review attacks exist in the med spa industry.</p></div></div>
+  <div class="rv-card"><div class="rv-head rh5"><h4>Wrong location or wrong business</h4><span>Strong indicator</span></div><div class="rv-body"><p>Review describes a location, parking situation, or physical detail that doesn't match your practice. May be intended for a different business entirely.</p></div></div>
+  <div class="rv-card"><div class="rv-head rh6"><h4>Posted during or after a known conflict</h4><span>Contextual indicator</span></div><div class="rv-body"><p>Review appears immediately after a staff termination, a known dispute with a patient, or following a public conflict. Timing matters as evidence.</p></div></div>
+</div>
+
+<div class="h3">How to Report a Fake Review to Google — Step by Step</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">1</div><div class="ps-line"></div></div>
+  <div class="ps-content"><h4>Document everything before reporting</h4><p>Screenshot the review, the reviewer's profile, the date it was posted, and any other reviews on their profile. Save all of this. If Google removes the review, you lose the ability to screenshot it afterward.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">2</div><div class="ps-line"></div></div>
+  <div class="ps-content"><h4>Flag the review through Google Business Profile</h4><p>Google Business Profile → Reviews → find the review → click the three dots → "Report review." Select the most accurate reason: Spam, Off topic, Conflict of interest, or Not a real customer experience. Submit.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">3</div><div class="ps-line"></div></div>
+  <div class="ps-content"><h4>Submit a formal removal request</h4><p>Go to: business.google.com/support → contact support → explain that the review is fraudulent and does not represent a real customer experience. Provide your documentation. Be specific and factual — not emotional.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">4</div><div class="ps-line"></div></div>
+  <div class="ps-content"><h4>Follow up if no response in 7 days</h4><p>Google's initial review of reports is automated and often results in "doesn't violate our policies." If this happens, request a human review by responding to their decision email or re-contacting support with additional evidence.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">5</div><div class="ps-line"></div></div>
+  <div class="ps-content"><h4>If Google won't remove it — your response becomes your defense</h4><p>Some fake reviews never get removed. In that case, your public response does the work: "We take every review seriously — however, we were unable to match this review to any visit in our records. If you've had a genuine experience with us, please contact us directly at [phone/email] so we can connect." This tells every reader exactly what they need to know without accusing anyone publicly.</p></div>
+</div>
+
+<div class="warn"><h4>Competitor-planted reviews — what you can do</h4><p>If you have strong evidence that a competitor is planting fake reviews, document everything and consult an attorney about defamation claims. In egregious cases, legal action is appropriate — especially if the reviews contain false statements of fact. Keep records of any coordinated pattern across multiple fake reviews.</p></div>
+</div>
+
+<!-- SECTION 8: THE REVIEW MOAT -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 08</div><div class="sh-title">The Review Moat</div><div class="sh-sub">Volume as your defense — why 200 reviews at 4.9 is untouchable</div></div>
+
+<div class="body-text">A review moat is what happens when your volume of positive reviews is so high that a single bad review — real or fake — cannot meaningfully impact your rating. This is the long game. And it is the most powerful reputation protection strategy that exists.</div>
+
+<div class="db"><div class="db-label">The math that changes everything</div><div class="db-text">"When Hello Gorgeous had 30 reviews, a 1-star review moved my rating noticeably. When we had 200 reviews, a 1-star review moved it by 0.02. The moat is real. Volume is everything. One bad review in a sea of good ones is a speedbump. One bad review when you only have 15 is a crisis."</div></div>
+
+<div class="h3">What Your Moat Needs to Be Bulletproof</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>Volume targets by practice size</h4>
+    <ul>
+      <li><strong>Under 1 year:</strong> Goal is 50 reviews — every patient asked every time</li>
+      <li><strong>Year 1–2:</strong> Goal is 100 reviews — automated system running</li>
+      <li><strong>Year 3–5:</strong> Goal is 200+ reviews — moat is established</li>
+      <li><strong>Year 5+:</strong> Maintain 10+ new reviews per month — recency matters as much as volume</li>
+      <li><strong>The danger zone:</strong> Any practice with fewer than 50 reviews is vulnerable to a single bad review having major rating impact</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Recency — why old reviews don't protect you</h4>
+    <ul>
+      <li>Google weights recent reviews more heavily than old ones</li>
+      <li>A practice with 200 reviews but none in 6 months looks stagnant</li>
+      <li>Patients notice when the most recent review is from 8 months ago</li>
+      <li>Target: at least 4–6 new reviews per month minimum for an active practice</li>
+      <li>A review sprint after a bad review is not cheating — it is managing your reputation actively</li>
+    </ul>
+  </div>
+</div>
+
+<div class="h3">The Review Sprint — 30 Patients in 30 Days</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Pull your patient list from the last 6 months</h4><p>Identify every patient you've seen who had a good experience and has NOT left a review. This is your sprint list.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Send a personal text to 5 patients per day for 6 days</h4><p>Not a mass email — individual texts. Personalize each one with their name and a reference to their last visit. "Hi [Name] — I was thinking about your [treatment] results and wanted to check in. If you have a second, a Google review would mean the world to us: [link]"</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Ask every in-person patient during the sprint</h4><p>Every single patient in the chair during your sprint gets the in-person ask. No exceptions for 30 days.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Add a review CTA to your Instagram stories for one week</h4><p>"If you've been a patient with us and love your results — we'd be so grateful for a Google review. Link in bio. 🤍" Simple, genuine, effective.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Track daily and celebrate milestones</h4><p>Post your team's running review count somewhere visible. Celebrate every 10 new reviews. Make it a practice-wide goal — everyone who interacts with patients is part of the review culture.</p></div></div>
+</div>
+</div>
+
+<!-- SECTION 9: PLATFORM STRATEGY -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 09</div><div class="sh-title">Platform-by-Platform Strategy</div><div class="sh-sub">Google · Facebook · Yelp · RealSelf · Healthgrades — what matters where</div></div>
+
+<div class="body-text">Not all review platforms are equal. Google is the most important by far for local search and booking conversions. But the others matter too — and each has different rules, different audiences, and different removal policies.</div>
+
+<table class="platform-table">
+  <thead><tr><th>Platform</th><th class="pink">Priority</th><th>Who Uses It</th><th>Key Strategy</th><th>Removal Policy</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Google Business Profile</td><td>🔴 Highest</td><td>Everyone — the default search result</td><td>Volume + recency + response rate. This is 80% of your reputation focus.</td><td>Will remove: spam, off-topic, conflict of interest, fake. Process is slow and inconsistent.</td></tr>
+    <tr><td class="label">Facebook</td><td>🟠 High</td><td>Local community, older demographics, referral-driven patients</td><td>Recommendations (not star ratings). Ask happy patients to "recommend" your page. Respond to all recommendations.</td><td>Can report "recommendations" that violate policies. Facebook is more responsive than Google for removal.</td></tr>
+    <tr><td class="label">Yelp</td><td>🟡 Medium</td><td>Decreasing relevance for med spas specifically</td><td>Do not actively solicit Yelp reviews — their algorithm penalizes solicited reviews and may filter them. Respond to all reviews that show publicly.</td><td>Yelp filters many reviews — legitimate reviews often get hidden. Their removal policy is strict and rarely successful.</td></tr>
+    <tr><td class="label">RealSelf</td><td>🟡 Medium</td><td>Patients researching cosmetic procedures specifically</td><td>Create and maintain your provider profile. Respond to all reviews. RealSelf reviews signal serious cosmetic patients.</td><td>More provider-friendly removal process than Google. Can dispute reviews that violate their guidelines.</td></tr>
+    <tr><td class="label">Healthgrades</td><td>🟢 Lower</td><td>Patients searching for medical providers specifically</td><td>Claim your profile, add photos and credentials. Healthgrades pulls from insurance databases — your listing may exist without you knowing.</td><td>Can dispute reviews. Their process is provider-friendly for obvious fakes.</td></tr>
+    <tr><td class="label">Zocdoc</td><td>🟢 Lower</td><td>Patients specifically looking to book medical appointments</td><td>Only relevant if you use Zocdoc for booking. Reviews are verified — only patients who booked through Zocdoc can review.</td><td>All reviews are verified — fake review risk is essentially zero.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">The 10-Minute Weekly Reputation Routine</div>
+<div class="checklist">
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Monday morning — check all platforms</h4><p>Google, Facebook, Yelp, RealSelf. New reviews since last week? Respond to anything unanswered within 24 hours.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Check your Google Business Profile insights</h4><p>How many searches, views, and clicks this week? How does your rating compare to last week? Trending down = activate review sprint immediately.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Count new reviews this week</h4><p>Are you hitting your target (4–6/month minimum)? If not — what did you do differently? Did you forget to ask? Adjust for next week.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Search your practice name in Google</h4><p>"[Practice Name] reviews" — what comes up? Are there review aggregator sites showing old data? Any new mentions? Know what patients see when they Google you.</p></div></div>
+</div>
+
+<!-- BONUS: 30-DAY SPRINT -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Bonus</div><div class="sh-title">The 30-Day Review Sprint Plan</div><div class="sh-sub">A day-by-day action plan to build your moat fast</div></div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"If I was starting over today with zero reviews, this is exactly what I would do for 30 days straight. No excuses. No days off. Reputation is built in sprints and protected in systems. Start the sprint. Build the system. Then let it run."</div></div>
+
+<table class="platform-table">
+  <thead><tr><th>Week</th><th class="pink">Focus</th><th>Daily Actions</th><th>Goal</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Week 1</td><td>Foundation + first reviews</td><td>Set up review link shortcut on phone. Set up automated post-appointment text in Fresha. Create QR code for front desk. Ask every in-person patient. Text 3 past happy patients per day.</td><td>10 new reviews</td></tr>
+    <tr><td class="label">Week 2</td><td>Momentum + past patients</td><td>Continue asking every in-person patient. Text 5 past patients per day (work through your list). Post one Instagram Story asking followers for a review. Add review link to email signature.</td><td>10 more reviews</td></tr>
+    <tr><td class="label">Week 3</td><td>Respond + refine</td><td>Respond to every review — positive and negative — within 24 hours. Continue in-person ask. Identify which ask is working best (in-person vs text vs email) and double down. Ask staff to support the push.</td><td>8 more reviews</td></tr>
+    <tr><td class="label">Week 4</td><td>Systemize + sustain</td><td>Confirm automated text is working. Review your response templates — are they feeling genuine? Do a final personal outreach to the remaining patients on your list. Set your monthly review target going forward.</td><td>7 more reviews + system running</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">After the Sprint — Your Ongoing System</div>
+<div class="pearl-list">
+  <div class="pearl"><div class="pearl-star">★</div>Automated post-appointment text fires for every booking — passive reviews on autopilot</div>
+  <div class="pearl"><div class="pearl-star">★</div>In-person ask for every patient who expresses happiness in the chair</div>
+  <div class="pearl"><div class="pearl-star">★</div>10-minute weekly reputation check every Monday</div>
+  <div class="pearl"><div class="pearl-star">★</div>24-hour response to every new review — positive or negative</div>
+  <div class="pearl"><div class="pearl-star">★</div>Mini sprint (5 days, 3 asks/day) any time a bad review drops</div>
+  <div class="pearl"><div class="pearl-star">★</div>Quarterly review of your rating trend — is it going up, staying flat, or slipping?</div>
+</div>
+
+<div class="db"><div class="db-label">The last thing from Danielle</div><div class="db-text">"Your reputation is the most valuable thing you own in this business. More valuable than your equipment. More valuable than your space. More valuable than your social media following. Because it's the thing patients trust before they've ever met you. Protect it like it's everything — because it is. You built something real. Make sure the world can see it. 🤍"</div></div>
+
+<div class="doc-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · The 4.9 Star System · $57</div>
+  <div class="footer-npa">For med spa &amp; esthetic providers · Build it. Protect it. Own it.</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

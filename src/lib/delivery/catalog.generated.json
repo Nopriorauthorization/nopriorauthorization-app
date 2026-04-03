@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T04:54:34.784Z",
+  "generatedAt": "2026-04-03T22:44:38.635Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1903,6 +1903,21 @@
           "title": "Membership Story Promo",
           "designId": "npm-story-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "npa-49-star-system",
+      "productSlug": "npa-49-star-system",
+      "productTitle": "The 4.9 Star System",
+      "buildTimestamp": "2026-04-03T20:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The 4.9 Star System — full guide",
+          "designId": "npa-49-star-system-main",
+          "editUrl": "/forms/NPA-49-Star-System.html",
           "viewUrl": null
         }
       ]

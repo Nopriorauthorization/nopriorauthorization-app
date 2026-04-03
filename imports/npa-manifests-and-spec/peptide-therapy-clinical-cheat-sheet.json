@@ -1,0 +1,25 @@
+{
+  "productId": "peptide-therapy-clinical-cheat-sheet",
+  "displayName": "Peptide Therapy Clinical Cheat Sheet",
+  "description": "One-page peptide therapy quick reference — common peptides, reconstitution reminders, screening cues, and chair-side documentation prompts for wellness and aesthetic practices.",
+  "version": "1.0.0",
+  "priceUSD": 10,
+  "etsySku": "NPA-CS-PEP-001",
+  "category": "clinical-reference",
+  "targetBuyer": "Prescribing providers, wellness clinics, peptide program leads",
+  "templates": [
+    {
+      "id": "peptide-therapy-clinical-cheat-sheet-main",
+      "name": "Peptide Therapy Clinical Cheat Sheet",
+      "description": "Printable peptide therapy quick reference",
+      "canvaTemplateUrl": "/forms/NPA-Peptide-Therapy-Clinical-Cheat-Sheet.html",
+      "_deliveryType": "html",
+      "format": "reference",
+      "pages": 1,
+      "category": "clinical-reference"
+    }
+  ],
+  "deliveryNote": "Interactive HTML cheat sheet — print from browser or save as PDF.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T12:01:00Z"
+}

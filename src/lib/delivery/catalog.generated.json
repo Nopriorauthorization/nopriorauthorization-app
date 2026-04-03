@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T02:15:16.996Z",
+  "generatedAt": "2026-04-03T02:44:21.772Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -399,6 +399,21 @@
       ]
     },
     {
+      "productKey": "dermal-filler-clinical-cheat-sheet",
+      "productSlug": "dermal-filler-clinical-cheat-sheet",
+      "productTitle": "Dermal Filler Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T12:04:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Dermal Filler Clinical Cheat Sheet",
+          "designId": "dermal-filler-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Dermal-Filler-Clinical-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "diy-google-setup-kit",
       "productSlug": "diy-google-setup-kit",
       "productTitle": "Complete DIY Google Setup Kit",
@@ -544,6 +559,21 @@
           "title": "Book Your Filler Consultation",
           "designId": "fsx-cta-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "glp1-clinical-cheat-sheet",
+      "productSlug": "glp1-clinical-cheat-sheet",
+      "productTitle": "GLP-1 / Weight-Loss Program Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T12:03:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "GLP-1 / Weight-Loss Program Clinical Cheat Sheet",
+          "designId": "glp1-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-GLP1-Clinical-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -723,6 +753,21 @@
       ]
     },
     {
+      "productKey": "hormone-therapy-clinical-cheat-sheet",
+      "productSlug": "hormone-therapy-clinical-cheat-sheet",
+      "productTitle": "Hormone Therapy (BHRT) Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T12:02:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Hormone Therapy (BHRT) Clinical Cheat Sheet",
+          "designId": "hormone-therapy-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Hormone-Therapy-Clinical-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "hormone-therapy-playbook",
       "productSlug": "hormone-therapy-playbook",
       "productTitle": "The Hormone Therapy Playbook — BHRT for Aesthetic Practices",
@@ -817,6 +862,21 @@
           "title": "Book IV Session Story CTA",
           "designId": "ivs-cta-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..p9-4hoB8fK7JKmD6.5Dallj9bf7s0lCbwGDMFFjNu0RnMb1aNex322ALrijqdxj6wxScBT2jl4DNdKqvi2xYag20g6s_gDmYjJjn92lJ47wbwG1g9dEMCmqbjTCwKewM.uJRHAfeychqFLcuOfUVSNw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=fa287e9f-5008-44f0-a5fb-53baf429401a&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "iv-therapy-clinical-cheat-sheet",
+      "productSlug": "iv-therapy-clinical-cheat-sheet",
+      "productTitle": "IV Therapy Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "IV Therapy Clinical Cheat Sheet",
+          "designId": "iv-therapy-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-IV-Therapy-Clinical-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -1654,6 +1714,21 @@
           "title": "Peptide Therapy Patient Journey Kit",
           "designId": "peptide-patient-journey-kit-main",
           "editUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "peptide-therapy-clinical-cheat-sheet",
+      "productSlug": "peptide-therapy-clinical-cheat-sheet",
+      "productTitle": "Peptide Therapy Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T12:01:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Peptide Therapy Clinical Cheat Sheet",
+          "designId": "peptide-therapy-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Peptide-Therapy-Clinical-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]

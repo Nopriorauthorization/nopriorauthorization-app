@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Peptide Therapy Clinical Cheat Sheet</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap');
+:root{--black:#1A1A1A;--pink:#D4537E;--darkpink:#A83560;--navy:#1a2940;--teal:#1a7a6e;--gold:#b8760a;--red:#c0392b;--purple:#6c3483;--green:#1e6b3c;--border:#ddd0d5;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Source Sans 3',sans-serif;font-size:7.6pt;background:#e8dde3;color:#1A1A1A;line-height:1.28;}
+.page{width:10.5in;min-height:8in;background:white;margin:.15in auto;padding:.12in .15in;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto 1fr;gap:.07in;box-shadow:0 4px 24px rgba(0,0,0,.18);}
+.page-header{grid-column:1/-1;background:#1A1A1A;color:white;padding:.05in .1in;display:flex;align-items:center;justify-content:space-between;border-radius:3px;margin-bottom:.03in;}
+.page-header h1{font-family:'Bebas Neue',sans-serif;font-size:20pt;letter-spacing:2px;}
+.page-header .subtitle{font-size:8pt;color:#D4537E;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.page-label{background:#D4537E;color:white;padding:2px 10px;border-radius:2px;font-family:'Bebas Neue',sans-serif;font-size:13pt;letter-spacing:1px;}
+.brand-name{font-family:'Bebas Neue',sans-serif;font-size:13pt;color:#D4537E;display:block;letter-spacing:1.5px;}
+.brand-sub{font-size:6.5pt;color:#888;}
+.col{display:flex;flex-direction:column;gap:.05in;}
+.card{border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+.card-head{padding:2px 6px;color:white;font-family:'Bebas Neue',sans-serif;font-size:9.5pt;letter-spacing:.8px;}
+.card-body{padding:4px 6px;background:white;}
+.c-black .card-head{background:#1A1A1A;}.c-black{border-color:#1A1A1A;}
+.c-pink .card-head{background:#D4537E;}.c-pink{border-color:#D4537E;}
+.c-darkpink .card-head{background:#A83560;}.c-darkpink{border-color:#A83560;}
+.c-navy .card-head{background:#1a2940;}.c-navy{border-color:#1a2940;}
+.c-teal .card-head{background:#1a7a6e;}.c-teal{border-color:#1a7a6e;}
+.c-gold .card-head{background:#b8760a;}.c-gold{border-color:#b8760a;}
+.c-red .card-head{background:#c0392b;}.c-red{border-color:#c0392b;}
+.c-purple .card-head{background:#6c3483;}.c-purple{border-color:#6c3483;}
+.c-green .card-head{background:#1e6b3c;}.c-green{border-color:#1e6b3c;}
+.row{display:flex;gap:3px;margin-bottom:2px;align-items:flex-start;}
+.row:last-child{margin-bottom:0;}
+.tag{background:#1A1A1A;color:white;border-radius:2px;padding:0 4px;font-size:6.5pt;font-weight:700;white-space:nowrap;min-width:14px;text-align:center;line-height:1.5;flex-shrink:0;}
+.tag.pink{background:#D4537E;}.tag.teal{background:#1a7a6e;}.tag.gold{background:#b8760a;}.tag.red{background:#c0392b;}.tag.purple{background:#6c3483;}.tag.green{background:#1e6b3c;}.tag.navy{background:#1a2940;}
+.info{flex:1;} b,strong{color:#1A1A1A;}
+.tbl{width:100%;border-collapse:collapse;font-size:7pt;}
+.tbl th{background:#1A1A1A;color:white;padding:1px 4px;font-weight:700;text-align:left;font-size:6.8pt;}
+.tbl th.pink{background:#D4537E;}.tbl th.teal{background:#1a7a6e;}.tbl th.navy{background:#1a2940;}.tbl th.red{background:#c0392b;}.tbl th.gold{background:#b8760a;}.tbl th.purple{background:#6c3483;}.tbl th.green{background:#1e6b3c;}
+.tbl td{padding:1px 4px;border-bottom:1px solid #e8dde3;vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#fdf5f8;}
+.star{color:#D4537E;font-weight:900;margin-right:2px;}
+.warn{color:#c0392b;font-weight:700;}
+.divider{height:1px;background:#ddd0d5;margin:3px 0;}
+.hl{background:#fdeef4;border-radius:1px;padding:0 1px;}.hl2{background:#d4f0e8;border-radius:1px;padding:0 1px;}.hl3{background:#fef3cd;border-radius:1px;padding:0 1px;}
+.footer-strip{grid-column:1/-1;background:#1A1A1A;color:#888;font-size:6pt;padding:2px 8px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;margin-top:.03in;}
+.footer-strip span{color:#D4537E;font-weight:700;}
+@media print{body{background:white;}.page{margin:0;box-shadow:none;}@page{size:11in 8.5in landscape;margin:.1in;}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="page-header">
+  <div><h1>Peptide Therapy — Clinical Reference</h1><div class="subtitle">Sermorelin · Ipamorelin · CJC-1295 · BPC-157 · GHK-Cu · PT-141 · Epithalon · Dosing · Storage · Reconstitution</div></div>
+  <div class="page-label">CHEAT SHEET</div>
+  <div><span class="brand-name">NO PRIOR AUTHORIZATION</span><span class="brand-sub">nopriorauthorization.com · Danielle Alcala · Ryan Kent FNP-BC</span></div>
+</div>
+
+<div class="col">
+  <div class="card c-black">
+    <div class="card-head">📊 Peptide Quick Reference — GH Secretagogues</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Peptide</th><th class="pink">Class</th><th>Dose</th><th>Timing</th><th>Half-Life</th><th>Goal</th></tr></thead>
+        <tbody>
+          <tr><td><b>Sermorelin</b></td><td>GHRH</td><td>200–300 mcg</td><td>Nightly SubQ</td><td>10–20 min</td><td>GH stim, sleep, body comp</td></tr>
+          <tr><td><b>Ipamorelin</b></td><td>GHRP</td><td>100–300 mcg</td><td>Nightly SubQ</td><td>2 hrs</td><td>GH pulse, clean — no cortisol</td></tr>
+          <tr><td><b>CJC-1295 (no DAC)</b></td><td>GHRH</td><td>100–300 mcg</td><td>Nightly SubQ</td><td>30 min</td><td>GH stim — short pulse</td></tr>
+          <tr><td><b>CJC-1295 + DAC</b></td><td>GHRH mod</td><td>1–2 mg/wk</td><td>Weekly SubQ</td><td>6–8 days</td><td>Sustained GH elevation</td></tr>
+          <tr><td><b>Tesamorelin</b></td><td>GHRH</td><td>1–2 mg/day</td><td>Daily SubQ</td><td>26 min</td><td>FDA: HIV lipodystrophy. Off-label: visceral fat</td></tr>
+          <tr><td><b>MK-677 (Ibutamoren)</b></td><td>GH secr.</td><td>10–25 mg/day</td><td>Oral, nightly</td><td>24 hrs</td><td>GH/IGF-1 stim, oral convenience</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">COMBO</div><div class="info"><b>Ipamorelin + CJC-1295 (no DAC)</b> is the most common combination — synergistic GH pulse without cortisol/prolactin elevation seen with older GHRPs. 1:1 ratio, nightly.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-head">🩹 BPC-157 — Body Protection Compound</div>
+    <div class="card-body">
+      <div class="row"><div class="tag teal">WHAT</div><div class="info">15-amino acid peptide derived from gastric juice protein. Promotes healing — tendon, ligament, muscle, gut, nerve. Strong safety profile in animal studies. No human clinical trials completed.</div></div>
+      <div class="divider"></div>
+      <table class="tbl">
+        <thead><tr><th>Route</th><th class="teal">Dose</th><th>Frequency</th><th>Best For</th></tr></thead>
+        <tbody>
+          <tr><td>SubQ injection</td><td>250–500 mcg</td><td>Daily or BID</td><td>Systemic healing, systemic inflammation</td></tr>
+          <tr><td>Oral/capsule</td><td>250–500 mcg</td><td>Daily</td><td>GI tract — leaky gut, IBD, ulcer</td></tr>
+          <tr><td>Topical (DMSO)</td><td>Variable</td><td>BID–TID</td><td>Localized tendon/joint</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">STATUS</div><div class="info"><span class="warn">FDA placed BPC-157 on Bulk Substances list (2024) — cannot be compounded at 503A/503B.</span> Verify current regulatory status before prescribing. Landscape changes rapidly.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">✨ GHK-Cu — Copper Peptide</div>
+    <div class="card-body">
+      <div class="row"><div class="tag gold">WHAT</div><div class="info">Naturally occurring copper-binding peptide. Promotes wound healing, collagen synthesis, anti-inflammatory. Strong evidence for topical skin rejuvenation. Injectable use — research ongoing.</div></div>
+      <div class="divider"></div>
+      <table class="tbl">
+        <thead><tr><th>Route</th><th class="gold">Dose</th><th>Frequency</th><th>Use Case</th></tr></thead>
+        <tbody>
+          <tr><td>Topical</td><td>1–2% concentration</td><td>Daily</td><td>Skin rejuvenation, wound healing</td></tr>
+          <tr><td>SubQ injection</td><td>1–2 mg</td><td>Daily</td><td>Systemic anti-aging, hair loss</td></tr>
+          <tr><td>Scalp injection</td><td>0.5–1 mg</td><td>2–3x/week</td><td>Androgenic alopecia</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">BENEFIT</div><div class="info">Topical GHK-Cu has strong evidence: increases collagen density, reduces fine lines, promotes wound healing. Excellent adjunct to microneedling/RF treatments.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-purple">
+    <div class="card-head">💜 PT-141 (Bremelanotide) — Sexual Health</div>
+    <div class="card-body">
+      <div class="row"><div class="tag purple">WHAT</div><div class="info">Melanocortin receptor agonist. Acts centrally on sexual arousal pathways — hypothalamus. FDA approved (Vyleesi) for HSDD in premenopausal women. Off-label use in men for erectile function.</div></div>
+      <div class="divider"></div>
+      <table class="tbl">
+        <thead><tr><th>Population</th><th class="purple">Dose</th><th>Route/Timing</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Women (HSDD)</b></td><td>1.75 mg</td><td>SubQ, 45 min before activity</td><td>FDA-approved Vyleesi dose</td></tr>
+          <tr><td><b>Men (ED)</b></td><td>0.5–2.0 mg</td><td>SubQ, 1–2 hrs before</td><td>Off-label. Start low — 0.5 mg.</td></tr>
+          <tr><td><b>Compounded</b></td><td>0.5–1.75 mg</td><td>SubQ</td><td>Verify pharmacy + current regs</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">SE</div><div class="info"><b>Side effects:</b> Nausea (most common — 40%), flushing, transient BP increase. Contraindicated with high CV risk. <span class="warn">Avoid in uncontrolled HTN, cardiovascular disease.</span></div></div>
+      <div class="row"><div class="tag gold">LIMIT</div><div class="info">Max 1 dose per 24 hours. No more than 1 dose per 8 days (Vyleesi labeling). Rotate SubQ sites. Nausea peaks 30–60 min post-dose.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-navy">
+    <div class="card-head">🌙 Epithalon (Epitalon)</div>
+    <div class="card-body">
+      <div class="row"><div class="tag navy">WHAT</div><div class="info">Tetrapeptide — Ala-Glu-Asp-Gly. Telomere-lengthening properties in research. Pineal gland support. Circadian rhythm optimization. Strong anti-aging interest. No FDA approval.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag navy">DOSE</div><div class="info"><b>Protocol:</b> 5–10 mg/day SubQ or IM for 10–20 day course. Repeat 2x/year. Some protocols: 100 mcg/kg. Research-based dosing — highly variable in literature.</div></div>
+      <div class="row"><div class="tag navy">TIMING</div><div class="info">Evening/before bed preferred — supports melatonin/circadian rhythm. Some use morning. No consensus on optimal timing.</div></div>
+      <div class="row"><div class="tag red">STATUS</div><div class="info">Not FDA approved. No human clinical trials. Research basis only — animal and in vitro studies. <span class="warn">Verify regulatory status before prescribing.</span> Gray area for compounding.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-pink">
+    <div class="card-head">🧬 Thymosin Alpha-1 &amp; Beta-4</div>
+    <div class="card-body">
+      <div class="row"><div class="tag pink">TA-1</div><div class="info"><b>Thymosin Alpha-1:</b> Immune modulator. 1.6 mg SubQ 2x/week. Used for chronic infections, immune deficiency, post-COVID immune support, cancer adjunct. FDA approved (Zadaxin) outside US.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">TB-4</div><div class="info"><b>Thymosin Beta-4:</b> Tissue repair, anti-inflammatory, cardiac protection. 1–5 mg SubQ 2–3x/week. Strong healing properties. Athletic recovery, chronic injury. Not FDA approved.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">TB-500</div><div class="info"><b>TB-500:</b> Synthetic TB-4 fragment. Same mechanism, more available. 2.5–5 mg SubQ 2x/week. Used for tendon/muscle/ligament healing. Popular in athletic populations.</div></div>
+      <div class="row"><div class="tag red">STATUS</div><div class="info">TB-4 and TB-500 — compounding availability variable by state and current FDA guidance. Verify before prescribing. Patient consent for off-label/research use essential.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-green">
+    <div class="card-head">🧪 Reconstitution Guide — All Peptides</div>
+    <div class="card-body">
+      <div class="row"><div class="tag green">DILUENT</div><div class="info"><b>Bacteriostatic water (BAC water)</b> — preferred for multi-use vials. <b>Sterile water</b> — single-use only. <span class="warn">Never use tap water or saline unless specified.</span></div></div>
+      <div class="divider"></div>
+      <table class="tbl">
+        <thead><tr><th>Vial Size</th><th class="green">BAC Water</th><th>Concentration Result</th></tr></thead>
+        <tbody>
+          <tr><td>2 mg peptide</td><td>2.0 mL</td><td>1 mg/mL = 1000 mcg/mL</td></tr>
+          <tr><td>5 mg peptide</td><td>2.5 mL</td><td>2 mg/mL = 2000 mcg/mL</td></tr>
+          <tr><td>10 mg peptide</td><td>5.0 mL</td><td>2 mg/mL = 2000 mcg/mL</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag green">TECHNIQUE</div><div class="info">Insert needle at angle, let BAC water run down the glass wall — do not inject directly onto powder. <b>Roll gently — never shake.</b> Allow to dissolve fully (1–2 minutes).</div></div>
+      <div class="row"><div class="tag green">DOSE CALC</div><div class="info"><b>Example:</b> 5mg vial + 2.5mL BAC = 2mg/mL. Want 200mcg dose = 0.1mL (10 units on U-100 insulin syringe).</div></div>
+      <div class="row"><div class="tag teal">STORAGE</div><div class="info"><b>Unmixed lyophilized:</b> Refrigerate or room temp. Protected from light. <b>Reconstituted:</b> Refrigerate 2–8°C. Use within 30 days. Mark date on vial.</div></div>
+      <div class="row"><div class="tag red">DISCARD</div><div class="info">Discard if: cloudy, particulate, discolored, or more than 30 days since reconstitution.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">💉 Injection Technique — Self-Injection Protocol</div>
+    <div class="card-body">
+      <div class="row"><div class="tag gold">NEEDLE</div><div class="info"><b>U-100 insulin syringe:</b> 28–31g, 5/16" or 1/2" length. SubQ injection — pinch skin, 45° angle. IM — 23–25g, 1–1.5" length, perpendicular.</div></div>
+      <div class="row"><div class="tag gold">SITES</div><div class="info"><b>Rotate every injection:</b> Abdomen (2" from navel), anterior thigh, upper arm (lateral). Avoid same site within 7 days. Document rotation.</div></div>
+      <div class="row"><div class="tag gold">TECHNIQUE</div><div class="info">Clean with alcohol swab — let dry 30 seconds. Pinch 1" skin. Insert at 45°. Inject slowly. Remove. Light pressure (no rubbing). Recap and dispose properly.</div></div>
+      <div class="row"><div class="tag teal">TIMING</div><div class="info"><b>GH secretagogues:</b> 30 min before bed on empty stomach (no food 2hrs prior). Fasting enhances GH pulse amplitude significantly.</div></div>
+      <div class="row"><div class="tag navy">MISSED</div><div class="info">Missed dose — skip and resume next scheduled dose. Do not double up. GH peptides work cumulatively — consistency matters more than individual doses.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-red">
+    <div class="card-head">⚠️ Regulatory Status — Verify Before Prescribing</div>
+    <div class="card-body">
+      <div class="row"><div class="tag red">CHECK</div><div class="info"><span class="warn">The peptide regulatory landscape changes frequently.</span> Always verify current FDA and DEA status before prescribing any compounded peptide. What was available in 2023 may not be in 2025.</div></div>
+      <div class="divider"></div>
+      <table class="tbl">
+        <thead><tr><th>Peptide</th><th class="red">2024–25 Status (verify)</th></tr></thead>
+        <tbody>
+          <tr><td>Sermorelin</td><td><span class="hl2">Generally available — 503A</span></td></tr>
+          <tr><td>Ipamorelin/CJC-1295</td><td><span class="hl2">Generally available — 503A</span></td></tr>
+          <tr><td>Tesamorelin</td><td><span class="hl3">FDA approved drug — compounding restricted</span></td></tr>
+          <tr><td>BPC-157</td><td><span class="hl">FDA Bulk Substances list — RESTRICTED</span></td></tr>
+          <tr><td>PT-141</td><td><span class="hl3">FDA approved (Vyleesi) — compounding gray area</span></td></tr>
+          <tr><td>GHK-Cu</td><td><span class="hl2">Generally available topical/injectable</span></td></tr>
+          <tr><td>TB-4 / TB-500</td><td><span class="hl">Restricted — verify current status</span></td></tr>
+          <tr><td>Epithalon</td><td><span class="hl3">Not approved — research use only</span></td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">PROTECT</div><div class="info">Use FDA-registered 503A pharmacy. Patient informed consent for off-label/research use. Document clinical indication. This protects your license.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-teal">
+    <div class="card-head">🎯 Peptide Selection by Patient Goal</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Patient Goal</th><th class="teal">First Choice</th><th>Add-On</th></tr></thead>
+        <tbody>
+          <tr><td>Anti-aging / longevity</td><td>Ipamorelin + CJC-1295</td><td>GHK-Cu, Epithalon</td></tr>
+          <tr><td>Body composition / fat loss</td><td>Ipamorelin + CJC-1295</td><td>Tesamorelin (visceral fat)</td></tr>
+          <tr><td>Muscle gain / recovery</td><td>Sermorelin or Ipamorelin combo</td><td>TB-500</td></tr>
+          <tr><td>Healing (tendon/ligament)</td><td>BPC-157* / TB-500</td><td>GHK-Cu</td></tr>
+          <tr><td>Sleep improvement</td><td>Sermorelin (nightly)</td><td>Epithalon</td></tr>
+          <tr><td>Skin rejuvenation</td><td>GHK-Cu topical</td><td>GHK-Cu injectable</td></tr>
+          <tr><td>Sexual health (women)</td><td>PT-141 1.75 mg PRN</td><td>Testosterone cream</td></tr>
+          <tr><td>Sexual health (men)</td><td>PT-141 0.5–1 mg PRN</td><td>Testosterone optimization</td></tr>
+          <tr><td>Immune support</td><td>Thymosin Alpha-1</td><td>BPC-157*</td></tr>
+          <tr><td>GI healing (gut)</td><td>BPC-157* oral</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">*</div><div class="info">BPC-157 on FDA restricted list as of 2024. Verify current availability before prescribing. See regulatory column.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-navy">
+    <div class="card-head">🧪 Required Labs — Before &amp; During</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Lab</th><th class="navy">Baseline</th><th>Monitor</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>IGF-1</td><td>✓</td><td>q3–6 mo</td><td>GH axis activity</td></tr>
+          <tr><td>GH (fasting AM)</td><td>Optional</td><td>PRN</td><td>Baseline deficiency</td></tr>
+          <tr><td>Fasting glucose</td><td>✓</td><td>q3 mo</td><td>GH can affect insulin sensitivity</td></tr>
+          <tr><td>HbA1c</td><td>✓</td><td>q6 mo</td><td>Glucose metabolism</td></tr>
+          <tr><td>CMP</td><td>✓</td><td>Annual</td><td>Organ function baseline</td></tr>
+          <tr><td>Thyroid (TSH)</td><td>✓</td><td>Annual</td><td>Overlapping symptoms</td></tr>
+          <tr><td>CBC</td><td>✓</td><td>Annual</td><td>General health</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">IGF-1</div><div class="info">Target IGF-1: upper third of age-appropriate reference range. Supratherapeutic IGF-1 = increase risk of insulin resistance, possible cancer promotion. Do not exceed.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-darkpink">
+    <div class="card-head">🧠 High-Yield Clinical Pearls</div>
+    <div class="card-body">
+      <div class="row"><div class="star">★</div><div class="info"><b>GH secretagogues on empty stomach.</b> Food — especially carbs — blunts GH pulse. 2hrs fasting before injection. Most important compliance factor.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Ipamorelin is cleanest GHRP</b> — no cortisol, no prolactin, no hunger side effect. First-line choice for most patients over older GHRPs (GHRP-2, GHRP-6).</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Verify regulatory status quarterly.</b> FDA landscape on peptides is one of the fastest-changing areas in clinical practice. Your license depends on prescribing only what is currently permissible.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Label reconstituted vials.</b> Date, concentration, patient initials. 30-day rule — discard after 30 days post-reconstitution regardless of remaining volume.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Results are cumulative.</b> GH secretagogues work over months — not weeks. Patients need 3-month minimum commitment. Consistency &gt; dose.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>IGF-1 monitoring is non-negotiable</b> for GH peptides. Supratherapeutic IGF-1 is associated with cancer risk. Stay within upper-normal reference range.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Informed consent for off-label use.</b> Document that patient understands these are compounded medications with limited clinical trial data. Use 503A/503B registered pharmacies only.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>No Prior Authorization</span> · Danielle Alcala · Ryan Kent FNP-BC · nopriorauthorization.com · For licensed prescribing providers only · Verify all regulatory status before prescribing
+  <span style="color:#888;font-weight:400">© 2026 NPA · Peptide Therapy Clinical Cheat Sheet · $17</span>
+</div>
+</div>
+</body>
+</html>

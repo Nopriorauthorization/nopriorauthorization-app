@@ -62,6 +62,11 @@ const CATEGORY_MAP: Record<string, string> = {
   "medical-disclaimer-system": "Legal",
   "diy-google-setup-kit": "Bundles",
   "botox-clinical-cheat-sheet": "Cheat Sheets",
+  "iv-therapy-clinical-cheat-sheet": "Cheat Sheets",
+  "peptide-therapy-clinical-cheat-sheet": "Cheat Sheets",
+  "hormone-therapy-clinical-cheat-sheet": "Cheat Sheets",
+  "glp1-clinical-cheat-sheet": "Cheat Sheets",
+  "dermal-filler-clinical-cheat-sheet": "Cheat Sheets",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
   "complete-injector-bundle": "Social Media",
@@ -124,6 +129,11 @@ const PRICE_MAP: Record<string, number> = {
   "medical-disclaimer-system": 4700,
   "diy-google-setup-kit": 29700,
   "botox-clinical-cheat-sheet": 1000,
+  "iv-therapy-clinical-cheat-sheet": 1000,
+  "peptide-therapy-clinical-cheat-sheet": 1000,
+  "hormone-therapy-clinical-cheat-sheet": 1000,
+  "glp1-clinical-cheat-sheet": 1000,
+  "dermal-filler-clinical-cheat-sheet": 1000,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -215,6 +225,11 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "aftercare-card-kit": "/shop-previews/kits/npa-thumbnail-aftercare-cards.png",
   "patient-communication-kit": "/shop-previews/kits/npa-thumbnail-patient-communication.png",
   "botox-clinical-cheat-sheet": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
+  "iv-therapy-clinical-cheat-sheet": "/shop-previews/default/iv-therapy.png",
+  "peptide-therapy-clinical-cheat-sheet": "/shop-previews/playbooks/npa-playbook-peptide-therapy.png",
+  "hormone-therapy-clinical-cheat-sheet": "/shop-previews/playbooks/npa-playbook-hormone-therapy.png",
+  "glp1-clinical-cheat-sheet": "/shop-previews/default/weight-loss.png",
+  "dermal-filler-clinical-cheat-sheet": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
 };
 
 const NICHE_THUMBNAIL: Record<string, string> = {

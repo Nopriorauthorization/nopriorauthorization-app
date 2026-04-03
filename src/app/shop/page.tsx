@@ -47,6 +47,11 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "medical-disclaimer-system": { label: "Essential", color: "bg-red-500/20 text-red-300" },
   "diy-google-setup-kit": { label: "Best Value", color: "bg-emerald-500/20 text-emerald-300" },
   "botox-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "iv-therapy-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "peptide-therapy-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "hormone-therapy-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "glp1-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "dermal-filler-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -82,6 +87,11 @@ const OUTCOME_MAP: Record<string, string> = {
   "medical-disclaimer-system": "Selling clinical content without disclaimers? That's a lawsuit waiting to happen. Fix it in 10 minutes.",
   "diy-google-setup-kit": "Everything an agency charges $797 for — in one $297 download. Set up your own Google presence.",
   "botox-clinical-cheat-sheet": "Landmarks, dosing cues, and complication reminders at a glance — keep it at the chair.",
+  "iv-therapy-clinical-cheat-sheet": "Drip math, additives, and red-flag cues without flipping through a full IV manual.",
+  "peptide-therapy-clinical-cheat-sheet": "Reconstitution, screening, and documentation prompts — built for busy peptide visits.",
+  "hormone-therapy-clinical-cheat-sheet": "BHRT labs, delivery methods, and follow-up rhythm on one sheet at the chair.",
+  "glp1-clinical-cheat-sheet": "Titration, side effects, and escalation cues for GLP-1 visits — fast and consistent.",
+  "dermal-filler-clinical-cheat-sheet": "Depth, anatomy, reversal, and complication reminders — filler confidence in one glance.",
 };
 
 const QUICK_CATEGORIES = [

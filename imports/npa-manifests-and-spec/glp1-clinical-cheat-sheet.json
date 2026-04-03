@@ -1,0 +1,25 @@
+{
+  "productId": "glp1-clinical-cheat-sheet",
+  "displayName": "GLP-1 / Weight-Loss Program Clinical Cheat Sheet",
+  "description": "One-page GLP-1 program quick reference — titration reminders, side-effect triage cues, contraindications, labs, and patient-education prompts at the chair.",
+  "version": "1.0.0",
+  "priceUSD": 10,
+  "etsySku": "NPA-CS-GLP1-001",
+  "category": "clinical-reference",
+  "targetBuyer": "Weight-loss program providers, NPs, PAs, med spa clinical staff",
+  "templates": [
+    {
+      "id": "glp1-clinical-cheat-sheet-main",
+      "name": "GLP-1 / Weight-Loss Program Clinical Cheat Sheet",
+      "description": "Printable GLP-1 program quick reference",
+      "canvaTemplateUrl": "/forms/NPA-GLP1-Clinical-Cheat-Sheet.html",
+      "_deliveryType": "html",
+      "format": "reference",
+      "pages": 1,
+      "category": "clinical-reference"
+    }
+  ],
+  "deliveryNote": "Interactive HTML cheat sheet — print from browser or save as PDF.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T12:03:00Z"
+}

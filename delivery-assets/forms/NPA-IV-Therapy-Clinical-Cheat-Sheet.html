@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — IV Therapy Clinical Cheat Sheet</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap');
+:root{--black:#1A1A1A;--pink:#D4537E;--darkpink:#A83560;--navy:#1a2940;--teal:#1a7a6e;--gold:#b8760a;--red:#c0392b;--purple:#6c3483;--green:#1e6b3c;--border:#ddd0d5;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Source Sans 3',sans-serif;font-size:7.6pt;background:#e8dde3;color:#1A1A1A;line-height:1.28;}
+.page{width:10.5in;min-height:8in;background:white;margin:.15in auto;padding:.12in .15in;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto 1fr;gap:.07in;box-shadow:0 4px 24px rgba(0,0,0,.18);}
+.page-header{grid-column:1/-1;background:#1A1A1A;color:white;padding:.05in .1in;display:flex;align-items:center;justify-content:space-between;border-radius:3px;margin-bottom:.03in;}
+.page-header h1{font-family:'Bebas Neue',sans-serif;font-size:20pt;letter-spacing:2px;}
+.subtitle{font-size:8pt;color:#D4537E;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.page-label{background:#D4537E;color:white;padding:2px 10px;border-radius:2px;font-family:'Bebas Neue',sans-serif;font-size:13pt;letter-spacing:1px;}
+.brand-name{font-family:'Bebas Neue',sans-serif;font-size:13pt;color:#D4537E;display:block;letter-spacing:1.5px;}
+.brand-sub{font-size:6.5pt;color:#888;}
+.col{display:flex;flex-direction:column;gap:.05in;}
+.card{border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+.card-head{padding:2px 6px;color:white;font-family:'Bebas Neue',sans-serif;font-size:9.5pt;letter-spacing:.8px;}
+.card-body{padding:4px 6px;background:white;}
+.c-black .card-head{background:#1A1A1A;}.c-black{border-color:#1A1A1A;}
+.c-pink .card-head{background:#D4537E;}.c-pink{border-color:#D4537E;}
+.c-darkpink .card-head{background:#A83560;}.c-darkpink{border-color:#A83560;}
+.c-navy .card-head{background:#1a2940;}.c-navy{border-color:#1a2940;}
+.c-teal .card-head{background:#1a7a6e;}.c-teal{border-color:#1a7a6e;}
+.c-gold .card-head{background:#b8760a;}.c-gold{border-color:#b8760a;}
+.c-red .card-head{background:#c0392b;}.c-red{border-color:#c0392b;}
+.c-purple .card-head{background:#6c3483;}.c-purple{border-color:#6c3483;}
+.c-green .card-head{background:#1e6b3c;}.c-green{border-color:#1e6b3c;}
+.row{display:flex;gap:3px;margin-bottom:2px;align-items:flex-start;}
+.row:last-child{margin-bottom:0;}
+.tag{background:#1A1A1A;color:white;border-radius:2px;padding:0 4px;font-size:6.5pt;font-weight:700;white-space:nowrap;min-width:14px;text-align:center;line-height:1.5;flex-shrink:0;}
+.tag.pink{background:#D4537E;}.tag.teal{background:#1a7a6e;}.tag.gold{background:#b8760a;}.tag.red{background:#c0392b;}.tag.purple{background:#6c3483;}.tag.green{background:#1e6b3c;}.tag.navy{background:#1a2940;}
+.info{flex:1;} b,strong{color:#1A1A1A;}
+.tbl{width:100%;border-collapse:collapse;font-size:7pt;}
+.tbl th{background:#1A1A1A;color:white;padding:1px 4px;font-weight:700;text-align:left;font-size:6.8pt;}
+.tbl th.pink{background:#D4537E;}.tbl th.teal{background:#1a7a6e;}.tbl th.navy{background:#1a2940;}.tbl th.red{background:#c0392b;}.tbl th.gold{background:#b8760a;}.tbl th.green{background:#1e6b3c;}
+.tbl td{padding:1px 4px;border-bottom:1px solid #e8dde3;vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#fdf5f8;}
+.star{color:#D4537E;font-weight:900;margin-right:2px;}
+.warn{color:#c0392b;font-weight:700;}
+.divider{height:1px;background:#ddd0d5;margin:3px 0;}
+.hl{background:#fdeef4;border-radius:1px;padding:0 1px;}.hl2{background:#d4f0e8;border-radius:1px;padding:0 1px;}
+.flow{display:flex;align-items:center;gap:2px;flex-wrap:wrap;margin-bottom:2px;}
+.flow-box{background:#1A1A1A;color:white;padding:1px 5px;border-radius:2px;font-size:6.5pt;font-weight:600;}
+.flow-box.pink{background:#D4537E;}.flow-box.teal{background:#1a7a6e;}.flow-box.gold{background:#b8760a;}.flow-box.red{background:#c0392b;}.flow-box.navy{background:#1a2940;}.flow-box.lt{background:#f5eff2;color:#1A1A1A;}
+.arrow{font-size:8pt;color:#D4537E;font-weight:900;}
+.footer-strip{grid-column:1/-1;background:#1A1A1A;color:#888;font-size:6pt;padding:2px 8px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;margin-top:.03in;}
+.footer-strip span{color:#D4537E;font-weight:700;}
+@media print{body{background:white;}.page{margin:0;box-shadow:none;}@page{size:11in 8.5in landscape;margin:.1in;}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="page-header">
+  <div><h1>IV Therapy — Clinical Reference</h1><div class="subtitle">Drip Menu · Additives · Contraindications · Insertion · Complications · NAD+ · Push Medications</div></div>
+  <div class="page-label">CHEAT SHEET</div>
+  <div><span class="brand-name">NO PRIOR AUTHORIZATION</span><span class="brand-sub">nopriorauthorization.com · Danielle Alcala</span></div>
+</div>
+
+<div class="col">
+  <div class="card c-black">
+    <div class="card-head">💧 IV Drip Menu — Standard Formulations</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Drip</th><th class="pink">Base</th><th>Key Additives</th><th>Time</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td><b>Myers Cocktail</b></td><td>100mL NS</td><td>MgCl2, B-complex, B12, Vit C, Calcium</td><td>30–45 min</td><td>$125–175</td></tr>
+          <tr><td><b>Hydration</b></td><td>1L NS or LR</td><td>Electrolytes, optional B12</td><td>45–60 min</td><td>$75–125</td></tr>
+          <tr><td><b>Immunity Boost</b></td><td>250mL NS</td><td>Vit C 5–10g, Zinc, B-complex, Glutathione push</td><td>45–60 min</td><td>$150–200</td></tr>
+          <tr><td><b>Energy/Performance</b></td><td>250mL NS</td><td>B-complex, B12, Amino acids, CoQ10, Taurine</td><td>45–60 min</td><td>$150–225</td></tr>
+          <tr><td><b>Beauty/Glow</b></td><td>250mL NS</td><td>Biotin, Glutathione, Vit C, B-complex, Zinc</td><td>45–60 min</td><td>$150–200</td></tr>
+          <tr><td><b>Hangover/Recovery</b></td><td>1L NS</td><td>B-complex, B12, Zofran, Toradol, Magnesium</td><td>45–60 min</td><td>$175–250</td></tr>
+          <tr><td><b>Weight Loss</b></td><td>250mL NS</td><td>MIC/Lipo-B, B12, B-complex, Carnitine</td><td>30–45 min</td><td>$125–175</td></tr>
+          <tr><td><b>High-Dose Vit C</b></td><td>500mL NS</td><td>Vit C 25–75g (G6PD required)</td><td>2–4 hrs</td><td>$200–400</td></tr>
+          <tr><td><b>NAD+</b></td><td>250mL NS</td><td>NAD+ 250–1000mg slow infusion</td><td>2–4 hrs</td><td>$300–800</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-head">💊 Additive Dosing Quick Reference</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Additive</th><th class="teal">IV Bag Dose</th><th>Push Dose</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Vitamin C</b></td><td>5–10g/250mL</td><td>1–2g slow</td><td>G6PD test if &gt;25g</td></tr>
+          <tr><td><b>Magnesium Cl</b></td><td>1–2g/bag</td><td>500mg slow</td><td>Fast push = hypotension</td></tr>
+          <tr><td><b>B-Complex</b></td><td>1 mL/bag</td><td>1 mL push</td><td>Yellow urine is normal</td></tr>
+          <tr><td><b>B12</b></td><td>1mg/bag</td><td>1mg IM/SubQ</td><td>Methylcobalamin preferred</td></tr>
+          <tr><td><b>Glutathione</b></td><td>Push only</td><td>600–2400mg over 2–5 min</td><td>AFTER bag. Never in bag.</td></tr>
+          <tr><td><b>Zinc</b></td><td>5–10mg/bag</td><td>—</td><td>Max 40mg/day total</td></tr>
+          <tr><td><b>Calcium gluconate</b></td><td>1–2g/bag</td><td>Slow only</td><td>Never rapid — cardiac risk</td></tr>
+          <tr><td><b>Biotin</b></td><td>10–20mg/bag</td><td>—</td><td>Interferes with thyroid labs</td></tr>
+          <tr><td><b>Carnitine</b></td><td>500–1000mg/bag</td><td>—</td><td>Fat metabolism support</td></tr>
+          <tr><td><b>Taurine</b></td><td>500mg/bag</td><td>—</td><td>Energy, cardiac support</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">!</div><div class="info"><b>Glutathione:</b> NEVER add to IV bag — oxidizes. Always as slow IV push after infusion completes. 2–5 min minimum push time.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">🧪 Push Medications — Symptom Management</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Medication</th><th class="gold">Dose</th><th>Route</th><th>Indication</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Zofran (ondansetron)</b></td><td>4mg</td><td>Slow IV push</td><td>Nausea/vomiting</td><td>QT prolongation risk — screen</td></tr>
+          <tr><td><b>Toradol (ketorolac)</b></td><td>15–30mg</td><td>IV/IM</td><td>Pain, headache, inflammation</td><td>Max 5 days. Renal CI.</td></tr>
+          <tr><td><b>Benadryl (diphenhydramine)</b></td><td>25–50mg</td><td>Slow IV push</td><td>Allergic reaction, nausea</td><td>Sedating — patient must have driver</td></tr>
+          <tr><td><b>Pepcid (famotidine)</b></td><td>20mg</td><td>IV push</td><td>GI upset, GERD symptoms</td><td>H2 blocker — safe adjunct</td></tr>
+          <tr><td><b>Dexamethasone</b></td><td>4–10mg</td><td>IV push</td><td>Inflammation, energy boost</td><td>Monitor glucose in diabetics</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-purple">
+    <div class="card-head">🧬 NAD+ Protocol — Special Considerations</div>
+    <div class="card-body">
+      <div class="row"><div class="tag purple">WHAT</div><div class="info"><b>Nicotinamide Adenine Dinucleotide.</b> Coenzyme involved in cellular energy, DNA repair, sirtuin activation. Declines with age. IV delivery bypasses absorption limitations of oral NMN/NR.</div></div>
+      <div class="divider"></div>
+      <table class="tbl">
+        <thead><tr><th>Dose</th><th class="purple">Volume</th><th>Run Time</th><th>Indication</th></tr></thead>
+        <tbody>
+          <tr><td>250mg</td><td>250mL NS</td><td>2 hrs minimum</td><td>Intro / sensitive patients</td></tr>
+          <tr><td>500mg</td><td>250mL NS</td><td>2.5–3 hrs</td><td>Standard dose</td></tr>
+          <tr><td>750mg</td><td>500mL NS</td><td>3–4 hrs</td><td>Anti-aging / cognitive</td></tr>
+          <tr><td>1000mg</td><td>500mL NS</td><td>4+ hrs</td><td>Addiction support, advanced</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">SIDE FX</div><div class="info"><b>Rate-dependent side effects:</b> Chest tightness, nausea, flushing, cramping — all from infusing too fast. <span class="warn">Slow the rate, do not stop.</span> These resolve when rate decreases. Always run slow.</div></div>
+      <div class="row"><div class="tag gold">SERIES</div><div class="info">Optimal protocol: 4 infusions over 2 weeks for loading, then monthly maintenance. Anti-addiction protocols: daily x 10 days under medical supervision.</div></div>
+      <div class="row"><div class="tag teal">STORAGE</div><div class="info">Refrigerate unopened. Light-sensitive — use amber bag or wrap in foil. Once mixed, infuse within 6 hours. Do not freeze.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-navy">
+    <div class="card-head">🚫 Contraindications</div>
+    <div class="card-body">
+      <div class="row"><div class="tag red">ABS</div><div class="info"><b>Absolute:</b> Active infection/fever. Congestive heart failure (fluid overload risk). Severe renal failure (fluid + electrolyte management). Known allergy to any component.</div></div>
+      <div class="row"><div class="tag red">ABS</div><div class="info"><b>High-dose Vitamin C:</b> G6PD deficiency (hemolytic anemia risk). Oxalate kidney stones history. Renal impairment. <span class="warn">Test G6PD before any dose &gt;10g.</span></div></div>
+      <div class="row"><div class="tag gold">REL</div><div class="info"><b>Relative:</b> Uncontrolled HTN — monitor BP before and during. Pregnancy — consult OB first. Diabetes — monitor glucose with dextrose-containing solutions.</div></div>
+      <div class="row"><div class="tag gold">REL</div><div class="info"><b>Cardiac history:</b> Magnesium and calcium IV require slower rates. QT prolongation risk with Zofran — screen EKG history. Obtain cardiac clearance for high-dose infusions.</div></div>
+      <div class="row"><div class="tag navy">SCREEN</div><div class="info">Always screen: CHF, renal disease, current medications, allergies, recent labs if available. Vital signs before every infusion.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-head">✅ Pre-Treatment Protocol</div>
+    <div class="card-body">
+      <div class="row"><div class="tag green">VITALS</div><div class="info">BP, HR, temp, SpO2 before every infusion. Document in chart. If BP &gt;160/100 — consult before proceeding with high-volume infusions.</div></div>
+      <div class="row"><div class="tag green">HYDRATE</div><div class="info">Instruct patient: drink 16–32oz water before arrival. Well-hydrated veins = easier access. Fasting increases vasovagal risk.</div></div>
+      <div class="row"><div class="tag green">EAT</div><div class="info"><b>Eat before IV — especially NAD+.</b> Empty stomach worsens nausea side effects from NAD+, high-dose Vit C, and magnesium. Light meal 1–2hrs before.</div></div>
+      <div class="row"><div class="tag green">CONSENT</div><div class="info">Signed consent for each infusion or standing consent for series. Document indication, components, patient education provided.</div></div>
+      <div class="row"><div class="tag red">LABS</div><div class="info">High-dose Vit C: G6PD required. Consider CMP for patients with unknown renal status. Not required for standard drips in healthy patients.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-red">
+    <div class="card-head">⚠️ IV Complication Management</div>
+    <div class="card-body">
+      <div class="row"><div class="tag red">INFILTRA</div><div class="info"><b>Infiltration (fluid in tissue):</b> Stop infusion immediately. Remove catheter. Elevate extremity. Warm compress for most solutions. Cold compress for vasoconstrictors. Document site, estimate volume extravasated.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">PHLEBITIS</div><div class="info"><b>Phlebitis:</b> Redness, warmth, pain along vein. Remove catheter. Warm moist compress. Elevate. Document. Monitor for infection. Do not reuse same vein for 48hrs.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">VASOVAGAL</div><div class="info"><b>Vasovagal syncope:</b> Pale, diaphoretic, bradycardic, presyncopal. Trendelenburg position. Cool cloth. Ammonia capsule. Monitor vitals. Do not leave patient alone. 95% resolve quickly.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">ALLERGIC</div><div class="info"><b>Allergic reaction:</b> Urticaria, pruritis, bronchospasm. STOP infusion. Benadryl 25–50mg IV. Epinephrine 0.3mg IM for anaphylaxis. Call 911. Have epi on-site always.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">AIR EMBOL</div><div class="info"><b>Air embolism prevention:</b> Prime tubing completely. Use Luer-lock connections. Monitor bag — do not run dry. Clamp line immediately when bag empty. Position patient if suspected: left lateral decubitus, Trendelenburg.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-pink">
+    <div class="card-head">💉 IV Insertion — Technique Guide</div>
+    <div class="card-body">
+      <div class="row"><div class="tag pink">SITES</div><div class="info"><b>Preferred sites:</b> Median cubital (AC), cephalic, basilic veins. Forearm preferred over hand for comfort and duration. Avoid lower extremities, areas of infection, AV fistulas, mastectomy side.</div></div>
+      <div class="row"><div class="tag pink">GAUGE</div><div class="info"><b>22g</b> — standard wellness infusions, most patients. <b>20g</b> — faster flow needed, larger volumes. <b>24g</b> — fragile/small veins, elderly, pediatric.</div></div>
+      <div class="row"><div class="tag pink">TECHNIQUE</div><div class="info">Apply tourniquet 3–4" above site. Palpate and visualize. Clean with alcohol — dry 30 sec. Bevel up at 15–30°. Advance until flash. Lower angle, advance catheter. Release tourniquet. Remove needle. Connect tubing. Secure.</div></div>
+      <div class="row"><div class="tag gold">DIFFICULT</div><div class="info"><b>Difficult access:</b> Warm compress/warm pack 5–10 min first. Hydrate patient. Gravity assist — arm below heart. Gentle fist pumping. Vein finder device. Max 2 attempts per provider.</div></div>
+      <div class="row"><div class="tag teal">DWELL TIME</div><div class="info">72–96hr max dwell per CDC guidelines for peripheral IV. For wellness/spa IV — remove after each infusion. New site each visit. Document site used.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">📊 Flow Rate Quick Reference</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Volume</th><th class="gold">Target Time</th><th>Drops/min (20 gtt)</th><th>mL/hr (pump)</th></tr></thead>
+        <tbody>
+          <tr><td>100 mL</td><td>30 min</td><td>67 gtt/min</td><td>200 mL/hr</td></tr>
+          <tr><td>250 mL</td><td>45 min</td><td>111 gtt/min</td><td>333 mL/hr</td></tr>
+          <tr><td>250 mL</td><td>60 min</td><td>83 gtt/min</td><td>250 mL/hr</td></tr>
+          <tr><td>500 mL</td><td>60 min</td><td>167 gtt/min</td><td>500 mL/hr</td></tr>
+          <tr><td>500 mL</td><td>90 min</td><td>111 gtt/min</td><td>333 mL/hr</td></tr>
+          <tr><td>1000 mL</td><td>2 hrs</td><td>167 gtt/min</td><td>500 mL/hr</td></tr>
+          <tr><td>NAD+ 500mg</td><td>3 hrs</td><td>56 gtt/min</td><td>167 mL/hr</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card c-darkpink">
+    <div class="card-head">🧠 High-Yield Clinical Pearls</div>
+    <div class="card-body">
+      <div class="row"><div class="star">★</div><div class="info"><b>Glutathione always last.</b> Push after the bag completes — never add to IV bag. Oxidizes immediately in solution.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>NAD+ side effects are rate-dependent.</b> Slow the drip — don't stop it. All symptoms resolve with reduced rate.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>G6PD test before high-dose Vit C.</b> Hemolytic anemia in G6PD-deficient patients is life-threatening. Non-negotiable.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Eat before IV.</b> Especially NAD+. Empty stomach significantly worsens side effects. Make it a standing pre-treatment instruction.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Epinephrine on-site always.</b> Anaphylaxis is rare but fast. 0.3mg EpiPen in every treatment room.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Magnesium too fast = hypotension.</b> Always run magnesium additives over the full bag duration — never bolus.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Document every infusion:</b> Site, gauge, components, volume, run time, patient tolerance, vitals pre/post. Protects you legally.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Biotin interferes with thyroid labs.</b> Hold biotin-containing IVs for 48hrs before thyroid blood draw. Educate patients.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-teal">
+    <div class="card-head">💉 IM Injection Reference — Common Add-Ons</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Injection</th><th class="teal">Dose</th><th>Site</th><th>Frequency</th><th>Indication</th></tr></thead>
+        <tbody>
+          <tr><td><b>B12 (cyanocobalamin)</b></td><td>1mg/mL</td><td>Deltoid/gluteal</td><td>Weekly–monthly</td><td>Energy, neurological support</td></tr>
+          <tr><td><b>MIC/Lipo-B shot</b></td><td>1–2mL</td><td>Deltoid/gluteal</td><td>Weekly</td><td>Fat metabolism, liver support</td></tr>
+          <tr><td><b>Vitamin D3</b></td><td>50,000 IU</td><td>Gluteal (deep IM)</td><td>Monthly</td><td>Deficiency repletion</td></tr>
+          <tr><td><b>Toradol (ketorolac)</b></td><td>30–60mg</td><td>Gluteal/deltoid</td><td>PRN (max 5 days)</td><td>Pain, migraine, inflammation</td></tr>
+          <tr><td><b>Phenergan (promethazine)</b></td><td>25mg</td><td>Gluteal — deep</td><td>PRN</td><td>Nausea — NEVER IV push</td></tr>
+          <tr><td><b>Testosterone</b></td><td>100–200mg</td><td>Gluteal/deltoid/quad</td><td>Weekly/biweekly</td><td>TRT — men</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">!</div><div class="info"><span class="warn">Phenergan (promethazine) — NEVER IV push.</span> Severe tissue necrosis risk. IM only, and only deep IM into large muscle. Avoid intradermal injection.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-head">📋 Documentation Checklist</div>
+    <div class="card-body">
+      <div class="row"><div class="tag green">BEFORE</div><div class="info">Patient name + DOB verified. Consent signed. Allergy review completed. Vitals (BP, HR, SpO2) documented. IV site assessment.</div></div>
+      <div class="row"><div class="tag green">DURING</div><div class="info">IV site: location, gauge, number of attempts. Bag components and doses. Start time, flow rate. Patient tolerance during infusion.</div></div>
+      <div class="row"><div class="tag green">AFTER</div><div class="info">End time. Vitals post-infusion. Any adverse reactions. Site condition on removal. Patient education given. Follow-up plan.</div></div>
+      <div class="row"><div class="tag pink">BILLING</div><div class="info">Retain copy of all orders. Document medical necessity for therapeutic drips. Cash-pay: itemized receipt for patient HSA/FSA reimbursement.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-navy">
+    <div class="card-head">🏪 Business Pearls — Hello Gorgeous Protocol</div>
+    <div class="card-body">
+      <div class="row"><div class="tag navy">MENU</div><div class="info">Name drips experientially — not clinically. "Glow Drip" sells better than "Glutathione + Vit C infusion." Patients buy the benefit, not the ingredient.</div></div>
+      <div class="row"><div class="tag navy">UPSELL</div><div class="info">Standard add-on script: "While you're here, would you like to add a glutathione push at the end? It takes 3 minutes and gives you that glow boost." +$40–60 per patient.</div></div>
+      <div class="row"><div class="tag navy">PACKAGE</div><div class="info">Series packages: 4-drip series at 10% discount. Monthly membership: 1 drip/month + 1 B12 shot = $X/month. Locks in recurring revenue.</div></div>
+      <div class="row"><div class="tag pink">RETENTION</div><div class="info">Send rebook text at 3 weeks post-infusion: "Hi [Name]! It's been 3 weeks since your IV drip — a lot of patients come back monthly to maintain their energy levels. Want me to grab you a spot?" 🤍</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · For licensed providers only · Educational reference — not a substitute for clinical training
+  <span style="color:#888;font-weight:400">© 2026 NPA · IV Therapy Clinical Cheat Sheet · $17</span>
+</div>
+</div>
+</body>
+</html>

@@ -10,11 +10,10 @@ export const metadata = {
 
 export default function MembershipPage() {
   return (
-    <div className="min-h-screen bg-[#FAF7F5]">
+    <div className="min-h-[calc(100dvh-4rem)] bg-[#FAF7F5]">
       <iframe
         src="/forms/NPA-Pro-Membership.html"
-        className="mx-auto block w-full max-w-[860px] border-0"
-        style={{ minHeight: "100vh", background: "#FAF7F5" }}
+        className="mx-auto block h-[calc(100dvh-4rem)] min-h-[calc(100dvh-4rem)] w-full max-w-[860px] border-0 bg-[#FAF7F5]"
         title="NPA Pro Membership"
       />
     </div>

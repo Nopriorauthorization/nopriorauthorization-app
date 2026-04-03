@@ -128,11 +128,11 @@ export default function ShopPage() {
     <div className="min-h-screen bg-[#1A1A1A] text-white">
       {/* HERO */}
       <section className="border-b border-white/5 bg-gradient-to-b from-[#1A1A1A] to-[#111]">
-        <div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28">
+        <div className="mx-auto max-w-5xl px-4 py-14 text-center sm:px-6 sm:py-28">
           <p className="text-xs font-bold uppercase tracking-[0.4em] text-[#D4537E]">
             No Prior Authorization
           </p>
-          <h1 className="mt-4 font-serif text-4xl font-bold leading-tight md:text-6xl">
+          <h1 className="mt-4 font-serif text-3xl font-bold leading-tight sm:text-4xl md:text-6xl">
             Stop designing.<br />
             <span className="text-[#D4537E]">Start posting.</span>
           </h1>
@@ -141,16 +141,16 @@ export default function ShopPage() {
             entrepreneurs. Consent forms, social media kits, legal bundles,
             and marketing materials &mdash; download instantly, customize in minutes.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <div className="mt-10 flex w-full max-w-md flex-col gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
             <a
               href="#start-here"
-              className="rounded-xl bg-[#D4537E] px-8 py-4 text-base font-bold text-white transition hover:bg-[#D4537E]/80"
+              className="min-h-[48px] rounded-xl bg-[#D4537E] px-8 py-3 text-center text-base font-bold text-white transition hover:bg-[#D4537E]/80 sm:min-h-0 sm:py-4"
             >
               Shop Best Sellers
             </a>
             <a
               href="#all-products"
-              className="rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white transition hover:bg-white/10"
+              className="min-h-[48px] rounded-xl border border-white/20 bg-white/5 px-8 py-3 text-center text-base font-bold text-white transition hover:bg-white/10 sm:min-h-0 sm:py-4"
             >
               Browse All Templates
             </a>
@@ -162,7 +162,7 @@ export default function ShopPage() {
       </section>
 
       {/* CATEGORY NAV */}
-      <section className="sticky top-0 z-40 border-b border-white/10 bg-[#1A1A1A]/95 backdrop-blur">
+      <section className="sticky top-14 z-30 border-b border-white/10 bg-[#1A1A1A]/95 backdrop-blur supports-[backdrop-filter]:bg-[#1A1A1A]/90">
         <div className="mx-auto max-w-6xl overflow-x-auto px-4 sm:px-6">
           <div className="flex gap-1 py-3">
             {QUICK_CATEGORIES.map((cat) => (

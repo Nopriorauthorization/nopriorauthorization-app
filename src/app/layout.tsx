@@ -4,7 +4,7 @@ import MainNavigation from "@/components/layout/main-navigation";
 import { StickyEmailBar } from "@/components/shop/StickyEmailBar";
 import Providers from "@/components/layout/providers";
 import { MascotControllerProvider } from "@/context/MascotController";
-import { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 const SITE_URL = "https://nopriorauthorization.com";
 
@@ -79,6 +79,12 @@ export const metadata: Metadata = {
   category: "Business",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 const schemaGraph = {
   "@context": "https://schema.org",
   "@graph": [
@@ -142,12 +148,14 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-black text-white min-h-screen">
+      <body className="min-h-screen overflow-x-hidden bg-black text-white antialiased">
         <Providers>
           <MascotControllerProvider>
             <ErrorBoundary>
               <MainNavigation />
-              <main className="pt-16">{children}</main>
+              <main className="min-w-0 pt-16 pb-[calc(6rem+env(safe-area-inset-bottom,0px))]">
+                {children}
+              </main>
               <StickyEmailBar />
             </ErrorBoundary>
           </MascotControllerProvider>

@@ -6,11 +6,10 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <div className="-mt-16 min-h-screen">
+    <div className="-mt-16 min-h-dvh">
       <iframe
         src="/npa-homepage.html"
-        className="block w-full border-0"
-        style={{ width: "100%", height: "100vh", minHeight: "100vh" }}
+        className="block h-dvh min-h-dvh w-full border-0"
         title="No Prior Authorization"
       />
     </div>

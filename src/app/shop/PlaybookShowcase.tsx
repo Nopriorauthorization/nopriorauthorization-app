@@ -186,13 +186,13 @@ export function PlaybookShowcase() {
       {/* Showcase card */}
       <div className="overflow-hidden rounded-2xl border border-[#C9A96E]/30 bg-gradient-to-br from-[#C9A96E]/5 to-transparent">
         <div className="grid gap-0 md:grid-cols-2">
-          {/* Image */}
-          <div className="relative overflow-hidden">
+          {/* Image — explicit aspect on small screens so the cover isn’t collapsed before the text */}
+          <div className="relative aspect-[4/5] max-h-[min(70vh,520px)] overflow-hidden md:aspect-auto md:max-h-none md:min-h-[280px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={pb.image}
               alt={pb.title}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-center"
             />
           </div>
 

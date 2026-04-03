@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Difficult Client Scripts</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;font-size:10.5pt;color:#1A1A1A;background:#f5f0ed;line-height:1.6}
+.page{width:8.5in;background:white;margin:.3in auto;padding:.65in .75in;box-shadow:0 4px 32px rgba(0,0,0,.12);}
+.cover{min-height:9in;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;}
+.npa-eyebrow{font-size:8pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:8px;}
+.cover-title{font-family:'Playfair Display',serif;font-size:32pt;font-weight:900;color:#1A1A1A;line-height:1.1;margin-bottom:10px;border-bottom:3px solid #1A1A1A;padding-bottom:16px;}
+.cover-title em{font-style:italic;color:#D4537E;}
+.cover-sub{font-size:12pt;color:#555;line-height:1.7;margin:16px 0;}
+.author-strip{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:0.5px solid #ddd;border-bottom:0.5px solid #ddd;margin:16px 0;}
+.avatar{width:44px;height:44px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18pt;color:#fff;font-weight:700;flex-shrink:0;}
+.author-info h3{font-size:11pt;font-weight:700;color:#1A1A1A;}
+.author-info p{font-size:9pt;color:#666;}
+.toc{background:#f9f5f3;border-radius:6px;padding:16px 20px;margin:16px 0;}
+.toc h4{font-size:9pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;}
+.toc-item{display:flex;justify-content:space-between;font-size:10pt;color:#444;padding:4px 0;border-bottom:0.5px solid #e8e4e0;}
+.toc-item:last-child{border-bottom:none;}
+.sec-header{background:#1A1A1A;margin:0 -.75in;padding:16px .75in;margin-bottom:20px;}
+.sh-num{font-size:8pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:3px;}
+.sh-title{font-family:'Playfair Display',serif;font-size:18pt;font-weight:900;color:#fff;}
+.sh-sub{font-size:9.5pt;color:rgba(255,255,255,.55);margin-top:3px;}
+.danielle-block{background:#FBEAF0;border-left:4px solid #D4537E;padding:12px 16px;border-radius:0 5px 5px 0;margin:14px 0;}
+.db-label{font-size:7.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:5px;}
+.db-text{font-size:10pt;color:#72243E;line-height:1.7;font-style:italic;}
+.scenario-card{border-radius:6px;overflow:hidden;border:0.5px solid #e0d8d4;margin-bottom:18px;}
+.sc-head{background:#1A1A1A;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
+.sc-head h3{font-size:11pt;font-weight:700;color:#fff;}
+.sc-tag{font-size:7.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#D4537E;color:#fff;padding:2px 8px;border-radius:2px;}
+.sc-body{padding:14px 16px;background:white;}
+.sc-situation{font-size:9.5pt;color:#555;line-height:1.65;margin-bottom:12px;padding:8px 12px;background:#f9f6f4;border-radius:4px;border-left:3px solid #888;}
+.script-label{font-size:7.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:6px;}
+.script-text{font-size:10pt;color:#1A1A1A;line-height:1.75;background:#fff8f9;border:0.5px solid #e8c4cc;border-radius:4px;padding:10px 14px;margin-bottom:10px;}
+.script-text em{color:#D4537E;font-style:normal;font-weight:700;}
+.why-note{font-size:9pt;color:#666;line-height:1.6;font-style:italic;border-top:0.5px solid #eee;padding-top:8px;margin-top:4px;}
+.rule-card{background:#f9f5f3;border-radius:6px;padding:12px 16px;margin:10px 0;border-left:3px solid #D4537E;}
+.rule-card h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:4px;}
+.rule-card p{font-size:9.5pt;color:#555;line-height:1.6;}
+.body-text{font-size:10pt;color:#444;line-height:1.7;margin-bottom:12px;}
+.doc-footer{margin-top:28px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:7.5pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+.page-break{page-break-before:always;padding-top:0;}
+.h2{font-family:'Playfair Display',serif;font-size:15pt;font-weight:700;color:#1A1A1A;margin:20px 0 10px;}
+@media print{body{background:white;}.page{margin:0;box-shadow:none;padding:.55in .65in;}@page{size:8.5in 11in portrait;margin:0;}.page-break{page-break-before:always;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div class="npa-eyebrow">No Prior Authorization &nbsp;·&nbsp; Business Communication Series</div>
+    <div class="cover-title">Difficult Client Scripts:<br><em>What to Say When<br>It Gets Hard.</em></div>
+    <div class="cover-sub">15 word-for-word scripts for the conversations every med spa and esthetic provider dreads — unhappy clients, refund demands, bad reviews, no-shows, and more. From someone who has had all of them.</div>
+    <div class="author-strip">
+      <div class="avatar">D</div>
+      <div class="author-info"><h3>Danielle Alcala</h3><p>Founder, Hello Gorgeous Med Spa · Oswego, IL · 10+ years in business</p></div>
+    </div>
+    <div class="toc">
+      <h4>15 Scenarios Covered</h4>
+      <div class="toc-item"><span>01 — "I hate my results" — in person</span></div>
+      <div class="toc-item"><span>02 — "I hate my results" — via text</span></div>
+      <div class="toc-item"><span>03 — The refund demand</span></div>
+      <div class="toc-item"><span>04 — The bad Google review response</span></div>
+      <div class="toc-item"><span>05 — The client who blames you for a complication</span></div>
+      <div class="toc-item"><span>06 — The repeat no-show</span></div>
+      <div class="toc-item"><span>07 — The price negotiator</span></div>
+      <div class="toc-item"><span>08 — The client who wants free touch-ups</span></div>
+      <div class="toc-item"><span>09 — The angry Instagram DM</span></div>
+      <div class="toc-item"><span>10 — The client who didn't follow aftercare</span></div>
+      <div class="toc-item"><span>11 — Firing a client (professionally)</span></div>
+      <div class="toc-item"><span>12 — The friend/family discount pressure</span></div>
+      <div class="toc-item"><span>13 — The client comparing you to a cheaper provider</span></div>
+      <div class="toc-item"><span>14 — The no-show cancellation fee conversation</span></div>
+      <div class="toc-item"><span>15 — The client posting false information publicly</span></div>
+    </div>
+  </div>
+  <div style="border-top:1px solid #ddd;padding-top:12px;display:flex;justify-content:space-between;">
+    <div style="font-size:8pt;color:#888;letter-spacing:.1em;text-transform:uppercase;"><span style="color:#D4537E;font-weight:700;">No Prior Authorization</span> · nopriorauthorization.com</div>
+    <div style="font-size:8pt;color:#888;">Included in the NPA Phase 2 Business Bundle</div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="danielle-block" style="margin-bottom:20px;">
+  <div class="db-label">From Danielle</div>
+  <div class="db-text">"Nobody prepares you for the moment a client looks you in the eye and says they hate their results. Or the first time someone demands a refund after you did everything right. I've had every one of these conversations. Some I handled well. Some I didn't. These scripts are what I wish I'd had — the words that de-escalate, protect your business, and let you keep your integrity at the same time."</div>
+</div>
+
+<div class="rule-card"><h4>The 3 rules behind every script</h4><p><strong>1. Acknowledge before you defend.</strong> The client needs to feel heard before they can hear anything you say. <strong>2. Never apologize for the outcome — acknowledge the feeling.</strong> "I'm sorry you're unhappy" is not an admission of wrongdoing. <strong>3. Move the conversation offline as fast as possible.</strong> Public arguments with clients never end well for the provider.</p></div>
+
+<!-- SCRIPTS -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Scenarios 01–05</div><div class="sh-title">Unhappy Clients &amp; Complaints</div><div class="sh-sub">The conversations that feel the most personal — and require the most care</div></div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>01 — "I hate my results" — in person</h3><span class="sc-tag">In-Clinic</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client sits up from the treatment chair, looks in the mirror, and immediately expresses disappointment or distress about what they see.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">I hear you, and I appreciate you telling me right now instead of leaving without saying anything. <em>Your feelings matter to me.</em> Before we talk through it, can I ask — what specifically isn't feeling right? I want to make sure I understand exactly what you're seeing. [Listen fully.] Here's what I want you to know: your results are still developing and will continue to change over the next 14 days. What you're seeing right now isn't your final result. Can we schedule your follow-up appointment for two weeks from today so I can assess everything properly — and so I can take care of you the right way?</div>
+    <div class="why-note">Why this works: You acknowledged the feeling immediately, asked clarifying questions before defending, reminded them of the timeline without dismissing their concern, and moved toward a solution. You did not apologize for the treatment outcome.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>02 — "I hate my results" — via text</h3><span class="sc-tag">Text / DM</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client sends an upset text or DM about their results — usually in the first few days when swelling is still present.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">Hi [Name] — I'm so glad you reached out and I'm sorry to hear you're feeling this way. I take every client's experience seriously and I want to make this right. Can we connect by phone today so I can hear exactly what you're experiencing? Results do continue to develop over the next 14 days and I want to make sure we assess everything properly. Text me back a good time to call — <em>I want to take care of you.</em></div>
+    <div class="why-note">Never try to resolve a serious complaint over text. Move it to a phone call immediately. Texts get screenshotted. Your words on the phone are much harder to take out of context.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>03 — The refund demand</h3><span class="sc-tag">High Stakes</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client demands a full or partial refund, either in person or in writing.</div>
+    <div class="script-label">What to say — phone or in person</div>
+    <div class="script-text">I hear that you're unhappy and I genuinely want to address your concerns. I'm not in a position to offer a refund for services that were rendered — that's our policy, which you'll also find in the consent form you signed. <em>What I can do is make sure we take proper care of you going forward.</em> I'd like to schedule a complimentary follow-up so I can see exactly what's happening and discuss what options we have from here. My goal is for you to feel taken care of — not to end this experience with you frustrated. Can we do that?</div>
+    <div class="why-note">Your policy on refunds should be in writing — on your consent form and your website. Never offer a refund in the heat of the moment. Offer a follow-up first. Many refund demands resolve completely once the client feels heard and cared for.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>04 — The bad Google review response</h3><span class="sc-tag">Public Response</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">A negative or inaccurate Google review appears. You need to respond professionally — publicly, in writing, forever.</div>
+    <div class="script-label">Public response script</div>
+    <div class="script-text">Thank you for sharing your experience. We take every piece of feedback seriously and we're genuinely sorry to hear your visit didn't meet your expectations. <em>We'd love the opportunity to connect with you directly</em> so we can better understand your experience and see how we can make it right. Please reach out to us at [phone/email] — we'd appreciate the chance to speak with you personally. Your satisfaction truly matters to us.</div>
+    <div class="why-note">Never argue publicly. Never explain what happened publicly. Never mention HIPAA or patient privacy in your response — it signals to readers that you can't defend the situation. Invite them offline. Every potential patient reading your reviews is watching how you handle this more than they're reading the complaint itself.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>05 — The client who blames you for a complication</h3><span class="sc-tag">Liability Risk</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client contacts you saying they had a reaction, bruising, swelling, or other complication they believe was caused by your treatment.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">I'm really glad you contacted me and I want to hear everything you're experiencing. Can you describe exactly what you're seeing or feeling? [Listen.] I want to see you in person as soon as possible — <em>today if you can.</em> Don't apply anything new to the area. I'll assess what's happening and make sure you're taken care of. Can you come in this afternoon? If you're experiencing severe pain, vision changes, or difficulty breathing — please go to an emergency room immediately and call me on the way.</div>
+    <div class="why-note">Do not admit liability. Do not speculate about cause over text or phone. Do get them in front of you as fast as possible. Document everything. Contact your malpractice carrier if you believe this may escalate to a formal complaint.</div>
+  </div>
+</div>
+</div>
+
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Scenarios 06–10</div><div class="sh-title">Boundaries, Policies &amp; Expectations</div><div class="sh-sub">The conversations where you have to hold the line — professionally</div></div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>06 — The repeat no-show</h3><span class="sc-tag">Policy Enforcement</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">A client has no-showed or cancelled last-minute for the second or third time.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">Hi [Name] — I wanted to reach out personally about your missed appointment. I value you as a client and I want to continue taking care of you. At the same time, I have to be transparent — when an appointment isn't cancelled with adequate notice, that time can't be filled by another patient who needs it, and it does affect our small practice. <em>Going forward</em>, I'll need a card on file to hold your appointments and our cancellation policy will apply. I wanted to tell you directly rather than just send a policy email. Can we get you rescheduled?</div>
+    <div class="why-note">Personal, direct, not punitive — but clear. Framing it as protecting other patients (true) is more effective than "it costs us money." Have your cancellation policy in writing before this conversation happens.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>07 — The price negotiator</h3><span class="sc-tag">Boundaries</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client asks for a discount, offers to pay less, or says they can get it cheaper somewhere else.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">I completely understand that price matters — it does for everyone. What I can tell you is that our pricing reflects the quality of products we use, the training and credentials behind every treatment, and the level of care you receive at every visit. <em>We don't discount our services</em> because we don't cut corners on any of those things. What I can do is tell you about our membership program — which is the best way to get consistent care at the most value. Would that be helpful?</div>
+    <div class="why-note">Never apologize for your prices. Never negotiate. Pivot to the membership as your value alternative. A client who starts negotiating before they've even had a treatment will negotiate at every visit.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>08 — The client who wants free touch-ups</h3><span class="sc-tag">Boundaries</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client returns claiming they need a free touch-up — either outside the complimentary 2-week window or for something that isn't a clinical indication for a touch-up.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">I really appreciate you coming back and I want to take a look at everything. [Assess.] Here's what I'm seeing — [clinical finding]. Our complimentary touch-up window is within 14 days of your original treatment and is for clinical asymmetry or placement correction. What you're describing is [explanation]. <em>I want to take care of you</em> — here's what I recommend and what that looks like in terms of your next appointment.</div>
+    <div class="why-note">Assess first, then have the conversation. If it's within your complimentary window and is a legitimate clinical finding — take care of it graciously, no charge. If it's outside the window or is a preference issue — explain clearly and move toward a paid appointment.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>09 — The angry Instagram DM</h3><span class="sc-tag">Social Media</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client sends an upset, accusatory, or threatening direct message on Instagram or another social platform.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">Hi [Name] — I received your message and I want to make sure I give your concerns the attention they deserve. <em>Can I give you a call?</em> This is a conversation I want to have directly — not over DM. My number is [phone]. I'll be available [time]. I genuinely want to understand what happened and talk through it with you.</div>
+    <div class="why-note">Never respond with anything substantive over social media DMs. Move to phone immediately. Screenshot every DM you receive from a dissatisfied client before responding. If a client threatens to "expose" you or post publicly — do not engage with that threat. Contact your attorney.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>10 — The client who didn't follow aftercare</h3><span class="sc-tag">Documentation</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client is unhappy with their results and upon questioning you discover they exercised immediately after Botox, got a spray tan after filler, picked at their microneedling, etc.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">Thank you for being honest with me — I know it's not easy to share that. Here's the thing: the aftercare instructions I sent aren't arbitrary — they directly impact your results. What you're experiencing is likely connected to [specific aftercare issue]. <em>I want to help you get the best possible outcome from here</em> — so let's talk about what we can do going forward and how we prevent this next time. Going forward I'll also be checking in at [timeframe] specifically to make sure you're on track.</div>
+    <div class="why-note">Do not blame or shame. Explain the connection clinically. This is also why documenting that you provided aftercare instructions is so important — if a client claims you didn't tell them, your documentation protects you.</div>
+  </div>
+</div>
+</div>
+
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Scenarios 11–15</div><div class="sh-title">The Hard Conversations</div><div class="sh-sub">Firing clients, family pressure, false information, and more</div></div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>11 — Firing a client professionally</h3><span class="sc-tag">Client Dismissal</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">A client has been consistently disrespectful, has crossed a boundary repeatedly, or the relationship is no longer serving either party.</div>
+    <div class="script-label">Written communication — letter or email</div>
+    <div class="script-text">Dear [Name] — I'm reaching out to let you know that after reflection, I feel that our practice may not be the best fit for your needs going forward. This is never an easy decision, and it's not one I make lightly. <em>Effective [date 30 days out]</em>, we will no longer be able to schedule future appointments for you. I want to make sure this transition is smooth — if you are in the middle of a treatment series, I will [complete X / refer you to Y]. I wish you all the best and hope you find the right provider for your goals.</div>
+    <div class="why-note">Always give adequate notice (30 days minimum for medical patients). Do not cite specific incidents in the dismissal letter — keep it professional and brief. Send via certified mail if the situation has been contentious. Document everything. For medical patients, check your state's patient abandonment rules before dismissing.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>12 — The friend/family discount pressure</h3><span class="sc-tag">Personal Boundaries</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">A friend, family member, or their referral expects significant discounts or free services because of the relationship.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">I love that you trust me with this — truly. Here's the thing I've learned the hard way: when I mix personal relationships with discounted services, it gets complicated for both of us. <em>I value our relationship too much to let business complicate it.</em> What I can do is make sure you always feel taken care of — but I keep my pricing consistent because it's the only way I can run this practice fairly and keep the lights on. I'd love to see you — at my regular rates — any time.</div>
+    <div class="why-note">Said warmly and with love — not defensively. The framing of protecting the relationship is both true and more effective than talking about policy. Have this conversation once, clearly, and most people will respect it.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>13 — "I can get it cheaper at [other place]"</h3><span class="sc-tag">Value Defense</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client uses a cheaper competitor to pressure you to match a lower price.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">I think that's worth exploring — and I want you to make the right decision for yourself. What I'd encourage you to ask is: what's included in that price? What credentials does the injector hold? What product are they using and where do they source it? <em>At Hello Gorgeous, [your practice name], you know exactly what you're getting</em> — the product, the credentials, the follow-up care, and me. If the other option checks all those boxes for you too, I completely understand. I just want you to be making a fully informed comparison.</div>
+    <div class="why-note">Never trash a competitor by name. Ask the questions that highlight your value without saying "they're worse than us." Let the client draw their own conclusions. Clients who leave for price almost always come back — and they come back loyal.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>14 — The cancellation fee conversation</h3><span class="sc-tag">Policy Enforcement</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">Client is upset about being charged a cancellation or no-show fee.</div>
+    <div class="script-label">What to say</div>
+    <div class="script-text">I completely understand that things come up — and I genuinely appreciate that you've been a client with us. The cancellation policy exists because when an appointment isn't cancelled with adequate notice, that time cannot be filled by another patient who needs it — and as a small practice, that time is how we keep our doors open. <em>That fee was communicated at booking</em> and is something all our clients agree to. I value your business and I don't want this to affect our relationship — can we get you rescheduled?</div>
+    <div class="why-note">Hold the fee. Waiving it once teaches clients that the policy is negotiable. The key is empathy + firmness + pivot to the future relationship. If you waive it, do so as a one-time professional courtesy — not as a capitulation.</div>
+  </div>
+</div>
+
+<div class="scenario-card">
+  <div class="sc-head"><h3>15 — The client posting false information publicly</h3><span class="sc-tag">Legal Risk</span></div>
+  <div class="sc-body">
+    <div class="sc-situation">A client is publicly posting inaccurate, misleading, or defamatory statements about your practice on social media or review platforms.</div>
+    <div class="script-label">What to say — direct outreach</div>
+    <div class="script-text">Hi [Name] — I've seen your posts and I want to reach out directly before this goes any further. I understand you're frustrated and <em>I genuinely want to resolve this</em> — but some of what's been shared publicly isn't accurate, and I'd really like the opportunity to talk through what actually happened. Can we connect by phone today? I want to make this right if there's a way to do that. My number is [phone].</div>
+    <div class="why-note">Do NOT respond publicly to false claims with specific details — you risk a HIPAA violation if you reference their treatment even to correct false information. Document everything with screenshots and dates. If the posts are genuinely defamatory (false statements of fact, not just negative opinions), consult an attorney about your options. Do not threaten legal action in your first outreach.</div>
+  </div>
+</div>
+
+<div class="danielle-block">
+  <div class="db-label">Final note from Danielle</div>
+  <div class="db-text">"The hardest part of owning a practice isn't the treatments. It's the moments when someone is unhappy and you have to hold your professionalism while your heart is racing. These scripts gave me language when I was too flustered to find my own. They don't make the conversations easy. They just make them possible."</div>
+</div>
+</div>
+
+<div class="doc-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · NPA Phase 2 Business Bundle</div>
+  <div class="footer-npa">Difficult Client Scripts</div>
+</div>
+
+</div>
+</body>
+</html>

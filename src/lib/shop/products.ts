@@ -62,6 +62,10 @@ const CATEGORY_MAP: Record<string, string> = {
   "medical-disclaimer-system": "Legal",
   "diy-google-setup-kit": "Bundles",
   "insurance-legal-compliance-guide": "Business Systems",
+  "phase-2-business-bundle": "Business Systems",
+  "difficult-client-scripts": "Business Systems",
+  "before-after-photo-system": "Business Systems",
+  "vendor-supplier-directory": "Business Systems",
   "botox-clinical-cheat-sheet": "Cheat Sheets",
   "iv-therapy-clinical-cheat-sheet": "Cheat Sheets",
   "peptide-therapy-clinical-cheat-sheet": "Cheat Sheets",
@@ -148,6 +152,10 @@ const PRICE_MAP: Record<string, number> = {
   "medical-disclaimer-system": 4700,
   "diy-google-setup-kit": 29700,
   "insurance-legal-compliance-guide": 4700,
+  "phase-2-business-bundle": 4700,
+  "difficult-client-scripts": 4700,
+  "before-after-photo-system": 4700,
+  "vendor-supplier-directory": 4700,
   "botox-clinical-cheat-sheet": 1000,
   "iv-therapy-clinical-cheat-sheet": 1000,
   "peptide-therapy-clinical-cheat-sheet": 1000,
@@ -299,6 +307,10 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "consent-microneedling-rf": "/shop-previews/standalone-consents/consent-microneedling-rf.png",
   "consent-photography-hipaa": "/shop-previews/standalone-consents/consent-photography-hipaa.png",
   "insurance-legal-compliance-guide": "/shop-previews/business-systems/insurance-legal-compliance-guide.png",
+  "phase-2-business-bundle": "/shop-previews/business-systems/phase-2-business-bundle.png",
+  "difficult-client-scripts": "/shop-previews/business-systems/difficult-client-scripts.png",
+  "before-after-photo-system": "/shop-previews/business-systems/before-after-photo-system.png",
+  "vendor-supplier-directory": "/shop-previews/business-systems/vendor-supplier-directory.png",
 };
 
 const NICHE_THUMBNAIL: Record<string, string> = {
@@ -361,11 +373,19 @@ function buildFeatures(slug: string, count: number): string[] {
     ];
   }
   if (cat === "Business Systems") {
+    if (slug === "insurance-legal-compliance-guide") {
+      return [
+        "Framework from Danielle Alcala — 10+ years in med spa & esthetics",
+        "Not legal advice — consult a licensed attorney",
+        "Cover disclaimer + footer on every page",
+        "Interactive HTML — print or PDF from your browser",
+        "Instant digital delivery",
+      ];
+    }
     return [
-      "Framework from Danielle Alcala — 10+ years in med spa & esthetics",
-      "Not legal advice — consult a licensed attorney",
-      "Cover disclaimer + footer on every page",
-      "Interactive HTML — print or PDF from your browser",
+      "Operations and systems content for med spa & esthetic businesses",
+      "Interactive HTML — print or save as PDF from your browser",
+      "Customize with your practice branding and policies",
       "Instant digital delivery",
     ];
   }
@@ -396,7 +416,10 @@ function buildShortDescription(slug: string, _title: string, count: number): str
     case "Cheat Sheets":
       return `Pocket-style reference you can print or keep on screen between patients — dosing cues, landmarks, and reminders without flipping through a full playbook.`;
     case "Business Systems":
-      return `Insurance, legal, and compliance roadmap for med spa and esthetic entrepreneurs — practical checklists and framing, not a substitute for an attorney.`;
+      if (slug === "insurance-legal-compliance-guide") {
+        return `Insurance, legal, and compliance roadmap for med spa and esthetic entrepreneurs — practical checklists and framing, not a substitute for an attorney.`;
+      }
+      return `Operations and systems guide for med spa and esthetic businesses — interactive HTML you can customize, print, or keep on screen.`;
     default:
       return `${count} editable templates for aesthetic professionals. Instant download, fully customizable.`;
   }
@@ -409,7 +432,10 @@ function buildLongDescription(slug: string, title: string, count: number, cat: s
     return `${short}\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, print for the treatment room, or save as PDF. This is a quick-reference format — not a full course or playbook.\n\n${count} reference file(s). Instant digital delivery. No physical product will be shipped.`;
   }
   if (cat === "Business Systems") {
-    return `${short}\n\nNot legal advice — consult a licensed attorney for your state and situation. The full guide includes disclaimers on the cover and in the footer of every page.\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, add your branding where appropriate, print or save as PDF.\n\n${count} interactive guide file. Instant digital delivery. No physical product will be shipped.`;
+    if (slug === "insurance-legal-compliance-guide") {
+      return `${short}\n\nNot legal advice — consult a licensed attorney for your state and situation. The full guide includes disclaimers on the cover and in the footer of every page.\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, add your branding where appropriate, print or save as PDF.\n\n${count} interactive guide file. Instant digital delivery. No physical product will be shipped.`;
+    }
+    return `${short}\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, customize for your practice, print or save as PDF.\n\n${count} interactive guide file. Instant digital delivery. No physical product will be shipped.`;
   }
   return `${short}\n\nDesigned for ${audienceList.join(", ").toLowerCase()}. All templates are fully editable — add your practice name, logo, and contact information. Print directly from your browser or save as PDF.\n\nIncludes ${count} templates with instant digital delivery. No physical product will be shipped.`;
 }

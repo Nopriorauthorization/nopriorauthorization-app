@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Before & After Photo System</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;font-size:10.5pt;color:#1A1A1A;background:#f5f0ed;line-height:1.6}
+.page{width:8.5in;background:white;margin:.3in auto;padding:.65in .75in;box-shadow:0 4px 32px rgba(0,0,0,.12);}
+.npa-eyebrow{font-size:8pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:8px;}
+.cover-title{font-family:'Playfair Display',serif;font-size:30pt;font-weight:900;color:#1A1A1A;line-height:1.1;margin-bottom:10px;border-bottom:3px solid #1A1A1A;padding-bottom:14px;}
+.cover-title em{font-style:italic;color:#D4537E;}
+.cover-sub{font-size:11.5pt;color:#555;line-height:1.7;margin:14px 0;}
+.author-strip{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:0.5px solid #ddd;border-bottom:0.5px solid #ddd;margin:14px 0;}
+.avatar{width:44px;height:44px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18pt;color:#fff;font-weight:700;flex-shrink:0;}
+.author-info h3{font-size:11pt;font-weight:700;color:#1A1A1A;}
+.author-info p{font-size:9pt;color:#666;}
+.sec-header{background:#1A1A1A;margin:0 -.75in;padding:16px .75in;margin-bottom:20px;}
+.sh-num{font-size:8pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:3px;}
+.sh-title{font-family:'Playfair Display',serif;font-size:18pt;font-weight:900;color:#fff;}
+.sh-sub{font-size:9.5pt;color:rgba(255,255,255,.55);margin-top:3px;}
+.danielle-block{background:#FBEAF0;border-left:4px solid #D4537E;padding:12px 16px;border-radius:0 5px 5px 0;margin:14px 0;}
+.db-label{font-size:7.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:5px;}
+.db-text{font-size:10pt;color:#72243E;line-height:1.7;font-style:italic;}
+.body-text{font-size:10pt;color:#444;line-height:1.7;margin-bottom:12px;}
+.checklist{display:flex;flex-direction:column;gap:7px;margin:12px 0;}
+.cl-item{display:flex;gap:12px;align-items:flex-start;padding:8px 12px;border-radius:4px;border:0.5px solid #e8e4e0;background:white;}
+.cl-item.priority{border-color:#e8c4cc;background:#fff8f9;}
+.cl-box{width:14px;height:14px;border:2px solid #1A1A1A;border-radius:2px;flex-shrink:0;margin-top:2px;}
+.cl-item.priority .cl-box{border-color:#D4537E;}
+.cl-content h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:2px;}
+.cl-content p{font-size:9pt;color:#666;line-height:1.55;}
+.info-card{background:#f9f6f4;border-radius:6px;padding:14px 18px;margin:12px 0;border:0.5px solid #e0d8d4;}
+.info-card h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:6px;}
+.info-card p{font-size:9.5pt;color:#555;line-height:1.65;}
+.info-card ul{margin:6px 0 0 14px;}
+.info-card ul li{font-size:9.5pt;color:#555;line-height:1.6;margin-bottom:3px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.warn-card{background:#fff5f7;border:1px solid #e8c4cc;border-left:4px solid #D4537E;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;}
+.warn-card h4{font-size:10pt;font-weight:700;color:#72243E;margin-bottom:5px;}
+.warn-card p{font-size:9.5pt;color:#72243E;line-height:1.65;}
+.angle-card{border-radius:6px;overflow:hidden;border:0.5px solid #e0d8d4;margin-bottom:10px;}
+.ac-head{background:#D4537E;padding:7px 14px;}
+.ac-head h4{font-size:10pt;font-weight:700;color:#fff;}
+.ac-body{padding:10px 14px;background:white;}
+.ac-body p{font-size:9.5pt;color:#444;line-height:1.6;}
+.setting-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:0.5px solid #eee;font-size:9.5pt;}
+.setting-row:last-child{border-bottom:none;}
+.setting-label{color:#666;font-weight:400;}
+.setting-value{color:#1A1A1A;font-weight:700;}
+.h2{font-family:'Playfair Display',serif;font-size:15pt;font-weight:700;color:#1A1A1A;margin:18px 0 10px;}
+.h3{font-size:11pt;font-weight:700;color:#1A1A1A;margin:14px 0 8px;}
+.page-break{page-break-before:always;padding-top:0;}
+.doc-footer{margin-top:28px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:7.5pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+@media print{body{background:white;}.page{margin:0;box-shadow:none;padding:.55in .65in;}@page{size:8.5in 11in portrait;margin:0;}.page-break{page-break-before:always;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div style="page-break-after:always;min-height:9in;display:flex;flex-direction:column;justify-content:space-between;">
+  <div>
+    <div class="npa-eyebrow">No Prior Authorization &nbsp;·&nbsp; Clinical Operations Series</div>
+    <div class="cover-title">The Before &amp; After<br><em>Photo System.</em></div>
+    <div class="cover-sub">How to take consistent, professional before/after photos with just your iPhone — lighting, angles, camera settings, consent, HIPAA storage, and posting guidance. The system that makes your results look as good as they actually are.</div>
+    <div class="author-strip">
+      <div class="avatar">D</div>
+      <div class="author-info"><h3>Danielle Alcala</h3><p>Founder, Hello Gorgeous Med Spa · Oswego, IL · 10+ years building a clinical photo system from scratch</p></div>
+    </div>
+    <div class="danielle-block">
+      <div class="db-label">From Danielle</div>
+      <div class="db-text">"My early before/afters were embarrassing. Different lighting, different angles, different distances — you literally couldn't compare them. The results were real but the photos didn't show it. Building a consistent photo system was one of the most valuable things I did for my marketing and for my legal protection. Now every photo tells the same story."</div>
+    </div>
+    <div class="info-card">
+      <h4>What's in this guide</h4>
+      <ul>
+        <li>Section 1 — Why consistency is everything (and what inconsistency costs you)</li>
+        <li>Section 2 — Your photo setup: lighting, background, distance, positioning</li>
+        <li>Section 3 — Required angles by treatment area</li>
+        <li>Section 4 — iPhone camera settings for clinical photos</li>
+        <li>Section 5 — The photo workflow: before, during, after every appointment</li>
+        <li>Section 6 — HIPAA-compliant storage and organization</li>
+        <li>Section 7 — Posting guidelines: what's safe, what's not, consent rules</li>
+        <li>Section 8 — The photo consent form script</li>
+      </ul>
+    </div>
+  </div>
+  <div style="border-top:1px solid #ddd;padding-top:12px;display:flex;justify-content:space-between;">
+    <div style="font-size:8pt;color:#888;letter-spacing:.1em;text-transform:uppercase;"><span style="color:#D4537E;font-weight:700;">No Prior Authorization</span> · nopriorauthorization.com</div>
+    <div style="font-size:8pt;color:#888;">Included in the NPA Phase 2 Business Bundle</div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="sec-header"><div class="sh-num">Section 01</div><div class="sh-title">Why Consistency Is Everything</div><div class="sh-sub">The business case for taking clinical photos the same way every single time</div></div>
+
+<div class="body-text">Inconsistent before/after photos don't just look unprofessional — they actively undermine your results. A patient who looks slightly to the left in their "before" and straight ahead in their "after" appears to have worse results than they actually do, even if the treatment was perfect. The photo system is not about photography. It's about showing your work fairly and accurately.</div>
+
+<div class="two-col">
+  <div class="info-card">
+    <h4>What inconsistency costs you</h4>
+    <ul>
+      <li>Results look worse than they are — loses potential clients</li>
+      <li>Client unhappy because the "before" photo flatters them more than the "after"</li>
+      <li>No legal protection in a dispute — unusable for documentation</li>
+      <li>Cannot be used for marketing — embarrassing to post</li>
+      <li>Cannot track treatment progress accurately over time</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>What consistency gives you</h4>
+    <ul>
+      <li>Marketing content that actually converts followers to clients</li>
+      <li>Legal documentation that protects you in a complaint</li>
+      <li>Pre-existing asymmetry documented and acknowledged</li>
+      <li>Compelling before/after series that tells a treatment story</li>
+      <li>Professional presentation that builds instant trust</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 02</div><div class="sh-title">Your Photo Setup</div><div class="sh-sub">Lighting, background, distance, and positioning — the non-negotiables</div></div>
+
+<div class="h3">Lighting — The Most Important Variable</div>
+<div class="body-text">Lighting is responsible for 80% of photo quality variation. Different lighting between before and after makes results look worse, not better. Standardize your lighting completely — meaning the same setup, same time of day (or controlled artificial light), same position relative to the patient, every single time.</div>
+
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Use a ring light — not window light<span style="background:#D4537E;color:#fff;font-size:7.5pt;font-weight:700;padding:1px 7px;border-radius:2px;margin-left:6px;">Non-negotiable</span></h4><p>Window light changes by time of day, weather, and season. A ring light gives you identical, reproducible lighting every single time. Position it at eye level, directly in front of the patient. Use the same ring light, same position, every photo.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Daylight-balanced bulb temperature</h4><p>5500–6500K color temperature. This is "daylight" balanced — skin tones appear natural and consistent. Avoid warm bulbs (3000K) — they make skin look more golden in one photo vs. another.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Close blinds and control ambient light</h4><p>If you have windows in your treatment room, close the blinds before every photo session. Ambient light changes everything — a sunny morning before vs. a cloudy afternoon after creates false visual inconsistency.</p></div></div>
+</div>
+
+<div class="h3">Background</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Solid, neutral background — always<span style="background:#D4537E;color:#fff;font-size:7.5pt;font-weight:700;padding:1px 7px;border-radius:2px;margin-left:6px;">Required</span></h4><p>White, light gray, or nude wall. No cabinets, shelves, products, or equipment visible. A branded photo backdrop ($20–40 on Amazon) mounted in a consistent location is ideal. Use the exact same spot for every facial photo.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Patient positioning</h4><p>Patient seated or standing, shoulders relaxed, face relaxed and neutral (not smiling — smile changes face shape dramatically). Hair off face and pulled back the same way in before and after. No makeup for facial photos — or consistent makeup in both before and after if agreed.</p></div></div>
+</div>
+
+<div class="h3">Distance and Height</div>
+<div class="info-card">
+  <h4>Standardized distance protocol</h4>
+  <ul>
+    <li><strong>Face:</strong> Camera approximately 18–24 inches from the face. Patient fills the frame from chin to hairline with 1–2 inches of space on each side.</li>
+    <li><strong>Body areas (legs, arms, abdomen):</strong> Step back to capture the full treatment area plus 6–8 inches on all sides for context.</li>
+    <li><strong>Camera height:</strong> Eye level for facial photos. Mark a spot on the wall or use a tripod with a fixed height so it's identical every time.</li>
+    <li><strong>Pro tip:</strong> Put tape on the floor where the patient stands and a mark on the wall where the camera goes. Takes the guesswork out completely.</li>
+  </ul>
+</div>
+
+<!-- SECTION 3 -->
+<div class="h2">Section 03 — Required Angles by Treatment Area</div>
+<div class="two-col">
+  <div class="angle-card">
+    <div class="ac-head"><h4>Botox / Neurotoxins</h4></div>
+    <div class="ac-body"><p>Anterior (straight on) · Left and right lateral (full side profile) · Left and right oblique (3/4 view) · At rest AND during expression (raise brows, frown, squint, smile) · Forehead lines: capture full forehead in frame</p></div>
+  </div>
+  <div class="angle-card">
+    <div class="ac-head"><h4>Dermal Fillers</h4></div>
+    <div class="ac-body"><p>Anterior · Left and right lateral · Left and right oblique · Lips: straight on + slight chin-down angle to show upper lip · Cheeks: oblique most important · Jawline: lateral and oblique from slightly below</p></div>
+  </div>
+  <div class="angle-card">
+    <div class="ac-head"><h4>Laser / IPL / Resurfacing</h4></div>
+    <div class="ac-body"><p>Anterior · Both obliques · Document specific lesion locations before treatment · Consistent lighting critical — shadows mask pigmentation changes · No foundation or BB cream in before photos</p></div>
+  </div>
+  <div class="angle-card">
+    <div class="ac-head"><h4>Body Treatments (Morpheus8, Lipo, Weight Loss)</h4></div>
+    <div class="ac-body"><p>Anterior · Left and right lateral · Posterior (back) · Same clothing or gown in before and after · Same posture — neutral stance, arms relaxed at sides · Same time of day if possible (bloating varies)</p></div>
+  </div>
+  <div class="angle-card">
+    <div class="ac-head"><h4>Brows / Lashes / Waxing</h4></div>
+    <div class="ac-body"><p>Anterior · Close-up crop of brow/lash area from straight on · Eyes open neutral, eyes lightly closed · No makeup in before for brow photos · Consistent zoom/crop ratio in before and after</p></div>
+  </div>
+  <div class="angle-card">
+    <div class="ac-head"><h4>Microneedling / RF</h4></div>
+    <div class="ac-body"><p>Anterior · Both obliques · Close-up of specific concern area (texture, scarring, pores) · Series photos at consistent intervals (Day 0, Day 7, Month 1, Month 3, Month 6) · Document healing stages</p></div>
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 04</div><div class="sh-title">iPhone Camera Settings</div><div class="sh-sub">The exact settings for consistent, professional clinical photos with no filters, no editing</div></div>
+
+<div class="body-text">You do not need a DSLR or a professional camera. Your iPhone takes clinically adequate photos if you use the right settings consistently. The goal is accurate, unmodified documentation — not artistic photography.</div>
+
+<div class="info-card">
+  <h4>iPhone Settings — Clinical Photo Mode</h4>
+  <div class="setting-row"><span class="setting-label">Camera mode</span><span class="setting-value">Photo (not Portrait mode — distorts features)</span></div>
+  <div class="setting-row"><span class="setting-label">Flash</span><span class="setting-value">OFF — always. Use ring light only.</span></div>
+  <div class="setting-row"><span class="setting-label">HDR</span><span class="setting-value">OFF — creates inconsistent processing</span></div>
+  <div class="setting-row"><span class="setting-label">Live Photo</span><span class="setting-value">OFF — only need still image</span></div>
+  <div class="setting-row"><span class="setting-label">Zoom</span><span class="setting-value">1x only — no digital zoom, no telephoto</span></div>
+  <div class="setting-row"><span class="setting-label">Filters</span><span class="setting-value">NONE — never apply any filter to clinical photos</span></div>
+  <div class="setting-row"><span class="setting-label">Timer</span><span class="setting-value">3-second timer or use a tripod — eliminates camera shake</span></div>
+  <div class="setting-row"><span class="setting-label">Grid</span><span class="setting-value">ON — helps with consistent framing and alignment</span></div>
+  <div class="setting-row"><span class="setting-label">Resolution</span><span class="setting-value">Highest available — Settings → Camera → Formats → High Efficiency or Most Compatible</span></div>
+</div>
+
+<div class="warn-card">
+  <h4>Never edit clinical photos</h4>
+  <p>Do not adjust brightness, contrast, saturation, or any other parameter on clinical before/after photos. Do not use Lightroom, VSCO, Facetune, or any editing app. A modified clinical photo is not only misleading — it exposes you to fraud and FTC enforcement actions. What the photo captures is what your documentation must show.</p>
+</div>
+
+<div class="h3">The Tripod Solution — $25 That Changes Everything</h3>
+<div class="info-card">
+  <h4>Recommended setup</h4>
+  <p>A basic flexible tripod (Joby GorillaPod or similar, $25–40) mounted at eye level. Mark the floor with tape where the tripod goes. Mark the tripod height with tape. This eliminates the single biggest source of inconsistency — handheld camera wobble and varying heights. Set it once, use it forever.</p>
+</div>
+
+<!-- SECTION 5 -->
+<div class="h2">Section 05 — The Photo Workflow</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Before every treatment — no exceptions<span style="background:#D4537E;color:#fff;font-size:7.5pt;font-weight:700;padding:1px 7px;border-radius:2px;margin-left:6px;">Required</span></h4><p>Confirm photo consent is signed. Position patient in photo spot. Set up ring light. Take all required angles. Review on screen to confirm focus and framing before patient leaves the photo spot. Transfer to HIPAA-compliant storage before end of day.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Naming convention — use this system</h4><p>LastnameFirstname_YYYYMMDD_Area_Angle. Example: AlcalaDanielle_20260115_Forehead_Anterior.jpg. This makes photos findable, sortable, and datable without opening each file. Use the same system for every patient every time.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>After photo timing</h4><p>Botox: at 14-day follow-up (peak results). Filler: at 14-day follow-up (swelling resolved). Laser/IPL: at 4-6 week follow-up AND at 3 months. Microneedling: at 1 month, 3 months, 6 months. Weight loss: monthly at weigh-in.</p></div></div>
+</div>
+
+<!-- SECTION 6 -->
+<div class="h2">Section 06 — HIPAA-Compliant Storage</div>
+<div class="warn-card">
+  <h4>Your iPhone camera roll is NOT HIPAA compliant</h4>
+  <p>Patient photos stored in a personal camera roll are not HIPAA compliant. If your phone is lost, stolen, or backed up to a personal iCloud account that is shared or breached — that is a HIPAA violation. Transfer photos to a HIPAA-compliant platform immediately after each session.</p>
+</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>HIPAA-compliant photo storage options</h4>
+    <ul>
+      <li><strong>Your EHR/EMR system</strong> — most have built-in photo upload with Business Associate Agreement (BAA). This is ideal.</li>
+      <li><strong>Google Workspace (with BAA)</strong> — Google will sign a BAA for healthcare providers. Google Drive with BAA = compliant.</li>
+      <li><strong>Microsoft 365 (with BAA)</strong> — similar to Google. OneDrive with healthcare BAA.</li>
+      <li><strong>Dropbox Business (with BAA)</strong> — Business plan includes BAA availability.</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Transfer workflow</h4>
+    <ul>
+      <li>Take photos on iPhone</li>
+      <li>Immediately transfer to HIPAA-compliant storage (same day)</li>
+      <li>Rename using naming convention</li>
+      <li>Delete from iPhone camera roll after confirmed upload</li>
+      <li>Never text patient photos from your personal phone — use HIPAA-compliant messaging</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 7 -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Sections 07–08</div><div class="sh-title">Posting Guidelines &amp; Consent Script</div><div class="sh-sub">What you can post, what you can't, and how to get permission the right way</div></div>
+
+<div class="h3">Section 07 — What You Can and Cannot Post</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Written marketing consent required before posting anything<span style="background:#D4537E;color:#fff;font-size:7.5pt;font-weight:700;padding:1px 7px;border-radius:2px;margin-left:6px;">Non-negotiable</span></h4><p>Clinical consent (for the medical record) does NOT authorize marketing use. You need a separate, specific consent for marketing/social media use. This is your Photo & HIPAA Authorization form — included in the NPA Consent Form Bundle.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>FTC endorsement guidelines — required disclosures</h4><p>The FTC requires disclosure when before/after photos represent typical or atypical results. If results shown are not typical for your average patient, you must disclose: "Results may vary. Individual results are not guaranteed." Post this caption on every before/after you share.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>What you can post with full consent</h4><p>Before/after photos where the patient has signed full marketing consent. Identifiable facial photos, body photos, name if patient agrees. Patient testimonials with their written consent. Tagged social media posts the patient initiates.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>What you can post with anonymized consent only</h4><p>Photos cropped to remove identifying features. Body area photos that don't include face. Photos where the face is blurred or cropped. Never combine with the patient's name, location, or any detail that could identify them.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>What you can never post regardless of consent</h4><p>Photos of minors in any form. Photos that are misleading or digitally altered to enhance results. Any clinical detail in the caption that constitutes PHI. Photos of patients who are intoxicated, incapacitated, or could not meaningfully consent.</p></div></div>
+</div>
+
+<div class="h3">Section 08 — The Photo Consent Conversation Script</div>
+<div class="danielle-block">
+  <div class="db-label">How Danielle asks for photo consent at Hello Gorgeous</div>
+  <div class="db-text">"I ask for photo consent at the beginning of every new patient's first appointment — before we do anything. I keep it casual and warm, not like I'm reading them their rights. Here's exactly how I do it."</div>
+</div>
+
+<div class="info-card" style="margin-bottom:14px;">
+  <h4>The ask — word for word</h4>
+  <p style="margin-bottom:10px;">"Before we get started, I take clinical photos at every appointment — it's how I track your progress over time and make sure I'm always giving you the best results. Those photos stay private in your chart. I have a consent form that covers that — it's part of what you already signed.</p>
+  <p style="margin-bottom:10px;">Now — completely separately and totally optional — I also love to share before/afters when I get a result I'm really proud of. If we get a great result today, would you be open to me sharing your photos on Instagram? [Pause.] No pressure at all if not — I'll take just as good care of you either way. If you say yes, I'll send you the post before I share anything."</p>
+  <p><strong>The magic sentence is "I'll send you the post before I share anything."</strong> Clients who would have said no say yes because they know they'll have approval. And it means you never post anything surprising — which protects your relationship with the patient long-term.</p>
+</div>
+
+<div class="danielle-block">
+  <div class="db-label">Final note from Danielle</div>
+  <div class="db-text">"A great before/after photo is one of the most powerful marketing tools you own. It costs nothing to take correctly and it works for you forever. Take the time to build this system right — once. Then it runs on autopilot."</div>
+</div>
+
+<div class="doc-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · NPA Phase 2 Business Bundle</div>
+  <div class="footer-npa">Before &amp; After Photo System</div>
+</div>
+
+</div>
+</body>
+</html>

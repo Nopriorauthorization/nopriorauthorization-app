@@ -71,6 +71,10 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "consent-microneedling-rf": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
   "consent-photography-hipaa": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
   "insurance-legal-compliance-guide": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
+  "phase-2-business-bundle": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
+  "difficult-client-scripts": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
+  "before-after-photo-system": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
+  "vendor-supplier-directory": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -131,6 +135,10 @@ const OUTCOME_MAP: Record<string, string> = {
   "consent-photography-hipaa": "Photo authorization with tiered use options and HIPAA-aligned language.",
   "insurance-legal-compliance-guide":
     "Danielle Alcala's 10-year framework for insurance, legal, and compliance — disclaimers on the cover and every page footer. Not legal advice; consult an attorney.",
+  "phase-2-business-bundle": "Next-phase systems for an aesthetic business that has outgrown startup mode — priorities, structure, and momentum.",
+  "difficult-client-scripts": "Scripts and framing for tense moments — complaints, refunds, boundaries — so your team sounds calm and consistent.",
+  "before-after-photo-system": "Repeatable before/after workflow — consistency, storage, and alignment with your consent and marketing rules.",
+  "vendor-supplier-directory": "Track vendors, reps, and reorders in one place — a directory framework you fill with your real suppliers.",
 };
 
 const QUICK_CATEGORIES = [

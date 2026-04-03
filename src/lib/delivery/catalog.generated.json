@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T04:14:26.680Z",
+  "generatedAt": "2026-04-03T04:20:04.007Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -13,6 +13,21 @@
           "title": "Aftercare Card Kit — 12 Treatment Cards",
           "designId": "aftercare-card-kit-main",
           "editUrl": "/forms/NPA-Aftercare-Card-Kit.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "before-after-photo-system",
+      "productSlug": "before-after-photo-system",
+      "productTitle": "Before & After Photo System",
+      "buildTimestamp": "2026-04-03T15:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Before & After Photo System",
+          "designId": "before-after-photo-system-main",
+          "editUrl": "/forms/NPA-Before-After-Photo-System.html",
           "viewUrl": null
         }
       ]
@@ -574,6 +589,21 @@
           "title": "Dermal Filler Clinical Cheat Sheet",
           "designId": "dermal-filler-clinical-cheat-sheet-main",
           "editUrl": "/forms/NPA-Dermal-Filler-Clinical-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "difficult-client-scripts",
+      "productSlug": "difficult-client-scripts",
+      "productTitle": "Difficult Client Scripts",
+      "buildTimestamp": "2026-04-03T15:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Difficult Client Scripts",
+          "designId": "difficult-client-scripts-main",
+          "editUrl": "/forms/NPA-Difficult-Client-Scripts.html",
           "viewUrl": null
         }
       ]
@@ -2019,6 +2049,21 @@
       ]
     },
     {
+      "productKey": "phase-2-business-bundle",
+      "productSlug": "phase-2-business-bundle",
+      "productTitle": "Phase 2 Business Bundle",
+      "buildTimestamp": "2026-04-03T15:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Phase 2 Business Bundle",
+          "designId": "phase-2-business-bundle-main",
+          "editUrl": "/forms/NPA-Phase2-Business-Bundle.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "review-testimonial-pack",
       "productSlug": "review-testimonial-pack",
       "productTitle": "Review and Testimonial Template Pack",
@@ -2200,6 +2245,21 @@
           "title": "Consultation Preparation Guide",
           "designId": "pm-consultation-guide",
           "editUrl": "/forms/PM-04-Consultation-Guide.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "vendor-supplier-directory",
+      "productSlug": "vendor-supplier-directory",
+      "productTitle": "Med Spa Vendor & Supplier Directory",
+      "buildTimestamp": "2026-04-03T15:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Med Spa Vendor & Supplier Directory",
+          "designId": "vendor-supplier-directory-main",
+          "editUrl": "/forms/NPA-Vendor-Supplier-Directory.html",
           "viewUrl": null
         }
       ]

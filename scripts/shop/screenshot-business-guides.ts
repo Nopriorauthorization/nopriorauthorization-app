@@ -15,6 +15,10 @@ const ENTRIES: { slug: string; html: string }[] = [
     slug: "insurance-legal-compliance-guide",
     html: "NPA-Insurance-Legal-Compliance-Guide.html",
   },
+  { slug: "phase-2-business-bundle", html: "NPA-Phase2-Business-Bundle.html" },
+  { slug: "difficult-client-scripts", html: "NPA-Difficult-Client-Scripts.html" },
+  { slug: "before-after-photo-system", html: "NPA-Before-After-Photo-System.html" },
+  { slug: "vendor-supplier-directory", html: "NPA-Vendor-Supplier-Directory.html" },
 ];
 
 async function main() {

@@ -1,0 +1,25 @@
+{
+  "productId": "phase-2-business-bundle",
+  "displayName": "Phase 2 Business Bundle",
+  "description": "Interactive HTML bundle for scaling an aesthetic business past startup — systems, priorities, and next-phase operations. Customize for your practice; not legal or financial advice.",
+  "version": "1.0.0",
+  "priceUSD": 47,
+  "etsySku": "NPA-BSG-P2B-001",
+  "category": "business-systems",
+  "targetBuyer": "Med spa owners and esthetic entrepreneurs ready for phase-two growth",
+  "templates": [
+    {
+      "id": "phase-2-business-bundle-main",
+      "name": "Phase 2 Business Bundle",
+      "description": "Phase-two operations framework — single interactive HTML guide",
+      "canvaTemplateUrl": "/forms/NPA-Phase2-Business-Bundle.html",
+      "_deliveryType": "html",
+      "format": "guide",
+      "pages": 1,
+      "category": "business-systems"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — print from browser or save as PDF.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T15:00:00Z"
+}

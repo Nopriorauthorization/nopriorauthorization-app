@@ -22,6 +22,11 @@ const ENTRIES: { slug: string; html: string }[] = [
   { slug: "pellet-therapy-clinical-cheat-sheet", html: "NPA-Pellet-Therapy-Clinical-Cheat-Sheet.html" },
   { slug: "pharmaceutical-reference-cheat-sheet", html: "NPA-Pharmaceutical-Reference-Cheat-Sheet.html" },
   { slug: "olympia-iv-dosing-guide-cheat-sheet", html: "NPA-Olympia-IV-Dosing-Guide-Cheat-Sheet.html" },
+  { slug: "lash-extensions-clinical-cheat-sheet", html: "NPA-Lash-Extensions-Cheat-Sheet.html" },
+  { slug: "lash-lift-perm-clinical-cheat-sheet", html: "NPA-Lash-Lift-Perm-Cheat-Sheet.html" },
+  { slug: "brow-henna-clinical-cheat-sheet", html: "NPA-Brow-Henna-Cheat-Sheet.html" },
+  { slug: "waxing-clinical-cheat-sheet", html: "NPA-Waxing-Cheat-Sheet.html" },
+  { slug: "ipl-laser-clinical-cheat-sheet", html: "NPA-IPL-Laser-Cheat-Sheet.html" },
 ];
 
 async function main() {

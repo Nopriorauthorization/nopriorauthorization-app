@@ -55,6 +55,11 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "pellet-therapy-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
   "pharmaceutical-reference-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
   "olympia-iv-dosing-guide-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "lash-extensions-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "lash-lift-perm-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "brow-henna-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "waxing-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "ipl-laser-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -98,6 +103,11 @@ const OUTCOME_MAP: Record<string, string> = {
   "pellet-therapy-clinical-cheat-sheet": "Insertion, dosing rhythm, and follow-up cues for pellet visits — keep it at the chair.",
   "pharmaceutical-reference-cheat-sheet": "High-yield med-class reminders and documentation prompts without digging through references.",
   "olympia-iv-dosing-guide-cheat-sheet": "Olympia-style IV menu dosing, bags, and additives in one glance for the IV suite.",
+  "lash-extensions-clinical-cheat-sheet": "Isolation, adhesive, fills, and allergy cues at a glance — keep it at the lash bed.",
+  "lash-lift-perm-clinical-cheat-sheet": "Processing, patch tests, and contraindications for lift and perm without flipping through a manual.",
+  "brow-henna-clinical-cheat-sheet": "Prep, develop timing, and aftercare prompts for henna and tint services between clients.",
+  "waxing-clinical-cheat-sheet": "Temperature, technique, and contraindication checks for consistent wax room flow.",
+  "ipl-laser-clinical-cheat-sheet": "Settings, skin-type cues, and post-treatment reminders for IPL and laser visits.",
 };
 
 const QUICK_CATEGORIES = [

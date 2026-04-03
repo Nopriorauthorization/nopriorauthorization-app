@@ -70,6 +70,11 @@ const CATEGORY_MAP: Record<string, string> = {
   "pellet-therapy-clinical-cheat-sheet": "Cheat Sheets",
   "pharmaceutical-reference-cheat-sheet": "Cheat Sheets",
   "olympia-iv-dosing-guide-cheat-sheet": "Cheat Sheets",
+  "lash-extensions-clinical-cheat-sheet": "Cheat Sheets",
+  "lash-lift-perm-clinical-cheat-sheet": "Cheat Sheets",
+  "brow-henna-clinical-cheat-sheet": "Cheat Sheets",
+  "waxing-clinical-cheat-sheet": "Cheat Sheets",
+  "ipl-laser-clinical-cheat-sheet": "Cheat Sheets",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
   "complete-injector-bundle": "Social Media",
@@ -140,6 +145,11 @@ const PRICE_MAP: Record<string, number> = {
   "pellet-therapy-clinical-cheat-sheet": 1000,
   "pharmaceutical-reference-cheat-sheet": 1000,
   "olympia-iv-dosing-guide-cheat-sheet": 1000,
+  "lash-extensions-clinical-cheat-sheet": 1000,
+  "lash-lift-perm-clinical-cheat-sheet": 1000,
+  "brow-henna-clinical-cheat-sheet": 1000,
+  "waxing-clinical-cheat-sheet": 1000,
+  "ipl-laser-clinical-cheat-sheet": 1000,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -169,7 +179,12 @@ const AUDIENCE_MAP: Record<string, string[]> = {
   "Practice Management": ["Office managers", "New practice owners", "Front desk staff", "Practice administrators"],
   "Bundles": ["Med spa owners", "Multi-service clinics", "Aesthetic suite providers"],
   "Playbooks": ["Nurse injectors", "NPs starting aesthetic practice", "Med spa owners hiring injectors", "Practice managers"],
-  "Cheat Sheets": ["Injectors at the chair", "Clinical trainers", "New neurotoxin providers", "Busy med spa treatment rooms"],
+  "Cheat Sheets": [
+    "Injectors at the chair",
+    "Lash and brow artists",
+    "Estheticians and laser techs",
+    "Busy treatment rooms",
+  ],
 };
 
 /** Map from slug to the asset subdirectory name in etsy-products/store-launch/assets/ */
@@ -239,6 +254,11 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "pellet-therapy-clinical-cheat-sheet": "/shop-previews/cheat-sheets/pellet-therapy-clinical-cheat-sheet.png",
   "pharmaceutical-reference-cheat-sheet": "/shop-previews/cheat-sheets/pharmaceutical-reference-cheat-sheet.png",
   "olympia-iv-dosing-guide-cheat-sheet": "/shop-previews/cheat-sheets/olympia-iv-dosing-guide-cheat-sheet.png",
+  "lash-extensions-clinical-cheat-sheet": "/shop-previews/cheat-sheets/lash-extensions-clinical-cheat-sheet.png",
+  "lash-lift-perm-clinical-cheat-sheet": "/shop-previews/cheat-sheets/lash-lift-perm-clinical-cheat-sheet.png",
+  "brow-henna-clinical-cheat-sheet": "/shop-previews/cheat-sheets/brow-henna-clinical-cheat-sheet.png",
+  "waxing-clinical-cheat-sheet": "/shop-previews/cheat-sheets/waxing-clinical-cheat-sheet.png",
+  "ipl-laser-clinical-cheat-sheet": "/shop-previews/cheat-sheets/ipl-laser-clinical-cheat-sheet.png",
 };
 
 const NICHE_THUMBNAIL: Record<string, string> = {

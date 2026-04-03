@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T03:01:06.630Z",
+  "generatedAt": "2026-04-03T03:24:45.210Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -157,6 +157,21 @@
           "title": "Book Your Botox Consultation",
           "designId": "bsx-cta-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "brow-henna-clinical-cheat-sheet",
+      "productSlug": "brow-henna-clinical-cheat-sheet",
+      "productTitle": "Brow Henna & Tinting Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T10:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Brow Henna & Tinting Clinical Cheat Sheet",
+          "designId": "brow-henna-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Brow-Henna-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -798,6 +813,21 @@
       ]
     },
     {
+      "productKey": "ipl-laser-clinical-cheat-sheet",
+      "productSlug": "ipl-laser-clinical-cheat-sheet",
+      "productTitle": "IPL & Laser Treatments Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T10:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "IPL & Laser Treatments Clinical Cheat Sheet",
+          "designId": "ipl-laser-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-IPL-Laser-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "iv-story-templates",
       "productSlug": "iv-story-templates",
       "productTitle": "IV Therapy Story Templates",
@@ -1024,6 +1054,36 @@
           "title": "Rebooking Reminder Card",
           "designId": "lsh-rebook-card",
           "editUrl": "/forms/LSH-07-Rebook-Card.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "lash-extensions-clinical-cheat-sheet",
+      "productSlug": "lash-extensions-clinical-cheat-sheet",
+      "productTitle": "Lash Extensions Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T10:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Lash Extensions Clinical Cheat Sheet",
+          "designId": "lash-extensions-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Lash-Extensions-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "lash-lift-perm-clinical-cheat-sheet",
+      "productSlug": "lash-lift-perm-clinical-cheat-sheet",
+      "productTitle": "Lash Lift & Perm Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T10:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Lash Lift & Perm Clinical Cheat Sheet",
+          "designId": "lash-lift-perm-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Lash-Lift-Perm-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -1975,6 +2035,21 @@
           "title": "Consultation Preparation Guide",
           "designId": "pm-consultation-guide",
           "editUrl": "/forms/PM-04-Consultation-Guide.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "waxing-clinical-cheat-sheet",
+      "productSlug": "waxing-clinical-cheat-sheet",
+      "productTitle": "Professional Waxing Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T10:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Professional Waxing Clinical Cheat Sheet",
+          "designId": "waxing-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Waxing-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { LibraryProductRow } from "@/lib/admin/library-types";
+import { FREE_PUBLIC_FORM_SET } from "@/lib/delivery/free-public-forms";
 
 type Props = {
   products: LibraryProductRow[];
@@ -240,7 +241,14 @@ function TemplateLink({ url }: { url: string }) {
   if (!url || url === "PLACEHOLDER_CANVA_URL") {
     return <span className="text-xs text-gray-600">—</span>;
   }
-  const href = url.startsWith("/") ? url : url;
+  let href = url.startsWith("/") ? url : url;
+  if (
+    url.startsWith("/forms/") &&
+    url.endsWith(".html") &&
+    !FREE_PUBLIC_FORM_SET.has(url)
+  ) {
+    href = `/api/admin/delivery-html?path=${encodeURIComponent(url)}`;
+  }
   const label = url.startsWith("/forms/") ? "View HTML" : "Open in Canva";
   return (
     <a

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
 import { CheckoutButton } from "./CheckoutButton";
 
@@ -29,7 +30,7 @@ function findRelatedSizes(slug: string, allProducts: ReturnType<typeof getShopPr
     .sort((a, b) => a.priceCents - b.priceCents);
 }
 
-export default function ProductDetailPage({
+export default async function ProductDetailPage({
   params,
 }: {
   params: { slug: string };
@@ -38,6 +39,7 @@ export default function ProductDetailPage({
   const product = getShopProductBySlug(params.slug);
   if (!product) notFound();
 
+  const interactivePreviewSrc = getShopInteractivePreviewSrc(params.slug);
   const relatedSizes = findRelatedSizes(params.slug, allProducts);
   const hasPricingLadder = relatedSizes.length > 0;
 
@@ -79,6 +81,26 @@ export default function ProductDetailPage({
             <span>Print-ready</span>
           </div>
         </section>
+
+        {interactivePreviewSrc ? (
+          <section className="mb-10" aria-label="Watermarked interactive preview">
+            <h2 className="mb-2 font-serif text-2xl font-semibold">
+              Interactive preview (sample)
+            </h2>
+            <p className="mb-4 max-w-2xl text-sm text-gray-500">
+              Watermarked teaser — after purchase, your email has a private link to the
+              full print-ready file (not hosted on a public URL).
+            </p>
+            <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a]">
+              <iframe
+                src={interactivePreviewSrc}
+                title={`${product.title} — sample preview`}
+                className="h-[min(32rem,72vh)] w-full border-0"
+                loading="lazy"
+              />
+            </div>
+          </section>
+        ) : null}
 
         {/* PREVIEW GALLERY */}
         {product.previewImages.length > 0 && (

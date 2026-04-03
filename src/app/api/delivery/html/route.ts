@@ -4,7 +4,7 @@ import { getDeliveryProductBySlugAsync } from "@/lib/delivery/catalog";
 import {
   isGatedFormPath,
   resolveGatedFormFile,
-} from "@/lib/delivery/gated-forms";
+} from "@/lib/delivery/form-access";
 import { verifyDeliveryToken } from "@/lib/delivery/token";
 
 export const dynamic = "force-dynamic";

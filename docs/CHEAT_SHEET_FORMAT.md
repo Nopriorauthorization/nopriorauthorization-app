@@ -3,11 +3,11 @@
 **Reference file on disk:** `delivery-assets/forms/NPA-Botox-Clinical-Cheat-Sheet.html` (not in `public/` — see gating below).  
 **Product pattern:** $10 SKU, category **Cheat Sheets**, HTML delivery, one primary “page” (printable letter-style).
 
-### Paid cheat sheets are gated
+### Paid cheat sheets are gated (site-wide pattern)
 
-Full cheat sheets **must not** live under `public/forms/` (that URL is public and copyable). Add each new paid sheet’s public path to `GATED_FORM_PUBLIC_PATHS` in `src/lib/delivery/gated-forms.ts`, store the file under `delivery-assets/forms/`, and keep the manifest `canvaTemplateUrl` as `/forms/NPA-....html` for consistency. Buyers open it via **View & Print** on `/delivery/[token]`, which links to `/api/delivery/html?token=…&i=…` after token verification.
+Full cheat sheets live in **`delivery-assets/forms/`** only. Catalog still uses logical paths like `/forms/NPA-....html`. Buyers open the real file via **View & Print** on `/delivery/[token]` → `/api/delivery/html?token=…&i=…`. See **`docs/DELIVERY_FORM_GATING.md`**.
 
-**Shop “preview”** is the product thumbnail image on `/shop` — not the full HTML. (Optional later: a separate watered-down `*-PREVIEW.html` in `public/` if you want an iframe teaser.)
+**Shop preview:** keep using **thumbnail images** on cards. For an **interactive** teaser on the product page, add **`public/forms/previews/{BaseName}-PREVIEW.html`** (watermarked sample). Example: `NPA-Botox-Clinical-Cheat-Sheet-PREVIEW.html`.
 
 Danielle’s direction: cheat sheets must feel **instantly usable** — dense, clinical, beautiful at a glance — not generic downloads. **Everything we ship is built to this bar; that’s the differentiator.**
 
@@ -60,11 +60,12 @@ Google Fonts import (match reference file):
 
 ## File & delivery conventions
 
-1. **Filename:** `delivery-assets/forms/NPA-{Topic}-Clinical-Cheat-Sheet.html` + register `/forms/NPA-....html` in `GATED_FORM_PUBLIC_PATHS`.
-2. **Manifest:** `imports/npa-manifests-and-spec/{slug}.json` with `productId` = shop slug, `canvaTemplateUrl` = `/forms/...`, `_deliveryType`: `html`.
-3. **Catalog:** Run `node scripts/import-canva-delivery-manifests.mjs` (merges with existing catalog if Canva folder absent).
-4. **Shop:** `src/lib/shop/products.ts` — `CATEGORY_MAP`, `PRICE_MAP` (**1000** = $10 unless pricing changes), optional `SLUG_THUMBNAIL`; `src/app/shop/page.tsx` badge/outcome lines optional.
-5. **Hub:** `src/app/cheat-sheets/page.tsx` lists all products where `category === "Cheat Sheets"` (no manual list per SKU required if category is set).
+1. **Full file:** `delivery-assets/forms/NPA-{Topic}-Clinical-Cheat-Sheet.html` (catalog `canvaTemplateUrl`: `/forms/...` — no public copy).
+2. **Optional teaser:** `public/forms/previews/NPA-{Topic}-Clinical-Cheat-Sheet-PREVIEW.html`.
+3. **Manifest:** `imports/npa-manifests-and-spec/{slug}.json` with `productId` = shop slug, `canvaTemplateUrl` = `/forms/...`, `_deliveryType`: `html`.
+4. **Catalog:** Run `node scripts/import-canva-delivery-manifests.mjs` (merges with existing catalog if Canva folder absent).
+5. **Shop:** `src/lib/shop/products.ts` — `CATEGORY_MAP`, `PRICE_MAP` (**1000** = $10 unless pricing changes), optional `SLUG_THUMBNAIL`; `src/app/shop/page.tsx` badge/outcome lines optional.
+6. **Hub:** `src/app/cheat-sheets/page.tsx` lists all products where `category === "Cheat Sheets"` (no manual list per SKU required if category is set).
 
 ---
 

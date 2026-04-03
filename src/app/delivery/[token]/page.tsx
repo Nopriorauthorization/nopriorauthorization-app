@@ -3,7 +3,7 @@ import {
   getDeliveryCatalogGeneratedAt,
   getDeliveryProductBySlugAsync,
 } from "@/lib/delivery/catalog";
-import { isGatedFormPath } from "@/lib/delivery/gated-forms";
+import { isGatedFormPath } from "@/lib/delivery/form-access";
 import { maskEmail, verifyDeliveryToken } from "@/lib/delivery/token";
 
 export const dynamic = "force-dynamic";

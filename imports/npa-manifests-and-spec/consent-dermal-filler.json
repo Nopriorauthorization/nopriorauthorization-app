@@ -1,0 +1,25 @@
+{
+  "productId": "consent-dermal-filler",
+  "displayName": "Dermal Filler Informed Consent Form",
+  "description": "Standalone informed consent for dermal filler treatments — vascular risk, dissolution options, expectations, and signatures. Print-ready HTML; medical director review before use.",
+  "version": "1.0.0",
+  "priceUSD": 19,
+  "etsySku": "NPA-CNF-FLL-001",
+  "category": "clinical-forms",
+  "targetBuyer": "Injectors and med spas offering hyaluronic acid and filler",
+  "templates": [
+    {
+      "id": "consent-dermal-filler-main",
+      "name": "Dermal Filler Informed Consent Form",
+      "description": "Single printable informed consent for filler treatments",
+      "canvaTemplateUrl": "/forms/NPA-Consent-Dermal-Filler.html",
+      "_deliveryType": "html",
+      "format": "consent",
+      "pages": 1,
+      "category": "clinical-forms"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — print from browser or save as PDF. Attorney or medical director review recommended.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T12:00:00Z"
+}

@@ -1,0 +1,25 @@
+{
+  "productId": "consent-glp1-weight-loss",
+  "displayName": "GLP-1 Weight Loss Informed Consent Form",
+  "description": "Standalone informed consent for GLP-1 weight loss programs — risks, side effects, monitoring, and patient acknowledgments. Print-ready HTML; medical director review before use.",
+  "version": "1.0.0",
+  "priceUSD": 19,
+  "etsySku": "NPA-CNF-GLP-001",
+  "category": "clinical-forms",
+  "targetBuyer": "Med spas and clinics offering semaglutide, tirzepatide, or GLP-1 programs",
+  "templates": [
+    {
+      "id": "consent-glp1-weight-loss-main",
+      "name": "GLP-1 Weight Loss Informed Consent Form",
+      "description": "Single printable informed consent for GLP-1 weight loss",
+      "canvaTemplateUrl": "/forms/NPA-Consent-GLP1-Weight-Loss.html",
+      "_deliveryType": "html",
+      "format": "consent",
+      "pages": 1,
+      "category": "clinical-forms"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — print from browser or save as PDF. Attorney or medical director review recommended.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T12:00:00Z"
+}

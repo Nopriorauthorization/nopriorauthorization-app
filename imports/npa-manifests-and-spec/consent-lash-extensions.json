@@ -1,0 +1,25 @@
+{
+  "productId": "consent-lash-extensions",
+  "displayName": "Lash Extension Informed Consent Form",
+  "description": "Standalone informed consent for lash extension services — adhesive, fills, allergies, and aftercare acknowledgments. Print-ready HTML; customize for your state rules.",
+  "version": "1.0.0",
+  "priceUSD": 19,
+  "etsySku": "NPA-CNF-LSH-001",
+  "category": "clinical-forms",
+  "targetBuyer": "Lash artists and med spa lash suites",
+  "templates": [
+    {
+      "id": "consent-lash-extensions-main",
+      "name": "Lash Extension Informed Consent Form",
+      "description": "Single printable informed consent for lash extensions",
+      "canvaTemplateUrl": "/forms/NPA-Consent-Lash-Extensions.html",
+      "_deliveryType": "html",
+      "format": "consent",
+      "pages": 1,
+      "category": "clinical-forms"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — print from browser or save as PDF. Attorney or medical director review recommended.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T12:00:00Z"
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Botox & Neurotoxin Consent Form</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;font-size:10pt;color:#1A1A1A;background:#f5f0ed;line-height:1.5}
+.page{width:8.5in;min-height:11in;background:white;margin:.3in auto;padding:.6in .7in;box-shadow:0 4px 32px rgba(0,0,0,.12);}
+/* HEADER */
+.form-header{border-bottom:2.5px solid #1A1A1A;padding-bottom:14px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:flex-end;}
+.practice-block .practice-name{font-family:'Playfair Display',serif;font-size:18pt;font-weight:700;color:#1A1A1A;letter-spacing:.01em;}
+.practice-block .practice-sub{font-size:8pt;color:#888;letter-spacing:.12em;text-transform:uppercase;margin-top:2px;}
+.form-title-block{text-align:right;}
+.form-title-block .form-type{font-size:7pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:3px;}
+.form-title-block .form-name{font-family:'Playfair Display',serif;font-size:13pt;font-weight:700;color:#1A1A1A;}
+/* CLIENT INFO */
+.client-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px 16px;margin-bottom:16px;}
+.client-grid-2{display:grid;grid-template-columns:2fr 1fr;gap:10px 16px;margin-bottom:18px;}
+.field-group{display:flex;flex-direction:column;gap:3px;}
+.field-label{font-size:7.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.field-line{border-bottom:1px solid #ccc;min-height:20px;width:100%;}
+/* SECTION */
+.section{margin-bottom:16px;}
+.section-title{font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid #e8d8dc;}
+.body-text{font-size:9.5pt;color:#333;line-height:1.65;margin-bottom:8px;}
+/* RISK LIST */
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;margin:8px 0 12px;}
+.risk-item{display:flex;gap:7px;align-items:flex-start;font-size:9pt;color:#333;line-height:1.5;}
+.risk-dot{width:5px;height:5px;border-radius:50%;background:#D4537E;flex-shrink:0;margin-top:5px;}
+/* CHECKBOX */
+.check-list{display:flex;flex-direction:column;gap:6px;margin:8px 0;}
+.check-item{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#1A1A1A;line-height:1.55;}
+.check-box{width:13px;height:13px;border:1.5px solid #1A1A1A;flex-shrink:0;margin-top:2px;border-radius:2px;}
+/* SCREENING */
+.screen-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;margin:8px 0;}
+.screen-item{display:flex;gap:8px;align-items:center;font-size:9pt;color:#333;}
+.yn-boxes{display:flex;gap:6px;flex-shrink:0;}
+.yn{width:20px;height:13px;border:1px solid #999;font-size:7pt;display:flex;align-items:center;justify-content:center;color:#888;border-radius:1px;}
+/* SIGNATURE */
+.sig-section{border-top:2px solid #1A1A1A;padding-top:16px;margin-top:18px;}
+.sig-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-top:12px;}
+.sig-block{display:flex;flex-direction:column;gap:4px;}
+.sig-line{border-bottom:1px solid #555;min-height:28px;}
+.sig-label{font-size:7.5pt;color:#888;letter-spacing:.06em;text-transform:uppercase;margin-top:3px;}
+/* PROVIDER */
+.provider-block{background:#f9f5f3;border-left:3px solid #D4537E;padding:10px 14px;margin-top:14px;border-radius:0 4px 4px 0;}
+.provider-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+/* FOOTER */
+.form-footer{margin-top:20px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;align-items:center;}
+.footer-npa{font-size:7pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;}
+.page-note{font-size:7pt;color:#bbb;}
+/* HIGHLIGHT BOX */
+.warn-box{background:#fff5f7;border:1px solid #e8c4cc;border-left:3px solid #D4537E;padding:10px 14px;border-radius:0 4px 4px 0;margin:10px 0;}
+.warn-box p{font-size:9pt;color:#72243E;line-height:1.6;}
+@media print{body{background:white}
+.page{margin:0;box-shadow:none;padding:.5in .6in}
+@page{size:8.5in 11in portrait;margin:0}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="form-header">
+  <div class="practice-block">
+    <div class="practice-name">[Practice Name]</div>
+    <div class="practice-sub">[Address] &nbsp;·&nbsp; [Phone] &nbsp;·&nbsp; [Website]</div>
+  </div>
+  <div class="form-title-block">
+    <div class="form-type">Informed Consent</div>
+    <div class="form-name">Botox &amp; Neurotoxin Treatment</div>
+  </div>
+</div>
+
+<!-- CLIENT INFO -->
+<div class="client-grid">
+  <div class="field-group"><div class="field-label">Patient Full Name</div><div class="field-line"></div></div>
+  <div class="field-group"><div class="field-label">Date of Birth</div><div class="field-line"></div></div>
+  <div class="field-group"><div class="field-label">Date of Service</div><div class="field-line"></div></div>
+</div>
+<div class="client-grid-2">
+  <div class="field-group"><div class="field-label">Treatment Areas</div><div class="field-line"></div></div>
+  <div class="field-group"><div class="field-label">Product Used</div><div class="field-line"></div></div>
+</div>
+
+<!-- DESCRIPTION -->
+<div class="section">
+  <div class="section-title">About This Treatment</div>
+  <div class="body-text">Botulinum toxin type A (Botox, Dysport, Xeomin, Jeuveau, or Daxxify) is an FDA-approved injectable medication that temporarily relaxes targeted muscles to soften dynamic wrinkles and achieve cosmetic or therapeutic results. Effects typically appear within 3–7 days, reach peak results at 14 days, and last approximately 3–4 months. Results vary by individual. I understand this is an elective cosmetic procedure and no guarantee of specific results has been made to me.</div>
+</div>
+
+<!-- RISKS -->
+<div class="section">
+  <div class="section-title">Risks, Side Effects &amp; Potential Complications</div>
+  <div class="body-text">I understand that the following risks and side effects are possible with neurotoxin injections. I have had the opportunity to ask questions and receive answers to my satisfaction.</div>
+  <div class="risk-grid">
+    <div class="risk-item"><div class="risk-dot"></div>Temporary bruising, redness, swelling at injection sites</div>
+    <div class="risk-item"><div class="risk-dot"></div>Headache or flu-like symptoms (24–48 hours)</div>
+    <div class="risk-item"><div class="risk-dot"></div>Asymmetry or uneven results</div>
+    <div class="risk-item"><div class="risk-dot"></div>Eyelid or brow ptosis (drooping) — temporary</div>
+    <div class="risk-item"><div class="risk-dot"></div>Unwanted spread to adjacent muscles</div>
+    <div class="risk-item"><div class="risk-dot"></div>Results less effective or shorter than expected</div>
+    <div class="risk-item"><div class="risk-dot"></div>Dry eye or excessive tearing (near orbital area)</div>
+    <div class="risk-item"><div class="risk-dot"></div>Difficulty with facial expressions (temporary)</div>
+    <div class="risk-item"><div class="risk-dot"></div>Allergic or hypersensitivity reaction (rare)</div>
+    <div class="risk-item"><div class="risk-dot"></div>Antibody resistance with repeated treatments (rare)</div>
+    <div class="risk-item"><div class="risk-dot"></div>Infection at injection site (rare)</div>
+    <div class="risk-item"><div class="risk-dot"></div>Difficulty swallowing, speaking, or breathing (very rare)</div>
+  </div>
+  <div class="warn-box">
+    <p><strong>Important:</strong> If you experience difficulty swallowing, speaking, or breathing after treatment, seek emergency medical care immediately. These symptoms may indicate spread of toxin effect beyond the injection site.</p>
+  </div>
+</div>
+
+<!-- MEDICAL SCREENING -->
+<div class="section">
+  <div class="section-title">Medical History Screening &nbsp;—&nbsp; Please Circle Yes or No</div>
+  <div class="screen-grid">
+    <div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Pregnant or breastfeeding</div>
+    <div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Neuromuscular disease (MS, ALS, myasthenia gravis)</div>
+    <div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Currently taking blood thinners or anticoagulants</div>
+    <div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Taking aminoglycoside antibiotics (gentamicin, neomycin)</div>
+    <div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Active skin infection or cold sore near treatment area</div>
+    <div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Previous allergic reaction to botulinum toxin or albumin</div>
+    <div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Recent facial surgery (within 2 weeks)</div>
+    <div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Previous botulinum toxin treatment (where/when below)</div>
+  </div>
+  <div class="field-group" style="margin-top:8px"><div class="field-label">Allergies / Medications / Additional Notes</div><div class="field-line" style="min-height:28px"></div></div>
+  <div class="field-group" style="margin-top:8px"><div class="field-label">Previous Neurotoxin Treatment — Location &amp; Date</div><div class="field-line" style="min-height:28px"></div></div>
+</div>
+
+<!-- ACKNOWLEDGMENTS -->
+<div class="section">
+  <div class="section-title">Patient Acknowledgments</div>
+  <div class="check-list">
+    <div class="check-item"><div class="check-box"></div>I have read and understand the description of this treatment, its risks, and potential complications as described above.</div>
+    <div class="check-item"><div class="check-box"></div>I understand that results vary by individual and that no specific outcome has been guaranteed to me.</div>
+    <div class="check-item"><div class="check-box"></div>I understand that a follow-up appointment should be scheduled at 14 days to assess results. Touch-ups are not guaranteed and may be subject to additional charge.</div>
+    <div class="check-item"><div class="check-box"></div>I confirm that I have accurately disclosed my complete medical history, current medications, and known allergies above.</div>
+    <div class="check-item"><div class="check-box"></div>I understand and will follow all pre- and post-treatment care instructions provided to me.</div>
+    <div class="check-item"><div class="check-box"></div>I understand that the effects of neurotoxin treatment are temporary and that maintenance treatments are required to sustain results.</div>
+    <div class="check-item"><div class="check-box"></div>I have had the opportunity to ask questions and all my questions have been answered to my satisfaction.</div>
+    <div class="check-item"><div class="check-box"></div>I am 18 years of age or older. (If under 18, parent/guardian signature is required below.)</div>
+  </div>
+</div>
+
+<!-- SIGNATURE -->
+<div class="sig-section">
+  <div class="body-text" style="font-size:9pt;color:#555;">By signing below, I confirm that I have read this entire consent form, that I understand its contents, and that I voluntarily consent to receive the treatment described above. I acknowledge that I have not been coerced or pressured into signing this form.</div>
+  <div class="sig-grid">
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-label">Patient Signature</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-label">Date</div>
+    </div>
+  </div>
+  <div class="sig-grid" style="margin-top:12px">
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-label">Parent / Guardian Signature (if patient is under 18)</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-label">Relationship to Patient</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROVIDER USE -->
+<div class="provider-block" style="margin-top:16px">
+  <div class="field-label" style="margin-bottom:8px;color:#D4537E;">For Provider Use Only</div>
+  <div class="provider-grid">
+    <div class="field-group"><div class="field-label">Provider Name &amp; Credentials</div><div class="field-line"></div></div>
+    <div class="field-group"><div class="field-label">Units Administered</div><div class="field-line"></div></div>
+    <div class="field-group"><div class="field-label">Lot # / Expiration</div><div class="field-line"></div></div>
+  </div>
+  <div class="provider-grid" style="margin-top:8px">
+    <div class="field-group"><div class="field-label">Provider Signature</div><div class="field-line"></div></div>
+    <div class="field-group"><div class="field-label">Date</div><div class="field-line"></div></div>
+    <div class="field-group"><div class="field-label">Next Recommended Visit</div><div class="field-line"></div></div>
+  </div>
+</div>
+
+<div class="form-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Consent Form Bundle · nopriorauthorization.com</div>
+  <div class="page-note">Botox &amp; Neurotoxin Consent · Retain in patient chart</div>
+</div>
+
+</div>
+</body>
+</html>

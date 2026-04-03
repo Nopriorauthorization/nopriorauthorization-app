@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T03:24:45.210Z",
+  "generatedAt": "2026-04-03T04:07:02.658Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -409,6 +409,156 @@
           "title": "Book Your Injector Appointment",
           "designId": "inj-cta-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-botox-neurotoxins",
+      "productSlug": "consent-botox-neurotoxins",
+      "productTitle": "Botox & Neurotoxin Informed Consent Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Botox & Neurotoxin Informed Consent Form",
+          "designId": "consent-botox-neurotoxins-main",
+          "editUrl": "/forms/NPA-Consent-Botox-Neurotoxins.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-dermal-filler",
+      "productSlug": "consent-dermal-filler",
+      "productTitle": "Dermal Filler Informed Consent Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Dermal Filler Informed Consent Form",
+          "designId": "consent-dermal-filler-main",
+          "editUrl": "/forms/NPA-Consent-Dermal-Filler.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-glp1-weight-loss",
+      "productSlug": "consent-glp1-weight-loss",
+      "productTitle": "GLP-1 Weight Loss Informed Consent Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "GLP-1 Weight Loss Informed Consent Form",
+          "designId": "consent-glp1-weight-loss-main",
+          "editUrl": "/forms/NPA-Consent-GLP1-Weight-Loss.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-hormone-therapy",
+      "productSlug": "consent-hormone-therapy",
+      "productTitle": "Hormone Therapy (BHRT / TRT) Informed Consent Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Hormone Therapy (BHRT / TRT) Informed Consent Form",
+          "designId": "consent-hormone-therapy-main",
+          "editUrl": "/forms/NPA-Consent-Hormone-Therapy.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-iv-im-therapy",
+      "productSlug": "consent-iv-im-therapy",
+      "productTitle": "IV & IM Therapy Informed Consent Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "IV & IM Therapy Informed Consent Form",
+          "designId": "consent-iv-im-therapy-main",
+          "editUrl": "/forms/NPA-Consent-IV-Therapy.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-laser-ipl",
+      "productSlug": "consent-laser-ipl",
+      "productTitle": "Laser & IPL Informed Consent Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Laser & IPL Informed Consent Form",
+          "designId": "consent-laser-ipl-main",
+          "editUrl": "/forms/NPA-Consent-Laser-IPL.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-lash-extensions",
+      "productSlug": "consent-lash-extensions",
+      "productTitle": "Lash Extension Informed Consent Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Lash Extension Informed Consent Form",
+          "designId": "consent-lash-extensions-main",
+          "editUrl": "/forms/NPA-Consent-Lash-Extensions.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-microneedling-rf",
+      "productSlug": "consent-microneedling-rf",
+      "productTitle": "Microneedling & RF Informed Consent Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Microneedling & RF Informed Consent Form",
+          "designId": "consent-microneedling-rf-main",
+          "editUrl": "/forms/NPA-Consent-Microneedling-RF.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-photography-hipaa",
+      "productSlug": "consent-photography-hipaa",
+      "productTitle": "Photography & HIPAA Authorization Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Photography & HIPAA Authorization Form",
+          "designId": "consent-photography-hipaa-main",
+          "editUrl": "/forms/NPA-Consent-Photography-HIPAA.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "consent-waxing",
+      "productSlug": "consent-waxing",
+      "productTitle": "Professional Waxing Informed Consent Form",
+      "buildTimestamp": "2026-04-03T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Professional Waxing Informed Consent Form",
+          "designId": "consent-waxing-main",
+          "editUrl": "/forms/NPA-Consent-Waxing.html",
           "viewUrl": null
         }
       ]

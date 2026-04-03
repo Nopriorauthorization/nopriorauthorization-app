@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Photography &amp; HIPAA Authorization</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;font-size:10pt;color:#1A1A1A;background:#f5f0ed;line-height:1.5}
+.page{width:8.5in;min-height:11in;background:white;margin:.3in auto;padding:.6in .7in;box-shadow:0 4px 32px rgba(0,0,0,.12);}
+/* HEADER */
+.form-header{border-bottom:2.5px solid #1A1A1A;padding-bottom:14px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:flex-end;}
+.practice-block .practice-name{font-family:'Playfair Display',serif;font-size:18pt;font-weight:700;color:#1A1A1A;letter-spacing:.01em;}
+.practice-block .practice-sub{font-size:8pt;color:#888;letter-spacing:.12em;text-transform:uppercase;margin-top:2px;}
+.form-title-block{text-align:right;}
+.form-title-block .form-type{font-size:7pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:3px;}
+.form-title-block .form-name{font-family:'Playfair Display',serif;font-size:13pt;font-weight:700;color:#1A1A1A;}
+/* CLIENT INFO */
+.client-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px 16px;margin-bottom:16px;}
+.client-grid-2{display:grid;grid-template-columns:2fr 1fr;gap:10px 16px;margin-bottom:18px;}
+.field-group{display:flex;flex-direction:column;gap:3px;}
+.field-label{font-size:7.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.field-line{border-bottom:1px solid #ccc;min-height:20px;width:100%;}
+/* SECTION */
+.section{margin-bottom:16px;}
+.section-title{font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid #e8d8dc;}
+.body-text{font-size:9.5pt;color:#333;line-height:1.65;margin-bottom:8px;}
+/* RISK LIST */
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;margin:8px 0 12px;}
+.risk-item{display:flex;gap:7px;align-items:flex-start;font-size:9pt;color:#333;line-height:1.5;}
+.risk-dot{width:5px;height:5px;border-radius:50%;background:#D4537E;flex-shrink:0;margin-top:5px;}
+/* CHECKBOX */
+.check-list{display:flex;flex-direction:column;gap:6px;margin:8px 0;}
+.check-item{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#1A1A1A;line-height:1.55;}
+.check-box{width:13px;height:13px;border:1.5px solid #1A1A1A;flex-shrink:0;margin-top:2px;border-radius:2px;}
+/* SCREENING */
+.screen-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;margin:8px 0;}
+.screen-item{display:flex;gap:8px;align-items:center;font-size:9pt;color:#333;}
+.yn-boxes{display:flex;gap:6px;flex-shrink:0;}
+.yn{width:20px;height:13px;border:1px solid #999;font-size:7pt;display:flex;align-items:center;justify-content:center;color:#888;border-radius:1px;}
+/* SIGNATURE */
+.sig-section{border-top:2px solid #1A1A1A;padding-top:16px;margin-top:18px;}
+.sig-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-top:12px;}
+.sig-block{display:flex;flex-direction:column;gap:4px;}
+.sig-line{border-bottom:1px solid #555;min-height:28px;}
+.sig-label{font-size:7.5pt;color:#888;letter-spacing:.06em;text-transform:uppercase;margin-top:3px;}
+/* PROVIDER */
+.provider-block{background:#f9f5f3;border-left:3px solid #D4537E;padding:10px 14px;margin-top:14px;border-radius:0 4px 4px 0;}
+.provider-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+/* FOOTER */
+.form-footer{margin-top:20px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;align-items:center;}
+.footer-npa{font-size:7pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;}
+.page-note{font-size:7pt;color:#bbb;}
+/* HIGHLIGHT BOX */
+.warn-box{background:#fff5f7;border:1px solid #e8c4cc;border-left:3px solid #D4537E;padding:10px 14px;border-radius:0 4px 4px 0;margin:10px 0;}
+.warn-box p{font-size:9pt;color:#72243E;line-height:1.6;}
+@media print{body{background:white}
+.page{margin:0;box-shadow:none;padding:.5in .6in}
+@page{size:8.5in 11in portrait;margin:0}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="form-header">
+  <div><div class="practice-name">[Practice Name]</div><div class="practice-sub">[Address] &nbsp;·&nbsp; [Phone] &nbsp;·&nbsp; [Website]</div></div>
+  <div><div class="form-type">Informed Consent</div><div class="form-name">Photography &amp; HIPAA Authorization</div></div>
+</div>
+
+<div class="client-grid"><div class="field-group"><div class="field-label">Client / Patient Full Name</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Date of Birth</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Date Signed</div><div class="field-line" style="min-height:20px"></div></div></div>
+<div class="section"><div class="section-title">Clinical Photography — Medical Record Use</div>
+<div class="body-text">[Practice Name] photographs clients before, during, and/or after treatments for documentation, treatment planning, and outcome tracking. All photographs are stored securely in your private record in compliance with HIPAA.</div>
+<div class="check-list">
+<div class="check-item"><div class="check-box"></div>I consent to clinical photographs being taken for inclusion in my private medical record.</div>
+<div class="check-item"><div class="check-box"></div>I understand these are stored securely and accessed only by authorized staff involved in my care.</div>
+<div class="check-item"><div class="check-box"></div>I understand I may request access to my clinical photographs at any time.</div>
+</div>
+</div>
+<div class="section"><div class="section-title">Marketing &amp; Social Media Use — Select Your Preference</div>
+<div class="body-text">From time to time, [Practice Name] may wish to share before/after photographs for marketing purposes. <strong>This is entirely optional and has no effect on your care whatsoever.</strong></div>
+<div class="check-list">
+<div class="check-item"><div class="check-box"></div><strong>YES — Full consent.</strong> I consent to [Practice Name] using my before/after photographs for marketing and promotional purposes including Instagram, Facebook, website, and print materials. I understand my identity may be identifiable.</div>
+<div class="check-item"><div class="check-box"></div><strong>YES — Anonymized only.</strong> I consent to use of my photographs only if my face or identifying features are cropped or obscured. My name will never be associated with images.</div>
+<div class="check-item"><div class="check-box"></div><strong>NO — I do not consent</strong> to any use of my photographs beyond my private medical record.</div>
+</div>
+</div>
+<div class="section"><div class="section-title">HIPAA Privacy Acknowledgment</div>
+<div class="body-text">Your protected health information (PHI) is kept private and secure in accordance with HIPAA. By signing, you acknowledge:</div>
+<div class="check-list">
+<div class="check-item"><div class="check-box"></div>I have been offered a copy of [Practice Name]'s Notice of Privacy Practices and had the opportunity to review it.</div>
+<div class="check-item"><div class="check-box"></div>I understand my health information may be used for treatment, payment, and healthcare operations.</div>
+<div class="check-item"><div class="check-box"></div>I understand I have the right to request restrictions on certain uses and disclosures of my health information.</div>
+<div class="check-item"><div class="check-box"></div>I understand I may revoke this authorization in writing at any time. Revocation will not affect prior uses.</div>
+<div class="check-item"><div class="check-box"></div>I understand my care is not conditioned on signing this authorization.</div>
+</div>
+</div>
+<div class="section"><div class="section-title">Communication Preferences</div>
+<div class="screen-grid">
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Appointment reminders via text message</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Appointment reminders via email</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Post-treatment follow-up messages via text</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Practice updates and promotions via email</div>
+</div>
+<div class="client-grid-2" style="margin-top:8px"><div class="field-group"><div class="field-label">Best Phone Number for Text</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Best Email Address</div><div class="field-line" style="min-height:20px"></div></div></div>
+</div>
+<div class="sig-section">
+  <div class="body-text" style="font-size:9pt;color:#555;">By signing below, I confirm I have read and understand this authorization and consent to the selected uses of my photographs and information as indicated above.</div>
+  <div class="sig-grid">
+    <div class="sig-block"><div class="sig-line"></div><div class="sig-label">Client / Patient Signature</div></div>
+    <div class="sig-block"><div class="sig-line"></div><div class="sig-label">Date</div></div>
+  </div>
+  <div class="sig-grid" style="margin-top:12px">
+    <div class="sig-block"><div class="sig-line"></div><div class="sig-label">Parent / Guardian Signature (if under 18)</div></div>
+    <div class="sig-block"><div class="sig-line"></div><div class="sig-label">Relationship to Client</div></div>
+  </div>
+</div>
+<div class="provider-block" style="margin-top:14px"><div class="field-label" style="margin-bottom:8px;color:#D4537E;">For Provider / Technician Use Only</div><div class="provider-grid" style="margin-top:8px"><div class="field-group"><div class="field-label">Staff Name</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Form Entered in Chart (Y/N)</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Date Added to Record</div><div class="field-line" style="min-height:20px"></div></div></div></div>
+<div class="form-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Consent Form Bundle · nopriorauthorization.com</div>
+  <div class="page-note">Photo &amp; HIPAA Authorization · Retain in patient chart</div>
+</div>
+</div>
+</body>
+</html>

@@ -60,6 +60,16 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "brow-henna-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
   "waxing-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
   "ipl-laser-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "consent-botox-neurotoxins": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "consent-dermal-filler": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "consent-glp1-weight-loss": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "consent-hormone-therapy": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "consent-iv-im-therapy": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "consent-laser-ipl": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "consent-lash-extensions": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "consent-waxing": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "consent-microneedling-rf": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "consent-photography-hipaa": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -108,6 +118,16 @@ const OUTCOME_MAP: Record<string, string> = {
   "brow-henna-clinical-cheat-sheet": "Prep, develop timing, and aftercare prompts for henna and tint services between clients.",
   "waxing-clinical-cheat-sheet": "Temperature, technique, and contraindication checks for consistent wax room flow.",
   "ipl-laser-clinical-cheat-sheet": "Settings, skin-type cues, and post-treatment reminders for IPL and laser visits.",
+  "consent-botox-neurotoxins": "Standalone neurotoxin informed consent — risks, alternatives, and signatures without the full bundle.",
+  "consent-dermal-filler": "Single filler consent covering vascular risk, dissolution options, and patient acknowledgments.",
+  "consent-glp1-weight-loss": "GLP-1 program consent for side effects, monitoring, and patient signatures.",
+  "consent-hormone-therapy": "BHRT/TRT consent language for hormone services — ready to brand and print.",
+  "consent-iv-im-therapy": "IV and IM therapy consent for your infusion suite documentation.",
+  "consent-laser-ipl": "Laser and IPL treatment consent with device-appropriate disclosures.",
+  "consent-lash-extensions": "Lash extension consent — adhesive, allergies, fills, and aftercare in one form.",
+  "consent-waxing": "Professional waxing consent for contraindications, skin integrity, and post-care.",
+  "consent-microneedling-rf": "Microneedling and RF consent — series expectations, risks, and aftercare.",
+  "consent-photography-hipaa": "Photo authorization with tiered use options and HIPAA-aligned language.",
 };
 
 const QUICK_CATEGORIES = [

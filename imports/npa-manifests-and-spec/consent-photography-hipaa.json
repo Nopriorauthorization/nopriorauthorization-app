@@ -1,0 +1,25 @@
+{
+  "productId": "consent-photography-hipaa",
+  "displayName": "Photography & HIPAA Authorization Form",
+  "description": "Standalone authorization for clinical photography, marketing use, and HIPAA-aligned disclosures — tiered use options and patient signatures. Print-ready HTML; attorney review recommended.",
+  "version": "1.0.0",
+  "priceUSD": 19,
+  "etsySku": "NPA-CNF-PHT-001",
+  "category": "clinical-forms",
+  "targetBuyer": "Med spas and practices using before/after and marketing photos",
+  "templates": [
+    {
+      "id": "consent-photography-hipaa-main",
+      "name": "Photography & HIPAA Authorization Form",
+      "description": "Single printable photo and HIPAA-style authorization",
+      "canvaTemplateUrl": "/forms/NPA-Consent-Photography-HIPAA.html",
+      "_deliveryType": "html",
+      "format": "consent",
+      "pages": 1,
+      "category": "clinical-forms"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — print from browser or save as PDF. Attorney review recommended.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T12:00:00Z"
+}

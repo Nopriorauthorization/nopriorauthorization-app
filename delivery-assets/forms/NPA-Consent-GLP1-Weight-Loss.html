@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GLP-1 Weight Loss Program</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;font-size:10pt;color:#1A1A1A;background:#f5f0ed;line-height:1.5}
+.page{width:8.5in;min-height:11in;background:white;margin:.3in auto;padding:.6in .7in;box-shadow:0 4px 32px rgba(0,0,0,.12);}
+/* HEADER */
+.form-header{border-bottom:2.5px solid #1A1A1A;padding-bottom:14px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:flex-end;}
+.practice-block .practice-name{font-family:'Playfair Display',serif;font-size:18pt;font-weight:700;color:#1A1A1A;letter-spacing:.01em;}
+.practice-block .practice-sub{font-size:8pt;color:#888;letter-spacing:.12em;text-transform:uppercase;margin-top:2px;}
+.form-title-block{text-align:right;}
+.form-title-block .form-type{font-size:7pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:3px;}
+.form-title-block .form-name{font-family:'Playfair Display',serif;font-size:13pt;font-weight:700;color:#1A1A1A;}
+/* CLIENT INFO */
+.client-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px 16px;margin-bottom:16px;}
+.client-grid-2{display:grid;grid-template-columns:2fr 1fr;gap:10px 16px;margin-bottom:18px;}
+.field-group{display:flex;flex-direction:column;gap:3px;}
+.field-label{font-size:7.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.field-line{border-bottom:1px solid #ccc;min-height:20px;width:100%;}
+/* SECTION */
+.section{margin-bottom:16px;}
+.section-title{font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid #e8d8dc;}
+.body-text{font-size:9.5pt;color:#333;line-height:1.65;margin-bottom:8px;}
+/* RISK LIST */
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;margin:8px 0 12px;}
+.risk-item{display:flex;gap:7px;align-items:flex-start;font-size:9pt;color:#333;line-height:1.5;}
+.risk-dot{width:5px;height:5px;border-radius:50%;background:#D4537E;flex-shrink:0;margin-top:5px;}
+/* CHECKBOX */
+.check-list{display:flex;flex-direction:column;gap:6px;margin:8px 0;}
+.check-item{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#1A1A1A;line-height:1.55;}
+.check-box{width:13px;height:13px;border:1.5px solid #1A1A1A;flex-shrink:0;margin-top:2px;border-radius:2px;}
+/* SCREENING */
+.screen-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;margin:8px 0;}
+.screen-item{display:flex;gap:8px;align-items:center;font-size:9pt;color:#333;}
+.yn-boxes{display:flex;gap:6px;flex-shrink:0;}
+.yn{width:20px;height:13px;border:1px solid #999;font-size:7pt;display:flex;align-items:center;justify-content:center;color:#888;border-radius:1px;}
+/* SIGNATURE */
+.sig-section{border-top:2px solid #1A1A1A;padding-top:16px;margin-top:18px;}
+.sig-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-top:12px;}
+.sig-block{display:flex;flex-direction:column;gap:4px;}
+.sig-line{border-bottom:1px solid #555;min-height:28px;}
+.sig-label{font-size:7.5pt;color:#888;letter-spacing:.06em;text-transform:uppercase;margin-top:3px;}
+/* PROVIDER */
+.provider-block{background:#f9f5f3;border-left:3px solid #D4537E;padding:10px 14px;margin-top:14px;border-radius:0 4px 4px 0;}
+.provider-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+/* FOOTER */
+.form-footer{margin-top:20px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;align-items:center;}
+.footer-npa{font-size:7pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;}
+.page-note{font-size:7pt;color:#bbb;}
+/* HIGHLIGHT BOX */
+.warn-box{background:#fff5f7;border:1px solid #e8c4cc;border-left:3px solid #D4537E;padding:10px 14px;border-radius:0 4px 4px 0;margin:10px 0;}
+.warn-box p{font-size:9pt;color:#72243E;line-height:1.6;}
+@media print{body{background:white}
+.page{margin:0;box-shadow:none;padding:.5in .6in}
+@page{size:8.5in 11in portrait;margin:0}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="form-header">
+  <div><div class="practice-name">[Practice Name]</div><div class="practice-sub">[Address] &nbsp;·&nbsp; [Phone] &nbsp;·&nbsp; [Website]</div></div>
+  <div><div class="form-type">Informed Consent</div><div class="form-name">GLP-1 Weight Loss Program</div></div>
+</div>
+
+<div class="client-grid"><div class="field-group"><div class="field-label">Patient Full Name</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Date of Birth</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Date of Service</div><div class="field-line" style="min-height:20px"></div></div></div>
+<div class="client-grid-2"><div class="field-group"><div class="field-label">Medication Prescribed</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Starting Dose</div><div class="field-line" style="min-height:20px"></div></div></div>
+<div class="section"><div class="section-title">About This Treatment</div>
+<div class="body-text">GLP-1 receptor agonists (including semaglutide and tirzepatide) are medications used for chronic weight management and/or type 2 diabetes management. These medications may be commercially available brand-name products or compounded through a licensed 503A pharmacy. I understand that compounded medications are not FDA-approved finished drug products and are prescribed based on my individual clinical need under provider supervision.</div>
+<div class="warn-box"><p><strong>Compounded Medication Notice:</strong> If receiving a compounded GLP-1, I acknowledge it is prepared by a licensed compounding pharmacy, is not FDA-approved, and is prescribed for my individual need. I understand the regulatory status of compounded GLP-1 medications may change and my provider will advise me of any changes affecting my prescription.</p></div>
+</div>
+<div class="section"><div class="section-title">Risks &amp; Side Effects</div>
+<div class="risk-grid">
+<div class="risk-item"><div class="risk-dot"></div>Nausea, vomiting, diarrhea, or constipation — very common</div>
+<div class="risk-item"><div class="risk-dot"></div>Decreased appetite and food tolerance changes</div>
+<div class="risk-item"><div class="risk-dot"></div>Fatigue, especially during dose escalation</div>
+<div class="risk-item"><div class="risk-dot"></div>Hypoglycemia especially if taking insulin or sulfonylureas</div>
+<div class="risk-item"><div class="risk-dot"></div>Pancreatitis — severe abdominal pain, nausea, vomiting</div>
+<div class="risk-item"><div class="risk-dot"></div>Gallbladder disease or gallstones (rapid weight loss)</div>
+<div class="risk-item"><div class="risk-dot"></div>Acute kidney injury from dehydration due to GI side effects</div>
+<div class="risk-item"><div class="risk-dot"></div>Hair loss (telogen effluvium) from rapid weight loss</div>
+<div class="risk-item"><div class="risk-dot"></div>Muscle loss if protein intake is insufficient</div>
+<div class="risk-item"><div class="risk-dot"></div>Possible thyroid C-cell tumors — animal studies, unknown human risk</div>
+</div>
+<div class="critical-box"><p><strong>Black Box Warning — Thyroid Cancer:</strong> GLP-1 medications caused thyroid C-cell tumors in animal studies. Human risk is unknown. These medications are <strong>contraindicated</strong> in patients with personal or family history of medullary thyroid carcinoma (MTC) or Multiple Endocrine Neoplasia type 2 (MEN 2). I confirm I have no such history unless disclosed below.</p></div>
+</div>
+<div class="section"><div class="section-title">Medical Screening — Circle Yes or No</div>
+<div class="screen-grid">
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Personal/family history of medullary thyroid carcinoma (MTC)</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Personal/family history of MEN 2 syndrome</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>History of pancreatitis</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Pregnant, planning pregnancy, or breastfeeding</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Type 1 or Type 2 diabetes</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>History of gallbladder disease</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Severe kidney or liver disease</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Active eating disorder</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Taking insulin or sulfonylureas</div>
+<div class="screen-item"><div class="yn-boxes"><div class="yn">Y</div><div class="yn">N</div></div>Taking oral contraceptives or thyroid medication</div>
+</div>
+<div class="client-grid-2" style="margin-top:8px"><div class="field-group"><div class="field-label">Current Medications &amp; Doses</div><div class="field-line" style="min-height:28px"></div></div><div class="field-group"><div class="field-label">Known Allergies</div><div class="field-line" style="min-height:28px"></div></div></div>
+</div>
+<div class="section"><div class="section-title">Patient Acknowledgments</div>
+<div class="check-list">
+<div class="check-item"><div class="check-box"></div>I understand GI side effects are most common in the first 4–8 weeks and will not rush my dose titration.</div>
+<div class="check-item"><div class="check-box"></div>I will meet minimum daily protein targets and attend all follow-up appointments.</div>
+<div class="check-item"><div class="check-box"></div>I understand that weight regain is expected if this medication is discontinued.</div>
+<div class="check-item"><div class="check-box"></div>I will contact the practice immediately if I experience severe abdominal pain, persistent vomiting, or signs of pancreatitis.</div>
+<div class="check-item"><div class="check-box"></div>I confirm I have no personal or family history of MTC or MEN 2 unless disclosed above.</div>
+<div class="check-item"><div class="check-box"></div>I am 18 years or older and consent voluntarily to this treatment.</div>
+</div></div>
+<div class="sig-section">
+  <div class="body-text" style="font-size:9pt;color:#555;">By signing below, I confirm I have read and understand this entire consent form and voluntarily consent to this treatment/service.</div>
+  <div class="sig-grid">
+    <div class="sig-block"><div class="sig-line"></div><div class="sig-label">Patient / Client Signature</div></div>
+    <div class="sig-block"><div class="sig-line"></div><div class="sig-label">Date</div></div>
+  </div>
+</div>
+<div class="provider-block" style="margin-top:14px"><div class="field-label" style="margin-bottom:8px;color:#D4537E;">For Provider / Technician Use Only</div><div class="provider-grid" style="margin-top:8px"><div class="field-group"><div class="field-label">Prescribing Provider &amp; Credentials</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Medication / Dose / Lot #</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Pharmacy Name</div><div class="field-line" style="min-height:20px"></div></div></div><div class="provider-grid" style="margin-top:8px"><div class="field-group"><div class="field-label">Baseline Weight / BMI</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Provider Signature</div><div class="field-line" style="min-height:20px"></div></div><div class="field-group"><div class="field-label">Next Follow-Up Date</div><div class="field-line" style="min-height:20px"></div></div></div></div>
+<div class="form-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Consent Form Bundle · nopriorauthorization.com</div>
+  <div class="page-note">GLP-1 Weight Loss Consent · Retain in patient chart</div>
+</div>
+</div>
+</body>
+</html>

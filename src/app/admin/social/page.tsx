@@ -1,7 +1,8 @@
 export const dynamic = "force-dynamic";
 
 import { requireAdmin } from "@/lib/auth/admin-guard";
-import { readFacebookEnv } from "@/lib/facebook/post-to-page";
+import { readFacebookEnv } from "@/lib/facebook/env";
+import prisma from "@/lib/db";
 import Link from "next/link";
 import { FacebookSocialPanel } from "./FacebookSocialPanel";
 
@@ -9,8 +10,21 @@ export default async function AdminSocialPage() {
   await requireAdmin("/admin/social");
 
   const pageId = readFacebookEnv("FB_PAGE_ID");
-  const token = readFacebookEnv("FB_PAGE_ACCESS_TOKEN");
-  const fbReady = Boolean(pageId && token);
+  const envTok = readFacebookEnv("FB_PAGE_ACCESS_TOKEN");
+  const appId = readFacebookEnv("FB_APP_ID");
+  const appSecret = readFacebookEnv("FB_APP_SECRET");
+  const redirectUri = readFacebookEnv("FB_REDIRECT_URI");
+
+  const row = pageId
+    ? await prisma.facebookPageCredential.findUnique({
+        where: { pageId },
+        select: { accessToken: true },
+      })
+    : null;
+
+  const oauthConnected = Boolean(row?.accessToken?.trim());
+  const fbReady = Boolean(pageId && (oauthConnected || Boolean(envTok)));
+  const canStartOAuth = Boolean(appId && appSecret && redirectUri && pageId);
   const pageIdSuffix =
     pageId.length > 4 ? pageId.slice(-4) : pageId || null;
   const storageReady = Boolean(
@@ -30,8 +44,10 @@ export default async function AdminSocialPage() {
               Facebook — Hello Gorgeous Page
             </h1>
             <p className="mt-2 text-sm text-gray-400">
-              Posts go to the Hello Gorgeous Facebook Page (Vercel credentials unchanged).
-              Post now or queue for cron. Facebook only.
+              Posts go to the Hello Gorgeous Facebook Page. Prefer{" "}
+              <strong className="text-white">Connect Facebook</strong> so the
+              Page token stays fresh; env <code className="text-hot-pink">FB_PAGE_ACCESS_TOKEN</code>{" "}
+              is optional fallback.
             </p>
           </div>
           <Link
@@ -46,6 +62,8 @@ export default async function AdminSocialPage() {
           fbReady={fbReady}
           pageIdSuffix={pageIdSuffix}
           storageReady={storageReady}
+          oauthConnected={oauthConnected}
+          canStartOAuth={canStartOAuth}
         />
       </div>
     </div>

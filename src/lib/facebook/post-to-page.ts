@@ -1,3 +1,7 @@
+import { getFacebookPageAccessContext } from "@/lib/facebook/get-page-token";
+
+export { readFacebookEnv } from "@/lib/facebook/env";
+
 const GRAPH_VERSION = "v21.0";
 
 export type FacebookPublishResult = {
@@ -5,20 +9,6 @@ export type FacebookPublishResult = {
   post_id?: string;
   [key: string]: unknown;
 };
-
-/** Trim and strip a single layer of wrapping quotes (common when pasting into Vercel). */
-export function readFacebookEnv(name: string): string {
-  const raw = process.env[name];
-  if (raw == null || raw === "") return "";
-  let s = raw.trim();
-  if (
-    (s.startsWith('"') && s.endsWith('"')) ||
-    (s.startsWith("'") && s.endsWith("'"))
-  ) {
-    s = s.slice(1, -1).trim();
-  }
-  return s;
-}
 
 function formatGraphError(data: unknown): string {
   const d = data as {
@@ -47,18 +37,19 @@ function formatGraphError(data: unknown): string {
 
 /**
  * Publish immediately to the Hello Gorgeous Facebook Page (Graph API).
- * Uses FB_PAGE_ID / FB_PAGE_ACCESS_TOKEN from Vercel (no separate NPA Page).
- * Requires FB_PAGE_ID and FB_PAGE_ACCESS_TOKEN.
+ * Uses OAuth-stored token if present, else FB_PAGE_ACCESS_TOKEN + FB_PAGE_ID.
  */
 export async function publishToFacebookPage(opts: {
   message: string;
   imageUrl?: string | null;
 }): Promise<FacebookPublishResult> {
-  const pageToken = readFacebookEnv("FB_PAGE_ACCESS_TOKEN");
-  const pageId = readFacebookEnv("FB_PAGE_ID");
-  if (!pageToken || !pageId) {
-    throw new Error("FB_PAGE_ACCESS_TOKEN and FB_PAGE_ID must be set");
+  const ctx = await getFacebookPageAccessContext();
+  if (!ctx) {
+    throw new Error(
+      "No Page token — use Connect Facebook on /admin/social or set FB_PAGE_ID and FB_PAGE_ACCESS_TOKEN"
+    );
   }
+  const { pageId, accessToken: pageToken } = ctx;
 
   const message = (opts.message ?? "").trim();
   const imageUrl = opts.imageUrl?.trim() || null;

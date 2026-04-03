@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import { NextResponse } from "next/server";
 import { getAdminUser } from "@/lib/auth/admin-guard";
-import { readFacebookEnv } from "@/lib/facebook/post-to-page";
+import { getFacebookPageAccessContext } from "@/lib/facebook/get-page-token";
 
 const GRAPH_VERSION = "v21.0";
 
@@ -15,20 +15,23 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
 
-  const pageId = readFacebookEnv("FB_PAGE_ID");
-  const token = readFacebookEnv("FB_PAGE_ACCESS_TOKEN");
-  if (!pageId || !token) {
+  const ctx = await getFacebookPageAccessContext();
+  if (!ctx) {
     return NextResponse.json(
-      { ok: false, error: "FB_PAGE_ID or FB_PAGE_ACCESS_TOKEN missing" },
+      {
+        ok: false,
+        error:
+          "No token — connect Facebook or set FB_PAGE_ID and FB_PAGE_ACCESS_TOKEN.",
+      },
       { status: 400 }
     );
   }
 
   const url = new URL(
-    `https://graph.facebook.com/${GRAPH_VERSION}/${pageId}`
+    `https://graph.facebook.com/${GRAPH_VERSION}/${ctx.pageId}`
   );
   url.searchParams.set("fields", "id,name");
-  url.searchParams.set("access_token", token);
+  url.searchParams.set("access_token", ctx.accessToken);
 
   try {
     const res = await fetch(url.toString(), { method: "GET" });
@@ -51,6 +54,7 @@ export async function GET() {
     return NextResponse.json({
       ok: true,
       page: { id: data.id, name: data.name },
+      tokenSource: ctx.source,
     });
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Request failed";

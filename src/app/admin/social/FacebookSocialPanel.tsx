@@ -19,6 +19,8 @@ export function FacebookSocialPanel(props: {
   fbReady: boolean;
   pageIdSuffix: string | null;
   storageReady: boolean;
+  oauthConnected: boolean;
+  canStartOAuth: boolean;
 }) {
   const [caption, setCaption] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -31,6 +33,8 @@ export function FacebookSocialPanel(props: {
   const [loadingList, setLoadingList] = useState(true);
   const [fbReady, setFbReady] = useState(props.fbReady);
   const [pageIdSuffix, setPageIdSuffix] = useState(props.pageIdSuffix);
+  const [oauthConnected, setOauthConnected] = useState(props.oauthConnected);
+  const [canStartOAuth, setCanStartOAuth] = useState(props.canStartOAuth);
 
   const loadPosts = useCallback(async () => {
     setLoadingList(true);
@@ -48,6 +52,30 @@ export function FacebookSocialPanel(props: {
   }, [loadPosts]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const q = new URLSearchParams(window.location.search);
+    const err = q.get("fb_error");
+    const ok = q.get("fb_connected");
+    if (err) {
+      setBanner({
+        tone: "error",
+        text: decodeURIComponent(err.replace(/\+/g, " ")),
+      });
+      window.history.replaceState({}, "", "/admin/social");
+    }
+    if (ok === "1") {
+      setBanner({
+        tone: "success",
+        text: "Facebook connected — Page token saved for posting.",
+      });
+      window.history.replaceState({}, "", "/admin/social");
+      setOauthConnected(true);
+      setFbReady(true);
+      void loadPosts();
+    }
+  }, [loadPosts]);
+
+  useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
@@ -55,10 +83,18 @@ export function FacebookSocialPanel(props: {
         const data = (await res.json()) as {
           fbReady?: boolean;
           pageIdSuffix?: string | null;
+          oauthConnected?: boolean;
+          canStartOAuth?: boolean;
         };
         if (!cancelled && res.ok && typeof data.fbReady === "boolean") {
           setFbReady(data.fbReady);
           setPageIdSuffix(data.pageIdSuffix ?? null);
+          if (typeof data.oauthConnected === "boolean") {
+            setOauthConnected(data.oauthConnected);
+          }
+          if (typeof data.canStartOAuth === "boolean") {
+            setCanStartOAuth(data.canStartOAuth);
+          }
         }
       } catch {
         /* keep SSR props */
@@ -142,9 +178,15 @@ export function FacebookSocialPanel(props: {
         hint?: string;
       };
       if (data.ok && data.page?.name) {
+        const src =
+          (data as { tokenSource?: string }).tokenSource === "database"
+            ? " (saved from Facebook login)"
+            : (data as { tokenSource?: string }).tokenSource === "env"
+              ? " (from env FB_PAGE_ACCESS_TOKEN)"
+              : "";
         setBanner({
           tone: "success",
-          text: `Graph API OK — token can read Page “${data.page.name}” (id ${data.page.id}).`,
+          text: `Graph API OK — Page “${data.page.name}” (id ${data.page.id})${src}.`,
         });
       } else {
         setBanner({
@@ -208,6 +250,31 @@ export function FacebookSocialPanel(props: {
     if (res.ok) loadPosts();
   }
 
+  async function disconnectFacebook() {
+    if (
+      !confirm(
+        "Remove the stored Facebook Page token? Posting will use env FB_PAGE_ACCESS_TOKEN only if it is still set."
+      )
+    ) {
+      return;
+    }
+    const res = await fetch("/api/auth/facebook/disconnect", {
+      method: "POST",
+    });
+    if (res.ok) {
+      setOauthConnected(false);
+      setBanner({
+        tone: "info",
+        text: "Stored token removed. Reconnect or rely on env token.",
+      });
+      const st = await fetch("/api/admin/social/posting-status");
+      const d = (await st.json()) as { fbReady?: boolean };
+      if (st.ok && typeof d.fbReady === "boolean") {
+        setFbReady(d.fbReady);
+      }
+    }
+  }
+
   async function onPickImage(file: File | null) {
     if (!file) return;
     setBanner(null);
@@ -248,51 +315,83 @@ export function FacebookSocialPanel(props: {
         <h2 className="text-sm font-bold uppercase tracking-wider text-gray-400">
           Facebook connection
         </h2>
-        {fbReady ? (
-          <div className="mt-2 space-y-3">
-            <p className="text-sm text-white">
-              Hello Gorgeous Page credentials loaded{" "}
-              {pageIdSuffix ? (
-                <span className="text-gray-400">
-                  (Page ID …{pageIdSuffix})
-                </span>
-              ) : null}
-            </p>
-            <button
-              type="button"
-              disabled={testingGraph}
-              onClick={() => void testGraphConnection()}
-              className="rounded-lg border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white hover:border-emerald-400/50 disabled:opacity-50"
-            >
-              {testingGraph ? "Testing…" : "Test Graph API (token + Page ID)"}
-            </button>
-            <p className="text-xs text-gray-500">
-              If posts “succeed” but never show on Facebook, run this test — wrong
-              Page ID or an expired user token instead of a Page token is the usual cause.
-            </p>
+        <div className="mt-2 space-y-3">
+          <p className="text-sm text-white">
+            Hello Gorgeous Page{" "}
+            {pageIdSuffix ? (
+              <span className="text-gray-400">(Page ID …{pageIdSuffix})</span>
+            ) : null}
+          </p>
+          <p className="text-xs text-gray-400">
+            Token:{" "}
+            <span className="text-white">
+              {oauthConnected
+                ? "Facebook login (saved in database)"
+                : fbReady
+                  ? "Environment variable FB_PAGE_ACCESS_TOKEN"
+                  : "Not configured"}
+            </span>
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {canStartOAuth ? (
+              <a
+                href="/api/auth/facebook/login"
+                className="inline-flex items-center rounded-lg border border-[#1877F2]/60 bg-[#1877F2]/25 px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#1877F2]/35"
+              >
+                {oauthConnected ? "Reconnect Facebook" : "Connect Facebook"}
+              </a>
+            ) : (
+              <p className="text-xs text-amber-200/90">
+                Set <code className="text-hot-pink">FB_APP_ID</code>,{" "}
+                <code className="text-hot-pink">FB_APP_SECRET</code>,{" "}
+                <code className="text-hot-pink">FB_REDIRECT_URI</code>, and{" "}
+                <code className="text-hot-pink">FB_PAGE_ID</code> to enable Connect.
+              </p>
+            )}
+            {oauthConnected ? (
+              <button
+                type="button"
+                onClick={() => void disconnectFacebook()}
+                className="rounded-lg border border-white/20 px-3 py-1.5 text-xs text-gray-400 hover:text-white"
+              >
+                Disconnect stored token
+              </button>
+            ) : null}
           </div>
-        ) : (
-          <div className="mt-2 space-y-2 text-sm text-amber-200/90">
-            <p>
-              <strong className="text-white">Post now stays off</strong> until
-              the server sees both variables. Typing a caption alone does not
-              enable it.
-            </p>
-            <p>
-              Add to <code className="text-hot-pink">.env.local</code> (local)
-              or Vercel → Project → Settings → Environment Variables (Production
-              <span className="text-amber-200/70"> + Preview if you use preview URLs</span>):
-            </p>
-            <pre className="overflow-x-auto rounded-lg bg-black/50 p-3 text-xs text-gray-300">
-              {`FB_PAGE_ID="your_page_id"
-FB_PAGE_ACCESS_TOKEN="your_long_lived_page_token"`}
-            </pre>
-            <p className="text-xs text-amber-200/70">
-              After saving locally, restart <code className="text-hot-pink">npm run dev</code>{" "}
-              so Next.js reloads env. Then refresh this page.
-            </p>
-          </div>
-        )}
+          {fbReady ? (
+            <>
+              <button
+                type="button"
+                disabled={testingGraph}
+                onClick={() => void testGraphConnection()}
+                className="rounded-lg border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white hover:border-emerald-400/50 disabled:opacity-50"
+              >
+                {testingGraph ? "Testing…" : "Test Graph API"}
+              </button>
+              <p className="text-xs text-gray-500">
+                Confirms the active token can read this Page. After Connect, run
+                this before your first post.
+              </p>
+            </>
+          ) : (
+            <div className="space-y-2 text-sm text-amber-200/90">
+              <p>
+                <strong className="text-white">Posting is off</strong> until you
+                Connect Facebook or set <code className="text-hot-pink">FB_PAGE_ACCESS_TOKEN</code>{" "}
+                in Vercel / <code className="text-hot-pink">.env.local</code>.
+              </p>
+              <p className="text-xs text-amber-200/70">
+                In Meta App → Facebook Login → Settings, add Valid OAuth Redirect
+                URI: your <code className="text-hot-pink">FB_REDIRECT_URI</code>{" "}
+                (e.g.{" "}
+                <code className="text-gray-400">
+                  https://nopriorauthorization.com/api/auth/facebook/callback
+                </code>
+                ).
+              </p>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="rounded-xl border border-white/10 bg-white/[0.03] p-6">

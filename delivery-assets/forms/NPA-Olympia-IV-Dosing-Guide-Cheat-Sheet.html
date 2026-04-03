@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Olympia IV Therapy Dosing Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap');
+:root{--black:#1A1A1A;--pink:#D4537E;--darkpink:#A83560;--navy:#1a2940;--teal:#1a7a6e;--gold:#b8760a;--red:#c0392b;--purple:#6c3483;--green:#1e6b3c;--border:#ddd0d5;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Source Sans 3',sans-serif;font-size:7.6pt;background:#e8dde3;color:#1A1A1A;line-height:1.28;}
+.page{width:10.5in;min-height:8in;background:white;margin:.15in auto;padding:.12in .15in;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto 1fr;gap:.07in;box-shadow:0 4px 24px rgba(0,0,0,.18);}
+.page-header{grid-column:1/-1;background:#1A1A1A;color:white;padding:.05in .1in;display:flex;align-items:center;justify-content:space-between;border-radius:3px;margin-bottom:.03in;}
+.page-header h1{font-family:'Bebas Neue',sans-serif;font-size:20pt;letter-spacing:2px;}
+.subtitle{font-size:8pt;color:#D4537E;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.page-label{background:#D4537E;color:white;padding:2px 10px;border-radius:2px;font-family:'Bebas Neue',sans-serif;font-size:13pt;letter-spacing:1px;}
+.brand-name{font-family:'Bebas Neue',sans-serif;font-size:13pt;color:#D4537E;display:block;letter-spacing:1.5px;}
+.brand-sub{font-size:6.5pt;color:#888;}
+.col{display:flex;flex-direction:column;gap:.05in;}
+.card{border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+.card-head{padding:2px 6px;color:white;font-family:'Bebas Neue',sans-serif;font-size:9.5pt;letter-spacing:.8px;}
+.card-body{padding:4px 6px;background:white;}
+.c-black .card-head{background:#1A1A1A;}.c-black{border-color:#1A1A1A;}
+.c-pink .card-head{background:#D4537E;}.c-pink{border-color:#D4537E;}
+.c-darkpink .card-head{background:#A83560;}.c-darkpink{border-color:#A83560;}
+.c-navy .card-head{background:#1a2940;}.c-navy{border-color:#1a2940;}
+.c-teal .card-head{background:#1a7a6e;}.c-teal{border-color:#1a7a6e;}
+.c-gold .card-head{background:#b8760a;}.c-gold{border-color:#b8760a;}
+.c-red .card-head{background:#c0392b;}.c-red{border-color:#c0392b;}
+.c-purple .card-head{background:#6c3483;}.c-purple{border-color:#6c3483;}
+.c-green .card-head{background:#1e6b3c;}.c-green{border-color:#1e6b3c;}
+.row{display:flex;gap:3px;margin-bottom:2px;align-items:flex-start;}
+.row:last-child{margin-bottom:0;}
+.tag{background:#1A1A1A;color:white;border-radius:2px;padding:0 4px;font-size:6.5pt;font-weight:700;white-space:nowrap;min-width:14px;text-align:center;line-height:1.5;flex-shrink:0;}
+.tag.pink{background:#D4537E;}.tag.teal{background:#1a7a6e;}.tag.gold{background:#b8760a;}.tag.red{background:#c0392b;}.tag.purple{background:#6c3483;}.tag.green{background:#1e6b3c;}.tag.navy{background:#1a2940;}
+.info{flex:1;} b,strong{color:#1A1A1A;}
+.tbl{width:100%;border-collapse:collapse;font-size:7pt;}
+.tbl th{background:#1A1A1A;color:white;padding:1px 4px;font-weight:700;text-align:left;font-size:6.8pt;}
+.tbl th.pink{background:#D4537E;}.tbl th.teal{background:#1a7a6e;}.tbl th.navy{background:#1a2940;}.tbl th.red{background:#c0392b;}.tbl th.gold{background:#b8760a;}.tbl th.purple{background:#6c3483;}.tbl th.green{background:#1e6b3c;}
+.tbl td{padding:1px 4px;border-bottom:1px solid #e8dde3;vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#fdf5f8;}
+.star{color:#D4537E;font-weight:900;margin-right:2px;}
+.warn{color:#c0392b;font-weight:700;}
+.divider{height:1px;background:#ddd0d5;margin:3px 0;}
+.hl{background:#fdeef4;border-radius:1px;padding:0 1px;}.hl2{background:#d4f0e8;border-radius:1px;padding:0 1px;}.hl3{background:#fef3cd;border-radius:1px;padding:0 1px;}
+.flow{display:flex;align-items:center;gap:2px;flex-wrap:wrap;margin-bottom:2px;}
+.flow-box{background:#1A1A1A;color:white;padding:1px 5px;border-radius:2px;font-size:6.5pt;font-weight:600;}
+.flow-box.pink{background:#D4537E;}.flow-box.teal{background:#1a7a6e;}.flow-box.gold{background:#b8760a;}.flow-box.red{background:#c0392b;}.flow-box.navy{background:#1a2940;}.flow-box.lt{background:#f5eff2;color:#1A1A1A;}
+.arrow{font-size:8pt;color:#D4537E;font-weight:900;}
+.footer-strip{grid-column:1/-1;background:#1A1A1A;color:#888;font-size:6pt;padding:2px 8px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;margin-top:.03in;}
+.footer-strip span{color:#D4537E;font-weight:700;}
+@media print{body{background:white;}.page{margin:0;box-shadow:none;}@page{size:11in 8.5in landscape;margin:.1in;}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="page-header">
+  <div><h1>Olympia IV Therapy — Dosing Reference Guide</h1><div class="subtitle">Olympia Compounding Pharmacy · Standard Formulas · Additive Dosing · Reconstitution · Ordering Reference</div></div>
+  <div class="page-label">CHEAT SHEET</div>
+  <div><span class="brand-name">NO PRIOR AUTHORIZATION</span><span class="brand-sub">nopriorauthorization.com · Danielle Alcala · For providers using Olympia Pharmacy</span></div>
+</div>
+
+<div class="col">
+  <div class="card c-black">
+    <div class="card-head">💧 Olympia Standard IV Kit Formulations</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Kit / Formula</th><th class="pink">Components</th><th>Volume</th><th>Run Time</th></tr></thead>
+        <tbody>
+          <tr><td><b>Myers Cocktail Kit</b></td><td>MgCl2 1g + B-Complex 1mL + B12 1mg + Vit C 500mg + Calcium gluconate 1g in NS</td><td>100–250mL NS</td><td>30–45 min</td></tr>
+          <tr><td><b>Hydration Kit</b></td><td>NS or LR base. Optional: B12 1mg, electrolytes</td><td>500mL–1L</td><td>45–60 min</td></tr>
+          <tr><td><b>Immunity Kit</b></td><td>Vit C 5g + Zinc 5mg + B-Complex 1mL + B12 1mg in NS. Glutathione push separately.</td><td>250mL NS</td><td>45 min</td></tr>
+          <tr><td><b>Energy/Performance Kit</b></td><td>B-Complex 1mL + B12 1mg + Taurine 500mg + MgCl2 1g + Carnitine 500mg</td><td>250mL NS</td><td>45–60 min</td></tr>
+          <tr><td><b>Beauty/Glow Kit</b></td><td>Biotin 10mg + B-Complex 1mL + Vit C 2.5g + Zinc 5mg. Glutathione push at end.</td><td>250mL NS</td><td>45–60 min</td></tr>
+          <tr><td><b>Recovery Kit</b></td><td>B-Complex 1mL + B12 1mg + MgCl2 1g + Zofran 4mg + Ketorolac 15mg</td><td>1L NS</td><td>45–60 min</td></tr>
+          <tr><td><b>NAD+ Kit</b></td><td>NAD+ 250–500mg in 250mL NS. Run slow — 2–3hrs minimum.</td><td>250mL NS</td><td>2–3 hrs</td></tr>
+          <tr><td><b>Alpha Lipoic Acid (ALA)</b></td><td>ALA 300–600mg in 250mL NS. Light-sensitive — cover bag.</td><td>250mL NS</td><td>45–60 min</td></tr>
+          <tr><td><b>High-Dose Vit C</b></td><td>Vit C 25–50g in 500mL–1L NS. G6PD required. Slow run.</td><td>500mL–1L</td><td>2–4 hrs</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">NOTE</div><div class="info">Olympia provides pre-mixed kits or individual vials. Always verify current Olympia formulary and pricing — additive availability and concentrations may vary by kit version. Confirm with your Olympia rep.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-head">💊 Olympia Individual Vial Reference</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Vial / Additive</th><th class="teal">Olympia Concentration</th><th>Standard Add Dose</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Magnesium Chloride</b></td><td>200mg/mL (20%)</td><td>1–2g (5–10mL)/bag</td><td>Run over full bag. Never bolus.</td></tr>
+          <tr><td><b>Calcium Gluconate</b></td><td>100mg/mL (10%)</td><td>1–2g (10–20mL)/bag</td><td>Always dilute. Slow infusion.</td></tr>
+          <tr><td><b>Vitamin C</b></td><td>500mg/mL</td><td>500mg–10g/bag</td><td>High dose: dedicated bag, slow run</td></tr>
+          <tr><td><b>B-Complex</b></td><td>Thiamine/Riboflavin/B6/Pantothenic/Niacin</td><td>1mL/bag</td><td>Yellow discoloration of urine — normal</td></tr>
+          <tr><td><b>Hydroxocobalamin (B12)</b></td><td>1mg/mL</td><td>1mg (1mL)/bag or IM</td><td>Preferred over cyanocobalamin</td></tr>
+          <tr><td><b>Glutathione</b></td><td>200mg/mL</td><td>600–2400mg push</td><td>IV push AFTER bag. Never in bag.</td></tr>
+          <tr><td><b>Zinc Chloride</b></td><td>1mg/mL or 5mg/mL</td><td>5–10mg/bag</td><td>Max 40mg/day total (oral + IV)</td></tr>
+          <tr><td><b>NAD+</b></td><td>100mg/mL</td><td>250–1000mg/bag</td><td>Separate dedicated bag. Very slow.</td></tr>
+          <tr><td><b>Alpha Lipoic Acid</b></td><td>25mg/mL or 50mg/mL</td><td>300–600mg/bag</td><td>Light sensitive — amber/foil wrap bag</td></tr>
+          <tr><td><b>Taurine</b></td><td>50mg/mL</td><td>500mg (10mL)/bag</td><td>Cardiac support, energy</td></tr>
+          <tr><td><b>L-Carnitine</b></td><td>200mg/mL</td><td>500–1000mg/bag</td><td>Fat metabolism, energy</td></tr>
+          <tr><td><b>Biotin</b></td><td>1mg/mL or 5mg/mL</td><td>10–20mg/bag</td><td>Hold 48hrs before thyroid labs</td></tr>
+          <tr><td><b>Selenium</b></td><td>40mcg/mL</td><td>100–200mcg/bag</td><td>Antioxidant, thyroid support</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-pink">
+    <div class="card-head">💉 Olympia IM Injectable Reference</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Injectable</th><th class="pink">Olympia Concentration</th><th>Standard Dose</th><th>Site / Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>B12 (hydroxocobalamin)</b></td><td>1mg/mL</td><td>1mg (1mL) IM weekly–monthly</td><td>Deltoid or gluteal. Preferred over cyano.</td></tr>
+          <tr><td><b>MIC/Lipo-B Shot</b></td><td>Methionine/Inositol/Choline + B12</td><td>1mL IM weekly</td><td>Deltoid. Fat metabolism + liver support.</td></tr>
+          <tr><td><b>Vitamin D3</b></td><td>50,000 IU/mL (some formulations)</td><td>50,000–100,000 IU monthly</td><td>Deep IM gluteal. Check 25-OH-D first.</td></tr>
+          <tr><td><b>Glutathione IM</b></td><td>200mg/mL</td><td>600–1200mg IM</td><td>Gluteal — deep IM. Large volume — may need split dose.</td></tr>
+          <tr><td><b>Toradol (ketorolac)</b></td><td>15mg/mL or 30mg/mL</td><td>15–30mg IM PRN</td><td>Max 5 days. No concurrent NSAIDs.</td></tr>
+          <tr><td><b>Zofran (ondansetron)</b></td><td>2mg/mL</td><td>4mg IM or slow IV</td><td>IM or slow IV push. QT screen.</td></tr>
+          <tr><td><b>Alpha Lipoic Acid IM</b></td><td>25mg/mL</td><td>100–300mg IM</td><td>Gluteal. Antioxidant, neuropathy, weight loss.</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">COMBO</div><div class="info"><b>Popular IM bundle:</b> B12 1mg + MIC 1mL mixed in same syringe = weekly "B12/Lipo shot." Common weight loss program add-on. Quick, effective, high patient satisfaction.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-head">🧬 Olympia Specialty Formulas</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Formula</th><th class="purple">Components</th><th>Indication</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>NAD+ Protocol</b></td><td>NAD+ 250–1000mg in 250mL NS</td><td>Anti-aging, energy, addiction support, cognitive</td><td>Run 2–4hrs. Side effects = rate-dependent.</td></tr>
+          <tr><td><b>Plaquex</b></td><td>Phosphatidylcholine (PPC) in NS</td><td>Cardiovascular, liver support, anti-aging</td><td>Series of 10–20 infusions. Slow run.</td></tr>
+          <tr><td><b>ALA (Alpha Lipoic)</b></td><td>ALA 300–600mg in 250mL NS</td><td>Neuropathy, antioxidant, weight loss, blood sugar</td><td>Light-sensitive. Wrap bag in foil.</td></tr>
+          <tr><td><b>Chelation (EDTA)</b></td><td>Na2EDTA or CaEDTA in NS</td><td>Heavy metal toxicity, cardiovascular (TACT protocol)</td><td>Requires specific training. 3hr infusion. Kidney monitoring required.</td></tr>
+          <tr><td><b>Ozone/UBI</b></td><td>Blood draw + ozone + UV light + return</td><td>Immune support, infection, anti-inflammatory</td><td>Specialized equipment required. Not standard Olympia kit.</td></tr>
+          <tr><td><b>Exosome IV</b></td><td>Exosomes in NS</td><td>Regenerative, anti-aging, post-procedure recovery</td><td>Evolving evidence. Provider discretion. Verify regulatory status.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">📐 Olympia Ordering & Logistics</div>
+    <div class="card-body">
+      <div class="row"><div class="tag gold">ORDER</div><div class="info"><b>Olympia Compounding Pharmacy:</b> olympiapharmacy.com. Provider account required. DEA registration needed for controlled substance orders. Your rep can set up standing orders for common kits.</div></div>
+      <div class="row"><div class="tag gold">SHIP</div><div class="info">Cold-chain shipping for temperature-sensitive products. Inspect packages on arrival — if cold packs are fully melted and products are warm, do not use. Contact Olympia rep for replacement.</div></div>
+      <div class="row"><div class="tag gold">STORAGE</div><div class="info">Refrigerate 2–8°C upon arrival. B12 and B-complex may be room temp (check individual product). NAD+ refrigerate — use within 30 days of reconstitution. ALA — refrigerate + protect from light.</div></div>
+      <div class="row"><div class="tag teal">STANDING</div><div class="info">Set up <b>standing orders</b> with Olympia for your most-used kits. Reduces order time, ensures consistent supply, locks in pricing. Ask your rep about volume discounts for monthly orders.</div></div>
+      <div class="row"><div class="tag navy">CATALOG</div><div class="info">Olympia catalog changes periodically — products added and removed. Verify availability before promising specific formulas to patients. Download current formulary from provider portal quarterly.</div></div>
+      <div class="row"><div class="tag red">EXPIRY</div><div class="info">Check expiration dates on every vial at receipt. Never use expired compounded medications. BUD (beyond use date) may be shorter than printed expiration — follow whichever is sooner.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-navy">
+    <div class="card-head">⚗️ Reconstitution Guide — Olympia Lyophilized Products</div>
+    <div class="card-body">
+      <div class="row"><div class="tag navy">DILUENT</div><div class="info"><b>Use bacteriostatic water (BAC water) for multi-use vials.</b> Sterile water for single-use. Never tap water. Check Olympia product insert for recommended diluent — some products specify NS only.</div></div>
+      <div class="divider"></div>
+      <table class="tbl">
+        <thead><tr><th>Product</th><th class="navy">Reconstitution</th><th>Concentration</th><th>Shelf Life (recon)</th></tr></thead>
+        <tbody>
+          <tr><td>NAD+ 500mg vial</td><td>5mL BAC water</td><td>100mg/mL</td><td>30 days refrigerated</td></tr>
+          <tr><td>Glutathione 600mg vial</td><td>3mL BAC water</td><td>200mg/mL</td><td>30 days refrigerated</td></tr>
+          <tr><td>ALA 300mg vial</td><td>6mL NS or BAC</td><td>50mg/mL</td><td>Use immediately — unstable</td></tr>
+          <tr><td>B12 (lyophilized)</td><td>1mL BAC water</td><td>1mg/mL</td><td>30 days refrigerated</td></tr>
+          <tr><td>Custom peptides</td><td>Per Olympia insert</td><td>Per Olympia insert</td><td>30 days max refrigerated</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">LABEL</div><div class="info">Label every reconstituted vial: patient name (if patient-specific), drug name, concentration, date mixed, BUD. Required for compliance and patient safety.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-head">📋 Olympia Patient-Specific vs. Office Use</div>
+    <div class="card-body">
+      <div class="row"><div class="tag green">503A</div><div class="info"><b>Olympia 503A (patient-specific):</b> Requires individual patient Rx with patient name, DOB, prescriber info. Cannot be kept as office stock. Most peptides and hormones fall here.</div></div>
+      <div class="row"><div class="tag green">OFFICE</div><div class="info"><b>Office-use products:</b> Some Olympia products can be ordered for office use (not patient-specific) — typically vitamins, minerals, standard IV additives. Confirm with your rep which products qualify.</div></div>
+      <div class="row"><div class="tag teal">STANDING RX</div><div class="info">For patient-specific products (B12, MIC, glutathione), some providers use <b>standing orders</b> — physician-signed protocol covering a category of patients. Check your state's standing order rules for compounded medications.</div></div>
+      <div class="row"><div class="tag red">COMPLIANCE</div><div class="info">Keep all Olympia invoices, Rx copies, lot numbers, and BUD dates. Required for state board inspection. Document the Olympia lot number for every compounded product administered.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-red">
+    <div class="card-head">⚠️ Special Precautions — Olympia Products</div>
+    <div class="card-body">
+      <div class="row"><div class="tag red">ALA</div><div class="info"><b>Alpha Lipoic Acid:</b> Extremely light-sensitive — degraded by light within minutes. Always use amber IV bag or wrap clear bag in aluminum foil. Administer immediately after preparation. Discard unused portion.</div></div>
+      <div class="row"><div class="tag red">NAD+</div><div class="info"><b>NAD+:</b> Rate-dependent side effects — chest tightness, nausea, cramping if run too fast. <span class="warn">Never push as IV bolus.</span> Minimum 2 hours for 500mg. Slow the rate — don't stop the infusion.</div></div>
+      <div class="row"><div class="tag red">PLAQUEX</div><div class="info"><b>Plaquex (PPC):</b> Must be run slowly — 2–3 hours. Some patients experience flushing, nausea, headache. Do not combine with other additives. Dedicated bag and dedicated IV line.</div></div>
+      <div class="row"><div class="tag gold">GLUTA</div><div class="info"><b>Glutathione:</b> Never add to IV bag — oxidizes immediately. Always IV push after bag complete. Some patients experience sulfur taste/smell — normal. Rare: bronchospasm in asthmatic patients.</div></div>
+      <div class="row"><div class="tag gold">HDVC</div><div class="info"><b>High-dose Vitamin C (&gt;10g):</b> G6PD deficiency test required before administration. Risk of hemolytic anemia in G6PD-deficient patients is life-threatening. No exceptions to this screening rule.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-darkpink">
+    <div class="card-head">💰 IV Therapy Menu Pricing Guide</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Service</th><th class="pink">Suggested Retail</th><th>Olympia Cost Est.</th><th>Margin</th></tr></thead>
+        <tbody>
+          <tr><td>Myers Cocktail</td><td>$150–175</td><td>$25–40</td><td>High</td></tr>
+          <tr><td>Basic Hydration (1L)</td><td>$75–100</td><td>$10–15</td><td>Very high</td></tr>
+          <tr><td>Immunity Boost</td><td>$175–200</td><td>$35–50</td><td>High</td></tr>
+          <tr><td>Beauty/Glow Drip</td><td>$175–200</td><td>$40–55</td><td>High</td></tr>
+          <tr><td>Hangover Recovery</td><td>$200–250</td><td>$40–60</td><td>High</td></tr>
+          <tr><td>NAD+ 500mg</td><td>$400–600</td><td>$80–120</td><td>High</td></tr>
+          <tr><td>High-Dose Vit C 25g</td><td>$200–300</td><td>$40–60</td><td>High</td></tr>
+          <tr><td>ALA 600mg</td><td>$150–200</td><td>$30–50</td><td>High</td></tr>
+          <tr><td>B12 shot (IM)</td><td>$25–35</td><td>$3–5</td><td>Very high</td></tr>
+          <tr><td>MIC/Lipo shot</td><td>$30–45</td><td>$5–8</td><td>Very high</td></tr>
+          <tr><td>Glutathione push (add-on)</td><td>$40–65</td><td>$8–15</td><td>Very high</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">TIP</div><div class="info">IV therapy has among the highest margins in med spa services. Add-on glutathione push at end of every drip = +$40–65 for 3 minutes of work. Standard upsell script: "Would you like to add a glutathione push? It gives you that glow effect you'll notice within 24 hours."</div></div>
+    </div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-head">📅 Membership & Package Pricing</div>
+    <div class="card-body">
+      <div class="row"><div class="tag teal">PACKAGE</div><div class="info"><b>4-Drip Series:</b> Offer 4 drips at 10–15% discount. Patient pays upfront, locks in recurring visits. Common: 4 Myers cocktails for $550 (vs. $625 individual). Creates commitment and cash flow.</div></div>
+      <div class="row"><div class="tag teal">MEMBER</div><div class="info"><b>Monthly IV Membership:</b> $149–199/month = 1 drip/month + 2 B12 shots. Patients who join memberships visit 3x more frequently than non-members. Recurring revenue + patient loyalty.</div></div>
+      <div class="row"><div class="tag gold">NAD+</div><div class="info"><b>NAD+ Loading Series:</b> 4 sessions in 2 weeks (loading) then monthly maintenance. Package: 4 sessions for $1,500–1,800 (save $200+). High-ticket package drives significant revenue.</div></div>
+      <div class="row"><div class="tag navy">CORPORATE</div><div class="info"><b>Corporate wellness:</b> Partner with local gyms, spas, offices. Mobile IV bar at events. Group packages. B2B revenue stream with minimal additional overhead.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">🧠 High-Yield Clinical + Business Pearls</div>
+    <div class="card-body">
+      <div class="row"><div class="star">★</div><div class="info"><b>ALA must be light-protected immediately.</b> Don't mix and set down — wrap in foil the moment it's prepared. Degraded ALA is inactive ALA.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>G6PD is non-negotiable before high-dose Vit C.</b> One hemolytic crisis destroys your practice. Test once, file it, never forget it.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>NAD+ side effects = too fast.</b> Slow the rate. Do not stop the infusion. These always resolve with rate reduction.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Glutathione add-on is your highest-margin upsell.</b> $8 cost, $40–65 retail, 3 minutes of work. Offer it to every IV patient.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Name your drips experientially.</b> "Glow Drip" sells. "Glutathione + B-complex infusion" doesn't. Patients buy results and experiences, not ingredients.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Rebook text at week 3.</b> "It's been 3 weeks since your IV drip — most patients come monthly to maintain their energy levels. Want me to grab you a spot?" 🤍 Consistent touchpoint = consistent revenue.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Document lot numbers</b> from Olympia on every patient chart. Recall traceability and state board compliance. Takes 10 seconds. Protects everything.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · For licensed providers using Olympia Compounding Pharmacy · Verify current Olympia formulary with your rep
+  <span style="color:#888;font-weight:400">© 2026 NPA · Olympia IV Therapy Dosing Guide · $17</span>
+</div>
+</div>
+</body>
+</html>

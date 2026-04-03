@@ -18,6 +18,7 @@
     "product:build-all": "tsx scripts/products/build-all-products.ts",
     "product:create-draft": "tsx scripts/products/create-draft.ts",
     "shop:seed-stripe": "tsx scripts/shop/seed-stripe-products.ts",
+    "shop:screenshot-cheat-sheets": "tsx scripts/shop/screenshot-cheat-sheets.ts",
     "catalog:rebuild": "bash scripts/catalog-rebuild.sh",
     "ebook:generate": "tsx scripts/ebooks/generate-ebook.ts",
     "product:explode": "tsx scripts/products/explode-niche.ts",

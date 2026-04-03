@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T02:44:21.772Z",
+  "generatedAt": "2026-04-03T03:01:06.630Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1623,6 +1623,21 @@
       ]
     },
     {
+      "productKey": "olympia-iv-dosing-guide-cheat-sheet",
+      "productSlug": "olympia-iv-dosing-guide-cheat-sheet",
+      "productTitle": "Olympia IV Therapy Dosing Guide",
+      "buildTimestamp": "2026-04-03T06:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Olympia IV Therapy Dosing Guide",
+          "designId": "olympia-iv-dosing-guide-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Olympia-IV-Dosing-Guide-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "patient-communication-kit",
       "productSlug": "patient-communication-kit",
       "productTitle": "Botox & Filler Patient Communication Kit",
@@ -1648,6 +1663,21 @@
           "title": "The Patient Loyalty & Retention System",
           "designId": "patient-loyalty-system-main",
           "editUrl": "/forms/NPA-Patient-Loyalty-System.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "pellet-therapy-clinical-cheat-sheet",
+      "productSlug": "pellet-therapy-clinical-cheat-sheet",
+      "productTitle": "Pellet Therapy Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T06:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Pellet Therapy Clinical Cheat Sheet",
+          "designId": "pellet-therapy-clinical-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Pellet-Therapy-Clinical-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -1744,6 +1774,21 @@
           "title": "The Peptide Therapy Playbook",
           "designId": "peptide-therapy-playbook-main",
           "editUrl": "/forms/NPA-Peptide-Therapy-Playbook.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "pharmaceutical-reference-cheat-sheet",
+      "productSlug": "pharmaceutical-reference-cheat-sheet",
+      "productTitle": "Pharmaceutical Reference Clinical Cheat Sheet",
+      "buildTimestamp": "2026-04-03T06:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Pharmaceutical Reference Clinical Cheat Sheet",
+          "designId": "pharmaceutical-reference-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Pharmaceutical-Reference-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]

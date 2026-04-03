@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Pharmaceutical Reference Cheat Sheet</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap');
+:root{--black:#1A1A1A;--pink:#D4537E;--darkpink:#A83560;--navy:#1a2940;--teal:#1a7a6e;--gold:#b8760a;--red:#c0392b;--purple:#6c3483;--green:#1e6b3c;--border:#ddd0d5;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Source Sans 3',sans-serif;font-size:7.6pt;background:#e8dde3;color:#1A1A1A;line-height:1.28;}
+.page{width:10.5in;min-height:8in;background:white;margin:.15in auto;padding:.12in .15in;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto 1fr;gap:.07in;box-shadow:0 4px 24px rgba(0,0,0,.18);}
+.page-header{grid-column:1/-1;background:#1A1A1A;color:white;padding:.05in .1in;display:flex;align-items:center;justify-content:space-between;border-radius:3px;margin-bottom:.03in;}
+.page-header h1{font-family:'Bebas Neue',sans-serif;font-size:20pt;letter-spacing:2px;}
+.subtitle{font-size:8pt;color:#D4537E;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.page-label{background:#D4537E;color:white;padding:2px 10px;border-radius:2px;font-family:'Bebas Neue',sans-serif;font-size:13pt;letter-spacing:1px;}
+.brand-name{font-family:'Bebas Neue',sans-serif;font-size:13pt;color:#D4537E;display:block;letter-spacing:1.5px;}
+.brand-sub{font-size:6.5pt;color:#888;}
+.col{display:flex;flex-direction:column;gap:.05in;}
+.card{border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+.card-head{padding:2px 6px;color:white;font-family:'Bebas Neue',sans-serif;font-size:9.5pt;letter-spacing:.8px;}
+.card-body{padding:4px 6px;background:white;}
+.c-black .card-head{background:#1A1A1A;}.c-black{border-color:#1A1A1A;}
+.c-pink .card-head{background:#D4537E;}.c-pink{border-color:#D4537E;}
+.c-darkpink .card-head{background:#A83560;}.c-darkpink{border-color:#A83560;}
+.c-navy .card-head{background:#1a2940;}.c-navy{border-color:#1a2940;}
+.c-teal .card-head{background:#1a7a6e;}.c-teal{border-color:#1a7a6e;}
+.c-gold .card-head{background:#b8760a;}.c-gold{border-color:#b8760a;}
+.c-red .card-head{background:#c0392b;}.c-red{border-color:#c0392b;}
+.c-purple .card-head{background:#6c3483;}.c-purple{border-color:#6c3483;}
+.c-green .card-head{background:#1e6b3c;}.c-green{border-color:#1e6b3c;}
+.row{display:flex;gap:3px;margin-bottom:2px;align-items:flex-start;}
+.row:last-child{margin-bottom:0;}
+.tag{background:#1A1A1A;color:white;border-radius:2px;padding:0 4px;font-size:6.5pt;font-weight:700;white-space:nowrap;min-width:14px;text-align:center;line-height:1.5;flex-shrink:0;}
+.tag.pink{background:#D4537E;}.tag.teal{background:#1a7a6e;}.tag.gold{background:#b8760a;}.tag.red{background:#c0392b;}.tag.purple{background:#6c3483;}.tag.green{background:#1e6b3c;}.tag.navy{background:#1a2940;}
+.info{flex:1;} b,strong{color:#1A1A1A;}
+.tbl{width:100%;border-collapse:collapse;font-size:7pt;}
+.tbl th{background:#1A1A1A;color:white;padding:1px 4px;font-weight:700;text-align:left;font-size:6.8pt;}
+.tbl th.pink{background:#D4537E;}.tbl th.teal{background:#1a7a6e;}.tbl th.navy{background:#1a2940;}.tbl th.red{background:#c0392b;}.tbl th.gold{background:#b8760a;}.tbl th.purple{background:#6c3483;}.tbl th.green{background:#1e6b3c;}
+.tbl td{padding:1px 4px;border-bottom:1px solid #e8dde3;vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#fdf5f8;}
+.star{color:#D4537E;font-weight:900;margin-right:2px;}
+.warn{color:#c0392b;font-weight:700;}
+.ok{color:#1e6b3c;font-weight:700;}
+.divider{height:1px;background:#ddd0d5;margin:3px 0;}
+.hl{background:#fdeef4;border-radius:1px;padding:0 1px;}.hl2{background:#d4f0e8;border-radius:1px;padding:0 1px;}.hl3{background:#fef3cd;border-radius:1px;padding:0 1px;}
+.footer-strip{grid-column:1/-1;background:#1A1A1A;color:#888;font-size:6pt;padding:2px 8px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;margin-top:.03in;}
+.footer-strip span{color:#D4537E;font-weight:700;}
+@media print{body{background:white;}.page{margin:0;box-shadow:none;}@page{size:11in 8.5in landscape;margin:.1in;}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="page-header">
+  <div><h1>Pharmaceutical Reference — Med Spa Clinical Guide</h1><div class="subtitle">Common Prescriptions · Topicals · Controlled Substances · DEA Schedules · Drug Interactions · Emergency Meds</div></div>
+  <div class="page-label">CHEAT SHEET</div>
+  <div><span class="brand-name">NO PRIOR AUTHORIZATION</span><span class="brand-sub">nopriorauthorization.com · Danielle Alcala · Ryan Kent FNP-BC</span></div>
+</div>
+
+<div class="col">
+  <div class="card c-black">
+    <div class="card-head">💊 Common Med Spa Prescriptions — Quick Reference</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Drug</th><th class="pink">Class</th><th>Common Dose</th><th>Route</th><th>Indication</th></tr></thead>
+        <tbody>
+          <tr><td><b>Valacyclovir</b></td><td>Antiviral</td><td>500mg–1g BID x5d</td><td>PO</td><td>Cold sore prophylaxis/tx before lip treatments</td></tr>
+          <tr><td><b>Doxycycline</b></td><td>Antibiotic</td><td>100mg BID x7d</td><td>PO</td><td>Post-procedure infection risk, acne management</td></tr>
+          <tr><td><b>Cephalexin</b></td><td>Antibiotic</td><td>500mg QID x7d</td><td>PO</td><td>Skin infection, post-procedure prophylaxis</td></tr>
+          <tr><td><b>Amoxicillin-clav</b></td><td>Antibiotic</td><td>875mg BID x7d</td><td>PO</td><td>Broader spectrum skin infection coverage</td></tr>
+          <tr><td><b>Prednisone</b></td><td>Steroid</td><td>20–60mg/day taper</td><td>PO</td><td>Inflammatory reaction, allergic response</td></tr>
+          <tr><td><b>Medrol dose pack</b></td><td>Steroid</td><td>Taper pack</td><td>PO</td><td>Swelling, inflammatory reaction post-procedure</td></tr>
+          <tr><td><b>Hydroxyzine</b></td><td>Antihistamine</td><td>25–50mg PRN</td><td>PO</td><td>Anxiety pre-procedure, mild allergic reaction</td></tr>
+          <tr><td><b>Zofran (ondansetron)</b></td><td>Antiemetic</td><td>4–8mg</td><td>PO/IV</td><td>Nausea during IV therapy, post-procedure</td></tr>
+          <tr><td><b>Phenergan (promethazine)</b></td><td>Antiemetic</td><td>25mg</td><td>PO/IM ONLY</td><td>Nausea — NEVER IV push</td></tr>
+          <tr><td><b>Toradol (ketorolac)</b></td><td>NSAID</td><td>15–30mg</td><td>IM/IV</td><td>Pain, headache, migraine — max 5 days</td></tr>
+          <tr><td><b>Diphenhydramine (Benadryl)</b></td><td>Antihistamine</td><td>25–50mg</td><td>PO/IV/IM</td><td>Allergic reaction, urticaria, mild anaphylaxis</td></tr>
+          <tr><td><b>Apraclonidine 0.5%</b></td><td>Alpha-2 agonist</td><td>1–2 drops TID</td><td>Ophthalmic</td><td>Lid ptosis post-Botox — stimulates Müller's muscle</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card c-red">
+    <div class="card-head">🚨 Emergency Medications — Always On-Site</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Drug</th><th class="red">Dose</th><th>Route</th><th>Indication</th></tr></thead>
+        <tbody>
+          <tr><td><b>Epinephrine 1:1000</b></td><td><span class="hl">0.3–0.5mg</span></td><td>IM (anterolateral thigh)</td><td>Anaphylaxis — FIRST LINE</td></tr>
+          <tr><td><b>EpiPen / EpiPen Jr</b></td><td>0.3mg (adult) / 0.15mg (child)</td><td>IM auto-injector</td><td>Anaphylaxis — easy deployment</td></tr>
+          <tr><td><b>Diphenhydramine</b></td><td>25–50mg</td><td>IV/IM</td><td>Adjunct to epi for anaphylaxis</td></tr>
+          <tr><td><b>Hyaluronidase (Hylenex)</b></td><td>150–300u STAT</td><td>Intralesional</td><td>Vascular occlusion — filler emergency</td></tr>
+          <tr><td><b>Aspirin 325mg</b></td><td>325mg PO</td><td>PO (chew)</td><td>Vascular occlusion adjunct</td></tr>
+          <tr><td><b>Naloxone (Narcan)</b></td><td>0.4–2mg</td><td>IM/IN</td><td>Opioid overdose — if controlled substances on-site</td></tr>
+          <tr><td><b>Glucose (oral)</b></td><td>15–20g</td><td>PO</td><td>Hypoglycemia — diabetic patients</td></tr>
+          <tr><td><b>Nitroglycerin paste</b></td><td>Apply topically</td><td>Topical</td><td>Vascular occlusion — vasodilator adjunct</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">RULE</div><div class="info"><b>Every med spa must have epinephrine and hyaluronidase immediately accessible in every treatment room.</b> Not in a cabinet down the hall. In the room. Always.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-purple">
+    <div class="card-head">📋 DEA Schedule Reference</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Schedule</th><th class="purple">Definition</th><th>Med Spa Examples</th><th>Prescribing Rules</th></tr></thead>
+        <tbody>
+          <tr><td><b>Schedule II</b></td><td>High abuse potential, accepted medical use</td><td>Testosterone (injectable), Adderall, oxycodone, fentanyl</td><td>Written Rx only. No refills. DEA 222 form for ordering. 30-day supply max most states.</td></tr>
+          <tr><td><b>Schedule III</b></td><td>Moderate abuse potential</td><td>Testosterone (pellets/gel/patch), Ketamine, buprenorphine, anabolic steroids</td><td>Written or electronic Rx. Up to 5 refills in 6 months. Some states stricter.</td></tr>
+          <tr><td><b>Schedule IV</b></td><td>Low abuse potential</td><td>Xanax (alprazolam), Valium, Ambien, tramadol</td><td>Written or electronic Rx. Up to 5 refills in 6 months.</td></tr>
+          <tr><td><b>Schedule V</b></td><td>Lowest abuse potential</td><td>Cough preps with codeine, pregabalin (Lyrica)</td><td>Some OTC in certain states. Rx in others.</td></tr>
+          <tr><td><b>Non-controlled</b></td><td>No abuse classification</td><td>GLP-1s, peptides, antibiotics, topicals</td><td>Standard Rx rules apply.</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">!</div><div class="info"><b>Testosterone is Schedule III federally.</b> Requires DEA registration to prescribe. Storage in locked, controlled substance cabinet. Maintain accurate dispensing logs. State rules may be stricter than federal.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">🧴 Topical Anesthetics — Procedure Reference</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Product</th><th class="gold">Concentration</th><th>Onset</th><th>Duration</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td><b>EMLA cream</b></td><td>Lidocaine 2.5% + Prilocaine 2.5%</td><td>60 min</td><td>1–2 hrs</td><td>Needles, laser, filler</td></tr>
+          <tr><td><b>LMX 4%</b></td><td>Lidocaine 4%</td><td>30 min</td><td>45–60 min</td><td>Faster onset, good for lips</td></tr>
+          <tr><td><b>BLT cream</b></td><td>Benzocaine/Lidocaine/Tetracaine</td><td>20–30 min</td><td>45–60 min</td><td>Mucosal procedures, lip filler, laser</td></tr>
+          <tr><td><b>Hurricaine gel</b></td><td>Benzocaine 20%</td><td>15–30 sec</td><td>15 min</td><td>Mucosal — lip, gum. OTC available.</td></tr>
+          <tr><td><b>Lidocaine 1% inj</b></td><td>Lidocaine 1%</td><td>Immediate</td><td>1–2 hrs</td><td>Field block, pellet insertion, dental ring block</td></tr>
+          <tr><td><b>Lidocaine 1% + epi</b></td><td>Lido 1% + Epi 1:100,000</td><td>Immediate</td><td>2–4 hrs</td><td>Pellet insertion — vasoconstriction reduces bleeding</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">MAX DOSE</div><div class="info"><b>Lidocaine max dose:</b> 4.5 mg/kg without epi. 7 mg/kg with epi. 1% lidocaine = 10mg/mL. Toxicity: perioral numbness, tinnitus, seizure, cardiac. Have resuscitation equipment available.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-navy">
+    <div class="card-head">💊 Compounding Pharmacy Categories</div>
+    <div class="card-body">
+      <div class="row"><div class="tag navy">503A</div><div class="info"><b>503A Traditional Compounding Pharmacy:</b> Patient-specific prescriptions only. Cannot compound in bulk for office use. Most compounded hormones, peptides, and topicals fall here. Requires individual patient Rx.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag navy">503B</div><div class="info"><b>503B Outsourcing Facility:</b> FDA-registered. Can produce in larger quantities. Can supply without patient-specific Rx (for office use/stock). Higher oversight — cGMP standards. More expensive but more scalable.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">VERIFY</div><div class="info">Always verify pharmacy is <b>state-licensed and FDA-registered.</b> Check NABP (National Association of Boards of Pharmacy) database. Use only PCAB-accredited pharmacies when possible.</div></div>
+      <div class="row"><div class="tag red">NEVER</div><div class="info"><span class="warn">Never use compounded medications from unregistered sources.</span> Patient safety + provider liability. If it's not from a licensed pharmacy — it's not safe to prescribe.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-teal">
+    <div class="card-head">⚡ Drug Interactions — Med Spa Prescribers Must Know</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Drug A</th><th class="teal">Drug B</th><th>Interaction</th><th>Management</th></tr></thead>
+        <tbody>
+          <tr><td>Testosterone</td><td>Warfarin</td><td>↑ INR — enhanced anticoagulation</td><td>Monitor INR closely when initiating TRT</td></tr>
+          <tr><td>Testosterone</td><td>Insulin/OHAs</td><td>↑ Hypoglycemia risk</td><td>Monitor glucose — may need dose reduction</td></tr>
+          <tr><td>Estrogen (oral)</td><td>Rifampin/CYP inducers</td><td>↓ Estrogen levels</td><td>Use transdermal — avoids first-pass</td></tr>
+          <tr><td>Anastrozole</td><td>Estrogen</td><td>Antagonistic — reduces estrogen</td><td>Don't give AI to women on estrogen therapy</td></tr>
+          <tr><td>GLP-1 agonists</td><td>Oral medications</td><td>↓ Absorption — delayed gastric emptying</td><td>Time-sensitive meds 1hr before GLP-1 injection day</td></tr>
+          <tr><td>Zofran</td><td>QT-prolonging drugs</td><td>↑ QT prolongation + arrhythmia risk</td><td>Screen for cardiac history + other QT drugs</td></tr>
+          <tr><td>Toradol (ketorolac)</td><td>Aspirin/NSAIDs</td><td>↑ GI bleed + renal toxicity</td><td>Don't combine. Limit to 5 days max.</td></tr>
+          <tr><td>Doxycycline</td><td>Isotretinoin</td><td>↑ Intracranial hypertension risk</td><td>Never combine — avoid concurrent use</td></tr>
+          <tr><td>Valacyclovir</td><td>Nephrotoxic drugs</td><td>↑ Renal toxicity in impaired patients</td><td>Hydrate well. Reduce dose in renal impairment.</td></tr>
+          <tr><td>Aminoglycosides</td><td>Botox/neurotoxins</td><td>↑ Botulinum toxin effect</td><td>Screen for current antibiotic use before injecting</td></tr>
+          <tr><td>Lidocaine (topical)</td><td>Antiarrhythmics</td><td>↑ Cardiac effect if absorbed systemically</td><td>Use minimum effective amount. Avoid mucosal overuse.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-head">📜 Prescription Writing — Required Elements</div>
+    <div class="card-body">
+      <div class="row"><div class="tag green">REQUIRED</div><div class="info"><b>Every valid prescription must include:</b> Patient full name + DOB. Date written. Drug name, strength, quantity. Directions (sig). Prescriber name, credentials, address, DEA# (if controlled). Signature.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag green">CONTROLLED</div><div class="info"><b>Controlled substance Rx extras:</b> DEA number mandatory. Some states: tamper-resistant paper required. Electronic prescribing for controlled substances (EPCS) required in many states. Check your state board.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag green">E-PRESCRIBE</div><div class="info">EPCS (electronic prescribing controlled substances) now mandatory in many states. Requires DEA-compliant software + two-factor authentication. Check your state's deadline if not yet compliant.</div></div>
+      <div class="row"><div class="tag pink">TELEHEALTH</div><div class="info"><b>Telehealth prescribing of controlled substances:</b> Ryan Haight Act + DEA special registration for telehealth. In-person evaluation typically required for initial controlled substance Rx. Check current DEA telehealth rules.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-pink">
+    <div class="card-head">🩺 Anaphylaxis Protocol — Step by Step</div>
+    <div class="card-body">
+      <div class="row"><div class="tag red">1</div><div class="info"><b>EPINEPHRINE FIRST.</b> 0.3mg IM into anterolateral thigh. No delay — epi before antihistamines. EpiPen if auto-injector available. Repeat in 5–15 min if no improvement.</div></div>
+      <div class="row"><div class="tag red">2</div><div class="info"><b>Call 911 immediately</b> after administering epi. Anaphylaxis can biphasic recur 4–8 hours later. All anaphylaxis requires ER evaluation.</div></div>
+      <div class="row"><div class="tag gold">3</div><div class="info"><b>Position:</b> Supine with legs elevated (if no respiratory distress). If respiratory distress — allow patient to sit up. Never stand a hypotensive patient.</div></div>
+      <div class="row"><div class="tag gold">4</div><div class="info"><b>Secondary medications:</b> Diphenhydramine 25–50mg IV/IM. H2 blocker (Pepcid 20mg IV). Corticosteroid (Solu-Medrol 125mg IV) if available — adjuncts only, not substitutes for epi.</div></div>
+      <div class="row"><div class="tag teal">SIGNS</div><div class="info"><b>Anaphylaxis triad:</b> Urticaria/angioedema + hypotension + bronchospasm. Two or more systems involved after allergen exposure = anaphylaxis. Act immediately — don't wait for all three.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-darkpink">
+    <div class="card-head">💊 Skincare Rx — Prescriber Reference</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Drug</th><th class="pink">Strength</th><th>Indication</th><th>Key Counseling</th></tr></thead>
+        <tbody>
+          <tr><td><b>Tretinoin</b></td><td>0.025–0.1%</td><td>Acne, photoaging, melasma</td><td>Start low, go slow. Sun protection mandatory. Retinoid dermatitis first 4–6 wks.</td></tr>
+          <tr><td><b>Hydroquinone</b></td><td>4–8% (Rx)</td><td>Melasma, PIH</td><td>Max 5 months continuous use. Sun protection. Ochronosis risk with prolonged use.</td></tr>
+          <tr><td><b>Azelaic acid</b></td><td>15–20% (Rx)</td><td>Rosacea, melasma, acne</td><td>Safe in pregnancy. Anti-inflammatory. Gentle alternative to HQ.</td></tr>
+          <tr><td><b>Ivermectin 1%</b></td><td>1% cream</td><td>Rosacea (papulopustular)</td><td>Apply nightly. 12-week course. Well-tolerated.</td></tr>
+          <tr><td><b>Metronidazole</b></td><td>0.75–1% gel/cream</td><td>Rosacea</td><td>BID application. Reduces inflammation.</td></tr>
+          <tr><td><b>Spironolactone</b></td><td>25–200mg/day</td><td>Hormonal acne (women)</td><td>Check K+ if &gt;100mg. Monitor BP. Teratogenic — reliable contraception.</td></tr>
+          <tr><td><b>Isotretinoin</b></td><td>0.5–1 mg/kg/day</td><td>Severe cystic acne</td><td>iPLEDGE program mandatory. Monthly labs. Teratogenic — Category X.</td></tr>
+          <tr><td><b>Clindamycin 1%</b></td><td>1% topical</td><td>Acne — topical antibiotic</td><td>Always combine with benzoyl peroxide to prevent resistance.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">📐 Controlled Substance Storage Requirements</div>
+    <div class="card-body">
+      <div class="row"><div class="tag gold">STORAGE</div><div class="info"><b>Schedule II–V:</b> Locked, substantially constructed cabinet or safe. Cannot be left unlocked or accessible to non-authorized personnel. Separate from non-controlled medications when possible.</div></div>
+      <div class="row"><div class="tag gold">LOGS</div><div class="info"><b>Dispensing logs required:</b> Patient name, date dispensed, quantity, lot number, prescriber signature. Testosterone logs must be maintained and available for DEA inspection.</div></div>
+      <div class="row"><div class="tag gold">INVENTORY</div><div class="info"><b>Biennial inventory required by DEA</b> for all registered facilities. Record all controlled substances on hand. Document losses or thefts immediately on DEA Form 106.</div></div>
+      <div class="row"><div class="tag red">THEFT</div><div class="info"><b>Any theft or significant loss</b> of controlled substances must be reported to DEA and local law enforcement within 1 business day. DEA Form 106. Non-reporting is a federal violation.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-navy">
+    <div class="card-head">🧠 High-Yield Prescribing Pearls</div>
+    <div class="card-body">
+      <div class="row"><div class="star">★</div><div class="info"><b>Valacyclovir before lip filler</b> in any patient with HSV history. 500mg BID starting 3 days before and continuing 3 days after. Prevent outbreak triggered by trauma.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Apraclonidine (Iopidine)</b> is the only intervention for Botox-induced lid ptosis. Have it in your dispensary. 1–2 drops TID to affected eye until resolved.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Toradol max 5 days.</b> Renal toxicity + GI bleed risk increases with duration. Never combine with aspirin or other NSAIDs.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Phenergan is NEVER IV push.</b> Severe tissue necrosis — cases of limb amputation reported. PO or deep IM only. No exceptions.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Aminoglycosides potentiate Botox.</b> Screen for gentamicin, tobramycin, neomycin use before injecting neurotoxins. Enhanced effect can cause adverse spread.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Isotretinoin: wait 6–12 months</b> after course completion before any ablative procedures, microneedling, or dermabrasion. Impaired wound healing during and after treatment.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>DEA registration required</b> to prescribe testosterone and other Schedule III substances. Verify your NPI, DEA#, and state CDS registration are all current before prescribing.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>No Prior Authorization</span> · Danielle Alcala · Ryan Kent FNP-BC · nopriorauthorization.com · For licensed prescribing providers only · Verify current regulations before prescribing
+  <span style="color:#888;font-weight:400">© 2026 NPA · Pharmaceutical Reference Cheat Sheet · $17</span>
+</div>
+</div>
+</body>
+</html>

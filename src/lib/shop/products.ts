@@ -67,6 +67,9 @@ const CATEGORY_MAP: Record<string, string> = {
   "hormone-therapy-clinical-cheat-sheet": "Cheat Sheets",
   "glp1-clinical-cheat-sheet": "Cheat Sheets",
   "dermal-filler-clinical-cheat-sheet": "Cheat Sheets",
+  "pellet-therapy-clinical-cheat-sheet": "Cheat Sheets",
+  "pharmaceutical-reference-cheat-sheet": "Cheat Sheets",
+  "olympia-iv-dosing-guide-cheat-sheet": "Cheat Sheets",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
   "complete-injector-bundle": "Social Media",
@@ -134,6 +137,9 @@ const PRICE_MAP: Record<string, number> = {
   "hormone-therapy-clinical-cheat-sheet": 1000,
   "glp1-clinical-cheat-sheet": 1000,
   "dermal-filler-clinical-cheat-sheet": 1000,
+  "pellet-therapy-clinical-cheat-sheet": 1000,
+  "pharmaceutical-reference-cheat-sheet": 1000,
+  "olympia-iv-dosing-guide-cheat-sheet": 1000,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -212,7 +218,7 @@ const CATEGORY_THUMBNAIL: Record<string, string> = {
   "Practice Management": "/shop-previews/default/clinical-forms.png",
   "Bundles": "/shop-previews/default/default-thumbnail.png",
   "Playbooks": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
-  "Cheat Sheets": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
+  "Cheat Sheets": "/shop-previews/cheat-sheets/botox-clinical-cheat-sheet.png",
 };
 
 const SLUG_THUMBNAIL: Record<string, string> = {
@@ -224,12 +230,15 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "treatment-menu-signage-kit": "/shop-previews/kits/npa-thumbnail-treatment-menu-kit.png",
   "aftercare-card-kit": "/shop-previews/kits/npa-thumbnail-aftercare-cards.png",
   "patient-communication-kit": "/shop-previews/kits/npa-thumbnail-patient-communication.png",
-  "botox-clinical-cheat-sheet": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
-  "iv-therapy-clinical-cheat-sheet": "/shop-previews/default/iv-therapy.png",
-  "peptide-therapy-clinical-cheat-sheet": "/shop-previews/playbooks/npa-playbook-peptide-therapy.png",
-  "hormone-therapy-clinical-cheat-sheet": "/shop-previews/playbooks/npa-playbook-hormone-therapy.png",
-  "glp1-clinical-cheat-sheet": "/shop-previews/default/weight-loss.png",
-  "dermal-filler-clinical-cheat-sheet": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
+  "botox-clinical-cheat-sheet": "/shop-previews/cheat-sheets/botox-clinical-cheat-sheet.png",
+  "iv-therapy-clinical-cheat-sheet": "/shop-previews/cheat-sheets/iv-therapy-clinical-cheat-sheet.png",
+  "peptide-therapy-clinical-cheat-sheet": "/shop-previews/cheat-sheets/peptide-therapy-clinical-cheat-sheet.png",
+  "hormone-therapy-clinical-cheat-sheet": "/shop-previews/cheat-sheets/hormone-therapy-clinical-cheat-sheet.png",
+  "glp1-clinical-cheat-sheet": "/shop-previews/cheat-sheets/glp1-clinical-cheat-sheet.png",
+  "dermal-filler-clinical-cheat-sheet": "/shop-previews/cheat-sheets/dermal-filler-clinical-cheat-sheet.png",
+  "pellet-therapy-clinical-cheat-sheet": "/shop-previews/cheat-sheets/pellet-therapy-clinical-cheat-sheet.png",
+  "pharmaceutical-reference-cheat-sheet": "/shop-previews/cheat-sheets/pharmaceutical-reference-cheat-sheet.png",
+  "olympia-iv-dosing-guide-cheat-sheet": "/shop-previews/cheat-sheets/olympia-iv-dosing-guide-cheat-sheet.png",
 };
 
 const NICHE_THUMBNAIL: Record<string, string> = {

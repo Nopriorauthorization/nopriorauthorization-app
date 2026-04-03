@@ -52,6 +52,9 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "hormone-therapy-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
   "glp1-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
   "dermal-filler-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "pellet-therapy-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "pharmaceutical-reference-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "olympia-iv-dosing-guide-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -92,6 +95,9 @@ const OUTCOME_MAP: Record<string, string> = {
   "hormone-therapy-clinical-cheat-sheet": "BHRT labs, delivery methods, and follow-up rhythm on one sheet at the chair.",
   "glp1-clinical-cheat-sheet": "Titration, side effects, and escalation cues for GLP-1 visits — fast and consistent.",
   "dermal-filler-clinical-cheat-sheet": "Depth, anatomy, reversal, and complication reminders — filler confidence in one glance.",
+  "pellet-therapy-clinical-cheat-sheet": "Insertion, dosing rhythm, and follow-up cues for pellet visits — keep it at the chair.",
+  "pharmaceutical-reference-cheat-sheet": "High-yield med-class reminders and documentation prompts without digging through references.",
+  "olympia-iv-dosing-guide-cheat-sheet": "Olympia-style IV menu dosing, bags, and additives in one glance for the IV suite.",
 };
 
 const QUICK_CATEGORIES = [

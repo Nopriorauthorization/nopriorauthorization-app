@@ -70,6 +70,7 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "consent-waxing": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
   "consent-microneedling-rf": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
   "consent-photography-hipaa": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
+  "insurance-legal-compliance-guide": { label: "$47 · Guide", color: "bg-violet-500/20 text-violet-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -128,6 +129,8 @@ const OUTCOME_MAP: Record<string, string> = {
   "consent-waxing": "Professional waxing consent for contraindications, skin integrity, and post-care.",
   "consent-microneedling-rf": "Microneedling and RF consent — series expectations, risks, and aftercare.",
   "consent-photography-hipaa": "Photo authorization with tiered use options and HIPAA-aligned language.",
+  "insurance-legal-compliance-guide":
+    "Danielle Alcala's 10-year framework for insurance, legal, and compliance — disclaimers on the cover and every page footer. Not legal advice; consult an attorney.",
 };
 
 const QUICK_CATEGORIES = [
@@ -140,6 +143,7 @@ const QUICK_CATEGORIES = [
   { label: "Mega Bundles", filter: "mega-bundle" },
   { label: "Playbooks", filter: "Playbooks" },
   { label: "Cheat Sheets", filter: "Cheat Sheets" },
+  { label: "Business Systems", filter: "Business Systems" },
 ];
 
 const START_HERE_SLUGS = [

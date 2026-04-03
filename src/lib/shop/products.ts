@@ -61,6 +61,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "peptide-patient-journey-kit": "Clinical Forms",
   "medical-disclaimer-system": "Legal",
   "diy-google-setup-kit": "Bundles",
+  "insurance-legal-compliance-guide": "Business Systems",
   "botox-clinical-cheat-sheet": "Cheat Sheets",
   "iv-therapy-clinical-cheat-sheet": "Cheat Sheets",
   "peptide-therapy-clinical-cheat-sheet": "Cheat Sheets",
@@ -146,6 +147,7 @@ const PRICE_MAP: Record<string, number> = {
   "peptide-patient-journey-kit": 6700,
   "medical-disclaimer-system": 4700,
   "diy-google-setup-kit": 29700,
+  "insurance-legal-compliance-guide": 4700,
   "botox-clinical-cheat-sheet": 1000,
   "iv-therapy-clinical-cheat-sheet": 1000,
   "peptide-therapy-clinical-cheat-sheet": 1000,
@@ -205,6 +207,12 @@ const AUDIENCE_MAP: Record<string, string[]> = {
     "Estheticians and laser techs",
     "Busy treatment rooms",
   ],
+  "Business Systems": [
+    "Med spa owners",
+    "Esthetic entrepreneurs",
+    "Solo providers scaling up",
+    "Practice managers navigating insurance and compliance",
+  ],
 };
 
 /** Map from slug to the asset subdirectory name in etsy-products/store-launch/assets/ */
@@ -254,6 +262,7 @@ const CATEGORY_THUMBNAIL: Record<string, string> = {
   "Bundles": "/shop-previews/default/default-thumbnail.png",
   "Playbooks": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
   "Cheat Sheets": "/shop-previews/cheat-sheets/botox-clinical-cheat-sheet.png",
+  "Business Systems": "/shop-previews/default/legal.png",
 };
 
 const SLUG_THUMBNAIL: Record<string, string> = {
@@ -289,6 +298,7 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "consent-waxing": "/shop-previews/standalone-consents/consent-waxing.png",
   "consent-microneedling-rf": "/shop-previews/standalone-consents/consent-microneedling-rf.png",
   "consent-photography-hipaa": "/shop-previews/standalone-consents/consent-photography-hipaa.png",
+  "insurance-legal-compliance-guide": "/shop-previews/business-systems/insurance-legal-compliance-guide.png",
 };
 
 const NICHE_THUMBNAIL: Record<string, string> = {
@@ -350,6 +360,15 @@ function buildFeatures(slug: string, count: number): string[] {
       "HTML — open in any browser",
     ];
   }
+  if (cat === "Business Systems") {
+    return [
+      "Framework from Danielle Alcala — 10+ years in med spa & esthetics",
+      "Not legal advice — consult a licensed attorney",
+      "Cover disclaimer + footer on every page",
+      "Interactive HTML — print or PDF from your browser",
+      "Instant digital delivery",
+    ];
+  }
   return base;
 }
 
@@ -376,6 +395,8 @@ function buildShortDescription(slug: string, _title: string, count: number): str
       return `Premium clinical education from Ryan Kent, FNP-BC. Real scripts, real protocols, real systems — not theory.`;
     case "Cheat Sheets":
       return `Pocket-style reference you can print or keep on screen between patients — dosing cues, landmarks, and reminders without flipping through a full playbook.`;
+    case "Business Systems":
+      return `Insurance, legal, and compliance roadmap for med spa and esthetic entrepreneurs — practical checklists and framing, not a substitute for an attorney.`;
     default:
       return `${count} editable templates for aesthetic professionals. Instant download, fully customizable.`;
   }
@@ -386,6 +407,9 @@ function buildLongDescription(slug: string, title: string, count: number, cat: s
   const audienceList = AUDIENCE_MAP[cat] || ["Aesthetic professionals"];
   if (cat === "Cheat Sheets") {
     return `${short}\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, print for the treatment room, or save as PDF. This is a quick-reference format — not a full course or playbook.\n\n${count} reference file(s). Instant digital delivery. No physical product will be shipped.`;
+  }
+  if (cat === "Business Systems") {
+    return `${short}\n\nNot legal advice — consult a licensed attorney for your state and situation. The full guide includes disclaimers on the cover and in the footer of every page.\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, add your branding where appropriate, print or save as PDF.\n\n${count} interactive guide file. Instant digital delivery. No physical product will be shipped.`;
   }
   return `${short}\n\nDesigned for ${audienceList.join(", ").toLowerCase()}. All templates are fully editable — add your practice name, logo, and contact information. Print directly from your browser or save as PDF.\n\nIncludes ${count} templates with instant digital delivery. No physical product will be shipped.`;
 }

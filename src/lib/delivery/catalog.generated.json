@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T04:07:02.658Z",
+  "generatedAt": "2026-04-03T04:14:26.680Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -958,6 +958,21 @@
           "title": "The Injector's Playbook — Botox & Filler Practice Guide",
           "designId": "injectors-playbook-main",
           "editUrl": "/forms/NPA-Botox-Filler-Playbook.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "insurance-legal-compliance-guide",
+      "productSlug": "insurance-legal-compliance-guide",
+      "productTitle": "Insurance & Legal Compliance Guide for Med Spa & Esthetic Entrepreneurs",
+      "buildTimestamp": "2026-04-03T14:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Insurance & Legal Compliance Guide",
+          "designId": "insurance-legal-compliance-guide-main",
+          "editUrl": "/forms/NPA-Insurance-Legal-Compliance-Guide.html",
           "viewUrl": null
         }
       ]

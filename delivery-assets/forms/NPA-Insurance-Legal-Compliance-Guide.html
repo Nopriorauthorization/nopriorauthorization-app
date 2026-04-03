@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Insurance & Legal Compliance Guide for Med Spa & Esthetic Entrepreneurs</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;font-size:10.5pt;color:#1A1A1A;background:#f5f0ed;line-height:1.6}
+
+.page{width:8.5in;background:white;margin:.3in auto;padding:.65in .75in;box-shadow:0 4px 32px rgba(0,0,0,.12);}
+
+/* COVER */
+.cover{min-height:9in;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;}
+.cover-top{border-bottom:3px solid #1A1A1A;padding-bottom:20px;margin-bottom:28px;}
+.npa-eyebrow{font-size:8pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:8px;}
+.cover-title{font-family:'Playfair Display',serif;font-size:34pt;font-weight:900;color:#1A1A1A;line-height:1.1;margin-bottom:12px;}
+.cover-title em{font-style:italic;color:#D4537E;}
+.cover-sub{font-size:13pt;color:#555;line-height:1.6;max-width:520px;margin-bottom:20px;}
+.cover-author{display:flex;align-items:flex-start;gap:16px;margin-top:24px;}
+.author-avatar{width:52px;height:52px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20pt;color:#fff;font-weight:700;flex-shrink:0;}
+.author-info h3{font-size:13pt;font-weight:700;color:#1A1A1A;margin-bottom:2px;}
+.author-info p{font-size:9.5pt;color:#666;line-height:1.55;}
+.cover-disclaimer{background:#1A1A1A;padding:16px 20px;border-radius:4px;margin-top:24px;}
+.cover-disclaimer p{font-size:8.5pt;color:rgba(255,255,255,.8);line-height:1.65;}
+.cover-disclaimer strong{color:#D4537E;}
+.cover-bottom{border-top:1px solid #ddd;padding-top:14px;display:flex;justify-content:space-between;align-items:center;}
+.cover-bottom-brand{font-size:8.5pt;color:#888;letter-spacing:.1em;text-transform:uppercase;}
+.cover-bottom-brand span{color:#D4537E;font-weight:700;}
+
+/* SECTION PAGES */
+.section-header{background:#1A1A1A;margin:0 -.75in;padding:18px .75in;margin-bottom:24px;}
+.sh-num{font-size:8pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;}
+.sh-title{font-family:'Playfair Display',serif;font-size:20pt;font-weight:900;color:#fff;line-height:1.15;}
+.sh-sub{font-size:10pt;color:rgba(255,255,255,.55);margin-top:4px;line-height:1.5;}
+
+/* DANIELLE VOICE */
+.danielle-block{background:#FBEAF0;border-left:4px solid #D4537E;padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;}
+.db-label{font-size:7.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4537E;margin-bottom:6px;}
+.db-text{font-size:10pt;color:#72243E;line-height:1.7;font-style:italic;}
+.db-text strong{font-style:normal;font-weight:700;color:#993556;}
+
+/* BODY STYLES */
+.body-intro{font-size:11pt;color:#333;line-height:1.75;margin-bottom:18px;}
+.body-text{font-size:10pt;color:#444;line-height:1.7;margin-bottom:12px;}
+.body-text strong{color:#1A1A1A;font-weight:700;}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:8px;margin:12px 0 18px;}
+.cl-item{display:flex;gap:12px;align-items:flex-start;padding:8px 12px;border-radius:4px;border:0.5px solid #e8e4e0;}
+.cl-item.priority{border-color:#e8c4cc;background:#fff8f9;}
+.cl-box{width:14px;height:14px;border:2px solid #1A1A1A;border-radius:2px;flex-shrink:0;margin-top:2px;}
+.cl-item.priority .cl-box{border-color:#D4537E;}
+.cl-content h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:2px;}
+.cl-content p{font-size:9pt;color:#666;line-height:1.55;}
+.cl-content .cl-tag{display:inline-block;font-size:7.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#D4537E;color:#fff;padding:1px 7px;border-radius:2px;margin-left:6px;vertical-align:middle;}
+
+/* INFO CARD */
+.info-card{background:#f9f6f4;border-radius:6px;padding:14px 18px;margin:12px 0;border:0.5px solid #e0d8d4;}
+.info-card h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.info-card p{font-size:9.5pt;color:#555;line-height:1.65;}
+.info-card ul{margin:6px 0 0 14px;}
+.info-card ul li{font-size:9.5pt;color:#555;line-height:1.6;margin-bottom:3px;}
+
+/* GRID */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 0;}
+
+/* INSURANCE TABLE */
+.ins-card{border-radius:6px;overflow:hidden;border:0.5px solid #e0d8d4;}
+.ins-head{background:#1A1A1A;padding:8px 14px;}
+.ins-head h4{font-size:10pt;font-weight:700;color:#fff;}
+.ins-head span{font-size:8pt;color:#D4537E;font-weight:700;}
+.ins-body{padding:10px 14px;background:white;}
+.ins-body p{font-size:9pt;color:#444;line-height:1.6;}
+.ins-body .must{font-size:8pt;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.06em;margin-top:6px;display:block;}
+
+/* WARNING */
+.warn-card{background:#fff5f7;border:1px solid #e8c4cc;border-left:4px solid #D4537E;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;}
+.warn-card h4{font-size:10pt;font-weight:700;color:#72243E;margin-bottom:5px;}
+.warn-card p{font-size:9.5pt;color:#72243E;line-height:1.65;}
+
+/* RESOURCE */
+.resource-item{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:0.5px solid #eee;}
+.resource-item:last-child{border-bottom:none;}
+.resource-icon{width:28px;height:28px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;color:white;font-size:11pt;font-weight:700;flex-shrink:0;margin-top:2px;}
+.resource-content h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:1px;}
+.resource-content p{font-size:9pt;color:#666;line-height:1.5;}
+.resource-content .resource-url{font-size:8.5pt;color:#D4537E;font-weight:700;}
+
+/* YEAR TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:0;}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:80px;flex-shrink:0;}
+.tl-year{background:#D4537E;color:#fff;font-size:8pt;font-weight:700;padding:4px 8px;border-radius:3px;text-align:center;white-space:nowrap;}
+.tl-line{width:2px;background:#e8d8dc;flex:1;margin:4px auto;}
+.tl-content{padding:0 0 20px 16px;flex:1;}
+.tl-content h4{font-size:10.5pt;font-weight:700;color:#1A1A1A;margin-bottom:4px;}
+.tl-content p{font-size:9.5pt;color:#555;line-height:1.6;}
+
+/* PAGE BREAK */
+.page-break{page-break-before:always;padding-top:0;}
+
+/* FOOTER */
+.doc-footer{margin-top:32px;padding-top:12px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;align-items:center;}
+.footer-npa{font-size:7.5pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+
+.divider{height:1px;background:#e8e4e0;margin:18px 0;}
+.pink{color:#D4537E;font-weight:700;}
+.section-num{font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:6px;}
+.h2{font-family:'Playfair Display',serif;font-size:16pt;font-weight:700;color:#1A1A1A;margin-bottom:10px;line-height:1.2;}
+.h3{font-size:11pt;font-weight:700;color:#1A1A1A;margin-bottom:6px;margin-top:16px;}
+
+@media print{
+body{background:white;}
+.page{margin:0;box-shadow:none;padding:.6in .7in;}
+@page{size:8.5in 11in portrait;margin:0;}
+.page-break{page-break-before:always;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ==================== COVER ==================== -->
+<div class="cover">
+  <div>
+    <div class="cover-top">
+      <div class="npa-eyebrow">No Prior Authorization &nbsp;·&nbsp; Business Resource Guide</div>
+      <div class="cover-title">The Med Spa<br>Insurance &amp; Legal<br><em>Compliance Guide.</em></div>
+      <div class="cover-sub">What I wish somebody had handed me on Day One — and what I've learned across 10 years of building Hello Gorgeous Med Spa in Oswego, Illinois. Not legal advice. Real experience.</div>
+      <div class="cover-author">
+        <div class="author-avatar">D</div>
+        <div class="author-info">
+          <h3>Danielle Alcala</h3>
+          <p>Founder, Hello Gorgeous Med Spa · Oswego, IL<br>Licensed Esthetician · Phlebotomist · CNA · CMAA · RN Student<br>10+ years building a med spa from scratch — one hard lesson at a time</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-disclaimer">
+      <p><strong>Important — Please Read:</strong> This guide is written from personal experience as a 10-year med spa owner and entrepreneur. It is <strong>not legal advice, not medical advice, and not a substitute for consultation with a licensed attorney or your state medical board.</strong> Laws, regulations, and requirements vary significantly by state and change frequently. Use this guide as a starting framework — a map of the questions you need to ask and the things you need to look into — then get the answers verified for your specific state and situation by the right professionals. That's exactly what I did. And still do.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="info-card" style="margin-bottom:16px">
+      <h4>What's in this guide</h4>
+      <ul>
+        <li>Section 1 &nbsp;·&nbsp; Danielle's Year-by-Year Compliance Journey</li>
+        <li>Section 2 &nbsp;·&nbsp; The Insurance Stack Every Med Spa Needs</li>
+        <li>Section 3 &nbsp;·&nbsp; Scope of Practice &amp; State Medical Board</li>
+        <li>Section 4 &nbsp;·&nbsp; Collaborative Practice Agreements (CPAs)</li>
+        <li>Section 5 &nbsp;·&nbsp; DEA Registration &amp; Controlled Substances</li>
+        <li>Section 6 &nbsp;·&nbsp; HIPAA Baseline Compliance Checklist</li>
+        <li>Section 7 &nbsp;·&nbsp; OSHA &amp; Workplace Safety Requirements</li>
+        <li>Section 8 &nbsp;·&nbsp; Business Structure &amp; Liability Protection</li>
+        <li>Section 9 &nbsp;·&nbsp; The Questions to Ask Before You Open</li>
+        <li>Section 10 &nbsp;·&nbsp; Resource Directory &amp; Where to Get Help</li>
+      </ul>
+    </div>
+    <div class="cover-bottom">
+      <div class="cover-bottom-brand"><span>No Prior Authorization</span> &nbsp;·&nbsp; nopriorauthorization.com</div>
+      <div class="cover-bottom-brand">$47 &nbsp;·&nbsp; Single Purchase &nbsp;·&nbsp; Instant Download</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 1: DANIELLE'S JOURNEY ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 01</div>
+  <div class="sh-title">The Year-by-Year Journey</div>
+  <div class="sh-sub">What compliance looked like at Hello Gorgeous from Day One to Year Ten — the honest version</div>
+</div>
+
+<div class="body-intro">Nobody handed me a compliance checklist when I opened Hello Gorgeous. I found things out when I needed them — sometimes the hard way. This section is what I know now, organized by when it typically becomes relevant for a growing med spa.</div>
+
+<div class="danielle-block">
+  <div class="db-label">From Danielle</div>
+  <div class="db-text">"When I opened Hello Gorgeous, I was a licensed esthetician with a dream, a name from my aunt who raised me, and absolutely no idea what a collaborative practice agreement was. I figured out compliance the way most of us do — by asking questions, making mistakes, and being terrified of doing something wrong. This guide is everything I wish I'd had on Day One."</div>
+</div>
+
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-year">Before You Open</div><div class="tl-line"></div></div>
+    <div class="tl-content">
+      <h4>The foundation — business structure, licensing, and basic insurance</h4>
+      <p>Form your LLC or PLLC before you open the door. Get your general liability and professional liability insurance in place. Confirm your state licensing requirements — esthetician license, facility license, and any business permits required by your city or county. This is non-negotiable. You need these before your first client walks in.</p>
+    </div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-year">Year 1</div><div class="tl-line"></div></div>
+    <div class="tl-content">
+      <h4>Adding medical services — the rules change completely</h4>
+      <p>The moment you add Botox, fillers, or any prescription service, you are operating as a medical practice in most states. This is where a collaborative practice agreement (CPA) or medical director relationship becomes critical. The rules for who can perform what and who must supervise vary dramatically by state. This is the year most people get this wrong — including me.</p>
+    </div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-year">Year 2–3</div><div class="tl-line"></div></div>
+    <div class="tl-content">
+      <h4>HIPAA, OSHA, and the paperwork you didn't know existed</h4>
+      <p>HIPAA compliance isn't optional the moment you collect patient health information — which is Day One. OSHA requirements for bloodborne pathogen training, sharps disposal, and exposure control plans kick in the first time you use a needle. Most small practices don't have these in place until they're forced to. Get ahead of it.</p>
+    </div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-year">Year 3–5</div><div class="tl-line"></div></div>
+    <div class="tl-content">
+      <h4>DEA registration, controlled substances, and prescription management</h4>
+      <p>Adding testosterone, GLP-1 medications, hormone therapy, or other controlled or prescription substances requires DEA registration for your prescribing provider and a whole new compliance layer around storage, dispensing logs, and inventory. This is not complicated once you know the rules — but you have to know the rules.</p>
+    </div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-year">Year 5–7</div><div class="tl-line"></div></div>
+    <div class="tl-content">
+      <h4>Employees, HR compliance, and expanding your liability footprint</h4>
+      <p>The moment you hire your first employee, you take on employment law obligations — workers' comp insurance, payroll taxes, employee handbooks, and documentation requirements. You also need to make sure your malpractice coverage extends to your staff's actions. Most providers underestimate how much their liability exposure grows with each hire.</p>
+    </div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-year">Year 7–10</div><div class="tl-line"></div></div>
+    <div class="tl-content">
+      <h4>Annual compliance reviews — because the rules keep changing</h4>
+      <p>At 10 years in, I still review my insurance coverage annually, verify my collaborative practice agreement is current, and check for regulatory changes in Illinois that affect my services. Compliance isn't a one-time task. It's an ongoing practice. The providers who get in trouble are the ones who set it up once and never revisit it.</p>
+    </div>
+  </div>
+</div>
+
+<div class="danielle-block">
+  <div class="db-label">The honest truth</div>
+  <div class="db-text">"I did not have everything perfectly in place from Day One. I don't know a single med spa owner who did. What matters is that you build the right foundation as early as possible and that you <strong>know what you don't know</strong> so you can go find the right person to fill the gap. That's what this guide is for."</div>
+</div>
+</div>
+
+<!-- ==================== SECTION 2: INSURANCE ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 02</div>
+  <div class="sh-title">The Insurance Stack</div>
+  <div class="sh-sub">The policies every med spa and esthetic practice needs — what they are, what they cover, and what to ask for</div>
+</div>
+
+<div class="body-intro">Insurance is not an area to cut corners. One lawsuit, one patient complaint, one employee injury without the right coverage — and you're not just dealing with a legal problem, you're dealing with a financial one that can end your business. Here's the stack I've built over 10 years.</div>
+
+<div class="danielle-block">
+  <div class="db-label">From Danielle</div>
+  <div class="db-text">"I remember the first time I had a patient call with a complaint about their results. I was terrified. The first thing I did was call my insurance broker. Knowing you have coverage is the difference between handling a situation calmly and panicking. Get properly insured before you need it."</div>
+</div>
+
+<div class="h3">The Core Insurance Policies</div>
+<div class="two-col">
+  <div class="ins-card">
+    <div class="ins-head"><h4>Professional Liability</h4><span>Also called Malpractice Insurance</span></div>
+    <div class="ins-body">
+      <p>Covers claims arising from your professional services — a patient claims your Botox caused ptosis, a client says their lash extensions damaged their natural lashes, a filler patient alleges a complication. This is your most important coverage as a medical or esthetic provider.</p>
+      <span class="must">Who needs it: every provider performing treatments</span>
+    </div>
+  </div>
+  <div class="ins-card">
+    <div class="ins-head"><h4>General Liability</h4><span>Also called Slip &amp; Fall / Premises Liability</span></div>
+    <div class="ins-body">
+      <p>Covers bodily injury or property damage that occurs at your practice — a client trips on a step, a patient's personal property is damaged. This is separate from professional liability and both are required. Most commercial leases require it as a condition of occupancy.</p>
+      <span class="must">Who needs it: every practice with a physical location</span>
+    </div>
+  </div>
+  <div class="ins-card">
+    <div class="ins-head"><h4>Product Liability</h4><span>Often bundled with GL or professional liability</span></div>
+    <div class="ins-body">
+      <p>Covers claims related to products you sell or use — skincare products, retail items, topical treatments. Verify whether your professional liability policy includes this or if it needs to be added. If you retail products, you need explicit product liability coverage.</p>
+      <span class="must">Who needs it: anyone selling or applying products</span>
+    </div>
+  </div>
+  <div class="ins-card">
+    <div class="ins-head"><h4>Workers' Compensation</h4><span>Required the moment you have employees</span></div>
+    <div class="ins-body">
+      <p>Covers your employees if they are injured on the job — a needlestick injury, a slip in the treatment room, a back injury from equipment. This is legally required in most states the moment you have even one W-2 employee. Check your state's specific threshold.</p>
+      <span class="must">Who needs it: any practice with W-2 employees</span>
+    </div>
+  </div>
+  <div class="ins-card">
+    <div class="ins-head"><h4>Cyber Liability</h4><span>Growing in importance — do not skip this</span></div>
+    <div class="ins-body">
+      <p>Covers data breaches, ransomware attacks, and HIPAA breach notification costs. If you store patient health information digitally — which you almost certainly do — a data breach triggers HIPAA notification requirements and potential fines. Cyber liability covers the response costs. Increasingly required by software vendors.</p>
+      <span class="must">Who needs it: any practice storing digital PHI</span>
+    </div>
+  </div>
+  <div class="ins-card">
+    <div class="ins-head"><h4>Business Owner's Policy (BOP)</h4><span>Bundles GL + property + business interruption</span></div>
+    <div class="ins-body">
+      <p>A BOP combines general liability, commercial property (your equipment, supplies, furniture), and business interruption insurance into one policy. Often more cost-effective than buying each separately. Ask your broker if a BOP makes sense for your practice size and service mix.</p>
+      <span class="must">Who needs it: established practices with significant equipment</span>
+    </div>
+  </div>
+</div>
+
+<div class="h3">Questions to Ask Your Insurance Broker</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Does my professional liability policy cover all the services I offer?<span class="cl-tag">Critical</span></h4><p>Some policies exclude certain procedures — laser, IV therapy, injectables. List every service you perform and confirm each is covered explicitly. Exclusions matter.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Am I covered for employee actions under my policy?<span class="cl-tag">Critical</span></h4><p>If an employee injures a patient, does your policy cover you as the employer? This is often a separate endorsement. Confirm before you hire anyone.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Is my policy occurrence-based or claims-made?</h4><p>Occurrence-based covers incidents that happen during the policy period regardless of when the claim is filed. Claims-made only covers claims filed while the policy is active — you need tail coverage when you cancel.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>What are my per-occurrence and aggregate limits?</h4><p>Common: $1M per occurrence / $3M aggregate. Make sure these are adequate for your services. Injectables and laser treatments carry higher liability exposure.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Does my policy cover telemedicine or remote consultations?</h4><p>If you conduct any virtual consultations or prescribe to patients you haven't seen in person, verify this is covered.</p></div></div>
+</div>
+
+<div class="danielle-block">
+  <div class="db-label">Danielle's insurance tip</div>
+  <div class="db-text">"Work with a broker who specializes in medical spas or aesthetic practices — not a general commercial insurance agent. The policies are different. The exclusions are different. A general agent may not know to ask about your laser or your IV services. I use a specialty broker and I review my coverage every single year when it renews."</div>
+</div>
+
+<div class="h3">Med Spa Insurance Specialists to Research</div>
+<div class="info-card">
+  <h4>Where to start your search</h4>
+  <p>Search for brokers who specialize in: <strong>medical spa insurance, aesthetic practice insurance, medspa malpractice insurance.</strong> National carriers who frequently work with med spas include HPSO, Berxi, CM&amp;F Group, Philadelphia Insurance, and Markel. The American Med Spa Association (AmSpa) also maintains an insurance resource directory for members. These are starting points — always compare multiple quotes and read the exclusions before you buy.</p>
+</div>
+</div>
+
+<!-- ==================== SECTION 3: SCOPE OF PRACTICE ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 03</div>
+  <div class="sh-title">Scope of Practice &amp; State Licensing</div>
+  <div class="sh-sub">The questions every med spa owner must answer — and where to find the answers for your specific state</div>
+</div>
+
+<div class="body-intro">This is the section that trips up more med spa owners than any other. Scope of practice — what you are legally allowed to do with your license — is governed by your state medical board, nursing board, or cosmetology board depending on your license type. And it varies wildly by state.</div>
+
+<div class="warn-card">
+  <h4>The most important thing I can tell you about scope of practice</h4>
+  <p>Do not rely on what someone in a Facebook group tells you is legal in your state. Do not rely on what a trainer at a Botox course tells you. Do not rely on this guide. Call your state medical board directly, ask your question in writing, and get the answer in writing. Then have a healthcare attorney review it. This is the only way to know for certain what you are permitted to do.</p>
+</div>
+
+<div class="h3">The Framework Questions — Answer These for Your State</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Who can perform Botox and dermal filler injections in my state?<span class="cl-tag">Critical</span></h4><p>In some states only MDs and DOs may inject. In others, NPs, PAs, and RNs may inject. In some, trained estheticians may perform certain services under physician oversight. Know your state's exact rule — not a neighboring state's rule.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>What level of physician oversight is required for medical services?<span class="cl-tag">Critical</span></h4><p>Some states require on-site physician presence for every injection. Others allow physician oversight via collaborative practice agreement with the physician off-site. Others allow NP full practice authority with no physician required. Know your state.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>What services require a medical license vs. an esthetic license in my state?<span class="cl-tag">Critical</span></h4><p>Chemical peels, microneedling, laser treatments, and even some advanced facials fall in different regulatory categories by state. What an esthetician can do in Illinois may not be legal for an esthetician in Georgia.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Is my facility required to be licensed as a medical facility?</h4><p>Some states require a med spa to obtain a clinic license or healthcare facility license in addition to a business license. Others do not. Check with your state health department.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>What are my state's requirements for laser and IPL operation?</h4><p>Some states require a physician on-site or on-call for laser treatments. Others allow NPs to operate lasers independently. Some require specific laser operator certifications. Check your state's radiation safety board as well as your medical board.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>What are the supervision requirements for IV therapy in my state?</h4><p>IV therapy regulation varies significantly. Some states require a physician to be on-site. Others allow NPs to run IV clinics with full practice authority. Confirm this specifically for your provider credential type.</p></div></div>
+</div>
+
+<div class="h3">Where to Find Your State's Rules</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>Your State Medical Board</h4>
+    <p>The primary regulatory body for physicians, NPs, and PAs. Governs scope of practice for medical services including injectables, prescriptions, and supervision requirements. Search: "[Your State] Medical Board" or "[Your State] Board of Medicine."</p>
+  </div>
+  <div class="info-card">
+    <h4>Your State Nursing Board</h4>
+    <p>Governs RN, NP, and LPN scope of practice including what NPs can do independently vs. under supervision. Critical if your provider is an NP. Search: "[Your State] Board of Nursing."</p>
+  </div>
+  <div class="info-card">
+    <h4>Your State Cosmetology / Esthetics Board</h4>
+    <p>Governs esthetician scope of practice — what services require a medical license vs. can be performed with an esthetic license. Search: "[Your State] Department of Professional Regulation" or "cosmetology board."</p>
+  </div>
+  <div class="info-card">
+    <h4>Your State Department of Health</h4>
+    <p>Governs facility licensing requirements — whether your med spa needs a clinic license, infection control inspections, or specific facility certifications beyond a standard business license.</p>
+  </div>
+</div>
+
+<div class="danielle-block">
+  <div class="db-label">From Danielle — Year 1 lesson</div>
+  <div class="db-text">"The thing that kept me up at night in Year 1 was not knowing what I was allowed to do. I finally just called the Illinois Medical Board directly. They were actually helpful. They answered my questions, and I followed up in writing. <strong>Pick up the phone. Call your board. Get it in writing.</strong> It's not as scary as it sounds and it's worth every minute of awkwardness."</div>
+</div>
+</div>
+
+<!-- ==================== SECTION 4: COLLABORATIVE PRACTICE ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 04</div>
+  <div class="sh-title">Collaborative Practice Agreements</div>
+  <div class="sh-sub">What a CPA is, when you need one, and what to look for — from someone who has one</div>
+</div>
+
+<div class="body-intro">A Collaborative Practice Agreement (CPA) — also called a Supervision Agreement, Collaborative Agreement, or Practice Agreement depending on your state — is a formal document between a licensed physician or advanced practice provider and a mid-level provider that defines the scope of collaborative practice. If you are an NP, PA, or RN running a med spa, this may be required in your state.</div>
+
+<div class="danielle-block">
+  <div class="db-label">From Danielle</div>
+  <div class="db-text">"Having Ryan Kent as my medical director and clinical partner changed everything at Hello Gorgeous. Not just for compliance — but for the quality of care we deliver. A CPA isn't just a piece of paper. It's a relationship. Find someone who actually believes in what you're building, not someone who just signs the form."</div>
+</div>
+
+<div class="h3">Key Questions About CPAs</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Does my state require a CPA for my credential type?<span class="cl-tag">Check first</span></h4><p>Some states have "full practice authority" for NPs — no CPA required. Others require physician collaboration for every prescription written. Your state nursing board website will list your state's NP practice authority level.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>What must the CPA document include?<span class="cl-tag">Critical</span></h4><p>A valid CPA typically includes: scope of services covered, supervision requirements (on-site vs. available by phone), prescribing authority, chart review requirements, emergency protocols, and termination procedures. Have a healthcare attorney draft or review yours.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>How often must the CPA be reviewed and renewed?</h4><p>Many states require annual review and re-signing of the CPA. Some require it to be filed with the state. Check your state's specific requirement — an expired CPA is the same as no CPA in a regulatory investigation.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>What is the chart review requirement?</h4><p>Most CPAs require the collaborating physician to review a percentage of patient charts at defined intervals — commonly 10–20% monthly. This must actually happen and be documented. Keep a log of every chart review meeting.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Is my collaborating physician adequately insured?</h4><p>Your medical director should carry their own malpractice insurance that covers their supervisory role at your practice. Verify this. If something goes wrong, their coverage is part of your protection.</p></div></div>
+</div>
+
+<div class="info-card">
+  <h4>What to look for in a medical director / collaborating physician</h4>
+  <ul>
+    <li>Active license in your state — verify on your state medical board's website</li>
+    <li>Experience with aesthetic medicine, hormone therapy, or the services you offer</li>
+    <li>Malpractice coverage that includes the supervisory role</li>
+    <li>Genuine involvement in your practice — not just a signature on a document</li>
+    <li>Availability for emergency consultation — not just for routine chart review</li>
+    <li>An attorney-drafted CPA that both parties have reviewed and understand</li>
+  </ul>
+</div>
+
+<div class="warn-card">
+  <h4>"Medical Director for Hire" — What to Watch Out For</h4>
+  <p>There are physicians who advertise "medical director" services and sign CPAs for dozens of practices simultaneously. Some are legitimate. Many are not. A medical director who doesn't know your protocols, hasn't visited your practice, and isn't reachable in an emergency is not protecting you — they're just cashing a check. Your CPA is only as protective as the relationship behind it.</p>
+</div>
+</div>
+
+<!-- ==================== SECTION 5: DEA ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 05</div>
+  <div class="sh-title">DEA Registration &amp; Controlled Substances</div>
+  <div class="sh-sub">What you need to know before you prescribe testosterone, GLP-1 medications, or any controlled substance</div>
+</div>
+
+<div class="body-intro">The moment your practice prescribes, dispenses, or stores controlled substances — including testosterone — you enter DEA territory. This is a federal layer of compliance that operates separately from your state licensing. It is not complicated once you understand the framework, but ignorance is not a defense.</div>
+
+<div class="h3">DEA Registration Basics</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Who must have a DEA number?<span class="cl-tag">Critical</span></h4><p>Any prescriber who prescribes, dispenses, or administers Schedule II–V controlled substances must be DEA-registered. This includes testosterone (Schedule III). Apply at DEA.gov. Registration is per-location — a provider must have a DEA registration for each practice location where they prescribe.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>What substances require DEA registration at a med spa?<span class="cl-tag">Know your list</span></h4><p>Testosterone and anabolic steroids (Schedule III). Ketamine (Schedule III). Benzodiazepines (Schedule IV). Tramadol (Schedule IV). GLP-1 medications like semaglutide and tirzepatide are NOT controlled substances — no DEA required for those specifically. Verify every substance you prescribe.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Storage requirements for controlled substances</h4><p>Must be stored in a substantially constructed locked safe or cabinet. Cannot be left accessible to unauthorized personnel. Separate from non-controlled medications when possible. Check DEA and state requirements for your specific situation.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Dispensing logs and record-keeping</h4><p>Every dispensing of a controlled substance must be logged: patient name, date, quantity, lot number, prescriber signature. Logs must be maintained and available for DEA inspection. Biennial inventory required.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Theft or loss reporting</h4><p>Any significant loss or theft of controlled substances must be reported to DEA and local law enforcement within one business day using DEA Form 106. Failure to report is a federal violation separate from the theft itself.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>State CDS (Controlled Dangerous Substance) registration</h4><p>Many states have their own controlled substance registration in addition to the federal DEA registration. Check whether your state requires a separate state CDS license for your prescribing provider.</p></div></div>
+</div>
+
+<div class="danielle-block">
+  <div class="db-label">From Danielle</div>
+  <div class="db-text">"When we started offering testosterone replacement therapy, DEA registration was one of the first things we got in order. It sounds intimidating but the DEA website actually walks you through the application. The harder part is the ongoing compliance — the logs, the storage, the inventory. Build the system before you need it."</div>
+</div>
+</div>
+
+<!-- ==================== SECTION 6: HIPAA ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 06</div>
+  <div class="sh-title">HIPAA Compliance Baseline</div>
+  <div class="sh-sub">The 12 things every practice must have in place from Day One</div>
+</div>
+
+<div class="body-intro">HIPAA applies to any practice that collects, stores, or transmits protected health information (PHI). If you take a client's name, date of birth, and a photo of their face — that is PHI. If you text a patient about their appointment — that is PHI in transit. HIPAA is not optional and it is not just for hospitals.</div>
+
+<div class="danielle-block">
+  <div class="db-label">From Danielle</div>
+  <div class="db-text">"HIPAA compliance is one of those things that feels overwhelming until you actually sit down and do it. It is not as complicated as people make it sound for a small practice. Most of it is common sense — protect your patients' information, document how you do it, and train your staff. That's the core of it."</div>
+</div>
+
+<div class="h3">The 12-Point HIPAA Baseline Checklist</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Notice of Privacy Practices (NPP)<span class="cl-tag">Required Day 1</span></h4><p>Every patient must receive your NPP at their first visit. It must explain how you use and protect their health information. Provide a copy and document that you offered it. Have a signed acknowledgment in every chart.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Written HIPAA Policies &amp; Procedures<span class="cl-tag">Required</span></h4><p>You must have documented policies covering how PHI is accessed, stored, transmitted, and disposed of. This doesn't need to be a 100-page manual — but it must exist in writing and be reviewed annually.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Staff HIPAA Training<span class="cl-tag">Required — All Staff</span></h4><p>Every member of your team who touches patient information must receive HIPAA training. Training must be documented. Retrain when policies change or when you hire new staff. Free training resources are available through HHS.gov.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Business Associate Agreements (BAAs)</h4><p>Any vendor who accesses PHI on your behalf — your EHR, your billing company, your email marketing platform — must sign a BAA. This includes your booking software, your cloud storage provider, and your email platform if you send clinical communications through it.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Secure Electronic PHI Storage</h4><p>PHI stored electronically must be protected with access controls, encryption, and audit logs. Your EHR system typically handles this — but verify with your vendor that it is HIPAA compliant and that you have a BAA in place.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Secure Messaging for PHI</h4><p>Regular text messages and standard email are not HIPAA compliant for PHI. If you communicate clinical information with patients electronically, use a HIPAA-compliant messaging platform. Options include TigerConnect, Spruce Health, and others.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Before/After Photo Policy</h4><p>Patient photos are PHI. You must have documented consent for clinical use (always) and separate consent for marketing use (optional). Your photo consent form must specify exactly how images will be stored, who can access them, and how they may be used.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Breach Response Plan</h4><p>You must have a documented plan for responding to a data breach. HIPAA requires notification to affected patients within 60 days of discovering a breach. Breaches affecting 500+ individuals must also be reported to HHS and the media. Your cyber liability insurance covers the response costs.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Physical Safeguards</h4><p>Paper charts must be stored securely and inaccessible to unauthorized individuals. Workstations with PHI must be positioned so they cannot be seen by other patients. Shred paper with PHI — don't trash it.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Patient Right of Access</h4><p>Patients have the right to access their own records within 30 days of request. You must have a process for providing records when requested and must not charge more than a reasonable cost-based fee for copies.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Social Media Policy for PHI</h4><p>Never post patient information, before/after photos, or anything that could identify a patient without their explicit written consent. This includes tagging, mentioning, or sharing any identifiable patient information in any format.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Annual HIPAA Risk Assessment</h4><p>HIPAA requires covered entities to conduct an annual risk assessment — a review of potential vulnerabilities to PHI security. This can be done internally or with a HIPAA consultant. Document it and update your policies based on the findings.</p></div></div>
+</div>
+
+<div class="info-card">
+  <h4>HIPAA Resources — Free from HHS</h4>
+  <p>The U.S. Department of Health and Human Services (HHS.gov) provides free HIPAA training materials, policy templates, and guidance documents at <strong>hhs.gov/hipaa</strong>. The Office for Civil Rights (OCR) HIPAA portal is your primary federal resource. Many state health departments also offer HIPAA compliance guides specific to small practices.</p>
+</div>
+</div>
+
+<!-- ==================== SECTION 7: OSHA ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 07</div>
+  <div class="sh-title">OSHA &amp; Workplace Safety</div>
+  <div class="sh-sub">The baseline requirements every practice must meet — starting from your first needle</div>
+</div>
+
+<div class="body-intro">OSHA (Occupational Safety and Health Administration) requirements apply to every employer with at least one employee. Even if you're a solo provider with a part-time receptionist, OSHA applies to you. The most relevant standards for med spas involve bloodborne pathogen protection — because you use needles.</div>
+
+<div class="h3">OSHA Compliance Checklist for Med Spas</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Bloodborne Pathogens Standard (29 CFR 1910.1030)<span class="cl-tag">Required — All Practices</span></h4><p>Applies to any workplace where employees may be exposed to blood or other potentially infectious materials. A written Exposure Control Plan is required, must be updated annually, and must be accessible to all employees.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Annual Bloodborne Pathogen Training<span class="cl-tag">Required — All Staff</span></h4><p>Every employee with potential bloodborne pathogen exposure must receive training at hire and annually thereafter. Training must be documented with date, content, and employee signature. Free training is available through OSHA and many state health departments.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Sharps Safety &amp; Disposal<span class="cl-tag">Required</span></h4><p>Use FDA-cleared sharps containers. Never recap needles. Full sharps containers must be disposed of through a licensed medical waste disposal vendor — not in regular trash. Keep a disposal log.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Personal Protective Equipment (PPE)</h4><p>Appropriate PPE — gloves, eye protection — must be provided by the employer at no cost to employees. Staff must be trained on proper PPE use and limitations. Gloves for all procedures involving blood or needles.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Hepatitis B Vaccination Offer</h4><p>Employers must offer Hepatitis B vaccination to all employees with potential bloodborne pathogen exposure within 10 days of employment. Employees may decline with a signed declination form. Keep the offer and any declination documented.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Needlestick Injury Protocol</h4><p>You must have a documented protocol for needlestick and sharps injuries. Staff must know exactly what to do if they experience a needlestick. Post-exposure evaluation must be available at no cost to the employee. Document every incident.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Medical Waste Disposal</h4><p>Beyond sharps — biohazardous waste (blood-soaked materials, contaminated items) must be segregated in red biohazard bags and disposed of through a licensed medical waste vendor. Many providers use vendors like Stericycle or local medical waste services. Check your state's specific medical waste disposal regulations.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>OSHA 300 Log (Injury &amp; Illness Recordkeeping)</h4><p>Employers with 10 or more employees must maintain OSHA Form 300 (Log of Work-Related Injuries and Illnesses). Smaller practices are partially exempt but must still report severe injuries (hospitalization, amputation, eye loss) to OSHA within 24 hours.</p></div></div>
+</div>
+
+<div class="danielle-block">
+  <div class="db-label">From Danielle</div>
+  <div class="db-text">"OSHA was one of the things I didn't think about enough in my first year. Once I had staff handling needles, I realized I needed an Exposure Control Plan and bloodborne pathogen training. It's not complicated — it's just a binder, some training documentation, and the right sharps disposal vendor. Do it before you hire your first employee."</div>
+</div>
+</div>
+
+<!-- ==================== SECTION 8: BUSINESS STRUCTURE ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 08</div>
+  <div class="sh-title">Business Structure &amp; Liability Protection</div>
+  <div class="sh-sub">How to set up your business so a lawsuit doesn't take everything you own</div>
+</div>
+
+<div class="body-intro">Your business structure is your first line of legal defense. Operating as a sole proprietor means your personal assets — your house, your savings, your car — are exposed if your business is sued. Forming the right entity separates your personal finances from your business liability.</div>
+
+<div class="danielle-block">
+  <div class="db-label">From Danielle</div>
+  <div class="db-text">"I formed my LLC before I opened my doors. I'm not a lawyer and I'm not telling you what structure to use — that's a question for a business attorney who knows your situation. What I am telling you is: do not operate as a sole proprietor running needles through people's faces. Protect yourself."</div>
+</div>
+
+<div class="h3">Entity Types to Discuss With Your Attorney</div>
+<div class="three-col">
+  <div class="info-card">
+    <h4>LLC (Limited Liability Company)</h4>
+    <p>Most common structure for small med spas and esthetic businesses. Separates personal assets from business liability. Flexible tax treatment. Relatively simple to form and maintain. Most states allow healthcare providers to form an LLC for business purposes separate from their professional license entity.</p>
+  </div>
+  <div class="info-card">
+    <h4>PLLC (Professional LLC)</h4>
+    <p>Required in some states for licensed healthcare providers. Similar to an LLC but specifically for licensed professionals. Ask your state whether your license type requires a PLLC rather than a standard LLC for the clinical side of your practice.</p>
+  </div>
+  <div class="info-card">
+    <h4>PC or S-Corp</h4>
+    <p>Professional Corporation or S-Corporation structures offer different tax advantages for higher-revenue practices. Typically more relevant once your practice is generating significant revenue. Discuss with your CPA and attorney when the time is right.</p>
+  </div>
+</div>
+
+<div class="h3">Liability Protection Checklist</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Form your entity before you open<span class="cl-tag">Do this first</span></h4><p>File with your state's Secretary of State office. Most states have online filing. Cost varies from $50–$500 depending on state. Use an attorney or a reputable service like LegalZoom as a starting point — but have an attorney review the operating agreement.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Maintain a separate business bank account<span class="cl-tag">Required for LLC protection</span></h4><p>Commingling personal and business funds is the fastest way to pierce your LLC protection. Open a dedicated business checking account and keep all business transactions there. Never pay personal expenses from your business account.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Obtain an EIN (Employer Identification Number)</h4><p>Apply for a free EIN through IRS.gov immediately after forming your entity. You need this to open a business bank account, hire employees, and file business taxes.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Register for state and local business licenses and permits</h4><p>In addition to your professional license, your business typically needs a general business license from your city or county, a sales tax permit (if selling retail products), and potentially a health department permit depending on your services and location.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Create an operating agreement (LLC) or corporate bylaws (Corp)</h4><p>This internal document defines how your business is governed — ownership percentages, decision-making processes, and what happens if a partner leaves. Critical if you have any business partners. Have an attorney draft this.</p></div></div>
+</div>
+</div>
+
+<!-- ==================== SECTION 9: QUESTIONS BEFORE YOU OPEN ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 09</div>
+  <div class="sh-title">The Questions to Ask Before You Open</div>
+  <div class="sh-sub">If I could go back to Day One and hand myself a list — this is it</div>
+</div>
+
+<div class="danielle-block">
+  <div class="db-label">From Danielle</div>
+  <div class="db-text">"Here's the thing nobody tells you. You don't have to have all the answers before you open. You just have to know the right questions. The providers who get in trouble aren't the ones who didn't know — they're the ones who didn't ask. This list is every question I wish I'd had on Day One."</div>
+</div>
+
+<div class="h3">Your Pre-Opening Compliance Checklist</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Have I confirmed scope of practice for every service I plan to offer in my state?<span class="cl-tag">Non-negotiable</span></h4><p>Call your state medical board AND your state esthetics board. Ask specifically about each service. Get the answer documented.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Do I have the right business entity formed and active?<span class="cl-tag">Before Day 1</span></h4><p>LLC, PLLC, or appropriate structure for your state and license type. Separate EIN. Separate business bank account.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Do I have professional liability insurance in place for every service I offer?<span class="cl-tag">Before Day 1</span></h4><p>Confirm every treatment is covered. Confirm the policy limits. Know whether it's occurrence or claims-made.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Do I need a collaborative practice agreement for my credential type and state?<span class="cl-tag">Research first</span></h4><p>Check your state NP practice authority. If you need one — get it drafted by a healthcare attorney before you offer any prescription or medical service.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Is my facility licensed for the services I plan to offer?</h4><p>Check with your state health department. Some states require a clinic license for any practice performing injections.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Do I have a HIPAA Notice of Privacy Practices ready for my first patient?</h4><p>Draft it before you open. Every first-visit patient gets a copy. Keep signed acknowledgments in every chart.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Do I have sharps containers and a licensed medical waste disposal vendor?</h4><p>Set this up before you use your first needle. You cannot dispose of sharps in regular trash.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Do I have a written Bloodborne Pathogen Exposure Control Plan?</h4><p>Required by OSHA the moment you have employees. Write it before you hire.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Have I consulted with a healthcare attorney about my specific situation?</h4><p>Even a one-hour paid consultation with a healthcare attorney in your state is worth hundreds of times its cost in potential liability avoided. Do this.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Have I built my annual compliance review calendar?</h4><p>Set calendar reminders for: annual insurance renewal review, CPA review and renewal, HIPAA annual risk assessment, OSHA annual training documentation, state license renewal dates.</p></div></div>
+</div>
+</div>
+
+<!-- ==================== SECTION 10: RESOURCES ==================== -->
+<div class="page-break">
+<div class="section-header">
+  <div class="sh-num">Section 10</div>
+  <div class="sh-title">Resource Directory</div>
+  <div class="sh-sub">Where to find the right answers — from the right sources</div>
+</div>
+
+<div class="body-intro">This guide gives you the framework. These resources give you the actual answers for your specific state, license type, and situation. Bookmark every one that applies to you.</div>
+
+<div class="h3">Federal Regulatory Bodies</div>
+<div class="resource-item"><div class="resource-icon">D</div><div class="resource-content"><h4>DEA — Drug Enforcement Administration</h4><p>Registration, controlled substance scheduling, dispensing requirements, DEA forms.</p><div class="resource-url">dea.gov &nbsp;·&nbsp; DEA Registration: dea.gov/drug-registration</div></div></div>
+<div class="resource-item"><div class="resource-icon">H</div><div class="resource-content"><h4>HHS Office for Civil Rights — HIPAA</h4><p>HIPAA rules, guidance, training resources, breach notification requirements, complaint filing.</p><div class="resource-url">hhs.gov/hipaa &nbsp;·&nbsp; Free training: hhs.gov/hipaa/for-professionals/training</div></div></div>
+<div class="resource-item"><div class="resource-icon">O</div><div class="resource-content"><h4>OSHA — Occupational Safety and Health Administration</h4><p>Bloodborne pathogen standard, Exposure Control Plan templates, training resources, inspection information.</p><div class="resource-url">osha.gov &nbsp;·&nbsp; BBP Standard: osha.gov/bloodborne-pathogens</div></div></div>
+<div class="resource-item"><div class="resource-icon">F</div><div class="resource-content"><h4>FDA — Food and Drug Administration</h4><p>Device regulations, compounding pharmacy oversight (503A/503B), drug approvals and shortage information.</p><div class="resource-url">fda.gov &nbsp;·&nbsp; Compounding: fda.gov/drugs/human-drug-compounding</div></div></div>
+<div class="resource-item"><div class="resource-icon">I</div><div class="resource-content"><h4>IRS — Employer Identification Number (EIN)</h4><p>Free EIN application online. Required for business banking and taxes.</p><div class="resource-url">irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online</div></div></div>
+
+<div class="divider"></div>
+<div class="h3">Industry Organizations</div>
+<div class="resource-item"><div class="resource-icon">A</div><div class="resource-content"><h4>AmSpa — American Med Spa Association</h4><p>Med spa legal guides by state, compliance resources, insurance vendor directory, annual Med Spa Legal Summit.</p><div class="resource-url">americanmedspa.org</div></div></div>
+<div class="resource-item"><div class="resource-icon">A</div><div class="resource-content"><h4>ASCP — Associated Skin Care Professionals</h4><p>Professional liability insurance for estheticians, scope of practice resources, continuing education.</p><div class="resource-url">ascpskincare.com</div></div></div>
+<div class="resource-item"><div class="resource-icon">N</div><div class="resource-content"><h4>AANP — American Association of Nurse Practitioners</h4><p>State practice authority maps, NP scope of practice guidance, CPA resources by state.</p><div class="resource-url">aanp.org &nbsp;·&nbsp; State practice environment: aanp.org/advocacy/state</div></div></div>
+
+<div class="divider"></div>
+<div class="h3">Where to Find State-Specific Answers</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>Your State Medical Board</h4>
+    <p>Search: "[Your State] Medical Board" or "[Your State] Board of Medicine." Every state has one and most have a website with licensing requirements and scope of practice guidance. Call them — they are usually helpful.</p>
+  </div>
+  <div class="info-card">
+    <h4>Your State Board of Nursing</h4>
+    <p>Search: "[Your State] Board of Nursing." NP practice authority, supervision requirements, and prescriptive authority rules are all governed here. The AANP also maintains a state-by-state map.</p>
+  </div>
+  <div class="info-card">
+    <h4>Your State Esthetics / Cosmetology Board</h4>
+    <p>Search: "[Your State] Department of Professional Regulation" or "[Your State] Cosmetology Board." Governs what estheticians can and cannot perform.</p>
+  </div>
+  <div class="info-card">
+    <h4>Your State Secretary of State</h4>
+    <p>Business entity formation, LLC registration, annual report requirements. Most states have online filing. Search: "[Your State] Secretary of State business filing."</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="danielle-block">
+  <div class="db-label">A final note from Danielle</div>
+  <div class="db-text">"Ten years in, I still don't have all the answers. What I have is a team of people I trust — an attorney, an accountant, a medical director, and an insurance broker — all of whom specialize in healthcare or small business. You don't need to know everything. <strong>You need to know who to call.</strong> Build that team early. It is the best investment you will make in your practice. And then keep showing up every day — still learning, still investing, still building. That's what this business is. That's what Hello Gorgeous has always been. I hope this guide helps you build yours."</div>
+</div>
+
+<div class="info-card" style="margin-top:18px">
+  <h4>When to hire a healthcare attorney</h4>
+  <p>Before you offer any medical service. Before you sign a lease for a clinical space. Before you hire your first employee. Before you sign a collaborative practice agreement. Before you add any new service line that involves prescriptions or controlled substances. A one-hour consultation with a healthcare attorney in your state costs $200–500. It is worth every dollar. Search: "healthcare attorney [your state]" or "medical spa attorney [your state]."</p>
+</div>
+</div>
+
+<!-- FOOTER across all sections -->
+<div class="doc-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> &nbsp;·&nbsp; Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; This guide is not legal advice. Consult a licensed attorney for guidance specific to your state and situation.</div>
+</div>
+
+</div>
+</body>
+</html>

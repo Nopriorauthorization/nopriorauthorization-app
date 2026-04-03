@@ -1,0 +1,25 @@
+{
+  "productId": "insurance-legal-compliance-guide",
+  "displayName": "Insurance & Legal Compliance Guide for Med Spa & Esthetic Entrepreneurs",
+  "description": "A practical framework for insurance, legal, and compliance decisions in med spa and esthetics — written from 10+ years in the field (Danielle Alcala). Not legal advice; consult a licensed attorney. Disclaimers on the cover and every page footer.",
+  "version": "1.0.0",
+  "priceUSD": 47,
+  "etsySku": "NPA-BSG-ILC-001",
+  "category": "business-systems",
+  "targetBuyer": "Med spa owners, esthetic entrepreneurs, solo providers scaling with insurance and compliance questions",
+  "templates": [
+    {
+      "id": "insurance-legal-compliance-guide-main",
+      "name": "Insurance & Legal Compliance Guide",
+      "description": "Interactive HTML guide — insurance, legal, and compliance roadmap for aesthetic businesses",
+      "canvaTemplateUrl": "/forms/NPA-Insurance-Legal-Compliance-Guide.html",
+      "_deliveryType": "html",
+      "format": "guide",
+      "pages": 1,
+      "category": "business-systems"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — print from browser or save as PDF. Not a substitute for legal counsel.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-03T14:00:00Z"
+}

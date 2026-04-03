@@ -33,6 +33,8 @@ export const metadata: Metadata = {
     "med spa digital products",
     "Danielle Alcala",
     "Hello Gorgeous Med Spa",
+    "med spa cheat sheet",
+    "botox quick reference injector",
   ],
   authors: [{ name: "Danielle Alcala", url: SITE_URL }],
   creator: "No Prior Authorization",

@@ -46,6 +46,7 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
   "peptide-patient-journey-kit": { label: "Journey Kit", color: "bg-sky-500/20 text-sky-300" },
   "medical-disclaimer-system": { label: "Essential", color: "bg-red-500/20 text-red-300" },
   "diy-google-setup-kit": { label: "Best Value", color: "bg-emerald-500/20 text-emerald-300" },
+  "botox-clinical-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -80,6 +81,7 @@ const OUTCOME_MAP: Record<string, string> = {
   "peptide-patient-journey-kit": "Reconstitution, injection technique, storage, goal-based protocols — everything your peptide patient needs.",
   "medical-disclaimer-system": "Selling clinical content without disclaimers? That's a lawsuit waiting to happen. Fix it in 10 minutes.",
   "diy-google-setup-kit": "Everything an agency charges $797 for — in one $297 download. Set up your own Google presence.",
+  "botox-clinical-cheat-sheet": "Landmarks, dosing cues, and complication reminders at a glance — keep it at the chair.",
 };
 
 const QUICK_CATEGORIES = [
@@ -91,6 +93,7 @@ const QUICK_CATEGORIES = [
   { label: "Legal & Compliance", filter: "Legal" },
   { label: "Mega Bundles", filter: "mega-bundle" },
   { label: "Playbooks", filter: "Playbooks" },
+  { label: "Cheat Sheets", filter: "Cheat Sheets" },
 ];
 
 const START_HERE_SLUGS = [

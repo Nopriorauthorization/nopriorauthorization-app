@@ -61,6 +61,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "peptide-patient-journey-kit": "Clinical Forms",
   "medical-disclaimer-system": "Legal",
   "diy-google-setup-kit": "Bundles",
+  "botox-clinical-cheat-sheet": "Cheat Sheets",
   "botox-social-bundle": "Social Media",
   "filler-social-bundle": "Social Media",
   "complete-injector-bundle": "Social Media",
@@ -122,6 +123,7 @@ const PRICE_MAP: Record<string, number> = {
   "peptide-patient-journey-kit": 6700,
   "medical-disclaimer-system": 4700,
   "diy-google-setup-kit": 29700,
+  "botox-clinical-cheat-sheet": 1000,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -151,6 +153,7 @@ const AUDIENCE_MAP: Record<string, string[]> = {
   "Practice Management": ["Office managers", "New practice owners", "Front desk staff", "Practice administrators"],
   "Bundles": ["Med spa owners", "Multi-service clinics", "Aesthetic suite providers"],
   "Playbooks": ["Nurse injectors", "NPs starting aesthetic practice", "Med spa owners hiring injectors", "Practice managers"],
+  "Cheat Sheets": ["Injectors at the chair", "Clinical trainers", "New neurotoxin providers", "Busy med spa treatment rooms"],
 };
 
 /** Map from slug to the asset subdirectory name in etsy-products/store-launch/assets/ */
@@ -199,6 +202,7 @@ const CATEGORY_THUMBNAIL: Record<string, string> = {
   "Practice Management": "/shop-previews/default/clinical-forms.png",
   "Bundles": "/shop-previews/default/default-thumbnail.png",
   "Playbooks": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
+  "Cheat Sheets": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
 };
 
 const SLUG_THUMBNAIL: Record<string, string> = {
@@ -210,6 +214,7 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "treatment-menu-signage-kit": "/shop-previews/kits/npa-thumbnail-treatment-menu-kit.png",
   "aftercare-card-kit": "/shop-previews/kits/npa-thumbnail-aftercare-cards.png",
   "patient-communication-kit": "/shop-previews/kits/npa-thumbnail-patient-communication.png",
+  "botox-clinical-cheat-sheet": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
 };
 
 const NICHE_THUMBNAIL: Record<string, string> = {
@@ -263,6 +268,14 @@ function buildFeatures(slug: string, count: number): string[] {
       "Instant digital delivery",
     ];
   }
+  if (cat === "Cheat Sheets") {
+    return [
+      "One-page clinical quick reference",
+      "Print or keep on a tablet at the chair",
+      "Instant digital delivery",
+      "HTML — open in any browser",
+    ];
+  }
   return base;
 }
 
@@ -287,6 +300,8 @@ function buildShortDescription(slug: string, _title: string, count: number): str
       return `The ultimate value pack — ${count} templates spanning clinical forms, social media, and business essentials.`;
     case "Playbooks":
       return `Premium clinical education from Ryan Kent, FNP-BC. Real scripts, real protocols, real systems — not theory.`;
+    case "Cheat Sheets":
+      return `Pocket-style reference you can print or keep on screen between patients — dosing cues, landmarks, and reminders without flipping through a full playbook.`;
     default:
       return `${count} editable templates for aesthetic professionals. Instant download, fully customizable.`;
   }
@@ -295,6 +310,9 @@ function buildShortDescription(slug: string, _title: string, count: number): str
 function buildLongDescription(slug: string, title: string, count: number, cat: string): string {
   const short = buildShortDescription(slug, title, count);
   const audienceList = AUDIENCE_MAP[cat] || ["Aesthetic professionals"];
+  if (cat === "Cheat Sheets") {
+    return `${short}\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, print for the treatment room, or save as PDF. This is a quick-reference format — not a full course or playbook.\n\n${count} reference file(s). Instant digital delivery. No physical product will be shipped.`;
+  }
   return `${short}\n\nDesigned for ${audienceList.join(", ").toLowerCase()}. All templates are fully editable — add your practice name, logo, and contact information. Print directly from your browser or save as PDF.\n\nIncludes ${count} templates with instant digital delivery. No physical product will be shipped.`;
 }
 

@@ -70,41 +70,55 @@ function normalizeHandoffManifest(manifest) {
 }
 
 function main() {
-  if (!fs.existsSync(canvaOutputRoot)) {
-    throw new Error(`Missing Canva output root: ${canvaOutputRoot}`);
-  }
-
-  const dirEntries = fs
-    .readdirSync(canvaOutputRoot, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name);
-
   const productsBySlug = new Map();
   const skipped = [];
 
-  for (const dirName of dirEntries) {
-    const manifestPath = path.join(canvaOutputRoot, dirName, "manifest.json");
-    if (!fs.existsSync(manifestPath)) continue;
-    const manifest = readJson(manifestPath);
-    const normalized = normalizeManifest(manifest);
-    if (!normalized.productSlug || normalized.templates.length === 0) continue;
+  if (fs.existsSync(canvaOutputRoot)) {
+    const dirEntries = fs
+      .readdirSync(canvaOutputRoot, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name);
 
-    const existing = productsBySlug.get(normalized.productSlug);
-    if (!existing) {
-      productsBySlug.set(normalized.productSlug, normalized);
-      continue;
+    for (const dirName of dirEntries) {
+      const manifestPath = path.join(canvaOutputRoot, dirName, "manifest.json");
+      if (!fs.existsSync(manifestPath)) continue;
+      const manifest = readJson(manifestPath);
+      const normalized = normalizeManifest(manifest);
+      if (!normalized.productSlug || normalized.templates.length === 0) continue;
+
+      const existing = productsBySlug.get(normalized.productSlug);
+      if (!existing) {
+        productsBySlug.set(normalized.productSlug, normalized);
+        continue;
+      }
+
+      const existingTs = existing.buildTimestamp
+        ? new Date(existing.buildTimestamp).getTime()
+        : 0;
+      const incomingTs = normalized.buildTimestamp
+        ? new Date(normalized.buildTimestamp).getTime()
+        : 0;
+
+      if (incomingTs >= existingTs) {
+        productsBySlug.set(normalized.productSlug, normalized);
+      }
     }
-
-    const existingTs = existing.buildTimestamp
-      ? new Date(existing.buildTimestamp).getTime()
-      : 0;
-    const incomingTs = normalized.buildTimestamp
-      ? new Date(normalized.buildTimestamp).getTime()
-      : 0;
-
-    if (incomingTs >= existingTs) {
-      productsBySlug.set(normalized.productSlug, normalized);
+  } else if (fs.existsSync(targetPath)) {
+    try {
+      const prior = readJson(targetPath);
+      for (const p of prior.products || []) {
+        if (p?.productSlug) productsBySlug.set(p.productSlug, p);
+      }
+      console.warn(
+        `[catalog] Canva root missing — seeded ${productsBySlug.size} product(s) from existing catalog`,
+      );
+    } catch (e) {
+      console.warn("[catalog] Could not read existing catalog:", e?.message || e);
     }
+  } else {
+    console.warn(
+      `[catalog] Canva root missing and no catalog file yet — only handoff JSON will define products`,
+    );
   }
 
   if (fs.existsSync(handoffRoot)) {

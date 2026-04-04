@@ -534,6 +534,132 @@ nav {
   background: linear-gradient(135deg, #fffefb 0%, var(--grey) 55%);
 }
 
+/* EXPLORE GUIDES & GROWTH TOOLS (SEO / authority — below trust strip) */
+.explore-guides-section {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 72px 40px 84px;
+}
+
+.explore-guides-inner {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.explore-guides-intro {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 44px;
+}
+
+.explore-guides-intro .section-sub {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.explore-guides-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.explore-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--grey);
+  border-radius: 10px;
+  padding: 26px 24px 24px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--pink);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  text-align: left;
+}
+
+.explore-card:hover {
+  box-shadow: 0 8px 28px rgba(26, 26, 26, 0.06);
+  border-color: rgba(212, 83, 126, 0.18);
+}
+
+.explore-card-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.explore-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.explore-card-benefit {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+.explore-card-cta {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+
+.explore-guides-bottom {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.explore-guides-bottom-lead {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.explore-guides-bottom-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+.explore-guides-bottom .btn-primary {
+  padding: 12px 26px;
+  font-size: 13px;
+}
+
+.explore-guides-bottom-secondary {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.explore-guides-bottom-secondary a {
+  color: var(--pink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.explore-guides-bottom-secondary a:hover {
+  text-decoration: underline;
+}
+
 /* SECTION BASE */
 section { padding: 96px 40px; }
 
@@ -1539,6 +1665,23 @@ footer {
     gap: 16px;
   }
 
+  .explore-guides-section {
+    padding: 56px 16px 64px;
+  }
+
+  .explore-guides-intro {
+    margin-bottom: 32px;
+  }
+
+  .explore-guides-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .explore-card {
+    padding: 22px 20px 20px;
+  }
+
   .hero-right {
     padding: 22px 18px;
   }
@@ -1793,6 +1936,63 @@ footer {
     <span class="credibility-strip-item">Trusted by injectors, owners &amp; clinical leads nationwide</span>
   </div>
 </div>
+
+<!-- EXPLORE GUIDES & GROWTH TOOLS -->
+<section class="explore-guides-section" id="explore-guides" aria-labelledby="explore-guides-heading">
+  <div class="explore-guides-inner">
+    <div class="explore-guides-intro">
+      <div class="section-eyebrow">Learn &amp; Grow</div>
+      <h2 id="explore-guides-heading" class="section-headline" style="margin-bottom:14px">Explore Guides &amp; Growth Tools</h2>
+      <p class="section-sub">Practical resources for med spas, injectors, weight loss clinics, and IV therapy businesses looking to grow faster, market better, and stay organized.</p>
+    </div>
+    <div class="explore-guides-grid">
+      <a class="explore-card" href="/botox-marketing-templates" data-explore-card data-explore-slug="botox-marketing-templates" data-explore-label="Injectables" data-explore-position="1">
+        <div class="explore-card-label">Injectables</div>
+        <div class="explore-card-title">Botox Marketing Templates</div>
+        <p class="explore-card-benefit">Bring in more injector clients with polished, ready-to-use content.</p>
+        <span class="explore-card-cta">Explore Botox Marketing →</span>
+      </a>
+      <a class="explore-card" href="/med-spa-consent-forms" data-explore-card data-explore-slug="med-spa-consent-forms" data-explore-label="Compliance" data-explore-position="2">
+        <div class="explore-card-label">Compliance</div>
+        <div class="explore-card-title">Med Spa Consent Forms</div>
+        <p class="explore-card-benefit">Protect your practice with clearer, more professional documentation.</p>
+        <span class="explore-card-cta">Explore Consent Forms →</span>
+      </a>
+      <a class="explore-card" href="/glp1-marketing-strategy" data-explore-card data-explore-slug="glp1-marketing-strategy" data-explore-label="Weight Loss" data-explore-position="3">
+        <div class="explore-card-label">Weight Loss</div>
+        <div class="explore-card-title">GLP-1 Marketing Strategy</div>
+        <p class="explore-card-benefit">Promote your weight loss program with content that builds trust and drives bookings.</p>
+        <span class="explore-card-cta">Explore GLP-1 Strategy →</span>
+      </a>
+      <a class="explore-card" href="/weight-loss-intake-forms" data-explore-card data-explore-slug="weight-loss-intake-forms" data-explore-label="Operations" data-explore-position="4">
+        <div class="explore-card-label">Operations</div>
+        <div class="explore-card-title">Weight Loss Intake Forms</div>
+        <p class="explore-card-benefit">Create a smoother onboarding process for GLP-1 and weight loss patients.</p>
+        <span class="explore-card-cta">Explore Intake Forms →</span>
+      </a>
+      <a class="explore-card" href="/iv-therapy-intake-form" data-explore-card data-explore-slug="iv-therapy-intake-form" data-explore-label="IV Therapy" data-explore-position="5">
+        <div class="explore-card-label">IV Therapy</div>
+        <div class="explore-card-title">IV Therapy Intake Forms</div>
+        <p class="explore-card-benefit">Streamline paperwork and make your IV workflow feel more established.</p>
+        <span class="explore-card-cta">Explore IV Therapy Forms →</span>
+      </a>
+      <a class="explore-card" href="/how-to-get-more-med-spa-clients" data-explore-card data-explore-slug="how-to-get-more-med-spa-clients" data-explore-label="Growth" data-explore-position="6">
+        <div class="explore-card-label">Growth</div>
+        <div class="explore-card-title">How to Get More Med Spa Clients</div>
+        <p class="explore-card-benefit">Learn the systems that help med spas stay visible and book more consistently.</p>
+        <span class="explore-card-cta">Explore Growth Guide →</span>
+      </a>
+    </div>
+    <div class="explore-guides-bottom">
+      <p class="explore-guides-bottom-lead">Want everything in one place?</p>
+      <p class="explore-guides-bottom-sub">Shop templates, systems, and best sellers in the NPA store.</p>
+      <a href="/shop" class="btn-primary" id="explore-guides-shop-cta">Shop Best Sellers</a>
+      <p class="explore-guides-bottom-secondary">
+        <a href="/shop/growth-system" id="explore-guides-growth-cta">View Growth System</a>
+      </p>
+    </div>
+  </div>
+</section>
 
 <!-- TICKER -->
 <div class="ticker-wrap">
@@ -2208,6 +2408,42 @@ footer {
       toggle.checked = false;
     });
   });
+})();
+
+(function () {
+  function npaDataLayerTarget() {
+    try {
+      if (window.parent && window.parent !== window) return window.parent;
+    } catch (e) {}
+    return window;
+  }
+  function npaPush(payload) {
+    var w = npaDataLayerTarget();
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push(payload);
+  }
+  document.querySelectorAll("[data-explore-card]").forEach(function (card) {
+    card.addEventListener("click", function () {
+      npaPush({
+        event: "homepage_explore_card_click",
+        slug: card.getAttribute("data-explore-slug") || "",
+        label: card.getAttribute("data-explore-label") || "",
+        position: card.getAttribute("data-explore-position") || "",
+      });
+    });
+  });
+  var shopCta = document.getElementById("explore-guides-shop-cta");
+  if (shopCta) {
+    shopCta.addEventListener("click", function () {
+      npaPush({ event: "homepage_explore_shop_click" });
+    });
+  }
+  var growthCta = document.getElementById("explore-guides-growth-cta");
+  if (growthCta) {
+    growthCta.addEventListener("click", function () {
+      npaPush({ event: "homepage_explore_growth_system_click" });
+    });
+  }
 })();
 </script>
 </body>

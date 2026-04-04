@@ -4,9 +4,44 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
 
+/**
+ * Square appends query params to `redirect_url` after payment link checkout, e.g.
+ * `transactionId`, `checkoutId`, `orderId`, `referenceId` (camelCase per Square docs).
+ * We show `transactionId` when present; fall back to other Square ids, then Stripe `session_id`.
+ */
+function getPostCheckoutReference(searchParams: URLSearchParams): {
+  label: string;
+  value: string;
+} | null {
+  const transactionId =
+    searchParams.get("transactionId") ?? searchParams.get("transaction_id");
+  if (transactionId) {
+    return { label: "Square transaction ID", value: transactionId };
+  }
+  const checkoutId =
+    searchParams.get("checkoutId") ?? searchParams.get("checkout_id");
+  if (checkoutId) {
+    return { label: "Square checkout ID", value: checkoutId };
+  }
+  const orderId = searchParams.get("orderId") ?? searchParams.get("order_id");
+  if (orderId) {
+    return { label: "Square order ID", value: orderId };
+  }
+  const referenceId =
+    searchParams.get("referenceId") ?? searchParams.get("reference_id");
+  if (referenceId) {
+    return { label: "Square reference ID", value: referenceId };
+  }
+  const sessionId = searchParams.get("session_id");
+  if (sessionId) {
+    return { label: "Order reference", value: sessionId };
+  }
+  return null;
+}
+
 function ThankYouContent() {
   const params = useSearchParams();
-  const sessionId = params.get("session_id");
+  const ref = getPostCheckoutReference(params);
 
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white">
@@ -53,9 +88,10 @@ function ThankYouContent() {
           .
         </div>
 
-        {sessionId && (
-          <p className="mb-6 text-xs text-gray-600">
-            Order reference: {sessionId.slice(0, 20)}…
+        {ref && (
+          <p className="mb-6 break-all text-left text-xs text-gray-500">
+            <span className="text-gray-600">{ref.label}:</span>{" "}
+            <span className="font-mono text-gray-400">{ref.value}</span>
           </p>
         )}
 

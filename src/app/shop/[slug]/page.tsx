@@ -7,6 +7,7 @@ import { MembershipUpsellBlock } from "@/components/shop/MembershipUpsellBlock";
 import { MEGA_UPGRADE_TARGET_SLUG } from "@/lib/shop/bundle-tier-config";
 import { getFamilyByProductSlug } from "@/lib/shop/families";
 import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
+import { buildProductMetaDescription, buildProductMetaTitle } from "@/lib/seo/shop-product-seo";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
 import { ProductPreviewGallery } from "../ProductPreviewGallery";
 import { CheckoutButton } from "./CheckoutButton";
@@ -20,9 +21,22 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const product = getShopProductBySlug(params.slug);
   if (!product) return {};
+  const title = buildProductMetaTitle(product);
+  const description = buildProductMetaDescription(product);
   return {
-    title: `${product.title} | No Prior Authorization`,
-    description: product.shortDescription,
+    title,
+    description,
+    robots: { index: true, follow: true },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

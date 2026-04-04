@@ -6,21 +6,34 @@ import {
   MEMBERSHIP_CONFIG,
 } from "@/config/growth-funnel.config";
 import { FunnelLink } from "@/components/shop/FunnelLink";
+import { buildProductMetaDescription, buildProductMetaTitle } from "@/lib/seo/shop-product-seo";
 import { getShopProductBySlug } from "@/lib/shop/products";
 import { CheckoutButton } from "../[slug]/CheckoutButton";
 
 const SITE = "https://nopriorauthorization.com";
 
-export const metadata: Metadata = {
-  title: "NPA Growth System | Full med spa template library",
-  description: GROWTH_SYSTEM_PRODUCT.shortDescription,
-  openGraph: {
-    title: "NPA Growth System",
-    description: GROWTH_SYSTEM_PRODUCT.shortDescription,
-    url: `${SITE}/shop/growth-system`,
-  },
-  alternates: { canonical: `${SITE}/shop/growth-system` },
-};
+export function generateMetadata(): Metadata {
+  const product = getShopProductBySlug(GROWTH_SYSTEM_SLUG);
+  const title = product
+    ? buildProductMetaTitle(product)
+    : `${GROWTH_SYSTEM_PRODUCT.title} | Med spa template bundles | No Prior Authorization`;
+  const description = product
+    ? buildProductMetaDescription(product)
+    : `${GROWTH_SYSTEM_PRODUCT.shortDescription} Instant download after purchase.`;
+  return {
+    title,
+    description,
+    robots: { index: true, follow: true },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE}/shop/growth-system`,
+      type: "website",
+    },
+    twitter: { card: "summary_large_image", title, description },
+    alternates: { canonical: `${SITE}/shop/growth-system` },
+  };
+}
 
 export default function GrowthSystemPage() {
   const product = getShopProductBySlug(GROWTH_SYSTEM_SLUG);

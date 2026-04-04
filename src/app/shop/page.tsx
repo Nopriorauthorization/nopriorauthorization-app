@@ -149,6 +149,8 @@ const OUTCOME_MAP: Record<string, string> = {
     "A full month of med-spa-friendly post themes and prompts — stop staring at a blank grid; follow the calendar and adapt to your brand.",
   "facial-anatomy-nurse-injector":
     "The anatomy guide injectors actually use — danger zones, depth, and vectors with Danielle's clinical voice. Top pick for new and returning injectors.",
+  "npa-49-star-system":
+    "Danielle's real 4.9-star playbook — review asks, bad-review protocol, HIPAA-safe responses, fake-review fights, and a 30-day sprint. Built from 10+ years on Google.",
 };
 
 const QUICK_CATEGORIES = [

@@ -134,6 +134,21 @@ export default function ShopPage() {
         </div>
       </section>
 
+      <section className="border-b border-white/10 bg-gradient-to-r from-[#D4537E]/10 to-transparent">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 px-4 py-4 text-center sm:flex-row sm:gap-4 sm:text-left">
+          <p className="text-sm text-gray-300">
+            <span className="font-semibold text-white">Free for your practice:</span>{" "}
+            guides and tools before you buy.
+          </p>
+          <Link
+            href="/shop/resources"
+            className="shrink-0 text-sm font-bold text-[#D4537E] underline-offset-4 hover:underline"
+          >
+            Explore free resources →
+          </Link>
+        </div>
+      </section>
+
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* PLAYBOOKS SHOWCASE */}
         <PlaybookShowcase />

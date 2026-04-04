@@ -229,6 +229,12 @@ export default function MainNavigation() {
             {/* Desktop CTA Buttons */}
             <div className="hidden md:flex items-center gap-2">
               <Link
+                href="/shop/resources"
+                className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
+              >
+                Free resources
+              </Link>
+              <Link
                 href="/shop"
                 className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
               >
@@ -338,6 +344,12 @@ export default function MainNavigation() {
 
             {/* Mobile CTA */}
             <div className="pt-4 border-t border-white/10 space-y-2">
+              <Link
+                href="/shop/resources"
+                className="w-full block text-center px-6 py-3 border border-[#D4537E]/40 text-[#D4537E] text-sm font-medium rounded-xl hover:bg-[#D4537E]/10 transition-all"
+              >
+                Free resources
+              </Link>
               <Link
                 href="/shop"
                 className="w-full block text-center px-6 py-3 border border-white/20 text-white text-sm font-medium rounded-xl hover:bg-white/5 transition-all"

@@ -66,6 +66,12 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
       color: "text-rose-400",
     },
     {
+      label: "Free resources",
+      href: "/shop/resources",
+      icon: "✨",
+      color: MASCOT_COLORS.fillaGrace,
+    },
+    {
       label: "Shop",
       href: "/shop",
       icon: "🛍️",

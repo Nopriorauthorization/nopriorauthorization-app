@@ -80,6 +80,7 @@ const BADGE_MAP: Record<string, { label: string; color: string }> = {
     label: "Top pick · Most popular",
     color: "bg-emerald-500/20 text-emerald-300",
   },
+  "npa-49-star-system": { label: "Best Seller", color: "bg-emerald-500/20 text-emerald-300" },
 };
 
 const OUTCOME_MAP: Record<string, string> = {
@@ -164,6 +165,7 @@ const QUICK_CATEGORIES = [
 ];
 
 const START_HERE_SLUGS = [
+  "npa-49-star-system",
   "facial-anatomy-nurse-injector",
   "med-spa-mega-bundle",
   "botox-consent-bundle",

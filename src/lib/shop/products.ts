@@ -204,6 +204,7 @@ const FEATURED_SLUGS = new Set([
   "complete-injector-bundle",
   "botox-consent-bundle",
   "facial-anatomy-nurse-injector",
+  "npa-49-star-system",
 ]);
 
 const STRIPE_PRICE_IDS: Record<string, string> = {};

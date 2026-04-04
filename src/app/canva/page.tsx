@@ -59,12 +59,24 @@ export default function CanvaToolsPage() {
           </code>
         </Link>
       </p>
+      <p className="mt-2 text-sm text-neutral-500">
+        <Link href="/api/canva/list-designs?save=desktop" className="underline">
+          List designs and save to Desktop
+        </Link>
+        <span className="text-neutral-400"> — </span>
+        <span className="text-neutral-500">
+          local dev only; writes{" "}
+          <code className="rounded bg-neutral-100 px-1 text-xs">
+            ~/Desktop/canva-list-designs.json
+          </code>
+        </span>
+      </p>
       <p className="mt-2 text-xs text-neutral-500">
         For <code className="rounded bg-neutral-100 px-1">npm run store:fill</code>,
-        save this response as{" "}
-        <code className="rounded bg-neutral-100 px-1">imports/canva-list-designs.json</code>{" "}
-        (see <code className="rounded bg-neutral-100 px-1">CANVA-NAMING-GUIDE.md</code>
-        ).
+        use the Desktop file above, or save as{" "}
+        <code className="rounded bg-neutral-100 px-1">imports/canva-list-designs.json</code>
+        , or set <code className="rounded bg-neutral-100 px-1">CANVA_LIST_DESIGNS_JSON</code>{" "}
+        (see <code className="rounded bg-neutral-100 px-1">CANVA-NAMING-GUIDE.md</code>).
       </p>
       <p className="mt-3 text-sm text-neutral-500">
         <Link href="/api/canva/match-manifests" className="underline">

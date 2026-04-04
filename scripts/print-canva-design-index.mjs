@@ -8,14 +8,13 @@
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
+import { resolveCanvaListDesignsPath } from "./resolve-canva-list-designs-path.mjs";
 
 dotenv.config({ path: ".env.local" });
 dotenv.config();
 
 const ROOT = process.cwd();
-const LIST =
-  process.env.CANVA_LIST_DESIGNS_JSON?.trim() ||
-  path.join(ROOT, "imports", "canva-list-designs.json");
+const LIST = resolveCanvaListDesignsPath(ROOT);
 
 const needle = process.argv[2]?.toLowerCase() || "";
 

@@ -1,3 +1,6 @@
+import { writeFile } from "fs/promises";
+import { homedir } from "os";
+import path from "path";
 import { NextRequest, NextResponse } from "next/server";
 import { CANVA_DESIGNS_LIST_URL, getCanvaEnv } from "@/lib/canva/oauth";
 
@@ -49,6 +52,8 @@ function resolveCanvaAccessToken(req: NextRequest): string | undefined {
  *
  * Query (optional):
  * - ownership: any | owned | shared (default any)
+ * - save=desktop — **local dev only** (NODE_ENV !== production): also writes JSON to
+ *   ~/Desktop/canva-list-designs.json so store:fill can read it without manual save.
  */
 export async function GET(req: NextRequest) {
   const cfg = getCanvaEnv();
@@ -163,12 +168,31 @@ export async function GET(req: NextRequest) {
       : null,
   }));
 
-  return NextResponse.json({
-    connected: true,
+  const payload = {
+    connected: true as const,
     count: designs.length,
     ownership: validOwnership,
     pagesFetched: pages,
     truncated: Boolean(continuation),
     designs,
-  });
+  };
+
+  let savedToDesktop: string | undefined;
+  const saveDesktop =
+    req.nextUrl.searchParams.get("save") === "desktop" ||
+    req.nextUrl.searchParams.get("save") === "1";
+  if (saveDesktop && process.env.NODE_ENV !== "production") {
+    try {
+      const desktopFile = path.join(homedir(), "Desktop", "canva-list-designs.json");
+      await writeFile(desktopFile, JSON.stringify(payload, null, 2) + "\n", "utf8");
+      savedToDesktop = desktopFile;
+      console.log("[canva/list-designs] Wrote", desktopFile);
+    } catch (e) {
+      console.error("[canva/list-designs] Desktop save failed:", e);
+    }
+  }
+
+  return NextResponse.json(
+    savedToDesktop ? { ...payload, savedToDesktop } : payload,
+  );
 }

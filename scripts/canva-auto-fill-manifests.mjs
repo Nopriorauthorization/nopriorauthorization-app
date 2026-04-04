@@ -1,13 +1,11 @@
 import fs from "fs";
 import path from "path";
+import { resolveCanvaListDesignsPath } from "./resolve-canva-list-designs-path.mjs";
 
 const ROOT = process.cwd();
 const MANIFEST_DIR = path.join(ROOT, "imports", "npa-manifests-and-spec");
 const STRICT_DIR = path.join(ROOT, "imports", "npa-manifests-and-spec-prefilled-strict");
-/** Same shape as GET /api/canva/list-designs — save full JSON response here (or set CANVA_LIST_DESIGNS_JSON). */
-const LIST_DESIGNS_PATH =
-  process.env.CANVA_LIST_DESIGNS_JSON?.trim() ||
-  path.join(ROOT, "imports", "canva-list-designs.json");
+const LIST_DESIGNS_PATH = resolveCanvaListDesignsPath(ROOT);
 const DESIGN_ID_MAP_PATH = path.join(ROOT, "imports", "canva-design-id-map.json");
 
 function loadDesignIdMap() {
@@ -135,9 +133,9 @@ function main() {
   if (!fs.existsSync(LIST_DESIGNS_PATH)) {
     console.error(
       `Missing Canva list file: ${LIST_DESIGNS_PATH}\n` +
-        `  1) npm run dev → open /canva → connect Canva\n` +
-        `  2) Open /api/canva/list-designs in the same browser (must be logged in)\n` +
-        `  3) Save the JSON response as imports/canva-list-designs.json (or set CANVA_LIST_DESIGNS_JSON)\n`,
+        `  1) npm run dev → /canva → connect Canva\n` +
+        `  2) Open /api/canva/list-designs?save=desktop (writes ~/Desktop/canva-list-designs.json)\n` +
+        `     or save JSON to imports/canva-list-designs.json — or set CANVA_LIST_DESIGNS_JSON\n`,
     );
     process.exit(1);
   }
@@ -190,20 +188,28 @@ function main() {
         continue;
       }
 
-      const mappedCanvaId = designIdMap[template.id];
-      if (mappedCanvaId) {
-        const byId = findDesignByCanvaId(mappedCanvaId, designs);
+      const mappedValue = designIdMap[template.id];
+      if (mappedValue) {
+        // Direct URL in map — use as-is (cross-workspace or pre-resolved)
+        if (mappedValue.startsWith("https://")) {
+          template.canvaTemplateUrl = mappedValue;
+          filledThisProduct += 1;
+          console.log(`  FILL ${productId} / ${template.id} <- direct URL`);
+          continue;
+        }
+        // Canva design ID — look up edit URL in list-designs
+        const byId = findDesignByCanvaId(mappedValue, designs);
         if (byId?.editUrl) {
           template.canvaTemplateUrl = byId.editUrl;
           filledThisProduct += 1;
           console.log(
-            `  FILL ${productId} / ${template.id} <- design ${mappedCanvaId} ("${byId.title}")`
+            `  FILL ${productId} / ${template.id} <- design ${mappedValue} ("${byId.title}")`
           );
           continue;
         }
         missingThisProduct += 1;
         console.log(
-          `  MISS ${productId} / ${template.id} (mapped design id "${mappedCanvaId}" not in list-designs)`
+          `  MISS ${productId} / ${template.id} (mapped design id "${mappedValue}" not in list-designs)`
         );
         continue;
       }

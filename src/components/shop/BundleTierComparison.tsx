@@ -1,10 +1,13 @@
-import Link from "next/link";
+"use client";
+
+import { GROWTH_SYSTEM_SLUG } from "@/config/growth-funnel.config";
 import {
   BUNDLE_TIERS,
   BUNDLE_TIER_SHOWCASE_SLUG,
   type BundleTierId,
 } from "@/lib/shop/bundle-tier-config";
 import type { ShopProduct } from "@/lib/shop/products";
+import { FunnelLink } from "./FunnelLink";
 
 export function BundleTierComparison({
   currentSlug,
@@ -22,7 +25,8 @@ export function BundleTierComparison({
         Compare bundle tiers
       </h2>
       <p className="mb-5 max-w-2xl text-sm text-gray-500">
-        Same ladder across the shop — start small, scale up, or jump to Mega when you want maximum value.
+        Same ladder across the shop — start small, scale up, or jump to the Growth System when you
+        want the full library.
       </p>
       <div className="overflow-x-auto rounded-xl border border-white/10">
         <table className="w-full min-w-[640px] border-collapse text-left text-sm">
@@ -79,12 +83,22 @@ export function BundleTierComparison({
                   <td className="px-4 py-4 align-top text-gray-400">{tier.anchorLabel}</td>
                   <td className="px-4 py-4 align-top">
                     {p ? (
-                      <Link
+                      <FunnelLink
                         href={`/shop/${p.slug}`}
+                        event={
+                          p.slug === GROWTH_SYSTEM_SLUG
+                            ? "funnel_growth_system_click"
+                            : "funnel_tier_table_product_click"
+                        }
+                        eventParams={{
+                          from: "tier_table",
+                          target_slug: p.slug,
+                          tier: tier.id,
+                        }}
                         className="font-medium text-white underline-offset-2 hover:text-[#D4537E] hover:underline"
                       >
                         {p.title}
-                      </Link>
+                      </FunnelLink>
                     ) : (
                       <span className="text-gray-500">—</span>
                     )}

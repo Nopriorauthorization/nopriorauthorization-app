@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T02:31:59.590Z",
+  "generatedAt": "2026-04-04T13:56:54.675Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -72,37 +72,37 @@
         {
           "title": "Neurotoxin Consultation & Medical History Form",
           "designId": "btx-consultation-form",
-          "editUrl": "/forms/BTX-01-Consultation-Form.html",
+          "editUrl": "https://www.canva.com/d/XQrbOn0zFeb9Loj",
           "viewUrl": null
         },
         {
           "title": "Botox / Neurotoxin Informed Consent Form",
           "designId": "btx-consent-form",
-          "editUrl": "/forms/BTX-02-Informed-Consent.html",
+          "editUrl": "https://www.canva.com/d/Vhsuo166OSMAAKD",
           "viewUrl": null
         },
         {
           "title": "Pre-Treatment Instructions — Neurotoxin",
           "designId": "btx-precare",
-          "editUrl": "/forms/BTX-03-Pre-Treatment-Neurotoxin.html",
+          "editUrl": "https://www.canva.com/d/TgarT-1qUBqRxu1",
           "viewUrl": null
         },
         {
           "title": "Post-Treatment Aftercare Instructions — Neurotoxin",
           "designId": "btx-postcare",
-          "editUrl": "/forms/BTX-04-Post-Treatment-Neurotoxin.html",
+          "editUrl": "https://www.canva.com/d/_abYd2aafr6OPHY",
           "viewUrl": null
         },
         {
           "title": "Neurotoxin Treatment Record & Dosing Log",
           "designId": "btx-treatment-record",
-          "editUrl": "/forms/BTX-05-Treatment-Record.html",
+          "editUrl": "https://www.canva.com/d/4DBaZuqBUU3pPbR",
           "viewUrl": null
         },
         {
           "title": "Before/After Photography Consent",
           "designId": "btx-photo-release",
-          "editUrl": "/forms/BTX-06-Photo-Release.html",
+          "editUrl": "https://www.canva.com/d/tM9fRSVFna_uanM",
           "viewUrl": null
         }
       ]
@@ -321,7 +321,7 @@
         {
           "title": "IV Therapy Intake & Consent Form",
           "designId": "cb-iv-intake",
-          "editUrl": "/forms/WL-01-Intake-Form.html",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..zL30iVhAARxEARsT.TrvHlFGiZIJKkr1M3BuK-4FUaRgbCP52KzaqdRDWGocBJxW0_LqEhS3NNDIKmq_e9S4lGqUG7sS9wjfo8rb4VA8_dRvansebIoCUaF4-MaCYklU.316_GWIXQn3wLhEGaGjWDg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=67a22a36-5678-4a5b-a88e-c3fcde416819&utm_campaign=public_api_list_design_clicked_hyperlink",
           "viewUrl": null
         },
         {
@@ -339,19 +339,19 @@
         {
           "title": "GLP-1 Patient Intake Form",
           "designId": "cb-wl-intake",
-          "editUrl": "/forms/WL-01-Intake-Form.html",
+          "editUrl": "https://www.canva.com/d/FupWQSHJewc6b1Z",
           "viewUrl": null
         },
         {
           "title": "GLP-1 Treatment Consent Form",
           "designId": "cb-wl-consent",
-          "editUrl": "/forms/WL-02-Consent-Form.html",
+          "editUrl": "https://www.canva.com/d/AdYq7xJAV8Y6cxn",
           "viewUrl": null
         },
         {
           "title": "What to Expect: Your GLP-1 Journey",
           "designId": "cb-wl-guide",
-          "editUrl": "/forms/WL-03-GLP1-Journey-Guide.html",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM3fQ..xT6NJgU1XGBQkeFG.TTMvJdhj0387kus6vizMwGytbfOeFOrgwRm19oQKGr_nREez7N0XY_4jsAD2botSCpo4cTgFPTyVtCzA2EdAUMQAukR6wLxKaAcfWgxqP5EErhg.pGpLZuhttfGst5m35DD9pw/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=195d9988-70d1-44b0-a6f5-da5863320342&utm_campaign=public_api_list_design_clicked_hyperlink",
           "viewUrl": null
         },
         {
@@ -663,43 +663,43 @@
         {
           "title": "Dermal Filler Consultation & Medical History Form",
           "designId": "flr-consultation-form",
-          "editUrl": "/forms/FLR-01-Consultation-Form.html",
+          "editUrl": "https://www.canva.com/d/B8C5iHC1V4U2KI6",
           "viewUrl": null
         },
         {
           "title": "Dermal Filler Informed Consent Form",
           "designId": "flr-consent-form",
-          "editUrl": "/forms/FLR-02-Informed-Consent.html",
+          "editUrl": "https://www.canva.com/d/v4WZR-K4IvuPNY3",
           "viewUrl": null
         },
         {
           "title": "Pre-Treatment Instructions — Dermal Filler",
           "designId": "flr-precare",
-          "editUrl": "/forms/FLR-03-Pre-Treatment.html",
+          "editUrl": "https://www.canva.com/d/En_ecL4gGZNnqea",
           "viewUrl": null
         },
         {
           "title": "Post-Treatment Aftercare Instructions — Dermal Filler",
           "designId": "flr-postcare",
-          "editUrl": "/forms/FLR-04-Post-Treatment.html",
+          "editUrl": "https://www.canva.com/d/cFP3Vv3mmuF4ilL",
           "viewUrl": null
         },
         {
           "title": "Filler Treatment Record & Product Log",
           "designId": "flr-treatment-record",
-          "editUrl": "/forms/FLR-05-Treatment-Record.html",
+          "editUrl": "https://www.canva.com/d/EliXKEBPTjklpBz",
           "viewUrl": null
         },
         {
           "title": "Hyaluronidase Dissolution Consent Form",
           "designId": "flr-dissolving-consent",
-          "editUrl": "/forms/FLR-06-Dissolution-Consent.html",
+          "editUrl": "https://www.canva.com/d/9I57e281NGwVMTH",
           "viewUrl": null
         },
         {
           "title": "Before/After Photography Consent",
           "designId": "flr-photo-release",
-          "editUrl": "/forms/BTX-06-Photo-Release.html",
+          "editUrl": "https://www.canva.com/d/tM9fRSVFna_uanM",
           "viewUrl": null
         }
       ]
@@ -1254,31 +1254,31 @@
         {
           "title": "Lash Client Intake & Health History Form",
           "designId": "lsh-intake-form",
-          "editUrl": "/forms/LSH-01-Intake-Form.html",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..d6cj9E-Jn554WDTL.hfj4tDcPP80QVddpxTlVumRMGJwiN0q5G9evfI2Fwkf-DuHHXvCvuwWsAgrrJ9ggxlug34j6ulAJx_9N6cjX3OipA1NAQSxN2-os4jZacdOd8tM.JXF-pOR6L-HxLC3hcnnFbg/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=28a3e55e-38a4-4c17-ad40-dc014e1f6fe0&utm_campaign=public_api_list_design_clicked_hyperlink",
           "viewUrl": null
         },
         {
           "title": "Patch Test Waiver & Allergy Release",
           "designId": "lsh-allergy-waiver",
-          "editUrl": "/forms/LSH-02-Allergy-Waiver.html",
+          "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..quQPBk0jP3hsOEO9.m4klEpdyCl5wNKlUzyuIvw8cybmk53Xe3xvSNcajkKJYtsA1-NWXUaJxhYEVQ7VY-QZyEc9tMfc6mVyR4umWlTE8N5HcaSmyQPVRPXb7LffVjNI.9fRTkh_pADniULZgH3Eq-A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=8adc6fb9-01a6-4928-907d-6e8cf9aee8a8&utm_campaign=public_api_list_design_clicked_hyperlink",
           "viewUrl": null
         },
         {
           "title": "Lash Extension Consent Form",
           "designId": "lsh-extension-consent",
-          "editUrl": "/forms/LSH-03-Extension-Consent.html",
+          "editUrl": "https://www.canva.com/d/QSI0fTCG0k4IfBX",
           "viewUrl": null
         },
         {
           "title": "Lash Lift & Tint Consent Form",
           "designId": "lsh-lift-consent",
-          "editUrl": "/forms/LSH-05-Lift-Consent.html",
+          "editUrl": "https://www.canva.com/d/gkYJVq7wK3e2fxf",
           "viewUrl": null
         },
         {
           "title": "Rebooking Reminder Card",
           "designId": "lsh-rebook-card",
-          "editUrl": "/forms/LSH-07-Rebook-Card.html",
+          "editUrl": "https://www.canva.com/d/L5SXfcDdvi8EA1S",
           "viewUrl": null
         }
       ]
@@ -2019,7 +2019,7 @@
         {
           "title": "What Are Peptides? Patient Education Guide",
           "designId": "pep-what-are-peptides",
-          "editUrl": "/forms/PEP-01-What-Are-Peptides.html",
+          "editUrl": "https://www.canva.com/d/szyJoDq8rvyLyej",
           "viewUrl": null
         },
         {
@@ -2031,31 +2031,31 @@
         {
           "title": "Peptide & Hormone Therapy Intake Form",
           "designId": "pep-intake-form",
-          "editUrl": "/forms/PEP-03-Intake-Form.html",
+          "editUrl": "https://www.canva.com/d/A5z-pdcDKGBg8SB",
           "viewUrl": null
         },
         {
           "title": "Peptide Therapy Informed Consent Form",
           "designId": "pep-consent-form",
-          "editUrl": "/forms/PEP-04-Consent-Form.html",
+          "editUrl": "https://www.canva.com/d/OFsejsHtGFPW46V",
           "viewUrl": null
         },
         {
           "title": "Self-Injection Training Guide",
           "designId": "pep-self-injection-guide",
-          "editUrl": "/forms/PEP-05-Self-Injection-Guide.html",
+          "editUrl": "https://www.canva.com/d/GN5AQimbxDoLJ5J",
           "viewUrl": null
         },
         {
           "title": "Monthly Symptom & Progress Tracker",
           "designId": "pep-symptom-tracker",
-          "editUrl": "/forms/PEP-06-Monthly-Tracker.html",
+          "editUrl": "https://www.canva.com/d/s0wl2uXibKB7J4y",
           "viewUrl": null
         },
         {
           "title": "Peptide Therapy FAQ Card",
           "designId": "pep-faq-card",
-          "editUrl": "/forms/PEP-07-FAQ-Card.html",
+          "editUrl": "https://www.canva.com/d/geTtEeHgeOYXu7H",
           "viewUrl": null
         }
       ]
@@ -2361,43 +2361,43 @@
         {
           "title": "GLP-1 Patient Intake Form",
           "designId": "wl-intake-form",
-          "editUrl": "/forms/WL-01-Intake-Form.html",
+          "editUrl": "https://www.canva.com/d/FupWQSHJewc6b1Z",
           "viewUrl": null
         },
         {
           "title": "GLP-1 Treatment Consent Form",
           "designId": "wl-consent-form",
-          "editUrl": "/forms/WL-02-Consent-Form.html",
+          "editUrl": "https://www.canva.com/d/AdYq7xJAV8Y6cxn",
           "viewUrl": null
         },
         {
           "title": "What to Expect: Your GLP-1 Journey",
           "designId": "wl-expectation-guide",
-          "editUrl": "/forms/WL-03-GLP1-Journey-Guide.html",
+          "editUrl": "https://www.canva.com/d/G5S5fzABeh2BpBS",
           "viewUrl": null
         },
         {
           "title": "Weekly Nutrition & Symptom Tracker",
           "designId": "wl-nutrition-tracker",
-          "editUrl": "/forms/WL-04-Nutrition-Tracker.html",
+          "editUrl": "https://www.canva.com/d/R_RHReK4ScG2y46",
           "viewUrl": null
         },
         {
           "title": "Side Effect Log & Action Guide",
           "designId": "wl-side-effect-log",
-          "editUrl": "/forms/WL-05-Side-Effect-Log.html",
+          "editUrl": "https://www.canva.com/d/lIN12HYoszdDSal",
           "viewUrl": null
         },
         {
           "title": "Injection Day Aftercare Card",
           "designId": "wl-aftercare-card",
-          "editUrl": "/forms/WL-06-Injection-Card.html",
+          "editUrl": "https://www.canva.com/d/l7M_mS7YZj-UXG_",
           "viewUrl": null
         },
         {
           "title": "Progress Photo & Video Release Form",
           "designId": "wl-progress-photo-release",
-          "editUrl": "/forms/WL-07-Photo-Release.html",
+          "editUrl": "https://www.canva.com/d/8S_ZFIcyvofNCrd",
           "viewUrl": null
         }
       ]

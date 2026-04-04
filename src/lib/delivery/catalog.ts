@@ -1,5 +1,10 @@
+import { DELIVERY_PRODUCT_SLUG_ALIASES } from "@/config/growth-funnel.config";
 import catalog from "@/lib/delivery/catalog.generated.json";
 import prisma from "@/lib/db";
+
+function resolveDeliveryProductSlug(productSlug: string): string {
+  return DELIVERY_PRODUCT_SLUG_ALIASES[productSlug] || productSlug;
+}
 
 export type DeliveryTemplateLink = {
   title: string;
@@ -47,8 +52,9 @@ export function getDeliveryProducts(): DeliveryProduct[] {
 export function getDeliveryProductBySlug(
   productSlug: string
 ): DeliveryProduct | null {
+  const resolved = resolveDeliveryProductSlug(productSlug);
   return (
-    getDeliveryProducts().find((product) => product.productSlug === productSlug) ||
+    getDeliveryProducts().find((product) => product.productSlug === resolved) ||
     null
   );
 }
@@ -90,12 +96,13 @@ function normalizeImportedManifest(
 export async function getDeliveryProductBySlugAsync(
   productSlug: string
 ): Promise<DeliveryProduct | null> {
+  const resolved = resolveDeliveryProductSlug(productSlug);
   const local = getDeliveryProductBySlug(productSlug);
   if (local) return local;
 
   const record = await prisma.analytics.findFirst({
     where: {
-      event: `${DELIVERY_MANIFEST_EVENT_PREFIX}${productSlug}`,
+      event: `${DELIVERY_MANIFEST_EVENT_PREFIX}${resolved}`,
     },
     orderBy: { createdAt: "desc" },
   });

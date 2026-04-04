@@ -1,0 +1,51 @@
+{
+  "productId": "treatment-pricing-menu",
+  "displayName": "Treatment Menu & Pricing Guide Templates",
+  "description": "Beautifully designed service menu templates including full treatment menu, injectable-specific menu, package/membership pricing guide, and new patient consultation guide.",
+  "version": "1.0.0",
+  "priceUSD": 19,
+  "etsySku": "NPA-PM-001",
+  "category": "marketing",
+  "targetBuyer": "Med spas and aesthetic clinics wanting a polished, professional service menu for their waiting room or website",
+  "templates": [
+    {
+      "id": "pm-full-menu",
+      "name": "Treatment Menu & Service Guide",
+      "description": "Full-service menu organized by category with descriptions and pricing placeholders",
+      "canvaTemplateUrl": "/forms/PM-01-Full-Service-Menu.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "marketing"
+    },
+    {
+      "id": "pm-injectable-menu",
+      "name": "Injectable Treatment Menu",
+      "description": "Botox, filler, Kybella, and PRP pricing with area-specific details",
+      "canvaTemplateUrl": "/forms/PM-02-Injectable-Menu.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "marketing"
+    },
+    {
+      "id": "pm-package-pricing",
+      "name": "Package & Membership Pricing Guide",
+      "description": "Package tiers, membership levels, and savings comparison layout",
+      "canvaTemplateUrl": "/forms/PM-03-Package-Pricing.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "marketing"
+    },
+    {
+      "id": "pm-consultation-guide",
+      "name": "Consultation Preparation Guide",
+      "description": "New patient guide covering what happens during consultation and next steps",
+      "canvaTemplateUrl": "/forms/PM-04-Consultation-Guide.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education"
+    }
+  ],
+  "deliveryNote": "Replace all placeholder pricing with your actual rates. Update treatment descriptions to match your specific offerings and equipment.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-31T22:04:05Z"
+}

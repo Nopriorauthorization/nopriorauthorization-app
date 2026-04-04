@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 // =============================================================================
 // GET /api/awareness/progress - Get progress snapshot for vault dashboard
 // =============================================================================

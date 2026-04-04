@@ -1,88 +1,85 @@
 /**
- * Bundle upgrade ladder — tiers, slug assignments, value anchors, showcase links.
- * Edit this file to change pricing psychology without touching UI components.
+ * Bundle upgrade ladder — tiers, slug assignments, showcase links.
+ * Checkout prices + tier compare-at: `@/config/growth-funnel.config`.
  */
 
-export type BundleTierId = "starter" | "most_popular" | "growth" | "mega";
+import {
+  BUNDLE_TIER_COMPARE_AT_CENTS as FUNNEL_TIER_COMPARE_AT,
+  BUNDLE_TIER_PRICE_CENTS,
+  GROWTH_SYSTEM_SLUG,
+} from "@/config/growth-funnel.config";
 
-export type BundleTierEmphasis = "none" | "recommended" | "best_value";
+export type { BundleTierEmphasis, BundleTierId } from "@/lib/shop/bundle-tier-types";
+import type { BundleTierEmphasis, BundleTierId } from "@/lib/shop/bundle-tier-types";
+
+export { BUNDLE_TIER_PRICE_CENTS, FUNNEL_TIER_COMPARE_AT as BUNDLE_TIER_COMPARE_AT_CENTS };
 
 export type BundleTierDefinition = {
   id: BundleTierId;
-  /** Display name in comparison table */
   title: string;
-  /** Short label for badges */
   shortLabel: string;
-  /** Marketing anchor (not necessarily exact checkout price) */
   anchorLabel: string;
   emphasis: BundleTierEmphasis;
-  /** Optional badge on PDP (e.g. MOST POPULAR) */
   badge: string | null;
-  /** One-line pitch for comparison table */
   summary: string;
 };
 
 export const BUNDLE_TIERS: BundleTierDefinition[] = [
   {
     id: "starter",
-    title: "Starter",
+    title: "Starter (30 templates)",
     shortLabel: "Starter",
-    anchorLabel: "~$30",
+    anchorLabel: "30 templates · $19",
     emphasis: "none",
     badge: null,
-    summary: "Entry bundles and essential consent stacks — start professional without a big spend.",
+    summary: "Entry bundles and essential stacks — start professional at the lowest tier.",
   },
   {
     id: "most_popular",
-    title: "Most popular",
+    title: "Most popular (60 templates)",
     shortLabel: "Most popular",
-    anchorLabel: "~$60",
+    anchorLabel: "60 templates · $29",
     emphasis: "recommended",
     badge: "Most popular",
-    summary: "Full kits owners buy most — social + clinical coverage for busy practices.",
+    summary: "The tier busy owners pick first — more coverage without the full library.",
   },
   {
     id: "growth",
-    title: "Growth",
+    title: "Growth (120 templates)",
     shortLabel: "Growth",
-    anchorLabel: "~$120",
+    anchorLabel: "120 templates · $57",
     emphasis: "none",
     badge: null,
-    summary: "Playbooks and systems — deeper ops, training, and revenue programs.",
+    summary: "Playbooks and deeper systems — training, ops, and revenue programs.",
   },
   {
     id: "mega",
-    title: "Best value / Mega",
-    shortLabel: "Mega",
-    anchorLabel: "$300+",
+    title: "💎 Growth System (300+ templates)",
+    shortLabel: "Growth System",
+    anchorLabel: "300+ templates · $147",
     emphasis: "best_value",
-    badge: "Best value",
-    summary: "Maximum coverage — combo stacks or premium suites for serious scale.",
+    badge: "Best Value",
+    summary: "Full library positioning — everything we bundle for serious scale (delivers mega stack).",
   },
 ];
 
-/** Canonical product shown per tier in the comparison table (live price/title from catalog). */
 export const BUNDLE_TIER_SHOWCASE_SLUG: Record<BundleTierId, string> = {
   starter: "botox-consent-bundle",
   most_popular: "weight-loss-kit",
   growth: "injectors-playbook",
-  mega: "combo-bundle",
+  mega: GROWTH_SYSTEM_SLUG,
 };
 
-/**
- * Primary “mega bundle” upsell for upgrade CTAs from lower tiers.
- * (Named consistently with homepage “mega bundle”.)
- */
-export const MEGA_UPGRADE_TARGET_SLUG = "combo-bundle";
+export const MEGA_UPGRADE_TARGET_SLUG = GROWTH_SYSTEM_SLUG;
 
-/**
- * Slugs that receive the full “no need to buy anything else” line (true all-in-one positioning).
- */
-export const MEGA_COMPLETE_STACK_SLUGS = new Set<string>(["combo-bundle"]);
+export const MEGA_COMPLETE_STACK_SLUGS = new Set<string>([
+  GROWTH_SYSTEM_SLUG,
+  "combo-bundle",
+]);
 
-/** Products that participate in the bundle ladder (PDP table + tier pricing UI). */
 export const PRODUCT_BUNDLE_TIER: Partial<Record<string, BundleTierId>> = {
-  // Starter (~$30 band)
+  [GROWTH_SYSTEM_SLUG]: "mega",
+
   "botox-consent-bundle": "starter",
   "filler-consent-bundle": "starter",
   "lash-aftercare-kit": "starter",
@@ -101,7 +98,6 @@ export const PRODUCT_BUNDLE_TIER: Partial<Record<string, BundleTierId>> = {
   "treatment-pricing-menu": "starter",
   "aftercare-card-kit": "starter",
 
-  // Most popular (~$60 band)
   "weight-loss-kit": "most_popular",
   "botox-social-bundle": "most_popular",
   "filler-social-bundle": "most_popular",
@@ -112,7 +108,6 @@ export const PRODUCT_BUNDLE_TIER: Partial<Record<string, BundleTierId>> = {
   "microneedling-patient-journey-kit": "most_popular",
   "chemical-peel-patient-journey-kit": "most_popular",
 
-  // Growth (~$120 band)
   "injectors-playbook": "growth",
   "new-injector-onboarding-kit": "growth",
   "google-domination-playbook": "growth",
@@ -134,20 +129,9 @@ export const PRODUCT_BUNDLE_TIER: Partial<Record<string, BundleTierId>> = {
   "patient-communication-kit": "growth",
   "microblading-pmu-playbook": "growth",
 
-  // Mega / best value ($300+ positioning or named mega stack)
   "combo-bundle": "mega",
   "diy-google-setup-kit": "mega",
   "med-spa-legal-startup-bundle": "mega",
-};
-
-/** Optional compare-at (cents) for strikethrough “value” anchoring — editorial, not legal MSRP. */
-export const BUNDLE_COMPARE_AT_CENTS: Partial<Record<string, number>> = {
-  "combo-bundle": 12000,
-  "complete-injector-bundle": 12000,
-  "weight-loss-kit": 9700,
-  "botox-consent-bundle": 5500,
-  "diy-google-setup-kit": 45000,
-  "med-spa-legal-startup-bundle": 35000,
 };
 
 export function getBundleTierDefinition(id: BundleTierId): BundleTierDefinition {

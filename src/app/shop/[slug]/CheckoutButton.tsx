@@ -1,17 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import { type FunnelEventName, trackFunnelEvent } from "@/lib/analytics/funnel-events";
 
 export function CheckoutButton({
   slug,
   label,
+  funnelEventOnCheckout,
+  funnelEventParams,
 }: {
   slug: string;
   label: string;
+  funnelEventOnCheckout?: FunnelEventName;
+  funnelEventParams?: Record<string, string | undefined>;
 }) {
   const [loading, setLoading] = useState(false);
 
   const handleCheckout = async () => {
+    if (funnelEventOnCheckout) {
+      trackFunnelEvent(funnelEventOnCheckout, funnelEventParams);
+    }
     setLoading(true);
     try {
       const res = await fetch("/api/shop/checkout", {

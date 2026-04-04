@@ -12,7 +12,7 @@
       "id": "lsh-intake-form",
       "name": "Lash Client Intake & Health History Form",
       "description": "New client intake capturing eye health history, contact lens use, allergies, and prior lash service history",
-      "canvaTemplateUrl": "/forms/LSH-01-Intake-Form.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/ljxKMC74n_oXo1m",
       "format": "8.5x11",
       "pages": 1,
       "category": "forms"
@@ -21,7 +21,7 @@
       "id": "lsh-allergy-waiver",
       "name": "Patch Test Waiver & Allergy Release",
       "description": "Waiver for clients who decline patch testing and acknowledgment of adhesive sensitivity risks",
-      "canvaTemplateUrl": "/forms/LSH-02-Allergy-Waiver.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/GFgewQf22t5_4UI",
       "format": "8.5x11",
       "pages": 1,
       "category": "forms"
@@ -30,7 +30,7 @@
       "id": "lsh-extension-consent",
       "name": "Lash Extension Consent Form",
       "description": "Service consent covering adhesive use, retention expectations, fill schedule, and removal procedures",
-      "canvaTemplateUrl": "/forms/LSH-03-Extension-Consent.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/QSI0fTCG0k4IfBX",
       "format": "8.5x11",
       "pages": 1,
       "category": "forms"
@@ -48,7 +48,7 @@
       "id": "lsh-lift-consent",
       "name": "Lash Lift & Tint Consent Form",
       "description": "Consent for lash lift / brow lamination covering chemical process, over-processing risk, and patch test requirements",
-      "canvaTemplateUrl": "/forms/LSH-05-Lift-Consent.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/gkYJVq7wK3e2fxf",
       "format": "8.5x11",
       "pages": 1,
       "category": "forms"
@@ -66,7 +66,7 @@
       "id": "lsh-rebook-card",
       "name": "Rebooking Reminder Card",
       "description": "Branded business-card sized reminder with recommended fill interval and booking link or QR code placeholder",
-      "canvaTemplateUrl": "/forms/LSH-07-Rebook-Card.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/L5SXfcDdvi8EA1S",
       "format": "3.5x2",
       "pages": 1,
       "category": "marketing"

@@ -1,10 +1,11 @@
-import Link from "next/link";
+import { FUNNEL_COPY } from "@/config/growth-funnel.config";
 import {
   MEGA_COMPLETE_STACK_SLUGS,
   MEGA_UPGRADE_TARGET_SLUG,
   type BundleTierId,
 } from "@/lib/shop/bundle-tier-config";
 import type { ShopProduct } from "@/lib/shop/products";
+import { FunnelLink } from "./FunnelLink";
 
 export function BundleUpgradeMessaging({
   slug,
@@ -27,9 +28,9 @@ export function BundleUpgradeMessaging({
       >
         {complete ? (
           <>
-            <strong className="text-white">Everything in this stack — </strong>
-            no need to buy anything else to run the full combo we designed. Add individual
-            playbooks later only if you want niche depth.
+            <strong className="text-white">Everything included — </strong>
+            no need to buy anything else for this stack. Add individual playbooks only if you
+            want niche depth later.
           </>
         ) : (
           <>
@@ -46,11 +47,19 @@ export function BundleUpgradeMessaging({
 
   return (
     <div className="mt-5 rounded-xl border border-[#D4537E]/35 bg-[#D4537E]/10 p-4 text-sm text-gray-300">
-      <strong className="text-white">Upgrade to the Mega Bundle and save — </strong>
-      <Link href={`/shop/${MEGA_UPGRADE_TARGET_SLUG}`} className="font-bold text-[#D4537E] hover:underline">
+      <span className="text-white/95">{FUNNEL_COPY.upgradeToGrowth} </span>
+      <FunnelLink
+        href={`/shop/${MEGA_UPGRADE_TARGET_SLUG}`}
+        event="funnel_upgrade_growth_click"
+        eventParams={{ from_tier: tierId }}
+        className="font-bold text-[#D4537E] hover:underline"
+      >
         {megaProduct.title}
-      </Link>
-      <span> ({megaProduct.priceDisplay}) bundles clinical, social, and ops templates so you stop buying piecemeal.</span>
+      </FunnelLink>
+      <span>
+        {" "}
+        ({megaProduct.priceDisplay}) — full Growth System instead of stacking smaller bundles.
+      </span>
     </div>
   );
 }

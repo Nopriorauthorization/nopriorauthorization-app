@@ -1,0 +1,60 @@
+{
+  "productId": "medspa-startup-checklist",
+  "displayName": "Med Spa Business Startup Checklist",
+  "description": "Step-by-step business formation, licensing, vendor setup, operations compliance, and 90-day launch timeline for opening a med spa or aesthetic practice.",
+  "version": "1.0.0",
+  "priceUSD": 27,
+  "etsySku": "NPA-SU-001",
+  "category": "operations",
+  "targetBuyer": "Nurse practitioners, PAs, and aestheticians planning to open their own med spa or aesthetic suite",
+  "templates": [
+    {
+      "id": "su-business-formation",
+      "name": "Med Spa Business Formation Checklist",
+      "description": "Entity type, state registration, EIN, banking, insurance, and collaborative practice requirements",
+      "canvaTemplateUrl": "/forms/SU-01-Business-Formation.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "operations"
+    },
+    {
+      "id": "su-licensing",
+      "name": "Licensing & Credentialing Checklist",
+      "description": "NPI, DEA, state licenses, local permits, OSHA, ADA, and facility inspections",
+      "canvaTemplateUrl": "/forms/SU-02-Licensing-Credentialing.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "operations"
+    },
+    {
+      "id": "su-vendor-setup",
+      "name": "Vendor & Supplier Setup Checklist",
+      "description": "Medical supplies, product lines, EMR, payment processing, and marketing tools",
+      "canvaTemplateUrl": "/forms/SU-03-Vendor-Setup.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "operations"
+    },
+    {
+      "id": "su-operations",
+      "name": "Operations & Compliance Setup Checklist",
+      "description": "HIPAA, consent forms, emergency protocols, infection control, and staff training",
+      "canvaTemplateUrl": "/forms/SU-04-Operations-Setup.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "operations"
+    },
+    {
+      "id": "su-launch-timeline",
+      "name": "90-Day Med Spa Launch Timeline",
+      "description": "Month-by-month milestone checklist from formation through grand opening",
+      "canvaTemplateUrl": "/forms/SU-05-Launch-Timeline.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "operations"
+    }
+  ],
+  "deliveryNote": "Requirements vary by state. Use these checklists as a planning framework and verify all licensing and legal requirements with your state board and attorney.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-31T22:04:05Z"
+}

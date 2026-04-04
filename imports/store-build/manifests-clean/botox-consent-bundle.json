@@ -12,7 +12,7 @@
       "id": "btx-consultation-form",
       "name": "Neurotoxin Consultation & Medical History Form",
       "description": "Full pre-treatment consultation capturing medical history, medications, contraindications, and aesthetic goals",
-      "canvaTemplateUrl": "/forms/BTX-01-Consultation-Form.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/XQrbOn0zFeb9Loj",
       "format": "8.5x11",
       "pages": 2,
       "category": "forms"
@@ -21,7 +21,7 @@
       "id": "btx-consent-form",
       "name": "Botox / Neurotoxin Informed Consent Form",
       "description": "Comprehensive consent covering risks, benefits, alternatives, realistic outcomes, and longevity expectations",
-      "canvaTemplateUrl": "/forms/BTX-02-Informed-Consent.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/Vhsuo166OSMAAKD",
       "format": "8.5x11",
       "pages": 2,
       "category": "forms"
@@ -30,7 +30,7 @@
       "id": "btx-precare",
       "name": "Pre-Treatment Instructions — Neurotoxin",
       "description": "Patient handout with 72-hour pre-treatment dos and don'ts to reduce bruising and optimize results",
-      "canvaTemplateUrl": "/forms/BTX-03-Pre-Treatment-Neurotoxin.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/TgarT-1qUBqRxu1",
       "format": "8.5x11",
       "pages": 1,
       "category": "education"
@@ -39,7 +39,7 @@
       "id": "btx-postcare",
       "name": "Post-Treatment Aftercare Instructions — Neurotoxin",
       "description": "Detailed post-injection care including activity restrictions, positioning, and when to expect results",
-      "canvaTemplateUrl": "/forms/BTX-04-Post-Treatment-Neurotoxin.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/_abYd2aafr6OPHY",
       "format": "8.5x11",
       "pages": 1,
       "category": "education"
@@ -48,7 +48,7 @@
       "id": "btx-treatment-record",
       "name": "Neurotoxin Treatment Record & Dosing Log",
       "description": "Per-visit documentation form with injection site diagram, units per area, lot number, and provider signature",
-      "canvaTemplateUrl": "/forms/BTX-05-Treatment-Record.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/4DBaZuqBUU3pPbR",
       "format": "8.5x11",
       "pages": 1,
       "category": "clinical-record"
@@ -57,7 +57,7 @@
       "id": "btx-photo-release",
       "name": "Before/After Photography Consent",
       "description": "HIPAA-compliant photo consent with options for clinical use, marketing use, and social media use",
-      "canvaTemplateUrl": "/forms/BTX-06-Photo-Release.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/tM9fRSVFna_uanM",
       "format": "8.5x11",
       "pages": 1,
       "category": "forms"

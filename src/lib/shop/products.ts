@@ -1,9 +1,14 @@
 import fs from "fs";
 import path from "path";
 import catalog from "@/lib/delivery/catalog.generated.json";
+import {
+  GROWTH_SYSTEM_PRODUCT,
+  GROWTH_SYSTEM_SLUG,
+  BUNDLE_TIER_COMPARE_AT_CENTS,
+  BUNDLE_TIER_PRICE_CENTS,
+} from "@/config/growth-funnel.config";
 import type { BundleTierEmphasis, BundleTierId } from "@/lib/shop/bundle-tier-config";
 import {
-  BUNDLE_COMPARE_AT_CENTS,
   getBundleTierDefinition,
   getBundleTierIdForSlug,
 } from "@/lib/shop/bundle-tier-config";
@@ -522,14 +527,20 @@ export function getShopProducts(): ShopProduct[] {
 
   const catalogProducts = (catalog as { products?: CatalogProduct[] }).products || [];
 
+  const comboEntry = catalogProducts.find((c) => c.productSlug === "combo-bundle");
+
   _products = catalogProducts.map((cp) => {
     const slug = cp.productSlug;
-    const priceCents = PRICE_MAP[slug] || 2700;
+    let priceCents = PRICE_MAP[slug] || 2700;
     const category = CATEGORY_MAP[slug] || "General";
     const tierId = getBundleTierIdForSlug(slug);
-    const rawCompare = BUNDLE_COMPARE_AT_CENTS[slug];
-    const compareAtCents =
-      typeof rawCompare === "number" && rawCompare > priceCents ? rawCompare : null;
+    if (tierId) {
+      priceCents = BUNDLE_TIER_PRICE_CENTS[tierId];
+    }
+
+    const tierCompare = tierId ? BUNDLE_TIER_COMPARE_AT_CENTS[tierId] : undefined;
+    let compareAtCents: number | null =
+      typeof tierCompare === "number" && tierCompare > priceCents ? tierCompare : null;
 
     const base: ShopProduct = {
       slug,
@@ -564,6 +575,40 @@ export function getShopProducts(): ShopProduct[] {
 
     return base;
   });
+
+  const hasGrowthSystem = _products.some((p) => p.slug === GROWTH_SYSTEM_SLUG);
+  if (!hasGrowthSystem) {
+    const gsTier = getBundleTierIdForSlug(GROWTH_SYSTEM_SLUG);
+    const gsDef = gsTier ? getBundleTierDefinition(gsTier) : null;
+    const templateCount = Math.max(
+      GROWTH_SYSTEM_PRODUCT.templateCountFloor,
+      comboEntry?.templateCount ?? 0,
+    );
+    const gs: ShopProduct = {
+      slug: GROWTH_SYSTEM_SLUG,
+      title: GROWTH_SYSTEM_PRODUCT.title,
+      shortDescription: GROWTH_SYSTEM_PRODUCT.shortDescription,
+      longDescription: `${GROWTH_SYSTEM_PRODUCT.shortDescription}\n\n${templateCount}+ templates and assets delivered as the full NPA Growth System stack. Instant digital delivery after checkout.`,
+      priceCents: GROWTH_SYSTEM_PRODUCT.priceCents,
+      priceDisplay: formatPrice(GROWTH_SYSTEM_PRODUCT.priceCents),
+      templateCount,
+      category: "Bundles",
+      features: buildFeatures("combo-bundle", templateCount),
+      featured: true,
+      stripePriceId: null,
+      previewImages: discoverPreviewImages("combo-bundle", "Bundles"),
+      audience: AUDIENCE_MAP["Bundles"] ?? ["Med spa owners", "Multi-service clinics"],
+      bundleTierId: "mega",
+      bundleTierTitle: gsDef?.title,
+      bundleTierShortLabel: gsDef?.shortLabel,
+      bundleTierAnchorLabel: gsDef?.anchorLabel,
+      bundleTierBadge: gsDef?.badge ?? null,
+      bundleTierEmphasis: gsDef?.emphasis ?? "best_value",
+      compareAtCents: GROWTH_SYSTEM_PRODUCT.compareAtCents,
+      compareAtDisplay: formatPrice(GROWTH_SYSTEM_PRODUCT.compareAtCents),
+    };
+    _products.push(gs);
+  }
 
   _products.sort((a, b) => {
     if (a.featured && !b.featured) return -1;

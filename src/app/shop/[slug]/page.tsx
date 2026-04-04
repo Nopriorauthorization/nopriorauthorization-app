@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { GROWTH_SYSTEM_SLUG } from "@/config/growth-funnel.config";
 import { BundleTierComparison } from "@/components/shop/BundleTierComparison";
 import { BundleUpgradeMessaging } from "@/components/shop/BundleUpgradeMessaging";
+import { MembershipUpsellBlock } from "@/components/shop/MembershipUpsellBlock";
 import { MEGA_UPGRADE_TARGET_SLUG } from "@/lib/shop/bundle-tier-config";
 import { getFamilyByProductSlug } from "@/lib/shop/families";
 import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
@@ -10,7 +12,9 @@ import { ProductPreviewGallery } from "../ProductPreviewGallery";
 import { CheckoutButton } from "./CheckoutButton";
 
 export function generateStaticParams() {
-  return getShopProducts().map((p) => ({ slug: p.slug }));
+  return getShopProducts()
+    .filter((p) => p.slug !== GROWTH_SYSTEM_SLUG)
+    .map((p) => ({ slug: p.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
@@ -128,6 +132,9 @@ export default async function ProductDetailPage({
             <span>Fully editable</span>
             <span>&middot;</span>
             <span>Print-ready</span>
+          </div>
+          <div className="mt-6">
+            <MembershipUpsellBlock productSlug={params.slug} />
           </div>
         </section>
 

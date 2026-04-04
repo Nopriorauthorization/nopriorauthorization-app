@@ -3,6 +3,8 @@
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
+import { FUNNEL_COPY, MEMBERSHIP_CONFIG } from "@/config/growth-funnel.config";
+import { FunnelLink } from "@/components/shop/FunnelLink";
 
 /**
  * Square appends query params to `redirect_url` after payment link checkout, e.g.
@@ -94,6 +96,39 @@ function ThankYouContent() {
             <span className="font-mono text-gray-400">{ref.value}</span>
           </p>
         )}
+
+        <div className="mb-10 grid gap-4 text-left sm:grid-cols-2">
+          <div className="rounded-xl border border-amber-500/35 bg-amber-500/[0.06] p-5">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-amber-200/90">
+              Go bigger
+            </h2>
+            <p className="mt-2 text-sm text-gray-400">{FUNNEL_COPY.thankYouGrowth}</p>
+            <FunnelLink
+              href="/shop/growth-system"
+              event="funnel_growth_system_click"
+              eventParams={{ source: "thank_you" }}
+              className="mt-3 inline-block text-sm font-bold text-[#D4537E] hover:underline"
+            >
+              View Growth System
+            </FunnelLink>
+          </div>
+          <div className="rounded-xl border border-[#D4537E]/25 bg-[#D4537E]/10 p-5">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-[#D4537E]">
+              Stay stocked
+            </h2>
+            <p className="mt-2 text-sm text-gray-400">{FUNNEL_COPY.thankYouMembership}</p>
+            <FunnelLink
+              href="/membership"
+              event="funnel_membership_click"
+              eventParams={{ source: "thank_you" }}
+              className="mt-3 inline-block text-sm font-bold text-[#D4537E] hover:underline"
+            >
+              {MEMBERSHIP_CONFIG.ctaLabel} — $
+              {(MEMBERSHIP_CONFIG.monthlyPriceCents / 100).toFixed(0)}
+              /mo
+            </FunnelLink>
+          </div>
+        </div>
 
         <div className="flex flex-wrap justify-center gap-4">
           <Link

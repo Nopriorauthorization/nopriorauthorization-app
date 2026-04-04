@@ -1,0 +1,69 @@
+{
+  "productId": "client-welcome-packet",
+  "displayName": "Client Welcome Packet for Med Spas",
+  "description": "Professional new patient welcome package including welcome letter, office policies, financial agreement, HIPAA summary, communication consent, and first visit preparation guide.",
+  "version": "1.0.0",
+  "priceUSD": 27,
+  "etsySku": "NPA-WP-001",
+  "category": "operations",
+  "targetBuyer": "Med spa owners and practice managers creating a premium first-visit client experience",
+  "templates": [
+    {
+      "id": "wp-welcome-letter",
+      "name": "Welcome to Our Med Spa",
+      "description": "Warm welcome message with clinic mission, provider bios, and first visit expectations",
+      "canvaTemplateUrl": "/forms/WP-01-Welcome-Letter.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "marketing"
+    },
+    {
+      "id": "wp-office-policies",
+      "name": "Office Policies & Patient Agreement",
+      "description": "Scheduling, cancellation, late arrival, payment, and communication policies with signature",
+      "canvaTemplateUrl": "/forms/WP-02-Office-Policies.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms"
+    },
+    {
+      "id": "wp-financial-policy",
+      "name": "Financial Policy & Payment Agreement",
+      "description": "Payment terms, accepted methods, package policies, refund rules, and insurance disclaimer",
+      "canvaTemplateUrl": "/forms/WP-03-Financial-Policy.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms"
+    },
+    {
+      "id": "wp-hipaa-summary",
+      "name": "Notice of Privacy Practices — Patient Summary",
+      "description": "Plain-language 1-page HIPAA summary with patient rights and acknowledgment signature",
+      "canvaTemplateUrl": "/forms/WP-04-HIPAA-Notice-Summary.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "compliance"
+    },
+    {
+      "id": "wp-communication-consent",
+      "name": "Communication & Marketing Consent Form",
+      "description": "TCPA-compliant consent for appointment reminders, marketing, and photo use",
+      "canvaTemplateUrl": "/forms/WP-05-Communication-Consent.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "forms"
+    },
+    {
+      "id": "wp-what-to-expect",
+      "name": "What to Expect at Your First Visit",
+      "description": "Arrival checklist, consultation process, and next steps guide for new patients",
+      "canvaTemplateUrl": "/forms/WP-06-What-To-Expect.html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education"
+    }
+  ],
+  "deliveryNote": "Customize all placeholder fields with your clinic name, address, hours, policies, and provider information before use.",
+  "expirationDays": 365,
+  "importedAt": "2026-03-31T22:04:05Z"
+}

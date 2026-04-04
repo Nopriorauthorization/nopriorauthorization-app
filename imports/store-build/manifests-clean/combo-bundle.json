@@ -44,7 +44,7 @@
       "id": "cb-wl-intake",
       "name": "GLP-1 Patient Intake Form",
       "description": "Medical history and candidacy screening for weight loss programs",
-      "canvaTemplateUrl": "/forms/WL-01-Intake-Form.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/FupWQSHJewc6b1Z",
       "format": "8.5x11",
       "pages": 2,
       "category": "forms"
@@ -53,7 +53,7 @@
       "id": "cb-wl-consent",
       "name": "GLP-1 Treatment Consent Form",
       "description": "Informed consent for semaglutide / GLP-1 weight loss treatment",
-      "canvaTemplateUrl": "/forms/WL-02-Consent-Form.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/AdYq7xJAV8Y6cxn",
       "format": "8.5x11",
       "pages": 2,
       "category": "forms"
@@ -62,7 +62,7 @@
       "id": "cb-wl-guide",
       "name": "What to Expect: Your GLP-1 Journey",
       "description": "Patient education guide for weeks 1-12 on GLP-1 therapy",
-      "canvaTemplateUrl": "/forms/WL-03-GLP1-Journey-Guide.html",
+      "canvaTemplateUrl": "https://www.canva.com/d/G5S5fzABeh2BpBS",
       "format": "8.5x11",
       "pages": 2,
       "category": "education"

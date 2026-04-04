@@ -6,7 +6,7 @@
 
 ## 1 — Square Dashboard (manual)
 
-- [ ] Webhook subscribed to **`payment.completed`**
+- [ ] Webhook subscribed to **`payment.updated`** (Payments) — delivery triggers when Square sets **`payment.status` to `COMPLETED`**. The app also accepts **`payment.completed`** if that event appears on older configs.
 - [ ] Webhook URL is **exactly:** `https://nopriorauthorization.com/api/square/webhook`
 - [ ] **Signing key** copied into Vercel as **`SQUARE_WEBHOOK_SIGNATURE_KEY`** (must match the key for that subscription)
 

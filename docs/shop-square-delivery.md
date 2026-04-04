@@ -14,7 +14,7 @@ This document describes how a customer gets from **Buy** to **download links**, 
 
 4. **Thank-you page** — Browser lands on `/shop/thank-you`. Square typically appends **`transactionId`** (and often `checkoutId`, `orderId`, `referenceId`). The page displays the **Square transaction ID** when `transactionId` is present, with fallbacks for other Square params; **`session_id`** is still supported for legacy Stripe checkouts.
 
-5. **Webhook** — Square sends **`payment.completed`** to `POST /api/square/webhook` (`src/app/api/square/webhook/route.ts`). The handler:
+5. **Webhook** — Square sends **`payment.updated`** (when `payment.status` becomes **`COMPLETED`**) to `POST /api/square/webhook`. The handler also accepts legacy **`payment.completed`** if subscribed. See Square’s [Webhook Events Reference](https://developer.squareup.com/docs/webhooks/v2webhook-events-tech-ref) — Payments API lists `payment.created` / `payment.updated`, not `payment.completed`. Code: `src/app/api/square/webhook/route.ts`. The handler:
    - Verifies the HMAC signature when `SQUARE_WEBHOOK_SIGNATURE_KEY` is set (notification URL must match **`SQUARE_WEBHOOK_URL`** exactly).
    - Reads **`buyer_email_address`** and **`payment.note`**, parses `npa:{slug}`.
    - Dedupes using `Purchase.stripeSessionId = sq_{paymentId}`.
@@ -42,7 +42,7 @@ Use **Square Sandbox** first; expose your dev server with a tunnel (e.g. ngrok) 
 ### Square Developer Dashboard
 
 - [ ] Webhook subscription points to **`https://<your-host>/api/square/webhook`** (same string as `SQUARE_WEBHOOK_URL` in that environment).
-- [ ] Subscription includes event type **`payment.completed`**.
+- [ ] Subscription includes **`payment.updated`** (and optionally **`payment.created`**) under Payments — delivery runs when status is **`COMPLETED`**. Legacy **`payment.completed`** is still handled if your app shows it.
 - [ ] Sandbox **application** has access token and location ID copied into env for the app you are testing.
 
 ### Create checkout & pay
@@ -54,7 +54,7 @@ Use **Square Sandbox** first; expose your dev server with a tunnel (e.g. ngrok) 
 
 ### Webhook & server logs
 
-- [ ] Logs show `[square/webhook] Event: payment.completed` (or inspect webhook delivery in Square dashboard).
+- [ ] Logs show `[square/webhook] Event: payment.updated` (or inspect webhook delivery in Square dashboard) and delivery proceeds after **`COMPLETED`**.
 - [ ] No `Invalid signature` (401) — if you see this, fix `SQUARE_WEBHOOK_URL` and signature key to match the subscribed URL.
 - [ ] No `No buyer email` — ensure checkout collects buyer email (Square payment link default behavior).
 - [ ] No persistent `No product slug in payment note` — confirms `payment_note` is `npa:{slug}` on the created link.

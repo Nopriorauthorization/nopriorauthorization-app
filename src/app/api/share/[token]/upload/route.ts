@@ -7,7 +7,7 @@ import {
   getShareRequestMetadata,
   SHARE_COMPLIANCE_STATEMENT,
 } from "@/lib/sharing/share-service";
-import { uploadToSupabase } from "@/lib/storage/supabase";
+import { uploadToBucket } from "@/lib/storage/supabase";
 import type { ProviderRole } from "@prisma/client";
 
 /**
@@ -228,7 +228,11 @@ export async function POST(
     const safeFilename = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
     const storagePath = `npa-vault/${shareSession!.npaId}/provider-contributions/${timestamp}-${safeFilename}`;
 
-    await uploadToSupabase(storagePath, fileBuffer, file.type);
+    await uploadToBucket({
+      path: storagePath,
+      data: fileBuffer,
+      mimeType: file.type,
+    });
 
     // Map contribution type to document category
     const categoryMap: Record<string, string> = {

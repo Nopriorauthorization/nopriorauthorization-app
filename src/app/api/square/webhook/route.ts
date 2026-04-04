@@ -46,21 +46,50 @@ export async function POST(req: NextRequest) {
 
   console.log(`[square/webhook] Event: ${event.type}`);
 
-  if (event.type === "payment.completed") {
-    try {
+  /**
+   * Square's Payments webhooks are `payment.created` and `payment.updated` (see
+   * Webhook Events Reference). Completion is indicated by `payment.status === "COMPLETED"`
+   * on `payment.updated`, not a separate `payment.completed` event. We still accept
+   * `payment.completed` if present on older subscriptions.
+   */
+  try {
+    if (shouldProcessPaymentForDelivery(event)) {
       await handlePaymentCompleted(event);
-    } catch (err) {
-      console.error("[square/webhook] Handler error:", err);
     }
+  } catch (err) {
+    console.error("[square/webhook] Handler error:", err);
   }
 
   return NextResponse.json({ received: true });
 }
 
-async function handlePaymentCompleted(event: Record<string, unknown>) {
+function extractPaymentFromEvent(event: Record<string, unknown>): Record<
+  string,
+  unknown
+> | undefined {
   const data = event.data as Record<string, unknown> | undefined;
   const obj = data?.object as Record<string, unknown> | undefined;
-  const payment = obj?.payment as Record<string, unknown> | undefined;
+  return obj?.payment as Record<string, unknown> | undefined;
+}
+
+function shouldProcessPaymentForDelivery(event: Record<string, unknown>): boolean {
+  const type = String(event.type || "");
+  if (type === "payment.completed") {
+    return true;
+  }
+  const payment = extractPaymentFromEvent(event);
+  if (!payment) {
+    return false;
+  }
+  const status = String(payment.status || "");
+  if (type === "payment.updated" || type === "payment.created") {
+    return status === "COMPLETED";
+  }
+  return false;
+}
+
+async function handlePaymentCompleted(event: Record<string, unknown>) {
+  const payment = extractPaymentFromEvent(event);
 
   if (!payment) {
     console.error("[square/webhook] No payment object in event");
@@ -70,10 +99,11 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
   const paymentId = String(payment.id || "");
   const email = String(payment.buyer_email_address || "");
   const note = String(payment.note || "");
-  const totalMoney = payment.total_money as
-    | { amount?: number }
-    | undefined;
-  const amountCents = Number(totalMoney?.amount || 0);
+  const totalMoney = payment.total_money as { amount?: number } | undefined;
+  const amountMoney = payment.amount_money as { amount?: number } | undefined;
+  const amountCents = Number(
+    totalMoney?.amount ?? amountMoney?.amount ?? 0,
+  );
 
   const slugMatch = note.match(/^npa:(.+)$/);
   const productSlug = slugMatch?.[1] || "";

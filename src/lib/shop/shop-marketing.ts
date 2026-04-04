@@ -90,7 +90,8 @@ export const SHOP_OUTCOME_MAP: Record<string, string> = {
   "med-spa-legal-startup-bundle": "Open your doors legally. 34 templates your attorney will thank you for.",
   "botox-consent-bundle": "Protect your practice and look professional from day one.",
   "hipaa-compliance-kit": "Be audit-ready tomorrow. Not next month.",
-  "injectors-playbook": "Ryan's exact consultation scripts, dosing protocols, and clinical systems — in your hands.",
+  "injectors-playbook":
+    "Consultation scripts, dosing protocols, and clinical systems from a real med spa practice — in your hands.",
   "new-injector-onboarding-kit": "Train your next injector in 30 days. Not 6 months of trial and error.",
   "guidebook-category-strategy": "Build a digital product business that earns while you sleep.",
   "microblading-pmu-playbook": "Run your PMU business like a clinic, not a side hustle.",

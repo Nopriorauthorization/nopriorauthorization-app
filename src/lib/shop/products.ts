@@ -381,7 +381,7 @@ function buildFeatures(slug: string, count: number): string[] {
   if (cat === "Bundles") base.push("Best value — multiple categories");
   if (cat === "Playbooks") {
     return [
-      "Written by Ryan Kent, FNP-BC",
+      "Written by Danielle Alcala",
       "Real consultation scripts — word for word",
       "Clinical protocols you can use tomorrow",
       "Interactive HTML — works on any device",
@@ -457,7 +457,7 @@ function buildShortDescription(slug: string, _title: string, count: number): str
     case "Bundles":
       return `The ultimate value pack — ${count} templates spanning clinical forms, social media, and business essentials.`;
     case "Playbooks":
-      return `Premium clinical education from Ryan Kent, FNP-BC. Real scripts, real protocols, real systems — not theory.`;
+      return `Premium clinical education from Danielle Alcala. Real scripts, real protocols, real systems — not theory.`;
     case "Cheat Sheets":
       return `Pocket-style reference you can print or keep on screen between patients — dosing cues, landmarks, and reminders without flipping through a full playbook.`;
     case "Business Systems":

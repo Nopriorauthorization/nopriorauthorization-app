@@ -157,7 +157,7 @@ export function PlaybookShowcase() {
           Playbooks &amp; Practice Guides
         </h2>
         <p className="mx-auto mt-3 max-w-lg text-sm text-gray-400">
-          Written by Ryan Kent, FNP-BC — real clinical systems from a real
+          Written by Danielle Alcala — real clinical systems from a real
           practice. Not theory. Not fluff.
         </p>
       </div>

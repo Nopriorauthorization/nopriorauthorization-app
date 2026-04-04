@@ -1,6 +1,12 @@
 import fs from "fs";
 import path from "path";
 import catalog from "@/lib/delivery/catalog.generated.json";
+import type { BundleTierEmphasis, BundleTierId } from "@/lib/shop/bundle-tier-config";
+import {
+  BUNDLE_COMPARE_AT_CENTS,
+  getBundleTierDefinition,
+  getBundleTierIdForSlug,
+} from "@/lib/shop/bundle-tier-config";
 
 export type ShopProduct = {
   slug: string;
@@ -16,6 +22,15 @@ export type ShopProduct = {
   stripePriceId: string | null;
   previewImages: string[];
   audience: string[];
+  /** Set when product is on the config-driven bundle ladder */
+  bundleTierId?: BundleTierId;
+  bundleTierTitle?: string;
+  bundleTierShortLabel?: string;
+  bundleTierAnchorLabel?: string;
+  bundleTierBadge?: string | null;
+  bundleTierEmphasis?: BundleTierEmphasis;
+  compareAtCents?: number | null;
+  compareAtDisplay?: string | null;
 };
 
 type CatalogProduct = {
@@ -511,7 +526,12 @@ export function getShopProducts(): ShopProduct[] {
     const slug = cp.productSlug;
     const priceCents = PRICE_MAP[slug] || 2700;
     const category = CATEGORY_MAP[slug] || "General";
-    return {
+    const tierId = getBundleTierIdForSlug(slug);
+    const rawCompare = BUNDLE_COMPARE_AT_CENTS[slug];
+    const compareAtCents =
+      typeof rawCompare === "number" && rawCompare > priceCents ? rawCompare : null;
+
+    const base: ShopProduct = {
       slug,
       title: cp.productTitle,
       shortDescription: buildShortDescription(slug, cp.productTitle, cp.templateCount),
@@ -526,6 +546,23 @@ export function getShopProducts(): ShopProduct[] {
       previewImages: discoverPreviewImages(slug, category),
       audience: AUDIENCE_MAP[category] || ["Aesthetic professionals"],
     };
+
+    if (tierId) {
+      const def = getBundleTierDefinition(tierId);
+      base.bundleTierId = tierId;
+      base.bundleTierTitle = def.title;
+      base.bundleTierShortLabel = def.shortLabel;
+      base.bundleTierAnchorLabel = def.anchorLabel;
+      base.bundleTierBadge = def.badge;
+      base.bundleTierEmphasis = def.emphasis;
+    }
+
+    if (compareAtCents != null) {
+      base.compareAtCents = compareAtCents;
+      base.compareAtDisplay = formatPrice(compareAtCents);
+    }
+
+    return base;
   });
 
   _products.sort((a, b) => {

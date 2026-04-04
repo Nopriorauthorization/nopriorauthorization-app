@@ -1,8 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { BundleTierComparison } from "@/components/shop/BundleTierComparison";
+import { BundleUpgradeMessaging } from "@/components/shop/BundleUpgradeMessaging";
+import { MEGA_UPGRADE_TARGET_SLUG } from "@/lib/shop/bundle-tier-config";
+import { getFamilyByProductSlug } from "@/lib/shop/families";
 import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
-import { getFamilyByProductSlug } from "@/lib/shop/families";
 import { ProductPreviewGallery } from "../ProductPreviewGallery";
 import { CheckoutButton } from "./CheckoutButton";
 
@@ -44,7 +47,16 @@ export default async function ProductDetailPage({
   const interactivePreviewSrc = getShopInteractivePreviewSrc(params.slug);
   const relatedSizes = findRelatedSizes(params.slug, allProducts);
   const hasPricingLadder = relatedSizes.length > 0;
+  const onBundleLadder = Boolean(product.bundleTierId);
+  const megaProduct = getShopProductBySlug(MEGA_UPGRADE_TARGET_SLUG);
   const collection = getFamilyByProductSlug(params.slug);
+
+  const priceEmphasisClass =
+    product.bundleTierEmphasis === "best_value"
+      ? "rounded-xl border-2 border-amber-500/45 bg-amber-500/[0.08] p-5 sm:p-6"
+      : product.bundleTierEmphasis === "recommended"
+        ? "rounded-xl border border-sky-500/40 bg-sky-500/[0.06] p-5 sm:p-6"
+        : "";
 
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white">
@@ -77,13 +89,37 @@ export default async function ProductDetailPage({
           <p className="mb-6 max-w-2xl text-lg leading-relaxed text-gray-400">
             {product.longDescription || product.shortDescription}
           </p>
-          <div className="flex flex-wrap items-center gap-6">
-            <div>
-              <span className="text-4xl font-bold">{product.priceDisplay}</span>
-              <span className="ml-2 text-sm text-gray-500">one-time payment</span>
+          <div className={`flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6 ${priceEmphasisClass}`}>
+            <div className="min-w-0 flex-1">
+              {product.bundleTierBadge ? (
+                <span className="mb-2 inline-block rounded-full bg-[#D4537E]/25 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#D4537E]">
+                  {product.bundleTierBadge}
+                </span>
+              ) : null}
+              <div className="flex flex-wrap items-baseline gap-3">
+                {product.compareAtDisplay ? (
+                  <span className="text-lg text-gray-500 line-through sm:text-xl">
+                    {product.compareAtDisplay}
+                  </span>
+                ) : null}
+                <span className="text-4xl font-bold">{product.priceDisplay}</span>
+                <span className="text-sm text-gray-500">one-time payment</span>
+              </div>
+              {product.bundleTierTitle ? (
+                <p className="mt-2 text-xs font-medium uppercase tracking-wider text-gray-500">
+                  {product.bundleTierTitle} tier
+                </p>
+              ) : null}
             </div>
             <CheckoutButton slug={product.slug} label={`Buy Now — ${product.priceDisplay}`} />
           </div>
+          {onBundleLadder && product.bundleTierId ? (
+            <BundleUpgradeMessaging
+              slug={product.slug}
+              tierId={product.bundleTierId}
+              megaProduct={megaProduct}
+            />
+          ) : null}
           <div className="mt-4 flex flex-wrap gap-4 text-xs text-gray-500">
             <span>Instant delivery</span>
             <span>&middot;</span>
@@ -183,8 +219,12 @@ export default async function ProductDetailPage({
           </section>
         )}
 
-        {/* PRICING LADDER */}
-        {hasPricingLadder && (
+        {onBundleLadder ? (
+          <BundleTierComparison currentSlug={params.slug} products={allProducts} />
+        ) : null}
+
+        {/* PRICING LADDER (non–bundle-ladder related SKUs only) */}
+        {hasPricingLadder && !onBundleLadder && (
           <section className="mb-10">
             <h2 className="mb-5 font-serif text-2xl font-semibold">
               Choose your size
@@ -279,12 +319,15 @@ export default async function ProductDetailPage({
 
         {/* STICKY BUY (mobile) */}
         <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#1A1A1A]/95 px-4 py-3 backdrop-blur sm:hidden">
-          <div className="mx-auto flex max-w-4xl items-center justify-between">
-            <div>
-              <span className="text-lg font-bold">{product.priceDisplay}</span>
-              <span className="ml-2 text-xs text-gray-500">
-                {product.templateCount} templates
-              </span>
+          <div className="mx-auto flex max-w-4xl items-center justify-between gap-3">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-baseline gap-2">
+                {product.compareAtDisplay ? (
+                  <span className="text-xs text-gray-500 line-through">{product.compareAtDisplay}</span>
+                ) : null}
+                <span className="text-lg font-bold">{product.priceDisplay}</span>
+              </div>
+              <span className="text-xs text-gray-500">{product.templateCount} templates</span>
             </div>
             <CheckoutButton slug={product.slug} label="Buy Now" />
           </div>

@@ -211,3 +211,11 @@ export function formatFamilyFloorPrice(family: ShopFamily, allProducts: ShopProd
   const minCents = Math.min(...resolved.map((p) => p.priceCents));
   return `$${(minCents / 100).toFixed(minCents % 100 === 0 ? 0 : 2)}`;
 }
+
+/** Non-empty collections, in catalog order, capped for the shop home grid. */
+export function getFeaturedFamiliesForHome(
+  allProducts: ShopProduct[],
+  limit = 6,
+): ShopFamily[] {
+  return SHOP_FAMILIES.filter((f) => familyProductCount(f, allProducts) > 0).slice(0, limit);
+}

@@ -5,6 +5,7 @@ import {
   SHOP_FAMILIES,
   familyProductCount,
   formatFamilyFloorPrice,
+  getFeaturedFamiliesForHome,
 } from "@/lib/shop/families";
 import { ShopCategoryFilter } from "./ShopCategoryFilter";
 import { EmailCapture } from "./EmailCapture";
@@ -20,17 +21,18 @@ export const metadata = {
   },
 };
 
-const QUICK_CATEGORIES = [
-  { label: "Botox & Injectables", filter: "Clinical Forms" },
-  { label: "Weight Loss", filter: "weight-loss" },
-  { label: "IV Therapy", filter: "iv-therapy" },
-  { label: "Clinical Forms", filter: "Clinical Forms" },
-  { label: "Social Media Kits", filter: "Social Media" },
-  { label: "Legal & Compliance", filter: "Legal" },
-  { label: "Mega Bundles", filter: "mega-bundle" },
-  { label: "Playbooks", filter: "Playbooks" },
-  { label: "Cheat Sheets", filter: "Cheat Sheets" },
-  { label: "Business Systems", filter: "Business Systems" },
+const QUICK_CATEGORIES: { label: string; href: string }[] = [
+  { label: "Botox & filler", href: "/shop/families/botox-filler-injectables" },
+  { label: "Weight loss / GLP-1", href: "/shop/families/weight-loss-glp1" },
+  { label: "IV therapy", href: "/shop/families/iv-therapy" },
+  { label: "Social & content", href: "/shop/families/social-content" },
+  { label: "Legal & compliance", href: "/shop/families/legal-compliance" },
+  { label: "Business & reviews", href: "/shop/families/business-reputation" },
+  { label: "Playbooks", href: "/shop/families/clinical-playbooks" },
+  { label: "Hormone & peptide", href: "/shop/families/hormone-peptide" },
+  { label: "Peel / MN / laser", href: "/shop/families/peel-microneedling-laser" },
+  { label: "Lash / brow / wax", href: "/shop/families/lash-brow-wax" },
+  { label: "All products", href: "#all-products" },
 ];
 
 const START_HERE_SLUGS = [
@@ -147,7 +149,7 @@ export default function ShopPage() {
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm text-gray-500">
               One page per focus area — cheat sheets, consents, social packs, and bundles
-              sorted low to high so patients can grab a single asset or stack several.
+              sorted low to high so you can grab a single asset or stack several.
             </p>
             <Link
               href="/shop/families"
@@ -157,9 +159,8 @@ export default function ShopPage() {
             </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {SHOP_FAMILIES.slice(0, 6).map((fam) => {
+            {getFeaturedFamiliesForHome(products, 6).map((fam) => {
               const n = familyProductCount(fam, products);
-              if (n === 0) return null;
               return (
                 <Link
                   key={fam.slug}

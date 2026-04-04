@@ -12,10 +12,12 @@ type Props = {
  */
 export function ProductPreviewGallery({ images, productTitle }: Props) {
   const safe = images.filter(Boolean);
+  const [active, setActive] = useState(0);
+
   if (safe.length === 0) return null;
 
-  const [active, setActive] = useState(0);
-  const main = safe[active] ?? safe[0];
+  const idx = Math.min(Math.max(0, active), safe.length - 1);
+  const main = safe[idx];
 
   return (
     <section className="mb-10" aria-label="Product previews">
@@ -33,7 +35,7 @@ export function ProductPreviewGallery({ images, productTitle }: Props) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={main}
-            alt={`${productTitle} — preview ${active + 1}`}
+            alt={`${productTitle} — preview ${idx + 1}`}
             className="aspect-[4/3] w-full object-cover object-top sm:aspect-[16/10]"
           />
         </div>
@@ -46,7 +48,7 @@ export function ProductPreviewGallery({ images, productTitle }: Props) {
                 type="button"
                 onClick={() => setActive(i)}
                 className={`relative shrink-0 overflow-hidden rounded-lg border-2 transition ${
-                  i === active
+                  i === idx
                     ? "border-[#D4537E] ring-2 ring-[#D4537E]/30"
                     : "border-white/10 opacity-80 hover:border-white/25 hover:opacity-100"
                 }`}

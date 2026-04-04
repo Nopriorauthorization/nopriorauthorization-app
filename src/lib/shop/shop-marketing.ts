@@ -1,11 +1,8 @@
 /** Shared badges & outcome one-liners for shop grids (main shop + family hubs). */
 
 export const SHOP_BADGE_MAP: Record<string, { label: string; color: string }> = {
-  "med-spa-mega-bundle": { label: "Best Seller", color: "bg-emerald-500/20 text-emerald-300" },
   "combo-bundle": { label: "Best Value", color: "bg-amber-500/20 text-amber-300" },
   "complete-injector-bundle": { label: "Popular", color: "bg-sky-500/20 text-sky-300" },
-  "weight-loss-mega-bundle": { label: "Trending", color: "bg-orange-500/20 text-orange-300" },
-  "iv-therapy-mega-bundle": { label: "Trending", color: "bg-purple-500/20 text-purple-300" },
   "med-spa-legal-startup-bundle": { label: "Essential", color: "bg-rose-500/20 text-rose-300" },
   "botox-consent-bundle": { label: "Top Rated", color: "bg-emerald-500/20 text-emerald-300" },
   "hipaa-compliance-kit": { label: "Required", color: "bg-red-500/20 text-red-300" },
@@ -87,11 +84,8 @@ export const SHOP_BADGE_MAP: Record<string, { label: string; color: string }> = 
 };
 
 export const SHOP_OUTCOME_MAP: Record<string, string> = {
-  "med-spa-mega-bundle": "Everything you need to market your med spa — one download, done.",
   "combo-bundle": "Save 40% vs buying separately. Your complete marketing toolkit.",
   "complete-injector-bundle": "Post consistently for 3+ months without creating a single graphic.",
-  "weight-loss-mega-bundle": "Dominate weight loss marketing with a full content library.",
-  "iv-therapy-mega-bundle": "Fill your IV therapy schedule with scroll-stopping content.",
   "med-spa-legal-startup-bundle": "Open your doors legally. 34 templates your attorney will thank you for.",
   "botox-consent-bundle": "Protect your practice and look professional from day one.",
   "hipaa-compliance-kit": "Be audit-ready tomorrow. Not next month.",

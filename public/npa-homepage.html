@@ -449,6 +449,70 @@ nav {
   text-decoration: underline;
 }
 
+/* START HERE (under hero) */
+.start-here-section {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 96px 40px;
+}
+
+.start-here-section .start-here-intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.start-here-section .start-here-intro .section-sub {
+  margin: 0 auto;
+}
+
+.start-here-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.start-here-block {
+  background: var(--grey);
+  border-radius: 10px;
+  padding: 24px 22px;
+  border-left: 3px solid var(--pink);
+}
+
+.start-here-block h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.start-here-block p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+.start-here-block a {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--pink);
+  text-decoration: none;
+}
+
+.start-here-block a:hover {
+  text-decoration: underline;
+}
+
 /* SECTION BASE */
 section { padding: 96px 40px; }
 
@@ -1444,6 +1508,16 @@ footer {
     gap: 12px;
   }
 
+  .start-here-section {
+    padding: 64px 16px;
+  }
+
+  .start-here-grid {
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+    gap: 16px;
+  }
+
   .hero-right {
     padding: 22px 18px;
   }
@@ -1657,6 +1731,32 @@ footer {
       </div>
       <a href="/audit" class="audit-submit" style="display:block;text-align:center;text-decoration:none">Generate My Free Report →</a>
       <div class="audit-free">Free &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; Instant results</div>
+    </div>
+  </div>
+</section>
+
+<!-- START HERE -->
+<section class="start-here-section" id="start-here" aria-labelledby="start-here-heading">
+  <div class="start-here-intro">
+    <div class="section-eyebrow">Choose a path</div>
+    <h2 id="start-here-heading" class="section-headline" style="margin-bottom:12px">Start here</h2>
+    <p class="section-sub">Pick the bundle or collection that matches what you need most — same checkout and instant delivery as everything in the shop.</p>
+  </div>
+  <div class="start-here-grid">
+    <div class="start-here-block">
+      <h3>Med spa mega bundle</h3>
+      <p>Clinical, social, and ops templates in one cart — maximum value when you want the full stack.</p>
+      <a href="/shop/combo-bundle">Get the bundle →</a>
+    </div>
+    <div class="start-here-block">
+      <h3>Botox / injectables</h3>
+      <p>Consents, social packs, and chair-side assets for neurotoxin and filler lines.</p>
+      <a href="/shop/families/botox-filler-injectables">Shop injectables →</a>
+    </div>
+    <div class="start-here-block">
+      <h3>Weight loss / GLP-1</h3>
+      <p>Patient education, marketing, and documentation for weight loss and GLP-1 programs.</p>
+      <a href="/shop/families/weight-loss-glp1">Shop weight loss →</a>
     </div>
   </div>
 </section>

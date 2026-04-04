@@ -388,6 +388,67 @@ nav {
   letter-spacing: .05em;
 }
 
+.hero-credibility-line {
+  margin-top: 24px;
+  font-size: 11px;
+  letter-spacing: .05em;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.42);
+  max-width: 520px;
+}
+
+.credibility-strip {
+  background: var(--grey);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 22px 40px;
+}
+
+.credibility-strip-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px 32px;
+}
+
+.credibility-strip-item {
+  font-size: 12px;
+  color: #555;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.credibility-strip-item::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--pink);
+  flex-shrink: 0;
+}
+
+.products-credibility-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 520px;
+}
+
+.products-credibility-note a {
+  color: var(--pink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.products-credibility-note a:hover {
+  text-decoration: underline;
+}
+
 /* SECTION BASE */
 section { padding: 96px 40px; }
 
@@ -1373,6 +1434,16 @@ footer {
     min-width: 100%;
   }
 
+  .credibility-strip {
+    padding: 18px 16px;
+  }
+
+  .credibility-strip-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
   .hero-right {
     padding: 22px 18px;
   }
@@ -1529,6 +1600,7 @@ footer {
     <li><a href="/audit">Free Audit</a></li>
     <li><a href="/shop#start-here">Playbooks</a></li>
     <li><a href="/cheat-sheets">Cheat Sheets</a></li>
+    <li><a href="/shop/resources">Free guides</a></li>
     <li><a href="/shop">Shop</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/membership" class="nav-cta">Pro Membership</a></li>
@@ -1555,6 +1627,9 @@ footer {
         <a href="/audit" class="btn-primary">Get Your Free Audit →</a>
         <a href="/shop" class="btn-ghost">Browse the Shop</a>
       </div>
+      <p class="hero-credibility-line">
+        Instant digital delivery · Built from real med spa workflows · Brand in Canva where noted · Medical director &amp; attorney review recommended for your use
+      </p>
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="num">22+</div>
@@ -1585,6 +1660,15 @@ footer {
     </div>
   </div>
 </section>
+
+<div class="credibility-strip" role="region" aria-label="Why providers trust NPA">
+  <div class="credibility-strip-inner">
+    <span class="credibility-strip-item">Instant download after purchase</span>
+    <span class="credibility-strip-item">Systems from a working med spa, not a content farm</span>
+    <span class="credibility-strip-item">Full template shop plus free audit &amp; guides</span>
+    <span class="credibility-strip-item">Trusted by injectors, owners &amp; clinical leads nationwide</span>
+  </div>
+</div>
 
 <!-- TICKER -->
 <div class="ticker-wrap">
@@ -1717,6 +1801,9 @@ footer {
       <div>
         <div class="section-eyebrow">The catalog</div>
         <h2 class="section-headline" style="margin-bottom:0">Built for where you are right now.</h2>
+        <p class="products-credibility-note">
+          <a href="/shop/resources">Free guides &amp; tools</a> — explore how we think before you buy. Same shop checkout and delivery as every paid product.
+        </p>
       </div>
       <a href="/shop" class="view-all">View all products →</a>
     </div>

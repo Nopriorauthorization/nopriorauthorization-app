@@ -100,12 +100,16 @@ Save each design into its matching folder in Canva:
 
 ---
 
+## Skip renaming in Canva (design ID map)
+
+If your Canva file **titles** do not match this guide exactly, use **`imports/canva-design-id-map.json`**: each key is a manifest **template `id`** (e.g. `btx-consent-form`), each value is the **Canva design id** from the design URL (`/design/DAHF…/edit`). **`npm run store:fill`** checks this file **before** title matching. The same Canva id may appear on multiple keys (e.g. shared photo consent). See **`_readme`** in that JSON for notes (e.g. lash aftercare placeholders until you add designs).
+
 ## AFTER BUILDING ALL DESIGNS — Anthony's 4-command sequence
 
-Once you've created and named all designs in Canva, tell Anthony to run:
+Once designs exist in Canva (renamed **or** mapped by id), run:
 
 1. `npm run dev` → open `/canva` → connect Canva OAuth → open `/api/canva/list-designs` in the **same browser** → save the full JSON response as **`imports/canva-list-designs.json`** (or set env **`CANVA_LIST_DESIGNS_JSON`** to another path)
-2. npm run store:fill      ← auto-matches your new designs to manifests
+2. npm run store:fill      ← uses `canva-design-id-map.json` then title matching
 3. npm run store:sync      ← writes links into all manifest JSON files  
 4. npm run store:build     ← verifies everything is connected
 5. Upload via /admin/import ← all 6 products go live

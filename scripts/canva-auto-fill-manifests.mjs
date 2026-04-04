@@ -8,6 +8,29 @@ const STRICT_DIR = path.join(ROOT, "imports", "npa-manifests-and-spec-prefilled-
 const LIST_DESIGNS_PATH =
   process.env.CANVA_LIST_DESIGNS_JSON?.trim() ||
   path.join(ROOT, "imports", "canva-list-designs.json");
+const DESIGN_ID_MAP_PATH = path.join(ROOT, "imports", "canva-design-id-map.json");
+
+function loadDesignIdMap() {
+  if (!fs.existsSync(DESIGN_ID_MAP_PATH)) return {};
+  const raw = readJson(DESIGN_ID_MAP_PATH);
+  const out = {};
+  for (const [k, v] of Object.entries(raw)) {
+    if (k.startsWith("_")) continue;
+    if (typeof v === "string" && v.trim()) out[k] = v.trim();
+  }
+  return out;
+}
+
+function findDesignByCanvaId(canvaId, designs) {
+  const want = String(canvaId || "").trim();
+  if (!want) return null;
+  for (const d of designs) {
+    const id = d.id ? String(d.id).trim() : "";
+    if (!id) continue;
+    if (id === want || id.endsWith(want) || want.endsWith(id)) return d;
+  }
+  return null;
+}
 
 function normalizeText(input) {
   return String(input || "")
@@ -129,6 +152,12 @@ function main() {
 
   console.log(`Loaded ${designs.length} Canva designs with edit URLs`);
 
+  const designIdMap = loadDesignIdMap();
+  const mapKeys = Object.keys(designIdMap).length;
+  if (mapKeys > 0) {
+    console.log(`Using ${mapKeys} template id → Canva design id mappings (${DESIGN_ID_MAP_PATH})`);
+  }
+
   const manifestFiles = fs
     .readdirSync(MANIFEST_DIR)
     .filter((f) => f.endsWith(".json"))
@@ -158,6 +187,24 @@ function main() {
       ) {
         usedUrls.add(template.canvaTemplateUrl);
         alreadyFilledThisProduct += 1;
+        continue;
+      }
+
+      const mappedCanvaId = designIdMap[template.id];
+      if (mappedCanvaId) {
+        const byId = findDesignByCanvaId(mappedCanvaId, designs);
+        if (byId?.editUrl) {
+          template.canvaTemplateUrl = byId.editUrl;
+          filledThisProduct += 1;
+          console.log(
+            `  FILL ${productId} / ${template.id} <- design ${mappedCanvaId} ("${byId.title}")`
+          );
+          continue;
+        }
+        missingThisProduct += 1;
+        console.log(
+          `  MISS ${productId} / ${template.id} (mapped design id "${mappedCanvaId}" not in list-designs)`
+        );
         continue;
       }
 

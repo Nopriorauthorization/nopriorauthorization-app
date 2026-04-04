@@ -104,7 +104,7 @@ Save each design into its matching folder in Canva:
 
 Once you've created and named all designs in Canva, tell Anthony to run:
 
-1. Re-authenticate Canva OAuth in browser → hit /api/canva/list-designs → save new JSON
+1. `npm run dev` → open `/canva` → connect Canva OAuth → open `/api/canva/list-designs` in the **same browser** → save the full JSON response as **`imports/canva-list-designs.json`** (or set env **`CANVA_LIST_DESIGNS_JSON`** to another path)
 2. npm run store:fill      ← auto-matches your new designs to manifests
 3. npm run store:sync      ← writes links into all manifest JSON files  
 4. npm run store:build     ← verifies everything is connected

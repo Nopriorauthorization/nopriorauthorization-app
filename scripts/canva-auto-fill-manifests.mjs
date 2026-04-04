@@ -4,7 +4,10 @@ import path from "path";
 const ROOT = process.cwd();
 const MANIFEST_DIR = path.join(ROOT, "imports", "npa-manifests-and-spec");
 const STRICT_DIR = path.join(ROOT, "imports", "npa-manifests-and-spec-prefilled-strict");
-const LIST_DESIGNS_PATH = "/Users/danid/Desktop/list-designs.json";
+/** Same shape as GET /api/canva/list-designs — save full JSON response here (or set CANVA_LIST_DESIGNS_JSON). */
+const LIST_DESIGNS_PATH =
+  process.env.CANVA_LIST_DESIGNS_JSON?.trim() ||
+  path.join(ROOT, "imports", "canva-list-designs.json");
 
 function normalizeText(input) {
   return String(input || "")
@@ -106,6 +109,15 @@ function matchDesignByExactName(targetName, designs) {
 }
 
 function main() {
+  if (!fs.existsSync(LIST_DESIGNS_PATH)) {
+    console.error(
+      `Missing Canva list file: ${LIST_DESIGNS_PATH}\n` +
+        `  1) npm run dev → open /canva → connect Canva\n` +
+        `  2) Open /api/canva/list-designs in the same browser (must be logged in)\n` +
+        `  3) Save the JSON response as imports/canva-list-designs.json (or set CANVA_LIST_DESIGNS_JSON)\n`,
+    );
+    process.exit(1);
+  }
   const designPayload = readJson(LIST_DESIGNS_PATH);
   const designs = (Array.isArray(designPayload.designs) ? designPayload.designs : [])
     .filter((d) => d?.urls?.edit_url)

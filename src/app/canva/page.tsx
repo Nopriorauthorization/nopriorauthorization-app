@@ -59,6 +59,13 @@ export default function CanvaToolsPage() {
           </code>
         </Link>
       </p>
+      <p className="mt-2 text-xs text-neutral-500">
+        For <code className="rounded bg-neutral-100 px-1">npm run store:fill</code>,
+        save this response as{" "}
+        <code className="rounded bg-neutral-100 px-1">imports/canva-list-designs.json</code>{" "}
+        (see <code className="rounded bg-neutral-100 px-1">CANVA-NAMING-GUIDE.md</code>
+        ).
+      </p>
       <p className="mt-3 text-sm text-neutral-500">
         <Link href="/api/canva/match-manifests" className="underline">
           Auto-match manifests to Canva designs (JSON)

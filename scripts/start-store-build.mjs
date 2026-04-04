@@ -7,7 +7,9 @@ const STRICT_MANIFEST_DIR = path.join(
   "imports",
   "npa-manifests-and-spec-prefilled-strict"
 );
-const LIST_DESIGNS_PATH = "/Users/danid/Desktop/list-designs.json";
+const LIST_DESIGNS_PATH =
+  process.env.CANVA_LIST_DESIGNS_JSON?.trim() ||
+  path.join(ROOT, "imports", "canva-list-designs.json");
 const OUTPUT_DIR = path.join(ROOT, "imports", "store-build");
 const OUTPUT_MANIFEST_DIR = path.join(OUTPUT_DIR, "manifests-clean");
 const OUTPUT_REPORT_MD = path.join(OUTPUT_DIR, "store-build-checklist.md");

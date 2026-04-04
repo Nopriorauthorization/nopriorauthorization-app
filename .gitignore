@@ -51,6 +51,9 @@ service-account-key.json
 build.log
 public/videos/roots-intro.mp4
 
+# Local export from GET /api/canva/list-designs (see CANVA-NAMING-GUIDE.md)
+imports/canva-list-designs.json
+
 # Internal product pipeline CLI output (see docs/TICKET-PIPELINE-IMPLEMENTATION-NEXT.md)
 /output/
 

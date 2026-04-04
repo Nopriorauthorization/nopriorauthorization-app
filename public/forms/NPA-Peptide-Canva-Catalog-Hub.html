@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NPA — Peptide therapy catalog (Canva)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Lato,sans-serif;background:#f5f2f0;color:#1a1a1a;line-height:1.65;padding:24px}
+.page{max-width:42rem;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.1);padding:2rem}
+.eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D4537E}
+h1{font-family:'Playfair Display',serif;font-size:1.75rem;margin:.5rem 0 1rem;line-height:1.2}
+.cta{display:inline-block;margin-top:1.25rem;padding:14px 28px;background:#D4537E;color:#fff;font-weight:700;text-decoration:none;border-radius:8px;font-size:.95rem}
+.cta:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:#555;margin-top:1.25rem;padding:12px 14px;background:#fdf5f8;border-left:4px solid #D4537E;border-radius:0 6px 6px 0}
+.warn{font-size:.8rem;color:#72243e;margin-top:1rem;padding:12px;background:#fff5f7;border-radius:6px}
+ul{margin:1rem 0 0 1.1rem;font-size:.9rem;color:#444}
+code{font-size:.8rem;background:#eee;padding:2px 6px;border-radius:4px}
+</style>
+<script>
+  const CANVA_EDIT_URL = "https://www.canva.com/";
+</script>
+</head>
+<body>
+<div class="page">
+  <p class="eyebrow">No Prior Authorization · Canva suite</p>
+  <h1>Peptide therapy catalog</h1>
+  <p>Multi-page Canva template for benefits, clinical framing, and <strong>your</strong> pricing — swap logo, QR code, and contact blocks. Ideal for consult binders, tablets, and “menu” handouts.</p>
+  <ul>
+    <li>Structured spreads for multiple peptides / programs</li>
+    <li>Room for vial imagery and benefit bullets you approve</li>
+    <li>Export as PDF from Canva for print or digital send</li>
+  </ul>
+  <p><a id="open-canva" class="cta" href="#">Open catalog in Canva</a></p>
+  <p class="note"><strong>Seller setup:</strong> Set <code>CANVA_EDIT_URL</code> in the <code>&lt;script&gt;</code> block to your published catalog template link.</p>
+  <p class="warn"><strong>Disclaimer:</strong> Not legal or medical advice. Pricing and clinical statements must match your licensure, compounding partners, and local rules. Attorney / medical director review recommended.</p>
+</div>
+<script>
+  document.getElementById("open-canva").href = typeof CANVA_EDIT_URL !== "undefined" ? CANVA_EDIT_URL : "https://www.canva.com/";
+</script>
+</body>
+</html>

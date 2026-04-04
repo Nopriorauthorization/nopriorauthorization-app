@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NPA — Peptide vial labels (Canva)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Lato,sans-serif;background:#f5f2f0;color:#1a1a1a;line-height:1.65;padding:24px}
+.page{max-width:42rem;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.1);padding:2rem}
+.eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D4537E}
+h1{font-family:'Playfair Display',serif;font-size:1.75rem;margin:.5rem 0 1rem;line-height:1.2}
+.cta{display:inline-block;margin-top:1.25rem;padding:14px 28px;background:#D4537E;color:#fff;font-weight:700;text-decoration:none;border-radius:8px;font-size:.95rem}
+.cta:hover{filter:brightness(1.05)}
+.note{font-size:.85rem;color:#555;margin-top:1.25rem;padding:12px 14px;background:#fdf5f8;border-left:4px solid #D4537E;border-radius:0 6px 6px 0}
+.warn{font-size:.8rem;color:#72243e;margin-top:1rem;padding:12px;background:#fff5f7;border-radius:6px}
+ul{margin:1rem 0 0 1.1rem;font-size:.9rem;color:#444}
+code{font-size:.8rem;background:#eee;padding:2px 6px;border-radius:4px}
+</style>
+<script>
+  const CANVA_EDIT_URL = "https://www.canva.com/";
+</script>
+</head>
+<body>
+<div class="page">
+  <p class="eyebrow">No Prior Authorization · Canva suite</p>
+  <h1>Peptide vial labels (editable)</h1>
+  <p>Canva label layouts with <strong>your brand</strong> placeholders — adjust colors, peptide names, and fine print to match <em>your</em> pharmacy / 503B / program rules. Confirm dimensions with your label printer before production runs.</p>
+  <ul>
+    <li>Multiple colorways and peptide name slots</li>
+    <li>Designed for professional-use framing — customize all copy</li>
+    <li>Export print-ready PDF from Canva at your vendor’s required DPI and bleed</li>
+  </ul>
+  <p><a id="open-canva" class="cta" href="#">Open labels in Canva</a></p>
+  <p class="note"><strong>Seller setup:</strong> Set <code>CANVA_EDIT_URL</code> in the <code>&lt;script&gt;</code> block to your label template link.</p>
+  <p class="warn"><strong>Important:</strong> Labels may be regulated depending on use (drug/device/cosmetic). This is a design template only — not a guarantee of compliance. Legal and pharmacy review required before any label is applied to product.</p>
+</div>
+<script>
+  document.getElementById("open-canva").href = typeof CANVA_EDIT_URL !== "undefined" ? CANVA_EDIT_URL : "https://www.canva.com/";
+</script>
+</body>
+</html>

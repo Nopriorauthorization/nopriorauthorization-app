@@ -79,6 +79,7 @@ export const SHOP_BADGE_MAP: Record<string, { label: string; color: string }> = 
   "weight-loss-kit": { label: "Full kit", color: "bg-orange-500/20 text-orange-300" },
   "iv-therapy-social-kit": { label: "Mega social", color: "bg-purple-500/20 text-purple-300" },
   "peptide-patient-guide": { label: "7 templates", color: "bg-violet-500/20 text-violet-300" },
+  "peptide-canva-marketing-pack": { label: "Canva flagship", color: "bg-orange-500/20 text-orange-300" },
   "lash-aftercare-kit": { label: "Aftercare", color: "bg-emerald-500/20 text-emerald-300" },
   "medspa-startup-checklist": { label: "Checklist", color: "bg-sky-500/20 text-sky-300" },
 };
@@ -163,6 +164,8 @@ export const SHOP_OUTCOME_MAP: Record<string, string> = {
   "weight-loss-kit": "Weight program forms and education in one download.",
   "iv-therapy-social-kit": "Large IV social library for feeds, stories, and promos.",
   "peptide-patient-guide": "Patient-facing peptide education you can brand.",
+  "peptide-canva-marketing-pack":
+    "Flyers, catalog, and label layouts in Canva — one pack for peptide programs that want Etsy-style polish without a designer on every asset.",
   "lash-aftercare-kit": "Aftercare cards and instructions lash clients follow.",
   "medspa-startup-checklist": "Open or level up without missing a compliance step.",
 };

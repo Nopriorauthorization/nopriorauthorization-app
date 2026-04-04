@@ -134,7 +134,7 @@ export const SHOP_FAMILIES: ShopFamily[] = [
     title: "Hormone & peptide services",
     subtitle: "Journeys, consents & chair-side references",
     description:
-      "BHRT and peptide program assets: quick cheat sheets, patient journeys, standalone consent, and the peptide patient guide.",
+      "BHRT and peptide program assets: quick cheat sheets, patient journeys, standalone consent, the peptide patient guide, and the flagship Canva marketing pack (flyers, catalog, labels).",
     productSlugs: [
       "consent-hormone-therapy",
       "hormone-therapy-clinical-cheat-sheet",
@@ -142,6 +142,7 @@ export const SHOP_FAMILIES: ShopFamily[] = [
       "peptide-therapy-clinical-cheat-sheet",
       "peptide-patient-journey-kit",
       "peptide-patient-guide",
+      "peptide-canva-marketing-pack",
       "pellet-therapy-clinical-cheat-sheet",
     ],
   },

@@ -104,6 +104,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "iv-story-templates": "Social Media",
   "glp1-story-templates": "Social Media",
   "31-day-social-media-content-calendar": "Social Media",
+  "peptide-canva-marketing-pack": "Social Media",
 };
 
 const PRICE_MAP: Record<string, number> = {
@@ -132,6 +133,7 @@ const PRICE_MAP: Record<string, number> = {
   "iv-story-templates": 2700,
   "glp1-story-templates": 2700,
   "31-day-social-media-content-calendar": 4700,
+  "peptide-canva-marketing-pack": 6700,
   "injectors-playbook": 12700,
   "new-injector-onboarding-kit": 6700,
   "guidebook-category-strategy": 4700,
@@ -205,6 +207,7 @@ const FEATURED_SLUGS = new Set([
   "botox-consent-bundle",
   "facial-anatomy-nurse-injector",
   "npa-49-star-system",
+  "peptide-canva-marketing-pack",
 ]);
 
 const STRIPE_PRICE_IDS: Record<string, string> = {};
@@ -287,6 +290,7 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "medspa-content-strategy-system": "/shop-previews/playbooks/npa-thumbnail-content-strategy.png",
   "hormone-therapy-playbook": "/shop-previews/playbooks/npa-playbook-hormone-therapy.png",
   "peptide-therapy-playbook": "/shop-previews/playbooks/npa-playbook-peptide-therapy.png",
+  "peptide-canva-marketing-pack": "/shop-previews/playbooks/npa-playbook-peptide-therapy.png",
   "diy-google-setup-kit": "/shop-previews/kits/npa-thumbnail-diy-google-kit.png",
   "treatment-menu-signage-kit": "/shop-previews/kits/npa-thumbnail-treatment-menu-kit.png",
   "aftercare-card-kit": "/shop-previews/kits/npa-thumbnail-aftercare-cards.png",
@@ -359,6 +363,14 @@ function discoverPreviewImages(slug: string, category: string): string[] {
 }
 
 function buildFeatures(slug: string, count: number): string[] {
+  if (slug === "peptide-canva-marketing-pack") {
+    return [
+      "Three Canva-oriented suites: flyers, catalog, and vial-style labels (each opens from a hub page)",
+      "Set your real Canva “use template” URL in each hub HTML (CANVA_EDIT_URL) before or after deploy",
+      "Medical director and legal review recommended for patient-facing and product claims",
+      "Instant digital delivery",
+    ];
+  }
   const base = [`${count} editable templates`, "Instant digital delivery", "Print-ready format"];
   const cat = CATEGORY_MAP[slug] || "General";
   if (cat === "Clinical Forms") base.push("HIPAA-aware documentation");
@@ -432,6 +444,9 @@ function buildShortDescription(slug: string, _title: string, count: number): str
     case "Clinical Forms":
       return `${count} professional clinical templates — consent forms, intake documents, and patient education materials ready to print and customize.`;
     case "Social Media":
+      if (slug === "peptide-canva-marketing-pack") {
+        return `Flagship Canva pack for peptide programs — patient education flyers, a multi-page therapy catalog, and editable label layouts. Brand in Canva; export for print or digital.`;
+      }
       return `${count} done-for-you social media templates designed for aesthetic providers. Edit, brand, and post in minutes.`;
     case "Legal":
       return `${count} editable legal and business templates — contracts, agreements, HIPAA forms, and website policies for med spa owners.`;
@@ -464,6 +479,9 @@ function buildShortDescription(slug: string, _title: string, count: number): str
 function buildLongDescription(slug: string, title: string, count: number, cat: string): string {
   const short = buildShortDescription(slug, title, count);
   const audienceList = AUDIENCE_MAP[cat] || ["Aesthetic professionals"];
+  if (slug === "peptide-canva-marketing-pack") {
+    return `${short}\n\nYou receive three delivery links (flyers hub, catalog hub, labels hub). Each hub’s primary button uses CANVA_EDIT_URL — replace the placeholder with your Canva template link so buyers land in their own copy. Confirm label dimensions with your print vendor before production.\n\nDesigned for ${audienceList.join(", ").toLowerCase()}.\n\n${count} hub-linked deliverables. Instant digital delivery. No physical product will be shipped.`;
+  }
   if (cat === "Cheat Sheets") {
     return `${short}\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, print for the treatment room, or save as PDF. This is a quick-reference format — not a full course or playbook.\n\n${count} reference file(s). Instant digital delivery. No physical product will be shipped.`;
   }

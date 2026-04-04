@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T22:44:38.635Z",
+  "generatedAt": "2026-04-04T02:31:59.590Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1978,6 +1978,33 @@
           "title": "Pellet Therapy Clinical Cheat Sheet",
           "designId": "pellet-therapy-clinical-cheat-sheet-main",
           "editUrl": "/forms/NPA-Pellet-Therapy-Clinical-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "peptide-canva-marketing-pack",
+      "productSlug": "peptide-canva-marketing-pack",
+      "productTitle": "Peptide Canva Marketing Pack — Flyers, Catalog & Labels",
+      "buildTimestamp": "2026-04-04T12:00:00Z",
+      "templateCount": 3,
+      "templates": [
+        {
+          "title": "Peptide education flyers (Canva)",
+          "designId": "peptide-canva-flyers",
+          "editUrl": "/forms/NPA-Peptide-Canva-Flyers-Hub.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Peptide therapy catalog (Canva)",
+          "designId": "peptide-canva-catalog",
+          "editUrl": "/forms/NPA-Peptide-Canva-Catalog-Hub.html",
+          "viewUrl": null
+        },
+        {
+          "title": "Peptide vial labels (Canva)",
+          "designId": "peptide-canva-labels",
+          "editUrl": "/forms/NPA-Peptide-Canva-Labels-Hub.html",
           "viewUrl": null
         }
       ]

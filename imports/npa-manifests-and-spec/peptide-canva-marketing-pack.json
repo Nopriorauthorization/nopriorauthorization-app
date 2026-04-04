@@ -1,0 +1,45 @@
+{
+  "productId": "peptide-canva-marketing-pack",
+  "displayName": "Peptide Canva Marketing Pack — Flyers, Catalog & Labels",
+  "description": "Flagship Canva suite for peptide programs: education flyers, a multi-page therapy catalog, and editable vial-style labels. Each item opens as your own copy in Canva — add branding, pricing, and compliant copy with your medical director and counsel. Instant digital delivery; nothing ships.",
+  "version": "1.0.0",
+  "priceUSD": 67,
+  "etsySku": "NPA-PEP-CANVA-001",
+  "category": "social-marketing",
+  "targetBuyer": "Med spas and wellness clinics offering peptide therapy who want Etsy-style editable marketing without hiring a designer for every asset",
+  "templates": [
+    {
+      "id": "peptide-canva-flyers",
+      "name": "Peptide education flyers (Canva)",
+      "description": "Multiple patient-facing flyer layouts — comparisons, benefits, anti-aging themes. Edit in Canva; export PDF or PNG.",
+      "canvaTemplateUrl": "/forms/NPA-Peptide-Canva-Flyers-Hub.html",
+      "_deliveryType": "html",
+      "format": "canva",
+      "pages": 1,
+      "category": "social-marketing"
+    },
+    {
+      "id": "peptide-canva-catalog",
+      "name": "Peptide therapy catalog (Canva)",
+      "description": "Multi-page catalog structure for benefits, applications, and your pricing — logo and QR placeholders.",
+      "canvaTemplateUrl": "/forms/NPA-Peptide-Canva-Catalog-Hub.html",
+      "_deliveryType": "html",
+      "format": "canva",
+      "pages": 1,
+      "category": "social-marketing"
+    },
+    {
+      "id": "peptide-canva-labels",
+      "name": "Peptide vial labels (Canva)",
+      "description": "Editable label frames with brand placeholders — confirm print specs with your label vendor before production.",
+      "canvaTemplateUrl": "/forms/NPA-Peptide-Canva-Labels-Hub.html",
+      "_deliveryType": "html",
+      "format": "canva",
+      "pages": 1,
+      "category": "social-marketing"
+    }
+  ],
+  "deliveryNote": "Three delivery links: each hub page contains a button wired to a Canva URL you set in the HTML (CANVA_EDIT_URL). Replace placeholder links before launch or update after deploy. Medical/legal review recommended for all patient- and product-facing copy.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-04T12:00:00Z"
+}

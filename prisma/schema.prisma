@@ -1450,3 +1450,47 @@ model FacebookPageCredential {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+// =============================================================================
+// Marketing email funnel (lead magnet → 7-step sequence, Resend)
+// =============================================================================
+
+model EmailFunnelSubscriber {
+  id               String    @id @default(cuid())
+  email            String    @unique
+  tags             String[]  @default([])
+  /// Last step successfully sent (1-7). 0 = none yet.
+  lastSentStep     Int       @default(0)
+  /// When to send next step; null when complete or stopped
+  nextSendAt       DateTime?
+  unsubscribedAt   DateTime?
+  /// buyer | growth_system_buyer | member | unsubscribed
+  stopReason       String?
+  unsubscribeToken String    @unique @default(cuid())
+  source           String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  sends EmailFunnelSend[]
+
+  @@index([nextSendAt])
+  @@index([email])
+  @@index([stopReason])
+}
+
+model EmailFunnelSend {
+  id             String   @id @default(cuid())
+  subscriberId   String
+  stepId         String
+  resendEmailId  String?
+  sentAt         DateTime @default(now())
+  openedAt       DateTime?
+  clickedAt      DateTime?
+  meta           Json?
+
+  subscriber EmailFunnelSubscriber @relation(fields: [subscriberId], references: [id], onDelete: Cascade)
+
+  @@index([subscriberId])
+  @@index([stepId])
+  @@index([resendEmailId])
+}

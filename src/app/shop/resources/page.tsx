@@ -112,7 +112,7 @@ export default function ShopResourcesPage() {
           <h2 className="mb-6 text-center font-serif text-2xl font-semibold">
             Get free templates by email
           </h2>
-          <EmailCapture />
+            <EmailCapture source="resources" />
         </section>
 
         <p className="mt-12 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs leading-relaxed text-gray-500">

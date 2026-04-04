@@ -5,9 +5,20 @@ type EmailOptions = {
   to: string;
   subject: string;
   html: string;
+  /** Optional headers for webhook correlation (e.g. funnel step id) */
+  headers?: Record<string, string>;
 };
 
-export async function sendEmail({ to, subject, html }: EmailOptions) {
+export type SendEmailResult =
+  | { success: true; resendEmailId?: string }
+  | { success: false; message: string };
+
+export async function sendEmail({
+  to,
+  subject,
+  html,
+  headers,
+}: EmailOptions): Promise<SendEmailResult> {
   const apiKey = process.env.RESEND_API_KEY || process.env.SENDGRID_API_KEY;
   
   if (!apiKey) {
@@ -29,6 +40,7 @@ export async function sendEmail({ to, subject, html }: EmailOptions) {
           to,
           subject,
           html,
+          ...(headers && Object.keys(headers).length > 0 ? { headers: headers } : {}),
         }),
       });
 
@@ -38,7 +50,15 @@ export async function sendEmail({ to, subject, html }: EmailOptions) {
         return { success: false, message: "Failed to send email" };
       }
 
-      return { success: true };
+      let resendEmailId: string | undefined;
+      try {
+        const data = (await response.json()) as { id?: string };
+        if (data?.id) resendEmailId = data.id;
+      } catch {
+        /* ignore parse */
+      }
+
+      return { success: true, resendEmailId };
     } catch (error) {
       console.error("Email error:", error);
       return { success: false, message: "Email service error" };

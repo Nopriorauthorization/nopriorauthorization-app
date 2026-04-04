@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
-export function EmailCapture() {
+type EmailCaptureProps = { source?: string };
+
+export function EmailCapture({ source = "free-templates-cta" }: EmailCaptureProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">(
     "idle",
@@ -17,7 +19,7 @@ export function EmailCapture() {
       await fetch("/api/shop/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({ email: email.trim(), source }),
       });
       setStatus("done");
       setEmail("");

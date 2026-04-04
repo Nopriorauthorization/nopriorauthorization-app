@@ -201,4 +201,11 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
   });
 
   console.log(`[square/webhook] Purchase complete: ${productSlug} → ${email}`);
+
+  try {
+    const { pauseFunnelOnPurchase } = await import("@/lib/email-funnel/purchase-hooks");
+    await pauseFunnelOnPurchase(email, productSlug || "");
+  } catch (e) {
+    console.error("[square/webhook] Funnel pause hook error:", e);
+  }
 }

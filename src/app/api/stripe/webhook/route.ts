@@ -268,6 +268,13 @@ async function handleDigitalProductPurchase(session: Stripe.Checkout.Session) {
   });
 
   console.log(`[webhook] Digital product purchase complete: ${slug} → ${email}`);
+
+  try {
+    const { pauseFunnelOnPurchase } = await import("@/lib/email-funnel/purchase-hooks");
+    await pauseFunnelOnPurchase(email, slug);
+  } catch (e) {
+    console.error("[webhook] Funnel pause hook error:", e);
+  }
 }
 
 async function handlePaymentFailed(invoice: Stripe.Invoice) {

@@ -25,7 +25,7 @@ export function StickyEmailBar() {
       await fetch("/api/shop/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({ email: email.trim(), source: "sticky_bar" }),
       });
       setStatus("done");
       setTimeout(() => setStatus("dismissed"), 3000);

@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
+import { getFamilyByProductSlug } from "@/lib/shop/families";
+import { ProductPreviewGallery } from "../ProductPreviewGallery";
 import { CheckoutButton } from "./CheckoutButton";
 
 export function generateStaticParams() {
@@ -42,16 +44,27 @@ export default async function ProductDetailPage({
   const interactivePreviewSrc = getShopInteractivePreviewSrc(params.slug);
   const relatedSizes = findRelatedSizes(params.slug, allProducts);
   const hasPricingLadder = relatedSizes.length > 0;
+  const collection = getFamilyByProductSlug(params.slug);
 
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white">
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-        <Link
-          href="/shop"
-          className="mb-6 inline-block text-sm text-gray-500 transition hover:text-[#D4537E]"
-        >
-          &larr; Back to shop
-        </Link>
+        <div className="mb-6 flex flex-wrap items-center gap-3 text-sm">
+          <Link href="/shop" className="text-gray-500 transition hover:text-[#D4537E]">
+            &larr; Back to shop
+          </Link>
+          {collection ? (
+            <>
+              <span className="text-gray-600">·</span>
+              <Link
+                href={`/shop/families/${collection.slug}`}
+                className="font-medium text-[#D4537E] transition hover:underline"
+              >
+                More in {collection.title}
+              </Link>
+            </>
+          ) : null}
+        </div>
 
         {/* HOOK */}
         <section className="mb-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] p-8 sm:p-10">
@@ -102,28 +115,12 @@ export default async function ProductDetailPage({
           </section>
         ) : null}
 
-        {/* PREVIEW GALLERY */}
-        {product.previewImages.length > 0 && (
-          <section className="mb-10">
-            <h2 className="mb-5 font-serif text-2xl font-semibold">Preview</h2>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {product.previewImages.slice(0, 6).map((src, i) => (
-                <div
-                  key={i}
-                  className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={src}
-                    alt={`${product.title} preview ${i + 1}`}
-                    loading="lazy"
-                    className="h-auto w-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
+        {product.previewImages.length > 0 ? (
+          <ProductPreviewGallery
+            images={product.previewImages.slice(0, 12)}
+            productTitle={product.title}
+          />
+        ) : null}
 
         {/* OUTCOME SECTION */}
         <section className="mb-10 rounded-2xl border border-[#D4537E]/20 bg-[#D4537E]/5 p-8">
@@ -230,7 +227,7 @@ export default async function ProductDetailPage({
           </h2>
           <div className="space-y-4">
             {[
-              { n: "1", t: "Purchase instantly — secure Stripe checkout, no account needed" },
+              { n: "1", t: "Purchase instantly — secure checkout, no account needed" },
               { n: "2", t: "Check your email — delivery link arrives in under 5 minutes" },
               { n: "3", t: "Open and customize — edit in your browser, add your logo and details" },
               { n: "4", t: "Print or post — download as PDF, print, or share on social media" },

@@ -20,10 +20,32 @@ type ListDesignsResponse = {
   continuation?: string;
 };
 
+function resolveCanvaAccessToken(req: NextRequest): string | undefined {
+  const cookie = req.cookies.get("canva_access_token")?.value?.trim();
+  if (cookie) return cookie;
+
+  const auth = req.headers.get("authorization");
+  if (auth?.startsWith("Bearer ")) {
+    const t = auth.slice(7).trim();
+    if (t) return t;
+  }
+
+  if (process.env.NODE_ENV !== "production") {
+    const envTok = process.env.CANVA_ACCESS_TOKEN?.trim();
+    if (envTok) return envTok;
+  }
+
+  return undefined;
+}
+
 /**
  * Lists all designs visible to the connected Canva user (paginated server-side).
  * Requires OAuth with `design:meta:read` and that scope enabled in the Canva portal.
  * GET /api/canva/list-designs
+ *
+ * Auth (first match): `canva_access_token` cookie (after /canva OAuth), or
+ * `Authorization: Bearer <token>`, or in development only `CANVA_ACCESS_TOKEN` in env
+ * (server logs this once after successful OAuth — see /api/canva/callback).
  *
  * Query (optional):
  * - ownership: any | owned | shared (default any)
@@ -37,10 +59,14 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const accessToken = req.cookies.get("canva_access_token")?.value;
+  const accessToken = resolveCanvaAccessToken(req);
   if (!accessToken) {
     return NextResponse.json(
-      { error: "Not connected to Canva yet. Visit /canva and connect first." },
+      {
+        error: "Not connected to Canva yet. Visit /canva and connect first.",
+        hint:
+          "Use the same browser host you used for OAuth (e.g. 127.0.0.1 vs localhost). Dev: set CANVA_ACCESS_TOKEN in .env.local or pass Authorization: Bearer …",
+      },
       { status: 401 }
     );
   }

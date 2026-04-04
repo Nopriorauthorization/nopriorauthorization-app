@@ -80,6 +80,30 @@ export default function CanvaToolsPage() {
         </code>{" "}
         to see what the connected Canva account can use through the API.
       </div>
+      <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
+        <p className="font-medium">If list-designs says “Not connected”</p>
+        <ul className="mt-2 list-inside list-disc space-y-1 text-amber-900/90">
+          <li>
+            Complete OAuth using the same host as{" "}
+            <code className="rounded bg-white px-1 text-xs">
+              CANVA_OAUTH_REDIRECT_URI
+            </code>{" "}
+            (often <code className="rounded bg-white px-1 text-xs">127.0.0.1</code>{" "}
+            — don&apos;t mix with <code className="rounded bg-white px-1 text-xs">localhost</code>
+            ).
+          </li>
+          <li>
+            Open <code className="rounded bg-white px-1 text-xs">/api/canva/list-designs</code>{" "}
+            in the same browser session (cookies are httpOnly).
+          </li>
+          <li>
+            Dev fallback: paste the token from the server log after connect into{" "}
+            <code className="rounded bg-white px-1 text-xs">CANVA_ACCESS_TOKEN</code>{" "}
+            in <code className="rounded bg-white px-1 text-xs">.env.local</code>, restart{" "}
+            <code className="rounded bg-white px-1 text-xs">npm run dev</code>, then list-designs works without the cookie.
+          </li>
+        </ul>
+      </div>
     </main>
   );
 }

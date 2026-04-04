@@ -31,6 +31,16 @@ export function SeoKeywordLanding({ def }: { def: SeoLandingPageDef }) {
             <h1 className="mt-4 font-serif text-3xl font-bold leading-tight sm:text-4xl md:text-[2.35rem]">
               {def.h1}
             </h1>
+            {def.introParagraphs && def.introParagraphs.length > 0 ? (
+              <div
+                className="mt-6 space-y-4 text-lg leading-relaxed text-gray-400"
+                aria-label="Introduction"
+              >
+                {def.introParagraphs.map((p, i) => (
+                  <p key={`intro-${i}`}>{p}</p>
+                ))}
+              </div>
+            ) : null}
           </header>
 
           <div className="space-y-12">

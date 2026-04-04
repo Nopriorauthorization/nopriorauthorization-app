@@ -4,6 +4,14 @@ const SEO_LANDING_PATHS = [
   "/med-spa-marketing-templates",
   "/weight-loss-marketing-templates",
   "/iv-therapy-marketing-templates",
+  "/botox-instagram-templates",
+  "/med-spa-consent-forms",
+  "/weight-loss-intake-forms",
+  "/iv-therapy-intake-form",
+  "/med-spa-marketing-ideas",
+  "/how-to-get-more-med-spa-clients",
+  "/glp1-marketing-strategy",
+  "/aesthetic-clinic-marketing",
 ];
 
 /** @type {import('next-sitemap').IConfig} */

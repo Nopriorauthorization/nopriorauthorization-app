@@ -17,7 +17,7 @@ export default function StudyGuidesThankYouPage() {
         <h1 className="mt-4 font-serif text-3xl font-bold">Thank you</h1>
         <p className="mt-6 text-lg leading-relaxed text-gray-400">
           Square is processing your payment. When it completes, you&apos;ll get an email with a{" "}
-          <strong className="text-gray-200">secure link</strong> to open and print your full NCLEX bundle
+          <strong className="text-gray-200">secure link</strong> to open and print all eight NCLEX sheets
           (same delivery flow as our shop — check spam if you don&apos;t see it within a few minutes).
         </p>
         <p className="mt-4 text-sm text-gray-500">

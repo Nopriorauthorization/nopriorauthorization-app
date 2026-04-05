@@ -5,12 +5,12 @@ import { NclexStudyGuidePurchase } from "@/components/study-guides/NclexStudyGui
 const SITE = "https://nopriorauthorization.com";
 
 export const metadata: Metadata = {
-  title: "Study Guides — NCLEX ($25) | No Prior Authorization",
+  title: "Study Guides — NCLEX ($49) | No Prior Authorization",
   description:
-    "NCLEX complete study bundle — large preview here; full HTML after secure checkout (separate from the med spa shop). Microbiology and A&P coming soon.",
+    "NCLEX — eight HTML cheat sheets, large preview, $49 checkout (separate from the med spa shop). Microbiology and A&P coming soon.",
   openGraph: {
     title: "Study guides | NCLEX bundle | No Prior Authorization",
-    description: "Preview the NCLEX pack — purchase for $25. Delivery by email.",
+    description: "Preview the NCLEX pack — 8 sheets, $49. Delivery by email.",
     url: `${SITE}/study-guides`,
     type: "website",
   },

@@ -1,5 +1,5 @@
 import { DELIVERY_PRODUCT_SLUG_ALIASES } from "@/config/growth-funnel.config";
-import { STUDY_GUIDE_NCLEX } from "@/config/study-guides.config";
+import { STUDY_GUIDE_NCLEX, STUDY_GUIDE_NCLEX_TEMPLATES } from "@/config/study-guides.config";
 import catalog from "@/lib/delivery/catalog.generated.json";
 import prisma from "@/lib/db";
 
@@ -28,15 +28,13 @@ const VIRTUAL_DELIVERY_PRODUCTS: DeliveryProduct[] = [
     productKey: STUDY_GUIDE_NCLEX.slug,
     productSlug: STUDY_GUIDE_NCLEX.slug,
     productTitle: STUDY_GUIDE_NCLEX.title,
-    templateCount: 1,
-    templates: [
-      {
-        title: "NCLEX Complete Bundle (HTML — all 8 sheets)",
-        designId: "study-nclex-complete-bundle",
-        editUrl: STUDY_GUIDE_NCLEX.deliveryFormPath,
-        viewUrl: null,
-      },
-    ],
+    templateCount: STUDY_GUIDE_NCLEX_TEMPLATES.length,
+    templates: STUDY_GUIDE_NCLEX_TEMPLATES.map((t) => ({
+      title: t.title,
+      designId: t.designId,
+      editUrl: t.editUrl,
+      viewUrl: null as string | null,
+    })),
   },
 ];
 

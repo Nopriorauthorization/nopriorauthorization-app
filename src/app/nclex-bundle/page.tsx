@@ -1,14 +1,14 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { NclexPurchasePanel } from "@/components/study-guides/NclexPurchasePanel";
-import { STUDY_GUIDE_NCLEX } from "@/config/study-guides.config";
+import { STUDY_GUIDE_NCLEX, formatStudyGuideUsd } from "@/config/study-guides.config";
 
 const SITE = "https://nopriorauthorization.com";
 
 export const metadata: Metadata = {
-  title: "NCLEX Complete Study Bundle — 8 Cheat Sheets ($25) | No Prior Authorization",
+  title: "NCLEX Complete Study Bundle — 8 Cheat Sheets ($49) | No Prior Authorization",
   description:
-    "Print-ready NCLEX reference: lab values, pharmacology, clinical judgment, and more — one HTML bundle. Built by Danielle Alcala-Glazier, RN student & licensed esthetician. $25. Secure checkout, instant email delivery.",
+    "Print-ready NCLEX reference: eight HTML cheat sheets — lab values, pharmacology, EKG, acid–base, and more. Built by Danielle Alcala-Glazier, RN student & licensed esthetician. $49. Secure checkout, instant email delivery.",
   keywords: [
     "NCLEX cheat sheet",
     "NCLEX lab values",
@@ -17,16 +17,16 @@ export const metadata: Metadata = {
     "printable NCLEX study guide",
   ],
   openGraph: {
-    title: "NCLEX Complete Study Bundle — $25 | No Prior Authorization",
+    title: "NCLEX Complete Study Bundle — $49 | No Prior Authorization",
     description:
-      "8 print-ready cheat sheets in one bundle. Preview the layout, then unlock the full HTML by email after checkout.",
+      "8 print-ready cheat sheets. Preview the layout, then unlock all HTML files by email after checkout.",
     url: `${SITE}/nclex-bundle`,
     type: "website",
     images: [{ url: `${SITE}${STUDY_GUIDE_NCLEX.previewImageSrc}`, width: 1200, height: 630, alt: "NCLEX bundle preview" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NCLEX Complete Study Bundle — $25",
+    title: "NCLEX Complete Study Bundle — $49",
     description: "Lab values, pharm, clinical judgment — print from any browser.",
   },
   alternates: {
@@ -52,17 +52,19 @@ const FAQ = [
   },
   {
     q: "What do I get after I pay?",
-    a: "Square sends a receipt; our system emails a secure link to open the full HTML bundle (same delivery tech as our digital shop). You can print or save as PDF.",
+    a: "Square sends a receipt; our system emails a secure link to a delivery page with all eight HTML files — open each in your browser to print or save as PDF (same delivery tech as our digital shop).",
   },
   {
     q: "Is this medical or legal advice?",
     a: "No — it’s an educational reference. Always follow your program, facility policies, and scope of practice. Licensing exams change; verify current test plans.",
   },
   {
-    q: "Can I share the file?",
-    a: "Your purchase is a single-use license for you and your own study. Please don’t redistribute — it supports building more nursing resources.",
+    q: "Can I share the files?",
+    a: "Your purchase is a single-use license for you and your own study. Please don’t redistribute the bundle — it supports building more nursing resources.",
   },
 ];
+
+const PRICE_LABEL = formatStudyGuideUsd(STUDY_GUIDE_NCLEX.priceCents);
 
 export default function NclexBundleLandingPage() {
   return (
@@ -107,7 +109,7 @@ export default function NclexBundleLandingPage() {
               href="#preview-buy"
               className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-[#D4537E] px-8 py-3 text-center text-base font-bold text-white shadow-lg shadow-[#D4537E]/20 transition hover:bg-[#D4537E]/90"
             >
-              See the preview &amp; buy — $25
+              See the preview &amp; buy — {PRICE_LABEL}
             </a>
             <p className="text-sm text-gray-500 sm:pl-2">One-time payment · not on the main template shop</p>
           </div>
@@ -146,8 +148,8 @@ export default function NclexBundleLandingPage() {
             Preview the real layout — then unlock the full file
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-gray-400">
-            Below is a high-resolution snapshot of the bundle. After checkout, you get the{" "}
-            <strong className="text-gray-300">interactive HTML</strong> (print-friendly, same design).
+            Below is a high-resolution snapshot of the first sheet. After checkout, you get a link to{" "}
+            <strong className="text-gray-300">all eight HTML files</strong> (print-friendly, same design system).
           </p>
           <div className="mx-auto mt-10 max-w-4xl">
             <NclexPurchasePanel variant="hero" />

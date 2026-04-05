@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharmacology — NCLEX Study Guide · No Prior Authorization</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1628;--pink:#D4537E;--blush:#FBEAF0;--gold:#c77b2a;--teal:#2a9d8f;--red:#e63946;--purple:#7b2d8b;--green:#2d7a55;--blue:#1a3a6b;--border:#e2e8f0;--bg:#f8f9fc;--text:#1a202c;--muted:#64748b;--card:#ffffff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+.topbar{background:var(--navy);color:white;padding:10px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.topbar-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;}
+.topbar-sub{font-size:11px;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;}
+.topbar-badge{background:var(--pink);color:white;font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;}
+.hero{background:var(--navy);padding:60px 40px 50px;border-bottom:3px solid var(--pink);}
+.hero-eyebrow{font-size:11px;font-weight:600;color:var(--pink);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+.hero h1{font-family:'DM Serif Display',serif;font-size:52px;color:white;line-height:1.1;margin-bottom:16px;}
+.hero-desc{font-size:16px;color:#94a3b8;max-width:640px;margin-bottom:28px;}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.hero-tag{background:rgba(255,255,255,0.08);color:#cbd5e1;font-size:12px;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.12);}
+.toc-wrap{background:white;border-bottom:1px solid var(--border);padding:20px 40px;}
+.toc-label{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.toc{display:flex;gap:8px;flex-wrap:wrap;}
+.toc a{font-size:13px;font-weight:500;color:var(--blue);background:#f0f4ff;padding:5px 14px;border-radius:20px;text-decoration:none;border:1px solid #c7d7f5;transition:all 0.15s;}
+.toc a:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.main{max-width:900px;margin:0 auto;padding:48px 24px 80px;}
+.section{margin-bottom:56px;}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--border);}
+.section-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.section-icon.navy{background:var(--navy);} .section-icon.teal{background:var(--teal);} .section-icon.blue{background:var(--blue);} .section-icon.red{background:var(--red);} .section-icon.gold{background:var(--gold);} .section-icon.purple{background:var(--purple);} .section-icon.green{background:var(--green);} .section-icon.pink{background:var(--pink);}
+.section-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--muted);}
+.section h2{font-family:'DM Serif Display',serif;font-size:28px;color:var(--navy);}
+.section-intro{font-size:15px;color:var(--muted);margin-bottom:24px;line-height:1.65;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.card-title{padding:12px 20px;font-weight:600;font-size:13px;letter-spacing:0.3px;color:white;display:flex;align-items:center;gap:8px;}
+.card-title.navy{background:var(--navy);} .card-title.teal{background:var(--teal);} .card-title.blue{background:var(--blue);} .card-title.red{background:var(--red);} .card-title.gold{background:var(--gold);} .card-title.purple{background:var(--purple);} .card-title.green{background:var(--green);} .card-title.pink{background:var(--pink);}
+.card-body{padding:20px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+thead th{background:var(--navy);color:white;padding:10px 16px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.3px;}
+tbody td{padding:10px 16px;border-bottom:1px solid var(--border);vertical-align:top;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:nth-child(even) td{background:#f8fafc;}
+.crit{color:var(--red);font-weight:600;}
+.callout{border-radius:10px;padding:16px 20px;margin-bottom:14px;display:flex;gap:14px;align-items:flex-start;}
+.callout.danger{background:#fff5f5;border-left:4px solid var(--red);}
+.callout.warning{background:#fffbeb;border-left:4px solid var(--gold);}
+.callout.info{background:#f0f9ff;border-left:4px solid var(--teal);}
+.callout.success{background:#f0fdf4;border-left:4px solid var(--green);}
+.callout-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.callout-title{font-weight:600;font-size:14px;margin-bottom:4px;}
+.callout.danger .callout-title{color:var(--red);} .callout.warning .callout-title{color:var(--gold);} .callout.info .callout-title{color:var(--teal);} .callout.success .callout-title{color:var(--green);}
+.callout-text{font-size:14px;color:var(--text);line-height:1.6;}
+.pill-list{display:flex;flex-direction:column;gap:10px;}
+.pill-row{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;background:white;border:1px solid var(--border);border-radius:10px;}
+.pill{background:var(--navy);color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.pill.red{background:var(--red);} .pill.teal{background:var(--teal);} .pill.gold{background:var(--gold);} .pill.purple{background:var(--purple);} .pill.green{background:var(--green);} .pill.pink{background:var(--pink);} .pill.blue{background:var(--blue);}
+.pill-text{font-size:14px;line-height:1.6;}
+.pill-text b{color:var(--navy);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.qa-list{display:flex;flex-direction:column;gap:12px;}
+.qa-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.qa-q{background:#fef3f4;padding:12px 16px;font-weight:600;font-size:14px;color:var(--red);display:flex;gap:10px;align-items:flex-start;}
+.qa-num{background:var(--red);color:white;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;flex-shrink:0;margin-top:1px;}
+.qa-a{padding:12px 16px;font-size:14px;line-height:1.65;color:var(--text);background:white;}
+.qa-a b{color:var(--navy);}
+.checklist{display:flex;flex-direction:column;gap:8px;}
+.check-item{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;background:white;border:1px solid var(--border);border-radius:8px;font-size:14px;}
+.check-box{width:18px;height:18px;border:2px solid var(--border);border-radius:4px;flex-shrink:0;margin-top:1px;}
+.check-text b{color:var(--navy);}
+.suffix-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.suffix-card{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.suffix-name{font-family:'Source Code Pro',monospace;font-size:15px;font-weight:700;color:var(--teal);margin-bottom:2px;}
+.suffix-class{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.suffix-detail{font-size:13px;color:var(--muted);line-height:1.5;}
+.anchor{scroll-margin-top:80px;}
+.footer{background:var(--navy);color:#94a3b8;text-align:center;padding:32px 24px;font-size:13px;}
+.footer strong{color:white;}
+.footer-divider{width:40px;height:2px;background:var(--pink);margin:12px auto;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div><div class="topbar-brand">No Prior Authorization</div><div class="topbar-sub">NCLEX Study Guide Series · Danielle Alcala-Glazier</div></div>
+  <div class="topbar-badge">Guide 2 of 8</div>
+</div>
+<div class="hero">
+  <div class="hero-eyebrow">NCLEX-RN Study Guide · No Prior Authorization</div>
+  <h1>Pharmacology<br>Quick Reference</h1>
+  <div class="hero-desc">Drug suffixes, high-alert medications, antidotes, therapeutic levels, and the nursing considerations that save lives — everything pharma the NCLEX loves to test.</div>
+  <div class="hero-tags">
+    <span class="hero-tag">Drug Suffix Decoder</span><span class="hero-tag">High-Alert Meds</span><span class="hero-tag">Antidotes</span><span class="hero-tag">Therapeutic Levels</span><span class="hero-tag">Nursing Considerations</span><span class="hero-tag">10 NCLEX Q&As</span>
+  </div>
+</div>
+<div class="toc-wrap">
+  <div class="toc-label">Jump to Section</div>
+  <div class="toc">
+    <a href="#suffixes">Suffix Decoder</a><a href="#highalert">High-Alert Meds</a><a href="#antidotes">Antidotes</a><a href="#levels">Therapeutic Levels</a><a href="#considerations">Nursing Considerations</a><a href="#nclex">NCLEX Q&As</a><a href="#checklist">Study Checklist</a>
+  </div>
+</div>
+<div class="main">
+
+  <div class="section anchor" id="suffixes">
+    <div class="section-header">
+      <div class="section-icon teal">🔡</div>
+      <div><div class="section-num">Section 01</div><h2>Drug Suffix Decoder</h2></div>
+    </div>
+    <p class="section-intro">Drug suffixes tell you the class before you even know the drug. Mastering these 10 suffixes lets you answer questions about unfamiliar drugs with confidence — the NCLEX tests this constantly.</p>
+    <div class="suffix-grid">
+      <div class="suffix-card"><div class="suffix-name">-olol</div><div class="suffix-class">Beta Blockers</div><div class="suffix-detail">metoprolol, atenolol, carvedilol. Slow HR and BP. Hold if HR &lt;60 or SBP &lt;90. Never stop abruptly — rebound HTN/angina. Masks hypoglycemia signs in diabetics.</div></div>
+      <div class="suffix-card"><div class="suffix-name">-pril</div><div class="suffix-class">ACE Inhibitors</div><div class="suffix-detail">lisinopril, enalapril, captopril. Classic SE = dry cough (switch to ARB). Risk: hyperkalemia, angioedema, teratogenic. Avoid in pregnancy. First-line for HTN + HF + DM.</div></div>
+      <div class="suffix-card"><div class="suffix-name">-sartan</div><div class="suffix-class">ARBs</div><div class="suffix-detail">losartan, valsartan, irbesartan. Same as ACEi but NO cough. Still hyperkalemia + renal risk. Teratogenic — contraindicated in pregnancy.</div></div>
+      <div class="suffix-card"><div class="suffix-name">-statin</div><div class="suffix-class">HMG-CoA Reductase Inhibitors</div><div class="suffix-detail">atorvastatin, simvastatin, rosuvastatin. Give at night (cholesterol made at night). Avoid grapefruit. SE: myopathy → rhabdomyolysis. Check CK if muscle pain reported.</div></div>
+      <div class="suffix-card"><div class="suffix-name">-dipine</div><div class="suffix-class">Calcium Channel Blockers (dihydropyridine)</div><div class="suffix-detail">amlodipine, nifedipine, felodipine. For HTN and angina. SE: flushing, peripheral edema, reflex tachycardia. Avoid grapefruit. No effect on heart rate (unlike non-DHP CCBs).</div></div>
+      <div class="suffix-card"><div class="suffix-name">-mycin / -cin</div><div class="suffix-class">Antibiotics (various classes)</div><div class="suffix-detail">erythromycin, vancomycin, gentamicin. Vancomycin: monitor troughs (10–20 mcg/mL), "Red Man Syndrome" with rapid infusion — slow the rate. Aminoglycosides: ototoxic + nephrotoxic.</div></div>
+      <div class="suffix-card"><div class="suffix-name">-floxacin</div><div class="suffix-class">Fluoroquinolones</div><div class="suffix-detail">ciprofloxacin, levofloxacin, moxifloxacin. Broad-spectrum antibiotics. Risk: tendon rupture (especially Achilles), contraindicated &lt;18 yrs, avoid in pregnancy. Phototoxicity — sun protection needed.</div></div>
+      <div class="suffix-card"><div class="suffix-name">-mab</div><div class="suffix-class">Monoclonal Antibodies</div><div class="suffix-detail">rituximab, trastuzumab, adalimumab. Biologic/immunotherapy agents. High infusion reaction risk — premedicating with diphenhydramine and acetaminophen. Monitor for infection (immunosuppressive).</div></div>
+      <div class="suffix-card"><div class="suffix-name">-tidine</div><div class="suffix-class">H2 Blockers</div><div class="suffix-detail">famotidine, ranitidine (withdrawn), cimetidine. Reduce gastric acid via histamine-2 receptor blockade. Less potent than PPIs. Used for GERD, peptic ulcer disease.</div></div>
+      <div class="suffix-card"><div class="suffix-name">-prazole</div><div class="suffix-class">Proton Pump Inhibitors (PPIs)</div><div class="suffix-detail">omeprazole, pantoprazole, esomeprazole. Strongest acid suppression. Give 30–60 min before first meal. Long-term use: risk of hypomagnesemia, C. diff, fractures.</div></div>
+    </div>
+  </div>
+
+  <div class="section anchor" id="highalert">
+    <div class="section-header">
+      <div class="section-icon red">⚠️</div>
+      <div><div class="section-num">Section 02</div><h2>High-Alert Medications</h2></div>
+    </div>
+    <p class="section-intro">High-alert medications have a heightened risk of causing significant patient harm when used in error. The ISMP list is the standard. Know these 8 categories — the NCLEX tests each one.</p>
+    <div class="pill-list">
+      <div class="pill-row"><span class="pill red">Insulin</span><span class="pill-text"><b>Double-check dose with a second RN.</b> Never abbreviate "U" (write "units" — U looks like 0). Only use insulin syringes. Regular insulin is the only type given IV. Glargine/Lantus has NO peak — once daily. Lispro is rapid-acting — give WITH meal.</span></div>
+      <div class="pill-row"><span class="pill red">Heparin</span><span class="pill-text"><b>Weight-based dosing — always double check.</b> Monitor aPTT (therapeutic: 46–70 sec). Antidote: protamine sulfate. Watch for HIT (Heparin-Induced Thrombocytopenia) — paradoxical clotting, drop in platelets. Switch to argatroban if HIT suspected.</span></div>
+      <div class="pill-row"><span class="pill red">Warfarin</span><span class="pill-text"><b>Monitor INR every visit.</b> Therapeutic INR: 2–3 (standard), 2.5–3.5 (mechanical heart valve). Antidote: Vitamin K (slow), FFP (fast). Many drug and food interactions. Leafy greens ↑ Vitamin K → ↓ drug effect. Teach consistency, not elimination, of greens.</span></div>
+      <div class="pill-row"><span class="pill red">Opioids</span><span class="pill-text"><b>Assess RR before every dose — hold if RR &lt;12.</b> Have Naloxone (Narcan) accessible. Risk: respiratory depression, constipation, sedation, tolerance. Rotate sites (patches). Do NOT crush extended-release formulations.</span></div>
+      <div class="pill-row"><span class="pill red">Digoxin</span><span class="pill-text"><b>Check apical pulse for 1 full minute — hold if &lt;60.</b> Therapeutic level: 0.5–2 ng/mL. Toxicity signs: nausea, visual changes (yellow-green halos), bradycardia. K+ must be normal — hypokalemia potentiates toxicity. Antidote: Digibind (Digoxin Immune Fab).</span></div>
+      <div class="pill-row"><span class="pill red">Concentrated Electrolytes</span><span class="pill-text"><b>Never give concentrated KCl or NaCl IV push.</b> Always dilute. Must be stored separately on restricted-access shelving. Administration requires two-nurse verification at most facilities.</span></div>
+      <div class="pill-row"><span class="pill red">Chemotherapy</span><span class="pill-text"><b>Triple-check drug, dose, route, patient, and cycle.</b> PPE required during preparation and administration. Watch for extravasation — vesicant drugs cause tissue necrosis. Know the facility extravasation protocol before administering.</span></div>
+      <div class="pill-row"><span class="pill red">NMBAs</span><span class="pill-text"><b>Neuromuscular blocking agents — patient is awake but paralyzed.</b> Must have ventilator ready before administering. Always concurrent with sedation and analgesia. Never confused with similar-appearing vials.</span></div>
+    </div>
+    <div class="callout danger" style="margin-top:16px;">
+      <div class="callout-icon">🚨</div>
+      <div><div class="callout-title">Always Check 6 Rights</div><div class="callout-text">Right patient (2 identifiers) · Right drug · Right dose · Right route · Right time · Right documentation. For high-alert meds, add: Right indication and Right response monitoring.</div></div>
+    </div>
+  </div>
+
+  <div class="section anchor" id="antidotes">
+    <div class="section-header">
+      <div class="section-icon gold">🆘</div>
+      <div><div class="section-num">Section 03</div><h2>Antidotes — Know These Cold</h2></div>
+    </div>
+    <p class="section-intro">The NCLEX tests antidotes regularly, often buried in clinical scenarios. Memorize every pair on this list. In practice, knowing the antidote could be the difference between life and death.</p>
+    <div class="card">
+      <div class="card-title gold">💊 Drug-Antidote Pairs</div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Drug / Toxin</th><th>Antidote</th><th>Key Note</th></tr></thead>
+          <tbody>
+            <tr><td><b>Heparin</b></td><td>Protamine sulfate</td><td>1mg neutralizes ~100 units. Give slowly IV.</td></tr>
+            <tr><td><b>Warfarin</b></td><td>Vitamin K / FFP</td><td>Vit K = slow (12–24h). FFP = fast (emergency).</td></tr>
+            <tr><td><b>Opioids</b></td><td>Naloxone (Narcan)</td><td>0.4mg IV/IM/IN. May need repeat doses.</td></tr>
+            <tr><td><b>Benzodiazepines</b></td><td>Flumazenil</td><td>Short-acting — may need repeat. Caution: seizure risk.</td></tr>
+            <tr><td><b>Acetaminophen OD</b></td><td>N-acetylcysteine (Mucomyst)</td><td>Most effective within 8–10 hrs of ingestion.</td></tr>
+            <tr><td><b>Organophosphates/Nerve Agents</b></td><td>Atropine + Pralidoxime</td><td>Atropine reverses muscarinic effects. Pral reactivates AChE.</td></tr>
+            <tr><td><b>Digoxin toxicity</b></td><td>Digibind (Digoxin Immune Fab)</td><td>For severe toxicity. Monitor K+ — may shift.</td></tr>
+            <tr><td><b>Iron OD</b></td><td>Deferoxamine</td><td>Chelation therapy. Urine turns orange-red (normal).</td></tr>
+            <tr><td><b>Lead poisoning</b></td><td>EDTA / Dimercaprol (BAL)</td><td>BAL first if encephalopathy present.</td></tr>
+            <tr><td><b>Magnesium toxicity</b></td><td>Calcium gluconate</td><td>10mL of 10% solution IV over 3 min. Keep at bedside during Mag infusion.</td></tr>
+            <tr><td><b>Thrombolytics (tPA)</b></td><td>Aminocaproic acid (Amicar)</td><td>Antifibrinolytic — stops tPA's clot-busting action.</td></tr>
+            <tr><td><b>Methanol/Ethylene glycol</b></td><td>Fomepizole (or ethanol)</td><td>Blocks alcohol dehydrogenase — prevents toxic metabolite formation.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section anchor" id="levels">
+    <div class="section-header">
+      <div class="section-icon purple">🔢</div>
+      <div><div class="section-num">Section 04</div><h2>Therapeutic Drug Levels</h2></div>
+    </div>
+    <p class="section-intro">These drugs have narrow therapeutic indices — too little = ineffective, too much = toxic. The NCLEX tests what toxicity looks like and what to do about it.</p>
+    <div class="card">
+      <div class="card-title purple">📊 Therapeutic Level Reference</div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Drug</th><th>Therapeutic Level</th><th>Toxic Signs</th><th>Action if Toxic</th></tr></thead>
+          <tbody>
+            <tr><td><b>Digoxin</b></td><td>0.5–2 ng/mL</td><td>N/V, bradycardia, yellow-green halos, dysrhythmia</td><td>Hold, check K+, notify, Digibind if severe</td></tr>
+            <tr><td><b>Lithium</b></td><td>0.6–1.2 mEq/L</td><td>&gt;1.5 = tremor, confusion; &gt;2.0 = seizures, coma</td><td>Hold, hydrate, dialysis if severe</td></tr>
+            <tr><td><b>Phenytoin (Dilantin)</b></td><td>10–20 mcg/mL</td><td>Nystagmus, ataxia, slurred speech, confusion</td><td>Hold, check level, reduce dose</td></tr>
+            <tr><td><b>Theophylline</b></td><td>10–20 mcg/mL</td><td>Tachycardia, N/V, tremors, seizures</td><td>Hold, check level, supportive care</td></tr>
+            <tr><td><b>Vancomycin (trough)</b></td><td>10–20 mcg/mL</td><td>Red man syndrome, nephrotoxicity, ototoxicity</td><td>Slow infusion, monitor renal function</td></tr>
+            <tr><td><b>Warfarin (INR)</b></td><td>2.0–3.0 (standard)</td><td>Bleeding — GI, intracranial, hematuria</td><td>Hold, Vit K or FFP per order</td></tr>
+            <tr><td><b>Heparin (aPTT)</b></td><td>46–70 sec (therapeutic)</td><td>Bleeding, HIT (platelet drop)</td><td>Stop infusion, protamine, monitor</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="callout warning">
+      <div class="callout-icon">💡</div>
+      <div><div class="callout-title">Lithium — Special Considerations</div><div class="callout-text">Lithium is excreted by the kidneys and competes with sodium. <b>Low sodium diet or dehydration = higher lithium levels = toxicity risk.</b> Teach patients to maintain consistent salt intake and stay hydrated. Avoid NSAIDs and ACE inhibitors (both raise lithium levels).</div></div>
+    </div>
+  </div>
+
+  <div class="section anchor" id="considerations">
+    <div class="section-header">
+      <div class="section-icon blue">🩺</div>
+      <div><div class="section-num">Section 05</div><h2>Nursing Considerations by Drug Class</h2></div>
+    </div>
+    <p class="section-intro">These are the before-you-give, while-you-give, and after-you-give standards for the most tested drug classes. This is where clinical judgment meets pharmacology on the NCLEX.</p>
+    <div class="pill-list">
+      <div class="pill-row"><span class="pill blue">Beta Blockers</span><span class="pill-text"><b>Before:</b> Check HR (hold if &lt;60) and SBP (hold if &lt;90). <b>During:</b> Monitor for bradycardia, hypotension, bronchospasm. <b>Teach:</b> Never stop abruptly — can cause rebound HTN/MI. Masks hypoglycemia symptoms in diabetics.</span></div>
+      <div class="pill-row"><span class="pill blue">Loop Diuretics</span><span class="pill-text"><b>Before:</b> Check electrolytes (especially K+), weight, BP. <b>During:</b> Monitor I&O, daily weights, K+. <b>Teach:</b> Take in AM to avoid nocturia. High-dose IV furosemide: risk of ototoxicity. "Furosemide causes furious urination."</span></div>
+      <div class="pill-row"><span class="pill blue">ACE Inhibitors</span><span class="pill-text"><b>Before:</b> Check renal function, K+. <b>During:</b> Monitor BP, creatinine, K+. <b>Teach:</b> Dry cough = common SE — can switch to ARB. Report facial swelling (angioedema) immediately — stop drug. Teratogenic — not for pregnancy.</span></div>
+      <div class="pill-row"><span class="pill blue">Steroids (Corticosteroids)</span><span class="pill-text"><b>During:</b> Monitor blood glucose (↑), BP, Na+, signs of infection (mask fever). <b>Teach:</b> Never stop abruptly — taper. Cushingoid effects: moon face, buffalo hump, central obesity, striae. Suppresses immune system — infection risk.</span></div>
+      <div class="pill-row"><span class="pill blue">Aminoglycosides</span><span class="pill-text"><b>Before:</b> Check renal function (BUN/Cr), baseline hearing. <b>During:</b> Monitor peak and trough levels, urine output, daily BUN/Cr. <b>Avoid combining</b> with other nephrotoxic or ototoxic drugs. Trough drawn 30 min before next dose.</span></div>
+      <div class="pill-row"><span class="pill blue">SSRIs / SNRIs</span><span class="pill-text"><b>Teach:</b> Takes 2–4 weeks to feel full effect — do NOT stop early. Serotonin syndrome risk when combined with MAOIs or other serotonergic agents (fever, agitation, tremors, diarrhea, clonus). Never combine with MAOIs — 14-day washout required.</span></div>
+    </div>
+  </div>
+
+  <div class="section anchor" id="nclex">
+    <div class="section-header">
+      <div class="section-icon red">⚠️</div>
+      <div><div class="section-num">Section 06</div><h2>High-Yield NCLEX Questions</h2></div>
+    </div>
+    <p class="section-intro">Ten pharmacology scenarios that appear frequently on the NCLEX. Think through each one before reading the answer.</p>
+    <div class="qa-list">
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q1</span>A patient on Metformin is scheduled for a CT scan with contrast dye tomorrow. What is the priority nursing action?</div><div class="qa-a"><b>Hold Metformin 48 hours before AND after the contrast procedure.</b> Contrast dye + Metformin = risk of lactic acidosis due to renal stress. Notify provider and radiology. Resume only after renal function is confirmed normal post-scan.</div></div>
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q2</span>A patient is prescribed an ACE inhibitor AND a K+-sparing diuretic (spironolactone). What does the nurse monitor closely?</div><div class="qa-a"><b>Potassium — hyperkalemia risk.</b> Both drugs raise K+ independently. Together, they significantly increase the risk of dangerous hyperkalemia. Monitor K+ frequently and educate patient to avoid K+ supplements and high-K+ foods.</div></div>
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q3</span>A patient on an MAOI eats aged cheddar cheese at dinner and develops a severe headache and BP of 210/120. What happened?</div><div class="qa-a"><b>Tyramine-induced hypertensive crisis.</b> MAOIs block monoamine oxidase, which normally breaks down tyramine in foods. Tyramine accumulates → massive catecholamine release → severe HTN. Teach: avoid aged cheeses, wine, cured meats, fermented foods.</div></div>
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q4</span>Which insulin can be given intravenously?</div><div class="qa-a"><b>Regular insulin ONLY.</b> All other insulin types — NPH, glargine, detemir, lispro, aspart — must NEVER be given IV. Regular insulin is clear; NPH is cloudy. When mixing, draw up clear (regular) before cloudy (NPH).</div></div>
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q5</span>A patient on Atorvastatin reports new onset muscle pain and weakness. What should the nurse do?</div><div class="qa-a"><b>Hold the statin and check CK (creatine kinase) level immediately.</b> Muscle pain on statins can indicate myopathy or rhabdomyolysis (breakdown of muscle tissue → acute kidney injury). Notify provider. Resume only with provider approval after CK normalizes.</div></div>
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q6</span>A patient is found unresponsive with RR of 6 and pinpoint pupils. They are on PCA morphine. What is the priority?</div><div class="qa-a"><b>Administer Naloxone (Narcan) immediately.</b> Pinpoint pupils + respiratory depression + opioid on board = opioid overdose. Give Naloxone 0.4mg IV/IM/IN, position patient, apply O2, call rapid response. Be prepared to repeat — Narcan wears off faster than most opioids.</div></div>
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q7</span>Which drugs are teratogenic and must be avoided in pregnancy?</div><div class="qa-a"><b>ACE inhibitors, ARBs, Warfarin, Tetracyclines, Fluoroquinolones, Isotretinoin, Methotrexate, NSAIDs (3rd trimester), Lithium, Valproic acid.</b> On NCLEX, if a woman of childbearing age is prescribed any of these, confirm contraception use or hold/discuss the prescription.</div></div>
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q8</span>A patient receiving IV Vancomycin suddenly develops flushing, redness, and itching across the face and upper body. What should the nurse do?</div><div class="qa-a"><b>Red Man Syndrome — slow the infusion rate immediately.</b> This is an infusion-related reaction (not a true allergy) caused by vancomycin infused too rapidly. Slow to infuse over at least 60 minutes. Diphenhydramine may be given. This is NOT an indication to stop permanently.</div></div>
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q9</span>A patient with asthma is prescribed Metoprolol for hypertension. What should the nurse do?</div><div class="qa-a"><b>Question the order — beta blockers are contraindicated in asthma.</b> Beta blockers block beta-2 receptors in the lungs → bronchoconstriction → can trigger asthma attack. Notify provider. A CCB or ACEi may be safer alternatives for this patient.</div></div>
+      <div class="qa-item"><div class="qa-q"><span class="qa-num">Q10</span>A patient's Digoxin level is 2.4 ng/mL. They are also reporting nausea and seeing yellow halos around lights. What is the priority?</div><div class="qa-a"><b>Hold Digoxin, check K+, and notify provider immediately.</b> Digoxin level &gt;2.0 = toxic. Visual disturbances (halos, color changes) are classic toxicity signs. Hypokalemia worsens toxicity — correct K+ first. Severe toxicity → Digibind. Continuous cardiac monitoring.</div></div>
+    </div>
+  </div>
+
+  <div class="section anchor" id="checklist">
+    <div class="section-header">
+      <div class="section-icon pink">✅</div>
+      <div><div class="section-num">Section 07</div><h2>Study Priority Checklist</h2></div>
+    </div>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>10 drug suffixes</b> — class, examples, key SE for each</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>8 ISMP high-alert meds</b> — what makes each dangerous, nursing checks</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>12 antidote pairs</b> — memorized cold</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Therapeutic levels</b> — Digoxin, Lithium, Phenytoin, Vancomycin, Warfarin</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Insulin types</b> — rapid, short, intermediate, long-acting; which can be given IV</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>ACE inhibitor SE</b> — cough, hyperkalemia, angioedema, teratogenic</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Beta blocker rules</b> — HR check, no abrupt stop, masks hypoglycemia</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>MAOI interactions</b> — tyramine foods, serotonin syndrome with SSRIs</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Drugs to avoid in pregnancy</b> — at least 5 by name</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Metformin + contrast rule</b> — hold 48 hrs before and after</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Red Man Syndrome</b> — cause, treatment, not a true allergy</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Statin + muscle pain</b> — hold and check CK (rhabdomyolysis risk)</span></div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div><strong>No Prior Authorization</strong></div>
+  <div class="footer-divider"></div>
+  <div>Created by Danielle Alcala-Glazier · RN Student · Licensed Esthetician · 10+ Years Clinical Practice</div>
+  <div style="margin-top:6px;">nopriorauthorization.com · Hello Gorgeous Med Spa, Oswego IL · 630-636-6193</div>
+  <div style="margin-top:10px;font-size:11px;color:#475569;">This guide is intended for educational purposes. Always follow current clinical guidelines and facility policies.</div>
+</div>
+</body>
+</html>

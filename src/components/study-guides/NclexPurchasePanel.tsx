@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { STUDY_GUIDE_NCLEX } from "@/config/study-guides.config";
+import { STUDY_GUIDE_NCLEX, formatStudyGuideUsd } from "@/config/study-guides.config";
 
 type Variant = "compact" | "hero";
 
@@ -32,7 +32,7 @@ export function NclexPurchasePanel({ variant }: { variant: Variant }) {
     }
   }
 
-  const price = `$${(STUDY_GUIDE_NCLEX.priceCents / 100).toFixed(0)}`;
+  const price = formatStudyGuideUsd(STUDY_GUIDE_NCLEX.priceCents);
   const isHero = variant === "hero";
 
   return (
@@ -42,7 +42,7 @@ export function NclexPurchasePanel({ variant }: { variant: Variant }) {
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-serif text-xl font-bold text-white sm:text-2xl">NCLEX</h2>
             <span className="rounded-full bg-[#D4537E]/20 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-[#D4537E]">
-              $25 · Not in main shop
+              {price} bundle · Not in main shop
             </span>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-gray-400 sm:text-base">

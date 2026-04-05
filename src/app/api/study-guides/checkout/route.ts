@@ -1,7 +1,11 @@
 export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
-import { STUDY_GUIDE_NCLEX_SLUG, STUDY_GUIDE_NCLEX } from "@/config/study-guides.config";
+import {
+  STUDY_GUIDE_NCLEX_SLUG,
+  STUDY_GUIDE_NCLEX,
+  STUDY_GUIDE_NCLEX_TEMPLATES,
+} from "@/config/study-guides.config";
 import { createCheckoutLink } from "@/lib/square/client";
 
 /**
@@ -29,7 +33,7 @@ export async function POST(req: NextRequest) {
         slug: STUDY_GUIDE_NCLEX_SLUG,
         title: STUDY_GUIDE_NCLEX.title,
         priceCents: STUDY_GUIDE_NCLEX.priceCents,
-        templateCount: 1,
+        templateCount: STUDY_GUIDE_NCLEX_TEMPLATES.length,
       },
       `${origin}/study-guides/thank-you`,
     );

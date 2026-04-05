@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab Values — NCLEX Study Guide · No Prior Authorization</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0a1628; --pink:#D4537E; --blush:#FBEAF0; --gold:#c77b2a;
+  --teal:#2a9d8f; --red:#e63946; --purple:#7b2d8b; --green:#2d7a55;
+  --blue:#1a3a6b; --border:#e2e8f0; --bg:#f8f9fc; --text:#1a202c;
+  --muted:#64748b; --card:#ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+
+/* TOP NAV */
+.topbar { background:var(--navy); color:white; padding:10px 40px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+.topbar-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; color:white; }
+.topbar-sub { font-size:11px; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; }
+.topbar-badge { background:var(--pink); color:white; font-size:10px; font-weight:600; padding:3px 10px; border-radius:20px; letter-spacing:0.5px; }
+
+/* HERO */
+.hero { background:var(--navy); padding:60px 40px 50px; border-bottom:3px solid var(--pink); }
+.hero-eyebrow { font-size:11px; font-weight:600; color:var(--pink); letter-spacing:3px; text-transform:uppercase; margin-bottom:12px; }
+.hero h1 { font-family:'DM Serif Display',serif; font-size:52px; color:white; line-height:1.1; margin-bottom:16px; }
+.hero-desc { font-size:16px; color:#94a3b8; max-width:640px; margin-bottom:28px; }
+.hero-tags { display:flex; gap:8px; flex-wrap:wrap; }
+.hero-tag { background:rgba(255,255,255,0.08); color:#cbd5e1; font-size:12px; padding:4px 12px; border-radius:20px; border:1px solid rgba(255,255,255,0.12); }
+
+/* TOC */
+.toc-wrap { background:white; border-bottom:1px solid var(--border); padding:20px 40px; }
+.toc-label { font-size:10px; font-weight:600; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+.toc { display:flex; gap:8px; flex-wrap:wrap; }
+.toc a { font-size:13px; font-weight:500; color:var(--blue); background:#f0f4ff; padding:5px 14px; border-radius:20px; text-decoration:none; border:1px solid #c7d7f5; transition:all 0.15s; }
+.toc a:hover { background:var(--navy); color:white; border-color:var(--navy); }
+
+/* MAIN LAYOUT */
+.main { max-width:900px; margin:0 auto; padding:48px 24px 80px; }
+
+/* SECTION HEADERS */
+.section { margin-bottom:56px; }
+.section-header { display:flex; align-items:center; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:2px solid var(--border); }
+.section-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.section-icon.navy { background:var(--navy); }
+.section-icon.teal { background:var(--teal); }
+.section-icon.blue { background:var(--blue); }
+.section-icon.red { background:var(--red); }
+.section-icon.gold { background:var(--gold); }
+.section-icon.purple { background:var(--purple); }
+.section-icon.green { background:var(--green); }
+.section-icon.pink { background:var(--pink); }
+.section-num { font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:2px; color:var(--muted); }
+.section h2 { font-family:'DM Serif Display',serif; font-size:28px; color:var(--navy); margin-bottom:0; }
+.section-intro { font-size:15px; color:var(--muted); margin-bottom:24px; line-height:1.65; }
+
+/* CARDS */
+.card { background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:16px; }
+.card-title { padding:12px 20px; font-weight:600; font-size:13px; letter-spacing:0.3px; color:white; display:flex; align-items:center; gap:8px; }
+.card-title.navy { background:var(--navy); }
+.card-title.teal { background:var(--teal); }
+.card-title.blue { background:var(--blue); }
+.card-title.red { background:var(--red); }
+.card-title.gold { background:var(--gold); }
+.card-title.purple { background:var(--purple); }
+.card-title.green { background:var(--green); }
+.card-title.pink { background:var(--pink); }
+.card-body { padding:20px; }
+
+/* TABLES */
+table { width:100%; border-collapse:collapse; font-size:14px; }
+thead th { background:var(--navy); color:white; padding:10px 16px; text-align:left; font-weight:600; font-size:12px; letter-spacing:0.3px; }
+tbody td { padding:10px 16px; border-bottom:1px solid var(--border); vertical-align:top; }
+tbody tr:last-child td { border-bottom:none; }
+tbody tr:nth-child(even) td { background:#f8fafc; }
+.crit { color:var(--red); font-weight:600; }
+.normal { color:var(--green); font-weight:500; }
+
+/* CALLOUTS */
+.callout { border-radius:10px; padding:16px 20px; margin-bottom:14px; display:flex; gap:14px; align-items:flex-start; }
+.callout.danger { background:#fff5f5; border-left:4px solid var(--red); }
+.callout.warning { background:#fffbeb; border-left:4px solid var(--gold); }
+.callout.info { background:#f0f9ff; border-left:4px solid var(--teal); }
+.callout.success { background:#f0fdf4; border-left:4px solid var(--green); }
+.callout.purple { background:#faf5ff; border-left:4px solid var(--purple); }
+.callout-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+.callout-title { font-weight:600; font-size:14px; margin-bottom:4px; }
+.callout.danger .callout-title { color:var(--red); }
+.callout.warning .callout-title { color:var(--gold); }
+.callout.info .callout-title { color:var(--teal); }
+.callout.success .callout-title { color:var(--green); }
+.callout.purple .callout-title { color:var(--purple); }
+.callout-text { font-size:14px; color:var(--text); line-height:1.6; }
+
+/* PILL LISTS */
+.pill-list { display:flex; flex-direction:column; gap:10px; }
+.pill-row { display:flex; gap:12px; align-items:flex-start; }
+.pill { background:var(--navy); color:white; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.pill.red { background:var(--red); }
+.pill.teal { background:var(--teal); }
+.pill.gold { background:var(--gold); }
+.pill.purple { background:var(--purple); }
+.pill.green { background:var(--green); }
+.pill.pink { background:var(--pink); }
+.pill.blue { background:var(--blue); }
+.pill-text { font-size:14px; line-height:1.6; }
+.pill-text b { color:var(--navy); }
+
+/* 2-COL GRID */
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+
+/* STAT BOXES */
+.stat-box { background:var(--blush); border:1px solid #f0c0d0; border-radius:10px; padding:16px; text-align:center; }
+.stat-label { font-size:11px; font-weight:600; color:var(--pink); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.stat-value { font-family:'Bebas Neue',sans-serif; font-size:30px; color:var(--navy); letter-spacing:1px; }
+.stat-sub { font-size:12px; color:var(--muted); margin-top:2px; }
+
+/* Q&A */
+.qa-list { display:flex; flex-direction:column; gap:12px; }
+.qa-item { border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+.qa-q { background:#fef3f4; padding:12px 16px; font-weight:600; font-size:14px; color:var(--red); display:flex; gap:10px; align-items:flex-start; }
+.qa-num { background:var(--red); color:white; font-size:11px; font-weight:700; padding:2px 8px; border-radius:20px; flex-shrink:0; margin-top:1px; }
+.qa-a { padding:12px 16px; font-size:14px; line-height:1.65; color:var(--text); background:white; }
+.qa-a b { color:var(--navy); }
+
+/* CHECKLIST */
+.checklist { display:flex; flex-direction:column; gap:8px; }
+.check-item { display:flex; gap:12px; align-items:flex-start; padding:10px 14px; background:white; border:1px solid var(--border); border-radius:8px; font-size:14px; }
+.check-box { width:18px; height:18px; border:2px solid var(--border); border-radius:4px; flex-shrink:0; margin-top:1px; }
+.check-text b { color:var(--navy); }
+
+/* FOOTER */
+.footer { background:var(--navy); color:#94a3b8; text-align:center; padding:32px 24px; font-size:13px; }
+.footer strong { color:white; }
+.footer-divider { width:40px; height:2px; background:var(--pink); margin:12px auto; }
+
+/* SECTION ANCHOR */
+.anchor { scroll-margin-top:80px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-brand">No Prior Authorization</div>
+    <div class="topbar-sub">NCLEX Study Guide Series · Danielle Alcala-Glazier</div>
+  </div>
+  <div class="topbar-badge">Guide 1 of 8</div>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">NCLEX-RN Study Guide · No Prior Authorization</div>
+  <h1>Lab Values<br>Complete Reference</h1>
+  <div class="hero-desc">Everything you need to know about lab values for the NCLEX — normal ranges, critical values, clinical implications, and exactly what to do when results come back abnormal.</div>
+  <div class="hero-tags">
+    <span class="hero-tag">BMP &amp; CMP</span>
+    <span class="hero-tag">CBC &amp; Differential</span>
+    <span class="hero-tag">Coagulation Studies</span>
+    <span class="hero-tag">ABG Interpretation</span>
+    <span class="hero-tag">Cardiac Enzymes</span>
+    <span class="hero-tag">Critical Values</span>
+    <span class="hero-tag">10 High-Yield NCLEX Q&amp;As</span>
+  </div>
+</div>
+
+<div class="toc-wrap">
+  <div class="toc-label">Jump to Section</div>
+  <div class="toc">
+    <a href="#bmp">BMP</a>
+    <a href="#cmp">CMP</a>
+    <a href="#cbc">CBC</a>
+    <a href="#coag">Coagulation</a>
+    <a href="#abg">ABG</a>
+    <a href="#cardiac">Cardiac Enzymes</a>
+    <a href="#electrolytes">Electrolyte Imbalances</a>
+    <a href="#nclex">NCLEX Q&amp;As</a>
+    <a href="#checklist">Study Checklist</a>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- BMP -->
+  <div class="section anchor" id="bmp">
+    <div class="section-header">
+      <div class="section-icon navy">🩸</div>
+      <div>
+        <div class="section-num">Section 01</div>
+        <h2>Basic Metabolic Panel (BMP)</h2>
+      </div>
+    </div>
+    <p class="section-intro">The BMP is an 8-test panel that gives a snapshot of kidney function, fluid and electrolyte balance, and blood glucose. It's ordered constantly — know every value cold.</p>
+
+    <div class="card">
+      <div class="card-title navy">🔢 Normal Ranges &amp; Critical Values</div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Lab Value</th><th>Normal Range</th><th>Critical Low</th><th>Critical High</th><th>Clinical Note</th></tr></thead>
+          <tbody>
+            <tr><td><b>Sodium (Na+)</b></td><td>136–145 mEq/L</td><td class="crit">&lt;120</td><td class="crit">&gt;160</td><td>Primary extracellular cation; water balance</td></tr>
+            <tr><td><b>Potassium (K+)</b></td><td>3.5–5.0 mEq/L</td><td class="crit">&lt;2.5</td><td class="crit">&gt;6.5</td><td>Cardiac conduction; muscle function</td></tr>
+            <tr><td><b>Chloride (Cl-)</b></td><td>98–106 mEq/L</td><td class="crit">&lt;80</td><td class="crit">&gt;115</td><td>Follows Na+; acid-base balance</td></tr>
+            <tr><td><b>CO2 / Bicarb (HCO3-)</b></td><td>22–29 mEq/L</td><td class="crit">&lt;15</td><td class="crit">&gt;40</td><td>Metabolic acid-base indicator</td></tr>
+            <tr><td><b>BUN</b></td><td>10–20 mg/dL</td><td>—</td><td class="crit">&gt;100</td><td>Kidney function; protein catabolism</td></tr>
+            <tr><td><b>Creatinine</b></td><td>0.6–1.2 mg/dL</td><td>—</td><td class="crit">&gt;10</td><td>Most specific kidney function marker</td></tr>
+            <tr><td><b>Glucose</b></td><td>70–100 mg/dL</td><td class="crit">&lt;40</td><td class="crit">&gt;500</td><td>Check fasting status; DM management</td></tr>
+            <tr><td><b>Calcium (Ca++)</b></td><td>8.5–10.5 mg/dL</td><td class="crit">&lt;6</td><td class="crit">&gt;13</td><td>Bone, muscle, nerve, cardiac function</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">💡</div>
+      <div>
+        <div class="callout-title">BUN:Creatinine Ratio</div>
+        <div class="callout-text">A ratio greater than 20:1 suggests <b>prerenal failure</b> (dehydration, decreased perfusion). A ratio less than 10:1 suggests intrinsic renal disease. This ratio is one of the most tested kidney concepts on NCLEX.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CMP -->
+  <div class="section anchor" id="cmp">
+    <div class="section-header">
+      <div class="section-icon teal">🧪</div>
+      <div>
+        <div class="section-num">Section 02</div>
+        <h2>Complete Metabolic Panel (CMP)</h2>
+      </div>
+    </div>
+    <p class="section-intro">The CMP includes everything in the BMP plus liver function tests, total protein, and albumin. Think of it as the BMP + liver panel. Often ordered for a comprehensive baseline or to monitor chronic conditions.</p>
+
+    <div class="card">
+      <div class="card-title teal">🔢 CMP Additional Values</div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Lab Value</th><th>Normal Range</th><th>↑ Suggests</th><th>↓ Suggests</th></tr></thead>
+          <tbody>
+            <tr><td><b>Total Protein</b></td><td>6.4–8.3 g/dL</td><td>Dehydration</td><td>Malnutrition, liver disease</td></tr>
+            <tr><td><b>Albumin</b></td><td>3.5–5.0 g/dL</td><td>—</td><td>Malnutrition, liver disease, inflammation</td></tr>
+            <tr><td><b>Total Bilirubin</b></td><td>0.2–1.2 mg/dL</td><td>Liver disease, hemolysis, bile obstruction</td><td>—</td></tr>
+            <tr><td><b>AST</b></td><td>10–40 U/L</td><td>Liver damage, MI, muscle injury</td><td>—</td></tr>
+            <tr><td><b>ALT</b></td><td>7–56 U/L</td><td>Liver damage (most specific)</td><td>—</td></tr>
+            <tr><td><b>Alkaline Phosphatase</b></td><td>44–147 U/L</td><td>Bone disease, liver/bile obstruction</td><td>—</td></tr>
+            <tr><td><b>Magnesium</b></td><td>1.5–2.5 mEq/L</td><td>Renal failure, OD</td><td>Poor nutrition, alcoholism, diarrhea</td></tr>
+            <tr><td><b>Phosphorus</b></td><td>2.5–4.5 mg/dL</td><td>Renal failure, hypoparathyroidism</td><td>Malnutrition, hyperparathyroidism</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-icon">⚠️</div>
+      <div>
+        <div class="callout-title">Low Albumin = Edema Risk</div>
+        <div class="callout-text">Albumin maintains oncotic pressure in the vessels. When albumin drops below 3.5 g/dL, fluid leaks out of the vasculature into tissues → <b>edema</b>. This is why malnourished or liver disease patients often present with swollen legs or ascites.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CBC -->
+  <div class="section anchor" id="cbc">
+    <div class="section-header">
+      <div class="section-icon blue">🔴</div>
+      <div>
+        <div class="section-num">Section 03</div>
+        <h2>Complete Blood Count (CBC)</h2>
+      </div>
+    </div>
+    <p class="section-intro">The CBC gives a full picture of all three blood cell lines — red cells, white cells, and platelets. Abnormalities point to anemia, infection, bleeding disorders, and more.</p>
+
+    <div class="card">
+      <div class="card-title blue">🔢 CBC Normal Ranges</div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Lab Value</th><th>Normal (Male)</th><th>Normal (Female)</th><th>Critical Value</th></tr></thead>
+          <tbody>
+            <tr><td><b>WBC</b></td><td colspan="2">4,500–11,000/μL</td><td class="crit">&lt;2,000 or &gt;30,000</td></tr>
+            <tr><td><b>RBC</b></td><td>4.5–5.5 million/μL</td><td>4.0–5.0 million/μL</td><td>—</td></tr>
+            <tr><td><b>Hemoglobin</b></td><td>13.5–17.5 g/dL</td><td>12.0–15.5 g/dL</td><td class="crit">&lt;7 or &gt;20</td></tr>
+            <tr><td><b>Hematocrit</b></td><td>41–53%</td><td>36–46%</td><td class="crit">&lt;21% or &gt;60%</td></tr>
+            <tr><td><b>Platelets</b></td><td colspan="2">150,000–400,000/μL</td><td class="crit">&lt;50,000 or &gt;1,000,000</td></tr>
+            <tr><td><b>MCV</b></td><td colspan="2">80–100 fL</td><td>↓ = microcytic; ↑ = macrocytic</td></tr>
+            <tr><td><b>MCH</b></td><td colspan="2">27–33 pg</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">📐</div>
+      <div>
+        <div class="callout-title">The H&amp;H Rule</div>
+        <div class="callout-text"><b>Hematocrit ≈ 3× Hemoglobin.</b> If a patient's Hgb is 10, their Hct should be around 30%. If the values don't match up, suspect a lab error or specimen issue. This rule is a quick sanity check used in clinical practice daily.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title blue">🔬 WBC Differential — Normal Percentages</div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Cell Type</th><th>Normal %</th><th>↑ Indicates</th><th>↓ Indicates</th></tr></thead>
+          <tbody>
+            <tr><td><b>Neutrophils</b></td><td>55–70%</td><td>Bacterial infection, stress</td><td>Chemotherapy, aplastic anemia</td></tr>
+            <tr><td><b>Lymphocytes</b></td><td>20–40%</td><td>Viral infection, leukemia</td><td>HIV, steroid use</td></tr>
+            <tr><td><b>Monocytes</b></td><td>2–8%</td><td>Chronic infection, TB, malaria</td><td>Rare</td></tr>
+            <tr><td><b>Eosinophils</b></td><td>1–4%</td><td>Allergies, asthma, parasites</td><td>Steroid use</td></tr>
+            <tr><td><b>Basophils</b></td><td>0.5–1%</td><td>Allergic reactions, CML</td><td>Acute allergic rxn (released)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout danger">
+      <div class="callout-icon">🚨</div>
+      <div>
+        <div class="callout-title">Left Shift = Severe Infection</div>
+        <div class="callout-text">A "left shift" means immature neutrophils (band cells) are being released from the bone marrow into circulation — the body is working overtime to fight a serious infection. An ANC (absolute neutrophil count) below 500/μL = severe neutropenia → place patient in <b>reverse/protective isolation.</b></div>
+      </div>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-icon">🩺</div>
+      <div>
+        <div class="callout-title">Platelet &lt;50,000 — Bleeding Precautions</div>
+        <div class="callout-text">When platelets drop below 50,000/μL, initiate bleeding precautions: <b>no IM injections, no rectal temperatures, soft toothbrush, electric razor only, fall precautions.</b> Below 20,000 = spontaneous bleeding risk. Below 10,000 = critical/life-threatening.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COAGULATION -->
+  <div class="section anchor" id="coag">
+    <div class="section-header">
+      <div class="section-icon gold">🩺</div>
+      <div>
+        <div class="section-num">Section 04</div>
+        <h2>Coagulation Studies</h2>
+      </div>
+    </div>
+    <p class="section-intro">Coagulation labs are essential when patients are on anticoagulants or have bleeding disorders. Know the normal vs therapeutic ranges — they are different and both are tested.</p>
+
+    <div class="card">
+      <div class="card-title gold">🔢 Coagulation Reference</div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Lab</th><th>Normal Range</th><th>Therapeutic Target</th><th>Key Clinical Note</th></tr></thead>
+          <tbody>
+            <tr><td><b>PT (Prothrombin Time)</b></td><td>11–13.5 sec</td><td>—</td><td>Tests extrinsic pathway (Warfarin)</td></tr>
+            <tr><td><b>INR</b></td><td>0.8–1.1</td><td>2.0–3.0 (Warfarin); 2.5–3.5 (mech valve)</td><td>Standardized PT ratio — most used clinically</td></tr>
+            <tr><td><b>aPTT</b></td><td>25–35 sec</td><td>46–70 sec (Heparin therapy)</td><td>Tests intrinsic pathway; monitor Heparin</td></tr>
+            <tr><td><b>Fibrinogen</b></td><td>200–400 mg/dL</td><td>—</td><td>↓ = DIC, liver failure risk</td></tr>
+            <tr><td><b>D-Dimer</b></td><td>&lt;0.5 μg/mL</td><td>—</td><td>↑ = clot breakdown (DVT, PE, DIC)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="callout danger">
+        <div class="callout-icon">💊</div>
+        <div>
+          <div class="callout-title">Warfarin Antidotes</div>
+          <div class="callout-text"><b>Vitamin K</b> — slow reversal (12–24 hrs). <b>FFP (Fresh Frozen Plasma)</b> — fast reversal (used in emergencies). INR &gt;3.0 = hold dose + notify provider.</div>
+        </div>
+      </div>
+      <div class="callout warning">
+        <div class="callout-icon">💉</div>
+        <div>
+          <div class="callout-title">Heparin Antidote</div>
+          <div class="callout-text"><b>Protamine sulfate</b> — given IV slowly. 1mg protamine neutralizes ~100 units of heparin. Watch for HIT (Heparin-Induced Thrombocytopenia) — paradoxical clotting.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABG -->
+  <div class="section anchor" id="abg">
+    <div class="section-header">
+      <div class="section-icon purple">💨</div>
+      <div>
+        <div class="section-num">Section 05</div>
+        <h2>Arterial Blood Gas (ABG)</h2>
+      </div>
+    </div>
+    <p class="section-intro">ABGs measure the balance between oxygen, carbon dioxide, and pH in arterial blood. They're used to evaluate respiratory and metabolic function — a cornerstone of critical care and high on the NCLEX.</p>
+
+    <div class="card">
+      <div class="card-title purple">🔢 ABG Normal Values</div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Component</th><th>Normal Range</th><th>Acidosis</th><th>Alkalosis</th><th>Controlled By</th></tr></thead>
+          <tbody>
+            <tr><td><b>pH</b></td><td>7.35–7.45</td><td class="crit">&lt;7.35</td><td>&gt;7.45</td><td>Both lungs and kidneys</td></tr>
+            <tr><td><b>PaCO2</b></td><td>35–45 mmHg</td><td class="crit">&gt;45 (↑acid)</td><td>&lt;35 (↓acid)</td><td>Lungs (respiratory)</td></tr>
+            <tr><td><b>HCO3-</b></td><td>22–26 mEq/L</td><td class="crit">&lt;22 (↓base)</td><td>&gt;26 (↑base)</td><td>Kidneys (metabolic)</td></tr>
+            <tr><td><b>PaO2</b></td><td>80–100 mmHg</td><td colspan="2"><span class="crit">&lt;60 = hypoxemia</span></td><td>Lungs (gas exchange)</td></tr>
+            <tr><td><b>SaO2</b></td><td>95–100%</td><td colspan="2"><span class="crit">&lt;90% = critical hypoxia</span></td><td>Oxygen saturation of Hgb</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">🔑</div>
+      <div>
+        <div class="callout-title">The ROME Method — Memorize This</div>
+        <div class="callout-text">
+          <b>R</b>espiratory = <b>O</b>pposite: pH and CO2 move in opposite directions.<br>
+          &nbsp;&nbsp;↓pH + ↑CO2 = Respiratory Acidosis &nbsp;|&nbsp; ↑pH + ↓CO2 = Respiratory Alkalosis<br><br>
+          <b>M</b>etabolic = <b>E</b>qual: pH and HCO3- move in the same direction.<br>
+          &nbsp;&nbsp;↓pH + ↓HCO3 = Metabolic Acidosis &nbsp;|&nbsp; ↑pH + ↑HCO3 = Metabolic Alkalosis
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDIAC ENZYMES -->
+  <div class="section anchor" id="cardiac">
+    <div class="section-header">
+      <div class="section-icon red">❤️</div>
+      <div>
+        <div class="section-num">Section 06</div>
+        <h2>Cardiac Enzymes &amp; Markers</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cardiac biomarkers are released into the bloodstream when heart muscle is damaged. Knowing which rises first, peaks highest, and stays longest is classic NCLEX material.</p>
+
+    <div class="card">
+      <div class="card-title red">📊 Cardiac Marker Timeline</div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Marker</th><th>Rises</th><th>Peaks</th><th>Returns to Normal</th><th>Key Point</th></tr></thead>
+          <tbody>
+            <tr><td><b>Troponin I / T</b></td><td>3–6 hrs</td><td>12–24 hrs</td><td>7–14 days</td><td>Most specific for MI; gold standard</td></tr>
+            <tr><td><b>CK-MB</b></td><td>3–6 hrs</td><td>12–24 hrs</td><td>48–72 hrs</td><td>Cardiac-specific CK; used for reinfarction</td></tr>
+            <tr><td><b>Myoglobin</b></td><td>1–3 hrs</td><td>4–12 hrs</td><td>24 hrs</td><td>First to rise; not cardiac-specific</td></tr>
+            <tr><td><b>BNP</b></td><td>Hours</td><td>Sustained</td><td>Varies with treatment</td><td>&gt;100 pg/mL = heart failure</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout danger">
+      <div class="callout-icon">💔</div>
+      <div>
+        <div class="callout-title">BNP in Heart Failure</div>
+        <div class="callout-text"><b>BNP &gt;100 pg/mL</b> = heart failure. <b>BNP &gt;400 pg/mL</b> = severe HF. BNP is released by the ventricles in response to increased wall stress — it's used to distinguish cardiac dyspnea from pulmonary dyspnea in the ER.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ELECTROLYTE IMBALANCES -->
+  <div class="section anchor" id="electrolytes">
+    <div class="section-header">
+      <div class="section-icon green">⚡</div>
+      <div>
+        <div class="section-num">Section 07</div>
+        <h2>Electrolyte Imbalances</h2>
+      </div>
+    </div>
+    <p class="section-intro">Electrolyte imbalances are woven throughout NCLEX — they affect cardiac rhythm, muscle function, neuro status, and more. Know the symptoms and priority nursing actions for each.</p>
+
+    <div class="pill-list">
+      <div class="pill-row"><span class="pill red">Hypo-Na &lt;136</span><span class="pill-text"><b>Hyponatremia:</b> Headache, confusion, seizures, muscle cramps, nausea. Caused by SIADH, excess water intake, diuretics. Treat by restricting fluids; hypertonic saline only for severe symptomatic cases.</span></div>
+      <div class="pill-row"><span class="pill navy">Hyper-Na &gt;145</span><span class="pill-text"><b>Hypernatremia:</b> Thirst, dry mucous membranes, agitation, tachycardia, decreased LOC. Caused by dehydration, diabetes insipidus. Treat with hypotonic fluids slowly.</span></div>
+      <div class="pill-row"><span class="pill gold">Hypo-K &lt;3.5</span><span class="pill-text"><b>Hypokalemia:</b> Muscle weakness, fatigue, U wave on EKG, dysrhythmias, constipation. Caused by vomiting, diuretics, diarrhea. Give K+ slowly IV — never IV push. Always give with monitoring.</span></div>
+      <div class="pill-row"><span class="pill red">Hyper-K &gt;5.0</span><span class="pill-text"><b>Hyperkalemia:</b> Peaked T waves → wide QRS → sine wave pattern → VF/asystole. Weakness, nausea. Treat with calcium gluconate (stabilize heart), sodium bicarb, insulin + dextrose, Kayexalate, dialysis.</span></div>
+      <div class="pill-row"><span class="pill teal">Hypo-Ca &lt;8.5</span><span class="pill-text"><b>Hypocalcemia:</b> Trousseau's sign (carpal spasm with BP cuff), Chvostek's sign (facial twitch with tap), tetany, seizures, prolonged QT. Treat with calcium gluconate IV.</span></div>
+      <div class="pill-row"><span class="pill navy">Hyper-Ca &gt;10.5</span><span class="pill-text"><b>Hypercalcemia:</b> "Stones, bones, groans, moans" — kidney stones, bone pain, constipation, lethargy. Caused by hyperparathyroidism, cancer. Treat with IV fluids, furosemide, bisphosphonates.</span></div>
+      <div class="pill-row"><span class="pill purple">Hypo-Mg &lt;1.5</span><span class="pill-text"><b>Hypomagnesemia:</b> Muscle cramps, tremors, irritability, prolonged QT, torsades de pointes risk. Caused by alcoholism, poor nutrition. Treat with Mag sulfate IV.</span></div>
+    </div>
+  </div>
+
+  <!-- NCLEX Q&A -->
+  <div class="section anchor" id="nclex">
+    <div class="section-header">
+      <div class="section-icon red">⚠️</div>
+      <div>
+        <div class="section-num">Section 08</div>
+        <h2>High-Yield NCLEX Questions</h2>
+      </div>
+    </div>
+    <p class="section-intro">These are the lab value scenarios that appear most frequently on the NCLEX. Read each question, think through your answer, then read the explanation carefully.</p>
+
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q1</span>A patient on Digoxin has a potassium level of 3.0 mEq/L. What is the priority nursing action?</div>
+        <div class="qa-a"><b>Hold the Digoxin and notify the provider.</b> Hypokalemia potentiates Digoxin toxicity — low K+ allows Digoxin to bind more aggressively to cardiac cells. Always check K+ before giving Digoxin. K+ must be within normal range before administering.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q2</span>A patient on Warfarin has an INR of 3.8. What is the nurse's first action?</div>
+        <div class="qa-a"><b>Hold the dose and notify the provider.</b> INR &gt;3.0 on standard Warfarin therapy = supratherapeutic. Do NOT give Vitamin K without an order. Assess for signs of bleeding. Document and notify.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q3</span>A patient's platelet count is 38,000/μL. What precautions should the nurse initiate?</div>
+        <div class="qa-a"><b>Bleeding precautions:</b> No IM injections, no rectal temperatures, soft toothbrush, electric razor, fall precautions, avoid NSAIDs. Notify provider. Below 50,000 = high bleeding risk; below 20,000 = spontaneous bleeding risk.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q4</span>A patient's BUN is 48, creatinine is 1.1. What does this suggest and what is the priority intervention?</div>
+        <div class="qa-a">BUN:Creatinine ratio = 43:1 → <b>Prerenal failure (dehydration).</b> Creatinine is normal, suggesting kidneys are functioning but aren't receiving adequate perfusion. Priority = IV fluid resuscitation. Monitor urine output closely.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q5</span>A patient's hemoglobin is 6.8 g/dL. What should the nurse anticipate?</div>
+        <div class="qa-a"><b>Expect a blood transfusion order.</b> Hgb &lt;7–8 g/dL typically triggers a transfusion in symptomatic patients. Ensure type and crossmatch is complete. Obtain IV access, assess for symptoms (fatigue, dyspnea, tachycardia), and monitor during transfusion.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q6</span>A patient reports chest pain. Troponin I is 0.09 ng/mL (normal &lt;0.04). What does this indicate?</div>
+        <div class="qa-a"><b>Elevated troponin = myocardial damage (MI).</b> Troponin is the most specific cardiac marker. Peaks at 12–24 hours. Stays elevated for 7–14 days. Notify provider immediately, obtain 12-lead EKG, prepare for treatment protocol.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q7</span>A patient's EKG shows peaked T waves. What lab should the nurse check immediately?</div>
+        <div class="qa-a"><b>Potassium (K+) — STAT.</b> Peaked T waves are the earliest EKG sign of hyperkalemia. As K+ rises: peaked T waves → widened QRS → sine wave → VF/asystole. This is a cardiac emergency. Check K+, notify provider, prepare calcium gluconate.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q8</span>A patient with Type 1 DM has a blood glucose of 52 mg/dL and is alert and oriented. What is the priority?</div>
+        <div class="qa-a"><b>Give 15g of fast-acting carbohydrates (Rule of 15).</b> Orange juice, glucose tablets, regular soda. Wait 15 minutes, recheck glucose. Repeat if still &lt;70. Once normalized, give a complex carb snack. Do NOT give insulin.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q9</span>A patient's WBC is 14,500 and they have a fever of 101.8°F. Blood cultures are pending. Should the nurse start antibiotics?</div>
+        <div class="qa-a"><b>Yes — obtain cultures first, then start antibiotics as ordered.</b> The sequence is: blood cultures × 2 → antibiotics. Do NOT delay antibiotics waiting for culture results once ordered. Each hour of delay in sepsis worsens outcomes.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q"><span class="qa-num">Q10</span>A patient has albumin of 2.8 g/dL and peripheral edema. How are these related?</div>
+        <div class="qa-a"><b>Low albumin → decreased oncotic pressure → fluid moves into tissues → edema.</b> Albumin holds fluid in the vascular space. When it drops, fluid leaks out. This is third-spacing. Common in malnutrition, liver disease, nephrotic syndrome.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section anchor" id="checklist">
+    <div class="section-header">
+      <div class="section-icon pink">✅</div>
+      <div>
+        <div class="section-num">Section 09</div>
+        <h2>Study Priority Checklist</h2>
+      </div>
+    </div>
+    <p class="section-intro">Use this before your exam. If you can explain every item on this list out loud without looking at your notes, you're ready.</p>
+
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>BMP normal ranges</b> — all 8 values by memory</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Critical values</b> — K+, Na+, glucose, Hgb, platelets (know the numbers)</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>H&amp;H rule</b> — Hct ≈ 3× Hgb and what to do if they don't match</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>WBC differential</b> — which cell type increases in bacterial vs viral infection</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Left shift</b> — what it means and when to act</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>INR ranges</b> — normal (0.8–1.1) vs therapeutic Warfarin (2–3) vs mechanical valve (2.5–3.5)</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Heparin vs Warfarin antidotes</b> — Protamine sulfate vs Vitamin K/FFP</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>ABG normal values</b> — pH, PaCO2, HCO3-, PaO2, SaO2</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>ROME method</b> — Respiratory Opposite, Metabolic Equal</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Troponin timeline</b> — rises 3–6 hrs, peaks 12–24 hrs, returns 7–14 days</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>BNP cutoff</b> — &gt;100 = HF, &gt;400 = severe HF</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>HbA1c interpretation</b> — &lt;5.7 normal, 5.7–6.4 pre-DM, ≥6.5 diabetes</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Hypo/hyperkalemia EKG changes</b> — U wave vs peaked T wave</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Chvostek's &amp; Trousseau's signs</b> — both indicate hypocalcemia</span></div>
+      <div class="check-item"><div class="check-box"></div><span class="check-text"><b>Platelet &lt;50k precautions</b> — no IM, no rectal, soft brush, electric razor</span></div>
+    </div>
+  </div>
+
+</div><!-- end main -->
+
+<div class="footer">
+  <div><strong>No Prior Authorization</strong></div>
+  <div class="footer-divider"></div>
+  <div>Created by Danielle Alcala-Glazier · RN Student · Licensed Esthetician · 10+ Years Clinical Practice</div>
+  <div style="margin-top:6px;">nopriorauthorization.com · Hello Gorgeous Med Spa, Oswego IL · 630-636-6193</div>
+  <div style="margin-top:10px; font-size:11px; color:#475569;">This guide is intended for educational purposes. Always follow current clinical guidelines and facility policies.</div>
+</div>
+
+</body>
+</html>

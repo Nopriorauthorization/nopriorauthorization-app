@@ -60,6 +60,12 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
       color: "text-cyan-400",
     },
     {
+      label: "Study guides",
+      href: "/study-guides",
+      icon: "📚",
+      color: "text-sky-400",
+    },
+    {
       label: "Ebooks",
       href: "/ebooks",
       icon: "📚",

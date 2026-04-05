@@ -3,6 +3,7 @@ const SEO_LANDING_PATHS = [
   "/free-templates",
   "/free-templates/downloads",
   "/custom",
+  "/study-guides",
   "/botox-marketing-templates",
   "/med-spa-marketing-templates",
   "/weight-loss-marketing-templates",

@@ -78,6 +78,12 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
       color: MASCOT_COLORS.fillaGrace,
     },
     {
+      label: "Custom build",
+      href: "/custom",
+      icon: "📐",
+      color: "text-rose-400",
+    },
+    {
       label: "Membership",
       href: "/membership",
       icon: "⭐",

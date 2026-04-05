@@ -71,6 +71,10 @@ export default function FreeTemplatesDownloadsPage() {
           <Link href="/free-templates" className="text-gray-400 hover:text-white hover:underline">
             Free templates landing
           </Link>
+          <span className="mx-2 text-gray-600">·</span>
+          <Link href="/custom" className="text-rose-300 hover:text-rose-200 hover:underline">
+            Custom build for your practice
+          </Link>
         </p>
       </div>
     </div>

@@ -12,7 +12,7 @@ The shop is the **library**—fast wins, proven layouts, and price points that r
 
 That combination—**operator-built defaults** plus **built-for-you deliverables**—is what separates NPA from volume marketplaces. If you need something that does not exist in the catalog yet, that is the lane.
 
-**Start a custom build:** [nopriorauthorization.com/contact](https://nopriorauthorization.com/contact) (brief your specialty, state, and what you wish you had on paper tomorrow).
+**On the website:** [nopriorauthorization.com/custom](https://nopriorauthorization.com/custom) explains the offer and links to contact. **Start a conversation:** [nopriorauthorization.com/contact](https://nopriorauthorization.com/contact) — brief your specialty, state, and what you wish you had on paper tomorrow (start the message with `Custom build:`).
 
 ---
 
@@ -27,7 +27,7 @@ That combination—**operator-built defaults** plus **built-for-you deliverables
 | **Homepage hero** | Video **avatar strip** (founder + mascots) — trust and positioning; see [Hero Avatar System](#hero-avatar-system-v1) below. |
 | **Auth** | **NextAuth** for protected app routes. |
 | **Data** | **Prisma** + **PostgreSQL** (commonly **Supabase**). `postbuild` syncs delivery manifests into the DB when `DATABASE_URL` is set (e.g. Vercel). |
-| **Custom builds** | Not a route in this repo—**positioning and fulfillment** for bespoke handouts, kits, and ops assets. Inquiry: [`/contact`](https://nopriorauthorization.com/contact). See [Custom-built for what you actually need](#custom-built-for-what-you-actually-need) above. |
+| **Custom builds** | Marketing page [`/custom`](https://nopriorauthorization.com/custom); inquiries via [`/contact`](https://nopriorauthorization.com/contact). See [Custom-built for what you actually need](#custom-built-for-what-you-actually-need) above. |
 
 ---
 

@@ -57,6 +57,10 @@ export default function FreeTemplatesLandingPage() {
           <Link href="/shop/resources" className="text-gray-400 hover:text-white hover:underline">
             More free resources
           </Link>
+          <span className="mx-2 text-gray-600">·</span>
+          <Link href="/custom" className="text-rose-300 hover:text-rose-200 hover:underline">
+            Need a custom build?
+          </Link>
         </p>
       </div>
     </div>

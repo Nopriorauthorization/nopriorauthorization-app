@@ -1,14 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { NclexPreviewSlideshow } from "@/components/study-guides/NclexPreviewSlideshow";
 import { NclexPurchasePanel } from "@/components/study-guides/NclexPurchasePanel";
 import { STUDY_GUIDE_NCLEX, formatStudyGuideUsd } from "@/config/study-guides.config";
 
 const SITE = "https://nopriorauthorization.com";
 
 export const metadata: Metadata = {
-  title: "NCLEX Complete Study Bundle — 8 Cheat Sheets ($49) | No Prior Authorization",
+  title: "NCLEX Complete Study Bundle — Cheat Sheets + Full Guides ($49) | No Prior Authorization",
   description:
-    "Print-ready NCLEX reference: eight HTML cheat sheets — lab values, pharmacology, EKG, acid–base, and more. Built by Danielle Alcala-Glazier, RN student & licensed esthetician. $49. Secure checkout, instant email delivery.",
+    "Eight print-ready NCLEX HTML files: at-a-glance reference tables plus full structured study guides with sections, callouts, and NCLEX-style Q&As. Lab values, pharmacology, EKG, and more. $49. Instant email delivery.",
   keywords: [
     "NCLEX cheat sheet",
     "NCLEX lab values",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NCLEX Complete Study Bundle — $49 | No Prior Authorization",
     description:
-      "8 print-ready cheat sheets. Preview the layout, then unlock all HTML files by email after checkout.",
+      "Quick-scan tables plus full-topic study guides in one bundle. Preview below, then unlock all eight HTML files after checkout.",
     url: `${SITE}/nclex-bundle`,
     type: "website",
     images: [{ url: `${SITE}${STUDY_GUIDE_NCLEX.previewImageSrc}`, width: 1200, height: 630, alt: "NCLEX bundle preview" }],
@@ -33,6 +34,25 @@ export const metadata: Metadata = {
     canonical: `${SITE}/nclex-bundle`,
   },
 };
+
+const NCLEX_SLIDESHOW_SLIDES = [
+  {
+    src: "/study-guides/nclex-slide-at-a-glance.png",
+    alt: "NCLEX lab values reference table excerpt showing normals and critical ranges",
+    badge: "At-a-glance cheat sheet",
+    title: "Scan it like a reference card",
+    description:
+      "Dense tables for normals vs. criticals, panels, and side-by-side comparisons — built to highlight, print, and flip through when you only have minutes.",
+  },
+  {
+    src: "/study-guides/nclex-slide-study-guide-depth.png",
+    alt: "NCLEX pharmacology study guide showing hero title and jump-to section navigation",
+    badge: "Full study guide depth",
+    title: "Study it like a structured lesson",
+    description:
+      "Each guide includes jump links, section intros, clinical callouts, NCLEX-style Q&As, and checklists — so you can go deep when you have a full study block.",
+  },
+] as const;
 
 const WHATS_INSIDE = [
   "NCLEX Lab Values — Complete Reference (BMP, CBC, coags, ABGs, and more)",
@@ -92,12 +112,12 @@ export default function NclexBundleLandingPage() {
           </p>
           <h1 className="mt-4 max-w-4xl font-serif text-[2rem] font-bold leading-[1.1] sm:text-5xl sm:leading-[1.05] md:text-[3.25rem]">
             Stop tab-hunting the night before NCLEX.
-            <span className="block text-[#D4537E]">One bundle. Eight cheat sheets.</span>
+            <span className="block text-[#D4537E]">One bundle. Cheat sheets + full guides.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-400">
-            Everything is laid out like a <strong className="text-gray-200">clinical quick reference</strong> —
-            lab grids, drug patterns, priority rules, and exam-ready summaries. Open in your browser, print, or
-            save as PDF.
+            You get <strong className="text-gray-200">two study modes in one purchase</strong>: tight reference
+            tables for cramming and print-and-go, plus multi-section guides with explanations, callouts, and
+            practice-style questions. Open in your browser, print, or save as PDF.
           </p>
           <p className="mt-4 text-sm text-gray-500">
             Built by <strong className="text-gray-400">Danielle Alcala-Glazier</strong> — RN student, licensed
@@ -116,12 +136,83 @@ export default function NclexBundleLandingPage() {
         </div>
       </section>
 
+      {/* Cheat sheet vs full guide + slideshow */}
+      <section className="border-b border-white/10 bg-[#11161f] py-14 sm:py-20">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <h2 className="font-serif text-2xl font-bold text-white sm:text-3xl">
+            Cheat sheets <span className="text-gray-500">and</span> full study guides — same bundle
+          </h2>
+          <p className="mt-3 max-w-3xl text-gray-400">
+            A lot of products make you pick: a one-page PDF <em>or</em> a long e-book. These eight HTML files are
+            built so you can use them <strong className="text-gray-300">both ways</strong> — lightning-fast lookup
+            when you need a number, and guided depth when you need to understand the &ldquo;why.&rdquo;
+          </p>
+          <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:gap-12">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4537E]">Cheat-sheet mode</p>
+              <h3 className="mt-2 font-serif text-xl font-bold text-white">For the night before &amp; test day</h3>
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-gray-400">
+                <li className="flex gap-2">
+                  <span className="text-[#D4537E]" aria-hidden>
+                    ·
+                  </span>
+                  <span>Normals, criticals, and comparison grids you can scan in seconds</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-[#D4537E]" aria-hidden>
+                    ·
+                  </span>
+                  <span>Print-friendly layout — tape to your desk or keep in a binder</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-[#D4537E]" aria-hidden>
+                    ·
+                  </span>
+                  <span>Pairs with your program; this is your high-yield reference layer</span>
+                </li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-teal-400/90">Full study guide</p>
+              <h3 className="mt-2 font-serif text-xl font-bold text-white">For real study blocks</h3>
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-gray-400">
+                <li className="flex gap-2">
+                  <span className="text-teal-400/90" aria-hidden>
+                    ·
+                  </span>
+                  <span>Jump-to navigation and section intros so you’re not lost in one endless wall of text</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-teal-400/90" aria-hidden>
+                    ·
+                  </span>
+                  <span>Clinical callouts, frameworks, and NCLEX-style Q&amp;As on many topics</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-teal-400/90" aria-hidden>
+                    ·
+                  </span>
+                  <span>End-of-topic checklists to close the loop before you move on</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="mx-auto mt-12 max-w-4xl">
+            <p className="mb-4 text-center text-sm font-medium text-gray-500">
+              Swipe through real excerpts — same design system you get after checkout
+            </p>
+            <NclexPreviewSlideshow slides={[...NCLEX_SLIDESHOW_SLIDES]} />
+          </div>
+        </div>
+      </section>
+
       {/* What's inside */}
       <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
         <h2 className="font-serif text-2xl font-bold text-white sm:text-3xl">What’s in the bundle</h2>
         <p className="mt-3 max-w-2xl text-gray-400">
-          Eight coordinated sheets designed to be <strong className="text-gray-300">scanned</strong>, not read like
-          a textbook. Pair with your program’s materials — this is your at-a-glance layer.
+          Eight coordinated files — each one works as a <strong className="text-gray-300">quick reference</strong>{" "}
+          and as a <strong className="text-gray-300">structured lesson</strong> when you scroll the full guide.
+          Pair with your program’s materials; this is your boards-ready layer.
         </p>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2">
           {WHATS_INSIDE.map((line) => (
@@ -148,8 +239,9 @@ export default function NclexBundleLandingPage() {
             Preview the real layout — then unlock the full file
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-gray-400">
-            Below is a high-resolution snapshot of the first sheet. After checkout, you get a link to{" "}
-            <strong className="text-gray-300">all eight HTML files</strong> (print-friendly, same design system).
+            Below is a high-resolution snapshot of the first sheet (lab values). After checkout, you get a link to{" "}
+            <strong className="text-gray-300">all eight HTML files</strong> — same cheat-sheet + full-guide format
+            across every topic.
           </p>
           <div className="mx-auto mt-10 max-w-4xl">
             <NclexPurchasePanel variant="hero" />

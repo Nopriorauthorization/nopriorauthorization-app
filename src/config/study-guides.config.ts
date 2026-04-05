@@ -48,14 +48,14 @@ export const STUDY_GUIDE_NCLEX_TEMPLATES = [
 
 export const STUDY_GUIDE_NCLEX = {
   slug: STUDY_GUIDE_NCLEX_SLUG,
-  title: "NCLEX Complete Study Bundle — 8 Cheat Sheets",
+  title: "NCLEX Complete Study Bundle — 8 Guides (Cheat Sheet + Deep Dive)",
   priceCents: 4900,
   /** Large preview (public); regenerate from sheet 1 after visual changes. */
   previewImageSrc: "/study-guides/nclex-complete-bundle-preview.png",
   /** First sheet — used for preview screenshots / tooling. */
   previewSourceFormPath: "/forms/NPA-NCLEX-01-Lab-Values.html" as const,
   shortDescription:
-    "Eight print-ready HTML cheat sheets — lab values, pharmacology, EKG, acid–base, priority, infection control, OB, and mental health. Open after purchase, print or save as PDF.",
+    "Eight print-ready HTML files: at-a-glance tables plus full structured guides — lab values, pharmacology, EKG, acid–base, priority, infection control, OB, and mental health. Open after purchase, print or save as PDF.",
 } as const;
 
 export function formatStudyGuideUsd(priceCents: number): string {

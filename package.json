@@ -20,6 +20,7 @@
     "product:create-draft": "tsx scripts/products/create-draft.ts",
     "shop:seed-stripe": "tsx scripts/shop/seed-stripe-products.ts",
     "shop:screenshot-cheat-sheets": "tsx scripts/shop/screenshot-cheat-sheets.ts",
+    "study-guides:nclex-slides": "tsx scripts/study-guides/screenshot-nclex-slides.ts",
     "shop:screenshot-consent-forms": "tsx scripts/shop/screenshot-consent-forms.ts",
     "shop:screenshot-business-guides": "tsx scripts/shop/screenshot-business-guides.ts",
     "catalog:rebuild": "bash scripts/catalog-rebuild.sh",

@@ -1,8 +1,10 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Img,
   interpolate,
   Sequence,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
@@ -24,9 +26,9 @@ function useVerticalMetrics() {
   const isVertical = height > width;
   return {
     isVertical,
-    pad: isVertical ? 40 : 28,
-    h1: isVertical ? 44 : 32,
-    body: isVertical ? 19 : 15,
+    pad: isVertical ? 36 : 24,
+    h1: isVertical ? 52 : 40,
+    body: isVertical ? 22 : 18,
   };
 }
 
@@ -35,10 +37,11 @@ export const StorefrontSocialVideo: React.FC = () => {
 
   const s1 = Math.round(4.5 * fps);
   const s2 = Math.round(5.5 * fps);
-  const s3 = Math.round(7 * fps);
-  const s4 = Math.round(6 * fps);
-  const s5 = Math.round(6 * fps);
-  const s6 = Math.round(7 * fps);
+  const s3 = Math.round(6.5 * fps);
+  const sSneak = Math.round(8 * fps);
+  const s4 = Math.round(5.5 * fps);
+  const s5 = Math.round(5.5 * fps);
+  const s6 = Math.round(8.5 * fps);
 
   let from = 0;
   const hookFrom = from;
@@ -47,6 +50,8 @@ export const StorefrontSocialVideo: React.FC = () => {
   from += s2;
   const pillarsFrom = from;
   from += s3;
+  const sneakFrom = from;
+  from += sSneak;
   const trustFrom = from;
   from += s4;
   const quoteFrom = from;
@@ -63,6 +68,9 @@ export const StorefrontSocialVideo: React.FC = () => {
       </Sequence>
       <Sequence from={pillarsFrom} durationInFrames={s3}>
         <PillarsScene />
+      </Sequence>
+      <Sequence from={sneakFrom} durationInFrames={sSneak}>
+        <SneakPeekScene />
       </Sequence>
       <Sequence from={trustFrom} durationInFrames={s4}>
         <TrustScene />
@@ -101,7 +109,7 @@ const HookScene: React.FC = () => {
             border: "1px solid rgba(212,83,126,0.35)",
             background: "rgba(212,83,126,0.12)",
             color: PINK,
-            fontSize: 11,
+            fontSize: 13,
             fontWeight: 700,
             letterSpacing: "0.22em",
             textTransform: "uppercase",
@@ -151,8 +159,143 @@ const HookScene: React.FC = () => {
             marginRight: "auto",
           }}
         >
-          Cheat sheets, business systems &amp; NCLEX prep — instant download.
+          Real previews: cheat sheets, playbooks, NCLEX & more — instant download.
         </p>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const SNEAK_TILES = [
+  {
+    src: staticFile("shop-previews/cheat-sheets/botox-clinical-cheat-sheet.png"),
+    label: "Cheat sheets",
+  },
+  {
+    src: staticFile("shop-previews/business-systems/facial-anatomy-nurse-injector.png"),
+    label: "Playbooks & guides",
+  },
+  {
+    src: staticFile("study-guides/nclex-slide-at-a-glance.png"),
+    label: "NCLEX prep",
+  },
+  {
+    src: staticFile("shop-previews/business-systems/phase-2-business-bundle.png"),
+    label: "Business systems",
+  },
+] as const;
+
+const SneakPeekScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { pad, isVertical } = useVerticalMetrics();
+  const { durationInFrames } = useVideoConfig();
+
+  const titleOp = interpolate(frame, [0, 14], [0, 1], { extrapolateRight: "clamp" });
+  const ken = interpolate(frame, [0, durationInFrames - 1], [1.04, 1], { extrapolateRight: "clamp" });
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: BG_SOFT,
+        padding: pad,
+        display: "flex",
+        flexDirection: "column",
+        minHeight: 0,
+      }}
+    >
+      <div style={{ textAlign: "center", marginBottom: isVertical ? 14 : 10, opacity: titleOp, flexShrink: 0 }}>
+        <p
+          style={{
+            color: PINK,
+            fontSize: isVertical ? 13 : 12,
+            fontWeight: 800,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            marginBottom: 8,
+          }}
+        >
+          Sneak peek
+        </p>
+        <h2
+          style={{
+            color: "#1A1A1A",
+            fontSize: isVertical ? 32 : 26,
+            fontWeight: 800,
+            margin: 0,
+            lineHeight: 1.12,
+            fontFamily: "Georgia, serif",
+          }}
+        >
+          Real layouts we built
+        </h2>
+        <p style={{ color: "#7a6b7a", fontSize: isVertical ? 17 : 15, marginTop: 8, marginBottom: 0 }}>
+          Same print-ready files as the shop — not stock photos.
+        </p>
+      </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: isVertical ? 10 : 8,
+          maxWidth: 920,
+          margin: "0 auto",
+          flex: 1,
+          minHeight: 0,
+        }}
+      >
+        {SNEAK_TILES.map((tile, i) => {
+          const st = 10 + i * 12;
+          const op = interpolate(frame, [st, st + 16], [0, 1], { extrapolateRight: "clamp" });
+          const scale = interpolate(frame, [st, st + durationInFrames * 0.4], [0.96, 1], {
+            extrapolateRight: "clamp",
+          });
+          return (
+            <div
+              key={tile.label}
+              style={{
+                opacity: op,
+                transform: `scale(${scale * ken})`,
+                borderRadius: 14,
+                overflow: "hidden",
+                border: "2px solid #e8e0e8",
+                boxShadow: "0 10px 28px rgba(0,0,0,0.08)",
+                position: "relative",
+                aspectRatio: "1 / 1",
+                background: "#fff",
+              }}
+            >
+              <Img
+                src={tile.src}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "top center",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  padding: isVertical ? "10px 12px" : "8px 10px",
+                  background: "linear-gradient(transparent, rgba(0,0,0,0.75))",
+                }}
+              >
+                <span
+                  style={{
+                    color: "#fff",
+                    fontSize: isVertical ? 16 : 14,
+                    fontWeight: 800,
+                  }}
+                >
+                  {tile.label}
+                </span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </AbsoluteFill>
   );
@@ -174,7 +317,7 @@ const StatsScene: React.FC = () => {
         style={{
           textAlign: "center",
           color: PINK,
-          fontSize: 11,
+          fontSize: isVertical ? 13 : 12,
           fontWeight: 700,
           letterSpacing: "0.25em",
           textTransform: "uppercase",
@@ -209,7 +352,7 @@ const StatsScene: React.FC = () => {
             >
               <div
                 style={{
-                  fontSize: isVertical ? 40 : 36,
+                  fontSize: isVertical ? 44 : 40,
                   fontWeight: 800,
                   color: "#fff",
                   letterSpacing: 2,
@@ -218,7 +361,16 @@ const StatsScene: React.FC = () => {
               >
                 {s.n}
               </div>
-              <div style={{ fontSize: 11, color: MUTED_DARK, textTransform: "uppercase", marginTop: 6 }}>{s.l}</div>
+              <div
+                style={{
+                  fontSize: isVertical ? 13 : 12,
+                  color: MUTED_DARK,
+                  textTransform: "uppercase",
+                  marginTop: 6,
+                }}
+              >
+                {s.l}
+              </div>
             </div>
           );
         })}
@@ -243,7 +395,7 @@ const PillarsScene: React.FC = () => {
         style={{
           textAlign: "center",
           color: "#1A1A1A",
-          fontSize: isVertical ? 28 : 22,
+          fontSize: isVertical ? 32 : 26,
           fontWeight: 800,
           marginBottom: 8,
           fontFamily: "Georgia, serif",
@@ -251,7 +403,7 @@ const PillarsScene: React.FC = () => {
       >
         One storefront. Four pillars.
       </h2>
-      <p style={{ textAlign: "center", color: "#7a6b7a", fontSize: isVertical ? 16 : 14, marginBottom: 24 }}>
+      <p style={{ textAlign: "center", color: "#7a6b7a", fontSize: isVertical ? 18 : 15, marginBottom: 24 }}>
         Built inside Hello Gorgeous Med Spa — not a textbook factory.
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 880, margin: "0 auto" }}>
@@ -275,10 +427,10 @@ const PillarsScene: React.FC = () => {
                 borderLeft: `4px solid ${item.c}`,
               }}
             >
-              <div style={{ fontSize: isVertical ? 22 : 18, fontWeight: 800, color: "#1A1A1A", minWidth: 100 }}>
+              <div style={{ fontSize: isVertical ? 24 : 20, fontWeight: 800, color: "#1A1A1A", minWidth: 100 }}>
                 {item.t}
               </div>
-              <div style={{ fontSize: isVertical ? 16 : 14, color: "#7a6b7a", flex: 1 }}>{item.d}</div>
+              <div style={{ fontSize: isVertical ? 18 : 15, color: "#7a6b7a", flex: 1 }}>{item.d}</div>
             </div>
           );
         })}
@@ -309,7 +461,7 @@ const TrustScene: React.FC = () => {
       <p
         style={{
           color: PINK,
-          fontSize: 11,
+          fontSize: 13,
           fontWeight: 700,
           letterSpacing: "0.2em",
           textTransform: "uppercase",
@@ -332,7 +484,7 @@ const TrustScene: React.FC = () => {
                 alignItems: "center",
                 gap: 12,
                 marginBottom: 14,
-                fontSize: 17,
+                fontSize: 19,
                 fontWeight: 600,
                 color: "#1A1A1A",
               }}
@@ -355,10 +507,10 @@ const QuoteScene: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#fff", padding: pad, justifyContent: "center" }}>
       <div style={{ opacity: op, maxWidth: 880, margin: "0 auto" }}>
-        <div style={{ color: "#c77b2a", fontSize: 14, marginBottom: 14 }}>★★★★★</div>
+        <div style={{ color: "#c77b2a", fontSize: 15, marginBottom: 14 }}>★★★★★</div>
         <p
           style={{
-            fontSize: isVertical ? 20 : 17,
+            fontSize: isVertical ? 22 : 19,
             lineHeight: 1.55,
             color: "#1A1A1A",
             fontStyle: "italic",
@@ -368,7 +520,7 @@ const QuoteScene: React.FC = () => {
           &ldquo;The Facial Anatomy guide is the most organized clinical reference I&apos;ve ever seen. Worth every
           dollar and then some.&rdquo;
         </p>
-        <p style={{ marginTop: 16, fontSize: 14, fontWeight: 700, color: "#7a6b7a" }}>
+        <p style={{ marginTop: 16, fontSize: 15, fontWeight: 700, color: "#7a6b7a" }}>
           RN, med spa owner · Nashville, TN
         </p>
       </div>
@@ -395,7 +547,7 @@ const CtaScene: React.FC = () => {
         <h2
           style={{
             color: "#fff",
-            fontSize: isVertical ? 36 : 28,
+            fontSize: isVertical ? 40 : 32,
             fontWeight: 800,
             lineHeight: 1.12,
             margin: 0,
@@ -406,7 +558,7 @@ const CtaScene: React.FC = () => {
           <br />
           landing page
         </h2>
-        <p style={{ color: "rgba(255,255,255,0.9)", fontSize: isVertical ? 18 : 15, marginTop: 16, lineHeight: 1.5 }}>
+        <p style={{ color: "rgba(255,255,255,0.9)", fontSize: isVertical ? 20 : 17, marginTop: 16, lineHeight: 1.5 }}>
           Full catalog, NCLEX bundle, Growth System — links that match the site.
         </p>
         <div

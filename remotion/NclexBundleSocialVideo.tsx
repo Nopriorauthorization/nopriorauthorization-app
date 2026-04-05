@@ -88,9 +88,9 @@ function useVerticalMetrics() {
   return {
     isVertical,
     pad: isVertical ? 44 : 32,
-    headline: isVertical ? 46 : 34,
-    sub: isVertical ? 22 : 17,
-    badge: isVertical ? 11 : 10,
+    headline: isVertical ? 52 : 40,
+    sub: isVertical ? 24 : 19,
+    badge: isVertical ? 13 : 11,
   };
 }
 
@@ -217,7 +217,7 @@ const ProductShotScene: React.FC<{
         <p
           style={{
             color: PINK,
-            fontSize: 11,
+            fontSize: isVertical ? 13 : 12,
             fontWeight: 700,
             letterSpacing: "0.22em",
             textTransform: "uppercase",
@@ -230,7 +230,7 @@ const ProductShotScene: React.FC<{
         <p
           style={{
             color: MUTED,
-            fontSize: isVertical ? 18 : 15,
+            fontSize: isVertical ? 20 : 16,
             textAlign: "center",
             margin: "0 0 16px 0",
             lineHeight: 1.45,
@@ -287,7 +287,7 @@ const TopicsScene: React.FC = () => {
       <h2
         style={{
           color: "#fff",
-          fontSize: isVertical ? 32 : 26,
+          fontSize: isVertical ? 34 : 28,
           fontWeight: 800,
           textAlign: "center",
           margin: "0 0 8px 0",
@@ -295,7 +295,7 @@ const TopicsScene: React.FC = () => {
       >
         8 guides. Boards-ready.
       </h2>
-      <p style={{ color: MUTED, fontSize: isVertical ? 17 : 14, textAlign: "center", margin: "0 0 22px 0" }}>
+      <p style={{ color: MUTED, fontSize: isVertical ? 18 : 15, textAlign: "center", margin: "0 0 22px 0" }}>
         Lab through mental health — quick scan or deep study.
       </p>
       <div
@@ -322,7 +322,7 @@ const TopicsScene: React.FC = () => {
                 borderRadius: 12,
                 padding: isVertical ? "14px 16px" : "10px 12px",
                 color: "#e2e8f0",
-                fontSize: isVertical ? 17 : 14,
+                fontSize: isVertical ? 18 : 15,
                 fontWeight: 600,
                 display: "flex",
                 alignItems: "center",
@@ -360,7 +360,7 @@ const CtaScene: React.FC = () => {
         <p
           style={{
             color: PINK,
-            fontSize: 11,
+            fontSize: isVertical ? 13 : 12,
             fontWeight: 700,
             letterSpacing: "0.25em",
             textTransform: "uppercase",
@@ -372,7 +372,7 @@ const CtaScene: React.FC = () => {
         <p
           style={{
             color: "#fff",
-            fontSize: isVertical ? 56 : 40,
+            fontSize: isVertical ? 58 : 44,
             fontWeight: 800,
             margin: 0,
             lineHeight: 1.05,
@@ -380,7 +380,7 @@ const CtaScene: React.FC = () => {
         >
           $49 · one-time
         </p>
-        <p style={{ color: MUTED, fontSize: isVertical ? 20 : 16, marginTop: 16, lineHeight: 1.5 }}>
+        <p style={{ color: MUTED, fontSize: isVertical ? 22 : 17, marginTop: 16, lineHeight: 1.5 }}>
           Print-ready HTML · Instant email delivery
         </p>
         <div
@@ -391,7 +391,7 @@ const CtaScene: React.FC = () => {
             background: PINK,
             color: "#fff",
             fontWeight: 800,
-            fontSize: isVertical ? 20 : 16,
+            fontSize: isVertical ? 22 : 17,
             padding: isVertical ? "18px 28px" : "14px 22px",
             borderRadius: 14,
             boxShadow: "0 12px 40px rgba(212, 83, 126, 0.35)",

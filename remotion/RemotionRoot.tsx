@@ -11,7 +11,8 @@ import { NPA_Homepage_Explainer_V1 } from './compositions/HomepageExplainer';
 
 /** Reels / TikTok / Stories (9:16) */
 const NCLEX_SOCIAL_DURATION_FRAMES = 30 * 30;
-const STOREFRONT_SOCIAL_DURATION_FRAMES = 36 * 30;
+/** Hook + stats + pillars + sneak-peek grid + trust + quote + CTA */
+const STOREFRONT_SOCIAL_DURATION_FRAMES = 44 * 30;
 
 export const RemotionRoot: React.FC = () => {
   return (

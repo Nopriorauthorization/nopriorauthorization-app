@@ -17,6 +17,27 @@
 -- Checksum below MUST match prisma/migrations/20260406120000_leads/migration.sql
 -- (Prisma stores SHA-256 hex of that file in _prisma_migrations.checksum).
 -- =============================================================================
+-- If you see: relation "_prisma_migrations" does not exist
+--   Your DB was likely created with `prisma db push` and never ran Migrate.
+--   SECTION 0 below creates that table (Prisma’s standard shape) so SECTION 2 works.
+-- =============================================================================
+
+-- -----------------------------------------------------------------------------
+-- SECTION 0: Prisma migration history table (only if missing)
+-- -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS "_prisma_migrations" (
+    "id" VARCHAR(36) NOT NULL,
+    "checksum" VARCHAR(64) NOT NULL,
+    "finished_at" TIMESTAMPTZ(6),
+    "migration_name" VARCHAR(255) NOT NULL,
+    "logs" TEXT,
+    "rolled_back_at" TIMESTAMPTZ(6),
+    "started_at" TIMESTAMPTZ(6) NOT NULL DEFAULT now(),
+    "applied_steps_count" INTEGER NOT NULL DEFAULT 0,
+
+    CONSTRAINT "_prisma_migrations_pkey" PRIMARY KEY ("id")
+);
 
 -- -----------------------------------------------------------------------------
 -- SECTION 1: Idempotent schema (safe if table already exists from db push)

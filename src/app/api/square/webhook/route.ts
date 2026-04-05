@@ -129,9 +129,16 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
 
   let productTitle = productSlug || "Digital Product";
   try {
+    const { getVirtualDeliveryProductTitle, getDeliveryProductBySlug } = await import(
+      "@/lib/delivery/catalog"
+    );
+    productTitle =
+      getVirtualDeliveryProductTitle(productSlug) ||
+      getDeliveryProductBySlug(productSlug)?.productTitle ||
+      productTitle;
     const { getShopProductBySlug } = await import("@/lib/shop/products");
-    const product = getShopProductBySlug(productSlug);
-    if (product) productTitle = product.title;
+    const shopProduct = getShopProductBySlug(productSlug);
+    if (shopProduct) productTitle = shopProduct.title;
   } catch {
     // non-critical
   }

@@ -1,4 +1,5 @@
 import { DELIVERY_PRODUCT_SLUG_ALIASES } from "@/config/growth-funnel.config";
+import { STUDY_GUIDE_NCLEX } from "@/config/study-guides.config";
 import catalog from "@/lib/delivery/catalog.generated.json";
 import prisma from "@/lib/db";
 
@@ -20,6 +21,24 @@ export type DeliveryProduct = {
   templateCount: number;
   templates: DeliveryTemplateLink[];
 };
+
+/** Token delivery for products not listed in `catalog.generated.json` (e.g. study guides). */
+const VIRTUAL_DELIVERY_PRODUCTS: DeliveryProduct[] = [
+  {
+    productKey: STUDY_GUIDE_NCLEX.slug,
+    productSlug: STUDY_GUIDE_NCLEX.slug,
+    productTitle: STUDY_GUIDE_NCLEX.title,
+    templateCount: 1,
+    templates: [
+      {
+        title: "NCLEX Complete Bundle (HTML — all 8 sheets)",
+        designId: "study-nclex-complete-bundle",
+        editUrl: STUDY_GUIDE_NCLEX.deliveryFormPath,
+        viewUrl: null,
+      },
+    ],
+  },
+];
 
 type ImportedManifestTemplate = {
   id?: string;
@@ -49,10 +68,18 @@ export function getDeliveryProducts(): DeliveryProduct[] {
   return typedCatalog.products || [];
 }
 
+export function getVirtualDeliveryProductTitle(productSlug: string): string | null {
+  const resolved = resolveDeliveryProductSlug(productSlug);
+  const v = VIRTUAL_DELIVERY_PRODUCTS.find((p) => p.productSlug === resolved);
+  return v?.productTitle ?? null;
+}
+
 export function getDeliveryProductBySlug(
   productSlug: string
 ): DeliveryProduct | null {
   const resolved = resolveDeliveryProductSlug(productSlug);
+  const virtual = VIRTUAL_DELIVERY_PRODUCTS.find((p) => p.productSlug === resolved);
+  if (virtual) return virtual;
   return (
     getDeliveryProducts().find((product) => product.productSlug === resolved) ||
     null

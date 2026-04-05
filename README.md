@@ -1,68 +1,129 @@
-No Prior Authorization — Hero Avatar System (V1)
-Overview
+# No Prior Authorization (NPA)
 
-The Hero Avatar System introduces users to the experts behind No Prior Authorization the moment they land on the app.
+**No Prior Authorization** is Danielle Alcala’s med-spa education brand—built from **Hello Gorgeous Med Spa** (Oswego, IL). This monorepo powers **[nopriorauthorization.com](https://nopriorauthorization.com)**: the **digital product shop** (cheat sheets, playbooks, consent-style HTML, peptide and GLP-1 resources), **free lead magnets**, marketing and SEO pages, **email automation**, and deeper **app / vault** experiences for members.
 
-Each avatar represents a distinct domain authority and delivers a short, high-impact introduction designed to build trust, signal credibility, and differentiate the product from generic medical or AI tools.
+---
 
-This system is intentionally designed to be:
+## What this app does today
 
-Media-swap friendly
+| Area | Description |
+|------|-------------|
+| **Shop** | `/shop` — large catalog of instant-download assets (mostly HTML templates under `public/forms/`). Checkout uses **Square** (`/api/shop/checkout`, Square webhooks for fulfillment). |
+| **Free template pack** | `/free-templates` — name + email capture; `/free-templates/downloads` — stable download hub. Ten files are defined in [`src/config/free-templates-lead-magnet.config.ts`](src/config/free-templates-lead-magnet.config.ts) (clinical freebies, premium patient handouts, retail/intake tools, and the **Vault Roadmap** cheat sheet that maps freebies → paid shop SKUs). |
+| **Leads & email** | `POST /api/leads/free-templates` upserts into Prisma **`Lead`** (`leads` table), sends delivery via **Resend**, and schedules nurture sends processed by the same cron as the legacy funnel. `GET /api/leads/unsubscribe?token=` opts out. |
+| **7-step marketing funnel** | Separate subscriber flow configured in [`src/config/email-funnel.config.ts`](src/config/email-funnel.config.ts); advanced by `/api/cron/email-funnel` (Bearer `CRON_SECRET`). |
+| **Homepage hero** | Video **avatar strip** (founder + mascots) — trust and positioning; see [Hero Avatar System](#hero-avatar-system-v1) below. |
+| **Auth** | **NextAuth** for protected app routes. |
+| **Data** | **Prisma** + **PostgreSQL** (commonly **Supabase**). `postbuild` syncs delivery manifests into the DB when `DATABASE_URL` is set (e.g. Vercel). |
 
-Scalable for future avatars
+---
 
-Safe for medical/legal constraints
+## Tech stack
 
-Compatible with V2 interactive avatars
+- **Next.js 14** (App Router), **React 18**, **TypeScript**, **Tailwind CSS**
+- **Prisma 5** ORM
+- **Resend** (transactional + funnel email)
+- **Square** (shop checkout + webhooks)
+- **Vitest** for tests
+- **Vercel** deployment; cron jobs in [`vercel.json`](vercel.json)
 
-Product Goal
+---
 
-“We tell you the juicy stuff you don’t want to ask providers — and what Google won’t.”
+## Local development
 
-The Hero is not decorative.
-It is a conversion and positioning mechanism.
+```bash
+npm install
+cp .env.example .env.local
+# Fill DATABASE_URL, NextAuth, Square, Resend, CRON_SECRET, etc. — see .env.example
 
-Hero Experience (V1)
-On Page Load
+npm run db:generate:local   # Prisma client (loads .env.local via scripts/prisma-with-env.cjs)
+npm run dev               # http://localhost:3000
+```
 
-Hero headline renders
-NO PRIOR AUTHORIZATION
+**Prisma note:** Prisma CLI does not load `.env.local` by default. Use `npm run db:*:local` wrappers, or put `DATABASE_URL` in `.env`.
 
-Tagline fades in
-We tell you the juicy stuff you don’t want to ask providers — and what Google won’t.
+```bash
+npm run build             # prisma generate + next build + postbuild (manifests + sitemap)
+npm run lint
+npm test                  # vitest
+```
 
-Avatar strip appears with muted autoplay
+---
 
-Avatar Behavior Rules
+## Environment variables
 
-Muted autoplay on load (no sound without user action)
+Authoritative list and comments: **[`.env.example`](.env.example)**.
 
-Subtitles ON by default
+**Commonly required for production-like behavior:**
 
-Tap / click toggles audio
+- `DATABASE_URL` — Postgres (Supabase pooler URL is fine)
+- `NEXTAUTH_SECRET`, `NEXTAUTH_URL`
+- `SQUARE_APPLICATION_ID`, `SQUARE_ACCESS_TOKEN`, `SQUARE_LOCATION_ID`, `SQUARE_WEBHOOK_SIGNATURE_KEY`, `SQUARE_ENVIRONMENT`
+- `RESEND_API_KEY`, `EMAIL_FROM` (verified domain)
+- `CRON_SECRET` — Vercel cron + protected cron routes
 
-Only one avatar speaks at a time
+Optional: Supabase storage keys, Facebook posting, Etsy/Canva pipeline keys, Stripe (legacy scripts), Anthropic/OpenAI, etc.
 
-Idle loop animation after intro finishes
+---
 
-Clear CTA below each avatar: “Ask [Name]”
+## Database & migrations
 
-User can scroll or skip immediately
+- Apply schema: `npx prisma migrate deploy` (or `npm run db:migrate:local` with env loaded).
+- The **`leads`** table supports the free-templates flow. If your database was created with `db push` only and lacks `_prisma_migrations`, use the reconciler SQL:  
+  [`prisma/migrations/20260406120000_leads/supabase-reconcile.sql`](prisma/migrations/20260406120000_leads/supabase-reconcile.sql)  
+  (creates `leads` + migration history safely).  
+- CLI-only alternative after DDL: `npm run db:migrate:resolve:leads`.
 
-Avatar Lineup (V1)
-Order	Avatar	Role
-1	Founder	Product authority & trust anchor
-2	Beau-Tox	Aesthetics truth teller
-3	Peppi	Peptide science & myth-busting
-4	F-ILL	Fillers & facial anatomy
-5	RN Lisa Grace	Safety & ethics
-6	Slim-T	Hormones & metabolism
-7	Ryan	Provider reality translator
-File Structure (Required)
+---
 
-All hero avatar media must live here:
+## Deploy
 
-/public/hero/avatars/
+- **Git → Vercel** auto-deploys on push to the connected branch.
+- **Manual / full check:** `npm run deploy` runs navigation `tsc`, `npm run build`, and `npx vercel --prod` (see [`deploy.sh`](deploy.sh)).
+- Ensure **Vercel env vars** match `.env.example` for email, Square, DB, and cron.
+- **Crons:** `/api/cron/email-funnel` (hourly), `/api/cron/publish-scheduled-posts` (per [`vercel.json`](vercel.json)).
+
+---
+
+## Useful npm scripts
+
+| Script | Purpose |
+|--------|---------|
+| `npm run dev` | Next dev server |
+| `npm run deploy` | Pre-checks, build, Vercel production |
+| `npm run email:test-resend` | Smoke-test Resend + `EMAIL_FROM` |
+| `npm run db:studio:local` | Prisma Studio with `.env.local` |
+| `npm run catalog:rebuild` | Regenerate shop/catalog artifacts (see script) |
+| `npm run delivery:sync-db` | Sync delivery manifests (also in postbuild) |
+
+Full list: [`package.json`](package.json).
+
+---
+
+## Repository layout (short)
+
+```
+src/app/           # Routes: marketing, shop, free-templates, api/*, admin, etc.
+src/lib/shop/    # Products, checkout helpers, pricing
+src/lib/leads/   # Free-templates signup, nurture, delivery email builders
+src/config/      # free-templates pack, email-funnel steps
+public/forms/    # Downloadable HTML templates (shop + free pack)
+prisma/          # schema.prisma, migrations
+docs/            # Runbooks, pipeline tickets, deployment notes
+```
+
+---
+
+## Hero Avatar System (V1)
+
+The homepage **Hero** introduces NPA through short video intros (founder + domain mascots). It is a **trust and conversion** surface—not decorative.
+
+**Rules (summary):** muted autoplay; subtitles on by default; tap toggles audio; one voice at a time; CTAs like “Ask [Name]”. **Do not burn captions into video** — UI renders subtitles for accessibility and A/B flexibility.
+
+**Media location (swap by filename only):**
+
+```
+public/hero/avatars/
   founder.mp4
   beau-tox.mp4
   peppi.mp4
@@ -70,146 +131,19 @@ All hero avatar media must live here:
   rn-lisa-grace.mp4
   slim-t.mp4
   ryan.mp4
+```
 
-
-Optional (recommended for performance):
-/public/hero/avatars/
-  founder.webm
-  beau-tox.webm
-  ...⚠️ Do not hard-code paths inside components.
-Media must be swappable by filename only.
-
-Subtitle Strategy (V1)
-
-Subtitles are rendered in UI, not burned into video
-
-Default state: ON
-
-Style:
-
-White text
-
-Hot pink emphasis where applicable
-
-High contrast for accessibility
-
-Subtitles should map directly to approved hero scripts
-
-Future-proofed for:
-
-Script updates
-
-A/B testing
-
-Localization
-
-Approved Hero Scripts (Source of Truth)
-
-Scripts are maintained separately and should be treated as authoritative copy.
-
-No improvisation, paraphrasing, or shortening without approval.
-
-Data Structure Example
-
-Each avatar intro should be configurable via data:
-
-{
-  "id": "beau-tox",
-  "displayName": "Beau-Tox",
-  "videoSrc": "/hero/avatars/beau-tox.mp4",
-  "subtitle": "I say what injectors think… but won’t say to your face.",
-  "cta": "Ask Beau-Tox",
-  "domain": "aesthetics"
-}
-
-Accessibility Requirements
-
-Keyboard navigable
-
-Captions always available
-
-No autoplay audio
-
-Clear focus states
-
-Mobile-first interaction support
-
-Performance Notes
-
-Prefer WebM with MP4 fallback
-
-Lazy load avatar media
-
-Avoid blocking main thread
-
-No large JS animation libraries for V1
-
-V2 Forward Compatibility (Do Not Break)
-
-This system will later support:
-
-Interactive talking avatars
-
-Live voice responses
-
-Domain-based routing from Hero
-
-Personalization
-
-Design decisions in V1 should not prevent:
-
-Replacing video with canvas / WebGL
-
-Triggering avatars programmatically
-
-Reusing avatars in-app
-
-What This Is NOT
-
-Not a marketing gimmick
-
-Not a looping cartoon
-
-Not a generic chatbot intro
-
-Not a medical advice system
-
-This is an expert-led trust interface.
-
-Implementation Status
-
-Media: Placeholder approved for V1
-
-Scripts: Finalized
-
-Interaction model: Approved
-
-Drop-in replacement of final videos: Required
-
-Questions or Changes
-
-All changes to:
-
-Scripts
-
-Order
-
-Tone
-
-Avatar roles
-
-Must be approved before implementation.
+Optional **WebM** variants for performance. **Scripts and tone** are source-of-truth copy—do not improvise without approval.
 
 ---
 
-## Internal: Digital product pipeline (Etsy + Canva)
+## Internal: digital product pipeline (Etsy + Canva)
 
-The **gap analysis** and what is already built vs missing:
+- Gap analysis and build status: **[docs/PRODUCT_AUTOMATION_PIPELINE.md](./docs/PRODUCT_AUTOMATION_PIPELINE.md)**
+- Next implementation ticket: **[docs/TICKET-PIPELINE-IMPLEMENTATION-NEXT.md](./docs/TICKET-PIPELINE-IMPLEMENTATION-NEXT.md)**
 
-**[docs/PRODUCT_AUTOMATION_PIPELINE.md](./docs/PRODUCT_AUTOMATION_PIPELINE.md)**
+---
 
-The **next implementation ticket** (file tree, `DigitalProductConfig`, services, scripts, acceptance criteria):
+## License / content
 
-**[docs/TICKET-PIPELINE-IMPLEMENTATION-NEXT.md](./docs/TICKET-PIPELINE-IMPLEMENTATION-NEXT.md)**
-
-End of README
+Private repository. Downloadable templates are for licensed purchasers or approved free-pack subscribers; medical and legal review is the buyer’s responsibility unless otherwise stated on each asset.

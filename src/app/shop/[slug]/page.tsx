@@ -6,6 +6,7 @@ import { BundleUpgradeMessaging } from "@/components/shop/BundleUpgradeMessaging
 import { MembershipUpsellBlock } from "@/components/shop/MembershipUpsellBlock";
 import { MEGA_UPGRADE_TARGET_SLUG } from "@/lib/shop/bundle-tier-config";
 import { getFamilyByProductSlug } from "@/lib/shop/families";
+import { FreeTemplatesLeadStrip } from "@/components/marketing/FreeTemplatesLeadStrip";
 import { CHEAT_SHEET_BONUS } from "@/config/cheat-sheet-bonus.config";
 import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
 import { buildProductMetaDescription, buildProductMetaTitle } from "@/lib/seo/shop-product-seo";
@@ -341,6 +342,8 @@ export default async function ProductDetailPage({
             ))}
           </div>
         </section>
+
+        {product.category === "Cheat Sheets" ? <FreeTemplatesLeadStrip /> : null}
 
         {/* TRUST */}
         <div className="mb-10 rounded-xl border border-[#D4537E]/30 bg-[#D4537E]/5 p-6 text-center">

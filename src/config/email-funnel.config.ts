@@ -1,6 +1,8 @@
 /**
  * 7-email lead magnet funnel — subjects, delays, and HTML bodies.
  * Edit copy here; logic lives in `src/lib/email-funnel/`.
+ *
+ * Note: The /free-templates pack uses the `leads` table + separate nurture cron, not this sequence.
  */
 
 export const FUNNEL_TAG_LEAD = "lead";
@@ -62,6 +64,7 @@ export const EMAIL_FUNNEL_STEPS: EmailFunnelStepConfig[] = [
         `<p style="margin:0 0 16px">Hi — thanks for joining. Here's what we promised: a practical starting point so you're not staring at a blank Canva file (or an empty front desk folder).</p>
 <p style="margin:0 0 16px"><strong>Start here:</strong></p>
 <ul style="margin:0 0 16px;padding-left:20px">
+<li><a href="${ctx.origin}/free-templates" style="color:#D4537E">10 free templates landing</a> — clinical, handouts, and ops starters</li>
 <li><a href="${ctx.origin}/shop/resources" style="color:#D4537E">Free resources hub</a> — audit, cheat sheets, and education</li>
 <li><a href="${ctx.origin}/shop" style="color:#D4537E">Template shop</a> — consent bundles, social packs, playbooks (instant download)</li>
 <li><a href="${ctx.origin}/how-to-get-more-med-spa-clients" style="color:#D4537E">Growth guide</a> — systems for visibility &amp; bookings</li>

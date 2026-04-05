@@ -1452,6 +1452,29 @@ model FacebookPageCredential {
 }
 
 // =============================================================================
+// Lead magnet signups (Supabase `leads` table — /free-templates flow)
+// =============================================================================
+
+model Lead {
+  id                String    @id @default(cuid())
+  firstName         String    @map("first_name")
+  email             String
+  /// e.g. free-templates
+  source            String    @default("free-templates")
+  optedIn           Boolean   @default(true) @map("opted_in")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  /// Count of nurture emails sent (0–3) after initial delivery email
+  nurtureEmailsSent Int       @default(0) @map("nurture_emails_sent")
+  nextNurtureAt     DateTime? @map("next_nurture_at")
+  unsubscribeToken  String    @unique @default(cuid()) @map("unsubscribe_token")
+
+  @@unique([email, source])
+  @@index([source, nextNurtureAt])
+  @@index([email])
+  @@map("leads")
+}
+
+// =============================================================================
 // Marketing email funnel (lead magnet → 7-step sequence, Resend)
 // =============================================================================
 

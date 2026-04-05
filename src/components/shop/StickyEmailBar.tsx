@@ -22,10 +22,13 @@ export function StickyEmailBar() {
     if (!email.trim()) return;
     setStatus("loading");
     try {
-      await fetch("/api/shop/subscribe", {
+      await fetch("/api/leads/free-templates", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), source: "sticky_bar" }),
+        body: JSON.stringify({
+          email: email.trim(),
+          firstName: "there",
+        }),
       });
       setStatus("done");
       setTimeout(() => setStatus("dismissed"), 3000);

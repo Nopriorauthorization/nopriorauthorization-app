@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
 import { processDueFunnelEmails } from "@/lib/email-funnel/process-due";
+import { processDueLeadNurtureEmails } from "@/lib/leads/process-lead-nurture";
 
 /**
  * Vercel Cron: hourly. Sends next step when `nextSendAt` is due.
@@ -21,6 +22,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const result = await processDueFunnelEmails(50);
-  return NextResponse.json({ ok: true, ...result });
+  const funnel = await processDueFunnelEmails(50);
+  const leads = await processDueLeadNurtureEmails(40);
+  return NextResponse.json({
+    ok: true,
+    funnel,
+    freeTemplatesLeads: leads,
+  });
 }

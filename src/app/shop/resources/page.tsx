@@ -22,6 +22,12 @@ export const metadata: Metadata = {
 
 const FREE_ITEMS = [
   {
+    href: "/free-templates",
+    title: "10 free med spa templates",
+    body: "Danielle’s lead magnet: first name + email → stored in Supabase `leads` → instant Resend delivery with 10 file links → nurture on days 1, 3, and 7.",
+    cta: "Get the 10 free templates",
+  },
+  {
     href: "/shop/free/skin-analysis-cheat-sheet",
     title: "Free Skin Analysis Cheat Sheet",
     body: "Email-unlock one page: Fitzpatrick, Glogau, zones, consult questions, contraindications — then upgrade to the $10 Facial Training Manual.",

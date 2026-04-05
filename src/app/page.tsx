@@ -1,3 +1,5 @@
+import { FreeTemplatesHomeBanner } from "@/components/marketing/FreeTemplatesHomeBanner";
+
 export const metadata = {
   title: "No Prior Authorization — The Operating System for the Modern Med Spa",
   description:
@@ -7,6 +9,7 @@ export const metadata = {
 export default function HomePage() {
   return (
     <div className="-mt-16 min-h-dvh">
+      <FreeTemplatesHomeBanner />
       <iframe
         src="/npa-homepage.html"
         className="block h-dvh min-h-dvh w-full border-0"

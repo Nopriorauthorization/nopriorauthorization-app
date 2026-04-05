@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Skin Analysis Quick Reference (Free Cheat Sheet)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;font-size:9pt;color:#1A1A1A;background:#f0eeed;}
+.page{width:8.5in;min-height:11in;background:white;margin:.2in auto;padding:.45in .5in;box-shadow:0 4px 24px rgba(0,0,0,.14);}
+
+/* HEADER */
+.header{border-bottom:3px solid #D4537E;padding-bottom:12px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:flex-end;}
+.header-left .eyebrow{font-size:7pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;}
+.header-left .title{font-family:'Playfair Display',serif;font-size:24pt;font-weight:900;color:#1A1A1A;line-height:1;}
+.header-left .sub{font-size:8pt;color:#888;margin-top:3px;}
+.header-right{text-align:right;}
+.free-badge{background:#D4537E;color:#fff;font-size:8pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:3px;}
+.header-right .author{font-size:7pt;color:#aaa;margin-top:4px;}
+
+/* BODY GRID */
+.body{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.full{grid-column:1/-1;}
+
+/* SECTION */
+.sec-title{font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1A1A1A;padding:4px 8px;background:#f5f5f5;border-left:3px solid #D4537E;margin-bottom:6px;}
+
+/* SKIN TYPE TABLE */
+.skin-table{width:100%;border-collapse:collapse;font-size:8pt;}
+.skin-table th{background:#1A1A1A;color:#fff;padding:4px 8px;text-align:left;font-size:7.5pt;font-weight:700;}
+.skin-table th:first-child{background:#D4537E;}
+.skin-table td{padding:4px 8px;border-bottom:0.5px solid #eee;vertical-align:top;line-height:1.5;color:#333;}
+.skin-table tr:nth-child(even) td{background:#fafafa;}
+
+/* ANALYSIS ZONES */
+.zones-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.zone-card{border-radius:4px;overflow:hidden;border:0.5px solid #e0d8d4;}
+.zone-head{background:#1A1A1A;padding:4px 8px;}
+.zone-head h4{font-size:8pt;font-weight:700;color:#fff;}
+.zone-body{padding:6px 8px;background:white;}
+.zone-item{font-size:7.5pt;color:#444;line-height:1.6;border-bottom:0.5px solid #f0f0f0;padding:1px 0;}
+.zone-item:last-child{border-bottom:none;}
+.zone-item strong{color:#1A1A1A;}
+
+/* LIST */
+.cs-list{display:flex;flex-direction:column;gap:3px;}
+.cs-list-item{display:flex;gap:8px;align-items:flex-start;font-size:8.5pt;color:#333;line-height:1.5;padding:3px 0;border-bottom:0.5px solid #f5f5f5;}
+.cs-list-key{font-weight:700;color:#1A1A1A;min-width:100px;flex-shrink:0;}
+.cs-list-val{color:#555;}
+
+/* CONCERN GRID */
+.concern-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.concern-card{border-radius:4px;overflow:hidden;border:0.5px solid #e0d8d4;}
+.cc-head{padding:4px 8px;background:#D4537E;}
+.cc-head h4{font-size:8pt;font-weight:700;color:#fff;}
+.cc-body{padding:5px 8px;background:white;}
+.cc-line{font-size:7.5pt;color:#444;line-height:1.6;border-bottom:0.5px solid #f5f5f5;padding:1px 0;}
+.cc-line:last-child{border-bottom:none;}
+
+/* WARN */
+.warn{border-left:3px solid #D4537E;padding:7px 10px;background:#FBEAF0;border-radius:0 4px 4px 0;}
+.warn-line{font-size:8pt;color:#72243E;line-height:1.6;margin-bottom:2px;}
+
+/* CTA */
+.cta-box{background:#1A1A1A;border-radius:5px;padding:12px 16px;margin-top:12px;}
+.cta-box h4{font-family:'Playfair Display',serif;font-size:13pt;font-weight:900;color:#fff;margin-bottom:4px;}
+.cta-box p{font-size:8.5pt;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:8px;}
+.cta-items{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+.cta-item{font-size:7.5pt;color:rgba(255,255,255,.65);padding:2px 0;display:flex;gap:6px;align-items:flex-start;}
+.cta-item::before{content:'→';color:#D4537E;font-weight:700;flex-shrink:0;}
+.cta-url{font-size:8pt;font-weight:700;color:#D4537E;margin-top:8px;letter-spacing:.04em;}
+
+/* FOOTER */
+.footer{margin-top:14px;padding-top:8px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:6.5pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+.footer-free{font-size:7pt;color:#D4537E;font-weight:700;}
+
+@media print{body{background:white;}.page{margin:0;box-shadow:none;padding:.4in .45in;}@page{size:8.5in 11in portrait;margin:0;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-left">
+    <div class="eyebrow">No Prior Authorization &nbsp;·&nbsp; Free Cheat Sheet</div>
+    <div class="title">Skin Analysis Quick Reference</div>
+    <div class="sub">Skin typing, Fitzpatrick classification, concern mapping, and consultation framework — all on one page</div>
+  </div>
+  <div class="header-right">
+    <div class="free-badge">FREE Download</div>
+    <div class="author">Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com</div>
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- SKIN TYPES -->
+  <div class="full">
+    <div class="sec-title">The 5 Skin Types — Assessment & Treatment Direction</div>
+    <table class="skin-table">
+      <thead><tr><th>Skin Type</th><th>Characteristics</th><th>What the Client Reports</th><th>Visual Signs</th><th>Primary Treatment Focus</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Normal</strong></td><td>Balanced oil-water ratio. Small pores. Minimal sensitivity.</td><td>"My skin is pretty low-maintenance. No major issues."</td><td>Even tone, smooth texture, minimal lines, no visible pores</td><td>Maintenance, prevention, SPF, antioxidants</td></tr>
+        <tr><td><strong>Dry</strong></td><td>Low sebum production. Impaired barrier function. Thin appearance.</td><td>"My skin feels tight, flaky, sometimes itchy — especially after cleansing."</td><td>Flaking, dull texture, fine lines more visible, no shine</td><td>Barrier repair, humectants, occlusives, gentle actives only</td></tr>
+        <tr><td><strong>Oily</strong></td><td>Excess sebum production. Enlarged pores. Prone to congestion.</td><td>"I'm shiny by midday. My pores look huge. I break out a lot."</td><td>Visible shine, enlarged pores, comedones, thicker skin texture</td><td>Sebum regulation, BHAs, niacinamide, non-comedogenic SPF</td></tr>
+        <tr><td><strong>Combination</strong></td><td>Oily T-zone (forehead, nose, chin), dry or normal cheeks.</td><td>"My nose and forehead get oily but my cheeks feel dry or normal."</td><td>Oiliness and enlarged pores in T-zone; dry patches on cheeks</td><td>Zone-specific treatment — different products for different areas</td></tr>
+        <tr><td><strong>Sensitive</strong></td><td>Reactive, easily irritated. Often secondary to another skin type.</td><td>"My skin reacts to everything. Gets red, burns, or breaks out easily."</td><td>Redness, reactive flushing, rosacea-like appearance, fine capillaries</td><td>Barrier support, anti-inflammatory ingredients, patch test everything, avoid fragrance/alcohol</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FITZPATRICK -->
+  <div>
+    <div class="sec-title">Fitzpatrick Type — Ask This Question</div>
+    <div class="cs-list">
+      <div class="cs-list-item"><span class="cs-list-key">Type I</span><span class="cs-list-val">Always burns, never tans. Very pale/ivory skin. Usually red or blonde hair.</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">Type II</span><span class="cs-list-val">Usually burns, rarely tans minimally. Fair/light beige skin.</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">Type III</span><span class="cs-list-val">Sometimes burns mildly, tans gradually to light brown.</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">Type IV</span><span class="cs-list-val">Rarely burns, tans easily to moderate brown. Olive skin.</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">Type V</span><span class="cs-list-val">Very rarely burns, tans easily to dark brown. Brown skin.</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">Type VI</span><span class="cs-list-val">Never burns, tans very deeply. Dark brown to black skin.</span></div>
+    </div>
+    <div style="margin-top:7px;font-size:7.5pt;color:#888;font-style:italic;">★ Ask: "What happens when you go in the sun without protection for 30 minutes?" — this is the most accurate classifier.</div>
+  </div>
+
+  <!-- GLOGAU SCALE -->
+  <div>
+    <div class="sec-title">Glogau Photoaging Classification</div>
+    <div class="cs-list">
+      <div class="cs-list-item"><span class="cs-list-key">Type I — Mild</span><span class="cs-list-val">20s–30s. No keratoses. Minimal wrinkles. Little/no makeup needed.</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">Type II — Moderate</span><span class="cs-list-val">30s–40s. Early keratoses. Smile lines. Foundation worn routinely.</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">Type III — Advanced</span><span class="cs-list-val">50s+. Visible keratoses. Persistent wrinkles. Heavy foundation always worn.</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">Type IV — Severe</span><span class="cs-list-val">60s–70s. Extensive actinic keratoses. Wrinkling throughout. Cannot wear makeup.</span></div>
+    </div>
+  </div>
+
+  <!-- ZONES OF THE FACE -->
+  <div class="full">
+    <div class="sec-title">The 5 Analysis Zones — What to Look for in Each</div>
+    <div class="zones-grid">
+      <div class="zone-card">
+        <div class="zone-head"><h4>Zone 1 — Forehead</h4></div>
+        <div class="zone-body">
+          <div class="zone-item"><strong>Oiliness:</strong> T-zone begins here</div>
+          <div class="zone-item"><strong>Lines:</strong> Horizontal (frontalis), vertical (glabella)</div>
+          <div class="zone-item"><strong>Pigment:</strong> Melasma common here</div>
+          <div class="zone-item"><strong>Texture:</strong> Congestion, milia common</div>
+          <div class="zone-item"><strong>Note:</strong> Most sun-exposed zone</div>
+        </div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-head"><h4>Zone 2 — Nose & Cheeks</h4></div>
+        <div class="zone-body">
+          <div class="zone-item"><strong>Pores:</strong> Largest pores on nose</div>
+          <div class="zone-item"><strong>Oiliness:</strong> Nose = peak T-zone</div>
+          <div class="zone-item"><strong>Redness:</strong> Cheeks = rosacea zone</div>
+          <div class="zone-item"><strong>Capillaries:</strong> Visible on cheeks in sensitive types</div>
+          <div class="zone-item"><strong>Pigment:</strong> Sun damage on cheeks</div>
+        </div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-head"><h4>Zone 3 — Periorbital</h4></div>
+        <div class="zone-body">
+          <div class="zone-item"><strong>Skin thickness:</strong> Thinnest skin on face (~0.5mm)</div>
+          <div class="zone-item"><strong>Lines:</strong> Crow's feet (dynamic), under-eye lines</div>
+          <div class="zone-item"><strong>Dark circles:</strong> Vascular vs pigmented vs structural</div>
+          <div class="zone-item"><strong>Bags:</strong> Fat pad herniation or edema</div>
+          <div class="zone-item"><strong>Note:</strong> Most sensitive zone — gentle products only</div>
+        </div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-head"><h4>Zone 4 — Perioral & Chin</h4></div>
+        <div class="zone-body">
+          <div class="zone-item"><strong>Lines:</strong> Vertical lip lines, marionette lines</div>
+          <div class="zone-item"><strong>Acne:</strong> Hormonal acne concentrated here</div>
+          <div class="zone-item"><strong>Volume loss:</strong> Chin and perioral deflation with age</div>
+          <div class="zone-item"><strong>Texture:</strong> Peau d'orange on chin (mentalis)</div>
+          <div class="zone-item"><strong>Note:</strong> Hormonal changes show here first</div>
+        </div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-head"><h4>Zone 5 — Neck & Décolletage</h4></div>
+        <div class="zone-body">
+          <div class="zone-item"><strong>Laxity:</strong> Platysmal bands, skin laxity</div>
+          <div class="zone-item"><strong>Pigment:</strong> Sun damage, dyschromia common</div>
+          <div class="zone-item"><strong>Texture:</strong> Often neglected — shows age quickly</div>
+          <div class="zone-item"><strong>Lines:</strong> Horizontal neck lines, décolletage wrinkling</div>
+          <div class="zone-item"><strong>Note:</strong> Thinner, more reactive than facial skin</div>
+        </div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-head"><h4>T-Zone vs U-Zone</h4></div>
+        <div class="zone-body">
+          <div class="zone-item"><strong>T-Zone:</strong> Forehead + nose + chin — typically oilier</div>
+          <div class="zone-item"><strong>U-Zone:</strong> Cheeks + jaw border — typically drier</div>
+          <div class="zone-item"><strong>Combination skin</strong> = oily T, normal/dry U</div>
+          <div class="zone-item"><strong>Treat zones separately</strong> with combination skin</div>
+          <div class="zone-item"><strong>Note:</strong> Document zone differences in every chart</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCERN MAPPING -->
+  <div class="full">
+    <div class="sec-title">Common Skin Concerns — Visual ID & Treatment Direction</div>
+    <div class="concern-grid">
+      <div class="concern-card">
+        <div class="cc-head"><h4>Hyperpigmentation</h4></div>
+        <div class="cc-body">
+          <div class="cc-line"><strong>Melasma:</strong> Bilateral cheeks/forehead. Hormonal trigger. UV-worsened.</div>
+          <div class="cc-line"><strong>PIH:</strong> Follows acne or trauma. Darker in higher Fitzpatrick.</div>
+          <div class="cc-line"><strong>Solar lentigines:</strong> Sun spots. Discrete, flat, brown.</div>
+          <div class="cc-line"><strong>Treatment:</strong> SPF first always. Hydroquinone, kojic, azelaic, mandelic, IPL (I–III only).</div>
+        </div>
+      </div>
+      <div class="concern-card">
+        <div class="cc-head"><h4>Acne & Congestion</h4></div>
+        <div class="cc-body">
+          <div class="cc-line"><strong>Comedones (open/closed):</strong> Blackheads/whiteheads. BHA + retinoids.</div>
+          <div class="cc-line"><strong>Inflammatory acne:</strong> Papules/pustules. Salicylic, BP, retinoids.</div>
+          <div class="cc-line"><strong>Cystic/nodular:</strong> Deep, painful. Refer for Rx (tretinoin, spiro, Accutane).</div>
+          <div class="cc-line"><strong>Fungal acne:</strong> Uniform tiny pustules. Responds to antifungals not standard acne tx.</div>
+        </div>
+      </div>
+      <div class="concern-card">
+        <div class="cc-head"><h4>Redness & Rosacea</h4></div>
+        <div class="cc-body">
+          <div class="cc-line"><strong>ETR (Erythematotelangiectatic):</strong> Flushing, diffuse redness, capillaries.</div>
+          <div class="cc-line"><strong>PPR (Papulopustular):</strong> Looks like acne. Do NOT treat as acne.</div>
+          <div class="cc-line"><strong>Triggers:</strong> Heat, spicy food, alcohol, UV, stress, harsh products.</div>
+          <div class="cc-line"><strong>Treatment:</strong> Gentle barrier support, azelaic acid, centella, IPL for vessels (I–III only).</div>
+        </div>
+      </div>
+      <div class="concern-card">
+        <div class="cc-head"><h4>Aging & Volume Loss</h4></div>
+        <div class="cc-body">
+          <div class="cc-line"><strong>Dynamic lines:</strong> With expression only. Botox.</div>
+          <div class="cc-line"><strong>Static lines:</strong> Present at rest. Filler + resurfacing + retinoids.</div>
+          <div class="cc-line"><strong>Volume loss:</strong> Hollowing cheeks, NLF, tear trough. Filler.</div>
+          <div class="cc-line"><strong>Laxity:</strong> Jowling, neck, perioral descent. RF, Morpheus8, threads, surgery.</div>
+        </div>
+      </div>
+      <div class="concern-card">
+        <div class="cc-head"><h4>Texture Issues</h4></div>
+        <div class="cc-body">
+          <div class="cc-line"><strong>Enlarged pores:</strong> Cannot shrink pores — can reduce appearance. Retinoids, niacinamide.</div>
+          <div class="cc-line"><strong>Rough texture:</strong> Keratin buildup. AHAs, gentle exfoliation, retinoids.</div>
+          <div class="cc-line"><strong>Milia:</strong> Keratin-filled cysts. Extraction or retinoids to prevent.</div>
+          <div class="cc-line"><strong>Scarring:</strong> Atrophic (ice pick, boxcar, rolling) — microneedling, fractional laser.</div>
+        </div>
+      </div>
+      <div class="concern-card">
+        <div class="cc-head"><h4>Dehydration vs Dry</h4></div>
+        <div class="cc-body">
+          <div class="cc-line"><strong>Dehydrated skin:</strong> Lacks WATER — any skin type can be dehydrated.</div>
+          <div class="cc-line"><strong>Dry skin:</strong> Lacks OIL — a true skin type condition.</div>
+          <div class="cc-line"><strong>Dehydration signs:</strong> Fine surface lines that disappear when skin is plumped. "Crepiness."</div>
+          <div class="cc-line"><strong>Treatment:</strong> Dehydration → hyaluronic acid. Dry → barrier repair + occlusives.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSULTATION QUESTIONS -->
+  <div>
+    <div class="sec-title">The 8 Questions — Every New Client Consultation</div>
+    <div class="cs-list">
+      <div class="cs-list-item"><span class="cs-list-key">1. Main concern</span><span class="cs-list-val">"What brings you in today? What bothers you most about your skin?"</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">2. Current routine</span><span class="cs-list-val">"Walk me through what you're using morning and night."</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">3. SPF habits</span><span class="cs-list-val">"Are you using sunscreen daily? Which one?"</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">4. Medications</span><span class="cs-list-val">"Any prescription skincare? Oral medications? Accutane history?"</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">5. Reactions history</span><span class="cs-list-val">"Have you ever reacted to a skincare product or treatment?"</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">6. Prior treatments</span><span class="cs-list-val">"Any facials, peels, laser, injectables in the past 4 weeks?"</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">7. Goals / timeline</span><span class="cs-list-val">"Is there a specific event or timeline you're working toward?"</span></div>
+      <div class="cs-list-item"><span class="cs-list-key">8. Sun exposure</span><span class="cs-list-val">"How much time do you spend in the sun? Any recent tan or self-tanner?"</span></div>
+    </div>
+  </div>
+
+  <!-- CONTRAINDICATIONS -->
+  <div>
+    <div class="sec-title">Stop Before You Start — Universal Contraindications</div>
+    <div class="warn">
+      <div class="warn-line">❌ <strong>Accutane (isotretinoin):</strong> No waxing, peels, dermaplaning, or microneedling during use or 6–12 months after</div>
+      <div class="warn-line">❌ <strong>Active infection:</strong> No facial treatment over active acne cysts, cold sores, open wounds, or skin infections</div>
+      <div class="warn-line">❌ <strong>Recent injectables:</strong> No facial massage, cupping, or microcurrent over Botox/filler sites within 2 weeks</div>
+      <div class="warn-line">❌ <strong>Pregnancy:</strong> Avoid chemical peels, essential oils, retinoids, electrical modalities, and high-frequency</div>
+      <div class="warn-line">❌ <strong>Active rosacea flare:</strong> No steam, extractions, heat, or strong actives — barrier support only</div>
+      <div class="warn-line">❌ <strong>Photosensitizing medications:</strong> No laser, IPL, or UV exposure (doxycycline, tetracycline, certain antifungals)</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA BOX -->
+<div class="cta-box">
+  <h4>Want the complete training? Get the Full Facial Training Manual for just $10 🤍</h4>
+  <p>Step-by-step treatment protocols, full facial anatomy, staff training guides, pre/post care systems, skin condition management, esthetic + injectable combined — everything you need to train your team or level up your own practice.</p>
+  <div class="cta-items">
+    <div class="cta-item">Complete step-by-step facial protocol</div>
+    <div class="cta-item">Facial anatomy for esthetic + injectable</div>
+    <div class="cta-item">Staff training framework and scripts</div>
+    <div class="cta-item">Skin condition management by type</div>
+    <div class="cta-item">Pre & post care for every service</div>
+    <div class="cta-item">Treatment room setup and protocols</div>
+    <div class="cta-item">Contraindication reference guide</div>
+    <div class="cta-item">Product layering and ingredient guide</div>
+  </div>
+  <div class="cta-url"><a href="https://nopriorauthorization.com/shop/facial-training-manual" style="color:#D4537E;text-decoration:underline;font-weight:700;">→ Get the Complete Facial Training Manual — $10</a></div>
+</div>
+
+<div class="footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · This cheat sheet is FREE — share it with a provider who needs it 🤍</div>
+  <div class="footer-free">FREE Download · No Prior Authorization</div>
+</div>
+
+</div>
+</body>
+</html>

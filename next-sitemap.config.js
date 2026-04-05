@@ -1,5 +1,7 @@
 /** Buyer-intent SEO landings — explicit entries so they always ship in sitemap after build */
 const SEO_LANDING_PATHS = [
+  "/free-templates",
+  "/free-templates/downloads",
   "/botox-marketing-templates",
   "/med-spa-marketing-templates",
   "/weight-loss-marketing-templates",

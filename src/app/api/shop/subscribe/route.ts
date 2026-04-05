@@ -4,7 +4,6 @@ import { enrollLeadFromSignup } from "@/lib/email-funnel/enroll";
 import { createLeadMagnetToken } from "@/lib/shop/lead-magnet-token";
 
 const SOURCE_ALIASES: Record<string, string> = {
-  "free-templates-cta": "shop_email_capture",
   sticky_bar: "sticky_bar",
   resources: "shop_resources",
   homepage: "homepage",

@@ -46,6 +46,14 @@ export default function StudyGuidesPage() {
             , not mixed into the med spa template shop. You always see a large preview first; the full files arrive
             after checkout.
           </p>
+          <p className="mt-6">
+            <Link
+              href="/nclex-bundle"
+              className="inline-flex items-center rounded-xl border border-[#D4537E]/50 bg-[#D4537E]/10 px-5 py-2.5 text-sm font-bold text-[#D4537E] transition hover:bg-[#D4537E]/20"
+            >
+              Full NCLEX sales page → long-form landing with FAQ &amp; details
+            </Link>
+          </p>
         </div>
       </div>
 

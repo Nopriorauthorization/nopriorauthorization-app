@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — The Complete Facial Training Manual</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;font-size:10pt;color:#1A1A1A;background:#f0eeed;line-height:1.6}
+.page{width:8.5in;background:white;margin:.25in auto;padding:.6in .7in;box-shadow:0 4px 32px rgba(0,0,0,.14);}
+
+/* COVER */
+.cover{min-height:10in;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;}
+.npa-eyebrow{font-size:7.5pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;}
+.cover-title{font-family:'Playfair Display',serif;font-size:38pt;font-weight:900;color:#1A1A1A;line-height:1.0;margin-bottom:12px;padding-bottom:16px;border-bottom:3px solid #1A1A1A;}
+.cover-title em{font-style:italic;color:#D4537E;display:block;}
+.price-row{display:flex;align-items:center;gap:16px;margin:14px 0;}
+.price-badge{background:#1A1A1A;border-radius:5px;padding:8px 18px;display:flex;align-items:center;gap:10px;}
+.price-badge .price{font-family:'Playfair Display',serif;font-size:26pt;font-weight:900;color:#D4537E;}
+.price-badge .price-label{font-size:9pt;color:rgba(255,255,255,.6);line-height:1.5;}
+.cover-sub{font-size:11.5pt;color:#555;line-height:1.75;margin:14px 0;}
+.author-strip{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:0.5px solid #ddd;border-bottom:0.5px solid #ddd;margin:14px 0;}
+.avatar{width:44px;height:44px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18pt;color:#fff;font-weight:700;flex-shrink:0;}
+.author-info h3{font-size:11pt;font-weight:700;}
+.author-info p{font-size:8.5pt;color:#666;line-height:1.5;}
+
+/* SECTION HEADERS */
+.sec-header{background:#1A1A1A;margin:0 -.7in;padding:14px .7in;margin-bottom:18px;}
+.sh-num{font-size:7.5pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:2px;}
+.sh-title{font-family:'Playfair Display',serif;font-size:19pt;font-weight:900;color:#fff;line-height:1.15;}
+.sh-sub{font-size:9pt;color:rgba(255,255,255,.5);margin-top:2px;}
+
+/* DANIELLE */
+.db{background:#FBEAF0;border-left:4px solid #D4537E;padding:10px 14px;border-radius:0 5px 5px 0;margin:12px 0;}
+.db-label{font-size:7pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;}
+.db-text{font-size:9.5pt;color:#72243E;line-height:1.7;font-style:italic;}
+
+/* BODY */
+.body-text{font-size:10pt;color:#333;line-height:1.7;margin-bottom:10px;}
+.h2{font-family:'Playfair Display',serif;font-size:15pt;font-weight:700;color:#1A1A1A;margin:18px 0 10px;}
+.h3{font-size:11pt;font-weight:700;color:#1A1A1A;margin:14px 0 7px;}
+.h4{font-size:9pt;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.08em;margin:10px 0 5px;}
+
+/* TABLES */
+.manual-table{width:100%;border-collapse:collapse;font-size:9pt;margin:10px 0;}
+.manual-table th{background:#1A1A1A;color:#fff;padding:5px 9px;text-align:left;font-size:8.5pt;font-weight:700;}
+.manual-table th:first-child{background:#D4537E;}
+.manual-table td{padding:5px 9px;border-bottom:0.5px solid #eee;vertical-align:top;line-height:1.5;color:#333;}
+.manual-table tr:nth-child(even) td{background:#fafafa;}
+.manual-table td.label{font-weight:700;color:#1A1A1A;}
+
+/* PROTOCOL STEPS */
+.protocol-step{display:flex;gap:0;margin-bottom:0;}
+.ps-left{display:flex;flex-direction:column;align-items:center;width:44px;flex-shrink:0;}
+.ps-num{width:24px;height:24px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-size:9.5pt;font-weight:700;color:#fff;flex-shrink:0;}
+.ps-line{width:2px;background:#e8d8dc;flex:1;margin:3px auto;}
+.ps-content{padding:0 0 14px 10px;flex:1;}
+.ps-content h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:3px;}
+.ps-content p{font-size:9.5pt;color:#555;line-height:1.65;}
+.ps-content .ps-time{font-size:8pt;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.06em;}
+
+/* CHECKLISTS */
+.checklist{display:flex;flex-direction:column;gap:5px;margin:10px 0;}
+.cl-item{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#333;line-height:1.55;padding:5px 10px;border:0.5px solid #e8e4e0;border-radius:4px;}
+.cl-box{width:12px;height:12px;border:1.5px solid #D4537E;border-radius:2px;flex-shrink:0;margin-top:2px;}
+.cl-item strong{color:#1A1A1A;}
+
+/* INFO CARDS */
+.info-card{background:#f9f6f4;border-radius:5px;padding:11px 14px;margin:10px 0;border:0.5px solid #e0d8d4;}
+.info-card h4{font-size:9.5pt;font-weight:700;color:#1A1A1A;margin-bottom:5px;}
+.info-card p{font-size:9.5pt;color:#555;line-height:1.65;}
+.info-card ul{margin:5px 0 0 14px;}
+.info-card ul li{font-size:9pt;color:#555;line-height:1.55;margin-bottom:2px;}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:10px 0;}
+
+.warn{background:#fff5f7;border-left:4px solid #D4537E;padding:10px 14px;border-radius:0 5px 5px 0;margin:10px 0;}
+.warn h4{font-size:9.5pt;font-weight:700;color:#72243E;margin-bottom:4px;}
+.warn p{font-size:9.5pt;color:#72243E;line-height:1.65;}
+.critical{background:#1A1A1A;padding:11px 14px;border-radius:4px;margin:10px 0;}
+.critical p{font-size:9.5pt;color:#fff;line-height:1.65;}
+.critical strong{color:#D4537E;}
+
+/* TECHNIQUE CARDS */
+.technique-card{border-radius:5px;overflow:hidden;border:0.5px solid #e0d8d4;margin-bottom:10px;}
+.tc-head{background:#D4537E;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;}
+.tc-head h4{font-size:10pt;font-weight:700;color:#fff;}
+.tc-head span{font-size:7.5pt;color:rgba(255,255,255,.8);}
+.tc-body{padding:10px 12px;background:white;}
+.tc-body p{font-size:9pt;color:#444;line-height:1.65;}
+.tc-body .tc-steps{margin-top:6px;display:flex;flex-direction:column;gap:3px;}
+.tc-step{font-size:8.5pt;color:#333;padding:2px 0;border-bottom:0.5px solid #f0f0f0;line-height:1.5;}
+.tc-step strong{color:#D4537E;}
+
+.page-break{page-break-before:always;padding-top:0;}
+.divider{height:1px;background:#e8e4e0;margin:16px 0;}
+.doc-footer{margin-top:22px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:7pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+
+@media print{
+body{background:white;}
+.page{margin:0;box-shadow:none;padding:.5in .6in;}
+@page{size:8.5in 11in portrait;margin:0;}
+.page-break{page-break-before:always;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div>
+    <div class="npa-eyebrow">No Prior Authorization &nbsp;·&nbsp; Clinical Training Series</div>
+    <div class="cover-title">The Complete<br>Facial Training<br><em>Manual.</em></div>
+    <div class="price-row">
+      <div class="price-badge">
+        <div class="price">$10</div>
+        <div class="price-label">Instant download<br>Print-ready · Complete</div>
+      </div>
+    </div>
+    <div class="cover-sub">The complete facial training reference for estheticians, injectors, and med spa teams — skin analysis, step-by-step treatment protocols, facial anatomy for esthetic and injectable practice, staff training framework, contraindications, pre and post care, and clinical pearls from 10 years of real practice.</div>
+    <div class="author-strip">
+      <div class="avatar">D</div>
+      <div class="author-info">
+        <h3>Danielle Alcala — Founder, Hello Gorgeous Med Spa · No Prior Authorization</h3>
+        <p>Licensed Esthetician · Phlebotomist · CNA · CMAA · RN Student · 10+ years · Oswego, IL<br>The manual she wished existed when she started — built for the provider who wants to do this right.</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <h4>12 Sections — Complete Contents</h4>
+      <p style="margin-bottom:8px;">Skin analysis & typing · Fitzpatrick & photoaging classification · Facial anatomy (esthetic + injectable) · Step-by-step facial protocol · Treatment customization by skin type · Skin condition management · Chemical exfoliation reference · Advanced modalities (microneedling, dermaplaning, high-frequency) · Injectable overlay for the esthetic provider · Pre & post care systems · Staff training framework & scripts · Contraindication master reference</p>
+    </div>
+  </div>
+  <div style="border-top:1px solid #ddd;padding-top:12px;display:flex;justify-content:space-between;margin-top:14px;">
+    <div style="font-size:7.5pt;color:#888;letter-spacing:.1em;text-transform:uppercase;"><span style="color:#D4537E;font-weight:700;">No Prior Authorization</span> &nbsp;·&nbsp; nopriorauthorization.com</div>
+    <div style="font-size:7.5pt;color:#888;">$10 &nbsp;·&nbsp; Instant Download &nbsp;·&nbsp; The best $10 you'll spend on your practice</div>
+  </div>
+</div>
+
+<!-- ===== SECTION 1: SKIN ANALYSIS ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 01</div><div class="sh-title">Skin Analysis & Assessment</div><div class="sh-sub">The foundation of every treatment — how to see the skin correctly before you touch it</div></div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"The consultation is the treatment. Everything that happens before a provider touches the skin determines whether the outcome is excellent or mediocre. Slow down. Ask the questions. Look at the skin in good lighting. Every great result starts here."</div></div>
+
+<div class="h3">The Consultation Environment</div>
+<div class="checklist">
+  <div class="cl-item"><div class="cl-box"></div><strong>Lighting:</strong> Bright, even, natural-simulating light. Magnification lamp for close assessment. Never assess skin in dim or warm-tinted light — it masks concerns.</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>No makeup:</strong> Client should arrive with clean skin or allow time for makeup removal before analysis. You cannot accurately assess skin through foundation.</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>Woods Lamp (optional):</strong> UV light device that reveals dehydration (purple/violet), oiliness (orange/yellow fluorescence), pigmentation (brown spots appear darker), bacteria (coral/pink fluorescence).</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>Skin scope / analyzer:</strong> Digital skin analysis devices provide objective data on pore size, wrinkle depth, moisture, and melanin. Excellent for patient education and tracking progress.</div>
+</div>
+
+<div class="h3">Visual Assessment — What to Look For in Order</div>
+<table class="manual-table">
+  <thead><tr><th>Assessment Area</th><th>What to Observe</th><th>What It Tells You</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Overall tone & color</td><td>Evenness, redness, yellowness, grayness, pallor</td><td>Vascular activity, sun damage, hydration status, circulation, possible systemic conditions</td></tr>
+    <tr><td class="label">Texture</td><td>Smoothness, roughness, bumps, congestion, pore size</td><td>Exfoliation needs, sebaceous activity, comedone formation, keratinization disorders</td></tr>
+    <tr><td class="label">Hydration</td><td>Tightness, flakiness, fine surface lines that disappear when pressed</td><td>Barrier function integrity, dehydration vs dry skin type, product recommendations</td></tr>
+    <tr><td class="label">Oiliness</td><td>Shine on T-zone vs total face, visible sebum in pores</td><td>Sebaceous activity, skin type classification, exfoliation and treatment selection</td></tr>
+    <tr><td class="label">Pigmentation</td><td>Sun spots, melasma pattern, PIH, freckles, birthmarks</td><td>UV history, hormonal influence, post-inflammatory changes, treatment safety for Fitzpatrick type</td></tr>
+    <tr><td class="label">Vascular patterns</td><td>Redness, broken capillaries, rosacea patterns, flushing</td><td>Skin sensitivity, rosacea subtype, contraindications for heat treatments, IPL candidacy</td></tr>
+    <tr><td class="label">Lines & laxity</td><td>Dynamic vs static lines, skin laxity, jowling, under-eye changes</td><td>Aging stage (Glogau), injectable candidacy, resurfacing vs volumization needs</td></tr>
+    <tr><td class="label">Active conditions</td><td>Open lesions, active acne, cysts, infections, cold sores</td><td>Contraindications — no treatment over active lesions without modification</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">The 8 Consultation Questions — Ask Every New Client</div>
+<div class="two-col">
+  <div class="checklist">
+    <div class="cl-item"><div class="cl-box"></div><strong>"What brings you in today? What bothers you most?"</strong> — Primary concern in their words, not yours.</div>
+    <div class="cl-item"><div class="cl-box"></div><strong>"Walk me through your morning and evening skincare routine."</strong> — Reveals products, habits, possible irritants.</div>
+    <div class="cl-item"><div class="cl-box"></div><strong>"Are you using sunscreen daily? Which one?"</strong> — SPF compliance is the single most important skincare behavior.</div>
+    <div class="cl-item"><div class="cl-box"></div><strong>"Any prescription skincare or oral medications?"</strong> — Accutane, retinoids, antibiotics, hormonal contraception all affect treatment.</div>
+  </div>
+  <div class="checklist">
+    <div class="cl-item"><div class="cl-box"></div><strong>"Have you ever reacted to a skincare product or treatment?"</strong> — Identifies sensitivities and contraindications early.</div>
+    <div class="cl-item"><div class="cl-box"></div><strong>"Any facials, peels, laser, or injectables in the past 4 weeks?"</strong> — Recent treatments change what is safe today.</div>
+    <div class="cl-item"><div class="cl-box"></div><strong>"Is there a specific event or timeline you're working toward?"</strong> — Sets realistic expectations and treatment planning.</div>
+    <div class="cl-item"><div class="cl-box"></div><strong>"How much sun exposure do you get? Any recent tan or self-tanner?"</strong> — Critical for any laser, IPL, or chemical exfoliation service.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== SECTION 2: FACIAL ANATOMY ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 02</div><div class="sh-title">Facial Anatomy for the Esthetic Provider</div><div class="sh-sub">Skin layers, facial muscles relevant to esthetic treatments, and the injectable overlay every esthetician needs to know</div></div>
+
+<div class="h3">The Layers of Skin — What Esthetic Treatments Target</div>
+<table class="manual-table">
+  <thead><tr><th>Layer</th><th>Depth</th><th>Contents</th><th>What Reaches Here</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Stratum corneum</td><td>Outermost</td><td>Dead keratinocytes, barrier lipids</td><td>Cleansers, toners, light AHAs, physical exfoliation, enzyme treatments</td></tr>
+    <tr><td class="label">Stratum granulosum</td><td>Upper epidermis</td><td>Lamellar bodies releasing barrier lipids</td><td>Stronger AHAs/BHAs, superficial peels, microdermabrasion</td></tr>
+    <tr><td class="label">Stratum spinosum</td><td>Mid epidermis</td><td>Langerhans cells (immune), keratinocytes</td><td>Medium chemical peels, laser resurfacing (partial)</td></tr>
+    <tr><td class="label">Stratum basale</td><td>Dermal-epidermal junction</td><td>Melanocytes, stem cells, basal keratinocytes</td><td>Targeted pigmentation treatments, ablative laser, deep peels</td></tr>
+    <tr><td class="label">Papillary dermis</td><td>Upper dermis</td><td>Fine collagen, blood vessels, nerve endings, sensory receptors</td><td>Microneedling (0.5–1mm), non-ablative laser, IPL, retinoids (with time)</td></tr>
+    <tr><td class="label">Reticular dermis</td><td>Deep dermis</td><td>Dense collagen, elastin, hair follicles, sweat glands</td><td>Deep microneedling (1.5–2.5mm), RF microneedling, ablative CO2 laser, dermal fillers</td></tr>
+    <tr><td class="label">Hypodermis (subcutaneous)</td><td>Below dermis</td><td>Fat cells, blood vessels, larger nerves</td><td>HA filler (volume), Sculptra, deep injections</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Facial Muscles Relevant to Esthetic Treatments</div>
+<table class="manual-table">
+  <thead><tr><th>Muscle</th><th>Location</th><th>Action</th><th>Esthetic Relevance</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Frontalis</td><td>Forehead</td><td>Raises eyebrows, wrinkles forehead</td><td>Horizontal forehead lines. Massage direction: upward. Botox target — know its location for facial massage.</td></tr>
+    <tr><td class="label">Orbicularis oculi</td><td>Surrounds eye orbit</td><td>Closes eye, squints</td><td>Crow's feet from orbital portion. Gentle pressure only — periorbital massage must be extremely light.</td></tr>
+    <tr><td class="label">Zygomaticus major</td><td>Cheekbone to mouth corner</td><td>Smile — pulls corner of mouth up and lateral</td><td>Key lifting muscle. Facial massage along this line supports lift. Upward strokes follow this vector.</td></tr>
+    <tr><td class="label">Masseter</td><td>Lateral jaw / ramus of mandible</td><td>Jaw closure, chewing</td><td>Palpable tension in bruxism patients. Massage and gua sha along masseter can release jaw tension. Botox target.</td></tr>
+    <tr><td class="label">Platysma</td><td>Neck and lower face</td><td>Draws lower face and neck skin downward</td><td>Neck massage and décolletage treatments must address platysma. Facial massage from neck upward supports lift.</td></tr>
+    <tr><td class="label">Orbicularis oris</td><td>Surrounds the mouth</td><td>Closes lips, purses, kisses</td><td>Perioral lines from repeated contraction. Massage around mouth follows circular muscle fibers.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">The Injectable Overlay — What Estheticians Must Know</div>
+<div class="critical"><p><strong>Why estheticians need to know injectable anatomy:</strong> You will treat patients who have had recent Botox and filler. Understanding where products are placed changes how you perform facial massage, microneedling, heat treatments, and chemical services. Treating the wrong area the wrong way can migrate filler, reduce Botox duration, or cause complications.</p></div>
+
+<table class="manual-table">
+  <thead><tr><th>Injectable Treatment</th><th>Location in Face</th><th>Esthetic Considerations</th><th>Timing Restrictions</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Botox / Neurotoxin</td><td>Forehead, glabella, crow's feet, DAO, masseter, other areas</td><td>No deep massage over injection sites — may spread toxin to unintended muscles. Light effleurage acceptable after 2 weeks.</td><td>No facial massage over treated areas for 14 days minimum</td></tr>
+    <tr><td class="label">HA Filler — cheeks</td><td>Supraperiosteal (deep) or subcutaneous mid-face</td><td>No aggressive manual pressure, cupping, or microcurrent over filler sites. Ultrasound devices may affect filler integrity.</td><td>No pressure-based modalities for 14 days. No RF or ultrasound over filler for 4 weeks minimum</td></tr>
+    <tr><td class="label">HA Filler — lips</td><td>Lip body and vermilion border</td><td>No microneedling over lips post-filler. Waxing upper lip — wait minimum 2 weeks.</td><td>No waxing, dermaplaning, or microneedling lips for 14 days</td></tr>
+    <tr><td class="label">Sculptra / Radiesse</td><td>Deep subcutaneous or supraperiosteal</td><td>Massage is actually REQUIRED after Sculptra (5-5-5 rule: 5 minutes, 5 times/day, 5 days). Radiesse — standard post-filler restrictions.</td><td>Sculptra requires massage — provider advises. Radiesse: 14-day restriction on pressure modalities.</td></tr>
+    <tr><td class="label">Kybella</td><td>Submental (under chin) fat</td><td>Area will be very swollen and tender for 2–4 weeks. No chin or neck treatments during healing.</td><td>No facial or neck treatments in submental area for 4 weeks minimum</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SECTION 3: FACIAL PROTOCOL ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 03</div><div class="sh-title">The Step-by-Step Facial Protocol</div><div class="sh-sub">Complete 60-minute treatment protocol — every step, technique, timing, and rationale</div></div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"A great facial is not a menu of steps performed in order. It's a clinical conversation with the skin. The protocol is your framework — your observation, your judgment, and your technique are what make it a result."</div></div>
+
+<div class="h3">Pre-Treatment Setup (10 minutes before client arrives)</div>
+<div class="checklist">
+  <div class="cl-item"><div class="cl-box"></div>Fresh linens on treatment table. Clean head rest cover. Blanket available.</div>
+  <div class="cl-item"><div class="cl-box"></div>Products staged in order of use — cleanser, toner, enzyme/exfoliant, ampoules, mask, moisturizer, SPF.</div>
+  <div class="cl-item"><div class="cl-box"></div>Towels or warm towel cabbie heated and ready. Facial steamer (if using) warmed 10 minutes prior.</div>
+  <div class="cl-item"><div class="cl-box"></div>Magnification lamp positioned and on. Tools (extractors, brushes) sanitized and covered.</div>
+  <div class="cl-item"><div class="cl-box"></div>Client chart and intake form reviewed. Note any contraindications, recent treatments, or product sensitivities.</div>
+</div>
+
+<div class="h3">The 60-Minute Classic Facial — Step by Step</div>
+
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">1</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 0–5</div><h4>Consultation & Visual Analysis</h4><p>Client reclined. Review intake form. Ask the 8 consultation questions. Perform visual skin analysis under magnification lamp. Assess skin type, concerns, contraindications. Explain your findings and the treatment plan. Obtain verbal consent for any modifications.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">2</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 5–12</div><h4>Double Cleanse</h4><p><strong>First cleanse — makeup and surface removal:</strong> Apply cleansing oil or micellar balm with dry hands to dry face. Massage gently using circular motions to emulsify makeup, SPF, and surface impurities. Remove with warm damp sponges or muslin cloth. <strong>Second cleanse — skin cleanse:</strong> Apply appropriate cleanser for skin type. Massage 60 seconds using effleurage technique. Remove thoroughly with warm water and sponges. Pat dry. Skin should be clean but not stripped.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">3</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 12–17</div><h4>Tone & Prep</h4><p>Apply appropriate toner to cotton pad or hands. Toner serves three purposes: (1) remove any remaining cleanser residue, (2) restore pH balance, (3) prepare skin for active ingredients. For hydrating toner — press into skin. For exfoliating toner (AHA/BHA) — swipe gently, follow instructions for that specific product. Allow to absorb fully before next step.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">4</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 17–25</div><h4>Exfoliation (choose one method per service)</h4><p><strong>Enzyme treatment:</strong> Apply warm enzyme mask to face avoiding eye area. Enzyme digests dead skin protein (keratin) through proteolytic action. Leave 5–10 minutes depending on sensitivity. Remove with warm damp sponges. Gentle enough for sensitive skin, rosacea, and Fitzpatrick V–VI.<br><strong>Chemical exfoliation (peel):</strong> See Section 06 — Chemical Exfoliation Reference for specific protocols by acid type and depth.<br><strong>Dermaplaning:</strong> Hold skin taut. Blade at 45° angle. Short, feathered strokes in direction of hair growth. Removes vellus hair and dead skin simultaneously. Not for active acne, rosacea, or broken skin.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">5</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 25–30</div><h4>Steam & Softening (optional based on skin type)</h4><p>Facial steam for 5 minutes softens comedone plugs, opens follicular openings, and prepares skin for extractions. Maintain steam 12–15 inches from face. Not appropriate for: rosacea, highly sensitive skin, active acne with significant inflammation, dilated capillaries. Alternative: warm compress towels applied 2–3 minutes.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">6</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 30–40</div><h4>Extractions (when appropriate)</h4><p>Only perform extractions on: closed and open comedones (not inflamed pustules or cysts). Wrap fingers in tissue or use clean extractor tool. Apply gentle, even pressure around the comedone — never squeeze directly on top. Release if the comedone does not express within 2 attempts — forcing causes trauma, scarring, and spreading bacteria. Apply toner or antiseptic after extractions. Apply spot treatment (salicylic, BHA) to extracted areas.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">7</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 40–45</div><h4>Facial Massage</h4><p>Massage increases circulation, lymphatic drainage, product penetration, and client relaxation. Apply massage medium (oil, cream, or serum appropriate for skin type). Use these primary techniques in sequence: <strong>Effleurage</strong> — long, gliding strokes to warm tissue and spread product. <strong>Petrissage</strong> — gentle kneading for lymphatic drainage. <strong>Tapotement</strong> — light tapping/percussion to stimulate circulation. <strong>Friction</strong> — small circular movements to break up tension. Always move in upward and outward directions — never downward. Avoid aggressive pressure over recent injectables.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">8</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 45–53</div><h4>Mask Application</h4><p>Select mask based on skin type and treatment goals. Apply in smooth, even layer avoiding eye area. Leave according to product instructions (typically 10–15 minutes). <strong>Clay/kaolin:</strong> Oily, congested skin. Absorbs sebum, tightens temporarily. <strong>Hydrogel/sheet:</strong> All skin types. Maximum hydration, soothing, calming. <strong>Cream/sleeping mask:</strong> Dry, dehydrated, mature skin. Barrier support. <strong>Brightening (vitamin C, kojic):</strong> Hyperpigmentation, dullness. <strong>Calming (centella, oat):</strong> Sensitive, rosacea, post-extraction.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">9</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 53–58</div><h4>Serum, Moisturizer & SPF Application</h4><p>Remove mask with warm, damp sponges. Tone. Apply targeted serum (vitamin C, niacinamide, hyaluronic acid, retinol — based on skin concern). Allow serum to absorb 60 seconds. Apply appropriate moisturizer for skin type. Apply SPF 50+ as final step (daytime appointments — always. Evening appointments: skip SPF, apply richer night cream instead). Apply eye cream with ring finger using gentle tapping motion.</p></div>
+</div>
+<div class="protocol-step">
+  <div class="ps-left"><div class="ps-num">10</div><div class="ps-line"></div></div>
+  <div class="ps-content"><div class="ps-time">Minutes 58–60</div><h4>Post-Treatment Consultation</h4><p>Sit client up slowly. Show results in magnifying mirror. Explain what you observed and what you did and why. Recommend 2 retail products maximum (not more — overwhelming). Schedule next appointment before they leave. Hand them printed post-care instructions. Ask for a Google review with your direct link — this is the moment. They are happy. Strike while it's warm.</p></div>
+</div>
+</div>
+
+<!-- ===== SECTION 4: TREATMENT BY SKIN TYPE ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 04</div><div class="sh-title">Treatment Customization by Skin Type & Condition</div><div class="sh-sub">How to modify the standard protocol for every skin type and common condition</div></div>
+
+<div class="h3">Protocol Modifications by Skin Type</div>
+<table class="manual-table">
+  <thead><tr><th>Skin Type</th><th>Cleanser</th><th>Exfoliation</th><th>Mask</th><th>Moisturizer</th><th>Key Modifications</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Normal</td><td>Gentle balanced cleanser</td><td>AHA 1–2x/week. Enzyme for facial.</td><td>Hydrogel or brightening</td><td>Light lotion or gel-cream</td><td>Maintenance focus. Prevention. Vitamin C + SPF.</td></tr>
+    <tr><td class="label">Dry</td><td>Cream or oil cleanser. No foaming.</td><td>Lactic acid — gentlest AHA. Enzyme. No BHA.</td><td>Cream or sleeping mask. No clay.</td><td>Rich cream. Ceramides. Shea.</td><td>No steam — dehydrates further. No manual scrubs. Focus on barrier repair.</td></tr>
+    <tr><td class="label">Oily</td><td>Foaming or gel cleanser</td><td>Salicylic acid (BHA). Enzyme + steam.</td><td>Clay or charcoal mask</td><td>Lightweight gel or oil-free lotion</td><td>Extended extractions (appropriate). High-frequency after extractions. Niacinamide.</td></tr>
+    <tr><td class="label">Combination</td><td>Balanced gel or foam cleanser</td><td>BHA on T-zone, AHA or enzyme on U-zone</td><td>Two-mask approach: clay T-zone, hydrating U-zone</td><td>Zone-specific: lightweight T-zone, richer cheeks</td><td>Treat zones independently. Do not over-strip cheeks chasing T-zone oiliness.</td></tr>
+    <tr><td class="label">Sensitive</td><td>Fragrance-free cream cleanser</td><td>Enzyme only. No AHA/BHA in facial. No manual.</td><td>Calming — centella, oat, aloe. No clay.</td><td>Barrier repair. Ceramides, peptides. Fragrance-free.</td><td>No steam. No extractions (high irritation risk). No high-frequency. No essential oils. Patch test products.</td></tr>
+    <tr><td class="label">Mature (50s+)</td><td>Cream or oil cleanser</td><td>Lactic or mandelic. Enzyme. Light TCA (advanced).</td><td>Peptide or collagen mask. Hydrating.</td><td>Rich peptide and antioxidant cream</td><td>Extended massage for circulation. Gua sha or microcurrent. LED red light. Retinoid home care.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Managing Common Skin Conditions in the Treatment Room</div>
+<div class="three-col">
+  <div class="technique-card">
+    <div class="tc-head"><h4>Acne-Prone Skin</h4><span>Modify not avoid</span></div>
+    <div class="tc-body">
+      <p><strong>Do:</strong> Salicylic cleanse + BHA toner. Enzyme exfoliation. Extractions of comedones only. High-frequency (germicidal). Clay mask. LED blue light. Niacinamide + zinc ampoule.</p>
+      <p style="margin-top:6px;"><strong>Do NOT:</strong> Extract inflamed pustules or cysts. Apply comedogenic oils. Use occlusive heavy masks.</p>
+      <p style="margin-top:6px;"><strong>Key rule:</strong> Never extract over an inflamed lesion — you spread bacteria and cause scarring.</p>
+    </div>
+  </div>
+  <div class="technique-card">
+    <div class="tc-head"><h4>Rosacea</h4><span>Calm is the goal</span></div>
+    <div class="tc-body">
+      <p><strong>Do:</strong> Cool or lukewarm water only. Gentle cream cleanser. No steam — ever. Centella, oat, or aloe mask. LED red light. Calming serum (azelaic, green tea). SPF 50+ always.</p>
+      <p style="margin-top:6px;"><strong>Do NOT:</strong> Steam, hot towels, heat, extractions, AHAs, high-frequency, friction massage, essential oils.</p>
+      <p style="margin-top:6px;"><strong>Key rule:</strong> Rosacea is a chronic condition — management, not cure. Trigger avoidance + barrier support.</p>
+    </div>
+  </div>
+  <div class="technique-card">
+    <div class="tc-head"><h4>Hyperpigmentation</h4><span>Consistent treatment</span></div>
+    <div class="tc-body">
+      <p><strong>Do:</strong> Brightening vitamin C ampoule. Mandelic or lactic acid exfoliation. Brightening mask. Niacinamide. Kojic acid. SPF 50+ — non-negotiable. IPL (Fitzpatrick I–III only).</p>
+      <p style="margin-top:6px;"><strong>Do NOT:</strong> Aggressive AHAs in Fitzpatrick IV–VI (PIH risk). Heat treatments over pigmented areas without test patch.</p>
+      <p style="margin-top:6px;"><strong>Key rule:</strong> SPF is the most important treatment for hyperpigmentation. Without it, every other treatment fails.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== SECTION 5: ADVANCED MODALITIES ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 05</div><div class="sh-title">Advanced Esthetic Modalities</div><div class="sh-sub">Microneedling, dermaplaning, high-frequency, LED, microcurrent, and gua sha — protocols and contraindications</div></div>
+
+<div class="h3">Microneedling — Esthetic Scope (State-Dependent)</div>
+<div class="warn"><h4>Scope of Practice Note</h4><p>Microneedling laws vary significantly by state. Some states allow licensed estheticians to perform microneedling at specific depths (typically 0.25–0.5mm). Others require a medical license for any microneedling. Confirm your state's specific requirements before offering this service. Operating outside your licensed scope is a legal liability, not just a professional one.</p></div>
+
+<table class="manual-table">
+  <thead><tr><th>Esthetic Microneedling Protocol</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Depth range (esthetic scope)</td><td>0.25–0.5mm — superficial epidermis to papillary dermis. Improves texture, tone, product absorption. Does not achieve deep collagen remodeling.</td></tr>
+    <tr><td class="label">Topical numbing</td><td>Apply 30–45 minutes prior. Remove completely before beginning. Do NOT needle over numbing cream.</td></tr>
+    <tr><td class="label">Passes</td><td>2–4 passes in horizontal, vertical, and diagonal directions. Consistent pressure. Slight erythema (redness) = expected endpoint at esthetic depth.</td></tr>
+    <tr><td class="label">Serums during treatment</td><td>Apply hyaluronic acid serum throughout as lubricant and active delivery. GHK-Cu, growth factors, or vitamin C serums can be applied — they penetrate via channels.</td></tr>
+    <tr><td class="label">Post-treatment care</td><td>Cool compress immediately. Hyaluronic acid serum. Calming moisturizer. SPF before leaving. No active ingredients (retinoids, AHAs, BHAs, vitamin C) for 5–7 days.</td></tr>
+    <tr><td class="label">Contraindications</td><td>Active acne breakout, active skin infection, keloid history, Accutane within 6–12 months, blood thinners, pregnancy, pacemaker (RF devices), rosacea flare, open wounds.</td></tr>
+    <tr><td class="label">Interval</td><td>Every 3–4 weeks for esthetic depth. Series of 4–6 for texture improvement.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">High-Frequency</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>Direct Method (orange/red electrode)</h4>
+    <ul>
+      <li>Electrode applied directly to skin over gauze</li>
+      <li>Ozone produced = germicidal and anti-inflammatory</li>
+      <li>Best for: oily, acne-prone skin, post-extraction</li>
+      <li>Move in small circles — never hold stationary</li>
+      <li>Duration: 3–5 minutes total facial treatment</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Indirect Method (Viennese massage)</h4>
+    <ul>
+      <li>Client holds electrode. Provider performs massage — current travels through both</li>
+      <li>Increases circulation, heat production, product penetration</li>
+      <li>Best for: mature, dry, devitalized skin</li>
+      <li>Apply oil or cream first — do not use on dry skin</li>
+      <li>Duration: 5–10 minutes</li>
+    </ul>
+  </div>
+</div>
+
+<div class="h3">LED Light Therapy</div>
+<table class="manual-table">
+  <thead><tr><th>Color / Wavelength</th><th>Primary Effects</th><th>Best For</th><th>Protocol</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Red (630–700nm)</td><td>Stimulates collagen production, increases ATP, anti-inflammatory</td><td>Anti-aging, wound healing, post-treatment recovery, rosacea calming</td><td>10–20 minutes. Most widely used. Safe for all Fitzpatrick types.</td></tr>
+    <tr><td class="label">Blue (415–445nm)</td><td>Kills Propionibacterium acnes bacteria (porphyrins produce free radical response)</td><td>Active acne, oily skin, post-extraction treatment</td><td>10–15 minutes. Often combined with red for acne (kill bacteria + heal tissue).</td></tr>
+    <tr><td class="label">Near-infrared (800–900nm)</td><td>Deepest penetration — stimulates mitochondria, deep tissue healing</td><td>Pain relief, deep collagen, post-procedure recovery</td><td>10–20 minutes. Often built into combination LED devices.</td></tr>
+    <tr><td class="label">Yellow (570–590nm)</td><td>Reduces redness, improves lymphatic drainage, skin tone</td><td>Redness, rosacea, post-IPL recovery</td><td>10–15 minutes. Less common but effective for vascular concerns.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SECTION 6: PRE POST CARE ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 06</div><div class="sh-title">Pre & Post Care Systems</div><div class="sh-sub">What to tell every client before and after every service — scripts and written instructions</div></div>
+
+<div class="h3">Universal Pre-Treatment Instructions — Give These at Booking</div>
+<table class="manual-table">
+  <thead><tr><th>Service</th><th>Day Before</th><th>Day Of</th><th>What to Avoid (48–72 hrs prior)</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Classic Facial</td><td>Do not use harsh actives (retinoids, strong AHAs)</td><td>Arrive with clean skin or allow time for makeup removal at appointment</td><td>Waxing, laser, or new skincare products in treatment area</td></tr>
+    <tr><td class="label">Chemical Peel</td><td>No exfoliating products 3–5 days prior. No retinoids 5–7 days prior.</td><td>Clean face — no moisturizer or SPF if possible. No active tan.</td><td>Accutane (6–12 months), recent laser, active infection, sun exposure 4 weeks prior</td></tr>
+    <tr><td class="label">Microneedling</td><td>No blood thinners (aspirin, fish oil, vitamin E) 48–72 hrs prior</td><td>Arrive clean. No retinoids for 3 days prior. No active tan.</td><td>Accutane (6–12 months), recent fillers or Botox in area (14 days), active acne breakout</td></tr>
+    <tr><td class="label">Dermaplaning</td><td>No waxing in 2 weeks prior. No retinoids 3 days prior.</td><td>Clean dry skin. No oil or moisturizer on skin before treatment.</td><td>Active acne, rosacea flare, open wounds, sunburn in area</td></tr>
+    <tr><td class="label">Laser / IPL</td><td>No sun exposure 4 weeks prior. No self-tanner 4 weeks prior.</td><td>Clean skin. No SPF, lotion, or makeup in treatment area. Shave hair removal areas day before.</td><td>Accutane (6–12 months), photosensitizing medications, active tan, pregnancy</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Post-Treatment Client Scripts — What to Say at Checkout</div>
+
+<div class="technique-card">
+  <div class="tc-head"><h4>Post-Classic Facial Script</h4><span>Say this every time</span></div>
+  <div class="tc-body">
+    <p>"Your skin may look a little flushed or feel slightly sensitive for the next few hours — that's completely normal. Tonight, keep it simple: gentle cleanser, moisturizer, and that's it. No retinoids, no vitamin C, no actives tonight. Starting tomorrow, go back to your normal routine. The most important thing: SPF 50 every single morning. Your skin is fresh and more sensitive to UV right now. Any extractions we did may have minor redness for 24–48 hours — that's healing. If you have any questions, text us. And I'm going to text you the Google review link — we'd be so grateful if you had a moment to share your experience. 🤍"</p>
+  </div>
+</div>
+
+<div class="technique-card">
+  <div class="tc-head"><h4>Post-Peel Script</h4><span>The peel downtime conversation</span></div>
+  <div class="tc-body">
+    <p>"Your skin is going to peel over the next 3–7 days — and I need you to let it happen naturally. I know it's tempting to pick or peel — but please don't. Peeling on its own timeline means you're healing perfectly. Do not use retinoids, AHAs, BHAs, or any active ingredients until peeling has completely stopped. Gentle cleanser, thick moisturizer, and SPF 50+ every single day — even if you're inside. No saunas, steam, exercise, or any heat for 5 days. And no sun exposure — your skin is very vulnerable to UV right now. The best result comes from patient aftercare. If you follow these instructions, your results will be significantly better."</p>
+  </div>
+</div>
+
+<div class="technique-card">
+  <div class="tc-head"><h4>Post-Microneedling Script</h4><span>Setting expectations correctly</span></div>
+  <div class="tc-body">
+    <p>"Your skin is going to look red — similar to a sunburn — for 24–48 hours. Some people also have mild swelling, especially around the eyes. This is completely expected and means the treatment worked. For the next 72 hours: only the products I recommend (the hyaluronic acid and calming moisturizer). No makeup for 24 hours. No retinoids, acids, or active ingredients for 5–7 days. No exercise, saunas, or heat for 48 hours. SPF 50+ every day starting tomorrow. Your skin may peel or flake lightly around days 3–5 — normal. Don't pick. Results continue developing for 4–6 weeks as collagen rebuilds. Your next session should be in 4–6 weeks for best results."</p>
+  </div>
+</div>
+</div>
+
+<!-- ===== SECTION 7: STAFF TRAINING ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Section 07</div><div class="sh-title">Staff Training Framework</div><div class="sh-sub">How to train your esthetic team — standards, scripts, competency checkpoints, and the culture that creates great providers</div></div>
+
+<div class="db"><div class="db-label">From Danielle</div><div class="db-text">"Your team is your brand. Every interaction they have with a patient is either building trust or eroding it. Training is not a one-time event — it's an ongoing conversation about standards. The practices that get 5-star reviews consistently are the ones where everyone from the front desk to the treatment room is operating from the same values."</div></div>
+
+<div class="h3">New Esthetician Onboarding — Week 1 Checklist</div>
+<div class="checklist">
+  <div class="cl-item"><div class="cl-box"></div><strong>HIPAA training completed and documented</strong> — required before any patient interaction</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>Bloodborne pathogen training completed and documented</strong> — required before any treatment involving extractions or needles</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>Review of all consent forms</strong> — every esthetician must understand what patients are consenting to before they perform services</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>Product knowledge training</strong> — complete understanding of every product used in treatments and every retail product sold</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>Observation of 3 complete facial treatments</strong> — shadow before solo treatment</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>Supervised practice treatment (1–2)</strong> — provider observes and evaluates technique and communication</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>Scope of practice review</strong> — clear understanding of what they can and cannot perform under their license in this state</div>
+  <div class="cl-item"><div class="cl-box"></div><strong>Communication and client interaction training</strong> — review scripts, review what never to say, review escalation protocol</div>
+</div>
+
+<div class="h3">Competency Assessment — Evaluate Every New Esthetician Before Solo Practice</div>
+<table class="manual-table">
+  <thead><tr><th>Competency Area</th><th>Assessment Method</th><th>Standard to Meet</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Skin analysis accuracy</td><td>Identify skin type and top 3 concerns on 3 different model clients</td><td>Correctly identifies type and concerns. Asks all 8 consultation questions without prompting.</td></tr>
+    <tr><td class="label">Contraindication screening</td><td>Role-play: give them 5 scenarios with contraindications</td><td>Correctly identifies all contraindications and communicates clearly why the modification is needed.</td></tr>
+    <tr><td class="label">Facial technique</td><td>Observe a complete 60-minute facial</td><td>Follows protocol in correct order. Massage technique is upward. Product selection matches skin type. Client comfort maintained throughout.</td></tr>
+    <tr><td class="label">Extraction technique</td><td>Supervised extraction on appropriate comedones</td><td>Correct pressure, correct tool, never forces, immediately recognizes when to stop. No inflammation caused.</td></tr>
+    <tr><td class="label">Product knowledge</td><td>Written or verbal quiz on 10 retail products</td><td>Can explain the benefit, key ingredient, and ideal client for every product sold in the practice.</td></tr>
+    <tr><td class="label">Client communication</td><td>Role-play: difficult client scenarios</td><td>Handles unhappy client professionally, escalates appropriately, stays within scope, never gives clinical advice outside training.</td></tr>
+    <tr><td class="label">Post-treatment script</td><td>Deliver post-care instructions verbally</td><td>Covers all key points without notes. Warm and personalized — not robotic. Asks for review naturally.</td></tr>
+  </tbody>
+</table>
+
+<div class="h3">The Standards Every Esthetic Provider Must Hold</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>Non-Negotiables in the Treatment Room</h4>
+    <ul>
+      <li>Fresh linens for every client — no exceptions</li>
+      <li>Never perform treatment without completed consent form</li>
+      <li>Never give advice outside your scope of practice</li>
+      <li>Document every treatment in the chart the same day</li>
+      <li>Never extract inflamed acne lesions — only comedones</li>
+      <li>Never use expired products or medications</li>
+      <li>Sharps disposal in approved containers immediately</li>
+      <li>Ask for a Google review from every satisfied client</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>The Client Experience Standards</h4>
+    <ul>
+      <li>Greet client by name — always use their name</li>
+      <li>Explain every step before you do it — no surprises</li>
+      <li>Check in at least twice during treatment — "How does that feel?"</li>
+      <li>Recommend maximum 2 retail products — not more</li>
+      <li>Book the next appointment before they leave the room</li>
+      <li>24-hour follow-up text — "How is your skin feeling?"</li>
+      <li>Never say "I don't know" without following up immediately</li>
+      <li>Every complaint goes to the provider/owner same day</li>
+    </ul>
+  </div>
+</div>
+
+<div class="h3">Contraindication Master Reference — Post in Every Treatment Room</div>
+<table class="manual-table">
+  <thead><tr><th>Contraindication</th><th>Services Affected</th><th>Script for Client</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Accutane (current or within 6–12 months)</td><td>Waxing, extractions, peels, dermaplaning, microneedling, laser, IPL</td><td>"To protect your skin's healing and avoid any risk of scarring, we're not able to perform [service] while you're on Accutane or within 6–12 months of finishing a course. We can absolutely do [alternative safe service] today and plan for [restricted service] once you've cleared that timeframe."</td></tr>
+    <tr><td class="label">Active skin infection / cold sore</td><td>All facial treatments in affected area</td><td>"I can see there's some active [redness/breakout/cold sore] in this area. For your safety and best results, we're going to avoid treating directly over that area today. I can modify your treatment to work around it — here's what I can do instead."</td></tr>
+    <tr><td class="label">Pregnancy</td><td>Electrical modalities, chemical peels, essential oils, retinoids, LED (caution), strong actives</td><td>"Congratulations! We have a modified treatment that's completely safe during pregnancy — we'll use calming, gentle products and avoid any electrical devices or strong actives. You're going to love it."</td></tr>
+    <tr><td class="label">Active rosacea flare</td><td>Steam, extractions, AHAs, heat modalities, high-frequency, aggressive massage</td><td>"Your skin looks like it's in a sensitive phase right now. We're going to take a gentler approach today — focusing on calming and barrier support rather than any exfoliation. This will actually give you better results right now."</td></tr>
+    <tr><td class="label">Recent injectables (within 14 days)</td><td>Deep massage, cupping, microcurrent, RF, ultrasound over injected areas</td><td>"Since you've recently had [treatment], we're going to be careful around those areas today. We'll avoid any pressure or heat over the treated areas — but everything else is completely fine."</td></tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<div class="db"><div class="db-label">A final note from Danielle</div><div class="db-text">"A great esthetician is not someone who knows the most products or the most techniques. It's someone who listens the most carefully, who sees what the skin is actually telling them, and who has the integrity to say 'this treatment isn't right for you today' when that's the truth. That's what builds a reputation. That's what builds a practice. That's what this manual is for. 🤍"</div></div>
+
+<div class="doc-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · The Complete Facial Training Manual · $10</div>
+  <div class="footer-npa">Esthetic + injectable · Protocol + anatomy + staff training · The $10 that levels up your whole practice</div>
+</div>
+
+</div>
+</body>
+</html>

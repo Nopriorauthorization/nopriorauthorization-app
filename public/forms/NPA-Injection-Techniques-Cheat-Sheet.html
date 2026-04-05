@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Injection Techniques — NPA Cheat Sheet</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;font-size:9pt;color:#1A1A1A;background:#f0eeed;}
+.page{width:8.5in;min-height:11in;background:white;margin:.2in auto;padding:.45in .5in;box-shadow:0 4px 24px rgba(0,0,0,.14);}
+
+.cs-header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:3px solid #1a2940;padding-bottom:10px;margin-bottom:16px;}
+.cs-eyebrow{font-size:7pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#1a2940;margin-bottom:4px;}
+.cs-title{font-family:'Playfair Display',serif;font-size:22pt;font-weight:900;color:#1A1A1A;line-height:1;}
+.cs-sub{font-size:8pt;color:#888;margin-top:3px;}
+.cs-cat{font-size:7pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border-radius:2px;background:#1a2940;color:#fff;}
+.cs-author{font-size:7pt;color:#aaa;margin-top:4px;text-align:right;}
+
+.body{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.full{grid-column:1/-1;}
+
+.sec-title{font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1A1A1A;padding:4px 8px;background:#f5f5f5;border-left:3px solid #1a2940;margin-bottom:6px;}
+
+.cs-table{width:100%;border-collapse:collapse;font-size:8pt;}
+.cs-table th{background:#1A1A1A;color:#fff;padding:4px 7px;text-align:left;font-size:7.5pt;font-weight:700;}
+.cs-table th:first-child{background:#1a2940;}
+.cs-table td{padding:4px 7px;border-bottom:0.5px solid #eee;vertical-align:top;line-height:1.5;color:#333;}
+.cs-table tr:nth-child(even) td{background:#fafafa;}
+
+.route-card{border-radius:5px;overflow:hidden;border:0.5px solid #e0d8d4;margin-bottom:8px;}
+.rc-head{padding:7px 12px;display:flex;justify-content:space-between;align-items:center;}
+.rc-head h4{font-size:10pt;font-weight:700;color:#fff;}
+.rc-head span{font-size:7.5pt;color:rgba(255,255,255,.8);font-weight:700;}
+.rc-body{padding:8px 12px;background:white;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.rc-col h5{font-size:7.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1a2940;margin-bottom:4px;border-bottom:1px solid #e8e4e0;padding-bottom:2px;}
+.rc-item{font-size:8pt;color:#333;line-height:1.6;padding:1px 0;border-bottom:0.5px solid #f5f5f5;}
+.rc-item strong{color:#1A1A1A;}
+.rc-item:last-child{border-bottom:none;}
+
+.cs-list{display:flex;flex-direction:column;gap:4px;}
+.cs-list-item{display:flex;gap:8px;align-items:flex-start;font-size:8.5pt;color:#333;line-height:1.5;padding:3px 0;border-bottom:0.5px solid #f0f0f0;}
+.cs-list-key{font-weight:700;color:#1A1A1A;min-width:110px;flex-shrink:0;}
+.cs-list-val{color:#555;}
+
+.warn{border-left:3px solid #1a2940;padding:8px 10px;background:#f0f2f5;border-radius:0 4px 4px 0;}
+.warn-line{font-size:8.5pt;color:#1A1A1A;line-height:1.65;margin-bottom:3px;}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.mini-card{border-radius:4px;overflow:hidden;border:0.5px solid #e0d8d4;}
+.mc-head{padding:4px 9px;background:#1a2940;}
+.mc-head h5{font-size:8pt;font-weight:700;color:#fff;}
+.mc-body{padding:6px 9px;}
+.mc-line{font-size:7.5pt;color:#444;line-height:1.6;border-bottom:0.5px solid #f5f5f5;padding:1px 0;}
+.mc-line:last-child{border-bottom:none;}
+
+.cs-footer{margin-top:14px;padding-top:8px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:6.5pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#1a2940;font-weight:700;}
+
+@media print{body{background:white;}.page{margin:0;box-shadow:none;padding:.4in .45in;}@page{size:8.5in 11in portrait;margin:0;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cs-header">
+  <div>
+    <div class="cs-eyebrow">No Prior Authorization &nbsp;·&nbsp; Clinical Cheat Sheet</div>
+    <div class="cs-title">Injection Techniques — Complete Route Reference</div>
+    <div class="cs-sub">Transdermal, intradermal, subcutaneous, intramuscular, intravenous — comparison, needle selection, depth, and technique</div>
+  </div>
+  <div>
+    <div class="cs-cat">Clinical Reference</div>
+    <div class="cs-author">Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com</div>
+  </div>
+</div>
+
+<div class="body">
+
+<!-- MASTER COMPARISON -->
+<div class="full">
+  <div class="sec-title">The 5 Injection Routes — Complete Comparison</div>
+  <table class="cs-table">
+    <thead><tr><th>Route</th><th>Layer Targeted</th><th>Depth</th><th>Needle Gauge</th><th>Angle</th><th>Onset</th><th>Common Uses in Med Spa</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Transdermal (topical)</strong></td><td>Stratum corneum → epidermis (passive diffusion)</td><td>Surface only — no needle</td><td>No needle — or microneedle 0.25–0.5mm</td><td>N/A</td><td>Slow — hours to days</td><td>Topical anesthetics (EMLA, LMX), topical retinoids, microneedling delivery enhancement</td></tr>
+      <tr><td><strong>Intradermal (ID)</strong></td><td>Dermis — within the skin layer itself</td><td>1–2mm</td><td>26–30g, 3/8" to 1/2"</td><td>10–15°</td><td>Slow — localized</td><td>Allergy testing, Botox superficial (select zones), Skinvive/HA microdroplets, local anesthetic wheal</td></tr>
+      <tr><td><strong>Subcutaneous (SubQ)</strong></td><td>Hypodermis — fatty tissue below dermis</td><td>4–10mm (varies by fat depth)</td><td>25–31g, 5/8" (standard)</td><td>45° (pinch skin) or 90° (obese patient)</td><td>Slow to moderate — 15–30 min</td><td>Testosterone cypionate (women), semaglutide, tirzepatide, peptide injections, vitamin injections, insulin</td></tr>
+      <tr><td><strong>Intramuscular (IM)</strong></td><td>Muscle belly — beneath fascia</td><td>25–38mm depending on site and body habitus</td><td>21–25g, 1" to 1.5"</td><td>90°</td><td>Faster than SubQ — 10–15 min</td><td>B12, B-complex, MIC/Lipo, glutathione, biotin, vitamin D, testosterone cypionate (men), GLP-1 (some protocols), vaccines</td></tr>
+      <tr><td><strong>Intravenous (IV)</strong></td><td>Directly into bloodstream via vein</td><td>Into lumen of vein</td><td>18–22g angiocatheter</td><td>15–30°</td><td>Immediate — seconds to minutes</td><td>IV hydration, NAD+, glutathione push, vitamin C, Myers cocktail, all IV therapy drips</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- INTRADERMAL DETAIL -->
+<div>
+  <div class="route-card">
+    <div class="rc-head" style="background:#6c3483;"><h4>Intradermal (ID)</h4><span>10–15° · 26–30g · 1–2mm</span></div>
+    <div class="rc-body">
+      <div>
+        <h5>Technique</h5>
+        <div class="rc-item"><strong>Position:</strong> Bevel UP — always</div>
+        <div class="rc-item"><strong>Angle:</strong> 10–15° nearly parallel to skin</div>
+        <div class="rc-item"><strong>Insertion:</strong> Advance just under skin surface — 2–3mm</div>
+        <div class="rc-item"><strong>Endpoint:</strong> Visible wheal (blister-like bump) confirms correct placement</div>
+        <div class="rc-item"><strong>No aspiration</strong> — intradermal layer has no vessels of concern</div>
+        <div class="rc-item"><strong>No massage</strong> after — disrupts wheal</div>
+      </div>
+      <div>
+        <h5>Med Spa Applications</h5>
+        <div class="rc-item">Skinvive/HA microdroplets — cheek intradermal grid</div>
+        <div class="rc-item">Botox — periorbital lower lid (advanced)</div>
+        <div class="rc-item">Local anesthetic wheal before cannula entry</div>
+        <div class="rc-item">Allergy skin testing (not typically in med spa)</div>
+        <div class="rc-item"><strong>Volume per deposit:</strong> 0.01–0.05mL maximum</div>
+        <div class="rc-item"><strong>Common error:</strong> Too steep angle = SubQ — no wheal forms</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBCUTANEOUS DETAIL -->
+<div>
+  <div class="route-card">
+    <div class="rc-head" style="background:#1a7a6e;"><h4>Subcutaneous (SubQ)</h4><span>45–90° · 25–31g · 4–10mm</span></div>
+    <div class="rc-body">
+      <div>
+        <h5>Technique</h5>
+        <div class="rc-item"><strong>Pinch technique:</strong> Grasp subcutaneous fat between thumb and finger — lifts away from muscle</div>
+        <div class="rc-item"><strong>Angle:</strong> 45° for lean patients; 90° for patients with more subcutaneous fat</div>
+        <div class="rc-item"><strong>Insertion:</strong> Quick, smooth — insert to hub or appropriate depth</div>
+        <div class="rc-item"><strong>Aspiration:</strong> Not required for SubQ (vessels rare) — but standard for testosterone</div>
+        <div class="rc-item"><strong>Inject slowly:</strong> Slow pressure to minimize discomfort and site reaction</div>
+        <div class="rc-item"><strong>Release pinch</strong> before withdrawing to prevent tracking</div>
+      </div>
+      <div>
+        <h5>Med Spa Applications</h5>
+        <div class="rc-item">GLP-1 (semaglutide, tirzepatide) — weekly injection</div>
+        <div class="rc-item">Peptide injections (BPC-157, CJC-1295, TB-500, etc.)</div>
+        <div class="rc-item">Testosterone cypionate — women (low dose)</div>
+        <div class="rc-item">Vitamin/mineral injections (alternative to IM)</div>
+        <div class="rc-item"><strong>Best sites:</strong> Abdomen (2" from navel), thigh, upper arm</div>
+        <div class="rc-item"><strong>Rotate sites:</strong> Lipohypertrophy risk with repeated same-site injection</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IM DETAIL -->
+<div>
+  <div class="route-card">
+    <div class="rc-head" style="background:#D4537E;"><h4>Intramuscular (IM)</h4><span>90° · 21–25g · 25–38mm</span></div>
+    <div class="rc-body">
+      <div>
+        <h5>Technique</h5>
+        <div class="rc-item"><strong>Angle:</strong> 90° — straight into muscle</div>
+        <div class="rc-item"><strong>Spread skin:</strong> Z-track technique or spread skin taut (not pinch)</div>
+        <div class="rc-item"><strong>Aspirate:</strong> Pull back plunger 5–10 seconds before injecting — blood = wrong placement, reposition</div>
+        <div class="rc-item"><strong>Inject rate:</strong> 1mL per 10 seconds. Do not inject faster.</div>
+        <div class="rc-item"><strong>Withdraw smoothly</strong> at same angle as insertion</div>
+        <div class="rc-item"><strong>Apply pressure</strong> 30 seconds post-injection. Light massage (unless Botox/specific product)</div>
+      </div>
+      <div>
+        <h5>Med Spa Applications</h5>
+        <div class="rc-item">B12, B-complex — deltoid or ventrogluteal</div>
+        <div class="rc-item">MIC/Lipo-C injections — deltoid preferred</div>
+        <div class="rc-item">Glutathione IM — deltoid</div>
+        <div class="rc-item">Testosterone cypionate — men (ventrogluteal preferred)</div>
+        <div class="rc-item">Vitamin D (high dose) — deltoid or ventrogluteal</div>
+        <div class="rc-item">Biotin — deltoid</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IV DETAIL -->
+<div>
+  <div class="route-card">
+    <div class="rc-head" style="background:#1a2940;"><h4>Intravenous (IV)</h4><span>15–30° · 18–22g · Into vein lumen</span></div>
+    <div class="rc-body">
+      <div>
+        <h5>Peripheral IV Technique</h5>
+        <div class="rc-item"><strong>Apply tourniquet</strong> 3–4 inches above site — dilates vein</div>
+        <div class="rc-item"><strong>Palpate vein</strong> — feel for bounce and track. Do not insert blind.</div>
+        <div class="rc-item"><strong>Angle:</strong> 15–30°, bevel up, pierce skin then advance at shallower angle into vein</div>
+        <div class="rc-item"><strong>Flashback:</strong> Blood return in catheter chamber confirms vein entry</div>
+        <div class="rc-item"><strong>Advance catheter</strong> off needle, withdraw needle, release tourniquet</div>
+        <div class="rc-item"><strong>Flush with 10mL NS</strong> before connecting drip — confirm patency</div>
+      </div>
+      <div>
+        <h5>Med Spa IV Applications</h5>
+        <div class="rc-item">IV hydration (NS, LR) — rapid onset</div>
+        <div class="rc-item">NAD+ infusion — 1–4 hours depending on dose</div>
+        <div class="rc-item">Myers cocktail (Mg, B-complex, Vit C, B12)</div>
+        <div class="rc-item">High-dose vitamin C — immune support</div>
+        <div class="rc-item">Glutathione IV push — brightening, antioxidant</div>
+        <div class="rc-item"><strong>Must assess:</strong> BP and pulse before every IV infusion</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IM INJECTION SITES -->
+<div class="full">
+  <div class="sec-title">IM Injection Sites — Landmarks, Volume Limits & When to Use Each</div>
+  <table class="cs-table">
+    <thead><tr><th>Site</th><th>Landmark</th><th>Max Volume</th><th>Preferred For</th><th>Avoid If</th><th>Patient Position</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Deltoid (upper arm)</strong></td><td>2–3 finger widths below acromion process, lateral aspect of arm</td><td>1–2mL</td><td>B12, MIC, glutathione, biotin, vitamin D, most vitamin injections</td><td>Atrophied deltoid, lymphedema of arm, axillary node dissection same side</td><td>Seated, arm relaxed at side or slightly abducted</td></tr>
+      <tr><td><strong>Ventrogluteal</strong></td><td>Place heel on greater trochanter, index finger on ASIS, middle finger toward iliac crest — inject in the V between fingers</td><td>3–5mL</td><td>Testosterone cypionate (men), large volume medications, hormones</td><td>Insufficient muscle mass, unable to identify landmarks</td><td>Side-lying preferred; standing with weight on opposite leg acceptable</td></tr>
+      <tr><td><strong>Dorsogluteal</strong></td><td>Upper outer quadrant of buttock — above and lateral to midpoint</td><td>3–5mL</td><td>Historically used but largely replaced by ventrogluteal</td><td>Sciatic nerve proximity risk — NOT recommended as first choice</td><td>Prone or side-lying</td></tr>
+      <tr><td><strong>Vastus lateralis (thigh)</strong></td><td>Outer middle third of thigh — anterolateral surface</td><td>2–5mL</td><td>Self-injection, pediatric, poor deltoid or gluteal access</td><td>Poor muscle mass, circulatory compromise in leg</td><td>Seated or supine with knee slightly flexed</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- NEEDLE SELECTION -->
+<div class="full">
+  <div class="sec-title">Needle Selection Quick Reference</div>
+  <table class="cs-table">
+    <thead><tr><th>Route</th><th>Gauge</th><th>Length</th><th>Viscosity Fit</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Intradermal</strong></td><td>26–30g</td><td>3/8"–1/2"</td><td>Very thin solutions</td><td>Bevel up always. Short bevel preferred for ID — long bevel increases SubQ risk.</td></tr>
+      <tr><td><strong>SubQ — peptides / GLP-1</strong></td><td>29–31g</td><td>4mm–8mm (5/16")</td><td>Thin solutions</td><td>Insulin-type pen needles for GLP-1. Short fine needles reduce pain significantly.</td></tr>
+      <tr><td><strong>SubQ — testosterone (women)</strong></td><td>25–27g</td><td>5/8"</td><td>Oil-based (moderate viscosity)</td><td>Testosterone is oil-based — cannot use 29–31g. Requires at minimum 25g.</td></tr>
+      <tr><td><strong>IM — vitamin injections</strong></td><td>23–25g</td><td>1"</td><td>Aqueous solutions</td><td>25g reduces discomfort for thin aqueous solutions. 23g if faster injection needed.</td></tr>
+      <tr><td><strong>IM — testosterone (men)</strong></td><td>21–23g</td><td>1"–1.5"</td><td>Oil-based (higher viscosity)</td><td>Oil-based testosterone requires larger gauge. 1.5" for patients with higher BMI to reach muscle.</td></tr>
+      <tr><td><strong>IV — angiocatheter</strong></td><td>18–22g</td><td>1"–1.25" catheter</td><td>All IV fluids</td><td>18–20g for viscous infusions (high-dose vitamin C). 20–22g for standard IV hydration and vitamin drips.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Z-TRACK + COMPLICATIONS -->
+<div>
+  <div class="sec-title">Z-Track Technique — When & Why</div>
+  <div class="cs-list">
+    <div class="cs-list-item"><span class="cs-list-key">What it is</span><span class="cs-list-val">Pull skin 2–3cm laterally before injection. Release after withdrawing. Creates a zigzag path that seals medication in muscle and prevents tracking to surface.</span></div>
+    <div class="cs-list-item"><span class="cs-list-key">When to use</span><span class="cs-list-val">Iron dextran (mandatory), any medication that stains skin or is highly irritating, oil-based hormones (testosterone), any IM injection where leakage is a concern</span></div>
+    <div class="cs-list-item"><span class="cs-list-key">Technique</span><span class="cs-list-val">1) Clean site. 2) Pull skin lateral with non-dominant hand. 3) Insert needle at 90°. 4) Aspirate. 5) Inject slowly. 6) Wait 10 seconds. 7) Withdraw needle. 8) Release skin. 9) Apply pressure — do NOT massage (disturbs seal).</span></div>
+    <div class="cs-list-item"><span class="cs-list-key">Never massage after Z-track</span><span class="cs-list-val">Massaging breaks the Z-track seal — allows medication to track back to SubQ layer or skin surface</span></div>
+  </div>
+</div>
+
+<!-- COMPLICATIONS -->
+<div>
+  <div class="sec-title">Injection Complications — Recognition & Response</div>
+  <div class="cs-list">
+    <div class="cs-list-item"><span class="cs-list-key">Blood in aspirate</span><span class="cs-list-val">Withdraw needle. Do not inject. Apply pressure. Prepare new dose in new syringe. Select alternate site.</span></div>
+    <div class="cs-list-item"><span class="cs-list-key">Hematoma</span><span class="cs-list-val">Apply firm pressure 2–5 minutes. Elevate if limb. Document. Monitor for expansion. Ice after 24 hours.</span></div>
+    <div class="cs-list-item"><span class="cs-list-key">Abscess / infection</span><span class="cs-list-val">Warmth, redness, swelling days after injection. Antibiotics. Incision and drainage if fluctuant. Review sterile technique.</span></div>
+    <div class="cs-list-item"><span class="cs-list-key">Lipohypertrophy</span><span class="cs-list-val">Fatty lump from repeated same-site SubQ injection. Prevention: site rotation every injection. No treatment once present except site avoidance.</span></div>
+    <div class="cs-list-item"><span class="cs-list-key">Nerve strike (IM)</span><span class="cs-list-val">Patient reports sharp shooting pain or numbness during IM injection. Withdraw immediately. Do not inject. Reassess landmark. Most resolve fully.</span></div>
+    <div class="cs-list-item"><span class="cs-list-key">Anaphylaxis</span><span class="cs-list-val">Urticaria + hypotension + bronchospasm = anaphylaxis. Epinephrine 0.3–0.5mg IM (thigh) IMMEDIATELY. Call 911. Lay patient supine, legs elevated. Have protocol posted and epi auto-injector in every room.</span></div>
+  </div>
+</div>
+
+<!-- ASPIRATION GUIDE -->
+<div class="full">
+  <div class="sec-title">Aspiration — When Required, When Optional, When Not Needed</div>
+  <table class="cs-table">
+    <thead><tr><th>Route</th><th>Aspiration</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Intradermal</strong></td><td>Not required</td><td>Dermal layer has no large vessels. Wheal formation confirms correct placement.</td></tr>
+      <tr><td><strong>Subcutaneous</strong></td><td>Not required (current CDC/WHO guidance)</td><td>SubQ layer has minimal vascular risk for standard medications. Exception: some providers still aspirate for testosterone SubQ.</td></tr>
+      <tr><td><strong>Intramuscular — deltoid, thigh</strong></td><td>Not required per current CDC guidance for vaccines</td><td>Low vessel density. However — many med spa providers aspirate for all IM injections as a safety standard. Either approach is defensible.</td></tr>
+      <tr><td><strong>Intramuscular — ventrogluteal/dorsogluteal</strong></td><td>Aspirate — standard practice</td><td>Closer proximity to superior gluteal artery. Aspirate 5–10 seconds before injecting. Blood = reposition.</td></tr>
+      <tr><td><strong>Intravenous</strong></td><td>Flashback confirms placement</td><td>Blood return in catheter confirms vein entry. Flush with NS to confirm patency before connecting drip.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- KEY RULES -->
+<div class="full">
+  <div class="warn">
+    <div class="warn-line">★ <strong>One needle, one patient, one time.</strong> Never recap a used needle. Never reuse a syringe. Never use a single-use vial for multiple patients.</div>
+    <div class="warn-line">★ <strong>Sharps in sharps containers immediately</strong> after withdrawal. Do not set on counter, pass to another person, or carry across the room.</div>
+    <div class="warn-line">★ <strong>Room temperature medications inject more comfortably</strong> — oil-based testosterone especially. Remove from refrigerator 30 minutes prior.</div>
+    <div class="warn-line">★ <strong>Slow injection = less pain.</strong> 1mL per 10 seconds for IM. Pressure pain is caused by rapid bolus delivery — not the needle. Train every provider on injection speed.</div>
+    <div class="warn-line">★ <strong>Epinephrine must be in every injection room.</strong> Every room. Every day. Every patient. Anaphylaxis is rare — but when it happens, seconds matter.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="cs-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> &nbsp;·&nbsp; Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com &nbsp;·&nbsp; Clinical Cheat Sheet Series</div>
+  <div style="font-size:7pt;color:#ccc;">$17 &nbsp;·&nbsp; Instant Download</div>
+</div>
+</div>
+</body>
+</html>

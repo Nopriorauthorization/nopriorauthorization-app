@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Free Vitamin Injection Manual</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;font-size:9pt;color:#1A1A1A;background:#f0eeed;}
+.page{width:8.5in;min-height:11in;background:white;margin:.2in auto;padding:.45in .5in;box-shadow:0 4px 24px rgba(0,0,0,.14);}
+
+/* HEADER */
+.header{border-bottom:3px solid #D4537E;padding-bottom:12px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:flex-end;}
+.eyebrow{font-size:7pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;}
+.title{font-family:'Playfair Display',serif;font-size:22pt;font-weight:900;color:#1A1A1A;line-height:1;}
+.sub{font-size:8pt;color:#888;margin-top:3px;}
+.free-badge{background:#D4537E;color:#fff;font-size:8pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:3px;}
+.author{font-size:7pt;color:#aaa;margin-top:4px;text-align:right;}
+
+/* GRID */
+.body{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.full{grid-column:1/-1;}
+.sec-title{font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1A1A1A;padding:4px 8px;background:#f5f5f5;border-left:3px solid #D4537E;margin-bottom:6px;}
+
+/* VITAMIN CARDS */
+.vit-card{border-radius:5px;overflow:hidden;border:0.5px solid #e0d8d4;margin-bottom:0;}
+.vc-head{padding:7px 12px;display:flex;justify-content:space-between;align-items:center;}
+.vc-head h4{font-size:9.5pt;font-weight:700;color:#fff;}
+.vc-head span{font-size:7pt;color:rgba(255,255,255,.85);font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+.vc-body{padding:8px 12px;background:white;}
+.vc-row{display:flex;gap:0;}
+.vc-col{flex:1;padding:0 6px;}
+.vc-col:first-child{padding-left:0;}
+.vc-col:last-child{padding-right:0;}
+.vc-col h5{font-size:7pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;padding-bottom:2px;border-bottom:1px solid #f0d4dc;}
+.vc-item{font-size:7.5pt;color:#333;line-height:1.6;padding:1px 0;border-bottom:0.5px solid #faf5f6;}
+.vc-item:last-child{border-bottom:none;}
+.vc-item strong{color:#1A1A1A;}
+
+/* MASTER TABLE */
+.vit-table{width:100%;border-collapse:collapse;font-size:8pt;}
+.vit-table th{background:#1A1A1A;color:#fff;padding:4px 8px;text-align:left;font-size:7.5pt;font-weight:700;}
+.vit-table th:first-child{background:#D4537E;}
+.vit-table td{padding:4px 8px;border-bottom:0.5px solid #eee;vertical-align:top;line-height:1.5;color:#333;}
+.vit-table tr:nth-child(even) td{background:#fafafa;}
+
+/* WARN / NOTE */
+.warn{border-left:3px solid #D4537E;padding:8px 10px;background:#FBEAF0;border-radius:0 4px 4px 0;}
+.warn-line{font-size:8pt;color:#72243E;line-height:1.65;margin-bottom:3px;}
+.warn-line:last-child{margin-bottom:0;}
+
+/* CTA */
+.cta-box{background:#1A1A1A;border-radius:5px;padding:12px 16px;margin-top:12px;}
+.cta-box h4{font-family:'Playfair Display',serif;font-size:13pt;font-weight:900;color:#fff;margin-bottom:4px;}
+.cta-box p{font-size:8.5pt;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:6px;}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.cta-item{font-size:7.5pt;color:rgba(255,255,255,.65);display:flex;gap:6px;}
+.cta-item::before{content:'→';color:#D4537E;font-weight:700;flex-shrink:0;}
+.cta-url{font-size:8pt;font-weight:700;color:#D4537E;margin-top:7px;}
+
+.cs-footer{margin-top:14px;padding-top:8px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:6.5pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+
+@media print{body{background:white;}.page{margin:0;box-shadow:none;padding:.4in .45in;}@page{size:8.5in 11in portrait;margin:0;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div>
+    <div class="eyebrow">No Prior Authorization &nbsp;·&nbsp; Free Clinical Manual</div>
+    <div class="title">The Vitamin Injection Manual</div>
+    <div class="sub">B12 · B-Complex · MIC/Lipo-C · Glutathione · Biotin · Vitamin D — dosing, technique, indications, and protocols</div>
+  </div>
+  <div>
+    <div class="free-badge">FREE Download</div>
+    <div class="author">Danielle Alcala &nbsp;·&nbsp; nopriorauthorization.com</div>
+  </div>
+</div>
+
+<div class="body">
+
+<!-- MASTER REFERENCE TABLE -->
+<div class="full">
+  <div class="sec-title">Complete Vitamin Injection Reference — At a Glance</div>
+  <table class="vit-table">
+    <thead><tr><th>Vitamin / Injection</th><th>Standard IM Dose</th><th>Frequency</th><th>Route</th><th>Site</th><th>Primary Indications</th><th>Onset of Effect</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Vitamin B12 (Cyanocobalamin)</strong></td><td>1,000mcg (1mL)</td><td>Weekly to monthly maintenance; daily for deficiency loading</td><td>IM or SubQ</td><td>Deltoid preferred</td><td>Fatigue, B12 deficiency, neurological support, vegans/vegetarians, GLP-1 patients</td><td>Energy: hours to days. Deficiency correction: weeks</td></tr>
+      <tr><td><strong>Vitamin B12 (Methylcobalamin)</strong></td><td>1,000–5,000mcg</td><td>Weekly to monthly</td><td>IM or SubQ</td><td>Deltoid</td><td>Preferred form for neurological symptoms, neuropathy, depression. Bioavailable immediately — no conversion needed</td><td>Similar to cyanocobalamin — neurological improvement: weeks to months</td></tr>
+      <tr><td><strong>B-Complex (B1/B2/B3/B5/B6)</strong></td><td>1mL (standard concentration per compounding pharmacy)</td><td>Weekly</td><td>IM</td><td>Deltoid</td><td>Energy, stress support, metabolism, GLP-1 adjunct, adrenal support, alcohol recovery</td><td>Energy boost: within hours. Systemic effects: weeks of consistent use</td></tr>
+      <tr><td><strong>MIC / Lipo-C (Methionine-Inositol-Choline)</strong></td><td>1–2mL</td><td>Weekly to twice weekly</td><td>IM</td><td>Deltoid preferred</td><td>Fat metabolism, liver support, weight loss adjunct, GLP-1 combination, lipid management</td><td>Metabolic support ongoing — not a standalone weight loss tool</td></tr>
+      <tr><td><strong>Glutathione (IM)</strong></td><td>200–600mg (concentration varies by pharmacy)</td><td>Weekly to twice weekly</td><td>IM or IV push</td><td>Deltoid (IM) or IV push</td><td>Antioxidant, skin brightening, liver detox, immune support, NAD+ adjunct</td><td>Antioxidant effects immediate. Skin brightening: 8–10 sessions</td></tr>
+      <tr><td><strong>Biotin (Vitamin B7)</strong></td><td>5,000–10,000mcg (5–10mg)</td><td>Weekly to monthly</td><td>IM</td><td>Deltoid</td><td>Hair thinning, nail brittleness, GLP-1 patients (biotin supports hair loss from rapid weight loss)</td><td>Hair and nail changes: 3–6 months minimum</td></tr>
+      <tr><td><strong>Vitamin D3 (high dose)</strong></td><td>50,000–200,000 IU per injection (loading) OR 50,000 IU maintenance</td><td>Monthly (maintenance); weekly x 8 (deficiency loading)</td><td>IM</td><td>Ventrogluteal or deltoid</td><td>Vitamin D deficiency, immune support, bone health, mood, thyroid function, weight management</td><td>Serum levels increase within 24–48 hours. Symptomatic improvement: 4–8 weeks</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- B12 CARD -->
+<div class="vit-card">
+  <div class="vc-head" style="background:#1a2940;"><h4>Vitamin B12 — Clinical Deep Dive</h4><span>Most common vitamin injection</span></div>
+  <div class="vc-body">
+    <div class="vc-row">
+      <div class="vc-col">
+        <h5>Forms — Which to Choose</h5>
+        <div class="vc-item"><strong>Cyanocobalamin:</strong> Most common, stable, inexpensive. Converted to active forms in body. Good for general supplementation.</div>
+        <div class="vc-item"><strong>Methylcobalamin:</strong> Active form — no conversion needed. Better for neurological symptoms, neuropathy, MTHFR gene mutation patients.</div>
+        <div class="vc-item"><strong>Hydroxocobalamin:</strong> Longer half-life. Used for B12 deficiency and cyanide toxicity. Less common in med spa setting.</div>
+      </div>
+      <div class="vc-col">
+        <h5>Deficiency Signs — Screen Your Patients</h5>
+        <div class="vc-item">Fatigue and weakness — most common</div>
+        <div class="vc-item">Tingling or numbness in hands and feet</div>
+        <div class="vc-item">Cognitive changes, brain fog, memory issues</div>
+        <div class="vc-item">Glossitis (smooth, red, painful tongue)</div>
+        <div class="vc-item">Megaloblastic anemia (check CBC)</div>
+        <div class="vc-item">Depression, mood instability</div>
+        <div class="vc-item">Elevated homocysteine (cardiovascular risk)</div>
+      </div>
+    </div>
+    <div class="vc-row" style="margin-top:7px;">
+      <div class="vc-col">
+        <h5>Who Benefits Most</h5>
+        <div class="vc-item">Vegans and vegetarians — B12 only from animal sources</div>
+        <div class="vc-item">GLP-1 patients — reduced food intake affects B12</div>
+        <div class="vc-item">Patients on Metformin — Metformin depletes B12</div>
+        <div class="vc-item">Adults 50+ — decreased gastric acid reduces absorption</div>
+        <div class="vc-item">Gastric bypass patients — intrinsic factor reduced</div>
+      </div>
+      <div class="vc-col">
+        <h5>Lab to Check</h5>
+        <div class="vc-item"><strong>Serum B12:</strong> Normal 200–900 pg/mL. Optimal 400–900.</div>
+        <div class="vc-item"><strong>MMA (methylmalonic acid):</strong> More sensitive early deficiency marker than serum B12 alone</div>
+        <div class="vc-item"><strong>Homocysteine:</strong> Elevated with B12 deficiency. Cardiovascular risk marker.</div>
+        <div class="vc-item"><strong>CBC:</strong> Megaloblastic anemia = macrocytic RBCs, low Hgb</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MIC CARD -->
+<div class="vit-card">
+  <div class="vc-head" style="background:#1a7a6e;"><h4>MIC / Lipo-C Injections</h4><span>Weight loss adjunct — what it actually does</span></div>
+  <div class="vc-body">
+    <div class="vc-row">
+      <div class="vc-col">
+        <h5>What MIC Contains</h5>
+        <div class="vc-item"><strong>Methionine:</strong> Essential amino acid. Supports fat metabolism, liver function, and detoxification. Reduces fat deposition in liver.</div>
+        <div class="vc-item"><strong>Inositol:</strong> B-vitamin relative. Supports insulin sensitivity, fat breakdown (lipolysis), and serotonin signaling — may support mood.</div>
+        <div class="vc-item"><strong>Choline:</strong> Essential nutrient. Required for fat transport from liver. Deficiency causes fatty liver disease. Supports cell membrane integrity.</div>
+        <div class="vc-item"><strong>Common additions (Lipo-C):</strong> B12, B-complex, L-carnitine, chromium, vitamin C — compounding pharmacy dependent.</div>
+      </div>
+      <div class="vc-col">
+        <h5>Clinical Expectations — Be Honest</h5>
+        <div class="vc-item">MIC injections are a <strong>metabolic support tool</strong> — not a standalone fat burner</div>
+        <div class="vc-item">Best results when combined with GLP-1 therapy, caloric deficit, and exercise</div>
+        <div class="vc-item">Supports liver health during rapid weight loss (important for GLP-1 patients)</div>
+        <div class="vc-item">Choline and inositol support healthy lipid metabolism</div>
+        <div class="vc-item"><strong>Do not oversell</strong> — patients who expect dramatic fat loss from injections alone will be disappointed and won't return</div>
+        <div class="vc-item">Frame as: "This supports your metabolism and liver during your weight loss journey"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GLUTATHIONE IM CARD -->
+<div class="vit-card">
+  <div class="vc-head" style="background:#D4537E;"><h4>Glutathione IM Injection</h4><span>Antioxidant + brightening</span></div>
+  <div class="vc-body">
+    <div class="vc-row">
+      <div class="vc-col">
+        <h5>IM vs IV — Key Differences</h5>
+        <div class="vc-item"><strong>IM glutathione:</strong> Lower bioavailability than IV — some research questions efficacy. Popular in clinical practice despite limited RCT data.</div>
+        <div class="vc-item"><strong>IV glutathione push:</strong> Significantly higher bioavailability. Faster systemic effect. 15–30 minute push at end of IV drip or standalone.</div>
+        <div class="vc-item"><strong>Dose IM:</strong> 200–600mg per injection. Frequency: weekly to twice weekly.</div>
+        <div class="vc-item"><strong>Dose IV push:</strong> 600–1,200mg in 10–20mL NS. Push over 10–15 min.</div>
+      </div>
+      <div class="vc-col">
+        <h5>Patient Counseling Points</h5>
+        <div class="vc-item">Skin brightening requires <strong>8–10 consistent sessions minimum</strong> before visible results</div>
+        <div class="vc-item">Effects are not permanent — ongoing maintenance required</div>
+        <div class="vc-item">SPF 50+ daily is non-negotiable for skin brightening goals</div>
+        <div class="vc-item">Some patients notice garlic taste or smell during/after IV push — completely normal</div>
+        <div class="vc-item">Pairs well with vitamin C IV (regenerates oxidized glutathione)</div>
+        <div class="vc-item">Not a skin bleaching agent — reduces melanin oxidation. Results vary by Fitzpatrick type.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BIOTIN + VIT D -->
+<div class="vit-card">
+  <div class="vc-head" style="background:#b8760a;"><h4>Biotin &amp; Vitamin D</h4><span>The overlooked essentials</span></div>
+  <div class="vc-body">
+    <div class="vc-row">
+      <div class="vc-col">
+        <h5>Biotin — Clinical Facts</h5>
+        <div class="vc-item"><strong>Primary uses:</strong> Hair thinning, nail brittleness, GLP-1 hair loss support</div>
+        <div class="vc-item"><strong>Important warning:</strong> Biotin supplementation interferes with thyroid lab tests (TSH, T3, T4) and troponin — instruct patients to stop biotin 48–72 hours before any lab draw</div>
+        <div class="vc-item"><strong>Timeline:</strong> Minimum 3–6 months before significant hair/nail changes visible</div>
+        <div class="vc-item"><strong>Dose:</strong> 5,000–10,000mcg IM weekly to monthly</div>
+      </div>
+      <div class="vc-col">
+        <h5>Vitamin D — Clinical Facts</h5>
+        <div class="vc-item"><strong>Deficiency is rampant:</strong> Over 40% of US adults are deficient. Check 25-OH Vitamin D levels before supplementing.</div>
+        <div class="vc-item"><strong>Optimal range:</strong> 40–80 ng/mL. Below 20 = deficient. 20–30 = insufficient.</div>
+        <div class="vc-item"><strong>Loading protocol:</strong> 50,000 IU weekly x 8 weeks IM, then monthly maintenance</div>
+        <div class="vc-item"><strong>Lab monitoring:</strong> Recheck 25-OH Vitamin D 8–12 weeks after loading. Toxicity possible with excessive supplementation (rare but real)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INJECTION PROTOCOL QUICK REFERENCE -->
+<div class="full">
+  <div class="sec-title">Vitamin Injection Procedure — Step by Step (Same for All IM Vitamin Injections)</div>
+  <table class="vit-table">
+    <thead><tr><th>Step</th><th>Action</th><th>Details</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Prepare</strong></td><td>Review chart and consent</td><td>Confirm allergy history. Confirm consent signed. Review current medications for interactions (Metformin + B12, biotin + labs).</td></tr>
+      <tr><td><strong>2. Gather supplies</strong></td><td>Syringe + needle + vial + alcohol wipes + gauze + sharps container</td><td>Select appropriate needle gauge and length for route and site. Single-use vials preferred. Multi-dose vials: note BUD (beyond use date), wipe septum with alcohol each use.</td></tr>
+      <tr><td><strong>3. Draw medication</strong></td><td>Clean technique — no touch of needle</td><td>Inject air equal to dose volume into vial. Draw medication. Tap out air bubbles. Confirm dose volume against order.</td></tr>
+      <tr><td><strong>4. Site selection</strong></td><td>Select and expose injection site</td><td>Deltoid for most vitamin injections. Confirm appropriate site for volume (deltoid max 2mL). Rotate from last injection site.</td></tr>
+      <tr><td><strong>5. Clean site</strong></td><td>Alcohol wipe in circular motion</td><td>Clean 2-inch diameter area. Allow to air dry completely — 30 seconds. Do not blow on site or fan dry.</td></tr>
+      <tr><td><strong>6. Inject</strong></td><td>90° angle, smooth and controlled</td><td>Spread skin taut (not pinch for IM). Insert in one smooth motion. Aspirate 5–10 seconds. If no blood: inject at 1mL/10 seconds. Withdraw at same angle.</td></tr>
+      <tr><td><strong>7. Post-injection</strong></td><td>Apply pressure, dispose, document</td><td>Apply gauze with gentle pressure 30 seconds. Dispose needle immediately in sharps container. Document: medication, dose, lot number, expiration, site, any reactions.</td></tr>
+      <tr><td><strong>8. Monitor</strong></td><td>Observe 10–15 minutes</td><td>Patient remains in office briefly. Watch for immediate hypersensitivity reaction: flushing, itching, hives, dyspnea. Anaphylaxis kit immediately accessible.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CONTRAINDICATIONS + INTERACTIONS -->
+<div>
+  <div class="sec-title">Contraindications & Drug Interactions</div>
+  <div class="warn">
+    <div class="warn-line">⚠️ <strong>Biotin:</strong> Stop 48–72 hours before ANY lab draw — falsely elevates or suppresses thyroid labs, troponin, and other immunoassay tests. Tell every biotin patient this at every visit.</div>
+    <div class="warn-line">⚠️ <strong>Vitamin D:</strong> Check 25-OH Vitamin D before high-dose therapy. Toxicity possible with prolonged high-dose supplementation — hypercalcemia, kidney stones. Recheck levels after loading.</div>
+    <div class="warn-line">⚠️ <strong>B12 injection:</strong> Allergic reactions are rare but real. Cyanocobalamin contains cobalt — cobalt allergy is a contraindication. First injection: observe 15 minutes.</div>
+    <div class="warn-line">⚠️ <strong>Glutathione:</strong> Use caution in patients undergoing chemotherapy — discuss with oncologist first. Theoretical concern about antioxidant interfering with oxidative mechanism of some chemotherapy agents.</div>
+    <div class="warn-line">⚠️ <strong>General:</strong> Anaphylaxis kit and protocol must be immediately accessible during all injections. Document all reactions. Report severe reactions to your malpractice carrier same day.</div>
+  </div>
+</div>
+
+<!-- COMBINATION PROTOCOLS -->
+<div>
+  <div class="sec-title">High-Value Combination Protocols</div>
+  <div class="warn" style="background:#f0f5ff;border-color:#1a2940;">
+    <div class="warn-line" style="color:#1a2940;"><strong>GLP-1 Support Stack:</strong> B12 (methylcobalamin) + B-complex + Biotin + MIC/Lipo-C. Addresses nutritional deficiencies from reduced food intake, supports hair retention, and enhances fat metabolism. Weekly injections throughout GLP-1 treatment.</div>
+    <div class="warn-line" style="color:#1a2940;"><strong>Energy & Metabolism Stack:</strong> B12 + B-complex + Vitamin D (if deficient) + MIC. For patients with fatigue, low energy, and poor metabolism. Monthly D, weekly B vitamins.</div>
+    <div class="warn-line" style="color:#1a2940;"><strong>Brightening Stack:</strong> Glutathione IM or IV push + Vitamin C (oral or IV). Weekly for 8–10 weeks, then monthly maintenance. Always paired with SPF 50+ — non-negotiable.</div>
+    <div class="warn-line" style="color:#1a2940;"><strong>NAD+ + Glutathione combo:</strong> Glutathione IV push at end of NAD+ infusion session. Enhances antioxidant capacity and reduces post-infusion fatigue. One of the most popular IV add-ons.</div>
+  </div>
+</div>
+
+</div>
+
+<!-- CTA BOX -->
+<div class="cta-box">
+  <h4>Want the complete injection technique reference? Get the Injection Techniques Cheat Sheet for $10 🤍</h4>
+  <p>Transdermal vs intradermal vs subcutaneous vs intramuscular vs intravenous — complete route comparison, needle selection guide, Z-track technique, aspiration rules, IM site landmarks, and complication management. The one clinical reference every injection provider needs printed and posted.</p>
+  <div class="cta-grid">
+    <div class="cta-item">Complete 5-route comparison table</div>
+    <div class="cta-item">Needle gauge and length selection guide</div>
+    <div class="cta-item">IM site landmarks and volume limits</div>
+    <div class="cta-item">Z-track technique — when and how</div>
+    <div class="cta-item">Aspiration — when required vs optional</div>
+    <div class="cta-item">Complication recognition and response</div>
+  </div>
+  <div class="cta-url"><a href="https://nopriorauthorization.com/shop/injection-techniques-cheat-sheet" style="color:#D4537E;text-decoration:underline;font-weight:700;">→ Get the Injection Techniques Cheat Sheet — $10</a></div>
+</div>
+
+<div class="cs-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · FREE Vitamin Injection Manual — share with a provider who needs it 🤍</div>
+  <div class="footer-npa">FREE Download · nopriorauthorization.com</div>
+</div>
+
+</div>
+</body>
+</html>

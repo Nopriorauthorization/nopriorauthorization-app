@@ -1,0 +1,25 @@
+{
+  "productId": "facial-training-manual",
+  "displayName": "The Complete Facial Training Manual",
+  "description": "Seven sections in one interactive HTML: skin analysis and consultation framework, facial anatomy for esthetic and injectable practice (including injectable overlay), full 60-minute facial protocol, customization by skin type and condition, advanced modalities (microneedling, high-frequency, LED), pre/post care with client scripts, staff training with competency checks and contraindication reference — plus a closing note from Danielle.",
+  "version": "1.0.0",
+  "priceUSD": 10,
+  "etsySku": "NPA-FTM-001",
+  "category": "playbook",
+  "targetBuyer": "Estheticians, injectors, med spa owners training staff or leveling up facial services",
+  "templates": [
+    {
+      "id": "facial-training-manual-main",
+      "name": "The Complete Facial Training Manual",
+      "description": "Full manual — print or save as PDF from the browser",
+      "canvaTemplateUrl": "/forms/NPA-Complete-Facial-Training-Manual.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "education"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — open in any browser, print sections or save as PDF.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-05T12:00:00Z"
+}

@@ -60,6 +60,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "treatment-pricing-menu": "Practice Management",
   "med-spa-legal-startup-bundle": "Legal",
   "injectors-playbook": "Playbooks",
+  "facial-training-manual": "Playbooks",
   "new-injector-onboarding-kit": "Playbooks",
   "guidebook-category-strategy": "Playbooks",
   "microblading-pmu-playbook": "Playbooks",
@@ -123,6 +124,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "staff-roles-cheat-sheet": "Cheat Sheets",
   "new-patient-intake-cheat-sheet": "Cheat Sheets",
   "treatment-room-setup-cheat-sheet": "Cheat Sheets",
+  "injection-techniques-cheat-sheet": "Cheat Sheets",
   "consent-botox-neurotoxins": "Clinical Forms",
   "consent-dermal-filler": "Clinical Forms",
   "consent-glp1-weight-loss": "Clinical Forms",
@@ -177,6 +179,7 @@ const PRICE_MAP: Record<string, number> = {
   "31-day-social-media-content-calendar": 4700,
   "peptide-canva-marketing-pack": 6700,
   "injectors-playbook": 12700,
+  "facial-training-manual": 1000,
   "new-injector-onboarding-kit": 6700,
   "guidebook-category-strategy": 4700,
   "microblading-pmu-playbook": 12700,
@@ -240,6 +243,7 @@ const PRICE_MAP: Record<string, number> = {
   "staff-roles-cheat-sheet": 1000,
   "new-patient-intake-cheat-sheet": 1000,
   "treatment-room-setup-cheat-sheet": 1000,
+  "injection-techniques-cheat-sheet": 1000,
   "consent-botox-neurotoxins": 1900,
   "consent-dermal-filler": 1900,
   "consent-glp1-weight-loss": 1900,
@@ -259,6 +263,7 @@ const FEATURED_SLUGS = new Set([
   "peptide-therapy-playbook",
   "diy-google-setup-kit",
   "injectors-playbook",
+  "facial-training-manual",
   "new-injector-onboarding-kit",
   "google-domination-playbook",
   "iv-therapy-social-kit",
@@ -312,6 +317,7 @@ const ASSET_DIR_MAP: Record<string, string> = {
   "weight-loss-kit": "weight-loss",
   "glp1-story-templates": "weight-loss",
   "injectors-playbook": "playbooks",
+  "facial-training-manual": "playbooks",
   "new-injector-onboarding-kit": "playbooks",
   "guidebook-category-strategy": "playbooks",
   "microblading-pmu-playbook": "playbooks",
@@ -373,6 +379,7 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "brow-henna-clinical-cheat-sheet": "/shop-previews/cheat-sheets/brow-henna-clinical-cheat-sheet.png",
   "waxing-clinical-cheat-sheet": "/shop-previews/cheat-sheets/waxing-clinical-cheat-sheet.png",
   "ipl-laser-clinical-cheat-sheet": "/shop-previews/cheat-sheets/ipl-laser-clinical-cheat-sheet.png",
+  "injection-techniques-cheat-sheet": "/shop-previews/cheat-sheets/injection-techniques-cheat-sheet.png",
   "consent-botox-neurotoxins": "/shop-previews/standalone-consents/consent-botox-neurotoxins.png",
   "consent-dermal-filler": "/shop-previews/standalone-consents/consent-dermal-filler.png",
   "consent-glp1-weight-loss": "/shop-previews/standalone-consents/consent-glp1-weight-loss.png",
@@ -522,6 +529,9 @@ function buildShortDescription(slug: string, _title: string, count: number): str
     case "Bundles":
       return `The ultimate value pack — ${count} templates spanning clinical forms, social media, and business essentials.`;
     case "Playbooks":
+      if (slug === "facial-training-manual") {
+        return `Full facial training manual — consult framework, anatomy, 60-minute protocol, modalities, pre/post scripts, and staff training in one $10 download.`;
+      }
       return `Premium clinical education from Danielle Alcala. Real scripts, real protocols, real systems — not theory.`;
     case "Cheat Sheets":
       return `Pocket-style reference you can print or keep on screen between patients — dosing cues, landmarks, and reminders without flipping through a full playbook.`;
@@ -546,6 +556,9 @@ function buildLongDescription(slug: string, title: string, count: number, cat: s
   const audienceList = AUDIENCE_MAP[cat] || ["Aesthetic professionals"];
   if (slug === "peptide-canva-marketing-pack") {
     return `${short}\n\nYou receive three delivery links (flyers hub, catalog hub, labels hub). Each hub’s primary button uses CANVA_EDIT_URL — replace the placeholder with your Canva template link so buyers land in their own copy. Confirm label dimensions with your print vendor before production.\n\nDesigned for ${audienceList.join(", ").toLowerCase()}.\n\n${count} hub-linked deliverables. Instant digital delivery. No physical product will be shipped.`;
+  }
+  if (slug === "facial-training-manual") {
+    return `${short}\n\nSeven sections: skin analysis and consultation framework, facial anatomy for esthetic and injectable practice, full 60-minute facial protocol, customization by skin type and condition, advanced modalities, pre/post care with client scripts, and staff training with competency and contraindication reference. Closes with a personal note from Danielle.\n\nEducational use — follow your scope of practice and facility protocols.\n\nBuilt for ${audienceList.join(", ").toLowerCase()}.\n\n${count} interactive HTML manual. Instant digital delivery. No physical product will be shipped.`;
   }
   if (cat === "Cheat Sheets") {
     return `${short}\n\nBuilt for ${audienceList.join(", ").toLowerCase()}. Open in any browser, print for the treatment room, or save as PDF. This is a quick-reference format — not a full course or playbook.\n\n${count} reference file(s). Instant digital delivery. No physical product will be shipped.`;

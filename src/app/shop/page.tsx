@@ -41,6 +41,7 @@ const QUICK_CATEGORIES: { label: string; href: string }[] = [
 const START_HERE_SLUGS = [
   "growth-system",
   "med-spa-starter-kit",
+  "facial-training-manual",
   "npa-49-star-system",
   "facial-anatomy-nurse-injector",
   "combo-bundle",

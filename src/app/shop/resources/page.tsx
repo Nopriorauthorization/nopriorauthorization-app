@@ -22,6 +22,18 @@ export const metadata: Metadata = {
 
 const FREE_ITEMS = [
   {
+    href: "/shop/free/skin-analysis-cheat-sheet",
+    title: "Free Skin Analysis Cheat Sheet",
+    body: "Email-unlock one page: Fitzpatrick, Glogau, zones, consult questions, contraindications — then upgrade to the $10 Facial Training Manual.",
+    cta: "Get the free cheat sheet",
+  },
+  {
+    href: "/shop/free/vitamin-injection-manual",
+    title: "Free Vitamin Injection Manual",
+    body: "Email-unlock doses, routes, IM steps, and vitamin cards — then upgrade to the $10 Injection Techniques Cheat Sheet.",
+    cta: "Get the free manual",
+  },
+  {
     href: "/audit",
     title: "Free practice audit",
     body: "A structured look at gaps in marketing, ops, and patient experience — a low-pressure way to see how we think.",

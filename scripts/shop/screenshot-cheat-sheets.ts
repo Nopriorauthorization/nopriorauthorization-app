@@ -47,6 +47,7 @@ const ENTRIES: { slug: string; html: string; outSubdir?: string }[] = [
   { slug: "staff-roles-cheat-sheet", html: "NPA-Staff-Roles-Cheat-Sheet.html" },
   { slug: "new-patient-intake-cheat-sheet", html: "NPA-New-Patient-Intake-Cheat-Sheet.html" },
   { slug: "treatment-room-setup-cheat-sheet", html: "NPA-Treatment-Room-Setup-Cheat-Sheet.html" },
+  { slug: "injection-techniques-cheat-sheet", html: "NPA-Injection-Techniques-Cheat-Sheet.html" },
   {
     slug: "31-day-social-media-content-calendar",
     html: "NPA-31-Day-Social-Media-Content-Calendar.html",

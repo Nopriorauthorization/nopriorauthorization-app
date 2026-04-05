@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-05T03:10:41.884Z",
+  "generatedAt": "2026-04-05T04:01:24.132Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -699,6 +699,21 @@
       ]
     },
     {
+      "productKey": "facial-training-manual",
+      "productSlug": "facial-training-manual",
+      "productTitle": "The Complete Facial Training Manual",
+      "buildTimestamp": "2026-04-05T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The Complete Facial Training Manual",
+          "designId": "facial-training-manual-main",
+          "editUrl": "/forms/NPA-Complete-Facial-Training-Manual.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "filler-consent-bundle",
       "productSlug": "filler-consent-bundle",
       "productTitle": "Dermal Filler Consent + Pre/Post Care Bundle",
@@ -1108,6 +1123,21 @@
           "title": "The Hormone Therapy Playbook",
           "designId": "hormone-therapy-playbook-main",
           "editUrl": "/forms/NPA-Hormone-Therapy-Playbook.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "injection-techniques-cheat-sheet",
+      "productSlug": "injection-techniques-cheat-sheet",
+      "productTitle": "Injection Techniques Cheat Sheet",
+      "buildTimestamp": "2026-04-05T12:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Injection Techniques Cheat Sheet",
+          "designId": "injection-techniques-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Injection-Techniques-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]

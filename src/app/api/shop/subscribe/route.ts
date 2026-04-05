@@ -1,12 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { enrollLeadFromSignup } from "@/lib/email-funnel/enroll";
+import { createLeadMagnetToken } from "@/lib/shop/lead-magnet-token";
 
 const SOURCE_ALIASES: Record<string, string> = {
   "free-templates-cta": "shop_email_capture",
   sticky_bar: "sticky_bar",
   resources: "shop_resources",
   homepage: "homepage",
+  "skin-analysis-lead": "skin_analysis_lead",
+  "vitamin-injection-lead": "vitamin_injection_lead",
+};
+
+/** rawSource from client → lead magnet id for signed download */
+const LEAD_MAGNET_SOURCE_TO_MAGNET: Record<string, string> = {
+  "skin-analysis-lead": "skin-analysis",
+  "vitamin-injection-lead": "vitamin-injection",
 };
 
 export async function POST(req: NextRequest) {
@@ -41,11 +50,21 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  let leadMagnetUrl: string | null = null;
+  const magnetId = LEAD_MAGNET_SOURCE_TO_MAGNET[rawSource];
+  if (magnetId) {
+    const t = createLeadMagnetToken(magnetId, email);
+    if (t) {
+      leadMagnetUrl = `/api/shop/lead-magnet?t=${encodeURIComponent(t)}`;
+    }
+  }
+
   return NextResponse.json({
     ok: true,
     funnel: {
       skipped: funnel.skipped ?? null,
       stepId: funnel.stepId ?? null,
     },
+    leadMagnetUrl,
   });
 }

@@ -11,6 +11,7 @@ export const SHOP_BADGE_MAP: Record<string, { label: string; color: string }> = 
   "botox-consent-bundle": { label: "Top Rated", color: "bg-emerald-500/20 text-emerald-300" },
   "hipaa-compliance-kit": { label: "Required", color: "bg-red-500/20 text-red-300" },
   "injectors-playbook": { label: "Premium", color: "bg-amber-500/20 text-amber-300" },
+  "facial-training-manual": { label: "$10 · Full manual", color: "bg-emerald-500/20 text-emerald-300" },
   "new-injector-onboarding-kit": { label: "New", color: "bg-sky-500/20 text-sky-300" },
   "guidebook-category-strategy": { label: "Strategy", color: "bg-violet-500/20 text-violet-300" },
   "microblading-pmu-playbook": { label: "Premium", color: "bg-amber-500/20 text-amber-300" },
@@ -67,6 +68,7 @@ export const SHOP_BADGE_MAP: Record<string, { label: string; color: string }> = 
   "staff-roles-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
   "new-patient-intake-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
   "treatment-room-setup-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
+  "injection-techniques-cheat-sheet": { label: "$10 Quick Ref", color: "bg-cyan-500/20 text-cyan-300" },
   "consent-botox-neurotoxins": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
   "consent-dermal-filler": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
   "consent-glp1-weight-loss": { label: "$19 consent", color: "bg-rose-500/20 text-rose-300" },
@@ -119,6 +121,8 @@ export const SHOP_OUTCOME_MAP: Record<string, string> = {
   "hipaa-compliance-kit": "Be audit-ready tomorrow. Not next month.",
   "injectors-playbook":
     "Consultation scripts, dosing protocols, and clinical systems from a real med spa practice — in your hands.",
+  "facial-training-manual":
+    "Seven sections: consult framework, anatomy, 60-min facial protocol, skin-type customization, modalities, pre/post scripts, staff training — $10, one download.",
   "new-injector-onboarding-kit": "Train your next injector in 30 days. Not 6 months of trial and error.",
   "guidebook-category-strategy": "Build a digital product business that earns while you sleep.",
   "microblading-pmu-playbook": "Run your PMU business like a clinic, not a side hustle.",
@@ -175,6 +179,8 @@ export const SHOP_OUTCOME_MAP: Record<string, string> = {
   "staff-roles-cheat-sheet": "Who owns what on the floor — MA, RN, injector, and front desk scope in plain English.",
   "new-patient-intake-cheat-sheet": "Intake flow that does not miss HIPAA, photos, or consent — front desk checklist.",
   "treatment-room-setup-cheat-sheet": "Room turnover and sterile field habits — the boring stuff that prevents incidents.",
+  "injection-techniques-cheat-sheet":
+    "IM, SC, ID, IV, and intradermal on one page — needle choice, landmarks, Z-track, aspiration, and complications without a textbook.",
   "consent-botox-neurotoxins": "Standalone neurotoxin informed consent — risks, alternatives, and signatures without the full bundle.",
   "consent-dermal-filler": "Single filler consent covering vascular risk, dissolution options, and patient acknowledgments.",
   "consent-glp1-weight-loss": "GLP-1 program consent for side effects, monitoring, and patient signatures.",

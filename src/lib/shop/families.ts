@@ -38,6 +38,7 @@ export const SHOP_FAMILIES: ShopFamily[] = [
       "Cheat sheets at the chair, consent templates, patient journey assets, and high-volume social kits for your infusion menu.",
     productSlugs: [
       "iv-therapy-clinical-cheat-sheet",
+      "injection-techniques-cheat-sheet",
       "consent-iv-im-therapy",
       "iv-therapy-patient-journey-kit",
       "iv-story-templates",
@@ -58,6 +59,7 @@ export const SHOP_FAMILIES: ShopFamily[] = [
       "dermal-filler-clinical-cheat-sheet",
       "lip-filler-anatomy-cheat-sheet",
       "cannula-vs-needle-cheat-sheet",
+      "injection-techniques-cheat-sheet",
       "filler-product-comparison-cheat-sheet",
       "vascular-occlusion-protocol-cheat-sheet",
       "botox-patient-journey-kit",
@@ -133,6 +135,7 @@ export const SHOP_FAMILIES: ShopFamily[] = [
     description:
       "Deep-dive systems from consultation scripts to specialty playbooks — the tier above templates when you’re building real clinical ops.",
     productSlugs: [
+      "facial-training-manual",
       "facial-anatomy-nurse-injector",
       "injectors-playbook",
       "new-injector-onboarding-kit",

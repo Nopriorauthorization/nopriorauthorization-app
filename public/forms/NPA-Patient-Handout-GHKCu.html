@@ -1,44 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GHK-Cu — Patient handout | NPA</title>
-  <style>
-    body { font-family: Georgia, serif; max-width: 8.5in; margin: 0 auto; padding: 0.5in; color: #1a1a1a; line-height: 1.55; }
-    h1 { font-size: 18pt; border-bottom: 3px solid #D4537E; padding-bottom: 8px; }
-    h2 { font-size: 11pt; margin: 18px 0 8px; color: #1a1a1a; }
-    .tag { font-size: 9pt; letter-spacing: 0.15em; text-transform: uppercase; color: #D4537E; font-weight: 700; }
-    p { margin: 0 0 10px; }
-    ul { margin: 8px 0 12px 1.1em; padding: 0; }
-    li { margin-bottom: 6px; }
-    .disclaimer { margin-top: 22px; font-size: 8pt; color: #555; line-height: 1.45; border-top: 1px solid #e5e5e5; padding-top: 12px; }
-    .footer { margin-top: 10px; font-size: 9pt; color: #666; }
-  </style>
+<meta charset="UTF-8">
+<title>GHK-Cu Therapy — Patient Education Handout</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8e4e1;display:flex;justify-content:center;padding:.3in 0;}
+
+.handout{
+  width:8.5in;
+  min-height:11in;
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 8px 48px rgba(0,0,0,.18);
+}
+
+/* ── PHOTO ZONE ── */
+.photo-zone{
+  width:100%;
+  background:#f0ebe8;
+  border:2px dashed #D4537E60;
+  border-radius:6px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.photo-zone .pz-icon{font-size:22pt;margin-bottom:6px;opacity:.4;}
+.photo-zone .pz-label{
+  font-size:7.5pt;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:#D4537E;opacity:.8;
+}
+.photo-zone .pz-hint{
+  font-size:7pt;color:#999;margin-top:3px;font-style:italic;
+}
+/* Instruction overlay shown on hover for print awareness */
+.photo-zone::after{
+  content:'Replace with your photo';
+  position:absolute;bottom:6px;right:8px;
+  font-size:6.5pt;color:#D4537E90;
+  font-style:italic;letter-spacing:.04em;
+}
+
+/* ── HEADER ── */
+.header{
+  display:grid;
+  grid-template-columns:1fr 280px;
+  min-height:160px;
+}
+.header-left{
+  background:#1A1A1A;
+  padding:28px 36px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.header-left::before{
+  content:'';position:absolute;
+  top:-60px;left:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,#D4537E20 0%,transparent 70%);
+}
+.header-eyebrow{
+  font-size:7pt;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:#D4537E;margin-bottom:8px;
+  position:relative;z-index:2;
+}
+.header-title{
+  font-family:'Playfair Display',serif;
+  font-size:48pt;font-weight:900;color:#fff;
+  line-height:.9;letter-spacing:-.02em;
+  position:relative;z-index:2;
+}
+.header-title sup{font-size:24pt;color:#D4537E;vertical-align:super;}
+.header-sub{
+  font-size:8pt;color:rgba(255,255,255,.45);
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-top:10px;position:relative;z-index:2;
+}
+.header-accent-bar{
+  width:4px;background:#D4537E;
+  position:absolute;left:0;top:0;bottom:0;
+}
+/* Hero photo zone */
+.header-photo{
+  position:relative;
+}
+.header-photo .photo-zone{
+  height:100%;border-radius:0;border:none;
+  border-left:4px solid #D4537E;
+  background:#1a1a1a;
+}
+.header-photo .pz-icon{color:#D4537E;opacity:.6;}
+.header-photo .pz-label{color:#D4537E;}
+.header-photo .pz-hint{color:rgba(255,255,255,.3);}
+.header-photo::after{content:none;}
+.header-photo .photo-zone::after{
+  content:'Add a wellness/patient photo here';
+  color:#D4537E60;
+}
+
+/* ── PRACTICE BAR ── */
+.practice-bar{
+  background:#D4537E;
+  padding:8px 36px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo-slot{
+  display:flex;align-items:center;gap:10px;
+}
+.logo-box{
+  width:34px;height:34px;border:1.5px dashed rgba(255,255,255,.5);
+  border-radius:4px;display:flex;align-items:center;justify-content:center;
+  font-size:6.5pt;color:rgba(255,255,255,.6);text-align:center;line-height:1.3;
+  font-weight:700;
+}
+.practice-name{
+  font-family:'Playfair Display',serif;
+  font-size:11pt;font-weight:700;color:#fff;
+  font-style:italic;opacity:.8;
+}
+.contact-info{
+  font-size:7.5pt;color:rgba(255,255,255,.75);
+  text-align:right;line-height:1.7;letter-spacing:.02em;
+}
+
+/* ── CONTENT GRID ── */
+.content{padding:24px 36px;display:flex;flex-direction:column;gap:20px;}
+
+/* ── SECTION ── */
+.sec-label{
+  font-size:7pt;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:#D4537E;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:#D4537E25;}
+
+/* ── WHAT IS — 2 col with photo ── */
+.what-is-grid{
+  display:grid;grid-template-columns:1fr 160px;gap:16px;align-items:start;
+}
+.what-is-text p{
+  font-size:10pt;color:#333;line-height:1.75;
+}
+.what-is-text p strong{color:#1A1A1A;font-weight:700;}
+.what-is-photo .photo-zone{height:140px;border-radius:8px;}
+
+/* ── TWO SECTION ROW ── */
+.two-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+/* ── HOW IT WORKS ── */
+.mechanism-list{display:flex;flex-direction:column;gap:8px;}
+.mechanism-item{display:flex;gap:10px;align-items:flex-start;}
+.mech-icon{
+  width:26px;height:26px;border-radius:50%;
+  background:#1A1A1A;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:9pt;
+}
+.mech-text h4{font-size:9pt;font-weight:700;color:#1A1A1A;margin-bottom:1px;}
+.mech-text p{font-size:8pt;color:#555;line-height:1.5;}
+.how-photo .photo-zone{height:110px;border-radius:6px;margin-top:10px;}
+
+/* ── BENEFITS ── */
+.benefits-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:6px;
+}
+.benefit-item{
+  background:#FBEAF0;border-radius:5px;
+  padding:7px 10px;border-left:3px solid #D4537E;
+}
+.benefit-item h4{font-size:8.5pt;font-weight:700;color:#1A1A1A;margin-bottom:1px;}
+.benefit-item p{font-size:7.5pt;color:#666;line-height:1.4;}
+.benefits-photo .photo-zone{height:100px;border-radius:6px;margin-top:8px;}
+
+/* ── TIMELINE SECTION ── */
+.timeline-row{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;}
+.timeline-photo .photo-zone{height:100%;min-height:120px;border-radius:8px;}
+.timeline{display:flex;flex-direction:column;gap:6px;}
+.tl-item{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:7px 10px;background:#1A1A1A;border-radius:5px;
+}
+.tl-when{
+  font-size:7pt;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:#D4537E;flex-shrink:0;width:72px;
+  margin-top:2px;
+}
+.tl-what{font-size:8pt;color:rgba(255,255,255,.8);line-height:1.5;}
+
+/* ── CANDIDATES + KNOW ── */
+.candidate-list{display:flex;flex-direction:column;gap:5px;}
+.candidate-item{
+  display:flex;gap:8px;align-items:flex-start;
+  font-size:8.5pt;color:#333;line-height:1.5;
+}
+.c-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#D4537E;flex-shrink:0;margin-top:5px;
+}
+.candidates-photo .photo-zone{height:90px;border-radius:6px;margin-top:8px;}
+
+.know-card{
+  background:#1A1A1A;border-radius:6px;padding:12px 14px;
+}
+.know-card p{font-size:8.5pt;color:rgba(255,255,255,.85);line-height:1.6;}
+.know-card strong{color:#D4537E;}
+.know-list{margin-top:7px;display:flex;flex-direction:column;gap:4px;}
+.know-item{
+  display:flex;gap:7px;font-size:8pt;
+  color:rgba(255,255,255,.7);line-height:1.5;
+}
+.know-item::before{content:'✓';color:#D4537E;font-weight:700;flex-shrink:0;}
+.know-photo .photo-zone{
+  height:90px;border-radius:6px;margin-top:8px;
+  background:#0d0d0d;border-color:#D4537E40;
+}
+.know-photo .photo-zone .pz-icon{color:#D4537E;opacity:.5;}
+.know-photo .photo-zone .pz-label{color:#D4537E;}
+.know-photo .photo-zone .pz-hint{color:rgba(255,255,255,.3);}
+.know-photo .photo-zone::after{color:#D4537E50;}
+
+/* ── FAQ ── */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.faq-item{
+  border:0.5px solid #e8e4e0;border-radius:5px;
+  padding:8px 10px;
+}
+.faq-q{font-size:8pt;font-weight:700;color:#1A1A1A;margin-bottom:3px;}
+.faq-a{font-size:7.5pt;color:#666;line-height:1.55;}
+
+/* ── DISCLAIMER ── */
+.disclaimer{
+  background:#f9f6f4;border-radius:5px;
+  padding:8px 12px;border:0.5px solid #e0d8d4;
+}
+.disclaimer p{font-size:7pt;color:#aaa;line-height:1.6;}
+.disclaimer strong{color:#999;}
+
+/* ── FOOTER ── */
+.footer{
+  background:#1A1A1A;padding:10px 36px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:auto;
+}
+.footer-brand{
+  font-size:7pt;color:rgba(255,255,255,.35);
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.footer-brand span{color:#D4537E;}
+.footer-qr{
+  width:36px;height:36px;border:1px dashed rgba(255,255,255,.2);
+  border-radius:3px;display:flex;align-items:center;
+  justify-content:center;font-size:6pt;
+  color:rgba(255,255,255,.25);text-align:center;line-height:1.3;
+}
+.footer-contact{
+  font-size:7pt;color:rgba(255,255,255,.35);
+  text-align:right;line-height:1.7;
+}
+
+@media print{
+  body{background:white;padding:0;}
+  .handout{box-shadow:none;}
+  @page{size:8.5in 11in portrait;margin:0;}
+}
+</style>
 </head>
 <body>
-  <p class="tag">Patient education</p>
-  <h1>GHK-Cu — skin and wellness context</h1>
+<div class="handout">
 
-  <p>GHK-Cu (copper peptide) appears in aesthetic and skin-care conversations because of interest in collagen support, texture, and post-procedure recovery. Depending on your practice, it may be used topically, as part of in-office protocols, or in other forms your provider will explain. Results and timelines vary by person.</p>
+  <div class="header">
+    <div class="header-left">
+      <div class="header-accent-bar"></div>
+      <div class="header-eyebrow">Patient Education Handout</div>
+      <div class="header-title">GHK-Cu</div>
+      <div class="header-sub">Copper Peptide &nbsp;·&nbsp; Skin Rejuvenation & Tissue Regeneration</div>
+    </div>
+    <div class="header-photo">
+      <div class="photo-zone">
+        <div class="pz-icon">✨</div>
+        <div class="pz-label">Header Photo</div>
+        <div class="pz-hint">Skin / glow / beauty / rejuvenation<br>Recommended: 560×320px</div>
+      </div>
+    </div>
+  </div>
 
-  <h2>What you should clarify with your clinician</h2>
-  <ul>
-    <li>Whether your plan is topical only, in-office only, or combined—and why</li>
-    <li>How often to apply or return for treatment</li>
-    <li>What sun protection and home care are required between visits</li>
-  </ul>
+  <div class="practice-bar">
+    <div class="logo-slot">
+      <div class="logo-box">YOUR<br>LOGO</div>
+      <div class="practice-name">[Practice Name]</div>
+    </div>
+    <div class="contact-info">[Address] &nbsp;·&nbsp; [Phone] &nbsp;·&nbsp; [Email] &nbsp;·&nbsp; [Website]</div>
+  </div>
 
-  <h2>Skin care at home</h2>
-  <p>Use daily broad-spectrum SPF as directed. Avoid mixing active ingredients unless your provider approves. If you develop stinging, rash, or peeling that worsens, pause new products and call the office.</p>
+  <div class="content">
 
-  <h2>After in-office treatments</h2>
-  <p>Follow written aftercare: cleansing, makeup avoidance, exercise limits, and follow-up timing. Mild redness or flaking can be expected with some protocols; spreading pain, fever, or blistering are not—seek guidance.</p>
+    <div>
+      <div class="sec-label">What is GHK-Cu</div>
+      <div class="what-is-grid">
+        <div class="what-is-text"><p>GHK-Cu (Glycyl-L-Histidyl-L-Lysine Copper) is a naturally occurring copper peptide found in human plasma, saliva, and urine. Levels decline significantly with age — dropping nearly 60% between ages 20 and 60. <strong>GHK-Cu is one of the most powerful regenerative peptides studied for skin rejuvenation</strong>, wound healing, hair growth, and anti-inflammatory effects. It works by stimulating collagen and elastin production, activating the body's antioxidant systems, modulating inflammatory genes, and promoting stem cell activity. It is used both topically and via injection for aesthetic and systemic regenerative benefits.</p></div>
+        <div class="what-is-photo">
+          <div class="photo-zone">
+            <div class="pz-icon">💊</div>
+            <div class="pz-label">Section Photo</div>
+            <div class="pz-hint">Skin / collagen / beauty close-up<br>160×140px</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <h2>When to call</h2>
-  <p>Allergic swelling, hives, or eye involvement; signs of infection; or lack of improvement when your provider said you should see change.</p>
+    <div class="two-row">
+      <div class="how-it-works">
+        <div class="sec-label">How It Works</div>
+        <div class="mechanism-list"><div class="mechanism-item">
+              <div class="mech-icon">✨</div>
+              <div class="mech-text"><h4>Stimulates Collagen & Elastin</h4><p>GHK-Cu directly activates fibroblasts to produce collagen types I, II, and III — the structural proteins that give skin its firmness, elasticity, and youthful appearance.</p></div>
+            </div><div class="mechanism-item">
+              <div class="mech-icon">🔧</div>
+              <div class="mech-text"><h4>Activates Antioxidant Systems</h4><p>Upregulates superoxide dismutase and other antioxidant enzymes, reducing oxidative damage to skin cells and tissues.</p></div>
+            </div><div class="mechanism-item">
+              <div class="mech-icon">🌱</div>
+              <div class="mech-text"><h4>Promotes Stem Cell Activity</h4><p>Stimulates stem cells in hair follicles and skin — supporting hair regrowth and accelerated tissue regeneration.</p></div>
+            </div><div class="mechanism-item">
+              <div class="mech-icon">🔥</div>
+              <div class="mech-text"><h4>Modulates Inflammation</h4><p>Regulates over 4,000 genes involved in the inflammatory response — reducing chronic inflammation that accelerates skin aging.</p></div>
+            </div></div>
+        <div class="how-photo">
+          <div class="photo-zone">
+            <div class="pz-icon">🔬</div>
+            <div class="pz-label">Section Photo</div>
+            <div class="pz-hint">Collagen / skin / microscopic / beauty<br>Full width, ~110px tall</div>
+          </div>
+        </div>
+      </div>
+      <div class="benefits">
+        <div class="sec-label">Patient Benefits</div>
+        <div class="benefits-grid"><div class="benefit-item"><h4>✨ Skin Firming</h4><p>Increases collagen and elastin production</p></div><div class="benefit-item"><h4>🌊 Hydration</h4><p>Improves skin moisture retention and barrier</p></div><div class="benefit-item"><h4>🔄 Wound Healing</h4><p>Accelerates healing of skin and tissue</p></div><div class="benefit-item"><h4>💇 Hair Growth</h4><p>Stimulates follicles, reduces hair loss</p></div><div class="benefit-item"><h4>🛡️ Antioxidant</h4><p>Reduces oxidative skin damage and aging</p></div><div class="benefit-item"><h4>🔥 Anti-Inflammatory</h4><p>Calms skin inflammation and redness</p></div><div class="benefit-item"><h4>🩹 Scar Reduction</h4><p>Improves appearance of scars over time</p></div><div class="benefit-item"><h4>⚙️ Tissue Repair</h4><p>Supports repair beyond skin — nerves, bone</p></div></div>
+        <div class="benefits-photo">
+          <div class="photo-zone">
+            <div class="pz-icon">💪</div>
+            <div class="pz-label">Section Photo</div>
+            <div class="pz-hint">Glowing skin / beauty / rejuvenation<br>Full width, ~100px tall</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <p class="disclaimer">For patient education only—not a treatment contract or medical advice. Your licensed provider selects products, technique, and consent language for your jurisdiction. No Prior Authorization does not practice medicine.</p>
-  <p class="footer">No Prior Authorization · nopriorauthorization.com</p>
+    <div>
+      <div class="sec-label">What to Expect — Your Treatment Timeline</div>
+      <div class="timeline-row">
+        <div class="timeline-photo">
+          <div class="photo-zone">
+            <div class="pz-icon">🏥</div>
+            <div class="pz-label">Section Photo</div>
+            <div class="pz-hint">Skin treatment / aesthetic / clinical<br>200px wide, full height</div>
+          </div>
+        </div>
+        <div class="timeline"><div class="tl-item"><div class="tl-when">Weeks 1–2</div><div class="tl-what">Anti-inflammatory effects. Skin may appear calmer, less red, and more hydrated. Hair shedding may temporarily increase (normal — part of the follicle reset process).</div></div><div class="tl-item"><div class="tl-when">Weeks 3–6</div><div class="tl-what">Visible improvement in skin texture and hydration. Early collagen stimulation effects beginning. Hair follicle activation ongoing.</div></div><div class="tl-item"><div class="tl-when">Months 2–3</div><div class="tl-what">Measurable improvement in skin firmness, elasticity, and fine lines. Hair regrowth visible in those using for alopecia.</div></div><div class="tl-item"><div class="tl-when">Months 4–6</div><div class="tl-what">Peak aesthetic results. Continued improvement in collagen density, scar appearance, and overall skin quality.</div></div><div class="tl-item"><div class="tl-when">Ongoing</div><div class="tl-what">Maintenance dosing recommended. Results are sustained with continued use — collagen levels can continue improving for up to 12 months.</div></div></div>
+      </div>
+    </div>
+
+    <div class="two-row">
+      <div>
+        <div class="sec-label">Who Benefits Most</div>
+        <div class="candidate-list"><div class="candidate-item"><div class="c-dot"></div>Adults seeking skin rejuvenation and anti-aging treatment</div><div class="candidate-item"><div class="c-dot"></div>Patients with thinning hair or early androgenic alopecia</div><div class="candidate-item"><div class="c-dot"></div>Individuals with scarring, wound healing concerns, or post-procedure recovery</div><div class="candidate-item"><div class="c-dot"></div>Patients combining with microneedling, RF, or laser treatments for enhanced results</div><div class="candidate-item"><div class="c-dot"></div>Anyone with chronic skin inflammation, rosacea, or barrier dysfunction</div><div class="candidate-item"><div class="c-dot"></div>Patients interested in systemic anti-aging and regenerative therapy</div></div>
+        <div class="candidates-photo">
+          <div class="photo-zone">
+            <div class="pz-icon">👩</div>
+            <div class="pz-label">Section Photo</div>
+            <div class="pz-hint">Patient / lifestyle photo<br>Full width, ~90px tall</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-label">What You Need to Know</div>
+        <div class="know-card">
+          <p><strong>Important before your treatment:</strong></p>
+          <div class="know-list"><div class="know-item">GHK-Cu can be administered topically, via subcutaneous injection, or through microneedling channels for direct skin delivery.</div><div class="know-item">When used with microneedling or RF microneedling, GHK-Cu is applied immediately post-treatment to enhance healing and collagen stimulation.</div><div class="know-item">Temporary hair shedding in the first 2–4 weeks of use is normal and indicates follicle activation — not increased hair loss.</div><div class="know-item">GHK-Cu is generally very well tolerated. Topical use may cause mild redness initially. Injection site reactions are rare.</div><div class="know-item">Disclose any copper allergy or Wilson's disease to your provider before starting GHK-Cu therapy.</div></div>
+        </div>
+        <div class="know-photo">
+          <div class="photo-zone">
+            <div class="pz-icon">💉</div>
+            <div class="pz-label">Section Photo</div>
+            <div class="pz-hint">Topical / injection / aesthetic treatment<br>Full width, ~90px tall</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">Frequently Asked Questions</div>
+      <div class="faq-grid"><div class="faq-item"><div class="faq-q">Can GHK-Cu be used with microneedling?</div><div class="faq-a">Yes — GHK-Cu is one of the most effective serums to apply post-microneedling. The micro-channels created by needling allow significantly deeper penetration and enhanced collagen stimulation.</div></div><div class="faq-item"><div class="faq-q">How is GHK-Cu different from topical copper peptide serums?</div><div class="faq-a">Injectable or microneedled GHK-Cu delivers the peptide at therapeutic concentrations to the deeper dermis. Most OTC topical serums contain concentrations too low to achieve significant collagen stimulation.</div></div><div class="faq-item"><div class="faq-q">How long do results last?</div><div class="faq-a">With continued use, results are sustained. Collagen improvements continue for up to 12 months. Stopping treatment will result in gradual return to baseline over time.</div></div><div class="faq-item"><div class="faq-q">Can GHK-Cu help with hair loss?</div><div class="faq-a">Yes — GHK-Cu stimulates hair follicles, extends the anagen (growth) phase, and has been studied for androgenic alopecia. It is often combined with other hair loss treatments for enhanced effect.</div></div><div class="faq-item"><div class="faq-q">Is there anything GHK-Cu shouldn't be combined with?</div><div class="faq-a">GHK-Cu is generally compatible with most treatments and peptides. Avoid direct combination with strong acids (AHAs/BHAs) topically as these may destabilize the peptide.</div></div><div class="faq-item"><div class="faq-q">Can men use GHK-Cu?</div><div class="faq-a">Absolutely — GHK-Cu is equally effective for men and women. It is particularly popular for men seeking skin quality improvement and hair regrowth.</div></div></div>
+    </div>
+
+    <div class="disclaimer">
+      <p><strong>Disclaimer:</strong> This handout is for educational purposes only and does not constitute medical advice. GHK-Cu therapy should be administered under the supervision of a licensed healthcare provider. This statement has not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results vary. Disclose all medical conditions and medications to your provider before beginning any new therapy.</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand"><span>No Prior Authorization</span> &nbsp;·&nbsp; Patient Handout Series &nbsp;·&nbsp; nopriorauthorization.com</div>
+    <div class="footer-qr">QR<br>CODE</div>
+    <div class="footer-contact">[Practice Name] &nbsp;·&nbsp; [Phone] &nbsp;·&nbsp; [Website]</div>
+  </div>
+
+</div>
 </body>
 </html>

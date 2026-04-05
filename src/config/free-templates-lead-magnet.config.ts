@@ -14,7 +14,8 @@ export const FREE_TEMPLATES_LEAD_MAGNET: FreeTemplateLeadRow[] = [
   { label: "GHK-Cu Patient Handout", fileName: "NPA-Patient-Handout-GHKCu.html" },
   { label: "Retail Pricing Formula Cheat Sheet", fileName: "NPA-Retail-Pricing-Formula-Cheat-Sheet.html" },
   { label: "New Patient Intake Checklist", fileName: "NPA-New-Patient-Intake-Cheat-Sheet.html" },
-  { label: "Treatment Room Setup Checklist", fileName: "NPA-Treatment-Room-Setup-Cheat-Sheet.html" },
+  /** Maps free pack → shop upgrades; credibility + conversion (replaces treatment-room in 10-pack). */
+  { label: "NPA Vault Roadmap — What's Next Cheat Sheet", fileName: "NPA-Vault-Roadmap-Free-Cheat-Sheet.html" },
 ];
 
 export const FREE_TEMPLATES_LEAD_SOURCE = "free-templates" as const;

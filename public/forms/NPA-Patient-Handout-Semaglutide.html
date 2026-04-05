@@ -1,53 +1,340 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Semaglutide — Patient handout | NPA</title>
-  <style>
-    body { font-family: Georgia, serif; max-width: 8.5in; margin: 0 auto; padding: 0.5in; color: #1a1a1a; line-height: 1.55; }
-    h1 { font-size: 18pt; border-bottom: 3px solid #D4537E; padding-bottom: 8px; }
-    h2 { font-size: 11pt; margin: 18px 0 8px; color: #1a1a1a; }
-    .tag { font-size: 9pt; letter-spacing: 0.15em; text-transform: uppercase; color: #D4537E; font-weight: 700; }
-    p { margin: 0 0 10px; }
-    ul { margin: 8px 0 12px 1.1em; padding: 0; }
-    li { margin-bottom: 6px; }
-    .disclaimer { margin-top: 22px; font-size: 8pt; color: #555; line-height: 1.45; border-top: 1px solid #e5e5e5; padding-top: 12px; }
-    .footer { margin-top: 10px; font-size: 9pt; color: #666; }
-  </style>
-</head>
-<body>
-  <p class="tag">Patient education</p>
-  <h1>GLP-1 (semaglutide) — patient overview</h1>
+<html lang="en"><head><meta charset="UTF-8"><title>Semaglutide — Patient Handout</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700;900&display=swap');
 
-  <p>Semaglutide belongs to a class of medications called GLP-1 receptor agonists. In appropriate candidates, prescribers may use it to support weight management alongside nutrition, activity, and follow-up. It works on appetite and blood-sugar regulation pathways; it is not a “quick fix,” and results take time.</p>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8e4e1;display:flex;justify-content:center;padding:.3in 0;}
 
-  <h2>Why dose changes are gradual</h2>
-  <p>Your clinician will usually increase your dose slowly to improve tolerance and monitor safety. Skipping steps or using someone else’s dose can raise the risk of side effects and is never appropriate.</p>
+.handout{
+  width:8.5in;
+  min-height:11in;
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 8px 48px rgba(0,0,0,.18);
+}
 
-  <h2>Common side effects</h2>
-  <ul>
-    <li>Nausea, vomiting, diarrhea, constipation, or bloating</li>
-    <li>Decreased appetite (expected to some degree)</li>
-    <li>Fatigue or reflux in some people</li>
-  </ul>
-  <p>Sipping fluids, smaller meals, and timing adjustments may help—ask your team before changing anything on your own.</p>
+/* ── PHOTO ZONE ── */
+.photo-zone{
+  width:100%;
+  background:#f0ebe8;
+  border:2px dashed #D4537E60;
+  border-radius:6px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.photo-zone .pz-icon{font-size:22pt;margin-bottom:6px;opacity:.4;}
+.photo-zone .pz-label{
+  font-size:7.5pt;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:#D4537E;opacity:.8;
+}
+.photo-zone .pz-hint{
+  font-size:7pt;color:#999;margin-top:3px;font-style:italic;
+}
+/* Instruction overlay shown on hover for print awareness */
+.photo-zone::after{
+  content:'Replace with your photo';
+  position:absolute;bottom:6px;right:8px;
+  font-size:6.5pt;color:#D4537E90;
+  font-style:italic;letter-spacing:.04em;
+}
 
-  <h2>Serious risks to know about</h2>
-  <p>GLP-1 drugs have boxed warnings and precautions that your prescriber must review with you (for example, history of certain thyroid tumors, pancreatitis, gallbladder disease, kidney issues, or diabetic eye disease). Pregnancy is not compatible with starting these medications for weight loss; discuss family planning.</p>
+/* ── HEADER ── */
+.header{
+  display:grid;
+  grid-template-columns:1fr 280px;
+  min-height:160px;
+}
+.header-left{
+  background:#1A1A1A;
+  padding:28px 36px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.header-left::before{
+  content:'';position:absolute;
+  top:-60px;left:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,#D4537E20 0%,transparent 70%);
+}
+.header-eyebrow{
+  font-size:7pt;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:#D4537E;margin-bottom:8px;
+  position:relative;z-index:2;
+}
+.header-title{
+  font-family:'Playfair Display',serif;
+  font-size:48pt;font-weight:900;color:#fff;
+  line-height:.9;letter-spacing:-.02em;
+  position:relative;z-index:2;
+}
+.header-title sup{font-size:24pt;color:#D4537E;vertical-align:super;}
+.header-sub{
+  font-size:8pt;color:rgba(255,255,255,.45);
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-top:10px;position:relative;z-index:2;
+}
+.header-accent-bar{
+  width:4px;background:#D4537E;
+  position:absolute;left:0;top:0;bottom:0;
+}
+/* Hero photo zone */
+.header-photo{
+  position:relative;
+}
+.header-photo .photo-zone{
+  height:100%;border-radius:0;border:none;
+  border-left:4px solid #D4537E;
+  background:#1a1a1a;
+}
+.header-photo .pz-icon{color:#D4537E;opacity:.6;}
+.header-photo .pz-label{color:#D4537E;}
+.header-photo .pz-hint{color:rgba(255,255,255,.3);}
+.header-photo::after{content:none;}
+.header-photo .photo-zone::after{
+  content:'Add a wellness/patient photo here';
+  color:#D4537E60;
+}
 
-  <h2>When to call urgently</h2>
-  <ul>
-    <li>Severe or persistent abdominal pain with or without vomiting (possible pancreatitis)</li>
-    <li>Symptoms of allergic reaction (throat swelling, trouble breathing, widespread rash)</li>
-    <li>Signs of dehydration from prolonged vomiting or diarrhea</li>
-    <li>New vision changes or severe headache</li>
-  </ul>
+/* ── PRACTICE BAR ── */
+.practice-bar{
+  background:#D4537E;
+  padding:8px 36px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo-slot{
+  display:flex;align-items:center;gap:10px;
+}
+.logo-box{
+  width:34px;height:34px;border:1.5px dashed rgba(255,255,255,.5);
+  border-radius:4px;display:flex;align-items:center;justify-content:center;
+  font-size:6.5pt;color:rgba(255,255,255,.6);text-align:center;line-height:1.3;
+  font-weight:700;
+}
+.practice-name{
+  font-family:'Playfair Display',serif;
+  font-size:11pt;font-weight:700;color:#fff;
+  font-style:italic;opacity:.8;
+}
+.contact-info{
+  font-size:7.5pt;color:rgba(255,255,255,.75);
+  text-align:right;line-height:1.7;letter-spacing:.02em;
+}
 
-  <h2>Staying on track</h2>
-  <p>Keep all lab and follow-up appointments. Tell every healthcare provider that you use a GLP-1 medication before surgery or new prescriptions.</p>
+/* ── CONTENT GRID ── */
+.content{padding:24px 36px;display:flex;flex-direction:column;gap:20px;}
 
-  <p class="disclaimer">This handout summarizes common themes only. It does not replace your prescription label, medication guide, informed consent, or direct advice from your prescriber. Only your licensed provider may determine if semaglutide is right for you. No Prior Authorization does not practice medicine.</p>
-  <p class="footer">No Prior Authorization · nopriorauthorization.com</p>
-</body>
-</html>
+/* ── SECTION ── */
+.sec-label{
+  font-size:7pt;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:#D4537E;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:#D4537E25;}
+
+/* ── WHAT IS — 2 col with photo ── */
+.what-is-grid{
+  display:grid;grid-template-columns:1fr 160px;gap:16px;align-items:start;
+}
+.what-is-text p{
+  font-size:10pt;color:#333;line-height:1.75;
+}
+.what-is-text p strong{color:#1A1A1A;font-weight:700;}
+.what-is-photo .photo-zone{height:140px;border-radius:8px;}
+
+/* ── TWO SECTION ROW ── */
+.two-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+/* ── HOW IT WORKS ── */
+.mechanism-list{display:flex;flex-direction:column;gap:8px;}
+.mechanism-item{display:flex;gap:10px;align-items:flex-start;}
+.mech-icon{
+  width:26px;height:26px;border-radius:50%;
+  background:#1A1A1A;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:9pt;
+}
+.mech-text h4{font-size:9pt;font-weight:700;color:#1A1A1A;margin-bottom:1px;}
+.mech-text p{font-size:8pt;color:#555;line-height:1.5;}
+.how-photo .photo-zone{height:110px;border-radius:6px;margin-top:10px;}
+
+/* ── BENEFITS ── */
+.benefits-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:6px;
+}
+.benefit-item{
+  background:#FBEAF0;border-radius:5px;
+  padding:7px 10px;border-left:3px solid #D4537E;
+}
+.benefit-item h4{font-size:8.5pt;font-weight:700;color:#1A1A1A;margin-bottom:1px;}
+.benefit-item p{font-size:7.5pt;color:#666;line-height:1.4;}
+.benefits-photo .photo-zone{height:100px;border-radius:6px;margin-top:8px;}
+
+/* ── TIMELINE SECTION ── */
+.timeline-row{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;}
+.timeline-photo .photo-zone{height:100%;min-height:120px;border-radius:8px;}
+.timeline{display:flex;flex-direction:column;gap:6px;}
+.tl-item{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:7px 10px;background:#1A1A1A;border-radius:5px;
+}
+.tl-when{
+  font-size:7pt;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:#D4537E;flex-shrink:0;width:72px;
+  margin-top:2px;
+}
+.tl-what{font-size:8pt;color:rgba(255,255,255,.8);line-height:1.5;}
+
+/* ── CANDIDATES + KNOW ── */
+.candidate-list{display:flex;flex-direction:column;gap:5px;}
+.candidate-item{
+  display:flex;gap:8px;align-items:flex-start;
+  font-size:8.5pt;color:#333;line-height:1.5;
+}
+.c-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#D4537E;flex-shrink:0;margin-top:5px;
+}
+.candidates-photo .photo-zone{height:90px;border-radius:6px;margin-top:8px;}
+
+.know-card{
+  background:#1A1A1A;border-radius:6px;padding:12px 14px;
+}
+.know-card p{font-size:8.5pt;color:rgba(255,255,255,.85);line-height:1.6;}
+.know-card strong{color:#D4537E;}
+.know-list{margin-top:7px;display:flex;flex-direction:column;gap:4px;}
+.know-item{
+  display:flex;gap:7px;font-size:8pt;
+  color:rgba(255,255,255,.7);line-height:1.5;
+}
+.know-item::before{content:'✓';color:#D4537E;font-weight:700;flex-shrink:0;}
+.know-photo .photo-zone{
+  height:90px;border-radius:6px;margin-top:8px;
+  background:#0d0d0d;border-color:#D4537E40;
+}
+.know-photo .photo-zone .pz-icon{color:#D4537E;opacity:.5;}
+.know-photo .photo-zone .pz-label{color:#D4537E;}
+.know-photo .photo-zone .pz-hint{color:rgba(255,255,255,.3);}
+.know-photo .photo-zone::after{color:#D4537E50;}
+
+/* ── FAQ ── */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.faq-item{
+  border:0.5px solid #e8e4e0;border-radius:5px;
+  padding:8px 10px;
+}
+.faq-q{font-size:8pt;font-weight:700;color:#1A1A1A;margin-bottom:3px;}
+.faq-a{font-size:7.5pt;color:#666;line-height:1.55;}
+
+/* ── DISCLAIMER ── */
+.disclaimer{
+  background:#f9f6f4;border-radius:5px;
+  padding:8px 12px;border:0.5px solid #e0d8d4;
+}
+.disclaimer p{font-size:7pt;color:#aaa;line-height:1.6;}
+.disclaimer strong{color:#999;}
+
+/* ── FOOTER ── */
+.footer{
+  background:#1A1A1A;padding:10px 36px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:auto;
+}
+.footer-brand{
+  font-size:7pt;color:rgba(255,255,255,.35);
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.footer-brand span{color:#D4537E;}
+.footer-qr{
+  width:36px;height:36px;border:1px dashed rgba(255,255,255,.2);
+  border-radius:3px;display:flex;align-items:center;
+  justify-content:center;font-size:6pt;
+  color:rgba(255,255,255,.25);text-align:center;line-height:1.3;
+}
+.footer-contact{
+  font-size:7pt;color:rgba(255,255,255,.35);
+  text-align:right;line-height:1.7;
+}
+
+@media print{
+  body{background:white;padding:0;}
+  .handout{box-shadow:none;}
+  @page{size:8.5in 11in portrait;margin:0;}
+}
+</style></head><body>
+<div class="handout">
+<div class="header">
+  <div class="header-left">
+    <div class="header-accent-bar"></div>
+    <div class="header-eyebrow">Patient Education Handout</div>
+    <div class="header-title">Semaglutide</div>
+    <div class="header-sub">GLP-1 Receptor Agonist &nbsp;·&nbsp; Medical Weight Management</div>
+  </div>
+  <div class="header-photo"><div class="photo-zone">
+    <div class="pz-icon">⚖️</div>
+    <div class="pz-label">Header Photo</div>
+    <div class="pz-hint">Weight loss / wellness / healthy lifestyle<br>Recommended: 560x320px</div>
+  </div></div>
+</div>
+<div class="practice-bar">
+  <div class="logo-slot"><div class="logo-box">YOUR<br>LOGO</div><div class="practice-name">[Practice Name]</div></div>
+  <div class="contact-info">[Address] &nbsp;·&nbsp; [Phone] &nbsp;·&nbsp; [Email] &nbsp;·&nbsp; [Website]</div>
+</div>
+<div class="content">
+  <div>
+    <div class="sec-label">What is Semaglutide</div>
+    <div class="what-is-grid">
+      <div class="what-is-text"><p>Semaglutide is a GLP-1 receptor agonist that mimics the GLP-1 hormone your body naturally produces after eating. <strong>Semaglutide works by reducing appetite, slowing gastric emptying, and regulating blood sugar</strong> — addressing the biological drivers of weight gain that diet and exercise alone often cannot overcome. Clinical trials demonstrated an average weight loss of 15% of body weight, making it one of the most effective medical weight loss tools available.</p></div>
+      <div class="what-is-photo"><div class="photo-zone"><div class="pz-icon">💊</div><div class="pz-label">Section Photo</div><div class="pz-hint">Healthy food / lifestyle / wellness<br>160x140px</div></div></div>
+    </div>
+  </div>
+  <div class="two-row">
+    <div class="how-it-works">
+      <div class="sec-label">How It Works</div>
+      <div class="mechanism-list"><div class="mechanism-item"><div class="mech-icon">🧠</div><div class="mech-text"><h4>Reduces Appetite</h4><p>Acts on GLP-1 receptors in the brain's appetite centers — reducing hunger signals and cravings, particularly for high-calorie foods.</p></div></div><div class="mechanism-item"><div class="mech-icon">🐢</div><div class="mech-text"><h4>Slows Gastric Emptying</h4><p>Food stays in the stomach longer — extending fullness after meals and naturally reducing portion sizes without effort.</p></div></div><div class="mechanism-item"><div class="mech-icon">🩸</div><div class="mech-text"><h4>Regulates Blood Sugar</h4><p>Stimulates insulin release when blood sugar is elevated and suppresses glucagon — improving glycemic control.</p></div></div><div class="mechanism-item"><div class="mech-icon">⚖️</div><div class="mech-text"><h4>Addresses Root Biology</h4><p>Targets the hormonal and neurological drivers of weight gain — making sustained weight loss biologically achievable.</p></div></div></div>
+      <div class="how-photo"><div class="photo-zone"><div class="pz-icon">🔬</div><div class="pz-label">Section Photo</div><div class="pz-hint">Healthy eating / fitness / wellness<br>Full width ~110px</div></div></div>
+    </div>
+    <div class="benefits">
+      <div class="sec-label">Patient Benefits</div>
+      <div class="benefits-grid"><div class="benefit-item"><h4>⚖️ Weight Loss</h4><p>~15% body weight reduction in clinical trials</p></div><div class="benefit-item"><h4>🩸 Blood Sugar</h4><p>Improved insulin sensitivity and glucose control</p></div><div class="benefit-item"><h4>❤️ Heart Health</h4><p>Reduces cardiovascular risk factors</p></div><div class="benefit-item"><h4>🔥 Visceral Fat</h4><p>Targets dangerous belly fat specifically</p></div><div class="benefit-item"><h4>💊 Cravings</h4><p>Decreased appetite for high-calorie foods</p></div><div class="benefit-item"><h4>⚡ Energy</h4><p>Improved energy as metabolic health improves</p></div><div class="benefit-item"><h4>😴 Sleep</h4><p>Weight loss improves sleep quality and apnea</p></div><div class="benefit-item"><h4>🦴 Joint Relief</h4><p>Reduced joint pain from lower body weight</p></div></div>
+      <div class="benefits-photo"><div class="photo-zone"><div class="pz-icon">💪</div><div class="pz-label">Section Photo</div><div class="pz-hint">Active / fit / healthy lifestyle<br>Full width ~100px</div></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="sec-label">What to Expect — Your Treatment Timeline</div>
+    <div class="timeline-row">
+      <div class="timeline-photo"><div class="photo-zone"><div class="pz-icon">🏥</div><div class="pz-label">Section Photo</div><div class="pz-hint">Injection / treatment / wellness clinic<br>200px wide</div></div></div>
+      <div class="timeline"><div class="tl-item"><div class="tl-when">Weeks 1–4</div><div class="tl-what">Starting dose. GI side effects most common — nausea, mild stomach discomfort. Appetite begins to decrease. Most patients lose 2–4 lbs.</div></div><div class="tl-item"><div class="tl-when">Months 2–3</div><div class="tl-what">Dose titration. Side effects diminish. Appetite significantly reduced. Consistent weight loss of 1–2 lbs/week. Energy improving.</div></div><div class="tl-item"><div class="tl-when">Months 3–6</div><div class="tl-what">Therapeutic dose established. Peak appetite suppression. Average 8–12% body weight lost. Body composition improving.</div></div><div class="tl-item"><div class="tl-when">Months 6–12</div><div class="tl-what">Continued weight loss. Metabolic improvements stabilizing. Lab markers improving — blood sugar, cholesterol, blood pressure.</div></div><div class="tl-item"><div class="tl-when">Ongoing</div><div class="tl-what">Long-term management. Semaglutide treats a chronic condition — ongoing use typically needed to maintain results.</div></div></div>
+    </div>
+  </div>
+  <div class="two-row">
+    <div>
+      <div class="sec-label">Who Benefits Most</div>
+      <div class="candidate-list"><div class="candidate-item"><div class="c-dot"></div>Adults with BMI ≥30, or BMI ≥27 with a weight-related health condition</div><div class="candidate-item"><div class="c-dot"></div>Patients who have tried diet and exercise without achieving sustainable results</div><div class="candidate-item"><div class="c-dot"></div>Individuals with insulin resistance, pre-diabetes, or type 2 diabetes</div><div class="candidate-item"><div class="c-dot"></div>Patients with high blood pressure, high cholesterol, or cardiovascular risk</div><div class="candidate-item"><div class="c-dot"></div>Anyone ready to address weight as a chronic medical condition — not a willpower issue</div><div class="candidate-item"><div class="c-dot"></div>Patients combining with hormone therapy for comprehensive metabolic optimization</div></div>
+      <div class="candidates-photo"><div class="photo-zone"><div class="pz-icon">👩</div><div class="pz-label">Section Photo</div><div class="pz-hint">Patient lifestyle photo<br>Full width ~90px</div></div></div>
+    </div>
+    <div>
+      <div class="sec-label">What You Need to Know</div>
+      <div class="know-card"><p><strong>Important before your treatment:</strong></p><div class="know-list"><div class="know-item">Semaglutide requires dose titration — you start low and increase gradually over weeks to minimize GI side effects.</div><div class="know-item">Nausea is most common in the first 4–8 weeks and typically resolves. Small, low-fat meals and good hydration significantly reduce nausea.</div><div class="know-item">You must meet minimum daily protein targets to prevent muscle loss during weight loss. Your provider will give you specific goals.</div><div class="know-item">Weight regain is expected if semaglutide is discontinued — this medication treats a chronic biological condition.</div><div class="know-item">Contraindications: personal or family history of medullary thyroid carcinoma (MTC) or MEN 2, history of pancreatitis, pregnancy.</div></div></div>
+      <div class="know-photo"><div class="photo-zone"><div class="pz-icon">💉</div><div class="pz-label">Section Photo</div><div class="pz-hint">Clinical / injection / medical<br>Full width ~90px</div></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="sec-label">Frequently Asked Questions</div>
+    <div class="faq-grid"><div class="faq-item"><div class="faq-q">How is semaglutide administered?</div><div class="faq-a">Semaglutide is injected subcutaneously once weekly — in the abdomen, thigh, or upper arm. Your provider will train you on self-injection technique.</div></div><div class="faq-item"><div class="faq-q">What if I experience nausea?</div><div class="faq-a">Eat small meals, avoid fatty or spicy foods, stay hydrated, and take your injection at bedtime. Nausea almost always resolves as your body adjusts over the first 4–8 weeks.</div></div><div class="faq-item"><div class="faq-q">Will I regain weight if I stop?</div><div class="faq-a">Most patients regain weight after stopping because the underlying biology that drives weight gain is still present. This medication manages a chronic condition.</div></div><div class="faq-item"><div class="faq-q">Is compounded semaglutide the same as Ozempic?</div><div class="faq-a">Compounded semaglutide contains the same active ingredient but is not an FDA-approved finished product. It is prepared by a licensed compounding pharmacy under your provider's prescription.</div></div><div class="faq-item"><div class="faq-q">What do I eat while on semaglutide?</div><div class="faq-a">Prioritize protein (0.8–1g per pound of ideal body weight), vegetables, and whole foods. Avoid high-fat, greasy foods which worsen nausea.</div></div><div class="faq-item"><div class="faq-q">How much weight will I lose?</div><div class="faq-a">Clinical trials show an average of 15% total body weight loss over 68 weeks. Patients who combine medication with nutritional changes consistently achieve better outcomes.</div></div></div>
+  </div>
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> This handout is for educational purposes only and does not constitute medical advice. Semaglutide therapy should be administered under the supervision of a licensed healthcare provider. This statement has not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results vary. Disclose all medical conditions and medications to your provider before beginning any new therapy.</p>
+  </div>
+</div>
+<div class="footer">
+  <div class="footer-brand"><span>No Prior Authorization</span> &nbsp;·&nbsp; Patient Handout Series &nbsp;·&nbsp; nopriorauthorization.com</div>
+  <div class="footer-qr">QR<br>CODE</div>
+  <div class="footer-contact">[Practice Name] &nbsp;·&nbsp; [Phone] &nbsp;·&nbsp; [Website]</div>
+</div>
+</div></body></html>

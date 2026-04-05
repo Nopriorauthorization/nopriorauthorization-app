@@ -47,7 +47,8 @@
     "remotion:render:nclex-reels": "remotion render remotion/index.ts NclexBundleSocialReels out/nclex-bundle-reels.mp4",
     "remotion:render:nclex-square": "remotion render remotion/index.ts NclexBundleSocialSquare out/nclex-bundle-square.mp4",
     "remotion:render:storefront-reels": "remotion render remotion/index.ts StorefrontSocialReels out/storefront-campaign-reels.mp4",
-    "remotion:render:storefront-square": "remotion render remotion/index.ts StorefrontSocialSquare out/storefront-campaign-square.mp4"
+    "remotion:render:storefront-square": "remotion render remotion/index.ts StorefrontSocialSquare out/storefront-campaign-square.mp4",
+    "videos:render:campaign": "remotion render remotion/index.ts StorefrontSocialReels public/videos/campaign/storefront-campaign-reels.mp4 && remotion render remotion/index.ts NclexBundleSocialReels public/videos/campaign/nclex-bundle-reels.mp4"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",

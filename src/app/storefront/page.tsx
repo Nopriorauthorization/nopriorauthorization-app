@@ -463,6 +463,11 @@ export default function StorefrontCampaignPage() {
         <p className="mt-6 text-sm text-white/80">
           Share this page: <span className="font-semibold text-white">{SITE.replace("https://", "")}/storefront</span>
         </p>
+        <p className="mt-3 text-sm text-white/70">
+          <Link href="/campaign-videos" className="font-semibold text-white underline-offset-2 hover:underline">
+            Download Reels-ready MP4s →
+          </Link>
+        </p>
       </section>
 
       <footer className="bg-[#1A1A1A] px-6 py-10 text-center text-[13px] text-[#475569] sm:px-10">

@@ -106,6 +106,7 @@ export const SHOP_BADGE_MAP: Record<string, { label: string; color: string }> = 
   "peptide-canva-marketing-pack": { label: "Canva flagship", color: "bg-orange-500/20 text-orange-300" },
   "lash-aftercare-kit": { label: "Aftercare", color: "bg-emerald-500/20 text-emerald-300" },
   "medspa-startup-checklist": { label: "Checklist", color: "bg-sky-500/20 text-sky-300" },
+  "med-spa-starter-kit": { label: "Best for new owners", color: "bg-amber-500/25 text-amber-200" },
 };
 
 export const SHOP_OUTCOME_MAP: Record<string, string> = {
@@ -215,4 +216,6 @@ export const SHOP_OUTCOME_MAP: Record<string, string> = {
     "Flyers, catalog, and label layouts in Canva — one pack for peptide programs that want Etsy-style polish without a designer on every asset.",
   "lash-aftercare-kit": "Aftercare cards and instructions lash clients follow.",
   "medspa-startup-checklist": "Open or level up without missing a compliance step.",
+  "med-spa-starter-kit":
+    "Danielle’s front-door kit: week-one launch, pricing workbook, and the map to everything NPA — $59, one download.",
 };

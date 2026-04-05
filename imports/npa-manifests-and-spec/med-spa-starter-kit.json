@@ -1,0 +1,25 @@
+{
+  "productId": "med-spa-starter-kit",
+  "displayName": "The Med Spa Starter Kit",
+  "description": "Danielle Alcala’s front-door kit for new aesthetic practices: launch timeline, first-week checklist, pricing workbook, and the roadmap to NPA’s full library — one interactive HTML download, print-ready.",
+  "version": "1.0.0",
+  "priceUSD": 59,
+  "etsySku": "NPA-MSK-001",
+  "category": "practice-launch",
+  "targetBuyer": "New med spa owners, injectors opening a suite, and estheticians leveling up to a full practice",
+  "templates": [
+    {
+      "id": "med-spa-starter-kit-main",
+      "name": "The Med Spa Starter Kit (full guide)",
+      "description": "Multi-section HTML: cover, week-one launch, compliance path, pricing workbook, and what to buy next from NPA",
+      "canvaTemplateUrl": "/forms/NPA-Med-Spa-Starter-Kit.html",
+      "_deliveryType": "html",
+      "format": "8.5x11",
+      "pages": 1,
+      "category": "practice-launch"
+    }
+  ],
+  "deliveryNote": "Interactive HTML — open in any browser, print sections or save as PDF.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-05T00:00:00Z"
+}

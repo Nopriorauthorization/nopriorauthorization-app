@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T23:55:39.649Z",
+  "generatedAt": "2026-04-05T03:10:41.884Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -1657,6 +1657,21 @@
           "title": "HIPAA Notice of Privacy Practices",
           "designId": "msl-hipaa-npp",
           "editUrl": "/forms/MSL-34-HIPAA-Notice-of-Privacy-Practices.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "med-spa-starter-kit",
+      "productSlug": "med-spa-starter-kit",
+      "productTitle": "The Med Spa Starter Kit",
+      "buildTimestamp": "2026-04-05T00:00:00Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "The Med Spa Starter Kit (full guide)",
+          "designId": "med-spa-starter-kit-main",
+          "editUrl": "/forms/NPA-Med-Spa-Starter-Kit.html",
           "viewUrl": null
         }
       ]

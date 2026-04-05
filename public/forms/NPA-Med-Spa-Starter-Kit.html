@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — The Med Spa Starter Kit</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;font-size:10pt;color:#1A1A1A;background:#f0eeed;line-height:1.6}
+.page{width:8.5in;background:white;margin:.25in auto;padding:.6in .7in;box-shadow:0 4px 32px rgba(0,0,0,.14);}
+
+/* COVER */
+.cover{min-height:10in;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;}
+.npa-eyebrow{font-size:7.5pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;}
+.cover-title{font-family:'Playfair Display',serif;font-size:42pt;font-weight:900;color:#1A1A1A;line-height:1.0;margin-bottom:12px;padding-bottom:16px;border-bottom:3px solid #1A1A1A;}
+.cover-title em{font-style:italic;color:#D4537E;display:block;}
+.price-badge{display:inline-flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:6px;padding:10px 20px;margin:14px 0;}
+.price-badge .price{font-family:'Playfair Display',serif;font-size:28pt;font-weight:900;color:#D4537E;}
+.price-badge .price-label{font-size:9pt;color:rgba(255,255,255,.6);line-height:1.5;}
+.cover-sub{font-size:12pt;color:#555;line-height:1.75;margin:16px 0;}
+.author-strip{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:0.5px solid #ddd;border-bottom:0.5px solid #ddd;margin:16px 0;}
+.avatar{width:44px;height:44px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18pt;color:#fff;font-weight:700;flex-shrink:0;}
+.author-info h3{font-size:11pt;font-weight:700;color:#1A1A1A;}
+.author-info p{font-size:8.5pt;color:#666;line-height:1.5;}
+.kit-contents{background:#f9f5f3;border-radius:6px;padding:16px 20px;margin:16px 0;border:0.5px solid #e0d8d4;}
+.kit-contents h4{font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin-bottom:12px;}
+.kit-item{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:0.5px solid #ede8e5;}
+.kit-item:last-child{border-bottom:none;}
+.kit-num{font-family:'Playfair Display',serif;font-size:14pt;font-weight:900;color:#D4537E;flex-shrink:0;width:28px;line-height:1;}
+.kit-item-content h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:2px;}
+.kit-item-content p{font-size:8.5pt;color:#666;line-height:1.5;}
+.danielle-block{background:#FBEAF0;border-left:4px solid #D4537E;padding:12px 16px;border-radius:0 5px 5px 0;margin:14px 0;}
+.db-label{font-size:7pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;}
+.db-text{font-size:10pt;color:#72243E;line-height:1.7;font-style:italic;}
+
+/* SECTION HEADERS */
+.sec-header{background:#1A1A1A;margin:0 -.7in;padding:14px .7in;margin-bottom:20px;}
+.sh-num{font-size:7.5pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#D4537E;margin-bottom:2px;}
+.sh-title{font-family:'Playfair Display',serif;font-size:19pt;font-weight:900;color:#fff;line-height:1.15;}
+.sh-sub{font-size:9pt;color:rgba(255,255,255,.5);margin-top:2px;}
+
+/* BODY */
+.body-text{font-size:10pt;color:#333;line-height:1.7;margin-bottom:12px;}
+.h2{font-family:'Playfair Display',serif;font-size:15pt;font-weight:700;color:#1A1A1A;margin:18px 0 10px;}
+.h3{font-size:11pt;font-weight:700;color:#1A1A1A;margin:14px 0 7px;}
+
+/* ROADMAP */
+.week-block{margin-bottom:14px;}
+.week-header{background:#D4537E;padding:6px 14px;border-radius:4px 4px 0 0;display:flex;justify-content:space-between;align-items:center;}
+.week-header h4{font-size:9.5pt;font-weight:700;color:#fff;letter-spacing:.04em;}
+.week-header span{font-size:8pt;color:rgba(255,255,255,.75);font-weight:400;}
+.week-body{border:0.5px solid #e8d8dc;border-top:none;border-radius:0 0 4px 4px;padding:10px 14px;}
+.week-tasks{display:flex;flex-direction:column;gap:5px;}
+.week-task{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#333;line-height:1.55;}
+.wt-box{width:12px;height:12px;border:1.5px solid #D4537E;border-radius:2px;flex-shrink:0;margin-top:2px;}
+.wt-text strong{color:#1A1A1A;font-weight:700;}
+.phase-label{font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4537E;margin:16px 0 8px;padding-bottom:4px;border-bottom:2px solid #1A1A1A;}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:6px;margin:10px 0;}
+.cl-item{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#333;line-height:1.55;padding:6px 10px;border:0.5px solid #e8e4e0;border-radius:4px;}
+.cl-item.priority{border-color:#e8c4cc;background:#fff8f9;}
+.cl-box{width:13px;height:13px;border:1.5px solid #1A1A1A;border-radius:2px;flex-shrink:0;margin-top:2px;}
+.cl-item.priority .cl-box{border-color:#D4537E;}
+.cl-content h4{font-size:9.5pt;font-weight:700;color:#1A1A1A;margin-bottom:2px;}
+.cl-content p{font-size:8.5pt;color:#666;line-height:1.5;}
+
+/* INFO CARDS */
+.info-card{background:#f9f6f4;border-radius:5px;padding:12px 16px;margin:10px 0;border:0.5px solid #e0d8d4;}
+.info-card h4{font-size:9.5pt;font-weight:700;color:#1A1A1A;margin-bottom:6px;}
+.info-card p{font-size:9.5pt;color:#555;line-height:1.65;}
+.info-card ul{margin:5px 0 0 14px;}
+.info-card ul li{font-size:9pt;color:#555;line-height:1.55;margin-bottom:3px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.warn{background:#fff5f7;border-left:4px solid #D4537E;padding:10px 14px;border-radius:0 5px 5px 0;margin:12px 0;}
+.warn h4{font-size:9.5pt;font-weight:700;color:#72243E;margin-bottom:4px;}
+.warn p{font-size:9.5pt;color:#72243E;line-height:1.65;}
+.critical{background:#1A1A1A;padding:12px 16px;border-radius:4px;margin:12px 0;}
+.critical p{font-size:9.5pt;color:#fff;line-height:1.65;}
+.critical strong{color:#D4537E;}
+
+/* PRICING TABLE */
+.pricing-table{width:100%;border-collapse:collapse;font-size:9pt;margin:10px 0;}
+.pricing-table th{background:#1A1A1A;color:#fff;padding:6px 10px;text-align:left;font-size:8.5pt;}
+.pricing-table th:first-child{background:#D4537E;}
+.pricing-table td{padding:6px 10px;border-bottom:0.5px solid #eee;vertical-align:top;line-height:1.5;color:#333;}
+.pricing-table tr:nth-child(even) td{background:#fdf9f7;}
+.pricing-table td.label{font-weight:700;color:#1A1A1A;}
+.pricing-table td.pink{color:#D4537E;font-weight:700;}
+
+/* SOCIAL CONTENT */
+.social-day{border-radius:5px;overflow:hidden;border:0.5px solid #e0d8d4;margin-bottom:8px;}
+.sd-head{background:#1A1A1A;padding:5px 12px;display:flex;justify-content:space-between;align-items:center;}
+.sd-day{font-size:8pt;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;}
+.sd-type{font-size:7pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#D4537E;color:#fff;padding:1px 6px;border-radius:2px;}
+.sd-body{padding:8px 12px;background:white;}
+.sd-hook{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:4px;line-height:1.3;}
+.sd-caption{font-size:8.5pt;color:#555;line-height:1.6;}
+.sd-caption em{color:#D4537E;font-style:normal;font-weight:700;}
+.sd-cta{font-size:7.5pt;font-weight:700;color:#D4537E;margin-top:5px;border-top:0.5px solid #eee;padding-top:4px;}
+
+/* LETTER */
+.letter{border:0.5px solid #e0d8d4;border-radius:6px;padding:28px 32px;margin:14px 0;position:relative;}
+.letter::before{content:'"';font-family:'Playfair Display',serif;font-size:80pt;color:#D4537E15;position:absolute;top:-10px;left:16px;line-height:1;}
+.letter-body{font-size:11pt;color:#333;line-height:1.85;position:relative;z-index:1;}
+.letter-sig{margin-top:20px;font-family:'Playfair Display',serif;font-size:13pt;font-style:italic;color:#D4537E;}
+
+/* PEARL */
+.pearl-list{display:flex;flex-direction:column;gap:6px;margin:10px 0;}
+.pearl{display:flex;gap:10px;align-items:flex-start;font-size:9.5pt;color:#333;line-height:1.6;}
+.pearl-star{color:#D4537E;font-weight:900;flex-shrink:0;font-size:12pt;margin-top:-2px;}
+
+.page-break{page-break-before:always;padding-top:0;}
+.divider{height:1px;background:#e8e4e0;margin:16px 0;}
+.doc-footer{margin-top:24px;padding-top:10px;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;}
+.footer-npa{font-size:7pt;color:#bbb;letter-spacing:.08em;text-transform:uppercase;}
+.footer-npa span{color:#D4537E;font-weight:700;}
+
+@media print{
+body{background:white;}
+.page{margin:0;box-shadow:none;padding:.5in .6in;}
+@page{size:8.5in 11in portrait;margin:0;}
+.page-break{page-break-before:always;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div>
+    <div class="npa-eyebrow">No Prior Authorization &nbsp;·&nbsp; The Starter Series</div>
+    <div class="cover-title">The Med Spa<br>Starter Kit.<br><em>Your First 90 Days.</em></div>
+
+    <div class="price-badge">
+      <div class="price">$59</div>
+      <div class="price-label">One-time purchase<br>Instant download · Print-ready</div>
+    </div>
+
+    <div class="cover-sub">Everything you need to go from licensed to launched — in the right order, with the right words, from someone who actually did it. No guessing. No Googling at midnight. Just the exact playbook Danielle Alcala wishes someone had handed her on Day One.</div>
+
+    <div class="author-strip">
+      <div class="avatar">D</div>
+      <div class="author-info">
+        <h3>Danielle Alcala — Founder, Hello Gorgeous Med Spa · Oswego, IL</h3>
+        <p>Licensed Esthetician · Phlebotomist · CNA · CMAA · RN Student · 10+ years building from scratch<br>Award-winning practice · $500K+ equipment investment · 4.9 Google stars</p>
+      </div>
+    </div>
+
+    <div class="kit-contents">
+      <h4>What's Inside — 6 Complete Resources</h4>
+      <div class="kit-item">
+        <div class="kit-num">01</div>
+        <div class="kit-item-content">
+          <h4>The 90-Day Week-by-Week Launch Roadmap</h4>
+          <p>Exactly what to do every single week from license in hand to first patient in chair — in order, with no guessing</p>
+        </div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-num">02</div>
+        <div class="kit-item-content">
+          <h4>The Business Setup Checklist</h4>
+          <p>LLC, EIN, bank account, insurance, facility permits, booking system — the exact sequence so nothing is missed</p>
+        </div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-num">03</div>
+        <div class="kit-item-content">
+          <h4>Your First 5 Services Pricing Workbook</h4>
+          <p>Walk through your own cost of goods, labor, overhead, and target margin — and price your services with confidence</p>
+        </div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-num">04</div>
+        <div class="kit-item-content">
+          <h4>The First 30 Patients Playbook</h4>
+          <p>How to get patients before you have reviews, before anyone knows you exist — Danielle's exact strategy from Year One</p>
+        </div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-num">05</div>
+        <div class="kit-item-content">
+          <h4>30 Days of Pre-Launch Social Content</h4>
+          <p>Coming soon content written specifically for the launch phase — before you open, the week you open, and the first month after</p>
+        </div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-num">06</div>
+        <div class="kit-item-content">
+          <h4>Danielle's Opening Day Letter</h4>
+          <p>The one page she would hand her Year One self — the honest, personal anchor that makes this kit unforgettable</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #ddd;padding-top:12px;display:flex;justify-content:space-between;margin-top:14px;">
+    <div style="font-size:7.5pt;color:#888;letter-spacing:.1em;text-transform:uppercase;"><span style="color:#D4537E;font-weight:700;">No Prior Authorization</span> &nbsp;·&nbsp; nopriorauthorization.com</div>
+    <div style="font-size:7.5pt;color:#888;">$59 &nbsp;·&nbsp; Instant Download &nbsp;·&nbsp; The front door to everything NPA offers</div>
+  </div>
+</div>
+
+<!-- ===== RESOURCE 01: 90-DAY ROADMAP ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Resource 01</div><div class="sh-title">The 90-Day Week-by-Week Launch Roadmap</div><div class="sh-sub">Exactly what to do, in order, every week from license to launch — no guessing required</div></div>
+
+<div class="danielle-block"><div class="db-label">From Danielle</div><div class="db-text">"The most overwhelming thing about opening a practice is not knowing what to do first. Everything feels equally urgent and you end up paralyzed. This roadmap fixes that. One week at a time. Check the box. Move forward. I would have given anything for this list in Year One."</div></div>
+
+<div class="phase-label">Phase 1 — Foundation &nbsp;·&nbsp; Weeks 1–4 &nbsp;·&nbsp; Before Anything Else</div>
+
+<div class="week-block">
+  <div class="week-header"><h4>Week 1 — Legal & Business Structure</h4><span>Do these before spending a dollar anywhere else</span></div>
+  <div class="week-body"><div class="week-tasks">
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Form your LLC or PLLC</strong> — file with your state Secretary of State online. Takes 1–3 days. Cost: $50–$500 depending on state.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Apply for your EIN</strong> — free at IRS.gov. Takes 10 minutes online. You need this before you can open a business bank account.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Open a business bank account</strong> — separate from personal. Bring your EIN, LLC paperwork, and ID. Never comingle personal and business funds.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Consult a healthcare attorney</strong> — 1 hour paid consultation. Confirm scope of practice for your license type in your state. Worth every dollar.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Research collaborative practice agreement (CPA) requirements</strong> — does your state require physician oversight for medical services? Get the answer in writing from your state medical board.</div></div>
+  </div></div>
+</div>
+
+<div class="week-block">
+  <div class="week-header"><h4>Week 2 — Insurance & Licensing</h4><span>You cannot see a single patient without these</span></div>
+  <div class="week-body"><div class="week-tasks">
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Apply for professional liability insurance</strong> — use a med spa specialty broker. Confirm every service you plan to offer is covered explicitly. Do not assume.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Apply for general liability insurance</strong> — required by most commercial leases. Separate from professional liability.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Confirm your facility license requirements</strong> — some states require a clinic license for any practice performing injections. Check with your state Department of Health.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Verify your professional license is active and in good standing</strong> — confirm on your state board website. Screenshot and save.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Apply for city/county business license and any required permits</strong> — check your local municipality's requirements.</div></div>
+  </div></div>
+</div>
+
+<div class="week-block">
+  <div class="week-header"><h4>Week 3 — Space, Equipment & Supplies</h4><span>Minimum viable setup to see your first patient</span></div>
+  <div class="week-body"><div class="week-tasks">
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Secure your treatment space</strong> — lease, sublease, or suite rental. Confirm your lease allows the services you plan to offer. Get a lawyer to review before signing.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Order minimum viable equipment</strong> — treatment table/chair, lighting, magnification lamp, medical-grade refrigerator (if storing injectables), sharps containers, supply cart.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Set up a medical waste disposal vendor</strong> — Stericycle or local equivalent. Required before your first needle. Cannot use regular trash for sharps.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Order consumable supplies</strong> — gloves, syringes, alcohol wipes, gauze, needles, topical numbing, PPE. See the NPA Vendor Directory for suppliers.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Set up your booking system</strong> — Fresha (free), Vagaro, or Jane App. Configure services, pricing, cancellation policy, and online booking before you announce anything.</div></div>
+  </div></div>
+</div>
+
+<div class="week-block">
+  <div class="week-header"><h4>Week 4 — HIPAA, OSHA & Documentation</h4><span>The paperwork that protects you and your patients</span></div>
+  <div class="week-body"><div class="week-tasks">
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Draft your Notice of Privacy Practices (HIPAA NPP)</strong> — required before your first patient. Every patient receives a copy at their first visit.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Write your Bloodborne Pathogen Exposure Control Plan</strong> — required by OSHA before you hire anyone or use a needle. Free templates at OSHA.gov.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Set up your consent form system</strong> — one consent form per service type. Use the NPA Consent Form Bundle as your starting point.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Set up your patient intake form system</strong> — medical history, medication list, allergy history, photo consent, communication preferences.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Create your Google Business Profile</strong> — claim or create at business.google.com. Add photos, hours, services, and your booking link. This is how people find you.</div></div>
+  </div></div>
+</div>
+
+<div class="phase-label">Phase 2 — Pre-Launch &nbsp;·&nbsp; Weeks 5–8 &nbsp;·&nbsp; Build Before You Open</div>
+
+<div class="week-block">
+  <div class="week-header"><h4>Weeks 5–6 — Your First Patients & Social Presence</h4><span>Get patients before you officially open</span></div>
+  <div class="week-body"><div class="week-tasks">
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Create your Instagram and Facebook business accounts</strong> — use your practice name. Link them together. Start posting coming soon content (see Resource 05).</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Join 3–5 local Facebook groups</strong> — neighborhood groups, local moms groups, community groups. Introduce yourself as a new local business. Do not sell. Just connect.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Offer 10 "founding patient" spots</strong> — limited slots, discounted rate or added value, first access when you open. Announce in your groups and to your personal network.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Set up your patient financing accounts</strong> — apply to become a CareCredit and Cherry accepting provider. Financing increases your average transaction by 30–50%.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Apply for product accounts</strong> — Allergan (Botox/Juvederm), Galderma (Dysport/Restylane), EltaMD, your skincare lines. These take time — apply early.</div></div>
+  </div></div>
+</div>
+
+<div class="week-block">
+  <div class="week-header"><h4>Weeks 7–8 — Final Prep & Soft Launch</h4><span>Everything in place — test your systems before the world sees you</span></div>
+  <div class="week-body"><div class="week-tasks">
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Do 5–10 practice treatments</strong> — friends, family, or models who understand they're your first paid or discounted patients. Get comfortable with your workflow, room, and documentation.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Take before/after photos of every practice patient</strong> — with consent. These become your first social media content. See the NPA Before/After Photo System.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Ask every practice patient for a Google review</strong> — use the script in Resource 04. Your first 5–10 reviews before you officially launch changes everything.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Test your booking system end to end</strong> — book yourself as a test patient. Confirm the confirmation email, reminder texts, and intake form link all work correctly.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Set your official opening date</strong> — announce on social media 1 week before. Build anticipation. Use the content calendar in Resource 05.</div></div>
+  </div></div>
+</div>
+
+<div class="phase-label">Phase 3 — Launch & Early Growth &nbsp;·&nbsp; Weeks 9–12</div>
+
+<div class="week-block">
+  <div class="week-header"><h4>Weeks 9–12 — Open, Operate & Build Momentum</h4><span>You're open. Now build the habits that make you great.</span></div>
+  <div class="week-body"><div class="week-tasks">
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Ask every single patient for a Google review</strong> — in person + text link within 5 minutes of departure. Every week. Non-negotiable. This is how you build a 4.9.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Post to social media 5 days per week</strong> — use the content calendar. Consistency beats quality. Show up every day even when you don't feel like it.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Schedule every follow-up appointment before the patient leaves</strong> — Botox 14-day follow-up. Filler 14-day follow-up. Next treatment 3–4 months. Retention starts at checkout.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Track your weekly numbers</strong> — appointments booked, appointments completed, revenue, new patients, reviews received. Know your numbers from Week 1.</div></div>
+    <div class="week-task"><div class="wt-box"></div><div class="wt-text"><strong>Introduce your membership program</strong> — present to every happy patient at checkout. "Have you heard about our membership? After seeing your results today, it might be perfect for you."</div></div>
+  </div></div>
+</div>
+</div>
+
+<!-- ===== RESOURCE 02: BUSINESS SETUP CHECKLIST ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Resource 02</div><div class="sh-title">The Business Setup Checklist</div><div class="sh-sub">The exact sequence — nothing missed, nothing out of order</div></div>
+
+<div class="h3">Entity & Legal Foundation</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Form LLC or PLLC (before anything else)</h4><p>File with your state Secretary of State. Most states have online filing. Bring your name, registered agent address, and member information. Cost: $50–$500.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Apply for EIN (Employee Identification Number)</h4><p>Free at IRS.gov — takes 10 minutes. Apply immediately after LLC is confirmed. You need this for everything that follows.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Open dedicated business checking account</h4><p>Bring your EIN, LLC articles, and personal ID. Never use personal account for business. Commingling funds = losing your LLC protection.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Draft Operating Agreement (LLC) or Bylaws (Corp)</h4><p>Defines how your business is governed, ownership, and decision-making. Essential if you have any business partners. Have an attorney draft or review.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Hire a CPA who specializes in healthcare small business</h4><p>Set up your bookkeeping, understand your tax structure, and make sure you're not leaving money on the table from Day One.</p></div></div>
+</div>
+
+<div class="h3">Licensing & Compliance</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Confirm professional license is active in your state</h4><p>Screenshot confirmation from your state board website. Keep this on file.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Confirm scope of practice for every service you plan to offer</h4><p>Call your state medical board AND esthetics board. Get the answer in writing. Do not rely on Facebook group advice.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Determine if CPA / medical director is required</h4><p>Check your state NP practice authority level. If required — get it drafted by a healthcare attorney before offering any prescription service.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Obtain city/county business license</h4><p>Check your local municipality's requirements. Usually simple online application. Required before operating.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Check if facility license is required in your state</h4><p>Contact your state Department of Health. Some states require a clinic license for any practice performing injections or IV therapy.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Apply for DEA registration (if prescribing controlled substances)</h4><p>Required for testosterone, ketamine, and other scheduled substances. Apply at DEA.gov. Per-location registration.</p></div></div>
+</div>
+
+<div class="h3">Insurance Stack (all required before first patient)</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>Required Insurance</h4>
+    <ul>
+      <li><strong>Professional liability (malpractice)</strong> — covers treatment-related claims</li>
+      <li><strong>General liability</strong> — covers slip/fall, premises incidents</li>
+      <li><strong>Workers' comp</strong> — required the moment you hire anyone</li>
+      <li><strong>Cyber liability</strong> — covers HIPAA breach response costs</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Booking & Software Setup</h4>
+    <ul>
+      <li>Booking system configured (Fresha, Vagaro, or Jane App)</li>
+      <li>Online booking live with correct services and prices</li>
+      <li>Cancellation policy enabled with card on file requirement</li>
+      <li>Intake form link configured and tested</li>
+      <li>Payment processing set up and tested</li>
+    </ul>
+  </div>
+</div>
+
+<div class="h3">Digital Presence — Do This Before You Open</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Claim/create your Google Business Profile</h4><p>business.google.com → claim or create → verify your address → add photos, hours, services, booking link. This is the single most important digital asset you own.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Create Instagram and Facebook business accounts</h4><p>Use your exact practice name. Link Instagram to your Facebook Page. Add booking link to both bios.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Purchase your domain name</h4><p>YourPracticeName.com — buy it even if you're not ready to build a website yet. Protects your brand. Cost: $12–15/year.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Set up a professional email address</h4><p>hello@yourpracticename.com — not a personal Gmail. Google Workspace costs $6/month. Looks professional immediately.</p></div></div>
+</div>
+</div>
+
+<!-- ===== RESOURCE 03: PRICING WORKBOOK ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Resource 03</div><div class="sh-title">Your First 5 Services Pricing Workbook</div><div class="sh-sub">Walk through your own numbers — price your services with confidence from Day One</div></div>
+
+<div class="danielle-block"><div class="db-label">From Danielle</div><div class="db-text">"I underpriced everything for my first two years because I didn't know my numbers. I felt like I had to be cheap because I was new. What I know now: patients associate low prices with low quality. Know your cost, know your value, price accordingly — and never apologize for it."</div></div>
+
+<div class="h3">The Pricing Formula — 5 Steps</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Step 1 — Calculate your Cost of Goods (COGS)</h4><p>What does it actually cost you to perform this service? Include: product (units of Botox × your cost per unit, filler cost), consumables (syringes, alcohol wipes, gauze, gloves), and any product applied topically during the treatment.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Step 2 — Calculate your Labor Cost</h4><p>Your hourly rate × time for this service. If you're the provider: what do you want to pay yourself per hour? Example: $100/hr provider rate × 30-minute service = $50 labor cost for that appointment.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Step 3 — Allocate Overhead</h4><p>Monthly overhead (rent, utilities, software, insurance, supplies) ÷ monthly appointment capacity = overhead per appointment slot. Multiply by % of overhead this service uses.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Step 4 — Set Your Target Margin</h4><p>Target 40–60% net margin on services after COGS, labor, and overhead. Add-on services (retail, memberships) have higher margins. Anchor services (Botox, filler) should hit at least 40%.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Step 5 — Market Check</h4><p>What are 3 comparable providers in your market charging? Price within 10–20% of market for comparable quality. If you're positioning as premium — price at or above market and deliver the experience that justifies it.</p></div></div>
+</div>
+
+<div class="h3">Your Pricing Workbook — Fill This In</div>
+<table class="pricing-table">
+  <thead><tr><th>Service</th><th>COGS</th><th>Labor Cost</th><th>Overhead/Appt</th><th>Break-even</th><th>Your Price</th><th>Margin %</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Botox (per area)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="label">Dermal Filler (per syringe)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="label">Facial / Skin Treatment</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="label">IV Therapy / Drip</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="label">Other: _______________</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<div class="h3">Common Starting Price Ranges by Market Type</div>
+<table class="pricing-table">
+  <thead><tr><th>Service</th><th>Small Market / Rural</th><th>Mid-Size Market</th><th>Urban / Chicago Metro</th></tr></thead>
+  <tbody>
+    <tr><td class="label">Botox (per unit)</td><td>$10–13/unit</td><td>$13–16/unit</td><td>$16–22/unit</td></tr>
+    <tr><td class="label">Dermal Filler (per syringe)</td><td>$500–650</td><td>$650–800</td><td>$800–1,100</td></tr>
+    <tr><td class="label">Lip Filler</td><td>$500–600</td><td>$600–750</td><td>$750–1,000</td></tr>
+    <tr><td class="label">Standard Facial (60 min)</td><td>$75–110</td><td>$110–150</td><td>$150–200+</td></tr>
+    <tr><td class="label">IV Drip (standard)</td><td>$125–175</td><td>$175–225</td><td>$225–300+</td></tr>
+    <tr><td class="label">Microneedling</td><td>$250–350</td><td>$350–450</td><td>$450–600+</td></tr>
+    <tr><td class="label">Chemical Peel (superficial)</td><td>$80–120</td><td>$120–175</td><td>$175–250</td></tr>
+  </tbody>
+</table>
+
+<div class="warn"><h4>The Most Important Pricing Rule</h4><p>If every client says yes without hesitation — you are underpriced. If no one ever pushes back — raise your prices. A healthy practice has occasional price sensitivity from patients. That's normal. What's not normal is never hearing it — because that means you're leaving money on the table every single day.</p></div>
+</div>
+
+<!-- ===== RESOURCE 04: FIRST 30 PATIENTS ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Resource 04</div><div class="sh-title">The First 30 Patients Playbook</div><div class="sh-sub">How to get patients before you have reviews — Danielle's exact Year One strategy</div></div>
+
+<div class="danielle-block"><div class="db-label">From Danielle</div><div class="db-text">"Getting my first 30 patients was the hardest thing I've ever done in business. I had no reviews, no reputation, no one knew who I was. Here's exactly what I did — and what I would do today if I was starting over from zero."</div></div>
+
+<div class="h3">Week 1–2: Your Warm Network (Patients 1–10)</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Text 20 people in your personal network today</h4><p>Not a group text — individual messages. "I'm opening [Practice Name] and I'd love for you to be one of my first patients. I'm offering a founding rate of [X] for the first 10 people who book. Would you want to come in?" Personal beats everything.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Post your "I'm opening" announcement on your personal social media</h4><p>Not your business page — your personal profile. Your friends and family are your first audience. Tell your story. Why you did this. What you offer. Booking link. This one post will get you more patients than your first 30 business page posts combined.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Offer a "Founding Patient Special"</h4><p>First 10–15 patients get a specific benefit: 15% off their first service, a complimentary add-on, or a gift with purchase. Create real urgency with a real cap. "I only have 15 founding spots and 8 are already claimed."</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Ask every person who books to bring a friend</h4><p>"If you bring a friend to your appointment, you both get [X]." Word of mouth from your first 10 patients is worth more than any ad you'll ever run.</p></div></div>
+</div>
+
+<div class="h3">Week 3–6: Facebook Groups (Patients 10–25)</div>
+<div class="body-text">Local Facebook groups are the highest-converting free marketing channel for a new med spa. Not because you're advertising — but because you're becoming a trusted presence in your community. Here's the exact strategy.</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Join 5–8 local Facebook groups</h4><p>Search: "[Your City] Moms," "[Your City] Community," "[Your City] Girls/Women," "[Your City] Deals and Recommendations," "[Your County] Neighbors." Join as yourself — not your business page.</p></div></div>
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>The 20-minute-per-day engagement strategy</h4><p>Every day: (1) Answer one question someone asked that you have expertise in. (2) Comment genuinely on 3 posts. (3) Post one piece of value — a skincare tip, a myth bust, a question for the community. Never sell directly. Build recognition first.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>When someone asks for a recommendation — that's your moment</h4><p>When someone asks "does anyone know a good injector near [city]?" or "who does Botox around here?" — respond immediately. "Hi! I'm [Name], I actually just opened [Practice Name] right in [city]. I'd love to offer you a complimentary consultation. DM me anytime." Professional, warm, not pushy.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Introduce yourself to the group — one time, done right</h4><p>"Hi everyone! I'm [Name], a [credential] who just opened [Practice Name] in [city]. I specialize in [services]. I know how personal these decisions are and I'm committed to building real relationships in this community — not just booking appointments. Happy to answer any questions about aesthetics/skincare/wellness anytime!" Include a warm photo of yourself.</p></div></div>
+</div>
+
+<div class="h3">Week 6–12: Reviews, Referrals & Momentum (Patients 25–30+)</div>
+<div class="checklist">
+  <div class="cl-item priority"><div class="cl-box"></div><div class="cl-content"><h4>Ask every single patient for a Google review — in person + text</h4><p>While they're in the chair looking in the mirror happy: "Can I ask you a huge favor? If you have 60 seconds before you leave, a Google review means everything to a new small practice like mine — it's literally how people find us." Text the link within 5 minutes.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Create a referral incentive</h4><p>"For every friend you send who books, you get [X]." Track referrals. Thank the referring patient personally. Referral patients are your highest-lifetime-value patients because they arrive with trust already built.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Cross-promote with complementary local businesses</h4><p>Introduce yourself to: hair salons, nail salons, gyms, boutiques, chiropractors, and yoga studios near you. Offer to display their cards if they display yours. Refer clients to each other. Community beats competition every time.</p></div></div>
+  <div class="cl-item"><div class="cl-box"></div><div class="cl-content"><h4>Post your first before/afters (with consent)</h4><p>Your first real results posted on social media — even modest ones — generate more interest than any promotional post. People want to see what you actually do. Post them with a personal caption about why you love your work.</p></div></div>
+</div>
+
+<div class="critical"><p><strong>The mindset shift that changes everything:</strong> Your first 30 patients are not customers. They are your founding community. Treat them like family. Overdeliver on every experience. Make them feel like the most important people who walked through your door — because they are. They will tell 10 people. Those 10 will tell 10 more. That's how a practice is built.</p></div>
+</div>
+
+<!-- ===== RESOURCE 05: PRE-LAUNCH SOCIAL CONTENT ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Resource 05</div><div class="sh-title">30 Days of Pre-Launch Social Content</div><div class="sh-sub">Coming soon · Opening week · First month — all written, ready to post</div></div>
+
+<div class="danielle-block"><div class="db-label">From Danielle</div><div class="db-text">"Most new providers go silent on social until they're open — then post their first result and wonder why no one cares. Your audience needs to know you exist before you open. These 30 posts build your community before your doors open — so that when you do, people are already waiting."</div></div>
+
+<div class="h3">Phase 1 — Coming Soon (2 Weeks Before Opening)</div>
+
+<div class="social-day">
+  <div class="sd-head"><span class="sd-day">Post 1</span><span class="sd-type">Announcement</span></div>
+  <div class="sd-body">
+    <div class="sd-hook">Something I've been working toward for a long time is finally happening. 🤍</div>
+    <div class="sd-caption">[Practice Name] is coming to [City]. I've poured everything into building a space where you can feel genuinely cared for — not rushed through a menu of services, but actually seen and taken care of. We open [date]. I can't wait to meet you. Follow along for updates — and drop a 🤍 in the comments if you're in [City].</div>
+    <div class="sd-cta">CTA: "Drop 🤍 if you're local — I want to say hi before we open!"</div>
+  </div>
+</div>
+
+<div class="social-day">
+  <div class="sd-head"><span class="sd-day">Post 2</span><span class="sd-type">Your Story</span></div>
+  <div class="sd-body">
+    <div class="sd-hook">Why I'm opening [Practice Name] — the honest version.</div>
+    <div class="sd-caption">I didn't plan this. [Your story — why you started, what drove you, what you believe about your work]. The name [Practice Name] means [meaning if applicable]. It's personal. This practice is personal. I can't wait to share it with you. Opening [date] — founding spots available now. Link in bio. 🤍</div>
+    <div class="sd-cta">CTA: "DM me 'FOUNDING' to get first access to our opening week spots."</div>
+  </div>
+</div>
+
+<div class="social-day">
+  <div class="sd-head"><span class="sd-day">Post 3</span><span class="sd-type">Education</span></div>
+  <div class="sd-body">
+    <div class="sd-hook">The question I get asked most before people try Botox for the first time.</div>
+    <div class="sd-caption">"Will I look frozen?" The short answer: not if it's done right. Good Botox lets you still raise your eyebrows, still smile, still look like <em>you</em> — just rested. At [Practice Name], we always start conservative and assess at 14 days. The goal is never to erase your face. Opening [date]. Complimentary consultations available — link in bio.</div>
+    <div class="sd-cta">CTA: "Drop your biggest Botox question below — I'll answer every one 👇"</div>
+  </div>
+</div>
+
+<div class="social-day">
+  <div class="sd-head"><span class="sd-day">Post 4</span><span class="sd-type">Behind the Scenes</span></div>
+  <div class="sd-body">
+    <div class="sd-hook">Setting up the treatment room for the first time. My heart is so full. 🤍</div>
+    <div class="sd-caption">[Share a photo or video of your space coming together]. Every shelf organized. Every detail intentional. This space was built for YOU — to feel safe, comfortable, and cared for from the moment you walk in. [date] cannot come fast enough. Are you on the waitlist yet? Link in bio.</div>
+    <div class="sd-cta">CTA: "Would you want a tour when we open? Comment 'TOUR' below 👇"</div>
+  </div>
+</div>
+
+<div class="social-day">
+  <div class="sd-head"><span class="sd-day">Post 5</span><span class="sd-type">Credentials</span></div>
+  <div class="sd-body">
+    <div class="sd-hook">Who is actually going to be taking care of you at [Practice Name]?</div>
+    <div class="sd-caption">Hi — I'm [Your name]. I'm a [credentials]. I've spent [X] years [training/working/preparing] for this. I source only FDA-approved products from authorized distributors. I photograph every patient before we start. I take your safety as seriously as I take your results. <em>You deserve to know who is caring for you.</em> Complimentary consultations open now — link in bio. 🤍</div>
+    <div class="sd-cta">CTA: "Any questions about my training or experience? Ask me anything below."</div>
+  </div>
+</div>
+
+<div class="h3">Phase 2 — Opening Week</div>
+
+<div class="social-day">
+  <div class="sd-head"><span class="sd-day">Opening Day Post</span><span class="sd-type">Launch</span></div>
+  <div class="sd-body">
+    <div class="sd-hook">We're open. 🤍 [Practice Name] is officially open in [City].</div>
+    <div class="sd-caption">Today is the day I've been working toward for longer than I can say. If you've been following along — thank you. If you're new here — welcome. [Practice Name] is a [description of your practice — what makes it different]. We are accepting new patients now. Complimentary consultations available. Link in bio to book. 🤍 [City] — we are so excited to take care of you.</div>
+    <div class="sd-cta">CTA: "Book your complimentary consultation — link in bio. We can't wait to meet you."</div>
+  </div>
+</div>
+
+<div class="social-day">
+  <div class="sd-head"><span class="sd-day">First Week — First Result</span><span class="sd-type">Results</span></div>
+  <div class="sd-body">
+    <div class="sd-hook">Our first week and already this. 🤍 [With patient permission]</div>
+    <div class="sd-caption">We are one week in and I am already so proud of the work we're doing. This is what it's about. Not just results — but the feeling when someone looks in the mirror and their face lights up. <em>That</em> is why I did this. If you've been thinking about coming in — now is the perfect time. We're booking now at the link in bio. 🤍</div>
+    <div class="sd-cta">CTA: "Save this post if you've been thinking about [treatment]. Link in bio to book."</div>
+  </div>
+</div>
+
+<div class="h3">Phase 3 — First Month: Content Pillars to Rotate</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>Week 3 Content Focus — Build Trust</h4>
+    <ul>
+      <li>Share your treatment philosophy in your own words</li>
+      <li>Myth bust the #1 fear about your most popular service</li>
+      <li>Post a behind-the-scenes of a treatment day (no patient identifiable)</li>
+      <li>Share a patient review (screenshot with permission)</li>
+      <li>Post your credentials and why they matter</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>Week 4 Content Focus — Drive Bookings</h4>
+    <ul>
+      <li>Seasonal or timely hook — "Spring is the perfect time for..."</li>
+      <li>"If you've been following but haven't booked yet — here's why now is the time"</li>
+      <li>Before/after with full caption story</li>
+      <li>The consultation process — what to expect</li>
+      <li>A direct CTA post — "We have 3 openings this week. Book at the link in bio."</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ===== RESOURCE 06: OPENING DAY LETTER ===== -->
+<div class="page-break">
+<div class="sec-header"><div class="sh-num">Resource 06</div><div class="sh-title">Danielle's Opening Day Letter</div><div class="sh-sub">The one page she would hand her Year One self — for you, on yours</div></div>
+
+<div class="letter">
+  <div class="letter-body">
+    <p style="margin-bottom:16px;">To you — on the day you open your doors,</p>
+
+    <p style="margin-bottom:14px;">You're not ready. I need you to know that — not to scare you, but to free you. Nobody is ready on Day One. I wasn't. The providers you admire weren't. Readiness is a myth we tell ourselves to delay starting things that scare us. You have already done the thing that matters most: you showed up.</p>
+
+    <p style="margin-bottom:14px;">Your first patient is going to walk through that door and they are going to be nervous. And so will you. And that's okay — because that nervousness is the same thing as caring. Providers who stop being nervous are providers who've stopped caring. Never let that happen.</p>
+
+    <p style="margin-bottom:14px;">You will make mistakes this year. Not big ones — but you'll second-guess an injection, misjudge a result, or handle a difficult conversation the wrong way. When that happens: own it, fix it, learn from it, and move forward. The providers who grow the fastest are not the ones who never make mistakes. They're the ones who turn every mistake into a lesson.</p>
+
+    <p style="margin-bottom:14px;">The money will feel terrifying for a while. There will be slow weeks and you will wonder if you made the right decision. You did. But the business takes longer to grow than you think it will — and it always grows faster than you think once it starts. Trust the process. Show up every day. Ask every patient for a review. Take every before/after photo. Send every follow-up text. The consistency of small actions is what builds a great practice — not one viral post.</p>
+
+    <p style="margin-bottom:14px;">Be the provider that knows their patients' names. Be the one who remembers what they were worried about last time and asks how it went. Be the one who calls personally when something goes wrong. <strong>Relationships are your product.</strong> The Botox and the filler are just the vehicle.</p>
+
+    <p style="margin-bottom:14px;">Protect your prices. Protect your time. Protect your energy. You cannot pour from an empty cup and you cannot serve your patients well if you're burnt out, undercharging, and overworked. Charge what you're worth. Say no to patients who don't respect your practice. Build boundaries early — they are much harder to build later.</p>
+
+    <p style="margin-bottom:14px;">And on the days when it's hard — and there will be hard days — remember why you started. Not the license. Not the income. The thing that made you say <em>yes</em> to this. For me it was my aunt. For you it's something real and true and yours. Go back to that place when you need to. It will always tell you what to do next.</p>
+
+    <p style="margin-bottom:20px;">You are more ready than you know. You are more capable than you feel today. And ten years from now, you will look back at this moment — the fear, the excitement, the not-knowing — and you will be so grateful you walked through that door anyway.</p>
+
+    <p>Now go take care of someone. 🤍</p>
+  </div>
+  <div class="letter-sig">— Danielle Alcala<br><span style="font-size:9pt;font-style:normal;font-family:'Lato',sans-serif;color:#888;">Founder, Hello Gorgeous Med Spa · Founder, No Prior Authorization · Oswego, IL</span></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="h3">What Comes Next — The NPA Catalog</div>
+<div class="body-text">This Starter Kit is your foundation. As your practice grows, every product in the NPA catalog is designed to grow with you.</div>
+<div class="two-col">
+  <div class="info-card">
+    <h4>When you're ready to go deeper on clinical skills</h4>
+    <ul>
+      <li><strong>Facial Anatomy for the Nurse Injector</strong> — $47</li>
+      <li><strong>Clinical Cheat Sheet Series</strong> — $17 each (34 total)</li>
+      <li><strong>Botox Dosing Zones / Cannula vs Needle</strong> — $17 each</li>
+      <li><strong>Vascular Occlusion Emergency Protocol</strong> — $17</li>
+      <li><strong>Filler Product Comparison Guide</strong> — $17</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>When you're ready to build your business systems</h4>
+    <ul>
+      <li><strong>The 4.9 Star System</strong> (reputation) — $57</li>
+      <li><strong>Phase 2 Business Bundle</strong> — $39</li>
+      <li><strong>Consent Form Bundle</strong> (10 forms) — $97</li>
+      <li><strong>31-Day Social Media Content Calendar</strong> — $37</li>
+      <li><strong>Insurance & Legal Compliance Guide</strong> — $47</li>
+    </ul>
+  </div>
+</div>
+
+<div class="danielle-block"><div class="db-label">A final note</div><div class="db-text">"Everything in the NPA catalog was built from real experience — 10 years of figuring out what nobody told me. You are not alone in building this. Every provider who has ever opened a practice has sat exactly where you're sitting right now. The ones who made it kept showing up. That's it. Keep showing up. 🤍"</div></div>
+
+<div class="doc-footer">
+  <div class="footer-npa"><span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · The Med Spa Starter Kit · $59</div>
+  <div class="footer-npa">Your first 90 days · Your foundation · Your practice</div>
+</div>
+
+</div>
+</body>
+</html>

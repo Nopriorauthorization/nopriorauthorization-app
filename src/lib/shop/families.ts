@@ -118,6 +118,7 @@ export const SHOP_FAMILIES: ShopFamily[] = [
       "patient-loyalty-system",
       "treatment-menu-signage-kit",
       "medspa-startup-checklist",
+      "med-spa-starter-kit",
       "retail-pricing-formula-cheat-sheet",
       "membership-pricing-calculator-cheat-sheet",
       "staff-roles-cheat-sheet",

@@ -56,6 +56,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "chemical-peel-consent-bundle": "Clinical Forms",
   "client-welcome-packet": "Practice Management",
   "medspa-startup-checklist": "Practice Management",
+  "med-spa-starter-kit": "Practice Management",
   "treatment-pricing-menu": "Practice Management",
   "med-spa-legal-startup-bundle": "Legal",
   "injectors-playbook": "Playbooks",
@@ -162,6 +163,7 @@ const PRICE_MAP: Record<string, number> = {
   "chemical-peel-consent-bundle": 2700,
   "client-welcome-packet": 2700,
   "medspa-startup-checklist": 2700,
+  "med-spa-starter-kit": 5900,
   "treatment-pricing-menu": 1900,
   "botox-social-bundle": 5700,
   "filler-social-bundle": 5700,
@@ -268,6 +270,7 @@ const FEATURED_SLUGS = new Set([
   "facial-anatomy-nurse-injector",
   "npa-49-star-system",
   "peptide-canva-marketing-pack",
+  "med-spa-starter-kit",
 ]);
 
 const STRIPE_PRICE_IDS: Record<string, string> = {};
@@ -331,6 +334,7 @@ const ASSET_DIR_MAP: Record<string, string> = {
   "peptide-patient-journey-kit": "kits",
   "medical-disclaimer-system": "kits",
   "diy-google-setup-kit": "kits",
+  "med-spa-starter-kit": "kits",
 };
 
 const CATEGORY_THUMBNAIL: Record<string, string> = {

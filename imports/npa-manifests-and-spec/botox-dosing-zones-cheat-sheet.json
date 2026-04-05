@@ -1,0 +1,25 @@
+{
+  "productId": "botox-dosing-zones-cheat-sheet",
+  "displayName": "Botox Dosing Zones Cheat Sheet",
+  "description": "One-page clinical quick reference — print or keep open on a tablet. Part of the NPA cheat sheet line.",
+  "version": "1.0.0",
+  "priceUSD": 10,
+  "etsySku": "NPA-CS-EXT-001",
+  "category": "clinical-reference",
+  "targetBuyer": "Med spa injectors, estheticians, and practice owners",
+  "templates": [
+    {
+      "id": "botox-dosing-zones-cheat-sheet-main",
+      "name": "Botox Dosing Zones Cheat Sheet",
+      "description": "Printable / on-screen quick reference",
+      "canvaTemplateUrl": "/forms/NPA-Botox-Dosing-Zones-Cheat-Sheet.html",
+      "_deliveryType": "html",
+      "format": "reference",
+      "pages": 1,
+      "category": "clinical-reference"
+    }
+  ],
+  "deliveryNote": "Interactive HTML cheat sheet — print from browser or save as PDF.",
+  "expirationDays": 365,
+  "importedAt": "2026-04-04T23:55:18.874Z"
+}

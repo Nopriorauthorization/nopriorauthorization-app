@@ -37,6 +37,26 @@ export const GROWTH_SYSTEM_PRODUCT = {
   ctaLabel: "Get the Growth System",
 } as const;
 
+/** Premium landing copy — /shop + /shop/growth-system */
+export const GROWTH_SYSTEM_SIGNATURE = {
+  eyebrow: "Signature collection",
+  headline: "The Growth System",
+  subhead:
+    "The full NPA library in one cart — not a taste test. Built for owners who want every major consent, social line, promo, and ops template without stacking five checkouts.",
+  seal: "Danielle Alcala’s flagship stack",
+  stats: [
+    { value: "300+", label: "templates & assets" },
+    { value: "4", label: "practice pillars" },
+    { value: "1", label: "checkout · instant send" },
+  ] as const,
+  trustStrip: ["Instant digital delivery", "Secure checkout", "Customize in Canva"] as const,
+  quote: {
+    text: "I went from posting once a week to daily — templates that actually look like a real med spa.",
+    author: "Jessica L.",
+    role: "Med spa owner, FL",
+  },
+} as const;
+
 export const GROWTH_SYSTEM_PAGE = {
   hero: "Everything you need to market and run your med spa",
   sections: [

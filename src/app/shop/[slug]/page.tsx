@@ -6,6 +6,7 @@ import { BundleUpgradeMessaging } from "@/components/shop/BundleUpgradeMessaging
 import { MembershipUpsellBlock } from "@/components/shop/MembershipUpsellBlock";
 import { MEGA_UPGRADE_TARGET_SLUG } from "@/lib/shop/bundle-tier-config";
 import { getFamilyByProductSlug } from "@/lib/shop/families";
+import { CHEAT_SHEET_BONUS } from "@/config/cheat-sheet-bonus.config";
 import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
 import { buildProductMetaDescription, buildProductMetaTitle } from "@/lib/seo/shop-product-seo";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
@@ -98,6 +99,19 @@ export default async function ProductDetailPage({
 
         {/* HOOK */}
         <section className="mb-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] p-8 sm:p-10">
+          {product.category === "Cheat Sheets" ? (
+            <div className="mb-6 rounded-xl border border-amber-400/35 bg-gradient-to-r from-amber-500/[0.12] to-[#D4537E]/[0.08] p-4 sm:p-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-amber-200/95">
+                {CHEAT_SHEET_BONUS.eyebrow}
+              </p>
+              <p className="mt-2 font-serif text-lg font-bold text-white sm:text-xl">
+                {CHEAT_SHEET_BONUS.title}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-amber-100/85 sm:text-base">
+                {CHEAT_SHEET_BONUS.body}
+              </p>
+            </div>
+          ) : null}
           <span className="mb-3 inline-block rounded-md bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gray-400">
             {product.category}
           </span>

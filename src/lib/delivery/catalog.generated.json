@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T13:56:54.675Z",
+  "generatedAt": "2026-04-04T23:55:39.649Z",
   "sourceRoot": "/Users/danid/Desktop/canva-automation/output/products",
   "products": [
     {
@@ -108,6 +108,21 @@
       ]
     },
     {
+      "productKey": "botox-dosing-zones-cheat-sheet",
+      "productSlug": "botox-dosing-zones-cheat-sheet",
+      "productTitle": "Botox Dosing Zones Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.874Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Botox Dosing Zones Cheat Sheet",
+          "designId": "botox-dosing-zones-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Botox-Dosing-Zones-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "botox-patient-journey-kit",
       "productSlug": "botox-patient-journey-kit",
       "productTitle": "Botox Patient Journey Kit — Complete Treatment Lifecycle",
@@ -207,6 +222,21 @@
       ]
     },
     {
+      "productKey": "cannula-vs-needle-cheat-sheet",
+      "productSlug": "cannula-vs-needle-cheat-sheet",
+      "productTitle": "Cannula Vs Needle Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.876Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Cannula Vs Needle Cheat Sheet",
+          "designId": "cannula-vs-needle-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Cannula-vs-Needle-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "chemical-peel-consent-bundle",
       "productSlug": "chemical-peel-consent-bundle",
       "productTitle": "Chemical Peel Consent & Documentation Bundle",
@@ -262,6 +292,21 @@
           "title": "Chemical Peel Patient Journey Kit",
           "designId": "chemical-peel-patient-journey-kit-main",
           "editUrl": "/forms/NPA-Patient-Journey-Kits-Batch.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "chemical-peel-reference-cheat-sheet",
+      "productSlug": "chemical-peel-reference-cheat-sheet",
+      "productTitle": "Chemical Peel Reference Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.876Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Chemical Peel Reference Cheat Sheet",
+          "designId": "chemical-peel-reference-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Chemical-Peel-Reference-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -720,6 +765,21 @@
       ]
     },
     {
+      "productKey": "filler-product-comparison-cheat-sheet",
+      "productSlug": "filler-product-comparison-cheat-sheet",
+      "productTitle": "Filler Product Comparison Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.876Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Filler Product Comparison Cheat Sheet",
+          "designId": "filler-product-comparison-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Filler-Product-Comparison-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "filler-social-bundle",
       "productSlug": "filler-social-bundle",
       "productTitle": "Filler Social Media Bundle",
@@ -784,6 +844,21 @@
           "title": "Book Your Filler Consultation",
           "designId": "fsx-cta-01",
           "editUrl": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc3NTI2OTI1NTM4fQ..HXCjEWhwCYbfwozJ.VN1MlDPyDMAu2CzKlf57P47j3kyB1-jggIFTSidCOHz-Rwy7fYmQrQVB8TtNjydR1brhqrQxEFBxVjQVx2hKiZOJ0NX5hhS9emifouC80AFteIc.YAx-A4cbTBBPr6BF8Vyo7A/edit?utm_source=OC-AZ06epE9RQFJ&utm_medium=referral&utm_term=a548c539-0a08-4621-90e9-bd10a823c221&utm_campaign=public_api_list_design_clicked_hyperlink",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "fitzpatrick-classification-cheat-sheet",
+      "productSlug": "fitzpatrick-classification-cheat-sheet",
+      "productTitle": "Fitzpatrick Classification Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.876Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Fitzpatrick Classification Cheat Sheet",
+          "designId": "fitzpatrick-classification-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Fitzpatrick-Classification-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -888,6 +963,21 @@
       ]
     },
     {
+      "productKey": "glp1-titration-cheat-sheet",
+      "productSlug": "glp1-titration-cheat-sheet",
+      "productTitle": "GLP-1 Titration Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.876Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "GLP-1 Titration Cheat Sheet",
+          "designId": "glp1-titration-cheat-sheet-main",
+          "editUrl": "/forms/NPA-GLP1-Titration-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "google-domination-playbook",
       "productSlug": "google-domination-playbook",
       "productTitle": "The Med Spa Google Domination Playbook",
@@ -958,6 +1048,21 @@
           "title": "Business Associate Agreement Template",
           "designId": "hipaa-baa",
           "editUrl": "/forms/HIPAA-06-BAA-Template.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "hormone-lab-reference-cheat-sheet",
+      "productSlug": "hormone-lab-reference-cheat-sheet",
+      "productTitle": "Hormone Lab Reference Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.876Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Hormone Lab Reference Cheat Sheet",
+          "designId": "hormone-lab-reference-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Hormone-Lab-Reference-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -1245,6 +1350,21 @@
       ]
     },
     {
+      "productKey": "laser-wavelength-reference-cheat-sheet",
+      "productSlug": "laser-wavelength-reference-cheat-sheet",
+      "productTitle": "Laser Wavelength Reference Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Laser Wavelength Reference Cheat Sheet",
+          "designId": "laser-wavelength-reference-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Laser-Wavelength-Reference-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "lash-aftercare-kit",
       "productSlug": "lash-aftercare-kit",
       "productTitle": "Lash Extension & Lash Lift Client Education Kit",
@@ -1309,6 +1429,21 @@
           "title": "Lash Lift & Perm Clinical Cheat Sheet",
           "designId": "lash-lift-perm-clinical-cheat-sheet-main",
           "editUrl": "/forms/NPA-Lash-Lift-Perm-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "lip-filler-anatomy-cheat-sheet",
+      "productSlug": "lip-filler-anatomy-cheat-sheet",
+      "productTitle": "Lip Filler Anatomy Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Lip Filler Anatomy Cheat Sheet",
+          "designId": "lip-filler-anatomy-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Lip-Filler-Anatomy-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -1680,6 +1815,21 @@
       ]
     },
     {
+      "productKey": "membership-pricing-calculator-cheat-sheet",
+      "productSlug": "membership-pricing-calculator-cheat-sheet",
+      "productTitle": "Membership Pricing Calculator Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Membership Pricing Calculator Cheat Sheet",
+          "designId": "membership-pricing-calculator-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Membership-Pricing-Calculator-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "microblading-pmu-playbook",
       "productSlug": "microblading-pmu-playbook",
       "productTitle": "Microblading & PMU Business Playbook",
@@ -1735,6 +1885,21 @@
           "title": "Microneedling Series Progress Tracker",
           "designId": "mn-series-tracker",
           "editUrl": "/forms/MN-06-Series-Tracker.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "microneedling-depth-cheat-sheet",
+      "productSlug": "microneedling-depth-cheat-sheet",
+      "productTitle": "Microneedling Depth Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Microneedling Depth Cheat Sheet",
+          "designId": "microneedling-depth-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Microneedling-Depth-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -1834,6 +1999,21 @@
           "title": "New Injector Onboarding Kit — 30-Day Training System",
           "designId": "new-injector-onboarding-kit-main",
           "editUrl": "/forms/NPA-New-Injector-Onboarding-Kit.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "new-patient-intake-cheat-sheet",
+      "productSlug": "new-patient-intake-cheat-sheet",
+      "productTitle": "New Patient Intake Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "New Patient Intake Cheat Sheet",
+          "designId": "new-patient-intake-cheat-sheet-main",
+          "editUrl": "/forms/NPA-New-Patient-Intake-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -1978,6 +2158,21 @@
           "title": "Pellet Therapy Clinical Cheat Sheet",
           "designId": "pellet-therapy-clinical-cheat-sheet-main",
           "editUrl": "/forms/NPA-Pellet-Therapy-Clinical-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "pellet-therapy-dosing-cheat-sheet",
+      "productSlug": "pellet-therapy-dosing-cheat-sheet",
+      "productTitle": "Pellet Therapy Dosing Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Pellet Therapy Dosing Cheat Sheet",
+          "designId": "pellet-therapy-dosing-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Pellet-Therapy-Dosing-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]
@@ -2136,6 +2331,21 @@
       ]
     },
     {
+      "productKey": "retail-pricing-formula-cheat-sheet",
+      "productSlug": "retail-pricing-formula-cheat-sheet",
+      "productTitle": "Retail Pricing Formula Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Retail Pricing Formula Cheat Sheet",
+          "designId": "retail-pricing-formula-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Retail-Pricing-Formula-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "review-testimonial-pack",
       "productSlug": "review-testimonial-pack",
       "productTitle": "Review and Testimonial Template Pack",
@@ -2274,6 +2484,51 @@
       ]
     },
     {
+      "productKey": "skincare-ingredient-interactions-cheat-sheet",
+      "productSlug": "skincare-ingredient-interactions-cheat-sheet",
+      "productTitle": "Skincare Ingredient Interactions Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Skincare Ingredient Interactions Cheat Sheet",
+          "designId": "skincare-ingredient-interactions-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Skincare-Ingredient-Interactions-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "staff-roles-cheat-sheet",
+      "productSlug": "staff-roles-cheat-sheet",
+      "productTitle": "Staff Roles Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Staff Roles Cheat Sheet",
+          "designId": "staff-roles-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Staff-Roles-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "tirzepatide-vs-semaglutide-cheat-sheet",
+      "productSlug": "tirzepatide-vs-semaglutide-cheat-sheet",
+      "productTitle": "Tirzepatide Vs Semaglutide Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Tirzepatide Vs Semaglutide Cheat Sheet",
+          "designId": "tirzepatide-vs-semaglutide-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Tirzepatide-vs-Semaglutide-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
       "productKey": "treatment-menu-signage-kit",
       "productSlug": "treatment-menu-signage-kit",
       "productTitle": "Treatment Menu & Signage Kit",
@@ -2317,6 +2572,51 @@
           "title": "Consultation Preparation Guide",
           "designId": "pm-consultation-guide",
           "editUrl": "/forms/PM-04-Consultation-Guide.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "treatment-room-setup-cheat-sheet",
+      "productSlug": "treatment-room-setup-cheat-sheet",
+      "productTitle": "Treatment Room Setup Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Treatment Room Setup Cheat Sheet",
+          "designId": "treatment-room-setup-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Treatment-Room-Setup-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "trt-men-vs-women-cheat-sheet",
+      "productSlug": "trt-men-vs-women-cheat-sheet",
+      "productTitle": "TRT: Men vs Women Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "TRT: Men vs Women Cheat Sheet",
+          "designId": "trt-men-vs-women-cheat-sheet-main",
+          "editUrl": "/forms/NPA-TRT-Men-vs-Women-Cheat-Sheet.html",
+          "viewUrl": null
+        }
+      ]
+    },
+    {
+      "productKey": "vascular-occlusion-protocol-cheat-sheet",
+      "productSlug": "vascular-occlusion-protocol-cheat-sheet",
+      "productTitle": "Vascular Occlusion Protocol Cheat Sheet",
+      "buildTimestamp": "2026-04-04T23:55:18.877Z",
+      "templateCount": 1,
+      "templates": [
+        {
+          "title": "Vascular Occlusion Protocol Cheat Sheet",
+          "designId": "vascular-occlusion-protocol-cheat-sheet-main",
+          "editUrl": "/forms/NPA-Vascular-Occlusion-Protocol-Cheat-Sheet.html",
           "viewUrl": null
         }
       ]

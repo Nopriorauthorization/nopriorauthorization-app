@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { getShopProducts, getShopCategories } from "@/lib/shop/products";
+import { GROWTH_SYSTEM_PRODUCT, GROWTH_SYSTEM_SLUG } from "@/config/growth-funnel.config";
+import { GrowthSystemShowcase } from "@/components/shop/GrowthSystemShowcase";
+import { getShopProducts, getShopCategories, getShopProductBySlug } from "@/lib/shop/products";
 import { SHOP_BADGE_MAP, SHOP_OUTCOME_MAP } from "@/lib/shop/shop-marketing";
 import {
   SHOP_FAMILIES,
@@ -22,6 +24,7 @@ export const metadata = {
 };
 
 const QUICK_CATEGORIES: { label: string; href: string }[] = [
+  { label: "Growth System", href: "/shop/growth-system" },
   { label: "Botox & filler", href: "/shop/families/botox-filler-injectables" },
   { label: "Weight loss / GLP-1", href: "/shop/families/weight-loss-glp1" },
   { label: "IV therapy", href: "/shop/families/iv-therapy" },
@@ -36,6 +39,7 @@ const QUICK_CATEGORIES: { label: string; href: string }[] = [
 ];
 
 const START_HERE_SLUGS = [
+  "growth-system",
   "npa-49-star-system",
   "facial-anatomy-nurse-injector",
   "combo-bundle",
@@ -64,6 +68,7 @@ const TESTIMONIALS = [
 export default function ShopPage() {
   const products = getShopProducts();
   const categories = getShopCategories();
+  const growthSystemProduct = getShopProductBySlug(GROWTH_SYSTEM_SLUG);
   const startHereProducts = START_HERE_SLUGS.map((s) =>
     products.find((p) => p.slug === s),
   ).filter(Boolean);
@@ -86,6 +91,14 @@ export default function ShopPage() {
             and marketing materials &mdash; download instantly, customize in minutes.
           </p>
           <div className="mt-10 flex w-full max-w-md flex-col gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
+            {growthSystemProduct ? (
+              <Link
+                href="/shop/growth-system"
+                className="min-h-[48px] rounded-xl border-2 border-amber-400/60 bg-gradient-to-r from-amber-500/25 to-amber-600/10 px-8 py-3 text-center text-base font-bold text-amber-100 shadow-[0_0_24px_rgba(245,158,11,0.15)] transition hover:border-amber-300/80 hover:from-amber-500/35 sm:min-h-0 sm:py-4"
+              >
+                Get the Growth System — {GROWTH_SYSTEM_PRODUCT.nowPriceLabel}
+              </Link>
+            ) : null}
             <a
               href="#start-here"
               className="min-h-[48px] rounded-xl bg-[#D4537E] px-8 py-3 text-center text-base font-bold text-white transition hover:bg-[#D4537E]/80 sm:min-h-0 sm:py-4"
@@ -111,6 +124,8 @@ export default function ShopPage() {
         </div>
       </section>
 
+      {growthSystemProduct ? <GrowthSystemShowcase product={growthSystemProduct} /> : null}
+
       {/* CATEGORY NAV */}
       <section className="sticky top-14 z-30 border-b border-white/10 bg-[#1A1A1A]/95 backdrop-blur supports-[backdrop-filter]:bg-[#1A1A1A]/90">
         <div className="mx-auto max-w-6xl overflow-x-auto px-4 sm:px-6">
@@ -121,15 +136,21 @@ export default function ShopPage() {
             >
               Collections
             </Link>
-            {QUICK_CATEGORIES.map((cat) => (
-              <a
-                key={cat.label}
-                href={`#all-products`}
-                className="shrink-0 rounded-full border border-white/10 px-4 py-2 text-xs font-bold text-gray-400 transition hover:border-[#D4537E]/40 hover:text-[#D4537E]"
-              >
-                {cat.label}
-              </a>
-            ))}
+            {QUICK_CATEGORIES.map((cat) => {
+              const isGrowth = cat.href === "/shop/growth-system";
+              const pillClass = isGrowth
+                ? "shrink-0 rounded-full border border-amber-400/50 bg-amber-500/15 px-4 py-2 text-xs font-bold text-amber-100 transition hover:border-amber-300/70 hover:bg-amber-500/25"
+                : "shrink-0 rounded-full border border-white/10 px-4 py-2 text-xs font-bold text-gray-400 transition hover:border-[#D4537E]/40 hover:text-[#D4537E]";
+              return cat.href.startsWith("/") ? (
+                <Link key={cat.label} href={cat.href} className={pillClass}>
+                  {cat.label}
+                </Link>
+              ) : (
+                <a key={cat.label} href={cat.href} className={pillClass}>
+                  {cat.label}
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>

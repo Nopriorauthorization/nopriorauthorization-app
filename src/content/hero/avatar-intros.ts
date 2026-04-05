@@ -50,13 +50,8 @@ export const AVATAR_INTROS: AvatarIntro[] = [
     microcopy: "Part of your Circle",
     poster: "/characters/Beau sitting.png",
     objectPosition: "50% 20%",
+  },
   {
-    id: "f-ill",
-    displayName: "Grace",
-    introParts: [
-      { text: "I explain fillers, facial anatomy, and why " },
-      { text: "'natural' is usually just good marketing.", emphasis: true },
-    ],
     id: "f-ill",
     displayName: "Grace",
     introParts: [

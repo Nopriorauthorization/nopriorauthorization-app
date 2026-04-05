@@ -26,7 +26,8 @@ const mascots = [
     video: "/hero/avatars/beau-tox-intro.mp4",
     credentials: "Certified Injector",
     personality: "Sassy, honest, tells it like it is",
-    chatPrompt: "Get real talk about injectables and cosmetic procedures"
+    chatPrompt: "Get real talk about injectables and cosmetic procedures",
+  },
   {
     id: "filla-grace",
     name: "Filla-Grace",
@@ -36,15 +37,7 @@ const mascots = [
     video: "/hero/avatars/f-ill-intro.mp4",
     credentials: "Filler Expert",
     personality: "Graceful, detailed, anatomy-focused",
-    id: "filla-grace",
-    name: "Filla-Grace",
-    specialty: "Dermal Fillers",
-    description: "Specialist in dermal filler treatments, facial contouring, and volume restoration.",
-    image: "/characters/filla-grace.png",
-    video: "/hero/avatars/f-ill-intro.mp4",
-    credentials: "Filler Expert",
-    personality: "Graceful, detailed, anatomy-focused",
-    chatPrompt: "Learn about fillers, facial anatomy, and realistic expectations"
+    chatPrompt: "Learn about fillers, facial anatomy, and realistic expectations",
   },
   {
     id: "slim-t",
@@ -66,8 +59,8 @@ const mascots = [
     video: "/hero/avatars/ryan-intro.mp4",
     credentials: "FNP-BC | Full Authority Nurse Practitioner",
     personality: "Clear communicator, bridge between providers and patients",
-    chatPrompt: "Translate medical language and provider thinking"
-  }
+    chatPrompt: "Translate medical language and provider thinking",
+  },
 ];
 
 // Scroll-triggered section component

@@ -5,12 +5,23 @@ import { useState } from "react";
 type Props = {
   images: string[];
   productTitle: string;
+  /** When false, hides the developer note about adding PNGs under public/. */
+  devHint?: boolean;
+  sectionTitle?: string;
+  /** Shown below the title (customer-facing). When devHint is true and this is omitted, the dev note is shown instead. */
+  sectionDescription?: string;
 };
 
 /**
  * Hero + thumbnail strip — closer to marketplace “mockup grid” UX than a flat 3-col gallery.
  */
-export function ProductPreviewGallery({ images, productTitle }: Props) {
+export function ProductPreviewGallery({
+  images,
+  productTitle,
+  devHint = true,
+  sectionTitle = "Preview gallery",
+  sectionDescription,
+}: Props) {
   const safe = images.filter(Boolean);
   const [active, setActive] = useState(0);
 
@@ -19,16 +30,24 @@ export function ProductPreviewGallery({ images, productTitle }: Props) {
   const idx = Math.min(Math.max(0, active), safe.length - 1);
   const main = safe[idx];
 
+  const caption =
+    sectionDescription ??
+    (devHint ? null : "Tap a thumbnail to explore what is inside your download.");
+
   return (
     <section className="mb-10" aria-label="Product previews">
-      <h2 className="mb-2 font-serif text-2xl font-semibold">Preview gallery</h2>
-      <p className="mb-5 max-w-2xl text-sm text-gray-500">
-        Tap a thumbnail to swap the hero image. Add more PNGs under{" "}
-        <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-gray-300">
-          public/shop-previews/
-        </code>{" "}
-        — the shop picks them up automatically for this product.
-      </p>
+      <h2 className="mb-2 font-serif text-2xl font-semibold">{sectionTitle}</h2>
+      {devHint ? (
+        <p className="mb-5 max-w-2xl text-sm text-gray-500">
+          Tap a thumbnail to swap the hero image. Add more PNGs under{" "}
+          <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-gray-300">
+            public/shop-previews/
+          </code>{" "}
+          — the shop picks them up automatically for this product.
+        </p>
+      ) : caption ? (
+        <p className="mb-5 max-w-2xl text-sm text-gray-400">{caption}</p>
+      ) : null}
 
       <div className="space-y-4">
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_20px_50px_rgba(0,0,0,0.35)]">

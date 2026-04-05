@@ -5,7 +5,13 @@ import { HormoneHarmonyVideo } from './HormoneHarmonyVideo';
 import { FamilyHealthVideo } from './FamilyHealthVideo';
 import { BeauToxVideo } from './BeauToxVideo';
 import FillaGraceVideo from './FillaGraceVideo';
+import { NclexBundleSocialVideo } from './NclexBundleSocialVideo';
+import { StorefrontSocialVideo } from './StorefrontSocialVideo';
 import { NPA_Homepage_Explainer_V1 } from './compositions/HomepageExplainer';
+
+/** Reels / TikTok / Stories (9:16) */
+const NCLEX_SOCIAL_DURATION_FRAMES = 30 * 30;
+const STOREFRONT_SOCIAL_DURATION_FRAMES = 36 * 30;
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -86,6 +92,42 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{
             title: 'Filla-Grace Aesthetics',
           }}
+        />
+      </Folder>
+      <Folder name="NCLEX">
+        <Composition
+          id="NclexBundleSocialReels"
+          component={NclexBundleSocialVideo}
+          durationInFrames={NCLEX_SOCIAL_DURATION_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="NclexBundleSocialSquare"
+          component={NclexBundleSocialVideo}
+          durationInFrames={NCLEX_SOCIAL_DURATION_FRAMES}
+          fps={30}
+          width={1080}
+          height={1080}
+        />
+      </Folder>
+      <Folder name="Storefront">
+        <Composition
+          id="StorefrontSocialReels"
+          component={StorefrontSocialVideo}
+          durationInFrames={STOREFRONT_SOCIAL_DURATION_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="StorefrontSocialSquare"
+          component={StorefrontSocialVideo}
+          durationInFrames={STOREFRONT_SOCIAL_DURATION_FRAMES}
+          fps={30}
+          width={1080}
+          height={1080}
         />
       </Folder>
     </>

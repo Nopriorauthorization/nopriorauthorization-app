@@ -5,6 +5,7 @@ const SEO_LANDING_PATHS = [
   "/custom",
   "/study-guides",
   "/nclex-bundle",
+  "/storefront",
   "/botox-marketing-templates",
   "/med-spa-marketing-templates",
   "/weight-loss-marketing-templates",

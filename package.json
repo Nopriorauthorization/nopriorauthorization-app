@@ -36,6 +36,7 @@
     "db:push": "prisma db push",
     "db:push:local": "node scripts/prisma-with-env.cjs db push",
     "db:migrate:local": "node scripts/prisma-with-env.cjs migrate deploy",
+    "db:migrate:resolve:leads": "node scripts/prisma-with-env.cjs migrate resolve --applied 20260406120000_leads",
     "db:migrate:dev:local": "node scripts/prisma-with-env.cjs migrate dev",
     "db:studio": "prisma studio",
     "db:studio:local": "node scripts/prisma-with-env.cjs studio",

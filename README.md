@@ -4,6 +4,18 @@
 
 ---
 
+## Custom-built for what you actually need
+
+Most template shops stop at “here’s the same file everyone else bought.” **That is not the ceiling here.**
+
+The shop is the **library**—fast wins, proven layouts, and price points that respect solo injectors. The differentiator is **custom work scoped to *your* practice**: your state and scope rules, your service menu, your peptide or weight-loss program, your brand voice, your photo zones, and the gaps nothing off-the-shelf fixes. You get artifacts that fit **your** charting, **your** consent workflow, and **your** front desk—not a generic PDF that still says “insert practice name.”
+
+That combination—**operator-built defaults** plus **built-for-you deliverables**—is what separates NPA from volume marketplaces. If you need something that does not exist in the catalog yet, that is the lane.
+
+**Start a custom build:** [nopriorauthorization.com/contact](https://nopriorauthorization.com/contact) (brief your specialty, state, and what you wish you had on paper tomorrow).
+
+---
+
 ## What this app does today
 
 | Area | Description |
@@ -15,6 +27,7 @@
 | **Homepage hero** | Video **avatar strip** (founder + mascots) — trust and positioning; see [Hero Avatar System](#hero-avatar-system-v1) below. |
 | **Auth** | **NextAuth** for protected app routes. |
 | **Data** | **Prisma** + **PostgreSQL** (commonly **Supabase**). `postbuild` syncs delivery manifests into the DB when `DATABASE_URL` is set (e.g. Vercel). |
+| **Custom builds** | Not a route in this repo—**positioning and fulfillment** for bespoke handouts, kits, and ops assets. Inquiry: [`/contact`](https://nopriorauthorization.com/contact). See [Custom-built for what you actually need](#custom-built-for-what-you-actually-need) above. |
 
 ---
 

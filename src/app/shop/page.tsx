@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { GROWTH_SYSTEM_PRODUCT, GROWTH_SYSTEM_SLUG } from "@/config/growth-funnel.config";
+import {
+  INFORMED_BEAUTY_GUIDE_SLUG,
+  INFORMED_BEAUTY_PRICE_CENTS,
+} from "@/config/informed-beauty-guide.config";
 import { GrowthSystemShowcase } from "@/components/shop/GrowthSystemShowcase";
 import { getShopProducts, getShopCategories, getShopProductBySlug } from "@/lib/shop/products";
 import { SHOP_BADGE_MAP, SHOP_OUTCOME_MAP } from "@/lib/shop/shop-marketing";
@@ -24,6 +28,7 @@ export const metadata = {
 };
 
 const QUICK_CATEGORIES: { label: string; href: string }[] = [
+  { label: "Informed Beauty Guide", href: "/informed-beauty-guide" },
   { label: "Growth System", href: "/shop/growth-system" },
   { label: "Botox & filler", href: "/shop/families/botox-filler-injectables" },
   { label: "Weight loss / GLP-1", href: "/shop/families/weight-loss-glp1" },
@@ -39,6 +44,7 @@ const QUICK_CATEGORIES: { label: string; href: string }[] = [
 ];
 
 const START_HERE_SLUGS = [
+  INFORMED_BEAUTY_GUIDE_SLUG,
   "growth-system",
   "med-spa-starter-kit",
   "facial-training-manual",
@@ -79,6 +85,25 @@ export default function ShopPage() {
     <div className="min-h-screen bg-[#1A1A1A] text-white">
       {/* HERO */}
       <section className="border-b border-white/5 bg-gradient-to-b from-[#1A1A1A] to-[#111]">
+        <div className="border-b border-amber-500/30 bg-gradient-to-r from-amber-950/80 to-[#D4537E]/20">
+          <div className="mx-auto max-w-5xl px-4 py-3 text-center sm:px-6">
+            <Link
+              href="/informed-beauty-guide"
+              className="inline-flex flex-wrap items-center justify-center gap-2 text-sm font-semibold text-amber-100 transition hover:text-white"
+            >
+              <span className="rounded-full bg-amber-500/25 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-200">
+                #1 seller · patient education
+              </span>
+              <span>
+                The Informed Beauty Guide —{" "}
+                <span className="text-white">
+                  ${(INFORMED_BEAUTY_PRICE_CENTS / 100).toFixed(0)} instant download
+                </span>
+              </span>
+              <span className="text-[#D4537E]">Shareable link →</span>
+            </Link>
+          </div>
+        </div>
         <div className="mx-auto max-w-5xl px-4 py-14 text-center sm:px-6 sm:py-28">
           <p className="text-xs font-bold uppercase tracking-[0.4em] text-[#D4537E]">
             No Prior Authorization

@@ -97,6 +97,14 @@ model CheckoutAttempt {
   source         String    @default("shop")
   funnelSessionId String?
   selectedBumpSlugs String[] @default([])
+  /// Opaque token appended to post-purchase redirect for one-click upsell eligibility.
+  postCheckoutToken String? @unique
+  /// Square payment id from the initial checkout (for GetPayment / card-on-file upsells).
+  squarePaymentId   String?
+  squareCustomerIdForUpsell String?
+  squareCardIdForUpsell     String?
+  /// Upsell SKUs already charged via POST /api/shop/upsell-charge (idempotency).
+  upsellOneClickSlugs String[] @default([])
   createdAt      DateTime  @default(now())
   reminderSentAt DateTime?
   completedAt    DateTime?

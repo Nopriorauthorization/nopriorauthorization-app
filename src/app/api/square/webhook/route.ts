@@ -4,8 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { normalizeCheckoutEmail } from "@/lib/checkout/email";
 import { verifySquareWebhook } from "@/lib/square/client";
-import { parseSquarePaymentNote } from "@/lib/square/payment-note";
+import {
+  parseSquarePaymentNote,
+  parseUpsellOneClickNote,
+} from "@/lib/square/payment-note";
 import { allocatePaymentCentsAcrossSlugs } from "@/lib/checkout/allocate-payment-to-slugs";
+import { retrieveSquarePaymentCardContext } from "@/lib/square/payments-api";
 
 const WEBHOOK_URL =
   process.env.SQUARE_WEBHOOK_URL ||
@@ -92,6 +96,81 @@ function stripeSessionIdForSlug(paymentId: string, slug: string, multi: boolean)
   return `sq_${paymentId}__${slug}`;
 }
 
+function parseProductSlugsFromNote(note: string): string[] {
+  const upsell = parseUpsellOneClickNote(note);
+  if (upsell) {
+    return [upsell.slug];
+  }
+  let slugs = parseSquarePaymentNote(note);
+  if (slugs.length === 0) {
+    const legacy = note.match(/^npa:(.+)$/);
+    const raw = legacy?.[1]?.trim() ?? "";
+    if (raw && !raw.startsWith("multi:") && !raw.startsWith("upsell|")) {
+      slugs = [raw];
+    }
+  }
+  return slugs;
+}
+
+async function persistCheckoutAttemptAfterPayment(opts: {
+  paymentId: string;
+  upsellParsed: { token: string; slug: string } | null;
+  email: string;
+  primarySlug: string;
+  pendingAttemptId: string | null;
+}) {
+  const { paymentId, upsellParsed, email, primarySlug, pendingAttemptId } = opts;
+  try {
+    const ctx = await retrieveSquarePaymentCardContext(paymentId);
+    const base = {
+      squarePaymentId: paymentId,
+      squareCustomerIdForUpsell: ctx.customerId,
+      squareCardIdForUpsell: ctx.cardId,
+    };
+    if (upsellParsed) {
+      await prisma.checkoutAttempt.updateMany({
+        where: { postCheckoutToken: upsellParsed.token },
+        data: base,
+      });
+      return;
+    }
+    if (pendingAttemptId) {
+      await prisma.checkoutAttempt.update({
+        where: { id: pendingAttemptId },
+        data: { ...base, completedAt: new Date() },
+      });
+      return;
+    }
+    await prisma.checkoutAttempt.updateMany({
+      where: {
+        buyerEmail: { equals: email, mode: "insensitive" },
+        productSlug: primarySlug,
+        completedAt: null,
+      },
+      data: { completedAt: new Date() },
+    });
+  } catch (e) {
+    console.error("[square/webhook] persistCheckoutAttemptAfterPayment:", e);
+    if (!upsellParsed) {
+      if (pendingAttemptId) {
+        await prisma.checkoutAttempt.update({
+          where: { id: pendingAttemptId },
+          data: { completedAt: new Date() },
+        });
+      } else {
+        await prisma.checkoutAttempt.updateMany({
+          where: {
+            buyerEmail: { equals: email, mode: "insensitive" },
+            productSlug: primarySlug,
+            completedAt: null,
+          },
+          data: { completedAt: new Date() },
+        });
+      }
+    }
+  }
+}
+
 async function handlePaymentCompleted(event: Record<string, unknown>) {
   const payment = extractPaymentFromEvent(event);
 
@@ -110,14 +189,8 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
     totalMoney?.amount ?? amountMoney?.amount ?? 0,
   );
 
-  let slugs = parseSquarePaymentNote(note);
-  if (slugs.length === 0) {
-    const legacy = note.match(/^npa:(.+)$/);
-    const raw = legacy?.[1]?.trim() ?? "";
-    if (raw && !raw.startsWith("multi:")) {
-      slugs = [raw];
-    }
-  }
+  const upsellParsed = parseUpsellOneClickNote(note);
+  const slugs = parseProductSlugsFromNote(note);
 
   if (!email) {
     console.error("[square/webhook] No buyer email — cannot deliver");
@@ -145,26 +218,58 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
   const existingSet = new Set(existingAll.map((p) => p.stripeSessionId));
   const centsBySlug = allocatePaymentCentsAcrossSlugs(amountCents, slugs);
 
-  const attempt = await prisma.checkoutAttempt.findFirst({
-    where: {
-      buyerEmail: { equals: email, mode: "insensitive" },
-      productSlug: slugs[0],
-      completedAt: null,
-    },
-    orderBy: { createdAt: "desc" },
-  });
+  let attemptForFunnel: {
+    id: string;
+    funnelSessionId: string | null;
+    selectedBumpSlugs: string[];
+    productSlug: string;
+  } | null = null;
 
-  if (attempt?.funnelSessionId) {
+  if (upsellParsed) {
+    const byToken = await prisma.checkoutAttempt.findFirst({
+      where: { postCheckoutToken: upsellParsed.token },
+    });
+    if (byToken) {
+      attemptForFunnel = {
+        id: byToken.id,
+        funnelSessionId: byToken.funnelSessionId,
+        selectedBumpSlugs: byToken.selectedBumpSlugs,
+        productSlug: byToken.productSlug,
+      };
+    }
+  } else {
+    const pending = await prisma.checkoutAttempt.findFirst({
+      where: {
+        buyerEmail: { equals: email, mode: "insensitive" },
+        productSlug: slugs[0],
+        completedAt: null,
+      },
+      orderBy: { createdAt: "desc" },
+    });
+    if (pending) {
+      attemptForFunnel = {
+        id: pending.id,
+        funnelSessionId: pending.funnelSessionId,
+        selectedBumpSlugs: pending.selectedBumpSlugs,
+        productSlug: pending.productSlug,
+      };
+    }
+  }
+
+  if (attemptForFunnel?.funnelSessionId) {
     try {
+      const primarySlug = upsellParsed ? attemptForFunnel.productSlug : slugs[0]!;
       await prisma.funnelAnalyticsEvent.create({
         data: {
-          sessionId: attempt.funnelSessionId,
-          primarySlug: slugs[0]!,
+          sessionId: attemptForFunnel.funnelSessionId,
+          primarySlug,
           step: "payment_complete",
           revenueCents: amountCents,
           metadata: {
             slugs,
-            selectedBumpSlugs: attempt.selectedBumpSlugs,
+            selectedBumpSlugs: attemptForFunnel.selectedBumpSlugs,
+            upsellOneClick: Boolean(upsellParsed),
+            upsellSlug: upsellParsed?.slug,
           },
         },
       });
@@ -254,6 +359,7 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
           squarePaymentId: paymentId,
           deliveryUrl,
           bundleSlugs: slugs,
+          upsellOneClick: Boolean(upsellParsed),
         },
       },
     });
@@ -270,12 +376,16 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
     console.error("[square/webhook] Funnel pause hook error:", e);
   }
 
-  await prisma.checkoutAttempt.updateMany({
-    where: {
-      buyerEmail: { equals: email, mode: "insensitive" },
-      productSlug: slugs[0],
-      completedAt: null,
-    },
-    data: { completedAt: new Date() },
+  const pendingAttemptId =
+    !upsellParsed && attemptForFunnel && attemptForFunnel.productSlug === slugs[0]
+      ? attemptForFunnel.id
+      : null;
+
+  await persistCheckoutAttemptAfterPayment({
+    paymentId,
+    upsellParsed,
+    email,
+    primarySlug: slugs[0]!,
+    pendingAttemptId,
   });
 }

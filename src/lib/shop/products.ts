@@ -7,6 +7,11 @@ import {
   BUNDLE_TIER_COMPARE_AT_CENTS,
   BUNDLE_TIER_PRICE_CENTS,
 } from "@/config/growth-funnel.config";
+import {
+  INFORMED_BEAUTY_GUIDE_SLUG,
+  INFORMED_BEAUTY_PRICE_CENTS,
+  INFORMED_BEAUTY_TITLE,
+} from "@/config/informed-beauty-guide.config";
 import type { BundleTierEmphasis, BundleTierId } from "@/lib/shop/bundle-tier-config";
 import {
   getBundleTierDefinition,
@@ -257,6 +262,7 @@ const PRICE_MAP: Record<string, number> = {
 };
 
 const FEATURED_SLUGS = new Set([
+  INFORMED_BEAUTY_GUIDE_SLUG,
   "medspa-social-media-system",
   "medspa-content-strategy-system",
   "hormone-therapy-playbook",
@@ -300,6 +306,11 @@ const AUDIENCE_MAP: Record<string, string[]> = {
     "Esthetic entrepreneurs",
     "Solo providers scaling up",
     "Practice managers navigating insurance and compliance",
+  ],
+  "Patient education": [
+    "Patients and clients researching aesthetic care",
+    "Anyone investing in skin, injectables, or wellness",
+    "People who want confident questions at consultations",
   ],
 };
 
@@ -668,7 +679,43 @@ export function getShopProducts(): ShopProduct[] {
     _products.push(gs);
   }
 
+  const hasInformedBeauty = _products.some((p) => p.slug === INFORMED_BEAUTY_GUIDE_SLUG);
+  if (!hasInformedBeauty) {
+    const ibg: ShopProduct = {
+      slug: INFORMED_BEAUTY_GUIDE_SLUG,
+      title: INFORMED_BEAUTY_TITLE,
+      shortDescription:
+        "Take control of your aesthetic and wellness care — 11 plain-English sections on skin, injectables, GLP-1, hormones, labs, IVs, peptides, and more. Built from 10+ years in a real med spa.",
+      longDescription: `${INFORMED_BEAUTY_TITLE} is a complete patient education system — not fluffy beauty tips. Danielle Alcala wrote it from thousands of real consultations so you can ask better questions, spot red flags, and understand what you’re paying for.\n\nOne interactive HTML book. Instant digital delivery after checkout. Read in any browser, print, or save as PDF. For education only — not medical advice; always work with a licensed provider for your care.`,
+      priceCents: INFORMED_BEAUTY_PRICE_CENTS,
+      priceDisplay: formatPrice(INFORMED_BEAUTY_PRICE_CENTS),
+      templateCount: 1,
+      category: "Patient education",
+      features: [
+        "11 sections: skin, facials, lasers, injectables, GLP-1, hormones, labs, IVs, peptides, clean beauty, taking control",
+        "Written by Danielle Alcala — Hello Gorgeous Med Spa & No Prior Authorization",
+        "Instant download — read on phone, tablet, or print",
+        "Lifetime access — refer back before every appointment",
+        "Educational only — not a substitute for your own clinician",
+      ],
+      featured: true,
+      stripePriceId: null,
+      previewImages: ["/shop-previews/default/default-thumbnail.png"],
+      audience: AUDIENCE_MAP["Patient education"] ?? ["Patients and clients"],
+    };
+    _products.push(ibg);
+  }
+
+  const PIN_FIRST = [INFORMED_BEAUTY_GUIDE_SLUG, GROWTH_SYSTEM_SLUG];
+  const pinRank = (slug: string) => {
+    const i = PIN_FIRST.indexOf(slug);
+    return i === -1 ? 999 : i;
+  };
+
   _products.sort((a, b) => {
+    const pa = pinRank(a.slug);
+    const pb = pinRank(b.slug);
+    if (pa !== pb) return pa - pb;
     if (a.featured && !b.featured) return -1;
     if (!a.featured && b.featured) return 1;
     return b.priceCents - a.priceCents;

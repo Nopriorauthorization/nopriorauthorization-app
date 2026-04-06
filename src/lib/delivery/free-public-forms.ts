@@ -8,6 +8,7 @@ export const FREE_PUBLIC_FORM_PATHS = [
   "/forms/NPA-Pro-Membership.html",
   "/forms/NPA-Ebook-Collection.html",
   "/forms/NPA-Contact-About.html",
+  "/forms/NPA-Free-Treatment-Guide-Cheat-Sheet.html",
 ] as const;
 
 export const FREE_PUBLIC_FORM_SET = new Set<string>(FREE_PUBLIC_FORM_PATHS);

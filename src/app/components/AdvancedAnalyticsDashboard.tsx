@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
+import { ProConversionStrip } from '@/components/membership/ProConversionStrip';
 import { format, subDays, startOfWeek, endOfWeek, eachDayOfInterval, isWithinInterval } from 'date-fns';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
@@ -161,6 +162,9 @@ export default function AdvancedAnalyticsDashboard() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="max-w-7xl mx-auto p-6">
+        <div className="mb-8">
+          <ProConversionStrip className="border-white/15 bg-violet-950/40 text-gray-200 [&_p]:text-gray-300" />
+        </div>
         {/* Hero Video Section */}
         <div className="mb-8">
           <div className="relative rounded-xl overflow-hidden bg-gray-900">

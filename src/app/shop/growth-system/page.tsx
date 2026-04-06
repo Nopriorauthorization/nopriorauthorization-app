@@ -206,6 +206,7 @@ export default function GrowthSystemPage() {
                     label={GROWTH_SYSTEM_PRODUCT.ctaLabel}
                     funnelEventOnCheckout="funnel_growth_system_click"
                     funnelEventParams={{ source: "growth_system_checkout" }}
+                    proConversionUpsell
                   />
                 </div>
                 <ul className="mt-8 space-y-3 border-t border-white/10 pt-6 text-xs text-gray-500">

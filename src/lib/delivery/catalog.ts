@@ -1,4 +1,9 @@
 import { DELIVERY_PRODUCT_SLUG_ALIASES } from "@/config/growth-funnel.config";
+import {
+  INFORMED_BEAUTY_DELIVERY_FORM_PATH,
+  INFORMED_BEAUTY_GUIDE_SLUG,
+  INFORMED_BEAUTY_TITLE,
+} from "@/config/informed-beauty-guide.config";
 import { STUDY_GUIDE_NCLEX, STUDY_GUIDE_NCLEX_TEMPLATES } from "@/config/study-guides.config";
 import catalog from "@/lib/delivery/catalog.generated.json";
 import prisma from "@/lib/db";
@@ -35,6 +40,20 @@ const VIRTUAL_DELIVERY_PRODUCTS: DeliveryProduct[] = [
       editUrl: t.editUrl,
       viewUrl: null as string | null,
     })),
+  },
+  {
+    productKey: INFORMED_BEAUTY_GUIDE_SLUG,
+    productSlug: INFORMED_BEAUTY_GUIDE_SLUG,
+    productTitle: INFORMED_BEAUTY_TITLE,
+    templateCount: 1,
+    templates: [
+      {
+        title: "The Informed Beauty Guide (full book)",
+        designId: null,
+        editUrl: INFORMED_BEAUTY_DELIVERY_FORM_PATH,
+        viewUrl: null as string | null,
+      },
+    ],
   },
 ];
 

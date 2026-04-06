@@ -31,20 +31,78 @@ export function PostPurchaseClient({
   purchasedTitle,
   upsells,
   finalRedirect = "post_purchase",
+  postCheckoutToken,
 }: {
   purchasedSlug: string;
   purchasedTitle: string;
   upsells: PostPurchaseUpsellPayload[];
   finalRedirect?: FunnelFinalRedirect;
+  postCheckoutToken?: string | null;
 }) {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const sessionId = useMemo(() => getOrCreateProductFunnelSessionId(), []);
+  const [hostedFallbackSteps, setHostedFallbackSteps] = useState<Record<number, boolean>>({});
+  const [sessionReady, setSessionReady] = useState(!postCheckoutToken);
+  const [cardOnFile, setCardOnFile] = useState(false);
+  const [oneClickLoading, setOneClickLoading] = useState(false);
+  const [oneClickMessage, setOneClickMessage] = useState<string | null>(null);
+  const [flash, setFlash] = useState<string | null>(null);
 
   const currentUpsell = upsells[step];
   const showUpsell =
     step < upsells.length && Boolean(currentUpsell) && currentUpsell.slug !== purchasedSlug;
   const showFooter = upsells.length === 0 || step >= upsells.length;
+  const useHostedForStep = Boolean(hostedFallbackSteps[step]);
+
+  useEffect(() => {
+    if (!postCheckoutToken) {
+      setSessionReady(true);
+      setCardOnFile(false);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      for (let i = 0; i < 20; i++) {
+        if (cancelled) return;
+        const res = await fetch(
+          `/api/shop/upsell-eligibility?npt=${encodeURIComponent(postCheckoutToken)}&primarySlug=${encodeURIComponent(purchasedSlug)}`,
+        );
+        const data = (await res.json()) as { ready?: boolean; canOneClick?: boolean };
+        if (cancelled) return;
+        if (data.ready) {
+          setSessionReady(true);
+          setCardOnFile(Boolean(data.canOneClick));
+          return;
+        }
+        await new Promise((r) => setTimeout(r, 700));
+      }
+      if (!cancelled) {
+        setSessionReady(true);
+        setCardOnFile(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [postCheckoutToken, purchasedSlug]);
+
+  useEffect(() => {
+    if (step === 0 || !postCheckoutToken) return;
+    let cancelled = false;
+    (async () => {
+      const res = await fetch(
+        `/api/shop/upsell-eligibility?npt=${encodeURIComponent(postCheckoutToken)}&primarySlug=${encodeURIComponent(purchasedSlug)}`,
+      );
+      const data = (await res.json()) as { ready?: boolean; canOneClick?: boolean };
+      if (!cancelled && data.ready) {
+        setCardOnFile(Boolean(data.canOneClick));
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [step, postCheckoutToken, purchasedSlug]);
 
   useEffect(() => {
     if (!sessionId || !showUpsell || !currentUpsell) return;
@@ -59,6 +117,7 @@ export function PostPurchaseClient({
   };
 
   const onDeclineUpsell = () => {
+    setOneClickMessage(null);
     if (sessionId && currentUpsell) {
       void trackProductFunnelStep(sessionId, purchasedSlug, "post_upsell_decline", {
         metadata: { upsellSlug: currentUpsell.slug, stepIndex: step },
@@ -77,10 +136,81 @@ export function PostPurchaseClient({
     }
   };
 
-  const onAcceptTracking = () => {
+  const showOneClick =
+    Boolean(postCheckoutToken) &&
+    sessionReady &&
+    cardOnFile &&
+    !useHostedForStep &&
+    Boolean(currentUpsell);
+
+  const showHostedCheckout =
+    !showOneClick || useHostedForStep || !postCheckoutToken || !sessionReady;
+
+  const runOneClick = async () => {
+    if (!postCheckoutToken || !currentUpsell) return;
+    if (sessionId) {
+      void trackProductFunnelStep(sessionId, purchasedSlug, "post_upsell_one_click_attempt", {
+        metadata: { upsellSlug: currentUpsell.slug, stepIndex: step },
+      });
+    }
+    setOneClickLoading(true);
+    setOneClickMessage(null);
+    try {
+      const res = await fetch("/api/shop/upsell-charge", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          postCheckoutToken,
+          primarySlug: purchasedSlug,
+          upsellSlug: currentUpsell.slug,
+        }),
+      });
+      const data = (await res.json()) as {
+        ok?: boolean;
+        duplicate?: boolean;
+        fallback?: string;
+        message?: string;
+      };
+
+      if (data.duplicate || data.ok) {
+        setFlash(`${currentUpsell.title} — check your email for the download link.`);
+        window.setTimeout(() => setFlash(null), 6000);
+        if (step + 1 < upsells.length) {
+          setStep((s) => s + 1);
+        } else {
+          goFinal();
+          setStep(upsells.length);
+        }
+        setOneClickLoading(false);
+        return;
+      }
+
+      if (data.fallback === "hosted_checkout") {
+        if (sessionId) {
+          void trackProductFunnelStep(sessionId, purchasedSlug, "post_upsell_one_click_fallback", {
+            metadata: { upsellSlug: currentUpsell.slug, stepIndex: step, reason: data.message },
+          });
+        }
+        setHostedFallbackSteps((prev) => ({ ...prev, [step]: true }));
+        setOneClickMessage(data.message ?? null);
+      } else if (res.status === 404) {
+        setOneClickMessage("Still confirming your payment — try again in a few seconds or use checkout below.");
+      } else {
+        setOneClickMessage(data.message ?? "Use secure checkout below.");
+        setHostedFallbackSteps((prev) => ({ ...prev, [step]: true }));
+      }
+    } catch {
+      setHostedFallbackSteps((prev) => ({ ...prev, [step]: true }));
+      setOneClickMessage("Network error — use secure checkout below.");
+    } finally {
+      setOneClickLoading(false);
+    }
+  };
+
+  const onAcceptHostedTracking = () => {
     if (sessionId && currentUpsell) {
       void trackProductFunnelStep(sessionId, purchasedSlug, "post_upsell_accept", {
-        metadata: { upsellSlug: currentUpsell.slug, stepIndex: step },
+        metadata: { upsellSlug: currentUpsell.slug, stepIndex: step, channel: "hosted_checkout" },
       });
     }
   };
@@ -97,6 +227,12 @@ export function PostPurchaseClient({
           (and your thank-you perks). It usually arrives within a few minutes; check spam if needed.
         </p>
         <p className="mx-auto mt-3 max-w-lg text-center text-xs text-gray-500">{DELIVERY_STANDARD.shortLine}</p>
+
+        {flash ? (
+          <p className="mx-auto mt-6 max-w-lg rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-center text-sm text-emerald-100">
+            {flash}
+          </p>
+        ) : null}
 
         {showUpsell && currentUpsell ? (
           <div className="mt-10 rounded-2xl border border-[#D4537E]/35 bg-[#D4537E]/[0.06] p-6">
@@ -117,11 +253,27 @@ export function PostPurchaseClient({
               </div>
             ) : null}
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <CheckoutButton
-                slug={currentUpsell.slug}
-                label={`Add to library — ${currentUpsell.priceDisplay}`}
-                onBeforeRedirectToSquare={onAcceptTracking}
-              />
+              {showOneClick ? (
+                <button
+                  type="button"
+                  disabled={oneClickLoading}
+                  onClick={() => void runOneClick()}
+                  className="min-h-[48px] rounded-lg bg-[#D4537E] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#D4537E]/85 disabled:cursor-wait disabled:opacity-60 sm:min-h-0"
+                >
+                  {oneClickLoading
+                    ? "Processing…"
+                    : `Yes — add for ${currentUpsell.priceDisplay} (same card)`}
+                </button>
+              ) : null}
+              {showHostedCheckout ? (
+                <CheckoutButton
+                  slug={currentUpsell.slug}
+                  label={`Checkout — ${currentUpsell.priceDisplay}`}
+                  funnelTrackingEnabled
+                  onBeforeRedirectToSquare={onAcceptHostedTracking}
+                  proConversionUpsell
+                />
+              ) : null}
               <button
                 type="button"
                 onClick={onDeclineUpsell}
@@ -130,9 +282,35 @@ export function PostPurchaseClient({
                 No thanks
               </button>
             </div>
-            <p className="mt-3 text-xs text-gray-500">
-              Opens secure Square checkout for this product — same delivery flow as your last order.
-            </p>
+            {showOneClick ? (
+              <p className="mt-3 text-xs text-gray-500">
+                Uses the card from your last checkout when Square has it on file. Apple Pay and some wallets may need
+                full checkout instead.
+              </p>
+            ) : null}
+            {postCheckoutToken && sessionReady && !cardOnFile && !useHostedForStep ? (
+              <p className="mt-3 text-xs text-gray-500">
+                One-tap add-on isn&apos;t available for this payment method — use checkout to pay securely.
+              </p>
+            ) : null}
+            {postCheckoutToken && !sessionReady ? (
+              <p className="mt-3 text-xs text-gray-500">Confirming your payment…</p>
+            ) : null}
+            {oneClickMessage ? (
+              <p className="mt-3 text-xs text-amber-200/90">{oneClickMessage}</p>
+            ) : null}
+            {showOneClick && !useHostedForStep ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setHostedFallbackSteps((prev) => ({ ...prev, [step]: true }));
+                  setOneClickMessage(null);
+                }}
+                className="mt-2 text-left text-xs text-gray-500 underline hover:text-gray-400"
+              >
+                Use a different card (full checkout)
+              </button>
+            ) : null}
           </div>
         ) : null}
 

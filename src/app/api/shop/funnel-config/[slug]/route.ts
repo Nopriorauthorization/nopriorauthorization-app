@@ -33,6 +33,11 @@ export async function GET(
 
   return NextResponse.json({
     primarySlug: product.slug,
+    primaryProduct: {
+      title: product.title,
+      priceDisplay: product.priceDisplay,
+      priceCents: product.priceCents,
+    },
     enabled: funnel.enabled,
     source: funnel.source,
     useDedicatedLanding: funnel.useDedicatedLanding,

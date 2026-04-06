@@ -31,6 +31,8 @@ export default async function PostPurchasePage({
 }) {
   const raw = searchParams.p;
   const p = typeof raw === "string" ? raw.trim() : "";
+  const rawNpt = searchParams.npt;
+  const npt = typeof rawNpt === "string" ? rawNpt.trim() : "";
   if (!p) {
     redirect("/shop/thank-you");
   }
@@ -67,6 +69,7 @@ export default async function PostPurchasePage({
       purchasedTitle={shopProduct?.title ?? STUDY_GUIDE_NCLEX.title}
       upsells={upsells}
       finalRedirect={funnel.enabled ? finalRedirect : "post_purchase"}
+      postCheckoutToken={npt || null}
     />
   );
 }

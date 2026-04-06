@@ -11,6 +11,7 @@ import {
   formatMembershipMonthlyUsd,
 } from "@/config/growth-funnel.config";
 import { PostPurchaseThankYouPanel } from "@/components/purchase/PostPurchaseThankYouPanel";
+import { ProConversionStrip } from "@/components/membership/ProConversionStrip";
 import { FunnelLink } from "@/components/shop/FunnelLink";
 
 /**
@@ -72,6 +73,10 @@ function ThankYouContent() {
 
         <div className="mb-8">
           <PostPurchaseThankYouPanel />
+        </div>
+
+        <div className="mb-8 text-left">
+          <ProConversionStrip className="border-white/15 bg-violet-950/30 text-gray-200 [&_p]:text-gray-300" />
         </div>
 
         <div className="mb-8 rounded-xl border border-white/10 bg-white/[0.03] p-6 text-left">

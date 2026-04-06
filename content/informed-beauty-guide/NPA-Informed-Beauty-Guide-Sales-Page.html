@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Informed Beauty Guide — Danielle Alcala · No Prior Authorization</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;background:#0e0e0e;color:#fff;line-height:1.7;overflow-x:hidden;}
+
+/* ── HERO ── */
+.hero{background:#0e0e0e;padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,rgba(212,83,126,.18) 0%,transparent 70%);pointer-events:none;}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#D4537E;margin-bottom:20px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,74px);font-weight:900;line-height:.95;color:#fff;margin-bottom:16px;}
+.hero h1 em{color:#D4537E;font-style:italic;display:block;}
+.hero-sub{font-size:clamp(16px,2.5vw,22px);color:rgba(255,255,255,.55);max-width:680px;margin:0 auto 36px;line-height:1.65;}
+.hero-badge{display:inline-flex;align-items:center;gap:16px;background:#1a1a1a;border:1px solid #D4537E33;border-radius:100px;padding:14px 28px;margin-bottom:40px;}
+.badge-price{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:#D4537E;}
+.badge-label{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5;text-align:left;}
+.cta-btn{display:inline-block;background:#D4537E;color:#fff;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:18px 44px;border-radius:6px;text-decoration:none;transition:background .2s,transform .2s;cursor:pointer;border:none;}
+.cta-btn:hover{background:#FF1493;transform:translateY(-2px);}
+.cta-sub{font-size:12px;color:rgba(255,255,255,.35);margin-top:12px;letter-spacing:.05em;}
+
+/* ── HOOK ── */
+.hook{background:#fff;color:#1A1A1A;padding:72px 24px;}
+.container{max-width:760px;margin:0 auto;}
+.hook h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:900;color:#1A1A1A;margin-bottom:20px;line-height:1.15;}
+.hook-text{font-size:18px;color:#333;line-height:1.85;margin-bottom:20px;}
+.hook-text strong{color:#1A1A1A;}
+.no-list{display:flex;flex-direction:column;gap:10px;margin:20px 0;}
+.no-item{display:flex;align-items:flex-start;gap:12px;font-size:17px;color:#444;line-height:1.6;padding:10px 0;border-bottom:1px solid #f0ebe8;}
+.no-item::before{content:'✗';color:#D4537E;font-weight:900;font-size:18px;flex-shrink:0;margin-top:1px;}
+.result-list{background:#FBEAF0;border-radius:8px;padding:24px 28px;margin:24px 0;}
+.result-list p{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4537E;margin-bottom:14px;}
+.result-item{display:flex;align-items:flex-start;gap:12px;font-size:17px;color:#72243E;line-height:1.65;padding:8px 0;border-bottom:1px solid rgba(212,83,126,.15);}
+.result-item:last-child{border:none;}
+.result-item::before{content:'→';color:#D4537E;font-weight:900;flex-shrink:0;}
+
+/* ── SECTION BREAK ── */
+.break-dark{background:#1A1A1A;padding:60px 24px;text-align:center;}
+.break-dark h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:900;color:#fff;margin-bottom:12px;}
+.break-dark p{font-size:18px;color:rgba(255,255,255,.55);max-width:580px;margin:0 auto;}
+.break-pink{background:#D4537E;padding:60px 24px;text-align:center;}
+.break-pink h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,42px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:8px;}
+.break-pink p{font-size:18px;color:rgba(255,255,255,.8);max-width:540px;margin:12px auto 0;}
+
+/* ── QUOTE ── */
+.quote-section{background:#0e0e0e;padding:72px 24px;text-align:center;}
+.quote-mark{font-family:'Playfair Display',serif;font-size:80px;color:#D4537E;line-height:.7;margin-bottom:16px;display:block;}
+blockquote{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,30px);font-style:italic;color:#fff;max-width:700px;margin:0 auto 24px;line-height:1.55;}
+.quote-attr{font-size:14px;color:rgba(255,255,255,.45);letter-spacing:.12em;text-transform:uppercase;}
+
+/* ── WHAT THIS IS ── */
+.what-section{background:#fff;padding:72px 24px;color:#1A1A1A;}
+.what-section h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:900;color:#1A1A1A;margin-bottom:8px;}
+.what-section .sub{font-size:16px;color:#888;margin-bottom:36px;}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:28px 0;}
+.proof-card{background:#f9f6f4;border-radius:8px;padding:20px;border-bottom:3px solid #D4537E;}
+.proof-card .num{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#D4537E;line-height:1;}
+.proof-card p{font-size:13px;color:#666;margin-top:6px;line-height:1.5;}
+
+/* ── SECTIONS INSIDE ── */
+.inside-section{background:#0e0e0e;padding:72px 24px;}
+.inside-section h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:900;color:#fff;text-align:center;margin-bottom:8px;}
+.inside-section .sub{font-size:16px;color:rgba(255,255,255,.4);text-align:center;margin-bottom:40px;}
+.section-cards{display:flex;flex-direction:column;gap:2px;}
+.sec-card{display:grid;grid-template-columns:64px 1fr;align-items:center;gap:20px;background:#141414;padding:22px 24px;border-left:4px solid transparent;transition:border-color .2s,background .2s;}
+.sec-card:hover{border-left-color:#D4537E;background:#1a1a1a;}
+.sec-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#D4537E;text-align:center;}
+.sec-info h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
+.sec-info p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.55;}
+
+/* ── OUTCOMES ── */
+.outcomes-section{background:#fff;padding:72px 24px;color:#1A1A1A;}
+.outcomes-section h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:900;margin-bottom:36px;text-align:center;}
+.outcome-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+.outcome-card{display:flex;align-items:flex-start;gap:14px;padding:20px;background:#f9f6f4;border-radius:8px;}
+.outcome-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.outcome-card p{font-size:15px;color:#333;line-height:1.65;}
+.outcome-card strong{color:#1A1A1A;display:block;margin-bottom:3px;font-size:15px;}
+
+/* ── FOR WHO ── */
+.who-section{background:#1A1A1A;padding:72px 24px;}
+.who-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:760px;margin:0 auto;}
+@media(max-width:580px){.who-inner{grid-template-columns:1fr;}}
+.who-col h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #D4537E;}
+.who-col.yes h3{color:#D4537E;}
+.who-col.no h3{color:rgba(255,255,255,.4);}
+.who-item{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:rgba(255,255,255,.7);line-height:1.6;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);}
+.who-item.yes-item::before{content:'✓';color:#D4537E;font-weight:900;flex-shrink:0;}
+.who-item.no-item::before{content:'✗';color:rgba(255,255,255,.25);font-weight:900;flex-shrink:0;}
+
+/* ── WHY KNOWLEDGE ── */
+.knowledge-section{background:#D4537E;padding:72px 24px;text-align:center;}
+.knowledge-section h2{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:20px;}
+.knowledge-section p{font-size:18px;color:rgba(255,255,255,.85);max-width:600px;margin:0 auto 20px;line-height:1.75;}
+.knowledge-section strong{color:#fff;font-weight:900;}
+
+/* ── REALITY CHECK ── */
+.reality-section{background:#0e0e0e;padding:72px 24px;text-align:center;}
+.reality-section h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:900;color:#fff;margin-bottom:36px;}
+.reality-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:760px;margin:0 auto 40px;text-align:left;}
+.reality-card{background:#141414;border-radius:8px;padding:22px;border-top:3px solid #D4537E;}
+.reality-card .label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4537E;margin-bottom:8px;}
+.reality-card p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.6;}
+.reality-fix{font-size:20px;color:#fff;font-weight:700;text-align:center;}
+.reality-fix span{color:#D4537E;}
+
+/* ── INSTANT ACCESS ── */
+.access-section{background:#fff;padding:72px 24px;color:#1A1A1A;}
+.access-section h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:900;margin-bottom:28px;text-align:center;}
+.access-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;max-width:760px;margin:0 auto;}
+.access-card{display:flex;align-items:flex-start;gap:12px;padding:16px;background:#f9f6f4;border-radius:8px;font-size:14px;color:#444;line-height:1.55;}
+.access-card::before{content:'✓';color:#D4537E;font-weight:900;font-size:16px;flex-shrink:0;margin-top:1px;}
+
+/* ── CTA SECTION ── */
+.cta-section{background:#1A1A1A;padding:80px 24px;text-align:center;}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,56px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:8px;}
+.cta-section .price-display{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;color:#D4537E;line-height:1;margin:20px 0 6px;}
+.cta-section .price-note{font-size:14px;color:rgba(255,255,255,.35);margin-bottom:32px;letter-spacing:.08em;text-transform:uppercase;}
+.cta-section .disclaimer{font-size:12px;color:rgba(255,255,255,.25);margin-top:20px;line-height:1.7;max-width:440px;margin-left:auto;margin-right:auto;}
+
+/* ── DANIELLE SECTION ── */
+.danielle-section{background:#0e0e0e;padding:72px 24px;}
+.danielle-inner{max-width:680px;margin:0 auto;}
+.danielle-inner h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,38px);font-weight:900;color:#D4537E;margin-bottom:28px;}
+.danielle-inner p{font-size:17px;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:18px;}
+.danielle-inner p strong{color:#fff;}
+.danielle-sig{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:#D4537E;margin-top:28px;}
+.danielle-sig-sub{font-size:12px;color:rgba(255,255,255,.3);margin-top:4px;letter-spacing:.08em;}
+
+/* ── FOOTER ── */
+footer{background:#0a0a0a;padding:32px 24px;text-align:center;border-top:1px solid #1a1a1a;}
+footer p{font-size:12px;color:rgba(255,255,255,.2);line-height:1.7;}
+footer a{color:#D4537E;text-decoration:none;}
+footer .footer-logo{font-family:'Playfair Display',serif;font-size:18px;color:#D4537E;font-weight:700;margin-bottom:10px;}
+
+/* ── STICKY CTA BAR ── */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:#D4537E;padding:14px 24px;display:flex;align-items:center;justify-content:center;gap:24px;z-index:100;transform:translateY(100%);transition:transform .3s;box-shadow:0 -4px 24px rgba(0,0,0,.4);}
+.sticky-bar.visible{transform:translateY(0);}
+.sticky-bar p{font-size:15px;font-weight:700;color:#fff;}
+.sticky-bar .sticky-btn{background:#fff;color:#D4537E;font-size:14px;font-weight:700;padding:10px 24px;border-radius:5px;text-decoration:none;white-space:nowrap;}
+
+@media(max-width:600px){
+  .sticky-bar p{display:none;}
+  .sticky-bar{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <p>The Informed Beauty Guide — Everything you need to take control of your care</p>
+  <a href="#checkout" class="sticky-btn">Get it for $49 →</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="eyebrow">No Prior Authorization &nbsp;·&nbsp; Patient Education Series</div>
+  <h1>The Informed<br>Beauty<br><em>Guide.</em></h1>
+  <p class="hero-sub">Everything you need to take control of your aesthetic, wellness, and beauty care — before you spend another dollar on treatments.</p>
+  <div class="hero-badge">
+    <div class="badge-price">$49</div>
+    <div class="badge-label">One-time purchase &nbsp;·&nbsp; Instant download<br>Read anywhere &nbsp;·&nbsp; Keep it forever</div>
+  </div>
+  <br>
+  <a href="#checkout" class="cta-btn">Get the Guide Now →</a>
+  <p class="cta-sub">Instant access &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; No fluff</p>
+</section>
+
+<!-- ══════════ HOOK ══════════ -->
+<section class="hook">
+  <div class="container">
+    <h2>You've trusted your face, your body, and your health to people you don't fully understand.</h2>
+    <p class="hook-text">And no one ever taught you how to ask the right questions.</p>
+    <p class="hook-text">No one explained what treatments actually do. What's worth your money. What's marketing vs. what actually works. What red flags to watch for. What your provider <strong>should</strong> be telling you.</p>
+    <p class="hook-text">So you walk into consultations hoping for the best…</p>
+    <p class="hook-text">And leave with:</p>
+
+    <div class="no-list">
+      <div class="no-item">confusion about what was just recommended to you</div>
+      <div class="no-item">pressure to book treatments you don't fully understand</div>
+      <div class="no-item">overpriced treatment plans with no real explanation</div>
+      <div class="no-item">results you don't know how to evaluate</div>
+    </div>
+
+    <div class="result-list">
+      <p>That ends here. This guide gives you:</p>
+      <div class="result-item">Clarity on what every treatment actually does</div>
+      <div class="result-item">Confidence to ask intelligent, specific questions</div>
+      <div class="result-item">Control over your own care — for the rest of your life</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ QUOTE ══════════ -->
+<section class="quote-section">
+  <span class="quote-mark">"</span>
+  <blockquote>You deserve to walk into any consultation knowing exactly what you're asking for — and why.</blockquote>
+  <p class="quote-attr">— Danielle Alcala &nbsp;·&nbsp; Founder, Hello Gorgeous Med Spa &amp; No Prior Authorization</p>
+</section>
+
+<!-- ══════════ WHAT THIS IS ══════════ -->
+<section class="what-section">
+  <div class="container">
+    <h2>This is NOT a fluffy beauty ebook.</h2>
+    <p class="sub">This is a complete education system built from real clinical experience.</p>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="num">10+</div>
+        <p>Years inside a real med spa — not theory. Real patients, real outcomes, real mistakes.</p>
+      </div>
+      <div class="proof-card">
+        <div class="num">1,000s</div>
+        <p>Patient consultations — Danielle has heard every question and seen every confusion firsthand.</p>
+      </div>
+      <div class="proof-card">
+        <div class="num">11</div>
+        <p>Complete sections covering every major category of aesthetic and wellness care.</p>
+      </div>
+      <div class="proof-card">
+        <div class="num">$0</div>
+        <p>The cost of walking away from a treatment you didn't understand and didn't need.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ INSIDE THE GUIDE ══════════ -->
+<section class="inside-section">
+  <div class="container">
+    <h2>Inside the Guide</h2>
+    <p class="sub">11 complete sections — written for you, not your provider</p>
+
+    <div class="section-cards">
+      <div class="sec-card">
+        <div class="sec-num">01</div>
+        <div class="sec-info">
+          <h3>Your Skin</h3>
+          <p>Skin types, Fitzpatrick classification, dehydration vs. dry, and how to actually build a routine that works for YOUR skin — not an algorithm's guess.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">02</div>
+        <div class="sec-info">
+          <h3>Facials &amp; Esthetic Treatments</h3>
+          <p>What a facial really does vs. what's a waste of your money. HydraFacial, chemical peels, microneedling, dermaplaning — all decoded in plain language.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">03</div>
+        <div class="sec-info">
+          <h3>Lasers &amp; Devices</h3>
+          <p>IPL vs. BBL. CO₂ vs. fractional. Morpheus8. RF. What each one does, who it's actually for, and what most providers don't tell you before you sit in the chair.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">04</div>
+        <div class="sec-info">
+          <h3>Injectables</h3>
+          <p>Botox vs. filler — the real difference. What good results look like. How to spot a bad injector before it's too late. What to communicate and how.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">05</div>
+        <div class="sec-info">
+          <h3>Weight Loss &amp; GLP-1</h3>
+          <p>What semaglutide and tirzepatide actually do in your body — and what no one tells you about the muscle loss problem you need to know about before you start.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">06</div>
+        <div class="sec-info">
+          <h3>Hormones</h3>
+          <p>What each hormone actually controls. What imbalance feels like. What labs to ask for. How to understand your results and advocate for the right treatment.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">07</div>
+        <div class="sec-info">
+          <h3>Blood Work &amp; Lab Markers</h3>
+          <p>CBC, thyroid, metabolic panels — decoded in plain English. The difference between "normal" and optimal. Why TSH alone is never enough.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">08</div>
+        <div class="sec-info">
+          <h3>IV Therapy &amp; Vitamin Injections</h3>
+          <p>B12, NAD+, glutathione, MIC, biotin — what actually works, what doesn't, who genuinely benefits, and what to ask before you sit in the chair.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">09</div>
+        <div class="sec-info">
+          <h3>Peptides</h3>
+          <p>BPC-157, GHK-Cu, sermorelin, CJC-1295, PT-141, TB-500 — the treatments you're starting to hear about, explained simply and honestly for the curious patient.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">10</div>
+        <div class="sec-info">
+          <h3>Toxic Ingredients &amp; Clean Beauty</h3>
+          <p>What's actually worth avoiding vs. what's marketing hype. How to read a label. Danielle's personal must-avoid list — and the greenwashing tricks to stop falling for.</p>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-num">11</div>
+        <div class="sec-info">
+          <h3>Taking Control of Your Care</h3>
+          <p>How to find the right provider. What questions to ask at every appointment. How to recognize red flags. And how to never feel lost, confused, or pressured again.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ OUTCOMES ══════════ -->
+<section class="outcomes-section">
+  <div class="container">
+    <h2>What you walk away with</h2>
+    <div class="outcome-grid">
+      <div class="outcome-card">
+        <div class="outcome-icon">🎯</div>
+        <div><strong>Understand EXACTLY what treatments do</strong><p>No more nodding along hoping it all makes sense later.</p></div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">💰</div>
+        <div><strong>Know what's worth your money — and what isn't</strong><p>Stop spending on treatments that don't serve your actual goals.</p></div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">💬</div>
+        <div><strong>Ask intelligent, confident questions</strong><p>The questions that tell you immediately whether a provider is worth your trust.</p></div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">🚩</div>
+        <div><strong>Spot red flags instantly</strong><p>Before you're lying in the chair wondering if you made a mistake.</p></div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">🧬</div>
+        <div><strong>Understand your own biology</strong><p>Your hormones, your labs, your skin type — finally explained in a way that sticks.</p></div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">👑</div>
+        <div><strong>Feel in control of your own care</strong><p>Every appointment. Every consultation. Every product. Every decision.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHO ══════════ -->
+<section class="who-section">
+  <div class="container">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,38px);font-weight:900;color:#fff;text-align:center;margin-bottom:36px;">Who this is — and isn't — for</h2>
+    <div class="who-inner">
+      <div class="who-col yes">
+        <h3>This IS for you if…</h3>
+        <div class="who-item yes-item">you've ever felt confused or overwhelmed in a consultation</div>
+        <div class="who-item yes-item">you've been talked into something you didn't fully understand</div>
+        <div class="who-item yes-item">you're starting your beauty or wellness journey</div>
+        <div class="who-item yes-item">you're investing in your skin, body, or hormones</div>
+        <div class="who-item yes-item">you want to feel confident — not at the mercy of whoever you're seeing</div>
+        <div class="who-item yes-item">you want to actually understand your lab results</div>
+        <div class="who-item yes-item">you've heard the words "Morpheus8," "semaglutide," or "peptides" and wanted to know more</div>
+      </div>
+      <div class="who-col no">
+        <h3>This is NOT for you if…</h3>
+        <div class="who-item no-item">you're looking for fluffy beauty tips</div>
+        <div class="who-item no-item">you blindly trust every provider without questions</div>
+        <div class="who-item no-item">you don't care to understand your own care</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHY KNOWLEDGE ══════════ -->
+<section class="knowledge-section">
+  <div class="container" style="text-align:center;">
+    <h2>The difference between a good outcome and a bad one is not luck.</h2>
+    <p>It's knowledge.</p>
+    <p>Knowing <strong>what to ask.</strong> Knowing <strong>what to expect.</strong> Knowing <strong>what's normal</strong> — and what's not.</p>
+    <p>And once you know that… <strong>you don't get taken advantage of anymore.</strong></p>
+  </div>
+</section>
+
+<!-- ══════════ REALITY CHECK ══════════ -->
+<section class="reality-section">
+  <div class="container">
+    <h2>The reality no one says out loud</h2>
+    <div class="reality-grid">
+      <div class="reality-card">
+        <div class="label">People are spending</div>
+        <p>Thousands on treatments — without understanding what's being done to their face, body, or bloodstream.</p>
+      </div>
+      <div class="reality-card">
+        <div class="label">Hundreds on products</div>
+        <p>That aren't right for their skin type — because no one ever explained skin types in a way that made sense.</p>
+      </div>
+      <div class="reality-card">
+        <div class="label">Months chasing results</div>
+        <p>From treatments they weren't the right candidate for — because they didn't know what questions to ask before booking.</p>
+      </div>
+    </div>
+    <p class="reality-fix">This guide <span>fixes that.</span></p>
+  </div>
+</section>
+
+<!-- ══════════ INSTANT ACCESS ══════════ -->
+<section class="access-section">
+  <div class="container">
+    <h2>Instant access &nbsp;·&nbsp; Lifetime value</h2>
+    <div class="access-grid">
+      <div class="access-card">Download immediately — no waiting</div>
+      <div class="access-card">Read on your phone, tablet, or print it</div>
+      <div class="access-card">Refer back before every appointment</div>
+      <div class="access-card">Use it for years — it doesn't expire</div>
+      <div class="access-card">Share it with people you love</div>
+      <div class="access-card">Take it into consultations with you</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FROM DANIELLE ══════════ -->
+<section class="danielle-section">
+  <div class="danielle-inner">
+    <h2>A final note from Danielle</h2>
+    <p>I struggled with my skin from a young age. <strong>Severe acne. Accutane at 18.</strong> Years of trying to figure out what actually worked — and what was just expensive hope.</p>
+    <p>That experience is why I built Hello Gorgeous Med Spa. And why I created this guide.</p>
+    <p>Because <strong>no one should feel confused, dismissed, or uninformed</strong> when it comes to their own face, body, and health.</p>
+    <p>I've sat across from thousands of patients who came in not knowing what they wanted — only knowing they wanted to feel better. More confident. More like themselves.</p>
+    <p>The ones who got the best results were always the ones who were <strong>informed.</strong> Not because they had a medical background. But because they understood enough to ask the right questions, set the right expectations, and trust the right providers.</p>
+    <p>That's what this guide gives you.</p>
+    <p><strong>You deserve better than confusion. You deserve to be in control. You deserve to feel gorgeous — and know exactly why.</strong></p>
+    <div class="danielle-sig">Danielle Alcala</div>
+    <div class="danielle-sig-sub">Founder, Hello Gorgeous Med Spa &nbsp;·&nbsp; No Prior Authorization &nbsp;·&nbsp; Oswego, IL &nbsp;·&nbsp; nopriorauthorization.com</div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta-section" id="checkout">
+  <div class="container">
+    <h2>Get the guide.<br>Take control.</h2>
+    <div class="price-display">$49</div>
+    <p class="price-note">One time &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; No fluff &nbsp;·&nbsp; Just clarity</p>
+    <a href="#" class="cta-btn" style="font-size:18px;padding:20px 52px;">Download The Informed Beauty Guide →</a>
+    <br><br>
+    <a href="#" class="cta-btn" style="font-size:18px;padding:20px 52px;background:transparent;border:2px solid #D4537E;color:#D4537E;" onmouseover="this.style.background='#D4537E';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#D4537E'">Take Control of Your Care — Starting Today →</a>
+    <p class="disclaimer">For educational purposes only — not medical advice. This guide is designed to help you become a more informed patient, not to replace your provider's clinical judgment. Always work with a licensed provider for your specific health needs.</p>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-logo">No Prior Authorization</div>
+  <p>Built by Danielle Alcala · <a href="https://nopriorauthorization.com">nopriorauthorization.com</a><br>
+  Hello Gorgeous Med Spa · 74 W Washington Street · Oswego, IL · 630-636-6193<br><br>
+  © 2026 No Prior Authorization. All rights reserved.<br>
+  For educational purposes only — not medical advice.</p>
+</footer>
+
+<script>
+// Sticky bar on scroll
+const bar = document.getElementById('stickyBar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) bar.classList.add('visible');
+  else bar.classList.remove('visible');
+});
+// Hide sticky bar when near checkout
+const checkout = document.getElementById('checkout');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) bar.classList.remove('visible'); });
+},{threshold: 0.1});
+observer.observe(checkout);
+</script>
+
+</body>
+</html>

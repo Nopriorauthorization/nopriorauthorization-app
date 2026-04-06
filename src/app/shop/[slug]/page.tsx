@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { GROWTH_SYSTEM_SLUG } from "@/config/growth-funnel.config";
+import { INFORMED_BEAUTY_GUIDE_SLUG } from "@/config/informed-beauty-guide.config";
 import { getDeliveryProfileForCategory } from "@/config/delivery-language.config";
 import { BundleTierComparison } from "@/components/shop/BundleTierComparison";
 import { BundleUpgradeMessaging } from "@/components/shop/BundleUpgradeMessaging";
@@ -17,12 +18,19 @@ import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
 import { buildProductMetaDescription, buildProductMetaTitle } from "@/lib/seo/shop-product-seo";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
 import { resolveShopFunnelForSlug } from "@/lib/shop/funnel-resolve";
+import { isShopProductIncludedInPro } from "@/lib/membership/pro-catalog";
+import { GatedProTeaser } from "@/components/membership/GatedProTeaser";
+import { IncludedInProBadge } from "@/components/membership/IncludedInProBadge";
+import { ProConversionStrip } from "@/components/membership/ProConversionStrip";
+import { ProProductRecordView } from "@/components/membership/ProProductRecordView";
 import { ProductPreviewGallery } from "../ProductPreviewGallery";
 import { CheckoutButton } from "./CheckoutButton";
 
 export function generateStaticParams() {
   return getShopProducts()
-    .filter((p) => p.slug !== GROWTH_SYSTEM_SLUG)
+    .filter(
+      (p) => p.slug !== GROWTH_SYSTEM_SLUG && p.slug !== INFORMED_BEAUTY_GUIDE_SLUG,
+    )
     .map((p) => ({ slug: p.slug }));
 }
 
@@ -89,12 +97,18 @@ export default async function ProductDetailPage({
 
   const deliveryProfile = getDeliveryProfileForCategory(product.category);
   const productJsonLd = buildShopProductJsonLd(product, params.slug);
+  const includedInPro = isShopProductIncludedInPro(params.slug);
 
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <ProProductRecordView
+        slug={params.slug}
+        priceCents={product.priceCents}
+        enabled={includedInPro}
       />
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
         <div className="mb-6 flex flex-wrap items-center gap-3 text-sm">
@@ -129,9 +143,12 @@ export default async function ProductDetailPage({
               </p>
             </div>
           ) : null}
-          <span className="mb-3 inline-block rounded-md bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gray-400">
-            {product.category}
-          </span>
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            <span className="inline-block rounded-md bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+              {product.category}
+            </span>
+            {includedInPro ? <IncludedInProBadge className="normal-case" /> : null}
+          </div>
           <h1 className="mb-3 font-serif text-3xl font-bold leading-tight md:text-4xl">
             {product.title}
           </h1>
@@ -165,6 +182,7 @@ export default async function ProductDetailPage({
               label={`Buy Now — ${product.priceDisplay}`}
               useFunnelLanding={useFunnelLanding}
               funnelTrackingEnabled={shopFunnel.enabled}
+              proConversionUpsell
             />
           </div>
           {onBundleLadder && product.bundleTierId ? (
@@ -184,8 +202,11 @@ export default async function ProductDetailPage({
             <span>Print-ready</span>
           </div>
           <p className="mt-3 max-w-2xl text-xs leading-relaxed text-gray-500">{deliveryProfile.shortLine}</p>
-          <div className="mt-6">
+          <div className="mt-6 space-y-4">
             <MembershipUpsellBlock productSlug={params.slug} />
+            {includedInPro ? (
+              <ProConversionStrip className="border-white/10 text-gray-200 [&_p]:text-gray-300" />
+            ) : null}
           </div>
         </section>
 
@@ -200,14 +221,31 @@ export default async function ProductDetailPage({
               Watermarked teaser — after purchase, your email has a private link to the
               full print-ready file (not hosted on a public URL).
             </p>
-            <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a]">
-              <iframe
-                src={interactivePreviewSrc}
-                title={`${product.title} — sample preview`}
-                className="h-[min(32rem,72vh)] w-full border-0"
-                loading="lazy"
-              />
-            </div>
+            {includedInPro ? (
+              <GatedProTeaser
+                teaserTitle="Pro members get the full interactive library — unlock this preview and every template."
+                overlayClassName="bg-[#1A1A1A]/88 backdrop-blur-sm"
+                className="border-white/10 bg-[#0a0a0a]"
+              >
+                <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a]">
+                  <iframe
+                    src={interactivePreviewSrc}
+                    title={`${product.title} — sample preview`}
+                    className="h-[min(32rem,72vh)] w-full border-0"
+                    loading="lazy"
+                  />
+                </div>
+              </GatedProTeaser>
+            ) : (
+              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a]">
+                <iframe
+                  src={interactivePreviewSrc}
+                  title={`${product.title} — sample preview`}
+                  className="h-[min(32rem,72vh)] w-full border-0"
+                  loading="lazy"
+                />
+              </div>
+            )}
           </section>
         ) : null}
 
@@ -402,6 +440,7 @@ export default async function ProductDetailPage({
               label="Buy Now"
               useFunnelLanding={useFunnelLanding}
               funnelTrackingEnabled={shopFunnel.enabled}
+              proConversionUpsell
             />
           </div>
         </div>

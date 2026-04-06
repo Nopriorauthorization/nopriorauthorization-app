@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-import { randomUUID } from "crypto";
+import { randomBytes, randomUUID } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { isValidCheckoutEmail, normalizeCheckoutEmail } from "@/lib/checkout/email";
@@ -74,8 +74,11 @@ export async function POST(req: NextRequest) {
     }),
   ];
 
+  const postCheckoutToken = randomBytes(24).toString("hex");
   const origin = req.nextUrl.origin;
-  const redirectUrl = buildShopCheckoutSuccessUrl(origin, product.slug, funnel);
+  const redirectUrl = buildShopCheckoutSuccessUrl(origin, product.slug, funnel, {
+    postCheckoutToken,
+  });
 
   let funnelSessionId: string | null = null;
   if (funnel.enabled) {
@@ -95,6 +98,7 @@ export async function POST(req: NextRequest) {
         source: "shop",
         funnelSessionId: funnel.enabled ? funnelSessionId : null,
         selectedBumpSlugs: funnel.enabled ? selectedBumps : [],
+        postCheckoutToken,
       },
     });
 

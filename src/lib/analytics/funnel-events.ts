@@ -9,7 +9,8 @@ export type FunnelEventName =
   | "funnel_membership_click"
   | "funnel_upgrade_growth_click"
   | "funnel_tier_table_product_click"
-  | "funnel_growth_to_membership_click";
+  | "funnel_growth_to_membership_click"
+  | "funnel_informed_beauty_checkout";
 
 export function trackFunnelEvent(
   event: FunnelEventName,

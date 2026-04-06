@@ -47,7 +47,7 @@ export function NclexPurchasePanel({ variant }: { variant: Variant }) {
         confirmLabel="Continue to Square"
         loading={loading}
         error={error}
-        onConfirm={(email) => buy(email)}
+        onConfirm={(email) => void buy(email)}
       />
       {!isHero ? (
         <>

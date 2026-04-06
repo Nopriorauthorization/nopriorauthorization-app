@@ -133,6 +133,7 @@ export function FunnelLandingClient({
               label={`Continue to checkout — ${totalDisplay}`}
               bumpSlugs={selectedSlugs}
               funnelSessionId={sessionId}
+              proConversionUpsell
             />
           </div>
           <p className="mt-3 text-xs text-gray-500">

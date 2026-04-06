@@ -20,7 +20,7 @@ That combination—**operator-built defaults** plus **built-for-you deliverables
 
 | Area | Description |
 |------|-------------|
-| **Shop** | `/shop` — large catalog of instant-download assets (mostly HTML templates under `public/forms/`). Checkout uses **Square** (`/api/shop/checkout`, Square webhooks for fulfillment). |
+| **Shop** | `/shop` — large catalog of instant-download assets (mostly HTML templates under `public/forms/`). Checkout uses **Square** (`/api/shop/checkout`, Square webhooks for fulfillment). Optional **configurable product funnels** (bumps, post-purchase upsells, analytics) — see [Shop product funnels](#shop-product-funnels-configurable) below. |
 | **Free template pack** | `/free-templates` — name + email capture; `/free-templates/downloads` — stable download hub. Ten files are defined in [`src/config/free-templates-lead-magnet.config.ts`](src/config/free-templates-lead-magnet.config.ts) (clinical freebies, premium patient handouts, retail/intake tools, and the **Vault Roadmap** cheat sheet that maps freebies → paid shop SKUs). |
 | **Leads & email** | `POST /api/leads/free-templates` upserts into Prisma **`Lead`** (`leads` table), sends delivery via **Resend**, and schedules nurture sends processed by the same cron as the legacy funnel. `GET /api/leads/unsubscribe?token=` opts out. |
 | **7-step marketing funnel** | Separate subscriber flow configured in [`src/config/email-funnel.config.ts`](src/config/email-funnel.config.ts); advanced by `/api/cron/email-funnel` (Bearer `CRON_SECRET`). |
@@ -28,6 +28,41 @@ That combination—**operator-built defaults** plus **built-for-you deliverables
 | **Auth** | **NextAuth** for protected app routes. |
 | **Data** | **Prisma** + **PostgreSQL** (commonly **Supabase**). `postbuild` syncs delivery manifests into the DB when `DATABASE_URL` is set (e.g. Vercel). |
 | **Custom builds** | Marketing page [`/custom`](https://nopriorauthorization.com/custom); inquiries via [`/contact`](https://nopriorauthorization.com/contact). See [Custom-built for what you actually need](#custom-built-for-what-you-actually-need) above. |
+
+---
+
+## Shop product funnels (configurable)
+
+This repo includes a **per-product (or per-category) checkout funnel** you control from **Admin → Shop funnels** (`/admin/product-funnels`). It layers on top of the existing Square shop flow without replacing it.
+
+### What you built
+
+| Piece | What it does |
+|--------|----------------|
+| **Pre-checkout landing** | Optional dedicated page at `/shop/[slug]/funnel` when the funnel is **enabled** and **Dedicated pre-checkout landing** is on. Shoppers pick **order bumps** (up to 3 SKUs) before email + Square. |
+| **Single Square charge** | Main product + selected bumps are one **quick-pay** total. The payment note encodes all SKUs (`npa:multi:slug1|slug2…`) so the **Square webhook** can create **one `Purchase` + delivery email per SKU** and split revenue by catalog price ratio. |
+| **Post-purchase upsells** | Up to **two** upsell SKUs in **admin-defined order** on `/shop/post-purchase?p=…`. Shown as steps on one page (no full reload between steps). Falls back to [`post-purchase-upsell.config.ts`](src/config/post-purchase-upsell.config.ts) when no funnel upsells are set. |
+| **Final redirect** | After payment, Square can send buyers to the post-purchase flow, **`/shop/thank-you`**, or **`/membership`** depending on funnel settings and whether post-upsells are configured. |
+| **Resolution rules** | **Product-specific** funnel row wins; else **category default**; else legacy behavior (no funnel). |
+| **Tracking** | Client events → `POST /api/funnel/track` → **`FunnelAnalyticsEvent`** (step, session id, optional revenue). Webhook records **`payment_complete`** when it can tie a payment to a **`CheckoutAttempt`** with `funnelSessionId`. Admin: **Load funnel analytics** on the same admin page. |
+
+**Data model (Prisma):** `ShopProductFunnel`, `FunnelAnalyticsEvent`, and extra fields on `CheckoutAttempt` (`funnelSessionId`, `selectedBumpSlugs`). Migration: `prisma/migrations/20260411120000_shop_product_funnel/`.
+
+**Public APIs:** `GET /api/shop/funnel-config/[slug]` (read-only config for a SKU), `POST /api/funnel/track` (analytics).
+
+### Why it matters (benefits)
+
+1. **Higher average order value** — Order bumps are optional add-ons in one checkout; no second “go find another product” step.
+2. **Controlled merchandising** — You assign bumps and upsells per product or per category default, reorder post-upsells, and turn a funnel on or off without code deploys.
+3. **Smoother UX** — Funnel landing and post-purchase steps are mobile-friendly; post-upsell steps use client state instead of full page reloads between offers.
+4. **Measurable funnel** — Step events, bump selection metadata, upsell accept/decline, and payment attribution give you material for conversion and attach-rate analysis (export/query via `FunnelAnalyticsEvent` or the admin analytics loader).
+5. **Cart abandonment still works** — `CheckoutAttempt` remains the source of truth; resume links go to `/shop/[slug]/funnel` when a funnel session id was stored on the attempt.
+
+### Operating notes
+
+- **First-time setup:** Run migrations so `ShopProductFunnel` and related columns exist (`npm run db:migrate:local` or `npx prisma migrate deploy` with `DATABASE_URL` set).
+- **Existing databases** that already contained tables from `db push` may need `prisma migrate resolve --applied …` for older migrations before deploy; see [Database & migrations](#database--migrations).
+- **No funnel rows in DB** → behavior matches the classic shop (single product page checkout, config-driven post-upsell only).
 
 ---
 

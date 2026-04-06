@@ -48,7 +48,7 @@ const VIRTUAL_DELIVERY_PRODUCTS: DeliveryProduct[] = [
     templateCount: 1,
     templates: [
       {
-        title: "The Informed Beauty Guide (full book)",
+        title: "The Informed Beauty Guide — complete (all sections, one HTML)",
         designId: null,
         editUrl: INFORMED_BEAUTY_DELIVERY_FORM_PATH,
         viewUrl: null as string | null,

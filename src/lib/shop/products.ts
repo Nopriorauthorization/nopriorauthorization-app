@@ -686,13 +686,13 @@ export function getShopProducts(): ShopProduct[] {
       title: INFORMED_BEAUTY_TITLE,
       shortDescription:
         "Take control of your aesthetic and wellness care — 11 plain-English sections on skin, injectables, GLP-1, hormones, labs, IVs, peptides, and more. Built from 10+ years in a real med spa.",
-      longDescription: `${INFORMED_BEAUTY_TITLE} is a complete patient education system — not fluffy beauty tips. Danielle Alcala wrote it from thousands of real consultations so you can ask better questions, spot red flags, and understand what you’re paying for.\n\nOne interactive HTML book. Instant digital delivery after checkout. Read in any browser, print, or save as PDF. For education only — not medical advice; always work with a licensed provider for your care.`,
+      longDescription: `${INFORMED_BEAUTY_TITLE} is a complete patient education system — not fluffy beauty tips. Danielle Alcala wrote it from thousands of real consultations so you can ask better questions, spot red flags, and understand what you’re paying for.\n\nOne download: full book plus all 11 sections in a single HTML file — sticky nav by topic, print / Save as PDF in the browser. Instant delivery after checkout. For education only — not medical advice; always work with a licensed provider for your care.`,
       priceCents: INFORMED_BEAUTY_PRICE_CENTS,
       priceDisplay: formatPrice(INFORMED_BEAUTY_PRICE_CENTS),
       templateCount: 1,
       category: "Patient education",
       features: [
-        "11 sections: skin, facials, lasers, injectables, GLP-1, hormones, labs, IVs, peptides, clean beauty, taking control",
+        "One HTML file — sticky top nav across all 11 sections (book + cheat sheets); print or save as PDF",
         "Written by Danielle Alcala — Hello Gorgeous Med Spa & No Prior Authorization",
         "Instant download — read on phone, tablet, or print",
         "Lifetime access — refer back before every appointment",

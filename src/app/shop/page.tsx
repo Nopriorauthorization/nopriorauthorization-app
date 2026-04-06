@@ -13,7 +13,12 @@ import {
   INFORMED_BEAUTY_PRICE_CENTS,
 } from "@/config/informed-beauty-guide.config";
 import { GrowthSystemShowcase } from "@/components/shop/GrowthSystemShowcase";
-import { getShopProducts, getShopCategories, getShopProductBySlug } from "@/lib/shop/products";
+import {
+  getShopProducts,
+  getShopCategories,
+  getShopProductBySlug,
+  type ShopProduct,
+} from "@/lib/shop/products";
 import { SHOP_BADGE_MAP, SHOP_OUTCOME_MAP } from "@/lib/shop/shop-marketing";
 import {
   SHOP_FAMILIES,
@@ -77,6 +82,16 @@ const START_HERE_SLUGS = [
   "botox-consent-bundle",
   "weight-loss-kit",
 ];
+
+/** Thumbnail for “Start here” cards — strong art for hero SKUs, else first shop preview. */
+function startHereCardImageSrc(p: ShopProduct): string {
+  if (p.slug === INFORMED_BEAUTY_GUIDE_SLUG) {
+    return "/images/informed-beauty-guide-promo.png";
+  }
+  const first = p.previewImages[0];
+  if (first) return first;
+  return "/shop-previews/default/default-thumbnail.png";
+}
 
 const TESTIMONIALS = [
   {
@@ -313,27 +328,38 @@ export default function ShopPage() {
                 <Link
                   key={p.slug}
                   href={`/shop/${p.slug}`}
-                  className="group relative flex flex-col rounded-2xl border-2 border-[#D4537E]/30 bg-[#D4537E]/5 p-6 transition hover:border-[#D4537E]/60"
+                  className="group flex flex-col overflow-hidden rounded-2xl border-2 border-[#D4537E]/30 bg-[#D4537E]/5 transition hover:border-[#D4537E]/60"
                 >
-                  <span className="mb-3 inline-block self-start rounded-full bg-[#D4537E] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
-                    {SHOP_BADGE_MAP[p.slug]?.label || "Featured"}
-                  </span>
-                  <h3 className="mb-2 font-serif text-xl font-bold text-white">
-                    {p.title}
-                  </h3>
-                  <p className="mb-4 flex-1 text-sm text-gray-400">
-                    {SHOP_OUTCOME_MAP[p.slug] || p.shortDescription}
-                  </p>
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <span className="text-3xl font-bold">{p.priceDisplay}</span>
-                      <span className="ml-2 text-xs text-gray-500">
-                        {p.templateCount} templates
+                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-[#0d0d0f]">
+                    <Image
+                      src={startHereCardImageSrc(p)}
+                      alt={p.title}
+                      fill
+                      className="object-cover object-center transition duration-300 group-hover:scale-[1.03]"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <span className="absolute left-3 top-3 z-10 rounded-full bg-[#D4537E] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md shadow-black/30">
+                      {SHOP_BADGE_MAP[p.slug]?.label || "Featured"}
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-5 sm:p-6">
+                    <h3 className="mb-2 font-serif text-xl font-bold text-white">
+                      {p.title}
+                    </h3>
+                    <p className="mb-4 flex-1 text-sm text-gray-400 line-clamp-4">
+                      {SHOP_OUTCOME_MAP[p.slug] || p.shortDescription}
+                    </p>
+                    <div className="flex flex-wrap items-end justify-between gap-3">
+                      <div>
+                        <span className="text-3xl font-bold">{p.priceDisplay}</span>
+                        <span className="ml-2 text-xs text-gray-500">
+                          {p.templateCount} templates
+                        </span>
+                      </div>
+                      <span className="rounded-lg bg-[#D4537E] px-5 py-2.5 text-sm font-bold text-white transition group-hover:bg-white group-hover:text-[#1A1A1A]">
+                        Get it now
                       </span>
                     </div>
-                    <span className="rounded-lg bg-[#D4537E] px-5 py-2.5 text-sm font-bold text-white transition group-hover:bg-white group-hover:text-[#1A1A1A]">
-                      Get it now
-                    </span>
                   </div>
                 </Link>
               ) : null,

@@ -407,7 +407,8 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "difficult-client-scripts": "/shop-previews/business-systems/difficult-client-scripts.png",
   "before-after-photo-system": "/shop-previews/business-systems/before-after-photo-system.png",
   "vendor-supplier-directory": "/shop-previews/business-systems/vendor-supplier-directory.png",
-  "facial-anatomy-nurse-injector": "/shop-previews/business-systems/facial-anatomy-nurse-injector.png",
+  "med-spa-starter-kit": "/shop-previews/playbooks/npa-promo-med-spa-starter-kit.png",
+  "facial-anatomy-nurse-injector": "/shop-previews/playbooks/npa-promo-facial-anatomy-nurse-injector.png",
   "npa-49-star-system": "/shop-previews/playbooks/npa-thumbnail-social-media-system.png",
 };
 

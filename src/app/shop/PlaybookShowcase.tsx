@@ -15,6 +15,22 @@ type PlaybookData = {
 
 const PLAYBOOKS: PlaybookData[] = [
   {
+    slug: "med-spa-starter-kit",
+    title: "The Med Spa Starter Kit",
+    subtitle: "Best for New Owners — Week-One Launch & Pricing",
+    price: "$59",
+    image: "/shop-previews/playbooks/npa-promo-med-spa-starter-kit.png",
+    peekItems: [
+      "Danielle’s front-door kit: what to tackle in week one so the practice actually launches",
+      "Pricing workbook — structure menus and packages without undercharging",
+      "Roadmap to the rest of NPA — know which templates to grab next as you scale",
+      "Operations framing from a working med spa, not generic startup blogs",
+      "One download — interactive HTML you can open, customize, print, or keep on screen",
+    ],
+    outcome:
+      "Open the doors with a plan, a pricing spine, and a clear map to everything else in the library.",
+  },
+  {
     slug: "injectors-playbook",
     title: "The Injector's Playbook",
     subtitle: "Botox & Filler Practice Guide",
@@ -29,6 +45,22 @@ const PLAYBOOKS: PlaybookData[] = [
     ],
     outcome:
       "Stop guessing. Start injecting with the confidence of a 10-year veteran.",
+  },
+  {
+    slug: "facial-anatomy-nurse-injector",
+    title: "Facial Anatomy for the Nurse Injector",
+    subtitle: "Danger Zones · Layers · What to Know at the Needle",
+    price: "$67",
+    image: "/shop-previews/playbooks/npa-promo-facial-anatomy-nurse-injector.png",
+    peekItems: [
+      "Facial layers and vectors explained the way injectors actually use them in the chair",
+      "Danger zones every nurse injector should know before treating",
+      "Illustrations and packaging-ready reference you can keep chair-side",
+      "Depth cues and landmarks that build confidence on neurotoxin and filler days",
+      "Educational reference — pair with supervised hands-on training and your scope of practice",
+    ],
+    outcome:
+      "Walk into every treatment knowing what lies under the skin — and where you need extra care.",
   },
   {
     slug: "new-injector-onboarding-kit",

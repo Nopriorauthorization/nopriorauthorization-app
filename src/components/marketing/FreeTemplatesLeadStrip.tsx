@@ -7,7 +7,8 @@ export function FreeTemplatesLeadStrip() {
       <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#D4537E]">Free pack</p>
       <p className="mt-2 font-serif text-lg font-bold text-white sm:text-xl">Want 10 free templates first?</p>
       <p className="mx-auto mt-2 max-w-lg text-sm text-gray-400">
-        Skin analysis, vitamin injection manual, patient handouts, and ops cheat sheets — email delivery from
+        Free treatment guide cheat sheet, vitamin injection manual, patient handouts, and ops cheat sheets —
+        email delivery from
         Danielle, same Resend setup as the shop.
       </p>
       <Link

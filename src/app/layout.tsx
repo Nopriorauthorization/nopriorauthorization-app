@@ -5,7 +5,7 @@ import { StickyEmailBar } from "@/components/shop/StickyEmailBar";
 import Providers from "@/components/layout/providers";
 import { MascotControllerProvider } from "@/context/MascotController";
 import type { Metadata, Viewport } from "next";
-import { NPA_PRIMARY_MESSAGE } from "@/config/npa-brand.config";
+import { NPA_OG_IMAGE_PATH, NPA_PRIMARY_MESSAGE } from "@/config/npa-brand.config";
 
 const SITE_URL = "https://nopriorauthorization.com";
 
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
     description: NPA_PRIMARY_MESSAGE,
     images: [
       {
-        url: `${SITE_URL}/og-image.png`,
-        width: 1200,
-        height: 630,
+        url: `${SITE_URL}${NPA_OG_IMAGE_PATH}`,
+        width: 1024,
+        height: 571,
         alt: "No Prior Authorization — The Operating System for the Modern Med Spa",
       },
     ],
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "No Prior Authorization | Med Spa Business Systems",
     description: NPA_PRIMARY_MESSAGE,
-    images: [`${SITE_URL}/og-image.png`],
+    images: [`${SITE_URL}${NPA_OG_IMAGE_PATH}`],
   },
   alternates: {
     canonical: SITE_URL,

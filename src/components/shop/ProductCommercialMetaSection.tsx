@@ -5,7 +5,7 @@ import {
   MEMBERSHIP_INCLUSION_LINE,
 } from "@/config/delivery-language.config";
 import { formatMembershipMonthlyUsd, MEMBERSHIP_CONFIG } from "@/config/growth-funnel.config";
-import { NPA_SITE_URL } from "@/config/npa-brand.config";
+import { NPA_OG_IMAGE_PATH, NPA_SITE_URL } from "@/config/npa-brand.config";
 import { getUpsellSlugAfterPurchase } from "@/config/post-purchase-upsell.config";
 import type { ShopProduct } from "@/lib/shop/products";
 import { getShopProductBySlug } from "@/lib/shop/products";
@@ -78,7 +78,7 @@ export function buildShopProductJsonLd(product: ShopProduct, slug: string) {
   const images =
     product.previewImages.length > 0
       ? product.previewImages.map((src) => (src.startsWith("http") ? src : `${NPA_SITE_URL}${src}`))
-      : [`${NPA_SITE_URL}/og-image.png`];
+      : [`${NPA_SITE_URL}${NPA_OG_IMAGE_PATH}`];
 
   return {
     "@context": "https://schema.org",

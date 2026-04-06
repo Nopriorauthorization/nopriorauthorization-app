@@ -1,11 +1,18 @@
-/** Eric's 10-pack — files under public/forms (absolute paths from site root). */
+/**
+ * Eric's 10-pack — files under public/forms (absolute paths from site root).
+ *
+ * Handoff (Eric): `/free-templates` + Resend delivery + `/free-templates/downloads` all read this list.
+ * Slot #1 is **NPA-Free-Treatment-Guide-Cheat-Sheet.html** — not NPA-Skin-Analysis-Free-Cheat-Sheet.html.
+ * The separate email-gated page `/shop/free/skin-analysis-cheat-sheet` still serves the skin analysis file
+ * via `/api/shop/lead-magnet` (token) if you keep that funnel live.
+ */
 export type FreeTemplateLeadRow = {
   label: string;
   fileName: string;
 };
 
 export const FREE_TEMPLATES_LEAD_MAGNET: FreeTemplateLeadRow[] = [
-  { label: "Skin Analysis Quick Reference", fileName: "NPA-Skin-Analysis-Free-Cheat-Sheet.html" },
+  { label: "Free Treatment Guide Cheat Sheet", fileName: "NPA-Free-Treatment-Guide-Cheat-Sheet.html" },
   { label: "Vitamin Injection Manual", fileName: "NPA-Vitamin-Injection-Manual-Free.html" },
   { label: "NAD+ Patient Handout", fileName: "NPA-Patient-Handout-NAD-v2.html" },
   { label: "Glutathione Patient Handout", fileName: "NPA-Patient-Handout-Glutathione.html" },

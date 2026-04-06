@@ -11,7 +11,7 @@ const SITE = "https://nopriorauthorization.com";
 export const metadata: Metadata = {
   title: "Download your 10 free templates | No Prior Authorization",
   description:
-    "Skin analysis, vitamin injection manual, patient handouts, and ops checklists — open each HTML in your browser.",
+    "Free treatment guide cheat sheet, vitamin injection manual, patient handouts, and ops checklists — open each HTML in your browser.",
   openGraph: {
     title: "Your 10 free NPA templates",
     url: `${SITE}/free-templates/downloads`,

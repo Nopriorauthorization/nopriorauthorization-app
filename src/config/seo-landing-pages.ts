@@ -4,6 +4,11 @@
  */
 
 import type { Metadata } from "next";
+import {
+  baseOpenGraphSiteFields,
+  defaultBrandOpenGraphImages,
+  defaultBrandTwitterImages,
+} from "@/lib/seo/brand-social-meta";
 
 const SITE = "https://nopriorauthorization.com";
 
@@ -635,15 +640,17 @@ export function buildSeoLandingMetadata(def: SeoLandingPageDef): Metadata {
     description: def.metaDescription,
     alternates: { canonical: url },
     openGraph: {
+      ...baseOpenGraphSiteFields(),
       title: def.metaTitle,
       description: def.metaDescription,
       url,
-      type: "website",
+      images: [...defaultBrandOpenGraphImages()],
     },
     twitter: {
       card: "summary_large_image",
       title: def.metaTitle,
       description: def.metaDescription,
+      images: [...defaultBrandTwitterImages()],
     },
     robots: { index: true, follow: true },
   };
@@ -653,18 +660,30 @@ export function seoLandingJsonLd(def: SeoLandingPageDef): Record<string, unknown
   const url = `${SITE}/${def.path}`;
   return {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: def.metaTitle,
-    description: def.metaDescription,
-    url,
-    isPartOf: {
-      "@type": "WebSite",
-      name: "No Prior Authorization",
-      url: SITE,
-    },
-    about: {
-      "@type": "Thing",
-      name: def.h1,
-    },
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+          { "@type": "ListItem", position: 2, name: "Shop", item: `${SITE}/shop` },
+          { "@type": "ListItem", position: 3, name: def.h1, item: url },
+        ],
+      },
+      {
+        "@type": "WebPage",
+        name: def.metaTitle,
+        description: def.metaDescription,
+        url,
+        isPartOf: {
+          "@type": "WebSite",
+          name: "No Prior Authorization",
+          url: SITE,
+        },
+        about: {
+          "@type": "Thing",
+          name: def.h1,
+        },
+      },
+    ],
   };
 }

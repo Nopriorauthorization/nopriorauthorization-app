@@ -1,6 +1,28 @@
 import { MetadataRoute } from "next";
+import { SEO_LANDING_PATHS } from "@/config/seo-landing-pages";
 
 const SITE_URL = "https://nopriorauthorization.com";
+
+const HIGH_INTENT_PATHS = [
+  "shop",
+  "shop/resources",
+  "shop/families",
+  "membership",
+  "ebooks",
+  "about",
+  "faq",
+  "contact",
+  "cheat-sheets",
+  "audit",
+  "informed-beauty-guide",
+  "free-templates",
+  "free-templates/downloads",
+  "custom",
+  "study-guides",
+  "nclex-bundle",
+  "storefront",
+  "campaign-videos",
+] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();
@@ -119,8 +141,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const shopAndFunnelPages: MetadataRoute.Sitemap = HIGH_INTENT_PATHS.map((path) => ({
+    url: `${SITE_URL}/${path}`,
+    lastModified: currentDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
+  const buyerIntentLandings: MetadataRoute.Sitemap = SEO_LANDING_PATHS.map((path) => ({
+    url: `${SITE_URL}/${path}`,
+    lastModified: currentDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
   return [
     ...publicPages,
+    ...shopAndFunnelPages,
+    ...buyerIntentLandings,
     ...featurePages,
     ...toolPages,
     ...providerPages,

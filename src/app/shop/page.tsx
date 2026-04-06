@@ -1,4 +1,11 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import { NPA_SITE_URL } from "@/config/npa-brand.config";
+import {
+  baseOpenGraphSiteFields,
+  defaultBrandOpenGraphImages,
+  defaultBrandTwitterImages,
+} from "@/lib/seo/brand-social-meta";
 import { GROWTH_SYSTEM_PRODUCT, GROWTH_SYSTEM_SLUG } from "@/config/growth-funnel.config";
 import {
   INFORMED_BEAUTY_GUIDE_SLUG,
@@ -17,14 +24,29 @@ import { ShopCategoryFilter } from "./ShopCategoryFilter";
 import { EmailCapture } from "./EmailCapture";
 import { PlaybookShowcase } from "./PlaybookShowcase";
 
-export const metadata = {
+const SHOP_CANONICAL = `${NPA_SITE_URL}/shop`;
+
+export const metadata: Metadata = {
   title: "Med Spa Templates & Consent Forms | NPA Shop",
   description:
     "Clinical consent forms, patient communication kits, aftercare cards, and social media templates. Instant download. Built for aesthetic providers.",
+  alternates: { canonical: SHOP_CANONICAL },
   openGraph: {
+    ...baseOpenGraphSiteFields(),
     title: "Med Spa Templates & Consent Forms | NPA Shop",
-    description: "Done-for-you templates for med spas, injectors, and aesthetic entrepreneurs. Instant download.",
+    description:
+      "Done-for-you templates for med spas, injectors, and aesthetic entrepreneurs. Instant download.",
+    url: SHOP_CANONICAL,
+    images: [...defaultBrandOpenGraphImages()],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Med Spa Templates & Consent Forms | NPA Shop",
+    description:
+      "Clinical consent forms, social templates, playbooks — instant download for med spas and injectors.",
+    images: [...defaultBrandTwitterImages()],
+  },
+  robots: { index: true, follow: true },
 };
 
 const QUICK_CATEGORIES: { label: string; href: string }[] = [

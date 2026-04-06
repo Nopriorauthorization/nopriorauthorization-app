@@ -1,5 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import {
+  baseOpenGraphSiteFields,
+  defaultBrandOpenGraphImages,
+  defaultBrandTwitterImages,
+} from "@/lib/seo/brand-social-meta";
 
 const SITE = "https://nopriorauthorization.com";
 
@@ -8,15 +13,24 @@ export const metadata: Metadata = {
   description:
     "Don't see exactly what you need? Danielle Alcala builds patient handouts, consent flows, SOPs, and clinical assets tailored to your state, menu, and brand — not a generic download.",
   openGraph: {
+    ...baseOpenGraphSiteFields(),
     title: "Custom builds for your med spa | No Prior Authorization",
     description:
       "Request a bespoke handout, kit, or ops asset. Built by a med spa owner, for med spa owners.",
     url: `${SITE}/custom`,
-    type: "website",
+    images: [...defaultBrandOpenGraphImages()],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Custom med spa templates | No Prior Authorization",
+    description:
+      "Bespoke handouts, consent flows, and ops assets — built for your practice.",
+    images: [...defaultBrandTwitterImages()],
   },
   alternates: {
     canonical: `${SITE}/custom`,
   },
+  robots: { index: true, follow: true },
 };
 
 const EXAMPLES = [

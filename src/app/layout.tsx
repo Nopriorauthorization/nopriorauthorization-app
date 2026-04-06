@@ -5,7 +5,11 @@ import { StickyEmailBar } from "@/components/shop/StickyEmailBar";
 import Providers from "@/components/layout/providers";
 import { MascotControllerProvider } from "@/context/MascotController";
 import type { Metadata, Viewport } from "next";
-import { NPA_OG_IMAGE_PATH, NPA_PRIMARY_MESSAGE } from "@/config/npa-brand.config";
+import {
+  NPA_OG_IMAGE_PATH,
+  NPA_PRIMARY_MESSAGE,
+  NPA_SHORT_TAGLINE,
+} from "@/config/npa-brand.config";
 
 const SITE_URL = "https://nopriorauthorization.com";
 
@@ -35,6 +39,20 @@ export const metadata: Metadata = {
     "Hello Gorgeous Med Spa",
     "med spa cheat sheet",
     "botox quick reference injector",
+    "aesthetic practice templates",
+    "medical spa SOP templates",
+    "semaglutide patient education",
+    "tirzepatide clinic templates",
+    "peptide therapy consent",
+    "med spa intake forms",
+    "injector training templates",
+    "laser IPL consent form",
+    "microneedling consent template",
+    "esthetician business templates",
+    "aesthetic nurse documentation",
+    "med spa HIPAA templates",
+    "patient journey kit med spa",
+    "Canva med spa templates",
   ],
   authors: [{ name: "Danielle Alcala", url: SITE_URL }],
   creator: "No Prior Authorization",
@@ -93,6 +111,7 @@ const schemaGraph = {
       name: "No Prior Authorization",
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
+      image: `${SITE_URL}${NPA_OG_IMAGE_PATH}`,
       description: NPA_PRIMARY_MESSAGE,
       founder: {
         "@type": "Person",
@@ -122,6 +141,7 @@ const schemaGraph = {
       "@type": "WebSite",
       name: "No Prior Authorization",
       url: SITE_URL,
+      description: NPA_SHORT_TAGLINE,
       potentialAction: {
         "@type": "SearchAction",
         target: `${SITE_URL}/shop?q={search_term_string}`,

@@ -1,5 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { NPA_SITE_URL } from "@/config/npa-brand.config";
+import {
+  baseOpenGraphSiteFields,
+  defaultBrandOpenGraphImages,
+  defaultBrandTwitterImages,
+} from "@/lib/seo/brand-social-meta";
 import { getShopProducts } from "@/lib/shop/products";
 import {
   SHOP_FAMILIES,
@@ -15,12 +22,29 @@ export function generateStaticParams() {
 
 type Props = { params: { familySlug: string } };
 
-export function generateMetadata({ params }: Props) {
+export function generateMetadata({ params }: Props): Metadata {
   const fam = getFamilyBySlug(params.familySlug);
   if (!fam) return { title: "Collection | NPA" };
+  const title = `${fam.title} templates & downloads | NPA`;
+  const url = `${NPA_SITE_URL}/shop/families/${params.familySlug}`;
   return {
-    title: `${fam.title} templates & downloads | NPA`,
+    title,
     description: fam.description,
+    alternates: { canonical: url },
+    openGraph: {
+      ...baseOpenGraphSiteFields(),
+      title,
+      description: fam.description,
+      url,
+      images: [...defaultBrandOpenGraphImages()],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: fam.description,
+      images: [...defaultBrandTwitterImages()],
+    },
+    robots: { index: true, follow: true },
   };
 }
 

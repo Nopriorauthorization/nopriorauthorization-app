@@ -1,11 +1,34 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { FAQ_PAGE_SECTIONS, buildFaqPageJsonLd } from "@/config/faq-page.config";
 import { NPA_PRIMARY_MESSAGE, NPA_SITE_URL } from "@/config/npa-brand.config";
+import {
+  baseOpenGraphSiteFields,
+  defaultBrandOpenGraphImages,
+  defaultBrandTwitterImages,
+} from "@/lib/seo/brand-social-meta";
 
-export const metadata = {
+const FAQ_CANONICAL = `${NPA_SITE_URL}/faq`;
+const FAQ_DESC = `${NPA_PRIMARY_MESSAGE} Products, delivery, Pro Membership, and licensing.`;
+
+export const metadata: Metadata = {
   title: "Frequently Asked Questions | No Prior Authorization",
-  description: `${NPA_PRIMARY_MESSAGE} Products, delivery, Pro Membership, and licensing.`,
-  alternates: { canonical: `${NPA_SITE_URL}/faq` },
+  description: FAQ_DESC,
+  alternates: { canonical: FAQ_CANONICAL },
+  openGraph: {
+    ...baseOpenGraphSiteFields(),
+    title: "FAQ | No Prior Authorization",
+    description: FAQ_DESC,
+    url: FAQ_CANONICAL,
+    images: [...defaultBrandOpenGraphImages()],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ | No Prior Authorization",
+    description: FAQ_DESC,
+    images: [...defaultBrandTwitterImages()],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function FaqPage() {

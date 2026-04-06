@@ -1,5 +1,16 @@
 /** Buyer-intent SEO landings — explicit entries so they always ship in sitemap after build */
 const SEO_LANDING_PATHS = [
+  "/shop",
+  "/shop/resources",
+  "/shop/families",
+  "/membership",
+  "/ebooks",
+  "/about",
+  "/faq",
+  "/contact",
+  "/cheat-sheets",
+  "/audit",
+  "/informed-beauty-guide",
   "/free-templates",
   "/free-templates/downloads",
   "/custom",

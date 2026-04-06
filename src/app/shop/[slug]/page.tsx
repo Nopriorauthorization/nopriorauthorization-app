@@ -15,7 +15,13 @@ import { getFamilyByProductSlug } from "@/lib/shop/families";
 import { FreeTemplatesLeadStrip } from "@/components/marketing/FreeTemplatesLeadStrip";
 import { CHEAT_SHEET_BONUS } from "@/config/cheat-sheet-bonus.config";
 import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
+import {
+  baseOpenGraphSiteFields,
+  openGraphImagesForProduct,
+  twitterImagesForProduct,
+} from "@/lib/seo/brand-social-meta";
 import { buildProductMetaDescription, buildProductMetaTitle } from "@/lib/seo/shop-product-seo";
+import { NPA_SITE_URL } from "@/config/npa-brand.config";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
 import { resolveShopFunnelForSlug } from "@/lib/shop/funnel-resolve";
 import { isShopProductIncludedInPro } from "@/lib/membership/pro-catalog";
@@ -39,19 +45,24 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   if (!product) return {};
   const title = buildProductMetaTitle(product);
   const description = buildProductMetaDescription(product);
+  const canonical = `${NPA_SITE_URL}/shop/${params.slug}`;
   return {
     title,
     description,
     robots: { index: true, follow: true },
+    alternates: { canonical },
     openGraph: {
+      ...baseOpenGraphSiteFields(),
       title,
       description,
-      type: "website",
+      url: canonical,
+      images: openGraphImagesForProduct(product),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: twitterImagesForProduct(product),
     },
   };
 }

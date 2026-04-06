@@ -1,10 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { createRoot, type Root } from "react-dom/client";
 import { INFORMED_BEAUTY_GUIDE_SLUG } from "@/config/informed-beauty-guide.config";
 import { CheckoutButton } from "@/app/shop/[slug]/CheckoutButton";
 import "./informed-beauty-sales-scoped.css";
+
+const PROMO_SRC = "/images/informed-beauty-guide-promo.png";
+const PROMO_ALT =
+  "The Informed Beauty Guide — skincare, lasers, injectables, hormones, and wellness. Become an informed patient before your next treatment. Only $49, instant access. By Danielle Alcala, Hello Gorgeous Med Spa.";
 
 const FREE_CHEAT_HREF = "/forms/NPA-Free-Treatment-Guide-Cheat-Sheet.html";
 
@@ -128,11 +133,24 @@ export function InformedBeautyGuideSalesHydrated({ bodyHtml }: { bodyHtml: strin
   }, [stickyVisible, bodyHtml]);
 
   return (
-    <div
-      ref={hostRef}
-      id="npa-ibg-sales"
-      className="npa-ibg-sales-root -mx-4 pb-28 sm:-mx-6"
-      dangerouslySetInnerHTML={{ __html: bodyHtml }}
-    />
+    <div className="ibg-page-with-promo">
+      <figure className="border-b border-white/10 bg-[#1a0a10] px-4 py-6 sm:px-6 sm:py-8">
+        <Image
+          src={PROMO_SRC}
+          alt={PROMO_ALT}
+          width={1024}
+          height={682}
+          className="mx-auto h-auto w-full max-w-5xl rounded-lg shadow-lg shadow-black/40"
+          priority
+          sizes="(max-width: 1024px) 100vw, 1024px"
+        />
+      </figure>
+      <div
+        ref={hostRef}
+        id="npa-ibg-sales"
+        className="npa-ibg-sales-root -mx-4 pb-28 sm:-mx-6"
+        dangerouslySetInnerHTML={{ __html: bodyHtml }}
+      />
+    </div>
   );
 }

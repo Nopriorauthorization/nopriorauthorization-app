@@ -1,8 +1,9 @@
 export const dynamic = "force-dynamic";
 
 import crypto from "crypto";
-import { NextResponse } from "next/server";
-import { getAdminUser } from "@/lib/auth/admin-guard";
+import { NextRequest, NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth/auth-options";
 import { readFacebookEnv } from "@/lib/facebook/env";
 
 const FB_SCOPES =
@@ -12,22 +13,27 @@ const FB_SCOPES =
  * Starts Facebook Login for the Page configured in FB_PAGE_ID.
  * Requires FB_APP_ID, FB_REDIRECT_URI, FB_PAGE_ID (and FB_APP_SECRET on callback).
  */
-export async function GET() {
-  const admin = await getAdminUser();
-  if (!admin) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+function redirectSocialWithError(request: NextRequest, message: string) {
+  const u = new URL("/admin/social", request.nextUrl.origin);
+  u.searchParams.set("fb_error", message);
+  return NextResponse.redirect(u);
+}
+
+export async function GET(request: NextRequest) {
+  const session = await getServerSession(authOptions).catch(() => null);
+  if (!session?.user?.id) {
+    const u = new URL("/login", request.nextUrl.origin);
+    u.searchParams.set("callbackUrl", "/admin/social");
+    return NextResponse.redirect(u);
   }
 
   const appId = readFacebookEnv("FB_APP_ID");
   const redirectUri = readFacebookEnv("FB_REDIRECT_URI");
   const pageId = readFacebookEnv("FB_PAGE_ID");
   if (!appId || !redirectUri || !pageId) {
-    return NextResponse.json(
-      {
-        error:
-          "Missing FB_APP_ID, FB_REDIRECT_URI, or FB_PAGE_ID in environment.",
-      },
-      { status: 500 }
+    return redirectSocialWithError(
+      request,
+      "Missing FB_APP_ID, FB_REDIRECT_URI, or FB_PAGE_ID in server environment. Add them in Vercel (or .env.local) then redeploy.",
     );
   }
 

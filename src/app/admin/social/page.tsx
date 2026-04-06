@@ -15,14 +15,23 @@ export default async function AdminSocialPage() {
   const appSecret = readFacebookEnv("FB_APP_SECRET");
   const redirectUri = readFacebookEnv("FB_REDIRECT_URI");
 
-  const row = pageId
-    ? await prisma.facebookPageCredential.findUnique({
+  let oauthConnected = false;
+  let credentialLoadError: string | null = null;
+  if (pageId) {
+    try {
+      const row = await prisma.facebookPageCredential.findUnique({
         where: { pageId },
         select: { accessToken: true },
-      })
-    : null;
-
-  const oauthConnected = Boolean(row?.accessToken?.trim());
+      });
+      oauthConnected = Boolean(row?.accessToken?.trim());
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "Unknown error";
+      credentialLoadError =
+        msg.includes("does not exist") || msg.includes("FacebookPageCredential")
+          ? "Facebook token table missing — run Prisma migrations on this database (FacebookPageCredential)."
+          : `Could not load saved Facebook token: ${msg}`;
+    }
+  }
   const fbReady = Boolean(pageId && (oauthConnected || Boolean(envTok)));
   const canStartOAuth = Boolean(appId && appSecret && redirectUri && pageId);
   const pageIdSuffix =
@@ -64,6 +73,7 @@ export default async function AdminSocialPage() {
           storageReady={storageReady}
           oauthConnected={oauthConnected}
           canStartOAuth={canStartOAuth}
+          credentialLoadError={credentialLoadError}
         />
       </div>
     </div>

@@ -20,14 +20,33 @@ export async function GET() {
   const appSecret = readFacebookEnv("FB_APP_SECRET");
   const redirectUri = readFacebookEnv("FB_REDIRECT_URI");
 
-  const row = pageId
-    ? await prisma.facebookPageCredential.findUnique({
+  let oauthConnected = false;
+  if (pageId) {
+    try {
+      const row = await prisma.facebookPageCredential.findUnique({
         where: { pageId },
         select: { accessToken: true },
-      })
-    : null;
-
-  const oauthConnected = Boolean(row?.accessToken?.trim());
+      });
+      oauthConnected = Boolean(row?.accessToken?.trim());
+    } catch {
+      return NextResponse.json(
+        {
+          error:
+            "Database error loading Facebook credentials — confirm migrations are applied (FacebookPageCredential).",
+          fbReady: Boolean(pageId && readFacebookEnv("FB_PAGE_ACCESS_TOKEN").trim()),
+          pageIdSuffix: pageId.length > 4 ? pageId.slice(-4) : pageId || null,
+          oauthConnected: false,
+          canStartOAuth: Boolean(
+            readFacebookEnv("FB_APP_ID") &&
+              readFacebookEnv("FB_APP_SECRET") &&
+              readFacebookEnv("FB_REDIRECT_URI") &&
+              pageId,
+          ),
+        },
+        { status: 200 },
+      );
+    }
+  }
   const fbReady = Boolean(
     pageId && (oauthConnected || Boolean(envTok.trim()))
   );

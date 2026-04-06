@@ -21,6 +21,8 @@ export function FacebookSocialPanel(props: {
   storageReady: boolean;
   oauthConnected: boolean;
   canStartOAuth: boolean;
+  /** Server could not read prisma.facebookPageCredential (migrations / DB). */
+  credentialLoadError?: string | null;
 }) {
   const [caption, setCaption] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -35,13 +37,27 @@ export function FacebookSocialPanel(props: {
   const [pageIdSuffix, setPageIdSuffix] = useState(props.pageIdSuffix);
   const [oauthConnected, setOauthConnected] = useState(props.oauthConnected);
   const [canStartOAuth, setCanStartOAuth] = useState(props.canStartOAuth);
+  const [queueError, setQueueError] = useState<string | null>(null);
+  const [statusRefreshError, setStatusRefreshError] = useState<string | null>(null);
 
   const loadPosts = useCallback(async () => {
     setLoadingList(true);
+    setQueueError(null);
     try {
       const res = await fetch("/api/admin/scheduled-posts?limit=40");
-      const data = await res.json();
-      if (res.ok && Array.isArray(data.posts)) setPosts(data.posts);
+      const data = (await res.json()) as { posts?: unknown; error?: string };
+      if (res.ok && Array.isArray(data.posts)) {
+        setPosts(data.posts as ScheduledRow[]);
+      } else {
+        setQueueError(
+          data.error ??
+            (res.status === 403
+              ? "Not authorized — sign in and ensure your account has admin access."
+              : `Queue API failed (HTTP ${res.status}).`),
+        );
+      }
+    } catch {
+      setQueueError("Could not load the post queue — network or server error.");
     } finally {
       setLoadingList(false);
     }
@@ -85,19 +101,37 @@ export function FacebookSocialPanel(props: {
           pageIdSuffix?: string | null;
           oauthConnected?: boolean;
           canStartOAuth?: boolean;
+          error?: string;
         };
-        if (!cancelled && res.ok && typeof data.fbReady === "boolean") {
-          setFbReady(data.fbReady);
-          setPageIdSuffix(data.pageIdSuffix ?? null);
-          if (typeof data.oauthConnected === "boolean") {
-            setOauthConnected(data.oauthConnected);
-          }
-          if (typeof data.canStartOAuth === "boolean") {
-            setCanStartOAuth(data.canStartOAuth);
+        if (!cancelled) {
+          if (res.ok && typeof data.fbReady === "boolean") {
+            setStatusRefreshError(
+              typeof data.error === "string" && data.error.trim()
+                ? data.error
+                : null,
+            );
+            setFbReady(data.fbReady);
+            setPageIdSuffix(data.pageIdSuffix ?? null);
+            if (typeof data.oauthConnected === "boolean") {
+              setOauthConnected(data.oauthConnected);
+            }
+            if (typeof data.canStartOAuth === "boolean") {
+              setCanStartOAuth(data.canStartOAuth);
+            }
+          } else if (!res.ok) {
+            const err = (data as { error?: string }).error;
+            setStatusRefreshError(
+              err ??
+                (res.status === 403
+                  ? "Posting status: not authorized (sign in as admin)."
+                  : `Posting status failed (HTTP ${res.status}).`),
+            );
           }
         }
       } catch {
-        /* keep SSR props */
+        if (!cancelled) {
+          setStatusRefreshError("Could not refresh Facebook status from the server.");
+        }
       }
     })();
     return () => {
@@ -305,6 +339,17 @@ export function FacebookSocialPanel(props: {
 
   return (
     <div className="space-y-10">
+      {props.credentialLoadError ? (
+        <div className="rounded-xl border border-red-500/50 bg-red-950/40 p-4 text-sm text-red-100">
+          <strong className="font-semibold">Database</strong> — {props.credentialLoadError}
+        </div>
+      ) : null}
+      {statusRefreshError ? (
+        <div className="rounded-xl border border-amber-500/40 bg-amber-950/30 p-4 text-sm text-amber-100">
+          {statusRefreshError}
+        </div>
+      ) : null}
+
       <div
         className={`rounded-xl border p-5 ${
           fbReady
@@ -521,7 +566,9 @@ export function FacebookSocialPanel(props: {
             minute on Vercel).
           </p>
         </div>
-        {loadingList ? (
+        {queueError ? (
+          <p className="p-4 text-sm text-red-300">{queueError}</p>
+        ) : loadingList ? (
           <p className="p-4 text-sm text-gray-500">Loading…</p>
         ) : posts.length === 0 ? (
           <p className="p-4 text-sm text-gray-500">No posts yet.</p>

@@ -68,11 +68,20 @@ export function InformedBeautyGuideSalesHydrated({ bodyHtml }: { bodyHtml: strin
     const host = hostRef.current;
     if (!host) return;
     const scrollCheckout = () => {
-      host.querySelector("#checkout")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      host
+        .querySelector("#checkout")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+    const clickTargetElement = (target: EventTarget | null): Element | null => {
+      if (!target || !(target instanceof Node)) return null;
+      return target instanceof Element ? target : target.parentElement;
     };
     const onClick = (e: MouseEvent) => {
-      const t = (e.target as HTMLElement).closest("[data-npa-ibg-scroll-checkout]");
-      if (t) {
+      const el = clickTargetElement(e.target);
+      if (!el) return;
+      const sticky = el.closest("[data-npa-ibg-scroll-checkout]");
+      const checkoutHash = el.closest('a[href="#checkout"]');
+      if (sticky || checkoutHash) {
         e.preventDefault();
         scrollCheckout();
       }

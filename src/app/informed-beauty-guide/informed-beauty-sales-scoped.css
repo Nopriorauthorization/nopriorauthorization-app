@@ -115,6 +115,7 @@
 
 /* ── CTA SECTION ── */
 #npa-ibg-sales .cta-section{background:#1A1A1A;padding:80px 24px;text-align:center;}
+#npa-ibg-sales #checkout{scroll-margin-top:5.5rem;}
 #npa-ibg-sales .cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,56px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:8px;}
 #npa-ibg-sales .cta-section .price-display{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;color:#D4537E;line-height:1;margin:20px 0 6px;}
 #npa-ibg-sales .cta-section .price-note{font-size:14px;color:rgba(255,255,255,.35);margin-bottom:32px;letter-spacing:.08em;text-transform:uppercase;}
@@ -136,7 +137,7 @@
 #npa-ibg-sales footer .footer-logo{font-family:'Playfair Display',serif;font-size:18px;color:#D4537E;font-weight:700;margin-bottom:10px;}
 
 /* ── STICKY CTA BAR ── */
-#npa-ibg-sales .sticky-bar{position:fixed;bottom:0;left:0;right:0;background:#D4537E;padding:14px 24px;display:flex;align-items:center;justify-content:center;gap:24px;z-index:100;transform:translateY(100%);transition:transform .3s;box-shadow:0 -4px 24px rgba(0,0,0,.4);}
+#npa-ibg-sales .sticky-bar{position:fixed;bottom:0;left:0;right:0;background:#D4537E;padding:14px 24px;display:flex;align-items:center;justify-content:center;gap:24px;z-index:200;transform:translateY(100%);transition:transform .3s;box-shadow:0 -4px 24px rgba(0,0,0,.4);}
 #npa-ibg-sales .sticky-bar.visible{transform:translateY(0);}
 #npa-ibg-sales .sticky-bar p{font-size:15px;font-weight:700;color:#fff;}
 #npa-ibg-sales .sticky-bar .sticky-btn{background:#fff;color:#D4537E;font-size:14px;font-weight:700;padding:10px 24px;border-radius:5px;text-decoration:none;white-space:nowrap;border:none;cursor:pointer;font:inherit;}

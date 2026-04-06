@@ -158,3 +158,13 @@
   background: #D4537E !important;
   color: #fff !important;
 }
+/* Funnel landing uses <a> instead of <button> */
+#npa-ibg-sales .ibg-checkout-secondary a {
+  background: transparent !important;
+  color: #D4537E !important;
+  border: 2px solid #D4537E !important;
+}
+#npa-ibg-sales .ibg-checkout-secondary a:hover {
+  background: #D4537E !important;
+  color: #fff !important;
+}

@@ -13,23 +13,37 @@ const PROMO_ALT =
 
 const FREE_CHEAT_HREF = "/forms/NPA-Free-Treatment-Guide-Cheat-Sheet.html";
 
-function IbgCheckoutMount() {
+function IbgCheckoutMount({
+  priceDisplay,
+  funnelTrackingEnabled,
+  useFunnelLanding,
+}: {
+  priceDisplay: string;
+  funnelTrackingEnabled: boolean;
+  useFunnelLanding: boolean;
+}) {
   return (
     <div className="ibg-checkout-stack flex flex-col items-center gap-4 py-2">
-      <div className="ibg-checkout-primary w-full max-w-md [&_button]:w-full [&_button]:justify-center">
+      <div className="ibg-checkout-primary w-full max-w-md [&_button]:w-full [&_button]:justify-center [&_a]:w-full [&_a]:justify-center [&_a]:text-center">
         <CheckoutButton
           slug={INFORMED_BEAUTY_GUIDE_SLUG}
-          label="Download The Informed Beauty Guide — $49"
+          label={`Buy now — ${priceDisplay}`}
           funnelEventOnCheckout="funnel_informed_beauty_checkout"
           funnelEventParams={{ source: "informed_beauty_sales_html" }}
+          funnelTrackingEnabled={funnelTrackingEnabled}
+          useFunnelLanding={useFunnelLanding}
+          proConversionUpsell
         />
       </div>
-      <div className="ibg-checkout-secondary w-full max-w-md [&_button]:w-full [&_button]:justify-center">
+      <div className="ibg-checkout-secondary w-full max-w-md [&_button]:w-full [&_button]:justify-center [&_a]:w-full [&_a]:justify-center [&_a]:text-center">
         <CheckoutButton
           slug={INFORMED_BEAUTY_GUIDE_SLUG}
-          label="Take Control of Your Care — Starting Today — $49"
+          label={`Unlock the full guide — ${priceDisplay}`}
           funnelEventOnCheckout="funnel_informed_beauty_checkout"
           funnelEventParams={{ source: "informed_beauty_sales_html_secondary" }}
+          funnelTrackingEnabled={funnelTrackingEnabled}
+          useFunnelLanding={useFunnelLanding}
+          proConversionUpsell
         />
       </div>
       <p className="max-w-md text-center text-xs leading-relaxed text-white/45">
@@ -47,7 +61,17 @@ function IbgCheckoutMount() {
   );
 }
 
-export function InformedBeautyGuideSalesHydrated({ bodyHtml }: { bodyHtml: string }) {
+export function InformedBeautyGuideSalesHydrated({
+  bodyHtml,
+  priceDisplay,
+  funnelTrackingEnabled = false,
+  useFunnelLanding = false,
+}: {
+  bodyHtml: string;
+  priceDisplay: string;
+  funnelTrackingEnabled?: boolean;
+  useFunnelLanding?: boolean;
+}) {
   const hostRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<Root | null>(null);
   const [stickyVisible, setStickyVisible] = useState(false);
@@ -59,7 +83,13 @@ export function InformedBeautyGuideSalesHydrated({ bodyHtml }: { bodyHtml: strin
     const mount = host.querySelector("#npa-ibg-checkout-root");
     if (!mount) return;
     const root = createRoot(mount);
-    root.render(<IbgCheckoutMount />);
+    root.render(
+      <IbgCheckoutMount
+        priceDisplay={priceDisplay}
+        funnelTrackingEnabled={funnelTrackingEnabled}
+        useFunnelLanding={useFunnelLanding}
+      />,
+    );
     rootRef.current = root;
     return () => {
       queueMicrotask(() => {
@@ -67,7 +97,7 @@ export function InformedBeautyGuideSalesHydrated({ bodyHtml }: { bodyHtml: strin
         rootRef.current = null;
       });
     };
-  }, [bodyHtml]);
+  }, [bodyHtml, priceDisplay, funnelTrackingEnabled, useFunnelLanding]);
 
   useEffect(() => {
     const host = hostRef.current;

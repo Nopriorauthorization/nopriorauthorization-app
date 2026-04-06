@@ -6,11 +6,10 @@ const SALES_FILE = path.join(
   "content/informed-beauty-guide/NPA-Informed-Beauty-Guide-Sales-Page.html",
 );
 
-/**
- * Body inner HTML from the authored sales page, with scripts stripped and
- * checkout CTAs replaced by a React mount node. Copy stays word-for-word otherwise.
- */
-export function getInformedBeautySalesBodyHtml(): string {
+/** Split marker — checkout UI is real React between these fragments (avoids createRoot + innerHTML wipes). */
+const CHECKOUT_SPLIT_MARKER = "<!--NPA_IBG_CHECKOUT_SPLIT-->";
+
+function buildProcessedSalesBody(): string {
   const raw = fs.readFileSync(SALES_FILE, "utf8");
   const bodyMatch = raw.match(/<body[^>]*>([\s\S]*)<\/body>/i);
   if (!bodyMatch) {
@@ -30,9 +29,26 @@ export function getInformedBeautySalesBodyHtml(): string {
       "[informed-beauty-guide] sales page: expected dual CTA anchors — re-sync content file",
     );
   }
-  body = body.replace(
-    dualCta,
-    "\n    <div id=\"npa-ibg-checkout-root\"></div>\n",
-  );
+  body = body.replace(dualCta, `\n    ${CHECKOUT_SPLIT_MARKER}\n`);
   return body.trim();
+}
+
+/** Before / after CTA block so React can render `CheckoutButton` between (no createRoot). */
+export function getInformedBeautySalesBodyParts(): { before: string; after: string } {
+  const body = buildProcessedSalesBody();
+  const parts = body.split(CHECKOUT_SPLIT_MARKER);
+  if (parts.length !== 2) {
+    throw new Error("[informed-beauty-guide] sales page: checkout split marker missing");
+  }
+  return { before: parts[0].trimEnd(), after: parts[1].trimStart() };
+}
+
+/**
+ * Body inner HTML from the authored sales page, with scripts stripped and
+ * checkout CTAs replaced by a React mount node. Copy stays word-for-word otherwise.
+ * @deprecated Prefer getInformedBeautySalesBodyParts + inline React checkout.
+ */
+export function getInformedBeautySalesBodyHtml(): string {
+  const { before, after } = getInformedBeautySalesBodyParts();
+  return `${before}\n    <div id="npa-ibg-checkout-root"></div>\n${after}`;
 }

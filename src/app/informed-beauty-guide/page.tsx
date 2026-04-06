@@ -5,7 +5,7 @@ import {
   INFORMED_BEAUTY_TITLE,
 } from "@/config/informed-beauty-guide.config";
 import { NPA_SITE_URL } from "@/config/npa-brand.config";
-import { getInformedBeautySalesBodyHtml } from "@/lib/informed-beauty-guide/sales-page-html";
+import { getInformedBeautySalesBodyParts } from "@/lib/informed-beauty-guide/sales-page-html";
 import { getShopProductBySlug } from "@/lib/shop/products";
 import { resolveShopFunnelForSlug } from "@/lib/shop/funnel-resolve";
 import { InformedBeautyGuideSalesHydrated } from "./InformedBeautyGuideSalesHydrated";
@@ -47,7 +47,8 @@ export const metadata: Metadata = {
 };
 
 export default async function InformedBeautyGuidePage() {
-  const bodyHtml = getInformedBeautySalesBodyHtml();
+  const { before: salesBeforeCheckout, after: salesAfterCheckout } =
+    getInformedBeautySalesBodyParts();
   const funnel = await resolveShopFunnelForSlug(INFORMED_BEAUTY_GUIDE_SLUG);
   const product = getShopProductBySlug(INFORMED_BEAUTY_GUIDE_SLUG);
   const priceDisplay = product?.priceDisplay ?? `$${(INFORMED_BEAUTY_PRICE_CENTS / 100).toFixed(0)}`;
@@ -77,10 +78,10 @@ export default async function InformedBeautyGuidePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <InformedBeautyGuideSalesHydrated
-        bodyHtml={bodyHtml}
+        salesBeforeCheckout={salesBeforeCheckout}
+        salesAfterCheckout={salesAfterCheckout}
         priceDisplay={priceDisplay}
         funnelTrackingEnabled={funnel.enabled}
-        useFunnelLanding={funnel.enabled && funnel.useDedicatedLanding}
       />
     </>
   );

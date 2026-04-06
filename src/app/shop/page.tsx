@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { NPA_SITE_URL } from "@/config/npa-brand.config";
@@ -289,6 +290,23 @@ export default function ShopPage() {
               Top picks &amp; best sellers
             </h2>
           </div>
+          <Link
+            href="/informed-beauty-guide"
+            className="group relative mb-10 block overflow-hidden rounded-2xl border-2 border-[#D4537E]/45 shadow-lg shadow-[#D4537E]/12 ring-1 ring-white/5 transition hover:border-[#D4537E]/75 hover:shadow-[#D4537E]/20"
+          >
+            <span className="absolute left-4 top-4 z-10 rounded-full bg-[#D4537E] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+              Featured · Patient education
+            </span>
+            <Image
+              src="/images/informed-beauty-guide-promo.png"
+              alt="The Informed Beauty Guide — The guide to know what you are asking for and why, $49"
+              width={1024}
+              height={682}
+              className="h-auto w-full"
+              priority
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </Link>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {startHereProducts.map((p) =>
               p ? (

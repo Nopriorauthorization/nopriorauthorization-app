@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   formatMembershipAnnualUsd,
@@ -29,6 +30,30 @@ export function NpaConversionHome() {
           {NPA_PRIMARY_MESSAGE} Shop print-ready templates and playbooks, or join{" "}
           <strong className="text-gray-200">Pro Membership</strong> for the full library — built from a real med spa
           practice, not generic agency templates.
+        </p>
+
+        <Link
+          href="/informed-beauty-guide"
+          className="group relative mx-auto mt-10 block max-w-3xl overflow-hidden rounded-2xl border-2 border-[#D4537E]/45 shadow-lg shadow-[#D4537E]/15 ring-1 ring-white/5 transition hover:border-[#D4537E]/80 hover:shadow-[#D4537E]/25"
+        >
+          <Image
+            src="/images/informed-beauty-guide-promo.png"
+            alt="The Informed Beauty Guide — skincare, lasers, injectables, hormones; $49 instant access"
+            width={1024}
+            height={682}
+            className="h-auto w-full"
+            priority
+            sizes="(max-width: 768px) 100vw, 768px"
+          />
+        </Link>
+        <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-400">
+          Featured:{" "}
+          <Link href="/informed-beauty-guide" className="font-medium text-[#D4537E] hover:underline">
+            The Informed Beauty Guide
+          </Link>
+          {" "}
+          — patient education before your next treatment.{" "}
+          <span className="text-gray-500">$49 · instant access</span>
         </p>
 
         <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">

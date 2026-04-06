@@ -87,9 +87,24 @@ export async function POST(req: NextRequest) {
       raw && raw.length <= 128 ? raw.slice(0, 128) : randomUUID();
   }
 
+  let checkoutUrl: string;
+  let paymentLinkId: string;
   try {
-    const { url, paymentLinkId } = await createCheckoutLinkBundle(lineItems, redirectUrl);
+    const out = await createCheckoutLinkBundle(lineItems, redirectUrl);
+    checkoutUrl = out.url;
+    paymentLinkId = out.paymentLinkId;
+  } catch (err) {
+    console.error("[shop/checkout] Square error:", err);
+    const debugCheckout = process.env.NPA_DEBUG_CHECKOUT === "1";
+    const detail =
+      debugCheckout && err instanceof Error ? err.message.slice(0, 500) : undefined;
+    return NextResponse.json(
+      { error: "Failed to create checkout session", ...(detail ? { detail } : {}) },
+      { status: 500 },
+    );
+  }
 
+  try {
     await prisma.checkoutAttempt.create({
       data: {
         productSlug: product.slug,
@@ -101,13 +116,15 @@ export async function POST(req: NextRequest) {
         postCheckoutToken,
       },
     });
-
-    return NextResponse.json({ url, funnelSessionId: funnel.enabled ? funnelSessionId : undefined });
-  } catch (err) {
-    console.error("[shop/checkout] Square error:", err);
-    return NextResponse.json(
-      { error: "Failed to create checkout session" },
-      { status: 500 },
+  } catch (dbErr) {
+    console.error(
+      "[shop/checkout] CheckoutAttempt DB write failed — Square URL is still valid; fix DATABASE_URL / migrations:",
+      dbErr,
     );
   }
+
+  return NextResponse.json({
+    url: checkoutUrl,
+    funnelSessionId: funnel.enabled ? funnelSessionId : undefined,
+  });
 }

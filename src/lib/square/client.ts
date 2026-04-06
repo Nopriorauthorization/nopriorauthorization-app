@@ -27,7 +27,7 @@ function headers(): Record<string, string> {
   return {
     Authorization: `Bearer ${getAccessToken()}`,
     "Content-Type": "application/json",
-    "Square-Version": "2024-01-18",
+    "Square-Version": "2026-01-22",
   };
 }
 
@@ -63,7 +63,7 @@ export async function createCheckoutLink(
       checkout_options: {
         redirect_url: redirectUrl,
       },
-      payment_note: `npa:${product.slug}`,
+      payment_note: buildSquarePaymentNote([product.slug]),
     }),
   });
 

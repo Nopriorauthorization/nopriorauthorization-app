@@ -137,7 +137,7 @@ export function CheckoutButton({
           funnelSessionId: funnelSessionId || undefined,
         }),
       });
-      const data = (await res.json()) as { url?: string; error?: string };
+      const data = (await res.json()) as { url?: string; error?: string; detail?: string };
       if (data.url) {
         if (funnelSessionId) {
           void trackProductFunnelStep(funnelSessionId, slug, "checkout_redirect", {
@@ -148,7 +148,8 @@ export function CheckoutButton({
         window.location.href = data.url;
         return;
       }
-      setError(data.error || "Checkout failed. Please try again.");
+      const msg = data.error || "Checkout failed. Please try again.";
+      setError(data.detail ? `${msg} (${data.detail})` : msg);
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {

@@ -2,6 +2,8 @@
  * Square payment_note encoding for NPA checkout.
  * Single: npa:slug
  * Multi (main + bumps, one charge): npa:multi:slug1|slug2|slug3
+ *
+ * Square max length is 500 chars — keep bump lists reasonable; webhook uses this for fulfillment.
  */
 export function buildSquarePaymentNote(slugs: string[]): string {
   const clean = slugs.map((s) => s.trim()).filter(Boolean);

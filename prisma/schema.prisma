@@ -95,6 +95,8 @@ model CheckoutAttempt {
   paymentLinkId  String?
   // shop | study_guides
   source         String    @default("shop")
+  funnelSessionId String?
+  selectedBumpSlugs String[] @default([])
   createdAt      DateTime  @default(now())
   reminderSentAt DateTime?
   completedAt    DateTime?
@@ -102,6 +104,36 @@ model CheckoutAttempt {
   @@index([buyerEmail, productSlug])
   @@index([createdAt])
   @@index([completedAt, reminderSentAt])
+  @@index([funnelSessionId])
+}
+
+/// Admin-configurable checkout funnel: product override or category default (one row per productSlug OR categoryDefault).
+model ShopProductFunnel {
+  id                  String   @id @default(cuid())
+  productSlug         String?  @unique
+  categoryDefault     String?  @unique
+  enabled             Boolean  @default(true)
+  useDedicatedLanding Boolean  @default(true)
+  bumpSlugs           String[]
+  postUpsellSlugs     String[]
+  /// post_purchase | thank_you | membership
+  finalRedirect       String   @default("post_purchase")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+/// Funnel analytics: step views, bump attach, upsell, revenue attribution (sessionId = client UUID).
+model FunnelAnalyticsEvent {
+  id           String   @id @default(cuid())
+  sessionId    String
+  primarySlug  String
+  step         String
+  revenueCents Int?
+  metadata     Json?
+  createdAt    DateTime @default(now())
+
+  @@index([sessionId, createdAt])
+  @@index([primarySlug, step, createdAt])
 }
 
 model Subscription {

@@ -3,14 +3,28 @@ import { redirect } from "next/navigation";
 import { getUpsellSlugAfterPurchase } from "@/config/post-purchase-upsell.config";
 import { STUDY_GUIDE_NCLEX, STUDY_GUIDE_NCLEX_SLUG } from "@/config/study-guides.config";
 import { getShopProductBySlug } from "@/lib/shop/products";
-import { PostPurchaseClient } from "./PostPurchaseClient";
+import { resolveShopFunnelForSlug } from "@/lib/shop/funnel-resolve";
+import type { FunnelFinalRedirect } from "@/lib/shop/funnel-types";
+import { PostPurchaseClient, type PostPurchaseUpsellPayload } from "./PostPurchaseClient";
 
 export const metadata: Metadata = {
   title: "Thank you — complete your library | No Prior Authorization",
   robots: { index: false, follow: true },
 };
 
-export default function PostPurchasePage({
+function toUpsellPayload(slug: string): PostPurchaseUpsellPayload | null {
+  const shopProduct = getShopProductBySlug(slug);
+  if (!shopProduct) return null;
+  return {
+    slug: shopProduct.slug,
+    title: shopProduct.title,
+    shortDescription: shopProduct.shortDescription,
+    priceDisplay: shopProduct.priceDisplay,
+    previewImage: shopProduct.previewImages[0] ?? null,
+  };
+}
+
+export default async function PostPurchasePage({
   searchParams,
 }: {
   searchParams: Record<string, string | string[] | undefined>;
@@ -28,24 +42,31 @@ export default function PostPurchasePage({
     redirect("/shop/thank-you");
   }
 
-  const upsellSlug = getUpsellSlugAfterPurchase(p);
-  const upsellProduct =
-    upsellSlug && upsellSlug !== p ? getShopProductBySlug(upsellSlug) : undefined;
-  const upsell =
-    upsellProduct &&
-    ({
-      slug: upsellProduct.slug,
-      title: upsellProduct.title,
-      shortDescription: upsellProduct.shortDescription,
-      priceDisplay: upsellProduct.priceDisplay,
-      previewImage: upsellProduct.previewImages[0] ?? null,
-    } as const);
+  const funnel = await resolveShopFunnelForSlug(p);
+  let upsells: PostPurchaseUpsellPayload[] = [];
+  let finalRedirect: FunnelFinalRedirect = "post_purchase";
+
+  if (funnel.enabled && funnel.postUpsellSlugs.length > 0) {
+    finalRedirect = funnel.finalRedirect;
+    for (const us of funnel.postUpsellSlugs) {
+      if (us === p) continue;
+      const payload = toUpsellPayload(us);
+      if (payload) upsells.push(payload);
+    }
+  } else {
+    const upsellSlug = getUpsellSlugAfterPurchase(p);
+    if (upsellSlug && upsellSlug !== p) {
+      const payload = toUpsellPayload(upsellSlug);
+      if (payload) upsells = [payload];
+    }
+  }
 
   return (
     <PostPurchaseClient
       purchasedSlug={p}
       purchasedTitle={shopProduct?.title ?? STUDY_GUIDE_NCLEX.title}
-      upsell={upsell ?? null}
+      upsells={upsells}
+      finalRedirect={funnel.enabled ? finalRedirect : "post_purchase"}
     />
   );
 }

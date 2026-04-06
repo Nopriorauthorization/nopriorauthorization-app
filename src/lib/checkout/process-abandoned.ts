@@ -54,7 +54,9 @@ export async function processAbandonedCheckoutReminders(
     }
 
     const productTitle = getCheckoutProductTitle(attempt.productSlug, attempt.source);
-    const resumeUrl = getCheckoutResumeUrl(origin, attempt.productSlug, attempt.source);
+    const resumeUrl = getCheckoutResumeUrl(origin, attempt.productSlug, attempt.source, {
+      funnelSessionId: attempt.funnelSessionId,
+    });
     const originLabel = getCheckoutOriginLabel(attempt.source);
     const html = generateAbandonedCheckoutEmail({ productTitle, resumeUrl, originLabel });
 

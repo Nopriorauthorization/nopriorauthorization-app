@@ -58,6 +58,13 @@ export default async function AdminPage() {
       icon: "💰",
     },
     {
+      title: "Shop funnels",
+      href: "/admin/product-funnels",
+      description:
+        "Order bumps, post-purchase upsells, category defaults, and funnel analytics",
+      icon: "🪜",
+    },
+    {
       title: "Facebook (Hello Gorgeous)",
       href: "/admin/social",
       description:

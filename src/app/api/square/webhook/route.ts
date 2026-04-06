@@ -4,6 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { normalizeCheckoutEmail } from "@/lib/checkout/email";
 import { verifySquareWebhook } from "@/lib/square/client";
+import { parseSquarePaymentNote } from "@/lib/square/payment-note";
+import { allocatePaymentCentsAcrossSlugs } from "@/lib/checkout/allocate-payment-to-slugs";
 
 const WEBHOOK_URL =
   process.env.SQUARE_WEBHOOK_URL ||
@@ -47,12 +49,6 @@ export async function POST(req: NextRequest) {
 
   console.log(`[square/webhook] Event: ${event.type}`);
 
-  /**
-   * Square's Payments webhooks are `payment.created` and `payment.updated` (see
-   * Webhook Events Reference). Completion is indicated by `payment.status === "COMPLETED"`
-   * on `payment.updated`, not a separate `payment.completed` event. We still accept
-   * `payment.completed` if present on older subscriptions.
-   */
   try {
     if (shouldProcessPaymentForDelivery(event)) {
       await handlePaymentCompleted(event);
@@ -89,6 +85,13 @@ function shouldProcessPaymentForDelivery(event: Record<string, unknown>): boolea
   return false;
 }
 
+function stripeSessionIdForSlug(paymentId: string, slug: string, multi: boolean): string {
+  if (!multi) {
+    return `sq_${paymentId}`;
+  }
+  return `sq_${paymentId}__${slug}`;
+}
+
 async function handlePaymentCompleted(event: Record<string, unknown>) {
   const payment = extractPaymentFromEvent(event);
 
@@ -107,125 +110,172 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
     totalMoney?.amount ?? amountMoney?.amount ?? 0,
   );
 
-  const slugMatch = note.match(/^npa:(.+)$/);
-  const productSlug = slugMatch?.[1] || "";
+  let slugs = parseSquarePaymentNote(note);
+  if (slugs.length === 0) {
+    const legacy = note.match(/^npa:(.+)$/);
+    const raw = legacy?.[1]?.trim() ?? "";
+    if (raw && !raw.startsWith("multi:")) {
+      slugs = [raw];
+    }
+  }
 
   if (!email) {
     console.error("[square/webhook] No buyer email — cannot deliver");
     return;
   }
 
-  if (!productSlug) {
+  if (slugs.length === 0) {
     console.warn(
       `[square/webhook] No product slug in payment note: "${note}". Payment ID: ${paymentId}`,
     );
+    return;
   }
 
-  const existing = await prisma.purchase.findFirst({
-    where: { stripeSessionId: `sq_${paymentId}` },
+  const multi = slugs.length > 1;
+  const allSessionIds = slugs.map((s) => stripeSessionIdForSlug(paymentId, s, multi));
+  const existingAll = await prisma.purchase.findMany({
+    where: { stripeSessionId: { in: allSessionIds } },
+    select: { stripeSessionId: true },
   });
-  if (existing) {
+  if (existingAll.length >= slugs.length) {
     console.log(`[square/webhook] Duplicate payment ${paymentId} — skipping`);
     return;
   }
 
-  let productTitle = productSlug || "Digital Product";
-  try {
-    const { getVirtualDeliveryProductTitle, getDeliveryProductBySlug } = await import(
-      "@/lib/delivery/catalog"
-    );
+  const existingSet = new Set(existingAll.map((p) => p.stripeSessionId));
+  const centsBySlug = allocatePaymentCentsAcrossSlugs(amountCents, slugs);
+
+  const attempt = await prisma.checkoutAttempt.findFirst({
+    where: {
+      buyerEmail: { equals: email, mode: "insensitive" },
+      productSlug: slugs[0],
+      completedAt: null,
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  if (attempt?.funnelSessionId) {
+    try {
+      await prisma.funnelAnalyticsEvent.create({
+        data: {
+          sessionId: attempt.funnelSessionId,
+          primarySlug: slugs[0]!,
+          step: "payment_complete",
+          revenueCents: amountCents,
+          metadata: {
+            slugs,
+            selectedBumpSlugs: attempt.selectedBumpSlugs,
+          },
+        },
+      });
+    } catch (e) {
+      console.error("[square/webhook] Funnel analytics insert failed:", e);
+    }
+  }
+
+  const { getVirtualDeliveryProductTitle, getDeliveryProductBySlug } = await import(
+    "@/lib/delivery/catalog"
+  );
+  const { getShopProductBySlug } = await import("@/lib/shop/products");
+  const { issueDeliveryToken } = await import("@/lib/delivery/token");
+  const { sendEmail } = await import("@/lib/email");
+  const { generateDeliveryEmail } = await import("@/lib/email/delivery-email");
+
+  const origin = process.env.NEXTAUTH_URL || "https://nopriorauthorization.com";
+
+  for (const productSlug of slugs) {
+    const sessionId = stripeSessionIdForSlug(paymentId, productSlug, multi);
+    if (existingSet.has(sessionId)) {
+      continue;
+    }
+
+    let productTitle = productSlug;
     productTitle =
       getVirtualDeliveryProductTitle(productSlug) ||
       getDeliveryProductBySlug(productSlug)?.productTitle ||
       productTitle;
-    const { getShopProductBySlug } = await import("@/lib/shop/products");
     const shopProduct = getShopProductBySlug(productSlug);
     if (shopProduct) productTitle = shopProduct.title;
-  } catch {
-    // non-critical
-  }
 
-  const { issueDeliveryToken } = await import("@/lib/delivery/token");
-  const token = issueDeliveryToken({
-    productSlug: productSlug || "unknown-product",
-    buyerEmail: email,
-    orderRef: `sq_${paymentId}`,
-    expiresInDays: 365,
-  });
-
-  const origin = process.env.NEXTAUTH_URL || "https://nopriorauthorization.com";
-  const deliveryUrl = `${origin}/delivery/${token}`;
-
-  const purchase = await prisma.purchase.create({
-    data: {
-      stripeSessionId: `sq_${paymentId}`,
-      stripePaymentId: paymentId,
-      customerEmail: email,
-      productSlug: productSlug || "unknown",
-      productTitle,
-      amountPaid: amountCents,
-      deliveryToken: token,
-    },
-  });
-
-  const { sendEmail } = await import("@/lib/email");
-  const { generateDeliveryEmail } = await import("@/lib/email/delivery-email");
-  const priceDisplay = `$${(amountCents / 100).toFixed(amountCents % 100 === 0 ? 0 : 2)}`;
-
-  const html = generateDeliveryEmail({
-    productTitle,
-    deliveryUrl,
-    price: priceDisplay,
-  });
-
-  const emailResult = await sendEmail({
-    to: email,
-    subject: `Your ${productTitle} is ready!`,
-    html,
-  });
-
-  if (emailResult.success) {
-    await prisma.purchase.update({
-      where: { id: purchase.id },
-      data: { deliveryEmailSent: true, deliveryEmailAt: new Date() },
+    const shareCents = centsBySlug.get(productSlug) ?? 0;
+    const token = issueDeliveryToken({
+      productSlug,
+      buyerEmail: email,
+      orderRef: sessionId,
+      expiresInDays: 365,
     });
-    console.log(`[square/webhook] Delivery sent to ${email} for ${productSlug}`);
-  } else {
-    console.error(`[square/webhook] Email FAILED for ${email}:`, emailResult.message);
-  }
 
-  await prisma.analytics.create({
-    data: {
-      event: "digital_product_purchased",
-      metadata: {
-        provider: "square",
+    const deliveryUrl = `${origin}/delivery/${token}`;
+
+    const purchase = await prisma.purchase.create({
+      data: {
+        stripeSessionId: sessionId,
+        stripePaymentId: paymentId,
+        customerEmail: email,
         productSlug,
         productTitle,
-        customerEmail: email,
-        amountPaid: amountCents,
-        squarePaymentId: paymentId,
-        deliveryUrl,
+        amountPaid: shareCents,
+        deliveryToken: token,
       },
-    },
-  });
+    });
 
-  console.log(`[square/webhook] Purchase complete: ${productSlug} → ${email}`);
+    const priceDisplay = `$${(shareCents / 100).toFixed(shareCents % 100 === 0 ? 0 : 2)}`;
+    const html = generateDeliveryEmail({
+      productTitle,
+      deliveryUrl,
+      price: priceDisplay,
+    });
+
+    const emailResult = await sendEmail({
+      to: email,
+      subject: `Your ${productTitle} is ready!`,
+      html,
+    });
+
+    if (emailResult.success) {
+      await prisma.purchase.update({
+        where: { id: purchase.id },
+        data: { deliveryEmailSent: true, deliveryEmailAt: new Date() },
+      });
+      console.log(`[square/webhook] Delivery sent to ${email} for ${productSlug}`);
+    } else {
+      console.error(`[square/webhook] Email FAILED for ${email}:`, emailResult.message);
+    }
+
+    await prisma.analytics.create({
+      data: {
+        event: "digital_product_purchased",
+        metadata: {
+          provider: "square",
+          productSlug,
+          productTitle,
+          customerEmail: email,
+          amountPaid: shareCents,
+          squarePaymentId: paymentId,
+          deliveryUrl,
+          bundleSlugs: slugs,
+        },
+      },
+    });
+  }
+
+  console.log(`[square/webhook] Purchase complete: ${slugs.join(", ")} → ${email}`);
 
   try {
     const { pauseFunnelOnPurchase } = await import("@/lib/email-funnel/purchase-hooks");
-    await pauseFunnelOnPurchase(email, productSlug || "");
+    for (const s of slugs) {
+      await pauseFunnelOnPurchase(email, s);
+    }
   } catch (e) {
     console.error("[square/webhook] Funnel pause hook error:", e);
   }
 
-  if (productSlug) {
-    await prisma.checkoutAttempt.updateMany({
-      where: {
-        buyerEmail: { equals: email, mode: "insensitive" },
-        productSlug,
-        completedAt: null,
-      },
-      data: { completedAt: new Date() },
-    });
-  }
+  await prisma.checkoutAttempt.updateMany({
+    where: {
+      buyerEmail: { equals: email, mode: "insensitive" },
+      productSlug: slugs[0],
+      completedAt: null,
+    },
+    data: { completedAt: new Date() },
+  });
 }

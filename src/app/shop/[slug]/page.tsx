@@ -16,6 +16,7 @@ import { CHEAT_SHEET_BONUS } from "@/config/cheat-sheet-bonus.config";
 import { getShopInteractivePreviewSrc } from "@/lib/shop/form-preview";
 import { buildProductMetaDescription, buildProductMetaTitle } from "@/lib/seo/shop-product-seo";
 import { getShopProductBySlug, getShopProducts } from "@/lib/shop/products";
+import { resolveShopFunnelForSlug } from "@/lib/shop/funnel-resolve";
 import { ProductPreviewGallery } from "../ProductPreviewGallery";
 import { CheckoutButton } from "./CheckoutButton";
 
@@ -68,6 +69,9 @@ export default async function ProductDetailPage({
   const allProducts = getShopProducts();
   const product = getShopProductBySlug(params.slug);
   if (!product) notFound();
+
+  const shopFunnel = await resolveShopFunnelForSlug(params.slug);
+  const useFunnelLanding = shopFunnel.enabled && shopFunnel.useDedicatedLanding;
 
   const interactivePreviewSrc = getShopInteractivePreviewSrc(params.slug);
   const relatedSizes = findRelatedSizes(params.slug, allProducts);
@@ -156,7 +160,12 @@ export default async function ProductDetailPage({
                 </p>
               ) : null}
             </div>
-            <CheckoutButton slug={product.slug} label={`Buy Now — ${product.priceDisplay}`} />
+            <CheckoutButton
+              slug={product.slug}
+              label={`Buy Now — ${product.priceDisplay}`}
+              useFunnelLanding={useFunnelLanding}
+              funnelTrackingEnabled={shopFunnel.enabled}
+            />
           </div>
           {onBundleLadder && product.bundleTierId ? (
             <BundleUpgradeMessaging
@@ -388,7 +397,12 @@ export default async function ProductDetailPage({
               </div>
               <span className="text-xs text-gray-500">{product.templateCount} templates</span>
             </div>
-            <CheckoutButton slug={product.slug} label="Buy Now" />
+            <CheckoutButton
+              slug={product.slug}
+              label="Buy Now"
+              useFunnelLanding={useFunnelLanding}
+              funnelTrackingEnabled={shopFunnel.enabled}
+            />
           </div>
         </div>
       </div>

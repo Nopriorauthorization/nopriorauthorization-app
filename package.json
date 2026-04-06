@@ -11,6 +11,7 @@
     "test": "vitest run",
     "deploy": "./deploy.sh",
     "ibg:screenshot-carousel": "tsx scripts/marketing/screenshot-ibg-carousel.ts",
+    "square:ibg-payment-link": "tsx scripts/square/create-ibg-payment-link.ts",
     "store:build": "node scripts/start-store-build.mjs",
     "store:apply": "node scripts/apply-suggested-matches.mjs",
     "store:sync": "node scripts/sync-master-tracker-to-manifests.mjs",

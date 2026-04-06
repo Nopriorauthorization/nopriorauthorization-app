@@ -1,20 +1,24 @@
+import type { Metadata } from "next";
+import { NpaConversionHome } from "@/components/marketing/NpaConversionHome";
 import { FreeTemplatesHomeBanner } from "@/components/marketing/FreeTemplatesHomeBanner";
+import { NPA_PRIMARY_MESSAGE, NPA_SITE_URL } from "@/config/npa-brand.config";
 
-export const metadata = {
-  title: "No Prior Authorization — The Operating System for the Modern Med Spa",
-  description:
-    "Playbooks, templates, clinical systems, and marketing tools built by providers who actually run a med spa. Free digital audit, premium education, and done-for-you content — all instant download.",
+export const metadata: Metadata = {
+  title: "No Prior Authorization — Med spa templates, playbooks & Pro Membership",
+  description: NPA_PRIMARY_MESSAGE,
+  openGraph: {
+    title: "No Prior Authorization — Digital OS for med spas & injectors",
+    description: NPA_PRIMARY_MESSAGE,
+    url: NPA_SITE_URL,
+  },
+  alternates: { canonical: NPA_SITE_URL },
 };
 
 export default function HomePage() {
   return (
     <div className="-mt-16 min-h-dvh">
       <FreeTemplatesHomeBanner />
-      <iframe
-        src="/npa-homepage.html"
-        className="block h-dvh min-h-dvh w-full border-0"
-        title="No Prior Authorization"
-      />
+      <NpaConversionHome />
     </div>
   );
 }

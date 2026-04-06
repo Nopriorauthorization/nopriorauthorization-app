@@ -87,6 +87,23 @@ model Purchase {
   @@index([createdAt(sort: Desc)])
 }
 
+// Square checkout started (email captured); cart-abandonment reminders via cron.
+model CheckoutAttempt {
+  id             String    @id @default(cuid())
+  productSlug    String
+  buyerEmail     String
+  paymentLinkId  String?
+  // shop | study_guides
+  source         String    @default("shop")
+  createdAt      DateTime  @default(now())
+  reminderSentAt DateTime?
+  completedAt    DateTime?
+
+  @@index([buyerEmail, productSlug])
+  @@index([createdAt])
+  @@index([completedAt, reminderSentAt])
+}
+
 model Subscription {
   id               String    @id @default(cuid())
   userId           String    @unique

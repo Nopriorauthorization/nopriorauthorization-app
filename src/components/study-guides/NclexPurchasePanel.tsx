@@ -2,22 +2,24 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { CheckoutEmailDialog } from "@/components/checkout/CheckoutEmailDialog";
 import { STUDY_GUIDE_NCLEX, formatStudyGuideUsd } from "@/config/study-guides.config";
 
 type Variant = "compact" | "hero";
 
 export function NclexPurchasePanel({ variant }: { variant: Variant }) {
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function buy() {
+  async function buy(buyerEmail: string) {
     setError(null);
     setLoading(true);
     try {
       const res = await fetch("/api/study-guides/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ product: "nclex" }),
+        body: JSON.stringify({ product: "nclex", buyerEmail }),
       });
       const data = (await res.json()) as { url?: string; error?: string };
       if (!res.ok || !data.url) {
@@ -37,6 +39,16 @@ export function NclexPurchasePanel({ variant }: { variant: Variant }) {
 
   return (
     <div className={isHero ? "" : ""}>
+      <CheckoutEmailDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        title="Continue to secure checkout"
+        description="We’ll use this email for your receipt, NCLEX bundle delivery link, and a one-time reminder if checkout isn’t finished."
+        confirmLabel="Continue to Square"
+        loading={loading}
+        error={error}
+        onConfirm={(email) => buy(email)}
+      />
       {!isHero ? (
         <>
           <div className="flex flex-wrap items-center gap-2">
@@ -86,7 +98,10 @@ export function NclexPurchasePanel({ variant }: { variant: Variant }) {
         </p>
         <button
           type="button"
-          onClick={buy}
+          onClick={() => {
+            setError(null);
+            setDialogOpen(true);
+          }}
           disabled={loading}
           className={
             isHero
@@ -97,11 +112,6 @@ export function NclexPurchasePanel({ variant }: { variant: Variant }) {
           {loading ? "Redirecting to secure checkout…" : `Get the bundle — ${price}`}
         </button>
       </div>
-      {error ? (
-        <p className="mt-4 text-sm text-red-400" role="alert">
-          {error}
-        </p>
-      ) : null}
     </div>
   );
 }

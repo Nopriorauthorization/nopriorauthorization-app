@@ -3,7 +3,14 @@
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
-import { FUNNEL_COPY, MEMBERSHIP_CONFIG } from "@/config/growth-funnel.config";
+import { RETURN_CUSTOMER_DISCOUNT_PERCENT } from "@/config/post-purchase.config";
+import {
+  FUNNEL_COPY,
+  MEMBERSHIP_CONFIG,
+  formatMembershipAnnualUsd,
+  formatMembershipMonthlyUsd,
+} from "@/config/growth-funnel.config";
+import { PostPurchaseThankYouPanel } from "@/components/purchase/PostPurchaseThankYouPanel";
 import { FunnelLink } from "@/components/shop/FunnelLink";
 
 /**
@@ -51,13 +58,21 @@ function ThankYouContent() {
         <div className="mb-6 text-5xl">&#127881;</div>
 
         <h1 className="mb-4 font-serif text-3xl font-semibold md:text-4xl">
-          Thank You for Your Purchase!
+          Thank you for your purchase
         </h1>
 
         <p className="mb-8 text-base text-gray-400">
           Your templates are on their way to your inbox. Check your email for a
-          secure download link.
+          secure download link — it also has a thank-you note, my contact info, and{" "}
+          <span className="text-gray-300">
+            {RETURN_CUSTOMER_DISCOUNT_PERCENT}% off your next order
+          </span>
+          .
         </p>
+
+        <div className="mb-8">
+          <PostPurchaseThankYouPanel />
+        </div>
 
         <div className="mb-8 rounded-xl border border-white/10 bg-white/[0.03] p-6 text-left">
           <h2 className="mb-4 text-sm font-bold uppercase tracking-wider text-[#D4537E]">
@@ -123,9 +138,7 @@ function ThankYouContent() {
               eventParams={{ source: "thank_you" }}
               className="mt-3 inline-block text-sm font-bold text-[#D4537E] hover:underline"
             >
-              {MEMBERSHIP_CONFIG.ctaLabel} — $
-              {(MEMBERSHIP_CONFIG.monthlyPriceCents / 100).toFixed(0)}
-              /mo
+              {MEMBERSHIP_CONFIG.ctaLabel} — {formatMembershipMonthlyUsd()}/mo or {formatMembershipAnnualUsd()}/yr
             </FunnelLink>
           </div>
         </div>

@@ -1,8 +1,13 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { GROWTH_SYSTEM_SLUG } from "@/config/growth-funnel.config";
+import { getDeliveryProfileForCategory } from "@/config/delivery-language.config";
 import { BundleTierComparison } from "@/components/shop/BundleTierComparison";
 import { BundleUpgradeMessaging } from "@/components/shop/BundleUpgradeMessaging";
+import {
+  buildShopProductJsonLd,
+  ProductCommercialMetaSection,
+} from "@/components/shop/ProductCommercialMetaSection";
 import { MembershipUpsellBlock } from "@/components/shop/MembershipUpsellBlock";
 import { MEGA_UPGRADE_TARGET_SLUG } from "@/lib/shop/bundle-tier-config";
 import { getFamilyByProductSlug } from "@/lib/shop/families";
@@ -78,8 +83,15 @@ export default async function ProductDetailPage({
         ? "rounded-xl border border-sky-500/40 bg-sky-500/[0.06] p-5 sm:p-6"
         : "";
 
+  const deliveryProfile = getDeliveryProfileForCategory(product.category);
+  const productJsonLd = buildShopProductJsonLd(product, params.slug);
+
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
         <div className="mb-6 flex flex-wrap items-center gap-3 text-sm">
           <Link href="/shop" className="text-gray-500 transition hover:text-[#D4537E]">
@@ -154,18 +166,21 @@ export default async function ProductDetailPage({
             />
           ) : null}
           <div className="mt-4 flex flex-wrap gap-4 text-xs text-gray-500">
-            <span>Instant delivery</span>
+            <span>{deliveryProfile.fileType}</span>
             <span>&middot;</span>
             <span>{product.templateCount} templates</span>
             <span>&middot;</span>
-            <span>Fully editable</span>
+            <span>Secure email delivery</span>
             <span>&middot;</span>
             <span>Print-ready</span>
           </div>
+          <p className="mt-3 max-w-2xl text-xs leading-relaxed text-gray-500">{deliveryProfile.shortLine}</p>
           <div className="mt-6">
             <MembershipUpsellBlock productSlug={params.slug} />
           </div>
         </section>
+
+        <ProductCommercialMetaSection product={product} />
 
         {interactivePreviewSrc ? (
           <section className="mb-10" aria-label="Watermarked interactive preview">
@@ -325,12 +340,18 @@ export default async function ProductDetailPage({
           </h2>
           <div className="space-y-3">
             {[
-              { q: "Can I customize the templates?", a: "Yes — every template is fully editable. Add your practice name, logo, colors, and contact info." },
-              { q: "What format are the files?", a: "HTML files you open in any browser. Save as PDF via File → Print → Save as PDF. Social media kits include Canva links." },
-              { q: "Is this a physical product?", a: "No — instant digital delivery. Nothing ships." },
-              { q: "Do I need Canva Pro?", a: "No. Canva Free works for all templates. Pro gives extra fonts and features but is not required." },
-              { q: "Can I use this for multiple locations?", a: "Licensed for your own practice. No redistribution or resale." },
-              { q: "What if I need help?", a: "Reply to your delivery email. We respond within 24 hours." },
+              { q: "Can I customize the templates?", a: "Yes — add your practice name, logo, colors, and contact info before printing." },
+              {
+                q: "What format are the files?",
+                a: deliveryProfile.longLine,
+              },
+              { q: "Is this a physical product?", a: "No — instant digital delivery by email. Nothing ships." },
+              {
+                q: "Do I need Canva Pro?",
+                a: "No. Most products are browser-only HTML. If this pack includes optional Canva links, Canva Free is enough.",
+              },
+              { q: "Can I use this for multiple locations?", a: "Licensed for your own practice. No redistribution or resale of files." },
+              { q: "What if I need help?", a: "Reply to your delivery email or use hello@nopriorauthorization.com — we respond within 24 hours." },
             ].map((item) => (
               <div
                 key={item.q}

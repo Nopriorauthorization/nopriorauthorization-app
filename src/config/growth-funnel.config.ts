@@ -49,7 +49,7 @@ export const GROWTH_SYSTEM_SIGNATURE = {
     { value: "4", label: "practice pillars" },
     { value: "1", label: "checkout · instant send" },
   ] as const,
-  trustStrip: ["Instant digital delivery", "Secure checkout", "Customize in Canva"] as const,
+  trustStrip: ["Instant email delivery", "Secure checkout", "HTML + optional Canva on select packs"] as const,
   quote: {
     text: "I went from posting once a week to daily — templates that actually look like a real med spa.",
     author: "Jessica L.",
@@ -78,30 +78,47 @@ export const GROWTH_SYSTEM_PAGE = {
     },
   ],
   membershipTeaser:
-    "Want ongoing updates? Join Membership — new drops every month so you never run out of content or forms.",
+    "Want ongoing updates? NPA Pro Membership adds new drops every month — full library access while you’re subscribed.",
 } as const;
 
 export const MEMBERSHIP_CONFIG = {
-  hero: "Never run out of content or systems again",
-  /** Short line under hero on /membership */
+  /** Must match public/forms/NPA-Pro-Membership.html pricing */
+  displayName: "NPA Pro Membership",
+  hero: "Every product we make. Every month. One membership.",
   heroSubline:
-    "Monthly drops, new forms, and member-only packs — built for busy med spa owners who need consistency without the grind.",
-  monthlyPriceCents: 1900,
-  /** Reserved for future annual / price changes */
-  annualPriceCents: null as number | null,
+    "Full library access for med spas, injectors, and aesthetic practices — new drops automatically, cancel anytime.",
+  monthlyPriceCents: 4700,
+  annualPriceCents: 39700,
+  /** Shown as effective monthly when billed annually ($397/12 ≈ $33.08 — display as $33 in UI) */
+  annualEffectiveMonthlyDisplay: "$33",
   bullets: [
-    "Monthly template drops",
-    "New forms and documents",
-    "Promo packs and seasonal kits",
-    "Exclusive updates for members",
+    "All current playbooks, kits, and template systems",
+    "New products unlock automatically while you’re subscribed",
+    "Member-first access before public launches",
+    "Cancel anytime — no long-term contract",
   ],
-  ctaLabel: "Join Membership",
-  /** Until Stripe subs are wired; override with env in component if needed */
+  ctaLabel: "Join Pro Membership",
   checkoutUrl: "/forms/NPA-Pro-Membership.html",
-  metaTitle: "NPA Membership | Ongoing templates & systems for med spas",
+  metaTitle: "NPA Pro Membership | Full template library for med spas",
   metaDescription:
-    "$19/month — monthly drops, new forms, promo packs, and member-only updates. Cancel anytime.",
+    "$47/month or $397/year — full NPA library, new drops monthly, cancel anytime. Same pricing as our membership checkout form.",
 } as const;
+
+export function formatMembershipMonthlyUsd(): string {
+  return `$${(MEMBERSHIP_CONFIG.monthlyPriceCents / 100).toFixed(0)}`;
+}
+
+export function formatMembershipAnnualUsd(): string {
+  const y = MEMBERSHIP_CONFIG.annualPriceCents;
+  return y != null ? `$${(y / 100).toFixed(0)}` : "";
+}
+
+export function membershipAnnualSavingsVsMonthlyUsd(): number {
+  const y = MEMBERSHIP_CONFIG.annualPriceCents;
+  if (y == null) return 0;
+  const monthlyYear = MEMBERSHIP_CONFIG.monthlyPriceCents * 12;
+  return (monthlyYear - y) / 100;
+}
 
 export const FUNNEL_COPY = {
   upgradeToGrowth:

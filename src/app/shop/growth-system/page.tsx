@@ -7,6 +7,8 @@ import {
   FiZap,
 } from "react-icons/fi";
 import {
+  formatMembershipAnnualUsd,
+  formatMembershipMonthlyUsd,
   GROWTH_SYSTEM_PAGE,
   GROWTH_SYSTEM_PRODUCT,
   GROWTH_SYSTEM_SIGNATURE,
@@ -169,7 +171,7 @@ export default function GrowthSystemPage() {
                 eventParams={{ source: "growth_system_page" }}
                 className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#D4537E] hover:underline"
               >
-                {MEMBERSHIP_CONFIG.ctaLabel} — ${MEMBERSHIP_CONFIG.monthlyPriceCents / 100}/mo
+                {MEMBERSHIP_CONFIG.ctaLabel} — {formatMembershipMonthlyUsd()}/mo or {formatMembershipAnnualUsd()}/yr
                 <span aria-hidden>→</span>
               </FunnelLink>
             </div>

@@ -5,6 +5,7 @@ import { StickyEmailBar } from "@/components/shop/StickyEmailBar";
 import Providers from "@/components/layout/providers";
 import { MascotControllerProvider } from "@/context/MascotController";
 import type { Metadata, Viewport } from "next";
+import { NPA_PRIMARY_MESSAGE } from "@/config/npa-brand.config";
 
 const SITE_URL = "https://nopriorauthorization.com";
 
@@ -15,8 +16,7 @@ export const metadata: Metadata = {
       "No Prior Authorization | Med Spa Business Systems by Danielle Alcala",
     template: "%s | No Prior Authorization",
   },
-  description:
-    "Playbooks, templates, and tools built inside a real med spa — so you don't spend years figuring out what nobody taught you. Free digital audit included.",
+  description: NPA_PRIMARY_MESSAGE,
   keywords: [
     "med spa templates",
     "med spa playbooks",
@@ -57,8 +57,7 @@ export const metadata: Metadata = {
     siteName: "No Prior Authorization",
     title:
       "No Prior Authorization | Med Spa Business Systems by Danielle Alcala",
-    description:
-      "Playbooks, templates, clinical systems, and marketing tools built by providers who actually run a med spa. Free digital audit included.",
+    description: NPA_PRIMARY_MESSAGE,
     images: [
       {
         url: `${SITE_URL}/og-image.png`,
@@ -71,8 +70,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "No Prior Authorization | Med Spa Business Systems",
-    description:
-      "Built by a med spa founder who actually runs one. Playbooks, templates, and tools — instant download.",
+    description: NPA_PRIMARY_MESSAGE,
     images: [`${SITE_URL}/og-image.png`],
   },
   alternates: {
@@ -95,8 +93,7 @@ const schemaGraph = {
       name: "No Prior Authorization",
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
-      description:
-        "Med spa business systems, playbooks, and tools built by Danielle Alcala, founder of Hello Gorgeous Med Spa.",
+      description: NPA_PRIMARY_MESSAGE,
       founder: {
         "@type": "Person",
         name: "Danielle Alcala",
@@ -116,8 +113,7 @@ const schemaGraph = {
       name: "Danielle Alcala",
       jobTitle: "Med Spa Founder & Business Educator",
       url: `${SITE_URL}`,
-      description:
-        "Danielle Alcala is the founder of Hello Gorgeous Med Spa in Oswego, Illinois and creator of No Prior Authorization — the business platform for aesthetic providers.",
+      description: NPA_PRIMARY_MESSAGE,
       sameAs: [
         "https://instagram.com/hellogorgeousmedspa",
       ],

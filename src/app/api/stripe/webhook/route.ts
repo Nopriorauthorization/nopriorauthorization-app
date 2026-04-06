@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import Stripe from "stripe";
 import { getStripeClient } from "@/lib/stripe/stripe";
 import prisma from "@/lib/db";
+import { normalizeCheckoutEmail } from "@/lib/checkout/email";
 
 export async function POST(request: Request) {
   const body = await request.text();
@@ -178,7 +179,8 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
 async function handleDigitalProductPurchase(session: Stripe.Checkout.Session) {
   const slug = session.metadata?.product_slug;
   const title = session.metadata?.product_title || slug || "Digital Product";
-  const email = session.customer_details?.email || session.customer_email || "";
+  const rawEmail = session.customer_details?.email || session.customer_email || "";
+  const email = rawEmail ? normalizeCheckoutEmail(rawEmail) : "";
   const name = session.customer_details?.name || undefined;
   const amountPaid = session.amount_total || 0;
   const paymentIntentId =
@@ -275,6 +277,15 @@ async function handleDigitalProductPurchase(session: Stripe.Checkout.Session) {
   } catch (e) {
     console.error("[webhook] Funnel pause hook error:", e);
   }
+
+  await prisma.checkoutAttempt.updateMany({
+    where: {
+      buyerEmail: { equals: email, mode: "insensitive" },
+      productSlug: slug,
+      completedAt: null,
+    },
+    data: { completedAt: new Date() },
+  });
 }
 
 async function handlePaymentFailed(invoice: Stripe.Invoice) {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { PostPurchaseThankYouPanel } from "@/components/purchase/PostPurchaseThankYouPanel";
 
 export const metadata: Metadata = {
   title: "Thank you | Study guides | No Prior Authorization",
@@ -23,6 +24,9 @@ export default function StudyGuidesThankYouPage() {
         <p className="mt-4 text-sm text-gray-500">
           This purchase is separate from the main template shop — you bought it from Study guides only.
         </p>
+        <div className="mx-auto mt-10 max-w-lg text-left">
+          <PostPurchaseThankYouPanel />
+        </div>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <Link
             href="/study-guides"

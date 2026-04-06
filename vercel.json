@@ -12,6 +12,10 @@
     {
       "path": "/api/cron/email-funnel",
       "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/checkout-abandonment",
+      "schedule": "*/15 * * * *"
     }
   ]
 }

@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
+import { normalizeCheckoutEmail } from "@/lib/checkout/email";
 import { verifySquareWebhook } from "@/lib/square/client";
 
 const WEBHOOK_URL =
@@ -97,7 +98,8 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
   }
 
   const paymentId = String(payment.id || "");
-  const email = String(payment.buyer_email_address || "");
+  const rawEmail = String(payment.buyer_email_address || "");
+  const email = rawEmail ? normalizeCheckoutEmail(rawEmail) : "";
   const note = String(payment.note || "");
   const totalMoney = payment.total_money as { amount?: number } | undefined;
   const amountMoney = payment.amount_money as { amount?: number } | undefined;
@@ -214,5 +216,16 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
     await pauseFunnelOnPurchase(email, productSlug || "");
   } catch (e) {
     console.error("[square/webhook] Funnel pause hook error:", e);
+  }
+
+  if (productSlug) {
+    await prisma.checkoutAttempt.updateMany({
+      where: {
+        buyerEmail: { equals: email, mode: "insensitive" },
+        productSlug,
+        completedAt: null,
+      },
+      data: { completedAt: new Date() },
+    });
   }
 }

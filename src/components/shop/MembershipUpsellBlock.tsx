@@ -1,5 +1,9 @@
 import { FUNNEL_COPY } from "@/config/growth-funnel.config";
-import { MEMBERSHIP_CONFIG } from "@/config/growth-funnel.config";
+import {
+  MEMBERSHIP_CONFIG,
+  formatMembershipAnnualUsd,
+  formatMembershipMonthlyUsd,
+} from "@/config/growth-funnel.config";
 import { FunnelLink } from "./FunnelLink";
 
 type Variant = "product" | "compact";
@@ -29,13 +33,8 @@ export function MembershipUpsellBlock({
         eventParams={{ source, product_slug: productSlug }}
         className="inline-flex font-bold text-[#D4537E] hover:underline"
       >
-        {MEMBERSHIP_CONFIG.ctaLabel} — {formatMembershipPrice()}
+        {MEMBERSHIP_CONFIG.ctaLabel} — {formatMembershipMonthlyUsd()}/mo or {formatMembershipAnnualUsd()}/yr
       </FunnelLink>
     </div>
   );
-}
-
-function formatMembershipPrice() {
-  const c = MEMBERSHIP_CONFIG.monthlyPriceCents;
-  return `$${(c / 100).toFixed(0)}/mo`;
 }

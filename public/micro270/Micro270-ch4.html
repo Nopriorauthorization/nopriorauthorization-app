@@ -136,6 +136,26 @@ const Q=[
 {id:50,cat:'c',trap:0,q:'Why can\'t humans develop drugs targeting the fungal cell wall as easily as bacterial cell wall drugs?',a:'Fungal cell walls contain chitin (β-1,3 and β-1,6 glucans + chitin). While chitin is unique to fungi (and insects), developing selective inhibitors is challenging because: 1. Fungi are eukaryotes like us — many pathways shared 2. Cell wall synthesis machinery shares some structural similarities with human carbohydrate synthesis pathways 3. Getting drugs through the cell wall itself is difficult.',e:'Echinocandins DO successfully target β-1,3-glucan synthase (fungal-specific) — well tolerated, major advance in antifungal therapy. This shows it IS possible to target the fungal cell wall. Chitin synthase is another target in development. The broader challenge is that unlike bacteria (whose many structures are entirely absent from humans), fungi share fundamental eukaryotic biology with us.'},
 ];
 let ans={};let cf='all';
+
+var __MICRO270_FP=(function(){
+  try{
+    return btoa([navigator.userAgent.slice(0,20),screen.width+'x'+screen.height,new Date().toISOString().slice(0,10),Math.random().toString(36).slice(2,7)].join('|')).slice(0,12);
+  }catch(e){
+    return btoa('fp|fallback|'+Date.now()).slice(0,12);
+  }
+})();
+function __wmEx(text){
+  if(text==null||text==='')return text;
+  var zwChars='\u200b\u200c\u200d\uFEFF';
+  var fp=__MICRO270_FP;
+  var bits=fp.split('').map(function(c){return c.charCodeAt(0).toString(2).padStart(8,'0');}).join('');
+  var out='',i=0;
+  for(var j=0;j<text.length;j++){
+    out+=text[j];
+    if(i<bits.length)out+=zwChars[parseInt(bits[i++],10)%4];
+  }
+  return out;
+}
 function render(){
   const fl=cf==='all'?Q:cf==='t'?Q.filter(q=>q.trap):Q.filter(q=>q.cat===cf);
   const g=document.getElementById('grid');g.innerHTML='';
@@ -145,7 +165,7 @@ function render(){
     const d=document.createElement('div');d.className='qcard';
     d.innerHTML=`<div class="qh"><span class="qn">Q${String(q.id).padStart(2,'0')}</span><div class="qt">${q.q}${q.trap?'<span class="trap-pill">⚠ Trap</span>':''}</div><span class="qtag ${tc}">${tl}</span></div>
     <div class="qans"><div class="al">Answer</div><div class="at">${q.a}</div></div>
-    <div class="qexp"><div class="el">Why it matters</div><div class="et">${q.e}</div></div>`;
+    <div class="qexp"><div class="el">Why it matters</div><div class="et">${__wmEx(q.e)}</div></div>`;
     g.appendChild(d);
   });
   document.getElementById('sr').textContent=50-Object.keys(ans).length;
@@ -153,6 +173,23 @@ function render(){
 function filt(c,btn){cf=c;document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render();}
 function resetAll(){ans={};render();}
 render();
+</script>
+
+<footer class="micro270-ip-footer" style="margin-top:2rem;padding:1rem 1.25rem;font-size:11px;line-height:1.5;color:rgba(255,255,255,0.45);text-align:center;border-top:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.25);">
+  © 2026 Danielle Alcala-Glazier / No Prior Authorization. All questions, explanations, and study content are original intellectual property. Personal use only — no reproduction, redistribution, commercial use, or use for training AI systems. See <a href="https://nopriorauthorization.com/terms" style="color:#c77b2a;">Terms of Use</a>.
+</footer>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('selectstart',function(e){
+    if(e.target.closest('.qcard'))e.preventDefault();
+  });
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&['a','c','s','p','u'].indexOf(e.key.toLowerCase())!==-1){
+      if(e.target.closest('.qcard,.grid'))e.preventDefault();
+    }
+  });
+})();
 </script>
 </body>
 </html>

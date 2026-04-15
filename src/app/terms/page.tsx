@@ -82,6 +82,37 @@ export default function TermsOfUsePage() {
           </section>
 
           <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">
+              Micro 270 study bank &amp; related products
+            </h2>
+            <p className="text-gray-700 mb-4">
+              Microbiology 270 question banks, chapter HTML tools, cram generators,
+              and any related materials offered on{" "}
+              <Link href="/micro270" className="font-medium text-gray-900 underline">
+                nopriorauthorization.com/micro270
+              </Link>{" "}
+              or linked checkout pages are original works owned by Danielle
+              Alcala-Glazier and No Prior Authorization.
+            </p>
+            <p className="text-gray-700 mb-4">Unless we give you written permission, you may not:</p>
+            <ul className="list-disc pl-6 text-gray-700 space-y-2">
+              <li>Copy, scrape, mirror, or bulk-download the questions or explanations</li>
+              <li>Redistribute, resell, sublicense, or share files (including on course
+                hero sites, forums, or group chats)</li>
+              <li>Use the content commercially or to train, fine-tune, or evaluate AI or
+                machine learning systems</li>
+              <li>Remove or circumvent technical protections (including rate limits,
+                access controls, or usage watermarks)</li>
+            </ul>
+            <p className="text-gray-700 mt-4">
+              Your purchase or license is for <strong>personal, non-commercial study
+              use only</strong> by the individual who bought it. We may revoke access
+              and pursue legal remedies for violations, including under the DMCA and
+              applicable copyright law.
+            </p>
+          </section>
+
+          <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">6. Disclaimer of Warranties</h2>
             <p className="text-gray-700">
               THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. WE DO

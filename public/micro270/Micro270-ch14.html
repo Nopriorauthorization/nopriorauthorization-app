@@ -158,6 +158,26 @@ const Q=[
 let revealed=new Set(),currentFilter='all';
 function tagClass(c){return {vacc:'tag-vacc',diag:'tag-diag',sero:'tag-sero',mol:'tag-mol'}[c]||'tag-vacc';}
 function tagLabel(c){return {vacc:'Vaccines',diag:'Diagnostics',sero:'Serology',mol:'Molecular'}[c]||c;}
+
+var __MICRO270_FP=(function(){
+  try{
+    return btoa([navigator.userAgent.slice(0,20),screen.width+'x'+screen.height,new Date().toISOString().slice(0,10),Math.random().toString(36).slice(2,7)].join('|')).slice(0,12);
+  }catch(e){
+    return btoa('fp|fallback|'+Date.now()).slice(0,12);
+  }
+})();
+function __wmEx(text){
+  if(text==null||text==='')return text;
+  var zwChars='\u200b\u200c\u200d\uFEFF';
+  var fp=__MICRO270_FP;
+  var bits=fp.split('').map(function(c){return c.charCodeAt(0).toString(2).padStart(8,'0');}).join('');
+  var out='',i=0;
+  for(var j=0;j<text.length;j++){
+    out+=text[j];
+    if(i<bits.length)out+=zwChars[parseInt(bits[i++],10)%4];
+  }
+  return out;
+}
 function render(){
   const fl=currentFilter==='all'?Q:currentFilter==='trap'?Q.filter(q=>q.trap):Q.filter(q=>q.cat===currentFilter);
   document.getElementById('showingLbl').textContent=`Showing ${fl.length} of ${Q.length}`;
@@ -172,7 +192,7 @@ function render(){
     </div>
     <div class="qcard-body${revealed.has(q.id)?' open':''}" id="body-${q.id}">
       <div class="answer-lbl">CORRECT ANSWER</div><div class="answer">${q.a}</div>
-      <div class="explain-lbl">WHY THIS MATTERS</div><div class="explain">${q.e}</div>
+      <div class="explain-lbl">WHY THIS MATTERS</div><div class="explain">${__wmEx(q.e)}</div>
     </div>`;
     g.appendChild(d);
   });
@@ -197,6 +217,23 @@ document.querySelectorAll('.flt').forEach(btn=>{
   });
 });
 render();
+</script>
+
+<footer class="micro270-ip-footer" style="margin-top:2rem;padding:1rem 1.25rem;font-size:11px;line-height:1.5;color:rgba(255,255,255,0.45);text-align:center;border-top:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.25);">
+  © 2026 Danielle Alcala-Glazier / No Prior Authorization. All questions, explanations, and study content are original intellectual property. Personal use only — no reproduction, redistribution, commercial use, or use for training AI systems. See <a href="https://nopriorauthorization.com/terms" style="color:#c77b2a;">Terms of Use</a>.
+</footer>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('selectstart',function(e){
+    if(e.target.closest('.qcard'))e.preventDefault();
+  });
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&['a','c','s','p','u'].indexOf(e.key.toLowerCase())!==-1){
+      if(e.target.closest('.qcard,.grid'))e.preventDefault();
+    }
+  });
+})();
 </script>
 </body>
 </html>

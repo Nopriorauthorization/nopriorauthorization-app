@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { micro270PricingHref } from "@/config/micro270-sales.config";
 
 type Chapter = {
   ch: number;
@@ -9,6 +10,8 @@ type Chapter = {
   total: number;
   built: boolean;
   supabaseUrl: string | null;
+  freeHubAccess: boolean;
+  hubLaunchAllowed: boolean;
 };
 
 const PROGRESS_GOAL = 1000;
@@ -44,27 +47,30 @@ export default function Micro270HubPage() {
     setProgressVersion((v) => v + 1);
   }, []);
 
+  const loadChapters = useCallback(async () => {
+    try {
+      const res = await fetch("/api/micro270/chapters", { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = (await res.json()) as Chapter[];
+      if (Array.isArray(data)) {
+        setChapters(data);
+        setLoadError(null);
+      } else setLoadError("Invalid response");
+    } catch (e) {
+      setLoadError(e instanceof Error ? e.message : "Failed to load");
+    }
+  }, []);
+
   useEffect(() => {
     let cancelled = false;
-    (async () => {
-      try {
-        const res = await fetch("/api/micro270/chapters");
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = (await res.json()) as Chapter[];
-        if (!cancelled) {
-          if (Array.isArray(data)) setChapters(data);
-          else setLoadError("Invalid response");
-        }
-      } catch (e) {
-        if (!cancelled) {
-          setLoadError(e instanceof Error ? e.message : "Failed to load");
-        }
-      }
+    void (async () => {
+      await loadChapters();
+      if (cancelled) return;
     })();
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [loadChapters]);
 
   useEffect(() => {
     const onStorage = (e: StorageEvent) => {
@@ -88,7 +94,10 @@ export default function Micro270HubPage() {
         bumpProgress();
       }
     };
-    const onFocus = () => bumpProgress();
+    const onFocus = () => {
+      bumpProgress();
+      void loadChapters();
+    };
     window.addEventListener("storage", onStorage);
     window.addEventListener("message", onMsg);
     window.addEventListener("focus", onFocus);
@@ -97,7 +106,7 @@ export default function Micro270HubPage() {
       window.removeEventListener("message", onMsg);
       window.removeEventListener("focus", onFocus);
     };
-  }, [bumpProgress]);
+  }, [bumpProgress, loadChapters]);
 
   const overall = useMemo(() => {
     let revealed = 0;
@@ -123,17 +132,11 @@ export default function Micro270HubPage() {
             Study hub
           </h1>
           <p className="mt-2 max-w-2xl text-sm text-white/70">
-            Launch chapter quizzes, track revealed cards per chapter on this
-            device. Progress syncs when chapters run on the same origin as this
-            site, or when chapter HTML calls{" "}
-            <code className="rounded bg-white/10 px-1 text-xs">
-              postMessage
-            </code>{" "}
-            to the parent window with type{" "}
-            <code className="rounded bg-white/10 px-1 text-xs">
-              micro270-progress
-            </code>
-            .
+            Free preview: only chapters marked for the public hub can be
+            launched here without purchasing the full bank. After you buy,
+            refresh this page (or come back from checkout) so your access
+            cookie applies. Direct links to paid chapter files redirect to
+            pricing.
           </p>
           <p className="mt-3 text-sm text-white/50">
             <a
@@ -141,6 +144,13 @@ export default function Micro270HubPage() {
               className="text-[#D4537E] underline-offset-2 hover:underline"
             >
               ← Back to Micro 270 overview
+            </a>
+            {" · "}
+            <a
+              href={micro270PricingHref}
+              className="text-[#2a9d8f] underline-offset-2 hover:underline"
+            >
+              Buy the full bank
             </a>
           </p>
           <div className="mt-6 rounded-lg border border-white/10 bg-white/5 p-4">
@@ -168,6 +178,8 @@ export default function Micro270HubPage() {
           {chapters.map((c) => {
             const { revealed, total } = readProgress(c.ch, c.total);
             const pct = total ? Math.round((revealed / total) * 100) : 0;
+            const canLaunch = c.built && c.hubLaunchAllowed;
+            const lockedPaid = c.built && !c.hubLaunchAllowed;
             return (
               <article
                 key={c.ch}
@@ -189,11 +201,23 @@ export default function Micro270HubPage() {
                       {c.file}
                     </p>
                   </div>
-                  {!c.built ? (
-                    <span className="shrink-0 rounded-full bg-white/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-white/60">
-                      Coming soon
-                    </span>
-                  ) : null}
+                  <div className="flex shrink-0 flex-col items-end gap-1">
+                    {lockedPaid ? (
+                      <span className="rounded-full bg-amber-500/20 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-amber-200">
+                        Paid bank
+                      </span>
+                    ) : null}
+                    {!c.built ? (
+                      <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-white/60">
+                        Coming soon
+                      </span>
+                    ) : null}
+                    {c.built && c.hubLaunchAllowed && c.freeHubAccess ? (
+                      <span className="rounded-full bg-[#2a9d8f]/25 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#7dcdc4]">
+                        Free preview
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
                 <div className="mt-4">
                   <div className="flex justify-between text-xs text-white/60">
@@ -210,7 +234,7 @@ export default function Micro270HubPage() {
                   </div>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {c.built ? (
+                  {canLaunch ? (
                     <>
                       <button
                         type="button"
@@ -228,6 +252,14 @@ export default function Micro270HubPage() {
                         New tab
                       </a>
                     </>
+                  ) : null}
+                  {lockedPaid ? (
+                    <a
+                      href={micro270PricingHref}
+                      className="rounded-lg bg-[#2a9d8f] px-4 py-2 text-sm font-semibold text-white shadow hover:bg-[#227a6f]"
+                    >
+                      Unlock — see pricing
+                    </a>
                   ) : null}
                 </div>
               </article>

@@ -1,10 +1,9 @@
 import Link from "next/link";
+import {
+  micro270PricingHref,
+  micro270ShopCheckout,
+} from "@/config/micro270-sales.config";
 import "./landing.css";
-
-/** Wire these to real checkout / product URLs when live. */
-const SHOP_BANK = "/shop";
-const SHOP_BUNDLE = "/shop";
-const SHOP_FULL = "/shop";
 
 export default function Micro270LandingPage() {
   return (
@@ -16,6 +15,7 @@ export default function Micro270LandingPage() {
         <div className="nav-links">
           <Link href="/shop">Shop</Link>
           <a href="#pricing">Pricing</a>
+          <Link href={micro270PricingHref}>Buy</Link>
           <Link href="/micro270/hub" className="nav-cta">
             Start free →
           </Link>
@@ -37,13 +37,16 @@ export default function Micro270LandingPage() {
             who want questions from their own notes. Both sold on
             nopriorauthorization.com.
           </p>
-          <div className="hero-actions">
+            <div className="hero-actions">
             <Link href="/micro270/hub" className="btn-primary">
               Try the free hub →
             </Link>
             <a href="#pricing" className="btn-outline">
               See pricing
             </a>
+            <Link href={micro270ShopCheckout.bankOnly} className="btn-outline">
+              Buy the bank
+            </Link>
           </div>
           <div className="hero-stats">
             <div className="h-stat">
@@ -147,8 +150,8 @@ export default function Micro270LandingPage() {
               <div className="price-desc">
                 1,000 questions · 20 chapters · one-time download
               </div>
-              <Link href={SHOP_BANK} className="price-cta">
-                Get the bank
+              <Link href={micro270ShopCheckout.bankOnly} className="price-cta">
+                Buy now — $47
               </Link>
             </div>
 
@@ -159,8 +162,8 @@ export default function Micro270LandingPage() {
               <div className="price-desc">
                 Micro 270 Bank + 3 custom cram sheet generations
               </div>
-              <Link href={SHOP_BUNDLE} className="price-cta">
-                Get the bundle
+              <Link href={micro270ShopCheckout.bankBundle} className="price-cta">
+                Buy now — $67
               </Link>
             </div>
 
@@ -170,8 +173,8 @@ export default function Micro270LandingPage() {
               <div className="price-desc">
                 Bank + unlimited custom cram sheets for any course
               </div>
-              <Link href={SHOP_FULL} className="price-cta">
-                Get full access
+              <Link href={micro270ShopCheckout.fullAccess} className="price-cta">
+                Buy now — $97
               </Link>
             </div>
           </div>

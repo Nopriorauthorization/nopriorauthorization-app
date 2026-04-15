@@ -6,6 +6,7 @@ Disallow: /api
 Disallow: /delivery
 Disallow: /canva
 Disallow: /etsy
+Disallow: /micro270/
 
 # Host
 Host: https://nopriorauthorization.com

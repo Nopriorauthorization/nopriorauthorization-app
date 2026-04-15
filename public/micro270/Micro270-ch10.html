@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro270 · Chapter 10 · Innate Immunity</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0a1628; --pink:#D4537E; --teal:#2a9d8f; --red:#e63946;
+  --gold:#c77b2a; --purple:#7b2d8b; --green:#2d7a55; --blue:#1a3a6b;
+  --bg:#f0f2f5; --card:#ffffff; --text:#1a1a2e; --sub:#555; --border:#e0e0e0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+.hdr{background:var(--navy);color:#fff;padding:28px 32px 22px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.hdr-course{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--pink);margin-bottom:4px;}
+.hdr-title{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;letter-spacing:1px;}
+.hdr-title span{color:var(--teal);}
+.hdr-sub{font-size:13px;color:#aaa;margin-top:6px;}
+.hdr-badge{background:var(--pink);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;padding:8px 20px;border-radius:6px;}
+.facts-banner{background:var(--navy);color:#fff;padding:18px 32px;display:flex;gap:24px;flex-wrap:wrap;border-bottom:3px solid var(--teal);}
+.fact-chip{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;}
+.fact-chip span{color:var(--teal);}
+.filters{background:var(--navy);padding:0 32px 20px;display:flex;gap:10px;flex-wrap:wrap;}
+.flt{background:transparent;border:1.5px solid #334;color:#aaa;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:7px 16px;border-radius:20px;cursor:pointer;transition:all .2s;}
+.flt:hover,.flt.active{border-color:var(--pink);color:#fff;background:var(--pink);}
+.flt[data-f="trap"].active{background:var(--red);border-color:var(--red);}
+.flt[data-f="barrier"].active{background:var(--teal);border-color:var(--teal);}
+.flt[data-f="cell"].active{background:var(--green);border-color:var(--green);}
+.flt[data-f="inflam"].active{background:var(--gold);border-color:var(--gold);}
+.flt[data-f="pattern"].active{background:var(--purple);border-color:var(--purple);}
+.stats{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.stat-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--sub);}
+.stat-dot{width:10px;height:10px;border-radius:50%;}
+.stat-count{color:var(--text);font-weight:700;font-size:15px;}
+.showing{margin-left:auto;font-size:12px;color:var(--sub);font-weight:500;}
+.prog-bar-wrap{background:#fff;border-bottom:1px solid var(--border);padding:12px 32px;display:flex;align-items:center;gap:16px;}
+.prog-label{font-size:12px;font-weight:700;color:var(--sub);white-space:nowrap;}
+.prog-track{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:4px;transition:width .4s;}
+.prog-pct{font-size:13px;font-weight:700;color:var(--green);white-space:nowrap;}
+.reset-btn{background:transparent;border:1.5px solid var(--border);color:var(--sub);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all .2s;}
+.reset-btn:hover{border-color:var(--pink);color:var(--pink);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(540px,1fr));gap:16px;padding:24px 32px 48px;max-width:1400px;margin:0 auto;}
+.qcard{background:var(--card);border-radius:10px;border:1.5px solid var(--border);overflow:hidden;transition:box-shadow .2s,transform .15s;}
+.qcard:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-1px);}
+.qcard.is-trap{border-color:#f5c6c6;}
+.qcard.is-trap .qcard-head{background:#fff9f9;}
+.qcard-head{display:flex;align-items:flex-start;gap:10px;padding:14px 16px 10px;cursor:pointer;user-select:none;}
+.qnum{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:#ccc;min-width:30px;}
+.qtext{font-size:14px;font-weight:600;line-height:1.45;flex:1;color:var(--text);}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-top:6px;}
+.tag-barrier{background:#e0f7f5;color:var(--teal);}
+.tag-cell{background:#e0f5ea;color:var(--green);}
+.tag-inflam{background:#fdf0e0;color:var(--gold);}
+.tag-pattern{background:#f2e8f7;color:var(--purple);}
+.tag-trap{background:#fdeaea;color:var(--red);}
+.trap-icon{font-size:16px;margin-left:auto;flex-shrink:0;}
+.qcard-body{display:none;border-top:1.5px solid var(--border);padding:14px 16px;}
+.qcard-body.open{display:block;}
+.answer-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
+.answer{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:12px;}
+.explain-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sub);margin-bottom:5px;}
+.explain{font-size:13px;color:var(--sub);line-height:1.6;}
+.explain b{color:var(--text);}
+@media(max-width:640px){.grid{grid-template-columns:1fr;padding:16px;}.hdr,.filters,.stats,.prog-bar-wrap,.facts-banner{padding-left:16px;padding-right:16px;}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-course">MICRO 250 · NURSING MICROBIOLOGY</div>
+    <div class="hdr-title">CHAPTER 10 <span>INNATE IMMUNITY</span></div>
+    <div class="hdr-sub">Physical Barriers · Cellular Defenses · Inflammation · Pattern Recognition · Complement</div>
+  </div>
+  <div class="hdr-badge">50 QUESTIONS</div>
+</div>
+
+<div class="facts-banner">
+  <div class="fact-chip">🛡️ <span>Innate</span> = nonspecific, immediate, NO memory</div>
+  <div class="fact-chip">🧱 <span>First line</span> = skin & mucous membranes</div>
+  <div class="fact-chip">🔥 <span>Inflammation</span> = redness, heat, swelling, pain, loss of function</div>
+  <div class="fact-chip">🍽️ <span>Neutrophils</span> = first responders; Macrophages = clean-up crew</div>
+  <div class="fact-chip">⚡ <span>Complement</span> = C3b opsonization + MAC lysis + inflammation</div>
+</div>
+
+<div class="filters">
+  <button class="flt active" data-f="all">All (50)</button>
+  <button class="flt" data-f="barrier">Physical Barriers (12)</button>
+  <button class="flt" data-f="cell">Cellular Defenses (12)</button>
+  <button class="flt" data-f="inflam">Inflammation (8)</button>
+  <button class="flt" data-f="pattern">Pattern Recognition (8)</button>
+  <button class="flt" data-f="trap">⚠️ Exam Traps (10)</button>
+</div>
+
+<div class="prog-bar-wrap">
+  <div class="prog-label">REVEALED</div>
+  <div class="prog-track"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-pct" id="progPct">0 / 50</div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+</div>
+
+<div class="stats">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--teal)"></div>Physical Barriers <span class="stat-count">12</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--green)"></div>Cellular Defenses <span class="stat-count">12</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--gold)"></div>Inflammation <span class="stat-count">8</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--purple)"></div>Pattern Recognition <span class="stat-count">8</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--red)"></div>Exam Traps <span class="stat-count">10</span></div>
+  <div class="showing" id="showingLbl">Showing 50 of 50</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const Q = [
+// ─── PHYSICAL BARRIERS (barrier) ──────────────────────────────
+{id:1,cat:'barrier',trap:0,
+ q:'What are the two lines of defense in innate immunity?',
+ a:'A. First line = physical/chemical barriers (skin, mucous membranes); Second line = cellular and chemical defenses (phagocytes, inflammation, complement, fever)',
+ e:'Innate immunity has <b>two lines</b>. The <b>first line</b> prevents pathogen entry — intact skin, mucous membranes, normal flora, secretions. The <b>second line</b> responds after entry — phagocytes, NK cells, complement, inflammation, fever. Neither line has memory; that\'s adaptive immunity.'},
+{id:2,cat:'barrier',trap:0,
+ q:'How does intact skin function as an innate immune barrier?',
+ a:'C. Physical barrier of keratinized cells, low pH from sweat/sebum, and antimicrobial peptides (defensins) all inhibit microbial growth',
+ e:'Skin\'s defense is multilayered: <b>keratinized dead cells</b> are physically tough, <b>low pH</b> (~5) from lactic acid and fatty acids inhibits most pathogens, <b>lysozyme</b> in sweat cleaves peptidoglycan, and <b>defensins</b> (antimicrobial peptides) disrupt microbial membranes. Breach skin → infection risk skyrockets.'},
+{id:3,cat:'barrier',trap:0,
+ q:'What role does mucus play in innate immunity?',
+ a:'B. Traps microorganisms and particles; ciliary action (mucociliary escalator) moves them toward the throat for elimination',
+ e:'Mucus is sticky — it <b>traps pathogens, dust, and debris</b>. Cilia on respiratory epithelium beat in coordinated waves, moving mucus toward the pharynx (the <b>mucociliary escalator</b>). Swallowing destroys most organisms in stomach acid. Smoking paralyzes cilia — that\'s why smokers get more respiratory infections.'},
+{id:4,cat:'barrier',trap:0,
+ q:'What is lysozyme and where is it found?',
+ a:'D. An enzyme that cleaves peptidoglycan in bacterial cell walls; found in tears, saliva, mucus, and breast milk',
+ e:'<b>Lysozyme</b> is a first-line chemical weapon — it cuts the β-1,4 glycosidic bonds in peptidoglycan, weakening and lysing bacterial cell walls. Present in <b>tears, saliva, nasal secretions, mucus, and breast milk</b>. More effective against Gram-positives (thick PG wall) than Gram-negatives (thin PG protected by outer membrane).'},
+{id:5,cat:'barrier',trap:0,
+ q:'How does the normal microbiome (resident flora) contribute to innate defense?',
+ a:'A. Competitive exclusion — normal flora competes for nutrients and space, preventing colonization by pathogens',
+ e:'Normal flora defends by <b>competitive exclusion</b>: they occupy attachment sites, consume nutrients, and produce inhibitory substances (bacteriocins, acids). Disrupting normal flora (antibiotics) allows opportunistic pathogens to colonize — classic example: <i>C. diff</i> overgrowth after broad-spectrum antibiotics.'},
+{id:6,cat:'barrier',trap:0,
+ q:'What chemical property of stomach acid makes it an effective barrier against most ingested pathogens?',
+ a:'C. Extremely low pH (~1.5–3.5) denatures proteins and kills most bacteria',
+ e:'Gastric acid (HCl, pH 1.5–3.5) is lethal to most organisms. It <b>denatures proteins</b> and disrupts cell membranes. Exceptions include endospores (<i>Clostridium, Bacillus</i>), acid-tolerant organisms (<i>H. pylori</i>), and norovirus. Proton pump inhibitors (PPIs) raise gastric pH → increased susceptibility to enteric infections.'},
+{id:7,cat:'barrier',trap:0,
+ q:'How does urine flow protect against urinary tract infections?',
+ a:'B. Mechanical flushing — urine flow washes bacteria out of the urethra before they can ascend to the bladder',
+ e:'"Flush" defense is powerful. Normal urine flow mechanically removes bacteria attempting to ascend. <b>Urinary stasis</b> (dehydration, obstruction, catheterization, neurogenic bladder) increases UTI risk dramatically because flushing stops. This is why adequate hydration is a real UTI prevention strategy.'},
+{id:8,cat:'barrier',trap:0,
+ q:'What is the role of defensins in innate immunity?',
+ a:'D. Antimicrobial peptides that disrupt microbial cell membranes by creating pores',
+ e:'<b>Defensins</b> are small cationic (positively charged) peptides that insert into negatively charged microbial membranes, forming pores that kill the cell. Produced by epithelial cells and neutrophils. They work against bacteria, fungi, and some viruses. Part of the <b>first and second line</b> depending on where they act.'},
+{id:9,cat:'barrier',trap:0,
+ q:'Why are burn patients at dramatically increased infection risk?',
+ a:'A. Loss of skin barrier eliminates the primary physical and chemical defense, exposing underlying tissue directly to pathogens',
+ e:'Skin is the body\'s most important barrier. <b>Burns destroy skin</b>, removing physical protection, chemical inhibition (low pH, lysozyme), and normal flora. Exposed, moist, protein-rich tissue is a perfect culture medium. <i>Pseudomonas aeruginosa</i> is the classic burn wound pathogen because it thrives in this environment.'},
+{id:10,cat:'barrier',trap:0,
+ q:'How does the low pH of the vagina protect against infections?',
+ a:'C. Lactobacillus species ferment glycogen to lactic acid, maintaining pH ~3.8–4.5, which inhibits most pathogens',
+ e:'>i>Lactobacillus</i> dominates the healthy vaginal microbiome and produces <b>lactic acid</b> from glycogen shed by vaginal epithelial cells, keeping vaginal pH ~3.8–4.5. Disrupting this (antibiotics, hormonal changes) raises pH, allowing opportunistic overgrowth: <i>Gardnerella</i> (BV) or <i>Candida</i> (yeast infection).'},
+{id:11,cat:'barrier',trap:0,
+ q:'What is the role of interferons (Type I: IFN-α and IFN-β) as an innate barrier against viruses?',
+ a:'B. Virus-infected cells release interferons that signal neighboring cells to produce antiviral proteins, limiting viral spread',
+ e:'When a cell is infected by a virus, it releases <b>Type I interferons (IFN-α, IFN-β)</b>. These don\'t kill the virus directly — they warn neighboring cells to upregulate antiviral defenses (RNases that degrade viral RNA, halt protein synthesis). This limits spread <i>before</i> the adaptive immune response activates. Innate, fast, nonspecific.'},
+{id:12,cat:'barrier',trap:0,
+ q:'What is the significance of the blood-brain barrier (BBB) as an innate defense?',
+ a:'D. The BBB restricts movement of pathogens and immune cells from blood into the CNS, protecting the brain from most infections',
+ e:'The <b>blood-brain barrier</b> is formed by tight junctions between brain capillary endothelial cells. It prevents most bacteria and many immune cells from entering the CNS. Pathogens that breach it (e.g., <i>Neisseria meningitidis, Listeria, Streptococcus pneumoniae</i>) cause devastating infections because the brain has limited immune surveillance.'},
+
+// ─── CELLULAR DEFENSES (cell) ─────────────────────────────────
+{id:13,cat:'cell',trap:0,
+ q:'Which white blood cell is the FIRST to arrive at a site of bacterial infection?',
+ a:'A. Neutrophil (PMN — polymorphonuclear leukocyte)',
+ e:'<b>Neutrophils</b> are the first responders — they arrive within <b>30–60 minutes</b> of infection, summoned by chemokines. They are the most abundant WBC (~50–70% of circulating leukocytes). They phagocytize and kill bacteria rapidly using oxidative burst, defensins, and lysozymes. Short-lived (~1–2 days).'},
+{id:14,cat:'cell',trap:0,
+ q:'What is phagocytosis and which innate immune cells perform it?',
+ a:'C. The process of engulfing and destroying pathogens by forming a phagosome; performed by neutrophils, macrophages, and dendritic cells',
+ e:'<b>Phagocytosis</b>: pathogen is engulfed into a <b>phagosome</b>, which fuses with lysosomes (containing digestive enzymes) to form a <b>phagolysosome</b>. The pathogen is destroyed by <b>reactive oxygen species (ROI)</b>, enzymes (lysozyme, proteases), and low pH. Key phagocytes: neutrophils, macrophages, dendritic cells.'},
+{id:15,cat:'cell',trap:0,
+ q:'What is the difference between a monocyte and a macrophage?',
+ a:'B. Monocytes circulate in blood; when they migrate into tissues, they mature into macrophages',
+ e:'<b>Monocytes</b> circulate in the bloodstream. When infection signals draw them into tissues, they differentiate into <b>macrophages</b>. Tissue-specific macrophages have names: <b>Kupffer cells</b> (liver), <b>microglia</b> (CNS), <b>alveolar macrophages</b> (lungs), <b>osteoclasts</b> (bone). All are long-lived professional phagocytes.'},
+{id:16,cat:'cell',trap:0,
+ q:'What is the oxidative burst and which cells use it?',
+ a:'D. A rapid release of reactive oxygen species (superoxide, H₂O₂, hypochlorous acid) inside the phagolysosome to kill pathogens; used by neutrophils and macrophages',
+ e:'The <b>oxidative (respiratory) burst</b> uses NADPH oxidase to generate <b>superoxide (O₂⁻)</b>, which converts to H₂O₂, then to <b>hypochlorous acid (HOCl — bleach)</b> via myeloperoxidase. This is extraordinarily toxic to microbes. Chronic granulomatous disease = NADPH oxidase deficiency → recurrent infections from organisms normally killed by oxidative burst.'},
+{id:17,cat:'cell',trap:0,
+ q:'What are natural killer (NK) cells and what is their primary target?',
+ a:'A. Innate lymphocytes that kill virus-infected cells and tumor cells by detecting absent or reduced MHC class I expression',
+ e:'<b>NK cells</b> patrol for cells that have <b>downregulated MHC class I</b> — a strategy viruses and tumors use to hide from T cells. NK cells follow the "missing self" rule: normal cells show MHC I = stay. Cells missing MHC I = kill. They release perforin and granzymes to induce apoptosis. Innate — no prior sensitization needed.'},
+{id:18,cat:'cell',trap:0,
+ q:'What is opsonization and how does it enhance phagocytosis?',
+ a:'C. Coating a pathogen with opsonins (antibody IgG or complement C3b) that bind to receptors on phagocytes, greatly increasing engulfment efficiency',
+ e:'<b>Opsonization</b> is like putting a "eat me" flag on a pathogen. <b>IgG antibodies</b> and <b>complement fragment C3b</b> coat the pathogen surface. Phagocytes have <b>Fc receptors</b> (for IgG) and <b>CR1 receptors</b> (for C3b). Binding these dramatically increases phagocytosis rate. Encapsulated bacteria resist phagocytosis by hiding their surface — opsonins overcome the capsule.'},
+{id:19,cat:'cell',trap:0,
+ q:'What are mast cells and what triggers their degranulation?',
+ a:'B. Tissue-resident cells that release histamine and other mediators when activated by pathogens, injury, or IgE cross-linking',
+ e:'<b>Mast cells</b> reside in connective tissue near blood vessels, especially at body surfaces. When activated (by complement, injury, or allergen-IgE cross-linking), they <b>degranulate</b>, releasing <b>histamine</b>, heparin, and other mediators. Histamine causes vasodilation and increased permeability — essential in inflammation and central to allergic reactions.'},
+{id:20,cat:'cell',trap:0,
+ q:'What are dendritic cells and what dual role do they play?',
+ a:'D. Innate phagocytes that engulf pathogens AND present antigens to T cells, bridging innate and adaptive immunity',
+ e:'<b>Dendritic cells</b> are the key link between innate and adaptive immunity. They act as <b>sentinel cells</b> in tissues — phagocytizing pathogens, migrating to lymph nodes, and <b>presenting antigens via MHC molecules</b> to T cells. They are the most potent <b>antigen-presenting cells (APCs)</b>. Without dendritic cells, adaptive immunity cannot be efficiently activated.'},
+{id:21,cat:'cell',trap:0,
+ q:'What is a neutrophil extracellular trap (NET)?',
+ a:'A. Webs of DNA and antimicrobial proteins released by neutrophils to trap and kill extracellular pathogens',
+ e:'<b>NETs</b> (neutrophil extracellular traps) are a remarkable discovery — dying neutrophils expel their <b>chromatin (DNA)</b> studded with histones and antimicrobial enzymes. These sticky webs trap bacteria, fungi, and parasites. Particularly effective against large pathogens that can\'t be phagocytized. NETs contribute to tissue damage in severe infections and sepsis.'},
+{id:22,cat:'cell',trap:0,
+ q:'What is the role of eosinophils in innate immunity?',
+ a:'C. Primarily defend against parasitic worm infections (helminths) by releasing toxic granule contents onto their surface; also involved in allergic responses',
+ e:'<b>Eosinophils</b> are poorly suited for phagocytosis of large parasites — instead they surround the parasite and <b>degranulate</b>, releasing toxic proteins (major basic protein, eosinophil peroxidase) directly onto the parasite surface. Elevated eosinophils on a CBC = think parasitic infection or allergic condition.'},
+{id:23,cat:'cell',trap:0,
+ q:'What is the function of basophils and how do they relate to mast cells?',
+ a:'B. Circulating counterpart to mast cells; release histamine and heparin; important in allergic and parasitic responses',
+ e:'<b>Basophils</b> circulate in blood; <b>mast cells</b> reside in tissues — but both are granule-filled cells that degranulate in response to IgE-mediated activation. Both release <b>histamine, heparin, leukotrienes</b>. Basophils are the rarest WBC (~0.5%). Their elevation: think allergic disease or parasitic infection.'},
+{id:24,cat:'cell',trap:0,
+ q:'What happens to neutrophils after they phagocytize pathogens?',
+ a:'D. They die (apoptosis) and form pus — pus = dead neutrophils, dead bacteria, tissue fluid, and cellular debris',
+ e:'Neutrophils are <b>short-lived</b> (~1–2 days). After phagocytizing pathogens and deploying their toxic arsenal, they undergo <b>apoptosis</b>. Pus = accumulation of dead neutrophils + dead/living bacteria + tissue fluid. The yellow-green color of pus comes from <b>myeloperoxidase</b> in neutrophil granules. Always a sign of bacterial infection.'},
+
+// ─── INFLAMMATION (inflam) ────────────────────────────────────
+{id:25,cat:'inflam',trap:0,
+ q:'What are the five cardinal signs of acute inflammation?',
+ a:'B. Redness (rubor), heat (calor), swelling (tumor), pain (dolor), loss of function (functio laesa)',
+ e:'The five cardinal signs: <b>Rubor</b> (redness — vasodilation), <b>Calor</b> (heat — increased blood flow), <b>Tumor</b> (swelling — increased vascular permeability + fluid leakage), <b>Dolor</b> (pain — bradykinin, prostaglandins stimulate nociceptors), <b>Functio laesa</b> (loss of function — swelling + pain). These are protective responses, not damage per se.'},
+{id:26,cat:'inflam',trap:0,
+ q:'What causes the redness and heat at an inflammation site?',
+ a:'A. Vasodilation of local blood vessels, increasing blood flow to the area',
+ e:'Mediators like <b>histamine, prostaglandins, and bradykinin</b> cause arterioles to dilate, increasing blood flow. More blood → <b>redness (rubor)</b> and <b>warmth (calor)</b>. This delivers phagocytes and nutrients to the infection site. NSAIDs (ibuprofen) block prostaglandins, reducing vasodilation and pain.'},
+{id:27,cat:'inflam',trap:0,
+ q:'What causes swelling (edema) during inflammation?',
+ a:'C. Increased vascular permeability — plasma proteins and fluid leak from capillaries into surrounding tissue',
+ e:'Histamine and other mediators cause <b>gaps to form between endothelial cells</b>, making capillaries leaky. Plasma proteins (including antibodies and complement) and fluid pour into the infected tissue. This <b>edema</b> dilutes toxins, delivers complement and antibodies, and allows phagocyte migration. Swelling is functional, not just a side effect.'},
+{id:28,cat:'inflam',trap:0,
+ q:'What is the process by which leukocytes migrate from blood vessels to the site of infection?',
+ a:'D. Diapedesis (extravasation) — leukocytes squeeze between endothelial cells, guided by chemokines',
+ e:'The migration sequence: <b>margination</b> (WBCs move to vessel wall) → <b>rolling</b> (selectin-mediated) → <b>adhesion</b> (integrin-mediated firm attachment) → <b>diapedesis</b> (squeezing between endothelial cells) → <b>chemotaxis</b> (movement toward the infection along chemokine gradient). Each step is receptor-mediated.'},
+{id:29,cat:'inflam',trap:0,
+ q:'What is fever and what causes it?',
+ a:'A. An elevation of core body temperature above normal, caused by pyrogens (IL-1, IL-6, TNF-α) resetting the hypothalamic thermostat',
+ e:'Macrophages and other cells release <b>endogenous pyrogens</b> — primarily <b>IL-1, IL-6, TNF-α</b>. These travel to the hypothalamus, stimulating prostaglandin E₂ (PGE₂) production, which <b>resets the thermostat upward</b>. Fever inhibits microbial growth, enhances phagocyte function, and speeds up immune reactions. Aspirin/NSAIDs block PGE₂ synthesis = antipyretic effect.'},
+{id:30,cat:'inflam',trap:0,
+ q:'What is the complement system and what are its three main functions?',
+ a:'C. A cascade of plasma proteins with three functions: opsonization (C3b coating), inflammation (C3a, C5a), and direct lysis (MAC — membrane attack complex)',
+ e:'Complement has three activation pathways (classical, lectin, alternative) but the same three outcomes: <b>C3b</b> coats pathogens for opsonization. <b>C3a and C5a</b> (anaphylatoxins) trigger mast cell degranulation, vasodilation, and chemotaxis. <b>MAC (C5b-9)</b> inserts into bacterial membranes → pore formation → osmotic lysis. Fastest pathway: alternative (no antibody needed).'},
+{id:31,cat:'inflam',trap:0,
+ q:'What is the difference between the classical and alternative complement pathways?',
+ a:'B. Classical = activated by antibody-antigen complexes (requires adaptive immunity); alternative = activated directly by pathogen surfaces (innate, no antibody required)',
+ e:'<b>Classical pathway</b>: C1 binds to antibody (IgM or IgG) already bound to antigen — bridges innate and adaptive. <b>Lectin pathway</b>: MBL (mannose-binding lectin) binds microbial sugars. <b>Alternative pathway</b>: spontaneous C3 activation on foreign surfaces — fully innate. All three converge at <b>C3 convertase → C3b + C3a</b>.'},
+{id:32,cat:'inflam',trap:0,
+ q:'What is septic shock and why is it life-threatening?',
+ a:'D. Systemic inflammatory response to infection causing massive vasodilation, capillary leakage, hypotension, and multi-organ failure',
+ e:'In <b>septic shock</b>, overwhelming infection triggers systemic release of TNF-α, IL-1, IL-6. Massive vasodilation → blood pressure drops. Widespread capillary leakage → fluid leaves circulation. Tissue hypoperfusion → multi-organ failure. <b>Gram-negative LPS (endotoxin)</b> is a powerful trigger. Mortality can exceed 30–50%. Knowing this explains why early antibiotic treatment and fluid resuscitation are critical.'},
+
+// ─── PATTERN RECOGNITION (pattern) ───────────────────────────
+{id:33,cat:'pattern',trap:0,
+ q:'What are PAMPs and PRRs?',
+ a:'A. PAMPs = pathogen-associated molecular patterns (conserved microbial structures); PRRs = pattern recognition receptors on host innate immune cells that detect PAMPs',
+ e:'The innate immune system recognizes broad categories of pathogens via <b>PAMPs</b> — conserved structures that microbes have but host cells don\'t: LPS, peptidoglycan, flagellin, viral RNA. Host innate cells express <b>PRRs</b> (including Toll-like receptors) that bind PAMPs → activate immune response. This is why innate immunity is fast but nonspecific.'},
+{id:34,cat:'pattern',trap:0,
+ q:'What is a Toll-like receptor (TLR) and give two examples of what they detect?',
+ a:'C. TLRs are PRRs on phagocytes and epithelial cells; TLR4 detects LPS (Gram-negative bacteria); TLR3 detects double-stranded RNA (viruses)',
+ e:'<b>TLRs</b> are the best-characterized PRRs. Key examples: <b>TLR4</b> + LPS (from Gram-negative outer membrane) → massive cytokine release, septic shock risk. <b>TLR2</b> + peptidoglycan/lipoteichoic acid (Gram-positives). <b>TLR3</b> + dsRNA (viral). <b>TLR5</b> + flagellin. TLR activation → NF-κB pathway → pro-inflammatory cytokines.'},
+{id:35,cat:'pattern',trap:0,
+ q:'What are DAMPs and how do they differ from PAMPs?',
+ a:'B. DAMPs = damage-associated molecular patterns released by damaged host cells (e.g., uric acid, HMGB1, ATP); signal tissue injury rather than infection',
+ e:'<b>DAMPs (danger signals)</b> are host-derived molecules released when cells are damaged or dying: uric acid crystals, HMGB1, mitochondrial DNA, ATP. They activate the same PRRs as PAMPs, triggering <b>sterile inflammation</b> (without infection). This explains inflammation after physical injury, gout, myocardial infarction, and why autoimmune conditions involve self-tissue damage.'},
+{id:36,cat:'pattern',trap:0,
+ q:'What is the inflammasome and what does it activate?',
+ a:'D. An intracellular protein complex that detects intracellular PAMPs/DAMPs and activates caspase-1 to cleave pro-IL-1β into active IL-1β, driving inflammation',
+ e:'The <b>NLRP3 inflammasome</b> is an intracellular sensor complex. When activated by intracellular danger signals (uric acid crystals, silica, bacterial toxins), it activates <b>caspase-1</b>, which processes <b>pro-IL-1β → IL-1β</b> (a major pyrogen and pro-inflammatory cytokine). Also triggers <b>pyroptosis</b> — inflammatory cell death. Target for gout and autoinflammatory disease treatments.'},
+{id:37,cat:'pattern',trap:0,
+ q:'What is LPS (lipopolysaccharide) and why is it clinically significant?',
+ a:'A. LPS is a component of Gram-negative outer membrane (endotoxin); detected by TLR4, triggering massive cytokine release that can cause septic shock',
+ e:'<b>LPS (endotoxin)</b> is the outermost layer of Gram-negative bacteria. When bacteria lyse (including from antibiotic treatment), LPS floods the bloodstream. <b>TLR4 + MD-2 + CD14</b> detect LPS → massive TNF-α, IL-1, IL-6 release → fever, hypotension, DIC. This is the mechanism of <b>Gram-negative septic shock</b>. Even dead Gram-negative bacteria are dangerous because their LPS persists.'},
+{id:38,cat:'pattern',trap:0,
+ q:'What is the difference between cytokines, chemokines, and interleukins?',
+ a:'C. Cytokines = general signaling proteins of the immune system; chemokines = cytokines that guide cell migration (chemotaxis); interleukins = cytokines that communicate between leukocytes',
+ e:'<b>Cytokines</b>: broad category of immune signaling molecules. <b>Chemokines</b>: a subtype that creates chemical gradients guiding cell migration (e.g., IL-8/CXCL8 attracts neutrophils). <b>Interleukins (ILs)</b>: cytokines mediating leukocyte communication (IL-1, IL-6 = pyrogens; IL-2 = T cell proliferation; IL-4 = IgE/allergy; IL-12 = NK/Th1 activation). <b>TNF-α</b>: major pro-inflammatory cytokine from macrophages.'},
+{id:39,cat:'pattern',trap:0,
+ q:'What is mannose-binding lectin (MBL) and which complement pathway does it activate?',
+ a:'B. An acute phase protein that binds mannose residues on microbial surfaces; activates the lectin (MBL) complement pathway',
+ e:'<b>MBL</b> is produced by the liver (acute phase response) and binds <b>mannose</b> — common on microbial glycoproteins but rare on host cells. MBL binding activates <b>MASPs (serine proteases)</b>, which cleave C4 and C2 → activating complement without antibody. The lectin pathway is a bridge between innate pattern recognition and complement activation.'},
+{id:40,cat:'pattern',trap:0,
+ q:'What are acute phase proteins and name two examples?',
+ a:'D. Proteins produced by the liver during infection/inflammation that enhance innate defenses; examples include C-reactive protein (CRP) and mannose-binding lectin (MBL)',
+ e:'The <b>acute phase response</b>: IL-6 (from macrophages) stimulates the liver to produce <b>acute phase proteins</b>. <b>CRP</b> binds phosphocholine on bacterial surfaces → opsonization and complement activation. <b>MBL</b> activates the lectin complement pathway. <b>Fibrinogen</b> increases (→ elevated ESR). CRP is used clinically as a biomarker of inflammation/infection.'},
+
+// ─── EXAM TRAPS (trap) ────────────────────────────────────────
+{id:41,cat:'barrier',trap:1,
+ q:'⚠️ TRAP: Innate immunity is "nonspecific" — meaning it does not distinguish between types of pathogens. True or false?',
+ a:'B. False (nuanced) — innate immunity recognizes broad pathogen CATEGORIES via PAMPs, but does not recognize specific antigens or generate memory',
+ e:'Innate immunity is <b>not completely blind</b> — it uses PRRs to distinguish bacteria from viruses from fungi based on PAMPs. "Nonspecific" means it <b>doesn\'t recognize individual antigens</b> and <b>has no memory</b>. Calling it "nonspecific" on exams usually means the response is the same regardless of prior exposure — unlike adaptive immunity which is antigen-specific and has memory.'},
+{id:42,cat:'cell',trap:1,
+ q:'⚠️ TRAP: Natural killer (NK) cells are part of adaptive immunity because they kill infected cells like cytotoxic T cells do. True or false?',
+ a:'D. False — NK cells are INNATE lymphocytes; they kill without prior antigen exposure and have no memory',
+ e:'NK cells look similar to cytotoxic T cells (CTLs) and kill the same targets — but they are <b>innate</b>. CTLs require prior antigen presentation, clonal expansion, and generate memory. <b>NK cells act immediately</b> without sensitization, responding to "missing self" (no MHC I). This is a classic adaptive vs. innate trap.'},
+{id:43,cat:'inflam',trap:1,
+ q:'⚠️ TRAP: Fever is always harmful and should always be treated with antipyretics. True or false?',
+ a:'A. False — moderate fever (up to ~40°C) is beneficial; it inhibits microbial growth, enhances phagocyte function, and speeds immune reactions',
+ e:'Moderate fever is a <b>protective mechanism</b> — it slows microbial replication (most pathogens prefer 37°C), enhances neutrophil and macrophage activity, and promotes T cell proliferation. Treating fever with antipyretics may slightly prolong illness. <b>High fever (>40–41°C)</b> is dangerous (denatured proteins, febrile seizures) and should be treated. For boards: fever is beneficial unless extreme.'},
+{id:44,cat:'cell',trap:1,
+ q:'⚠️ TRAP: Macrophages and neutrophils are equally effective at killing intracellular pathogens. True or false?',
+ a:'C. False — some pathogens (Mycobacterium, Listeria, Salmonella) survive and replicate INSIDE macrophages by evading phagolysosome fusion',
+ e:'Some pathogens are <b>facultative intracellular parasites</b> — they\'ve evolved to survive inside phagocytes. <i>M. tuberculosis</i> prevents phagosome-lysosome fusion. <i>Listeria</i> escapes the phagosome into cytoplasm. <i>Salmonella</i> manipulates the phagosome into a replication niche. Neutrophils are short-lived and less exploited; macrophages are the main intracellular niche.'},
+{id:45,cat:'pattern',trap:1,
+ q:'⚠️ TRAP: The alternative complement pathway requires antibody to be activated. True or false?',
+ a:'D. False — the alternative pathway is activated spontaneously on foreign (microbial) surfaces without requiring antibody',
+ e:'This is the <b>most common complement trap</b>. The <b>classical pathway</b> requires antibody (IgM or IgG). The <b>lectin pathway</b> requires MBL binding to sugar. The <b>alternative pathway</b> requires neither — it\'s activated by spontaneous C3 hydrolysis that deposits on surfaces lacking host "protect me" signals. It\'s the fastest innate complement activation.'},
+{id:46,cat:'inflam',trap:1,
+ q:'⚠️ TRAP: Pus formation indicates the immune system is failing. True or false?',
+ a:'B. False — pus is evidence of a robust immune response; it represents dead neutrophils that died fighting the infection',
+ e:'Pus = <b>victory</b> (mostly). It contains dead neutrophils, destroyed bacteria, cellular debris, and plasma fluid. Its presence shows neutrophils arrived and engaged. A patient who <b>cannot form pus</b> (neutropenia — <500 neutrophils/mm³) is in much greater danger than one who can. <b>Absence of pus in neutropenia</b> despite severe infection is a red flag.'},
+{id:47,cat:'barrier',trap:1,
+ q:'⚠️ TRAP: Lysozyme is only effective against Gram-negative bacteria because they have a thicker peptidoglycan layer. True or false?',
+ a:'A. False — lysozyme is more effective against GRAM-POSITIVE bacteria; Gram-negatives are protected by their outer membrane',
+ e:'Gram-positives have a <b>thick, exposed peptidoglycan layer</b> — directly accessible to lysozyme. Gram-negatives have a <b>thin peptidoglycan layer</b> protected by an outer membrane that lysozyme cannot easily penetrate. So lysozyme preferentially attacks <b>Gram-positives</b>. This is the opposite of what students usually assume.'},
+{id:48,cat:'cell',trap:1,
+ q:'⚠️ TRAP: IFN-γ (interferon gamma) is part of the innate immune response to viruses. True or false?',
+ a:'C. False — IFN-γ is produced by T cells and NK cells; it is primarily an adaptive/NK cytokine. IFN-α and IFN-β (Type I) are the innate antiviral interferons',
+ e:'Interferon types matter: <b>Type I IFNs (IFN-α, IFN-β)</b> = innate, produced by virus-infected cells and plasmacytoid dendritic cells. <b>Type II IFN (IFN-γ)</b> = produced by <b>NK cells and T cells</b> — bridges innate and adaptive. IFN-γ activates macrophages (critical for killing intracellular pathogens like TB). When asked about innate antiviral interferons → Type I. IFN-γ ≠ innate antiviral.'},
+{id:49,cat:'pattern',trap:1,
+ q:'⚠️ TRAP: CRP (C-reactive protein) is an antibody produced by B cells during infection. True or false?',
+ a:'D. False — CRP is an acute phase PROTEIN produced by the LIVER in response to IL-6; it is part of innate immunity, not adaptive',
+ e:'CRP is an <b>acute phase reactant</b> made by the <b>liver</b>, not a B cell product. It binds phosphocholine on bacterial and dead cell surfaces → activates complement and promotes phagocytosis. CRP rises within <b>6–12 hours</b> of infection — much faster than antibody production (days). Clinically used as an inflammation biomarker. Elevated CRP ≠ elevated antibodies.'},
+{id:50,cat:'cell',trap:1,
+ q:'⚠️ TRAP: Opsonization only occurs through antibody coating. True or false?',
+ a:'B. False — opsonization occurs via BOTH antibody (IgG via Fc receptors) AND complement fragment C3b (via complement receptor CR1)',
+ e:'Two major opsonins: <b>IgG antibody</b> (binds Fc receptors on phagocytes — adaptive) and <b>C3b</b> (complement fragment binds CR1 on phagocytes — innate). Encapsulated bacteria (e.g., <i>S. pneumoniae, H. influenzae, N. meningitidis</i>) resist phagocytosis by hiding their surface. Opsonization overcomes the capsule. Asplenic patients are especially vulnerable because the spleen is the primary site of opsonin-dependent phagocytosis.'},
+];
+
+let revealed=new Set();
+let currentFilter='all';
+function tagClass(cat){return {barrier:'tag-barrier',cell:'tag-cell',inflam:'tag-inflam',pattern:'tag-pattern'}[cat]||'tag-barrier';}
+function tagLabel(cat){return {barrier:'Physical Barrier',cell:'Cellular Defense',inflam:'Inflammation',pattern:'Pattern Recognition'}[cat]||cat;}
+function render(){
+  const filtered=currentFilter==='all'?Q:currentFilter==='trap'?Q.filter(q=>q.trap):Q.filter(q=>q.cat===currentFilter);
+  document.getElementById('showingLbl').textContent=`Showing ${filtered.length} of ${Q.length}`;
+  const g=document.getElementById('grid');g.innerHTML='';
+  filtered.forEach(q=>{
+    const div=document.createElement('div');
+    div.className='qcard'+(q.trap?' is-trap':'');
+    div.id='card-'+q.id;
+    div.innerHTML=`<div class="qcard-head" onclick="toggleReveal(${q.id})">
+      <span class="qnum">Q${String(q.id).padStart(2,'0')}</span>
+      <div class="qtext">${q.q}<div><span class="tag ${tagClass(q.cat)}">${tagLabel(q.cat)}</span>${q.trap?'<span class="tag tag-trap" style="margin-left:4px">⚠ Exam Trap</span>':''}</div></div>
+      ${q.trap?'<span class="trap-icon">⚠️</span>':''}
+    </div>
+    <div class="qcard-body${revealed.has(q.id)?' open':''}" id="body-${q.id}">
+      <div class="answer-lbl">CORRECT ANSWER</div>
+      <div class="answer">${q.a}</div>
+      <div class="explain-lbl">WHY THIS MATTERS</div>
+      <div class="explain">${q.e}</div>
+    </div>`;
+    g.appendChild(div);
+  });
+  updateProgress();
+}
+function toggleReveal(id){
+  const b=document.getElementById('body-'+id);if(!b)return;
+  if(b.classList.contains('open')){b.classList.remove('open');revealed.delete(id);}
+  else{b.classList.add('open');revealed.add(id);}
+  updateProgress();
+}
+function updateProgress(){
+  const pct=Math.round((revealed.size/Q.length)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=`${revealed.size} / ${Q.length}`;
+}
+function resetAll(){revealed.clear();document.querySelectorAll('.qcard-body').forEach(b=>b.classList.remove('open'));updateProgress();}
+document.querySelectorAll('.flt').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.flt').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');currentFilter=btn.dataset.f;render();
+  });
+});
+render();
+</script>
+</body>
+</html>

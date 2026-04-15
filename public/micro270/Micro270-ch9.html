@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro270 · Chapter 9 · Microbial Growth</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0a1628; --pink:#D4537E; --teal:#2a9d8f; --red:#e63946;
+  --gold:#c77b2a; --purple:#7b2d8b; --green:#2d7a55; --blue:#1a3a6b;
+  --bg:#f0f2f5; --card:#ffffff; --text:#1a1a2e; --sub:#555;
+  --border:#e0e0e0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+.hdr{background:var(--navy);color:#fff;padding:28px 32px 22px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.hdr-course{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--pink);margin-bottom:4px;}
+.hdr-title{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;letter-spacing:1px;}
+.hdr-title span{color:var(--teal);}
+.hdr-sub{font-size:13px;color:#aaa;margin-top:6px;}
+.hdr-badge{background:var(--pink);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;padding:8px 20px;border-radius:6px;}
+.facts-banner{background:var(--navy);color:#fff;padding:18px 32px;display:flex;gap:24px;flex-wrap:wrap;border-bottom:3px solid var(--teal);}
+.fact-chip{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;}
+.fact-chip span{color:var(--teal);}
+.filters{background:var(--navy);padding:0 32px 20px;display:flex;gap:10px;flex-wrap:wrap;}
+.flt{background:transparent;border:1.5px solid #334;color:#aaa;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:7px 16px;border-radius:20px;cursor:pointer;transition:all .2s;}
+.flt:hover,.flt.active{border-color:var(--pink);color:#fff;background:var(--pink);}
+.flt[data-f="trap"].active{background:var(--red);border-color:var(--red);}
+.flt[data-f="curve"].active{background:var(--teal);border-color:var(--teal);}
+.flt[data-f="req"].active{background:var(--green);border-color:var(--green);}
+.flt[data-f="oxy"].active{background:var(--gold);border-color:var(--gold);}
+.flt[data-f="media"].active{background:var(--purple);border-color:var(--purple);}
+.stats{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.stat-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--sub);}
+.stat-dot{width:10px;height:10px;border-radius:50%;}
+.stat-count{color:var(--text);font-weight:700;font-size:15px;}
+.showing{margin-left:auto;font-size:12px;color:var(--sub);font-weight:500;}
+.prog-bar-wrap{background:#fff;border-bottom:1px solid var(--border);padding:12px 32px;display:flex;align-items:center;gap:16px;}
+.prog-label{font-size:12px;font-weight:700;color:var(--sub);white-space:nowrap;}
+.prog-track{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:4px;transition:width .4s;}
+.prog-pct{font-size:13px;font-weight:700;color:var(--green);white-space:nowrap;}
+.reset-btn{background:transparent;border:1.5px solid var(--border);color:var(--sub);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all .2s;}
+.reset-btn:hover{border-color:var(--pink);color:var(--pink);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(540px,1fr));gap:16px;padding:24px 32px 48px;max-width:1400px;margin:0 auto;}
+.qcard{background:var(--card);border-radius:10px;border:1.5px solid var(--border);overflow:hidden;transition:box-shadow .2s,transform .15s;}
+.qcard:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-1px);}
+.qcard-head{display:flex;align-items:flex-start;gap:10px;padding:14px 16px 10px;cursor:pointer;user-select:none;}
+.qnum{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:#ccc;min-width:30px;}
+.qtext{font-size:14px;font-weight:600;line-height:1.45;flex:1;color:var(--text);}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-top:6px;}
+.tag-curve{background:#e0f7f5;color:var(--teal);}
+.tag-req{background:#e0f5ea;color:var(--green);}
+.tag-oxy{background:#fdf0e0;color:var(--gold);}
+.tag-media{background:#f2e8f7;color:var(--purple);}
+.tag-trap{background:#fdeaea;color:var(--red);}
+.trap-icon{font-size:16px;margin-left:auto;flex-shrink:0;}
+.qcard-body{display:none;border-top:1.5px solid var(--border);padding:14px 16px;}
+.qcard-body.open{display:block;}
+.answer-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
+.answer{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:12px;}
+.explain-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sub);margin-bottom:5px;}
+.explain{font-size:13px;color:var(--sub);line-height:1.6;}
+.explain b{color:var(--text);}
+.qcard.is-trap{border-color:#f5c6c6;}
+.qcard.is-trap .qcard-head{background:#fff9f9;}
+@media(max-width:640px){.grid{grid-template-columns:1fr;padding:16px;}.hdr,.filters,.stats,.prog-bar-wrap,.facts-banner{padding-left:16px;padding-right:16px;}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-course">MICRO 250 · NURSING MICROBIOLOGY</div>
+    <div class="hdr-title">CHAPTER 9 <span>MICROBIAL GROWTH</span></div>
+    <div class="hdr-sub">Growth Curve · Physical Requirements · Oxygen Classes · Culture Media · Measuring Growth</div>
+  </div>
+  <div class="hdr-badge">50 QUESTIONS</div>
+</div>
+
+<div class="facts-banner">
+  <div class="fact-chip">📈 <span>Growth curve:</span> Lag → Log → Stationary → Death</div>
+  <div class="fact-chip">🧫 <span>Log phase</span> = most metabolically active = most antibiotic-sensitive</div>
+  <div class="fact-chip">💀 <span>Stationary</span> ≠ no growth — birth rate EQUALS death rate</div>
+  <div class="fact-chip">🧪 <span>Generation time</span> = time for population to double</div>
+  <div class="fact-chip">🌡️ <span>Mesophiles</span> = human pathogens — grow at body temp 37°C</div>
+</div>
+
+<div class="filters">
+  <button class="flt active" data-f="all">All (50)</button>
+  <button class="flt" data-f="curve">Growth Curve (12)</button>
+  <button class="flt" data-f="req">Physical Requirements (12)</button>
+  <button class="flt" data-f="oxy">Oxygen Classes (8)</button>
+  <button class="flt" data-f="media">Culture Media (8)</button>
+  <button class="flt" data-f="trap">⚠️ Exam Traps (10)</button>
+</div>
+
+<div class="prog-bar-wrap">
+  <div class="prog-label">REVEALED</div>
+  <div class="prog-track"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-pct" id="progPct">0 / 50</div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+</div>
+
+<div class="stats">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--teal)"></div>Growth Curve <span class="stat-count">12</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--green)"></div>Physical Requirements <span class="stat-count">12</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--gold)"></div>Oxygen Classes <span class="stat-count">8</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--purple)"></div>Culture Media <span class="stat-count">8</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--red)"></div>Exam Traps <span class="stat-count">10</span></div>
+  <div class="showing" id="showingLbl">Showing 50 of 50</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const Q = [
+// ─── GROWTH CURVE (curve) ─────────────────────────────────────
+{id:1,cat:'curve',trap:0,
+ q:'What are the four phases of the bacterial growth curve in order?',
+ a:'A. Lag → Log (Exponential) → Stationary → Death (Decline)',
+ e:'The four phases are always in this order: <b>Lag</b> (metabolic prep, no division), <b>Log</b> (exponential doubling), <b>Stationary</b> (births = deaths), <b>Death</b> (deaths > births). Every growth curve question anchors on knowing what\'s happening in each phase.'},
+{id:2,cat:'curve',trap:0,
+ q:'What is happening during the lag phase of bacterial growth?',
+ a:'B. Bacteria are metabolically active but NOT dividing — synthesizing enzymes and adapting to the new environment',
+ e:'Lag phase is NOT inactivity. Bacteria are <b>synthesizing enzymes, ATP, and RNA</b> — basically gearing up. Cell number stays flat. Duration depends on how different the new environment is from the previous one. Inoculating into fresh media of the same type = short lag.'},
+{id:3,cat:'curve',trap:0,
+ q:'During which phase of growth are bacteria dividing at the maximum rate?',
+ a:'C. Log (exponential) phase',
+ e:'In <b>log phase</b>, every cell divides at a constant, maximum rate for those conditions. Population doubles every generation time. This is the phase used for most lab experiments because cells are uniform, metabolically consistent, and predictable.'},
+{id:4,cat:'curve',trap:0,
+ q:'What is generation time (doubling time)?',
+ a:'A. The time required for the bacterial population to double in number',
+ e:'<b>Generation time</b> is the time for one division cycle. <i>E. coli</i> = ~20 min. <i>Mycobacterium tuberculosis</i> = ~15–20 hours (which is why TB treatment takes months). Shorter generation time = faster growth = harder to control in some clinical contexts.'},
+{id:5,cat:'curve',trap:0,
+ q:'What causes bacteria to enter the stationary phase?',
+ a:'D. Nutrient depletion and/or toxic waste accumulation — birth rate equals death rate',
+ e:'Stationary phase begins when <b>nutrients run low</b> and <b>toxic byproducts accumulate</b>. The population stabilizes — not because growth stops entirely, but because the division rate now equals the death rate. Total cell count plateaus.'},
+{id:6,cat:'curve',trap:0,
+ q:'During which growth phase are bacteria MOST susceptible to antibiotics?',
+ a:'B. Log (exponential) phase',
+ e:'Most antibiotics target active processes — cell wall synthesis, protein synthesis, DNA replication. These are most active during <b>log phase</b>. Bacteria in stationary or lag phase are less susceptible because they\'re not actively dividing. This is why antibiotic timing matters clinically.'},
+{id:7,cat:'curve',trap:0,
+ q:'A culture has 100 bacteria with a generation time of 30 minutes. How many bacteria after 2 hours?',
+ a:'C. 1,600 bacteria',
+ e:'2 hours = 4 generations (2 hrs ÷ 30 min). Formula: N = N₀ × 2ⁿ. 100 × 2⁴ = 100 × 16 = <b>1,600</b>. Know this formula: N = initial number × 2^(number of generations). This type of calculation appears on exams.'},
+{id:8,cat:'curve',trap:0,
+ q:'What happens to cell viability in the death phase?',
+ a:'A. Death rate exceeds birth rate — total viable cell count declines',
+ e:'In death phase, the environment is severely depleted and toxic. Death rate > birth rate, so the total viable (living) cell count falls exponentially. Note: <b>total cell count</b> (including dead cells) may still appear high if measured by turbidity — only <b>viable counts</b> drop.'},
+{id:9,cat:'curve',trap:0,
+ q:'What is a biofilm and which growth phase are bacteria most likely to form one?',
+ a:'D. A structured community of bacteria encased in polysaccharide matrix; formed during stationary phase when nutrients are scarce',
+ e:'<b>Biofilms</b> form when bacteria attach to surfaces and produce a protective extracellular matrix. They form most commonly when nutrients become limiting (stationary phase). Biofilms are clinically critical — they are up to 1,000× more resistant to antibiotics. Think: dental plaque, catheter infections, chronic wound infections.'},
+{id:10,cat:'curve',trap:0,
+ q:'What is the difference between a closed (batch) culture and an open (continuous) culture?',
+ a:'B. Closed culture = fixed nutrients, goes through all 4 phases; open (chemostat) = fresh media added continuously, maintains log phase indefinitely',
+ e:'A <b>batch culture</b> is a closed system — nutrients deplete, phases progress naturally. A <b>chemostat (continuous culture)</b> continuously adds fresh media and removes waste, keeping bacteria in perpetual log phase. Chemostats are used in research and industrial fermentation.'},
+{id:11,cat:'curve',trap:0,
+ q:'Why does Mycobacterium tuberculosis take so long to culture in the lab (up to 6–8 weeks)?',
+ a:'A. Its generation time is 15–20 hours, so log phase growth is extremely slow compared to most bacteria',
+ e:'M. tb has a <b>generation time of ~15–20 hours</b>, compared to <i>E. coli</i>\'s 20 minutes. This extremely slow doubling means detectable growth takes weeks. This is why TB diagnosis historically relied on culture and why molecular tests (PCR) dramatically improved turnaround time.'},
+{id:12,cat:'curve',trap:0,
+ q:'Which method of measuring microbial growth counts only LIVING cells?',
+ a:'C. Plate count (colony-forming units / CFU)',
+ e:'A <b>plate count</b> spreads diluted sample on agar — only viable cells form colonies, each counted as 1 CFU. Turbidity (spectrophotometry) measures ALL cells (live + dead). Direct microscopic count counts all cells. <b>CFU = viable count only</b> — the most clinically relevant measurement.'},
+
+// ─── PHYSICAL REQUIREMENTS (req) ──────────────────────────────
+{id:13,cat:'req',trap:0,
+ q:'What are the four main physical factors that affect microbial growth?',
+ a:'D. Temperature, pH, osmolarity, and oxygen availability',
+ e:'The big four physical growth requirements are <b>temperature, pH, osmolarity</b> (solute concentration), and <b>oxygen</b>. Each defines what environment an organism can survive in — and which organisms you\'ll find in specific clinical infections.'},
+{id:14,cat:'req',trap:0,
+ q:'What temperature range do most human pathogens (mesophiles) prefer?',
+ a:'B. 25–40°C, with optimal growth near 37°C (body temperature)',
+ e:'<b>Mesophiles</b> thrive at 25–40°C and are optimized for body temperature (37°C). This is why they cause human infections. The cardinal temperatures to know: <b>psychrophiles</b> (0–15°C), <b>mesophiles</b> (25–40°C), <b>thermophiles</b> (50–80°C), <b>hyperthermophiles</b> (>80°C).'},
+{id:15,cat:'req',trap:0,
+ q:'Listeria monocytogenes can grow at refrigerator temperatures (4°C). What temperature category does this make it?',
+ a:'A. Psychrotroph (psychrotolerant)',
+ e:'<i>Listeria</i> is a <b>psychrotroph</b> — it can grow at refrigerator temperatures, which makes it uniquely dangerous in ready-to-eat foods. Most pathogens are killed or inhibited at 4°C. Listeria\'s cold tolerance explains why refrigeration alone doesn\'t eliminate the risk of listeriosis.'},
+{id:16,cat:'req',trap:0,
+ q:'What is the optimum pH for most human bacterial pathogens?',
+ a:'C. pH 6.5–7.5 (near neutral)',
+ e:'Most human pathogens are <b>neutrophiles</b> — they grow best at near-neutral pH (6.5–7.5), which matches the pH of most body tissues. Exceptions: <i>Helicobacter pylori</i> tolerates gastric acid; <i>Lactobacillus</i> acidophiles thrive at low pH in the vagina.'},
+{id:17,cat:'req',trap:0,
+ q:'What is a halophile?',
+ a:'B. An organism that requires high salt concentrations to grow',
+ e:'<b>Halophiles</b> require or tolerate high NaCl. <b>Extreme halophiles</b> need >15% NaCl (e.g., <i>Halobacterium</i> in salt lakes). <b>Moderate halophiles</b>: 3–15% NaCl. <i>Staphylococcus aureus</i> is <b>salt-tolerant</b> (not a true halophile) — this is why it colonizes skin and survives salty environments.'},
+{id:18,cat:'req',trap:0,
+ q:'What happens to bacteria placed in a hypertonic solution (high salt/sugar concentration)?',
+ a:'D. Plasmolysis — water leaves the cell by osmosis, causing the cell membrane to shrink away from the cell wall',
+ e:'In a hypertonic environment, water exits the cell by osmosis → <b>plasmolysis</b>. This is the principle behind salt and sugar preservation of food — high osmolarity dehydrates bacteria. Osmophiles and halophiles have adaptations to counteract this.'},
+{id:19,cat:'req',trap:0,
+ q:'What is the minimum water activity (aW) concept and why does it matter for microbial growth?',
+ a:'A. Water activity measures available free water; lower aW = less water available = inhibits most microbial growth',
+ e:'<b>Water activity (aW)</b> ranges from 0–1.0. Pure water = 1.0. Most bacteria need aW >0.91; molds tolerate as low as 0.70. Drying food (jerky, dried fruit) lowers aW below the threshold for most pathogens — that\'s why drying preserves food.'},
+{id:20,cat:'req',trap:0,
+ q:'Why does refrigeration slow but NOT stop microbial growth?',
+ a:'C. Psychrotrophic organisms like Listeria can still grow at 4°C; refrigeration only slows mesophile growth',
+ e:'Refrigeration (4°C) is below the minimum growth temperature for <b>most mesophiles</b>, slowing their growth dramatically. But <b>psychrotrophs</b> like <i>Listeria monocytogenes</i>, some <i>Yersinia</i>, and spoilage organisms still grow. Never assume refrigerated food is microbe-free.'},
+{id:21,cat:'req',trap:0,
+ q:'What is the significance of Helicobacter pylori\'s urease enzyme in terms of pH requirements?',
+ a:'B. Urease converts urea to ammonia, neutralizing local stomach acid and creating a hospitable pH microenvironment',
+ e:'The stomach (pH 1.5–3.5) kills most bacteria. <i>H. pylori</i> survives by producing <b>urease</b>, which breaks down urea → ammonia + CO₂. Ammonia neutralizes acid around the bacterium, creating a neutral pH microenvironment in the mucous layer. This is a classic virulence mechanism.'},
+{id:22,cat:'req',trap:0,
+ q:'What are the three cardinal temperatures for microbial growth?',
+ a:'D. Minimum (lowest temp that permits growth), optimum (fastest growth rate), maximum (highest temp that permits growth)',
+ e:'Every organism has three cardinal temperatures: <b>minimum</b> (lower threshold), <b>optimum</b> (fastest growth — where you want to keep clinical samples away from), and <b>maximum</b> (upper threshold — exceeded by pasteurization and autoclaving). Outside min/max = no growth (or death).'},
+{id:23,cat:'req',trap:0,
+ q:'How does pressure affect microbial growth, and which organisms thrive under high pressure?',
+ a:'A. Most organisms are inhibited by high pressure; barophiles (piezophiles) live in deep ocean environments with extreme pressure',
+ e:'<b>Barophiles (piezophiles)</b> thrive at high hydrostatic pressure — found in deep ocean trenches. <b>Barotolerant</b> organisms survive but don\'t require high pressure. High-pressure processing (HPP) is used in food preservation — it kills pathogens without heat. Not heavily tested, but know the term.'},
+{id:24,cat:'req',trap:0,
+ q:'Staphylococcus aureus is commonly found on human skin, which has high salt content and low moisture. What physical tolerance does this reflect?',
+ a:'C. Salt tolerance (halotolerance) and moderate resistance to low water activity',
+ e:'<i>S. aureus</i> is a <b>halotolerant</b> organism — it tolerates NaCl concentrations up to ~10%, unlike most bacteria that are inhibited at 1–2%. This salt tolerance allows it to colonize skin, nasal passages, and salty environments, contributing to its role as a major human pathogen.'},
+
+// ─── OXYGEN CLASSES (oxy) ─────────────────────────────────────
+{id:25,cat:'oxy',trap:0,
+ q:'What are the five oxygen requirement categories for bacteria?',
+ a:'B. Obligate aerobe, obligate anaerobe, facultative anaerobe, aerotolerant anaerobe, microaerophile',
+ e:'The five oxygen categories: <b>Obligate aerobe</b> (must have O₂), <b>Obligate anaerobe</b> (killed by O₂), <b>Facultative anaerobe</b> (uses O₂ if present, ferments if not), <b>Aerotolerant anaerobe</b> (ignores O₂, always ferments), <b>Microaerophile</b> (needs low O₂, 2–10%).'},
+{id:26,cat:'oxy',trap:0,
+ q:'Where in a thioglycolate broth tube would you find obligate anaerobes growing?',
+ a:'D. At the BOTTOM of the tube, far from the oxygen-rich surface',
+ e:'Thioglycolate broth creates an O₂ gradient — high at top, low at bottom. <b>Obligate anaerobes</b> grow at the <b>bottom</b>. Obligate aerobes = top. Facultative anaerobes = throughout (denser at top). Microaerophiles = just below the surface. Aerotolerant = uniform throughout.'},
+{id:27,cat:'oxy',trap:0,
+ q:'Which enzyme do obligate anaerobes LACK that makes oxygen toxic to them?',
+ a:'A. Superoxide dismutase (SOD) and catalase',
+ e:'Oxygen metabolism produces <b>superoxide (O₂⁻)</b> and <b>hydrogen peroxide (H₂O₂)</b>. Aerobic organisms neutralize these with <b>superoxide dismutase</b> (O₂⁻ → H₂O₂) and <b>catalase</b> (H₂O₂ → H₂O + O₂). Obligate anaerobes lack these, so reactive oxygen species destroy their cellular components.'},
+{id:28,cat:'oxy',trap:0,
+ q:'E. coli is a facultative anaerobe. What does this mean clinically?',
+ a:'C. E. coli can cause infection in oxygen-rich (lung) AND oxygen-poor (intestine, urinary tract) environments',
+ e:'<b>Facultative anaerobes</b> are metabolically flexible — they perform aerobic respiration when O₂ is available (more ATP) and switch to anaerobic respiration or fermentation without it. This versatility makes organisms like <i>E. coli</i>, <i>Staphylococcus</i>, and most gut bacteria clinically dangerous across many body sites.'},
+{id:29,cat:'oxy',trap:0,
+ q:'Campylobacter jejuni is a microaerophile. What oxygen level does it require?',
+ a:'B. 3–10% O₂ — less than atmospheric (21%) but more than zero',
+ e:'<b>Microaerophiles</b> like <i>Campylobacter jejuni</i> and <i>Helicobacter pylori</i> require <b>reduced oxygen (3–10%)</b>. Normal atmospheric O₂ (21%) is actually toxic to them. Culturing these organisms requires special incubation chambers with controlled low O₂ — important for the clinical lab.'},
+{id:30,cat:'oxy',trap:0,
+ q:'Clostridium perfringens causes gas gangrene in deep wounds. What oxygen class is it?',
+ a:'D. Obligate anaerobe',
+ e:'<i>Clostridium perfringens</i> is an <b>obligate anaerobe</b> — it thrives in the anaerobic environment of deep tissue wounds where blood supply is cut off. It produces gas (CO₂, H₂) and toxins that destroy tissue. Treatment requires surgical debridement + hyperbaric oxygen (which is directly toxic to the organism).'},
+{id:31,cat:'oxy',trap:0,
+ q:'What is the difference between an aerotolerant anaerobe and a facultative anaerobe?',
+ a:'A. Aerotolerant = always ferments, O₂ doesn\'t help or harm; facultative = uses O₂ when available for more ATP',
+ e:'Both survive in oxygen, but: <b>Aerotolerant</b> (e.g., <i>Streptococcus</i>) always uses fermentation regardless of O₂ — O₂ is present but ignored. <b>Facultative anaerobe</b> (e.g., <i>E. coli</i>) actively switches to aerobic respiration when O₂ is available for greater ATP yield. The facultative organism is more efficient.'},
+{id:32,cat:'oxy',trap:0,
+ q:'Why is Streptococcus classified as aerotolerant even though it grows well in the presence of oxygen?',
+ a:'C. Streptococcus lacks the ETC for aerobic respiration — it always ferments, but also lacks enzymes that make O₂ toxic',
+ e:'<i>Streptococcus</i> ferments regardless of O₂ availability — it has no functional ETC for aerobic respiration. But it also has enough <b>peroxidase</b> (though not catalase) to detoxify some H₂O₂. So O₂ neither helps (no aerobic ETC) nor kills it (partial ROS tolerance). True aerotolerant anaerobe.'},
+
+// ─── CULTURE MEDIA (media) ────────────────────────────────────
+{id:33,cat:'media',trap:0,
+ q:'What is the difference between selective and differential media?',
+ a:'B. Selective = inhibits certain organisms to allow others to grow; differential = allows multiple organisms to grow but distinguishes them by appearance',
+ e:'<b>Selective media</b> contains inhibitors (antibiotics, bile salts, high salt) that suppress unwanted organisms. <b>Differential media</b> contains indicators that produce visible differences (color, colony appearance) based on metabolic activity. Many media are BOTH — e.g., MacConkey agar.'},
+{id:34,cat:'media',trap:0,
+ q:'What does MacConkey agar select for AND differentiate between?',
+ a:'D. Selects for Gram-negative bacteria (bile salts + crystal violet inhibit Gram-positives); differentiates lactose fermenters (pink/red colonies) from non-fermenters (colorless)',
+ e:'MacConkey agar: bile salts and crystal violet <b>inhibit Gram-positives</b> (selective). Neutral red indicator turns <b>pink/red</b> when acid is produced from lactose fermentation. Lactose fermenters (e.g., <i>E. coli</i>) = pink colonies. Non-fermenters (e.g., <i>Salmonella, Shigella</i>) = colorless. Classic lab ID tool.'},
+{id:35,cat:'media',trap:0,
+ q:'What type of media is blood agar, and what does it differentiate?',
+ a:'A. Differential media — differentiates bacteria by their hemolytic activity (alpha, beta, or gamma hemolysis)',
+ e:'Blood agar is <b>differential</b>: <b>Beta-hemolysis</b> = complete red cell lysis → clear zone (<i>S. pyogenes, S. aureus</i>). <b>Alpha-hemolysis</b> = partial lysis → green/brown zone (<i>S. pneumoniae, viridans streptococci</i>). <b>Gamma-hemolysis</b> = no hemolysis (<i>Enterococcus faecalis</i>). Blood agar is NOT selective — most bacteria grow on it.'},
+{id:36,cat:'media',trap:0,
+ q:'What is enriched media and why is it used?',
+ a:'C. Media supplemented with growth factors (blood, serum, vitamins) for fastidious organisms that cannot grow on standard media',
+ e:'<b>Fastidious organisms</b> have complex nutritional needs and cannot synthesize all required compounds. <b>Enriched media</b> adds nutrients like blood, serum, or NAD⁺. Examples: <b>Chocolate agar</b> (heated blood — releases hemoglobin factors) for <i>Neisseria gonorrhoeae</i>, <i>Haemophilus influenzae</i>. Standard nutrient agar won\'t grow them.'},
+{id:37,cat:'media',trap:0,
+ q:'What is a defined (synthetic) medium vs. a complex medium?',
+ a:'B. Defined = exact known chemical composition; complex = made from biological extracts with variable/unknown composition',
+ e:'<b>Defined (synthetic) media</b>: every component is known and controlled. Used for precise metabolic research. <b>Complex media</b> (nutrient broth, tryptic soy agar): made from yeast extract, peptone, beef extract — exact composition varies batch to batch. Most clinical lab media is complex because fastidious organisms need undefined factors.'},
+{id:38,cat:'media',trap:0,
+ q:'What is the purpose of Thayer-Martin agar in clinical microbiology?',
+ a:'D. Selectively grows Neisseria gonorrhoeae and N. meningitidis by inhibiting most other organisms with antibiotics',
+ e:'<b>Thayer-Martin agar</b> is a modified chocolate agar containing antibiotics (vancomycin, colistin, nystatin, trimethoprim) that inhibit most normal flora and contaminants. It selectively allows <i>Neisseria</i> species to grow. Used for STI testing and CSF cultures when meningococcal meningitis is suspected.'},
+{id:39,cat:'media',trap:0,
+ q:'What does the term "colony-forming unit" (CFU) represent and why is it important in clinical urine cultures?',
+ a:'A. CFU = the number of viable bacteria that produced a visible colony; ≥100,000 CFU/mL in urine = significant bacteriuria indicating UTI',
+ e:'A <b>CFU</b> is one viable cell (or clump) that formed a visible colony. In urine cultures, <b>≥10⁵ CFU/mL</b> (100,000 per mL) indicates clinically significant bacteriuria consistent with UTI. 10³–10⁴ may indicate contamination or early infection. <10³ = likely contamination.'},
+{id:40,cat:'media',trap:0,
+ q:'What is an anaerobic jar (GasPak system) used for in microbiology labs?',
+ a:'C. Creates an oxygen-free environment for culturing obligate anaerobes',
+ e:'The <b>GasPak/anaerobic jar</b> uses a chemical packet that generates H₂ and CO₂. Palladium catalyst combines H₂ with residual O₂ → H₂O, eliminating O₂. An indicator (methylene blue) confirms anaerobic conditions. This allows culturing of obligate anaerobes like <i>Clostridium, Bacteroides, Fusobacterium</i>.'},
+
+// ─── EXAM TRAPS (trap) ────────────────────────────────────────
+{id:41,cat:'curve',trap:1,
+ q:'⚠️ TRAP: During stationary phase, bacteria have stopped growing. True or false?',
+ a:'B. False — bacteria are still dividing AND dying; the RATES are equal, so total count stays flat',
+ e:'This is the #1 growth curve trap. Stationary phase ≠ no growth. Bacteria are <b>still actively dividing</b> — but the death rate equals the birth rate. Think of it as a plateau caused by balance, not cessation. Some cells are stressed and begin spore formation during this phase.'},
+{id:42,cat:'req',trap:1,
+ q:'⚠️ TRAP: Pasteurization kills ALL microorganisms in food or beverages. True or false?',
+ a:'D. False — pasteurization kills MOST pathogens and reduces total microbial load, but does NOT sterilize; endospores survive',
+ e:'Pasteurization is <b>disinfection, not sterilization</b>. It kills most pathogens (including <i>Listeria, Salmonella, E. coli</i> O157:H7 in milk) but endospores survive. That\'s why pasteurized milk still spoils — surviving organisms eventually grow. Sterilization = 100% kill; pasteurization ≠ sterilization.'},
+{id:43,cat:'oxy',trap:1,
+ q:'⚠️ TRAP: Aerotolerant anaerobes and facultative anaerobes both survive in oxygen — so they are the same category. True or false?',
+ a:'A. False — facultative anaerobes USE oxygen for aerobic respiration; aerotolerant anaerobes ALWAYS ferment and simply tolerate oxygen without using it',
+ e:'Key distinction: <b>Facultative</b> organisms switch metabolic pathways when O₂ is present (more ATP). <b>Aerotolerant</b> organisms ferment no matter what — O₂ is irrelevant to their metabolism. <i>E. coli</i> = facultative. <i>Streptococcus pyogenes</i> = aerotolerant. Wrong answer on exams if you mix them up.'},
+{id:44,cat:'media',trap:1,
+ q:'⚠️ TRAP: Blood agar is selective media because it contains blood. True or false?',
+ a:'C. False — blood agar is DIFFERENTIAL, not selective; most organisms grow on it, but it distinguishes them by hemolysis patterns',
+ e:'Blood agar does NOT inhibit most bacteria — it\'s not selective. It\'s <b>differential</b> because hemolytic patterns (alpha/beta/gamma) vary between species. <b>Selective</b> media contains specific inhibitors. <b>MacConkey</b> is both selective (bile salts inhibit Gram+) AND differential (lactose fermentation). Know the difference.'},
+{id:45,cat:'curve',trap:1,
+ q:'⚠️ TRAP: Turbidity (OD measurement) is the best way to measure viable bacterial cell counts. True or false?',
+ a:'D. False — turbidity measures TOTAL cells (living + dead); only plate counts (CFU) measure viable cells',
+ e:'This is a critical distinction. <b>Turbidity/OD</b> = total cells, fast but includes dead cells. <b>Plate count (CFU)</b> = viable cells only, slower. <b>Direct microscopic count</b> = total cells (live + dead). When a question asks about "living" or "viable" bacteria, the answer is <b>CFU/plate count</b>, never turbidity.'},
+{id:46,cat:'req',trap:1,
+ q:'⚠️ TRAP: Psychrophiles and psychrotrophs are the same thing. True or false?',
+ a:'B. False — psychrophiles REQUIRE cold temperatures; psychrotrophs (psychrotolerant) PREFER warmer temps but CAN grow in the cold',
+ e:'<b>Psychrophile</b>: optimal ~15°C, cannot grow above ~20°C. True cold-lovers. Found in polar regions. <b>Psychrotroph (psychrotolerant)</b>: optimal 25–30°C but can grow at 0–4°C. <i>Listeria monocytogenes</i> is a psychrotroph, not a psychrophile. This distinction matters because psychrotrophs are the food safety concern — they contaminate refrigerated food.'},
+{id:47,cat:'oxy',trap:1,
+ q:'⚠️ TRAP: Clostridium difficile (C. diff) can be killed by alcohol-based hand sanitizers. True or false?',
+ a:'A. False — C. diff produces endospores that are resistant to alcohol; soap and water (mechanical removal) is required',
+ e:'<b>C. diff endospores</b> are NOT killed by alcohol-based hand sanitizers. This is why C. diff infection control requires <b>soap and water handwashing</b> — the mechanical action physically removes spores. This directly contradicts standard hand hygiene for most pathogens (where alcohol-based is preferred). Know this exception for NCLEX.'},
+{id:48,cat:'curve',trap:1,
+ q:'⚠️ TRAP: Antibiotics work equally well regardless of which growth phase bacteria are in. True or false?',
+ a:'C. False — antibiotics targeting cell wall synthesis or active processes are most effective during LOG phase',
+ e:'<b>Cell wall–active antibiotics</b> (penicillins, cephalosporins) require active cell wall synthesis — most effective in <b>log phase</b>. Stationary phase bacteria are dividing slowly, making these drugs less effective. This is one reason why <b>chronic low-grade infections</b> (biofilms, stationary phase) are hard to treat. Static drugs (bacteriostatic) slow growth regardless of phase.'},
+{id:49,cat:'req',trap:1,
+ q:'⚠️ TRAP: All bacteria require the same six elements (CHNOPS) plus identical vitamins and growth factors. True or false?',
+ a:'D. False — all require CHNOPS, but fastidious organisms need specific additional growth factors that non-fastidious organisms synthesize themselves',
+ e:'All organisms need carbon, hydrogen, nitrogen, oxygen, phosphorus, sulfur (<b>CHNOPS</b>). But <b>fastidious organisms</b> (e.g., <i>Haemophilus, Neisseria, Treponema</i>) cannot synthesize specific vitamins, amino acids, or heme derivatives — they must be supplied in enriched media. <b>Prototrophs</b> can synthesize all needed growth factors; <b>auxotrophs</b> cannot.'},
+{id:50,cat:'media',trap:1,
+ q:'⚠️ TRAP: A urine culture result of 50,000 CFU/mL of E. coli in a symptomatic patient indicates contamination and no treatment is needed. True or false?',
+ a:'B. False — in a symptomatic patient, ≥10,000–50,000 CFU/mL can be significant; the 100,000 threshold applies to clean-catch asymptomatic screening',
+ e:'The <b>100,000 CFU/mL threshold</b> was established for asymptomatic screening in clean-catch samples. In <b>symptomatic patients</b>, or catheterized specimens, as few as <b>1,000–10,000 CFU/mL</b> may be clinically significant. Always interpret culture results in clinical context — the number alone doesn\'t tell the whole story.'},
+];
+
+let revealed=new Set();
+let currentFilter='all';
+
+function filterColor(cat){
+  return {curve:'tag-curve',req:'tag-req',oxy:'tag-oxy',media:'tag-media'}[cat]||'tag-curve';
+}
+function filterLabel(cat){
+  return {curve:'Growth Curve',req:'Physical Req.',oxy:'Oxygen Class',media:'Culture Media'}[cat]||cat;
+}
+
+function render(){
+  const filtered = currentFilter==='all' ? Q
+    : currentFilter==='trap' ? Q.filter(q=>q.trap)
+    : Q.filter(q=>q.cat===currentFilter);
+  document.getElementById('showingLbl').textContent=`Showing ${filtered.length} of ${Q.length}`;
+  const g=document.getElementById('grid');
+  g.innerHTML='';
+  filtered.forEach(q=>{
+    const isRevealed=revealed.has(q.id);
+    const div=document.createElement('div');
+    div.className='qcard'+(q.trap?' is-trap':'');
+    div.id='card-'+q.id;
+    div.innerHTML=`
+      <div class="qcard-head" onclick="toggleReveal(${q.id})">
+        <span class="qnum">Q${String(q.id).padStart(2,'0')}</span>
+        <div class="qtext">
+          ${q.q}
+          <div><span class="tag ${filterColor(q.cat)}">${filterLabel(q.cat)}</span>${q.trap?'<span class="tag tag-trap" style="margin-left:4px">⚠ Exam Trap</span>':''}</div>
+        </div>
+        ${q.trap?'<span class="trap-icon">⚠️</span>':''}
+      </div>
+      <div class="qcard-body${isRevealed?' open':''}" id="body-${q.id}">
+        <div class="answer-lbl">CORRECT ANSWER</div>
+        <div class="answer">${q.a}</div>
+        <div class="explain-lbl">WHY THIS MATTERS</div>
+        <div class="explain">${q.e}</div>
+      </div>
+    `;
+    g.appendChild(div);
+  });
+  updateProgress();
+}
+
+function toggleReveal(id){
+  const body=document.getElementById('body-'+id);
+  if(!body) return;
+  if(body.classList.contains('open')){body.classList.remove('open');revealed.delete(id);}
+  else{body.classList.add('open');revealed.add(id);}
+  updateProgress();
+}
+
+function updateProgress(){
+  const pct=Math.round((revealed.size/Q.length)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=`${revealed.size} / ${Q.length}`;
+}
+
+function resetAll(){
+  revealed.clear();
+  document.querySelectorAll('.qcard-body').forEach(b=>b.classList.remove('open'));
+  updateProgress();
+}
+
+document.querySelectorAll('.flt').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.flt').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter=btn.dataset.f;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>

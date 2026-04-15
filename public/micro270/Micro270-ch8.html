@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro270 · Chapter 8 · Metabolism</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0a1628; --pink:#D4537E; --teal:#2a9d8f; --red:#e63946;
+  --gold:#c77b2a; --purple:#7b2d8b; --green:#2d7a55; --blue:#1a3a6b;
+  --bg:#f0f2f5; --card:#ffffff; --text:#1a1a2e; --sub:#555;
+  --border:#e0e0e0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* HEADER */
+.hdr{background:var(--navy);color:#fff;padding:28px 32px 22px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.hdr-left{}
+.hdr-course{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--pink);margin-bottom:4px;}
+.hdr-title{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;letter-spacing:1px;}
+.hdr-title span{color:var(--teal);}
+.hdr-sub{font-size:13px;color:#aaa;margin-top:6px;}
+.hdr-badge{background:var(--pink);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;padding:8px 20px;border-radius:6px;}
+
+/* FILTERS */
+.filters{background:var(--navy);padding:0 32px 20px;display:flex;gap:10px;flex-wrap:wrap;}
+.flt{background:transparent;border:1.5px solid #334;color:#aaa;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:7px 16px;border-radius:20px;cursor:pointer;transition:all .2s;}
+.flt:hover,.flt.active{border-color:var(--pink);color:#fff;background:var(--pink);}
+.flt[data-f="trap"].active{background:var(--red);border-color:var(--red);}
+.flt[data-f="g"].active{background:var(--teal);border-color:var(--teal);}
+.flt[data-f="k"].active{background:var(--green);border-color:var(--green);}
+.flt[data-f="e"].active{background:var(--gold);border-color:var(--gold);}
+.flt[data-f="f"].active{background:var(--purple);border-color:var(--purple);}
+
+/* STATS BAR */
+.stats{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.stat-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--sub);}
+.stat-dot{width:10px;height:10px;border-radius:50%;}
+.stat-count{color:var(--text);font-weight:700;font-size:15px;}
+.showing{margin-left:auto;font-size:12px;color:var(--sub);font-weight:500;}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(540px,1fr));gap:16px;padding:24px 32px 48px;max-width:1400px;margin:0 auto;}
+
+/* CARD */
+.qcard{background:var(--card);border-radius:10px;border:1.5px solid var(--border);overflow:hidden;transition:box-shadow .2s,transform .15s;}
+.qcard:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-1px);}
+.qcard-head{display:flex;align-items:flex-start;gap:10px;padding:14px 16px 10px;cursor:pointer;user-select:none;}
+.qnum{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:#ccc;min-width:30px;}
+.qtext{font-size:14px;font-weight:600;line-height:1.45;flex:1;color:var(--text);}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-top:6px;}
+.tag-g{background:#e0f7f5;color:var(--teal);}
+.tag-k{background:#e0f5ea;color:var(--green);}
+.tag-e{background:#fdf0e0;color:var(--gold);}
+.tag-f{background:#f2e8f7;color:var(--purple);}
+.tag-trap{background:#fdeaea;color:var(--red);}
+.trap-icon{font-size:16px;margin-left:auto;flex-shrink:0;}
+.qcard-body{display:none;border-top:1.5px solid var(--border);padding:14px 16px;}
+.qcard-body.open{display:block;}
+.answer-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
+.answer{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:12px;}
+.explain-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sub);margin-bottom:5px;}
+.explain{font-size:13px;color:var(--sub);line-height:1.6;}
+.explain b{color:var(--text);}
+.reveal-btn{background:var(--navy);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;padding:8px 18px;border-radius:5px;cursor:pointer;margin-top:4px;transition:background .2s;}
+.reveal-btn:hover{background:var(--pink);}
+.revealed .reveal-btn{display:none;}
+
+/* TRAP CARD ACCENT */
+.qcard.is-trap{border-color:#f5c6c6;}
+.qcard.is-trap .qcard-head{background:#fff9f9;}
+
+/* PROGRESS */
+.prog-bar-wrap{background:#fff;border-bottom:1px solid var(--border);padding:12px 32px;display:flex;align-items:center;gap:16px;}
+.prog-label{font-size:12px;font-weight:700;color:var(--sub);white-space:nowrap;}
+.prog-track{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:4px;transition:width .4s;}
+.prog-pct{font-size:13px;font-weight:700;color:var(--green);white-space:nowrap;}
+.reset-btn{background:transparent;border:1.5px solid var(--border);color:var(--sub);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all .2s;}
+.reset-btn:hover{border-color:var(--pink);color:var(--pink);}
+
+/* KEY FACTS BANNER */
+.facts-banner{background:var(--navy);color:#fff;padding:18px 32px;display:flex;gap:24px;flex-wrap:wrap;border-bottom:3px solid var(--teal);}
+.fact-chip{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;}
+.fact-chip span{color:var(--teal);}
+
+@media(max-width:640px){
+  .grid{grid-template-columns:1fr;padding:16px;}
+  .hdr{padding:20px 16px;}
+  .filters{padding:0 16px 16px;}
+  .stats{padding:12px 16px;}
+  .prog-bar-wrap{padding:10px 16px;}
+  .facts-banner{padding:14px 16px;}
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-course">MICRO 250 · NURSING MICROBIOLOGY</div>
+    <div class="hdr-title">CHAPTER 8 <span>METABOLISM</span></div>
+    <div class="hdr-sub">Glycolysis · Krebs Cycle · ETC · Fermentation · Catabolism vs. Anabolism</div>
+  </div>
+  <div class="hdr-badge">50 QUESTIONS</div>
+</div>
+
+<div class="facts-banner">
+  <div class="fact-chip">⚡ <span>Glycolysis</span> NET = 2 ATP · cytoplasm · no O₂ needed</div>
+  <div class="fact-chip">🔄 <span>Krebs</span> = 2 ATP + 6 NADH + 2 FADH₂ per glucose</div>
+  <div class="fact-chip">💥 <span>ETC</span> = ~34 ATP · requires O₂ · inner membrane</div>
+  <div class="fact-chip">🍺 <span>Fermentation</span> regenerates NAD⁺ only · no extra ATP</div>
+  <div class="fact-chip">🧪 <span>Obligate anaerobes</span> = O₂ is TOXIC to them</div>
+</div>
+
+<div class="filters">
+  <button class="flt active" data-f="all">All (50)</button>
+  <button class="flt" data-f="g">Glycolysis (10)</button>
+  <button class="flt" data-f="k">Krebs Cycle (10)</button>
+  <button class="flt" data-f="e">ETC &amp; O₂ (10)</button>
+  <button class="flt" data-f="f">Fermentation (10)</button>
+  <button class="flt" data-f="trap">⚠️ Exam Traps (10)</button>
+</div>
+
+<div class="prog-bar-wrap">
+  <div class="prog-label">REVEALED</div>
+  <div class="prog-track"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-pct" id="progPct">0 / 50</div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+</div>
+
+<div class="stats">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--teal)"></div>Glycolysis <span class="stat-count">10</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--green)"></div>Krebs Cycle <span class="stat-count">10</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--gold)"></div>ETC &amp; O₂ <span class="stat-count">10</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--purple)"></div>Fermentation <span class="stat-count">10</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--red)"></div>Exam Traps <span class="stat-count">10</span></div>
+  <div class="showing" id="showingLbl">Showing 50 of 50</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const Q = [
+// ─── GLYCOLYSIS (g) ───────────────────────────────────────────
+{id:1,cat:'g',trap:0,
+ q:'Where does glycolysis occur in the cell?',
+ a:'A. In the cytoplasm (cytosol)',
+ e:'Glycolysis happens in the <b>cytoplasm</b> of ALL cells — prokaryotes and eukaryotes alike. It does NOT require mitochondria, which is why anaerobes can still use glycolysis. The Krebs cycle and ETC are mitochondria-based (in eukaryotes).'},
+{id:2,cat:'g',trap:0,
+ q:'How many net ATP molecules are produced by glycolysis per glucose molecule?',
+ a:'B. 2 net ATP',
+ e:'Glycolysis invests <b>2 ATP</b> to get <b>4 ATP</b> back — so the <b>net gain is 2 ATP</b>. It also produces 2 NADH and 2 pyruvate. The gross yield (4) vs. net yield (2) is a favorite professor distinction.'},
+{id:3,cat:'g',trap:0,
+ q:'What is the starting molecule and the end product of glycolysis?',
+ a:'C. Glucose (6C) → 2 Pyruvate (3C each)',
+ e:'One glucose (6-carbon) is split into <b>two pyruvate molecules</b> (3-carbon each). This carbon accounting is critical — every carbon must be accounted for as you follow it through the metabolic pathways.'},
+{id:4,cat:'g',trap:0,
+ q:'What electron carriers are produced during glycolysis?',
+ a:'A. 2 NADH',
+ e:'Glycolysis produces <b>2 NADH</b> per glucose. These carry high-energy electrons to the ETC later (if oxygen is available). No FADH₂ is produced during glycolysis — FADH₂ comes from the Krebs cycle.'},
+{id:5,cat:'g',trap:0,
+ q:'Does glycolysis require oxygen?',
+ a:'D. No — glycolysis is anaerobic',
+ e:'Glycolysis requires <b>no oxygen</b>. It is the universal first step in glucose catabolism for all living organisms. Whether oxygen is present or not, glycolysis proceeds. What changes afterward (Krebs vs. fermentation) depends on O₂ availability.'},
+{id:6,cat:'g',trap:0,
+ q:'What happens to pyruvate under aerobic conditions after glycolysis?',
+ a:'B. Pyruvate is converted to Acetyl-CoA and enters the Krebs cycle',
+ e:'When oxygen is available, pyruvate is transported into the mitochondrial matrix and converted to <b>Acetyl-CoA</b> by pyruvate dehydrogenase, releasing one CO₂ and one NADH per pyruvate. Acetyl-CoA then enters the Krebs cycle.'},
+{id:7,cat:'g',trap:0,
+ q:'How many carbons are in pyruvate?',
+ a:'C. 3 carbons',
+ e:'Pyruvate is a <b>3-carbon</b> molecule. When pyruvate enters the transition reaction and becomes Acetyl-CoA, it loses one carbon as CO₂, producing a <b>2-carbon</b> acetyl group. This is why the Krebs cycle starts with a 2-carbon input.'},
+{id:8,cat:'g',trap:0,
+ q:'In prokaryotes, where does the Krebs cycle occur since they have no mitochondria?',
+ a:'A. In the cytoplasm (cytosol)',
+ e:'Prokaryotes have <b>no membrane-bound organelles</b>. Their Krebs cycle runs in the <b>cytoplasm</b>. The ETC is embedded in the plasma membrane rather than the inner mitochondrial membrane. Same chemistry, different location.'},
+{id:9,cat:'g',trap:0,
+ q:'What is the primary purpose of glycolysis in the context of overall cellular respiration?',
+ a:'D. To break glucose into pyruvate and capture a small amount of ATP and NADH for further processing',
+ e:'Glycolysis is the <b>gateway step</b> — it generates a small immediate ATP payoff and produces pyruvate (the fuel for Krebs) and NADH (fuel for ETC). Most of the energy is still locked in pyruvate and NADH at this stage.'},
+{id:10,cat:'g',trap:0,
+ q:'Which statement correctly describes the energy investment phase vs. payoff phase of glycolysis?',
+ a:'B. 2 ATP invested early; 4 ATP recovered later = 2 net ATP',
+ e:'Glycolysis has two phases: the <b>energy investment phase</b> (spends 2 ATP to phosphorylate glucose and fructose-6-phosphate) and the <b>energy payoff phase</b> (produces 4 ATP and 2 NADH from splitting and processing the 3-carbon intermediates). Net = 2 ATP.'},
+
+// ─── KREBS CYCLE (k) ──────────────────────────────────────────
+{id:11,cat:'k',trap:0,
+ q:'For each acetyl-CoA that enters the Krebs cycle, how many ATP are directly produced?',
+ a:'A. 1 ATP (or GTP) per turn',
+ e:'The Krebs cycle directly produces only <b>1 ATP (or GTP) per turn</b>. Its primary role is producing electron carriers: 3 NADH and 1 FADH₂ per turn. Since 2 Acetyl-CoA come from one glucose, the Krebs cycle runs <b>twice per glucose</b> = 2 ATP total.'},
+{id:12,cat:'k',trap:0,
+ q:'What are the two electron carriers produced by the Krebs cycle per turn?',
+ a:'C. NADH and FADH₂',
+ e:'Each turn of the Krebs cycle produces <b>3 NADH and 1 FADH₂</b>. These carry electrons to the ETC. NADH feeds into Complex I; FADH₂ feeds into Complex II. FADH₂ produces fewer ATP (1.5) vs. NADH (~2.5) because it enters at a lower point.'},
+{id:13,cat:'k',trap:0,
+ q:'Where does the Krebs cycle occur in eukaryotes?',
+ a:'B. Mitochondrial matrix',
+ e:'The Krebs cycle occurs in the <b>mitochondrial matrix</b> — the innermost compartment of the mitochondria. The ETC, by contrast, is embedded in the <b>inner mitochondrial membrane</b>. These locations matter for exam questions.'},
+{id:14,cat:'k',trap:0,
+ q:'What 2-carbon molecule enters the Krebs cycle?',
+ a:'A. Acetyl-CoA',
+ e:'<b>Acetyl-CoA</b> (2 carbons attached to Coenzyme A) is what feeds into the Krebs cycle. It combines with oxaloacetate (4C) to form citrate (6C). The CoA is released and recycled. This is why the cycle can keep running.'},
+{id:15,cat:'k',trap:0,
+ q:'How many times does the Krebs cycle turn per glucose molecule?',
+ a:'C. Twice — once for each pyruvate/Acetyl-CoA',
+ e:'One glucose → 2 pyruvates → 2 Acetyl-CoA → <b>2 turns of the Krebs cycle</b>. When professors give Krebs cycle output numbers, they usually mean per turn. Always multiply by 2 to get the per-glucose total.'},
+{id:16,cat:'k',trap:0,
+ q:'What happens to the carbons from Acetyl-CoA as they pass through the Krebs cycle?',
+ a:'D. They are released as CO₂',
+ e:'The 2 carbons of Acetyl-CoA are ultimately released as <b>2 CO₂ molecules</b> per turn. This is where the carbon from glucose goes — exhaled as CO₂. By the end of the Krebs cycle, all 6 carbons of the original glucose have been released as CO₂.'},
+{id:17,cat:'k',trap:0,
+ q:'What is the 4-carbon molecule that accepts Acetyl-CoA at the start of the Krebs cycle and is regenerated at the end?',
+ a:'B. Oxaloacetate (OAA)',
+ e:'<b>Oxaloacetate (OAA)</b> is the accepting molecule that combines with Acetyl-CoA to form citrate. It is regenerated at the end of each turn, which is why the cycle can continue. OAA running out = cycle stalls — important concept in metabolic disorders.'},
+{id:18,cat:'k',trap:0,
+ q:'What is the total NADH yield from the Krebs cycle for one complete glucose oxidation?',
+ a:'A. 6 NADH (3 per turn × 2 turns)',
+ e:'Each Krebs turn = <b>3 NADH</b>. Two turns per glucose = <b>6 NADH</b> from Krebs alone. Add the 2 NADH from glycolysis and 2 NADH from the transition reaction = <b>10 NADH total</b> per glucose entering the ETC.'},
+{id:19,cat:'k',trap:0,
+ q:'What is the role of NADH and FADH₂ produced in the Krebs cycle?',
+ a:'C. They carry electrons to the electron transport chain to drive ATP synthesis',
+ e:'NADH and FADH₂ are <b>electron carriers</b>. They carry high-energy electrons from substrate oxidation to the ETC. There, the electrons power proton pumping, creating a gradient used to synthesize ATP via ATP synthase. Without the ETC, NADH/FADH₂ pile up and the Krebs cycle halts.'},
+{id:20,cat:'k',trap:0,
+ q:'Does the Krebs cycle require oxygen directly?',
+ a:'D. No — but it stalls without oxygen because NADH/FADH₂ cannot be recycled',
+ e:'The Krebs cycle does <b>not directly use oxygen</b>. However, it depends on the ETC to regenerate NAD⁺ and FAD from NADH/FADH₂. Without O₂, the ETC stops, these carriers back up, and the Krebs cycle cannot continue. So it is <b>functionally aerobic</b>.'},
+
+// ─── ETC & OXYGEN (e) ─────────────────────────────────────────
+{id:21,cat:'e',trap:0,
+ q:'Where is the electron transport chain located in eukaryotes?',
+ a:'B. Inner mitochondrial membrane',
+ e:'The ETC protein complexes (I–IV) are embedded in the <b>inner mitochondrial membrane</b>. This is important because the membrane creates the two compartments needed for the proton gradient: matrix (inside) and intermembrane space (outside).'},
+{id:22,cat:'e',trap:0,
+ q:'What is the final electron acceptor in aerobic respiration?',
+ a:'A. Oxygen (O₂)',
+ e:'At the end of the ETC, electrons are passed to <b>oxygen</b>, which combines with electrons and H⁺ to form <b>water (H₂O)</b>. This is why aerobic respiration requires oxygen — and why its absence halts the ETC. Without a final acceptor, electrons back up.'},
+{id:23,cat:'e',trap:0,
+ q:'What process uses the proton gradient created by the ETC to synthesize ATP?',
+ a:'C. Chemiosmosis via ATP synthase',
+ e:'As electrons flow through the ETC, protons (H⁺) are pumped from the matrix into the intermembrane space, building a gradient. Protons flow back through <b>ATP synthase</b> (Complex V) by chemiosmosis, and the energy drives ATP synthesis. This is <b>oxidative phosphorylation</b>.'},
+{id:24,cat:'e',trap:0,
+ q:'Approximately how many ATP are produced by the ETC per glucose molecule?',
+ a:'D. ~32–34 ATP',
+ e:'The ETC generates approximately <b>32–34 ATP</b> per glucose via oxidative phosphorylation. Combined with glycolysis (2 ATP) and Krebs (2 ATP), the total is approximately <b>36–38 ATP</b>. Modern estimates prefer 30–32 total due to membrane leakage, but know ~34 from ETC alone.'},
+{id:25,cat:'e',trap:0,
+ q:'What is the difference between NADH and FADH₂ in terms of ATP yield from the ETC?',
+ a:'B. NADH yields ~2.5 ATP; FADH₂ yields ~1.5 ATP',
+ e:'FADH₂ enters the ETC at <b>Complex II</b> (bypassing Complex I), so it pumps fewer protons and generates fewer ATP (~1.5). NADH enters at <b>Complex I</b> and generates more (~2.5). This is why it matters whether a Krebs step produces NADH or FADH₂.'},
+{id:26,cat:'e',trap:0,
+ q:'What happens to electrons after they are passed through Complexes I–IV of the ETC?',
+ a:'A. They are accepted by O₂, forming water (H₂O)',
+ e:'At <b>Complex IV (cytochrome c oxidase)</b>, electrons are transferred to O₂. Each O₂ accepts 4 electrons and combines with 4 H⁺ to form <b>2 H₂O</b>. This is the step that consumes oxygen and explains why aerobic organisms require it.'},
+{id:27,cat:'e',trap:0,
+ q:'In prokaryotes, where is the ETC located?',
+ a:'C. The plasma (cell) membrane',
+ e:'Prokaryotes have no mitochondria, so their ETC is embedded in the <b>plasma membrane</b>. The proton gradient forms across the plasma membrane rather than the inner mitochondrial membrane, but the chemiosmosis mechanism is the same.'},
+{id:28,cat:'e',trap:0,
+ q:'What is substrate-level phosphorylation vs. oxidative phosphorylation?',
+ a:'D. Substrate-level = ATP made directly from a chemical reaction; oxidative = ATP made via proton gradient and ATP synthase',
+ e:'<b>Substrate-level phosphorylation</b> is direct ATP production (glycolysis and Krebs). <b>Oxidative phosphorylation</b> is ATP production driven by the proton gradient through ATP synthase. The vast majority (~90%) of ATP comes from oxidative phosphorylation.'},
+{id:29,cat:'e',trap:0,
+ q:'Which organisms perform anaerobic respiration?',
+ a:'B. Some bacteria and archaea that use an inorganic molecule other than O₂ as the final electron acceptor',
+ e:'<b>Anaerobic respiration</b> still uses an ETC — just with a different final electron acceptor: nitrate (NO₃⁻), sulfate (SO₄²⁻), CO₂, or others. This is NOT fermentation. These organisms can generate more ATP than fermenters but less than aerobic organisms.'},
+{id:30,cat:'e',trap:0,
+ q:'What is the proton motive force?',
+ a:'A. The electrochemical gradient of H⁺ ions across the inner mitochondrial membrane that drives ATP synthesis',
+ e:'The <b>proton motive force (PMF)</b> is built by proton pumping during the ETC. It has two components: a <b>concentration gradient</b> (more H⁺ outside) and a <b>charge gradient</b> (positive outside, negative inside). ATP synthase harvests this gradient\'s energy.'},
+
+// ─── FERMENTATION (f) ─────────────────────────────────────────
+{id:31,cat:'f',trap:0,
+ q:'What is the primary purpose of fermentation?',
+ a:'C. To regenerate NAD⁺ so glycolysis can continue',
+ e:'Fermentation does <b>NOT produce extra ATP</b>. Its sole purpose is to regenerate <b>NAD⁺</b> from NADH so that glycolysis can keep running. Without NAD⁺ regeneration, glycolysis stalls and the cell cannot produce even the 2 ATP from glycolysis.'},
+{id:32,cat:'f',trap:0,
+ q:'What are the two common types of fermentation in microorganisms?',
+ a:'A. Lactic acid fermentation and alcohol (ethanol) fermentation',
+ e:'The two main types are: <b>lactic acid fermentation</b> (pyruvate → lactate + NAD⁺; used by Lactobacillus, muscle cells) and <b>alcohol fermentation</b> (pyruvate → ethanol + CO₂ + NAD⁺; used by yeasts). Both regenerate NAD⁺ without producing extra ATP.'},
+{id:33,cat:'f',trap:0,
+ q:'In lactic acid fermentation, what is the end product?',
+ a:'B. Lactate (lactic acid)',
+ e:'In lactic acid fermentation, pyruvate is directly reduced to <b>lactate</b> by NADH → NAD⁺. No CO₂ is released. This is what Streptococcus, Lactobacillus, and your skeletal muscle cells do during anaerobic exercise (the "burn").'},
+{id:34,cat:'f',trap:0,
+ q:'In alcohol fermentation, what are the end products?',
+ a:'D. Ethanol + CO₂',
+ e:'In alcohol fermentation, pyruvate is first decarboxylated (loses CO₂) to acetaldehyde, then NADH reduces it to <b>ethanol</b>. This regenerates NAD⁺. CO₂ is a byproduct — it\'s what makes bread rise and beer carbonated. Used by <i>Saccharomyces cerevisiae</i> (yeast).'},
+{id:35,cat:'f',trap:0,
+ q:'How much ATP does fermentation produce beyond what glycolysis already made?',
+ a:'A. Zero — fermentation produces no additional ATP',
+ e:'Fermentation produces <b>NO additional ATP</b>. The 2 net ATP come entirely from glycolysis. Fermentation only recycles NADH → NAD⁺ to allow glycolysis to keep running. Students frequently say "fermentation makes 2 ATP" — that\'s glycolysis making 2 ATP, not fermentation.'},
+{id:36,cat:'f',trap:0,
+ q:'What type of organism relies entirely on fermentation for energy?',
+ a:'C. Obligate anaerobes (e.g., Clostridium, some Lactobacillus)',
+ e:'<b>Obligate anaerobes</b> cannot use oxygen and rely on fermentation (or anaerobic respiration) for ATP. Examples: <i>Clostridium tetani</i>, <i>Clostridium difficile</i>, <i>Bacteroides fragilis</i>. They get only 2 ATP per glucose — which is why they live in low-energy environments.'},
+{id:37,cat:'f',trap:0,
+ q:'What distinguishes fermentation from anaerobic respiration?',
+ a:'B. Fermentation has no ETC; anaerobic respiration uses an ETC with an inorganic final electron acceptor other than O₂',
+ e:'This is a high-yield distinction. <b>Fermentation</b>: no ETC, no electron acceptor chain, only 2 ATP. <b>Anaerobic respiration</b>: uses a full ETC with an alternative final acceptor (nitrate, sulfate, etc.) and produces more ATP than fermentation.'},
+{id:38,cat:'f',trap:0,
+ q:'Why can obligate anaerobes not survive in the presence of oxygen?',
+ a:'A. They lack enzymes (catalase, SOD) to neutralize toxic oxygen radicals',
+ e:'Oxygen metabolism produces <b>reactive oxygen species (ROS)</b> — superoxide (O₂⁻) and hydrogen peroxide (H₂O₂). Aerobic organisms have <b>superoxide dismutase (SOD)</b> and <b>catalase</b> to neutralize these. Obligate anaerobes lack these enzymes, so ROS destroy them.'},
+{id:39,cat:'f',trap:0,
+ q:'What is mixed acid fermentation and which clinically significant bacteria performs it?',
+ a:'C. Multiple organic acids + gas produced; performed by Escherichia coli',
+ e:'<b>Mixed acid fermentation</b> produces various organic acids (acetic, lactic, formic, succinic) plus CO₂ and H₂ gas. <i>E. coli</i> performs this. The methyl red (MR) test detects the acidic pH. This distinguishes <i>E. coli</i> from <i>Enterobacter</i> in lab diagnostics.'},
+{id:40,cat:'f',trap:0,
+ q:'What test is used in clinical microbiology labs to detect whether bacteria can ferment specific sugars?',
+ a:'D. Phenol red broth fermentation tubes or API test strips',
+ e:'Fermentation tests use <b>phenol red broth</b> with a specific sugar and a Durham tube (to capture gas). If the bacteria ferments the sugar → acid production → broth turns <b>yellow</b>. Gas in Durham tube = gas production. This is how we differentiate Enterobacteriaceae.'},
+
+// ─── EXAM TRAPS ───────────────────────────────────────────────
+{id:41,cat:'g',trap:1,
+ q:'⚠️ TRAP: A student says "glycolysis produces 4 ATP." Is this correct?',
+ a:'B. Partially — 4 ATP are produced gross, but 2 ATP are invested first, so the NET yield is 2 ATP',
+ e:'This is the #1 glycolysis trap. <b>Gross = 4 ATP. Net = 2 ATP.</b> Exam questions will specify "net" — always answer 2. If they ask total produced before subtracting = 4. Know which number to use based on the question wording.'},
+{id:42,cat:'k',trap:1,
+ q:'⚠️ TRAP: The Krebs cycle "requires oxygen." True or false?',
+ a:'A. False — Krebs does not directly use O₂, but is functionally dependent on O₂ to recycle NADH/FADH₂',
+ e:'The Krebs cycle has <b>no reaction that uses O₂ directly</b>. However, it stops without O₂ because NADH and FADH₂ cannot be oxidized (ETC halts without O₂). So the correct answer is: does not require O₂ directly, but cannot function without it. Know this nuance.'},
+{id:43,cat:'e',trap:1,
+ q:'⚠️ TRAP: Fermentation and anaerobic respiration are the same process. True or false?',
+ a:'D. False — fermentation uses no ETC; anaerobic respiration uses an ETC with a non-O₂ final electron acceptor',
+ e:'These are <b>completely different processes</b>. Fermentation = no ETC, 2 ATP only. Anaerobic respiration = ETC present, more ATP, alternative final acceptor (NO₃⁻, SO₄²⁻, etc.). Students constantly conflate these. When you see "anaerobic," ask: is there an ETC or not?'},
+{id:44,cat:'f',trap:1,
+ q:'⚠️ TRAP: Fermentation produces ATP in addition to the 2 ATP from glycolysis. True or false?',
+ a:'C. False — fermentation only regenerates NAD⁺; all ATP comes from glycolysis alone',
+ e:'Fermentation\'s job is <b>NAD⁺ recycling only</b>. Zero extra ATP. The 2 net ATP come entirely from glycolysis. This is why obligate anaerobes using fermentation must consume enormous amounts of glucose to keep up with aerobic competitors.'},
+{id:45,cat:'e',trap:1,
+ q:'⚠️ TRAP: Which produces more ATP per glucose: lactic acid fermentation or aerobic respiration?',
+ a:'B. Aerobic respiration (~36–38 ATP) vs. lactic acid fermentation (2 ATP) — aerobic wins by ~18x',
+ e:'Aerobic respiration is <b>~18× more efficient</b>. This is why aerobic organisms dominate most environments. Fermenters compensate by consuming glucose rapidly and living in niches where aerobes can\'t compete (intestines, anaerobic soil, food preservation environments).'},
+{id:46,cat:'g',trap:1,
+ q:'⚠️ TRAP: NADH produced in glycolysis yields the same ATP as NADH produced in the mitochondria. True or false?',
+ a:'A. False — cytoplasmic NADH from glycolysis yields fewer ATP (~1.5) due to the cost of shuttling electrons into the mitochondria',
+ e:'NADH made in the cytoplasm (glycolysis) must be shuttled into the mitochondria — this costs energy. Depending on the shuttle system used (malate-aspartate vs. glycerol-3-phosphate), cytoplasmic NADH yields <b>~1.5–2.5 ATP</b> rather than the full ~2.5. Mitochondrial NADH is more efficient.'},
+{id:47,cat:'k',trap:1,
+ q:'⚠️ TRAP: CO₂ produced during cellular respiration comes from which steps?',
+ a:'C. Transition reaction (pyruvate → Acetyl-CoA) AND Krebs cycle — NOT glycolysis or ETC',
+ e:'CO₂ is released in: (1) the <b>transition/preparatory reaction</b> — 1 CO₂ per pyruvate (2 total) and (2) the <b>Krebs cycle</b> — 2 CO₂ per turn (4 total). Glycolysis produces NO CO₂. ETC produces NO CO₂ — it produces water. Total CO₂ per glucose = 6.'},
+{id:48,cat:'e',trap:1,
+ q:'⚠️ TRAP: Obligate anaerobes are simply organisms that "prefer" low oxygen environments.',
+ a:'D. False — obligate anaerobes are KILLED by oxygen because they lack catalase and superoxide dismutase',
+ e:'<b>Obligate anaerobes ≠ prefer anaerobic.</b> They are <b>killed</b> by oxygen. Oxygen produces superoxide and H₂O₂ (reactive oxygen species) that destroy them. Aerotolerant anaerobes can tolerate O₂ but don\'t use it. Facultative anaerobes use O₂ if available. Know all four oxygen categories.'},
+{id:49,cat:'f',trap:1,
+ q:'⚠️ TRAP: Humans can perform fermentation. True or false?',
+ a:'B. True — skeletal muscle cells perform lactic acid fermentation during intense anaerobic exercise',
+ e:'Yes — when O₂ runs out during intense exercise, muscle cells switch to <b>lactic acid fermentation</b>. Pyruvate becomes lactate, regenerating NAD⁺. The lactate is exported and metabolized by the liver. This is the Cori cycle. It\'s temporary — the muscle "debt" is paid back when breathing catches up.'},
+{id:50,cat:'k',trap:1,
+ q:'⚠️ TRAP: The "total ATP from aerobic respiration" is exactly 38 ATP per glucose.',
+ a:'A. False — modern estimates are 30–32 total; 36–38 is the theoretical maximum rarely achieved due to membrane leakage',
+ e:'The <b>classic textbook answer was 36–38 ATP</b>, but modern biochemistry revises this to <b>30–32 ATP</b> due to proton leakage and the energetic cost of transporting pyruvate and ADP/ATP across the mitochondrial membrane. Know both numbers and understand <i>why</i> the real number is lower.'},
+];
+
+let revealed=new Set();
+let currentFilter='all';
+
+function filterColor(cat){
+  const m={g:'tag-g',k:'tag-k',e:'tag-e',f:'tag-f'};
+  return m[cat]||'tag-g';
+}
+function filterLabel(cat){
+  const m={g:'Glycolysis',k:'Krebs Cycle',e:'ETC & O₂',f:'Fermentation'};
+  return m[cat]||cat;
+}
+
+function render(){
+  const filtered = currentFilter==='all' ? Q
+    : currentFilter==='trap' ? Q.filter(q=>q.trap)
+    : Q.filter(q=>q.cat===currentFilter);
+
+  document.getElementById('showingLbl').textContent=`Showing ${filtered.length} of ${Q.length}`;
+
+  const g=document.getElementById('grid');
+  g.innerHTML='';
+  filtered.forEach(q=>{
+    const isRevealed=revealed.has(q.id);
+    const div=document.createElement('div');
+    div.className='qcard'+(q.trap?' is-trap':'');
+    div.id='card-'+q.id;
+    const tagCls=filterColor(q.cat);
+    const tagLbl=filterLabel(q.cat);
+    div.innerHTML=`
+      <div class="qcard-head" onclick="toggleReveal(${q.id})">
+        <span class="qnum">Q${String(q.id).padStart(2,'0')}</span>
+        <div class="qtext">
+          ${q.q}
+          <div><span class="tag ${tagCls}">${tagLbl}</span>${q.trap?'<span class="tag tag-trap" style="margin-left:4px">⚠ Exam Trap</span>':''}</div>
+        </div>
+        ${q.trap?'<span class="trap-icon">⚠️</span>':''}
+      </div>
+      <div class="qcard-body${isRevealed?' open revealed':''}" id="body-${q.id}">
+        <div class="answer-lbl">CORRECT ANSWER</div>
+        <div class="answer">${q.a}</div>
+        <div class="explain-lbl">WHY THIS MATTERS</div>
+        <div class="explain">${q.e}</div>
+      </div>
+    `;
+    // click on head toggles body
+    g.appendChild(div);
+  });
+  updateProgress();
+}
+
+function toggleReveal(id){
+  const body=document.getElementById('body-'+id);
+  if(!body) return;
+  if(body.classList.contains('open')){
+    body.classList.remove('open','revealed');
+    revealed.delete(id);
+  } else {
+    body.classList.add('open','revealed');
+    revealed.add(id);
+  }
+  updateProgress();
+}
+
+function updateProgress(){
+  const pct=Math.round((revealed.size/Q.length)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=`${revealed.size} / ${Q.length}`;
+}
+
+function resetAll(){
+  revealed.clear();
+  document.querySelectorAll('.qcard-body').forEach(b=>{b.classList.remove('open','revealed');});
+  updateProgress();
+}
+
+document.querySelectorAll('.flt').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.flt').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter=btn.dataset.f;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>

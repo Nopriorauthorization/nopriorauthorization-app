@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro270 · Chapter 11 · Adaptive Immunity</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0a1628; --pink:#D4537E; --teal:#2a9d8f; --red:#e63946;
+  --gold:#c77b2a; --purple:#7b2d8b; --green:#2d7a55; --blue:#1a3a6b;
+  --bg:#f0f2f5; --card:#ffffff; --text:#1a1a2e; --sub:#555; --border:#e0e0e0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+.hdr{background:var(--navy);color:#fff;padding:28px 32px 22px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.hdr-course{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--pink);margin-bottom:4px;}
+.hdr-title{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;letter-spacing:1px;}
+.hdr-title span{color:var(--teal);}
+.hdr-sub{font-size:13px;color:#aaa;margin-top:6px;}
+.hdr-badge{background:var(--pink);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;padding:8px 20px;border-radius:6px;}
+.facts-banner{background:var(--navy);color:#fff;padding:18px 32px;display:flex;gap:24px;flex-wrap:wrap;border-bottom:3px solid var(--teal);}
+.fact-chip{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;}
+.fact-chip span{color:var(--teal);}
+.filters{background:var(--navy);padding:0 32px 20px;display:flex;gap:10px;flex-wrap:wrap;}
+.flt{background:transparent;border:1.5px solid #334;color:#aaa;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:7px 16px;border-radius:20px;cursor:pointer;transition:all .2s;}
+.flt:hover,.flt.active{border-color:var(--pink);color:#fff;background:var(--pink);}
+.flt[data-f="trap"].active{background:var(--red);border-color:var(--red);}
+.flt[data-f="tcell"].active{background:var(--teal);border-color:var(--teal);}
+.flt[data-f="bcell"].active{background:var(--green);border-color:var(--green);}
+.flt[data-f="ab"].active{background:var(--gold);border-color:var(--gold);}
+.flt[data-f="mhc"].active{background:var(--purple);border-color:var(--purple);}
+.stats{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.stat-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--sub);}
+.stat-dot{width:10px;height:10px;border-radius:50%;}
+.stat-count{color:var(--text);font-weight:700;font-size:15px;}
+.showing{margin-left:auto;font-size:12px;color:var(--sub);font-weight:500;}
+.prog-bar-wrap{background:#fff;border-bottom:1px solid var(--border);padding:12px 32px;display:flex;align-items:center;gap:16px;}
+.prog-label{font-size:12px;font-weight:700;color:var(--sub);white-space:nowrap;}
+.prog-track{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:4px;transition:width .4s;}
+.prog-pct{font-size:13px;font-weight:700;color:var(--green);white-space:nowrap;}
+.reset-btn{background:transparent;border:1.5px solid var(--border);color:var(--sub);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all .2s;}
+.reset-btn:hover{border-color:var(--pink);color:var(--pink);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(540px,1fr));gap:16px;padding:24px 32px 48px;max-width:1400px;margin:0 auto;}
+.qcard{background:var(--card);border-radius:10px;border:1.5px solid var(--border);overflow:hidden;transition:box-shadow .2s,transform .15s;}
+.qcard:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-1px);}
+.qcard.is-trap{border-color:#f5c6c6;}
+.qcard.is-trap .qcard-head{background:#fff9f9;}
+.qcard-head{display:flex;align-items:flex-start;gap:10px;padding:14px 16px 10px;cursor:pointer;user-select:none;}
+.qnum{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:#ccc;min-width:30px;}
+.qtext{font-size:14px;font-weight:600;line-height:1.45;flex:1;color:var(--text);}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-top:6px;}
+.tag-tcell{background:#e0f7f5;color:var(--teal);}
+.tag-bcell{background:#e0f5ea;color:var(--green);}
+.tag-ab{background:#fdf0e0;color:var(--gold);}
+.tag-mhc{background:#f2e8f7;color:var(--purple);}
+.tag-trap{background:#fdeaea;color:var(--red);}
+.trap-icon{font-size:16px;margin-left:auto;flex-shrink:0;}
+.qcard-body{display:none;border-top:1.5px solid var(--border);padding:14px 16px;}
+.qcard-body.open{display:block;}
+.answer-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
+.answer{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:12px;}
+.explain-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sub);margin-bottom:5px;}
+.explain{font-size:13px;color:var(--sub);line-height:1.6;}
+.explain b{color:var(--text);}
+@media(max-width:640px){.grid{grid-template-columns:1fr;padding:16px;}.hdr,.filters,.stats,.prog-bar-wrap,.facts-banner{padding-left:16px;padding-right:16px;}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-course">MICRO 250 · NURSING MICROBIOLOGY</div>
+    <div class="hdr-title">CHAPTER 11 <span>ADAPTIVE IMMUNITY</span></div>
+    <div class="hdr-sub">T Cells · B Cells · Antibodies · MHC · Clonal Selection · Immunological Memory</div>
+  </div>
+  <div class="hdr-badge">50 QUESTIONS</div>
+</div>
+
+<div class="facts-banner">
+  <div class="fact-chip">🎯 <span>Adaptive</span> = specific, slow (days), HAS memory</div>
+  <div class="fact-chip">🟦 <span>MHC I</span> = all nucleated cells → CD8 T cells</div>
+  <div class="fact-chip">🟩 <span>MHC II</span> = APCs only → CD4 T cells</div>
+  <div class="fact-chip">💉 <span>IgG</span> = most abundant; crosses placenta; secondary response</div>
+  <div class="fact-chip">🧬 <span>Clonal selection</span> = antigen selects the ONE B/T cell that fits</div>
+</div>
+
+<div class="filters">
+  <button class="flt active" data-f="all">All (50)</button>
+  <button class="flt" data-f="tcell">T Cells (12)</button>
+  <button class="flt" data-f="bcell">B Cells &amp; Memory (12)</button>
+  <button class="flt" data-f="ab">Antibodies (10)</button>
+  <button class="flt" data-f="mhc">MHC &amp; Antigen Presentation (6)</button>
+  <button class="flt" data-f="trap">⚠️ Exam Traps (10)</button>
+</div>
+
+<div class="prog-bar-wrap">
+  <div class="prog-label">REVEALED</div>
+  <div class="prog-track"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-pct" id="progPct">0 / 50</div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+</div>
+
+<div class="stats">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--teal)"></div>T Cells <span class="stat-count">12</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--green)"></div>B Cells &amp; Memory <span class="stat-count">12</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--gold)"></div>Antibodies <span class="stat-count">10</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--purple)"></div>MHC &amp; Antigen Presentation <span class="stat-count">6</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--red)"></div>Exam Traps <span class="stat-count">10</span></div>
+  <div class="showing" id="showingLbl">Showing 50 of 50</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const Q = [
+// ─── T CELLS (tcell) ──────────────────────────────────────────
+{id:1,cat:'tcell',trap:0,
+ q:'What are the two main types of T cells and what is each one\'s primary function?',
+ a:'A. CD4+ helper T cells (coordinate immune response via cytokines) and CD8+ cytotoxic T cells (kill infected/cancerous cells directly)',
+ e:'<b>CD4+ T helper cells</b> do not kill directly — they orchestrate by releasing cytokines that activate B cells, macrophages, and CD8 T cells. <b>CD8+ cytotoxic T lymphocytes (CTLs)</b> kill cells displaying foreign antigen on MHC I — virus-infected cells, cancer cells, transplanted tissue. CD4 = conductor; CD8 = assassin.'},
+{id:2,cat:'tcell',trap:0,
+ q:'Where do T cells mature and undergo selection?',
+ a:'C. The thymus',
+ e:'T cells originate in <b>bone marrow</b> but mature in the <b>thymus</b> (that\'s the "T" in T cell). In the thymus, T cells undergo: <b>positive selection</b> (must recognize self-MHC — survive) and <b>negative selection</b> (must NOT react to self-antigens — survive; if they do react strongly → apoptosis/deletion). Failure of negative selection → autoimmunity.'},
+{id:3,cat:'tcell',trap:0,
+ q:'What two signals are required to fully activate a naïve T cell?',
+ a:'B. Signal 1: TCR binding to antigen-MHC complex; Signal 2: co-stimulatory signal (CD28 on T cell binds B7 on APC)',
+ e:'T cell activation requires TWO signals: <b>Signal 1</b> = T cell receptor (TCR) binds antigen presented on MHC. <b>Signal 2</b> = co-stimulatory molecules (CD28 on T cell + B7/CD80/86 on APC). Signal 1 alone → <b>anergy</b> (T cell becomes unresponsive). This two-signal requirement prevents random activation against innocent bystander antigens.'},
+{id:4,cat:'tcell',trap:0,
+ q:'What are the main subsets of CD4+ T helper cells and what cytokines does each produce?',
+ a:'D. Th1 (IFN-γ → activates macrophages, CTLs — intracellular pathogens); Th2 (IL-4, IL-5, IL-13 → B cell activation, IgE, allergies); Th17 (IL-17 → neutrophil recruitment, extracellular bacteria/fungi)',
+ e:'CD4+ T cells differentiate based on the cytokine environment: <b>Th1</b> (IFN-γ, IL-2) → fights intracellular pathogens, activates macrophages and CTLs. <b>Th2</b> (IL-4, IL-5, IL-13) → drives antibody production, IgE, eosinophils — allergies and parasites. <b>Th17</b> (IL-17) → recruits neutrophils, fights extracellular bacteria and fungi at mucosal surfaces.'},
+{id:5,cat:'tcell',trap:0,
+ q:'How do cytotoxic T cells (CTLs) kill target cells?',
+ a:'A. Releasing perforin (forms pores in target membrane) and granzymes (enter through pores and trigger apoptosis)',
+ e:'CTLs deliver a <b>lethal hit</b>: <b>perforin</b> polymerizes to form pores in the target cell membrane; <b>granzymes</b> (serine proteases) enter through the pores and activate caspase cascades → <b>apoptosis</b>. CTLs also express <b>FasL</b> which binds Fas on target cells → apoptosis. The CTL survives and moves on to kill another target.'},
+{id:6,cat:'tcell',trap:0,
+ q:'What is clonal selection?',
+ a:'C. The process by which an antigen binds to and activates only the lymphocyte(s) with a complementary receptor, triggering proliferation of that specific clone',
+ e:'Out of millions of lymphocytes, each with a unique receptor, an antigen physically selects and binds the ONE (or few) lymphocytes that fit. That cell then undergoes <b>clonal expansion</b> — rapid proliferation into many identical effector cells plus <b>memory cells</b>. This is the foundation of antigen-specificity in adaptive immunity.'},
+{id:7,cat:'tcell',trap:0,
+ q:'What is the role of regulatory T cells (Tregs)?',
+ a:'B. Suppress immune responses to prevent autoimmunity and control inflammation after the threat is cleared',
+ e:'<b>Tregs (CD4+ CD25+ FoxP3+)</b> dampen the immune response by releasing IL-10 and TGF-β, which inhibit T cell and B cell activity. They prevent: (1) <b>autoimmunity</b> by tolerating self-antigens, (2) <b>excessive inflammation</b> by shutting down responses after the pathogen is cleared. Treg deficiency → autoimmune disease. Treg excess → cancer immune evasion.'},
+{id:8,cat:'tcell',trap:0,
+ q:'What happens to T cells after an infection is cleared?',
+ a:'D. Most effector T cells die (contraction phase); a small population survives as long-lived memory T cells',
+ e:'After pathogen clearance, 90–95% of effector T cells undergo <b>activation-induced cell death</b>. The remaining 5–10% become <b>memory T cells</b> — long-lived, quickly reactivated on re-exposure. This is the cellular basis of immunological memory. Memory T cells respond faster and more strongly than naïve T cells did.'},
+{id:9,cat:'tcell',trap:0,
+ q:'What is the difference between central and effector memory T cells?',
+ a:'A. Central memory T cells (TCM) reside in lymph nodes and proliferate rapidly on re-exposure; effector memory T cells (TEM) circulate in tissues and respond immediately',
+ e:'Two memory T cell pools: <b>Central memory (TCM)</b> — in lymph nodes/spleen, need re-stimulation to become effectors but are long-lived and proliferate massively. <b>Effector memory (TEM)</b> — in peripheral tissues, can kill immediately without further differentiation. TEM provide rapid protection at the site of infection; TCM provide sustained long-term protection.'},
+{id:10,cat:'tcell',trap:0,
+ q:'What is superantigen and why is it dangerous?',
+ a:'C. A microbial toxin that non-specifically activates a large fraction of T cells (up to 20%) by cross-linking MHC II to TCR outside the normal antigen-binding groove, causing massive cytokine release',
+ e:'Normal antigen activates <0.001% of T cells. <b>Superantigens</b> (e.g., Staphylococcal toxic shock syndrome toxin, streptococcal pyrogenic exotoxin) bypass specificity by binding MHC II and TCR simultaneously outside the peptide groove → activating <b>5–20% of all T cells</b> at once → <b>cytokine storm</b> → fever, hypotension, multi-organ failure, toxic shock syndrome.'},
+{id:11,cat:'tcell',trap:0,
+ q:'What is the thymic selection process that prevents autoimmunity?',
+ a:'B. Negative selection — T cells that react strongly to self-peptides presented on thymic MHC are deleted (clonal deletion)',
+ e:'In the thymus medulla, developing T cells encounter <b>self-antigens</b> presented on MHC. If a T cell binds too strongly → <b>apoptosis (clonal deletion)</b> — this eliminates self-reactive T cells. If it doesn\'t bind at all → also dies (failed positive selection). Only T cells with intermediate affinity survive. AIRE gene controls presentation of peripheral self-antigens in thymus — AIRE mutations → autoimmune polyendocrinopathy.'},
+{id:12,cat:'tcell',trap:0,
+ q:'HIV preferentially infects which T cell subset and why is this devastating?',
+ a:'D. CD4+ T helper cells — their loss disables coordination of both cellular and humoral immunity, collapsing the entire adaptive immune response',
+ e:'HIV uses <b>CD4 as its receptor</b> (plus CCR5 or CXCR4 co-receptors). Destroying CD4+ T helper cells is catastrophic because Th cells are the <b>master coordinators</b>: without them, B cells don\'t make antibodies efficiently, macrophages aren\'t activated, CTLs don\'t expand. CD4 count <200 cells/μL = AIDS diagnosis — patient is susceptible to opportunistic infections that healthy immune systems handle easily.'},
+
+// ─── B CELLS & MEMORY (bcell) ─────────────────────────────────
+{id:13,cat:'bcell',trap:0,
+ q:'Where do B cells mature and what is their primary effector function?',
+ a:'A. Mature in bone marrow; differentiate into plasma cells that secrete antibodies (humoral immunity)',
+ e:'B cells mature in the <b>bone marrow</b> (B = bone marrow). When activated, they differentiate into <b>plasma cells</b> — antibody factories that can secrete thousands of antibodies per second. Some B cells become <b>memory B cells</b> for faster future responses. B cell = humoral immunity.'},
+{id:14,cat:'bcell',trap:0,
+ q:'What is the difference between T-dependent and T-independent B cell activation?',
+ a:'C. T-dependent: B cell needs help from CD4+ T helper cell (for most protein antigens — produces IgG, memory); T-independent: B cell activated by repetitive antigen structures (polysaccharides, LPS) without T help — produces IgM only, no memory',
+ e:'<b>T-dependent activation</b>: B cell presents antigen on MHC II → CD4+ Th cell recognizes it → CD40L-CD40 interaction + cytokines → B cell proliferates, class switches (IgM→IgG), forms memory. <b>T-independent</b>: polysaccharide capsules crosslink multiple B cell receptors → IgM only, no class switch, no robust memory. This is why capsular polysaccharide vaccines (like original Pneumovax) need conjugation to protein to be effective in infants.'},
+{id:15,cat:'bcell',trap:0,
+ q:'What is clonal expansion and somatic hypermutation?',
+ a:'B. Clonal expansion = rapid proliferation of antigen-selected B cells; somatic hypermutation = random mutations in antibody variable regions in germinal centers that increase antigen-binding affinity (affinity maturation)',
+ e:'After antigen activation, B cells enter <b>germinal centers</b> in lymph nodes. There: <b>clonal expansion</b> = massive proliferation. <b>Somatic hypermutation</b> = random point mutations in variable regions of antibody genes → <b>affinity maturation</b> (better-fitting antibodies are selected; weaker ones die). This is why secondary antibodies bind antigen more tightly than primary ones.'},
+{id:16,cat:'bcell',trap:0,
+ q:'What is the primary vs. secondary antibody response?',
+ a:'D. Primary: slow (7–14 days), low titer, IgM first then IgG; Secondary: fast (1–3 days), high titer, mostly IgG — due to memory B cells',
+ e:'<b>Primary response</b>: first exposure, naïve B cells activated → takes 7–14 days to peak, mostly IgM, lower titer. <b>Secondary response</b>: re-exposure activates memory B cells → responds in 1–3 days, much higher titer, mostly IgG (class switched), higher affinity. This is the immunological basis of vaccination — prime the memory, so natural infection triggers a powerful secondary response.'},
+{id:17,cat:'bcell',trap:0,
+ q:'What is class switching (isotype switching)?',
+ a:'A. The process by which a B cell changes the antibody class it produces (e.g., IgM → IgG, IgA, or IgE) while keeping the same antigen-binding specificity',
+ e:'All B cells start making <b>IgM</b>. With T helper cell signals (CD40L + cytokines), B cells can switch their constant region gene to produce a different isotype: <b>IgG</b> (systemic, opsonization), <b>IgA</b> (mucosal), <b>IgE</b> (allergies/parasites). The variable region (antigen specificity) never changes — only the constant region (effector function) switches.'},
+{id:18,cat:'bcell',trap:0,
+ q:'What is the role of memory B cells in long-term immunity?',
+ a:'C. They persist for decades, rapidly differentiate into antibody-secreting plasma cells upon re-exposure, enabling faster and stronger secondary responses',
+ e:'<b>Memory B cells</b> are long-lived (decades, sometimes lifetime). They already carry <b>class-switched, affinity-matured</b> antibody genes. Re-exposure → they rapidly proliferate and differentiate into plasma cells within 1–3 days. This is why you don\'t get chickenpox twice (usually) and why booster vaccines work — they reactivate the memory pool.'},
+{id:19,cat:'bcell',trap:0,
+ q:'What is a plasma cell?',
+ a:'B. A terminally differentiated B cell that is specialized for massive antibody secretion (up to 2,000 antibodies/second)',
+ e:'<b>Plasma cells</b> are the antibody factories. They are terminally differentiated — they no longer divide or express B cell receptors on their surface. Their entire machinery is devoted to secreting antibodies. Short-lived plasma cells die within days; <b>long-lived plasma cells</b> migrate to bone marrow and can produce antibodies for years without re-stimulation.'},
+{id:20,cat:'bcell',trap:0,
+ q:'What is the complement-fixing ability of antibodies and which isotypes do it?',
+ a:'D. IgM and IgG activate the classical complement pathway by binding C1q after antigen binding',
+ e:'<b>IgM</b> is the best complement activator (pentameric — lots of Fc regions). <b>IgG</b> also activates complement (IgG3 > IgG1). IgA, IgD, IgE do NOT activate complement. Complement activation by antibody: C1q binds Fc regions of antigen-bound antibody → classical pathway → C3b opsonization + MAC lysis. This bridges humoral and innate immunity.'},
+{id:21,cat:'bcell',trap:0,
+ q:'What is the role of CD40-CD40L interaction in B cell activation?',
+ a:'A. CD40L on activated CD4+ T helper cells binds CD40 on B cells, providing the essential co-stimulatory signal for B cell proliferation, class switching, and memory formation',
+ e:'The <b>CD40-CD40L interaction</b> is the critical handshake between T helper cells and B cells. CD40L (on Th) + CD40 (on B cell) → B cell activation signal. Combined with cytokines from Th cells, this drives: clonal expansion, somatic hypermutation, affinity maturation, class switching, and memory cell formation. <b>CD40L deficiency</b> = Hyper-IgM syndrome — B cells make IgM but can\'t class switch.'},
+{id:22,cat:'bcell',trap:0,
+ q:'What is Hyper-IgM syndrome and what does it teach us about class switching?',
+ a:'C. A deficiency of CD40L (on T cells) → B cells cannot receive co-stimulation for class switching → stuck making only IgM; patients are susceptible to extracellular bacteria and opportunistic infections',
+ e:'<b>Hyper-IgM syndrome</b>: CD40L (CD154) mutation on T cells. B cells can make IgM (T-independent) but cannot class switch to IgG, IgA, or IgE (need CD40-CD40L signal). Very high IgM, very low/absent IgG, IgA, IgE. Recurrent bacterial infections (no opsonizing IgG), Pneumocystis pneumonia (no IgA mucosal protection). Proof that class switching requires T cell help.'},
+{id:23,cat:'bcell',trap:0,
+ q:'What is the germinal center reaction?',
+ a:'B. A specialized microenvironment in lymph node follicles where activated B cells undergo rapid proliferation, somatic hypermutation, affinity maturation, class switching, and selection of high-affinity clones',
+ e:'Germinal centers (GCs) are <b>Darwinian selection engines</b> for antibodies. B cells enter, mutate their antibody genes randomly, then compete to bind antigen displayed on follicular dendritic cells. High-affinity binders survive and proliferate; low-affinity binders die. Survivors undergo class switching and become plasma cells or memory B cells. GCs produce the best antibodies.'},
+{id:24,cat:'bcell',trap:0,
+ q:'What triggers the transition from IgM to IgG production during an immune response?',
+ a:'D. T helper cell signals — CD40L-CD40 interaction plus cytokines (IL-4 for IgE, TGF-β for IgA, IFN-γ for certain IgG subclasses)',
+ e:'Class switching is directed by <b>cytokines</b> from T helper cells: <b>IL-4 → IgE</b> (allergy, parasites); <b>TGF-β → IgA</b> (mucosal); <b>IFN-γ → IgG1/IgG3</b> (opsonization, complement); <b>IL-5 → eosinophil activation</b>. The cytokine environment during infection shapes which antibody class dominates — matching the effector function to the threat.'},
+
+// ─── ANTIBODIES (ab) ──────────────────────────────────────────
+{id:25,cat:'ab',trap:0,
+ q:'What are the five antibody isotypes and their key distinguishing features?',
+ a:'B. IgG (most abundant, crosses placenta, secondary response); IgA (mucosal secretions, dimer); IgM (first responder, pentamer, best complement activator); IgE (allergy, parasites, mast cell binding); IgD (B cell receptor, function unclear)',
+ e:'The five isotypes: <b>IgG</b> — 75–80% of serum Ig, long half-life, crosses placenta, opsonization. <b>IgA</b> — dimer in secretions (saliva, tears, breast milk, gut, respiratory), first-line mucosal defense. <b>IgM</b> — pentamer, first produced, best complement activator. <b>IgE</b> — lowest serum concentration, binds mast cells/basophils, triggers allergy. <b>IgD</b> — mostly a naive B cell receptor.'},
+{id:26,cat:'ab',trap:0,
+ q:'What is the basic structure of an antibody?',
+ a:'A. Y-shaped protein with 2 heavy chains + 2 light chains; variable regions (Fab) bind antigen; constant region (Fc) mediates effector functions',
+ e:'Antibody structure: <b>2 identical heavy chains + 2 identical light chains</b>, held by disulfide bonds. <b>Fab (antigen-binding fragment)</b> = variable regions at the tips of the Y — unique per antibody, binds antigen. <b>Fc (crystallizable fragment)</b> = constant region of heavy chain — binds complement (C1q), Fc receptors on phagocytes, neonatal FcRn (for placental transfer). Specificity lives in Fab; function lives in Fc.'},
+{id:27,cat:'ab',trap:0,
+ q:'What is the only antibody isotype that crosses the placenta and why is this clinically important?',
+ a:'C. IgG — provides passive immunity to the fetus/newborn for the first 3–6 months of life',
+ e:'<b>IgG</b> is actively transported across the placenta via <b>FcRn receptors</b>. Newborns are born with maternal IgG protecting them during the first 3–6 months while their own immune system matures. This is why maternal vaccination (flu, Tdap) during pregnancy directly protects newborns. Also explains hemolytic disease of the newborn — maternal anti-Rh IgG crosses and destroys fetal RBCs.'},
+{id:28,cat:'ab',trap:0,
+ q:'What is the function of secretory IgA (sIgA)?',
+ a:'D. Protects mucosal surfaces (GI tract, respiratory tract, urogenital tract, saliva, tears, breast milk) by neutralizing pathogens and preventing their adherence to epithelial cells',
+ e:'<b>Secretory IgA (sIgA)</b> is a dimer with a secretory component that protects it from proteases in secretions. It is the most abundant antibody in the body by total production. It <b>neutralizes</b> pathogens and toxins, <b>blocks adherence</b> to mucosal epithelium (immune exclusion), and is passed to infants via <b>breast milk</b> — a major reason breastfeeding protects against GI and respiratory infections.'},
+{id:29,cat:'ab',trap:0,
+ q:'What are the four effector functions of antibodies?',
+ a:'A. Neutralization, opsonization, complement activation, and antibody-dependent cellular cytotoxicity (ADCC)',
+ e:'<b>Neutralization</b>: antibody blocks pathogen/toxin from binding host receptors. <b>Opsonization</b>: IgG Fc region recognized by phagocyte Fc receptors → enhanced phagocytosis. <b>Complement activation</b>: IgM/IgG → classical pathway. <b>ADCC</b>: IgG coats target cell → NK cells, macrophages, or eosinophils bind via Fc receptors → kill without phagocytosis. Each function matches different threats.'},
+{id:30,cat:'ab',trap:0,
+ q:'Which antibody isotype is associated with allergic reactions and how?',
+ a:'C. IgE — binds to Fc receptors on mast cells and basophils; cross-linking by allergen triggers degranulation (histamine release)',
+ e:'IgE is produced in response to allergens (and parasites). It binds to <b>FcεRI receptors</b> on mast cells and basophils via its Fc region. When an allergen cross-links two adjacent IgE molecules on the mast cell surface → <b>degranulation</b> → histamine, leukotrienes, prostaglandins release → immediate hypersensitivity (type I). Anaphylaxis = systemic IgE-mediated mast cell degranulation.'},
+{id:31,cat:'ab',trap:0,
+ q:'What is antibody-dependent cellular cytotoxicity (ADCC)?',
+ a:'B. IgG antibodies coat a target cell → NK cells, macrophages, or eosinophils bind the Fc region and kill the target without phagocytosis',
+ e:'<b>ADCC</b> bridges humoral and innate immunity. IgG coats the surface of a target (virus-infected cell, parasite, tumor cell). NK cells express <b>FcγRIII (CD16)</b> — they grab the IgG Fc tail and deliver cytotoxic granules. Eosinophil ADCC is important for parasites too large to phagocytize. ADCC is exploited by therapeutic monoclonal antibodies like trastuzumab (Herceptin) for cancer.'},
+{id:32,cat:'ab',trap:0,
+ q:'What is passive vs. active immunity?',
+ a:'D. Active immunity: body produces its own antibodies/T cells (infection or vaccination) — slow onset, long-lasting; Passive immunity: pre-formed antibodies transferred from another source — immediate but temporary (weeks to months)',
+ e:'<b>Active immunity</b>: your immune system makes the response — takes days to weeks but lasts years/lifetime due to memory. Examples: natural infection, vaccines. <b>Passive immunity</b>: borrowed antibodies — immediate protection but no memory, wanes as IgG degrades (half-life ~21 days). Examples: maternal IgG across placenta, breast milk IgA, IVIG therapy, anti-venom, rabies immunoglobulin. For exams: passive = fast but short.'},
+{id:33,cat:'ab',trap:0,
+ q:'What is agglutination and precipitation as antibody functions?',
+ a:'A. Agglutination: antibodies crosslink multiple cells/particles → clumps; precipitation: antibodies crosslink soluble antigens → insoluble precipitate — both enhance phagocytosis',
+ e:'When antibodies bind multivalent antigens, they can <b>crosslink</b> them: <b>agglutination</b> = clumping of cells (bacteria, RBCs) — makes them too large to escape phagocytosis. <b>Precipitation</b> = soluble antigen-antibody complexes become insoluble and precipitate out. Both forms of immune complex formation flag pathogens for phagocyte clearance and complement activation.'},
+{id:34,cat:'ab',trap:0,
+ q:'What is the significance of IgM being a pentamer?',
+ a:'C. The pentameric structure gives IgM 10 antigen-binding sites, making it extremely effective at agglutination and complement activation early in infection before IgG is produced',
+ e:'IgM is a <b>pentamer</b> (5 Y-shaped units joined by a J chain) = <b>10 Fab binding sites</b>. This polyvalency makes IgM incredibly efficient at: (1) <b>agglutinating</b> bacteria early in infection, (2) <b>activating complement</b> (C1q needs to bind 2 Fc regions simultaneously — IgM presents many at once), (3) <b>neutralizing</b> viruses. IgM is less affinity-matured than IgG but its sheer size and valency compensates.'},
+
+// ─── MHC & ANTIGEN PRESENTATION (mhc) ────────────────────────
+{id:35,cat:'mhc',trap:0,
+ q:'What is the difference between MHC class I and MHC class II molecules in terms of location and which T cells they activate?',
+ a:'B. MHC I: on ALL nucleated cells → presents endogenous (intracellular) antigens → activates CD8+ cytotoxic T cells; MHC II: on APCs only (dendritic cells, macrophages, B cells) → presents exogenous antigens → activates CD4+ T helper cells',
+ e:'The MHC rule: <b>MHC I → CD8</b>; <b>MHC II → CD4</b>. MHC I presents peptides from proteins made INSIDE the cell (viral proteins, tumor antigens) — signals CTLs to kill it. MHC II presents peptides from proteins taken up from OUTSIDE and processed in lysosomes — signals T helper cells to coordinate. Remember: <b>"8 goes into 1"</b> (CD8 binds MHC I); <b>"4 goes into 2"</b> (CD4 binds MHC II) — wait, no: CD8-MHC I, CD4-MHC II.'},
+{id:36,cat:'mhc',trap:0,
+ q:'What are professional antigen-presenting cells (APCs)?',
+ a:'D. Dendritic cells, macrophages, and B cells — cells that express MHC II and co-stimulatory molecules needed to activate naïve T helper cells',
+ e:'<b>Professional APCs</b> express: MHC II (for antigen presentation), B7/CD80/CD86 (co-stimulatory signals), and produce cytokines that direct T cell differentiation. <b>Dendritic cells</b> are the most potent APCs — best at activating naïve T cells. <b>Macrophages</b> activate T cells at infection sites. <b>B cells</b> present antigen to get T cell help. All nucleated cells can present via MHC I — but only these three are "professional" APCs.'},
+{id:37,cat:'mhc',trap:0,
+ q:'What is cross-presentation and why is it important?',
+ a:'A. Dendritic cells can present exogenous antigens (from outside the cell) on MHC class I — normally reserved for endogenous antigens — allowing activation of CD8+ T cells against extracellular pathogens and tumors',
+ e:'Normally: exogenous antigens → MHC II → CD4 T cells. <b>Cross-presentation</b> breaks this rule — specialized dendritic cells can load external antigens (dead infected cells, tumor debris) onto MHC I → activate CD8 CTLs. This is critical for anti-tumor immunity and vaccines where you want CTL responses against non-replicating antigen. Dendritic cells are uniquely capable of this.'},
+{id:38,cat:'mhc',trap:0,
+ q:'What is the HLA system and why does it matter clinically?',
+ a:'C. HLA (human leukocyte antigen) is the human version of MHC; highly polymorphic between individuals — responsible for transplant rejection and associated with autoimmune disease susceptibility',
+ e:'<b>HLA = MHC in humans</b>. HLA genes are the most polymorphic in the human genome — thousands of alleles. Different people present different peptides to T cells, explaining variable immune responses to same pathogen/vaccine. Clinically: <b>transplant rejection</b> (donor HLA seen as foreign by recipient T cells), <b>autoimmune associations</b> (HLA-B27 + ankylosing spondylitis; HLA-DR4 + rheumatoid arthritis; HLA-DQ2/DQ8 + celiac disease).'},
+{id:39,cat:'mhc',trap:0,
+ q:'What happens when T cells encounter antigen without co-stimulation (Signal 1 only)?',
+ a:'B. Anergy — the T cell becomes unresponsive/tolerant, unable to respond even if proper stimulation is given later',
+ e:'<b>Anergy</b> is a peripheral tolerance mechanism. Without Signal 2 (co-stimulation), TCR binding alone induces a state of <b>unresponsiveness</b> — the T cell cannot proliferate or produce cytokines. This prevents T cells from being activated by tissue antigens presented by non-professional APCs (which lack co-stimulatory molecules). Cancer exploits this — tumors downregulate co-stimulation to induce T cell anergy. Checkpoint inhibitors (anti-CTLA-4, anti-PD-1) reverse this.'},
+{id:40,cat:'mhc',trap:0,
+ q:'What is the significance of CD4 and CD8 as co-receptors?',
+ a:'D. CD4 binds the non-polymorphic region of MHC II; CD8 binds MHC I — they stabilize TCR-MHC interaction and transduce activation signals into the cell',
+ e:'CD4 and CD8 are <b>co-receptors</b>, not just surface markers. <b>CD4</b> binds MHC II constant region while TCR binds the peptide-MHC II complex — this stabilizes the interaction AND recruits Lck kinase for signaling. <b>CD8</b> does the same for MHC I. This is why HIV (which targets CD4) disables T helper function — it destroys the cell expressing the co-receptor essential for MHC II recognition.'},
+
+// ─── EXAM TRAPS (trap) ────────────────────────────────────────
+{id:41,cat:'tcell',trap:1,
+ q:'⚠️ TRAP: T cells recognize free-floating (soluble) antigens in the bloodstream. True or false?',
+ a:'A. False — T cells ONLY recognize antigen when it is processed and presented on MHC molecules by APCs; they cannot recognize free antigen',
+ e:'This is the most fundamental T cell rule. <b>T cells are MHC-restricted</b> — they ONLY see antigen as a peptide-MHC complex. They cannot recognize native proteins, polysaccharides, or any free antigen. <b>B cells CAN</b> recognize free antigen directly via their B cell receptor (BCR). This distinction explains why B cells respond to both protein and non-protein antigens while T cells only respond to peptides.'},
+{id:42,cat:'ab',trap:1,
+ q:'⚠️ TRAP: The first antibody produced during a primary immune response is IgG. True or false?',
+ a:'C. False — IgM is always the FIRST antibody produced; IgG appears later after class switching',
+ e:'<b>IgM first, always</b>. Primary response: IgM appears at ~5–7 days → peaks → declines. IgG appears at ~10–14 days after class switching. Secondary response: IgG dominates quickly. Clinically: detecting <b>IgM antibodies</b> = acute/current infection. Detecting <b>IgG only</b> = past infection or vaccination. This is why serology panels always test both IgM and IgG.'},
+{id:43,cat:'mhc',trap:1,
+ q:'⚠️ TRAP: CD8+ T cells are activated by MHC class II because they have more co-receptors. True or false?',
+ a:'D. False — CD8 binds ONLY MHC class I; CD4 binds ONLY MHC class II. There is no cross-pairing.',
+ e:'<b>Strict rule, no exceptions</b>: CD8 → MHC I. CD4 → MHC II. The co-receptor physically binds the constant (non-polymorphic) domain of each MHC class — they are structurally incompatible with the wrong MHC class. Memory aid: <b>8 × 1 = 8</b> (CD8 goes with MHC I); <b>4 × 2 = 8... no — CD4 goes with MHC II</b>. Just memorize: CD8-MHC I, CD4-MHC II.'},
+{id:44,cat:'bcell',trap:1,
+ q:'⚠️ TRAP: Memory B cells are long-lived because they constantly secrete antibodies. True or false?',
+ a:'B. False — memory B cells do NOT secrete antibodies; they are resting cells that rapidly differentiate into plasma cells upon re-exposure',
+ e:'<b>Memory B cells</b> = resting, quiescent cells. They don\'t secrete antibodies. <b>Plasma cells</b> = antibody secretors. Memory B cells wait — sometimes for decades — in lymph nodes and spleen. Re-exposure to antigen rapidly activates them → they differentiate into plasma cells within 1–3 days. Confusing memory B cells with plasma cells is a very common exam error.'},
+{id:45,cat:'tcell',trap:1,
+ q:'⚠️ TRAP: Helper T cells (CD4+) directly kill virus-infected cells. True or false?',
+ a:'A. False — CD4+ T helper cells COORDINATE the immune response via cytokines; CD8+ cytotoxic T cells do the direct killing',
+ e:'CD4+ Th cells are <b>coordinators, not killers</b> (mostly). They release cytokines to: activate macrophages, help B cells make antibodies, stimulate CD8 expansion. <b>CD8+ CTLs</b> are the killers — they directly lyse infected cells via perforin/granzymes. Some activated Th cells can kill, but this is not their primary role. On every exam: killing = CD8. Helping = CD4.'},
+{id:46,cat:'ab',trap:1,
+ q:'⚠️ TRAP: IgA is the most abundant antibody in blood serum. True or false?',
+ a:'C. False — IgG is the most abundant antibody in SERUM (~75–80%); IgA is the most abundant overall because enormous quantities are secreted daily at mucosal surfaces',
+ e:'Nuance matters: <b>IgG = most abundant in serum</b>. But <b>IgA = most abundant antibody overall</b> — the body secretes more IgA per day than any other isotype (~3g/day) at mucosal surfaces. IgG dominates the bloodstream; IgA dominates the mucosa. Exam questions usually ask about serum → IgG. Questions about mucosal immunity → IgA.'},
+{id:47,cat:'bcell',trap:1,
+ q:'⚠️ TRAP: The secondary immune response is slower than the primary because more cells need to be activated. True or false?',
+ a:'D. False — the secondary response is FASTER and STRONGER because memory B and T cells are pre-formed and respond within 1–3 days vs. 7–14 days for the primary response',
+ e:'The entire point of immunological memory. <b>Primary</b>: naïve lymphocytes need to be found, activated, expanded — takes 7–14 days to peak. <b>Secondary</b>: memory cells are already antigen-experienced, pre-class-switched (IgG), and respond in 1–3 days with a much higher antibody titer and affinity. This is why most vaccinated people don\'t get sick even if exposed — the secondary response clears infection before symptoms develop.'},
+{id:48,cat:'mhc',trap:1,
+ q:'⚠️ TRAP: All cells in the body express MHC class II molecules. True or false?',
+ a:'B. False — MHC class II is expressed ONLY on professional APCs (dendritic cells, macrophages, B cells) under normal conditions; all nucleated cells express MHC class I',
+ e:'<b>MHC I</b>: all nucleated cells (not RBCs — they have no nucleus). <b>MHC II</b>: only professional APCs normally. Note: MHC II can be induced on other cells by IFN-γ during inflammation. RBCs have <b>no MHC</b> (no nucleus). Platelets also lack MHC. This is why RBCs can be cross-matched by ABO/Rh but not HLA.'},
+{id:49,cat:'ab',trap:1,
+ q:'⚠️ TRAP: IgE is the most abundant antibody in the body because allergies are so common. True or false?',
+ a:'A. False — IgE is the LEAST abundant antibody in serum; its potency comes from binding mast cells, not from its serum concentration',
+ e:'<b>IgE has the lowest serum concentration</b> of all isotypes — about 0.00005 g/L (compare to IgG at ~12 g/L). But IgE is incredibly potent because it <b>binds FcεRI on mast cells with extremely high affinity</b> and remains bound for weeks. Just a tiny amount crosslinked by allergen can trigger massive degranulation. High serum IgE on a lab panel = allergic disease or parasitic infection.'},
+{id:50,cat:'tcell',trap:1,
+ q:'⚠️ TRAP: Vaccination provides protection entirely through antibody production — T cells are not involved. True or false?',
+ a:'C. False — effective vaccines generate BOTH humoral (antibody) AND cellular (T cell) immunity; T cell help is required for strong antibody responses, and CTLs are essential for killing infected cells',
+ e:'Vaccines work through both arms: <b>B cells → antibodies</b> neutralize and opsonize pathogens. <b>CD4+ Th cells</b> are required for B cell class switching, affinity maturation, and memory formation (T-dependent responses). <b>CD8+ CTLs</b> kill cells that are already infected (critical for viruses and intracellular pathogens). Live attenuated vaccines generate the strongest T cell responses. Killed/subunit vaccines may need adjuvants to stimulate robust T cell help.'},
+];
+
+let revealed=new Set();
+let currentFilter='all';
+function tagClass(cat){return {tcell:'tag-tcell',bcell:'tag-bcell',ab:'tag-ab',mhc:'tag-mhc'}[cat]||'tag-tcell';}
+function tagLabel(cat){return {tcell:'T Cells',bcell:'B Cells & Memory',ab:'Antibodies',mhc:'MHC & Antigen'}[cat]||cat;}
+function render(){
+  const filtered=currentFilter==='all'?Q:currentFilter==='trap'?Q.filter(q=>q.trap):Q.filter(q=>q.cat===currentFilter);
+  document.getElementById('showingLbl').textContent=`Showing ${filtered.length} of ${Q.length}`;
+  const g=document.getElementById('grid');g.innerHTML='';
+  filtered.forEach(q=>{
+    const div=document.createElement('div');
+    div.className='qcard'+(q.trap?' is-trap':'');
+    div.id='card-'+q.id;
+    div.innerHTML=`<div class="qcard-head" onclick="toggleReveal(${q.id})">
+      <span class="qnum">Q${String(q.id).padStart(2,'0')}</span>
+      <div class="qtext">${q.q}<div><span class="tag ${tagClass(q.cat)}">${tagLabel(q.cat)}</span>${q.trap?'<span class="tag tag-trap" style="margin-left:4px">⚠ Exam Trap</span>':''}</div></div>
+      ${q.trap?'<span class="trap-icon">⚠️</span>':''}
+    </div>
+    <div class="qcard-body${revealed.has(q.id)?' open':''}" id="body-${q.id}">
+      <div class="answer-lbl">CORRECT ANSWER</div>
+      <div class="answer">${q.a}</div>
+      <div class="explain-lbl">WHY THIS MATTERS</div>
+      <div class="explain">${q.e}</div>
+    </div>`;
+    g.appendChild(div);
+  });
+  updateProgress();
+}
+function toggleReveal(id){
+  const b=document.getElementById('body-'+id);if(!b)return;
+  if(b.classList.contains('open')){b.classList.remove('open');revealed.delete(id);}
+  else{b.classList.add('open');revealed.add(id);}
+  updateProgress();
+}
+function updateProgress(){
+  const pct=Math.round((revealed.size/Q.length)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=`${revealed.size} / ${Q.length}`;
+}
+function resetAll(){revealed.clear();document.querySelectorAll('.qcard-body').forEach(b=>b.classList.remove('open'));updateProgress();}
+document.querySelectorAll('.flt').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.flt').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');currentFilter=btn.dataset.f;render();
+  });
+});
+render();
+</script>
+</body>
+</html>

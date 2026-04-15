@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro270 · Chapter 13 · Antimicrobial Drugs</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0a1628; --pink:#D4537E; --teal:#2a9d8f; --red:#e63946;
+  --gold:#c77b2a; --purple:#7b2d8b; --green:#2d7a55; --blue:#1a3a6b;
+  --bg:#f0f2f5; --card:#ffffff; --text:#1a1a2e; --sub:#555; --border:#e0e0e0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+.hdr{background:var(--navy);color:#fff;padding:28px 32px 22px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.hdr-course{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--pink);margin-bottom:4px;}
+.hdr-title{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;letter-spacing:1px;}
+.hdr-title span{color:var(--teal);}
+.hdr-sub{font-size:13px;color:#aaa;margin-top:6px;}
+.hdr-badge{background:var(--pink);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;padding:8px 20px;border-radius:6px;}
+.facts-banner{background:var(--navy);color:#fff;padding:18px 32px;display:flex;gap:24px;flex-wrap:wrap;border-bottom:3px solid var(--teal);}
+.fact-chip{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;}
+.fact-chip span{color:var(--teal);}
+.filters{background:var(--navy);padding:0 32px 20px;display:flex;gap:10px;flex-wrap:wrap;}
+.flt{background:transparent;border:1.5px solid #334;color:#aaa;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:7px 16px;border-radius:20px;cursor:pointer;transition:all .2s;}
+.flt:hover,.flt.active{border-color:var(--pink);color:#fff;background:var(--pink);}
+.flt[data-f="trap"].active{background:var(--red);border-color:var(--red);}
+.flt[data-f="mech"].active{background:var(--teal);border-color:var(--teal);}
+.flt[data-f="classes"].active{background:var(--green);border-color:var(--green);}
+.flt[data-f="resist"].active{background:var(--gold);border-color:var(--gold);}
+.flt[data-f="special"].active{background:var(--purple);border-color:var(--purple);}
+.stats{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.stat-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--sub);}
+.stat-dot{width:10px;height:10px;border-radius:50%;}
+.stat-count{color:var(--text);font-weight:700;font-size:15px;}
+.showing{margin-left:auto;font-size:12px;color:var(--sub);font-weight:500;}
+.prog-bar-wrap{background:#fff;border-bottom:1px solid var(--border);padding:12px 32px;display:flex;align-items:center;gap:16px;}
+.prog-label{font-size:12px;font-weight:700;color:var(--sub);white-space:nowrap;}
+.prog-track{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:4px;transition:width .4s;}
+.prog-pct{font-size:13px;font-weight:700;color:var(--green);white-space:nowrap;}
+.reset-btn{background:transparent;border:1.5px solid var(--border);color:var(--sub);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all .2s;}
+.reset-btn:hover{border-color:var(--pink);color:var(--pink);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(540px,1fr));gap:16px;padding:24px 32px 48px;max-width:1400px;margin:0 auto;}
+.qcard{background:var(--card);border-radius:10px;border:1.5px solid var(--border);overflow:hidden;transition:box-shadow .2s,transform .15s;}
+.qcard:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-1px);}
+.qcard.is-trap{border-color:#f5c6c6;}
+.qcard.is-trap .qcard-head{background:#fff9f9;}
+.qcard-head{display:flex;align-items:flex-start;gap:10px;padding:14px 16px 10px;cursor:pointer;user-select:none;}
+.qnum{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:#ccc;min-width:30px;}
+.qtext{font-size:14px;font-weight:600;line-height:1.45;flex:1;color:var(--text);}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-top:6px;}
+.tag-mech{background:#e0f7f5;color:var(--teal);}
+.tag-classes{background:#e0f5ea;color:var(--green);}
+.tag-resist{background:#fdf0e0;color:var(--gold);}
+.tag-special{background:#f2e8f7;color:var(--purple);}
+.tag-trap{background:#fdeaea;color:var(--red);}
+.trap-icon{font-size:16px;margin-left:auto;flex-shrink:0;}
+.qcard-body{display:none;border-top:1.5px solid var(--border);padding:14px 16px;}
+.qcard-body.open{display:block;}
+.answer-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
+.answer{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:12px;}
+.explain-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sub);margin-bottom:5px;}
+.explain{font-size:13px;color:var(--sub);line-height:1.6;}
+.explain b{color:var(--text);}
+@media(max-width:640px){.grid{grid-template-columns:1fr;padding:16px;}.hdr,.filters,.stats,.prog-bar-wrap,.facts-banner{padding-left:16px;padding-right:16px;}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-course">MICRO 250 · NURSING MICROBIOLOGY</div>
+    <div class="hdr-title">CHAPTER 13 <span>ANTIMICROBIAL DRUGS</span></div>
+    <div class="hdr-sub">Mechanisms · Drug Classes · Resistance · Antifungals · Antivirals · Selective Toxicity</div>
+  </div>
+  <div class="hdr-badge">50 QUESTIONS</div>
+</div>
+
+<div class="facts-banner">
+  <div class="fact-chip">🧱 <span>Beta-lactams</span> = inhibit cell wall synthesis (PBPs)</div>
+  <div class="fact-chip">🔬 <span>Aminoglycosides</span> = irreversible 30S ribosome binding = bactericidal</div>
+  <div class="fact-chip">⚠️ <span>Bacteriostatic</span> = inhibit growth; <span>bactericidal</span> = kill</div>
+  <div class="fact-chip">🦠 <span>MRSA</span> = altered PBP2a — not beta-lactamase</div>
+  <div class="fact-chip">💊 <span>Vancomycin</span> = last resort Gram+ ; nephrotoxic + ototoxic</div>
+</div>
+
+<div class="filters">
+  <button class="flt active" data-f="all">All (50)</button>
+  <button class="flt" data-f="mech">Mechanisms (12)</button>
+  <button class="flt" data-f="classes">Drug Classes (14)</button>
+  <button class="flt" data-f="resist">Resistance (8)</button>
+  <button class="flt" data-f="special">Antifungals &amp; Antivirals (6)</button>
+  <button class="flt" data-f="trap">⚠️ Exam Traps (10)</button>
+</div>
+
+<div class="prog-bar-wrap">
+  <div class="prog-label">REVEALED</div>
+  <div class="prog-track"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-pct" id="progPct">0 / 50</div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+</div>
+
+<div class="stats">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--teal)"></div>Mechanisms <span class="stat-count">12</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--green)"></div>Drug Classes <span class="stat-count">14</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--gold)"></div>Resistance <span class="stat-count">8</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--purple)"></div>Antifungals &amp; Antivirals <span class="stat-count">6</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--red)"></div>Exam Traps <span class="stat-count">10</span></div>
+  <div class="showing" id="showingLbl">Showing 50 of 50</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const Q = [
+// ─── MECHANISMS (mech) ────────────────────────────────────────
+{id:1,cat:'mech',trap:0,
+ q:'What is selective toxicity and why is it the foundation of antimicrobial therapy?',
+ a:'A. The ability of a drug to harm the pathogen while causing minimal or no harm to the host — possible because bacterial/fungal/viral targets differ structurally from human cell targets',
+ e:'<b>Selective toxicity</b> exploits structural and metabolic differences between pathogens and host cells. Bacteria have peptidoglycan cell walls (humans don\'t) → cell wall drugs are selectively toxic. Bacteria have 70S ribosomes (humans have 80S) → ribosomal antibiotics spare host cells. The narrower the difference, the harder it is to achieve selectivity (antifungals are hardest — fungi are eukaryotes like us).'},
+{id:2,cat:'mech',trap:0,
+ q:'What are the five major mechanisms of antibiotic action?',
+ a:'B. (1) Cell wall synthesis inhibition; (2) Cell membrane disruption; (3) Protein synthesis inhibition; (4) Nucleic acid synthesis inhibition; (5) Metabolic pathway inhibition (antimetabolites)',
+ e:'The five targets: <b>Cell wall</b> — beta-lactams, vancomycin, bacitracin. <b>Cell membrane</b> — polymyxins, daptomycin. <b>Protein synthesis</b> — aminoglycosides (30S), tetracyclines (30S), chloramphenicol (50S), macrolides (50S), clindamycin (50S), linezolid (50S). <b>Nucleic acid</b> — fluoroquinolones (DNA gyrase/topoisomerase), rifampin (RNA polymerase), metronidazole (DNA strand breaks). <b>Antimetabolites</b> — sulfonamides + trimethoprim (folate pathway).'},
+{id:3,cat:'mech',trap:0,
+ q:'How do beta-lactam antibiotics kill bacteria?',
+ a:'C. They bind and inhibit penicillin-binding proteins (PBPs) — transpeptidases that cross-link peptidoglycan strands — resulting in a weakened cell wall that lyses under osmotic pressure',
+ e:'Beta-lactams (penicillins, cephalosporins, carbapenems, monobactams) contain a beta-lactam ring that mimics the D-Ala-D-Ala terminal of the peptidoglycan precursor. They covalently bind <b>PBPs (transpeptidases)</b>, blocking cross-linking. The cell wall weakens → osmotic pressure ruptures the cell → <b>bactericidal</b>. Beta-lactams only work on actively dividing bacteria (actively synthesizing cell wall).'},
+{id:4,cat:'mech',trap:0,
+ q:'What is the difference between bactericidal and bacteriostatic antibiotics?',
+ a:'A. Bactericidal = kills bacteria directly (≥99.9% reduction); bacteriostatic = inhibits growth/reproduction, relies on host immune system to clear the infection',
+ e:'<b>Bactericidal</b>: penicillins, cephalosporins, aminoglycosides, fluoroquinolones, vancomycin, metronidazole. <b>Bacteriostatic</b>: tetracyclines, macrolides, clindamycin, chloramphenicol, sulfonamides, linezolid. Clinical significance: immunocompromised patients (HIV, neutropenic) need <b>bactericidal</b> drugs — they can\'t rely on their immune system to finish the job. Bacteriostatic drugs are adequate for immunocompetent patients.'},
+{id:5,cat:'mech',trap:0,
+ q:'How do aminoglycosides kill bacteria and what makes them unique among protein synthesis inhibitors?',
+ a:'D. They bind the 30S ribosomal subunit irreversibly, cause misreading of mRNA → aberrant proteins inserted into cell membrane → membrane damage → drug entry accelerates → bactericidal (not just static)',
+ e:'Aminoglycosides (gentamicin, tobramycin, amikacin, streptomycin) are the only protein synthesis inhibitors that are <b>bactericidal</b>. They bind 30S → misread mRNA → abnormal proteins insert into membrane → increased permeability → more drug enters → cell death (self-amplifying). Requires oxygen for uptake — <b>ineffective against anaerobes</b>. Major toxicities: nephrotoxicity + ototoxicity (irreversible hearing loss).'},
+{id:6,cat:'mech',trap:0,
+ q:'How do fluoroquinolones work and what is their spectrum?',
+ a:'B. Inhibit DNA gyrase (topoisomerase II) in Gram-negatives and topoisomerase IV in Gram-positives → prevent DNA supercoiling/decatenation → bactericidal; broad spectrum including Gram-negatives, atypicals',
+ e:'Fluoroquinolones (ciprofloxacin, levofloxacin, moxifloxacin) are <b>bactericidal</b> DNA synthesis inhibitors. They trap the topoisomerase-DNA complex in a broken state → double-strand DNA breaks → cell death. Excellent <b>Gram-negative</b> coverage (including <i>Pseudomonas</i> — cipro). <b>Atypicals</b>: <i>Legionella, Mycoplasma, Chlamydia</i>. Levofloxacin/moxifloxacin also cover Gram-positives. NOT for routine UTI first-line anymore (resistance). Avoid in pregnancy/children (cartilage toxicity).'},
+{id:7,cat:'mech',trap:0,
+ q:'How do sulfonamides and trimethoprim work together (as co-trimoxazole/TMP-SMX)?',
+ a:'A. Sequential blockade of folate synthesis: sulfonamides inhibit dihydropteroate synthase (DHPS); trimethoprim inhibits dihydrofolate reductase (DHFR) — blocking two steps in the same pathway = synergistic bactericidal effect',
+ e:'Bacteria must synthesize their own folate (humans obtain folate from diet). <b>Sulfonamides</b> block the first step (PABA → dihydropteroate). <b>Trimethoprim</b> blocks the second step (dihydrofolate → tetrahydrofolate). Combined = <b>TMP-SMX (Bactrim)</b> — synergistic, bactericidal at combined doses. Used for: UTIs, PCP (<i>Pneumocystis jirovecii</i> pneumonia prophylaxis/treatment in HIV), <i>Stenotrophomonas</i>, MRSA (community-acquired skin infections).'},
+{id:8,cat:'mech',trap:0,
+ q:'How does vancomycin work and why is it reserved for serious Gram-positive infections?',
+ a:'C. Binds D-Ala-D-Ala terminus of peptidoglycan precursors → physically blocks transglycosylase and transpeptidase → cell wall synthesis inhibited → bactericidal; reserved because it is toxic (nephro/ototoxic) and resistance must be preserved',
+ e:'Vancomycin is a glycopeptide that binds the <b>D-Ala-D-Ala</b> end of peptidoglycan precursors — different from beta-lactams (which bind the enzyme). It physically blocks the enzymes from accessing their substrate. Only works on <b>Gram-positives</b> (can\'t penetrate Gram-negative outer membrane). Major toxicities: <b>nephrotoxicity, ototoxicity</b>, red man syndrome (histamine release — not a true allergy). Trough levels must be monitored. Reserved for MRSA, severe Gram-positive infections.'},
+{id:9,cat:'mech',trap:0,
+ q:'What is the mechanism of rifampin and what is its key clinical use?',
+ a:'D. Inhibits bacterial RNA polymerase (beta subunit) → blocks transcription → bactericidal; used for TB treatment AND prophylaxis against N. meningitidis and H. influenzae contacts',
+ e:'Rifampin binds the <b>beta subunit of bacterial RNA polymerase</b> — distinct from human RNA polymerase (selective toxicity). Bactericidal. Excellent penetration including into macrophages (kills intracellular <i>M. tuberculosis</i>). Critical: <b>NEVER used alone</b> — resistance develops within days via single-step mutations. Always part of combination therapy (RIPE for TB: Rifampin, Isoniazid, Pyrazinamide, Ethambutol). Also used for <b>meningococcal prophylaxis</b> in close contacts.'},
+{id:10,cat:'mech',trap:0,
+ q:'How does metronidazole (Flagyl) selectively kill anaerobes and protozoa?',
+ a:'A. In anaerobic conditions, metronidazole is reduced to a toxic intermediate that causes DNA strand breaks; aerobic organisms cannot activate it (no reduction pathway)',
+ e:'Metronidazole is a <b>prodrug</b> — activated only in low-oxygen environments. Anaerobic organisms reduce the nitro group → toxic free radical that breaks DNA strands → bactericidal/antiprotozoal. <b>Aerobic bacteria cannot activate it</b> — hence selective for anaerobes and protozoa. Uses: <i>C. difficile</i> (mild cases), <i>Bacteroides fragilis</i>, <i>Trichomonas vaginalis</i>, <i>Giardia</i>, <i>Entamoeba histolytica</i>. Disulfiram-like reaction with alcohol — warn patients.'},
+{id:11,cat:'mech',trap:0,
+ q:'What is the mechanism of polymyxins and when are they used?',
+ a:'C. Polymyxins (colistin, polymyxin B) act like detergents — they disrupt the Gram-negative outer membrane by displacing Mg²⁺/Ca²⁺ from LPS → membrane permeability → bactericidal; used as last resort for MDR Gram-negatives',
+ e:'Polymyxins are <b>last-resort drugs</b> for multidrug-resistant (MDR) Gram-negative infections (<i>Acinetobacter, Pseudomonas, Klebsiella</i> — the "ESKAPE" pathogens). They disrupt the outer membrane → inner membrane → cell contents leak out → cell death. Major toxicities: <b>nephrotoxicity and neurotoxicity</b> (dose-limiting). Only active against Gram-negatives (need the LPS outer membrane to act on). Colistin resistance = one of the most feared AMR developments.'},
+{id:12,cat:'mech',trap:0,
+ q:'What is the post-antibiotic effect (PAE) and which drug classes exhibit it?',
+ a:'B. Continued bacterial growth suppression even after drug levels fall below the MIC; exhibited by aminoglycosides and fluoroquinolones — allows once-daily dosing',
+ e:'The <b>PAE</b> means bacteria are "stunned" and don\'t recover immediately after drug is removed. Aminoglycosides and fluoroquinolones have prolonged PAE. This is the pharmacological basis for <b>once-daily aminoglycoside dosing</b> (same efficacy, less toxicity than multiple daily doses). Drugs with PAE exhibit <b>concentration-dependent killing</b> (higher peak = better effect). Drugs without PAE (beta-lactams, vancomycin) exhibit <b>time-dependent killing</b> (need to maintain levels above MIC continuously).'},
+
+// ─── DRUG CLASSES (classes) ───────────────────────────────────
+{id:13,cat:'classes',trap:0,
+ q:'What is the spectrum and key clinical uses of penicillin G/V?',
+ a:'D. Narrow spectrum — primarily Gram-positive cocci (Streptococcus, sensitive Staphylococcus), Neisseria, spirochetes (Treponema pallidum); used for strep throat, syphilis, pneumococcal pneumonia, gas gangrene',
+ e:'<b>Natural penicillins</b> (PCN G IV, PCN V oral): narrow Gram-positive coverage. Key uses: <b>Group A Strep</b> pharyngitis/rheumatic fever prophylaxis, <b>syphilis</b> (PCN G is the ONLY drug for syphilis — no alternatives are equally effective), <b>pneumococcal pneumonia</b> (if sensitive), <b>Clostridium perfringens</b> (gas gangrene). Destroyed by beta-lactamase — <i>S. aureus</i> producing penicillinase = resistant. Penicillin allergy: ask about reaction type (rash vs. anaphylaxis matters for cross-reactivity).'},
+{id:14,cat:'classes',trap:0,
+ q:'What are anti-staphylococcal penicillins and why are they used instead of regular penicillin for S. aureus?',
+ a:'A. Nafcillin, oxacillin, dicloxacillin — beta-lactamase-resistant penicillins; used because most S. aureus produce penicillinase (beta-lactamase) that destroys regular penicillin',
+ e:'Most <i>S. aureus</i> produce <b>penicillinase (beta-lactamase)</b> that hydrolyzes the beta-lactam ring of regular penicillin. <b>Anti-staphylococcal penicillins</b> have a bulky side chain that sterically protects the beta-lactam ring from penicillinase. <b>Nafcillin</b> (IV), <b>dicloxacillin</b> (oral) are first-line for MSSA (methicillin-sensitive <i>S. aureus</i>). They do NOT cover MRSA (which has a different resistance mechanism — altered PBP).'},
+{id:15,cat:'classes',trap:0,
+ q:'What is amoxicillin-clavulanate (Augmentin) and how does the clavulanate help?',
+ a:'C. Amoxicillin (aminopenicillin) + clavulanate (beta-lactamase inhibitor) — clavulanate irreversibly binds beta-lactamase, protecting amoxicillin from destruction and extending coverage to beta-lactamase-producing organisms',
+ e:'<b>Beta-lactamase inhibitors</b> (clavulanate, sulbactam, tazobactam) are "suicide inhibitors" — they bind beta-lactamase irreversibly, sacrificing themselves to protect the penicillin. <b>Augmentin</b> = amoxicillin + clavulanate → covers beta-lactamase-producing <i>H. influenzae, Moraxella catarrhalis, S. aureus</i> (MSSA), and oral anaerobes. Used for: sinusitis, otitis media, dental infections, dog/cat bites (<i>Pasteurella</i>). Does NOT cover MRSA.'},
+{id:16,cat:'classes',trap:0,
+ q:'How are cephalosporins organized into generations and what does each generation add?',
+ a:'B. 1st gen (cephalexin, cefazolin): best Gram-positive coverage; 2nd gen: adds some Gram-negatives; 3rd gen (ceftriaxone, cefotaxime): excellent Gram-negatives, CNS penetration; 4th gen (cefepime): Pseudomonas; 5th gen (ceftaroline): covers MRSA',
+ e:'Cephalosporin generations: <b>1st</b> (cephalexin/cefazolin) — Gram-positives + basic Gram-negatives (E. coli, Klebsiella, Proteus); surgical prophylaxis. <b>2nd</b> (cefuroxime, cefoxitin) — adds more Gram-negatives + anaerobes. <b>3rd</b> (ceftriaxone, cefdinir) — excellent Gram-negatives, crosses BBB; meningitis, gonorrhea, community pneumonia. <b>4th</b> (cefepime) — adds <i>Pseudomonas</i>. <b>5th</b> (ceftaroline) — only cephalosporin covering MRSA. Each generation gains Gram-negative coverage but relatively loses Gram-positive coverage (except 5th).'},
+{id:17,cat:'classes',trap:0,
+ q:'What are carbapenems and when are they used?',
+ a:'D. Broadest-spectrum beta-lactams (imipenem, meropenem, ertapenem) — cover Gram-positives, Gram-negatives including Pseudomonas, and anaerobes; reserved for MDR infections and severe polymicrobial infections',
+ e:'<b>Carbapenems</b> are the "big guns" of beta-lactams — broadest spectrum. Cover: most Gram-positives (not MRSA), virtually all Gram-negatives (including <i>Pseudomonas</i> — except ertapenem), and anaerobes. <b>Imipenem</b> comes with cilastatin (prevents renal breakdown). <b>Meropenem</b> preferred for CNS (less seizure risk than imipenem). Reserved for: MDR infections, febrile neutropenia, ICU polymicrobial infections. <b>Carbapenem-resistant organisms (CRE)</b> are an urgent public health threat.'},
+{id:18,cat:'classes',trap:0,
+ q:'What is the mechanism and spectrum of tetracyclines, and what are their key toxicities?',
+ a:'A. Bind 30S ribosomal subunit → block aminoacyl-tRNA binding → bacteriostatic; broad spectrum including atypicals (Mycoplasma, Chlamydia, Rickettsia, Borrelia); contraindicated in pregnancy and children <8 (chelates calcium → teeth/bone)',
+ e:'Tetracyclines (tetracycline, doxycycline, minocycline) are <b>bacteriostatic</b> 30S inhibitors. Unique coverage: <b>atypical organisms</b> (Chlamydia, Mycoplasma, Rickettsia, Borrelia burgdorferi/Lyme disease, Brucella), <i>Vibrio cholerae</i>, MRSA (doxycycline for community MRSA skin infections). Doxycycline is the most used. Toxicities: <b>photosensitivity</b> (warn patients — avoid sun), <b>GI upset</b>, <b>teeth discoloration and bone deposition in children <8 and fetuses</b> (chelates calcium). Take with full glass of water, stay upright (esophageal ulceration). Avoid with antacids/dairy (reduces absorption).'},
+{id:19,cat:'classes',trap:0,
+ q:'What is the clinical role of macrolides (azithromycin, clarithromycin, erythromycin)?',
+ a:'C. Bind 50S ribosomal subunit → inhibit translocation → bacteriostatic; excellent for atypical pneumonias (Mycoplasma, Chlamydophila, Legionella), strep pharyngitis (penicillin-allergic patients), H. pylori eradication',
+ e:'<b>Macrolides</b> bind 23S rRNA of the 50S subunit — block ribosome translocation. <b>Azithromycin (Z-pack)</b>: long half-life, once-daily dosing, excellent tissue penetration — atypical community pneumonia, STIs (<i>Chlamydia trachomatis</i>), <i>MAC</i> prophylaxis in HIV. <b>Clarithromycin</b>: <i>H. pylori</i> triple therapy, MAC treatment. <b>Erythromycin</b>: oldest, more GI side effects (stimulates motilin). All macrolides: <b>QT prolongation risk</b> (cardiac arrhythmia — check baseline EKG in high-risk patients), CYP3A4 inhibitors (drug interactions).'},
+{id:20,cat:'classes',trap:0,
+ q:'What is clindamycin used for and what is its most feared complication?',
+ a:'B. Covers Gram-positive cocci and anaerobes; used for MRSA skin infections, dental/orofacial anaerobic infections, aspiration pneumonia, pelvic infections; most feared complication = C. difficile colitis',
+ e:'<b>Clindamycin</b> binds 50S ribosome — bacteriostatic. Excellent for: anaerobes above the diaphragm (<i>Bacteroides, Prevotella</i>), Gram-positive cocci (MRSA skin, <i>S. pyogenes</i>), aspiration pneumonia. Does NOT cover Gram-negatives or <i>Enterococcus</i>. <b>Most feared complication: <i>C. difficile</i> pseudomembranous colitis</b> — clindamycin disrupts normal flora → C. diff overgrowth → toxin production → colitis. Historically clindamycin was the #1 cause of C. diff (now broad-spectrum antibiotics overall). Warn patients: diarrhea during or after treatment = stop and call.'},
+{id:21,cat:'classes',trap:0,
+ q:'What is the role of linezolid and what makes it unique among protein synthesis inhibitors?',
+ a:'D. Binds 50S ribosome at a unique site (50S initiation complex) — bacteriostatic for most organisms but bactericidal for Streptococcus; covers MRSA, VRE, and MDR TB; unique because it is oral with excellent bioavailability',
+ e:'<b>Linezolid</b> (oxazolidinone class) has a unique mechanism — binds 23S rRNA and prevents formation of the 70S initiation complex. Covers: <b>MRSA, VRE (vancomycin-resistant Enterococcus), MDR streptococci</b>. Available <b>IV and oral with nearly 100% bioavailability</b> — rare for a drug covering MRSA. Toxicities with prolonged use: <b>myelosuppression</b> (thrombocytopenia — check CBC weekly), <b>serotonin syndrome</b> risk (weak MAO inhibitor — avoid SSRIs/SNRIs), optic neuropathy, peripheral neuropathy. Expensive.'},
+{id:22,cat:'classes',trap:0,
+ q:'What infections is metronidazole (Flagyl) specifically used for in clinical practice?',
+ a:'A. Anaerobic bacterial infections (Bacteroides, C. difficile mild cases), protozoal infections (Giardia, Trichomonas, Entamoeba histolytica), and H. pylori eradication (triple therapy)',
+ e:'<b>Metronidazole</b> key uses: <b>Bacterial vaginosis</b> (anaerobic overgrowth), <b>Trichomonas vaginalis</b> (both partners treated), <b>Giardia lamblia</b> and <b>Entamoeba histolytica</b>, <b>C. difficile</b> (mild cases — oral), <b>Bacteroides fragilis</b> (intra-abdominal anaerobes), <b>H. pylori triple therapy</b>. Drug interaction: <b>disulfiram-like reaction with alcohol</b> — flushing, vomiting, tachycardia. Warn patients to avoid alcohol during treatment AND for 48 hours after.'},
+{id:23,cat:'classes',trap:0,
+ q:'What is daptomycin and what is its unique mechanism and critical limitation?',
+ a:'C. Cyclic lipopeptide that inserts into the Gram-positive cell membrane → depolarization → cell death (bactericidal); cannot be used for pneumonia because lung surfactant inactivates it',
+ e:'<b>Daptomycin</b> works differently from all other antibiotics — it inserts its lipid tail into the <b>Gram-positive cell membrane</b> → forms pores → rapid membrane depolarization → loss of membrane potential → cell death. Covers MRSA, VRE, <i>Enterococcus</i>. <b>Critical limitation: CANNOT be used for pneumonia</b> — pulmonary surfactant binds and inactivates daptomycin. This is a high-yield exam trap. Toxicity: <b>myopathy</b> (check CK levels weekly). IV only.'},
+{id:24,cat:'classes',trap:0,
+ q:'What is the clinical significance of azoles (fluconazole, itraconazole, voriconazole) as antifungals?',
+ a:'B. Inhibit ergosterol synthesis (lanosterol 14α-demethylase/CYP51) → fungal membrane dysfunction → fungistatic; fluconazole for Candida/Cryptococcus; voriconazole for Aspergillus',
+ e:'Azoles target <b>ergosterol synthesis</b> — fungi use ergosterol instead of cholesterol in their membranes. Azoles inhibit the CYP51 enzyme → ergosterol depleted → membrane dysfunction. <b>Fluconazole</b>: <i>Candida</i> (UTI, mucocutaneous, non-severe candidemia), <i>Cryptococcus</i> maintenance. <b>Itraconazole</b>: <i>Histoplasma, Blastomyces, Coccidioides</i>. <b>Voriconazole</b>: <i>Aspergillus</i> (first-line), invasive mold infections. Major side effects: hepatotoxicity, <b>major CYP450 interactions</b> (many drug interactions). Note: <i>Candida krusei</i> and <i>C. glabrata</i> may be fluconazole-resistant.'},
+{id:25,cat:'classes',trap:0,
+ q:'What is the mechanism and use of acyclovir, and which viruses does it cover?',
+ a:'D. Nucleoside analogue activated by viral thymidine kinase → inhibits viral DNA polymerase → chain termination; covers HSV-1, HSV-2, VZV (high dose); limited activity against EBV/CMV',
+ e:'<b>Acyclovir</b> is selectively toxic because viral thymidine kinase (TK) phosphorylates it much more efficiently than host TK. Active form (acyclovir triphosphate) inhibits <b>viral DNA polymerase</b> and causes chain termination. Covers: <b>HSV-1, HSV-2</b> (oral/genital herpes, encephalitis), <b>VZV</b> (chickenpox, shingles — needs higher doses). Poor CMV coverage. <b>Valacyclovir</b> = prodrug with much better oral bioavailability (converted to acyclovir). Resistance: TK mutation in immunocompromised patients → switch to foscarnet.'},
+{id:26,cat:'classes',trap:0,
+ q:'What antivirals are used for HIV and what is their combined strategy called?',
+ a:'A. Multiple classes (NRTIs, NNRTIs, PIs, integrase inhibitors, entry inhibitors) used in combination as ART (antiretroviral therapy) — combination prevents resistance development and achieves undetectable viral load',
+ e:'HIV antiretroviral classes target different steps: <b>NRTIs</b> (tenofovir, emtricitabine) — nucleoside reverse transcriptase inhibitors, chain termination. <b>NNRTIs</b> (efavirenz) — non-nucleoside RT inhibitors, allosteric. <b>PIs</b> (ritonavir, darunavir) — protease inhibitors, block viral maturation. <b>INSTIs</b> (dolutegravir, bictegravir) — integrase strand transfer inhibitors — now preferred first-line. <b>ART</b> (antiretroviral therapy) = combination of ≥3 drugs from ≥2 classes → undetectable viral load → cannot transmit (U=U), immune recovery.'},
+
+// ─── RESISTANCE (resist) ──────────────────────────────────────
+{id:27,cat:'resist',trap:0,
+ q:'What are the four main mechanisms of antibiotic resistance?',
+ a:'C. (1) Drug inactivation (beta-lactamase); (2) Target modification (altered PBPs in MRSA); (3) Reduced permeability/efflux pumps; (4) Bypass of inhibited pathway',
+ e:'The four resistance mechanisms: <b>Enzymatic inactivation</b>: beta-lactamases hydrolyze the beta-lactam ring; aminoglycoside-modifying enzymes. <b>Target modification</b>: MRSA — altered PBP2a (mecA gene) has low affinity for all beta-lactams; VRE — D-Ala-D-Lac instead of D-Ala-D-Ala (vancomycin can\'t bind). <b>Efflux pumps</b>: actively pump drug out (tetracycline, fluoroquinolone resistance). <b>Reduced permeability</b>: porin loss in Gram-negatives. <b>Bypass</b>: folate synthesis bypass in sulfonamide resistance.'},
+{id:28,cat:'resist',trap:0,
+ q:'What is the mechanism of MRSA resistance and why don\'t beta-lactamase inhibitors help?',
+ a:'B. MRSA carries mecA gene encoding PBP2a — an altered penicillin-binding protein with very low affinity for ALL beta-lactams; beta-lactamase inhibitors are irrelevant because MRSA resistance is NOT due to beta-lactamase',
+ e:'This is the most important resistance distinction. <b>MSSA</b> resistance to penicillin = beta-lactamase production (destroys the drug). Fixed by beta-lactamase inhibitors or anti-staphylococcal penicillins. <b>MRSA</b> resistance = <b>mecA gene</b> → <b>PBP2a</b> — a completely different PBP that still cross-links peptidoglycan but has too low an affinity for beta-lactams to bind. NO beta-lactam (including carbapenems, except ceftaroline) can inhibit PBP2a. Treatment: <b>vancomycin</b> (hospital MRSA), <b>TMP-SMX or doxycycline</b> (community MRSA skin infections).'},
+{id:29,cat:'resist',trap:0,
+ q:'What is VRE (vancomycin-resistant Enterococcus) and how does resistance occur?',
+ a:'D. VRE acquires van genes (vanA, vanB) that reprogram peptidoglycan synthesis to use D-Ala-D-Lac instead of D-Ala-D-Ala — vancomycin cannot bind D-Lac and cannot inhibit cell wall synthesis',
+ e:'Vancomycin binds <b>D-Ala-D-Ala</b> with high affinity. <b>VanA/VanB</b> enzymes change the terminal amino acid to <b>D-lactate (D-Lac)</b> — vancomycin binds D-Lac ~1000x less avidly. The cell wall can still be synthesized; vancomycin can\'t block it. Treatment options for VRE: <b>linezolid, daptomycin</b>. Infection control: contact precautions, aggressive environmental cleaning. VRE is a major hospital-acquired infection concern.'},
+{id:30,cat:'resist',trap:0,
+ q:'What is horizontal gene transfer (HGT) and how does it spread antibiotic resistance?',
+ a:'A. Transfer of resistance genes between bacteria via conjugation (plasmids), transduction (bacteriophages), or transformation (naked DNA uptake) — allows resistance to spread rapidly between species',
+ e:'Resistance genes often live on <b>plasmids</b> (extra-chromosomal DNA) that can be transferred between bacteria: <b>Conjugation</b> = direct cell-to-cell transfer of plasmid via sex pilus (most clinically important). <b>Transduction</b> = bacteriophage carries resistance gene between bacteria. <b>Transformation</b> = bacteria takes up naked DNA from environment. This is why a patient who\'s never been on antibiotics can acquire resistant organisms — the resistance spread via HGT through the hospital environment.'},
+{id:31,cat:'resist',trap:0,
+ q:'What are extended-spectrum beta-lactamases (ESBLs) and why are they clinically dangerous?',
+ a:'C. Evolved beta-lactamases that hydrolyze most penicillins AND most cephalosporins (including 3rd generation); ESBL-producing organisms (often E. coli, Klebsiella) require carbapenem treatment',
+ e:'<b>ESBLs</b> are mutant beta-lactamases with an expanded substrate range — they destroy most beta-lactams including 3rd-generation cephalosporins (ceftriaxone, ceftazidime). Commonly carried by <b><i>E. coli</i> and <i>Klebsiella pneumoniae</i></b> on transferable plasmids. ESBL-producing organisms are often also resistant to fluoroquinolones and aminoglycosides (co-resistance on same plasmid). Treatment: <b>carbapenems</b> (meropenem, ertapenem). Detected by the double-disk synergy test in clinical labs.'},
+{id:32,cat:'resist',trap:0,
+ q:'Why should antibiotics NEVER be used to treat viral infections like the common cold?',
+ a:'B. Viruses have no bacterial targets (no cell wall, no 70S ribosomes) so antibiotics have no effect; unnecessary use kills normal flora and selects for resistant bacteria in the microbiome',
+ e:'Antibiotics only target bacterial-specific structures. Viruses lack: cell walls, 70S ribosomes, PBPs — nothing for antibiotics to inhibit. Prescribing antibiotics for viral URI: (1) <b>doesn\'t help the patient</b>, (2) <b>kills normal protective flora</b> → C. diff risk, (3) <b>selects for resistance</b> among normal flora bacteria. Antibiotic stewardship = prescribing antibiotics only when indicated, narrowest spectrum possible, for the shortest effective duration. This is one of the most important public health principles in infectious disease.'},
+{id:33,cat:'resist',trap:0,
+ q:'What is the minimum inhibitory concentration (MIC) and why does it matter clinically?',
+ a:'D. The lowest concentration of antibiotic that prevents visible bacterial growth after 18–24 hours of incubation; MIC is compared to achievable drug levels in target tissue to determine if a drug will be effective',
+ e:'The <b>MIC</b> is the threshold — can we achieve drug concentrations that exceed the MIC at the infection site? If MIC is low (organism is susceptible) and achievable serum/tissue levels are much higher → effective. If MIC is high (resistant) → drug fails. MIC breakpoints define <b>susceptible (S)</b>, <b>intermediate (I)</b>, and <b>resistant (R)</b> on culture reports. For bactericidal drugs: <b>MBC (minimum bactericidal concentration)</b> = needed to kill 99.9%. MBC > 32× MIC = "tolerant" organism.'},
+{id:34,cat:'resist',trap:0,
+ q:'What is antibiotic stewardship and what are its core principles?',
+ a:'A. A coordinated program to optimize antibiotic selection, dose, duration, and route to improve patient outcomes while minimizing resistance, C. diff, and other adverse effects',
+ e:'<b>Antibiotic stewardship</b> principles: (1) <b>Right drug</b> — narrowest spectrum covering the pathogen, based on culture/sensitivity. (2) <b>Right dose</b> — weight-based, renal-adjusted. (3) <b>Right duration</b> — shortest effective course. (4) <b>Right route</b> — oral when possible (IV to oral step-down). (5) <b>De-escalation</b> — start broad empirically, narrow when culture results available. In hospital settings, pharmacists and ID physicians lead stewardship teams. Nurses play a key role by: collecting cultures before antibiotics when ordered, monitoring for adverse effects, reporting non-improvement.'},
+
+// ─── ANTIFUNGALS & ANTIVIRALS (special) ───────────────────────
+{id:35,cat:'special',trap:0,
+ q:'Why is it harder to develop antifungal drugs than antibacterial drugs?',
+ a:'C. Fungi are eukaryotes like human cells — they share many cellular structures (80S ribosomes, similar membrane lipids) making it harder to find selectively toxic targets',
+ e:'Bacteria (prokaryotes) differ enormously from human cells: 70S ribosomes, peptidoglycan walls, different enzymes → easy selective toxicity. Fungi (eukaryotes) share: 80S ribosomes, similar membrane structure (except ergosterol vs. cholesterol), similar DNA/RNA machinery. The main exploitable difference is <b>ergosterol</b> (fungi) vs. <b>cholesterol</b> (humans) in membranes. This is why antifungals are more toxic and fewer in number than antibacterials.'},
+{id:36,cat:'special',trap:0,
+ q:'What is amphotericin B and why is it both highly effective and highly toxic?',
+ a:'B. A polyene antifungal that binds ergosterol in fungal membranes → forms pores → cell contents leak → fungicidal; also binds cholesterol in human membranes (though with less affinity) → significant nephrotoxicity, fever, rigors',
+ e:'<b>Amphotericin B</b> (AmpB) is the "gold standard" broad-spectrum antifungal — covers virtually all fungi. Binds <b>ergosterol</b> preferentially but also binds <b>cholesterol</b> → human cell toxicity. Toxicities: <b>nephrotoxicity</b> (acute — dose-limiting), infusion reactions (fever, rigors, hypotension — "shake and bake"), hypokalemia, hypomagnesemia. Lipid formulations (liposomal AmpB) are less nephrotoxic. Used for: life-threatening systemic fungal infections (<i>Cryptococcus</i> meningitis, invasive <i>Aspergillus</i>, severe <i>Candida</i>), when azoles fail or are contraindicated.'},
+{id:37,cat:'special',trap:0,
+ q:'What is oseltamivir (Tamiflu) and how does it work?',
+ a:'D. Neuraminidase inhibitor — blocks influenza neuraminidase enzyme that releases new viral particles from infected cells → virions remain clumped, cannot spread to new cells',
+ e:'Influenza uses <b>neuraminidase</b> to cleave sialic acid and release new virions from the host cell surface. <b>Oseltamivir (Tamiflu)</b> and <b>zanamivir (Relenza)</b> inhibit neuraminidase → virions stick together and to the host cell → can\'t spread. Must be started within <b>48 hours of symptom onset</b> for maximum benefit — reduces duration by ~1 day and severity. Used for treatment AND prophylaxis (post-exposure). Does NOT work against viruses other than influenza. IV peramivir and inhaled zanamivir are alternatives.'},
+{id:38,cat:'special',trap:0,
+ q:'What antivirals are used for CMV (cytomegalovirus) and when are they needed?',
+ a:'A. Ganciclovir (IV) and valganciclovir (oral prodrug) — inhibit viral DNA polymerase; used for CMV retinitis, colitis, pneumonitis in immunocompromised (HIV with CD4 <50, transplant recipients)',
+ e:'<b>CMV</b> is controlled by the immune system in healthy people — only causes disease in immunocompromised. <b>Ganciclovir</b> (nucleoside analogue, phosphorylated by viral UL97 kinase) inhibits CMV DNA polymerase. <b>Valganciclovir</b> = oral prodrug with good bioavailability. Toxicities: <b>myelosuppression</b> (neutropenia, thrombocytopenia — monitor CBC). Resistance: UL97 or UL54 mutations → switch to <b>foscarnet</b> (direct DNA polymerase inhibitor, no kinase activation needed) or <b>cidofovir</b>. Foscarnet is highly nephrotoxic.'},
+{id:39,cat:'special',trap:0,
+ q:'What is the mechanism of echinocandins (caspofungin, micafungin, anidulafungin) and what makes them unique?',
+ a:'C. Inhibit (1,3)-β-D-glucan synthase → block fungal cell wall synthesis (glucan is a major fungal cell wall component absent in humans) → fungicidal against Candida, fungistatic against Aspergillus',
+ e:'<b>Echinocandins</b> are the newest antifungal class with excellent selective toxicity — they target <b>(1,3)-β-D-glucan synthase</b>, an enzyme that builds glucan in fungal cell walls. Humans have NO glucan in our cells → no off-target toxicity. Well-tolerated, few drug interactions (compared to azoles). IV only (no oral formulations). Excellent for <b>Candida</b> (including azole-resistant strains, <i>C. glabrata</i>, <i>C. krusei</i>). Limited coverage of <i>Cryptococcus</i> (intrinsically resistant). Now first-line for invasive candidiasis in most guidelines.'},
+{id:40,cat:'special',trap:0,
+ q:'What is the mechanism of HIV antiretroviral drug resistance and why is combination therapy essential?',
+ a:'B. HIV reverse transcriptase has no proofreading → high mutation rate (~1 error per genome copy) → resistant mutants arise spontaneously; combination therapy ensures mutants resistant to one drug are killed by another drug in the regimen',
+ e:'HIV reverse transcriptase makes <b>~1 error per genome replication</b> — extremely error-prone. In a person with 10 billion virions per day, essentially every possible single-point mutation exists simultaneously. Monotherapy → resistant mutants selected → treatment failure within weeks. <b>Combination ART (3+ drugs, 2+ classes)</b>: the probability of a mutant being simultaneously resistant to 3 drugs is astronomically low. This principle applies to TB treatment (RIPE) too. Resistance to ART develops when patients have poor adherence — miss doses = sub-therapeutic levels = selection pressure.'},
+
+// ─── EXAM TRAPS (trap) ────────────────────────────────────────
+{id:41,cat:'mech',trap:1,
+ q:'⚠️ TRAP: Penicillin allergy means all beta-lactams (including cephalosporins and carbapenems) are contraindicated. True or false?',
+ a:'A. False — cross-reactivity between penicillin and cephalosporins is low (~1–2%); the decision depends on the nature of the penicillin reaction and the specific cephalosporin; carbapenems have even lower cross-reactivity',
+ e:'This is a major clinical misconception that leads to patients receiving inferior antibiotics unnecessarily. True <b>IgE-mediated anaphylaxis</b> to penicillin: avoid cephalosporins with similar R1 side chains (e.g., cefadroxil, cephalexin — similar side chain to amoxicillin). <b>Rash-only reaction</b> to penicillin: cephalosporins are generally safe. <b>Carbapenems</b>: even lower cross-reactivity. The cross-reactivity is due to side chains, not the beta-lactam ring itself. "Penicillin-allergic patients cannot have any beta-lactam" is outdated — assess the reaction type.'},
+{id:42,cat:'classes',trap:1,
+ q:'⚠️ TRAP: Daptomycin is a good choice for treating Staphylococcus aureus pneumonia because it covers MRSA. True or false?',
+ a:'C. False — daptomycin is INACTIVATED by pulmonary surfactant and cannot be used for pneumonia regardless of the organism',
+ e:'Daptomycin covers MRSA in bloodstream infections, endocarditis, and skin infections — but is <b>absolutely contraindicated for pneumonia</b>. Pulmonary surfactant (phospholipid-rich fluid lining the alveoli) binds and inactivates daptomycin before it can reach the bacteria. This was discovered in clinical trials and is now a mandatory contraindication. For MRSA pneumonia: use <b>vancomycin</b> (IV) or <b>linezolid</b> (equally effective, can be oral). This trap appears on boards regularly.'},
+{id:43,cat:'resist',trap:1,
+ q:'⚠️ TRAP: Antibiotics cause bacteria to mutate and become resistant. True or false?',
+ a:'D. False — antibiotics SELECT for pre-existing resistant mutants; they do not CAUSE mutations. Resistance mutations arise spontaneously before antibiotic exposure',
+ e:'This is a fundamental evolution misconception. Resistant mutants arise spontaneously through random mutation at a very low rate — <b>before</b> any antibiotic exposure. When antibiotic is introduced: susceptible bacteria die, resistant bacteria survive and reproduce (<b>natural selection</b>). The antibiotic selects for resistance; it doesn\'t create it. This matters clinically: a patient who\'s never taken an antibiotic can still harbor resistant organisms — acquired through contact with resistant bacteria in the environment or from other people.'},
+{id:44,cat:'classes',trap:1,
+ q:'⚠️ TRAP: Tetracyclines should be taken with milk or antacids to reduce stomach upset. True or false?',
+ a:'B. False — dairy products, antacids (calcium, magnesium, aluminum), and iron chelate tetracyclines → form insoluble complexes → dramatically reduced absorption. Take on an empty stomach with water only.',
+ e:'Tetracyclines are <b>chelating agents</b> — they bind divalent/trivalent cations (Ca²⁺, Mg²⁺, Al³⁺, Fe²⁺/³⁺). Dairy, antacids, multivitamins with minerals, and iron supplements all reduce tetracycline absorption by >80%. Correct instruction: take <b>1 hour before or 2 hours after</b> dairy, antacids, or mineral supplements. With a full glass of water. Remain upright for 30 minutes (prevents esophageal ulceration). This is a classic patient education/NCLEX question.'},
+{id:45,cat:'mech',trap:1,
+ q:'⚠️ TRAP: Bacteriostatic antibiotics are always inferior to bactericidal antibiotics. True or false?',
+ a:'A. False — bacteriostatic antibiotics are effective for most infections in immunocompetent patients; bactericidal is required for specific high-risk situations only',
+ e:'Bacteriostatic drugs are clinically effective for most infections — the immune system handles bacteria that can\'t replicate. Bactericidal is specifically required for: <b>endocarditis</b> (vegetation is avascular, immune cells can\'t get in), <b>meningitis</b> (BBB limits immune access), <b>febrile neutropenia/immunocompromised</b> (no immune backup), <b>bacteremia</b>. For uncomplicated pneumonia, sinusitis, UTI — bacteriostatic drugs work perfectly well in immunocompetent patients.'},
+{id:46,cat:'classes',trap:1,
+ q:'⚠️ TRAP: Fluoroquinolones are the best first-line choice for uncomplicated UTI in all patients. True or false?',
+ a:'C. False — fluoroquinolones are no longer recommended as first-line for uncomplicated UTI due to resistance concerns and serious side effects (tendinopathy, aortic aneurysm, CNS effects); TMP-SMX or nitrofurantoin preferred',
+ e:'The FDA has issued multiple warnings about fluoroquinolones: <b>tendon rupture</b> (Achilles tendon — especially in elderly and corticosteroid users), <b>aortic aneurysm/dissection</b>, CNS effects (seizures, psychosis), peripheral neuropathy (may be permanent). Current guidelines: uncomplicated cystitis → <b>nitrofurantoin</b> (5 days) or <b>TMP-SMX</b> (3 days) first-line. Fluoroquinolones reserved for complicated UTI, pyelonephritis, or when first-line agents can\'t be used. Reserve fluoroquinolones — their effectiveness is precious.'},
+{id:47,cat:'resist',trap:1,
+ q:'⚠️ TRAP: Completing a full antibiotic course is important to prevent the infection from coming back — finishing the pills prevents relapse. True or false?',
+ a:'D. Partially true but the primary reason is resistance prevention, not relapse prevention — incomplete courses leave the most resistant survivors who then repopulate',
+ e:'The traditional teaching was "finish all your antibiotics to prevent relapse." More nuanced current understanding: completing the course primarily prevents <b>resistance selection</b> — if you stop early, the most resistant bacteria (which take longest to kill) survive and multiply. The most susceptible bacteria die first. However, recent evidence shows some infections (e.g., uncomplicated UTI, community pneumonia) can be treated with shorter courses. The message for patients: take the full course as prescribed — don\'t stop early because you feel better, and don\'t save leftovers.'},
+{id:48,cat:'special',trap:1,
+ q:'⚠️ TRAP: Antiviral drugs cure viral infections by eliminating the virus completely from the body. True or false?',
+ a:'B. False — most antivirals are virustatic (suppress replication) not viricidal; latent viruses (HSV, VZV, HIV, EBV) persist in the body permanently despite treatment',
+ e:'Most antivirals <b>suppress viral replication</b> but do not eliminate latent virus. <b>HSV/VZV</b>: acyclovir suppresses outbreaks but virus persists in dorsal root ganglia for life — recurrences possible when treatment stops. <b>HIV</b>: ART suppresses viral load to undetectable but HIV provirus remains integrated in resting CD4 T cells — ART must continue lifelong. <b>HCV</b> is the exception — direct-acting antivirals (DAAs like sofosbuvir/ledipasvir) achieve sustained virologic response (SVR) = functional cure in >95%. HCV cure is the rare exception, not the rule.'},
+{id:49,cat:'classes',trap:1,
+ q:'⚠️ TRAP: Vancomycin can be given orally to treat MRSA bacteremia. True or false?',
+ a:'A. False — oral vancomycin is NOT absorbed from the GI tract and has no systemic effect; IV vancomycin is required for bacteremia; oral vancomycin is used ONLY for C. difficile colitis (acts locally in the colon)',
+ e:'Vancomycin is a large glycopeptide that is <b>not absorbed from the GI tract</b> — oral administration results in negligible serum levels. <b>Oral vancomycin</b> is used exclusively for <b><i>C. difficile</i> colitis</b> — it stays in the colon where it kills C. diff locally without systemic absorption. For <b>MRSA bacteremia, endocarditis, or any systemic infection</b> → <b>IV vancomycin only</b>. Confusing these routes is a dangerous clinical error. IV and oral formulations are entirely different clinical uses.'},
+{id:50,cat:'resist',trap:1,
+ q:'⚠️ TRAP: If a patient is allergic to sulfonamide antibiotics (TMP-SMX), they will also be allergic to all other sulfonamide-containing drugs like furosemide and thiazide diuretics. True or false?',
+ a:'C. False — "sulfonamide allergy" is class-specific; allergy to sulfonamide antibiotics does not reliably predict allergy to non-antibiotic sulfonamides (furosemide, thiazides, celecoxib); cross-reactivity is not established',
+ e:'This is one of the most common and consequential drug allergy misconceptions in clinical practice. <b>Sulfonamide antibiotics</b> (TMP-SMX) contain an arylamine group at the N4 position — this is the allergenic component. <b>Non-antibiotic sulfonamides</b> (furosemide, thiazides, sulfonylureas, celecoxib) lack this arylamine group. Cross-reactivity is not established by evidence. Withholding furosemide from a heart failure patient because of a TMP-SMX allergy can cause serious harm. Always clarify the exact allergy reaction and consult pharmacy/ID when uncertain.'},
+];
+
+let revealed=new Set();
+let currentFilter='all';
+function tagClass(cat){return {mech:'tag-mech',classes:'tag-classes',resist:'tag-resist',special:'tag-special'}[cat]||'tag-mech';}
+function tagLabel(cat){return {mech:'Mechanism',classes:'Drug Class',resist:'Resistance',special:'Antifungal/Antiviral'}[cat]||cat;}
+function render(){
+  const filtered=currentFilter==='all'?Q:currentFilter==='trap'?Q.filter(q=>q.trap):Q.filter(q=>q.cat===currentFilter);
+  document.getElementById('showingLbl').textContent=`Showing ${filtered.length} of ${Q.length}`;
+  const g=document.getElementById('grid');g.innerHTML='';
+  filtered.forEach(q=>{
+    const div=document.createElement('div');
+    div.className='qcard'+(q.trap?' is-trap':'');
+    div.id='card-'+q.id;
+    div.innerHTML=`<div class="qcard-head" onclick="toggleReveal(${q.id})">
+      <span class="qnum">Q${String(q.id).padStart(2,'0')}</span>
+      <div class="qtext">${q.q}<div><span class="tag ${tagClass(q.cat)}">${tagLabel(q.cat)}</span>${q.trap?'<span class="tag tag-trap" style="margin-left:4px">⚠ Exam Trap</span>':''}</div></div>
+      ${q.trap?'<span class="trap-icon">⚠️</span>':''}
+    </div>
+    <div class="qcard-body${revealed.has(q.id)?' open':''}" id="body-${q.id}">
+      <div class="answer-lbl">CORRECT ANSWER</div>
+      <div class="answer">${q.a}</div>
+      <div class="explain-lbl">WHY THIS MATTERS</div>
+      <div class="explain">${q.e}</div>
+    </div>`;
+    g.appendChild(div);
+  });
+  updateProgress();
+}
+function toggleReveal(id){
+  const b=document.getElementById('body-'+id);if(!b)return;
+  if(b.classList.contains('open')){b.classList.remove('open');revealed.delete(id);}
+  else{b.classList.add('open');revealed.add(id);}
+  updateProgress();
+}
+function updateProgress(){
+  const pct=Math.round((revealed.size/Q.length)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=`${revealed.size} / ${Q.length}`;
+  localStorage.setItem('micro270_progress_ch13',JSON.stringify({revealed:revealed.size,total:Q.length}));
+}
+function resetAll(){revealed.clear();document.querySelectorAll('.qcard-body').forEach(b=>b.classList.remove('open'));updateProgress();}
+document.querySelectorAll('.flt').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.flt').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');currentFilter=btn.dataset.f;render();
+  });
+});
+render();
+</script>
+</body>
+</html>

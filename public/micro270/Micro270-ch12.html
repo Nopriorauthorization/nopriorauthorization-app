@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro270 · Chapter 12 · Diseases of the Immune System</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0a1628; --pink:#D4537E; --teal:#2a9d8f; --red:#e63946;
+  --gold:#c77b2a; --purple:#7b2d8b; --green:#2d7a55; --blue:#1a3a6b;
+  --bg:#f0f2f5; --card:#ffffff; --text:#1a1a2e; --sub:#555; --border:#e0e0e0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+.hdr{background:var(--navy);color:#fff;padding:28px 32px 22px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.hdr-course{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--pink);margin-bottom:4px;}
+.hdr-title{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;letter-spacing:1px;}
+.hdr-title span{color:var(--teal);}
+.hdr-sub{font-size:13px;color:#aaa;margin-top:6px;}
+.hdr-badge{background:var(--pink);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;padding:8px 20px;border-radius:6px;}
+.facts-banner{background:var(--navy);color:#fff;padding:18px 32px;display:flex;gap:24px;flex-wrap:wrap;border-bottom:3px solid var(--teal);}
+.fact-chip{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;}
+.fact-chip span{color:var(--teal);}
+.filters{background:var(--navy);padding:0 32px 20px;display:flex;gap:10px;flex-wrap:wrap;}
+.flt{background:transparent;border:1.5px solid #334;color:#aaa;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:7px 16px;border-radius:20px;cursor:pointer;transition:all .2s;}
+.flt:hover,.flt.active{border-color:var(--pink);color:#fff;background:var(--pink);}
+.flt[data-f="trap"].active{background:var(--red);border-color:var(--red);}
+.flt[data-f="hyper"].active{background:var(--teal);border-color:var(--teal);}
+.flt[data-f="auto"].active{background:var(--green);border-color:var(--green);}
+.flt[data-f="immdef"].active{background:var(--gold);border-color:var(--gold);}
+.flt[data-f="transplant"].active{background:var(--purple);border-color:var(--purple);}
+.stats{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.stat-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--sub);}
+.stat-dot{width:10px;height:10px;border-radius:50%;}
+.stat-count{color:var(--text);font-weight:700;font-size:15px;}
+.showing{margin-left:auto;font-size:12px;color:var(--sub);font-weight:500;}
+.prog-bar-wrap{background:#fff;border-bottom:1px solid var(--border);padding:12px 32px;display:flex;align-items:center;gap:16px;}
+.prog-label{font-size:12px;font-weight:700;color:var(--sub);white-space:nowrap;}
+.prog-track{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:4px;transition:width .4s;}
+.prog-pct{font-size:13px;font-weight:700;color:var(--green);white-space:nowrap;}
+.reset-btn{background:transparent;border:1.5px solid var(--border);color:var(--sub);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all .2s;}
+.reset-btn:hover{border-color:var(--pink);color:var(--pink);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(540px,1fr));gap:16px;padding:24px 32px 48px;max-width:1400px;margin:0 auto;}
+.qcard{background:var(--card);border-radius:10px;border:1.5px solid var(--border);overflow:hidden;transition:box-shadow .2s,transform .15s;}
+.qcard:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-1px);}
+.qcard.is-trap{border-color:#f5c6c6;}
+.qcard.is-trap .qcard-head{background:#fff9f9;}
+.qcard-head{display:flex;align-items:flex-start;gap:10px;padding:14px 16px 10px;cursor:pointer;user-select:none;}
+.qnum{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:#ccc;min-width:30px;}
+.qtext{font-size:14px;font-weight:600;line-height:1.45;flex:1;color:var(--text);}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-top:6px;}
+.tag-hyper{background:#e0f7f5;color:var(--teal);}
+.tag-auto{background:#e0f5ea;color:var(--green);}
+.tag-immdef{background:#fdf0e0;color:var(--gold);}
+.tag-transplant{background:#f2e8f7;color:var(--purple);}
+.tag-trap{background:#fdeaea;color:var(--red);}
+.trap-icon{font-size:16px;margin-left:auto;flex-shrink:0;}
+.qcard-body{display:none;border-top:1.5px solid var(--border);padding:14px 16px;}
+.qcard-body.open{display:block;}
+.answer-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
+.answer{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:12px;}
+.explain-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sub);margin-bottom:5px;}
+.explain{font-size:13px;color:var(--sub);line-height:1.6;}
+.explain b{color:var(--text);}
+@media(max-width:640px){.grid{grid-template-columns:1fr;padding:16px;}.hdr,.filters,.stats,.prog-bar-wrap,.facts-banner{padding-left:16px;padding-right:16px;}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-course">MICRO 250 · NURSING MICROBIOLOGY</div>
+    <div class="hdr-title">CHAPTER 12 <span>IMMUNE SYSTEM DISEASES</span></div>
+    <div class="hdr-sub">Hypersensitivities (Types I–IV) · Autoimmunity · Immunodeficiencies · Transplant Rejection</div>
+  </div>
+  <div class="hdr-badge">50 QUESTIONS</div>
+</div>
+
+<div class="facts-banner">
+  <div class="fact-chip">🤧 <span>Type I</span> = IgE + mast cells = immediate (anaphylaxis, allergy)</div>
+  <div class="fact-chip">🩸 <span>Type II</span> = IgG/IgM vs. cell surface = cytotoxic (transfusion rxn)</div>
+  <div class="fact-chip">🔴 <span>Type III</span> = immune complexes = serum sickness, lupus</div>
+  <div class="fact-chip">🦠 <span>Type IV</span> = T cell mediated = delayed (TB test, contact dermatitis)</div>
+  <div class="fact-chip">💉 <span>Epinephrine</span> = FIRST treatment for anaphylaxis — always</div>
+</div>
+
+<div class="filters">
+  <button class="flt active" data-f="all">All (50)</button>
+  <button class="flt" data-f="hyper">Hypersensitivities (16)</button>
+  <button class="flt" data-f="auto">Autoimmunity (10)</button>
+  <button class="flt" data-f="immdef">Immunodeficiencies (8)</button>
+  <button class="flt" data-f="transplant">Transplant (6)</button>
+  <button class="flt" data-f="trap">⚠️ Exam Traps (10)</button>
+</div>
+
+<div class="prog-bar-wrap">
+  <div class="prog-label">REVEALED</div>
+  <div class="prog-track"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-pct" id="progPct">0 / 50</div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+</div>
+
+<div class="stats">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--teal)"></div>Hypersensitivities <span class="stat-count">16</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--green)"></div>Autoimmunity <span class="stat-count">10</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--gold)"></div>Immunodeficiencies <span class="stat-count">8</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--purple)"></div>Transplant Rejection <span class="stat-count">6</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--red)"></div>Exam Traps <span class="stat-count">10</span></div>
+  <div class="showing" id="showingLbl">Showing 50 of 50</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const Q = [
+// ─── HYPERSENSITIVITIES (hyper) ───────────────────────────────
+{id:1,cat:'hyper',trap:0,
+ q:'What are the four types of hypersensitivity reactions and what mediates each?',
+ a:'A. Type I = IgE/mast cells (immediate); Type II = IgG/IgM vs. cell surface (cytotoxic); Type III = immune complexes (immune complex); Type IV = T cells (delayed)',
+ e:'The Gell-Coombs classification: <b>Type I</b> — IgE pre-armed on mast cells, allergen crosslinks → immediate (seconds to minutes). <b>Type II</b> — IgG/IgM target cell surfaces → complement + phagocytosis. <b>Type III</b> — soluble antigen-antibody complexes deposit in tissues → complement + neutrophil damage. <b>Type IV</b> — sensitized T cells, NO antibody → 24–72 hour delay. Types I–III = antibody-mediated. Type IV = cell-mediated only.'},
+{id:2,cat:'hyper',trap:0,
+ q:'What is the mechanism of Type I hypersensitivity (immediate/anaphylactic)?',
+ a:'C. Sensitization: allergen exposure → IgE production → IgE binds FcεRI on mast cells. Elicitation: re-exposure → allergen crosslinks IgE → mast cell degranulation → histamine + leukotrienes released',
+ e:'Two phases: <b>Sensitization</b> (first exposure — no symptoms, but IgE is made and armed on mast cells). <b>Elicitation</b> (re-exposure — allergen crosslinks 2+ IgE → degranulation within seconds). Products released: <b>histamine</b> (vasodilation, bronchoconstriction, mucus), <b>leukotrienes</b> (prolonged bronchoconstriction), <b>prostaglandins, tryptase</b>. Range: mild hay fever → anaphylaxis.'},
+{id:3,cat:'hyper',trap:0,
+ q:'What is anaphylaxis and what is the FIRST-LINE treatment?',
+ a:'B. Life-threatening systemic Type I hypersensitivity causing widespread vasodilation, bronchospasm, and shock; first-line treatment is intramuscular epinephrine (EpiPen)',
+ e:'<b>Anaphylaxis</b>: systemic mast cell/basophil degranulation → massive histamine + leukotriene release → profound vasodilation (↓BP), bronchoconstriction (can\'t breathe), urticaria, angioedema. Can be fatal in minutes. <b>Epinephrine IM (0.3–0.5mg into lateral thigh)</b> is ALWAYS first — it reverses vasodilation (α1), bronchospasm (β2), and blocks further mediator release. Antihistamines and steroids are adjuncts, NOT first-line.'},
+{id:4,cat:'hyper',trap:0,
+ q:'What is the difference between atopy and anaphylaxis?',
+ a:'D. Atopy = genetic predisposition to localized IgE-mediated hypersensitivity (asthma, hay fever, eczema); anaphylaxis = systemic life-threatening IgE-mediated reaction',
+ e:'<b>Atopy</b>: inherited tendency to make IgE against common environmental allergens → localized Type I reactions (allergic rhinitis, atopic dermatitis, allergic asthma). <b>Anaphylaxis</b>: same mechanism but systemic — affects cardiovascular and respiratory systems simultaneously. Atopic individuals are at higher risk for anaphylaxis. Common anaphylaxis triggers: peanuts, tree nuts, shellfish, penicillin, latex, bee venom.'},
+{id:5,cat:'hyper',trap:0,
+ q:'What is Type II hypersensitivity and give two clinical examples?',
+ a:'A. Antibody (IgG or IgM) binds to antigens on cell surfaces → complement activation, opsonization, or ADCC destroys the cell; examples: ABO transfusion reaction, hemolytic disease of the newborn',
+ e:'Type II = <b>cytotoxic</b>. The antibody targets a cell surface or matrix-bound antigen. Destruction mechanisms: complement lysis (MAC), opsonization → phagocytosis, ADCC. Clinical examples: <b>ABO transfusion reaction</b> (anti-A or anti-B IgM destroys RBCs → acute hemolysis, fever, renal failure), <b>hemolytic disease of the newborn</b> (maternal anti-Rh IgG crosses placenta, destroys fetal RBCs), <b>Goodpasture\'s syndrome</b> (anti-GBM antibodies destroy kidney + lung), <b>Graves\' disease</b> (stimulatory).'},
+{id:6,cat:'hyper',trap:0,
+ q:'What happens during an ABO-incompatible blood transfusion?',
+ a:'C. Pre-formed IgM antibodies against the wrong blood type immediately activate complement → intravascular hemolysis → fever, chills, flank pain, hemoglobinuria, renal failure, shock',
+ e:'ABO antibodies are <b>pre-formed</b> (no prior sensitization needed — formed against gut bacteria with similar antigens). Type A person has anti-B IgM. Transfuse type B blood → immediate massive complement activation → <b>intravascular hemolysis</b>. Symptoms: fever, chills, back/flank pain, dark urine (hemoglobinuria). Can progress to DIC, acute kidney injury, death. This is a Type II reaction and a nursing patient safety priority.'},
+{id:7,cat:'hyper',trap:0,
+ q:'What is Type III hypersensitivity and what conditions does it cause?',
+ a:'B. Soluble antigen-antibody immune complexes deposit in blood vessel walls and tissues → complement activation + neutrophil recruitment → tissue damage; examples: serum sickness, lupus nephritis, post-streptococcal glomerulonephritis',
+ e:'Type III = <b>immune complex</b>. The problem isn\'t which cell the antibody targets — it\'s where the complexes deposit. Complement is activated → C3a/C5a attract neutrophils → neutrophils release enzymes trying to phagocytize the complexes → <b>bystander tissue damage</b>. Joints, kidneys, and blood vessels are common deposition sites. <b>Serum sickness</b> (drug/antiserum reaction), <b>SLE lupus nephritis</b>, <b>post-streptococcal GN</b> are classic Type III diseases.'},
+{id:8,cat:'hyper',trap:0,
+ q:'What is the Arthus reaction?',
+ a:'D. A localized Type III hypersensitivity reaction occurring at the injection site when antigen is injected into a person with high levels of circulating IgG antibodies against that antigen',
+ e:'The <b>Arthus reaction</b> is a localized Type III: IgG + locally injected antigen → immune complex formation in vessel walls at the injection site → complement activation + neutrophil infiltration → local tissue necrosis. Can occur with repeated vaccine doses (especially in those with high pre-existing antibody titers). Important distinction: Arthus = local Type III; serum sickness = systemic Type III.'},
+{id:9,cat:'hyper',trap:0,
+ q:'What is Type IV hypersensitivity and why is it "delayed"?',
+ a:'A. T cell–mediated reaction requiring 24–72 hours because sensitized T cells must migrate to the site, recognize antigen, activate, and recruit macrophages — no antibody involved',
+ e:'Type IV is the only <b>non-antibody</b> hypersensitivity. It requires previously sensitized <b>T cells (CD4+ Th1 and CD8+ CTLs)</b> to recognize antigen → release IFN-γ → macrophage activation → tissue damage. Delayed because T cells take time to arrive and respond. Classic examples: <b>tuberculin skin test (PPD)</b>, <b>contact dermatitis</b> (poison ivy, nickel), <b>granulomatous disease</b> (TB, sarcoidosis), <b>graft rejection</b>.'},
+{id:10,cat:'hyper',trap:0,
+ q:'What is the tuberculin skin test (PPD/Mantoux) and what type of hypersensitivity does it measure?',
+ a:'C. Type IV (delayed-type) hypersensitivity — purified protein derivative (PPD) of M. tuberculosis is injected intradermally; a positive reaction (induration ≥10mm at 48–72 hours) indicates prior sensitization, NOT active disease',
+ e:'PPD test measures <b>immunological memory to M. tuberculosis antigens</b>. Previously sensitized T cells recognize PPD → IFN-γ release → macrophage recruitment → induration (hardening from cells, not fluid — measure induration, not redness). <b>Positive ≠ active TB</b> — it means prior exposure or BCG vaccination. Active disease requires chest X-ray + sputum culture. IGRA (blood test) has replaced PPD in many settings — not affected by BCG.'},
+{id:11,cat:'hyper',trap:0,
+ q:'What is contact dermatitis and which hypersensitivity type is it?',
+ a:'B. Type IV (delayed) hypersensitivity — small chemicals (haptens) bind skin proteins, are processed by Langerhans cells, and activate sensitized T cells → eczematous rash 24–72 hours after re-exposure',
+ e:'<b>Contact dermatitis</b>: haptens (poison ivy urushiol, nickel, latex, fragrances, neomycin) are too small to be antigens alone — they bind host proteins to form complete antigens. Langerhans cells (skin dendritic cells) process and present → sensitize T cells. Re-exposure → T cell activation → cytokines → macrophage recruitment → itchy, blistering rash in 1–3 days. Treated with topical/systemic corticosteroids.'},
+{id:12,cat:'hyper',trap:0,
+ q:'What is a hapten and why is it clinically relevant to drug allergies?',
+ a:'D. A small molecule that is not immunogenic alone but becomes immunogenic when bound to a carrier protein; penicillin is the classic example',
+ e:'<b>Haptens</b> are too small to activate B/T cells alone. When penicillin binds serum proteins → hapten-carrier complex → recognized as foreign → IgE production → allergic response on re-exposure. Penicillin allergy (Type I) or hemolytic anemia (Type II) results. This explains drug allergies to small molecules. Important: not all drug "allergies" are true hypersensitivities — many are adverse reactions without immune involvement.'},
+{id:13,cat:'hyper',trap:0,
+ q:'What is serum sickness and what causes it?',
+ a:'A. A systemic Type III hypersensitivity reaction occurring 7–14 days after injection of a large amount of foreign protein (e.g., antiserum, monoclonal antibodies) — causes fever, rash, arthritis, and lymphadenopathy',
+ e:'<b>Serum sickness</b>: foreign protein antigen (originally horse antitoxin, now some drugs/biologics) → IgG production → immune complex deposition in joints, kidney, skin → Type III damage. Onset 7–14 days (time to make IgG). Symptoms: fever, urticaria, arthralgias, lymphadenopathy. Self-limiting. Treat with corticosteroids. Classic example: anti-thymocyte globulin (ATG) used in transplant rejection — causes serum sickness in many recipients.'},
+{id:14,cat:'hyper',trap:0,
+ q:'How do antihistamines work in allergic reactions and what are their limitations?',
+ a:'C. H1 antihistamines (diphenhydramine, cetirizine) competitively block histamine H1 receptors — reducing vasodilation and itching; they do NOT reverse bronchoconstriction or anaphylaxis and are NOT first-line for anaphylaxis',
+ e:'Antihistamines block <b>H1 receptors</b> → reduce: vasodilation (redness, edema), itching, rhinorrhea. They do <b>NOT</b>: reverse already-released mediators efficiently, block leukotrienes (which cause prolonged bronchospasm), or treat anaphylaxis acutely. In anaphylaxis: <b>epinephrine first</b> always. Antihistamines are adjuncts. Students who answer "diphenhydramine" for anaphylaxis treatment are choosing the wrong answer.'},
+{id:15,cat:'hyper',trap:0,
+ q:'What is allergic asthma and what hypersensitivity type drives it?',
+ a:'B. Type I hypersensitivity — IgE-mediated mast cell degranulation in bronchial airways → bronchoconstriction (immediate phase); Th2 cytokines + eosinophils cause chronic airway inflammation (late phase)',
+ e:'Allergic asthma has <b>two phases</b>: <b>Immediate</b> (minutes): IgE + allergen → mast cell degranulation → histamine + leukotrienes → bronchoconstriction, mucus → wheeze. <b>Late phase</b> (hours): Th2 cytokines (IL-4, IL-5, IL-13) recruit eosinophils → chronic inflammation → airway remodeling. Treatment: short-acting β2 agonists (salbutamol) for acute; inhaled corticosteroids for chronic inflammation; monoclonal antibodies (omalizumab = anti-IgE) for severe.'},
+{id:16,cat:'hyper',trap:0,
+ q:'What is the late-phase allergic response and how does it differ from the immediate phase?',
+ a:'D. Immediate phase (minutes): mast cell degranulation → histamine effects. Late phase (4–12 hours): Th2 cytokines recruit eosinophils and basophils → sustained inflammation and tissue damage without additional allergen exposure',
+ e:'After the <b>immediate mast cell response</b> (histamine, leukotrienes within minutes), a <b>late-phase response</b> follows 4–12 hours later without re-exposure to allergen. Mast cell–derived cytokines (TNF-α, IL-4) recruit <b>eosinophils, basophils, and Th2 cells</b> → prolonged inflammation. This late phase causes the persistent symptoms of asthma and rhinitis and explains why anti-inflammatory treatment (steroids) is needed for chronic allergy management.'},
+
+// ─── AUTOIMMUNITY (auto) ──────────────────────────────────────
+{id:17,cat:'auto',trap:0,
+ q:'What is autoimmunity and what breaks self-tolerance?',
+ a:'A. Immune responses directed against self-antigens; caused by failure of central tolerance (thymic deletion), peripheral tolerance (anergy, Tregs), or molecular mimicry',
+ e:'Autoimmunity = the immune system attacks host tissues. Normally prevented by: <b>central tolerance</b> (thymic negative selection deletes self-reactive T cells), <b>peripheral tolerance</b> (anergy, Treg suppression). Breaks down via: <b>molecular mimicry</b> (microbial antigen resembles self — antibodies cross-react), <b>bystander activation</b> (inflammation activates self-reactive cells), <b>cryptic antigen exposure</b> (hidden self-antigens exposed by tissue damage).'},
+{id:18,cat:'auto',trap:0,
+ q:'What is Systemic Lupus Erythematosus (SLE) and what is its hallmark laboratory finding?',
+ a:'C. A systemic autoimmune disease caused by immune complexes (Type III) and anti-nuclear antibodies (ANA) attacking multiple organs; hallmark = positive ANA and anti-dsDNA antibodies',
+ e:'<b>SLE</b>: autoantibodies against nuclear components (DNA, histones, RNA-binding proteins) → immune complex deposition in kidneys (nephritis), skin (malar butterfly rash), joints, brain, heart. <b>ANA (anti-nuclear antibody)</b> = screening test (sensitive but not specific). <b>Anti-dsDNA</b> = specific for SLE, correlates with disease activity. Butterfly rash, photosensitivity, serositis, cytopenias, nephritis = classic presentation. Predominantly affects women of childbearing age.'},
+{id:19,cat:'auto',trap:0,
+ q:'What is rheumatoid arthritis (RA) and what are its immunological mechanisms?',
+ a:'B. Chronic autoimmune joint disease; CD4+ Th1 cells and macrophages activated in synovium → TNF-α, IL-1, IL-6 → pannus formation → cartilage and bone destruction; rheumatoid factor (anti-IgG IgM) positive in ~80%',
+ e:'<b>RA</b>: autoimmune attack on synovial joints. Autoreactive CD4+ T cells activate macrophages → cytokine storm in joint (TNF-α, IL-1, IL-6). <b>Pannus</b> = invasive synovial tissue that erodes cartilage and bone. <b>Rheumatoid factor (RF)</b> = IgM antibody against IgG Fc (autoantibody). <b>Anti-CCP antibodies</b> = more specific. Treatment targets TNF-α (etanercept, infliximab), IL-6 (tocilizumab), or T cell co-stimulation (abatacept).'},
+{id:20,cat:'auto',trap:0,
+ q:'What is molecular mimicry and give a clinical example?',
+ a:'D. Pathogen antigens structurally similar to host antigens → antibodies/T cells against the pathogen cross-react with host tissue; example: Group A Streptococcus M protein resembles cardiac myosin → rheumatic fever',
+ e:'<b>Molecular mimicry</b>: the immune system correctly targets a pathogen, but the antibodies/T cells generated cross-react with similar host structures. <b>Rheumatic fever</b>: anti-streptococcal M protein antibodies cross-react with <b>cardiac myosin → autoimmune carditis</b>. <b>Guillain-Barré syndrome</b>: anti-<i>Campylobacter</i> antibodies cross-react with gangliosides in peripheral nerve myelin → ascending paralysis. This is why strep throat should be treated — to prevent post-strep sequelae.'},
+{id:21,cat:'auto',trap:0,
+ q:'What is Type 1 diabetes mellitus (T1DM) immunologically?',
+ a:'A. Autoimmune destruction of pancreatic β cells by CD8+ cytotoxic T cells and CD4+ Th1 cells → loss of insulin production',
+ e:'<b>T1DM</b>: T cells infiltrate pancreatic islets and destroy <b>insulin-producing β cells</b>. CD8+ CTLs directly kill β cells; CD4+ Th1 cells activate macrophages. Autoantibodies (anti-GAD65, anti-insulin, anti-IA-2) are markers but not the primary cause. Genetic risk: HLA-DR3 and HLA-DR4. Environmental triggers (viral infection?) may initiate molecular mimicry. Complete loss of insulin → absolute insulin requirement for survival.'},
+{id:22,cat:'auto',trap:0,
+ q:'What is Graves\' disease and what makes it a unique Type II hypersensitivity?',
+ a:'C. Autoantibodies (TSI) against TSH receptors on thyroid STIMULATE (rather than destroy) the thyroid → hyperthyroidism; unique because it is a stimulatory, not cytotoxic, Type II reaction',
+ e:'Most Type II reactions destroy cells. <b>Graves\' disease</b> is different — <b>thyroid-stimulating immunoglobulins (TSI)</b> bind and <b>activate</b> TSH receptors, mimicking TSH → constant thyroid stimulation → hyperthyroidism (tachycardia, weight loss, heat intolerance, exophthalmos). This is the classic example that Type II antibodies can stimulate as well as destroy. Contrast with <b>Hashimoto\'s thyroiditis</b> = destructive autoimmunity → hypothyroidism.'},
+{id:23,cat:'auto',trap:0,
+ q:'What is multiple sclerosis (MS) immunologically?',
+ a:'B. Autoimmune demyelinating disease — CD4+ Th1 and Th17 cells attack myelin basic protein in CNS white matter → demyelination → impaired nerve conduction',
+ e:'<b>MS</b>: T cells breach the blood-brain barrier and attack <b>myelin</b> (the insulating sheath of neurons in CNS). Demyelination = slowed/blocked nerve signals → relapsing-remitting neurological deficits (vision loss, weakness, sensory loss, ataxia). Lesions (plaques) visible on MRI. Treatment: immunomodulators (interferon-β, glatiramer, natalizumab). MS is CNS (brain/spinal cord); <b>Guillain-Barré</b> is PNS (peripheral nerves).'},
+{id:24,cat:'auto',trap:0,
+ q:'What is myasthenia gravis and what is its mechanism?',
+ a:'D. Autoantibodies against nicotinic acetylcholine receptors (AChR) at the neuromuscular junction → block ACh binding → muscle weakness that worsens with use',
+ e:'<b>Myasthenia gravis</b>: IgG autoantibodies bind <b>nicotinic AChR</b> at the NMJ → receptor blockade + degradation → less ACh effect → muscle weakness. Hallmark: <b>fatigable weakness</b> — gets worse with repeated use, better with rest. Ptosis (drooping eyelid) and diplopia common. Diagnosis: anti-AChR antibodies, Tensilon (edrophonium) test. Treatment: acetylcholinesterase inhibitors (pyridostigmine), immunosuppression, thymectomy (thymic hyperplasia common). Type II hypersensitivity.'},
+{id:25,cat:'auto',trap:0,
+ q:'What factors contribute to susceptibility to autoimmune diseases?',
+ a:'A. Genetic (HLA type, gender — female predominance), environmental (infections triggering molecular mimicry, UV light in lupus), hormonal, and failure of tolerance mechanisms',
+ e:'Autoimmune disease is multifactorial: <b>Genetics</b>: specific HLA alleles (HLA-DR3/4 → T1DM, SLE; HLA-B27 → ankylosing spondylitis). <b>Sex</b>: females 70–80% of autoimmune patients (estrogen may enhance B cell responses). <b>Infections</b>: molecular mimicry, bystander activation. <b>Gut microbiome</b>: dysbiosis linked to autoimmunity. <b>Smoking</b>: increased RA/lupus risk. <b>UV light</b>: triggers SLE flares (DNA exposure from sunburned cells).'},
+{id:26,cat:'auto',trap:0,
+ q:'What is Hashimoto\'s thyroiditis and how does it differ from Graves\' disease?',
+ a:'C. Hashimoto\'s = autoimmune destruction of thyroid tissue by T cells + anti-thyroid antibodies → hypothyroidism; Graves\' = stimulatory antibodies → hyperthyroidism',
+ e:'Both are thyroid autoimmune diseases but opposite outcomes: <b>Hashimoto\'s</b>: CD8+ T cells destroy follicular cells + anti-thyroglobulin and anti-TPO antibodies → goiter + progressive <b>hypothyroidism</b>. Treatment: levothyroxine replacement. <b>Graves\'</b>: TSI antibodies stimulate TSH receptor → <b>hyperthyroidism</b>. Treatment: antithyroids (methimazole), radioiodine, surgery. Know both for NCLEX — thyroid function opposite in each.'},
+
+// ─── IMMUNODEFICIENCIES (immdef) ──────────────────────────────
+{id:27,cat:'immdef',trap:0,
+ q:'What is the difference between primary and secondary immunodeficiency?',
+ a:'B. Primary = inherited/genetic defects in immune components (present from birth); secondary = acquired due to infection, malnutrition, drugs, or disease (HIV is the classic example)',
+ e:'<b>Primary immunodeficiencies</b>: genetic mutations affecting lymphocyte development, antibody production, complement, or phagocytes. Present in infancy/childhood with recurrent infections. Examples: SCID, X-linked agammaglobulinemia, CVID. <b>Secondary immunodeficiencies</b>: acquired. Causes: HIV (destroys CD4+ T cells), immunosuppressive drugs (transplant, chemo), malnutrition, diabetes, asplenia, burns. Far more common than primary.'},
+{id:28,cat:'immdef',trap:0,
+ q:'What is Severe Combined Immunodeficiency (SCID) and why is it called "bubble boy disease"?',
+ a:'D. Complete absence of both T cell and B cell function due to genetic mutations (most commonly adenosine deaminase [ADA] deficiency or γc cytokine receptor deficiency) → susceptible to all pathogens from birth',
+ e:'<b>SCID</b>: no functional T cells AND no functional B cells (B cells need T cell help anyway). Without any adaptive immunity, even normally harmless organisms (opportunistic infections, live vaccine strains) are fatal. David Vetter ("Bubble Boy") lived in a sterile plastic isolator. Treatment: <b>hematopoietic stem cell transplant</b> (potentially curative) or gene therapy (ADA-SCID was first successful gene therapy target). Live vaccines are absolutely contraindicated.'},
+{id:29,cat:'immdef',trap:0,
+ q:'What is X-linked agammaglobulinemia (XLA/Bruton\'s agammaglobulinemia)?',
+ a:'A. X-linked defect in Bruton\'s tyrosine kinase (BTK) → B cell maturation arrest → no mature B cells, no antibodies → recurrent bacterial infections starting at 6 months (when maternal IgG wanes)',
+ e:'<b>Bruton\'s XLA</b>: BTK mutation → B cells cannot mature past pre-B stage → no B cells, no antibodies. Affects males (X-linked). Protected for first 6 months by maternal IgG (passive). After maternal IgG wanes → recurrent <b>encapsulated bacterial infections</b> (pneumococcus, H. influenzae, meningococcus — require opsonizing antibodies). Treatment: regular IVIG infusions. Cellular (T cell) immunity intact — viral infections handled normally.'},
+{id:30,cat:'immdef',trap:0,
+ q:'What infections are characteristic of T cell deficiencies vs. B cell (antibody) deficiencies?',
+ a:'C. T cell deficiency → susceptible to intracellular pathogens (viruses, fungi, mycobacteria, Pneumocystis); B cell/antibody deficiency → susceptible to extracellular encapsulated bacteria (pneumococcus, Haemophilus, Neisseria)',
+ e:'The type of recurrent infection reveals which immune component is deficient: <b>T cell deficiency</b>: CMV, EBV, herpes, PCP (<i>Pneumocystis jirovecii</i>), <i>Candida</i>, <i>Cryptococcus</i>, mycobacteria. <b>Antibody deficiency</b>: encapsulated bacteria (need opsonizing IgG to be phagocytized) — <i>S. pneumoniae, H. influenzae, N. meningitidis</i>. <b>Complement deficiency</b>: <i>Neisseria</i> species (need MAC for lysis). <b>Phagocyte deficiency</b>: <i>Staphylococcus, Aspergillus, Pseudomonas</i>.'},
+{id:31,cat:'immdef',trap:0,
+ q:'What is DiGeorge syndrome and what immune defect does it cause?',
+ a:'B. Deletion of chromosome 22q11 → failure of thymus and parathyroid development → T cell deficiency (no thymus = no T cell maturation) + hypocalcemia',
+ e:'<b>DiGeorge syndrome</b>: 22q11 deletion → third and fourth pharyngeal pouch development fails → <b>absent thymus</b> (no T cell maturation) + absent parathyroids (hypocalcemia → tetany). Cardiac defects (conotruncal) also common. Without thymus: no T cells → severe T cell deficiency → susceptibility to viral and fungal infections. B cells present but non-functional (need T cell help). Treatment: thymus transplant or stem cell transplant.'},
+{id:32,cat:'immdef',trap:0,
+ q:'What is Common Variable Immunodeficiency (CVID)?',
+ a:'D. A heterogeneous primary immunodeficiency with low IgG, IgA, IgM due to failure of B cell differentiation into plasma cells; presents in 2nd–3rd decade with recurrent sinopulmonary infections',
+ e:'<b>CVID</b>: B cells are present but don\'t differentiate into plasma cells → very low antibody levels (all isotypes). Unlike XLA (no B cells), CVID patients have B cells. Presents later (20s–30s) than XLA. Recurrent sinopulmonary bacterial infections, GI issues (<i>Giardia</i>), increased lymphoma risk. Most common symptomatic primary immunodeficiency in adults. Treatment: IVIG replacement therapy.'},
+{id:33,cat:'immdef',trap:0,
+ q:'What is Chronic Granulomatous Disease (CGD) and what is its mechanism?',
+ a:'A. Genetic defect in NADPH oxidase → phagocytes cannot generate oxidative burst → bacteria and fungi engulfed but not killed → chronic granuloma formation from persistent infection',
+ e:'<b>CGD</b>: NADPH oxidase mutation → no superoxide/H₂O₂/HOCl production. Phagocytes ingest organisms but cannot kill catalase-positive organisms (organisms that neutralize their own H₂O₂). Classic pathogens: <i>S. aureus, Aspergillus, Serratia, Nocardia, Burkholderia</i>. All are catalase-positive. The body walls off persistent infection with granulomas. Diagnosis: dihydrorhodamine (DHR) flow cytometry test. Treatment: prophylactic antibiotics + antifungals, IFN-γ, stem cell transplant.'},
+{id:34,cat:'immdef',trap:0,
+ q:'What is asplenia and why does it cause increased infection risk?',
+ a:'C. Absence (surgical or functional) of the spleen removes the major site of blood filtration, opsonin-dependent phagocytosis, and rapid antibody response → susceptibility to encapsulated bacteria',
+ e:'The <b>spleen</b> filters blood, removing opsonized bacteria via resident macrophages. It also produces emergency antibodies rapidly. Without it: <b>encapsulated bacteria</b> (<i>S. pneumoniae, H. influenzae, N. meningitidis</i>) that require opsonization to be phagocytized circulate freely. Overwhelming Post-Splenectomy Infection (OPSI) can kill within hours. Management: vaccines against encapsulated organisms (pneumococcal, meningococcal, Hib) + penicillin prophylaxis. Remember: sickle cell → functional asplenia by autoinfarction.'},
+
+// ─── TRANSPLANT REJECTION (transplant) ───────────────────────
+{id:35,cat:'transplant',trap:0,
+ q:'What are the three types of transplant rejection and their timeframes?',
+ a:'B. Hyperacute (minutes to hours): pre-formed antibodies; Acute (days to weeks): T cell-mediated; Chronic (months to years): slow antibody + T cell damage to vasculature',
+ e:'<b>Hyperacute</b>: pre-formed donor-specific antibodies (from prior transfusion, pregnancy, or transplant) → immediate complement activation + thrombosis → graft destroyed in minutes-hours. <b>Acute</b>: recipient T cells recognize donor HLA → CD8 CTLs kill graft cells, CD4 activate macrophages → days to weeks. Most common and most treatable (immunosuppression). <b>Chronic</b>: slow fibrosis and vasculopathy from repeated low-level immune attack → months to years.'},
+{id:36,cat:'transplant',trap:0,
+ q:'What is graft-versus-host disease (GVHD) and in what transplant scenario does it occur?',
+ a:'D. Donor T cells in the graft attack recipient tissues; occurs in allogeneic bone marrow/hematopoietic stem cell transplants where donor immune cells are transferred into an immunocompromised host',
+ e:'<b>GVHD</b>: the opposite of normal rejection — here the <b>graft attacks the host</b>. Donor T cells (in bone marrow transplant) recognize recipient HLA as foreign → attack skin (rash), GI tract (diarrhea), liver (jaundice). <b>Acute GVHD</b>: <100 days. <b>Chronic GVHD</b>: >100 days. Prevention: HLA matching, T cell depletion, immunosuppression. GVHD is actually beneficial against leukemia (graft-versus-leukemia effect) — the immune attack also kills residual cancer cells.'},
+{id:37,cat:'transplant',trap:0,
+ q:'Why is HLA matching important in transplantation?',
+ a:'A. HLA molecules are the primary target of allograft rejection; greater HLA mismatch = stronger T cell response against donor tissue = higher rejection risk',
+ e:'<b>HLA (MHC) matching</b> between donor and recipient minimizes rejection. Recipient T cells see foreign donor HLA as non-self → direct or indirect allorecognition → rejection. <b>Direct pathway</b>: recipient T cells recognize intact donor MHC. <b>Indirect pathway</b>: donor antigens processed by recipient APCs and presented on recipient MHC. Kidney transplants match HLA-A, -B, -DR. Identical twins = no rejection. Unrelated individuals = must immunosuppress even with good HLA match.'},
+{id:38,cat:'transplant',trap:0,
+ q:'What immunosuppressive drugs are used to prevent transplant rejection and what are their mechanisms?',
+ a:'C. Calcineurin inhibitors (cyclosporine, tacrolimus) block IL-2 production → prevent T cell activation; mycophenolate mofetil blocks purine synthesis → prevents lymphocyte proliferation; corticosteroids suppress inflammation broadly',
+ e:'Key transplant drugs: <b>Cyclosporine/Tacrolimus</b> — inhibit calcineurin → block NFAT transcription → no IL-2 → T cells can\'t proliferate. <b>Mycophenolate (MMF)</b> — blocks inosine monophosphate dehydrogenase → lymphocytes can\'t make purines → can\'t divide. <b>Azathioprine</b> — antimetabolite blocking DNA synthesis. <b>Corticosteroids</b> — broad anti-inflammatory. <b>Basiliximab</b> (anti-IL-2R) — blocks IL-2 signaling. Side effect of all: increased susceptibility to opportunistic infections and malignancy.'},
+{id:39,cat:'transplant',trap:0,
+ q:'What is hyperacute rejection and why can\'t it be reversed?',
+ a:'B. Pre-formed recipient antibodies against donor ABO blood group or HLA antigens immediately activate complement upon vascularization → thrombosis and ischemic necrosis of the graft within minutes to hours; irreversible',
+ e:'<b>Hyperacute rejection</b> occurs the moment the donor vasculature is connected (reperfusion). Pre-formed IgG or IgM antibodies (from prior sensitization) immediately bind donor endothelium → complement activation → endothelial destruction → platelet aggregation → thrombosis → graft infarction. The graft turns blue and necrotic on the operating table. <b>No treatment reverses it</b> — prevention is the only option: crossmatching before transplant (mixing recipient serum with donor cells to detect pre-formed antibodies).'},
+{id:40,cat:'transplant',trap:0,
+ q:'What is the crossmatch test and why is it done before transplantation?',
+ a:'D. Mixing recipient serum with donor lymphocytes — if recipient has pre-formed antibodies against donor HLA, cells are killed (positive crossmatch) → transplant is contraindicated due to hyperacute rejection risk',
+ e:'The <b>crossmatch</b> is the final safety check before transplant. <b>Positive crossmatch</b> = recipient has pre-formed antibodies against donor antigens → high risk of hyperacute rejection → transplant usually contraindicated. <b>Negative crossmatch</b> = no pre-formed antibodies → safe to proceed (still need HLA matching and immunosuppression). Sensitizing events that create pre-formed antibodies: prior transfusions, previous transplants, pregnancies.'},
+
+// ─── EXAM TRAPS (trap) ────────────────────────────────────────
+{id:41,cat:'hyper',trap:1,
+ q:'⚠️ TRAP: The first-line treatment for an acute allergic reaction (anaphylaxis) is diphenhydramine (Benadryl). True or false?',
+ a:'A. False — epinephrine IM is ALWAYS first-line; diphenhydramine is a second-line adjunct',
+ e:'This is a <b>life-or-death NCLEX trap</b>. Diphenhydramine blocks histamine receptors but does NOT reverse bronchospasm or cardiovascular collapse fast enough to prevent death. <b>Epinephrine (0.3–0.5mg IM into lateral thigh)</b> is always first: α1 → vasoconstriction (raises BP), β2 → bronchodilation, β1 → increases heart rate. Diphenhydramine, corticosteroids, and H2 blockers are added AFTER epinephrine. Delaying epinephrine = preventable death.'},
+{id:42,cat:'hyper',trap:1,
+ q:'⚠️ TRAP: A positive tuberculin (PPD) skin test means the patient has active tuberculosis. True or false?',
+ a:'C. False — a positive PPD indicates prior SENSITIZATION (past exposure or BCG vaccination), NOT necessarily active disease; active TB requires imaging and sputum culture',
+ e:'PPD measures <b>immunological memory</b> (Type IV hypersensitivity), not active infection. Positive PPD = T cells were sensitized at some point — from: (1) past TB infection, (2) BCG vaccination, (3) NTM cross-reactivity. Active TB diagnosis requires: <b>chest X-ray</b> (cavitary lesion, infiltrate) + <b>sputum acid-fast smear and culture</b>. IGRA (QuantiFERON) is more specific (not affected by BCG) and also does not diagnose active disease — it only indicates sensitization.'},
+{id:43,cat:'auto',trap:1,
+ q:'⚠️ TRAP: Type II hypersensitivity always destroys the target cell. True or false?',
+ a:'D. False — Graves\' disease is a Type II reaction where antibodies STIMULATE rather than destroy the TSH receptor',
+ e:'Type II = antibody against cell-surface antigen → but the outcome varies: <b>Cytotoxic</b>: complement lysis or phagocytosis (transfusion reaction, hemolytic anemia). <b>Stimulatory</b>: Graves\' disease — TSI antibodies activate TSH receptor → hyperthyroidism (no cell death). <b>Inhibitory/blocking</b>: myasthenia gravis — anti-AChR antibodies block receptor → loss of function without always killing the cell. Type II can destroy, stimulate, OR block depending on what the antibody does to its target.'},
+{id:44,cat:'hyper',trap:1,
+ q:'⚠️ TRAP: Contact dermatitis (poison ivy rash) is a Type I (IgE-mediated) allergic reaction. True or false?',
+ a:'B. False — contact dermatitis is Type IV (delayed, T cell–mediated) hypersensitivity; it takes 24–72 hours to appear and involves no IgE',
+ e:'Students confuse contact dermatitis with allergy because it "looks allergic." Key differences: <b>Type I</b> (IgE): occurs within minutes, urticaria/hives/anaphylaxis, mediated by IgE + mast cells. <b>Type IV</b> (delayed): occurs 24–72 hours, eczematous rash with vesicles, T cell–mediated, NO antibody/IgE involved. Poison ivy, nickel allergy, latex dermatitis, neomycin reactions — all Type IV. The delay is the giveaway.'},
+{id:45,cat:'immdef',trap:1,
+ q:'⚠️ TRAP: Live vaccines are safe to give to immunocompromised patients because the attenuated strains can\'t cause real infection. True or false?',
+ a:'A. False — live vaccines are CONTRAINDICATED in severely immunocompromised patients because attenuated strains CAN cause disease when immune defenses are absent',
+ e:'Live attenuated vaccines (MMR, varicella, yellow fever, oral polio, intranasal flu, BCG) use weakened but <b>living organisms</b>. In immunocompetent hosts, they replicate briefly → excellent immunity. In immunocompromised patients (SCID, HIV with low CD4, transplant recipients on immunosuppression), the attenuated organism can replicate unchecked → <b>vaccine-strain infection</b>. Classic example: BCG vaccination in SCID → disseminated BCG infection. Always screen immune status before live vaccines.'},
+{id:46,cat:'hyper',trap:1,
+ q:'⚠️ TRAP: Type III and Type II hypersensitivity both involve antibodies attacking cell surfaces. True or false?',
+ a:'C. False — Type II antibodies target cell-SURFACE antigens; Type III antibodies form SOLUBLE immune complexes with free antigens that then deposit in tissues',
+ e:'Critical distinction: <b>Type II</b>: antibody binds antigen <b>on a cell surface or fixed tissue</b> → complement + phagocytosis destroy that specific cell. <b>Type III</b>: antibody binds <b>free/soluble antigen</b> in blood/fluid → immune complex forms → complex deposits in vessel walls, glomeruli, synovium → complement + neutrophil activation damages the surrounding tissue (not a specific cell). Type II = targeted cell destruction. Type III = collateral tissue damage from deposited complexes.'},
+{id:47,cat:'auto',trap:1,
+ q:'⚠️ TRAP: Autoimmune diseases affect men and women equally. True or false?',
+ a:'D. False — ~70–80% of autoimmune disease patients are female; SLE is 9:1 female:male; Hashimoto\'s is 7–10:1 female:male',
+ e:'Autoimmune diseases show a dramatic <b>female predominance</b>. SLE (9:1 F:M), Hashimoto\'s (7–10:1), Graves\' (7:1), RA (3:1), MS (3:1). Proposed reasons: estrogen enhances B cell activity and antibody production; X chromosome inactivation variation; pregnancy-related immune modulation. Exceptions with male/equal prevalence: ankylosing spondylitis (HLA-B27 linked, male predominant), Type 1 diabetes (roughly equal).'},
+{id:48,cat:'transplant',trap:1,
+ q:'⚠️ TRAP: Graft-versus-host disease (GVHD) is the same as transplant rejection. True or false?',
+ a:'B. False — in rejection, the HOST attacks the GRAFT; in GVHD, the GRAFT (donor T cells) attacks the HOST',
+ e:'These are opposite processes: <b>Rejection</b>: recipient immune system attacks donor graft (occurs in all solid organ transplants). <b>GVHD</b>: donor T cells (in the graft) recognize recipient tissues as foreign and attack them (occurs mainly in allogeneic bone marrow/stem cell transplants where a new immune system is being given). GVHD targets skin, GI tract, and liver. GVHD only occurs when the graft contains immunologically active T cells — not an issue with solid organ transplants.'},
+{id:49,cat:'hyper',trap:1,
+ q:'⚠️ TRAP: Measuring IgE levels is the best way to diagnose a specific allergy. True or false?',
+ a:'A. False — total IgE is elevated in allergic disease but not specific; allergen-specific IgE (RAST/ImmunoCAP) or skin prick testing identifies the specific allergen',
+ e:'<b>Total serum IgE</b>: elevated in allergic disease and parasitic infection, but doesn\'t identify the trigger. <b>Allergen-specific IgE (RAST, ImmunoCAP)</b>: tests for IgE against specific allergens (peanut, cat dander, dust mite, etc.) — identifies the trigger. <b>Skin prick test</b>: small amount of allergen introduced intradermally — wheal and flare within 15 minutes = positive Type I reaction. Skin prick testing is more sensitive than serum IgE but requires stopping antihistamines first.'},
+{id:50,cat:'immdef',trap:1,
+ q:'⚠️ TRAP: A patient with recurrent Neisseria infections (gonorrhea, meningitis) likely has a T cell deficiency. True or false?',
+ a:'C. False — recurrent Neisseria infections suggest a COMPLEMENT deficiency (specifically terminal complement C5–C9 / MAC); Neisseria requires complement MAC for lysis',
+ e:'Each immune deficiency has a characteristic infection pattern: <b>Neisseria (gonorrhoeae, meningitidis)</b> = <b>terminal complement deficiency (C5–C9)</b> — these bacteria require the MAC to be lysed; opsonization alone isn\'t enough. <b>Encapsulated bacteria</b> = antibody deficiency or asplenia. <b>Intracellular pathogens/fungi</b> = T cell deficiency. <b>Catalase-positive bacteria/fungi</b> = phagocyte deficiency (CGD). Matching the organism to the immune defect = the key to these exam questions.'},
+];
+
+let revealed=new Set();
+let currentFilter='all';
+function tagClass(cat){return {hyper:'tag-hyper',auto:'tag-auto',immdef:'tag-immdef',transplant:'tag-transplant'}[cat]||'tag-hyper';}
+function tagLabel(cat){return {hyper:'Hypersensitivity',auto:'Autoimmunity',immdef:'Immunodeficiency',transplant:'Transplant'}[cat]||cat;}
+function render(){
+  const filtered=currentFilter==='all'?Q:currentFilter==='trap'?Q.filter(q=>q.trap):Q.filter(q=>q.cat===currentFilter);
+  document.getElementById('showingLbl').textContent=`Showing ${filtered.length} of ${Q.length}`;
+  const g=document.getElementById('grid');g.innerHTML='';
+  filtered.forEach(q=>{
+    const div=document.createElement('div');
+    div.className='qcard'+(q.trap?' is-trap':'');
+    div.id='card-'+q.id;
+    div.innerHTML=`<div class="qcard-head" onclick="toggleReveal(${q.id})">
+      <span class="qnum">Q${String(q.id).padStart(2,'0')}</span>
+      <div class="qtext">${q.q}<div><span class="tag ${tagClass(q.cat)}">${tagLabel(q.cat)}</span>${q.trap?'<span class="tag tag-trap" style="margin-left:4px">⚠ Exam Trap</span>':''}</div></div>
+      ${q.trap?'<span class="trap-icon">⚠️</span>':''}
+    </div>
+    <div class="qcard-body${revealed.has(q.id)?' open':''}" id="body-${q.id}">
+      <div class="answer-lbl">CORRECT ANSWER</div>
+      <div class="answer">${q.a}</div>
+      <div class="explain-lbl">WHY THIS MATTERS</div>
+      <div class="explain">${q.e}</div>
+    </div>`;
+    g.appendChild(div);
+  });
+  updateProgress();
+}
+function toggleReveal(id){
+  const b=document.getElementById('body-'+id);if(!b)return;
+  if(b.classList.contains('open')){b.classList.remove('open');revealed.delete(id);}
+  else{b.classList.add('open');revealed.add(id);}
+  updateProgress();
+}
+function updateProgress(){
+  const pct=Math.round((revealed.size/Q.length)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=`${revealed.size} / ${Q.length}`;
+}
+function resetAll(){revealed.clear();document.querySelectorAll('.qcard-body').forEach(b=>b.classList.remove('open'));updateProgress();}
+document.querySelectorAll('.flt').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.flt').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');currentFilter=btn.dataset.f;render();
+  });
+});
+render();
+</script>
+</body>
+</html>

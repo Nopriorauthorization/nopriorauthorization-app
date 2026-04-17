@@ -30,14 +30,14 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: "/book",
-        destination: "/informed-beauty-guide",
-        permanent: false,
+        source: "/informed-beauty-guide",
+        destination: "/book",
+        permanent: true,
       },
       {
         source: "/shop/informed-beauty-guide",
-        destination: "/informed-beauty-guide",
-        permanent: false,
+        destination: "/shop/hello-gorgeous-the-book",
+        permanent: true,
       },
     ];
   },

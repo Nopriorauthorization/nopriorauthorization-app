@@ -4,6 +4,10 @@ import {
   HELLO_GORGEOUS_BOOK_TITLE,
 } from "@/config/hello-gorgeous-book.config";
 import {
+  ANATOMY_STUDY_SHOP_SLUG,
+  getAnatomyStudyShopProductDef,
+} from "@/config/anatomy-study.config";
+import {
   MICRO270_SHOP_SLUG_BANK,
   MICRO270_SHOP_SLUG_BUNDLE,
   MICRO270_SHOP_SLUG_FULL,
@@ -101,6 +105,23 @@ const VIRTUAL_DELIVERY_PRODUCTS: DeliveryProduct[] = [
       },
     ],
   },
+  (() => {
+    const def = getAnatomyStudyShopProductDef();
+    return {
+      productKey: ANATOMY_STUDY_SHOP_SLUG,
+      productSlug: ANATOMY_STUDY_SHOP_SLUG,
+      productTitle: def.title,
+      templateCount: def.templateCount,
+      templates: [
+        {
+          title: "Anatomy & Physiology Study Hub — activate in browser",
+          designId: null,
+          editUrl: "/nursing-study/anatomy",
+          viewUrl: null as string | null,
+        },
+      ],
+    };
+  })(),
 ];
 
 type ImportedManifestTemplate = {

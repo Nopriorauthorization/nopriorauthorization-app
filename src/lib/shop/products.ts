@@ -12,6 +12,7 @@ import {
   HELLO_GORGEOUS_BOOK_PRICE_CENTS,
   HELLO_GORGEOUS_BOOK_TITLE,
 } from "@/config/hello-gorgeous-book.config";
+import { getAnatomyStudyShopProductDef } from "@/config/anatomy-study.config";
 import { getMicro270ShopProductDefs } from "@/config/micro270-shop.config";
 import type { BundleTierEmphasis, BundleTierId } from "@/lib/shop/bundle-tier-config";
 import {
@@ -263,6 +264,7 @@ const PRICE_MAP: Record<string, number> = {
   "micro270-question-bank": 4700,
   "micro270-bank-ai-bundle": 6700,
   "micro270-full-access": 9700,
+  "anatomy-physiology-study-complete": 3900,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -734,6 +736,26 @@ export function getShopProducts(): ShopProduct[] {
       audience: AUDIENCE_MAP["Study guides"] ?? ["Nursing students"],
     };
     _products.push(micro);
+  }
+
+  const anatomyDef = getAnatomyStudyShopProductDef();
+  if (!_products.some((p) => p.slug === anatomyDef.slug)) {
+    const anatomy: ShopProduct = {
+      slug: anatomyDef.slug,
+      title: anatomyDef.title,
+      shortDescription: anatomyDef.shortDescription,
+      longDescription: anatomyDef.longDescription,
+      priceCents: anatomyDef.priceCents,
+      priceDisplay: formatPrice(anatomyDef.priceCents),
+      templateCount: anatomyDef.templateCount,
+      category: "Study guides",
+      features: anatomyDef.features,
+      featured: false,
+      stripePriceId: null,
+      previewImages: discoverPreviewImages(anatomyDef.slug, "Study guides"),
+      audience: AUDIENCE_MAP["Study guides"] ?? ["Nursing students"],
+    };
+    _products.push(anatomy);
   }
 
   const PIN_FIRST = [HELLO_GORGEOUS_BOOK_SLUG, GROWTH_SYSTEM_SLUG];

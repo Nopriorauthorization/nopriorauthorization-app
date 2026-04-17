@@ -5,6 +5,7 @@ import {
 } from "@/lib/delivery/catalog";
 import { isGatedFormPath } from "@/lib/delivery/form-access";
 import { maskEmail, verifyDeliveryToken } from "@/lib/delivery/token";
+import { isAnatomyStudyProductSlug } from "@/config/anatomy-study.config";
 import {
   MICRO270_CRAM_SLUGS,
 } from "@/config/micro270-sales.config";
@@ -95,6 +96,34 @@ export default async function DeliveryPage({ params }: Props) {
             <p className="mt-3 text-xs text-indigo-600">
               Access is stored as a cookie on this browser. If you switch devices, visit
               your delivery link again and click activate.
+            </p>
+          </div>
+        )}
+
+        {isAnatomyStudyProductSlug(grant.productSlug) && (
+          <div className="mt-5 rounded-2xl border border-pink-200 bg-pink-50 p-5">
+            <p className="font-semibold text-pink-950">Anatomy &amp; Physiology Study Hub</p>
+            <p className="mt-1 text-sm text-pink-900">
+              Activate your purchase on this device to unlock lectures 2–12 (lecture 1
+              stays free as a preview). Progress syncs when you&apos;re logged in.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a
+                href={`/api/anatomy-study/activate?token=${encodeURIComponent(params.token)}`}
+                className="inline-flex rounded-lg bg-pink-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-pink-700"
+              >
+                Activate full course access →
+              </a>
+              <Link
+                href="/nursing-study/anatomy/hub"
+                className="inline-flex rounded-lg border border-pink-300 px-5 py-2.5 text-sm font-semibold text-pink-900 hover:bg-pink-100"
+              >
+                Open study hub
+              </Link>
+            </div>
+            <p className="mt-3 text-xs text-pink-800">
+              Access is stored as a cookie on this browser. If you switch devices, open
+              this delivery link again and click activate.
             </p>
           </div>
         )}

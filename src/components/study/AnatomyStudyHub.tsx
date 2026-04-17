@@ -2,6 +2,11 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  ANATOMY_FREE_LECTURE_IDS,
+  ANATOMY_STUDY_PRICE_DISPLAY,
+  anatomyStudyShopHref,
+} from "@/config/anatomy-study.config";
 import { anatomyCourse } from "@/lib/study/anatomy-data";
 import LectureCheatSheet from "./LectureCheatSheet";
 import LectureFlashcards from "./LectureFlashcards";
@@ -62,42 +67,65 @@ function ProgressRing({ pct }: { pct: number }) {
   );
 }
 
+function lectureUnlocked(fullAccess: boolean | null, lectureId: string): boolean {
+  if (fullAccess === true) return true;
+  return ANATOMY_FREE_LECTURE_IDS.has(lectureId);
+}
+
 export default function AnatomyStudyHub() {
   const lectures = anatomyCourse.lectures;
   const [selectedId, setSelectedId] = useState(lectures[0]?.id ?? "");
   const [tab, setTab] = useState<Tab>("cheat");
   const [byLecture, setByLecture] = useState<Record<string, Row>>({});
   const [loading, setLoading] = useState(true);
+  const [fullAccess, setFullAccess] = useState<boolean | null>(null);
 
   useEffect(() => {
     let alive = true;
     (async () => {
       try {
-        const res = await fetch(
-          `/api/study/progress?courseId=${encodeURIComponent(COURSE_ID)}`,
-          { cache: "no-store" }
-        );
-        if (!res.ok) throw new Error(String(res.status));
-        const data = (await res.json()) as {
-          progress: Array<{
-            lectureId: string;
-            quizScores: unknown;
-            flashcardIdx: number;
-            cheatViewed: boolean;
-          }>;
-        };
-        if (!alive) return;
-        const next: Record<string, Row> = {};
-        for (const p of data.progress) {
-          next[p.lectureId] = {
-            quizScores: parseQuizScores(p.quizScores),
-            flashcardIdx: p.flashcardIdx ?? 0,
-            cheatViewed: p.cheatViewed ?? false,
-          };
+        const [accessRes, progRes] = await Promise.all([
+          fetch("/api/study/access", { cache: "no-store" }),
+          fetch(
+            `/api/study/progress?courseId=${encodeURIComponent(COURSE_ID)}`,
+            { cache: "no-store" }
+          ),
+        ]);
+
+        let paid = false;
+        if (accessRes.ok) {
+          const aj = (await accessRes.json()) as { fullAccess?: boolean };
+          paid = aj.fullAccess === true;
         }
-        setByLecture(next);
+        if (!alive) return;
+        setFullAccess(paid);
+
+        if (progRes.ok) {
+          const data = (await progRes.json()) as {
+            progress: Array<{
+              lectureId: string;
+              quizScores: unknown;
+              flashcardIdx: number;
+              cheatViewed: boolean;
+            }>;
+          };
+          const next: Record<string, Row> = {};
+          for (const p of data.progress) {
+            next[p.lectureId] = {
+              quizScores: parseQuizScores(p.quizScores),
+              flashcardIdx: p.flashcardIdx ?? 0,
+              cheatViewed: p.cheatViewed ?? false,
+            };
+          }
+          setByLecture(next);
+        } else {
+          setByLecture({});
+        }
       } catch {
-        if (alive) setByLecture({});
+        if (alive) {
+          setByLecture({});
+          setFullAccess(false);
+        }
       } finally {
         if (alive) setLoading(false);
       }
@@ -107,30 +135,50 @@ export default function AnatomyStudyHub() {
     };
   }, []);
 
-  const active = useMemo(
-    () => lectures.find((l) => l.id === selectedId),
-    [lectures, selectedId]
-  );
+  const lecturesForStats = useMemo(() => {
+    if (fullAccess === true) return lectures;
+    return lectures.filter((l) => ANATOMY_FREE_LECTURE_IDS.has(l.id));
+  }, [lectures, fullAccess]);
+
+  const active = useMemo(() => {
+    const cur = lectures.find((l) => l.id === selectedId);
+    if (cur && lectureUnlocked(fullAccess, cur.id)) return cur;
+    return (
+      lectures.find((l) => ANATOMY_FREE_LECTURE_IDS.has(l.id)) ?? lectures[0]
+    );
+  }, [lectures, selectedId, fullAccess]);
 
   const totalQuestions = useMemo(
-    () => lectures.reduce((s, l) => s + l.quiz.length, 0),
-    [lectures]
+    () => lecturesForStats.reduce((s, l) => s + l.quiz.length, 0),
+    [lecturesForStats]
   );
 
   const totalCorrect = useMemo(() => {
-    return lectures.reduce((sum, lec) => {
+    return lecturesForStats.reduce((sum, lec) => {
       const scores = parseQuizScores(byLecture[lec.id]?.quizScores);
       return (
         sum +
         lec.quiz.reduce((a, _, i) => a + (scores[`q${i}`] === true ? 1 : 0), 0)
       );
     }, 0);
-  }, [byLecture, lectures]);
+  }, [byLecture, lecturesForStats]);
 
   const overallPct =
     totalQuestions > 0
       ? Math.round((totalCorrect / totalQuestions) * 100)
       : 0;
+
+  const selectLecture = useCallback(
+    (lecId: string) => {
+      if (!lectureUnlocked(fullAccess, lecId)) {
+        window.location.href = anatomyStudyShopHref;
+        return;
+      }
+      setSelectedId(lecId);
+      setTab("cheat");
+    },
+    [fullAccess]
+  );
 
   const rowFor = useCallback(
     (lectureId: string): Row => byLecture[lectureId] ?? emptyRow(),
@@ -224,6 +272,24 @@ export default function AnatomyStudyHub() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
+            {fullAccess === false && (
+              <Link
+                href={anatomyStudyShopHref}
+                className="rounded-full bg-[#FF69B4] px-3 py-1 text-xs font-semibold text-white hover:bg-[#FF1493]"
+              >
+                Unlock full course {ANATOMY_STUDY_PRICE_DISPLAY}
+              </Link>
+            )}
+            {fullAccess === true && (
+              <span className="rounded-full border border-emerald-700/60 bg-emerald-950/40 px-3 py-1 text-xs font-medium text-emerald-400">
+                Full access
+              </span>
+            )}
+            {fullAccess === false && (
+              <span className="rounded-full border border-amber-600/50 bg-amber-950/30 px-3 py-1 text-xs font-medium text-amber-200">
+                Preview · Lecture 1 free
+              </span>
+            )}
             <Link
               href="/login?callbackUrl=/nursing-study/anatomy/hub"
               className="rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-xs font-medium text-gray-300 hover:border-[#FF69B4]/50 hover:text-[#FF69B4]"
@@ -236,9 +302,30 @@ export default function AnatomyStudyHub() {
           </div>
         </div>
 
+        {fullAccess === false && (
+          <div className="mx-auto mt-4 max-w-6xl rounded-lg border border-amber-600/40 bg-amber-950/25 px-4 py-3 text-sm text-amber-100">
+            <strong className="text-amber-50">Free preview:</strong> Lecture 1 only
+            (cheat sheet, quiz, flashcards). Purchase unlocks lectures 2–12 and all{" "}
+            {anatomyCourse.lectures.reduce((s, l) => s + l.quiz.length, 0)} questions.{" "}
+            <Link
+              href={anatomyStudyShopHref}
+              className="font-semibold text-[#FF69B4] underline hover:text-[#FF1493]"
+            >
+              Buy full course ({ANATOMY_STUDY_PRICE_DISPLAY})
+            </Link>
+            {" · "}
+            After checkout, use the link in your email and click{" "}
+            <em>Activate full course access</em>.
+          </div>
+        )}
+
         <div className="mx-auto mt-5 max-w-6xl">
           <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-gray-400">
-            <span>Overall quiz mastery</span>
+            <span>
+              {fullAccess === false
+                ? "Quiz mastery (free preview)"
+                : "Overall quiz mastery"}
+            </span>
             <span className="font-semibold text-white">
               {totalCorrect}/{totalQuestions}{" "}
               <span className="text-[#FF69B4]">({overallPct}%)</span>
@@ -261,6 +348,7 @@ export default function AnatomyStudyHub() {
           </p>
           <div className="flex gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {lectures.map((lec) => {
+              const unlocked = lectureUnlocked(fullAccess, lec.id);
               const r = rowFor(lec.id);
               const sc = parseQuizScores(r.quizScores);
               const c = lec.quiz.reduce(
@@ -276,23 +364,25 @@ export default function AnatomyStudyHub() {
                 <button
                   type="button"
                   key={lec.id}
-                  onClick={() => {
-                    setSelectedId(lec.id);
-                    setTab("cheat");
-                  }}
+                  onClick={() => selectLecture(lec.id)}
                   className={`flex min-w-[10.5rem] shrink-0 flex-col rounded-xl border px-3 py-2 text-left transition-colors ${
-                    sel
-                      ? "border-[#FF69B4] bg-gray-900"
-                      : "border-gray-800 bg-gray-950"
+                    !unlocked
+                      ? "border-gray-800 border-dashed bg-gray-950/80 opacity-75"
+                      : sel
+                        ? "border-[#FF69B4] bg-gray-900"
+                        : "border-gray-800 bg-gray-950"
                   }`}
                 >
-                  <span className="text-xs text-gray-500">Lec {lec.number}</span>
+                  <span className="text-xs text-gray-500">
+                    Lec {lec.number}
+                    {!unlocked && " · 🔒"}
+                  </span>
                   <span className="line-clamp-2 text-sm font-medium text-white">
                     {lec.icon} {lec.title}
                   </span>
                   <div className="mt-2 flex items-center gap-2">
                     <ProgressRing pct={pct} />
-                    {perfect && (
+                    {perfect && unlocked && (
                       <span className="text-[#FF69B4]" aria-hidden>
                         ✓
                       </span>
@@ -311,6 +401,7 @@ export default function AnatomyStudyHub() {
           </p>
           <ul className="space-y-2">
             {lectures.map((lec) => {
+              const unlocked = lectureUnlocked(fullAccess, lec.id);
               const r = rowFor(lec.id);
               const sc = parseQuizScores(r.quizScores);
               const c = lec.quiz.reduce(
@@ -326,14 +417,13 @@ export default function AnatomyStudyHub() {
                 <li key={lec.id}>
                   <button
                     type="button"
-                    onClick={() => {
-                      setSelectedId(lec.id);
-                      setTab("cheat");
-                    }}
+                    onClick={() => selectLecture(lec.id)}
                     className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors ${
-                      sel
-                        ? "border-[#FF69B4] text-[#FF69B4]"
-                        : "border-gray-800 text-gray-300 hover:border-gray-700"
+                      !unlocked
+                        ? "border-gray-800 border-dashed text-gray-500 hover:border-gray-600"
+                        : sel
+                          ? "border-[#FF69B4] text-[#FF69B4]"
+                          : "border-gray-800 text-gray-300 hover:border-gray-700"
                     }`}
                   >
                     <ProgressRing pct={pct} />
@@ -341,8 +431,9 @@ export default function AnatomyStudyHub() {
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-gray-500">
                           {lec.number}.
+                          {!unlocked && " 🔒"}
                         </span>
-                        {perfect && (
+                        {perfect && unlocked && (
                           <span className="text-[#FF69B4]" title="100% correct">
                             ✓
                           </span>

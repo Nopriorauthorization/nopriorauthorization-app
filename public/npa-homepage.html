@@ -191,7 +191,7 @@ nav {
   align-items: center;
 }
 
-/* Full-bleed hero video (same asset as React conversion home; requires Git LFS on deploy) */
+/* Full-bleed hero video (stored in git as normal binary so Vercel always serves real MP4) */
 .hero-media {
   grid-column: 1 / -1;
   width: 100%;
@@ -1872,12 +1872,16 @@ footer {
     <div class="hero-media">
       <video
         src="/videos/npa/npa-hero-wide.mp4"
+        poster="/danielle-injection.jpg"
         autoplay
         muted
         loop
         playsinline
+        preload="metadata"
         title="No Prior Authorization — brand preview"
-      ></video>
+      >
+        <source src="/videos/npa/npa-hero-wide.mp4" type="video/mp4" />
+      </video>
     </div>
     <div class="hero-left">
       <div class="hero-eyebrow">By Danielle Alcala &nbsp;·&nbsp; Hello Gorgeous Med Spa</div>

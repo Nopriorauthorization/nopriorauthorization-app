@@ -1,2 +1,4 @@
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.webm filter=lfs diff=lfs merge=lfs -text
+# Hero must ship as real bytes on Vercel (LFS pointers break <video> in production).
+public/videos/npa/npa-hero-wide.mp4 -filter -diff -merge

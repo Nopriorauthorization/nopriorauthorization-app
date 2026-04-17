@@ -191,6 +191,23 @@ nav {
   align-items: center;
 }
 
+/* Full-bleed hero video (same asset as React conversion home; requires Git LFS on deploy) */
+.hero-media {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto 36px;
+}
+
+.hero-media video {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 40px rgba(212, 83, 126, 0.12);
+}
+
 .hero-left {}
 
 .hero-eyebrow {
@@ -1852,6 +1869,16 @@ footer {
   <div class="hero-glow-2"></div>
 
   <div class="hero-inner">
+    <div class="hero-media">
+      <video
+        src="/videos/npa/npa-hero-wide.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        title="No Prior Authorization — brand preview"
+      ></video>
+    </div>
     <div class="hero-left">
       <div class="hero-eyebrow">By Danielle Alcala &nbsp;·&nbsp; Hello Gorgeous Med Spa</div>
       <h1 class="hero-headline">

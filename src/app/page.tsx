@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { NpaConversionHome } from "@/components/marketing/NpaConversionHome";
 import { FreeTemplatesHomeBanner } from "@/components/marketing/FreeTemplatesHomeBanner";
 import { NPA_PRIMARY_MESSAGE, NPA_SITE_URL } from "@/config/npa-brand.config";
 import {
@@ -29,9 +28,13 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="-mt-16 min-h-dvh">
+    <div className="-mt-16 flex min-h-dvh flex-col">
       <FreeTemplatesHomeBanner />
-      <NpaConversionHome />
+      <iframe
+        src="/npa-homepage.html"
+        className="min-h-0 w-full flex-1 border-0"
+        title="No Prior Authorization"
+      />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ANATOMY_STUDY_PRICE_DISPLAY,
@@ -26,6 +27,22 @@ export default function AnatomyLanding() {
             <strong className="text-gray-200">
               Try Lecture 1 free — purchase unlocks the full course.
             </strong>
+          </p>
+          <div className="relative mx-auto mt-8 aspect-[16/10] w-full max-w-2xl overflow-hidden rounded-2xl border border-[#FF69B4]/25 shadow-lg shadow-[#FF69B4]/10">
+            <Image
+              src="/danielle-injection.jpg"
+              alt="Danielle Alcala, Nurse Injector & Founder — Hello Gorgeous Med Spa"
+              fill
+              className="object-cover object-[center_18%]"
+              sizes="(max-width: 768px) 100vw, 672px"
+              priority
+            />
+          </div>
+          <p className="mx-auto mt-3 max-w-xl text-center text-xs text-gray-500">
+            Danielle Alcala, FNP-BC — clinical educator behind this hub.{" "}
+            <Link href="/npa-landing.html" className="text-[#FF69B4] hover:underline">
+              Full marketing page →
+            </Link>
           </p>
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <Link

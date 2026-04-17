@@ -86,16 +86,16 @@ export default function StudyGuidesPage() {
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
-                  href="/npa-landing.html"
+                  href="/nursing-study/anatomy"
                   className="inline-flex items-center justify-center rounded-xl bg-[#D4537E] px-5 py-3 text-center text-sm font-bold text-white shadow-lg shadow-[#D4537E]/20 transition hover:bg-[#D4537E]/88"
                 >
-                  View landing page
+                  Open study hub
                 </Link>
                 <Link
-                  href="/nursing-study/anatomy"
+                  href="/npa-landing.html"
                   className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/[0.06] px-5 py-3 text-center text-sm font-semibold text-white transition hover:border-[#D4537E]/50 hover:bg-white/[0.09]"
                 >
-                  Open study hub
+                  View marketing landing
                 </Link>
                 <Link
                   href="/shop/anatomy-physiology-study-complete"

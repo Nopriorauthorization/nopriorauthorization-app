@@ -1,0 +1,339 @@
+{
+  "cheatSheet": [
+    {
+      "title": "Cross-bridge cycle — sliding filament theory",
+      "color": "pink",
+      "content": "<p>1. <strong>Attachment</strong>: Ca²⁺ binds troponin → tropomyosin moves → myosin head binds actin (cross-bridge forms). 2. <strong>Power stroke</strong>: myosin head pivots → pulls actin toward M line (ADP + Pᵢ released). 3. <strong>Detachment</strong>: new ATP binds myosin head → cross-bridge releases. 4. <strong>Cocking</strong>: ATP hydrolyzed → myosin head returns to high-energy position. Cycle repeats as long as Ca²⁺ and ATP are present.</p>"
+    },
+    {
+      "title": "ATP sources for muscle contraction",
+      "color": "teal",
+      "content": "<ul><li><strong>Creatine phosphate (CP)</strong>: fastest, no O₂ needed, limited (lasts ~10 sec). CP + ADP → creatine + ATP.</li><li><strong>Anaerobic glycolysis</strong>: fast, no O₂ needed, produces lactic acid, moderate ATP (~1–2 min of intense exercise).</li><li><strong>Aerobic respiration</strong>: slow to start, requires O₂, most efficient (36–38 ATP/glucose), unlimited if O₂ available — sustains prolonged activity.</li></ul>"
+    },
+    {
+      "title": "Muscle fiber types",
+      "color": "coral",
+      "content": "<table style='font-size:13px;border-collapse:collapse;width:100%;'><tr><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Type</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Speed</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Fatigue</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Use</th></tr><tr><td style='padding:4px;'>I — Slow oxidative</td><td style='padding:4px;'>Slow twitch</td><td style='padding:4px;'>Fatigue resistant</td><td style='padding:4px;'>Posture, endurance</td></tr><tr><td style='padding:4px;'>IIa — Fast oxidative</td><td style='padding:4px;'>Fast twitch</td><td style='padding:4px;'>Resistant (moderate)</td><td style='padding:4px;'>Sprinting, sustained power</td></tr><tr><td style='padding:4px;'>IIb — Fast glycolytic</td><td style='padding:4px;'>Fastest twitch</td><td style='padding:4px;'>Fatigues quickly</td><td style='padding:4px;'>Explosive movements</td></tr></table>"
+    },
+    {
+      "title": "Contraction types & muscle fatigue",
+      "color": "green",
+      "content": "<p><strong>Isotonic</strong>: muscle changes length — CONCENTRIC (muscle shortens, lifts weight) or ECCENTRIC (muscle lengthens under tension, lowers weight). <strong>Isometric</strong>: muscle generates tension but does NOT change length (holding a static position).</p><p><strong>Twitch</strong>: single AP → single contraction. <strong>Summation</strong>: rapid successive stimuli before relaxation → stronger contraction. <strong>Tetanus (fused)</strong>: sustained maximal contraction — no relaxation between stimuli.</p><p><strong>Fatigue</strong>: depletion of ATP/CP, O₂ debt, lactic acid accumulation, neurotransmitter depletion.</p>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "During the POWER STROKE of the cross-bridge cycle, the myosin head:",
+      "options": [
+        "Binds ATP and detaches from actin",
+        "Pivots and pulls the thin (actin) filament toward the M line, releasing ADP and Pi",
+        "Returns to its high-energy cocked position",
+        "Causes Ca²⁺ to be released from the SR"
+      ],
+      "correctIndex": 1,
+      "explanation": "Power stroke: the myosin head PIVOTS (changes angle from 90° to 45°) → pulls the actin thin filament toward the center of the sarcomere (M line) → ADP and Pi released. This is the force-generating step. The Z discs are pulled closer together → sarcomere shortens."
+    },
+    {
+      "question": "ATP is required in the cross-bridge cycle to:",
+      "options": [
+        "Power the power stroke directly",
+        "Detach the myosin head from actin (cross-bridge release) and recock the head for the next cycle",
+        "Release calcium from the SR",
+        "Phosphorylate troponin to expose actin binding sites"
+      ],
+      "correctIndex": 1,
+      "explanation": "ATP binds to the myosin head AFTER the power stroke → causes cross-bridge to RELEASE from actin. ATP is then hydrolyzed → ADP + Pi remain on myosin → head RECOCKS to high-energy position. Without ATP (rigor mortis), myosin stays bound to actin → permanent stiffness."
+    },
+    {
+      "question": "Rigor mortis occurs because:",
+      "options": [
+        "Muscle proteins denature at death",
+        "No ATP is available after death — myosin heads cannot detach from actin",
+        "Calcium is released from all SR stores simultaneously",
+        "Acetylcholine floods all neuromuscular junctions"
+      ],
+      "correctIndex": 1,
+      "explanation": "After death, ATP production ceases. Without ATP, myosin heads CANNOT detach from actin → permanently locked in the bound position → muscles become stiff (rigor mortis). Appears 2–6 hours after death, peaks at 12 hours, resolves as proteins decompose."
+    },
+    {
+      "question": "The FASTEST source of ATP for sudden explosive muscle contraction is:",
+      "options": [
+        "Aerobic cellular respiration",
+        "Anaerobic glycolysis",
+        "Creatine phosphate (phosphocreatine) system",
+        "Beta-oxidation of fatty acids"
+      ],
+      "correctIndex": 2,
+      "explanation": "Creatine phosphate (CP) is the FASTEST ATP source — no oxygen needed, instant, lasts only about 10 seconds. CP + ADP → Creatine + ATP (catalyzed by creatine kinase). Used for explosive activities: sprinting, weightlifting, jumping. Replenished during rest by aerobic metabolism."
+    },
+    {
+      "question": "Anaerobic glycolysis can sustain intense muscle activity for about 1–2 minutes but produces:",
+      "options": [
+        "CO₂ and water as only byproducts",
+        "Lactic acid (lactate) and only 2 ATP per glucose",
+        "36–38 ATP per glucose, very efficient",
+        "Creatine as a byproduct"
+      ],
+      "correctIndex": 1,
+      "explanation": "Anaerobic glycolysis: glucose → pyruvate → LACTIC ACID + only 2 net ATP per glucose. No O₂ needed — fast but inefficient. Lactic acid accumulation causes muscle burning sensation. The liver can convert lactate back to glucose (Cori cycle). Sustains high-intensity activity for ~1–2 minutes."
+    },
+    {
+      "question": "Aerobic respiration is the preferred ATP source during PROLONGED, MODERATE exercise because:",
+      "options": [
+        "It is the fastest ATP-producing pathway",
+        "It produces 36–38 ATP per glucose and can continue as long as O₂ and fuel are available",
+        "It does not require any fuel molecules",
+        "It produces lactic acid for extra fuel"
+      ],
+      "correctIndex": 1,
+      "explanation": "Aerobic respiration (glycolysis + Krebs cycle + ETC) produces 36–38 ATP per glucose. Requires O₂ but is highly efficient and can use glucose, fatty acids, and amino acids as fuel. Sustains prolonged activity indefinitely with adequate O₂. Used by slow oxidative and fast oxidative fibers."
+    },
+    {
+      "question": "Slow oxidative (Type I) muscle fibers differ from fast glycolytic (Type IIb) fibers because they:",
+      "options": [
+        "Contract faster and generate more power",
+        "Are fatigue-resistant, have more mitochondria, more myoglobin (dark), and are used for endurance",
+        "Have fewer mitochondria and rely on anaerobic glycolysis",
+        "Are larger in diameter and more powerful"
+      ],
+      "correctIndex": 1,
+      "explanation": "Type I (slow oxidative): slow twitch, FATIGUE RESISTANT, more mitochondria, more myoglobin (dark red), rely on aerobic respiration → used for posture, marathon running, sustained activities. Type IIb (fast glycolytic): fast twitch, FATIGUE QUICKLY, few mitochondria, pale, used for explosive power (sprinting, jumping)."
+    },
+    {
+      "question": "An ISOTONIC CONCENTRIC contraction occurs when:",
+      "options": [
+        "The muscle generates tension but does not change length",
+        "The muscle lengthens while generating tension under load",
+        "The muscle shortens while generating tension and lifting a load",
+        "No movement occurs at the joint"
+      ],
+      "correctIndex": 2,
+      "explanation": "Isotonic concentric: muscle SHORTENS while generating tension → joint movement occurs → load is lifted. Example: the biceps during the upward phase of a bicep curl. The muscle overcomes the load. Concentric = shortening (con = together, centric = center)."
+    },
+    {
+      "question": "An ECCENTRIC contraction occurs when:",
+      "options": [
+        "The muscle generates tension but does not change length",
+        "The muscle shortens against resistance",
+        "The muscle LENGTHENS while generating tension — controlling movement under load",
+        "The muscle relaxes completely"
+      ],
+      "correctIndex": 2,
+      "explanation": "Eccentric: muscle LENGTHENS while generating tension → controls the movement (braking action). Example: the biceps slowly lowering the weight in a bicep curl. Eccentric contractions generate the most force and cause the most DOMS (delayed onset muscle soreness). Eccentric = the muscle loses the battle against the load but controls it."
+    },
+    {
+      "question": "An ISOMETRIC contraction occurs when:",
+      "options": [
+        "The muscle shortens and joint angle decreases",
+        "The muscle lengthens while generating tension",
+        "Muscle tension is generated but the muscle does NOT change length — no joint movement",
+        "The muscle produces a single twitch without summation"
+      ],
+      "correctIndex": 2,
+      "explanation": "Isometric: muscle generates TENSION but does NOT change length → no joint movement. Example: holding a heavy bag still, pushing against an immovable wall, maintaining posture. Important for stabilization. 'Iso' = same, 'metric' = length."
+    },
+    {
+      "question": "WAVE SUMMATION (temporal summation) occurs when:",
+      "options": [
+        "Multiple motor units are recruited simultaneously",
+        "A second stimulus arrives before the muscle has fully relaxed from the first, producing a stronger contraction",
+        "The muscle is stimulated at such a slow rate that it fully relaxes between each stimulus",
+        "The muscle fiber hypertrophies in response to training"
+      ],
+      "correctIndex": 1,
+      "explanation": "Wave summation = second stimulus arrives BEFORE the muscle fully relaxes → intracellular Ca²⁺ remains elevated → stronger contraction added to the previous one (like waves adding together). Increasing stimulation frequency → unfused tetanus (partial relaxation) → fused tetanus (no relaxation, maximum sustained force)."
+    },
+    {
+      "question": "FUSED (complete) TETANUS occurs when:",
+      "options": [
+        "Stimuli are so frequent that no relaxation occurs between contractions — sustained maximal tension",
+        "Only one motor unit is activated",
+        "The muscle is stimulated just once at high voltage",
+        "The muscle fatigues and stops contracting"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fused tetanus = stimuli are so rapid that Ca²⁺ never fully returns to SR between stimuli → muscle stays in continuous maximal contraction with NO relaxation. This is the maximal sustained force a muscle can produce. Normal voluntary muscle movements use graded tetanic contractions, not single twitches."
+    },
+    {
+      "question": "Muscle fatigue occurs primarily due to:",
+      "options": [
+        "Too many motor units being recruited",
+        "Depletion of ATP and CP, lactic acid accumulation, O₂ deficit, and neurotransmitter depletion at the NMJ",
+        "Complete loss of all calcium from the SR",
+        "Destruction of actin and myosin filaments"
+      ],
+      "correctIndex": 1,
+      "explanation": "Muscle fatigue = inability to maintain force despite continued stimulation. Causes: depletion of ATP and creatine phosphate, O₂ debt, lactic acid accumulation (↓ pH inhibits enzymes), depletion of glycogen, and ACh depletion at NMJ. Recovery requires aerobic restoration of ATP and removal of metabolic waste."
+    },
+    {
+      "question": "Oxygen debt (excess post-exercise oxygen consumption — EPOC) refers to:",
+      "options": [
+        "The amount of O₂ consumed during rest",
+        "The extra O₂ needed after exercise to restore CP, remove lactic acid, replenish O₂ stores, and repair tissues",
+        "The O₂ stored in myoglobin before exercise",
+        "The decrease in O₂ consumption during warming up"
+      ],
+      "correctIndex": 1,
+      "explanation": "EPOC = elevated O₂ consumption AFTER exercise to restore homeostasis: replenish creatine phosphate stores, convert lactic acid back to glucose (Cori cycle in liver), restore O₂ in myoglobin/hemoglobin, and fuel repair processes. This is why breathing and heart rate remain elevated after exercise ends."
+    },
+    {
+      "question": "The 3 types of skeletal muscle compared to cardiac and smooth muscle: skeletal muscle is UNIQUE because it:",
+      "options": [
+        "Is involuntary and self-excitable",
+        "Has the most mitochondria of any muscle type",
+        "Is voluntary, striated, attached to bone, has multi-nucleated fibers, and uses ACh at NMJ",
+        "Is found in all hollow organs and blood vessels"
+      ],
+      "correctIndex": 2,
+      "explanation": "Skeletal: VOLUNTARY, striated, attached to skeleton, multi-nucleated fibers, uses ACh at NMJ. Cardiac: involuntary, striated, intercalated discs with gap junctions, single nucleus, self-excitable (SA node). Smooth: involuntary, non-striated, single nucleus, found in organs/blood vessels, uses autonomic NS."
+    },
+    {
+      "question": "Muscle HYPERTROPHY (increased muscle size) in response to resistance training occurs through:",
+      "options": [
+        "New muscle fibers being formed (hyperplasia is the primary mechanism)",
+        "Existing muscle fibers enlarging due to increased synthesis of actin and myosin filaments",
+        "Increased number of motor neurons innervating the muscle",
+        "Conversion of Type IIb fibers to Type I fibers"
+      ],
+      "correctIndex": 1,
+      "explanation": "Muscle hypertrophy = EXISTING FIBERS get larger (more actin and myosin synthesized → larger diameter). Hyperplasia (new fibers) plays a minimal role in humans. Resistance training stimulates myosin heavy chain synthesis, satellite cell activity, and increases the number of myofibrils per fiber. Early strength gains are mainly neural (better motor unit recruitment)."
+    },
+    {
+      "question": "The latent period of a muscle twitch is the time between:",
+      "options": [
+        "The action potential and the beginning of tension development — when excitation-contraction coupling events occur",
+        "The peak tension and when relaxation begins",
+        "The stimulus and the action potential on the sarcolemma",
+        "Full contraction and the return to resting length"
+      ],
+      "correctIndex": 0,
+      "explanation": "Latent period = time between the stimulus (AP) and the beginning of observable tension development. During this period: AP propagates along sarcolemma → T-tubules → triggers SR Ca²⁺ release → Ca²⁺ binds troponin → tropomyosin moves → cross-bridges begin forming. Lasts 1–2 milliseconds."
+    },
+    {
+      "question": "Type IIa (fast oxidative) muscle fibers are INTERMEDIATE because:",
+      "options": [
+        "They contract at medium speed with no fatigue",
+        "They are fast-twitch like Type IIb but have MORE mitochondria and myoglobin than IIb — more fatigue-resistant, used for sustained power activities",
+        "They are identical to Type I slow oxidative fibers",
+        "They use only creatine phosphate for ATP"
+      ],
+      "correctIndex": 1,
+      "explanation": "Type IIa (fast oxidative glycolytic): FAST twitch + moderately fatigue resistant (more mitochondria and myoglobin than IIb, but less than Type I). Can use both aerobic and anaerobic pathways. Used for activities requiring speed AND some endurance: 400m sprint, middle-distance running, cycling. Training can shift IIb → IIa."
+    },
+    {
+      "question": "The REFRACTORY PERIOD of a muscle fiber:",
+      "options": [
+        "Is when the muscle generates maximum tension",
+        "Is the brief period after an AP during which the membrane cannot generate another AP — ensures discrete contractions",
+        "Allows the muscle to accumulate Ca²⁺ for stronger contractions",
+        "Is longer than the refractory period of neurons"
+      ],
+      "correctIndex": 1,
+      "explanation": "Refractory period = brief period after an action potential when the membrane CANNOT be restimulated (absolute refractory period). Ensures that individual twitches can be distinguished and prevents continuous tetanic contraction from a single stimulus. The muscle fiber's refractory period is SHORTER than its contraction period — allowing wave summation."
+    },
+    {
+      "question": "Which of the following is the correct sequence of events in EXCITATION-CONTRACTION COUPLING?",
+      "options": [
+        "Ca²⁺ release → AP on sarcolemma → T-tubule activation → cross-bridge formation",
+        "AP on sarcolemma → T-tubule activation → SR releases Ca²⁺ → Ca²⁺ binds troponin → tropomyosin moves → cross-bridges form",
+        "Troponin activated first → then Ca²⁺ released → then AP generated",
+        "Cross-bridges form → then Ca²⁺ released → then AP generated"
+      ],
+      "correctIndex": 1,
+      "explanation": "Correct E-C coupling sequence: Motor neuron AP → ACh release → muscle AP on sarcolemma → AP travels down T-tubules → T-tubule voltage change triggers SR to release Ca²⁺ → Ca²⁺ binds troponin C → troponin moves tropomyosin aside → myosin binding sites on actin exposed → myosin heads bind → cross-bridge cycle begins → CONTRACTION."
+    },
+    {
+      "question": "Motor unit RECRUITMENT refers to:",
+      "options": [
+        "A single motor unit activating all its muscle fibers simultaneously",
+        "The progressive activation of additional motor units to increase the force of contraction",
+        "The conversion of slow-twitch to fast-twitch fibers during exercise",
+        "The refractory period between successive stimulations of a motor unit"
+      ],
+      "correctIndex": 1,
+      "explanation": "Motor unit recruitment = activating ADDITIONAL motor units to increase force. Starts with small motor units (Type I — fatigue resistant) → progressively adds larger motor units (Type II) as more force is needed. This orderly recruitment (size principle) optimizes efficiency and delays fatigue. Maximal effort = all motor units recruited."
+    }
+  ],
+  "flashcards": [
+    {
+      "term": "Sliding Filament Theory",
+      "definition": "Muscle contraction: thin ACTIN filaments SLIDE past thick MYOSIN filaments toward center (M line). Filaments don't shorten — the sarcomere shortens as they overlap more."
+    },
+    {
+      "term": "Cross-Bridge Cycle",
+      "definition": "1. Attachment (myosin binds actin). 2. Power stroke (myosin pivots, pulls actin → ADP+Pi released). 3. Detachment (ATP binds myosin → releases actin). 4. Cocking (ATP hydrolyzed → head recocked). Repeat."
+    },
+    {
+      "term": "Power Stroke",
+      "definition": "Myosin head PIVOTS from 90° to 45° → pulls actin toward M line → ADP + Pi released. The force-generating step of cross-bridge cycle. Z discs pulled closer → sarcomere shortens."
+    },
+    {
+      "term": "Rigor Mortis",
+      "definition": "Post-death muscle stiffness. NO ATP → myosin heads CANNOT detach from actin → permanent cross-bridges → rigidity. Appears 2–6 hrs, peaks 12 hrs, resolves as proteins decompose."
+    },
+    {
+      "term": "ATP Sources for Muscle",
+      "definition": "1. Creatine phosphate (fastest, ~10 sec, no O₂). 2. Anaerobic glycolysis (fast, ~1–2 min, produces lactic acid, 2 ATP). 3. Aerobic respiration (slow, prolonged, requires O₂, 36–38 ATP)."
+    },
+    {
+      "term": "Creatine Phosphate",
+      "definition": "Fastest ATP source. CP + ADP → Creatine + ATP (instant). No O₂ needed. Lasts only ~10 seconds. Used for explosive activities (sprint start, jump). Replenished during rest."
+    },
+    {
+      "term": "Anaerobic Glycolysis",
+      "definition": "Fast ATP without O₂. Glucose → pyruvate → LACTIC ACID + 2 ATP. Causes burning sensation. Sustains ~1–2 min of intense exercise. Liver converts lactate back to glucose (Cori cycle)."
+    },
+    {
+      "term": "Aerobic Respiration",
+      "definition": "Most efficient ATP source. Requires O₂. 36–38 ATP per glucose. Uses glucose, fatty acids, amino acids. Sustains prolonged moderate activity. Used by Type I and IIa fibers."
+    },
+    {
+      "term": "Muscle Fiber Types",
+      "definition": "Type I (slow oxidative): fatigue resistant, endurance, many mitochondria, dark. Type IIa (fast oxidative): intermediate, sustained power. Type IIb (fast glycolytic): fastest, most powerful, fatigues quickly, pale."
+    },
+    {
+      "term": "Isotonic Contraction",
+      "definition": "Muscle changes LENGTH. CONCENTRIC = muscle shortens (lifting weight). ECCENTRIC = muscle lengthens while generating tension (lowering weight — most force, most DOMS)."
+    },
+    {
+      "term": "Isometric Contraction",
+      "definition": "Muscle generates tension but does NOT change length — no joint movement. Example: holding a static position, pushing against wall. Important for posture and stabilization."
+    },
+    {
+      "term": "Wave Summation (Temporal Summation)",
+      "definition": "Second stimulus arrives BEFORE full relaxation → Ca²⁺ remains elevated → stronger contraction added to previous. Increasing frequency → unfused tetanus → fused tetanus (max force)."
+    },
+    {
+      "term": "Fused (Complete) Tetanus",
+      "definition": "Stimuli so rapid that NO relaxation occurs between contractions → sustained maximal tension. Maximum force a muscle can produce. Normal movements use graded tetanic contractions."
+    },
+    {
+      "term": "Muscle Fatigue",
+      "definition": "Inability to maintain force despite stimulation. Causes: ATP/CP depletion, lactic acid ↓ pH, O₂ debt, glycogen depletion, ACh depletion at NMJ."
+    },
+    {
+      "term": "Oxygen Debt (EPOC)",
+      "definition": "Extra O₂ consumed AFTER exercise to restore homeostasis: replenish CP, convert lactic acid to glucose, restore myoglobin O₂, repair tissues. Why breathing stays elevated after exercise."
+    },
+    {
+      "term": "Latent Period",
+      "definition": "Time between stimulus (AP) and onset of tension. During this time: E-C coupling events occur (AP → T-tubule → SR Ca²⁺ release → troponin binding → cross-bridge formation begins)."
+    },
+    {
+      "term": "Motor Unit Recruitment",
+      "definition": "Progressive activation of ADDITIONAL motor units to increase force. Starts with small Type I → adds larger Type II as needed (SIZE PRINCIPLE). Maximizes efficiency and delays fatigue."
+    },
+    {
+      "term": "Muscle Hypertrophy",
+      "definition": "Increase in muscle SIZE from RESISTANCE TRAINING. Existing fibers enlarge (more actin/myosin synthesized, more myofibrils). NOT new fibers primarily. Early strength gains = neural (better recruitment)."
+    },
+    {
+      "term": "Excitation-Contraction Coupling",
+      "definition": "AP on sarcolemma → T-tubule → SR releases Ca²⁺ → Ca²⁺ binds troponin → tropomyosin moves → actin binding sites exposed → myosin binds → cross-bridge cycle → CONTRACTION."
+    },
+    {
+      "term": "Refractory Period",
+      "definition": "Brief period after AP when membrane CANNOT generate another AP. Ensures discrete contractions. SHORTER than contraction period — allowing summation. Absolute (no AP possible) → relative (needs larger stimulus)."
+    }
+  ]
+}

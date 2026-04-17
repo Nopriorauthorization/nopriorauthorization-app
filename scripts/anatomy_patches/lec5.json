@@ -1,0 +1,328 @@
+{
+  "cheatSheet": [
+    {
+      "title": "Skin layers — superficial to deep",
+      "color": "pink",
+      "content": "<p><strong>Epidermis</strong>: stratified squamous keratinized epithelium. AVASCULAR. 4–5 strata. Main cell = keratinocyte. Also melanocytes (pigment), Langerhans cells (immunity), Merkel cells (light touch).</p><p><strong>Dermis</strong>: dense irregular CT. VASCULARIZED. Papillary layer (superficial, fingerprint ridges, Meissner corpuscles) + reticular layer (deep, hair follicles, glands, Pacinian corpuscles).</p><p><strong>Hypodermis</strong>: NOT true skin. Areolar + adipose CT. Insulation, energy storage, anchors skin.</p>"
+    },
+    {
+      "title": "Epidermal strata — deep to superficial",
+      "color": "teal",
+      "content": "<p>Mnemonic (thick skin): <strong>Come Let's Get Sun Burned</strong> = Corneum, Lucidum, Granulosum, Spinosum, Basale.</p><ul><li><strong>Basale</strong>: deepest, stem cells divide here, melanocytes present.</li><li><strong>Spinosum</strong>: prickly layer, Langerhans cells, desmosomes.</li><li><strong>Granulosum</strong>: keratohyalin granules form, cells begin dying.</li><li><strong>Lucidum</strong>: THICK SKIN ONLY (palms/soles), clear dead cells.</li><li><strong>Corneum</strong>: most superficial, dead keratinized cells, waterproofing.</li></ul>"
+    },
+    {
+      "title": "Glands & accessory structures",
+      "color": "coral",
+      "content": "<ul><li><strong>Eccrine sweat glands</strong>: all over body, watery sweat (NaCl, water, urea), thermoregulation via evaporation.</li><li><strong>Apocrine sweat glands</strong>: axillae/groin, viscous lipid-rich secretion, activated at puberty, body odor from bacteria.</li><li><strong>Sebaceous glands</strong>: oil glands, secrete SEBUM (fats + proteins), holocrine secretion, associated with hair follicles.</li><li><strong>Hair papilla</strong>: capillaries at follicle base — nutrients for growth. Destroy it = permanent hair loss.</li><li><strong>Arrector pili</strong>: smooth muscle → contracts in cold/fear → goosebumps.</li></ul>"
+    },
+    {
+      "title": "Pigments, receptors & wound healing",
+      "color": "purple",
+      "content": "<p><strong>Pigments</strong>: Melanin (brown-black, UV protection), Hemoglobin (pink/red = oxygenated; blue = cyanosis), Carotene (yellow-orange, dietary).</p><p><strong>Receptors</strong>: Meissner corpuscles (light touch, dermal papillae); Pacinian/lamellated corpuscles (deep pressure/vibration, reticular dermis/hypodermis).</p><p><strong>Wound healing</strong>: Epidermal (superficial) → keratinocytes migrate, NO scar. Deep → 4 phases: inflammatory → migratory (granulation tissue) → proliferative → maturation (SCAR forms).</p>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What is the correct order of skin layers from SUPERFICIAL to DEEP?",
+      "options": [
+        "Epidermis → Dermis → Hypodermis",
+        "Dermis → Epidermis → Hypodermis",
+        "Hypodermis → Dermis → Epidermis",
+        "Epidermis → Hypodermis → Dermis"
+      ],
+      "correctIndex": 0,
+      "explanation": "Superficial to deep: Epidermis (outermost, avascular, stratified squamous keratinized) → Dermis (middle, vascular, dense irregular CT) → Hypodermis (deepest, subcutaneous, adipose + areolar CT). The hypodermis is NOT considered true skin."
+    },
+    {
+      "question": "In which epidermal stratum does CELL DIVISION occur to produce new keratinocytes?",
+      "options": [
+        "Stratum corneum",
+        "Stratum granulosum",
+        "Stratum spinosum",
+        "Stratum basale"
+      ],
+      "correctIndex": 3,
+      "explanation": "Stratum basale (deepest layer) contains stem cells that undergo mitosis to produce new keratinocytes. New cells are pushed upward through layers, gradually dying and keratinizing until shed from stratum corneum (~28-day cycle)."
+    },
+    {
+      "question": "Stratum lucidum is found ONLY in thick skin because:",
+      "options": [
+        "Only these areas are exposed to UV light",
+        "High-friction pressure-bearing surfaces (palms/soles) require this extra protective layer",
+        "These areas have more melanocytes",
+        "These areas are avascular and need extra layers"
+      ],
+      "correctIndex": 1,
+      "explanation": "Thick skin (palms and soles) experiences the most pressure and friction. The stratum lucidum provides an extra clear zone of dead cells between the granulosum and corneum. Thin skin (most of body) has only 4 strata — no lucidum."
+    },
+    {
+      "question": "A patient has yellow-orange skin discoloration without jaundice. This is most likely due to:",
+      "options": [
+        "Increased melanin production",
+        "Excessive dietary carotene intake",
+        "Decreased hemoglobin",
+        "Increased bilirubin levels"
+      ],
+      "correctIndex": 1,
+      "explanation": "Carotene (from carrots, sweet potatoes) accumulates in stratum corneum and hypodermis causing yellow-orange skin (carotenemia). Unlike jaundice (bilirubin), it is benign and reverses when dietary intake decreases."
+    },
+    {
+      "question": "Melanocytes protect skin from UV damage by:",
+      "options": [
+        "Producing keratin that blocks UV",
+        "Transferring melanin to keratinocytes which absorbs UV radiation",
+        "Secreting collagen to thicken the dermis",
+        "Activating Langerhans cells to attack UV rays"
+      ],
+      "correctIndex": 1,
+      "explanation": "Melanocytes in stratum basale produce melanin → package into melanosomes → transfer to surrounding keratinocytes → melanin caps over nucleus → absorbs UV before it damages DNA. All skin tones have the same number of melanocytes — color difference is melanin AMOUNT and type."
+    },
+    {
+      "question": "Which glands are responsible for thermoregulation through evaporative cooling?",
+      "options": [
+        "Apocrine sweat glands",
+        "Sebaceous glands",
+        "Eccrine (merocrine) sweat glands",
+        "Ceruminous glands"
+      ],
+      "correctIndex": 2,
+      "explanation": "Eccrine sweat glands are distributed all over the body and produce watery sweat (NaCl, water, urea, lactic acid) via merocrine (exocytosis) secretion. Evaporation of sweat from skin surface is the primary mechanism for lowering body temperature."
+    },
+    {
+      "question": "Body odor associated with sweating is primarily caused by:",
+      "options": [
+        "Eccrine sweat itself smelling bad",
+        "Bacteria acting on apocrine gland secretions",
+        "Sebum oxidizing on the skin surface",
+        "Keratin breakdown products"
+      ],
+      "correctIndex": 1,
+      "explanation": "Apocrine glands (in axillae, groin, areolae) secrete viscous, lipid-rich fluid into hair follicles. Fresh apocrine secretion is odorless — body odor is produced when SKIN BACTERIA metabolize these organic compounds."
+    },
+    {
+      "question": "The arrector pili muscle causes goosebumps by:",
+      "options": [
+        "Relaxing and letting the hair shaft flatten",
+        "Contracting and pulling the hair shaft upright",
+        "Pushing melanin to the hair surface",
+        "Stimulating sebaceous glands to release more oil"
+      ],
+      "correctIndex": 1,
+      "explanation": "Arrector pili = smooth muscle attached to each hair follicle. Contracts (triggered by cold or emotion via sympathetic NS) → pulls hair upright → raises a small skin mound → goosebumps (piloerection). In animals with fur, this traps an insulating air layer."
+    },
+    {
+      "question": "The hair PAPILLA is clinically important because:",
+      "options": [
+        "It produces the visible hair shaft",
+        "It is the visible portion determining hair color",
+        "It contains capillaries nourishing hair growth — its destruction causes permanent hair loss",
+        "It is the site where melanin transfers into the hair"
+      ],
+      "correctIndex": 2,
+      "explanation": "The hair papilla is a cluster of loose CT richly supplied with capillaries at the BASE of the hair follicle. Provides nutrients and oxygen essential for hair growth. Permanent destruction of the papilla (e.g., laser hair removal) prevents regrowth permanently."
+    },
+    {
+      "question": "A Meissner corpuscle differs from a Pacinian (lamellated) corpuscle in that Meissner corpuscles:",
+      "options": [
+        "Detect deep pressure and vibration; located in hypodermis",
+        "Detect light touch and texture; located in dermal papillae",
+        "Are larger and detect temperature changes",
+        "Are found in reticular dermis and detect proprioception"
+      ],
+      "correctIndex": 1,
+      "explanation": "Meissner corpuscles: light touch + texture, in dermal PAPILLAE (papillary dermis), most dense in fingertips and lips. Pacinian corpuscles: deep pressure + vibration, deeper in RETICULAR dermis and hypodermis, larger onion-shaped structure."
+    },
+    {
+      "question": "Cyanosis (blue skin discoloration) results from:",
+      "options": [
+        "Excess carotene in stratum corneum",
+        "Deoxygenated hemoglobin in blood vessels beneath the skin",
+        "Decreased melanin production",
+        "Increased bilirubin levels"
+      ],
+      "correctIndex": 1,
+      "explanation": "Cyanosis = bluish discoloration caused by high levels of DEOXYGENATED hemoglobin (deoxyhemoglobin appears blue-purple). Common in respiratory failure, cardiac issues. Best seen in lips, nail beds, and fingertips where skin is thin."
+    },
+    {
+      "question": "During thermoregulation in a HOT environment, cutaneous blood vessels:",
+      "options": [
+        "Constrict to conserve heat",
+        "Dilate to bring more warm blood near skin surface for heat radiation",
+        "Constrict to reduce sweating",
+        "Remain unchanged"
+      ],
+      "correctIndex": 1,
+      "explanation": "Hot environment → hypothalamus signals → cutaneous blood vessel VASODILATION → more warm blood near skin → heat radiates out (radiation) + sweat evaporation cools skin. In cold: vasoconstriction → less blood at surface → conserves core heat."
+    },
+    {
+      "question": "Epidermal wound healing differs from deep wound healing because:",
+      "options": [
+        "Epidermal healing involves fibroblasts and forms scar tissue",
+        "Epidermal healing involves only keratinocyte migration — NO scar forms",
+        "Epidermal healing takes longer and has more phases",
+        "Deep wound healing never involves blood clot formation"
+      ],
+      "correctIndex": 1,
+      "explanation": "Epidermal (superficial) healing: only epidermis damaged. Keratinocytes from wound edges and hair follicles migrate and proliferate to fill gap. NO scar. Deep healing: dermis involved → 4 phases → granulation tissue → collagen → SCAR formation."
+    },
+    {
+      "question": "The reticular layer of the dermis contains:",
+      "options": [
+        "A single layer of epithelial cells",
+        "Simple squamous epithelium",
+        "Dense irregular CT with most skin appendages: hair follicles, glands, larger blood vessels",
+        "Adipose tissue for insulation"
+      ],
+      "correctIndex": 2,
+      "explanation": "Reticular layer (deeper dermis) = dense irregular CT. Contains collagen + elastic fibers running in multiple directions. Houses most hair follicles, sweat glands, sebaceous glands, deep blood vessels, and Pacinian (lamellated) corpuscles."
+    },
+    {
+      "question": "Langerhans cells in the epidermis function as:",
+      "options": [
+        "Stem cells that produce new keratinocytes",
+        "Sensory receptors for light touch",
+        "Immune defense dendritic cells that recognize and respond to pathogens",
+        "Melanin-producing cells"
+      ],
+      "correctIndex": 2,
+      "explanation": "Langerhans cells are epidermal dendritic cells in stratum spinosum. They are part of the immune system — recognize antigens (pathogens, allergens) that breach the skin barrier, process them, and activate T lymphocytes. Important in contact dermatitis."
+    },
+    {
+      "question": "The three skin color pigments are:",
+      "options": [
+        "Melanin, keratin, and collagen",
+        "Melanin, hemoglobin, and carotene",
+        "Melanin, elastin, and bilirubin",
+        "Hemoglobin, carotene, and retinol"
+      ],
+      "correctIndex": 1,
+      "explanation": "Three pigments determine skin color: 1) MELANIN (brown-black or yellow-red — genetics/UV, most important). 2) HEMOGLOBIN in RBCs (pink-red = oxygenated, blue = deoxygenated). 3) CAROTENE (yellow-orange dietary pigment accumulates in corneum/hypodermis)."
+    },
+    {
+      "question": "Vitamin D synthesis in the skin requires:",
+      "options": [
+        "Melanin production in stratum basale",
+        "UV radiation acting on a cholesterol precursor in the epidermis",
+        "Keratin production in stratum corneum",
+        "Iron from hemoglobin in dermal capillaries"
+      ],
+      "correctIndex": 1,
+      "explanation": "UV radiation converts 7-dehydrocholesterol (a cholesterol precursor) in the epidermis to previtamin D3 → Vitamin D3. Then processed by liver and kidney. Vitamin D3 is essential for calcium absorption from intestines."
+    },
+    {
+      "question": "Thick skin and thin skin differ in that thick skin:",
+      "options": [
+        "Has hair follicles and 4 epidermal layers",
+        "Lacks hair follicles and has all 5 epidermal strata including stratum lucidum",
+        "Has fewer sweat glands than thin skin",
+        "Is found all over the body"
+      ],
+      "correctIndex": 1,
+      "explanation": "Thick skin (palms, soles): all 5 strata (basale, spinosum, granulosum, LUCIDUM, corneum), NO hair follicles, more sweat glands. Thin skin: only 4 strata (NO lucidum), HAS hair follicles. Thin skin covers most of the body."
+    },
+    {
+      "question": "The dermis is important to the epidermis primarily because:",
+      "options": [
+        "It provides cells that become keratinocytes",
+        "Its capillaries provide oxygen and nutrients to the avascular epidermis by diffusion",
+        "It produces melanin for the epidermis",
+        "It forms the stratum basale"
+      ],
+      "correctIndex": 1,
+      "explanation": "The epidermis has NO blood vessels — it depends entirely on the dermis for survival. Capillaries in the papillary dermis bring O2 and nutrients close to the epidermis → diffuse across the basement membrane to nourish epidermal cells."
+    },
+    {
+      "question": "Sebaceous glands are described as HOLOCRINE because:",
+      "options": [
+        "They secrete using exocytosis without harming the cell",
+        "They pinch off part of their membrane with each secretion",
+        "The entire secretory cell dies and disintegrates to become the secretion (sebum)",
+        "They secrete hormones directly into the bloodstream"
+      ],
+      "correctIndex": 2,
+      "explanation": "Holocrine = entire cell fills with sebum (lipids, proteins, cell debris) then ruptures and dies to release it. The dead cell itself IS the secretion. Sebaceous glands are always associated with hair follicles; absent from palms and soles."
+    }
+  ],
+  "flashcards": [
+    {
+      "term": "Integumentary Functions",
+      "definition": "Protection (physical/UV/chemical/microbial), thermoregulation (sweating/vasodilation), sensation, Vitamin D synthesis, excretion, blood reservoir."
+    },
+    {
+      "term": "Epidermis",
+      "definition": "Outermost skin layer. AVASCULAR. Stratified squamous keratinized epithelium. 4–5 strata. Main cell = keratinocyte. Also melanocytes, Langerhans, Merkel cells."
+    },
+    {
+      "term": "Dermis",
+      "definition": "Middle skin layer. Dense irregular CT. VASCULARIZED. Contains hair follicles, glands, nerve endings. Two sub-layers: papillary (superficial) + reticular (deep)."
+    },
+    {
+      "term": "Hypodermis",
+      "definition": "Deepest layer (subcutaneous). NOT true skin. Areolar + adipose CT. Anchors skin, insulation, energy storage, shock absorption."
+    },
+    {
+      "term": "Stratum Basale",
+      "definition": "DEEPEST epidermal layer. Single layer. Contains STEM CELLS (mitosis occurs here → new keratinocytes). Also melanocytes. Attached to basement membrane."
+    },
+    {
+      "term": "Stratum Spinosum",
+      "definition": "8–10 layers. Keratinocytes connected by DESMOSOMES (appear spiny/prickly). LANGERHANS CELLS (immune defense) present here."
+    },
+    {
+      "term": "Stratum Granulosum",
+      "definition": "3–5 layers. KERATOHYALIN GRANULES form → precursor to keratin. Cells begin to die (nuclei disintegrate). Transition from living to dead cells."
+    },
+    {
+      "term": "Stratum Corneum",
+      "definition": "MOST SUPERFICIAL layer. 20–30 layers of dead, keratinized cells. WATERPROOFING. Continuously shed (desquamation). Takes ~2 weeks to move from granulosum."
+    },
+    {
+      "term": "Stratum Lucidum",
+      "definition": "Found ONLY in THICK SKIN (palms, soles). Clear zone of dead flattened cells between corneum and granulosum. Provides extra protection."
+    },
+    {
+      "term": "Melanocytes",
+      "definition": "In stratum basale. Produce MELANIN via melanogenesis → package in melanosomes → transfer to keratinocytes. Protects DNA from UV. Same number in all skin tones — amount differs."
+    },
+    {
+      "term": "Eccrine vs Apocrine Glands",
+      "definition": "Eccrine: all body, watery sweat (NaCl/water/urea), THERMOREGULATION via evaporation. Apocrine: axillae/groin, viscous lipid-rich secretion, body odor from bacteria, activated at puberty."
+    },
+    {
+      "term": "Sebaceous Glands",
+      "definition": "Oil glands associated with hair follicles. Secrete SEBUM (oily fats + proteins). HOLOCRINE secretion. Waterproofs skin, antibacterial. Absent from palms/soles."
+    },
+    {
+      "term": "Arrector Pili",
+      "definition": "Smooth muscle attached to hair follicle. Contracts in cold/fear → erects hair → GOOSEBUMPS (piloerection). Involuntary sympathetic response."
+    },
+    {
+      "term": "Hair Papilla",
+      "definition": "Connective tissue + CAPILLARIES at base of hair follicle. Provides nutrients for hair growth. Destruction = PERMANENT hair loss."
+    },
+    {
+      "term": "Meissner vs Pacinian Corpuscles",
+      "definition": "Meissner: LIGHT TOUCH/texture, in DERMAL PAPILLAE (papillary dermis), dense in fingertips. Pacinian (lamellated): DEEP PRESSURE/vibration, RETICULAR DERMIS/hypodermis, larger/deeper, onion-shaped."
+    },
+    {
+      "term": "Skin Color Pigments",
+      "definition": "MELANIN (brown-black, UV protection, genetics), HEMOGLOBIN (pink/red = oxygenated; blue = cyanosis), CAROTENE (yellow-orange, dietary, accumulates in corneum/hypodermis)."
+    },
+    {
+      "term": "Thermoregulation — Hot/Cold",
+      "definition": "HOT: eccrine glands activated + cutaneous vasodilation → heat radiates out. COLD: vasoconstriction (reduces heat loss) + arrector pili contracts (goosebumps) + sweat decreases."
+    },
+    {
+      "term": "Epidermal vs Deep Wound Healing",
+      "definition": "Epidermal: superficial, keratinocytes migrate from edges/follicles, NO SCAR. Deep: dermis involved, 4 phases (inflammatory→migratory→proliferative→maturation), SCAR forms."
+    },
+    {
+      "term": "Thick vs Thin Skin",
+      "definition": "Thick: 5 strata (includes lucidum), NO hair follicles, more sweat glands. Palms/soles only. Thin: 4 strata (no lucidum), HAS hair follicles. Covers most of body."
+    },
+    {
+      "term": "Nail Anatomy",
+      "definition": "Nail body (visible portion), nail root (embedded below skin), nail matrix (germinal layer, growth by mitosis), lunula (white crescent = visible matrix), hyponychium (seals nail bed)."
+    }
+  ]
+}

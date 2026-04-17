@@ -1,0 +1,328 @@
+{
+  "cheatSheet": [
+    {
+      "title": "Epithelial tissue — key properties",
+      "color": "pink",
+      "content": "<p><strong>Epithelial tissue</strong> covers body surfaces and lines cavities. Key properties: <strong>cellularity</strong> (tightly packed cells), <strong>polarity</strong> (apical vs basal surface), <strong>avascular</strong> (no blood vessels — fed by diffusion from connective tissue below), <strong>innervated</strong>, and <strong>high regeneration rate</strong>.</p><p>Classified by <strong>layers</strong> (simple = 1 layer; stratified = multiple) and <strong>cell shape</strong> (squamous = flat; cuboidal = cube; columnar = tall).</p>"
+    },
+    {
+      "title": "Cell junctions",
+      "color": "teal",
+      "content": "<ul><li><strong>Tight junctions</strong> — claudins/occludins; seal cells, prevent paracellular leakage; intestine, BBB, bladder.</li><li><strong>Desmosomes</strong> — cadherins + intermediate filaments; mechanical anchors resist tearing; skin, cardiac muscle.</li><li><strong>Gap junctions</strong> — connexins form connexons; direct ion/molecule communication; heart, smooth muscle.</li></ul>"
+    },
+    {
+      "title": "Glands & secretion types",
+      "color": "amber",
+      "content": "<p><strong>Endocrine</strong>: ductless, hormones into bloodstream (thyroid, adrenal, pituitary).</p><p><strong>Exocrine</strong>: have ducts, secrete onto surfaces.</p><p>Secretion methods: <strong>Merocrine</strong> (exocytosis, cell intact — most common); <strong>Apocrine</strong> (part of membrane pinches off — mammary, apocrine sweat); <strong>Holocrine</strong> (entire cell ruptures — sebaceous glands).</p>"
+    },
+    {
+      "title": "Connective tissue & fibers",
+      "color": "green",
+      "content": "<p>CT has ECM (extracellular matrix). <strong>Blast cells</strong> = immature builders (fibroblast, osteoblast). <strong>Cyte cells</strong> = mature maintainers (fibrocyte, osteocyte).</p><p>Fibers: <strong>Collagen</strong> (tensile strength, white, most abundant — tendons/ligaments); <strong>Elastic</strong> (stretch/recoil, yellow — arteries/skin); <strong>Reticular</strong> (thin collagen mesh — liver/spleen/lymph nodes).</p><p>Membranes: Mucous (open cavities, wet); Serous (closed cavities, watery fluid); Cutaneous (skin); Synovial (joints, CT not epithelial).</p>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which cell junction PREVENTS leakage of substances between epithelial cells?",
+      "options": [
+        "Gap junctions",
+        "Desmosomes",
+        "Tight junctions",
+        "Focal adhesions"
+      ],
+      "correctIndex": 2,
+      "explanation": "Tight junctions seal adjacent cells using claudin and occludin proteins, preventing paracellular leakage. Critical in the intestine (selective absorption), blood-brain barrier, and urinary bladder."
+    },
+    {
+      "question": "Epithelial tissue is avascular, meaning it:",
+      "options": [
+        "Has no nerve supply",
+        "Has no blood vessels — receives nutrients by diffusion from connective tissue below",
+        "Does not regenerate",
+        "Cannot perform secretion"
+      ],
+      "correctIndex": 1,
+      "explanation": "Avascular = no blood vessels. Epithelium receives oxygen and nutrients by diffusion from underlying vascularized connective tissue through the basement membrane. This is a key distinguishing property."
+    },
+    {
+      "question": "Simple squamous epithelium is found in alveoli because:",
+      "options": [
+        "Multiple layers protect against abrasion",
+        "One flat layer allows rapid gas diffusion",
+        "Cuboidal shape enables secretion",
+        "It is the thickest epithelium available"
+      ],
+      "correctIndex": 1,
+      "explanation": "Simple squamous (one layer of flat cells) is ideal for diffusion and filtration. In alveoli, O2 and CO2 must cross rapidly — this thin single layer minimizes diffusion distance."
+    },
+    {
+      "question": "Which epithelial type lines the URINARY BLADDER and allows stretching?",
+      "options": [
+        "Simple squamous",
+        "Stratified squamous",
+        "Pseudostratified columnar",
+        "Transitional"
+      ],
+      "correctIndex": 3,
+      "explanation": "Transitional epithelium (urothelium) lines the bladder, ureters, and renal pelvis. Cells change shape — dome-shaped when relaxed, flattened when stretched — allowing organ expansion."
+    },
+    {
+      "question": "Pseudostratified columnar epithelium APPEARS multi-layered but is actually:",
+      "options": [
+        "Truly multiple layers — all cells touch the surface",
+        "One layer — all cells contact the basement membrane but nuclei sit at different heights",
+        "Two layers with distinct functions",
+        "Stratified cuboidal that has been compressed"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pseudostratified is ONE layer — all cells touch the basement membrane. Nuclei at varying heights create the false impression of multiple layers. Lines the respiratory tract (trachea, bronchi) with cilia to move mucus."
+    },
+    {
+      "question": "An endocrine gland differs from an exocrine gland because:",
+      "options": [
+        "Endocrine glands have ducts; exocrine do not",
+        "Exocrine secrete hormones; endocrine secrete enzymes",
+        "Endocrine glands are ductless and release hormones into the bloodstream",
+        "Endocrine glands only produce saliva"
+      ],
+      "correctIndex": 2,
+      "explanation": "Endocrine = NO ducts, releases HORMONES directly into bloodstream (thyroid, adrenal, pancreatic islets). Exocrine = HAS ducts, secretes products onto surfaces (sweat, salivary, sebaceous glands)."
+    },
+    {
+      "question": "Sebaceous glands use holocrine secretion. This means:",
+      "options": [
+        "Products released by exocytosis — cell intact",
+        "Products released with a portion of cell membrane",
+        "Entire cell accumulates sebum then ruptures and dies to release it",
+        "Products are released into the bloodstream"
+      ],
+      "correctIndex": 2,
+      "explanation": "Holocrine = entire cell dies and disintegrates to release contents as secretion. Sebaceous glands produce sebum (oily mix of lipids, proteins, cell debris) this way. Contrast with merocrine (cell intact) and apocrine (partial membrane loss)."
+    },
+    {
+      "question": "The '-blast' suffix in connective tissue cell names indicates:",
+      "options": [
+        "A mature maintenance cell",
+        "An immature active cell that builds extracellular matrix",
+        "A cell that resorbs bone",
+        "A cell found only in blood"
+      ],
+      "correctIndex": 1,
+      "explanation": "-blast = immature, ACTIVE, builds ECM. Fibroblast secretes collagen/elastic/reticular fibers. Osteoblast builds bone. -cyte = mature maintenance. Blast = Builder, Cyte = Caretaker."
+    },
+    {
+      "question": "Collagen fibers provide which primary mechanical property to connective tissue?",
+      "options": [
+        "Stretch and recoil like a rubber band",
+        "Tensile strength — resistance to pulling forces",
+        "Delicate mesh scaffolding for soft organs",
+        "Lubrication of joint surfaces"
+      ],
+      "correctIndex": 1,
+      "explanation": "Collagen fibers are the most abundant protein in the body, providing tensile strength (resist tension/pulling). Found in tendons (muscle to bone), ligaments (bone to bone), skin, bone matrix."
+    },
+    {
+      "question": "Which membrane is a CONNECTIVE TISSUE membrane — not epithelial?",
+      "options": [
+        "Mucous membrane",
+        "Serous membrane",
+        "Cutaneous membrane",
+        "Synovial membrane"
+      ],
+      "correctIndex": 3,
+      "explanation": "The synovial membrane is made of connective tissue and has NO basement membrane. Lines joint cavities and secretes synovial fluid for lubrication. All other body membranes (mucous, serous, cutaneous) are epithelial membranes."
+    },
+    {
+      "question": "Mesothelium specifically refers to:",
+      "options": [
+        "Epithelium lining blood vessel interiors",
+        "Simple columnar epithelium of the GI tract",
+        "Simple squamous epithelium lining closed body cavities",
+        "Stratified squamous epithelium of the skin"
+      ],
+      "correctIndex": 2,
+      "explanation": "Mesothelium = simple squamous epithelium lining BODY CAVITIES (pleural around lungs, pericardial around heart, peritoneal around abdominal organs). Secretes serous fluid to reduce friction. Endothelium = lines blood and lymph vessels."
+    },
+    {
+      "question": "Of the three cytoskeletal components, microtubules are the LARGEST and function in:",
+      "options": [
+        "Cell shape and muscle contraction",
+        "Structural support and anchoring organelles",
+        "Cell division spindle, organelle transport, cilia and flagella",
+        "Forming the glycocalyx on the cell surface"
+      ],
+      "correctIndex": 2,
+      "explanation": "Microtubules (~25 nm diameter, made of tubulin) radiate from the centrosome. Functions: mitotic spindle for cell division, highways for vesicle/organelle transport, form the core of cilia and flagella."
+    },
+    {
+      "question": "Merocrine secretion — used by eccrine sweat glands — involves:",
+      "options": [
+        "Entire cell rupture to release product",
+        "Apical cytoplasm budding off with the secretion",
+        "Exocytosis — secretory vesicles fuse with membrane, cell remains intact",
+        "Diffusion through gap junctions"
+      ],
+      "correctIndex": 2,
+      "explanation": "Merocrine secretion = products packaged in vesicles → exocytosis → released outside cell → CELL REMAINS INTACT. Most common type. Examples: eccrine sweat glands, pancreatic enzymes, most salivary glands."
+    },
+    {
+      "question": "Stratified squamous epithelium is found on body surfaces subjected to abrasion because:",
+      "options": [
+        "It is best for absorption",
+        "Multiple layers of flat cells provide maximum protection",
+        "It is the thinnest epithelium for efficient diffusion",
+        "It has the most goblet cells for mucus production"
+      ],
+      "correctIndex": 1,
+      "explanation": "Stratified squamous = multiple layers + flat top cells. As surface cells wear away, lower layers replace them. Found in skin (keratinized) and high-friction areas: mouth, esophagus, vagina (non-keratinized)."
+    },
+    {
+      "question": "Reticular fibers form delicate networks and are primarily found in:",
+      "options": [
+        "Tendons and ligaments",
+        "Large arteries and vocal cords",
+        "Liver, spleen, lymph nodes, and basement membranes",
+        "Only in bone tissue"
+      ],
+      "correctIndex": 2,
+      "explanation": "Reticular fibers are thin collagen fibers forming meshwork/lattice support frameworks (stroma). Found in liver, spleen, lymph nodes, bone marrow, and basement membranes — support soft organs and blood-forming cells."
+    },
+    {
+      "question": "Desmosomes are especially important in the skin because they:",
+      "options": [
+        "Allow rapid ion exchange between keratinocytes",
+        "Seal cells to prevent pathogen entry",
+        "Provide strong mechanical anchoring between cells, resisting tearing forces",
+        "Allow cells to communicate via small molecules"
+      ],
+      "correctIndex": 2,
+      "explanation": "Desmosomes use cadherin proteins anchored to intermediate filaments — act like spot welds between cells. In skin epidermis, they hold keratinocytes together, preventing tearing when skin is pulled or abraded."
+    },
+    {
+      "question": "Gap junctions are critical in cardiac muscle because they:",
+      "options": [
+        "Prevent ions from moving between cells",
+        "Mechanically anchor cardiomyocytes to resist contraction forces",
+        "Allow action potentials to spread directly from cell to cell for coordinated contraction",
+        "Seal the heart chambers from each other"
+      ],
+      "correctIndex": 2,
+      "explanation": "Gap junctions (connexons made of connexin proteins) allow ions and small molecules to pass DIRECTLY between adjacent cells. In the heart, this allows action potentials to spread rapidly through the myocardium for synchronized contraction."
+    },
+    {
+      "question": "Elastic fibers are found in the walls of large arteries because:",
+      "options": [
+        "They resist compression",
+        "They provide tensile strength against pulling",
+        "They stretch during systole and recoil during diastole to maintain blood pressure",
+        "They form mesh scaffolding for red blood cells"
+      ],
+      "correctIndex": 2,
+      "explanation": "Elastic fibers (made of elastin) stretch when arterial pressure rises (systole) and recoil when it drops (diastole). In the aorta and large arteries, this elastic recoil helps maintain continuous blood pressure between heartbeats."
+    },
+    {
+      "question": "The basement membrane that anchors epithelium consists of:",
+      "options": [
+        "Two layers: basal lamina (from epithelial cells) and reticular lamina (from connective tissue)",
+        "A single layer of collagen secreted entirely by epithelial cells",
+        "Only reticular fibers secreted by fibroblasts",
+        "Smooth muscle and elastic fibers"
+      ],
+      "correctIndex": 0,
+      "explanation": "Basement membrane = basal lamina (secreted by epithelial cells, contains type IV collagen and laminin) + reticular lamina (secreted by underlying connective tissue). Anchors epithelium, acts as filtration barrier, guides cell migration."
+    },
+    {
+      "question": "Which tissue type is embryonically the MOST primitive and gives rise to all other connective tissues?",
+      "options": [
+        "Areolar connective tissue",
+        "Mucous connective tissue (Wharton's jelly)",
+        "Mesenchyme",
+        "Dense regular connective tissue"
+      ],
+      "correctIndex": 2,
+      "explanation": "Mesenchyme is the most primitive embryonic connective tissue — undifferentiated mesenchymal cells can differentiate into ALL types of connective tissue (bone, cartilage, blood, adipose, fibrous CT). Found in embryo; replaced by specialized CT in adults."
+    }
+  ],
+  "flashcards": [
+    {
+      "term": "Histology",
+      "definition": "Microscopic study of tissues. Histologists examine biopsy samples to identify structure and detect disease (e.g., cancer diagnosis)."
+    },
+    {
+      "term": "Tight Junctions",
+      "definition": "Cell junctions using claudins + occludins. SEAL cells together preventing paracellular leakage. Found in intestine, blood-brain barrier, urinary bladder."
+    },
+    {
+      "term": "Desmosomes",
+      "definition": "Strong anchor junctions using cadherins + intermediate filaments. Resist mechanical stress/tearing. Found in skin epidermis and cardiac muscle."
+    },
+    {
+      "term": "Gap Junctions",
+      "definition": "Communication channels made of connexins (connexons). Allow ions and small molecules to pass directly between cells. Found in heart and smooth muscle for coordinated contraction."
+    },
+    {
+      "term": "Simple Squamous Epithelium",
+      "definition": "ONE layer of FLAT cells. Best for diffusion and filtration. Found in alveoli, capillaries (endothelium), serous membranes (mesothelium)."
+    },
+    {
+      "term": "Stratified Squamous Epithelium",
+      "definition": "MULTIPLE layers, flat top cells. Best for PROTECTION against abrasion. Keratinized = skin. Non-keratinized = mouth, esophagus, vagina."
+    },
+    {
+      "term": "Pseudostratified Columnar",
+      "definition": "ONE layer (all cells touch basement membrane) that APPEARS multi-layered because nuclei are at different heights. Lines respiratory tract. Ciliated to move mucus."
+    },
+    {
+      "term": "Transitional Epithelium",
+      "definition": "Stratified epithelium that STRETCHES. Cells dome-shaped when relaxed, flat when stretched. ONLY in urinary tract (bladder, ureters, renal pelvis)."
+    },
+    {
+      "term": "Endocrine vs Exocrine Glands",
+      "definition": "Endocrine: DUCTLESS, hormones into bloodstream (thyroid, pituitary, adrenal). Exocrine: HAVE DUCTS, secrete onto surfaces (sweat, salivary, sebaceous glands)."
+    },
+    {
+      "term": "Merocrine Secretion",
+      "definition": "Most common secretion. Products released by EXOCYTOSIS — cell remains intact. Examples: eccrine sweat glands, pancreas, salivary glands."
+    },
+    {
+      "term": "Apocrine Secretion",
+      "definition": "Products released WITH a portion of the apical cell membrane pinching off. Examples: mammary glands, apocrine sweat glands."
+    },
+    {
+      "term": "Holocrine Secretion",
+      "definition": "Entire cell RUPTURES AND DIES to release its contents as the secretion. Example: sebaceous (oil) glands. Most destructive method."
+    },
+    {
+      "term": "-blast vs -cyte",
+      "definition": "-blast = IMMATURE, ACTIVE, BUILDS extracellular matrix (fibroblast, osteoblast, chondroblast). -cyte = MATURE, MAINTENANCE (fibrocyte, osteocyte). Blast = Builder. Cyte = Caretaker."
+    },
+    {
+      "term": "Collagen Fibers",
+      "definition": "Most abundant protein in body. Provide TENSILE STRENGTH (resist pulling). White fibers. Found in tendons, ligaments, bone, skin. Secreted by fibroblasts."
+    },
+    {
+      "term": "Elastic Fibers",
+      "definition": "Made of elastin. STRETCH and RECOIL (like rubber bands). Yellow fibers. Found in skin, lungs, large arteries (aorta), vocal cords."
+    },
+    {
+      "term": "Reticular Fibers",
+      "definition": "Thin collagen fibers forming delicate MESHWORK support frameworks. Found in liver, spleen, lymph nodes, basement membranes. Secreted by fibroblasts."
+    },
+    {
+      "term": "Mucous Membrane",
+      "definition": "Epithelial membrane lining body cavities OPEN to exterior. WET, secretes mucus. Lines GI tract, respiratory, urinary, and reproductive tracts."
+    },
+    {
+      "term": "Serous Membrane",
+      "definition": "Epithelial membrane lining CLOSED body cavities. Secretes watery serous fluid to reduce friction. Examples: pleura (lungs), pericardium (heart), peritoneum (abdomen)."
+    },
+    {
+      "term": "Synovial Membrane",
+      "definition": "CONNECTIVE TISSUE membrane (NOT epithelial). Lines joint cavities. NO basement membrane. Secretes synovial fluid for joint lubrication."
+    },
+    {
+      "term": "Endothelium vs Mesothelium",
+      "definition": "Endothelium = simple squamous lining BLOOD and LYMPH VESSEL interiors. Mesothelium = simple squamous lining BODY CAVITIES (pleural, pericardial, peritoneal). Both reduce friction."
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "cheatSheet": [
+    {
+      "title": "Spinal cord anatomy & spinal nerves",
+      "color": "pink",
+      "content": "<p>31 pairs of spinal nerves (8 cervical, 12 thoracic, 5 lumbar, 5 sacral, 1 coccygeal). <strong>Cervical enlargement</strong> (C4–T1): supplies upper limbs. <strong>Lumbar enlargement</strong> (L1–S3): supplies lower limbs.</p><p>Gray matter inner H-shape: <strong>Anterior horn</strong> = motor neuron cell bodies. <strong>Posterior horn</strong> = sensory interneurons. Dorsal root = SENSORY (afferent). Ventral root = MOTOR (efferent). <strong>Dorsal root ganglion</strong> = sensory neuron cell bodies.</p>"
+    },
+    {
+      "title": "Ascending & descending tracts",
+      "color": "teal",
+      "content": "<p><strong>Ascending (sensory) tracts</strong>: carry sensory info TO brain. <strong>Spinothalamic tract</strong>: pain, temperature, crude touch (crosses soon after entering). <strong>Dorsal columns</strong> (posterior funiculus): proprioception, fine touch, vibration (crosses in medulla).</p><p><strong>Descending (motor) tracts</strong>: carry motor commands FROM brain. <strong>Lateral corticospinal tract</strong>: voluntary motor control (crosses in medulla — pyramidal decussation).</p>"
+    },
+    {
+      "title": "Nerve plexuses",
+      "color": "coral",
+      "content": "<ul><li><strong>Cervical plexus</strong> (C1–C5): neck, diaphragm (phrenic nerve C3–C5).</li><li><strong>Brachial plexus</strong> (C5–T1): entire upper limb (musculocutaneous, ulnar, median, radial, axillary nerves).</li><li><strong>Lumbar plexus</strong> (L1–L4): anterior thigh (femoral nerve), groin.</li><li><strong>Sacral plexus</strong> (L4–S4): posterior thigh, entire leg/foot (sciatic nerve — largest nerve in body).</li></ul>"
+    },
+    {
+      "title": "Reflex arcs & autonomic NS",
+      "color": "purple",
+      "content": "<p><strong>Reflex arc components</strong>: Receptor → Afferent neuron → Integration center (spinal cord) → Efferent neuron → Effector. BYPASSES conscious brain (fast protection).</p><p><strong>Stretch reflex</strong>: muscle spindle stretched → reflex muscle contraction (monosynaptic — knee jerk). <strong>Withdrawal reflex</strong>: pain → flexion of ipsilateral limb + extension of contralateral limb (crossed extension).</p><p><strong>Autonomic NS</strong>: preganglionic neuron (CNS) → ganglion → postganglionic neuron → effector. Sympathetic: thoracolumbar (T1–L2). Parasympathetic: craniosacral (CN III, VII, IX, X + S2–S4).</p>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "How many pairs of spinal nerves are there in total, and how are they distributed?",
+      "options": [
+        "24 pairs — 12 cervical, 8 thoracic, 4 lumbar",
+        "31 pairs — 8 cervical, 12 thoracic, 5 lumbar, 5 sacral, 1 coccygeal",
+        "30 pairs — 7 cervical, 12 thoracic, 6 lumbar, 5 sacral",
+        "33 pairs — 8 cervical, 12 thoracic, 6 lumbar, 5 sacral, 2 coccygeal"
+      ],
+      "correctIndex": 1,
+      "explanation": "31 pairs of spinal nerves: 8 CERVICAL (C1–C8), 12 THORACIC (T1–T12), 5 LUMBAR (L1–L5), 5 SACRAL (S1–S5), 1 COCCYGEAL (Co1). Note: 8 cervical nerves but only 7 cervical vertebrae — C8 exits below C7 vertebra. All other spinal nerves exit below their numbered vertebra."
+    },
+    {
+      "question": "The dorsal root of a spinal nerve carries which type of information?",
+      "options": [
+        "Motor — from CNS to skeletal muscles",
+        "Sensory — from sensory receptors TO the CNS; contains sensory neuron axons",
+        "Both sensory and motor equally",
+        "Only autonomic motor signals"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dorsal root = SENSORY (afferent) — carries sensory signals FROM peripheral receptors TO the spinal cord. Dorsal root ganglion (DRG) = where pseudounipolar sensory neuron cell bodies are located. Ventral root = MOTOR (efferent) — from anterior horn motor neurons to muscles/glands. Combined dorsal + ventral = mixed spinal nerve."
+    },
+    {
+      "question": "The anterior horn of spinal cord gray matter contains:",
+      "options": [
+        "Sensory neuron cell bodies receiving information from the periphery",
+        "Preganglionic autonomic neurons only",
+        "MOTOR neuron cell bodies (somatic motor neurons) whose axons exit via the ventral root",
+        "Interneurons processing only pain information"
+      ],
+      "correctIndex": 2,
+      "explanation": "Anterior (ventral) horn = SOMATIC MOTOR neuron cell bodies. Their axons exit via the ventral root → become part of spinal nerve → innervate skeletal muscles. Posterior (dorsal) horn = sensory interneurons. Lateral horn (T1–L2, S2–S4) = autonomic preganglionic neurons."
+    },
+    {
+      "question": "The dorsal root ganglion (DRG) contains:",
+      "options": [
+        "Motor neuron cell bodies that send signals to muscles",
+        "The cell bodies of PSEUDOUNIPOLAR SENSORY neurons that carry peripheral sensory signals to the spinal cord",
+        "Autonomic motor neurons controlling smooth muscle",
+        "Interneuron cell bodies that relay signals between spinal cord segments"
+      ],
+      "correctIndex": 1,
+      "explanation": "DRG = clusters of SENSORY (pseudounipolar) neuron cell bodies just outside the spinal cord on the dorsal root. The single process divides into a peripheral branch (from receptor) and a central branch (into spinal cord). Cell bodies in DRG are protected — their location outside the cord means sensory info enters via dorsal root."
+    },
+    {
+      "question": "The SPINOTHALAMIC TRACT carries which type of sensory information?",
+      "options": [
+        "Proprioception, fine touch, and vibration sensation — travels in dorsal columns",
+        "Pain, temperature, and crude touch — crosses the spinal cord soon after entering and travels in the anterolateral column",
+        "Voluntary motor commands from the cortex",
+        "Stretch reflex signals from muscle spindles"
+      ],
+      "correctIndex": 1,
+      "explanation": "Spinothalamic tract (anterolateral system): PAIN, TEMPERATURE, and CRUDE TOUCH. Sensory neuron enters spinal cord → CROSSES to opposite side (within 1–2 segments) → ascends in anterolateral funiculus → to thalamus. Damage to one side of spinal cord = loss of pain/temp on OPPOSITE (contralateral) body side."
+    },
+    {
+      "question": "The DORSAL COLUMNS (posterior funiculus) carry:",
+      "options": [
+        "Pain and temperature sensation, crossing immediately",
+        "Proprioception, fine discriminative touch, and vibration — travel IPSILATERAL up to medulla where they CROSS",
+        "Voluntary motor signals from cerebral cortex",
+        "Autonomic signals from the lateral horn"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dorsal columns (gracile fasciculus for lower body, cuneate fasciculus for upper body): carry PROPRIOCEPTION (joint position), FINE TOUCH (two-point discrimination), and VIBRATION. Travel IPSILATERAL (same side) all the way to the MEDULLA where they cross → thalamus. Damage = loss of fine touch/proprioception on SAME side."
+    },
+    {
+      "question": "The LATERAL CORTICOSPINAL TRACT controls:",
+      "options": [
+        "Sensory signals from the skin to the thalamus",
+        "Voluntary MOTOR control of skeletal muscles — originates in motor cortex, crosses in medulla (pyramidal decussation), descends in lateral white matter",
+        "Autonomic reflexes in the thoracic spinal cord",
+        "Balance and coordination via cerebellar pathways"
+      ],
+      "correctIndex": 1,
+      "explanation": "Lateral corticospinal tract = VOLUNTARY MOTOR. Originates in motor cortex → axons descend → CROSS in medulla (pyramidal decussation) → descend in lateral white matter of spinal cord → synapse on motor neurons in anterior horn. Upper motor neuron (brain) → lower motor neuron (anterior horn) → muscle."
+    },
+    {
+      "question": "A PLEXUS of spinal nerves is:",
+      "options": [
+        "A single spinal nerve without branching",
+        "A network formed by the anterior rami of several spinal nerves that intermingle to form named peripheral nerves",
+        "The dorsal root ganglion of the cervical region",
+        "The meningeal covering of the spinal cord"
+      ],
+      "correctIndex": 1,
+      "explanation": "A plexus = NETWORK formed by the ANTERIOR RAMI of several spinal nerve levels intermingling → forming named peripheral nerves that carry fibers from multiple spinal levels. Major plexuses: Cervical (C1–C5), Brachial (C5–T1), Lumbar (L1–L4), Sacral (L4–S4). The posterior rami supply back muscles and skin directly."
+    },
+    {
+      "question": "The BRACHIAL PLEXUS (C5–T1) is clinically important because damage to it causes:",
+      "options": [
+        "Loss of sensation and movement of the lower extremity",
+        "Paralysis and sensory loss of the upper extremity",
+        "Loss of diaphragmatic function and breathing",
+        "Disruption of the sciatic nerve affecting the entire leg"
+      ],
+      "correctIndex": 1,
+      "explanation": "Brachial plexus (C5–T1) innervates the ENTIRE UPPER LIMB. Damage (trauma, difficult delivery — Erb's palsy at C5–C6) causes upper limb weakness/paralysis and sensory loss. Named nerves: musculocutaneous, axillary, radial (wrist extension — Saturday night palsy), ulnar (claw hand), median (carpal tunnel)."
+    },
+    {
+      "question": "The SCIATIC NERVE is clinically significant because it:",
+      "options": [
+        "Arises from the cervical plexus and controls shoulder movement",
+        "Is the largest nerve in the body, arising from the sacral plexus (L4–S4), innervating the posterior thigh and entire leg/foot",
+        "Controls breathing via phrenic nerve",
+        "Arises from the lumbar plexus and controls anterior thigh movement"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sciatic nerve = LARGEST nerve in the body. Arises from sacral plexus (L4–S4). Passes through the greater sciatic foramen. Innervates: posterior thigh muscles (hamstrings), then divides into tibial + common fibular (peroneal) nerves → entire leg and foot. Sciatica = sciatic nerve compression (often by herniated disc at L4–L5 or L5–S1)."
+    },
+    {
+      "question": "A REFLEX ARC differs from voluntary movement because:",
+      "options": [
+        "Reflex arcs require conscious processing in the cerebral cortex",
+        "Reflex arcs bypass conscious brain processing — the response is integrated in the spinal cord for faster, protective reactions",
+        "Voluntary movement uses fewer neurons than reflex arcs",
+        "Reflex arcs only involve the autonomic nervous system"
+      ],
+      "correctIndex": 1,
+      "explanation": "Reflex arc bypasses conscious cortical processing. The signal is integrated at the SPINAL CORD level (for spinal reflexes) → immediate protective response. The brain receives info about the reflex AFTER it occurs (you pull your hand from the flame before consciously feeling the pain). Components: receptor → afferent neuron → integration center → efferent neuron → effector."
+    },
+    {
+      "question": "The STRETCH REFLEX (e.g., patellar/knee-jerk reflex) is unique because it is:",
+      "options": [
+        "Polysynaptic — involves multiple interneurons",
+        "Monosynaptic — sensory neuron directly synapses on the motor neuron without interneurons",
+        "Contralateral — the response is on the opposite side of the stimulus",
+        "Controlled by the cerebral cortex"
+      ],
+      "correctIndex": 1,
+      "explanation": "Stretch reflex = MONOSYNAPTIC (only ONE synapse): muscle spindle stretch → Ia afferent sensory neuron → directly synapses on alpha motor neuron in anterior horn → motor neuron activates the same muscle to contract (resisting the stretch). The patellar reflex tests L2–L4 integrity. Hyperreflexia = upper motor neuron damage. Hyporeflexia = lower motor neuron damage."
+    },
+    {
+      "question": "A dermatome is defined as:",
+      "options": [
+        "A muscle group controlled by a specific spinal nerve",
+        "The area of SKIN innervated by the sensory fibers of a SINGLE spinal nerve (or spinal cord segment)",
+        "The bony vertebral canal protecting the spinal cord",
+        "A nerve plexus in the lumbar region"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dermatome = area of SKIN innervated by ONE spinal nerve's sensory fibers. Clinical uses: 1) Localize spinal cord/nerve root level of injury (shingles follows dermatomes). 2) Test spinal cord integrity (pin prick sensation at specific dermatomes). Example: C6 = thumb/index finger; L4 = medial leg; S1 = lateral foot."
+    },
+    {
+      "question": "The PREGANGLIONIC neuron of the autonomic NS has its cell body:",
+      "options": [
+        "In a ganglion outside the spinal cord",
+        "In the peripheral nerve just before the effector",
+        "In the CNS (brainstem or spinal cord lateral horn)",
+        "In the dorsal root ganglion"
+      ],
+      "correctIndex": 2,
+      "explanation": "Preganglionic neuron cell body is in the CNS (lateral horn of spinal cord for thoracolumbar/sympathetic and sacral segments + cranial nerve nuclei for parasympathetic). Its AXON exits CNS → travels to an AUTONOMIC GANGLION → synapses on postganglionic neuron → postganglionic innervates the effector."
+    },
+    {
+      "question": "The SYMPATHETIC nervous system arises from which spinal cord levels?",
+      "options": [
+        "Craniosacral — cranial nerve nuclei and S2–S4",
+        "Thoracolumbar — T1 through L2",
+        "Entire spinal cord from C1 to S5",
+        "Only the thoracic segments T1–T12"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sympathetic NS = THORACOLUMBAR outflow from T1–L2 lateral horn. Preganglionic axons exit via ventral roots → enter sympathetic chain ganglia (paravertebral) → synapse or ascend/descend → postganglionic fibers innervate target organs. NT: preganglionic = ACh; postganglionic = NOREPINEPHRINE (mostly)."
+    },
+    {
+      "question": "The CAUDA EQUINA (horse's tail) is:",
+      "options": [
+        "The enlarged section of spinal cord at L1–L4",
+        "The collection of spinal nerve roots below the conus medullaris (end of spinal cord at L1–L2) that travel down within the vertebral canal to exit at their appropriate foramina",
+        "The filum terminale that anchors the spinal cord to the coccyx",
+        "The meninges surrounding the lower spinal cord"
+      ],
+      "correctIndex": 1,
+      "explanation": "Cauda equina = bundle of spinal nerve ROOTS (L2–Co) that travel downward within the vertebral canal below the end of the spinal cord (conus medullaris at L1–L2). Named for its horse-tail appearance. Cauda equina syndrome (compression) = loss of bowel/bladder control, saddle anesthesia, lower limb weakness — surgical emergency."
+    },
+    {
+      "question": "The conus medullaris is:",
+      "options": [
+        "The superior end of the spinal cord at the foramen magnum",
+        "The tapered inferior END of the spinal cord, typically ending at the L1–L2 vertebral level in adults",
+        "The widened area of the spinal cord supplying the upper limb",
+        "The central canal of the spinal cord"
+      ],
+      "correctIndex": 1,
+      "explanation": "Conus medullaris = the tapered, cone-shaped inferior END of the spinal cord. Located at vertebral level L1–L2 in adults (higher in children). Below the conus, the vertebral canal contains only the CAUDA EQUINA (nerve roots). Lumbar punctures (spinal taps) are performed below L2 to avoid spinal cord damage."
+    },
+    {
+      "question": "The FILUM TERMINALE anchors the spinal cord by:",
+      "options": [
+        "Connecting the spinal cord to the dura mater superiorly",
+        "Being a thin strand of pia mater extending from the conus medullaris to the coccyx, stabilizing the spinal cord position",
+        "Forming the cauda equina nerve root bundles",
+        "Connecting adjacent vertebrae to protect the cord from movement"
+      ],
+      "correctIndex": 1,
+      "explanation": "Filum terminale = thin strand of PIA MATER (innermost meninx) extending from the conus medullaris → through the cauda equina → to the coccyx. Anchors and stabilizes the spinal cord. Tethered cord syndrome = filum terminale is abnormally short/thick → pulls on spinal cord during growth → neurological deficits."
+    },
+    {
+      "question": "Which reflex involves flexion of the stimulated limb AND extension of the opposite limb?",
+      "options": [
+        "Stretch reflex (monosynaptic)",
+        "Crossed extension reflex (during the withdrawal reflex)",
+        "Tendon reflex (Golgi tendon organ)",
+        "Autonomic vasomotor reflex"
+      ],
+      "correctIndex": 1,
+      "explanation": "Crossed extension reflex accompanies the WITHDRAWAL (flexor) reflex. When you step on a nail (right foot): Right foot withdraws (right leg flexes — ipsilateral) AND the left leg extends (contralateral) to SUPPORT BODY WEIGHT and maintain balance. The reflex protects and simultaneously maintains posture. Involves crossed interneurons in the spinal cord."
+    },
+    {
+      "question": "Gray rami communicantes carry which type of nerve fibers?",
+      "options": [
+        "Preganglionic sympathetic fibers from spinal cord to sympathetic chain",
+        "Sensory fibers from skin to dorsal horn",
+        "Postganglionic UNMYELINATED sympathetic fibers from sympathetic chain back to spinal nerves — innervating body wall structures",
+        "Parasympathetic fibers from the cranial nerve nuclei"
+      ],
+      "correctIndex": 2,
+      "explanation": "Gray rami communicantes carry POSTGANGLIONIC UNMYELINATED sympathetic fibers from the sympathetic chain ganglia BACK to the spinal nerve → distributed to body wall (sweat glands, arrector pili, blood vessels in skin and skeletal muscle). White rami communicantes carry PREGANGLIONIC MYELINATED sympathetic fibers FROM spinal cord TO the sympathetic chain. Gray = post. White = pre."
+    }
+  ],
+  "flashcards": [
+    {
+      "term": "31 Spinal Nerve Pairs",
+      "definition": "8 Cervical, 12 Thoracic, 5 Lumbar, 5 Sacral, 1 Coccygeal. 8 cervical nerves but only 7 cervical vertebrae (C8 exits below C7)."
+    },
+    {
+      "term": "Dorsal Root vs Ventral Root",
+      "definition": "Dorsal root = SENSORY (afferent) — carries signals from receptors TO spinal cord. Dorsal root ganglion = sensory cell bodies. Ventral root = MOTOR (efferent) — from anterior horn neurons to muscles."
+    },
+    {
+      "term": "Spinal Cord Gray Matter",
+      "definition": "H-shaped, inner. Anterior horn = MOTOR neuron cell bodies (voluntary). Posterior horn = sensory interneurons. Lateral horn (T1–L2, S2–S4) = autonomic preganglionic neurons."
+    },
+    {
+      "term": "Spinothalamic Tract",
+      "definition": "ASCENDING (sensory). Carries PAIN, TEMPERATURE, crude touch. Crosses to OPPOSITE SIDE within 1–2 segments of entering. Travels in anterolateral column to thalamus."
+    },
+    {
+      "term": "Dorsal Columns",
+      "definition": "ASCENDING (sensory). Carry PROPRIOCEPTION, FINE TOUCH, VIBRATION. Travel IPSILATERAL all the way to medulla where they CROSS. Gracile (lower body) + cuneate (upper body) fasciculi."
+    },
+    {
+      "term": "Lateral Corticospinal Tract",
+      "definition": "DESCENDING (motor). VOLUNTARY motor control. Originates in motor cortex → crosses in medulla (pyramidal decussation) → descends in lateral white matter → anterior horn motor neurons → muscles."
+    },
+    {
+      "term": "Cervical Enlargement & Lumbar Enlargement",
+      "definition": "Cervical (C4–T1): enlarged area supplying UPPER LIMBS (brachial plexus). Lumbar (L1–S3): enlarged area supplying LOWER LIMBS (lumbosacral plexus)."
+    },
+    {
+      "term": "Brachial Plexus",
+      "definition": "C5–T1. Innervates ENTIRE UPPER LIMB. Key nerves: Musculocutaneous, Axillary, Radial (wrist drop = Saturday night palsy), Ulnar (claw hand), Median (carpal tunnel syndrome)."
+    },
+    {
+      "term": "Sciatic Nerve",
+      "definition": "LARGEST nerve in body. From sacral plexus (L4–S4). Innervates posterior thigh then divides → tibial + common fibular → entire leg/foot. Sciatica from L4–L5 or L5–S1 disc herniation."
+    },
+    {
+      "term": "Plexus",
+      "definition": "Network formed by ANTERIOR RAMI of several spinal nerve levels intermingling to form named peripheral nerves. Cervical (C1–C5), Brachial (C5–T1), Lumbar (L1–L4), Sacral (L4–S4)."
+    },
+    {
+      "term": "Reflex Arc",
+      "definition": "BYPASSES conscious brain. Receptor → Afferent neuron → Spinal cord integration center → Efferent neuron → Effector. Fast protective response — brain informed AFTER."
+    },
+    {
+      "term": "Stretch Reflex",
+      "definition": "MONOSYNAPTIC. Muscle spindle stretched → Ia afferent → DIRECTLY synapses on alpha motor neuron → same muscle contracts. Patellar reflex = L2–L4. Hyperreflexia = upper MN damage."
+    },
+    {
+      "term": "Withdrawal + Crossed Extension Reflex",
+      "definition": "Painful stimulus → IPSILATERAL LIMB FLEXES (withdraw) + CONTRALATERAL LIMB EXTENDS (support weight). Crossed interneurons coordinate both sides simultaneously."
+    },
+    {
+      "term": "Dermatome",
+      "definition": "Area of SKIN innervated by sensory fibers of ONE spinal nerve/segment. Used to localize nerve root damage (shingles, spinal injury). C6 = thumb, L4 = medial leg, S1 = lateral foot."
+    },
+    {
+      "term": "Autonomic NS Organization",
+      "definition": "Preganglionic neuron (CNS) → ganglion → postganglionic neuron → effector (2-neuron chain). Sympathetic: thoracolumbar (T1–L2). Parasympathetic: craniosacral (CN III,VII,IX,X + S2–S4)."
+    },
+    {
+      "term": "Preganglionic vs Postganglionic",
+      "definition": "Preganglionic: cell body in CNS, MYELINATED axon, NT = ACh (always). Postganglionic: cell body in ganglion, UNMYELINATED, NT = NE (sympathetic) or ACh (parasympathetic)."
+    },
+    {
+      "term": "Conus Medullaris",
+      "definition": "Tapered END of spinal cord at L1–L2 in adults. Below it = only cauda equina in vertebral canal. Lumbar punctures done BELOW L2 to avoid spinal cord damage."
+    },
+    {
+      "term": "Cauda Equina",
+      "definition": "Bundle of spinal nerve ROOTS (L2–Co) below the conus medullaris. Named for horse-tail appearance. Cauda equina syndrome (compression) = bowel/bladder loss, saddle anesthesia — surgical emergency."
+    },
+    {
+      "term": "Filum Terminale",
+      "definition": "Thin strand of PIA MATER extending from conus medullaris to coccyx. ANCHORS and stabilizes spinal cord. Tethered cord syndrome = abnormally short/thick filum."
+    },
+    {
+      "term": "Gray vs White Rami Communicantes",
+      "definition": "White rami: PREGANGLIONIC myelinated sympathetic fibers FROM spinal cord TO sympathetic chain (white = myelin). Gray rami: POSTGANGLIONIC unmyelinated fibers FROM chain BACK to spinal nerve to body wall."
+    }
+  ]
+}

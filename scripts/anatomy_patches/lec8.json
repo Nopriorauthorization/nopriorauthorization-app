@@ -1,0 +1,339 @@
+{
+  "cheatSheet": [
+    {
+      "title": "Connective tissue organization",
+      "color": "pink",
+      "content": "<p>From outside in: <strong>Fascia</strong> (surrounds entire muscle) → <strong>Epimysium</strong> (around whole muscle) → <strong>Perimysium</strong> (around fascicles/bundles) → <strong>Endomysium</strong> (around individual muscle fibers).</p><p>Fascicle arrangements: parallel, fusiform, pennate (unipennate/bipennate/multipennate), circular, convergent — determines strength and range of motion.</p>"
+    },
+    {
+      "title": "Muscle fiber microanatomy",
+      "color": "teal",
+      "content": "<p><strong>Sarcolemma</strong>: plasma membrane of muscle fiber. <strong>T-tubules</strong>: deep infoldings carrying action potential into the cell. <strong>Sarcoplasmic reticulum (SR)</strong>: modified ER, stores and releases Ca²⁺. <strong>Triad</strong>: one T-tubule + two terminal cisternae of SR.</p><p><strong>Myofibrils</strong>: cylindrical organelles filled with <strong>sarcomeres</strong> (functional units). Thick filaments = myosin. Thin filaments = actin + tropomyosin + troponin.</p>"
+    },
+    {
+      "title": "Sarcomere anatomy",
+      "color": "coral",
+      "content": "<p><strong>Z discs</strong>: boundaries of sarcomere. <strong>A band</strong>: full length of myosin (thick) — does NOT shorten. <strong>I band</strong>: only actin (thin), no myosin overlap — SHORTENS during contraction. <strong>H zone</strong>: myosin only, no actin overlap — SHORTENS. <strong>M line</strong>: center of sarcomere, holds myosin together.</p>"
+    },
+    {
+      "title": "Neuromuscular junction (NMJ)",
+      "color": "purple",
+      "content": "<p>Steps: 1. AP arrives at motor neuron axon terminal. 2. Ca²⁺ enters terminal. 3. ACh released into synaptic cleft. 4. ACh binds nicotinic receptors on motor end plate. 5. Na⁺ enters → muscle AP generated. 6. ACh broken down by <strong>acetylcholinesterase</strong>.</p><p>Motor unit = one motor neuron + all muscle fibers it innervates. Smaller motor units = finer control (eye, hand). Larger = power (quadriceps).</p>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "From outside to inside, the correct order of connective tissue wrappings of skeletal muscle is:",
+      "options": [
+        "Endomysium → perimysium → epimysium → fascia",
+        "Fascia → epimysium → perimysium → endomysium",
+        "Epimysium → fascia → endomysium → perimysium",
+        "Perimysium → epimysium → endomysium → fascia"
+      ],
+      "correctIndex": 1,
+      "explanation": "Fascia (surrounds entire muscle/muscle group) → Epimysium (around whole muscle) → Perimysium (around each fascicle/bundle) → Endomysium (around each individual muscle fiber). Tendons and aponeuroses are extensions of epimysium."
+    },
+    {
+      "question": "T-tubules in skeletal muscle fibers function to:",
+      "options": [
+        "Store calcium ions for release during contraction",
+        "Produce ATP for muscle contraction",
+        "Conduct action potentials deep into the muscle fiber to trigger contraction throughout its width",
+        "Synthesize myosin and actin proteins"
+      ],
+      "correctIndex": 2,
+      "explanation": "T-tubules (transverse tubules) are deep infoldings of the sarcolemma that penetrate to the center of the muscle fiber. They rapidly conduct the action potential deep into the cell so that all sarcomeres contract simultaneously — preventing the outside from contracting before the inside."
+    },
+    {
+      "question": "The sarcoplasmic reticulum (SR) functions specifically to:",
+      "options": [
+        "Produce ATP via oxidative phosphorylation",
+        "Store, release, and resequester calcium ions that trigger contraction",
+        "Synthesize myosin heavy chains",
+        "Form the T-tubule network"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sarcoplasmic reticulum = smooth ER of muscle cells. Its specialized function is Ca²⁺ storage and regulation. When an action potential arrives via T-tubules, SR releases Ca²⁺ → binds troponin → contraction begins. After AP ends, SR actively pumps Ca²⁺ back → relaxation."
+    },
+    {
+      "question": "The TRIAD of skeletal muscle consists of:",
+      "options": [
+        "One T-tubule + two terminal cisternae of the sarcoplasmic reticulum",
+        "Three myofibrils surrounding one T-tubule",
+        "Actin + myosin + titin filaments",
+        "Three sarcomeres arranged in series"
+      ],
+      "correctIndex": 0,
+      "explanation": "The triad = ONE T-tubule flanked by TWO terminal cisternae (expanded ends of the SR). The close proximity allows voltage changes in the T-tubule (from the AP) to trigger Ca²⁺ release from the SR via ryanodine receptors — the critical link between electrical and mechanical events."
+    },
+    {
+      "question": "In a sarcomere, which band does NOT shorten during contraction?",
+      "options": [
+        "I band",
+        "H zone",
+        "A band",
+        "The distance between Z discs"
+      ],
+      "correctIndex": 2,
+      "explanation": "The A band = full length of the MYOSIN (thick) filaments and does NOT change length during contraction (thick filaments don't shorten). The I band (actin only) and H zone (myosin only, no overlap) SHORTEN as thin filaments slide toward the center. The Z discs move closer together."
+    },
+    {
+      "question": "Thick filaments in the sarcomere are composed of:",
+      "options": [
+        "Actin, tropomyosin, and troponin",
+        "Myosin — the motor protein that drives sliding",
+        "Titin elastic protein only",
+        "Troponin C, I, and T subunits"
+      ],
+      "correctIndex": 1,
+      "explanation": "Thick filaments = MYOSIN. Myosin has a tail (structural) and a head (binds actin + hydrolyzes ATP to drive movement). Thin filaments = ACTIN + tropomyosin (covers binding sites at rest) + troponin complex (Ca²⁺ sensor that moves tropomyosin when Ca²⁺ binds)."
+    },
+    {
+      "question": "Tropomyosin's role in the resting muscle is to:",
+      "options": [
+        "Provide ATP to myosin heads",
+        "Block the myosin-binding sites on actin, preventing cross-bridge formation",
+        "Release calcium from the sarcoplasmic reticulum",
+        "Anchor myosin filaments to the M line"
+      ],
+      "correctIndex": 1,
+      "explanation": "At rest, tropomyosin physically BLOCKS the myosin-binding sites on actin — preventing cross-bridge formation and contraction. When Ca²⁺ is released and binds to troponin C, troponin changes shape → moves tropomyosin aside → myosin binding sites exposed → cross-bridges form → contraction."
+    },
+    {
+      "question": "At the neuromuscular junction, acetylcholine (ACh) is released from:",
+      "options": [
+        "The motor end plate on the muscle fiber",
+        "The synaptic knob (axon terminal) of the motor neuron",
+        "The sarcoplasmic reticulum",
+        "The T-tubule membrane"
+      ],
+      "correctIndex": 1,
+      "explanation": "ACh is synthesized and stored in synaptic vesicles in the AXON TERMINAL (synaptic knob) of the motor neuron. When an AP arrives → Ca²⁺ enters the terminal → vesicles fuse with membrane → ACh released into synaptic cleft → binds nicotinic receptors on motor end plate of muscle fiber."
+    },
+    {
+      "question": "After ACh binds to receptors on the motor end plate, what immediately happens?",
+      "options": [
+        "Ca²⁺ is immediately released from the SR",
+        "K⁺ rushes into the cell, creating hyperpolarization",
+        "Na⁺ rushes into the muscle fiber, creating a local depolarization (end-plate potential) that triggers a muscle AP",
+        "The muscle fiber immediately shortens without an action potential"
+      ],
+      "correctIndex": 2,
+      "explanation": "ACh binds nicotinic receptors (ligand-gated ion channels) → channels open → Na⁺ rushes in (more than K⁺ exits) → local depolarization (end-plate potential/EPP). If large enough, EPP triggers a MUSCLE ACTION POTENTIAL that propagates along sarcolemma and down T-tubules → Ca²⁺ released from SR → contraction."
+    },
+    {
+      "question": "Acetylcholinesterase (AChE) is important at the NMJ because it:",
+      "options": [
+        "Releases more ACh when the muscle needs to contract longer",
+        "Rapidly breaks down ACh in the synaptic cleft, allowing the muscle to relax",
+        "Prevents Ca²⁺ from entering the axon terminal",
+        "Repolarizes the motor neuron membrane"
+      ],
+      "correctIndex": 1,
+      "explanation": "AChE is an enzyme in the synaptic cleft and on the motor end plate that rapidly breaks down ACh into acetate + choline. This terminates the signal → muscle stops being stimulated → SR pumps Ca²⁺ back → muscle relaxes. Without AChE (e.g., organophosphate poisoning), ACh accumulates → sustained muscle contraction → death."
+    },
+    {
+      "question": "A motor unit is defined as:",
+      "options": [
+        "All the sarcomeres in one muscle fiber",
+        "One motor neuron plus all the muscle fibers it innervates",
+        "All the muscles in one limb",
+        "The group of motor neurons in the spinal cord controlling one muscle"
+      ],
+      "correctIndex": 1,
+      "explanation": "Motor unit = ONE motor neuron + ALL muscle fibers it innervates. Small motor units (1 neuron : few fibers) = FINE control (extraocular muscles, hand intrinsics). Large motor units (1 neuron : hundreds of fibers) = POWER but less precision (gastrocnemius, quadriceps)."
+    },
+    {
+      "question": "The Z disc of the sarcomere serves as:",
+      "options": [
+        "The site where myosin heads attach to actin",
+        "The center of the A band where myosin tails are anchored",
+        "The BOUNDARY of each sarcomere where thin (actin) filaments are anchored",
+        "The region containing only myosin with no actin overlap"
+      ],
+      "correctIndex": 2,
+      "explanation": "Z discs (Z lines) define the BOUNDARIES of each sarcomere. Thin filaments (actin) are anchored to Z discs and extend toward the center. During contraction, Z discs are pulled toward each other → sarcomere shortens. The distance between two Z discs = one sarcomere."
+    },
+    {
+      "question": "Which regulatory protein on thin filaments senses calcium and causes tropomyosin to move?",
+      "options": [
+        "Titin",
+        "Myosin",
+        "Actin",
+        "Troponin"
+      ],
+      "correctIndex": 3,
+      "explanation": "TROPONIN is the calcium sensor. It has 3 subunits: Troponin C (binds Ca²⁺), Troponin I (inhibits actin-myosin interaction), Troponin T (binds tropomyosin). When Ca²⁺ binds TnC → conformational change → TnI moves → tropomyosin shifts → myosin-binding sites on actin exposed. Clinical note: cardiac troponin (cTnI, cTnT) = gold standard marker for MI."
+    },
+    {
+      "question": "Myoglobin in skeletal muscle functions to:",
+      "options": [
+        "Generate ATP during anaerobic metabolism",
+        "Store oxygen within the muscle fiber for immediate use",
+        "Contract the muscle when stimulated by ACh",
+        "Anchor myosin filaments to the M line"
+      ],
+      "correctIndex": 1,
+      "explanation": "Myoglobin is an oxygen-binding protein in muscle cytoplasm (sarcoplasm). It STORES O₂ within the muscle fiber for immediate use during sudden intense activity. It also facilitates O₂ diffusion from capillaries to mitochondria. Gives red/dark meat its color. Released during rhabdomyolysis → can damage kidneys (cola-colored urine)."
+    },
+    {
+      "question": "The H zone of the sarcomere contains:",
+      "options": [
+        "Only actin — no myosin overlap",
+        "Both actin and myosin overlapping",
+        "Only myosin — no actin overlap",
+        "The Z discs at the boundaries of the sarcomere"
+      ],
+      "correctIndex": 2,
+      "explanation": "H zone = central region of A band containing ONLY MYOSIN tails — no actin overlap. The H zone SHORTENS during contraction as actin slides into it (more overlap). At full contraction, the H zone may disappear entirely as actin filaments from opposite sides meet at the M line."
+    },
+    {
+      "question": "Fascicle arrangement in PENNATE muscles (like the deltoid) results in:",
+      "options": [
+        "Maximum range of motion but less force generation",
+        "Fibers parallel to the long axis for maximum shortening",
+        "Fibers arranged at an angle to the tendon — less range of motion but greater power",
+        "Circular arrangement for constriction functions"
+      ],
+      "correctIndex": 2,
+      "explanation": "Pennate muscles have fascicles arranged at an ANGLE to the central tendon (like a feather — penna = feather). More muscle fibers can pack in → greater POWER but less shortening range. Examples: deltoid (multipennate), rectus femoris (bipennate), tibialis posterior (unipennate)."
+    },
+    {
+      "question": "Muscle TONE (tonus) is defined as:",
+      "options": [
+        "Maximum force a muscle can generate",
+        "A continuous small degree of contraction in a resting muscle, maintaining posture",
+        "Complete relaxation of all motor units",
+        "The force generated during a single twitch"
+      ],
+      "correctIndex": 1,
+      "explanation": "Muscle tone = sustained partial contraction of resting muscle. A small number of motor units contract asynchronously at all times to maintain POSTURE and keep muscles ready for action. Hypotonia = decreased tone (flaccid paralysis — lower motor neuron damage). Hypertonia = increased tone (spastic paralysis — upper motor neuron damage)."
+    },
+    {
+      "question": "The epimysium is:",
+      "options": [
+        "The thin layer surrounding individual muscle fibers",
+        "The connective tissue surrounding each fascicle (bundle)",
+        "The outer connective tissue sheath surrounding the entire muscle",
+        "The synovial sheath surrounding tendons"
+      ],
+      "correctIndex": 2,
+      "explanation": "Epimysium = outermost CT layer surrounding the ENTIRE muscle. Continuous with the tendon (which attaches muscle to bone). Under the epimysium = perimysium (around fascicles) → endomysium (around individual fibers). These CT layers form the tendon when they converge at the muscle's end."
+    },
+    {
+      "question": "The neuromuscular junction transmits signals from the nervous system to muscle using which neurotransmitter?",
+      "options": [
+        "Norepinephrine",
+        "Dopamine",
+        "Glutamate",
+        "Acetylcholine (ACh)"
+      ],
+      "correctIndex": 3,
+      "explanation": "ACh (acetylcholine) is the neurotransmitter at ALL neuromuscular junctions of skeletal muscle. Released from motor neuron axon terminals, binds nicotinic receptors on motor end plate → Na⁺ influx → muscle AP. Curare blocks these receptors (paralysis). Succinylcholine mimics ACh (used for intubation)."
+    },
+    {
+      "question": "The length-tension relationship of muscle states that:",
+      "options": [
+        "Longer muscles always generate more tension than shorter muscles",
+        "Maximum tension is generated at the optimal resting length where actin and myosin overlap maximally",
+        "Muscle tension is independent of muscle length",
+        "Shorter sarcomeres always generate more force"
+      ],
+      "correctIndex": 1,
+      "explanation": "Maximum force is generated at the OPTIMAL RESTING LENGTH where actin and myosin overlap is maximum — allowing maximum cross-bridge formation. Too short (sarcomeres too compressed, filaments overlap incorrectly) OR too long (insufficient overlap) both reduce force. This principle underlies muscle strength testing and positioning in rehabilitation."
+    },
+    {
+      "question": "Which structural protein connects myosin to the Z disc and acts as a molecular spring providing passive elasticity?",
+      "options": [
+        "Tropomyosin",
+        "Actin",
+        "Titin",
+        "Troponin T"
+      ],
+      "correctIndex": 2,
+      "explanation": "TITIN is the largest protein in the body. It connects the myosin M line to the Z disc, acting as a molecular spring that returns the sarcomere to resting length after stretching. Titin prevents overstretching of sarcomeres and contributes to passive tension. Mutations in titin cause certain cardiomyopathies."
+    }
+  ],
+  "flashcards": [
+    {
+      "term": "Epimysium / Perimysium / Endomysium",
+      "definition": "Epimysium: outer sheath around ENTIRE MUSCLE. Perimysium: around FASCICLES (bundles). Endomysium: around individual MUSCLE FIBERS. All continuous with tendon."
+    },
+    {
+      "term": "Sarcolemma",
+      "definition": "Plasma membrane of a MUSCLE FIBER. Excitable — can generate and propagate action potentials. T-tubules are deep infoldings of the sarcolemma."
+    },
+    {
+      "term": "T-Tubules",
+      "definition": "Deep infoldings of the sarcolemma penetrating to the fiber's center. Conduct action potentials deep into the cell so ALL sarcomeres contract simultaneously."
+    },
+    {
+      "term": "Sarcoplasmic Reticulum (SR)",
+      "definition": "Modified smooth ER of muscle cells. STORES and RELEASES Ca²⁺. Terminal cisternae release Ca²⁺ when triggered. SR pumps Ca²⁺ back in for relaxation."
+    },
+    {
+      "term": "Triad",
+      "definition": "ONE T-tubule + TWO terminal cisternae of SR. Allows voltage change in T-tubule to trigger Ca²⁺ release from SR via ryanodine receptors."
+    },
+    {
+      "term": "Sarcomere",
+      "definition": "FUNCTIONAL UNIT of muscle contraction. Extends from Z disc to Z disc. Contains overlapping thick (myosin) and thin (actin) filaments."
+    },
+    {
+      "term": "Thick vs Thin Filaments",
+      "definition": "Thick = MYOSIN (motor protein, has heads that bind actin + ATP). Thin = ACTIN + tropomyosin (covers binding sites) + troponin (Ca²⁺ sensor)."
+    },
+    {
+      "term": "Sarcomere Bands",
+      "definition": "A band: full length of MYOSIN — does NOT shorten. I band: ACTIN only — SHORTENS. H zone: MYOSIN only, no actin — SHORTENS. Z disc: boundary (anchors actin). M line: center (anchors myosin)."
+    },
+    {
+      "term": "Troponin",
+      "definition": "Ca²⁺ sensor on thin filaments. TnC binds Ca²⁺ → moves tropomyosin → exposes actin binding sites → cross-bridges form. CARDIAC TROPONIN = gold standard for MI diagnosis."
+    },
+    {
+      "term": "Tropomyosin",
+      "definition": "Regulatory protein that BLOCKS myosin binding sites on actin at rest. Moved aside when troponin binds Ca²⁺ → allows cross-bridge formation and contraction."
+    },
+    {
+      "term": "Neuromuscular Junction (NMJ)",
+      "definition": "Synapse between motor neuron axon terminal and muscle motor end plate. Neurotransmitter = ACETYLCHOLINE (ACh). Signal: AP → Ca²⁺ enters → ACh released → binds receptors → muscle AP."
+    },
+    {
+      "term": "Acetylcholine (ACh) at NMJ",
+      "definition": "Released from motor neuron axon terminal. Binds NICOTINIC receptors on motor end plate → Na⁺ influx → end-plate potential → muscle AP. Broken down by acetylcholinesterase (AChE)."
+    },
+    {
+      "term": "Acetylcholinesterase (AChE)",
+      "definition": "Enzyme in synaptic cleft that rapidly breaks down ACh → terminates signal → muscle relaxes. Inhibited by organophosphates (nerve agents, some pesticides) → sustained contraction."
+    },
+    {
+      "term": "Motor Unit",
+      "definition": "ONE motor neuron + ALL muscle fibers it innervates. Small motor units = fine control (eyes, hands). Large motor units = power (gastrocnemius, quadriceps)."
+    },
+    {
+      "term": "Myoglobin",
+      "definition": "Oxygen-storing protein in muscle sarcoplasm. Stores O₂ for immediate use during intense activity. Gives muscle its red color. Released in rhabdomyolysis → kidney damage (cola urine)."
+    },
+    {
+      "term": "Muscle Tone (Tonus)",
+      "definition": "Continuous low-level contraction of resting muscle maintaining posture. Small motor units fire asynchronously. Hypotonia = ↓ tone (flaccid). Hypertonia = ↑ tone (spastic)."
+    },
+    {
+      "term": "Fascicle Arrangements",
+      "definition": "Parallel (max shortening), Fusiform (tapered ends), Pennate (uni/bi/multi — max power, less ROM), Circular (sphincters), Convergent (fan-shaped — variable force)."
+    },
+    {
+      "term": "Titin",
+      "definition": "Largest protein in body. Connects myosin to Z disc — acts as MOLECULAR SPRING providing passive elasticity. Prevents sarcomere overstretching. Mutations cause cardiomyopathy."
+    },
+    {
+      "term": "H Zone",
+      "definition": "Center of A band. Contains ONLY MYOSIN tails — no actin overlap. SHORTENS during contraction as actin slides in. May disappear entirely at full contraction."
+    },
+    {
+      "term": "Length-Tension Relationship",
+      "definition": "Maximum force at OPTIMAL RESTING LENGTH where actin-myosin overlap is maximal. Too short or too long = less force. Basis for muscle strength testing and rehab positioning."
+    }
+  ]
+}

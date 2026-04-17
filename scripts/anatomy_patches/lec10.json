@@ -1,0 +1,328 @@
+{
+  "cheatSheet": [
+    {
+      "title": "NS organization & neuron anatomy",
+      "color": "pink",
+      "content": "<p><strong>CNS</strong>: brain + spinal cord. <strong>PNS</strong>: all nerves outside CNS. PNS = Somatic (voluntary, skeletal muscle) + Autonomic (involuntary — Sympathetic = fight/flight; Parasympathetic = rest/digest).</p><p><strong>Neuron</strong>: Cell body (soma) → Dendrites (receive signals) → Axon hillock (AP initiation) → Axon → Axon terminals. Myelin sheath (from Schwann cells/oligodendrocytes) speeds conduction via saltatory conduction at Nodes of Ranvier.</p>"
+    },
+    {
+      "title": "Neuron classification",
+      "color": "teal",
+      "content": "<p><strong>Structural</strong>: Multipolar (most neurons — many dendrites, one axon), Bipolar (retina, olfactory), Unipolar/Pseudounipolar (sensory — dorsal root ganglion).</p><p><strong>Functional</strong>: Sensory/Afferent (carry signals TO CNS), Motor/Efferent (carry signals FROM CNS to effectors), Interneurons/Association (within CNS — 99% of all neurons).</p>"
+    },
+    {
+      "title": "Neuroglia — support cells",
+      "color": "coral",
+      "content": "<p><strong>CNS glia</strong>: Astrocytes (BBB, support, glutamate uptake), Oligodendrocytes (MYELIN in CNS — one cell myelinates multiple axons), Microglia (immune defense — phagocytes of CNS), Ependymal cells (line ventricles, produce CSF).</p><p><strong>PNS glia</strong>: Schwann cells (MYELIN in PNS — one cell per axon segment), Satellite cells (surround neuron cell bodies in ganglia).</p>"
+    },
+    {
+      "title": "Chemical synapses & white/gray matter",
+      "color": "purple",
+      "content": "<p><strong>Synapse</strong>: Presynaptic neuron releases NT into synaptic cleft → binds receptors on postsynaptic neuron. <strong>EPSP</strong> = excitatory. <strong>IPSP</strong> = inhibitory. Summation (spatial + temporal) determines whether AP fires at axon hillock.</p><p><strong>Gray matter</strong>: cell bodies, dendrites, unmyelinated axons, synapses. <strong>White matter</strong>: myelinated axons (myelin = white/fatty). In CNS: gray matter is OUTER (cortex) in brain, INNER (butterfly shape) in spinal cord.</p>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "The THREE basic functions of the nervous system are:",
+      "options": [
+        "Digestion, respiration, and circulation",
+        "Sensory input, integration, and motor output",
+        "Sensation, movement, and cognition only",
+        "Reflex arcs, voluntary movement, and memory"
+      ],
+      "correctIndex": 1,
+      "explanation": "The nervous system performs three functions: 1) SENSORY INPUT — gathering information from sensory receptors. 2) INTEGRATION — processing and interpreting information (CNS). 3) MOTOR OUTPUT — sending commands to effectors (muscles and glands). All nervous system activities involve these three steps."
+    },
+    {
+      "question": "A neuron differs from neuroglia (glial cells) in that neurons:",
+      "options": [
+        "Are more numerous in the nervous system",
+        "Cannot generate electrical signals",
+        "Are the functional signaling cells that generate and transmit nerve impulses",
+        "Form the myelin sheath around axons"
+      ],
+      "correctIndex": 2,
+      "explanation": "Neurons are the FUNCTIONAL signaling cells — they generate and transmit electrical signals (action potentials). Neuroglia are support cells: they do NOT generate action potentials but perform structural, metabolic, immune, and myelination functions. Glia outnumber neurons approximately 10:1."
+    },
+    {
+      "question": "The AXON HILLOCK is important because it:",
+      "options": [
+        "Receives signals from other neurons via synaptic contacts",
+        "Stores neurotransmitters in synaptic vesicles",
+        "Is the site where action potentials are INITIATED — highest density of voltage-gated Na⁺ channels",
+        "Produces myelin to insulate the axon"
+      ],
+      "correctIndex": 2,
+      "explanation": "The axon hillock is the cone-shaped region where the axon emerges from the cell body. It has the HIGHEST density of voltage-gated Na⁺ channels in the neuron → is where the action potential is INITIATED (threshold most easily reached here). It integrates all EPSPs and IPSPs from dendrites and cell body."
+    },
+    {
+      "question": "Myelin sheath increases conduction velocity because:",
+      "options": [
+        "It adds more ion channels to the axon membrane",
+        "It allows ions to cross at every point along the axon (continuous conduction)",
+        "It insulates the axon, forcing the action potential to jump between Nodes of Ranvier (saltatory conduction)",
+        "It increases the diameter of the axon"
+      ],
+      "correctIndex": 2,
+      "explanation": "Myelin INSULATES the axon between Nodes of Ranvier → ions can only cross the membrane AT THE NODES. The AP 'jumps' from node to node (SALTATORY conduction — salire = to leap). Much faster than continuous conduction along unmyelinated axons. MS attacks myelin → slowed/blocked conduction."
+    },
+    {
+      "question": "Oligodendrocytes differ from Schwann cells in that oligodendrocytes:",
+      "options": [
+        "Produce myelin in the PNS",
+        "Can myelinate only one axon segment per cell",
+        "Produce myelin in the CNS and one oligodendrocyte can myelinate segments of MULTIPLE axons",
+        "Are the immune defense cells of the nervous system"
+      ],
+      "correctIndex": 2,
+      "explanation": "Oligodendrocytes = myelin in the CNS. ONE oligodendrocyte can extend processes to myelinate segments of 1–60 different axons. Schwann cells = myelin in the PNS, but ONE Schwann cell myelinates ONE segment of ONE axon. This difference affects regeneration: PNS axons can regenerate (Schwann cells guide), CNS axons cannot (oligodendrocytes inhibit)."
+    },
+    {
+      "question": "Astrocytes perform which functions?",
+      "options": [
+        "Produce the myelin sheath around CNS axons",
+        "Line the ventricles and produce CSF",
+        "Form part of the blood-brain barrier, support neurons metabolically, uptake excess glutamate, and guide neural development",
+        "Are the phagocytic immune cells of the CNS"
+      ],
+      "correctIndex": 2,
+      "explanation": "Astrocytes are the most abundant CNS glial cells. Functions: 1) BLOOD-BRAIN BARRIER (their end-feet surround capillaries). 2) Metabolic support (supply glucose/lactate to neurons). 3) Glutamate uptake (prevents excitotoxicity). 4) K⁺ buffering. 5) Guide axon growth in development. 6) Form glial scar after CNS injury."
+    },
+    {
+      "question": "Microglia are to the CNS as __________ are to the rest of the body.",
+      "options": [
+        "Astrocytes",
+        "Macrophages",
+        "Ependymal cells",
+        "Satellite cells"
+      ],
+      "correctIndex": 1,
+      "explanation": "Microglia are the IMMUNE DEFENSE cells of the CNS — derived from monocytes (same lineage as macrophages). They patrol CNS tissue, phagocytose pathogens and cellular debris, and become activated during injury or infection. Analogous to MACROPHAGES in peripheral tissues."
+    },
+    {
+      "question": "A multipolar neuron has:",
+      "options": [
+        "One dendrite and one axon",
+        "Two processes — one dendrite and one axon",
+        "Multiple dendrites and ONE axon — the most common neuron type in the CNS",
+        "Multiple axons and no dendrites"
+      ],
+      "correctIndex": 2,
+      "explanation": "Multipolar neurons have multiple DENDRITES and ONE axon. They are the MOST COMMON type — includes motor neurons and most interneurons. Bipolar = one dendrite + one axon (retina, olfactory). Unipolar/pseudounipolar = one process that splits (sensory neurons — dorsal root ganglion)."
+    },
+    {
+      "question": "SENSORY (afferent) neurons differ from MOTOR (efferent) neurons in that sensory neurons:",
+      "options": [
+        "Carry signals FROM the CNS to muscles and glands",
+        "Are found only within the CNS",
+        "Carry signals TO the CNS from sensory receptors; are mostly unipolar/pseudounipolar",
+        "Are exclusively multipolar in structure"
+      ],
+      "correctIndex": 2,
+      "explanation": "Sensory (afferent) neurons carry information FROM sensory receptors (skin, joints, organs) TO the CNS. They are mostly PSEUDOUNIPOLAR with cell bodies in dorsal root ganglia. Motor (efferent) neurons carry commands FROM the CNS TO muscles and glands — mostly multipolar."
+    },
+    {
+      "question": "Gray matter in the brain is composed of:",
+      "options": [
+        "Myelinated axon tracts running between brain regions",
+        "Neuron cell bodies, dendrites, unmyelinated axons, and synapses",
+        "Only glial cells with no neuron cell bodies",
+        "Cerebrospinal fluid in the ventricles"
+      ],
+      "correctIndex": 1,
+      "explanation": "Gray matter = neuron CELL BODIES, dendrites, unmyelinated axons, and synapses. In the brain, gray matter is the OUTER cortex. In the spinal cord, gray matter is INNER (butterfly/H-shape). WHITE matter = myelinated axon tracts — myelin gives the white/cream color."
+    },
+    {
+      "question": "White matter in the CNS consists of:",
+      "options": [
+        "Neuron cell bodies and synapses",
+        "Myelinated axon tracts — myelin gives a white/cream appearance",
+        "Cerebrospinal fluid-filled spaces",
+        "Only astrocytes and oligodendrocytes"
+      ],
+      "correctIndex": 1,
+      "explanation": "White matter = MYELINATED AXON TRACTS that connect different brain regions (in brain) or carry signals up/down (in spinal cord). Myelin (fatty, white) gives the characteristic color. Examples: corpus callosum (connects cerebral hemispheres), corticospinal tracts, spinothalamic tracts."
+    },
+    {
+      "question": "At a chemical synapse, neurotransmitter is released from:",
+      "options": [
+        "The postsynaptic neuron into the cleft",
+        "The synaptic vesicles in the PRESYNAPTIC axon terminal into the synaptic cleft",
+        "The myelin sheath",
+        "The dendrites of the postsynaptic neuron"
+      ],
+      "correctIndex": 1,
+      "explanation": "At chemical synapses: AP arrives at PRESYNAPTIC axon terminal → Ca²⁺ enters → synaptic vesicles fuse with membrane → NT released into synaptic cleft → NT binds receptors on POSTSYNAPTIC membrane → causes EPSP or IPSP. The signal travels in ONE direction (presynaptic → postsynaptic)."
+    },
+    {
+      "question": "An EPSP (excitatory postsynaptic potential) differs from an IPSP in that an EPSP:",
+      "options": [
+        "Hyperpolarizes the postsynaptic membrane making it less likely to fire",
+        "Depolarizes the postsynaptic membrane making it MORE likely to reach threshold and fire an AP",
+        "Is produced exclusively by GABA",
+        "Directly generates an action potential without summation"
+      ],
+      "correctIndex": 1,
+      "explanation": "EPSP = excitatory PSP = LOCAL DEPOLARIZATION of postsynaptic membrane (brings it closer to threshold). Common NTs: glutamate (CNS), ACh. IPSP = inhibitory PSP = hyperpolarization (moves membrane AWAY from threshold). Common NTs: GABA (CNS), glycine. Neither alone may trigger an AP — summation determines outcome."
+    },
+    {
+      "question": "Spatial summation in neural integration refers to:",
+      "options": [
+        "Multiple stimuli from the SAME synapse over a short time period adding together",
+        "EPSPs from multiple synapses on the SAME postsynaptic neuron adding together simultaneously to reach threshold",
+        "The summation of inhibitory and excitatory inputs at one location",
+        "One neuron stimulating multiple target cells at once"
+      ],
+      "correctIndex": 1,
+      "explanation": "Spatial summation: EPSPs from MULTIPLE DIFFERENT synapses (on dendrites and cell body) occurring simultaneously → their depolarizations ADD TOGETHER → if combined EPSP reaches threshold at axon hillock → AP fires. Temporal summation: SAME synapse fires rapidly → EPSPs accumulate before membrane returns to resting potential."
+    },
+    {
+      "question": "Ganglia are clusters of neuron cell bodies located:",
+      "options": [
+        "Within the CNS (brain and spinal cord)",
+        "Outside the CNS (in the PNS)",
+        "Within the myelin sheath",
+        "Inside the ventricles of the brain"
+      ],
+      "correctIndex": 1,
+      "explanation": "GANGLIA = clusters of neuron cell bodies in the PNS (outside brain and spinal cord). Examples: dorsal root ganglia (sensory neurons), autonomic ganglia (sympathetic chain ganglia, terminal ganglia). The CNS equivalent = NUCLEI (clusters of neuron cell bodies inside the brain/spinal cord)."
+    },
+    {
+      "question": "A nerve in the PNS is defined as:",
+      "options": [
+        "A cluster of neuron cell bodies outside the CNS",
+        "A bundle of AXONS wrapped in connective tissue outside the CNS",
+        "A tract of myelinated axons within the brain",
+        "A synapse between two neurons"
+      ],
+      "correctIndex": 1,
+      "explanation": "A nerve = bundle of AXONS (nerve fibers) in the PNS, wrapped in connective tissue (endoneurium around each axon, perineurium around fascicles, epineurium around whole nerve). The CNS equivalent = TRACT (bundle of axons within the brain or spinal cord)."
+    },
+    {
+      "question": "The AUTONOMIC nervous system controls:",
+      "options": [
+        "Voluntary movements of skeletal muscle",
+        "Involuntary control of smooth muscle, cardiac muscle, and glands — maintaining homeostasis",
+        "Conscious sensory perception only",
+        "Reflex responses of skeletal muscle only"
+      ],
+      "correctIndex": 1,
+      "explanation": "Autonomic NS = INVOLUNTARY control of smooth muscle (blood vessels, GI, airways), cardiac muscle (heart rate), and glands. Maintains homeostasis (BP, digestion, breathing, pupil size, etc.). Divided into: Sympathetic (fight/flight — ↑HR, vasoconstiction, bronchodilation) and Parasympathetic (rest/digest — ↓HR, ↑GI motility)."
+    },
+    {
+      "question": "Ependymal cells are important because they:",
+      "options": [
+        "Form the myelin sheath in the CNS",
+        "Act as the immune cells of the CNS",
+        "Line the ventricles of the brain and central canal of the spinal cord, producing and circulating CSF",
+        "Support sensory neuron cell bodies in ganglia"
+      ],
+      "correctIndex": 2,
+      "explanation": "Ependymal cells LINE the ventricles of the brain and central canal of the spinal cord. They are ciliated, and their cilia help circulate cerebrospinal fluid (CSF). Choroid plexus (modified ependymal cells + capillaries) actively PRODUCES CSF."
+    },
+    {
+      "question": "Neurotransmitter reuptake is important because:",
+      "options": [
+        "It amplifies the signal at the postsynaptic neuron",
+        "It removes NT from the synaptic cleft — terminating the signal — by transporting NT back into the presynaptic terminal for reuse",
+        "It converts NT into enzymes for the next AP",
+        "It releases NT from synaptic vesicles"
+      ],
+      "correctIndex": 1,
+      "explanation": "Reuptake = presynaptic terminal actively TRANSPORTS NT back from synaptic cleft for recycling and reuse. This TERMINATES the signal. Many drugs work by blocking reuptake: SSRIs block serotonin reuptake → more serotonin in cleft (antidepressant effect). Cocaine blocks dopamine/norepinephrine reuptake → euphoria."
+    },
+    {
+      "question": "Satellite cells in the PNS function to:",
+      "options": [
+        "Generate action potentials in sensory nerves",
+        "Form the myelin sheath around PNS axons (one cell per axon segment)",
+        "Surround and support neuron cell bodies in PNS ganglia",
+        "Act as phagocytes removing debris in PNS"
+      ],
+      "correctIndex": 2,
+      "explanation": "Satellite cells surround and support NEURON CELL BODIES in PNS ganglia (dorsal root ganglia, autonomic ganglia). They regulate the microenvironment around the cell body, provide nutrients, and may modulate neuron excitability. Schwann cells myelinate PNS axons (not cell bodies)."
+    }
+  ],
+  "flashcards": [
+    {
+      "term": "NS Functions",
+      "definition": "SENSORY INPUT (gather information from receptors) → INTEGRATION (process in CNS) → MOTOR OUTPUT (commands to effectors). All NS activities involve these three steps."
+    },
+    {
+      "term": "CNS vs PNS",
+      "definition": "CNS = brain + spinal cord (integration center). PNS = all nerves outside CNS. PNS = Somatic (voluntary, skeletal) + Autonomic (involuntary — Sympathetic + Parasympathetic)."
+    },
+    {
+      "term": "Neuron Anatomy",
+      "definition": "Cell body/soma (metabolic center, nucleus) → Dendrites (RECEIVE signals, multiple) → Axon hillock (AP INITIATION) → Axon (conducts AP) → Axon terminals (release NT)."
+    },
+    {
+      "term": "Myelin Sheath",
+      "definition": "Fatty insulation around axons. Speeds conduction via SALTATORY conduction (AP jumps between Nodes of Ranvier). CNS = oligodendrocytes. PNS = Schwann cells."
+    },
+    {
+      "term": "Nodes of Ranvier",
+      "definition": "Gaps in myelin sheath where action potentials are REGENERATED. AP jumps from node to node (saltatory conduction) → much faster than continuous conduction along unmyelinated axons."
+    },
+    {
+      "term": "Multipolar vs Bipolar vs Unipolar",
+      "definition": "Multipolar: many dendrites + 1 axon — MOST COMMON (motor neurons, interneurons). Bipolar: 1 dendrite + 1 axon (retina, olfactory). Pseudounipolar: 1 process splits — sensory (DRG)."
+    },
+    {
+      "term": "Sensory vs Motor vs Interneurons",
+      "definition": "Sensory (afferent): TO CNS from receptors — pseudounipolar. Motor (efferent): FROM CNS to effectors — multipolar. Interneurons: within CNS — 99% of all neurons."
+    },
+    {
+      "term": "Astrocytes",
+      "definition": "Most abundant CNS glia. Form BLOOD-BRAIN BARRIER (end-feet on capillaries), metabolic support, glutamate uptake, K⁺ buffering, guide development, form glial scar after injury."
+    },
+    {
+      "term": "Oligodendrocytes",
+      "definition": "Myelin producers in CNS. ONE oligodendrocyte myelinates segments of MULTIPLE axons (up to 60). Attacked in multiple sclerosis → demyelination → slowed conduction."
+    },
+    {
+      "term": "Microglia",
+      "definition": "Immune defense of CNS. Derived from monocytes. PHAGOCYTOSE pathogens, debris, dead cells. Activated during injury/infection. CNS equivalent of macrophages."
+    },
+    {
+      "term": "Schwann Cells",
+      "definition": "Myelin producers in PNS. ONE Schwann cell myelinates ONE segment of ONE axon. Guide PNS axon regeneration after injury (unlike oligodendrocytes in CNS)."
+    },
+    {
+      "term": "Ependymal Cells",
+      "definition": "Line brain VENTRICLES and spinal cord central canal. Ciliated — circulate CSF. Choroid plexus (modified ependymal + capillaries) PRODUCES CSF."
+    },
+    {
+      "term": "Chemical Synapse",
+      "definition": "AP at presynaptic terminal → Ca²⁺ enters → NT released into synaptic cleft → binds postsynaptic receptors → EPSP or IPSP. One-directional signal transmission."
+    },
+    {
+      "term": "EPSP vs IPSP",
+      "definition": "EPSP: excitatory PSP — DEPOLARIZES postsynaptic membrane (closer to threshold). IPSP: inhibitory PSP — HYPERPOLARIZES membrane (further from threshold). Summation determines if AP fires."
+    },
+    {
+      "term": "Spatial vs Temporal Summation",
+      "definition": "Spatial: EPSPs from MULTIPLE synapses simultaneously add together. Temporal: SAME synapse fires rapidly → EPSPs accumulate before returning to rest. Both can trigger AP if threshold reached."
+    },
+    {
+      "term": "Ganglia vs Nuclei",
+      "definition": "GANGLIA: clusters of neuron cell bodies in the PNS (dorsal root ganglia, autonomic ganglia). NUCLEI: clusters of neuron cell bodies in the CNS (e.g., basal nuclei, cranial nerve nuclei)."
+    },
+    {
+      "term": "Nerve vs Tract",
+      "definition": "NERVE: bundle of axons in the PNS wrapped in CT (endoneurium → perineurium → epineurium). TRACT: bundle of axons in the CNS connecting brain regions or carrying signals in spinal cord."
+    },
+    {
+      "term": "Sympathetic vs Parasympathetic",
+      "definition": "Sympathetic: FIGHT/FLIGHT — ↑HR, vasoconstriction, bronchodilation, ↓GI. NT = norepinephrine (post-ganglionic). Parasympathetic: REST/DIGEST — ↓HR, ↑GI, bronchoconstriction. NT = ACh."
+    },
+    {
+      "term": "Neurotransmitter Reuptake",
+      "definition": "Presynaptic terminal transports NT back from synaptic cleft for recycling. TERMINATES the signal. SSRIs block serotonin reuptake → more serotonin in cleft (antidepressant). Cocaine blocks dopamine reuptake."
+    },
+    {
+      "term": "Satellite Cells (PNS)",
+      "definition": "Surround neuron CELL BODIES in PNS ganglia. Support and regulate the microenvironment around neuronal soma. Different from Schwann cells (which myelinate axons)."
+    }
+  ]
+}

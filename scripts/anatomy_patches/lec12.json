@@ -1,0 +1,339 @@
+{
+  "cheatSheet": [
+    {
+      "title": "Major brain regions & functions",
+      "color": "pink",
+      "content": "<p><strong>Cerebrum</strong>: largest part. Frontal (executive function, motor cortex, Broca's area — speech production), Parietal (sensory integration, body position), Temporal (hearing, memory, Wernicke's — speech comprehension), Occipital (vision). <strong>Cerebellum</strong>: coordination, balance, fine motor, motor learning. <strong>Brainstem</strong>: midbrain + pons + medulla. Controls vital functions (HR, breathing, BP), relay station, houses most cranial nerve nuclei.</p>"
+    },
+    {
+      "title": "Diencephalon & limbic system",
+      "color": "teal",
+      "content": "<p><strong>Thalamus</strong>: relay station for ALL sensory info (except olfaction) going to cortex. Gateway to conscious awareness.</p><p><strong>Hypothalamus</strong>: homeostasis master — temperature, hunger, thirst, circadian rhythms, emotion, controls pituitary (via infundibulum/pituitary stalk). Links NS and endocrine system.</p><p><strong>Limbic system</strong>: hippocampus (memory formation), amygdala (fear, emotion), cingulate gyrus. Involved in emotion, memory, and behavior.</p>"
+    },
+    {
+      "title": "Meninges, CSF & blood-brain barrier",
+      "color": "coral",
+      "content": "<p><strong>Meninges</strong> (3 layers outside-in): <strong>Dura mater</strong> (tough fibrous outer), <strong>Arachnoid mater</strong> (middle, web-like), <strong>Pia mater</strong> (innermost, adheres to brain). Subarachnoid space = between arachnoid and pia, contains CSF.</p><p><strong>CSF</strong>: produced by CHOROID PLEXUS in ventricles → circulates through ventricles → subarachnoid space → reabsorbed by arachnoid granulations into dural sinuses. Cushions and nourishes brain.</p><p><strong>BBB</strong>: tight junctions between brain capillary endothelial cells (+ astrocyte feet). Selective barrier protecting brain from pathogens/toxins.</p>"
+    },
+    {
+      "title": "12 Cranial nerves — Oh Oh Oh To Touch And Feel Very Good Velvet Ah Heaven",
+      "color": "purple",
+      "content": "<p>CN I Olfactory (S-smell), CN II Optic (S-vision), CN III Oculomotor (M-eye movement/pupil), CN IV Trochlear (M-superior oblique), CN V Trigeminal (B-face sensation+chewing), CN VI Abducens (M-lateral eye), CN VII Facial (B-expression/taste/lacrimation), CN VIII Vestibulocochlear (S-hearing/balance), CN IX Glossopharyngeal (B-taste/swallowing/gag), CN X Vagus (B-heart/GI/speaking/swallowing), CN XI Accessory (M-SCM/trapezius), CN XII Hypoglossal (M-tongue).</p><p>Mnemonic: <strong>Some Say Marry Money But My Brother Says Big Brains Matter More</strong> (S/S/M/M/B/M/B/S/B/B/M/M)</p>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "The cerebrum is divided into lobes. The FRONTAL lobe's primary functions include:",
+      "options": [
+        "Processing visual information from the eyes",
+        "Hearing, language comprehension, and memory",
+        "Executive function, voluntary motor control, and speech production (Broca's area)",
+        "Sensory integration and body position awareness"
+      ],
+      "correctIndex": 2,
+      "explanation": "Frontal lobe: PRIMARY MOTOR CORTEX (voluntary movement — homunculus), PREFRONTAL CORTEX (executive function, planning, personality, decision-making), BROCA'S AREA (left hemisphere — speech production). Damage to Broca's area → expressive (Broca's) aphasia: understands but cannot produce fluent speech."
+    },
+    {
+      "question": "Wernicke's area is located in the temporal lobe and damage to it causes:",
+      "options": [
+        "Inability to initiate voluntary movement",
+        "Expressive aphasia — patient cannot speak",
+        "Receptive aphasia — patient speaks fluently but words do not make sense; cannot understand language",
+        "Loss of visual perception"
+      ],
+      "correctIndex": 2,
+      "explanation": "Wernicke's area (posterior superior temporal lobe, left hemisphere): SPEECH COMPREHENSION. Damage → Wernicke's (receptive) aphasia: patient speaks fluently but produces 'word salad' (meaningless combinations) and cannot understand spoken or written language. Contrast with Broca's area (frontal) damage = Broca's aphasia (understands but cannot produce speech)."
+    },
+    {
+      "question": "The CEREBELLUM is primarily responsible for:",
+      "options": [
+        "Conscious decision-making and personality",
+        "Generating voluntary motor commands",
+        "Coordination of movement, balance, posture, and motor learning — comparing intended vs actual movement",
+        "Regulating heart rate and blood pressure"
+      ],
+      "correctIndex": 2,
+      "explanation": "Cerebellum = COORDINATION, BALANCE, POSTURE, and MOTOR LEARNING. Receives input from motor cortex (intended movement) and proprioceptors/vestibular system (actual movement) → compares them → sends error correction signals. Cerebellar damage → ataxia (uncoordinated movement), intention tremor, dysmetria (misjudging distances)."
+    },
+    {
+      "question": "The BRAINSTEM consists of which three parts, from superior to inferior?",
+      "options": [
+        "Cerebrum, cerebellum, diencephalon",
+        "Midbrain, pons, medulla oblongata",
+        "Thalamus, hypothalamus, pituitary",
+        "Frontal, parietal, temporal lobes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Brainstem (superior to inferior): MIDBRAIN (CN III, IV; visual/auditory reflexes; substantia nigra — dopamine; reticular formation), PONS (CN V, VI, VII, VIII; breathing regulation; relay between cortex and cerebellum), MEDULLA OBLONGATA (CN IX, X, XI, XII; cardiovascular/respiratory centers; pyramidal decussation)."
+    },
+    {
+      "question": "The THALAMUS functions as:",
+      "options": [
+        "The master controller of the endocrine system",
+        "The relay station for ALL sensory information (except olfaction) traveling to the cerebral cortex",
+        "The site of CSF production",
+        "The control center for homeostasis including temperature and hunger"
+      ],
+      "correctIndex": 1,
+      "explanation": "Thalamus = SENSORY RELAY — all sensory signals (EXCEPT OLFACTION which projects directly to the cortex) pass through the thalamus before reaching the cerebral cortex. It acts as a 'gateway to consciousness.' The thalamus is also involved in motor functions, consciousness, and sleep-wake cycles."
+    },
+    {
+      "question": "The HYPOTHALAMUS is often called the 'master homeostasis controller' because it:",
+      "options": [
+        "Relays all sensory information to the cortex",
+        "Produces all neurotransmitters in the brain",
+        "Regulates body temperature, hunger, thirst, circadian rhythms, emotion, and controls the pituitary gland via the infundibulum",
+        "Controls only cardiovascular function"
+      ],
+      "correctIndex": 2,
+      "explanation": "Hypothalamus: master homeostasis center. Controls: TEMPERATURE (thermostat), HUNGER and SATIETY (feeding), THIRST and water balance, CIRCADIAN RHYTHMS, EMOTION and stress response, and PITUITARY GLAND via the infundibulum (pituitary stalk). Links the nervous system to the endocrine system. Located below the thalamus."
+    },
+    {
+      "question": "The THREE LAYERS of meninges from outer to inner are:",
+      "options": [
+        "Pia mater, arachnoid mater, dura mater",
+        "Dura mater, arachnoid mater, pia mater",
+        "Arachnoid mater, dura mater, pia mater",
+        "Dura mater, pia mater, arachnoid mater"
+      ],
+      "correctIndex": 1,
+      "explanation": "Meninges (PAD mnemonic — Pia, Arachnoid, Dura from inside out; or DAP from outside in): DURA MATER (tough fibrous outer layer), ARACHNOID MATER (middle, web-like, with trabeculae), PIA MATER (thin, innermost, adheres to brain surface). CSF fills the subarachnoid space (between arachnoid and pia)."
+    },
+    {
+      "question": "Cerebrospinal fluid (CSF) is PRODUCED by the:",
+      "options": [
+        "Arachnoid granulations in the dural sinuses",
+        "Choroid plexus — specialized capillary networks in the ventricles of the brain",
+        "Astrocytes surrounding brain capillaries",
+        "Ependymal cells lining the subarachnoid space"
+      ],
+      "correctIndex": 1,
+      "explanation": "CSF is produced by the CHOROID PLEXUS (specialized capillaries + modified ependymal cells) in the LATERAL VENTRICLES, third ventricle, and fourth ventricle. About 500 mL produced daily; ~150 mL circulates at any time. Circulates through ventricles → subarachnoid space → reabsorbed by arachnoid granulations into dural sinuses → venous blood."
+    },
+    {
+      "question": "The BLOOD-BRAIN BARRIER (BBB) is formed by:",
+      "options": [
+        "The three meningeal layers surrounding the brain",
+        "Tight junctions between cerebral capillary endothelial cells with astrocyte end-feet reinforcing the barrier",
+        "The choroid plexus producing CSF to dilute toxins",
+        "Microglia that phagocytose all incoming substances"
+      ],
+      "correctIndex": 1,
+      "explanation": "BBB = TIGHT JUNCTIONS between brain capillary ENDOTHELIAL CELLS (unlike leaky capillaries elsewhere in body) + ASTROCYTE END-FEET that wrap around capillaries and induce tight junction formation. Selectively restricts passage: allows lipid-soluble molecules, O₂, CO₂, glucose (via carriers), but blocks large molecules, most drugs, and pathogens. Inflammation can disrupt BBB (meningitis)."
+    },
+    {
+      "question": "The CSF CIRCULATION pathway is:",
+      "options": [
+        "Subarachnoid space → ventricles → absorbed by choroid plexus",
+        "Lateral ventricles → third ventricle → cerebral aqueduct → fourth ventricle → subarachnoid space → reabsorbed by arachnoid granulations",
+        "Dura mater → arachnoid → pia → brain tissue",
+        "Choroid plexus → directly into blood without circulating"
+      ],
+      "correctIndex": 1,
+      "explanation": "CSF circulation: Choroid plexus PRODUCES CSF → LATERAL VENTRICLES → through interventricular foramen (of Monro) → THIRD VENTRICLE → through cerebral aqueduct (of Sylvius) → FOURTH VENTRICLE → through foramina → SUBARACHNOID SPACE around brain and cord → ARACHNOID GRANULATIONS reabsorb into dural sinuses → venous blood. Blockage = hydrocephalus."
+    },
+    {
+      "question": "Cranial nerve I (Olfactory) is classified as:",
+      "options": [
+        "Motor — controls muscles of the face",
+        "Sensory — transmits the sense of smell",
+        "Mixed — both sensory and motor",
+        "Parasympathetic only"
+      ],
+      "correctIndex": 1,
+      "explanation": "CN I (Olfactory) = SENSORY ONLY. Transmits smell (olfaction) from olfactory receptors in nasal epithelium → olfactory bulb → olfactory cortex. UNIQUE: the only sensory modality that does NOT relay through the thalamus first — olfactory signals project directly to the cortex and limbic system. This is why smells trigger strong emotional memories."
+    },
+    {
+      "question": "Cranial nerve VII (Facial) is a MIXED nerve. Its motor functions include:",
+      "options": [
+        "Eye movement and pupil constriction",
+        "Facial EXPRESSION muscles; also has parasympathetic fibers for lacrimal and salivary glands and taste from anterior 2/3 of tongue",
+        "Tongue movement for speech and swallowing",
+        "Jaw movement for chewing"
+      ],
+      "correctIndex": 1,
+      "explanation": "CN VII (Facial) = MIXED. Motor: facial EXPRESSION muscles (frontalis, orbicularis oculi, orbicularis oris, zygomaticus). Parasympathetic: lacrimal gland (tears), submandibular and sublingual salivary glands. Sensory: TASTE from anterior 2/3 of tongue. Bell's palsy = CN VII damage → unilateral facial muscle paralysis + dry eye + loss of taste."
+    },
+    {
+      "question": "Cranial nerve X (Vagus) is critically important clinically because:",
+      "options": [
+        "It controls eye movement and is tested with H-pattern eye test",
+        "It is a purely sensory nerve for general sensation from the face",
+        "It has the widest distribution of any cranial nerve — controlling heart rate, GI motility, speaking, and swallowing",
+        "It controls shoulder shrugging via the trapezius muscle"
+      ],
+      "correctIndex": 2,
+      "explanation": "CN X (Vagus) = the WANDERER (vagus = wandering). WIDEST distribution — extends from brainstem to abdomen. Parasympathetic control of: HEART (↓HR), LUNGS (bronchoconstriction), GI TRACT (↑motility, digestion), pharynx/larynx (swallowing, voice). Sensory from viscera. Vagal tone maintains resting heart rate ~70 bpm. Vagal maneuvers slow HR."
+    },
+    {
+      "question": "The dural folds (dura mater extensions) include the tentorium cerebelli, which:",
+      "options": [
+        "Separates the two cerebral hemispheres in the longitudinal fissure",
+        "Separates the cerebrum (above) from the cerebellum (below)",
+        "Surrounds the pituitary gland in the sella turcica",
+        "Forms the cavernous sinus lateral to the sella turcica"
+      ],
+      "correctIndex": 1,
+      "explanation": "Tentorium cerebelli = horizontal dural fold separating the CEREBRUM (supratentorial) from the CEREBELLUM (infratentorial). Clinical importance: transtentorial (uncal) herniation — when increased ICP forces the temporal lobe (uncus) through the tentorial notch → compresses CN III (dilated pupil), brainstem → coma/death."
+    },
+    {
+      "question": "The BASAL NUCLEI (basal ganglia) are important in motor control because they:",
+      "options": [
+        "Directly generate voluntary motor commands",
+        "Coordinate movement in the cerebellum",
+        "Regulate the initiation and smoothness of voluntary movement, suppress unwanted movements, and modulate motor cortex activity",
+        "Control only involuntary reflexes via the spinal cord"
+      ],
+      "correctIndex": 2,
+      "explanation": "Basal nuclei (caudate, putamen, globus pallidus, subthalamic nucleus, substantia nigra): regulate initiation and SMOOTHNESS of voluntary movement, SUPPRESS unwanted movements, and modulate motor cortex via thalamus. Dopaminergic pathways from substantia nigra are crucial. Parkinson's = ↓ dopamine → reduced basal nuclei activity → rigidity, tremor, bradykinesia."
+    },
+    {
+      "question": "The LIMBIC SYSTEM is involved in:",
+      "options": [
+        "Voluntary motor control of skeletal muscles",
+        "Processing visual information in the occipital lobe",
+        "Emotion, memory formation, and the emotional response to olfactory stimuli — includes hippocampus and amygdala",
+        "Only the autonomic regulation of heart rate and breathing"
+      ],
+      "correctIndex": 2,
+      "explanation": "Limbic system: EMOTION and MEMORY. Key structures: HIPPOCAMPUS (memory consolidation — damage → anterograde amnesia), AMYGDALA (fear conditioning, emotional responses, fight/flight), CINGULATE GYRUS (attention, emotion-cognition interaction). Olfaction links directly to limbic system — why smells trigger emotional memories."
+    },
+    {
+      "question": "Cranial nerve VIII (Vestibulocochlear) damage would result in:",
+      "options": [
+        "Loss of taste and facial paralysis",
+        "Inability to shrug the shoulder",
+        "Hearing loss (cochlear division) and/or balance problems and vertigo (vestibular division)",
+        "Loss of vision in both eyes"
+      ],
+      "correctIndex": 2,
+      "explanation": "CN VIII (Vestibulocochlear) = SENSORY ONLY. Two divisions: COCHLEAR (hearing — transmits sound from organ of Corti in cochlea to auditory cortex) and VESTIBULAR (balance — from semicircular canals and otolith organs). Damage → sensorineural hearing loss, tinnitus, vertigo, nystagmus. Acoustic neuroma (vestibular schwannoma) = benign tumor on CN VIII."
+    },
+    {
+      "question": "The FORAMEN MAGNUM is clinically significant because:",
+      "options": [
+        "CSF is reabsorbed here",
+        "The spinal cord exits the skull through this opening in the occipital bone — herniation here is life-threatening",
+        "CN XII exits through this opening",
+        "The basilar artery enters the brain through this structure"
+      ],
+      "correctIndex": 1,
+      "explanation": "Foramen magnum = large opening in the OCCIPITAL BONE through which the brainstem (medulla) transitions to the spinal cord. Also transmits the vertebral arteries, anterior spinal artery, and CN XI (accessory). Tonsillar/cerebellar herniation through the foramen magnum (Chiari malformation, ↑ICP) → compresses vital centers → respiratory arrest."
+    },
+    {
+      "question": "The blood supply to the brain is primarily provided by:",
+      "options": [
+        "The external carotid arteries and jugular veins",
+        "The internal carotid arteries and vertebral arteries — forming the Circle of Willis",
+        "The subclavian arteries directly",
+        "The aorta without any intermediate vessels"
+      ],
+      "correctIndex": 1,
+      "explanation": "Brain blood supply: INTERNAL CAROTID ARTERIES (anterior circulation — cerebral hemispheres) + VERTEBRAL ARTERIES (posterior circulation — join to form basilar artery → brainstem/cerebellum → posterior cerebral arteries). They anastomose at the CIRCLE OF WILLIS (circulus arteriosus) — provides collateral circulation if one vessel is blocked."
+    },
+    {
+      "question": "Cranial nerve III (Oculomotor) controls:",
+      "options": [
+        "Only the lateral rectus muscle of the eye",
+        "The superior oblique muscle for downward-inward eye movement",
+        "Most extraocular eye muscles (medial, superior, inferior rectus; inferior oblique), pupil constriction (parasympathetic), and eyelid elevation",
+        "The facial expression muscles"
+      ],
+      "correctIndex": 2,
+      "explanation": "CN III (Oculomotor) = MOTOR. Controls: medial rectus, superior rectus, inferior rectus, inferior oblique (all eye movement), levator palpebrae superioris (eyelid elevation). PARASYMPATHETIC: pupil constriction (miosis) and lens accommodation. CN III palsy: ptosis (drooping eyelid), 'down and out' eye position, DILATED PUPIL (classic sign of uncal herniation compressing CN III)."
+    },
+    {
+      "question": "When testing the 12 cranial nerves clinically, damage to CN XII (Hypoglossal) would be identified by:",
+      "options": [
+        "Loss of smell",
+        "Inability to close the eye or raise the eyebrow",
+        "Tongue deviation TOWARD the side of the lesion when protruded",
+        "Loss of hearing on one side"
+      ],
+      "correctIndex": 2,
+      "explanation": "CN XII (Hypoglossal) = MOTOR — controls all TONGUE muscles (intrinsic and extrinsic, except palatoglossus). When CN XII is damaged: tongue DEVIATES TOWARD THE DAMAGED SIDE when protruded (ipsilateral deviation) — because the intact contralateral genioglossus pushes the tongue toward the weak side. Important in stroke assessment (dysarthria, dysphagia)."
+    }
+  ],
+  "flashcards": [
+    {
+      "term": "Cerebral Lobes & Functions",
+      "definition": "Frontal: executive function, motor cortex, Broca's (speech production). Parietal: sensory integration, body position. Temporal: hearing, memory, Wernicke's (speech comprehension). Occipital: vision."
+    },
+    {
+      "term": "Thalamus",
+      "definition": "SENSORY RELAY STATION. ALL sensory info (except olfaction) passes through thalamus before reaching cortex. Gateway to conscious awareness. Also involved in motor function, consciousness, sleep."
+    },
+    {
+      "term": "Hypothalamus",
+      "definition": "HOMEOSTASIS master. Controls: temperature (thermostat), hunger, thirst, circadian rhythms, emotion, stress response. Controls PITUITARY via infundibulum (pituitary stalk). Links NS to endocrine system."
+    },
+    {
+      "term": "Cerebellum",
+      "definition": "COORDINATION, BALANCE, POSTURE, motor learning. Compares intended vs actual movement → sends error correction to motor cortex. Damage → ATAXIA, intention tremor, dysmetria."
+    },
+    {
+      "term": "Brainstem",
+      "definition": "Midbrain (CN III,IV; substantia nigra) + Pons (CN V,VI,VII,VIII; breathing) + Medulla (CN IX,X,XI,XII; cardiovascular/respiratory centers; pyramidal decussation). Controls vital functions."
+    },
+    {
+      "term": "Meninges — 3 Layers",
+      "definition": "DURA MATER (tough fibrous outer layer) → ARACHNOID MATER (middle, web-like) → PIA MATER (thin, adheres to brain). PAD from inside out. Subarachnoid space between arachnoid and pia = contains CSF."
+    },
+    {
+      "term": "CSF Production & Circulation",
+      "definition": "Choroid plexus PRODUCES CSF in ventricles → lateral → third → cerebral aqueduct → fourth ventricle → subarachnoid space → ARACHNOID GRANULATIONS reabsorb into dural sinuses → blood. Blockage = hydrocephalus."
+    },
+    {
+      "term": "Blood-Brain Barrier (BBB)",
+      "definition": "TIGHT JUNCTIONS between brain capillary endothelial cells + ASTROCYTE end-feet. Selectively restricts passage. Allows: O₂, CO₂, glucose, lipid-soluble molecules. Blocks: large molecules, most drugs, pathogens."
+    },
+    {
+      "term": "Basal Nuclei",
+      "definition": "Regulate INITIATION and SMOOTHNESS of voluntary movement. Suppress unwanted movements. Modulate motor cortex via thalamus. DOPAMINE pathway crucial. Parkinson's = ↓dopamine → rigidity/tremor/bradykinesia."
+    },
+    {
+      "term": "Limbic System",
+      "definition": "EMOTION and MEMORY. Hippocampus (memory consolidation), Amygdala (fear, emotional responses), Cingulate gyrus. Directly linked to olfaction — why smells trigger emotional memories."
+    },
+    {
+      "term": "12 Cranial Nerves (Name + Function)",
+      "definition": "I-Olfactory(S), II-Optic(S), III-Oculomotor(M), IV-Trochlear(M), V-Trigeminal(B), VI-Abducens(M), VII-Facial(B), VIII-Vestibulocochlear(S), IX-Glossopharyngeal(B), X-Vagus(B), XI-Accessory(M), XII-Hypoglossal(M). Some Say Marry Money But My Brother Says Big Brains Matter More."
+    },
+    {
+      "term": "CN VII (Facial) — Clinical",
+      "definition": "MIXED. Motor = facial EXPRESSION muscles. Parasympathetic = lacrimal + salivary glands. Sensory = TASTE anterior 2/3 tongue. BELL'S PALSY = CN VII damage → unilateral facial paralysis, dry eye, taste loss."
+    },
+    {
+      "term": "CN X (Vagus)",
+      "definition": "WANDERER — widest distribution. Parasympathetic: ↓HR, ↑GI motility, bronchoconstriction. Sensory: viscera. Controls swallowing, speaking, cough reflex. Vagal maneuvers ↓HR. Damage → hoarseness, dysphagia."
+    },
+    {
+      "term": "CN III (Oculomotor) — Clinical",
+      "definition": "MOTOR. Eye movement (medial/superior/inferior rectus, inferior oblique), eyelid elevation, PUPIL CONSTRICTION (parasympathetic). CN III palsy → ptosis, 'down and out' eye, DILATED PUPIL = sign of uncal herniation."
+    },
+    {
+      "term": "CN XII (Hypoglossal) — Clinical",
+      "definition": "MOTOR — all TONGUE muscles. Tongue deviates TOWARD LESION SIDE when protruded (ipsilateral deviation). Damage → dysarthria, dysphagia. Important in stroke assessment."
+    },
+    {
+      "term": "Dural Folds",
+      "definition": "Dura mater extensions: FALX CEREBRI (separates cerebral hemispheres), TENTORIUM CEREBELLI (separates cerebrum above from cerebellum below), FALX CEREBELLI (separates cerebellar hemispheres), DIAPHRAGMA SELLAE (covers pituitary)."
+    },
+    {
+      "term": "Choroid Plexus",
+      "definition": "Specialized capillaries + modified ependymal cells in the VENTRICLES. PRODUCES CSF (~500 mL/day; ~150 mL circulating). Found in lateral, third, and fourth ventricles."
+    },
+    {
+      "term": "Circle of Willis",
+      "definition": "Arterial anastomosis at base of brain formed by internal carotid arteries + basilar artery (from vertebral arteries). Provides COLLATERAL CIRCULATION if one vessel is blocked. Reduces risk of total infarction from single vessel occlusion."
+    },
+    {
+      "term": "Broca's vs Wernicke's Aphasia",
+      "definition": "Broca's (frontal lobe): EXPRESSIVE aphasia — understands language but CANNOT PRODUCE fluent speech. Wernicke's (temporal lobe): RECEPTIVE aphasia — speaks fluently but words don't make sense, CANNOT UNDERSTAND language."
+    },
+    {
+      "term": "Foramen Magnum",
+      "definition": "Large opening in occipital bone where BRAINSTEM (medulla) transitions to SPINAL CORD. Also transmits vertebral arteries and CN XI. Tonsillar herniation here → compresses vital centers → RESPIRATORY ARREST."
+    }
+  ]
+}

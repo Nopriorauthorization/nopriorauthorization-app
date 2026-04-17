@@ -1,0 +1,339 @@
+{
+  "cheatSheet": [
+    {
+      "title": "Joint classification",
+      "color": "pink",
+      "content": "<p><strong>Structural</strong>: Fibrous (collagen fibers connect bones, no cavity), Cartilaginous (cartilage connects bones), Synovial (joint cavity with synovial fluid).</p><p><strong>Functional</strong>: Synarthrosis (immovable — skull sutures), Amphiarthrosis (slightly movable — pubic symphysis), Diarthrosis (freely movable — most synovial joints).</p>"
+    },
+    {
+      "title": "Fibrous & cartilaginous joints",
+      "color": "teal",
+      "content": "<p><strong>Fibrous joints</strong>: Sutures (skull — immovable), Syndesmoses (fibula-tibia — slight movement, interosseous membrane), Gomphoses (tooth in socket).</p><p><strong>Cartilaginous joints</strong>: Synchondroses (hyaline cartilage — epiphyseal plate, immovable), Symphyses (fibrocartilage — pubic symphysis, intervertebral discs, slightly movable).</p>"
+    },
+    {
+      "title": "Synovial joints — structure & types",
+      "color": "coral",
+      "content": "<p>Synovial joint features: articular cartilage (hyaline), joint cavity, articular capsule (fibrous layer + synovial membrane), synovial fluid (lubricates, nourishes), reinforcing ligaments, bursae (fluid sacs reducing friction), menisci (fibrocartilage pads — knee).</p><p>Types: <strong>Hinge</strong> (elbow, knee — flex/extend), <strong>Ball-and-socket</strong> (shoulder, hip — multiaxial), <strong>Pivot</strong> (atlas-axis — rotation), <strong>Condyloid</strong> (wrist — biaxial), <strong>Saddle</strong> (thumb carpometacarpal — biaxial), <strong>Plane/gliding</strong> (intercarpal — glide).</p>"
+    },
+    {
+      "title": "Body movements & joint pathology",
+      "color": "amber",
+      "content": "<p><strong>Angular</strong>: Flexion (↓ angle), Extension (↑ angle), Abduction (away from midline), Adduction (toward midline).</p><p><strong>Rotation</strong>: Medial/Lateral. <strong>Special</strong>: Pronation/Supination (forearm), Inversion/Eversion (foot), Dorsiflexion/Plantar flexion (ankle), Circumduction (arm circles).</p><p><strong>Sprain</strong>: stretched/torn LIGAMENT. <strong>Strain</strong>: stretched/torn MUSCLE or TENDON.</p><p><strong>OA</strong>: wear-and-tear, cartilage breakdown, older adults. <strong>RA</strong>: autoimmune, synovial membrane attacked, systemic, any age.</p>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "An articulation (joint) is best defined as:",
+      "options": [
+        "A point where two or more bones meet",
+        "The cartilage lining the ends of bones",
+        "The synovial fluid inside a joint cavity",
+        "The ligament holding bones together"
+      ],
+      "correctIndex": 0,
+      "explanation": "Articulation = joint = any point where two or more bones meet. Arthrosis and arthrology are related terms (arthrosis = joint condition; arthrology = study of joints). Joints are classified structurally (fibrous/cartilaginous/synovial) and functionally (immovable/slightly movable/freely movable)."
+    },
+    {
+      "question": "Which structural joint type has a joint cavity filled with synovial fluid?",
+      "options": [
+        "Fibrous joint",
+        "Cartilaginous joint",
+        "Synovial joint",
+        "Suture"
+      ],
+      "correctIndex": 2,
+      "explanation": "Synovial joints are the only joints with a JOINT CAVITY containing synovial fluid. They are the most common and most freely movable joints in the body. Features: articular cartilage, articular capsule, synovial membrane, synovial fluid, ligaments."
+    },
+    {
+      "question": "The pubic symphysis and intervertebral discs are examples of which joint type?",
+      "options": [
+        "Synchondrosis — hyaline cartilage, immovable",
+        "Symphysis — fibrocartilage, slightly movable",
+        "Suture — fibrous, immovable",
+        "Synovial — freely movable"
+      ],
+      "correctIndex": 1,
+      "explanation": "Symphyses are cartilaginous joints using FIBROCARTILAGE — slightly movable (amphiarthrosis). The pubic symphysis allows slight movement during childbirth; intervertebral discs allow slight bending/rotation. Both are strong and resilient."
+    },
+    {
+      "question": "Synovial fluid is important because it:",
+      "options": [
+        "Provides structural support to the joint capsule",
+        "Lubricates articular cartilage, absorbs shock, and nourishes avascular cartilage",
+        "Acts as a ligament to hold bones together",
+        "Produces new cartilage cells when cartilage wears down"
+      ],
+      "correctIndex": 1,
+      "explanation": "Synovial fluid (secreted by synovial membrane): lubricates articular surfaces → reduces friction, absorbs compressive forces (shock absorption), and provides nutrients to avascular articular cartilage. It is viscous (like egg white — 'synovial' from Latin ovum = egg)."
+    },
+    {
+      "question": "A BURSA is best described as:",
+      "options": [
+        "A fibrocartilage pad within the knee joint",
+        "A fluid-filled sac that reduces friction between structures",
+        "A type of ligament connecting bones",
+        "The fibrous outer layer of the joint capsule"
+      ],
+      "correctIndex": 1,
+      "explanation": "Bursae are small fluid-filled sacs lined by synovial membrane located between structures that rub together (tendons/muscles/bone, or skin/bone). Reduce friction and cushion. Bursitis = inflammation of a bursa (e.g., olecranon bursitis = elbow, prepatellar bursitis = knee)."
+    },
+    {
+      "question": "The shoulder (glenohumeral) joint is a ball-and-socket joint. This means it allows:",
+      "options": [
+        "Flexion and extension only",
+        "Rotation around one axis",
+        "Movement in all planes — flexion/extension, abduction/adduction, rotation, circumduction (multiaxial)",
+        "Only gliding movements"
+      ],
+      "correctIndex": 2,
+      "explanation": "Ball-and-socket joints (shoulder, hip) are MULTIAXIAL — allow the greatest range of motion in all planes. The round head of one bone fits into a cup-shaped socket. The shoulder sacrifices stability for mobility (most dislocated joint); the hip is more stable."
+    },
+    {
+      "question": "The knee joint contains menisci. These are:",
+      "options": [
+        "Bony projections that lock the joint",
+        "Fibrocartilage pads that deepen the joint socket, absorb shock, and improve fit between femur and tibia",
+        "Small bones (sesamoids) within the tendon",
+        "Fluid-filled sacs that reduce friction"
+      ],
+      "correctIndex": 1,
+      "explanation": "Menisci (medial and lateral) are C-shaped fibrocartilage pads in the knee. They deepen the shallow tibial surface, absorb compressive forces, stabilize the joint, and distribute weight. Torn meniscus is a common sports injury — the medial meniscus tears more often because it is less mobile."
+    },
+    {
+      "question": "ABDUCTION at the shoulder means:",
+      "options": [
+        "Bringing the arm toward the body midline",
+        "Moving the arm away from the body midline",
+        "Rotating the arm medially",
+        "Decreasing the angle at the shoulder joint"
+      ],
+      "correctIndex": 1,
+      "explanation": "Abduction = movement AWAY from the midline. Raising your arm out to the side is shoulder abduction. Adduction = returning arm toward midline. Mnemonic: ABduction = Away. ADduction = Adds back to midline."
+    },
+    {
+      "question": "Pronation of the forearm involves:",
+      "options": [
+        "Rotating the forearm so the palm faces anteriorly (forward)",
+        "Rotating the forearm so the palm faces posteriorly (backward/down)",
+        "Bending the elbow to decrease the angle",
+        "Straightening the elbow to increase the angle"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pronation = rotating the forearm so the palm faces POSTERIORLY (down when arm is at side). The radius crosses over the ulna. Supination = palm faces ANTERIORLY (up). Mnemonic: Supination = Soup (carry a bowl of soup with palm up). Pronation = pour out the soup (palm down)."
+    },
+    {
+      "question": "A sprain differs from a strain in that a sprain involves:",
+      "options": [
+        "Stretched or torn MUSCLE or TENDON",
+        "Stretched or torn LIGAMENT",
+        "Fracture of bone at the joint",
+        "Inflammation of the bursa"
+      ],
+      "correctIndex": 1,
+      "explanation": "SPRAIN = stretched/torn LIGAMENT (bone-to-bone connection). STRAIN = stretched/torn MUSCLE or TENDON (muscle-to-bone connection). Mnemonic: Sprain = S for Structural support (ligament). Strain = Muscle pulls on bone = S for Sliding filament."
+    },
+    {
+      "question": "Rheumatoid arthritis differs from osteoarthritis in that rheumatoid arthritis:",
+      "options": [
+        "Is caused by wear-and-tear of articular cartilage over decades",
+        "Is an autoimmune disease attacking the synovial membrane, affecting any age, often symmetrical",
+        "Only affects weight-bearing joints",
+        "Is more common in elderly men"
+      ],
+      "correctIndex": 1,
+      "explanation": "RA = AUTOIMMUNE — immune system attacks synovial membrane → pannus (inflammatory tissue) forms → destroys cartilage and bone. Affects any age (including children = juvenile RA), symmetrical, systemic. OA = degenerative wear-and-tear, asymmetric, older adults, weight-bearing joints."
+    },
+    {
+      "question": "The 'unhappy triad' (terrible triad) knee injury involves:",
+      "options": [
+        "Fracture of the patella, tibia, and fibula",
+        "Tear of the ACL, MCL, and medial meniscus",
+        "Dislocation of the patella, femur, and tibia",
+        "Rupture of the PCL, LCL, and lateral meniscus"
+      ],
+      "correctIndex": 1,
+      "explanation": "Unhappy triad = ACL (anterior cruciate ligament) + MCL (medial collateral ligament) + medial meniscus damage. Caused by lateral force on the knee (e.g., football tackle from the side) while the foot is planted. Common in contact sports."
+    },
+    {
+      "question": "The pivot joint between the atlas (C1) and axis (C2) allows:",
+      "options": [
+        "Flexion and extension of the neck",
+        "Rotation of the head (saying 'no')",
+        "Lateral flexion of the neck",
+        "Gliding movements only"
+      ],
+      "correctIndex": 1,
+      "explanation": "The atlas-axis pivot joint allows ROTATION of the head from side to side (shaking your head 'no'). The dens (odontoid process) of the axis acts as the pivot around which the ring-shaped atlas rotates. The nodding movement (yes) is at the atlanto-occipital joint."
+    },
+    {
+      "question": "The acetabulum is clinically important because it:",
+      "options": [
+        "Is the ball-shaped head of the femur",
+        "Is the cup-shaped socket of the hip joint where the femoral head articulates",
+        "Is the cartilage lining the knee joint",
+        "Is the tendon connecting quadriceps to the patella"
+      ],
+      "correctIndex": 1,
+      "explanation": "The acetabulum is the cup-shaped socket on the hip bone (formed by fusion of ilium, ischium, and pubis) that receives the head of the femur. Important in hip dislocation, total hip replacement, and acetabular fractures (hip fractures in elderly)."
+    },
+    {
+      "question": "Radial head dislocation (nursemaid's elbow) is caused by:",
+      "options": [
+        "Direct blow to the lateral elbow",
+        "Sudden pulling or yanking of a young child's outstretched arm, causing the radial head to slip out of the annular ligament",
+        "Repetitive overhead throwing causing rotator cuff tear",
+        "Falling on an outstretched hand breaking the radius"
+      ],
+      "correctIndex": 1,
+      "explanation": "Nursemaid's elbow = radial head subluxation. In young children (1–4 years), the radial head is still immature and the annular ligament is loose. Sudden longitudinal traction (pulling child by the arm) allows the radial head to slip through the annular ligament. Reduction is simple and immediate."
+    },
+    {
+      "question": "Dorsiflexion of the foot means:",
+      "options": [
+        "Pointing the toes downward (as in wearing high heels)",
+        "Bringing the toes/top of foot upward toward the shin",
+        "Turning the sole of the foot outward (laterally)",
+        "Turning the sole of the foot inward (medially)"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dorsiflexion = bringing the dorsum (top) of the foot toward the shin — toes point up. Opposite = plantar flexion (pointing toes downward, like pressing a gas pedal or wearing heels). Inversion = sole turns inward. Eversion = sole turns outward (common in ankle sprains)."
+    },
+    {
+      "question": "Range of motion (ROM) can be objectively measured using:",
+      "options": [
+        "A stethoscope",
+        "A goniometer",
+        "A spirometer",
+        "A sphygmomanometer"
+      ],
+      "correctIndex": 1,
+      "explanation": "A goniometer is the tool used to objectively measure JOINT RANGE OF MOTION (degrees of movement). It has a protractor-like dial and two arms aligned with body segments on either side of the joint. Standard tool in physical therapy and orthopedic assessment."
+    },
+    {
+      "question": "The rotator cuff of the shoulder consists of:",
+      "options": [
+        "Four muscles (SITS) that stabilize the glenohumeral joint and control rotation: Supraspinatus, Infraspinatus, Teres minor, Subscapularis",
+        "The biceps and triceps tendons crossing the shoulder",
+        "The acromion and coracoid processes of the scapula",
+        "The glenoid labrum and articular capsule"
+      ],
+      "correctIndex": 0,
+      "explanation": "SITS muscles = Supraspinatus, Infraspinatus, Teres minor, Subscapularis. These four muscles form the rotator cuff — their tendons blend with the joint capsule to stabilize the glenohumeral joint and initiate/control arm rotation. Supraspinatus most commonly torn (initiates abduction)."
+    },
+    {
+      "question": "An intervertebral disc is which type of joint?",
+      "options": [
+        "Synovial joint — contains joint cavity with synovial fluid",
+        "Fibrous joint — bones joined by collagen fibers",
+        "Symphysis — cartilaginous joint using fibrocartilage",
+        "Synchondrosis — hyaline cartilage, completely immovable"
+      ],
+      "correctIndex": 2,
+      "explanation": "Intervertebral discs are SYMPHYSES — cartilaginous joints using fibrocartilage. The disc has an outer annulus fibrosus (fibrocartilage ring) and inner nucleus pulposus (gel-like core). Allows slight bending/rotation. Herniated disc = nucleus pulposus protrudes through annulus → nerve compression."
+    },
+    {
+      "question": "A saddle joint allows which movements?",
+      "options": [
+        "Rotation only",
+        "Flexion/extension and abduction/adduction (biaxial — no rotation)",
+        "Movement in all planes (multiaxial)",
+        "Gliding in one plane only (uniaxial)"
+      ],
+      "correctIndex": 1,
+      "explanation": "Saddle joints are BIAXIAL — allow flexion/extension and abduction/adduction but NOT rotation. The best example is the carpometacarpal joint of the thumb (between trapezium and 1st metacarpal) — allows the thumb's unique opposition ability."
+    },
+    {
+      "question": "Skull sutures are which type of fibrous joint?",
+      "options": [
+        "Syndesmosis — connected by interosseous membrane, slightly movable",
+        "Gomphosis — peg-in-socket, as teeth in jaw",
+        "Suture — interlocking jagged edges of skull bones, completely immovable",
+        "Symphysis — fibrocartilage pad between bones"
+      ],
+      "correctIndex": 2,
+      "explanation": "Skull sutures are fibrous SUTURES — interlocking irregular edges of cranial bones connected by short collagenous fibers (Sharpey's fibers). Completely immovable (synarthrosis) in adults. In infants, fontanelles (soft spots) = areas where sutures haven't yet ossified."
+    }
+  ],
+  "flashcards": [
+    {
+      "term": "Articulation / Joint",
+      "definition": "Any point where two or more bones meet. Classified structurally (fibrous/cartilaginous/synovial) and functionally (synarthrosis/amphiarthrosis/diarthrosis)."
+    },
+    {
+      "term": "Fibrous Joints — 3 Types",
+      "definition": "Sutures (skull, immovable), Syndesmoses (fibula-tibia, interosseous membrane, slightly movable), Gomphoses (teeth in sockets, immovable)."
+    },
+    {
+      "term": "Cartilaginous Joints — 2 Types",
+      "definition": "Synchondroses (hyaline cartilage, immovable — epiphyseal plate). Symphyses (fibrocartilage, slightly movable — pubic symphysis, intervertebral discs)."
+    },
+    {
+      "term": "Synovial Joint Features",
+      "definition": "Articular cartilage (hyaline), joint cavity, articular capsule (fibrous layer + synovial membrane), synovial fluid, reinforcing ligaments, bursae, menisci (some joints)."
+    },
+    {
+      "term": "Synovial Fluid",
+      "definition": "Secreted by synovial membrane. Lubricates articular surfaces, absorbs shock, nourishes avascular cartilage. Viscous — like egg white (Latin: ovum = egg)."
+    },
+    {
+      "term": "Bursa",
+      "definition": "Fluid-filled sac lined by synovial membrane. Reduces friction between structures (tendons/bone/skin). Bursitis = inflammation. Olecranon (elbow), prepatellar (knee)."
+    },
+    {
+      "term": "Meniscus",
+      "definition": "Fibrocartilage pad within the knee joint. Deepens tibial socket, absorbs compressive forces, stabilizes joint. Medial meniscus tears more often (less mobile). Common sports injury."
+    },
+    {
+      "term": "6 Synovial Joint Types",
+      "definition": "Hinge (elbow/knee — uniaxial flex/ext), Ball-and-socket (shoulder/hip — multiaxial), Pivot (atlas-axis — rotation), Condyloid (wrist — biaxial), Saddle (thumb — biaxial), Plane (intercarpal — gliding)."
+    },
+    {
+      "term": "Flexion vs Extension",
+      "definition": "Flexion = DECREASES the angle between bones (bending). Extension = INCREASES the angle (straightening). Hyperextension = extension beyond anatomical position."
+    },
+    {
+      "term": "Abduction vs Adduction",
+      "definition": "Abduction = AWAY from the midline. Adduction = TOWARD the midline. ABduction = Away. ADduction = Adds back."
+    },
+    {
+      "term": "Pronation vs Supination",
+      "definition": "Forearm. Supination = palm ANTERIOR/up (hold soup). Pronation = palm POSTERIOR/down (pour soup). Radius crosses over ulna in pronation."
+    },
+    {
+      "term": "Dorsiflexion vs Plantar Flexion",
+      "definition": "Dorsiflexion = toes/top of foot pulled UP toward shin. Plantar flexion = pointing toes DOWN (pressing gas pedal, high heels)."
+    },
+    {
+      "term": "Sprain vs Strain",
+      "definition": "Sprain = stretched/torn LIGAMENT (bone-to-bone). Strain = stretched/torn MUSCLE or TENDON (muscle-to-bone). SPrain = Structural support (ligament). STrain = muscle/tendon."
+    },
+    {
+      "term": "Osteoarthritis vs Rheumatoid Arthritis",
+      "definition": "OA: wear-and-tear, cartilage breakdown, asymmetric, older adults. RA: AUTOIMMUNE attacks synovial membrane, symmetrical, systemic, any age. RA = autoimmune. OA = old age wear."
+    },
+    {
+      "term": "Unhappy Triad",
+      "definition": "Knee injury: ACL (anterior cruciate ligament) + MCL (medial collateral ligament) + medial meniscus tear. Caused by lateral force on planted knee. Common in contact sports."
+    },
+    {
+      "term": "Rotator Cuff — SITS",
+      "definition": "Supraspinatus, Infraspinatus, Teres minor, Subscapularis. Stabilize glenohumeral joint. Supraspinatus most commonly torn. Initiates abduction (first 15°)."
+    },
+    {
+      "term": "Acetabulum",
+      "definition": "Cup-shaped socket on hip bone (ilium + ischium + pubis) that receives the femoral head. Ball-and-socket hip joint. Important in hip dislocation and total hip replacement."
+    },
+    {
+      "term": "Goniometer",
+      "definition": "Tool used to objectively measure JOINT RANGE OF MOTION (ROM) in degrees. Standard in physical therapy and orthopedic assessment."
+    },
+    {
+      "term": "Gomphosis",
+      "definition": "Fibrous joint — peg fits into socket. ONLY example in the body: teeth in alveolar sockets of mandible/maxilla. Periodontal ligament holds tooth in place. Completely immovable."
+    },
+    {
+      "term": "Circumduction",
+      "definition": "Circular movement of a limb tracing a cone shape. Combines flexion, extension, abduction, and adduction sequentially. Possible at ball-and-socket and condyloid joints."
+    }
+  ]
+}

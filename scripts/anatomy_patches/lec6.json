@@ -1,0 +1,339 @@
+{
+  "cheatSheet": [
+    {
+      "title": "Bone cells — the 4 types",
+      "color": "pink",
+      "content": "<ul><li><strong>Osteoprogenitor</strong>: stem cells, divide to produce osteoblasts, found in periosteum/endosteum.</li><li><strong>Osteoblast</strong>: BUILDERS, secrete osteoid (collagen matrix), trigger calcification, become osteocytes.</li><li><strong>Osteocyte</strong>: mature cells in lacunae, MAINTAIN matrix, sense mechanical stress.</li><li><strong>Osteoclast</strong>: RESORBERS, large multinucleate, secrete acids + enzymes, dissolve bone matrix to release Ca²⁺.</li></ul>"
+    },
+    {
+      "title": "Compact vs spongy bone",
+      "color": "teal",
+      "content": "<p><strong>Compact bone</strong>: dense, organized into OSTEONS (Haversian systems). Central canals run PARALLEL to long axis (blood vessels/nerves). Perforating (Volkmann's) canals run PERPENDICULAR.</p><p><strong>Spongy bone</strong>: lattice of trabeculae, spaces contain red marrow, at bone ends and in flat bones. Lightweight but strong.</p><p><strong>Lamellae types</strong>: concentric (within osteon), interstitial (between osteons), circumferential (outer/inner rings).</p>"
+    },
+    {
+      "title": "Ossification & growth",
+      "color": "coral",
+      "content": "<p><strong>Intramembranous</strong>: bone forms DIRECTLY in fibrous membrane, no cartilage model. Forms FLAT BONES (skull, clavicle, mandible).</p><p><strong>Endochondral</strong>: bone REPLACES hyaline cartilage model. Forms MOST BONES (long, short, irregular).</p><p><strong>Interstitial growth</strong>: bone grows LONGER at epiphyseal plate. <strong>Appositional growth</strong>: bone grows WIDER — osteoblasts on periosteum add to outer surface.</p>"
+    },
+    {
+      "title": "Hormones & blood calcium",
+      "color": "purple",
+      "content": "<p><strong>PTH</strong> (parathyroid): released when Ca²⁺ LOW → stimulates osteoclasts → bone resorption → ↑ blood Ca²⁺.</p><p><strong>Calcitonin</strong> (thyroid C cells): released when Ca²⁺ HIGH → inhibits osteoclasts, stimulates osteoblasts → ↓ blood Ca²⁺.</p><p>Memory: PTH = 'Please Take Home' Ca²⁺ (raises it). Calcitonin = 'tones down' Ca²⁺ (lowers it).</p><p><strong>Osteoporosis</strong>: osteoclast > osteoblast activity → bone loss. Post-menopausal ↓ estrogen → ↑ osteoclasts. Treatment: Ca²⁺ + Vit D, weight-bearing exercise, bisphosphonates.</p>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which bone cell is responsible for RESORBING (breaking down) bone matrix?",
+      "options": [
+        "Osteoprogenitor cell",
+        "Osteoblast",
+        "Osteocyte",
+        "Osteoclast"
+      ],
+      "correctIndex": 3,
+      "explanation": "Osteoclasts are large multinucleate cells (from monocytes) that resorb bone. They secrete hydrochloric acid (dissolves hydroxyapatite) and enzymes (digest collagen) into a resorption pit, releasing Ca²⁺ and PO₄³⁻ into blood."
+    },
+    {
+      "question": "The PRIMARY function of osteoblasts is to:",
+      "options": [
+        "Break down bone matrix to release calcium",
+        "Maintain mature bone matrix in lacunae",
+        "Synthesize and secrete osteoid to build new bone",
+        "Divide to produce more osteoblasts"
+      ],
+      "correctIndex": 2,
+      "explanation": "Osteoblasts are the bone-BUILDING cells. They synthesize and secrete osteoid (organic matrix = collagen + glycoproteins) and initiate calcification. When surrounded by hardened matrix they become osteocytes (mature maintenance cells)."
+    },
+    {
+      "question": "Compact bone is organized into functional units called:",
+      "options": [
+        "Trabeculae",
+        "Lacunae",
+        "Osteons (Haversian systems)",
+        "Canaliculi"
+      ],
+      "correctIndex": 2,
+      "explanation": "Osteons (Haversian systems) are the structural units of compact bone. Each osteon = central canal + concentric rings of lamellae + osteocytes in lacunae connected by canaliculi. Central canal contains blood vessels and nerves."
+    },
+    {
+      "question": "Spongy bone differs from compact bone in that it:",
+      "options": [
+        "Has a denser more organized structure",
+        "Consists of a lattice of trabeculae with spaces containing red bone marrow",
+        "Is found only in the diaphysis of long bones",
+        "Has no blood supply"
+      ],
+      "correctIndex": 1,
+      "explanation": "Spongy (cancellous) bone has an open lattice of thin bony plates/bars called trabeculae. Spaces between trabeculae contain red bone marrow (hematopoiesis). Found at bone ends (epiphyses) and flat bones. Lightweight but strong."
+    },
+    {
+      "question": "Perforating (Volkmann's) canals differ from central (Haversian) canals because they:",
+      "options": [
+        "Run parallel to the long axis within each osteon",
+        "Are found only in spongy bone",
+        "Run perpendicular to central canals, connecting osteons to each other and to periosteum",
+        "Contain only lymphatic vessels"
+      ],
+      "correctIndex": 2,
+      "explanation": "Central (Haversian) canals: run PARALLEL to bone's long axis, supply each osteon with blood and nerves. Perforating (Volkmann's) canals: run PERPENDICULAR, connecting central canals of adjacent osteons AND connecting to periosteum and endosteum."
+    },
+    {
+      "question": "Intramembranous ossification differs from endochondral ossification because:",
+      "options": [
+        "Intramembranous requires a cartilage template; endochondral does not",
+        "Intramembranous bone forms directly in fibrous membrane without a cartilage template",
+        "Endochondral forms only flat bones",
+        "Both processes are identical"
+      ],
+      "correctIndex": 1,
+      "explanation": "Intramembranous: bone forms DIRECTLY within fibrous CT membrane (no cartilage model). Forms flat bones (skull, mandible, clavicle). Endochondral: bone replaces a pre-existing HYALINE CARTILAGE model. Forms most bones of the body."
+    },
+    {
+      "question": "Bone grows LONGER through interstitial growth at the:",
+      "options": [
+        "Periosteum surface",
+        "Epiphyseal plate (growth plate)",
+        "Medullary cavity",
+        "Endosteum lining"
+      ],
+      "correctIndex": 1,
+      "explanation": "Interstitial growth (lengthening) occurs at the EPIPHYSEAL PLATE (growth plate of hyaline cartilage). Chondrocytes divide and enlarge → pushing epiphysis away from diaphysis → new cartilage replaced by bone on diaphysis side. Stops when plate closes (~18–21 years)."
+    },
+    {
+      "question": "Appositional growth differs from interstitial growth in that appositional growth:",
+      "options": [
+        "Makes bone longer at the epiphyseal plate",
+        "Makes bone WIDER by adding to the outer surface via periosteal osteoblasts",
+        "Occurs only during fracture repair",
+        "Occurs inside the medullary cavity"
+      ],
+      "correctIndex": 1,
+      "explanation": "Interstitial = LENGTHENING at epiphyseal plate. Appositional = WIDENING. Osteoblasts in periosteum deposit bone on OUTER surface (wider); osteoclasts in endosteum remove from inner surface (enlarging medullary cavity). Net = wider bone."
+    },
+    {
+      "question": "When blood calcium DROPS, the body responds by:",
+      "options": [
+        "Calcitonin stimulating osteoblasts to deposit more calcium",
+        "PTH stimulating osteoclasts to resorb bone and release calcium into blood",
+        "Osteocytes shutting down to conserve calcium",
+        "Vitamin D directly activating osteoclasts"
+      ],
+      "correctIndex": 1,
+      "explanation": "Low blood Ca²⁺ → parathyroid glands release PTH → PTH stimulates OSTEOCLASTS to resorb bone → releases Ca²⁺ into blood → restores levels. PTH also increases Ca²⁺ reabsorption in kidneys and activates Vitamin D for intestinal absorption."
+    },
+    {
+      "question": "Calcitonin is released when blood calcium is HIGH and it acts to:",
+      "options": [
+        "Stimulate osteoclasts to release more calcium",
+        "Inhibit osteoclasts and stimulate osteoblasts to deposit calcium back into bone",
+        "Stimulate PTH release",
+        "Increase calcium absorption from intestines"
+      ],
+      "correctIndex": 1,
+      "explanation": "High blood Ca²⁺ → thyroid C cells release calcitonin → INHIBITS osteoclasts (stops resorption) and STIMULATES osteoblasts (promotes deposition) → Ca²⁺ moves from blood back into bone → blood Ca²⁺ returns to normal."
+    },
+    {
+      "question": "Gigantism results from excess GH BEFORE epiphyseal plates close. Excess GH AFTER closure causes:",
+      "options": [
+        "Gigantism still occurs — bones continue to lengthen",
+        "Acromegaly — bones widen and facial features/hands/feet enlarge but height does not increase",
+        "Dwarfism — bones cannot respond to excess GH",
+        "No effect — GH is inactive after plate closure"
+      ],
+      "correctIndex": 1,
+      "explanation": "After epiphyseal plates close, bones CANNOT lengthen. Excess GH after closure → acromegaly: bones thicken (appositional growth) → enlarged hands/feet/facial features. Gigantism = excess GH BEFORE closure → excessive height."
+    },
+    {
+      "question": "Vitamin D deficiency in children causes rickets because:",
+      "options": [
+        "Excess bone growth causes deformity",
+        "Calcium cannot be absorbed from intestines → bones cannot calcify properly → soft deformable bones",
+        "Bone loss from increased osteoclast activity",
+        "Premature closure of epiphyseal plates"
+      ],
+      "correctIndex": 1,
+      "explanation": "Vitamin D is required for Ca²⁺ absorption in the intestines. Without it → insufficient Ca²⁺ → bones cannot calcify properly → soft, pliable bones → bow legs (weight deforms soft bone). Adult version = osteomalacia."
+    },
+    {
+      "question": "The FIBROCARTILAGINOUS CALLUS in fracture repair forms during:",
+      "options": [
+        "Step 1 — when the hematoma (blood clot) forms",
+        "Step 2 — when osteoblasts and chondroblasts invade the clot and form a soft cartilage bridge",
+        "Step 3 — when cartilage is replaced by spongy bone",
+        "Step 4 — when the bony callus is remodeled into compact bone"
+      ],
+      "correctIndex": 1,
+      "explanation": "Fracture repair step 2: fibroblasts and chondroblasts from periosteum invade hematoma → produce collagen + cartilage → forms soft fibrocartilaginous callus bridging the fracture (like a soft splint). Step 3 replaces with bony callus (spongy bone). Step 4 remodels to compact bone."
+    },
+    {
+      "question": "A comminuted fracture is defined as:",
+      "options": [
+        "Incomplete break — bone bends but doesn't fully break",
+        "Bone shatters into 3 or more fragments",
+        "Break perpendicular to the long axis",
+        "Break at an oblique angle"
+      ],
+      "correctIndex": 1,
+      "explanation": "Comminuted fracture = bone shatters into 3 or MORE fragments. Common in high-energy trauma (car accidents) and in elderly osteoporotic bone. Often requires surgical repair (open reduction internal fixation — ORIF)."
+    },
+    {
+      "question": "Osteoporosis is most common in post-menopausal women because:",
+      "options": [
+        "Estrogen stimulates osteoclast activity — its loss reduces osteoclast activity",
+        "Declining estrogen leads to INCREASED osteoclast activity and decreased bone density",
+        "Post-menopausal women exercise less",
+        "Calcitonin increases at menopause causing excess bone deposition"
+      ],
+      "correctIndex": 1,
+      "explanation": "Estrogen normally INHIBITS osteoclast activity. After menopause, estrogen drops dramatically → osteoclasts overactive → bone resorption exceeds deposition → net BONE LOSS → fracture risk. Treatment: Ca²⁺ + Vit D, bisphosphonates (osteoclast inhibitors), weight-bearing exercise."
+    },
+    {
+      "question": "The ORGANIC component of bone (osteoid — collagen) provides:",
+      "options": [
+        "Hardness and resistance to compression",
+        "Flexibility and tensile strength — bone bends without snapping",
+        "The mineral content visible on X-ray",
+        "Color to bone tissue"
+      ],
+      "correctIndex": 1,
+      "explanation": "Organic component (~35%) = collagen fibers (osteoid). Provides FLEXIBILITY and tensile strength. Remove organic component (burn bone) → brittle chalk. Remove inorganic minerals (soak in acid) → rubbery. Both components needed for optimal bone properties."
+    },
+    {
+      "question": "The periosteum differs from the endosteum in that periosteum:",
+      "options": [
+        "Lines the medullary cavity",
+        "Covers the outer bone surface (except articular cartilage) and contains osteoprogenitor cells plus anchors ligaments and tendons (Sharpey's fibers)",
+        "Contains only osteoclasts",
+        "Is found only in spongy bone"
+      ],
+      "correctIndex": 1,
+      "explanation": "Periosteum = fibrous outer membrane covering bone's surface (except articular cartilage). Contains osteoprogenitor cells + osteoblasts, blood vessels, nerves, Sharpey's fibers (anchor tendons/ligaments). Endosteum = thin inner lining of medullary cavity and trabeculae."
+    },
+    {
+      "question": "Weight-bearing exercise prevents osteoporosis because:",
+      "options": [
+        "It increases calcium intake",
+        "Mechanical stress stimulates osteocytes which signal osteoblasts to deposit more bone",
+        "It directly inhibits osteoclast activity",
+        "It increases estrogen in post-menopausal women"
+      ],
+      "correctIndex": 1,
+      "explanation": "Weight-bearing creates mechanical stress → OSTEOCYTES sense strain through canaliculi → signal OSTEOBLASTS to increase bone formation → denser, stronger bone. Sedentary lifestyle removes this stimulus → osteoclasts dominate → bone loss. Basis for exercise in osteoporosis prevention."
+    },
+    {
+      "question": "A greenstick fracture is most common in children because:",
+      "options": [
+        "Children are more physically active",
+        "Children's bones have more collagen relative to minerals → more flexible → incomplete fracture on one side",
+        "Children have less compact bone than adults",
+        "Children have fewer osteoclasts to repair damage"
+      ],
+      "correctIndex": 1,
+      "explanation": "Greenstick fractures occur in CHILDREN because their bones contain more collagen (organic matrix) relative to minerals → more flexible → when bent by force, one side breaks while the other bends (incomplete fracture). Adult bones are more mineralized → more brittle → complete fractures."
+    },
+    {
+      "question": "In adults, the diaphysis (shaft) of a long bone contains:",
+      "options": [
+        "Red marrow — active in blood cell production",
+        "Yellow marrow — primarily adipose (fat) tissue for energy storage",
+        "Equal amounts of red and yellow marrow",
+        "No marrow — only compact bone"
+      ],
+      "correctIndex": 1,
+      "explanation": "In adults, the medullary cavity of the diaphysis contains YELLOW marrow (adipose/fat storage). RED marrow (hematopoietic — produces blood cells) persists in adults in epiphyses of long bones, flat bones (sternum, iliac crest), and irregular bones. Children have mostly red marrow."
+    },
+    {
+      "question": "Vitamin C deficiency affects bone formation because:",
+      "options": [
+        "It reduces calcium absorption from intestines",
+        "It impairs collagen synthesis by osteoblasts, weakening the organic bone matrix",
+        "It directly inhibits hydroxyapatite crystal formation",
+        "It causes osteoclasts to become overactive"
+      ],
+      "correctIndex": 1,
+      "explanation": "Vitamin C (ascorbic acid) is required by osteoblasts for COLLAGEN SYNTHESIS. Collagen is the main organic component of osteoid. Without Vit C → defective collagen → weak bone matrix. Deficiency = scurvy: bleeding gums, poor wound healing, bone pain."
+    }
+  ],
+  "flashcards": [
+    {
+      "term": "Osteoprogenitor Cells",
+      "definition": "Bone STEM CELLS (undifferentiated). Divide to produce osteoblasts. Found in periosteum and endosteum. Activated during bone growth and fracture repair."
+    },
+    {
+      "term": "Osteoblasts",
+      "definition": "Immature bone-BUILDING cells (-blast). Synthesize and secrete OSTEOID (collagen matrix). Trigger calcification. Become osteocytes when surrounded by matrix."
+    },
+    {
+      "term": "Osteocytes",
+      "definition": "MATURE bone cells (-cyte). Most abundant bone cell. Maintain bone matrix. Sense MECHANICAL STRESS via canaliculi. Trapped in lacunae."
+    },
+    {
+      "term": "Osteoclasts",
+      "definition": "Large multinucleate cells (from monocytes). BONE RESORPTION — secrete acids + enzymes to dissolve bone matrix. Essential for remodeling and Ca²⁺ release."
+    },
+    {
+      "term": "Compact vs Spongy Bone",
+      "definition": "Compact: dense, organized into OSTEONS, outer shell of all bones. Spongy (cancellous): lattice of TRABECULAE, at bone ends and flat bones, houses RED MARROW."
+    },
+    {
+      "term": "Osteon (Haversian System)",
+      "definition": "Structural unit of COMPACT BONE. Concentric lamellae surrounding CENTRAL CANAL (blood vessels + nerves). Osteocytes in lacunae connected via canaliculi."
+    },
+    {
+      "term": "Central vs Perforating Canals",
+      "definition": "Central (Haversian): run PARALLEL to long axis, within each osteon, blood vessels + nerves. Perforating (Volkmann's): run PERPENDICULAR, connect osteons to each other + periosteum."
+    },
+    {
+      "term": "Intramembranous vs Endochondral Ossification",
+      "definition": "Intramembranous: bone forms DIRECTLY in fibrous membrane, NO cartilage template — forms FLAT BONES. Endochondral: bone REPLACES hyaline cartilage model — forms MOST BONES."
+    },
+    {
+      "term": "Interstitial vs Appositional Growth",
+      "definition": "Interstitial: bone grows LONGER at EPIPHYSEAL PLATE. Appositional: bone grows WIDER — periosteal osteoblasts add to outer surface."
+    },
+    {
+      "term": "PTH vs Calcitonin",
+      "definition": "PTH: low Ca²⁺ → stimulates OSTEOCLASTS → bone resorption → ↑ blood Ca²⁺. Calcitonin: high Ca²⁺ → inhibits osteoclasts, stimulates OSTEOBLASTS → ↓ blood Ca²⁺."
+    },
+    {
+      "term": "Epiphyseal Plate Zones",
+      "definition": "Resting → Proliferating (cell division) → Hypertrophic (cells enlarge) → Calcified (cartilage calcifies) → Ossification (spongy bone forms). Growth occurs at proliferating zone."
+    },
+    {
+      "term": "Long Bone Anatomy",
+      "definition": "Diaphysis (shaft, compact bone, medullary cavity/yellow marrow). Epiphyses (ends, spongy bone, articular cartilage). Periosteum (outer membrane). Endosteum (inner lining)."
+    },
+    {
+      "term": "Fracture Repair — 4 Steps",
+      "definition": "1. HEMATOMA forms. 2. FIBROCARTILAGINOUS CALLUS (osteoblasts/chondroblasts fill clot). 3. BONY CALLUS (spongy bone). 4. BONE REMODELING (spongy → compact, shape restored)."
+    },
+    {
+      "term": "Osteoporosis",
+      "definition": "Decreased bone mass + density → fracture risk. Osteoclast > osteoblast activity. Most common post-menopausal women (↓ estrogen → ↑ osteoclasts). Treatment: Ca²⁺ + Vit D, weight-bearing exercise, bisphosphonates."
+    },
+    {
+      "term": "Gigantism vs Dwarfism",
+      "definition": "Gigantism: excess GH BEFORE epiphyseal plate closes → excessive height. Dwarfism: deficient GH or achondroplasia before closure → short stature. Both involve epiphyseal plate TIMING."
+    },
+    {
+      "term": "Bone Chemical Composition",
+      "definition": "Organic (~35%): COLLAGEN (osteoid) → flexibility + tensile strength. Inorganic (~65%): HYDROXYAPATITE Ca crystals → hardness + compressive strength. Both needed for optimal properties."
+    },
+    {
+      "term": "Vitamins & Minerals for Bone",
+      "definition": "Calcium (hardness). Phosphorus (with Ca in hydroxyapatite). Vitamin D (Ca absorption from intestines — deficiency = rickets/osteomalacia). Vitamin C (collagen synthesis by osteoblasts — deficiency = scurvy). Vitamin A (osteoblast stimulation)."
+    },
+    {
+      "term": "Fracture Types",
+      "definition": "Closed (skin intact). Open/compound (bone through skin). Comminuted (3+ fragments). Greenstick (incomplete, children). Stress (hairline, repetitive). Transverse (perpendicular). Oblique (angle). Spiral (twisting)."
+    },
+    {
+      "term": "Bone Resorption vs Deposition",
+      "definition": "Resorption: OSTEOCLASTS dissolve matrix → releases Ca²⁺ + PO₄. Deposition: OSTEOBLASTS build osteoid → calcification. MECHANICAL STRESS → more deposition. Sedentary → more resorption."
+    },
+    {
+      "term": "Weight Bearing Exercise & Bone",
+      "definition": "Mechanical stress → osteocytes sense → signal osteoblasts → increased bone DEPOSITION → denser stronger bone. Sedentary = disuse osteoporosis. BEST prevention for osteoporosis."
+    }
+  ]
+}

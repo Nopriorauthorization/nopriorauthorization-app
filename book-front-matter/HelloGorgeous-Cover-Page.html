@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello Gorgeous — Cover</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #000; }
+.print-bar {
+  background: #1A1A1A;
+  padding: 8px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 2px solid #D4537E;
+}
+.print-bar span { font-family: sans-serif; font-size: 9pt; color: rgba(255,255,255,.5); }
+.print-btn {
+  background: #D4537E;
+  color: white;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 4px;
+  font-size: 9pt;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+.cover-page {
+  width: 8.5in;
+  height: 11in;
+  background: #000;
+  margin: 0.3in auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+  position: relative;
+}
+.cover-page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+@media print {
+  .print-bar { display: none !important; }
+  body { background: #000; }
+  .cover-page {
+    width: 8.5in;
+    height: 11in;
+    margin: 0;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  @page { margin: 0; size: 8.5in 11in; }
+  .cover-page img {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+<div class="print-bar">
+  <span>Hello Gorgeous — The Book &nbsp;·&nbsp; Cover Page &nbsp;·&nbsp; Danielle Alcala</span>
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+</div>
+<div class="cover-page">
+  <img src="assets/cover-aesthetic-anatomy.png" alt="Everything you need to know about the aesthetic industry — Hello Gorgeous by Danielle Alcala" />
+</div>
+</body>
+</html>

@@ -19,11 +19,19 @@ export function NpaConversionHome() {
             "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212,83,126,0.45), transparent 55%)",
         }}
       />
-      <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-10 sm:px-6 sm:pb-28 sm:pt-14">
-        <p className="text-center text-xs font-bold uppercase tracking-[0.28em] text-[#D4537E]">
-          No Prior Authorization
-        </p>
-        <h1 className="mt-5 text-center font-serif text-[1.65rem] font-bold leading-[1.12] sm:text-4xl md:text-[2.65rem]">
+      <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-8 sm:px-6 sm:pb-28 sm:pt-10">
+        <div className="mx-auto mb-8 sm:mb-10">
+          <video
+            src="/videos/npa/npa-hero-wide.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-auto w-full rounded-2xl border border-white/10 shadow-2xl shadow-[#D4537E]/25"
+          />
+        </div>
+        <p className="sr-only">No Prior Authorization</p>
+        <h1 className="mt-0 text-center font-serif text-[1.65rem] font-bold leading-[1.12] sm:text-4xl md:text-[2.65rem]">
           The digital operating system for med spas, injectors &amp; aesthetic practices
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-gray-400 sm:text-lg">
@@ -33,12 +41,12 @@ export function NpaConversionHome() {
         </p>
 
         <Link
-          href="/informed-beauty-guide"
+          href="/book"
           className="group relative mx-auto mt-10 block max-w-3xl overflow-hidden rounded-2xl border-2 border-[#D4537E]/45 shadow-lg shadow-[#D4537E]/15 ring-1 ring-white/5 transition hover:border-[#D4537E]/80 hover:shadow-[#D4537E]/25"
         >
           <Image
             src="/images/informed-beauty-guide-promo.png"
-            alt="The Informed Beauty Guide — skincare, lasers, injectables, hormones; $49 instant access"
+            alt="Hello Gorgeous — THE BOOK — skincare, lasers, injectables, hormones; instant download"
             width={1024}
             height={682}
             className="h-auto w-full"
@@ -48,12 +56,12 @@ export function NpaConversionHome() {
         </Link>
         <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-400">
           Featured:{" "}
-          <Link href="/informed-beauty-guide" className="font-medium text-[#D4537E] hover:underline">
-            The Informed Beauty Guide
+          <Link href="/book" className="font-medium text-[#D4537E] hover:underline">
+            Hello Gorgeous — THE BOOK
           </Link>
           {" "}
-          — patient education before your next treatment.{" "}
-          <span className="text-gray-500">$49 · instant access</span>
+          — full digital book before your next treatment.{" "}
+          <span className="text-gray-500">$47 · instant download</span>
         </p>
 
         <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">

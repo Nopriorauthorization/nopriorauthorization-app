@@ -1,0 +1,97 @@
+{
+  "priorityChapters": [1, 2, 5, 8, 9, 10, 11, 15, 16, 17, 19],
+  "chapters": {
+    "1": {
+      "theme": "Skin layers / anatomy",
+      "requiredVisuals": [
+        "Opener: 5-layer depth stack (replace or refine inline SVG for print)",
+        "Body slot 01 (hero / full-bleed): signature facial depth & injection-plane diagram after “Five Layers”",
+        "Body slot 02 after “Cell Turnover, Collagen…”: aging / bone–fat–dermis / structural-change visual"
+      ],
+      "optionalVisuals": ["Cell turnover timeline", "Collagen types I/III micro-diagram"],
+      "quotePageCandidates": ["Opening From Danielle (long-form)", "Closing Bottom Line (short pull-quote spread)"],
+      "infographicCandidates": ["Opener depth reference", "Barrier / dehydration vs dry comparison"],
+      "finaleStatus": "Set in chapter-finale-lines.json — Ch 1 (gold template)"
+    },
+    "2": {
+      "theme": "Fitzpatrick / PIH risk",
+      "requiredVisuals": ["Fitzpatrick scale visual (I–VI)", "PIH risk ladder or heat map"],
+      "optionalVisuals": ["Melanocyte behavior diagram", "Tan vs treatment timing graphic"],
+      "quotePageCandidates": ["Safety-first framing quote from Danielle"],
+      "infographicCandidates": ["Device + skin type matrix"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 2"
+    },
+    "5": {
+      "theme": "Lasers & devices science",
+      "requiredVisuals": ["Chromophore / wavelength primer", "Depth vs modality diagram"],
+      "optionalVisuals": ["Selective photothermolysis one-pager"],
+      "quotePageCandidates": ["Physics-before-marketing line"],
+      "infographicCandidates": ["Wavelength-to-target cheat sheet"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 5"
+    },
+    "8": {
+      "theme": "Before you book any laser",
+      "requiredVisuals": ["Consult checklist hero", "Consent / downtime reality graphic"],
+      "optionalVisuals": ["Red-flag provider signals illustration"],
+      "quotePageCandidates": ["Consult is not a sales pitch"],
+      "infographicCandidates": ["Questions to ask in consult"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 8"
+    },
+    "9": {
+      "theme": "Botox / neuromodulators",
+      "requiredVisuals": ["Muscle / NMJ plane diagram", "Onset–duration timeline"],
+      "optionalVisuals": ["Areas map (glabella, crow’s, forehead) editorial"],
+      "quotePageCandidates": ["Precision over trend"],
+      "infographicCandidates": ["What Botox does / does not do"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 9"
+    },
+    "10": {
+      "theme": "Filler architecture",
+      "requiredVisuals": ["Facial planes stack (periosteum → SMAS → fat)", "G’ vs cohesivity explainer graphic"],
+      "optionalVisuals": ["Overfilled vs structural support comparison"],
+      "quotePageCandidates": ["Architecture, not volume"],
+      "infographicCandidates": ["Plane-by-plane indication map"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 10"
+    },
+    "11": {
+      "theme": "Safe injector",
+      "requiredVisuals": ["Credential / scope checklist", "Complication preparedness graphic"],
+      "optionalVisuals": ["Vascular emergency awareness one-pager"],
+      "quotePageCandidates": ["The injector who says no"],
+      "infographicCandidates": ["Green / red flags in a practice"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 11"
+    },
+    "15": {
+      "theme": "Hormones",
+      "requiredVisuals": ["Axis diagram (HPA / thyroid / sex steroids overview)", "Symptom cluster map"],
+      "optionalVisuals": ["Normal vs optimal spectrum graphic"],
+      "quotePageCandidates": ["Labs are a story"],
+      "infographicCandidates": ["When to test what (high level)"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 15"
+    },
+    "16": {
+      "theme": "BHRT",
+      "requiredVisuals": ["Bioidentical vs synthetic distinction graphic", "Monitoring cadence timeline"],
+      "optionalVisuals": ["Routes of administration comparison"],
+      "quotePageCandidates": ["Partnership, not product"],
+      "infographicCandidates": ["Dose response is individual"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 16"
+    },
+    "17": {
+      "theme": "Lab work",
+      "requiredVisuals": ["Panel map (thyroid, metabolic, inflammatory markers)", "Reference vs optimal shading"],
+      "optionalVisuals": ["Sample collection / timing note graphic"],
+      "quotePageCandidates": ["You are not a single number"],
+      "infographicCandidates": ["CBC / CMP / thyroid one-glance guide"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 17"
+    },
+    "19": {
+      "theme": "Peptide therapy",
+      "requiredVisuals": ["Mechanism categories (signal vs support)", "Prescriber oversight callout visual"],
+      "optionalVisuals": ["Sequence / timing graphic"],
+      "quotePageCandidates": ["Signals not shortcuts"],
+      "infographicCandidates": ["Peptide family overview"],
+      "finaleStatus": "chapter-finale-lines.json — Ch 19"
+    }
+  }
+}

@@ -73,6 +73,29 @@ export default function Micro270LandingPage() {
 
       <div className="full-divider" />
 
+      {/* Hero image + ad video side by side */}
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "56px 24px 0", display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
+        <div style={{ flex: "1 1 300px", minWidth: 0 }}>
+          <img
+            src="/images/micro270-hero.png"
+            alt="Micro 270 Study Hub — 1,000 nursing microbiology questions, exam-trap flags, and AI cram tool"
+            style={{ width: "100%", borderRadius: 16, display: "block" }}
+          />
+        </div>
+        <div style={{ flex: "1 1 300px", minWidth: 0 }}>
+          <video
+            src="/videos/micro270/micro270-ad-square.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{ width: "100%", borderRadius: 16, display: "block" }}
+          />
+        </div>
+      </div>
+
+      <div className="full-divider" />
+
       <div className="product-section">
         <div className="product-label">Product 1 — The Question Bank</div>
         <div className="product-grid">

@@ -1,7 +1,7 @@
 # Micro 270 — Video & static ad brief (Anthony)
 
 **Product:** Micro 270 study hub + bank (No Prior Authorization)  
-**Primary URL (marketing + pricing):** https://nopriorauthorization.com/micro270  
+**Primary URL (marketing + pricing):** https://nopriorauthorization.com/micro270
 **Free hub (chapter grid + Launch):** https://nopriorauthorization.com/micro270/hub  
 
 ---

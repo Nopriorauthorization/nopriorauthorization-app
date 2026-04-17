@@ -1,0 +1,47 @@
+/**
+ * Hello Gorgeous — print-only typography (injected after premium CSS for chapter HTML → PDF).
+ * Targets body column only; opener / dark blocks keep their own scales.
+ */
+@media print {
+  .body-content > .body-text {
+    font-size: 11.25pt;
+    line-height: 1.88;
+    orphans: 2;
+    widows: 2;
+  }
+
+  .body-content > .ch-h2 {
+    font-size: 21pt;
+    line-height: 1.12;
+    margin-top: 0.5in;
+    margin-bottom: 0.1in;
+  }
+
+  .body-content > .ch-h2:first-of-type {
+    margin-top: 0.38in;
+  }
+
+  .body-content > .ch-h3 {
+    font-size: 10.25pt;
+    margin-top: 0.26in;
+    margin-bottom: 0.06in;
+  }
+
+  /* Keep premium rails from splitting awkwardly from their lead-in heading */
+  .ch-h2.hg-cinematic + .body-text {
+    orphans: 2;
+    widows: 2;
+  }
+
+  .hg-chapter-finale {
+    margin-top: 0.42in;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .hg-visual-spread:not(.hg-visual-spread--hero-moment),
+  .hg-danielle-stamp {
+    margin-top: 0.28in;
+    margin-bottom: 0.28in;
+  }
+}

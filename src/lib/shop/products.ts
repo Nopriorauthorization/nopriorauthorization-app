@@ -8,10 +8,11 @@ import {
   BUNDLE_TIER_PRICE_CENTS,
 } from "@/config/growth-funnel.config";
 import {
-  INFORMED_BEAUTY_GUIDE_SLUG,
-  INFORMED_BEAUTY_PRICE_CENTS,
-  INFORMED_BEAUTY_TITLE,
-} from "@/config/informed-beauty-guide.config";
+  HELLO_GORGEOUS_BOOK_SLUG,
+  HELLO_GORGEOUS_BOOK_PRICE_CENTS,
+  HELLO_GORGEOUS_BOOK_TITLE,
+} from "@/config/hello-gorgeous-book.config";
+import { getMicro270ShopProductDefs } from "@/config/micro270-shop.config";
 import type { BundleTierEmphasis, BundleTierId } from "@/lib/shop/bundle-tier-config";
 import {
   getBundleTierDefinition,
@@ -259,10 +260,13 @@ const PRICE_MAP: Record<string, number> = {
   "consent-waxing": 1900,
   "consent-microneedling-rf": 1900,
   "consent-photography-hipaa": 1900,
+  "micro270-question-bank": 4700,
+  "micro270-bank-ai-bundle": 6700,
+  "micro270-full-access": 9700,
 };
 
 const FEATURED_SLUGS = new Set([
-  INFORMED_BEAUTY_GUIDE_SLUG,
+  HELLO_GORGEOUS_BOOK_SLUG,
   "medspa-social-media-system",
   "medspa-content-strategy-system",
   "hormone-therapy-playbook",
@@ -311,6 +315,11 @@ const AUDIENCE_MAP: Record<string, string[]> = {
     "Patients and clients researching aesthetic care",
     "Anyone investing in skin, injectables, or wellness",
     "People who want confident questions at consultations",
+  ],
+  "Study guides": [
+    "Nursing students in Microbiology / Micro 270",
+    "RN and allied health students preparing for exams",
+    "Anyone who wants professor-style practice questions with explanations",
   ],
 };
 
@@ -364,6 +373,7 @@ const CATEGORY_THUMBNAIL: Record<string, string> = {
   "Playbooks": "/shop-previews/playbooks/npa-playbook-botox-filler.png",
   "Cheat Sheets": "/shop-previews/cheat-sheets/botox-clinical-cheat-sheet.png",
   "Business Systems": "/shop-previews/default/legal.png",
+  "Study guides": "/shop-previews/default/default-thumbnail.png",
 };
 
 const SLUG_THUMBNAIL: Record<string, string> = {
@@ -680,23 +690,22 @@ export function getShopProducts(): ShopProduct[] {
     _products.push(gs);
   }
 
-  const hasInformedBeauty = _products.some((p) => p.slug === INFORMED_BEAUTY_GUIDE_SLUG);
-  if (!hasInformedBeauty) {
-    const ibg: ShopProduct = {
-      slug: INFORMED_BEAUTY_GUIDE_SLUG,
-      title: INFORMED_BEAUTY_TITLE,
+  const hasHelloGorgeousBook = _products.some((p) => p.slug === HELLO_GORGEOUS_BOOK_SLUG);
+  if (!hasHelloGorgeousBook) {
+    const book: ShopProduct = {
+      slug: HELLO_GORGEOUS_BOOK_SLUG,
+      title: HELLO_GORGEOUS_BOOK_TITLE,
       shortDescription:
-        "Take control of your aesthetic and wellness care — 11 plain-English sections on skin, injectables, GLP-1, hormones, labs, IVs, peptides, and more. Built from 10+ years in a real med spa.",
-      longDescription: `${INFORMED_BEAUTY_TITLE} is a complete patient education system — not fluffy beauty tips. Danielle Alcala wrote it from thousands of real consultations so you can ask better questions, spot red flags, and understand what you’re paying for.\n\nOne download: full book plus all 11 sections in a single HTML file — sticky nav by topic, print / Save as PDF in the browser. Instant delivery after checkout. For education only — not medical advice; always work with a licensed provider for your care.`,
-      priceCents: INFORMED_BEAUTY_PRICE_CENTS,
-      priceDisplay: formatPrice(INFORMED_BEAUTY_PRICE_CENTS),
+        "The complete patient education book — 24 chapters on skin, lasers, injectables, hormones, GLP-1, labs, peptides, and more. Written by Danielle Alcala from real med-spa practice.",
+      longDescription: `${HELLO_GORGEOUS_BOOK_TITLE} is the full digital book: table of contents, all chapters, clinical visuals, and print-ready layout. One PDF download after checkout. For education only — not medical advice; always work with a licensed provider for your care.`,
+      priceCents: HELLO_GORGEOUS_BOOK_PRICE_CENTS,
+      priceDisplay: formatPrice(HELLO_GORGEOUS_BOOK_PRICE_CENTS),
       templateCount: 1,
       category: "Patient education",
       features: [
-        "One HTML file — sticky top nav across all 11 sections (book + cheat sheets); print or save as PDF",
+        "Full merged PDF — 24 chapters, TOC, title & copyright pages",
         "Written by Danielle Alcala — Hello Gorgeous Med Spa & No Prior Authorization",
-        "Instant download — read on phone, tablet, or print",
-        "Lifetime access — refer back before every appointment",
+        "Instant download after purchase",
         "Educational only — not a substitute for your own clinician",
       ],
       featured: true,
@@ -704,10 +713,30 @@ export function getShopProducts(): ShopProduct[] {
       previewImages: ["/shop-previews/default/default-thumbnail.png"],
       audience: AUDIENCE_MAP["Patient education"] ?? ["Patients and clients"],
     };
-    _products.push(ibg);
+    _products.push(book);
   }
 
-  const PIN_FIRST = [INFORMED_BEAUTY_GUIDE_SLUG, GROWTH_SYSTEM_SLUG];
+  for (const def of getMicro270ShopProductDefs()) {
+    if (_products.some((p) => p.slug === def.slug)) continue;
+    const micro: ShopProduct = {
+      slug: def.slug,
+      title: def.title,
+      shortDescription: def.shortDescription,
+      longDescription: def.longDescription,
+      priceCents: def.priceCents,
+      priceDisplay: formatPrice(def.priceCents),
+      templateCount: def.templateCount,
+      category: "Study guides",
+      features: def.features,
+      featured: false,
+      stripePriceId: null,
+      previewImages: discoverPreviewImages(def.slug, "Study guides"),
+      audience: AUDIENCE_MAP["Study guides"] ?? ["Nursing students"],
+    };
+    _products.push(micro);
+  }
+
+  const PIN_FIRST = [HELLO_GORGEOUS_BOOK_SLUG, GROWTH_SYSTEM_SLUG];
   const pinRank = (slug: string) => {
     const i = PIN_FIRST.indexOf(slug);
     return i === -1 ? 999 : i;

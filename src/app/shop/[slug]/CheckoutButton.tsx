@@ -31,6 +31,7 @@ export function CheckoutButton({
   funnelTrackingEnabled,
   onBeforeRedirectToSquare,
   proConversionUpsell = false,
+  buttonClassName,
 }: {
   slug: string;
   label: string;
@@ -46,6 +47,8 @@ export function CheckoutButton({
   onBeforeRedirectToSquare?: () => void;
   /** Show Pro membership savings strip in the email/checkout dialog */
   proConversionUpsell?: boolean;
+  /** Override default button styles (e.g. landing pages that match non-shop UI). */
+  buttonClassName?: string;
 }) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -157,9 +160,11 @@ export function CheckoutButton({
     }
   };
 
+  const btnClass = buttonClassName ?? BTN_CLASS;
+
   if (useFunnelLanding) {
     return (
-      <Link href={`/shop/${encodeURIComponent(slug)}/funnel`} className={BTN_CLASS}>
+      <Link href={`/shop/${encodeURIComponent(slug)}/funnel`} className={btnClass}>
         {label}
       </Link>
     );
@@ -196,7 +201,7 @@ export function CheckoutButton({
           setDialogOpen(true);
         }}
         disabled={loading}
-        className={BTN_CLASS}
+        className={btnClass}
       >
         {loading ? "Redirecting…" : label}
       </button>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { NPA_PRIMARY_MESSAGE, NPA_SITE_URL } from "@/config/npa-brand.config";
@@ -13,7 +14,30 @@ export const metadata: Metadata = {
   alternates: { canonical: `${NPA_SITE_URL}/about` },
 };
 
+const HELLO_GORGEOUS_GOOGLE_MAPS =
+  "https://www.google.com/maps/search/?api=1&query=Hello+Gorgeous+Med+Spa+Oswego+IL";
+
 export default function AboutPage() {
+  const patientReviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    author: { "@type": "Person", name: "Mona Herrada" },
+    reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+    reviewBody:
+      "I wanted to share my experience with the Oswego community regarding my visits to Hello Gorgeous Med Spa. Over the years, I have gone to several different places seeking treatment for unwanted hair on my upper lip and chin. Although I was consistently assured of results, I unfortunately never saw any real improvement and felt I had spent money without benefit. That completely changed when I met Danielle Alcala. From my very first treatment, I noticed a significant difference—something I had never experienced before. After just two sessions, the majority of the hair is gone, and I couldn't be more pleased with the results. Danielle's expertise and attention to detail truly set her apart. Encouraged by my results, I decided to explore additional treatment. I had the opportunity to consult with Danielle and Dr. Ryan, Nurse Practitioner, about concerns I've had regarding skin laxity in my arms, as well as my face, neck, and chest. They both took the time to sit down with me, listen to my concerns, and thoroughly explain my options. I appreciated how comfortable and informed they made me feel throughout the process. Based on their recommendation, I proceeded with Morpheus8 treatments on my arms, face, neck, and chest. I am currently in the process of treatment and look forward to sharing my before-and-after photos as my results continue to develop. I am grateful for the professionalism, honesty, and care I've received at Hello Gorgeous Med Spa, and I highly recommend them to anyone seeking effective and personalized aesthetic treatments. I will be forever grateful to Hello Gorgeous Med Spa in Oswego, IL, for their professionalism, kindness, and truly life-changing results.",
+    itemReviewed: {
+      "@type": "LocalBusiness",
+      name: "Hello Gorgeous Med Spa",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "74 W Washington St",
+        addressLocality: "Oswego",
+        addressRegion: "IL",
+        addressCountry: "US",
+      },
+    },
+  };
+
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -46,6 +70,10 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(patientReviewSchema) }}
       />
       <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20">
         <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#D4537E]">About</p>
@@ -119,6 +147,83 @@ export default function AboutPage() {
               .
             </li>
           </ul>
+        </section>
+
+        <section id="hello-gorgeous-reviews" className="mt-14 scroll-mt-24">
+          <h2 className="font-serif text-2xl font-bold text-[#1A1A1A]">What patients say</h2>
+          <p className="mt-2 text-sm font-medium text-[#5c5c5c]">
+            Hello Gorgeous Med Spa · Oswego, IL ·{" "}
+            <a
+              href={HELLO_GORGEOUS_GOOGLE_MAPS}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#D4537E] hover:underline"
+            >
+              Google reviews
+            </a>
+          </p>
+
+          <figure className="mt-8 overflow-hidden rounded-xl border border-[#e8d5de] bg-white shadow-sm">
+            <Image
+              src="/images/testimonials/mona-herrada-google-review.png"
+              alt="Google review by Mona Herrada — 5 stars for Hello Gorgeous Med Spa"
+              width={1024}
+              height={764}
+              className="h-auto w-full"
+              sizes="(max-width: 768px) 100vw, 672px"
+            />
+            <figcaption className="border-t border-[#f0ebe8] px-4 py-3 text-center text-xs text-[#888]">
+              Screenshot shared with permission ·{" "}
+              <a
+                href={HELLO_GORGEOUS_GOOGLE_MAPS}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#D4537E] hover:underline"
+              >
+                View on Google Maps
+              </a>
+            </figcaption>
+          </figure>
+
+          <div className="mt-8 rounded-xl border border-[#e8d5de] bg-white p-6 shadow-sm sm:p-8">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-lg tracking-tight text-amber-500" aria-hidden="true">
+                ★★★★★
+              </span>
+              <span className="text-sm font-bold text-[#1A1A1A]">Great price</span>
+              <span className="text-xs font-medium uppercase tracking-wider text-[#D4537E]">Google review</span>
+            </div>
+            <p className="mt-1 text-sm text-[#666]">Mona Herrada · Local Guide</p>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-[#444]">
+              <p>
+                I wanted to share my experience with the Oswego community regarding my visits to Hello Gorgeous Med
+                Spa. Over the years, I have gone to several different places seeking treatment for unwanted hair on my
+                upper lip and chin. Although I was consistently assured of results, I unfortunately never saw any real
+                improvement and felt I had spent money without benefit. That completely changed when I met Danielle
+                Alcala. From my very first treatment, I noticed a significant difference—something I had never
+                experienced before. After just two sessions, the majority of the hair is gone, and I couldn&apos;t be
+                more pleased with the results. Danielle&apos;s expertise and attention to detail truly set her apart.
+              </p>
+              <p>
+                Encouraged by my results, I decided to explore additional treatment. I had the opportunity to consult
+                with Danielle and Dr. Ryan, Nurse Practitioner, about concerns I&apos;ve had regarding skin laxity in
+                my arms, as well as my face, neck, and chest. They both took the time to sit down with me, listen to
+                my concerns, and thoroughly explain my options. I appreciated how comfortable and informed they made me
+                feel throughout the process.
+              </p>
+              <p>
+                Based on their recommendation, I proceeded with Morpheus8 treatments on my arms, face, neck, and chest.
+                I am currently in the process of treatment and look forward to sharing my before-and-after photos as my
+                results continue to develop.
+              </p>
+              <p>
+                I am grateful for the professionalism, honesty, and care I&apos;ve received at Hello Gorgeous Med Spa,
+                and I highly recommend them to anyone seeking effective and personalized aesthetic treatments. I will
+                be forever grateful to Hello Gorgeous Med Spa in Oswego, IL, for their professionalism, kindness, and
+                truly life-changing results.
+              </p>
+            </div>
+          </div>
         </section>
 
         <div className="mt-14 flex flex-wrap gap-4 border-t border-[#e8d5de] pt-10">

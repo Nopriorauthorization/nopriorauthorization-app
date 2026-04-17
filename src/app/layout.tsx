@@ -1,7 +1,6 @@
 import "./globals.css";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
-import MainNavigation from "@/components/layout/main-navigation";
-import { StickyEmailBar } from "@/components/shop/StickyEmailBar";
+import { ConditionalAppChrome } from "@/components/layout/conditional-app-chrome";
 import Providers from "@/components/layout/providers";
 import { MascotControllerProvider } from "@/context/MascotController";
 import type { Metadata, Viewport } from "next";
@@ -170,11 +169,7 @@ export default function RootLayout({
         <Providers>
           <MascotControllerProvider>
             <ErrorBoundary>
-              <MainNavigation />
-              <main className="min-w-0 pt-16 pb-[calc(6rem+env(safe-area-inset-bottom,0px))]">
-                {children}
-              </main>
-              <StickyEmailBar />
+              <ConditionalAppChrome>{children}</ConditionalAppChrome>
             </ErrorBoundary>
           </MascotControllerProvider>
         </Providers>

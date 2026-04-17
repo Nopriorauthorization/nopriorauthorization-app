@@ -1,0 +1,675 @@
+/**
+ * Hello Gorgeous — THE BOOK · Premium visual system
+ * Injected into every HelloGorgeous-Chapter-*.html at PDF build time.
+ * Use the same class names in chapter HTML for manual blocks.
+ */
+
+/* ─── Visual rhythm (full width, ~½–¾ page) ─── */
+.hg-visual-spread {
+  width: 100%;
+  max-width: 100%;
+  margin: 0.35in 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.hg-visual-spread--placeholder {
+  min-height: 2.85in;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(145deg, #1e1218 0%, #2a1822 50%, #1a1216 100%);
+  border: 1px solid rgba(212, 83, 126, 0.28);
+  /* Subtle inset only — heavy glows clip in print engines */
+  box-shadow: inset 0 0 40px rgba(212, 83, 126, 0.06);
+}
+/* Production slots: drop in final art; build fills empty slots with placeholder inner */
+.hg-visual-slot {
+  display: block;
+  width: 100%;
+  margin: 0.32in 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.hg-visual-spread--bleed-contained {
+  margin-left: 0;
+  margin-right: 0;
+}
+/* Edge-to-edge inside body column — may run under running head; use for true full-bleed art only */
+.hg-visual-spread--bleed-full {
+  width: calc(100% + 128px);
+  margin-left: -64px;
+  margin-right: -64px;
+  border-radius: 0;
+}
+.hg-visual-spread__inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.25in 0.65in;
+}
+.hg-visual-spread__label {
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 9pt;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(212, 83, 126, 0.95);
+  margin-bottom: 0.35in;
+}
+.hg-visual-spread__hint {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 11pt;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 4.2in;
+  line-height: 1.65;
+}
+.hg-visual-spread--photo {
+  min-height: 4in;
+  line-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.hg-visual-spread--photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+/* ─── Behind the Scenes (boxed, dark pink) ─── */
+.hg-behind-scenes {
+  margin: 0.38in 0;
+  padding: 0.42in 0.5in;
+  border-radius: 10px;
+  background: linear-gradient(165deg, #5c1f3a 0%, #72243e 45%, #4a1530 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.hg-behind-scenes__eyebrow {
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.18in;
+}
+.hg-behind-scenes__title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 16pt;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 0.22in;
+}
+.hg-behind-scenes__body {
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.78;
+  color: rgba(255, 255, 255, 0.88);
+}
+.hg-behind-scenes__body strong {
+  color: #ffb8d9;
+  font-weight: 700;
+}
+
+/* Upgrade legacy .bts to feel premium when combined */
+.body-content .bts.hg-bts--premium {
+  background: linear-gradient(165deg, #5c1f3a 0%, #72243e 50%, #3d1228 100%);
+  border-left: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.42in 0.48in;
+}
+.body-content .bts.hg-bts--premium .bts-label {
+  color: rgba(255, 255, 255, 0.65);
+}
+.body-content .bts.hg-bts--premium .bts-text {
+  color: rgba(255, 255, 255, 0.9);
+}
+.body-content .bts.hg-bts--premium .bts-text strong {
+  color: #ffb8d9;
+}
+
+/* ─── Red Flag (alert) ─── */
+.hg-red-flag {
+  margin: 0.38in 0;
+  padding: 0.38in 0.48in 0.38in 0.55in;
+  border-radius: 8px;
+  background: #fff8f8;
+  border: 2px solid #c62828;
+  border-left-width: 10px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.hg-red-flag__icon {
+  font-size: 18pt;
+  line-height: 1;
+  margin-bottom: 0.12in;
+}
+.hg-red-flag__label {
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 8.5pt;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c62828;
+  margin-bottom: 0.14in;
+}
+.hg-red-flag__text {
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 11pt;
+  font-weight: 700;
+  line-height: 1.65;
+  color: #1a1a1a;
+}
+
+/* ─── Don’t Waste Your Money ─── */
+.hg-dont-waste {
+  margin: 0.38in 0;
+  padding: 0.4in 0.48in;
+  border-radius: 10px;
+  background: #faf7f5;
+  border: 1px solid #e8dfd8;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.hg-dont-waste__head {
+  display: flex;
+  align-items: center;
+  gap: 0.15in;
+  margin-bottom: 0.22in;
+  padding-bottom: 0.15in;
+  border-bottom: 2px solid #d4537e;
+}
+.hg-dont-waste__icon {
+  font-size: 22pt;
+  line-height: 1;
+}
+.hg-dont-waste__title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 15pt;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+.hg-dont-waste__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hg-dont-waste__list li {
+  display: flex;
+  gap: 0.18in;
+  align-items: flex-start;
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.72;
+  color: #333;
+  padding: 0.12in 0;
+  border-bottom: 1px solid #eee;
+}
+.hg-dont-waste__list li:last-child {
+  border-bottom: none;
+}
+.hg-dont-waste__list li::before {
+  content: "✕";
+  flex-shrink: 0;
+  width: 0.22in;
+  text-align: center;
+  font-weight: 900;
+  color: #d4537e;
+  font-size: 11pt;
+  line-height: 1.65;
+}
+
+/* ─── Pull quote (large, centered) ─── */
+.hg-pull-quote {
+  margin: 0.45in 0.15in;
+  padding: 0.35in 0.4in;
+  text-align: center;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.hg-pull-quote__text {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 17pt;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.45;
+  color: #1a1a1a;
+  max-width: 5.8in;
+  margin: 0 auto;
+}
+.hg-pull-quote__rule {
+  width: 48px;
+  height: 3px;
+  background: #d4537e;
+  margin: 0.28in auto 0;
+  border-radius: 2px;
+}
+
+/* ─── Full-page quote (use sparingly in HTML) ─── */
+.hg-fullpage-quote {
+  page-break-before: always;
+  page-break-after: auto;
+  break-inside: avoid;
+  min-height: 9in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.2in 0.55in 1.25in;
+  background: linear-gradient(180deg, #faf7f5 0%, #fff 45%, #fdf5f8 100%);
+  border-top: 4px solid #d4537e;
+  border-bottom: 4px solid #d4537e;
+  margin: 0.7in -64px 0.75in;
+  width: calc(100% + 128px);
+  max-width: none;
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.hg-fullpage-quote__mark {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 72pt;
+  line-height: 0.5;
+  color: rgba(212, 83, 126, 0.2);
+  margin-bottom: 0.15in;
+}
+.hg-fullpage-quote__text {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 22pt;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.4;
+  color: #1a1a1a;
+  max-width: 5.5in;
+}
+.hg-fullpage-quote__sig {
+  margin-top: 0.45in;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 12pt;
+  color: #d4537e;
+  font-style: italic;
+}
+
+/* ─── Cinematic section opener (only first .ch-h2; variants set at build) ─── */
+.ch-h2.hg-cinematic {
+  page-break-before: auto;
+  width: calc(100% + 128px);
+  margin-left: -64px;
+  margin-right: -64px;
+  margin-top: 0;
+  margin-bottom: 0.2in;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(118deg, #0f0f0f 0%, #1f1418 38%, #2d1520 62%, #0a0a0a 100%);
+  border: none;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+.ch-h2.hg-cinematic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 75% 55% at 72% 38%, rgba(212, 83, 126, 0.18), transparent 58%);
+  pointer-events: none;
+}
+.ch-h2.hg-cinematic::after {
+  display: none;
+}
+.ch-h2.hg-cinematic em {
+  color: #d4537e;
+  font-style: italic;
+}
+/* Part-opening chapters (1,5,9,13,15,19): shorter cinematic — premium, not a blank sheet */
+.ch-h2.hg-cinematic.hg-cinematic--part-opener {
+  min-height: 5.35in;
+  padding: 0.65in 0.85in;
+  font-size: 28pt;
+}
+/* HG_PREMIUM_CINEMATIC=all: first section hero in every chapter */
+.ch-h2.hg-cinematic.hg-cinematic--full {
+  min-height: 7.1in;
+  padding: 0.85in;
+  font-size: 32pt;
+}
+
+/* ─── Infographic frame (timelines, tables, layers) ─── */
+.hg-infographic,
+.visual-box.hg-infographic {
+  margin: 0.38in 0;
+  padding: 0.35in 0.4in;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fdfcfa 0%, #f7f2ee 100%);
+  border: 1px solid #e5dcd6;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.hg-infographic .visual-label,
+.hg-infographic .timeline {
+  margin-top: 0;
+}
+
+/* ─── From Danielle — authority stamp (compact) ─── */
+.hg-danielle-stamp {
+  margin: 0.35in 0;
+  padding: 0.28in 0.4in;
+  border-radius: 8px;
+  background: #1a1a1a;
+  border-left: 4px solid #d4537e;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.hg-danielle-stamp__label {
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #d4537e;
+  margin-bottom: 0.1in;
+}
+.hg-danielle-stamp__text {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 11pt;
+  font-style: italic;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+.hg-danielle-stamp--ribbon {
+  border-left: none;
+  border-top: 3px solid #d4537e;
+  padding-top: 0.32in;
+}
+.hg-danielle-stamp--minimal {
+  background: #faf7f5;
+  border-left: 3px solid #d4537e;
+  border-radius: 6px;
+}
+.hg-danielle-stamp--minimal .hg-danielle-stamp__label {
+  color: #a33d62;
+}
+.hg-danielle-stamp--minimal .hg-danielle-stamp__text {
+  color: #333;
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 10.5pt;
+  font-style: normal;
+  line-height: 1.72;
+}
+.hg-danielle-stamp--inset {
+  background: linear-gradient(90deg, #1a1a1a 0%, #252028 100%);
+  border-radius: 10px;
+  border-left-width: 5px;
+}
+
+/* Premium treatment for existing block quotes */
+.dq.hg-dq-premium {
+  border-radius: 10px;
+  border: 1px solid rgba(212, 83, 126, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* ─── Chapter finale (compact closing spread — copy from chapter-finale-lines.json) ─── */
+.hg-chapter-finale {
+  page-break-before: always;
+  break-inside: avoid;
+  min-height: 4.85in;
+  width: calc(100% + 128px);
+  margin: 0.15in -64px 0;
+  padding: 0.65in 0.72in 0.75in;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(165deg, #c9447a 0%, #8f3558 42%, #1f1a1d 100%);
+  color: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.hg-finale-eyebrow {
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 0.22in;
+}
+.hg-finale-statement {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 17pt;
+  font-weight: 800;
+  line-height: 1.32;
+  max-width: 5.35in;
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.2);
+}
+.hg-finale-context {
+  margin-top: 0.38in;
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 8.5pt;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 5in;
+  line-height: 1.45;
+}
+
+/* ─── Signature hero moment (data-moment="hero" on .hg-visual-slot) — immersive bleed, no “safe box” ─── */
+.hg-visual-spread--hero-moment.hg-visual-spread--bleed-full {
+  margin-top: 0 !important;
+  margin-bottom: 0.12in !important;
+  box-sizing: border-box;
+}
+.hg-visual-spread--hero-moment.hg-visual-spread--placeholder {
+  min-height: 4.85in;
+  border-radius: 0;
+  border: none;
+  background: radial-gradient(ellipse 90% 80% at 50% 20%, rgba(212, 83, 126, 0.14), transparent 55%),
+    linear-gradient(168deg, #0f0a0d 0%, #1a1216 45%, #0d080c 100%);
+  box-shadow: 0 0 0 1px rgba(212, 83, 126, 0.35), 0 0 48px rgba(212, 83, 126, 0.12), inset 0 0 60px rgba(212, 83, 126, 0.05);
+}
+.hg-visual-spread--hero-moment .hg-visual-spread__label {
+  font-size: 8.5pt;
+  letter-spacing: 0.42em;
+  color: #ff8cba;
+  text-shadow: 0 0 20px rgba(212, 83, 126, 0.45);
+  margin-bottom: 0.12in;
+}
+.hg-visual-spread--hero-moment .hg-visual-spread__hint {
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 5.4in;
+}
+/* No inner safe padding — art or placeholder fills the frame */
+.hg-visual-spread__inner--hero {
+  padding: 0 !important;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.hg-visual-spread--hero-moment.hg-visual-spread--photo {
+  min-height: 4.85in;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+.hg-visual-spread--hero-moment.hg-visual-spread--photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 4.85in;
+  object-fit: cover;
+  display: block;
+}
+.hg-visual-spread__hero-fake {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.08in;
+  margin-top: 0.28in;
+  opacity: 0.85;
+}
+.hg-visual-spread__depth {
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 9pt;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #d4537e;
+}
+.hg-visual-spread__arrow {
+  display: block;
+  width: 2px;
+  height: 0.28in;
+  background: linear-gradient(180deg, #d4537e, rgba(212, 83, 126, 0.2));
+  box-shadow: 0 0 8px rgba(212, 83, 126, 0.5);
+}
+
+/* ─── Aging / structure moment (data-moment="aging") ─── */
+.hg-visual-spread--aging-moment.hg-visual-spread--placeholder {
+  min-height: 3.1in;
+  background: linear-gradient(145deg, #1c1619 0%, #251a20 100%);
+  border: 1px solid rgba(212, 83, 126, 0.22);
+}
+.hg-visual-spread--aging-moment .hg-visual-spread__label {
+  color: rgba(255, 180, 210, 0.95);
+}
+
+/* ─── Full-page pull quote accent line ─── */
+.hg-fullpage-quote__accent {
+  display: block;
+  margin-top: 0.2in;
+  color: #d4537e;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 0.02em;
+}
+.hg-fullpage-quote--dark {
+  background: linear-gradient(165deg, #121014 0%, #1a1418 55%, #0c0a0c 100%);
+  border-top-color: #d4537e;
+  border-bottom-color: #d4537e;
+}
+.hg-fullpage-quote--dark .hg-fullpage-quote__mark {
+  color: rgba(212, 83, 126, 0.35);
+}
+.hg-fullpage-quote--dark .hg-fullpage-quote__text {
+  color: #faf7f5;
+}
+.hg-fullpage-quote--dark .hg-fullpage-quote__accent {
+  color: #ffb8d9;
+}
+
+/* ─── Opening Danielle — editorial rhythm (add .dq--editorial-open on chapter HTML) ─── */
+.body-content .dq.dq--editorial-open {
+  padding: 0.38in 0.42in;
+}
+.body-content .dq.dq--editorial-open .dq-lead {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 13.5pt;
+  font-weight: 600;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+.body-content .dq.dq--editorial-open .dq-text.dq-text--compact {
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.78;
+  color: rgba(255, 255, 255, 0.68);
+  font-style: normal;
+  margin-top: 0.16in;
+  position: relative;
+  z-index: 1;
+}
+.body-content .dq.dq--editorial-open .dq-promise {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 15pt;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #fff;
+  margin-top: 0.22in;
+  padding-top: 0.18in;
+  border-top: 1px solid rgba(212, 83, 126, 0.35);
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Chapter mic drop — two lines only, nothing competing ─── */
+.hg-chapter-mic-drop {
+  page-break-before: always;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  min-height: 9.25in;
+  width: calc(100% + 128px);
+  margin: 0.2in -64px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5in 0.4in;
+  background: radial-gradient(ellipse 70% 45% at 50% 35%, rgba(212, 83, 126, 0.12), transparent 55%),
+    linear-gradient(180deg, #0f0e10 0%, #1a1518 40%, #0a090b 100%);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.hg-chapter-mic-drop__line {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 22pt;
+  font-weight: 800;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  max-width: 5.6in;
+  margin: 0;
+}
+.hg-chapter-mic-drop__line--accent {
+  margin-top: 0.42in;
+  font-size: 28pt;
+  color: #ffb8d9;
+  text-shadow: 0 0 40px rgba(212, 83, 126, 0.35);
+}
+.hg-chapter-mic-drop__sig {
+  margin-top: 0.55in;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 11pt;
+  font-style: italic;
+  color: rgba(212, 83, 126, 0.95);
+  letter-spacing: 0.06em;
+}

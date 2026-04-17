@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { GROWTH_SYSTEM_SLUG } from "@/config/growth-funnel.config";
-import { INFORMED_BEAUTY_GUIDE_SLUG } from "@/config/informed-beauty-guide.config";
 import { getDeliveryProfileForCategory } from "@/config/delivery-language.config";
 import { buildShopProductJsonLd } from "@/components/shop/ProductCommercialMetaSection";
 import {
@@ -19,9 +18,7 @@ import { CheckoutButton } from "./CheckoutButton";
 
 export function generateStaticParams() {
   return getShopProducts()
-    .filter(
-      (p) => p.slug !== GROWTH_SYSTEM_SLUG && p.slug !== INFORMED_BEAUTY_GUIDE_SLUG,
-    )
+    .filter((p) => p.slug !== GROWTH_SYSTEM_SLUG)
     .map((p) => ({ slug: p.slug }));
 }
 

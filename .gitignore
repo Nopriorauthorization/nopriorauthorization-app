@@ -18,6 +18,9 @@ node_modules
 .DS_Store
 *.pem
 
+# Nested scaffold / separate repo — do not track inside this project
+my-new-app/
+
 # Cursor / editor
 .cursor/
 

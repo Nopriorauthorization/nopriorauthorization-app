@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello Gorgeous — Title Page</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#1A1A1A;color:white;line-height:1.5;}
+.page{width:8.5in;height:11in;background:#1A1A1A;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;}
+.top-rule{position:absolute;top:0;left:0;right:0;height:4px;background:#D4537E;}
+.bottom-rule{position:absolute;bottom:0;left:0;right:0;height:4px;background:#D4537E;}
+/* Subtle radial glow */
+.glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(ellipse,rgba(212,83,126,0.07) 0%,transparent 70%);pointer-events:none;}
+.inner{position:relative;z-index:1;padding:0 80px;}
+.eyebrow{font-family:'Lato',sans-serif;font-size:9pt;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#D4537E;margin-bottom:40px;}
+.title{font-family:'Playfair Display',serif;font-size:72pt;font-weight:900;color:white;line-height:0.95;margin-bottom:16px;}
+.title em{color:#D4537E;font-style:italic;display:block;}
+.rule{width:60px;height:4px;background:#D4537E;margin:40px auto;}
+.subtitle{font-family:'Playfair Display',serif;font-size:15pt;color:rgba(255,255,255,0.5);font-style:italic;line-height:1.8;max-width:5in;margin:0 auto 56px;}
+.author-rule{width:40px;height:2px;background:#D4537E;margin:0 auto 20px;}
+.author{font-family:'Playfair Display',serif;font-size:18pt;color:white;font-weight:700;}
+.author-title{font-family:'Lato',sans-serif;font-size:8pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:10px;}
+.publisher{position:absolute;bottom:40px;left:0;right:0;text-align:center;}
+.publisher-name{font-family:'Lato',sans-serif;font-size:8pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#D4537E;}
+.publisher-sub{font-family:'Lato',sans-serif;font-size:7.5pt;color:rgba(255,255,255,0.3);margin-top:6px;letter-spacing:.05em;}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top-rule"></div>
+  <div class="bottom-rule"></div>
+  <div class="glow"></div>
+  <div class="inner">
+    <div class="eyebrow">A Complete Guide to Medical Aesthetics &amp; Wellness</div>
+    <div class="title">Hello<br><em>Gorgeous</em></div>
+    <div class="rule"></div>
+    <div class="subtitle">Everything your provider never explained — about your skin, your lasers, your injectables, your hormones, and your right to understand all of it.</div>
+    <div class="author-rule"></div>
+    <div class="author">Danielle Alcala</div>
+    <div class="author-title">Founder · Hello Gorgeous Med Spa · Licensed Esthetician · RN Student<br>Co-Founder · No Prior Authorization</div>
+  </div>
+  <div class="publisher">
+    <div class="publisher-name">No Prior Authorization</div>
+    <div class="publisher-sub">nopriorauthorization.com &nbsp;·&nbsp; hellogorgeousmedspa.com &nbsp;·&nbsp; Oswego, Illinois</div>
+  </div>
+</div>
+</body>
+</html>

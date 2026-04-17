@@ -8,6 +8,14 @@ import FillaGraceVideo from './FillaGraceVideo';
 import { NclexBundleSocialVideo } from './NclexBundleSocialVideo';
 import { StorefrontSocialVideo } from './StorefrontSocialVideo';
 import { NPA_Homepage_Explainer_V1 } from './compositions/HomepageExplainer';
+import { Micro270AdVideo } from './Micro270AdVideo';
+import { NpaHeroVideo } from './NpaHeroVideo';
+
+/** Micro 270 ad: 60s at 30fps */
+const MICRO270_AD_DURATION_FRAMES = 60 * 30;
+
+/** NPA hero brand video: 55s at 30fps */
+const NPA_HERO_DURATION_FRAMES = 55 * 30;
 
 /** Reels / TikTok / Stories (9:16) */
 const NCLEX_SOCIAL_DURATION_FRAMES = 30 * 30;
@@ -93,6 +101,50 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{
             title: 'Filla-Grace Aesthetics',
           }}
+        />
+      </Folder>
+      <Folder name="NpaHero">
+        <Composition
+          id="NpaHeroSquare"
+          component={NpaHeroVideo}
+          durationInFrames={NPA_HERO_DURATION_FRAMES}
+          fps={30}
+          width={1080}
+          height={1080}
+        />
+        <Composition
+          id="NpaHeroWide"
+          component={NpaHeroVideo}
+          durationInFrames={NPA_HERO_DURATION_FRAMES}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+        <Composition
+          id="NpaHeroReels"
+          component={NpaHeroVideo}
+          durationInFrames={NPA_HERO_DURATION_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+      </Folder>
+      <Folder name="Micro270">
+        <Composition
+          id="Micro270AdReels"
+          component={Micro270AdVideo}
+          durationInFrames={MICRO270_AD_DURATION_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="Micro270AdSquare"
+          component={Micro270AdVideo}
+          durationInFrames={MICRO270_AD_DURATION_FRAMES}
+          fps={30}
+          width={1080}
+          height={1080}
         />
       </Folder>
       <Folder name="NCLEX">

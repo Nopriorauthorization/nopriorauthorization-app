@@ -10,7 +10,7 @@ const SEO_LANDING_PATHS = [
   "/contact",
   "/cheat-sheets",
   "/audit",
-  "/informed-beauty-guide",
+  "/book",
   "/free-templates",
   "/free-templates/downloads",
   "/custom",
@@ -29,6 +29,7 @@ const SEO_LANDING_PATHS = [
   "/med-spa-marketing-ideas",
   "/how-to-get-more-med-spa-clients",
   "/glp1-marketing-strategy",
+  "/hello-gorgeous/glp1-side-effect-support",
   "/aesthetic-clinic-marketing",
 ];
 

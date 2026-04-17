@@ -9,7 +9,7 @@
 
 /* ── GLOBAL ── */
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Lato',sans-serif;background:#f0eeed;color:#1A1A1A;line-height:1.7;}
+body{font-family:'Lato',sans-serif;background:#EDEAE8;color:#1A1A1A;line-height:1.7;}
 
 /* ── NAV / TABLE OF CONTENTS ── */
 .main-nav{background:#1A1A1A;padding:0;position:sticky;top:0;z-index:999;border-bottom:3px solid #D4537E;box-shadow:0 2px 20px rgba(0,0,0,.4);}
@@ -37,7 +37,7 @@ body{font-family:'Lato',sans-serif;background:#f0eeed;color:#1A1A1A;line-height:
 .print-btn:hover{background:#FF1493;}
 
 /* ── BOOK STYLES (from main guide) ── */
-.page{width:8.5in;background:white;margin:.25in auto;padding:.75in .85in;box-shadow:0 4px 32px rgba(0,0,0,.12);}
+.page{width:8.5in;background:white;margin:.25in auto;padding:.75in .85in;box-shadow:0 8px 40px rgba(0,0,0,.16);}
 .cover{min-height:10.5in;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always;}
 .cover-top{border-bottom:4px solid #D4537E;padding-bottom:20px;margin-bottom:24px;}
 .cover-eyebrow{font-size:8pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;}
@@ -57,18 +57,23 @@ body{font-family:'Lato',sans-serif;background:#f0eeed;color:#1A1A1A;line-height:
 .cover-price-badge{background:#1A1A1A;color:#fff;padding:10px 20px;border-radius:5px;display:inline-flex;align-items:center;gap:14px;margin-top:10px;}
 .price-num{font-family:'Playfair Display',serif;font-size:28pt;font-weight:900;color:#D4537E;}
 .price-label{font-size:9pt;color:rgba(255,255,255,.65);line-height:1.5;}
-.section-header{background:#1A1A1A;margin:0 -.85in;padding:18px .85in;margin-bottom:24px;page-break-before:always;}
-.sec-eyebrow{font-size:8pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D4537E;margin-bottom:4px;}
-.sec-title{font-family:'Playfair Display',serif;font-size:24pt;font-weight:900;color:#fff;line-height:1.1;}
-.sec-subtitle{font-size:10pt;color:rgba(255,255,255,.5);margin-top:4px;}
-.h2{font-family:'Playfair Display',serif;font-size:16pt;font-weight:700;color:#1A1A1A;margin:22px 0 10px;padding-bottom:6px;border-bottom:2px solid #D4537E;}
+.section-header{background:#1A1A1A;margin:0 -.85in;padding:22px .85in 20px;margin-bottom:28px;page-break-before:always;border-bottom:3px solid #D4537E;position:relative;}
+.section-header::after{content:"";position:absolute;top:0;right:0;width:30%;height:100%;background:#D4537E;opacity:0.04;}
+.sec-eyebrow{font-size:7.5pt;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#D4537E;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.sec-eyebrow::before{content:"";display:inline-block;width:16px;height:2px;background:#D4537E;}
+.sec-title{font-family:'Playfair Display',serif;font-size:26pt;font-weight:900;color:#fff;line-height:1.05;}
+.sec-subtitle{font-size:10pt;color:rgba(255,255,255,.45);margin-top:5px;font-style:italic;}
+.h2{font-family:'Playfair Display',serif;font-size:16pt;font-weight:700;color:#1A1A1A;margin:28px 0 10px;padding-bottom:8px;border-bottom:0;position:relative;}
+.h2::after{content:"";display:block;width:36px;height:3px;background:#D4537E;margin-top:6px;}
 .h3{font-size:12pt;font-weight:700;color:#1A1A1A;margin:16px 0 7px;}
 .h4{font-size:10pt;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 5px;}
 .body-text{font-size:10.5pt;color:#333;line-height:1.75;margin-bottom:12px;}
 .body-text strong{color:#1A1A1A;font-weight:700;}
-.db{background:#FBEAF0;border-left:5px solid #D4537E;padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;}
-.db-label{font-size:7.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4537E;margin-bottom:5px;}
-.db-text{font-size:10.5pt;color:#72243E;line-height:1.75;font-style:italic;}
+.db{background:#1A1A1A;padding:24px 30px;border-radius:6px;margin:28px 0;position:relative;overflow:hidden;}
+.db::before{content:"\201C";font-family:'Playfair Display',serif;font-size:80pt;color:#D4537E;opacity:0.15;position:absolute;top:-18px;left:14px;line-height:1;pointer-events:none;}
+.db-label{font-size:7.5pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D4537E;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.db-label::before{content:"";display:inline-block;width:20px;height:2px;background:#D4537E;}
+.db-text{font-size:11pt;color:rgba(255,255,255,0.75);line-height:1.85;font-style:italic;font-family:'Playfair Display',serif;position:relative;z-index:1;}
 .info-card{background:#f9f6f4;border-radius:6px;padding:14px 18px;margin:12px 0;border:0.5px solid #e0d8d4;}
 .info-card h4{font-size:10pt;font-weight:700;color:#1A1A1A;margin-bottom:6px;}
 .info-card p{font-size:10pt;color:#555;line-height:1.7;}
@@ -81,21 +86,22 @@ body{font-family:'Lato',sans-serif;background:#f0eeed;color:#1A1A1A;line-height:
 .guide-table tr:nth-child(even) td{background:#fafafa;}
 .guide-table td strong{color:#1A1A1A;}
 .check-list{display:flex;flex-direction:column;gap:5px;margin:10px 0;}
-.check-item{display:flex;gap:10px;align-items:flex-start;font-size:10.5pt;color:#333;line-height:1.6;padding:4px 0;border-bottom:0.5px solid #f5f0ee;}
-.check-item::before{content:"✓";color:#D4537E;font-weight:900;flex-shrink:0;margin-top:1px;}
+.check-item{display:flex;gap:12px;align-items:flex-start;font-size:10.5pt;color:#333;line-height:1.7;padding:7px 0;border-bottom:0.5px solid #f0ebe8;}
+.check-item::before{content:"✓";color:#D4537E;font-weight:900;flex-shrink:0;margin-top:2px;font-size:10pt;}
 .bullet-list{display:flex;flex-direction:column;gap:5px;margin:10px 0;}
 .bullet-item{display:flex;gap:10px;align-items:flex-start;font-size:10.5pt;color:#333;line-height:1.6;}
 .bullet-item::before{content:"•";color:#D4537E;font-weight:900;flex-shrink:0;}
-.warn{background:#fff5f7;border-left:5px solid #D4537E;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;}
-.warn h4{font-size:10pt;font-weight:700;color:#72243E;margin-bottom:5px;}
-.warn p{font-size:10pt;color:#72243E;line-height:1.7;}
+.warn{background:#fff0f5;border-left:4px solid #D4537E;padding:14px 18px;border-radius:0;margin:18px 0;border-radius:0 4px 4px 0;}
+.warn h4{font-size:9pt;font-weight:700;color:#D4537E;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.warn p{font-size:10pt;color:#72243E;line-height:1.75;}
 .tip{background:#f0f7ff;border-left:5px solid #1a2940;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;}
 .tip h4{font-size:10pt;font-weight:700;color:#1a2940;margin-bottom:5px;}
 .tip p{font-size:10pt;color:#1a2940;line-height:1.7;}
-.question-box{background:#1A1A1A;border-radius:6px;padding:16px 20px;margin:14px 0;}
-.question-box h4{font-size:10pt;font-weight:700;color:#D4537E;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase;}
-.question-item{font-size:10pt;color:rgba(255,255,255,.85);line-height:1.7;padding:4px 0;border-bottom:0.5px solid rgba(255,255,255,.1);display:flex;gap:8px;}
-.question-item::before{content:"→";color:#D4537E;flex-shrink:0;}
+.question-box{background:#1A1A1A;border-radius:6px;padding:20px 24px;margin:20px 0;border-left:3px solid #D4537E;}
+.question-box h4{font-size:8pt;font-weight:700;color:#D4537E;margin-bottom:14px;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.question-box h4::before{content:"";display:inline-block;width:16px;height:2px;background:#D4537E;}
+.question-item{font-size:10.5pt;color:rgba(255,255,255,.8);line-height:1.75;padding:6px 0;border-bottom:0.5px solid rgba(255,255,255,.08);display:flex;gap:10px;}
+.question-item::before{content:"→";color:#D4537E;flex-shrink:0;font-weight:700;}
 .letter{border:0.5px solid #e0d8d4;border-radius:6px;padding:32px 36px;margin:14px 0;position:relative;}
 .letter::before{content:'"';font-family:'Playfair Display',serif;font-size:100pt;color:#D4537E12;position:absolute;top:-20px;left:16px;line-height:1;}
 .letter-body{font-size:11.5pt;color:#333;line-height:1.9;position:relative;z-index:1;}
@@ -198,47 +204,100 @@ body{font-family:'Lato',sans-serif;background:#f0eeed;color:#1A1A1A;line-height:
 <div id="section-book" class="book-section active">
 <div class="page">
 
-<!-- ══════════════════════ COVER ══════════════════════ -->
-<div class="cover">
-  <div>
-    <div class="cover-top">
-      <div class="cover-eyebrow">No Prior Authorization &nbsp;·&nbsp; The Patient Education Series</div>
-      <div class="cover-title">The Informed<br>Beauty<br><em>Guide.</em></div>
-      <div class="cover-subtitle">Everything you need to know to take control of your aesthetic, wellness, and beauty care — from lasers to Botox, fillers to weight loss, hormones to peptides, facials to IV therapy. In plain language. For you.</div>
+<!-- ══════════════════════ COVER — PREMIUM REBUILD ══════════════════════ -->
+<div style="min-height:10.5in;background:#1A1A1A;margin:0 -.85in;padding:0;display:flex;flex-direction:column;page-break-after:always;position:relative;overflow:hidden;">
+
+  <!-- Pink accent stripe -->
+  <div style="position:absolute;top:0;right:0;width:40%;height:100%;background:#D4537E;opacity:0.06;pointer-events:none;"></div>
+
+  <!-- Top bar -->
+  <div style="background:#D4537E;padding:11px 48px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+    <span style="font-family:'Lato',sans-serif;font-size:9pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:white;opacity:0.95;">No Prior Authorization</span>
+    <span style="font-family:'Lato',sans-serif;font-size:9pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:white;opacity:0.7;">The Patient Education Series</span>
+  </div>
+
+  <!-- Main content -->
+  <div style="padding:52px 48px 40px;flex:1;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:1;">
+    <div>
+      <!-- Eyebrow -->
+      <div style="font-family:'Lato',sans-serif;font-size:8pt;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#D4537E;margin-bottom:22px;">Complete Edition &nbsp;·&nbsp; 11 Sections &nbsp;·&nbsp; Print-Ready</div>
+
+      <!-- Main title -->
+      <div style="font-family:'Playfair Display',serif;font-size:56pt;font-weight:900;color:white;line-height:0.92;margin-bottom:0;">The Informed<br>Beauty</div>
+      <div style="font-family:'Playfair Display',serif;font-size:56pt;font-weight:900;color:#D4537E;line-height:0.92;font-style:italic;margin-bottom:0;">Guide.</div>
+
+      <!-- Divider -->
+      <div style="width:56px;height:3px;background:#D4537E;margin:26px 0;"></div>
+
+      <!-- Tagline block -->
+      <div style="border-left:3px solid #D4537E;padding:14px 20px;background:rgba(212,83,126,0.09);margin-bottom:26px;">
+        <div style="font-family:'Playfair Display',serif;font-size:12pt;color:rgba(255,255,255,0.75);line-height:1.75;font-style:italic;">"You deserve to walk into any consultation knowing exactly what you&rsquo;re asking for &mdash; and why. This guide exists so you never feel confused, dismissed, or uninformed again."</div>
+      </div>
+
+      <!-- Subtitle -->
+      <div style="font-family:'Lato',sans-serif;font-size:11pt;color:rgba(255,255,255,0.45);line-height:1.7;max-width:5in;margin-bottom:34px;">Everything you need to take control of your aesthetic, wellness, and beauty care &mdash; from lasers to Botox, fillers to weight loss, hormones to peptides, facials to IV therapy. In plain language. For you.</div>
+
+      <!-- TOC -->
+      <div style="font-family:'Lato',sans-serif;font-size:8pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#D4537E;margin-bottom:14px;">What&rsquo;s Inside &mdash; 11 Complete Sections</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+        <div style="display:flex;gap:10px;padding:7px 14px 7px 0;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">01</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Your Skin &mdash; types, Fitzpatrick, clean beauty</span></div>
+        <div style="display:flex;gap:10px;padding:7px 0 7px 14px;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">02</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Facials &amp; Esthetic Treatments</span></div>
+        <div style="display:flex;gap:10px;padding:7px 14px 7px 0;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">03</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Lasers &amp; Devices &mdash; every treatment decoded</span></div>
+        <div style="display:flex;gap:10px;padding:7px 0 7px 14px;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">04</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Injectables &mdash; Botox, filler, and the truth</span></div>
+        <div style="display:flex;gap:10px;padding:7px 14px 7px 0;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">05</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Weight Loss &amp; GLP-1 &mdash; what it does in your body</span></div>
+        <div style="display:flex;gap:10px;padding:7px 0 7px 14px;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">06</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Hormones &mdash; understanding your biology</span></div>
+        <div style="display:flex;gap:10px;padding:7px 14px 7px 0;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">07</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Blood Work &amp; Lab Markers &mdash; read your results</span></div>
+        <div style="display:flex;gap:10px;padding:7px 0 7px 14px;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">08</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Vitamin Injections &amp; IV Therapy</span></div>
+        <div style="display:flex;gap:10px;padding:7px 14px 7px 0;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">09</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Peptides &mdash; treatments you&rsquo;ll hear about</span></div>
+        <div style="display:flex;gap:10px;padding:7px 0 7px 14px;border-bottom:0.5px solid rgba(255,255,255,0.07);"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">10</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Toxic Ingredients &amp; Clean Beauty</span></div>
+        <div style="display:flex;gap:10px;padding:7px 14px 7px 0;"><span style="font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#D4537E;min-width:22px;">11</span><span style="font-family:'Lato',sans-serif;font-size:9pt;color:rgba(255,255,255,0.45);line-height:1.5;">Taking Control &mdash; finding the right provider</span></div>
+        <div></div>
+      </div>
     </div>
 
-    <div class="cover-tagline">"You deserve to walk into any consultation knowing exactly what you're asking for — and why. This book exists so you never have to feel confused, dismissed, or uninformed again."</div>
-
-    <div class="cover-toc">
-      <h3>What's Inside — 11 Complete Sections</h3>
-      <div class="toc-grid">
-        <div class="toc-item"><span class="toc-num">01</span>Your Skin — types, Fitzpatrick, toxic ingredients, clean beauty</div>
-        <div class="toc-item"><span class="toc-num">02</span>Facials & Esthetic Treatments — what actually works</div>
-        <div class="toc-item"><span class="toc-num">03</span>Lasers & Devices — every treatment decoded</div>
-        <div class="toc-item"><span class="toc-num">04</span>Injectables — Botox, filler, and the truth about both</div>
-        <div class="toc-item"><span class="toc-num">05</span>Weight Loss & GLP-1 — what it really does in your body</div>
-        <div class="toc-item"><span class="toc-num">06</span>Hormones — understanding your own biology</div>
-        <div class="toc-item"><span class="toc-num">07</span>Blood Work & Lab Markers — reading your own results</div>
-        <div class="toc-item"><span class="toc-num">08</span>Vitamin Injections & IV Therapy — what's worth it</div>
-        <div class="toc-item"><span class="toc-num">09</span>Peptides — the treatments you'll start hearing about</div>
-        <div class="toc-item"><span class="toc-num">10</span>Toxic Ingredients & Clean Beauty — what to actually avoid</div>
-        <div class="toc-item"><span class="toc-num">11</span>Taking Control of Your Care — finding the right provider</div>
+    <!-- Author bar -->
+    <div style="border-top:0.5px solid rgba(255,255,255,0.12);padding-top:22px;display:flex;align-items:center;justify-content:space-between;margin-top:32px;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:#D4537E;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18pt;font-weight:700;color:white;flex-shrink:0;">D</div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:13pt;color:white;font-weight:700;">Danielle Alcala</div>
+          <div style="font-family:'Lato',sans-serif;font-size:8pt;color:rgba(255,255,255,0.4);margin-top:3px;line-height:1.6;">Founder, Hello Gorgeous Med Spa &amp; No Prior Authorization &nbsp;&middot;&nbsp; Licensed Esthetician &nbsp;&middot;&nbsp; Phlebotomist &nbsp;&middot;&nbsp; CNA &nbsp;&middot;&nbsp; CMAA &nbsp;&middot;&nbsp; RN Student &nbsp;&middot;&nbsp; 10+ years &nbsp;&middot;&nbsp; Oswego, IL &nbsp;&middot;&nbsp; 4.9 stars</div>
+        </div>
+      </div>
+      <div style="background:#D4537E;padding:12px 22px;border-radius:5px;text-align:center;flex-shrink:0;margin-left:20px;">
+        <div style="font-family:'Playfair Display',serif;font-size:26pt;font-weight:900;color:white;line-height:1;">$49</div>
+        <div style="font-family:'Lato',sans-serif;font-size:7.5pt;color:rgba(255,255,255,0.75);letter-spacing:1px;text-transform:uppercase;margin-top:3px;">One-time &nbsp;&middot;&nbsp; Instant download</div>
       </div>
     </div>
   </div>
+</div>
 
-  <div>
-    <div class="cover-author">
-      <div class="author-avatar">D</div>
-      <div class="author-info">
-        <h3>Danielle Alcala — Founder, Hello Gorgeous Med Spa &amp; No Prior Authorization</h3>
-        <p>Licensed Esthetician · Phlebotomist · CNA · CMAA · RN Student · 10+ years in practice<br>Oswego, IL &nbsp;·&nbsp; Award-winning med spa &nbsp;·&nbsp; 4.9 Google stars &nbsp;·&nbsp; nopriorauthorization.com</p>
-      </div>
+<!-- ══════════════════════ HOW TO USE THIS GUIDE ══════════════════════ -->
+<div style="min-height:4in;background:#1A1A1A;margin:0 -.85in;padding:44px 48px;page-break-after:always;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:#D4537E;"></div>
+  <div style="font-family:'Lato',sans-serif;font-size:8pt;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#D4537E;margin-bottom:20px;">Before You Begin</div>
+  <div style="font-family:'Playfair Display',serif;font-size:28pt;font-weight:900;color:white;margin-bottom:6px;">How to Use<br>This Guide</div>
+  <div style="width:40px;height:2px;background:#D4537E;margin:18px 0 24px;"></div>
+  <div style="font-family:'Lato',sans-serif;font-size:11pt;color:rgba(255,255,255,0.5);margin-bottom:32px;max-width:5.5in;line-height:1.7;">This guide was designed to be used &mdash; not just read. You do not need to read it front to back. Start with what applies to you right now.</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px;">
+    <div style="background:rgba(212,83,126,0.1);border:0.5px solid rgba(212,83,126,0.3);border-radius:6px;padding:18px;">
+      <div style="font-family:'Lato',sans-serif;font-size:8pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D4537E;margin-bottom:10px;">Before a treatment</div>
+      <div style="font-family:'Lato',sans-serif;font-size:10pt;color:rgba(255,255,255,0.6);line-height:1.7;">Read the section that applies to you &mdash; Injectables, Lasers, GLP-1, Hormones. Know what you&rsquo;re walking into before you sit in the chair.</div>
     </div>
-    <div class="cover-price-badge">
-      <div class="price-num">$49</div>
-      <div class="price-label">One-time purchase &nbsp;·&nbsp; Instant download<br>Print-ready &nbsp;·&nbsp; Keep it forever</div>
+    <div style="background:rgba(212,83,126,0.1);border:0.5px solid rgba(212,83,126,0.3);border-radius:6px;padding:18px;">
+      <div style="font-family:'Lato',sans-serif;font-size:8pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D4537E;margin-bottom:10px;">During your consultation</div>
+      <div style="font-family:'Lato',sans-serif;font-size:10pt;color:rgba(255,255,255,0.6);line-height:1.7;">Use the questions provided in each section. Take notes. Your provider should welcome every single one of them.</div>
     </div>
+    <div style="background:rgba(212,83,126,0.1);border:0.5px solid rgba(212,83,126,0.3);border-radius:6px;padding:18px;">
+      <div style="font-family:'Lato',sans-serif;font-size:8pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D4537E;margin-bottom:10px;">After your appointment</div>
+      <div style="font-family:'Lato',sans-serif;font-size:10pt;color:rgba(255,255,255,0.6);line-height:1.7;">Refer back to timelines, aftercare, and expectations. Your results depend on what you do after the treatment, not just during it.</div>
+    </div>
+  </div>
+  <div style="border-top:0.5px solid rgba(255,255,255,0.1);padding-top:24px;">
+    <div style="font-family:'Playfair Display',serif;font-size:13pt;color:white;font-weight:700;margin-bottom:8px;">A note from Danielle</div>
+    <div style="font-family:'Lato',sans-serif;font-size:10.5pt;color:rgba(255,255,255,0.55);line-height:1.8;max-width:6in;font-style:italic;">"I wrote this for you. Every single day, my patients sit in my chair and ask me questions they wish they&rsquo;d known to ask before they arrived. This guide is the conversation I wish every patient could have &mdash; the one where someone finally explains things clearly, honestly, and without making you feel like you should already know this stuff. You should know this stuff. Now you do. Take this book to your appointments. Ask the questions in it. Advocate for yourself with it. You are worth the education. You are worth the care. You are worth understanding. Hello gorgeous. I&rsquo;m so glad you&rsquo;re here."</div>
+    <div style="font-family:'Playfair Display',serif;font-size:12pt;color:#D4537E;font-style:italic;margin-top:14px;">&mdash; Danielle Alcala</div>
+    <div style="font-family:'Lato',sans-serif;font-size:8pt;color:rgba(255,255,255,0.3);margin-top:4px;">Founder, Hello Gorgeous Med Spa &nbsp;&middot;&nbsp; Founder, No Prior Authorization &nbsp;&middot;&nbsp; Oswego, IL</div>
   </div>
 </div>
 

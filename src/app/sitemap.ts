@@ -14,7 +14,7 @@ const HIGH_INTENT_PATHS = [
   "contact",
   "cheat-sheets",
   "audit",
-  "informed-beauty-guide",
+  "book",
   "free-templates",
   "free-templates/downloads",
   "custom",

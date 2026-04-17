@@ -5,6 +5,9 @@ import {
 } from "@/lib/delivery/catalog";
 import { isGatedFormPath } from "@/lib/delivery/form-access";
 import { maskEmail, verifyDeliveryToken } from "@/lib/delivery/token";
+import {
+  MICRO270_CRAM_SLUGS,
+} from "@/config/micro270-sales.config";
 
 export const dynamic = "force-dynamic";
 
@@ -66,6 +69,36 @@ export default async function DeliveryPage({ params }: Props) {
           each form. Customize with your clinic details before use.
         </p>
 
+        {grant.productSlug.startsWith("micro270") && (
+          <div className="mt-5 rounded-2xl border border-indigo-200 bg-indigo-50 p-5">
+            <p className="font-semibold text-indigo-900">Micro270 Study Hub</p>
+            <p className="mt-1 text-sm text-indigo-800">
+              Click below to activate your hub access on this device. All 20 chapters
+              will unlock and your progress will be tracked automatically.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a
+                href={`/api/micro270/activate?token=${encodeURIComponent(params.token)}`}
+                className="inline-flex rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-800"
+              >
+                Activate hub access →
+              </a>
+              {MICRO270_CRAM_SLUGS.has(grant.productSlug) && (
+                <a
+                  href="/micro270/cram"
+                  className="inline-flex rounded-lg border border-indigo-300 px-5 py-2.5 text-sm font-semibold text-indigo-800 hover:bg-indigo-100"
+                >
+                  Go to AI cram tool
+                </a>
+              )}
+            </div>
+            <p className="mt-3 text-xs text-indigo-600">
+              Access is stored as a cookie on this browser. If you switch devices, visit
+              your delivery link again and click activate.
+            </p>
+          </div>
+        )}
+
         <div className="mt-6 grid gap-4 rounded-2xl bg-neutral-50 p-5 text-sm text-neutral-700 md:grid-cols-3">
           <div>
             <p className="font-medium text-neutral-900">Buyer</p>
@@ -114,6 +147,9 @@ export default async function DeliveryPage({ params }: Props) {
               const isHtml =
                 template.editUrl?.startsWith("/forms/") ||
                 template.editUrl?.endsWith(".html");
+              const isPdfDeliverable =
+                !!template.editUrl?.startsWith("/deliverables/") &&
+                template.editUrl.endsWith(".pdf");
               const isCanva = template.editUrl?.startsWith(
                 "https://www.canva.com/"
               );
@@ -122,6 +158,10 @@ export default async function DeliveryPage({ params }: Props) {
                 gated && template.editUrl
                   ? `/api/delivery/html?token=${encodeURIComponent(params.token)}&i=${index}`
                   : template.editUrl || "";
+              const pdfHref =
+                isPdfDeliverable && template.editUrl
+                  ? `/api/delivery/pdf?token=${encodeURIComponent(params.token)}&i=${index}`
+                  : "";
 
               return (
                 <div
@@ -135,6 +175,10 @@ export default async function DeliveryPage({ params }: Props) {
                     {isHtml ? (
                       <p className="mt-1 text-xs text-emerald-600">
                         Printable form — view &amp; print from browser
+                      </p>
+                    ) : isPdfDeliverable ? (
+                      <p className="mt-1 text-xs text-emerald-700">
+                        PDF download — save to any device
                       </p>
                     ) : template.designId ? (
                       <p className="mt-1 text-xs text-neutral-500">
@@ -151,6 +195,13 @@ export default async function DeliveryPage({ params }: Props) {
                         className="inline-flex rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"
                       >
                         View &amp; Print
+                      </a>
+                    ) : isPdfDeliverable && pdfHref ? (
+                      <a
+                        href={pdfHref}
+                        className="inline-flex rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"
+                      >
+                        Download PDF
                       </a>
                     ) : isCanva && template.editUrl ? (
                       <a

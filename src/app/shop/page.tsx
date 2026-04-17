@@ -9,9 +9,9 @@ import {
 } from "@/lib/seo/brand-social-meta";
 import { GROWTH_SYSTEM_PRODUCT, GROWTH_SYSTEM_SLUG } from "@/config/growth-funnel.config";
 import {
-  INFORMED_BEAUTY_GUIDE_SLUG,
-  INFORMED_BEAUTY_PRICE_CENTS,
-} from "@/config/informed-beauty-guide.config";
+  HELLO_GORGEOUS_BOOK_SLUG,
+  HELLO_GORGEOUS_BOOK_PRICE_CENTS,
+} from "@/config/hello-gorgeous-book.config";
 import { GrowthSystemShowcase } from "@/components/shop/GrowthSystemShowcase";
 import {
   getShopProducts,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 };
 
 const QUICK_CATEGORIES: { label: string; href: string }[] = [
-  { label: "Informed Beauty Guide", href: "/informed-beauty-guide" },
+  { label: "Hello Gorgeous — THE BOOK", href: "/book" },
   { label: "Growth System", href: "/shop/growth-system" },
   { label: "Botox & filler", href: "/shop/families/botox-filler-injectables" },
   { label: "Weight loss / GLP-1", href: "/shop/families/weight-loss-glp1" },
@@ -72,7 +72,7 @@ const QUICK_CATEGORIES: { label: string; href: string }[] = [
 ];
 
 const START_HERE_SLUGS = [
-  INFORMED_BEAUTY_GUIDE_SLUG,
+  HELLO_GORGEOUS_BOOK_SLUG,
   "growth-system",
   "med-spa-starter-kit",
   "facial-training-manual",
@@ -85,7 +85,7 @@ const START_HERE_SLUGS = [
 
 /** Thumbnail for “Start here” cards — strong art for hero SKUs, else first shop preview. */
 function startHereCardImageSrc(p: ShopProduct): string {
-  if (p.slug === INFORMED_BEAUTY_GUIDE_SLUG) {
+  if (p.slug === HELLO_GORGEOUS_BOOK_SLUG) {
     return "/images/informed-beauty-guide-promo.png";
   }
   const first = p.previewImages[0];
@@ -126,19 +126,19 @@ export default function ShopPage() {
         <div className="border-b border-amber-500/30 bg-gradient-to-r from-amber-950/80 to-[#D4537E]/20">
           <div className="mx-auto max-w-5xl px-4 py-3 text-center sm:px-6">
             <Link
-              href="/informed-beauty-guide"
+              href="/book"
               className="inline-flex flex-wrap items-center justify-center gap-2 text-sm font-semibold text-amber-100 transition hover:text-white"
             >
               <span className="rounded-full bg-amber-500/25 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-200">
                 #1 seller · patient education
               </span>
               <span>
-                The Informed Beauty Guide —{" "}
+                Hello Gorgeous — THE BOOK —{" "}
                 <span className="text-white">
-                  ${(INFORMED_BEAUTY_PRICE_CENTS / 100).toFixed(0)} instant download
+                  ${(HELLO_GORGEOUS_BOOK_PRICE_CENTS / 100).toFixed(0)} instant download
                 </span>
               </span>
-              <span className="text-[#D4537E]">Shareable link →</span>
+              <span className="text-[#D4537E]">Sneak peek →</span>
             </Link>
           </div>
         </div>
@@ -306,7 +306,7 @@ export default function ShopPage() {
             </h2>
           </div>
           <Link
-            href="/informed-beauty-guide"
+            href="/book"
             className="group relative mb-10 block overflow-hidden rounded-2xl border-2 border-[#D4537E]/45 shadow-lg shadow-[#D4537E]/12 ring-1 ring-white/5 transition hover:border-[#D4537E]/75 hover:shadow-[#D4537E]/20"
           >
             <span className="absolute left-4 top-4 z-10 rounded-full bg-[#D4537E] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
@@ -314,7 +314,7 @@ export default function ShopPage() {
             </span>
             <Image
               src="/images/informed-beauty-guide-promo.png"
-              alt="The Informed Beauty Guide — The guide to know what you are asking for and why, $49"
+              alt="Hello Gorgeous — THE BOOK — full digital book, instant download"
               width={1024}
               height={682}
               className="h-auto w-full"

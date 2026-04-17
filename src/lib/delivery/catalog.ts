@@ -1,9 +1,13 @@
 import { DELIVERY_PRODUCT_SLUG_ALIASES } from "@/config/growth-funnel.config";
 import {
-  INFORMED_BEAUTY_DELIVERY_FORM_PATH,
-  INFORMED_BEAUTY_GUIDE_SLUG,
-  INFORMED_BEAUTY_TITLE,
-} from "@/config/informed-beauty-guide.config";
+  HELLO_GORGEOUS_BOOK_SLUG,
+  HELLO_GORGEOUS_BOOK_TITLE,
+} from "@/config/hello-gorgeous-book.config";
+import {
+  MICRO270_SHOP_SLUG_BANK,
+  MICRO270_SHOP_SLUG_BUNDLE,
+  MICRO270_SHOP_SLUG_FULL,
+} from "@/config/micro270-shop.config";
 import { STUDY_GUIDE_NCLEX, STUDY_GUIDE_NCLEX_TEMPLATES } from "@/config/study-guides.config";
 import catalog from "@/lib/delivery/catalog.generated.json";
 import prisma from "@/lib/db";
@@ -42,15 +46,57 @@ const VIRTUAL_DELIVERY_PRODUCTS: DeliveryProduct[] = [
     })),
   },
   {
-    productKey: INFORMED_BEAUTY_GUIDE_SLUG,
-    productSlug: INFORMED_BEAUTY_GUIDE_SLUG,
-    productTitle: INFORMED_BEAUTY_TITLE,
+    productKey: HELLO_GORGEOUS_BOOK_SLUG,
+    productSlug: HELLO_GORGEOUS_BOOK_SLUG,
+    productTitle: HELLO_GORGEOUS_BOOK_TITLE,
     templateCount: 1,
     templates: [
       {
-        title: "The Informed Beauty Guide — complete (all sections, one HTML)",
+        title: "Hello Gorgeous — THE BOOK (full PDF, 24 chapters)",
         designId: null,
-        editUrl: INFORMED_BEAUTY_DELIVERY_FORM_PATH,
+        editUrl: "/deliverables/HelloGorgeous-THE-BOOK.pdf",
+        viewUrl: null as string | null,
+      },
+    ],
+  },
+  {
+    productKey: MICRO270_SHOP_SLUG_BANK,
+    productSlug: MICRO270_SHOP_SLUG_BANK,
+    productTitle: "Micro 270 — Complete Question Bank",
+    templateCount: 1,
+    templates: [
+      {
+        title: "Micro 270 Study Hub — all 20 chapters",
+        designId: null,
+        editUrl: "/micro270",
+        viewUrl: null as string | null,
+      },
+    ],
+  },
+  {
+    productKey: MICRO270_SHOP_SLUG_BUNDLE,
+    productSlug: MICRO270_SHOP_SLUG_BUNDLE,
+    productTitle: "Micro 270 Bank + AI Cram Tool (3 generations)",
+    templateCount: 1,
+    templates: [
+      {
+        title: "Micro 270 Study Hub — all 20 chapters",
+        designId: null,
+        editUrl: "/micro270",
+        viewUrl: null as string | null,
+      },
+    ],
+  },
+  {
+    productKey: MICRO270_SHOP_SLUG_FULL,
+    productSlug: MICRO270_SHOP_SLUG_FULL,
+    productTitle: "Micro 270 Full Access — Bank + unlimited AI cram",
+    templateCount: 1,
+    templates: [
+      {
+        title: "Micro 270 Study Hub — all 20 chapters",
+        designId: null,
+        editUrl: "/micro270",
         viewUrl: null as string | null,
       },
     ],

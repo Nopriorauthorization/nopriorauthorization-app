@@ -134,4 +134,6 @@ export const FUNNEL_COPY = {
 /** Map checkout slug → catalog slug for delivery page lookup. */
 export const DELIVERY_PRODUCT_SLUG_ALIASES: Record<string, string> = {
   [GROWTH_SYSTEM_SLUG]: GROWTH_SYSTEM_DELIVERY_ALIAS,
+  /** Legacy Informed Beauty Guide checkout → same delivery as the full book PDF. */
+  "informed-beauty-guide": "hello-gorgeous-the-book",
 };

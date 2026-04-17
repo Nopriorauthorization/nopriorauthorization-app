@@ -64,6 +64,7 @@ model User {
   identityAuditLogs   IdentityAuditLog[]
   npaVaultDocuments   NpaVaultDocument[]
   shareSessions       NpaShareSession[]    // Phase 4: Sharing
+  studyProgress       StudyProgress[]
 }
 
 model Purchase {
@@ -1573,4 +1574,37 @@ model EmailFunnelSend {
   @@index([subscriberId])
   @@index([stepId])
   @@index([resendEmailId])
+}
+
+// =============================================================================
+// STUDY TOOL: Anatomy & Physiology Progress Tracking
+// =============================================================================
+
+model StudyProgress {
+  id           String   @id @default(cuid())
+  userId       String
+  courseId     String
+  lectureId    String
+  quizScores   Json     @default("{}")
+  flashcardIdx Int      @default(0)
+  cheatViewed  Boolean  @default(false)
+  lastStudied  DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId, lectureId])
+  @@index([userId])
+  @@index([courseId])
+}
+
+model StudyCourse {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

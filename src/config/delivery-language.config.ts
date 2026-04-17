@@ -36,9 +36,14 @@ export const MEMBERSHIP_INCLUSION_LINE =
   "NPA Pro Membership includes the full template library while your subscription is active. One-time purchases keep perpetual access to the products you bought.";
 
 /** Map shop `product.category` to delivery profile. */
-export function getDeliveryProfileForCategory(category: string): typeof DELIVERY_STANDARD | typeof DELIVERY_SOCIAL_CANVA {
+export function getDeliveryProfileForCategory(
+  category: string
+): typeof DELIVERY_STANDARD | typeof DELIVERY_SOCIAL_CANVA | typeof DELIVERY_STUDY_GUIDES {
   if (category === "Social Media") {
     return DELIVERY_SOCIAL_CANVA;
+  }
+  if (category === "Study guides") {
+    return DELIVERY_STUDY_GUIDES;
   }
   return DELIVERY_STANDARD;
 }

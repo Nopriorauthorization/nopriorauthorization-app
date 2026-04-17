@@ -1363,13 +1363,13 @@ export const anatomyCourse: Course = {
           "definition": "Endothelium = simple squamous lining BLOOD and LYMPH VESSEL interiors. Mesothelium = simple squamous lining BODY CAVITIES (pleural, pericardial, peritoneal). Both reduce friction."
         }
       ]
-        },
-        {
-          "term": "Synovial Membrane",
-          "definition": "CONNECTIVE TISSUE membrane (NOT epithelial). Lines joint cavities. NO basement membrane. Secretes synovial fluid for joint lubrication."
-        },
-        {
-          "term": "Endothelium vs Mesothelium",
+    },
+    {
+      "id": "lec5",
+      "number": 5,
+      "title": "Integumentary System",
+      "subtitle": "Skin layers, epidermis strata, hair, glands, thermoregulation, wound healing",
+      "icon": "🩹",
       "cheatSheet": [
         {
           "title": "Skin layers — superficial to deep",
@@ -2048,13 +2048,13 @@ export const anatomyCourse: Course = {
           "definition": "Mechanical stress → osteocytes sense → signal osteoblasts → increased bone DEPOSITION → denser stronger bone. Sedentary = disuse osteoporosis. BEST prevention for osteoporosis."
         }
       ]
-        {
-          "term": "Epiphyseal Plate Zones",
-          "definition": "Resting → Proliferating (cell division) → Hypertrophic (cells enlarge) → Calcified (cartilage calcifies) → Ossification (spongy bone forms). Growth occurs at proliferating zone."
-        },
-        {
-          "term": "Long Bone Anatomy",
-          "definition": "Diaphysis (shaft, compact bone, medullary cavity/yellow marrow). Epiphyses (ends, spongy bone, articular cartilage). Periosteum (outer membrane). Endosteum (inner lining)."
+    },
+    {
+      "id": "lec7",
+      "number": 7,
+      "title": "Joints & Articulations",
+      "subtitle": "Joint classification, synovial joints, movements, arthritis, shoulder/elbow/hip/knee",
+      "icon": "🦵",
       "cheatSheet": [
         {
           "title": "Joint classification",
@@ -2392,13 +2392,13 @@ export const anatomyCourse: Course = {
           "definition": "Circular movement of a limb tracing a cone shape. Combines flexion, extension, abduction, and adduction sequentially. Possible at ball-and-socket and condyloid joints."
         }
       ]
-        },
-        {
-          "term": "Bursa",
-          "definition": "Fluid-filled sac lined by synovial membrane. Reduces friction between structures (tendons/bone/skin). Bursitis = inflammation. Olecranon (elbow), prepatellar (knee)."
-        },
-        {
-          "term": "Meniscus",
+    },
+    {
+      "id": "lec89",
+      "number": 8,
+      "title": "Muscular System",
+      "subtitle": "Muscle fiber anatomy, contraction, NMJ, motor units, muscle types",
+      "icon": "💪",
       "cheatSheet": [
         {
           "title": "Connective tissue organization",
@@ -2419,6 +2419,26 @@ export const anatomyCourse: Course = {
           "title": "Neuromuscular junction (NMJ)",
           "color": "purple",
           "content": "<p>Steps: 1. AP arrives at motor neuron axon terminal. 2. Ca²⁺ enters terminal. 3. ACh released into synaptic cleft. 4. ACh binds nicotinic receptors on motor end plate. 5. Na⁺ enters → muscle AP generated. 6. ACh broken down by <strong>acetylcholinesterase</strong>.</p><p>Motor unit = one motor neuron + all muscle fibers it innervates. Smaller motor units = finer control (eye, hand). Larger = power (quadriceps).</p>"
+        },
+        {
+          "title": "Cross-bridge cycle — sliding filament theory",
+          "color": "pink",
+          "content": "<p>1. <strong>Attachment</strong>: Ca²⁺ binds troponin → tropomyosin moves → myosin head binds actin (cross-bridge forms). 2. <strong>Power stroke</strong>: myosin head pivots → pulls actin toward M line (ADP + Pᵢ released). 3. <strong>Detachment</strong>: new ATP binds myosin head → cross-bridge releases. 4. <strong>Cocking</strong>: ATP hydrolyzed → myosin head returns to high-energy position. Cycle repeats as long as Ca²⁺ and ATP are present.</p>"
+        },
+        {
+          "title": "ATP sources for muscle contraction",
+          "color": "teal",
+          "content": "<ul><li><strong>Creatine phosphate (CP)</strong>: fastest, no O₂ needed, limited (lasts ~10 sec). CP + ADP → creatine + ATP.</li><li><strong>Anaerobic glycolysis</strong>: fast, no O₂ needed, produces lactic acid, moderate ATP (~1–2 min of intense exercise).</li><li><strong>Aerobic respiration</strong>: slow to start, requires O₂, most efficient (36–38 ATP/glucose), unlimited if O₂ available — sustains prolonged activity.</li></ul>"
+        },
+        {
+          "title": "Muscle fiber types",
+          "color": "coral",
+          "content": "<table style='font-size:13px;border-collapse:collapse;width:100%;'><tr><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Type</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Speed</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Fatigue</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Use</th></tr><tr><td style='padding:4px;'>I — Slow oxidative</td><td style='padding:4px;'>Slow twitch</td><td style='padding:4px;'>Fatigue resistant</td><td style='padding:4px;'>Posture, endurance</td></tr><tr><td style='padding:4px;'>IIa — Fast oxidative</td><td style='padding:4px;'>Fast twitch</td><td style='padding:4px;'>Resistant (moderate)</td><td style='padding:4px;'>Sprinting, sustained power</td></tr><tr><td style='padding:4px;'>IIb — Fast glycolytic</td><td style='padding:4px;'>Fastest twitch</td><td style='padding:4px;'>Fatigues quickly</td><td style='padding:4px;'>Explosive movements</td></tr></table>"
+        },
+        {
+          "title": "Contraction types & muscle fatigue",
+          "color": "green",
+          "content": "<p><strong>Isotonic</strong>: muscle changes length — CONCENTRIC (muscle shortens, lifts weight) or ECCENTRIC (muscle lengthens under tension, lowers weight). <strong>Isometric</strong>: muscle generates tension but does NOT change length (holding a static position).</p><p><strong>Twitch</strong>: single AP → single contraction. <strong>Summation</strong>: rapid successive stimuli before relaxation → stronger contraction. <strong>Tetanus (fused)</strong>: sustained maximal contraction — no relaxation between stimuli.</p><p><strong>Fatigue</strong>: depletion of ATP/CP, O₂ debt, lactic acid accumulation, neurotransmitter depletion.</p>"
         }
       ],
       "quiz": [
@@ -2652,120 +2672,7 @@ export const anatomyCourse: Course = {
           ],
           "correctIndex": 2,
           "explanation": "TITIN is the largest protein in the body. It connects the myosin M line to the Z disc, acting as a molecular spring that returns the sarcomere to resting length after stretching. Titin prevents overstretching of sarcomeres and contributes to passive tension. Mutations in titin cause certain cardiomyopathies."
-        }
-      ],
-      "flashcards": [
-        {
-          "term": "Epimysium / Perimysium / Endomysium",
-          "definition": "Epimysium: outer sheath around ENTIRE MUSCLE. Perimysium: around FASCICLES (bundles). Endomysium: around individual MUSCLE FIBERS. All continuous with tendon."
         },
-        {
-          "term": "Sarcolemma",
-          "definition": "Plasma membrane of a MUSCLE FIBER. Excitable — can generate and propagate action potentials. T-tubules are deep infoldings of the sarcolemma."
-        },
-        {
-          "term": "T-Tubules",
-          "definition": "Deep infoldings of the sarcolemma penetrating to the fiber's center. Conduct action potentials deep into the cell so ALL sarcomeres contract simultaneously."
-        },
-        {
-          "term": "Sarcoplasmic Reticulum (SR)",
-          "definition": "Modified smooth ER of muscle cells. STORES and RELEASES Ca²⁺. Terminal cisternae release Ca²⁺ when triggered. SR pumps Ca²⁺ back in for relaxation."
-        },
-        {
-          "term": "Triad",
-          "definition": "ONE T-tubule + TWO terminal cisternae of SR. Allows voltage change in T-tubule to trigger Ca²⁺ release from SR via ryanodine receptors."
-        },
-        {
-          "term": "Sarcomere",
-          "definition": "FUNCTIONAL UNIT of muscle contraction. Extends from Z disc to Z disc. Contains overlapping thick (myosin) and thin (actin) filaments."
-        },
-        {
-          "term": "Thick vs Thin Filaments",
-          "definition": "Thick = MYOSIN (motor protein, has heads that bind actin + ATP). Thin = ACTIN + tropomyosin (covers binding sites) + troponin (Ca²⁺ sensor)."
-        },
-        {
-          "term": "Sarcomere Bands",
-          "definition": "A band: full length of MYOSIN — does NOT shorten. I band: ACTIN only — SHORTENS. H zone: MYOSIN only, no actin — SHORTENS. Z disc: boundary (anchors actin). M line: center (anchors myosin)."
-        },
-        {
-          "term": "Troponin",
-          "definition": "Ca²⁺ sensor on thin filaments. TnC binds Ca²⁺ → moves tropomyosin → exposes actin binding sites → cross-bridges form. CARDIAC TROPONIN = gold standard for MI diagnosis."
-        },
-        {
-          "term": "Tropomyosin",
-          "definition": "Regulatory protein that BLOCKS myosin binding sites on actin at rest. Moved aside when troponin binds Ca²⁺ → allows cross-bridge formation and contraction."
-        },
-        {
-          "term": "Neuromuscular Junction (NMJ)",
-          "definition": "Synapse between motor neuron axon terminal and muscle motor end plate. Neurotransmitter = ACETYLCHOLINE (ACh). Signal: AP → Ca²⁺ enters → ACh released → binds receptors → muscle AP."
-        },
-        {
-          "term": "Acetylcholine (ACh) at NMJ",
-          "definition": "Released from motor neuron axon terminal. Binds NICOTINIC receptors on motor end plate → Na⁺ influx → end-plate potential → muscle AP. Broken down by acetylcholinesterase (AChE)."
-        },
-        {
-          "term": "Acetylcholinesterase (AChE)",
-          "definition": "Enzyme in synaptic cleft that rapidly breaks down ACh → terminates signal → muscle relaxes. Inhibited by organophosphates (nerve agents, some pesticides) → sustained contraction."
-        },
-        {
-          "term": "Motor Unit",
-          "definition": "ONE motor neuron + ALL muscle fibers it innervates. Small motor units = fine control (eyes, hands). Large motor units = power (gastrocnemius, quadriceps)."
-        },
-        {
-          "term": "Myoglobin",
-          "definition": "Oxygen-storing protein in muscle sarcoplasm. Stores O₂ for immediate use during intense activity. Gives muscle its red color. Released in rhabdomyolysis → kidney damage (cola urine)."
-        },
-        {
-          "term": "Muscle Tone (Tonus)",
-          "definition": "Continuous low-level contraction of resting muscle maintaining posture. Small motor units fire asynchronously. Hypotonia = ↓ tone (flaccid). Hypertonia = ↑ tone (spastic)."
-        },
-        {
-          "term": "Fascicle Arrangements",
-          "definition": "Parallel (max shortening), Fusiform (tapered ends), Pennate (uni/bi/multi — max power, less ROM), Circular (sphincters), Convergent (fan-shaped — variable force)."
-        },
-        {
-          "term": "Titin",
-          "definition": "Largest protein in body. Connects myosin to Z disc — acts as MOLECULAR SPRING providing passive elasticity. Prevents sarcomere overstretching. Mutations cause cardiomyopathy."
-        },
-        {
-          "term": "H Zone",
-          "definition": "Center of A band. Contains ONLY MYOSIN tails — no actin overlap. SHORTENS during contraction as actin slides in. May disappear entirely at full contraction."
-        },
-        {
-          "term": "Length-Tension Relationship",
-          "definition": "Maximum force at OPTIMAL RESTING LENGTH where actin-myosin overlap is maximal. Too short or too long = less force. Basis for muscle strength testing and rehab positioning."
-        }
-      ]
-      ],
-      "flashcards": [
-        {
-          "term": "Epimysium / Perimysium / Endomysium",
-          "definition": "Epimysium: outer sheath around ENTIRE MUSCLE. Perimysium: around FASCICLES (bundles). Endomysium: around individual MUSCLE FIBERS. All continuous with tendon."
-        },
-        {
-      "cheatSheet": [
-        {
-          "title": "Cross-bridge cycle — sliding filament theory",
-          "color": "pink",
-          "content": "<p>1. <strong>Attachment</strong>: Ca²⁺ binds troponin → tropomyosin moves → myosin head binds actin (cross-bridge forms). 2. <strong>Power stroke</strong>: myosin head pivots → pulls actin toward M line (ADP + Pᵢ released). 3. <strong>Detachment</strong>: new ATP binds myosin head → cross-bridge releases. 4. <strong>Cocking</strong>: ATP hydrolyzed → myosin head returns to high-energy position. Cycle repeats as long as Ca²⁺ and ATP are present.</p>"
-        },
-        {
-          "title": "ATP sources for muscle contraction",
-          "color": "teal",
-          "content": "<ul><li><strong>Creatine phosphate (CP)</strong>: fastest, no O₂ needed, limited (lasts ~10 sec). CP + ADP → creatine + ATP.</li><li><strong>Anaerobic glycolysis</strong>: fast, no O₂ needed, produces lactic acid, moderate ATP (~1–2 min of intense exercise).</li><li><strong>Aerobic respiration</strong>: slow to start, requires O₂, most efficient (36–38 ATP/glucose), unlimited if O₂ available — sustains prolonged activity.</li></ul>"
-        },
-        {
-          "title": "Muscle fiber types",
-          "color": "coral",
-          "content": "<table style='font-size:13px;border-collapse:collapse;width:100%;'><tr><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Type</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Speed</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Fatigue</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Use</th></tr><tr><td style='padding:4px;'>I — Slow oxidative</td><td style='padding:4px;'>Slow twitch</td><td style='padding:4px;'>Fatigue resistant</td><td style='padding:4px;'>Posture, endurance</td></tr><tr><td style='padding:4px;'>IIa — Fast oxidative</td><td style='padding:4px;'>Fast twitch</td><td style='padding:4px;'>Resistant (moderate)</td><td style='padding:4px;'>Sprinting, sustained power</td></tr><tr><td style='padding:4px;'>IIb — Fast glycolytic</td><td style='padding:4px;'>Fastest twitch</td><td style='padding:4px;'>Fatigues quickly</td><td style='padding:4px;'>Explosive movements</td></tr></table>"
-        },
-        {
-          "title": "Contraction types & muscle fatigue",
-          "color": "green",
-          "content": "<p><strong>Isotonic</strong>: muscle changes length — CONCENTRIC (muscle shortens, lifts weight) or ECCENTRIC (muscle lengthens under tension, lowers weight). <strong>Isometric</strong>: muscle generates tension but does NOT change length (holding a static position).</p><p><strong>Twitch</strong>: single AP → single contraction. <strong>Summation</strong>: rapid successive stimuli before relaxation → stronger contraction. <strong>Tetanus (fused)</strong>: sustained maximal contraction — no relaxation between stimuli.</p><p><strong>Fatigue</strong>: depletion of ATP/CP, O₂ debt, lactic acid accumulation, neurotransmitter depletion.</p>"
-        }
-      ],
-      "quiz": [
         {
           "question": "During the POWER STROKE of the cross-bridge cycle, the myosin head:",
           "options": [
@@ -3000,6 +2907,86 @@ export const anatomyCourse: Course = {
       ],
       "flashcards": [
         {
+          "term": "Epimysium / Perimysium / Endomysium",
+          "definition": "Epimysium: outer sheath around ENTIRE MUSCLE. Perimysium: around FASCICLES (bundles). Endomysium: around individual MUSCLE FIBERS. All continuous with tendon."
+        },
+        {
+          "term": "Sarcolemma",
+          "definition": "Plasma membrane of a MUSCLE FIBER. Excitable — can generate and propagate action potentials. T-tubules are deep infoldings of the sarcolemma."
+        },
+        {
+          "term": "T-Tubules",
+          "definition": "Deep infoldings of the sarcolemma penetrating to the fiber's center. Conduct action potentials deep into the cell so ALL sarcomeres contract simultaneously."
+        },
+        {
+          "term": "Sarcoplasmic Reticulum (SR)",
+          "definition": "Modified smooth ER of muscle cells. STORES and RELEASES Ca²⁺. Terminal cisternae release Ca²⁺ when triggered. SR pumps Ca²⁺ back in for relaxation."
+        },
+        {
+          "term": "Triad",
+          "definition": "ONE T-tubule + TWO terminal cisternae of SR. Allows voltage change in T-tubule to trigger Ca²⁺ release from SR via ryanodine receptors."
+        },
+        {
+          "term": "Sarcomere",
+          "definition": "FUNCTIONAL UNIT of muscle contraction. Extends from Z disc to Z disc. Contains overlapping thick (myosin) and thin (actin) filaments."
+        },
+        {
+          "term": "Thick vs Thin Filaments",
+          "definition": "Thick = MYOSIN (motor protein, has heads that bind actin + ATP). Thin = ACTIN + tropomyosin (covers binding sites) + troponin (Ca²⁺ sensor)."
+        },
+        {
+          "term": "Sarcomere Bands",
+          "definition": "A band: full length of MYOSIN — does NOT shorten. I band: ACTIN only — SHORTENS. H zone: MYOSIN only, no actin — SHORTENS. Z disc: boundary (anchors actin). M line: center (anchors myosin)."
+        },
+        {
+          "term": "Troponin",
+          "definition": "Ca²⁺ sensor on thin filaments. TnC binds Ca²⁺ → moves tropomyosin → exposes actin binding sites → cross-bridges form. CARDIAC TROPONIN = gold standard for MI diagnosis."
+        },
+        {
+          "term": "Tropomyosin",
+          "definition": "Regulatory protein that BLOCKS myosin binding sites on actin at rest. Moved aside when troponin binds Ca²⁺ → allows cross-bridge formation and contraction."
+        },
+        {
+          "term": "Neuromuscular Junction (NMJ)",
+          "definition": "Synapse between motor neuron axon terminal and muscle motor end plate. Neurotransmitter = ACETYLCHOLINE (ACh). Signal: AP → Ca²⁺ enters → ACh released → binds receptors → muscle AP."
+        },
+        {
+          "term": "Acetylcholine (ACh) at NMJ",
+          "definition": "Released from motor neuron axon terminal. Binds NICOTINIC receptors on motor end plate → Na⁺ influx → end-plate potential → muscle AP. Broken down by acetylcholinesterase (AChE)."
+        },
+        {
+          "term": "Acetylcholinesterase (AChE)",
+          "definition": "Enzyme in synaptic cleft that rapidly breaks down ACh → terminates signal → muscle relaxes. Inhibited by organophosphates (nerve agents, some pesticides) → sustained contraction."
+        },
+        {
+          "term": "Motor Unit",
+          "definition": "ONE motor neuron + ALL muscle fibers it innervates. Small motor units = fine control (eyes, hands). Large motor units = power (gastrocnemius, quadriceps)."
+        },
+        {
+          "term": "Myoglobin",
+          "definition": "Oxygen-storing protein in muscle sarcoplasm. Stores O₂ for immediate use during intense activity. Gives muscle its red color. Released in rhabdomyolysis → kidney damage (cola urine)."
+        },
+        {
+          "term": "Muscle Tone (Tonus)",
+          "definition": "Continuous low-level contraction of resting muscle maintaining posture. Small motor units fire asynchronously. Hypotonia = ↓ tone (flaccid). Hypertonia = ↑ tone (spastic)."
+        },
+        {
+          "term": "Fascicle Arrangements",
+          "definition": "Parallel (max shortening), Fusiform (tapered ends), Pennate (uni/bi/multi — max power, less ROM), Circular (sphincters), Convergent (fan-shaped — variable force)."
+        },
+        {
+          "term": "Titin",
+          "definition": "Largest protein in body. Connects myosin to Z disc — acts as MOLECULAR SPRING providing passive elasticity. Prevents sarcomere overstretching. Mutations cause cardiomyopathy."
+        },
+        {
+          "term": "H Zone",
+          "definition": "Center of A band. Contains ONLY MYOSIN tails — no actin overlap. SHORTENS during contraction as actin slides in. May disappear entirely at full contraction."
+        },
+        {
+          "term": "Length-Tension Relationship",
+          "definition": "Maximum force at OPTIMAL RESTING LENGTH where actin-myosin overlap is maximal. Too short or too long = less force. Basis for muscle strength testing and rehab positioning."
+        },
+        {
           "term": "Sliding Filament Theory",
           "definition": "Muscle contraction: thin ACTIN filaments SLIDE past thick MYOSIN filaments toward center (M line). Filaments don't shorten — the sarcomere shortens as they overlap more."
         },
@@ -3080,13 +3067,13 @@ export const anatomyCourse: Course = {
           "definition": "Brief period after AP when membrane CANNOT generate another AP. Ensures discrete contractions. SHORTER than contraction period — allowing summation. Absolute (no AP possible) → relative (needs larger stimulus)."
         }
       ]
-          "question": "Which of the following is the correct sequence of events in EXCITATION-CONTRACTION COUPLING?",
-          "options": [
-            "Ca²⁺ release → AP on sarcolemma → T-tubule activation → cross-bridge formation",
-            "AP on sarcolemma → T-tubule activation → SR releases Ca²⁺ → Ca²⁺ binds troponin → tropomyosin moves → cross-bridges form",
-            "Troponin activated first → then Ca²⁺ released → then AP generated",
-            "Cross-bridges form → then Ca²⁺ released → then AP generated"
-          ],
+    },
+    {
+      "id": "lec10",
+      "number": 10,
+      "title": "Introduction to the Nervous System",
+      "subtitle": "Neurons, neuroglia, white/gray matter, synapses, NS subdivisions",
+      "icon": "🧠",
       "cheatSheet": [
         {
           "title": "NS organization & neuron anatomy",
@@ -3413,13 +3400,13 @@ export const anatomyCourse: Course = {
           "definition": "Surround neuron CELL BODIES in PNS ganglia. Support and regulate the microenvironment around neuronal soma. Different from Schwann cells (which myelinate axons)."
         }
       ]
-          "options": [
-            "Form the myelin sheath in the CNS",
-            "Act as the immune cells of the CNS",
-            "Line the ventricles of the brain and central canal of the spinal cord, producing and circulating CSF",
-            "Support sensory neuron cell bodies in ganglia"
-          ],
-          "correctIndex": 2,
+    },
+    {
+      "id": "lec11",
+      "number": 11,
+      "title": "Spinal Cord & Spinal Nerves",
+      "subtitle": "Spinal cord anatomy, tracts, plexuses, reflex arcs, autonomic NS",
+      "icon": "🦴",
       "cheatSheet": [
         {
           "title": "Spinal cord anatomy & spinal nerves",
@@ -3746,13 +3733,13 @@ export const anatomyCourse: Course = {
           "definition": "White rami: PREGANGLIONIC myelinated sympathetic fibers FROM spinal cord TO sympathetic chain (white = myelin). Gray rami: POSTGANGLIONIC unmyelinated fibers FROM chain BACK to spinal nerve to body wall."
         }
       ]
-            "The superior end of the spinal cord at the foramen magnum",
-            "The tapered inferior END of the spinal cord, typically ending at the L1–L2 vertebral level in adults",
-            "The widened area of the spinal cord supplying the upper limb",
-            "The central canal of the spinal cord"
-          ],
-          "correctIndex": 1,
-          "explanation": "Conus medullaris = the tapered, cone-shaped inferior END of the spinal cord. Located at vertebral level L1–L2 in adults (higher in children). Below the conus, the vertebral canal contains only the CAUDA EQUINA (nerve roots). Lumbar punctures (spinal taps) are performed below L2 to avoid spinal cord damage."
+    },
+    {
+      "id": "lec12",
+      "number": 12,
+      "title": "The Brain & Cranial Nerves",
+      "subtitle": "Brain regions, meninges, CSF, blood-brain barrier, 12 cranial nerves",
+      "icon": "🧬",
       "cheatSheet": [
         {
           "title": "Major brain regions & functions",
@@ -3945,151 +3932,6 @@ export const anatomyCourse: Course = {
           "question": "The LIMBIC SYSTEM is involved in:",
           "options": [
             "Voluntary motor control of skeletal muscles",
-            "Processing visual information in the occipital lobe",
-            "Emotion, memory formation, and the emotional response to olfactory stimuli — includes hippocampus and amygdala",
-            "Only the autonomic regulation of heart rate and breathing"
-          ],
-          "correctIndex": 2,
-          "explanation": "Limbic system: EMOTION and MEMORY. Key structures: HIPPOCAMPUS (memory consolidation — damage → anterograde amnesia), AMYGDALA (fear conditioning, emotional responses, fight/flight), CINGULATE GYRUS (attention, emotion-cognition interaction). Olfaction links directly to limbic system — why smells trigger emotional memories."
-        },
-        {
-          "question": "Cranial nerve VIII (Vestibulocochlear) damage would result in:",
-          "options": [
-            "Loss of taste and facial paralysis",
-            "Inability to shrug the shoulder",
-            "Hearing loss (cochlear division) and/or balance problems and vertigo (vestibular division)",
-            "Loss of vision in both eyes"
-          ],
-          "correctIndex": 2,
-          "explanation": "CN VIII (Vestibulocochlear) = SENSORY ONLY. Two divisions: COCHLEAR (hearing — transmits sound from organ of Corti in cochlea to auditory cortex) and VESTIBULAR (balance — from semicircular canals and otolith organs). Damage → sensorineural hearing loss, tinnitus, vertigo, nystagmus. Acoustic neuroma (vestibular schwannoma) = benign tumor on CN VIII."
-        },
-        {
-          "question": "The FORAMEN MAGNUM is clinically significant because:",
-          "options": [
-            "CSF is reabsorbed here",
-            "The spinal cord exits the skull through this opening in the occipital bone — herniation here is life-threatening",
-            "CN XII exits through this opening",
-            "The basilar artery enters the brain through this structure"
-          ],
-          "correctIndex": 1,
-          "explanation": "Foramen magnum = large opening in the OCCIPITAL BONE through which the brainstem (medulla) transitions to the spinal cord. Also transmits the vertebral arteries, anterior spinal artery, and CN XI (accessory). Tonsillar/cerebellar herniation through the foramen magnum (Chiari malformation, ↑ICP) → compresses vital centers → respiratory arrest."
-        },
-        {
-          "question": "The blood supply to the brain is primarily provided by:",
-          "options": [
-            "The external carotid arteries and jugular veins",
-            "The internal carotid arteries and vertebral arteries — forming the Circle of Willis",
-            "The subclavian arteries directly",
-            "The aorta without any intermediate vessels"
-          ],
-          "correctIndex": 1,
-          "explanation": "Brain blood supply: INTERNAL CAROTID ARTERIES (anterior circulation — cerebral hemispheres) + VERTEBRAL ARTERIES (posterior circulation — join to form basilar artery → brainstem/cerebellum → posterior cerebral arteries). They anastomose at the CIRCLE OF WILLIS (circulus arteriosus) — provides collateral circulation if one vessel is blocked."
-        },
-        {
-          "question": "Cranial nerve III (Oculomotor) controls:",
-          "options": [
-            "Only the lateral rectus muscle of the eye",
-            "The superior oblique muscle for downward-inward eye movement",
-            "Most extraocular eye muscles (medial, superior, inferior rectus; inferior oblique), pupil constriction (parasympathetic), and eyelid elevation",
-            "The facial expression muscles"
-          ],
-          "correctIndex": 2,
-          "explanation": "CN III (Oculomotor) = MOTOR. Controls: medial rectus, superior rectus, inferior rectus, inferior oblique (all eye movement), levator palpebrae superioris (eyelid elevation). PARASYMPATHETIC: pupil constriction (miosis) and lens accommodation. CN III palsy: ptosis (drooping eyelid), 'down and out' eye position, DILATED PUPIL (classic sign of uncal herniation compressing CN III)."
-        },
-        {
-          "question": "When testing the 12 cranial nerves clinically, damage to CN XII (Hypoglossal) would be identified by:",
-          "options": [
-            "Loss of smell",
-            "Inability to close the eye or raise the eyebrow",
-            "Tongue deviation TOWARD the side of the lesion when protruded",
-            "Loss of hearing on one side"
-          ],
-          "correctIndex": 2,
-          "explanation": "CN XII (Hypoglossal) = MOTOR — controls all TONGUE muscles (intrinsic and extrinsic, except palatoglossus). When CN XII is damaged: tongue DEVIATES TOWARD THE DAMAGED SIDE when protruded (ipsilateral deviation) — because the intact contralateral genioglossus pushes the tongue toward the weak side. Important in stroke assessment (dysarthria, dysphagia)."
-        }
-      ],
-      "flashcards": [
-        {
-          "term": "Cerebral Lobes & Functions",
-          "definition": "Frontal: executive function, motor cortex, Broca's (speech production). Parietal: sensory integration, body position. Temporal: hearing, memory, Wernicke's (speech comprehension). Occipital: vision."
-        },
-        {
-          "term": "Thalamus",
-          "definition": "SENSORY RELAY STATION. ALL sensory info (except olfaction) passes through thalamus before reaching cortex. Gateway to conscious awareness. Also involved in motor function, consciousness, sleep."
-        },
-        {
-          "term": "Hypothalamus",
-          "definition": "HOMEOSTASIS master. Controls: temperature (thermostat), hunger, thirst, circadian rhythms, emotion, stress response. Controls PITUITARY via infundibulum (pituitary stalk). Links NS to endocrine system."
-        },
-        {
-          "term": "Cerebellum",
-          "definition": "COORDINATION, BALANCE, POSTURE, motor learning. Compares intended vs actual movement → sends error correction to motor cortex. Damage → ATAXIA, intention tremor, dysmetria."
-        },
-        {
-          "term": "Brainstem",
-          "definition": "Midbrain (CN III,IV; substantia nigra) + Pons (CN V,VI,VII,VIII; breathing) + Medulla (CN IX,X,XI,XII; cardiovascular/respiratory centers; pyramidal decussation). Controls vital functions."
-        },
-        {
-          "term": "Meninges — 3 Layers",
-          "definition": "DURA MATER (tough fibrous outer layer) → ARACHNOID MATER (middle, web-like) → PIA MATER (thin, adheres to brain). PAD from inside out. Subarachnoid space between arachnoid and pia = contains CSF."
-        },
-        {
-          "term": "CSF Production & Circulation",
-          "definition": "Choroid plexus PRODUCES CSF in ventricles → lateral → third → cerebral aqueduct → fourth ventricle → subarachnoid space → ARACHNOID GRANULATIONS reabsorb into dural sinuses → blood. Blockage = hydrocephalus."
-        },
-        {
-          "term": "Blood-Brain Barrier (BBB)",
-          "definition": "TIGHT JUNCTIONS between brain capillary endothelial cells + ASTROCYTE end-feet. Selectively restricts passage. Allows: O₂, CO₂, glucose, lipid-soluble molecules. Blocks: large molecules, most drugs, pathogens."
-        },
-        {
-          "term": "Basal Nuclei",
-          "definition": "Regulate INITIATION and SMOOTHNESS of voluntary movement. Suppress unwanted movements. Modulate motor cortex via thalamus. DOPAMINE pathway crucial. Parkinson's = ↓dopamine → rigidity/tremor/bradykinesia."
-        },
-        {
-          "term": "Limbic System",
-          "definition": "EMOTION and MEMORY. Hippocampus (memory consolidation), Amygdala (fear, emotional responses), Cingulate gyrus. Directly linked to olfaction — why smells trigger emotional memories."
-        },
-        {
-          "term": "12 Cranial Nerves (Name + Function)",
-          "definition": "I-Olfactory(S), II-Optic(S), III-Oculomotor(M), IV-Trochlear(M), V-Trigeminal(B), VI-Abducens(M), VII-Facial(B), VIII-Vestibulocochlear(S), IX-Glossopharyngeal(B), X-Vagus(B), XI-Accessory(M), XII-Hypoglossal(M). Some Say Marry Money But My Brother Says Big Brains Matter More."
-        },
-        {
-          "term": "CN VII (Facial) — Clinical",
-          "definition": "MIXED. Motor = facial EXPRESSION muscles. Parasympathetic = lacrimal + salivary glands. Sensory = TASTE anterior 2/3 tongue. BELL'S PALSY = CN VII damage → unilateral facial paralysis, dry eye, taste loss."
-        },
-        {
-          "term": "CN X (Vagus)",
-          "definition": "WANDERER — widest distribution. Parasympathetic: ↓HR, ↑GI motility, bronchoconstriction. Sensory: viscera. Controls swallowing, speaking, cough reflex. Vagal maneuvers ↓HR. Damage → hoarseness, dysphagia."
-        },
-        {
-          "term": "CN III (Oculomotor) — Clinical",
-          "definition": "MOTOR. Eye movement (medial/superior/inferior rectus, inferior oblique), eyelid elevation, PUPIL CONSTRICTION (parasympathetic). CN III palsy → ptosis, 'down and out' eye, DILATED PUPIL = sign of uncal herniation."
-        },
-        {
-          "term": "CN XII (Hypoglossal) — Clinical",
-          "definition": "MOTOR — all TONGUE muscles. Tongue deviates TOWARD LESION SIDE when protruded (ipsilateral deviation). Damage → dysarthria, dysphagia. Important in stroke assessment."
-        },
-        {
-          "term": "Dural Folds",
-          "definition": "Dura mater extensions: FALX CEREBRI (separates cerebral hemispheres), TENTORIUM CEREBELLI (separates cerebrum above from cerebellum below), FALX CEREBELLI (separates cerebellar hemispheres), DIAPHRAGMA SELLAE (covers pituitary)."
-        },
-        {
-          "term": "Choroid Plexus",
-          "definition": "Specialized capillaries + modified ependymal cells in the VENTRICLES. PRODUCES CSF (~500 mL/day; ~150 mL circulating). Found in lateral, third, and fourth ventricles."
-        },
-        {
-          "term": "Circle of Willis",
-          "definition": "Arterial anastomosis at base of brain formed by internal carotid arteries + basilar artery (from vertebral arteries). Provides COLLATERAL CIRCULATION if one vessel is blocked. Reduces risk of total infarction from single vessel occlusion."
-        },
-        {
-          "term": "Broca's vs Wernicke's Aphasia",
-          "definition": "Broca's (frontal lobe): EXPRESSIVE aphasia — understands language but CANNOT PRODUCE fluent speech. Wernicke's (temporal lobe): RECEPTIVE aphasia — speaks fluently but words don't make sense, CANNOT UNDERSTAND language."
-        },
-        {
-          "term": "Foramen Magnum",
-          "definition": "Large opening in occipital bone where BRAINSTEM (medulla) transitions to SPINAL CORD. Also transmits vertebral arteries and CN XI. Tonsillar herniation here → compresses vital centers → RESPIRATORY ARREST."
-        }
-      ]
             "Processing visual information in the occipital lobe",
             "Emotion, memory formation, and the emotional response to olfactory stimuli — includes hippocampus and amygdala",
             "Only the autonomic regulation of heart rate and breathing"

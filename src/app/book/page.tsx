@@ -60,7 +60,7 @@ export default function BookPage() {
   const printStyles = `
 @media print {
   .book-print-toolbar { display: none !important; }
-  html, body { overflow: visible !important; height: auto !important; }
+  html, body, #book-sneak-peek-root { overflow: visible !important; height: auto !important; }
   section, .author-strip, .facts-strip, footer { break-inside: avoid; page-break-inside: avoid; }
   .pages-scroll { overflow: visible !important; }
 }

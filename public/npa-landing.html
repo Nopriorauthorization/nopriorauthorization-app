@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A&P Study Hub — No Prior Authorization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --pink:#FF69B4;
+  --pink-dark:#E8559F;
+  --pink-light:#FFF0F8;
+  --black:#0A0A0A;
+  --off-black:#111111;
+  --gray:#6B6B6B;
+  --light:#F9F4F7;
+  --white:#FFFFFF;
+  --cream:#FDF8FB;
+}
+
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 40px;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,105,180,0.12);
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:17px;font-weight:700;
+  color:var(--black);letter-spacing:-0.3px;
+  text-decoration:none;
+}
+.nav-logo span{color:var(--pink);}
+.nav-cta{
+  background:var(--pink);color:#fff;
+  padding:10px 22px;border-radius:100px;
+  font-size:13px;font-weight:600;
+  text-decoration:none;
+  transition:background 0.2s,transform 0.2s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:var(--pink-dark);transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding-top:80px;
+  background:var(--cream);
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-200px;right:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(255,105,180,0.12) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:-100px;left:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle, rgba(255,105,180,0.07) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.hero-left{
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:80px 60px 80px 80px;
+  position:relative;z-index:2;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--pink-light);border:1px solid rgba(255,105,180,0.25);
+  border-radius:100px;padding:6px 16px;
+  font-size:12px;font-weight:600;color:var(--pink-dark);
+  letter-spacing:0.5px;text-transform:uppercase;
+  margin-bottom:28px;width:fit-content;
+  animation:fadeUp 0.6s ease both;
+}
+.badge-dot{width:7px;height:7px;background:var(--pink);border-radius:50%;}
+
+.hero-headline{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,5vw,68px);
+  font-weight:900;
+  line-height:1.05;
+  letter-spacing:-2px;
+  color:var(--black);
+  margin-bottom:24px;
+  animation:fadeUp 0.6s 0.1s ease both;
+}
+.hero-headline em{
+  font-style:italic;
+  color:var(--pink);
+}
+
+.hero-sub{
+  font-size:18px;line-height:1.7;
+  color:var(--gray);font-weight:400;
+  max-width:480px;
+  margin-bottom:40px;
+  animation:fadeUp 0.6s 0.2s ease both;
+}
+.hero-sub strong{color:var(--black);font-weight:600;}
+
+.hero-actions{
+  display:flex;flex-direction:column;gap:14px;
+  animation:fadeUp 0.6s 0.3s ease both;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--pink);color:#fff;
+  padding:18px 36px;border-radius:100px;
+  font-size:16px;font-weight:600;
+  text-decoration:none;
+  transition:all 0.25s;
+  box-shadow:0 8px 30px rgba(255,105,180,0.35);
+  width:fit-content;
+}
+.btn-primary:hover{
+  background:var(--pink-dark);
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(255,105,180,0.45);
+}
+.btn-secondary{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:transparent;color:var(--black);
+  padding:18px 36px;border-radius:100px;
+  font-size:16px;font-weight:500;
+  text-decoration:none;
+  border:1.5px solid rgba(0,0,0,0.15);
+  transition:all 0.25s;
+  width:fit-content;
+}
+.btn-secondary:hover{
+  border-color:var(--pink);color:var(--pink);
+  transform:translateY(-2px);
+}
+.btn-arrow{font-size:18px;transition:transform 0.2s;}
+.btn-primary:hover .btn-arrow{transform:translateX(4px);}
+.btn-secondary:hover .btn-arrow{transform:translateX(4px);}
+
+.free-label{
+  font-size:13px;color:var(--gray);
+  display:flex;align-items:center;gap:6px;
+}
+.free-label::before{content:'✓';color:var(--pink);font-weight:700;}
+
+.hero-stats{
+  display:flex;gap:40px;
+  margin-top:48px;padding-top:40px;
+  border-top:1px solid rgba(0,0,0,0.08);
+  animation:fadeUp 0.6s 0.4s ease both;
+}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:32px;font-weight:900;color:var(--black);
+  letter-spacing:-1px;
+}
+.stat-num span{color:var(--pink);}
+.stat-label{font-size:12px;color:var(--gray);font-weight:500;margin-top:2px;}
+
+/* ── HERO IMAGE ── */
+.hero-right{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero-img-wrap{
+  position:absolute;inset:0;
+  animation:fadeIn 0.8s 0.2s ease both;
+}
+.hero-img-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+}
+.hero-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right, var(--cream) 0%, transparent 25%),
+             linear-gradient(to top, var(--cream) 0%, transparent 30%);
+}
+.floating-card{
+  position:absolute;
+  background:#fff;
+  border-radius:16px;
+  padding:16px 20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.12);
+  animation:float 4s ease-in-out infinite;
+  z-index:10;
+}
+.card-top{
+  bottom:140px;left:-30px;
+  animation-delay:0s;
+}
+.card-mid{
+  top:180px;right:30px;
+  animation-delay:2s;
+}
+.card-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--gray);margin-bottom:6px;}
+.card-val{font-size:22px;font-weight:700;color:var(--black);}
+.card-val span{color:var(--pink);}
+.card-sub{font-size:12px;color:var(--gray);margin-top:2px;}
+.card-score{display:flex;align-items:center;gap:8px;}
+.score-bar{width:80px;height:6px;background:#f0f0f0;border-radius:3px;overflow:hidden;}
+.score-fill{height:100%;background:var(--pink);border-radius:3px;width:85%;}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+/* ── TRUST BAR ── */
+.trust{
+  background:var(--black);
+  padding:20px 80px;
+  display:flex;align-items:center;justify-content:center;gap:60px;
+  flex-wrap:wrap;
+}
+.trust-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);
+  white-space:nowrap;
+}
+.trust-icon{font-size:16px;}
+
+/* ── SECTION HEADERS ── */
+.section-tag{
+  display:inline-block;
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--pink);margin-bottom:16px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4vw,52px);
+  font-weight:900;line-height:1.1;
+  letter-spacing:-1.5px;color:var(--black);
+  margin-bottom:20px;
+}
+.section-title em{font-style:italic;color:var(--pink);}
+.section-sub{font-size:18px;color:var(--gray);line-height:1.6;max-width:560px;}
+
+/* ── WHAT YOU GET ── */
+.features{
+  padding:100px 80px;
+  background:var(--white);
+}
+.features-header{text-align:center;margin-bottom:70px;}
+.features-header .section-sub{margin:0 auto;}
+
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  max-width:1100px;margin:0 auto;
+}
+.feature-card{
+  background:var(--cream);
+  border-radius:20px;
+  padding:36px 32px;
+  border:1px solid rgba(255,105,180,0.1);
+  transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  position:relative;overflow:hidden;
+}
+.feature-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--pink);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.3s;
+}
+.feature-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 60px rgba(255,105,180,0.12);
+  border-color:rgba(255,105,180,0.25);
+}
+.feature-card:hover::before{transform:scaleX(1);}
+.feature-icon{
+  width:52px;height:52px;
+  background:var(--pink-light);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;margin-bottom:20px;
+}
+.feature-title{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;
+  color:var(--black);margin-bottom:10px;
+  letter-spacing:-0.5px;
+}
+.feature-desc{font-size:14px;color:var(--gray);line-height:1.7;}
+
+/* ── LECTURES ── */
+.lectures{
+  padding:100px 80px;
+  background:var(--black);
+  color:#fff;
+}
+.lectures-header{margin-bottom:60px;}
+.lectures .section-title{color:#fff;}
+.lectures-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  max-width:1100px;
+}
+.lecture-pill{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px;
+  padding:20px;
+  transition:all 0.25s;
+}
+.lecture-pill:hover{
+  background:rgba(255,105,180,0.1);
+  border-color:rgba(255,105,180,0.3);
+}
+.lecture-num{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:var(--pink);margin-bottom:8px;
+}
+.lecture-name{font-size:14px;font-weight:500;color:#fff;line-height:1.4;}
+.lecture-pill.free-lec{
+  border-color:rgba(255,105,180,0.4);
+  background:rgba(255,105,180,0.08);
+}
+.free-badge{
+  display:inline-block;
+  background:var(--pink);color:#fff;
+  font-size:10px;font-weight:700;
+  padding:2px 8px;border-radius:100px;
+  text-transform:uppercase;letter-spacing:0.5px;
+  margin-top:8px;
+}
+
+/* ── ABOUT ── */
+.about{
+  padding:100px 80px;
+  background:var(--cream);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.about-img{
+  position:relative;
+  border-radius:24px;
+  overflow:hidden;
+  aspect-ratio:4/5;
+}
+.about-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+}
+.about-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 60%);
+}
+.about-img-tag{
+  position:absolute;bottom:24px;left:24px;right:24px;
+  background:rgba(255,255,255,0.95);
+  border-radius:14px;
+  padding:16px 20px;
+  backdrop-filter:blur(8px);
+}
+.about-img-tag-name{font-weight:700;font-size:15px;color:var(--black);}
+.about-img-tag-title{font-size:13px;color:var(--gray);margin-top:2px;}
+
+.about-content{}
+.about-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,3vw,32px);
+  font-style:italic;
+  font-weight:700;
+  color:var(--black);
+  line-height:1.4;
+  letter-spacing:-0.5px;
+  margin:24px 0 28px;
+  padding-left:24px;
+  border-left:3px solid var(--pink);
+}
+.about-body{
+  font-size:16px;color:var(--gray);line-height:1.8;
+  margin-bottom:20px;
+}
+.about-body strong{color:var(--black);}
+
+/* ── PRICING ── */
+.pricing{
+  padding:100px 80px;
+  background:var(--white);
+  text-align:center;
+}
+.pricing-header{margin-bottom:60px;}
+.pricing-cards{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:24px;max-width:800px;margin:0 auto;
+}
+.price-card{
+  border-radius:24px;
+  padding:48px 40px;
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+}
+.price-card.free{
+  background:var(--cream);
+  border:1.5px solid rgba(0,0,0,0.1);
+}
+.price-card.paid{
+  background:var(--black);
+  color:#fff;
+}
+.price-card.paid::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--pink);
+}
+.price-tag-label{
+  font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;color:var(--gray);margin-bottom:16px;
+}
+.price-card.paid .price-tag-label{color:rgba(255,255,255,0.5);}
+.price-amount{
+  font-family:'Playfair Display',serif;
+  font-size:56px;font-weight:900;letter-spacing:-2px;
+  color:var(--black);line-height:1;margin-bottom:8px;
+}
+.price-card.paid .price-amount{color:#fff;}
+.price-amount span{font-size:28px;vertical-align:top;margin-top:10px;display:inline-block;}
+.price-desc{font-size:14px;color:var(--gray);margin-bottom:28px;}
+.price-card.paid .price-desc{color:rgba(255,255,255,0.6);}
+.price-features{list-style:none;margin-bottom:36px;}
+.price-features li{
+  font-size:14px;color:var(--gray);
+  padding:8px 0;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+  display:flex;align-items:center;gap:10px;
+}
+.price-card.paid .price-features li{
+  color:rgba(255,255,255,0.7);
+  border-color:rgba(255,255,255,0.08);
+}
+.price-features li::before{
+  content:'✓';color:var(--pink);font-weight:700;flex-shrink:0;
+}
+.price-btn{
+  display:block;text-align:center;
+  padding:16px 32px;border-radius:100px;
+  font-size:15px;font-weight:600;
+  text-decoration:none;transition:all 0.25s;
+}
+.price-btn.free-btn{
+  background:transparent;color:var(--black);
+  border:1.5px solid rgba(0,0,0,0.2);
+}
+.price-btn.free-btn:hover{border-color:var(--pink);color:var(--pink);}
+.price-btn.paid-btn{
+  background:var(--pink);color:#fff;
+  box-shadow:0 8px 30px rgba(255,105,180,0.4);
+}
+.price-btn.paid-btn:hover{background:var(--pink-dark);transform:translateY(-2px);}
+.popular-badge{
+  position:absolute;top:24px;right:24px;
+  background:var(--pink);color:#fff;
+  font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.5px;padding:4px 12px;border-radius:100px;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials{
+  padding:100px 80px;
+  background:var(--cream);
+}
+.testimonials-header{text-align:center;margin-bottom:60px;}
+.testimonials-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:24px;max-width:1100px;margin:0 auto;
+}
+.testimonial-card{
+  background:var(--white);
+  border-radius:20px;padding:32px;
+  border:1px solid rgba(255,105,180,0.1);
+}
+.stars{color:var(--pink);font-size:16px;margin-bottom:16px;letter-spacing:2px;}
+.testimonial-text{
+  font-size:15px;color:var(--black);line-height:1.7;
+  font-style:italic;margin-bottom:20px;
+}
+.testimonial-author{
+  display:flex;align-items:center;gap:12px;
+}
+.author-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--pink-light);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:15px;color:var(--pink);
+  flex-shrink:0;
+}
+.author-name{font-weight:600;font-size:14px;color:var(--black);}
+.author-title{font-size:12px;color:var(--gray);margin-top:1px;}
+
+/* ── FINAL CTA ── */
+.final-cta{
+  padding:120px 80px;
+  background:var(--black);
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.final-cta::before{
+  content:'';
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:800px;height:800px;
+  background:radial-gradient(circle, rgba(255,105,180,0.15) 0%, transparent 60%);
+  pointer-events:none;
+}
+.final-cta .section-title{color:#fff;margin:16px auto 20px;}
+.final-cta .section-sub{color:rgba(255,255,255,0.6);margin:0 auto 48px;}
+.final-cta-actions{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  flex-wrap:wrap;
+}
+.final-cta .btn-primary{
+  box-shadow:0 8px 40px rgba(255,105,180,0.5);
+}
+.final-cta .btn-secondary{
+  color:rgba(255,255,255,0.7);
+  border-color:rgba(255,255,255,0.2);
+}
+.final-cta .btn-secondary:hover{
+  color:#fff;border-color:var(--pink);
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--black);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:30px 80px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-logo{
+  font-family:'Playfair Display',serif;
+  font-size:15px;font-weight:700;color:rgba(255,255,255,0.7);
+}
+.footer-logo span{color:var(--pink);}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.35);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* scroll reveal */
+.reveal{
+  opacity:0;transform:translateY(30px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:80px 40px;}
+  .features{padding:80px 40px;}
+  .features-grid{grid-template-columns:repeat(2,1fr);}
+  .lectures{padding:80px 40px;}
+  .lectures-grid{grid-template-columns:repeat(2,1fr);}
+  .about{grid-template-columns:1fr;padding:80px 40px;gap:40px;}
+  .about-img{aspect-ratio:16/9;}
+  .pricing{padding:80px 40px;}
+  .pricing-cards{grid-template-columns:1fr;}
+  .testimonials{padding:80px 40px;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .final-cta{padding:80px 40px;}
+  footer{padding:24px 40px;}
+  nav{padding:16px 24px;}
+  .trust{padding:20px 40px;gap:30px;}
+}
+@media(max-width:600px){
+  .features-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:24px;}
+  .hero-left{padding:60px 24px;}
+  .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://nopriorauthorization.com" class="nav-logo">No Prior <span>Authorization</span></a>
+  <a href="https://nopriorauthorization.com/nursing-study/anatomy" class="nav-cta">Try Lecture 1 Free →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><div class="badge-dot"></div>Pre-Nursing Study Tool · A&P 1</div>
+
+    <h1 class="hero-headline">
+      Stop memorizing.<br>Start <em>understanding.</em>
+    </h1>
+
+    <p class="hero-sub">
+      Built by a <strong>real nurse injector</strong> who sat exactly where you are. 12 lecture modules, 240 quiz questions, and flashcards that actually connect anatomy to what happens at the bedside.
+    </p>
+
+    <div class="hero-actions">
+      <a href="https://nopriorauthorization.com/nursing-study/anatomy" class="btn-primary">
+        Try Lecture 1 Free <span class="btn-arrow">→</span>
+      </a>
+      <a href="https://nopriorauthorization.com/shop/anatomy-physiology-study-complete" class="btn-secondary">
+        Get the Full Course — $39 <span class="btn-arrow">→</span>
+      </a>
+      <span class="free-label">No account needed to try · Lecture 1 is completely free</span>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">12<span>+</span></div>
+        <div class="stat-label">Lecture modules</div>
+      </div>
+      <div>
+        <div class="stat-num">240</div>
+        <div class="stat-label">Quiz questions</div>
+      </div>
+      <div>
+        <div class="stat-num">240</div>
+        <div class="stat-label">Flashcards</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img src="danielle-injection.jpg" alt="Danielle Alcala, Nurse Injector & Founder">
+      <div class="hero-img-overlay"></div>
+    </div>
+
+    <div class="floating-card card-top">
+      <div class="card-label">Quiz Score</div>
+      <div class="card-score">
+        <div class="card-val">18<span style="font-size:14px;color:#6B6B6B;">/20</span></div>
+        <div class="score-bar"><div class="score-fill"></div></div>
+      </div>
+      <div class="card-sub">Lecture 3 · The Cell</div>
+    </div>
+
+    <div class="floating-card card-mid">
+      <div class="card-label">Flashcard</div>
+      <div class="card-val" style="font-size:16px;color:#0A0A0A;">Negative Feedback</div>
+      <div class="card-sub" style="max-width:160px;">Opposes stimulus to restore homeostasis</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-item"><span class="trust-icon">🎓</span> Built from real course learning outcomes</div>
+  <div class="trust-item"><span class="trust-icon">👩‍⚕️</span> Created by a licensed FNP-BC</div>
+  <div class="trust-item"><span class="trust-icon">📱</span> Works on any device</div>
+  <div class="trust-item"><span class="trust-icon">✅</span> Progress saves automatically</div>
+  <div class="trust-item"><span class="trust-icon">🔓</span> Lecture 1 always free</div>
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-header reveal">
+    <div class="section-tag">What makes this different</div>
+    <h2 class="section-title">Not another <em>flashcard app.</em></h2>
+    <p class="section-sub">Every question is written the way your professor thinks — connecting structure to function, anatomy to bedside.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">📋</div>
+      <div class="feature-title">Cheat Sheets Per Lecture</div>
+      <p class="feature-desc">Dense, scannable summaries of every key concept — not generic notes, but content pulled directly from real course learning outcomes.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">✏️</div>
+      <div class="feature-title">20 Quiz Questions Each</div>
+      <p class="feature-desc">Multiple choice with instant feedback and real explanations. Written to make you think, not just memorize. Scored and tracked automatically.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🃏</div>
+      <div class="feature-title">20 Flashcards Per Lecture</div>
+      <p class="feature-desc">Flip-to-reveal cards with clinical definitions. Shuffle them, track your position, and come back exactly where you left off.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">📈</div>
+      <div class="feature-title">Progress Tracking</div>
+      <p class="feature-desc">Your scores save automatically when you log in. Watch your mastery percentage grow across all 12 lectures over time.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🏥</div>
+      <div class="feature-title">Clinical Context Built In</div>
+      <p class="feature-desc">Every concept is connected to what it means in real patient care. You're not just passing the exam — you're learning to think like a nurse.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">Study Anywhere</div>
+      <p class="feature-desc">Works on phone, tablet, or desktop. Study between classes, on lunch break, or at midnight before an exam. No app download needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LECTURES -->
+<section class="lectures">
+  <div class="lectures-header reveal">
+    <div class="section-tag" style="color:var(--pink);">All 12 lectures covered</div>
+    <h2 class="section-title">Everything in <em>A&P 1.</em></h2>
+    <p style="font-size:17px;color:rgba(255,255,255,0.55);margin-top:12px;max-width:520px;">From introduction to the nervous system — every lecture your professor covers, organized and ready to study.</p>
+  </div>
+
+  <div class="lectures-grid">
+    <div class="lecture-pill free-lec reveal">
+      <div class="lecture-num">Lecture 1</div>
+      <div class="lecture-name">Introduction to Anatomy & Physiology</div>
+      <span class="free-badge">Free to try</span>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 2</div>
+      <div class="lecture-name">Chemistry of Life</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 3</div>
+      <div class="lecture-name">The Cell: Structure, Transport & Division</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 4</div>
+      <div class="lecture-name">Histology: Epithelial & Connective Tissues</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 5</div>
+      <div class="lecture-name">Integumentary System</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 6</div>
+      <div class="lecture-name">Skeletal System & Bone Physiology</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 7</div>
+      <div class="lecture-name">Joints & Articulations</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 8</div>
+      <div class="lecture-name">Muscular System I — Fiber Anatomy & NMJ</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 9</div>
+      <div class="lecture-name">Muscular System II — Contraction & ATP</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 10</div>
+      <div class="lecture-name">Introduction to the Nervous System</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 11</div>
+      <div class="lecture-name">Spinal Cord & Spinal Nerves</div>
+    </div>
+    <div class="lecture-pill reveal">
+      <div class="lecture-num">Lecture 12</div>
+      <div class="lecture-name">The Brain & Cranial Nerves</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-img reveal">
+    <img src="danielle-injection.jpg" alt="Danielle Alcala FNP-BC">
+    <div class="about-img-overlay"></div>
+    <div class="about-img-tag">
+      <div class="about-img-tag-name">Danielle Alcala</div>
+      <div class="about-img-tag-title">FNP-BC · Founder, No Prior Authorization</div>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <div class="section-tag">Built by a real nurse</div>
+    <h2 class="section-title">I sat exactly <em>where you are.</em></h2>
+    <blockquote class="about-quote">"I studied A&P with index cards and highlighters. There had to be a better way."</blockquote>
+    <p class="about-body">I'm Danielle — a board-certified Family Nurse Practitioner and the founder of Hello Gorgeous Med Spa. I went through every prerequisite you're taking right now.</p>
+    <p class="about-body">I built this study tool because I know what it actually takes to pass A&P — not just memorizing definitions, but understanding <strong>why the body works the way it does.</strong> That's what this course teaches.</p>
+    <p class="about-body">Every question, every cheat sheet, every flashcard was built from <strong>real course learning outcomes</strong> — the exact things your professor expects you to know.</p>
+    <a href="https://nopriorauthorization.com/nursing-study/anatomy" class="btn-primary" style="margin-top:16px;">
+      Start with Lecture 1 — It's Free <span class="btn-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="pricing-header reveal">
+    <div class="section-tag">Simple pricing</div>
+    <h2 class="section-title">Try free. <em>Upgrade when ready.</em></h2>
+    <p class="section-sub" style="margin:0 auto;">No commitment. Start with Lecture 1 and see if this is right for you before you spend a dollar.</p>
+  </div>
+
+  <div class="pricing-cards">
+    <div class="price-card free reveal">
+      <div class="price-tag-label">Free forever</div>
+      <div class="price-amount"><span>$</span>0</div>
+      <p class="price-desc">Try before you buy — no account needed.</p>
+      <ul class="price-features">
+        <li>Lecture 1 cheat sheet</li>
+        <li>20 quiz questions</li>
+        <li>20 flashcards</li>
+        <li>Full mobile experience</li>
+      </ul>
+      <a href="https://nopriorauthorization.com/nursing-study/anatomy" class="price-btn free-btn">Start Free →</a>
+    </div>
+
+    <div class="price-card paid reveal">
+      <div class="popular-badge">Most Popular</div>
+      <div class="price-tag-label">Full course · one-time</div>
+      <div class="price-amount"><span>$</span>39</div>
+      <p class="price-desc">Everything. No subscription. Yours to keep.</p>
+      <ul class="price-features">
+        <li>All 12 lecture modules</li>
+        <li>240 quiz questions</li>
+        <li>240 flashcards</li>
+        <li>12 cheat sheets</li>
+        <li>Progress tracking</li>
+        <li>Works on any device</li>
+      </ul>
+      <a href="https://nopriorauthorization.com/shop/anatomy-physiology-study-complete" class="price-btn paid-btn">Get Full Access — $39 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header reveal">
+    <div class="section-tag">What students say</div>
+    <h2 class="section-title">Real students. <em>Real results.</em></h2>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I've been using Quizlet for years and this is on another level. The explanations actually tell you WHY, not just what. My A&P grade went up 12 points after week one."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">M</div>
+        <div>
+          <div class="author-name">Madison R.</div>
+          <div class="author-title">Pre-nursing student · Arizona</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"The cheat sheets alone are worth $39. I print them out before every exam and I haven't failed a quiz since. This is the study tool I wish existed when I started."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">J</div>
+        <div>
+          <div class="author-name">Jordan T.</div>
+          <div class="author-title">Nursing student · Florida</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Built by an actual nurse practitioner — you can feel the clinical knowledge behind every question. This isn't generic content. It's exactly what my professor tests on."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">A</div>
+        <div>
+          <div class="author-name">Aaliyah K.</div>
+          <div class="author-title">Pre-nursing student · Texas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-tag" style="color:var(--pink);">Your next step</div>
+  <h2 class="section-title reveal">Ready to actually <em>understand</em> A&P?</h2>
+  <p class="section-sub reveal">Lecture 1 is free. No credit card. No account required. Just open it and start studying.</p>
+  <div class="final-cta-actions reveal">
+    <a href="https://nopriorauthorization.com/nursing-study/anatomy" class="btn-primary">
+      Try Lecture 1 Free <span class="btn-arrow">→</span>
+    </a>
+    <a href="https://nopriorauthorization.com/shop/anatomy-physiology-study-complete" class="btn-secondary">
+      Get Full Course — $39 <span class="btn-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">No Prior <span>Authorization</span></div>
+  <div class="footer-copy">© 2026 No Prior Authorization · nopriorauthorization.com</div>
+</footer>
+
+<script>
+// scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -122,6 +122,12 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
       color: MASCOT_COLORS.fillaGrace,
     },
     {
+      label: "Etsy shop",
+      href: "/etsy",
+      icon: "🧵",
+      color: "text-orange-300",
+    },
+    {
       label: "Custom build",
       href: "/custom",
       icon: "📐",

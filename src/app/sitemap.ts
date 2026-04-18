@@ -19,6 +19,7 @@ const HIGH_INTENT_PATHS = [
   "free-templates/downloads",
   "custom",
   "study-guides",
+  "etsy",
   "nclex-bundle",
   "storefront",
   "campaign-videos",

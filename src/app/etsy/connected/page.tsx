@@ -17,8 +17,16 @@ export default function EtsyConnectedPage({ searchParams }: Props) {
           err
         ) : ok ? (
           <>
-            OAuth completed. Tokens are stored in secure cookies for this
-            browser. You can call the Etsy Open API from server routes next.
+            OAuth completed. Tokens are stored in your database for server-side
+            API calls. Visit{" "}
+            <Link href="/etsy" className="font-medium text-rose-700 underline">
+              /etsy
+            </Link>{" "}
+            to see synced listings, or{" "}
+            <Link href="/api/etsy/listings" className="font-medium text-rose-700 underline">
+              /api/etsy/listings
+            </Link>{" "}
+            for JSON.
           </>
         ) : (
           "Use Connect from the Etsy page to authorize this app."

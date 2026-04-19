@@ -11,7 +11,7 @@ function mergeTags(existing: string[], add: string[]): string[] {
 }
 
 /**
- * Call from Square (or Stripe) after a completed purchase.
+ * Call from Square after a completed purchase.
  * Stops promo funnel; tags buyer / growth_system_buyer.
  */
 export async function pauseFunnelOnPurchase(

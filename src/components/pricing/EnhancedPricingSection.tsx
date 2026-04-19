@@ -63,8 +63,9 @@ function PricingCard({ tier, isAnnual, discountCode }: PricingCardProps) {
         size="lg"
         className="w-full"
         onClick={() => {
-          // TODO: Stripe checkout integration
-          alert(`Stripe checkout for ${tier.id} (${isAnnual ? 'annual' : 'monthly'}) coming soon!`);
+          alert(
+            `Membership checkout uses Square on nopriorauthorization.com — ${tier.id} (${isAnnual ? "annual" : "monthly"}) is not wired on this page yet.`
+          );
         }}
       >
         {tier.cta}

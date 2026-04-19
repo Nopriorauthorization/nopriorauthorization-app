@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { DELIVERY_PRODUCT_SLUG_ALIASES } from "@/config/growth-funnel.config";
 import {
   HELLO_GORGEOUS_BOOK_SLUG,
@@ -19,6 +21,27 @@ import { isPrintifyPhysicalSku } from "@/lib/printify/products";
 
 function resolveDeliveryProductSlug(productSlug: string): string {
   return DELIVERY_PRODUCT_SLUG_ALIASES[productSlug] || productSlug;
+}
+
+/** One delivery row per chapter; links resolve under /micro270/cheat-sheets/ (gated cookie). */
+function micro270ChapterCheatDeliveryTemplates(): DeliveryTemplateLink[] {
+  try {
+    const filePath = path.join(process.cwd(), "public/micro270/chapters.json");
+    const rows = JSON.parse(fs.readFileSync(filePath, "utf8")) as Array<{
+      ch: number;
+      title: string;
+      file: string;
+    }>;
+    return rows.map((row) => ({
+      title: `Chapter ${row.ch} — ${row.title} (printable)`,
+      designId: null,
+      editUrl: `/micro270/cheat-sheets/${row.file}`,
+      viewUrl: null as string | null,
+    }));
+  } catch (e) {
+    console.error("[delivery] micro270 cheat templates:", e);
+    return [];
+  }
 }
 
 export type DeliveryTemplateLink = {
@@ -108,6 +131,26 @@ const VIRTUAL_DELIVERY_PRODUCTS: DeliveryProduct[] = [
       },
     ],
   },
+  (() => {
+    const cheatTemplates = micro270ChapterCheatDeliveryTemplates();
+    return {
+      productKey: MICRO270_SHOP_SLUG_CHEATS,
+      productSlug: MICRO270_SHOP_SLUG_CHEATS,
+      productTitle: "Micro 270 — Chapter cheat sheets (all 20 topics)",
+      templateCount: cheatTemplates.length || 20,
+      templates:
+        cheatTemplates.length > 0
+          ? cheatTemplates
+          : [
+              {
+                title: "Micro 270 cheat sheets — activate from email after purchase",
+                designId: null,
+                editUrl: "/micro270",
+                viewUrl: null as string | null,
+              },
+            ],
+    };
+  })(),
   (() => {
     const def = getAnatomyStudyShopProductDef();
     return {

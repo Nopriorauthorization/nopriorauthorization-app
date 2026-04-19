@@ -46,7 +46,7 @@ Next.js 14 app delivering aesthetic treatment education through AI-powered masco
 
 ### Subscription & Billing
 - Stripe integration: checkout sessions, webhooks, customer portal
-- Webhook handler at [`api/stripe/webhook/route.ts`](src/app/api/stripe/webhook/route.ts) — excluded from auth middleware
+- Shop payments: Square webhook at [`api/square/webhook/route.ts`](src/app/api/square/webhook/route.ts)
 - Tier changes update both `User.subscriptionTier` and `Subscription.tier`
 
 ## Commands & Workflows
@@ -68,7 +68,7 @@ npm run build                  # Prisma generate + Next.js build
 ```
 
 ## Environment Variables
-Required: `DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `OPENAI_API_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET`
+Required: `DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `OPENAI_API_KEY`; shop checkout uses `SQUARE_ACCESS_TOKEN`, `SQUARE_LOCATION_ID`, and Square webhook secrets as documented in deploy checklists.
 
 Optional: `INTERNAL_ACCESS_BYPASS=true` (skip auth locally), `ANTHROPIC_API_KEY` (if using Claude models)
 

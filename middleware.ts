@@ -3,6 +3,8 @@ import type { NextRequest } from "next/server";
 import {
   MICRO270_BANK_COOKIE,
   MICRO270_BANK_COOKIE_VALUE,
+  MICRO270_CHEATS_COOKIE,
+  MICRO270_CHEATS_COOKIE_VALUE,
 } from "@/config/micro270-sales.config";
 
 /**
@@ -52,11 +54,22 @@ export function middleware(req: NextRequest) {
   if (pathname.startsWith("/micro270/") && pathname.endsWith(".html")) {
     const base = pathname.slice(pathname.lastIndexOf("/") + 1);
     const allowed = freeHtmlBasenames();
-    const unlocked =
+    const unlockedBank =
       req.cookies.get(MICRO270_BANK_COOKIE)?.value ===
       MICRO270_BANK_COOKIE_VALUE;
+    const unlockedCheats =
+      req.cookies.get(MICRO270_CHEATS_COOKIE)?.value ===
+      MICRO270_CHEATS_COOKIE_VALUE;
+    const cheatPath = pathname.includes("/micro270/cheat-sheets/");
 
-    if (!unlocked && !allowed.includes(base)) {
+    if (cheatPath) {
+      if (!unlockedBank && !unlockedCheats) {
+        const url = req.nextUrl.clone();
+        url.pathname = "/micro270";
+        url.hash = "pricing";
+        return NextResponse.redirect(url);
+      }
+    } else if (!unlockedBank && !allowed.includes(base)) {
       const url = req.nextUrl.clone();
       url.pathname = "/micro270";
       url.hash = "pricing";

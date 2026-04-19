@@ -17,7 +17,7 @@ import { FunnelLink } from "@/components/shop/FunnelLink";
 /**
  * Square appends query params to `redirect_url` after payment link checkout, e.g.
  * `transactionId`, `checkoutId`, `orderId`, `referenceId` (camelCase per Square docs).
- * We show `transactionId` when present; fall back to other Square ids, then Stripe `session_id`.
+ * We show `transactionId` when present; fall back to other Square ids, then legacy `session_id` if present.
  */
 function getPostCheckoutReference(searchParams: URLSearchParams): {
   label: string;

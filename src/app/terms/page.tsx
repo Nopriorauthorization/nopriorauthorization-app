@@ -56,7 +56,7 @@ export default function TermsOfUsePage() {
               <li>You may cancel your subscription at any time</li>
               <li>Cancellation takes effect at the end of your billing period</li>
               <li>No refunds are provided for partial billing periods</li>
-              <li>Payments are processed securely through Stripe</li>
+              <li>Payments are processed securely through Square</li>
             </ul>
           </section>
 

@@ -95,6 +95,13 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
           color: "text-emerald-400",
         },
         {
+          label: "Chapter cheat sheets ($9.99)",
+          href: "/shop/micro270-chapter-cheat-sheets",
+          icon: "📄",
+          description: "Printable all-chapter pack · upgrade to bank anytime",
+          color: "text-amber-300",
+        },
+        {
           label: "NCLEX Study Bundle",
           href: "/study-guides",
           icon: "📋",

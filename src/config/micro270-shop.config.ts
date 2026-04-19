@@ -2,6 +2,8 @@
  * Micro 270 SKUs — Square checkout uses /api/shop/checkout + these slugs.
  * Fulfillment (email / download) must match your delivery pipeline for these slugs.
  */
+/** Printable chapter HTML (mirrors under /micro270/cheat-sheets/); upgrade path to full bank. */
+export const MICRO270_SHOP_SLUG_CHEATS = "micro270-chapter-cheat-sheets";
 export const MICRO270_SHOP_SLUG_BANK = "micro270-question-bank";
 export const MICRO270_SHOP_SLUG_BUNDLE = "micro270-bank-ai-bundle";
 export const MICRO270_SHOP_SLUG_FULL = "micro270-full-access";
@@ -18,6 +20,23 @@ export type Micro270ShopProductDef = {
 
 export function getMicro270ShopProductDefs(): Micro270ShopProductDef[] {
   return [
+    {
+      slug: MICRO270_SHOP_SLUG_CHEATS,
+      title: "Micro 270 — Chapter cheat sheets (all 20 topics)",
+      priceCents: 999,
+      templateCount: 20,
+      shortDescription:
+        "Printable chapter layouts for every Micro 270 topic — perfect if you want visuals first, then upgrade to the full interactive bank later.",
+      longDescription:
+        "Twenty chapter-aligned printable pages (same chapter HTML as the full bank, opened from a dedicated /cheat-sheets/ path after you activate). Use Print → Save as PDF for your binder. This tier does not include the AI cram tool. Upgrade anytime by purchasing Micro 270 — Complete Question Bank (you keep what you already bought; the bank unlocks hub + all chapters + explanations). Checkout is via Square; delivery link arrives by email.",
+      features: [
+        "All 20 chapter topics — print-friendly HTML from your browser",
+        "Activate once per device (cookie) from your delivery email",
+        "Upgrade path: add the $47 question bank when you are ready",
+        "Personal study license — see /terms",
+        "Secure checkout via Square",
+      ],
+    },
     {
       slug: MICRO270_SHOP_SLUG_BANK,
       title: "Micro 270 — Complete Question Bank",

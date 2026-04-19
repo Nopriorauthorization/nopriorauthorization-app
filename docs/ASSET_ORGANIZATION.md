@@ -1,7 +1,7 @@
 # Asset & Delivery Organization
 
 **Source of truth:** JSON manifests in `imports/npa-manifests-and-spec/`
-**Primary channel:** `/shop` (Stripe checkout + tokenized delivery)
+**Primary channel:** `/shop` (Square checkout + tokenized delivery)
 **Secondary channel:** Etsy (draft listings from pipeline output)
 
 ## Directory map
@@ -46,7 +46,7 @@ Etsy assets (listing images + copy)
    /shop → src/lib/shop/products.ts → catalog.generated.json
    ↓
 4. Customer buys on /shop
-   Stripe checkout → webhook → Purchase row + delivery token + email
+   Square checkout → webhook → Purchase row + delivery token + email
    ↓
 5. Buyer opens /delivery/[token]
    Renders templates from catalog (HTML forms + Canva links)
@@ -67,4 +67,4 @@ Optional: Etsy downstream
 | `pnpm product:create-draft <slug>` | Legacy: create Etsy draft from pipeline output |
 | `pnpm delivery:import` | Regenerate catalog.generated.json only |
 | `pnpm delivery:sync-db` | Push manifests to DB only |
-| `pnpm shop:seed-stripe` | Create Stripe Products + Prices for all shop products |
+| `pnpm shop:content-thumbnails` | Generate shop PNG previews from HTML (optional) |

@@ -9,6 +9,7 @@ import { isAnatomyStudyProductSlug } from "@/config/anatomy-study.config";
 import {
   MICRO270_CRAM_SLUGS,
 } from "@/config/micro270-sales.config";
+import { MICRO270_SHOP_SLUG_CHEATS } from "@/config/micro270-shop.config";
 
 export const dynamic = "force-dynamic";
 
@@ -72,27 +73,54 @@ export default async function DeliveryPage({ params }: Props) {
 
         {grant.productSlug.startsWith("micro270") && (
           <div className="mt-5 rounded-2xl border border-indigo-200 bg-indigo-50 p-5">
-            <p className="font-semibold text-indigo-900">Micro270 Study Hub</p>
-            <p className="mt-1 text-sm text-indigo-800">
-              Click below to activate your hub access on this device. All 20 chapters
-              will unlock and your progress will be tracked automatically.
-            </p>
-            <div className="mt-3 flex flex-wrap gap-3">
-              <a
-                href={`/api/micro270/activate?token=${encodeURIComponent(params.token)}`}
-                className="inline-flex rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-800"
-              >
-                Activate hub access →
-              </a>
-              {MICRO270_CRAM_SLUGS.has(grant.productSlug) && (
-                <a
-                  href="/micro270/cram"
-                  className="inline-flex rounded-lg border border-indigo-300 px-5 py-2.5 text-sm font-semibold text-indigo-800 hover:bg-indigo-100"
-                >
-                  Go to AI cram tool
-                </a>
-              )}
-            </div>
+            {grant.productSlug === MICRO270_SHOP_SLUG_CHEATS ? (
+              <>
+                <p className="font-semibold text-indigo-900">Micro 270 — Chapter cheat sheets</p>
+                <p className="mt-1 text-sm text-indigo-800">
+                  Activate to unlock printable chapter pages under{" "}
+                  <code className="rounded bg-white/80 px-1">/micro270/cheat-sheets/</code> on this
+                  browser. Upgrade to the full question bank anytime from the cheat-sheet index.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <a
+                    href={`/api/micro270/activate?token=${encodeURIComponent(params.token)}`}
+                    className="inline-flex rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-800"
+                  >
+                    Activate cheat-sheet access →
+                  </a>
+                  <a
+                    href="/micro270/cheat-sheets"
+                    className="inline-flex rounded-lg border border-indigo-300 px-5 py-2.5 text-sm font-semibold text-indigo-800 hover:bg-indigo-100"
+                  >
+                    Open chapter index
+                  </a>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="font-semibold text-indigo-900">Micro270 Study Hub</p>
+                <p className="mt-1 text-sm text-indigo-800">
+                  Click below to activate your hub access on this device. All 20 chapters
+                  will unlock and your progress will be tracked automatically.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <a
+                    href={`/api/micro270/activate?token=${encodeURIComponent(params.token)}`}
+                    className="inline-flex rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-800"
+                  >
+                    Activate hub access →
+                  </a>
+                  {MICRO270_CRAM_SLUGS.has(grant.productSlug) && (
+                    <a
+                      href="/micro270/cram"
+                      className="inline-flex rounded-lg border border-indigo-300 px-5 py-2.5 text-sm font-semibold text-indigo-800 hover:bg-indigo-100"
+                    >
+                      Go to AI cram tool
+                    </a>
+                  )}
+                </div>
+              </>
+            )}
             <p className="mt-3 text-xs text-indigo-600">
               Access is stored as a cookie on this browser. If you switch devices, visit
               your delivery link again and click activate.

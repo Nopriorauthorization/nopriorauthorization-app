@@ -194,9 +194,8 @@ async function checkServiceHealth(service: string): Promise<ServiceStatus> {
         break;
 
       case 'stripe':
-        // Check Stripe connectivity (simplified)
         status = 'healthy';
-        message = 'Stripe integration active';
+        message = 'Payments use Square; Stripe is not used';
         break;
     }
 

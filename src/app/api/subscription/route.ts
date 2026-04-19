@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/auth-options";
-import { createCustomerPortalSession } from "@/lib/stripe/stripe";
 import prisma from "@/lib/db";
 
 // GET - Check subscription status
@@ -46,7 +45,7 @@ export async function GET() {
   }
 }
 
-// POST - Create customer portal session for managing subscription
+// POST — legacy Stripe customer portal removed; checkout is Square.
 export async function POST() {
   try {
     const session = await getServerSession(authOptions);
@@ -58,26 +57,17 @@ export async function POST() {
       );
     }
 
-    const subscription = await prisma.subscription.findUnique({
-      where: { userId: session.user.id },
-    });
-
-    if (!subscription?.stripeCustomerId) {
-      return NextResponse.json(
-        { error: "No subscription found" },
-        { status: 404 }
-      );
-    }
-
-    const portalSession = await createCustomerPortalSession(
-      subscription.stripeCustomerId
-    );
-
-    return NextResponse.json({ url: portalSession.url });
-  } catch (error) {
-    console.error("Portal session error:", error);
     return NextResponse.json(
-      { error: "Failed to create portal session" },
+      {
+        error:
+          "Billing portal is not available. NPA shop checkout uses Square; contact support for subscription changes.",
+      },
+      { status: 410 }
+    );
+  } catch (error) {
+    console.error("Subscription POST error:", error);
+    return NextResponse.json(
+      { error: "Failed to process request" },
       { status: 500 }
     );
   }

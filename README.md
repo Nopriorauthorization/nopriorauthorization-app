@@ -110,7 +110,7 @@ Authoritative list and comments: **[`.env.example`](.env.example)**.
 - `RESEND_API_KEY`, `EMAIL_FROM` (verified domain)
 - `CRON_SECRET` — Vercel cron + protected cron routes
 
-Optional: Supabase storage keys, Facebook posting, Etsy/Canva pipeline keys, Stripe (legacy scripts), Anthropic/OpenAI, etc.
+Optional: Supabase storage keys, Facebook posting, Etsy/Canva pipeline keys, Anthropic/OpenAI, etc.
 
 ---
 

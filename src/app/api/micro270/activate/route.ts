@@ -1,8 +1,8 @@
 /**
  * GET /api/micro270/activate?token=<deliveryToken>
  *
- * Verifies the delivery token, sets micro270_bank and micro270_tier cookies,
- * then redirects to the hub. Called from the delivery page after purchase.
+ * Sets hub cookies from a valid delivery token (Square purchase).
+ * Cheat-sheet tier only unlocks /micro270/cheat-sheets/*.html; bank tiers unlock full hub.
  */
 export const dynamic = "force-dynamic";
 
@@ -11,12 +11,15 @@ import { verifyDeliveryToken } from "@/lib/delivery/token";
 import {
   MICRO270_BANK_COOKIE,
   MICRO270_BANK_COOKIE_VALUE,
+  MICRO270_CHEATS_COOKIE,
+  MICRO270_CHEATS_COOKIE_VALUE,
   MICRO270_TIER_COOKIE,
   MICRO270_TIER_BUNDLE,
   MICRO270_TIER_FULL,
 } from "@/config/micro270-sales.config";
 import {
   MICRO270_SHOP_SLUG_BUNDLE,
+  MICRO270_SHOP_SLUG_CHEATS,
   MICRO270_SHOP_SLUG_FULL,
 } from "@/config/micro270-shop.config";
 
@@ -43,9 +46,19 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Not a Micro270 product" }, { status: 400 });
   }
 
+  if (grant.productSlug === MICRO270_SHOP_SLUG_CHEATS) {
+    const res = NextResponse.redirect(new URL("/micro270/cheat-sheets", req.url));
+    res.cookies.set(MICRO270_CHEATS_COOKIE, MICRO270_CHEATS_COOKIE_VALUE, {
+      httpOnly: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: COOKIE_MAX_AGE,
+    });
+    return res;
+  }
+
   const res = NextResponse.redirect(new URL("/micro270/hub", req.url));
 
-  // Always set the bank access cookie
   res.cookies.set(MICRO270_BANK_COOKIE, MICRO270_BANK_COOKIE_VALUE, {
     httpOnly: true,
     sameSite: "lax",
@@ -53,7 +66,6 @@ export async function GET(req: NextRequest) {
     maxAge: COOKIE_MAX_AGE,
   });
 
-  // Set tier cookie if this slug includes cram access
   const tier = tierForSlug(grant.productSlug);
   if (tier) {
     res.cookies.set(MICRO270_TIER_COOKIE, tier, {

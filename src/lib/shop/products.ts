@@ -31,7 +31,6 @@ export type ShopProduct = {
   category: string;
   features: string[];
   featured: boolean;
-  stripePriceId: string | null;
   previewImages: string[];
   audience: string[];
   /** Set when product is on the config-driven bundle ladder */
@@ -162,6 +161,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "give-me-everything-kit": "Physical Kits",
   "micro250-exam-prep-digital": "Nursing Study Series",
   "micro250-exam-prep-physical": "Nursing Study Series",
+  "micro270-chapter-cheat-sheets": "Study guides",
 };
 
 const PRICE_MAP: Record<string, number> = {
@@ -303,8 +303,6 @@ const FEATURED_SLUGS = new Set([
   "peptide-canva-marketing-pack",
   "med-spa-starter-kit",
 ]);
-
-const STRIPE_PRICE_IDS: Record<string, string> = {};
 
 const AUDIENCE_MAP: Record<string, string[]> = {
   "Clinical Forms": ["Nurse injectors", "Med spa owners", "Practice managers", "NPs and PAs"],
@@ -554,6 +552,7 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "micro-270-kit": "/shop-previews/generated/micro-270-kit-thumbnail.png",
   "micro270-bank-ai-bundle": "/shop-previews/generated/micro270-bank-ai-bundle-thumbnail.png",
   "micro270-full-access": "/shop-previews/generated/micro270-full-access-thumbnail.png",
+  "micro270-chapter-cheat-sheets": "/shop-previews/generated/micro270-question-bank-thumbnail.png",
   "micro270-question-bank": "/shop-previews/generated/micro270-question-bank-thumbnail.png",
   "microblading-pmu-playbook": "/shop-previews/generated/microblading-pmu-playbook-thumbnail.png",
   "microneedling-depth-cheat-sheet": "/shop-previews/content/microneedling-depth-cheat-sheet-thumbnail.png",
@@ -802,7 +801,6 @@ export function getShopProducts(): ShopProduct[] {
       category,
       features: buildFeatures(slug, cp.templateCount),
       featured: FEATURED_SLUGS.has(slug),
-      stripePriceId: STRIPE_PRICE_IDS[slug] || null,
       previewImages: discoverPreviewImages(slug, category),
       audience: AUDIENCE_MAP[category] || ["Aesthetic professionals"],
     };
@@ -844,7 +842,6 @@ export function getShopProducts(): ShopProduct[] {
       category: "Bundles",
       features: buildFeatures("combo-bundle", templateCount),
       featured: true,
-      stripePriceId: null,
       previewImages: discoverPreviewImages("combo-bundle", "Bundles"),
       audience: AUDIENCE_MAP["Bundles"] ?? ["Med spa owners", "Multi-service clinics"],
       bundleTierId: "mega",
@@ -878,7 +875,6 @@ export function getShopProducts(): ShopProduct[] {
         "Educational only — not a substitute for your own clinician",
       ],
       featured: true,
-      stripePriceId: null,
       previewImages: ["/shop-previews/default/default-thumbnail.png"],
       audience: AUDIENCE_MAP["Patient education"] ?? ["Patients and clients"],
     };
@@ -898,7 +894,6 @@ export function getShopProducts(): ShopProduct[] {
       category: "Study guides",
       features: def.features,
       featured: false,
-      stripePriceId: null,
       previewImages: discoverPreviewImages(def.slug, "Study guides"),
       audience: AUDIENCE_MAP["Study guides"] ?? ["Nursing students"],
     };
@@ -918,7 +913,6 @@ export function getShopProducts(): ShopProduct[] {
       category: "Study guides",
       features: anatomyDef.features,
       featured: false,
-      stripePriceId: null,
       previewImages: discoverPreviewImages(anatomyDef.slug, "Study guides"),
       audience: AUDIENCE_MAP["Study guides"] ?? ["Nursing students"],
     };
@@ -942,7 +936,6 @@ export function getShopProducts(): ShopProduct[] {
         "Printed and shipped via Printify",
       ],
       featured: false,
-      stripePriceId: null,
       previewImages: ["/shop-previews/default/default-thumbnail.png"],
       audience: ["Nursing students", "Nurse injectors", "Aesthetic providers"],
     };
@@ -969,7 +962,6 @@ export function getShopProducts(): ShopProduct[] {
         "Instant PDF — study today",
       ],
       featured: false,
-      stripePriceId: null,
       previewImages: ["/shop-previews/generated/micro250-exam-prep-digital-thumbnail.png"],
       audience: micro250Audience,
     });
@@ -992,7 +984,6 @@ export function getShopProducts(): ShopProduct[] {
         "Printed by SPOKE Custom Products via Printify",
       ],
       featured: false,
-      stripePriceId: null,
       previewImages: ["/shop-previews/generated/micro250-exam-prep-physical-thumbnail.png"],
       audience: micro250Audience,
     });

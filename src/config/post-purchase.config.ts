@@ -1,6 +1,6 @@
 /**
  * Copy and contact shown after every digital purchase (thank-you pages + delivery email).
- * Create a matching coupon in Square (and Stripe if used) for `NEXT_PUBLIC_RETURN_CUSTOMER_COUPON_CODE`.
+ * Create a matching coupon in Square for `NEXT_PUBLIC_RETURN_CUSTOMER_COUPON_CODE`.
  */
 export const RETURN_CUSTOMER_DISCOUNT_PERCENT = 20;
 

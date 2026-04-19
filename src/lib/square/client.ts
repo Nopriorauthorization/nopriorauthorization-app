@@ -44,8 +44,14 @@ export type CheckoutProduct = {
 export async function createCheckoutLink(
   product: CheckoutProduct,
   redirectUrl: string,
+  opts?: { requiresShipping?: boolean },
 ): Promise<{ url: string; paymentLinkId: string }> {
   const locationId = getLocationId();
+
+  const checkoutOptions: Record<string, unknown> = { redirect_url: redirectUrl };
+  if (opts?.requiresShipping) {
+    checkoutOptions.ask_for_shipping_address = true;
+  }
 
   const res = await fetch(`${SQUARE_BASE}/online-checkout/payment-links`, {
     method: "POST",
@@ -60,9 +66,7 @@ export async function createCheckoutLink(
         },
         location_id: locationId,
       },
-      checkout_options: {
-        redirect_url: redirectUrl,
-      },
+      checkout_options: checkoutOptions,
       payment_note: buildSquarePaymentNote([product.slug]),
     }),
   });
@@ -92,12 +96,13 @@ export async function createCheckoutLink(
 export async function createCheckoutLinkBundle(
   items: CheckoutProduct[],
   redirectUrl: string,
+  opts?: { requiresShipping?: boolean },
 ): Promise<{ url: string; paymentLinkId: string }> {
   if (items.length === 0) {
     throw new Error("createCheckoutLinkBundle: at least one item required");
   }
   if (items.length === 1) {
-    return createCheckoutLink(items[0]!, redirectUrl);
+    return createCheckoutLink(items[0]!, redirectUrl, opts);
   }
 
   const locationId = getLocationId();
@@ -108,6 +113,11 @@ export async function createCheckoutLinkBundle(
     extra === 1
       ? `${primary.title} + 1 add-on`
       : `${primary.title} + ${extra} add-ons`;
+
+  const checkoutOptions: Record<string, unknown> = { redirect_url: redirectUrl };
+  if (opts?.requiresShipping) {
+    checkoutOptions.ask_for_shipping_address = true;
+  }
 
   const res = await fetch(`${SQUARE_BASE}/online-checkout/payment-links`, {
     method: "POST",
@@ -122,9 +132,7 @@ export async function createCheckoutLinkBundle(
         },
         location_id: locationId,
       },
-      checkout_options: {
-        redirect_url: redirectUrl,
-      },
+      checkout_options: checkoutOptions,
       payment_note: buildSquarePaymentNote(items.map((i) => i.slug)),
     }),
   });

@@ -1,0 +1,37 @@
+{
+  "ap-notebook": {
+    "productId": "69e4dd53eae4f3fd3d0724d2",
+    "variantId": 34240,
+    "title": "A&P Cheat Sheet Study Notebook — Nursing & Allied Health",
+    "price": 1799,
+    "createdAt": "2026-04-19T13:49:08.461Z"
+  },
+  "micro-notebook": {
+    "productId": "69e4dd59e1b544748a0541d1",
+    "variantId": 34240,
+    "title": "Micro 270 Study Notebook — Microbiology for Nursing Students",
+    "price": 1799,
+    "createdAt": "2026-04-19T13:49:13.614Z"
+  },
+  "ap-flashcards": {
+    "productId": "69e4dd5aeae4f3fd3d0724d4",
+    "variantId": 87236,
+    "title": "A&P Clinical Reference Card Deck — 240 Study Cards for Nursing",
+    "price": 1499,
+    "createdAt": "2026-04-19T13:49:15.233Z"
+  },
+  "micro-flashcards": {
+    "productId": "69e4dd5ce9b8abdb01099585",
+    "variantId": 87236,
+    "title": "Micro 270 Q&A Card Deck — 1,000 Study Cards for Nursing",
+    "price": 1499,
+    "createdAt": "2026-04-19T13:49:16.875Z"
+  },
+  "injector-cards": {
+    "productId": "69e4dd5ee9b8abdb01099586",
+    "variantId": 76854,
+    "title": "Nurse Injector Clinical Reference Cards — 100 Cards",
+    "price": 1999,
+    "createdAt": "2026-04-19T13:49:18.817Z"
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "glp1-clinical-notebook": {
+    "productId": "69e48c10d7ad3889150081a3",
+    "title": "GLP-1 & Weight Loss Clinical Reference Notebook",
+    "price": 1799,
+    "createdAt": "2026-04-19T08:02:26.538Z"
+  },
+  "botox-clinical-notebook": {
+    "productId": "69e48c14d7ad3889150081a7",
+    "title": "Botox & Neurotoxin Clinical Reference Notebook",
+    "price": 1799,
+    "createdAt": "2026-04-19T08:02:30.463Z"
+  },
+  "filler-clinical-notebook": {
+    "productId": "69e48c18d7ad3889150081a9",
+    "title": "Dermal Filler Clinical Reference Notebook",
+    "price": 1799,
+    "createdAt": "2026-04-19T08:02:35.474Z"
+  },
+  "iv-therapy-clinical-notebook": {
+    "productId": "69e48c1d504bfa3d3c099c47",
+    "title": "IV Therapy Clinical Reference Notebook",
+    "price": 1799,
+    "createdAt": "2026-04-19T08:02:39.681Z"
+  },
+  "injection-techniques-notebook": {
+    "productId": "69e48c21eae4f3fd3d070e33",
+    "title": "Injection Techniques Clinical Reference Notebook",
+    "price": 1799,
+    "createdAt": "2026-04-19T08:02:42.298Z"
+  },
+  "hormone-therapy-notebook": {
+    "productId": "69e49042e1b544748a052b64",
+    "title": "Hormone Therapy (BHRT) — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:20:21.019Z"
+  },
+  "peptide-therapy-notebook": {
+    "productId": "69e49049d11ffeed1d06e26f",
+    "title": "Peptide Therapy — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:20:27.703Z"
+  },
+  "botox-dosing-zones-notebook": {
+    "productId": "69e49050d7ad38891500828b",
+    "title": "Botox Dosing Zones — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:20:35.365Z"
+  },
+  "cannula-vs-needle-notebook": {
+    "productId": "69e49057eae4f3fd3d070f18",
+    "title": "Cannula vs Needle — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:20:43.126Z"
+  },
+  "chemical-peel-notebook": {
+    "productId": "69e49061e9b8abdb01097f2c",
+    "title": "Chemical Peel Reference — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:20:52.767Z"
+  },
+  "filler-comparison-notebook": {
+    "productId": "69e4906815a70dfc4b0d626a",
+    "title": "Filler Product Comparison — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:20:58.908Z"
+  },
+  "fitzpatrick-notebook": {
+    "productId": "69e4906fd11ffeed1d06e27a",
+    "title": "Fitzpatrick Classification — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:21:06.385Z"
+  },
+  "glp1-titration-notebook": {
+    "productId": "69e49076d11ffeed1d06e27d",
+    "title": "GLP-1 Titration Schedule — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:21:13.656Z"
+  },
+  "hormone-lab-notebook": {
+    "productId": "69e4907c504bfa3d3c099d48",
+    "title": "Hormone Lab Reference — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:21:19.558Z"
+  },
+  "ipl-laser-notebook": {
+    "productId": "69e49083e9b8abdb01097f33",
+    "title": "IPL & Laser Treatments — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:21:25.592Z"
+  },
+  "laser-wavelength-notebook": {
+    "productId": "69e49089e1b544748a052b6e",
+    "title": "Laser Wavelength Reference — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:21:34.545Z"
+  },
+  "lash-extensions-notebook": {
+    "productId": "69e49093e1b544748a052b73",
+    "title": "Lash Extensions — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:21:42.040Z"
+  },
+  "lash-lift-notebook": {
+    "productId": "69e4909cd11ffeed1d06e285",
+    "title": "Lash Lift & Perm — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:21:49.799Z"
+  },
+  "lip-filler-anatomy-notebook": {
+    "productId": "69e490a1e9b8abdb01097f3c",
+    "title": "Lip Filler Anatomy — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:21:54.872Z"
+  },
+  "membership-pricing-notebook": {
+    "productId": "69e490a615a70dfc4b0d6275",
+    "title": "Membership Pricing Calculator — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:22:00.420Z"
+  },
+  "microneedling-depth-notebook": {
+    "productId": "69e490b015a70dfc4b0d6276",
+    "title": "Microneedling Depth Guide — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:22:11.070Z"
+  },
+  "new-patient-intake-notebook": {
+    "productId": "69e490b6d7ad3889150082aa",
+    "title": "New Patient Intake — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:22:17.112Z"
+  },
+  "olympia-iv-dosing-notebook": {
+    "productId": "69e490bfe9b8abdb01097f40",
+    "title": "Olympia IV Therapy Dosing — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:22:27.484Z"
+  },
+  "pellet-therapy-clinical-notebook": {
+    "productId": "69e490c8504bfa3d3c099d59",
+    "title": "Pellet Therapy Clinical — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:22:35.605Z"
+  },
+  "pellet-dosing-notebook": {
+    "productId": "69e490cfe1b544748a052b80",
+    "title": "Pellet Therapy Dosing — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:22:44.279Z"
+  },
+  "pharmaceutical-reference-notebook": {
+    "productId": "69e490d8504bfa3d3c099d5c",
+    "title": "Pharmaceutical Reference — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:22:51.447Z"
+  },
+  "retail-pricing-notebook": {
+    "productId": "69e490df504bfa3d3c099d5e",
+    "title": "Retail Pricing Formula — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:22:58.305Z"
+  },
+  "skincare-ingredients-notebook": {
+    "productId": "69e490e6d7ad3889150082ae",
+    "title": "Skincare Ingredient Interactions — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:23:05.271Z"
+  },
+  "staff-roles-notebook": {
+    "productId": "69e490edeae4f3fd3d070f3b",
+    "title": "Staff Roles & Scope — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:23:09.676Z"
+  },
+  "tirzepatide-vs-sema-notebook": {
+    "productId": "69e490f1504bfa3d3c099d61",
+    "title": "Tirzepatide vs Semaglutide — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:23:13.976Z"
+  },
+  "treatment-room-setup-notebook": {
+    "productId": "69e490f7d7ad3889150082b1",
+    "title": "Treatment Room Setup — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:23:20.801Z"
+  },
+  "trt-men-vs-women-notebook": {
+    "productId": "69e490fcd11ffeed1d06e292",
+    "title": "TRT: Men vs Women — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:23:25.207Z"
+  },
+  "vascular-occlusion-notebook": {
+    "productId": "69e49103e1b544748a052b8b",
+    "title": "Vascular Occlusion Protocol — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:23:32.187Z"
+  },
+  "waxing-notebook": {
+    "productId": "69e4910815a70dfc4b0d6284",
+    "title": "Professional Waxing — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:23:36.915Z"
+  },
+  "brow-henna-notebook": {
+    "productId": "69e4910dd7ad3889150082b5",
+    "title": "Brow Henna & Tinting — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:23:41.598Z"
+  },
+  "skin-analysis-notebook": {
+    "productId": "69e49111504bfa3d3c099d67",
+    "title": "Skin Analysis — Clinical Reference Notebook",
+    "createdAt": "2026-04-19T08:23:45.593Z"
+  }
+}

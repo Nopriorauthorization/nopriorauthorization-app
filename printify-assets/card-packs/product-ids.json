@@ -1,0 +1,32 @@
+{
+  "botox-card-pack": {
+    "productId": "69e4912415a70dfc4b0d6287",
+    "title": "Botox & Neurotoxin Clinical Reference Card Pack",
+    "createdAt": "2026-04-19T08:24:05.485Z"
+  },
+  "filler-card-pack": {
+    "productId": "69e4913af2671100e10e242b",
+    "title": "Dermal Filler Clinical Reference Card Pack",
+    "createdAt": "2026-04-19T08:24:27.269Z"
+  },
+  "iv-therapy-card-pack": {
+    "productId": "69e4914fd11ffeed1d06e2b9",
+    "title": "IV Therapy Clinical Reference Card Pack",
+    "createdAt": "2026-04-19T08:24:48.085Z"
+  },
+  "hormone-peptide-card-pack": {
+    "productId": "69e49162eae4f3fd3d070f50",
+    "title": "Hormone & Peptide Clinical Reference Card Pack",
+    "createdAt": "2026-04-19T08:25:07.785Z"
+  },
+  "lash-skin-card-pack": {
+    "productId": "69e49175eae4f3fd3d070f56",
+    "title": "Lash & Skin Clinical Reference Card Pack",
+    "createdAt": "2026-04-19T08:25:25.973Z"
+  },
+  "business-practice-card-pack": {
+    "productId": "69e49189eae4f3fd3d070f5a",
+    "title": "Med Spa Business & Practice Reference Card Pack",
+    "createdAt": "2026-04-19T08:25:47.374Z"
+  }
+}

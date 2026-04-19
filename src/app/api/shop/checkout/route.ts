@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { isValidCheckoutEmail, normalizeCheckoutEmail } from "@/lib/checkout/email";
 import { getShopProductBySlug } from "@/lib/shop/products";
+import { getFulfillmentTypeForProductSlug } from "@/lib/delivery/catalog";
 import { createCheckoutLinkBundle } from "@/lib/square/client";
 import { resolveShopFunnelForSlug, validateBumpSelection } from "@/lib/shop/funnel-resolve";
 import { buildShopCheckoutSuccessUrl } from "@/lib/shop/checkout-success-url";
@@ -87,10 +88,15 @@ export async function POST(req: NextRequest) {
       raw && raw.length <= 128 ? raw.slice(0, 128) : randomUUID();
   }
 
+  const allSlugs = lineItems.map((i) => i.slug);
+  const requiresShipping = allSlugs.some(
+    (s) => getFulfillmentTypeForProductSlug(s) === "physical",
+  );
+
   let checkoutUrl: string;
   let paymentLinkId: string;
   try {
-    const out = await createCheckoutLinkBundle(lineItems, redirectUrl);
+    const out = await createCheckoutLinkBundle(lineItems, redirectUrl, { requiresShipping });
     checkoutUrl = out.url;
     paymentLinkId = out.paymentLinkId;
   } catch (err) {

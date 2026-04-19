@@ -80,6 +80,12 @@ model Purchase {
   deliveryToken     String?
   deliveryEmailSent Boolean   @default(false)
   deliveryEmailAt   DateTime?
+  /// Printify shop order id after a fulfillment order is created.
+  printifyOrderId   String?   @unique
+  /// digital | physical (physical may use Printify when inventory + address are configured).
+  fulfillmentType   String?
+  trackingNumber    String?
+  shippedAt         DateTime?
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 

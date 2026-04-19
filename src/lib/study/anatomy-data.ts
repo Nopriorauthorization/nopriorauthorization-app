@@ -1,6 +1,7 @@
 export type FlashCard = {
   term: string;
   definition: string;
+  clinicalTieIn?: string;
 };
 
 export type QuizQuestion = {
@@ -290,83 +291,103 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "Anatomy",
-          "definition": "Study of body STRUCTURES — form, location, relationships. Asks: What is it?"
+          "definition": "Study of body STRUCTURES — form, location, relationships. Asks: What is it?",
+          "clinicalTieIn": "Understanding anatomy aids nurses in identifying and describing locations of injuries or conditions accurately in clinical documentation."
         },
         {
           "term": "Physiology",
-          "definition": "Study of body FUNCTIONS — how structures work. Structure determines function."
+          "definition": "Study of body FUNCTIONS — how structures work. Structure determines function.",
+          "clinicalTieIn": "Knowledge of physiology helps nurses anticipate how diseases affect body functions and guide patient care decisions."
         },
         {
           "term": "Anatomical Position",
-          "definition": "Body erect, feet flat, palms facing FORWARD. Reference for ALL directional terms."
+          "definition": "Body erect, feet flat, palms facing FORWARD. Reference for ALL directional terms.",
+          "clinicalTieIn": "Using anatomical position ensures consistent and clear communication among healthcare professionals during assessments and procedures."
         },
         {
           "term": "Prone",
-          "definition": "Face DOWN. Prone = face down."
+          "definition": "Face DOWN. Prone = face down.",
+          "clinicalTieIn": "Prone positioning is used in patients with ARDS to improve oxygenation by promoting lung expansion."
         },
         {
           "term": "Supine",
-          "definition": "Face UP. Supine = on your spine."
+          "definition": "Face UP. Supine = on your spine.",
+          "clinicalTieIn": "Supine positioning is crucial during CPR to maintain airway patency and facilitate effective chest compressions."
         },
         {
           "term": "Superior / Inferior",
-          "definition": "Superior = above (toward head). Inferior = below (toward feet)."
+          "definition": "Superior = above (toward head). Inferior = below (toward feet).",
+          "clinicalTieIn": "Recognizing superior and inferior relationships assists in accurately describing the location of surgical incisions or lesions."
         },
         {
           "term": "Anterior / Posterior",
-          "definition": "Anterior = front (ventral). Posterior = back (dorsal)."
+          "definition": "Anterior = front (ventral). Posterior = back (dorsal).",
+          "clinicalTieIn": "Understanding anterior and posterior orientations helps nurses position patients for procedures like lumbar punctures."
         },
         {
           "term": "Medial / Lateral",
-          "definition": "Medial = toward midline. Lateral = away from midline."
+          "definition": "Medial = toward midline. Lateral = away from midline.",
+          "clinicalTieIn": "Knowing medial and lateral positions aids in assessing limb injuries and planning appropriate interventions."
         },
         {
           "term": "Proximal / Distal",
-          "definition": "Proximal = closer to attachment. Distal = farther from attachment."
+          "definition": "Proximal = closer to attachment. Distal = farther from attachment.",
+          "clinicalTieIn": "Proximal and distal terminology is essential for documenting the location of fractures or IV catheter placements."
         },
         {
           "term": "Sagittal Plane",
-          "definition": "Divides LEFT and RIGHT. Midsagittal = equal halves. Parasagittal = unequal."
+          "definition": "Divides LEFT and RIGHT. Midsagittal = equal halves. Parasagittal = unequal.",
+          "clinicalTieIn": "Sagittal plane knowledge helps in interpreting MRI scans that show side-to-side anatomical structures."
         },
         {
           "term": "Frontal (Coronal) Plane",
-          "definition": "Divides ANTERIOR (front) and POSTERIOR (back)."
+          "definition": "Divides ANTERIOR (front) and POSTERIOR (back).",
+          "clinicalTieIn": "Frontal plane understanding is vital when assessing injuries or conditions affecting the front and back of the body."
         },
         {
           "term": "Transverse Plane",
-          "definition": "Divides SUPERIOR and INFERIOR. Horizontal cut. Used in CT scans."
+          "definition": "Divides SUPERIOR and INFERIOR. Horizontal cut. Used in CT scans.",
+          "clinicalTieIn": "Transverse plane familiarity assists in interpreting CT scans that provide cross-sectional views of organs."
         },
         {
           "term": "Homeostasis",
-          "definition": "Body's ability to maintain stable internal environment despite external changes."
+          "definition": "Body's ability to maintain stable internal environment despite external changes.",
+          "clinicalTieIn": "Maintaining homeostasis is critical in nursing care to ensure patient stability during illness or recovery."
         },
         {
           "term": "Negative Feedback",
-          "definition": "Most common. Response OPPOSES stimulus to restore set point. Example: sweating when hot."
+          "definition": "Most common. Response OPPOSES stimulus to restore set point. Example: sweating when hot.",
+          "clinicalTieIn": "Negative feedback mechanisms are foundational for nurses to understand how the body regulates vital signs."
         },
         {
           "term": "Positive Feedback",
-          "definition": "Response AMPLIFIES stimulus. Rare. Examples: childbirth, blood clotting."
+          "definition": "Response AMPLIFIES stimulus. Rare. Examples: childbirth, blood clotting.",
+          "clinicalTieIn": "Positive feedback processes are important in understanding physiological events like labor progression."
         },
         {
           "term": "Receptor",
-          "definition": "Detects the stimulus or change in controlled variable."
+          "definition": "Detects the stimulus or change in controlled variable.",
+          "clinicalTieIn": "Receptors play a key role in monitoring changes that can indicate the need for nursing interventions."
         },
         {
           "term": "Control Center",
-          "definition": "Processes info, determines response. Usually brain or endocrine gland."
+          "definition": "Processes info, determines response. Usually brain or endocrine gland.",
+          "clinicalTieIn": "The control center's function is crucial for nurses to understand how the body coordinates responses to changes."
         },
         {
           "term": "Effector",
-          "definition": "Carries out the response. Could be muscle or gland."
+          "definition": "Carries out the response. Could be muscle or gland.",
+          "clinicalTieIn": "Effectors are important in nursing as they are the target of many pharmacological interventions to restore function."
         },
         {
           "term": "RLQ",
-          "definition": "Right Lower Quadrant — contains appendix, cecum, right ovary. Appendicitis = RLQ pain."
+          "definition": "Right Lower Quadrant — contains appendix, cecum, right ovary. Appendicitis = RLQ pain.",
+          "clinicalTieIn": "Recognizing RLQ pain is essential for nurses to assess and quickly identify potential appendicitis in patients."
         },
         {
           "term": "Epigastric Region",
-          "definition": "Upper middle abdominopelvic region. Contains stomach, part of liver."
+          "definition": "Upper middle abdominopelvic region. Contains stomach, part of liver.",
+          "clinicalTieIn": "Understanding the epigastric region helps nurses assess potential causes of upper abdominal pain, such as gastritis."
         }
       ]
     },
@@ -618,83 +639,103 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "Element",
-          "definition": "Pure substance that cannot be broken down further. Made of one type of atom. C, O, H, N."
+          "definition": "Pure substance that cannot be broken down further. Made of one type of atom. C, O, H, N.",
+          "clinicalTieIn": "Understanding elements helps nurses interpret lab results like electrolyte imbalances in patients."
         },
         {
           "term": "Atom",
-          "definition": "Smallest unit of an element retaining its properties. Has protons (+), neutrons (neutral), electrons (−)."
+          "definition": "Smallest unit of an element retaining its properties. Has protons (+), neutrons (neutral), electrons (−).",
+          "clinicalTieIn": "Knowledge of atomic structure aids in understanding drug interactions at the molecular level."
         },
         {
           "term": "Octet Rule",
-          "definition": "Atoms most stable with 8 electrons in outer shell. Drives bonding. Noble gases already have 8 — inert."
+          "definition": "Atoms most stable with 8 electrons in outer shell. Drives bonding. Noble gases already have 8 — inert.",
+          "clinicalTieIn": "The octet rule explains why certain medications form stable compounds, affecting their efficacy."
         },
         {
           "term": "Ionic Bond",
-          "definition": "TRANSFER of electrons. Creates cation (+) and anion (−). Example: NaCl."
+          "definition": "TRANSFER of electrons. Creates cation (+) and anion (−). Example: NaCl.",
+          "clinicalTieIn": "Ionic bonds are crucial for understanding how electrolytes like Na+ and Cl− function in fluid balance."
         },
         {
           "term": "Covalent Bond",
-          "definition": "SHARING of electrons. Polar = unequal sharing. Nonpolar = equal sharing."
+          "definition": "SHARING of electrons. Polar = unequal sharing. Nonpolar = equal sharing.",
+          "clinicalTieIn": "Covalent bonds explain the stability and reactivity of drugs, impacting their therapeutic effects."
         },
         {
           "term": "Hydrogen Bond",
-          "definition": "Weak attraction between H and electronegative atom (O,N,F). Gives water cohesion. Holds DNA together."
+          "definition": "Weak attraction between H and electronegative atom (O,N,F). Gives water cohesion. Holds DNA together.",
+          "clinicalTieIn": "Hydrogen bonds are essential for understanding protein structure, affecting enzyme function and drug interactions."
         },
         {
           "term": "pH Scale",
-          "definition": "0–14. 7 = neutral. <7 = acidic. >7 = alkaline. Blood pH = 7.35–7.45. Each unit = 10× change."
+          "definition": "0–14. 7 = neutral. <7 = acidic. >7 = alkaline. Blood pH = 7.35–7.45. Each unit = 10× change.",
+          "clinicalTieIn": "Monitoring blood pH is critical for assessing acid-base balance in patients with respiratory or metabolic disorders."
         },
         {
           "term": "Buffer",
-          "definition": "Resists sudden pH changes by converting strong acids/bases to weak ones. Bicarbonate buffer in blood."
+          "definition": "Resists sudden pH changes by converting strong acids/bases to weak ones. Bicarbonate buffer in blood.",
+          "clinicalTieIn": "Buffers maintain blood pH, crucial for managing conditions like metabolic acidosis in diabetic ketoacidosis."
         },
         {
           "term": "Dehydration Synthesis",
-          "definition": "Building molecules by REMOVING water to join monomers → polymer. Anabolic."
+          "definition": "Building molecules by REMOVING water to join monomers → polymer. Anabolic.",
+          "clinicalTieIn": "Dehydration synthesis is important in understanding how the body builds proteins and other macromolecules."
         },
         {
           "term": "Hydrolysis",
-          "definition": "Breaking molecules by ADDING water. Catabolic. Digestion = hydrolysis."
+          "definition": "Breaking molecules by ADDING water. Catabolic. Digestion = hydrolysis.",
+          "clinicalTieIn": "Hydrolysis is key in digestion, helping nurses understand how nutrients are broken down for absorption."
         },
         {
           "term": "Monosaccharide",
-          "definition": "Simple sugar — single unit. Glucose, fructose, galactose. Immediate energy."
+          "definition": "Simple sugar — single unit. Glucose, fructose, galactose. Immediate energy.",
+          "clinicalTieIn": "Recognizing monosaccharides helps in managing blood glucose levels in diabetic patients."
         },
         {
           "term": "Polysaccharide",
-          "definition": "Many monosaccharides linked. Starch (plant), glycogen (animal), cellulose (structural)."
+          "definition": "Many monosaccharides linked. Starch (plant), glycogen (animal), cellulose (structural).",
+          "clinicalTieIn": "Polysaccharides are important for understanding dietary fiber's role in digestion and blood sugar control."
         },
         {
           "term": "Triglyceride",
-          "definition": "1 glycerol + 3 fatty acids. Main energy storage. Saturated = solid. Unsaturated = liquid."
+          "definition": "1 glycerol + 3 fatty acids. Main energy storage. Saturated = solid. Unsaturated = liquid.",
+          "clinicalTieIn": "Triglycerides are monitored in lipid panels to assess cardiovascular risk in patients."
         },
         {
           "term": "Phospholipid",
-          "definition": "Glycerol + 2 fatty acids + phosphate. Hydrophilic head (out) + hydrophobic tails (in). Forms membranes."
+          "definition": "Glycerol + 2 fatty acids + phosphate. Hydrophilic head (out) + hydrophobic tails (in). Forms membranes.",
+          "clinicalTieIn": "Phospholipids form cell membranes, crucial for understanding cell permeability and drug delivery."
         },
         {
           "term": "Enzyme",
-          "definition": "Biological catalyst (protein). Speeds reactions without being consumed. Specific. Ends in -ase."
+          "definition": "Biological catalyst (protein). Speeds reactions without being consumed. Specific. Ends in -ase.",
+          "clinicalTieIn": "Enzymes are vital in metabolism, affecting how drugs are processed and their duration of action."
         },
         {
           "term": "DNA vs RNA",
-          "definition": "DNA: double helix, deoxyribose, A-T-G-C, stores instructions. RNA: single, ribose, A-U-G-C, executes instructions."
+          "definition": "DNA: double helix, deoxyribose, A-T-G-C, stores instructions. RNA: single, ribose, A-U-G-C, executes instructions.",
+          "clinicalTieIn": "Understanding DNA and RNA is essential for genetic testing and interpreting results in personalized medicine."
         },
         {
           "term": "ATP",
-          "definition": "Adenosine Triphosphate. Energy currency. Removing 3rd phosphate → ADP + energy. Made in mitochondria."
+          "definition": "Adenosine Triphosphate. Energy currency. Removing 3rd phosphate → ADP + energy. Made in mitochondria.",
+          "clinicalTieIn": "ATP is crucial for understanding energy metabolism, especially in patients with mitochondrial disorders."
         },
         {
           "term": "Electrolyte",
-          "definition": "Ion conducting electrical current in solution. Na+, K+, Ca2+, Cl−. Nerve and muscle function."
+          "definition": "Ion conducting electrical current in solution. Na+, K+, Ca2+, Cl−. Nerve and muscle function.",
+          "clinicalTieIn": "Electrolytes are critical for nerve and muscle function, influencing assessments in cardiac and neurological patients."
         },
         {
           "term": "Saturated vs Unsaturated",
-          "definition": "Saturated: all single bonds, solid, animal fats. Unsaturated: 1+ double bonds, liquid, plant oils."
+          "definition": "Saturated: all single bonds, solid, animal fats. Unsaturated: 1+ double bonds, liquid, plant oils.",
+          "clinicalTieIn": "Saturated and unsaturated fats impact cardiovascular health, guiding dietary recommendations for patients."
         },
         {
           "term": "Synthesis vs Decomposition",
-          "definition": "Synthesis (A+B→AB): building up, anabolic. Decomposition (AB→A+B): breaking down, catabolic."
+          "definition": "Synthesis (A+B→AB): building up, anabolic. Decomposition (AB→A+B): breaking down, catabolic.",
+          "clinicalTieIn": "Synthesis and decomposition reactions are fundamental in understanding metabolic pathways and drug mechanisms."
         }
       ]
     },
@@ -951,83 +992,103 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "Solute / Solvent / Solution",
-          "definition": "Solute = dissolved (smaller, e.g., salt). Solvent = does dissolving (larger, e.g., water). Solution = homogeneous mixture."
+          "definition": "Solute = dissolved (smaller, e.g., salt). Solvent = does dissolving (larger, e.g., water). Solution = homogeneous mixture.",
+          "clinicalTieIn": "Understanding solute and solvent interactions helps nurses manage IV fluid therapy and electrolyte imbalances effectively."
         },
         {
           "term": "ICF vs ECF",
-          "definition": "ICF = fluid INSIDE cells (cytosol, 2/3 body water). ECF = fluid OUTSIDE (plasma + interstitial, 1/3)."
+          "definition": "ICF = fluid INSIDE cells (cytosol, 2/3 body water). ECF = fluid OUTSIDE (plasma + interstitial, 1/3).",
+          "clinicalTieIn": "Nurses monitor ICF and ECF balance to assess fluid status and prevent complications like dehydration or edema."
         },
         {
           "term": "3 Regions of a Cell",
-          "definition": "1. Plasma membrane (boundary). 2. Cytoplasm (organelles + cytosol). 3. Nucleus (control center, DNA)."
+          "definition": "1. Plasma membrane (boundary). 2. Cytoplasm (organelles + cytosol). 3. Nucleus (control center, DNA).",
+          "clinicalTieIn": "Recognizing cell regions aids nurses in understanding cellular responses to injury or drug mechanisms."
         },
         {
           "term": "Fluid Mosaic Model",
-          "definition": "Plasma membrane: FLUID phospholipid bilayer + MOSAIC of proteins. Also cholesterol and carbohydrates."
+          "definition": "Plasma membrane: FLUID phospholipid bilayer + MOSAIC of proteins. Also cholesterol and carbohydrates.",
+          "clinicalTieIn": "Knowledge of the fluid mosaic model helps nurses understand how drugs and hormones interact with cell membranes."
         },
         {
           "term": "Selective Permeability",
-          "definition": "Membrane allows some substances through freely, blocks others. Small nonpolar pass freely; large/polar need help."
+          "definition": "Membrane allows some substances through freely, blocks others. Small nonpolar pass freely; large/polar need help.",
+          "clinicalTieIn": "Selective permeability is crucial for nurses administering medications that require cellular entry to be effective."
         },
         {
           "term": "Simple Diffusion",
-          "definition": "PASSIVE. Molecules move directly through bilayer HIGH→LOW. No energy, no proteins. O2, CO2, lipids."
+          "definition": "PASSIVE. Molecules move directly through bilayer HIGH→LOW. No energy, no proteins. O2, CO2, lipids.",
+          "clinicalTieIn": "Nurses apply simple diffusion principles when administering oxygen therapy to enhance patient oxygenation."
         },
         {
           "term": "Osmosis",
-          "definition": "PASSIVE movement of WATER from low solute→high solute concentration. Water follows the solute."
+          "definition": "PASSIVE movement of WATER from low solute→high solute concentration. Water follows the solute.",
+          "clinicalTieIn": "Understanding osmosis is vital for nurses managing patients with fluid overload or dehydration."
         },
         {
           "term": "Tonicity",
-          "definition": "Relative solute concentration. Isotonic = normal. Hypotonic = water enters, lyses. Hypertonic = water leaves, crenates."
+          "definition": "Relative solute concentration. Isotonic = normal. Hypotonic = water enters, lyses. Hypertonic = water leaves, crenates.",
+          "clinicalTieIn": "Nurses use tonicity knowledge to select appropriate IV fluids to correct patient fluid imbalances."
         },
         {
           "term": "Active Transport",
-          "definition": "Movement AGAINST gradient (low→high). Requires ATP. Na+/K+ pump, endocytosis, exocytosis."
+          "definition": "Movement AGAINST gradient (low→high). Requires ATP. Na+/K+ pump, endocytosis, exocytosis.",
+          "clinicalTieIn": "Active transport knowledge is essential for nurses to understand how medications affect cellular ion gradients."
         },
         {
           "term": "Na+/K+ Pump",
-          "definition": "Primary active transport. ATP powers: 3 Na+ OUT, 2 K+ IN. Maintains gradients for nerve/muscle."
+          "definition": "Primary active transport. ATP powers: 3 Na+ OUT, 2 K+ IN. Maintains gradients for nerve/muscle.",
+          "clinicalTieIn": "The Na+/K+ pump is critical for nurses to understand in managing electrolyte imbalances and cardiac function."
         },
         {
           "term": "Endocytosis vs Exocytosis",
-          "definition": "Endocytosis: takes IN via vesicle (phagocytosis = cells/particles, pinocytosis = fluids). Exocytosis: expels via vesicle fusion."
+          "definition": "Endocytosis: takes IN via vesicle (phagocytosis = cells/particles, pinocytosis = fluids). Exocytosis: expels via vesicle fusion.",
+          "clinicalTieIn": "Nurses must understand endocytosis and exocytosis to comprehend how cells uptake nutrients or expel waste."
         },
         {
           "term": "Chromatin / Chromosomes / Chromatids",
-          "definition": "Chromatin = loosely coiled (non-dividing). Chromosomes = condensed (dividing, 46 in humans). Chromatids = two identical copies joined at centromere."
+          "definition": "Chromatin = loosely coiled (non-dividing). Chromosomes = condensed (dividing, 46 in humans). Chromatids = two identical copies joined at centromere.",
+          "clinicalTieIn": "Recognizing chromatin and chromosomes helps nurses understand genetic disorders and cancer cell proliferation."
         },
         {
           "term": "Centromere vs Centrosome vs Centrioles",
-          "definition": "Centromere = junction of sister chromatids. Centrosome = organizes spindle (contains 2 centrioles). Centrioles = cylindrical structures within centrosome."
+          "definition": "Centromere = junction of sister chromatids. Centrosome = organizes spindle (contains 2 centrioles). Centrioles = cylindrical structures within centrosome.",
+          "clinicalTieIn": "Understanding centromeres and centrosomes aids nurses in grasping cell division errors that lead to cancer."
         },
         {
           "term": "Cell Cycle",
-          "definition": "G1 (growth) → S (DNA replication) → G2 (prep) → Mitosis (PMAT) + Cytokinesis. Interphase = G1+S+G2."
+          "definition": "G1 (growth) → S (DNA replication) → G2 (prep) → Mitosis (PMAT) + Cytokinesis. Interphase = G1+S+G2.",
+          "clinicalTieIn": "Nurses monitor the cell cycle to understand cancer growth patterns and the effects of chemotherapy."
         },
         {
           "term": "Mitosis Phases PMAT",
-          "definition": "Prophase: condense, spindle. Metaphase: align at equator. Anaphase: pull apart, cytokinesis begins. Telophase: nuclear envelopes reform, 2 cells."
+          "definition": "Prophase: condense, spindle. Metaphase: align at equator. Anaphase: pull apart, cytokinesis begins. Telophase: nuclear envelopes reform, 2 cells.",
+          "clinicalTieIn": "Knowledge of mitosis phases helps nurses understand how cancer therapies target rapidly dividing cells."
         },
         {
           "term": "Cytokinesis",
-          "definition": "Division of CYTOPLASM (not nucleus). Begins Anaphase, completes Telophase. Cleavage furrow in animal cells."
+          "definition": "Division of CYTOPLASM (not nucleus). Begins Anaphase, completes Telophase. Cleavage furrow in animal cells.",
+          "clinicalTieIn": "Cytokinesis understanding aids nurses in recognizing cellular division errors that can lead to tumor growth."
         },
         {
           "term": "Transcription",
-          "definition": "DNA → mRNA. In NUCLEUS. RNA polymerase reads DNA → builds mRNA. mRNA exits through nuclear pores."
+          "definition": "DNA → mRNA. In NUCLEUS. RNA polymerase reads DNA → builds mRNA. mRNA exits through nuclear pores.",
+          "clinicalTieIn": "Transcription knowledge is crucial for nurses to understand genetic expression and its role in disease."
         },
         {
           "term": "Translation",
-          "definition": "mRNA → Protein. At RIBOSOMES. Codons read → tRNA brings amino acids → polypeptide → protein."
+          "definition": "mRNA → Protein. At RIBOSOMES. Codons read → tRNA brings amino acids → polypeptide → protein.",
+          "clinicalTieIn": "Translation understanding helps nurses grasp how genetic mutations can lead to defective proteins and disease."
         },
         {
           "term": "Nucleus vs Nucleolus",
-          "definition": "Nucleus = entire control center, contains DNA. Nucleolus = inside nucleus, makes rRNA, assembles ribosome subunits."
+          "definition": "Nucleus = entire control center, contains DNA. Nucleolus = inside nucleus, makes rRNA, assembles ribosome subunits.",
+          "clinicalTieIn": "Nurses must understand nucleus and nucleolus functions to comprehend genetic disorders and cell regulation."
         },
         {
           "term": "Facilitated Diffusion",
-          "definition": "PASSIVE transport using proteins. Channel-mediated (ions via pores) or carrier-mediated (glucose via carrier). No ATP."
+          "definition": "PASSIVE transport using proteins. Channel-mediated (ions via pores) or carrier-mediated (glucose via carrier). No ATP.",
+          "clinicalTieIn": "Facilitated diffusion knowledge is vital for nurses administering medications like insulin that require protein carriers."
         }
       ]
     },
@@ -1284,83 +1345,103 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "Histology",
-          "definition": "Microscopic study of tissues. Histologists examine biopsy samples to identify structure and detect disease (e.g., cancer diagnosis)."
+          "definition": "Microscopic study of tissues. Histologists examine biopsy samples to identify structure and detect disease (e.g., cancer diagnosis).",
+          "clinicalTieIn": "Histology aids in diagnosing conditions like cancer by analyzing tissue samples from biopsies."
         },
         {
           "term": "Tight Junctions",
-          "definition": "Cell junctions using claudins + occludins. SEAL cells together preventing paracellular leakage. Found in intestine, blood-brain barrier, urinary bladder."
+          "definition": "Cell junctions using claudins + occludins. SEAL cells together preventing paracellular leakage. Found in intestine, blood-brain barrier, urinary bladder.",
+          "clinicalTieIn": "Tight junction integrity is crucial in preventing intestinal leaks, which can lead to conditions like Crohn's disease."
         },
         {
           "term": "Desmosomes",
-          "definition": "Strong anchor junctions using cadherins + intermediate filaments. Resist mechanical stress/tearing. Found in skin epidermis and cardiac muscle."
+          "definition": "Strong anchor junctions using cadherins + intermediate filaments. Resist mechanical stress/tearing. Found in skin epidermis and cardiac muscle.",
+          "clinicalTieIn": "Desmosomes provide skin resilience, important in assessing conditions like pemphigus vulgaris, where skin blistering occurs."
         },
         {
           "term": "Gap Junctions",
-          "definition": "Communication channels made of connexins (connexons). Allow ions and small molecules to pass directly between cells. Found in heart and smooth muscle for coordinated contraction."
+          "definition": "Communication channels made of connexins (connexons). Allow ions and small molecules to pass directly between cells. Found in heart and smooth muscle for coordinated contraction.",
+          "clinicalTieIn": "Gap junctions facilitate cardiac muscle contraction coordination, critical in understanding arrhythmias."
         },
         {
           "term": "Simple Squamous Epithelium",
-          "definition": "ONE layer of FLAT cells. Best for diffusion and filtration. Found in alveoli, capillaries (endothelium), serous membranes (mesothelium)."
+          "definition": "ONE layer of FLAT cells. Best for diffusion and filtration. Found in alveoli, capillaries (endothelium), serous membranes (mesothelium).",
+          "clinicalTieIn": "Simple squamous epithelium's role in diffusion is vital for effective gas exchange in alveoli."
         },
         {
           "term": "Stratified Squamous Epithelium",
-          "definition": "MULTIPLE layers, flat top cells. Best for PROTECTION against abrasion. Keratinized = skin. Non-keratinized = mouth, esophagus, vagina."
+          "definition": "MULTIPLE layers, flat top cells. Best for PROTECTION against abrasion. Keratinized = skin. Non-keratinized = mouth, esophagus, vagina.",
+          "clinicalTieIn": "Stratified squamous epithelium protects against abrasion, essential in areas like the esophagus to prevent injury."
         },
         {
           "term": "Pseudostratified Columnar",
-          "definition": "ONE layer (all cells touch basement membrane) that APPEARS multi-layered because nuclei are at different heights. Lines respiratory tract. Ciliated to move mucus."
+          "definition": "ONE layer (all cells touch basement membrane) that APPEARS multi-layered because nuclei are at different heights. Lines respiratory tract. Ciliated to move mucus.",
+          "clinicalTieIn": "Pseudostratified columnar epithelium lines the respiratory tract, where cilia help clear mucus, crucial for respiratory health."
         },
         {
           "term": "Transitional Epithelium",
-          "definition": "Stratified epithelium that STRETCHES. Cells dome-shaped when relaxed, flat when stretched. ONLY in urinary tract (bladder, ureters, renal pelvis)."
+          "definition": "Stratified epithelium that STRETCHES. Cells dome-shaped when relaxed, flat when stretched. ONLY in urinary tract (bladder, ureters, renal pelvis).",
+          "clinicalTieIn": "Transitional epithelium's stretchability is key in the bladder, accommodating urine volume changes."
         },
         {
           "term": "Endocrine vs Exocrine Glands",
-          "definition": "Endocrine: DUCTLESS, hormones into bloodstream (thyroid, pituitary, adrenal). Exocrine: HAVE DUCTS, secrete onto surfaces (sweat, salivary, sebaceous glands)."
+          "definition": "Endocrine: DUCTLESS, hormones into bloodstream (thyroid, pituitary, adrenal). Exocrine: HAVE DUCTS, secrete onto surfaces (sweat, salivary, sebaceous glands).",
+          "clinicalTieIn": "Understanding gland types aids in distinguishing between hormonal imbalances and duct blockages in patient assessments."
         },
         {
           "term": "Merocrine Secretion",
-          "definition": "Most common secretion. Products released by EXOCYTOSIS — cell remains intact. Examples: eccrine sweat glands, pancreas, salivary glands."
+          "definition": "Most common secretion. Products released by EXOCYTOSIS — cell remains intact. Examples: eccrine sweat glands, pancreas, salivary glands.",
+          "clinicalTieIn": "Merocrine secretion involves exocytosis, relevant for understanding sweat gland function in thermoregulation."
         },
         {
           "term": "Apocrine Secretion",
-          "definition": "Products released WITH a portion of the apical cell membrane pinching off. Examples: mammary glands, apocrine sweat glands."
+          "definition": "Products released WITH a portion of the apical cell membrane pinching off. Examples: mammary glands, apocrine sweat glands.",
+          "clinicalTieIn": "Apocrine secretion involves cell membrane pinching, important in lactation and body odor production."
         },
         {
           "term": "Holocrine Secretion",
-          "definition": "Entire cell RUPTURES AND DIES to release its contents as the secretion. Example: sebaceous (oil) glands. Most destructive method."
+          "definition": "Entire cell RUPTURES AND DIES to release its contents as the secretion. Example: sebaceous (oil) glands. Most destructive method.",
+          "clinicalTieIn": "Holocrine secretion involves cell rupture, explaining the oily nature of sebaceous gland secretions."
         },
         {
           "term": "-blast vs -cyte",
-          "definition": "-blast = IMMATURE, ACTIVE, BUILDS extracellular matrix (fibroblast, osteoblast, chondroblast). -cyte = MATURE, MAINTENANCE (fibrocyte, osteocyte). Blast = Builder. Cyte = Caretaker."
+          "definition": "-blast = IMMATURE, ACTIVE, BUILDS extracellular matrix (fibroblast, osteoblast, chondroblast). -cyte = MATURE, MAINTENANCE (fibrocyte, osteocyte). Blast = Builder. Cyte = Caretaker.",
+          "clinicalTieIn": "Recognizing -blast vs -cyte helps in understanding tissue repair and maintenance processes."
         },
         {
           "term": "Collagen Fibers",
-          "definition": "Most abundant protein in body. Provide TENSILE STRENGTH (resist pulling). White fibers. Found in tendons, ligaments, bone, skin. Secreted by fibroblasts."
+          "definition": "Most abundant protein in body. Provide TENSILE STRENGTH (resist pulling). White fibers. Found in tendons, ligaments, bone, skin. Secreted by fibroblasts.",
+          "clinicalTieIn": "Collagen fibers' tensile strength is crucial in wound healing and scar formation."
         },
         {
           "term": "Elastic Fibers",
-          "definition": "Made of elastin. STRETCH and RECOIL (like rubber bands). Yellow fibers. Found in skin, lungs, large arteries (aorta), vocal cords."
+          "definition": "Made of elastin. STRETCH and RECOIL (like rubber bands). Yellow fibers. Found in skin, lungs, large arteries (aorta), vocal cords.",
+          "clinicalTieIn": "Elastic fibers' stretchability is important in assessing conditions like Marfan syndrome affecting connective tissues."
         },
         {
           "term": "Reticular Fibers",
-          "definition": "Thin collagen fibers forming delicate MESHWORK support frameworks. Found in liver, spleen, lymph nodes, basement membranes. Secreted by fibroblasts."
+          "definition": "Thin collagen fibers forming delicate MESHWORK support frameworks. Found in liver, spleen, lymph nodes, basement membranes. Secreted by fibroblasts.",
+          "clinicalTieIn": "Reticular fibers provide structural support in organs like the spleen, important for understanding lymphatic function."
         },
         {
           "term": "Mucous Membrane",
-          "definition": "Epithelial membrane lining body cavities OPEN to exterior. WET, secretes mucus. Lines GI tract, respiratory, urinary, and reproductive tracts."
+          "definition": "Epithelial membrane lining body cavities OPEN to exterior. WET, secretes mucus. Lines GI tract, respiratory, urinary, and reproductive tracts.",
+          "clinicalTieIn": "Mucous membranes' secretion of mucus is vital for protecting against pathogens in the respiratory and GI tracts."
         },
         {
           "term": "Serous Membrane",
-          "definition": "Epithelial membrane lining CLOSED body cavities. Secretes watery serous fluid to reduce friction. Examples: pleura (lungs), pericardium (heart), peritoneum (abdomen)."
+          "definition": "Epithelial membrane lining CLOSED body cavities. Secretes watery serous fluid to reduce friction. Examples: pleura (lungs), pericardium (heart), peritoneum (abdomen).",
+          "clinicalTieIn": "Serous membranes reduce friction, crucial in preventing inflammation in areas like the pleura."
         },
         {
           "term": "Synovial Membrane",
-          "definition": "CONNECTIVE TISSUE membrane (NOT epithelial). Lines joint cavities. NO basement membrane. Secretes synovial fluid for joint lubrication."
+          "definition": "CONNECTIVE TISSUE membrane (NOT epithelial). Lines joint cavities. NO basement membrane. Secretes synovial fluid for joint lubrication.",
+          "clinicalTieIn": "Synovial membranes' fluid secretion is essential for joint lubrication and mobility."
         },
         {
           "term": "Endothelium vs Mesothelium",
-          "definition": "Endothelium = simple squamous lining BLOOD and LYMPH VESSEL interiors. Mesothelium = simple squamous lining BODY CAVITIES (pleural, pericardial, peritoneal). Both reduce friction."
+          "definition": "Endothelium = simple squamous lining BLOOD and LYMPH VESSEL interiors. Mesothelium = simple squamous lining BODY CAVITIES (pleural, pericardial, peritoneal). Both reduce friction.",
+          "clinicalTieIn": "Endothelium's role in vessel lining is important for understanding atherosclerosis, while mesothelium's role is key in serous cavity health."
         }
       ]
     },
@@ -1617,91 +1698,113 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "Integumentary Functions",
-          "definition": "Protection (physical/UV/chemical/microbial), thermoregulation (sweating/vasodilation), sensation, Vitamin D synthesis, excretion, blood reservoir."
+          "definition": "Protection (physical/UV/chemical/microbial), thermoregulation (sweating/vasodilation), sensation, Vitamin D synthesis, excretion, blood reservoir.",
+          "clinicalTieIn": "Nurses assess skin integrity and color changes to identify potential systemic issues or localized infections."
         },
         {
           "term": "Epidermis",
-          "definition": "Outermost skin layer. AVASCULAR. Stratified squamous keratinized epithelium. 4–5 strata. Main cell = keratinocyte. Also melanocytes, Langerhans, Merkel cells."
+          "definition": "Outermost skin layer. AVASCULAR. Stratified squamous keratinized epithelium. 4–5 strata. Main cell = keratinocyte. Also melanocytes, Langerhans, Merkel cells.",
+          "clinicalTieIn": "Recognizing epidermal damage helps nurses evaluate the risk of infection and plan wound care."
         },
         {
           "term": "Dermis",
-          "definition": "Middle skin layer. Dense irregular CT. VASCULARIZED. Contains hair follicles, glands, nerve endings. Two sub-layers: papillary (superficial) + reticular (deep)."
+          "definition": "Middle skin layer. Dense irregular CT. VASCULARIZED. Contains hair follicles, glands, nerve endings. Two sub-layers: papillary (superficial) + reticular (deep).",
+          "clinicalTieIn": "Nurses monitor dermal changes for signs of inflammation or infection, crucial for assessing wound healing."
         },
         {
           "term": "Hypodermis",
-          "definition": "Deepest layer (subcutaneous). NOT true skin. Areolar + adipose CT. Anchors skin, insulation, energy storage, shock absorption."
+          "definition": "Deepest layer (subcutaneous). NOT true skin. Areolar + adipose CT. Anchors skin, insulation, energy storage, shock absorption.",
+          "clinicalTieIn": "Understanding hypodermis function aids in administering subcutaneous injections and evaluating pressure injury risk."
         },
         {
           "term": "Stratum Basale",
-          "definition": "DEEPEST epidermal layer. Single layer. Contains STEM CELLS (mitosis occurs here → new keratinocytes). Also melanocytes. Attached to basement membrane."
+          "definition": "DEEPEST epidermal layer. Single layer. Contains STEM CELLS (mitosis occurs here → new keratinocytes). Also melanocytes. Attached to basement membrane.",
+          "clinicalTieIn": "Nurses assess the stratum basale for signs of basal cell carcinoma during skin examinations."
         },
         {
           "term": "Stratum Spinosum",
-          "definition": "8–10 layers. Keratinocytes connected by DESMOSOMES (appear spiny/prickly). LANGERHANS CELLS (immune defense) present here."
+          "definition": "8–10 layers. Keratinocytes connected by DESMOSOMES (appear spiny/prickly). LANGERHANS CELLS (immune defense) present here.",
+          "clinicalTieIn": "Identifying Langerhans cells in the stratum spinosum helps nurses understand skin's immune response."
         },
         {
           "term": "Stratum Granulosum",
-          "definition": "3–5 layers. KERATOHYALIN GRANULES form → precursor to keratin. Cells begin to die (nuclei disintegrate). Transition from living to dead cells."
+          "definition": "3–5 layers. KERATOHYALIN GRANULES form → precursor to keratin. Cells begin to die (nuclei disintegrate). Transition from living to dead cells.",
+          "clinicalTieIn": "Recognizing the stratum granulosum's role in keratinization aids in understanding skin barrier function."
         },
         {
           "term": "Stratum Corneum",
-          "definition": "MOST SUPERFICIAL layer. 20–30 layers of dead, keratinized cells. WATERPROOFING. Continuously shed (desquamation). Takes ~2 weeks to move from granulosum."
+          "definition": "MOST SUPERFICIAL layer. 20–30 layers of dead, keratinized cells. WATERPROOFING. Continuously shed (desquamation). Takes ~2 weeks to move from granulosum.",
+          "clinicalTieIn": "Nurses evaluate the stratum corneum for hydration status and barrier integrity in patients with skin disorders."
         },
         {
           "term": "Stratum Lucidum",
-          "definition": "Found ONLY in THICK SKIN (palms, soles). Clear zone of dead flattened cells between corneum and granulosum. Provides extra protection."
+          "definition": "Found ONLY in THICK SKIN (palms, soles). Clear zone of dead flattened cells between corneum and granulosum. Provides extra protection.",
+          "clinicalTieIn": "Identifying stratum lucidum in thick skin is essential for assessing callus formation on palms and soles."
         },
         {
           "term": "Melanocytes",
-          "definition": "In stratum basale. Produce MELANIN via melanogenesis → package in melanosomes → transfer to keratinocytes. Protects DNA from UV. Same number in all skin tones — amount differs."
+          "definition": "In stratum basale. Produce MELANIN via melanogenesis → package in melanosomes → transfer to keratinocytes. Protects DNA from UV. Same number in all skin tones — amount differs.",
+          "clinicalTieIn": "Nurses educate patients on sun protection to prevent DNA damage from UV exposure."
         },
         {
           "term": "Eccrine vs Apocrine Glands",
-          "definition": "Eccrine: all body, watery sweat (NaCl/water/urea), THERMOREGULATION via evaporation. Apocrine: axillae/groin, viscous lipid-rich secretion, body odor from bacteria, activated at puberty."
+          "definition": "Eccrine: all body, watery sweat (NaCl/water/urea), THERMOREGULATION via evaporation. Apocrine: axillae/groin, viscous lipid-rich secretion, body odor from bacteria, activated at puberty.",
+          "clinicalTieIn": "Nurses monitor sweat gland function to assess thermoregulation and hydration status."
         },
         {
           "term": "Sebaceous Glands",
-          "definition": "Oil glands associated with hair follicles. Secrete SEBUM (oily fats + proteins). HOLOCRINE secretion. Waterproofs skin, antibacterial. Absent from palms/soles."
+          "definition": "Oil glands associated with hair follicles. Secrete SEBUM (oily fats + proteins). HOLOCRINE secretion. Waterproofs skin, antibacterial. Absent from palms/soles.",
+          "clinicalTieIn": "Understanding sebaceous gland function helps nurses manage acne and other sebaceous disorders."
         },
         {
           "term": "Arrector Pili",
-          "definition": "Smooth muscle attached to hair follicle. Contracts in cold/fear → erects hair → GOOSEBUMPS (piloerection). Involuntary sympathetic response."
+          "definition": "Smooth muscle attached to hair follicle. Contracts in cold/fear → erects hair → GOOSEBUMPS (piloerection). Involuntary sympathetic response.",
+          "clinicalTieIn": "Nurses explain piloerection as a physiological response to cold or emotional stress."
         },
         {
           "term": "Hair Papilla",
-          "definition": "Connective tissue + CAPILLARIES at base of hair follicle. Provides nutrients for hair growth. Destruction = PERMANENT hair loss."
+          "definition": "Connective tissue + CAPILLARIES at base of hair follicle. Provides nutrients for hair growth. Destruction = PERMANENT hair loss.",
+          "clinicalTieIn": "Nurses assess hair papilla health to evaluate potential causes of hair loss."
         },
         {
           "term": "Meissner vs Pacinian Corpuscles",
-          "definition": "Meissner: LIGHT TOUCH/texture, in DERMAL PAPILLAE (papillary dermis), dense in fingertips. Pacinian (lamellated): DEEP PRESSURE/vibration, RETICULAR DERMIS/hypodermis, larger/deeper, onion-shaped."
+          "definition": "Meissner: LIGHT TOUCH/texture, in DERMAL PAPILLAE (papillary dermis), dense in fingertips. Pacinian (lamellated): DEEP PRESSURE/vibration, RETICULAR DERMIS/hypodermis, larger/deeper, onion-shaped.",
+          "clinicalTieIn": "Nurses assess tactile sensation using Meissner and Pacinian corpuscles to evaluate neurological function."
         },
         {
           "term": "Skin Color Pigments",
-          "definition": "MELANIN (brown-black, UV protection, genetics), HEMOGLOBIN (pink/red = oxygenated; blue = cyanosis), CAROTENE (yellow-orange, dietary, accumulates in corneum/hypodermis)."
+          "definition": "MELANIN (brown-black, UV protection, genetics), HEMOGLOBIN (pink/red = oxygenated; blue = cyanosis), CAROTENE (yellow-orange, dietary, accumulates in corneum/hypodermis).",
+          "clinicalTieIn": "Nurses assess skin color changes to identify underlying conditions such as jaundice or cyanosis."
         },
         {
           "term": "Thermoregulation — Hot/Cold",
-          "definition": "HOT: eccrine glands activated + cutaneous vasodilation → heat radiates out. COLD: vasoconstriction (reduces heat loss) + arrector pili contracts (goosebumps) + sweat decreases."
+          "definition": "HOT: eccrine glands activated + cutaneous vasodilation → heat radiates out. COLD: vasoconstriction (reduces heat loss) + arrector pili contracts (goosebumps) + sweat decreases.",
+          "clinicalTieIn": "Nurses monitor thermoregulatory responses to prevent hyperthermia or hypothermia in vulnerable patients."
         },
         {
           "term": "Epidermal vs Deep Wound Healing",
-          "definition": "Epidermal: superficial, keratinocytes migrate from edges/follicles, NO SCAR. Deep: dermis involved, 4 phases (inflammatory→migratory→proliferative→maturation), SCAR forms."
+          "definition": "Epidermal: superficial, keratinocytes migrate from edges/follicles, NO SCAR. Deep: dermis involved, 4 phases (inflammatory→migratory→proliferative→maturation), SCAR forms.",
+          "clinicalTieIn": "Nurses differentiate wound healing types to plan appropriate interventions and anticipate scarring."
         },
         {
           "term": "Thick vs Thin Skin",
-          "definition": "Thick: 5 strata (includes lucidum), NO hair follicles, more sweat glands. Palms/soles only. Thin: 4 strata (no lucidum), HAS hair follicles. Covers most of body."
+          "definition": "Thick: 5 strata (includes lucidum), NO hair follicles, more sweat glands. Palms/soles only. Thin: 4 strata (no lucidum), HAS hair follicles. Covers most of body.",
+          "clinicalTieIn": "Nurses assess skin thickness to evaluate protective function and potential for injury."
         },
         {
           "term": "Nail Anatomy",
-          "definition": "Nail body (visible portion), nail root (embedded below skin), nail matrix (germinal layer, growth by mitosis), lunula (white crescent = visible matrix), hyponychium (seals nail bed)."
+          "definition": "Nail body (visible portion), nail root (embedded below skin), nail matrix (germinal layer, growth by mitosis), lunula (white crescent = visible matrix), hyponychium (seals nail bed).",
+          "clinicalTieIn": "Nurses assess nail changes to identify systemic conditions like anemia or fungal infections."
         },
         {
           "term": "Skin Color Pigments",
-          "definition": "MELANIN (brown-black, UV protection, genetics), HEMOGLOBIN (pink/red = oxygenated; blue = cyanosis), CAROTENE (yellow-orange, dietary, accumulates in corneum/hypodermis)."
+          "definition": "MELANIN (brown-black, UV protection, genetics), HEMOGLOBIN (pink/red = oxygenated; blue = cyanosis), CAROTENE (yellow-orange, dietary, accumulates in corneum/hypodermis).",
+          "clinicalTieIn": "Nurses assess skin color changes to identify underlying conditions such as jaundice or cyanosis."
         },
         {
           "term": "Thermoregulation — Hot/Cold",
-          "definition": "HOT: eccrine glands activated + cutaneous vasodilation → heat radiates out. COLD: vasoconstriction (reduces heat loss) + arrector pili contracts (goosebumps) + sweat decreases."
+          "definition": "HOT: eccrine glands activated + cutaneous vasodilation → heat radiates out. COLD: vasoconstriction (reduces heat loss) + arrector pili contracts (goosebumps) + sweat decreases.",
+          "clinicalTieIn": "Nurses monitor thermoregulatory responses to prevent hyperthermia or hypothermia in vulnerable patients."
         }
       ]
     },
@@ -1969,83 +2072,103 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "Osteoprogenitor Cells",
-          "definition": "Bone STEM CELLS (undifferentiated). Divide to produce osteoblasts. Found in periosteum and endosteum. Activated during bone growth and fracture repair."
+          "definition": "Bone STEM CELLS (undifferentiated). Divide to produce osteoblasts. Found in periosteum and endosteum. Activated during bone growth and fracture repair.",
+          "clinicalTieIn": "Osteoprogenitor cells are crucial for bone healing after fractures, as they differentiate into osteoblasts to form new bone tissue."
         },
         {
           "term": "Osteoblasts",
-          "definition": "Immature bone-BUILDING cells (-blast). Synthesize and secrete OSTEOID (collagen matrix). Trigger calcification. Become osteocytes when surrounded by matrix."
+          "definition": "Immature bone-BUILDING cells (-blast). Synthesize and secrete OSTEOID (collagen matrix). Trigger calcification. Become osteocytes when surrounded by matrix.",
+          "clinicalTieIn": "Osteoblast activity is enhanced by weight-bearing exercises, promoting bone formation and reducing osteoporosis risk."
         },
         {
           "term": "Osteocytes",
-          "definition": "MATURE bone cells (-cyte). Most abundant bone cell. Maintain bone matrix. Sense MECHANICAL STRESS via canaliculi. Trapped in lacunae."
+          "definition": "MATURE bone cells (-cyte). Most abundant bone cell. Maintain bone matrix. Sense MECHANICAL STRESS via canaliculi. Trapped in lacunae.",
+          "clinicalTieIn": "Osteocytes help regulate bone remodeling by sensing mechanical stress, important for maintaining bone integrity in bedridden patients."
         },
         {
           "term": "Osteoclasts",
-          "definition": "Large multinucleate cells (from monocytes). BONE RESORPTION — secrete acids + enzymes to dissolve bone matrix. Essential for remodeling and Ca²⁺ release."
+          "definition": "Large multinucleate cells (from monocytes). BONE RESORPTION — secrete acids + enzymes to dissolve bone matrix. Essential for remodeling and Ca²⁺ release.",
+          "clinicalTieIn": "Osteoclast activity is targeted by bisphosphonates in osteoporosis treatment to reduce bone resorption and prevent fractures."
         },
         {
           "term": "Compact vs Spongy Bone",
-          "definition": "Compact: dense, organized into OSTEONS, outer shell of all bones. Spongy (cancellous): lattice of TRABECULAE, at bone ends and flat bones, houses RED MARROW."
+          "definition": "Compact: dense, organized into OSTEONS, outer shell of all bones. Spongy (cancellous): lattice of TRABECULAE, at bone ends and flat bones, houses RED MARROW.",
+          "clinicalTieIn": "Understanding compact vs spongy bone is essential for assessing fracture types and locations, such as hip fractures in elderly patients."
         },
         {
           "term": "Osteon (Haversian System)",
-          "definition": "Structural unit of COMPACT BONE. Concentric lamellae surrounding CENTRAL CANAL (blood vessels + nerves). Osteocytes in lacunae connected via canaliculi."
+          "definition": "Structural unit of COMPACT BONE. Concentric lamellae surrounding CENTRAL CANAL (blood vessels + nerves). Osteocytes in lacunae connected via canaliculi.",
+          "clinicalTieIn": "Osteons are vital for bone strength and nutrient delivery, important in evaluating bone health in conditions like osteoporosis."
         },
         {
           "term": "Central vs Perforating Canals",
-          "definition": "Central (Haversian): run PARALLEL to long axis, within each osteon, blood vessels + nerves. Perforating (Volkmann's): run PERPENDICULAR, connect osteons to each other + periosteum."
+          "definition": "Central (Haversian): run PARALLEL to long axis, within each osteon, blood vessels + nerves. Perforating (Volkmann's): run PERPENDICULAR, connect osteons to each other + periosteum.",
+          "clinicalTieIn": "Central and perforating canals are crucial for vascular supply in bone, affecting healing in fractures and surgical recovery."
         },
         {
           "term": "Intramembranous vs Endochondral Ossification",
-          "definition": "Intramembranous: bone forms DIRECTLY in fibrous membrane, NO cartilage template — forms FLAT BONES. Endochondral: bone REPLACES hyaline cartilage model — forms MOST BONES."
+          "definition": "Intramembranous: bone forms DIRECTLY in fibrous membrane, NO cartilage template — forms FLAT BONES. Endochondral: bone REPLACES hyaline cartilage model — forms MOST BONES.",
+          "clinicalTieIn": "Knowledge of ossification types aids in understanding congenital bone disorders and growth abnormalities in pediatric patients."
         },
         {
           "term": "Interstitial vs Appositional Growth",
-          "definition": "Interstitial: bone grows LONGER at EPIPHYSEAL PLATE. Appositional: bone grows WIDER — periosteal osteoblasts add to outer surface."
+          "definition": "Interstitial: bone grows LONGER at EPIPHYSEAL PLATE. Appositional: bone grows WIDER — periosteal osteoblasts add to outer surface.",
+          "clinicalTieIn": "Monitoring interstitial and appositional growth is essential in pediatric assessments for growth disorders like gigantism or dwarfism."
         },
         {
           "term": "PTH vs Calcitonin",
-          "definition": "PTH: low Ca²⁺ → stimulates OSTEOCLASTS → bone resorption → ↑ blood Ca²⁺. Calcitonin: high Ca²⁺ → inhibits osteoclasts, stimulates OSTEOBLASTS → ↓ blood Ca²⁺."
+          "definition": "PTH: low Ca²⁺ → stimulates OSTEOCLASTS → bone resorption → ↑ blood Ca²⁺. Calcitonin: high Ca²⁺ → inhibits osteoclasts, stimulates OSTEOBLASTS → ↓ blood Ca²⁺.",
+          "clinicalTieIn": "PTH and calcitonin balance is crucial in managing calcium levels in patients with parathyroid disorders or osteoporosis."
         },
         {
           "term": "Epiphyseal Plate Zones",
-          "definition": "Resting → Proliferating (cell division) → Hypertrophic (cells enlarge) → Calcified (cartilage calcifies) → Ossification (spongy bone forms). Growth occurs at proliferating zone."
+          "definition": "Resting → Proliferating (cell division) → Hypertrophic (cells enlarge) → Calcified (cartilage calcifies) → Ossification (spongy bone forms). Growth occurs at proliferating zone.",
+          "clinicalTieIn": "Recognizing epiphyseal plate zones is vital in assessing growth plate injuries in pediatric patients."
         },
         {
           "term": "Long Bone Anatomy",
-          "definition": "Diaphysis (shaft, compact bone, medullary cavity/yellow marrow). Epiphyses (ends, spongy bone, articular cartilage). Periosteum (outer membrane). Endosteum (inner lining)."
+          "definition": "Diaphysis (shaft, compact bone, medullary cavity/yellow marrow). Epiphyses (ends, spongy bone, articular cartilage). Periosteum (outer membrane). Endosteum (inner lining).",
+          "clinicalTieIn": "Understanding long bone anatomy aids in assessing fracture locations and planning orthopedic interventions."
         },
         {
           "term": "Fracture Repair — 4 Steps",
-          "definition": "1. HEMATOMA forms. 2. FIBROCARTILAGINOUS CALLUS (osteoblasts/chondroblasts fill clot). 3. BONY CALLUS (spongy bone). 4. BONE REMODELING (spongy → compact, shape restored)."
+          "definition": "1. HEMATOMA forms. 2. FIBROCARTILAGINOUS CALLUS (osteoblasts/chondroblasts fill clot). 3. BONY CALLUS (spongy bone). 4. BONE REMODELING (spongy → compact, shape restored).",
+          "clinicalTieIn": "Fracture repair stages guide nursing interventions for promoting optimal healing and monitoring complications."
         },
         {
           "term": "Osteoporosis",
-          "definition": "Decreased bone mass + density → fracture risk. Osteoclast > osteoblast activity. Most common post-menopausal women (↓ estrogen → ↑ osteoclasts). Treatment: Ca²⁺ + Vit D, weight-bearing exercise, bisphosphonates."
+          "definition": "Decreased bone mass + density → fracture risk. Osteoclast > osteoblast activity. Most common post-menopausal women (↓ estrogen → ↑ osteoclasts). Treatment: Ca²⁺ + Vit D, weight-bearing exercise, bisphosphonates.",
+          "clinicalTieIn": "Nurses must educate post-menopausal women on osteoporosis risk factors and prevention strategies to reduce fracture incidence."
         },
         {
           "term": "Gigantism vs Dwarfism",
-          "definition": "Gigantism: excess GH BEFORE epiphyseal plate closes → excessive height. Dwarfism: deficient GH or achondroplasia before closure → short stature. Both involve epiphyseal plate TIMING."
+          "definition": "Gigantism: excess GH BEFORE epiphyseal plate closes → excessive height. Dwarfism: deficient GH or achondroplasia before closure → short stature. Both involve epiphyseal plate TIMING.",
+          "clinicalTieIn": "Recognizing gigantism and dwarfism helps in early intervention and management of growth hormone disorders in children."
         },
         {
           "term": "Bone Chemical Composition",
-          "definition": "Organic (~35%): COLLAGEN (osteoid) → flexibility + tensile strength. Inorganic (~65%): HYDROXYAPATITE Ca crystals → hardness + compressive strength. Both needed for optimal properties."
+          "definition": "Organic (~35%): COLLAGEN (osteoid) → flexibility + tensile strength. Inorganic (~65%): HYDROXYAPATITE Ca crystals → hardness + compressive strength. Both needed for optimal properties.",
+          "clinicalTieIn": "Understanding bone composition is crucial for assessing bone strength and the impact of nutritional deficiencies."
         },
         {
           "term": "Vitamins & Minerals for Bone",
-          "definition": "Calcium (hardness). Phosphorus (with Ca in hydroxyapatite). Vitamin D (Ca absorption from intestines — deficiency = rickets/osteomalacia). Vitamin C (collagen synthesis by osteoblasts — deficiency = scurvy). Vitamin A (osteoblast stimulation)."
+          "definition": "Calcium (hardness). Phosphorus (with Ca in hydroxyapatite). Vitamin D (Ca absorption from intestines — deficiency = rickets/osteomalacia). Vitamin C (collagen synthesis by osteoblasts — deficiency = scurvy). Vitamin A (osteoblast stimulation).",
+          "clinicalTieIn": "Educating patients on the importance of calcium, phosphorus, and vitamin D is key in preventing bone diseases like rickets."
         },
         {
           "term": "Fracture Types",
-          "definition": "Closed (skin intact). Open/compound (bone through skin). Comminuted (3+ fragments). Greenstick (incomplete, children). Stress (hairline, repetitive). Transverse (perpendicular). Oblique (angle). Spiral (twisting)."
+          "definition": "Closed (skin intact). Open/compound (bone through skin). Comminuted (3+ fragments). Greenstick (incomplete, children). Stress (hairline, repetitive). Transverse (perpendicular). Oblique (angle). Spiral (twisting).",
+          "clinicalTieIn": "Identifying fracture types guides emergency management and treatment planning for optimal recovery."
         },
         {
           "term": "Bone Resorption vs Deposition",
-          "definition": "Resorption: OSTEOCLASTS dissolve matrix → releases Ca²⁺ + PO₄. Deposition: OSTEOBLASTS build osteoid → calcification. MECHANICAL STRESS → more deposition. Sedentary → more resorption."
+          "definition": "Resorption: OSTEOCLASTS dissolve matrix → releases Ca²⁺ + PO₄. Deposition: OSTEOBLASTS build osteoid → calcification. MECHANICAL STRESS → more deposition. Sedentary → more resorption.",
+          "clinicalTieIn": "Balancing bone resorption and deposition is crucial in managing metabolic bone diseases like osteoporosis."
         },
         {
           "term": "Weight Bearing Exercise & Bone",
-          "definition": "Mechanical stress → osteocytes sense → signal osteoblasts → increased bone DEPOSITION → denser stronger bone. Sedentary = disuse osteoporosis. BEST prevention for osteoporosis."
+          "definition": "Mechanical stress → osteocytes sense → signal osteoblasts → increased bone DEPOSITION → denser stronger bone. Sedentary = disuse osteoporosis. BEST prevention for osteoporosis.",
+          "clinicalTieIn": "Encouraging weight-bearing exercises is essential in nursing care plans to enhance bone density and prevent osteoporosis."
         }
       ]
     },
@@ -2313,91 +2436,111 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "Articulation / Joint",
-          "definition": "Any point where two or more bones meet. Classified structurally (fibrous/cartilaginous/synovial) and functionally (synarthrosis/amphiarthrosis/diarthrosis)."
+          "definition": "Any point where two or more bones meet. Classified structurally (fibrous/cartilaginous/synovial) and functionally (synarthrosis/amphiarthrosis/diarthrosis).",
+          "clinicalTieIn": "Understanding joint types aids in assessing mobility limitations and planning appropriate interventions for patients with joint disorders."
         },
         {
           "term": "Fibrous Joints — 3 Types",
-          "definition": "Sutures (skull, immovable), Syndesmoses (fibula-tibia, interosseous membrane, slightly movable), Gomphoses (teeth in sockets, immovable)."
+          "definition": "Sutures (skull, immovable), Syndesmoses (fibula-tibia, interosseous membrane, slightly movable), Gomphoses (teeth in sockets, immovable).",
+          "clinicalTieIn": "Knowledge of fibrous joints is crucial for evaluating cranial integrity and potential complications in trauma or post-surgical patients."
         },
         {
           "term": "Cartilaginous Joints — 2 Types",
-          "definition": "Synchondroses (hyaline cartilage, immovable — epiphyseal plate). Symphyses (fibrocartilage, slightly movable — pubic symphysis, intervertebral discs)."
+          "definition": "Synchondroses (hyaline cartilage, immovable — epiphyseal plate). Symphyses (fibrocartilage, slightly movable — pubic symphysis, intervertebral discs).",
+          "clinicalTieIn": "Recognizing cartilaginous joints helps in assessing growth plate injuries in pediatrics and pelvic stability during childbirth."
         },
         {
           "term": "Synovial Joint Features",
-          "definition": "Articular cartilage (hyaline), joint cavity, articular capsule (fibrous layer + synovial membrane), synovial fluid, reinforcing ligaments, bursae, menisci (some joints)."
+          "definition": "Articular cartilage (hyaline), joint cavity, articular capsule (fibrous layer + synovial membrane), synovial fluid, reinforcing ligaments, bursae, menisci (some joints).",
+          "clinicalTieIn": "Identifying synovial joint features is essential for diagnosing joint effusions and guiding aspirations or injections."
         },
         {
           "term": "Synovial Fluid",
-          "definition": "Secreted by synovial membrane. Lubricates articular surfaces, absorbs shock, nourishes avascular cartilage. Viscous — like egg white (Latin: ovum = egg)."
+          "definition": "Secreted by synovial membrane. Lubricates articular surfaces, absorbs shock, nourishes avascular cartilage. Viscous — like egg white (Latin: ovum = egg).",
+          "clinicalTieIn": "Assessing synovial fluid properties can help diagnose joint pathologies like arthritis through joint aspiration analysis."
         },
         {
           "term": "Bursa",
-          "definition": "Fluid-filled sac lined by synovial membrane. Reduces friction between structures (tendons/bone/skin). Bursitis = inflammation. Olecranon (elbow), prepatellar (knee)."
+          "definition": "Fluid-filled sac lined by synovial membrane. Reduces friction between structures (tendons/bone/skin). Bursitis = inflammation. Olecranon (elbow), prepatellar (knee).",
+          "clinicalTieIn": "Recognizing bursitis symptoms allows nurses to provide effective pain management and educate patients on activity modifications."
         },
         {
           "term": "Meniscus",
-          "definition": "Fibrocartilage pad within the knee joint. Deepens tibial socket, absorbs compressive forces, stabilizes joint. Medial meniscus tears more often (less mobile). Common sports injury."
+          "definition": "Fibrocartilage pad within the knee joint. Deepens tibial socket, absorbs compressive forces, stabilizes joint. Medial meniscus tears more often (less mobile). Common sports injury.",
+          "clinicalTieIn": "Understanding meniscus function aids in assessing knee injuries and planning post-operative care for meniscectomy patients."
         },
         {
           "term": "6 Synovial Joint Types",
-          "definition": "Hinge (elbow/knee — uniaxial flex/ext), Ball-and-socket (shoulder/hip — multiaxial), Pivot (atlas-axis — rotation), Condyloid (wrist — biaxial), Saddle (thumb — biaxial), Plane (intercarpal — gliding)."
+          "definition": "Hinge (elbow/knee — uniaxial flex/ext), Ball-and-socket (shoulder/hip — multiaxial), Pivot (atlas-axis — rotation), Condyloid (wrist — biaxial), Saddle (thumb — biaxial), Plane (intercarpal — gliding).",
+          "clinicalTieIn": "Identifying synovial joint types assists in evaluating joint stability and guiding rehabilitation exercises post-injury."
         },
         {
           "term": "Flexion vs Extension",
-          "definition": "Flexion = DECREASES the angle between bones (bending). Extension = INCREASES the angle (straightening). Hyperextension = extension beyond anatomical position."
+          "definition": "Flexion = DECREASES the angle between bones (bending). Extension = INCREASES the angle (straightening). Hyperextension = extension beyond anatomical position.",
+          "clinicalTieIn": "Assessing flexion and extension is vital for evaluating joint range of motion and functional limitations in physical therapy."
         },
         {
           "term": "Abduction vs Adduction",
-          "definition": "Abduction = AWAY from the midline. Adduction = TOWARD the midline. ABduction = Away. ADduction = Adds back."
+          "definition": "Abduction = AWAY from the midline. Adduction = TOWARD the midline. ABduction = Away. ADduction = Adds back.",
+          "clinicalTieIn": "Teaching patients about abduction and adduction helps them understand movement restrictions and perform exercises correctly."
         },
         {
           "term": "Pronation vs Supination",
-          "definition": "Forearm. Supination = palm ANTERIOR/up (hold soup). Pronation = palm POSTERIOR/down (pour soup). Radius crosses over ulna in pronation."
+          "definition": "Forearm. Supination = palm ANTERIOR/up (hold soup). Pronation = palm POSTERIOR/down (pour soup). Radius crosses over ulna in pronation.",
+          "clinicalTieIn": "Understanding pronation and supination is crucial for assessing forearm injuries and guiding rehabilitation exercises."
         },
         {
           "term": "Dorsiflexion vs Plantar Flexion",
-          "definition": "Dorsiflexion = toes/top of foot pulled UP toward shin. Plantar flexion = pointing toes DOWN (pressing gas pedal, high heels)."
+          "definition": "Dorsiflexion = toes/top of foot pulled UP toward shin. Plantar flexion = pointing toes DOWN (pressing gas pedal, high heels).",
+          "clinicalTieIn": "Recognizing dorsiflexion and plantar flexion is important for assessing gait abnormalities and providing appropriate footwear advice."
         },
         {
           "term": "Sprain vs Strain",
-          "definition": "Sprain = stretched/torn LIGAMENT (bone-to-bone). Strain = stretched/torn MUSCLE or TENDON (muscle-to-bone). SPrain = Structural support (ligament). STrain = muscle/tendon."
+          "definition": "Sprain = stretched/torn LIGAMENT (bone-to-bone). Strain = stretched/torn MUSCLE or TENDON (muscle-to-bone). SPrain = Structural support (ligament). STrain = muscle/tendon.",
+          "clinicalTieIn": "Differentiating sprains from strains aids in providing accurate treatment plans and educating patients on injury prevention."
         },
         {
           "term": "Osteoarthritis vs Rheumatoid Arthritis",
-          "definition": "OA: wear-and-tear, cartilage breakdown, asymmetric, older adults. RA: AUTOIMMUNE attacks synovial membrane, symmetrical, systemic, any age. RA = autoimmune. OA = old age wear."
+          "definition": "OA: wear-and-tear, cartilage breakdown, asymmetric, older adults. RA: AUTOIMMUNE attacks synovial membrane, symmetrical, systemic, any age. RA = autoimmune. OA = old age wear.",
+          "clinicalTieIn": "Distinguishing osteoarthritis from rheumatoid arthritis is crucial for implementing appropriate treatment and patient education strategies."
         },
         {
           "term": "Unhappy Triad",
-          "definition": "Knee injury: ACL (anterior cruciate ligament) + MCL (medial collateral ligament) + medial meniscus tear. Caused by lateral force on planted knee. Common in contact sports."
+          "definition": "Knee injury: ACL (anterior cruciate ligament) + MCL (medial collateral ligament) + medial meniscus tear. Caused by lateral force on planted knee. Common in contact sports.",
+          "clinicalTieIn": "Identifying the unhappy triad is essential for evaluating knee injuries and planning surgical interventions and rehabilitation."
         },
         {
           "term": "Rotator Cuff — SITS",
-          "definition": "Supraspinatus, Infraspinatus, Teres minor, Subscapularis. Stabilize glenohumeral joint. Supraspinatus most commonly torn. Initiates abduction (first 15°)."
+          "definition": "Supraspinatus, Infraspinatus, Teres minor, Subscapularis. Stabilize glenohumeral joint. Supraspinatus most commonly torn. Initiates abduction (first 15°).",
+          "clinicalTieIn": "Understanding the rotator cuff's role aids in assessing shoulder injuries and guiding rehabilitation for rotator cuff tears."
         },
         {
           "term": "Acetabulum",
-          "definition": "Cup-shaped socket on hip bone (ilium + ischium + pubis) that receives the femoral head. Ball-and-socket hip joint. Important in hip dislocation and total hip replacement."
+          "definition": "Cup-shaped socket on hip bone (ilium + ischium + pubis) that receives the femoral head. Ball-and-socket hip joint. Important in hip dislocation and total hip replacement.",
+          "clinicalTieIn": "Recognizing acetabulum importance is vital for assessing hip joint stability and planning interventions for hip fractures."
         },
         {
           "term": "Goniometer",
-          "definition": "Tool used to objectively measure JOINT RANGE OF MOTION (ROM) in degrees. Standard in physical therapy and orthopedic assessment."
+          "definition": "Tool used to objectively measure JOINT RANGE OF MOTION (ROM) in degrees. Standard in physical therapy and orthopedic assessment.",
+          "clinicalTieIn": "Using a goniometer helps objectively measure joint range of motion, guiding rehabilitation progress and treatment adjustments."
         },
         {
           "term": "Gomphosis",
-          "definition": "Fibrous joint — peg fits into socket. ONLY example in the body: teeth in alveolar sockets of mandible/maxilla. Periodontal ligament holds tooth in place. Completely immovable."
+          "definition": "Fibrous joint — peg fits into socket. ONLY example in the body: teeth in alveolar sockets of mandible/maxilla. Periodontal ligament holds tooth in place. Completely immovable.",
+          "clinicalTieIn": "Understanding gomphosis aids in assessing dental health and planning care for patients with periodontal disease."
         },
         {
           "term": "Circumduction",
-          "definition": "Circular movement of a limb tracing a cone shape. Combines flexion, extension, abduction, and adduction sequentially. Possible at ball-and-socket and condyloid joints."
+          "definition": "Circular movement of a limb tracing a cone shape. Combines flexion, extension, abduction, and adduction sequentially. Possible at ball-and-socket and condyloid joints.",
+          "clinicalTieIn": "Recognizing circumduction is important for evaluating shoulder and hip joint mobility and guiding rehabilitation exercises."
         }
       ]
     },
     {
-      "id": "lec89",
+      "id": "lec8",
       "number": 8,
-      "title": "Muscular System",
-      "subtitle": "Muscle fiber anatomy, contraction, NMJ, motor units, muscle types",
+      "title": "Muscular System — Anatomy & Contraction",
+      "subtitle": "Connective tissue wrappings, sarcomere, NMJ, sliding filament theory",
       "icon": "💪",
       "cheatSheet": [
         {
@@ -2419,26 +2562,6 @@ export const anatomyCourse: Course = {
           "title": "Neuromuscular junction (NMJ)",
           "color": "purple",
           "content": "<p>Steps: 1. AP arrives at motor neuron axon terminal. 2. Ca²⁺ enters terminal. 3. ACh released into synaptic cleft. 4. ACh binds nicotinic receptors on motor end plate. 5. Na⁺ enters → muscle AP generated. 6. ACh broken down by <strong>acetylcholinesterase</strong>.</p><p>Motor unit = one motor neuron + all muscle fibers it innervates. Smaller motor units = finer control (eye, hand). Larger = power (quadriceps).</p>"
-        },
-        {
-          "title": "Cross-bridge cycle — sliding filament theory",
-          "color": "pink",
-          "content": "<p>1. <strong>Attachment</strong>: Ca²⁺ binds troponin → tropomyosin moves → myosin head binds actin (cross-bridge forms). 2. <strong>Power stroke</strong>: myosin head pivots → pulls actin toward M line (ADP + Pᵢ released). 3. <strong>Detachment</strong>: new ATP binds myosin head → cross-bridge releases. 4. <strong>Cocking</strong>: ATP hydrolyzed → myosin head returns to high-energy position. Cycle repeats as long as Ca²⁺ and ATP are present.</p>"
-        },
-        {
-          "title": "ATP sources for muscle contraction",
-          "color": "teal",
-          "content": "<ul><li><strong>Creatine phosphate (CP)</strong>: fastest, no O₂ needed, limited (lasts ~10 sec). CP + ADP → creatine + ATP.</li><li><strong>Anaerobic glycolysis</strong>: fast, no O₂ needed, produces lactic acid, moderate ATP (~1–2 min of intense exercise).</li><li><strong>Aerobic respiration</strong>: slow to start, requires O₂, most efficient (36–38 ATP/glucose), unlimited if O₂ available — sustains prolonged activity.</li></ul>"
-        },
-        {
-          "title": "Muscle fiber types",
-          "color": "coral",
-          "content": "<table style='font-size:13px;border-collapse:collapse;width:100%;'><tr><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Type</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Speed</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Fatigue</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Use</th></tr><tr><td style='padding:4px;'>I — Slow oxidative</td><td style='padding:4px;'>Slow twitch</td><td style='padding:4px;'>Fatigue resistant</td><td style='padding:4px;'>Posture, endurance</td></tr><tr><td style='padding:4px;'>IIa — Fast oxidative</td><td style='padding:4px;'>Fast twitch</td><td style='padding:4px;'>Resistant (moderate)</td><td style='padding:4px;'>Sprinting, sustained power</td></tr><tr><td style='padding:4px;'>IIb — Fast glycolytic</td><td style='padding:4px;'>Fastest twitch</td><td style='padding:4px;'>Fatigues quickly</td><td style='padding:4px;'>Explosive movements</td></tr></table>"
-        },
-        {
-          "title": "Contraction types & muscle fatigue",
-          "color": "green",
-          "content": "<p><strong>Isotonic</strong>: muscle changes length — CONCENTRIC (muscle shortens, lifts weight) or ECCENTRIC (muscle lengthens under tension, lowers weight). <strong>Isometric</strong>: muscle generates tension but does NOT change length (holding a static position).</p><p><strong>Twitch</strong>: single AP → single contraction. <strong>Summation</strong>: rapid successive stimuli before relaxation → stronger contraction. <strong>Tetanus (fused)</strong>: sustained maximal contraction — no relaxation between stimuli.</p><p><strong>Fatigue</strong>: depletion of ATP/CP, O₂ debt, lactic acid accumulation, neurotransmitter depletion.</p>"
         }
       ],
       "quiz": [
@@ -2672,7 +2795,140 @@ export const anatomyCourse: Course = {
           ],
           "correctIndex": 2,
           "explanation": "TITIN is the largest protein in the body. It connects the myosin M line to the Z disc, acting as a molecular spring that returns the sarcomere to resting length after stretching. Titin prevents overstretching of sarcomeres and contributes to passive tension. Mutations in titin cause certain cardiomyopathies."
+        }
+      ],
+      "flashcards": [
+        {
+          "term": "Epimysium / Perimysium / Endomysium",
+          "definition": "Epimysium: outer sheath around ENTIRE MUSCLE. Perimysium: around FASCICLES (bundles). Endomysium: around individual MUSCLE FIBERS. All continuous with tendon.",
+          "clinicalTieIn": "Understanding fascial layers helps nurses assess muscle injuries and plan interventions for compartment syndrome."
         },
+        {
+          "term": "Sarcolemma",
+          "definition": "Plasma membrane of a MUSCLE FIBER. Excitable — can generate and propagate action potentials. T-tubules are deep infoldings of the sarcolemma.",
+          "clinicalTieIn": "Damage to the sarcolemma can impair muscle contraction, a concern in conditions like muscular dystrophy."
+        },
+        {
+          "term": "T-Tubules",
+          "definition": "Deep infoldings of the sarcolemma penetrating to the fiber's center. Conduct action potentials deep into the cell so ALL sarcomeres contract simultaneously.",
+          "clinicalTieIn": "T-tubule function is crucial in cardiac muscle contraction, affecting how nurses manage arrhythmias."
+        },
+        {
+          "term": "Sarcoplasmic Reticulum (SR)",
+          "definition": "Modified smooth ER of muscle cells. STORES and RELEASES Ca²⁺. Terminal cisternae release Ca²⁺ when triggered. SR pumps Ca²⁺ back in for relaxation.",
+          "clinicalTieIn": "Nurses monitor calcium levels to prevent muscle weakness due to impaired sarcoplasmic reticulum function."
+        },
+        {
+          "term": "Triad",
+          "definition": "ONE T-tubule + TWO terminal cisternae of SR. Allows voltage change in T-tubule to trigger Ca²⁺ release from SR via ryanodine receptors.",
+          "clinicalTieIn": "Recognizing triad dysfunction helps nurses anticipate issues in muscle contraction, relevant in malignant hyperthermia."
+        },
+        {
+          "term": "Sarcomere",
+          "definition": "FUNCTIONAL UNIT of muscle contraction. Extends from Z disc to Z disc. Contains overlapping thick (myosin) and thin (actin) filaments.",
+          "clinicalTieIn": "Sarcomere function is essential for understanding muscle weakness in conditions like myopathy."
+        },
+        {
+          "term": "Thick vs Thin Filaments",
+          "definition": "Thick = MYOSIN (motor protein, has heads that bind actin + ATP). Thin = ACTIN + tropomyosin (covers binding sites) + troponin (Ca²⁺ sensor).",
+          "clinicalTieIn": "Knowledge of filament interactions aids in understanding muscle contraction and relaxation, critical in muscle disorders."
+        },
+        {
+          "term": "Sarcomere Bands",
+          "definition": "A band: full length of MYOSIN — does NOT shorten. I band: ACTIN only — SHORTENS. H zone: MYOSIN only, no actin — SHORTENS. Z disc: boundary (anchors actin). M line: center (anchors myosin).",
+          "clinicalTieIn": "Observing sarcomere band changes helps nurses assess muscle contraction efficiency in physical therapy."
+        },
+        {
+          "term": "Troponin",
+          "definition": "Ca²⁺ sensor on thin filaments. TnC binds Ca²⁺ → moves tropomyosin → exposes actin binding sites → cross-bridges form. CARDIAC TROPONIN = gold standard for MI diagnosis.",
+          "clinicalTieIn": "Troponin levels are key in diagnosing myocardial infarction, a critical nursing assessment."
+        },
+        {
+          "term": "Tropomyosin",
+          "definition": "Regulatory protein that BLOCKS myosin binding sites on actin at rest. Moved aside when troponin binds Ca²⁺ → allows cross-bridge formation and contraction.",
+          "clinicalTieIn": "Understanding tropomyosin's role is crucial when educating patients on muscle relaxation techniques."
+        },
+        {
+          "term": "Neuromuscular Junction (NMJ)",
+          "definition": "Synapse between motor neuron axon terminal and muscle motor end plate. Neurotransmitter = ACETYLCHOLINE (ACh). Signal: AP → Ca²⁺ enters → ACh released → binds receptors → muscle AP.",
+          "clinicalTieIn": "NMJ function is vital in conditions like myasthenia gravis, affecting nursing care plans."
+        },
+        {
+          "term": "Acetylcholine (ACh) at NMJ",
+          "definition": "Released from motor neuron axon terminal. Binds NICOTINIC receptors on motor end plate → Na⁺ influx → end-plate potential → muscle AP. Broken down by acetylcholinesterase (AChE).",
+          "clinicalTieIn": "ACh's role at the NMJ is essential for understanding muscle paralysis in anesthesia."
+        },
+        {
+          "term": "Acetylcholinesterase (AChE)",
+          "definition": "Enzyme in synaptic cleft that rapidly breaks down ACh → terminates signal → muscle relaxes. Inhibited by organophosphates (nerve agents, some pesticides) → sustained contraction.",
+          "clinicalTieIn": "Nurses must know AChE inhibitors' effects when managing organophosphate poisoning."
+        },
+        {
+          "term": "Motor Unit",
+          "definition": "ONE motor neuron + ALL muscle fibers it innervates. Small motor units = fine control (eyes, hands). Large motor units = power (gastrocnemius, quadriceps).",
+          "clinicalTieIn": "Motor unit knowledge helps nurses assess muscle strength and plan rehabilitation exercises."
+        },
+        {
+          "term": "Myoglobin",
+          "definition": "Oxygen-storing protein in muscle sarcoplasm. Stores O₂ for immediate use during intense activity. Gives muscle its red color. Released in rhabdomyolysis → kidney damage (cola urine).",
+          "clinicalTieIn": "Myoglobin levels are monitored in rhabdomyolysis to prevent kidney damage."
+        },
+        {
+          "term": "Muscle Tone (Tonus)",
+          "definition": "Continuous low-level contraction of resting muscle maintaining posture. Small motor units fire asynchronously. Hypotonia = ↓ tone (flaccid). Hypertonia = ↑ tone (spastic).",
+          "clinicalTieIn": "Assessing muscle tone aids in diagnosing neurological conditions like cerebral palsy."
+        },
+        {
+          "term": "Fascicle Arrangements",
+          "definition": "Parallel (max shortening), Fusiform (tapered ends), Pennate (uni/bi/multi — max power, less ROM), Circular (sphincters), Convergent (fan-shaped — variable force).",
+          "clinicalTieIn": "Fascicle arrangement knowledge helps nurses understand muscle function and injury mechanisms."
+        },
+        {
+          "term": "Titin",
+          "definition": "Largest protein in body. Connects myosin to Z disc — acts as MOLECULAR SPRING providing passive elasticity. Prevents sarcomere overstretching. Mutations cause cardiomyopathy.",
+          "clinicalTieIn": "Titin's role in elasticity is important in understanding muscle stiffness in conditions like muscular dystrophy."
+        },
+        {
+          "term": "H Zone",
+          "definition": "Center of A band. Contains ONLY MYOSIN tails — no actin overlap. SHORTENS during contraction as actin slides in. May disappear entirely at full contraction.",
+          "clinicalTieIn": "Changes in the H zone during contraction are crucial for nurses assessing muscle function."
+        },
+        {
+          "term": "Length-Tension Relationship",
+          "definition": "Maximum force at OPTIMAL RESTING LENGTH where actin-myosin overlap is maximal. Too short or too long = less force. Basis for muscle strength testing and rehab positioning.",
+          "clinicalTieIn": "The length-tension relationship is fundamental in physical therapy to optimize muscle strength exercises."
+        }
+      ]
+    },
+    {
+      "id": "lec9",
+      "number": 9,
+      "title": "Muscular System — Energy, Fiber Types & Function",
+      "subtitle": "ATP sources, muscle fiber types, contraction types, fatigue",
+      "icon": "🔋",
+      "cheatSheet": [
+        {
+          "title": "Cross-bridge cycle — sliding filament theory",
+          "color": "pink",
+          "content": "<p>1. <strong>Attachment</strong>: Ca²⁺ binds troponin → tropomyosin moves → myosin head binds actin (cross-bridge forms). 2. <strong>Power stroke</strong>: myosin head pivots → pulls actin toward M line (ADP + Pᵢ released). 3. <strong>Detachment</strong>: new ATP binds myosin head → cross-bridge releases. 4. <strong>Cocking</strong>: ATP hydrolyzed → myosin head returns to high-energy position. Cycle repeats as long as Ca²⁺ and ATP are present.</p>"
+        },
+        {
+          "title": "ATP sources for muscle contraction",
+          "color": "teal",
+          "content": "<ul><li><strong>Creatine phosphate (CP)</strong>: fastest, no O₂ needed, limited (lasts ~10 sec). CP + ADP → creatine + ATP.</li><li><strong>Anaerobic glycolysis</strong>: fast, no O₂ needed, produces lactic acid, moderate ATP (~1–2 min of intense exercise).</li><li><strong>Aerobic respiration</strong>: slow to start, requires O₂, most efficient (36–38 ATP/glucose), unlimited if O₂ available — sustains prolonged activity.</li></ul>"
+        },
+        {
+          "title": "Muscle fiber types",
+          "color": "coral",
+          "content": "<table style='font-size:13px;border-collapse:collapse;width:100%;'><tr><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Type</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Speed</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Fatigue</th><th style='text-align:left;padding:4px;border-bottom:1px solid #ccc;'>Use</th></tr><tr><td style='padding:4px;'>I — Slow oxidative</td><td style='padding:4px;'>Slow twitch</td><td style='padding:4px;'>Fatigue resistant</td><td style='padding:4px;'>Posture, endurance</td></tr><tr><td style='padding:4px;'>IIa — Fast oxidative</td><td style='padding:4px;'>Fast twitch</td><td style='padding:4px;'>Resistant (moderate)</td><td style='padding:4px;'>Sprinting, sustained power</td></tr><tr><td style='padding:4px;'>IIb — Fast glycolytic</td><td style='padding:4px;'>Fastest twitch</td><td style='padding:4px;'>Fatigues quickly</td><td style='padding:4px;'>Explosive movements</td></tr></table>"
+        },
+        {
+          "title": "Contraction types & muscle fatigue",
+          "color": "green",
+          "content": "<p><strong>Isotonic</strong>: muscle changes length — CONCENTRIC (muscle shortens, lifts weight) or ECCENTRIC (muscle lengthens under tension, lowers weight). <strong>Isometric</strong>: muscle generates tension but does NOT change length (holding a static position).</p><p><strong>Twitch</strong>: single AP → single contraction. <strong>Summation</strong>: rapid successive stimuli before relaxation → stronger contraction. <strong>Tetanus (fused)</strong>: sustained maximal contraction — no relaxation between stimuli.</p><p><strong>Fatigue</strong>: depletion of ATP/CP, O₂ debt, lactic acid accumulation, neurotransmitter depletion.</p>"
+        }
+      ],
+      "quiz": [
         {
           "question": "During the POWER STROKE of the cross-bridge cycle, the myosin head:",
           "options": [
@@ -2907,164 +3163,104 @@ export const anatomyCourse: Course = {
       ],
       "flashcards": [
         {
-          "term": "Epimysium / Perimysium / Endomysium",
-          "definition": "Epimysium: outer sheath around ENTIRE MUSCLE. Perimysium: around FASCICLES (bundles). Endomysium: around individual MUSCLE FIBERS. All continuous with tendon."
-        },
-        {
-          "term": "Sarcolemma",
-          "definition": "Plasma membrane of a MUSCLE FIBER. Excitable — can generate and propagate action potentials. T-tubules are deep infoldings of the sarcolemma."
-        },
-        {
-          "term": "T-Tubules",
-          "definition": "Deep infoldings of the sarcolemma penetrating to the fiber's center. Conduct action potentials deep into the cell so ALL sarcomeres contract simultaneously."
-        },
-        {
-          "term": "Sarcoplasmic Reticulum (SR)",
-          "definition": "Modified smooth ER of muscle cells. STORES and RELEASES Ca²⁺. Terminal cisternae release Ca²⁺ when triggered. SR pumps Ca²⁺ back in for relaxation."
-        },
-        {
-          "term": "Triad",
-          "definition": "ONE T-tubule + TWO terminal cisternae of SR. Allows voltage change in T-tubule to trigger Ca²⁺ release from SR via ryanodine receptors."
-        },
-        {
-          "term": "Sarcomere",
-          "definition": "FUNCTIONAL UNIT of muscle contraction. Extends from Z disc to Z disc. Contains overlapping thick (myosin) and thin (actin) filaments."
-        },
-        {
-          "term": "Thick vs Thin Filaments",
-          "definition": "Thick = MYOSIN (motor protein, has heads that bind actin + ATP). Thin = ACTIN + tropomyosin (covers binding sites) + troponin (Ca²⁺ sensor)."
-        },
-        {
-          "term": "Sarcomere Bands",
-          "definition": "A band: full length of MYOSIN — does NOT shorten. I band: ACTIN only — SHORTENS. H zone: MYOSIN only, no actin — SHORTENS. Z disc: boundary (anchors actin). M line: center (anchors myosin)."
-        },
-        {
-          "term": "Troponin",
-          "definition": "Ca²⁺ sensor on thin filaments. TnC binds Ca²⁺ → moves tropomyosin → exposes actin binding sites → cross-bridges form. CARDIAC TROPONIN = gold standard for MI diagnosis."
-        },
-        {
-          "term": "Tropomyosin",
-          "definition": "Regulatory protein that BLOCKS myosin binding sites on actin at rest. Moved aside when troponin binds Ca²⁺ → allows cross-bridge formation and contraction."
-        },
-        {
-          "term": "Neuromuscular Junction (NMJ)",
-          "definition": "Synapse between motor neuron axon terminal and muscle motor end plate. Neurotransmitter = ACETYLCHOLINE (ACh). Signal: AP → Ca²⁺ enters → ACh released → binds receptors → muscle AP."
-        },
-        {
-          "term": "Acetylcholine (ACh) at NMJ",
-          "definition": "Released from motor neuron axon terminal. Binds NICOTINIC receptors on motor end plate → Na⁺ influx → end-plate potential → muscle AP. Broken down by acetylcholinesterase (AChE)."
-        },
-        {
-          "term": "Acetylcholinesterase (AChE)",
-          "definition": "Enzyme in synaptic cleft that rapidly breaks down ACh → terminates signal → muscle relaxes. Inhibited by organophosphates (nerve agents, some pesticides) → sustained contraction."
-        },
-        {
-          "term": "Motor Unit",
-          "definition": "ONE motor neuron + ALL muscle fibers it innervates. Small motor units = fine control (eyes, hands). Large motor units = power (gastrocnemius, quadriceps)."
-        },
-        {
-          "term": "Myoglobin",
-          "definition": "Oxygen-storing protein in muscle sarcoplasm. Stores O₂ for immediate use during intense activity. Gives muscle its red color. Released in rhabdomyolysis → kidney damage (cola urine)."
-        },
-        {
-          "term": "Muscle Tone (Tonus)",
-          "definition": "Continuous low-level contraction of resting muscle maintaining posture. Small motor units fire asynchronously. Hypotonia = ↓ tone (flaccid). Hypertonia = ↑ tone (spastic)."
-        },
-        {
-          "term": "Fascicle Arrangements",
-          "definition": "Parallel (max shortening), Fusiform (tapered ends), Pennate (uni/bi/multi — max power, less ROM), Circular (sphincters), Convergent (fan-shaped — variable force)."
-        },
-        {
-          "term": "Titin",
-          "definition": "Largest protein in body. Connects myosin to Z disc — acts as MOLECULAR SPRING providing passive elasticity. Prevents sarcomere overstretching. Mutations cause cardiomyopathy."
-        },
-        {
-          "term": "H Zone",
-          "definition": "Center of A band. Contains ONLY MYOSIN tails — no actin overlap. SHORTENS during contraction as actin slides in. May disappear entirely at full contraction."
-        },
-        {
-          "term": "Length-Tension Relationship",
-          "definition": "Maximum force at OPTIMAL RESTING LENGTH where actin-myosin overlap is maximal. Too short or too long = less force. Basis for muscle strength testing and rehab positioning."
-        },
-        {
           "term": "Sliding Filament Theory",
-          "definition": "Muscle contraction: thin ACTIN filaments SLIDE past thick MYOSIN filaments toward center (M line). Filaments don't shorten — the sarcomere shortens as they overlap more."
+          "definition": "Muscle contraction: thin ACTIN filaments SLIDE past thick MYOSIN filaments toward center (M line). Filaments don't shorten — the sarcomere shortens as they overlap more.",
+          "clinicalTieIn": "Understanding the sliding filament theory helps nurses explain muscle contraction mechanics to patients with conditions like muscular dystrophy."
         },
         {
           "term": "Cross-Bridge Cycle",
-          "definition": "1. Attachment (myosin binds actin). 2. Power stroke (myosin pivots, pulls actin → ADP+Pi released). 3. Detachment (ATP binds myosin → releases actin). 4. Cocking (ATP hydrolyzed → head recocked). Repeat."
+          "definition": "1. Attachment (myosin binds actin). 2. Power stroke (myosin pivots, pulls actin → ADP+Pi released). 3. Detachment (ATP binds myosin → releases actin). 4. Cocking (ATP hydrolyzed → head recocked). Repeat.",
+          "clinicalTieIn": "Knowledge of the cross-bridge cycle is crucial for nurses when assessing muscle function in patients with neuromuscular disorders."
         },
         {
           "term": "Power Stroke",
-          "definition": "Myosin head PIVOTS from 90° to 45° → pulls actin toward M line → ADP + Pi released. The force-generating step of cross-bridge cycle. Z discs pulled closer → sarcomere shortens."
+          "definition": "Myosin head PIVOTS from 90° to 45° → pulls actin toward M line → ADP + Pi released. The force-generating step of cross-bridge cycle. Z discs pulled closer → sarcomere shortens.",
+          "clinicalTieIn": "Recognizing the power stroke phase aids nurses in understanding how muscle weakness may occur in conditions like myasthenia gravis."
         },
         {
           "term": "Rigor Mortis",
-          "definition": "Post-death muscle stiffness. NO ATP → myosin heads CANNOT detach from actin → permanent cross-bridges → rigidity. Appears 2–6 hrs, peaks 12 hrs, resolves as proteins decompose."
+          "definition": "Post-death muscle stiffness. NO ATP → myosin heads CANNOT detach from actin → permanent cross-bridges → rigidity. Appears 2–6 hrs, peaks 12 hrs, resolves as proteins decompose.",
+          "clinicalTieIn": "Nurses must recognize rigor mortis onset to accurately determine time of death in post-mortem care."
         },
         {
           "term": "ATP Sources for Muscle",
-          "definition": "1. Creatine phosphate (fastest, ~10 sec, no O₂). 2. Anaerobic glycolysis (fast, ~1–2 min, produces lactic acid, 2 ATP). 3. Aerobic respiration (slow, prolonged, requires O₂, 36–38 ATP)."
+          "definition": "1. Creatine phosphate (fastest, ~10 sec, no O₂). 2. Anaerobic glycolysis (fast, ~1–2 min, produces lactic acid, 2 ATP). 3. Aerobic respiration (slow, prolonged, requires O₂, 36–38 ATP).",
+          "clinicalTieIn": "Nurses should educate patients on ATP sources to optimize recovery and performance in physical therapy settings."
         },
         {
           "term": "Creatine Phosphate",
-          "definition": "Fastest ATP source. CP + ADP → Creatine + ATP (instant). No O₂ needed. Lasts only ~10 seconds. Used for explosive activities (sprint start, jump). Replenished during rest."
+          "definition": "Fastest ATP source. CP + ADP → Creatine + ATP (instant). No O₂ needed. Lasts only ~10 seconds. Used for explosive activities (sprint start, jump). Replenished during rest.",
+          "clinicalTieIn": "Creatine phosphate's role in rapid energy production is important for nurses to consider when advising athletes on supplementation."
         },
         {
           "term": "Anaerobic Glycolysis",
-          "definition": "Fast ATP without O₂. Glucose → pyruvate → LACTIC ACID + 2 ATP. Causes burning sensation. Sustains ~1–2 min of intense exercise. Liver converts lactate back to glucose (Cori cycle)."
+          "definition": "Fast ATP without O₂. Glucose → pyruvate → LACTIC ACID + 2 ATP. Causes burning sensation. Sustains ~1–2 min of intense exercise. Liver converts lactate back to glucose (Cori cycle).",
+          "clinicalTieIn": "Understanding anaerobic glycolysis helps nurses manage patients experiencing lactic acidosis during intense physical exertion."
         },
         {
           "term": "Aerobic Respiration",
-          "definition": "Most efficient ATP source. Requires O₂. 36–38 ATP per glucose. Uses glucose, fatty acids, amino acids. Sustains prolonged moderate activity. Used by Type I and IIa fibers."
+          "definition": "Most efficient ATP source. Requires O₂. 36–38 ATP per glucose. Uses glucose, fatty acids, amino acids. Sustains prolonged moderate activity. Used by Type I and IIa fibers.",
+          "clinicalTieIn": "Nurses use aerobic respiration knowledge to promote effective breathing techniques in patients with chronic obstructive pulmonary disease."
         },
         {
           "term": "Muscle Fiber Types",
-          "definition": "Type I (slow oxidative): fatigue resistant, endurance, many mitochondria, dark. Type IIa (fast oxidative): intermediate, sustained power. Type IIb (fast glycolytic): fastest, most powerful, fatigues quickly, pale."
+          "definition": "Type I (slow oxidative): fatigue resistant, endurance, many mitochondria, dark. Type IIa (fast oxidative): intermediate, sustained power. Type IIb (fast glycolytic): fastest, most powerful, fatigues quickly, pale.",
+          "clinicalTieIn": "Identifying muscle fiber types assists nurses in tailoring exercise regimens for patients with specific endurance or strength goals."
         },
         {
           "term": "Isotonic Contraction",
-          "definition": "Muscle changes LENGTH. CONCENTRIC = muscle shortens (lifting weight). ECCENTRIC = muscle lengthens while generating tension (lowering weight — most force, most DOMS)."
+          "definition": "Muscle changes LENGTH. CONCENTRIC = muscle shortens (lifting weight). ECCENTRIC = muscle lengthens while generating tension (lowering weight — most force, most DOMS).",
+          "clinicalTieIn": "Nurses should monitor isotonic contractions in rehabilitation to ensure proper muscle strengthening without injury."
         },
         {
           "term": "Isometric Contraction",
-          "definition": "Muscle generates tension but does NOT change length — no joint movement. Example: holding a static position, pushing against wall. Important for posture and stabilization."
+          "definition": "Muscle generates tension but does NOT change length — no joint movement. Example: holding a static position, pushing against wall. Important for posture and stabilization.",
+          "clinicalTieIn": "Isometric contraction knowledge helps nurses design safe exercise plans for patients with joint instability."
         },
         {
           "term": "Wave Summation (Temporal Summation)",
-          "definition": "Second stimulus arrives BEFORE full relaxation → Ca²⁺ remains elevated → stronger contraction added to previous. Increasing frequency → unfused tetanus → fused tetanus (max force)."
+          "definition": "Second stimulus arrives BEFORE full relaxation → Ca²⁺ remains elevated → stronger contraction added to previous. Increasing frequency → unfused tetanus → fused tetanus (max force).",
+          "clinicalTieIn": "Wave summation understanding aids nurses in explaining muscle cramping and spasms to patients with electrolyte imbalances."
         },
         {
           "term": "Fused (Complete) Tetanus",
-          "definition": "Stimuli so rapid that NO relaxation occurs between contractions → sustained maximal tension. Maximum force a muscle can produce. Normal movements use graded tetanic contractions."
+          "definition": "Stimuli so rapid that NO relaxation occurs between contractions → sustained maximal tension. Maximum force a muscle can produce. Normal movements use graded tetanic contractions.",
+          "clinicalTieIn": "Recognizing fused tetanus helps nurses assess muscle tension in patients with tetanus infection or neuromuscular disorders."
         },
         {
           "term": "Muscle Fatigue",
-          "definition": "Inability to maintain force despite stimulation. Causes: ATP/CP depletion, lactic acid ↓ pH, O₂ debt, glycogen depletion, ACh depletion at NMJ."
+          "definition": "Inability to maintain force despite stimulation. Causes: ATP/CP depletion, lactic acid ↓ pH, O₂ debt, glycogen depletion, ACh depletion at NMJ.",
+          "clinicalTieIn": "Nurses should assess muscle fatigue to adjust activity levels in patients with chronic fatigue syndrome."
         },
         {
           "term": "Oxygen Debt (EPOC)",
-          "definition": "Extra O₂ consumed AFTER exercise to restore homeostasis: replenish CP, convert lactic acid to glucose, restore myoglobin O₂, repair tissues. Why breathing stays elevated after exercise."
+          "definition": "Extra O₂ consumed AFTER exercise to restore homeostasis: replenish CP, convert lactic acid to glucose, restore myoglobin O₂, repair tissues. Why breathing stays elevated after exercise.",
+          "clinicalTieIn": "Oxygen debt knowledge assists nurses in guiding post-exercise recovery strategies for cardiac rehabilitation patients."
         },
         {
           "term": "Latent Period",
-          "definition": "Time between stimulus (AP) and onset of tension. During this time: E-C coupling events occur (AP → T-tubule → SR Ca²⁺ release → troponin binding → cross-bridge formation begins)."
+          "definition": "Time between stimulus (AP) and onset of tension. During this time: E-C coupling events occur (AP → T-tubule → SR Ca²⁺ release → troponin binding → cross-bridge formation begins).",
+          "clinicalTieIn": "Understanding the latent period helps nurses anticipate muscle response timing during neuromuscular assessments."
         },
         {
           "term": "Motor Unit Recruitment",
-          "definition": "Progressive activation of ADDITIONAL motor units to increase force. Starts with small Type I → adds larger Type II as needed (SIZE PRINCIPLE). Maximizes efficiency and delays fatigue."
+          "definition": "Progressive activation of ADDITIONAL motor units to increase force. Starts with small Type I → adds larger Type II as needed (SIZE PRINCIPLE). Maximizes efficiency and delays fatigue.",
+          "clinicalTieIn": "Motor unit recruitment knowledge is essential for nurses to evaluate muscle strength progression in rehabilitation therapy."
         },
         {
           "term": "Muscle Hypertrophy",
-          "definition": "Increase in muscle SIZE from RESISTANCE TRAINING. Existing fibers enlarge (more actin/myosin synthesized, more myofibrils). NOT new fibers primarily. Early strength gains = neural (better recruitment)."
+          "definition": "Increase in muscle SIZE from RESISTANCE TRAINING. Existing fibers enlarge (more actin/myosin synthesized, more myofibrils). NOT new fibers primarily. Early strength gains = neural (better recruitment).",
+          "clinicalTieIn": "Nurses should encourage resistance training to promote muscle hypertrophy in patients recovering from muscle atrophy."
         },
         {
           "term": "Excitation-Contraction Coupling",
-          "definition": "AP on sarcolemma → T-tubule → SR releases Ca²⁺ → Ca²⁺ binds troponin → tropomyosin moves → actin binding sites exposed → myosin binds → cross-bridge cycle → CONTRACTION."
+          "definition": "AP on sarcolemma → T-tubule → SR releases Ca²⁺ → Ca²⁺ binds troponin → tropomyosin moves → actin binding sites exposed → myosin binds → cross-bridge cycle → CONTRACTION.",
+          "clinicalTieIn": "Excitation-contraction coupling understanding is crucial for nurses when managing patients with calcium channel disorders."
         },
         {
           "term": "Refractory Period",
-          "definition": "Brief period after AP when membrane CANNOT generate another AP. Ensures discrete contractions. SHORTER than contraction period — allowing summation. Absolute (no AP possible) → relative (needs larger stimulus)."
+          "definition": "Brief period after AP when membrane CANNOT generate another AP. Ensures discrete contractions. SHORTER than contraction period — allowing summation. Absolute (no AP possible) → relative (needs larger stimulus).",
+          "clinicalTieIn": "Knowledge of the refractory period helps nurses explain the importance of rest intervals in muscle recovery and training."
         }
       ]
     },
@@ -3321,83 +3517,103 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "NS Functions",
-          "definition": "SENSORY INPUT (gather information from receptors) → INTEGRATION (process in CNS) → MOTOR OUTPUT (commands to effectors). All NS activities involve these three steps."
+          "definition": "SENSORY INPUT (gather information from receptors) → INTEGRATION (process in CNS) → MOTOR OUTPUT (commands to effectors). All NS activities involve these three steps.",
+          "clinicalTieIn": "Nurses assess sensory input and motor output to evaluate neurological function and detect potential CNS integration issues."
         },
         {
           "term": "CNS vs PNS",
-          "definition": "CNS = brain + spinal cord (integration center). PNS = all nerves outside CNS. PNS = Somatic (voluntary, skeletal) + Autonomic (involuntary — Sympathetic + Parasympathetic)."
+          "definition": "CNS = brain + spinal cord (integration center). PNS = all nerves outside CNS. PNS = Somatic (voluntary, skeletal) + Autonomic (involuntary — Sympathetic + Parasympathetic).",
+          "clinicalTieIn": "Understanding CNS and PNS divisions aids nurses in assessing neurological deficits and planning appropriate interventions."
         },
         {
           "term": "Neuron Anatomy",
-          "definition": "Cell body/soma (metabolic center, nucleus) → Dendrites (RECEIVE signals, multiple) → Axon hillock (AP INITIATION) → Axon (conducts AP) → Axon terminals (release NT)."
+          "definition": "Cell body/soma (metabolic center, nucleus) → Dendrites (RECEIVE signals, multiple) → Axon hillock (AP INITIATION) → Axon (conducts AP) → Axon terminals (release NT).",
+          "clinicalTieIn": "Nurses must recognize neuron structure to understand nerve impulse transmission and the impact of neurodegenerative diseases."
         },
         {
           "term": "Myelin Sheath",
-          "definition": "Fatty insulation around axons. Speeds conduction via SALTATORY conduction (AP jumps between Nodes of Ranvier). CNS = oligodendrocytes. PNS = Schwann cells."
+          "definition": "Fatty insulation around axons. Speeds conduction via SALTATORY conduction (AP jumps between Nodes of Ranvier). CNS = oligodendrocytes. PNS = Schwann cells.",
+          "clinicalTieIn": "Knowledge of myelin sheath function helps nurses explain symptoms of demyelinating diseases like multiple sclerosis to patients."
         },
         {
           "term": "Nodes of Ranvier",
-          "definition": "Gaps in myelin sheath where action potentials are REGENERATED. AP jumps from node to node (saltatory conduction) → much faster than continuous conduction along unmyelinated axons."
+          "definition": "Gaps in myelin sheath where action potentials are REGENERATED. AP jumps from node to node (saltatory conduction) → much faster than continuous conduction along unmyelinated axons.",
+          "clinicalTieIn": "Nurses should understand nodes of Ranvier to explain how nerve impulses are efficiently transmitted in myelinated neurons."
         },
         {
           "term": "Multipolar vs Bipolar vs Unipolar",
-          "definition": "Multipolar: many dendrites + 1 axon — MOST COMMON (motor neurons, interneurons). Bipolar: 1 dendrite + 1 axon (retina, olfactory). Pseudounipolar: 1 process splits — sensory (DRG)."
+          "definition": "Multipolar: many dendrites + 1 axon — MOST COMMON (motor neurons, interneurons). Bipolar: 1 dendrite + 1 axon (retina, olfactory). Pseudounipolar: 1 process splits — sensory (DRG).",
+          "clinicalTieIn": "Identifying neuron types assists nurses in understanding specific neural pathways and their roles in sensory and motor functions."
         },
         {
           "term": "Sensory vs Motor vs Interneurons",
-          "definition": "Sensory (afferent): TO CNS from receptors — pseudounipolar. Motor (efferent): FROM CNS to effectors — multipolar. Interneurons: within CNS — 99% of all neurons."
+          "definition": "Sensory (afferent): TO CNS from receptors — pseudounipolar. Motor (efferent): FROM CNS to effectors — multipolar. Interneurons: within CNS — 99% of all neurons.",
+          "clinicalTieIn": "Nurses use knowledge of neuron types to assess sensory and motor pathways during neurological examinations."
         },
         {
           "term": "Astrocytes",
-          "definition": "Most abundant CNS glia. Form BLOOD-BRAIN BARRIER (end-feet on capillaries), metabolic support, glutamate uptake, K⁺ buffering, guide development, form glial scar after injury."
+          "definition": "Most abundant CNS glia. Form BLOOD-BRAIN BARRIER (end-feet on capillaries), metabolic support, glutamate uptake, K⁺ buffering, guide development, form glial scar after injury.",
+          "clinicalTieIn": "Understanding astrocytes helps nurses appreciate their role in maintaining the blood-brain barrier and supporting CNS homeostasis."
         },
         {
           "term": "Oligodendrocytes",
-          "definition": "Myelin producers in CNS. ONE oligodendrocyte myelinates segments of MULTIPLE axons (up to 60). Attacked in multiple sclerosis → demyelination → slowed conduction."
+          "definition": "Myelin producers in CNS. ONE oligodendrocyte myelinates segments of MULTIPLE axons (up to 60). Attacked in multiple sclerosis → demyelination → slowed conduction.",
+          "clinicalTieIn": "Nurses should recognize oligodendrocyte function to understand the pathology of multiple sclerosis and its impact on patients."
         },
         {
           "term": "Microglia",
-          "definition": "Immune defense of CNS. Derived from monocytes. PHAGOCYTOSE pathogens, debris, dead cells. Activated during injury/infection. CNS equivalent of macrophages."
+          "definition": "Immune defense of CNS. Derived from monocytes. PHAGOCYTOSE pathogens, debris, dead cells. Activated during injury/infection. CNS equivalent of macrophages.",
+          "clinicalTieIn": "Microglia activation is crucial for nurses to understand CNS immune responses during infections or injuries."
         },
         {
           "term": "Schwann Cells",
-          "definition": "Myelin producers in PNS. ONE Schwann cell myelinates ONE segment of ONE axon. Guide PNS axon regeneration after injury (unlike oligodendrocytes in CNS)."
+          "definition": "Myelin producers in PNS. ONE Schwann cell myelinates ONE segment of ONE axon. Guide PNS axon regeneration after injury (unlike oligodendrocytes in CNS).",
+          "clinicalTieIn": "Nurses should know Schwann cells' role in PNS repair to educate patients on nerve regeneration after peripheral nerve injuries."
         },
         {
           "term": "Ependymal Cells",
-          "definition": "Line brain VENTRICLES and spinal cord central canal. Ciliated — circulate CSF. Choroid plexus (modified ependymal + capillaries) PRODUCES CSF."
+          "definition": "Line brain VENTRICLES and spinal cord central canal. Ciliated — circulate CSF. Choroid plexus (modified ependymal + capillaries) PRODUCES CSF.",
+          "clinicalTieIn": "Ependymal cells' function is essential for nurses monitoring CSF circulation and potential hydrocephalus in patients."
         },
         {
           "term": "Chemical Synapse",
-          "definition": "AP at presynaptic terminal → Ca²⁺ enters → NT released into synaptic cleft → binds postsynaptic receptors → EPSP or IPSP. One-directional signal transmission."
+          "definition": "AP at presynaptic terminal → Ca²⁺ enters → NT released into synaptic cleft → binds postsynaptic receptors → EPSP or IPSP. One-directional signal transmission.",
+          "clinicalTieIn": "Understanding chemical synapses helps nurses explain how medications like SSRIs affect neurotransmitter release and mood regulation."
         },
         {
           "term": "EPSP vs IPSP",
-          "definition": "EPSP: excitatory PSP — DEPOLARIZES postsynaptic membrane (closer to threshold). IPSP: inhibitory PSP — HYPERPOLARIZES membrane (further from threshold). Summation determines if AP fires."
+          "definition": "EPSP: excitatory PSP — DEPOLARIZES postsynaptic membrane (closer to threshold). IPSP: inhibitory PSP — HYPERPOLARIZES membrane (further from threshold). Summation determines if AP fires.",
+          "clinicalTieIn": "Nurses must differentiate EPSP and IPSP to understand how synaptic inputs affect neuronal firing and patient responses."
         },
         {
           "term": "Spatial vs Temporal Summation",
-          "definition": "Spatial: EPSPs from MULTIPLE synapses simultaneously add together. Temporal: SAME synapse fires rapidly → EPSPs accumulate before returning to rest. Both can trigger AP if threshold reached."
+          "definition": "Spatial: EPSPs from MULTIPLE synapses simultaneously add together. Temporal: SAME synapse fires rapidly → EPSPs accumulate before returning to rest. Both can trigger AP if threshold reached.",
+          "clinicalTieIn": "Recognizing spatial and temporal summation aids nurses in understanding how neurons integrate multiple synaptic inputs."
         },
         {
           "term": "Ganglia vs Nuclei",
-          "definition": "GANGLIA: clusters of neuron cell bodies in the PNS (dorsal root ganglia, autonomic ganglia). NUCLEI: clusters of neuron cell bodies in the CNS (e.g., basal nuclei, cranial nerve nuclei)."
+          "definition": "GANGLIA: clusters of neuron cell bodies in the PNS (dorsal root ganglia, autonomic ganglia). NUCLEI: clusters of neuron cell bodies in the CNS (e.g., basal nuclei, cranial nerve nuclei).",
+          "clinicalTieIn": "Knowledge of ganglia and nuclei helps nurses localize neurological lesions based on symptoms and imaging findings."
         },
         {
           "term": "Nerve vs Tract",
-          "definition": "NERVE: bundle of axons in the PNS wrapped in CT (endoneurium → perineurium → epineurium). TRACT: bundle of axons in the CNS connecting brain regions or carrying signals in spinal cord."
+          "definition": "NERVE: bundle of axons in the PNS wrapped in CT (endoneurium → perineurium → epineurium). TRACT: bundle of axons in the CNS connecting brain regions or carrying signals in spinal cord.",
+          "clinicalTieIn": "Differentiating nerves and tracts is vital for nurses to understand peripheral versus central nervous system injuries."
         },
         {
           "term": "Sympathetic vs Parasympathetic",
-          "definition": "Sympathetic: FIGHT/FLIGHT — ↑HR, vasoconstriction, bronchodilation, ↓GI. NT = norepinephrine (post-ganglionic). Parasympathetic: REST/DIGEST — ↓HR, ↑GI, bronchoconstriction. NT = ACh."
+          "definition": "Sympathetic: FIGHT/FLIGHT — ↑HR, vasoconstriction, bronchodilation, ↓GI. NT = norepinephrine (post-ganglionic). Parasympathetic: REST/DIGEST — ↓HR, ↑GI, bronchoconstriction. NT = ACh.",
+          "clinicalTieIn": "Nurses should understand sympathetic and parasympathetic effects to anticipate physiological changes in stress or relaxation."
         },
         {
           "term": "Neurotransmitter Reuptake",
-          "definition": "Presynaptic terminal transports NT back from synaptic cleft for recycling. TERMINATES the signal. SSRIs block serotonin reuptake → more serotonin in cleft (antidepressant). Cocaine blocks dopamine reuptake."
+          "definition": "Presynaptic terminal transports NT back from synaptic cleft for recycling. TERMINATES the signal. SSRIs block serotonin reuptake → more serotonin in cleft (antidepressant). Cocaine blocks dopamine reuptake.",
+          "clinicalTieIn": "Nurses need to understand neurotransmitter reuptake to explain the mechanism of action for medications like SSRIs."
         },
         {
           "term": "Satellite Cells (PNS)",
-          "definition": "Surround neuron CELL BODIES in PNS ganglia. Support and regulate the microenvironment around neuronal soma. Different from Schwann cells (which myelinate axons)."
+          "definition": "Surround neuron CELL BODIES in PNS ganglia. Support and regulate the microenvironment around neuronal soma. Different from Schwann cells (which myelinate axons).",
+          "clinicalTieIn": "Understanding satellite cells helps nurses appreciate their role in supporting neuron function within peripheral ganglia."
         }
       ]
     },
@@ -3654,83 +3870,103 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "31 Spinal Nerve Pairs",
-          "definition": "8 Cervical, 12 Thoracic, 5 Lumbar, 5 Sacral, 1 Coccygeal. 8 cervical nerves but only 7 cervical vertebrae (C8 exits below C7)."
+          "definition": "8 Cervical, 12 Thoracic, 5 Lumbar, 5 Sacral, 1 Coccygeal. 8 cervical nerves but only 7 cervical vertebrae (C8 exits below C7).",
+          "clinicalTieIn": "Understanding spinal nerve pairs aids in assessing nerve root injuries and corresponding dermatomal patterns in patients."
         },
         {
           "term": "Dorsal Root vs Ventral Root",
-          "definition": "Dorsal root = SENSORY (afferent) — carries signals from receptors TO spinal cord. Dorsal root ganglion = sensory cell bodies. Ventral root = MOTOR (efferent) — from anterior horn neurons to muscles."
+          "definition": "Dorsal root = SENSORY (afferent) — carries signals from receptors TO spinal cord. Dorsal root ganglion = sensory cell bodies. Ventral root = MOTOR (efferent) — from anterior horn neurons to muscles.",
+          "clinicalTieIn": "Differentiating dorsal and ventral roots is crucial for diagnosing sensory versus motor nerve damage in spinal cord injuries."
         },
         {
           "term": "Spinal Cord Gray Matter",
-          "definition": "H-shaped, inner. Anterior horn = MOTOR neuron cell bodies (voluntary). Posterior horn = sensory interneurons. Lateral horn (T1–L2, S2–S4) = autonomic preganglionic neurons."
+          "definition": "H-shaped, inner. Anterior horn = MOTOR neuron cell bodies (voluntary). Posterior horn = sensory interneurons. Lateral horn (T1–L2, S2–S4) = autonomic preganglionic neurons.",
+          "clinicalTieIn": "Recognizing spinal cord gray matter regions helps localize lesions affecting motor or sensory pathways in neurological assessments."
         },
         {
           "term": "Spinothalamic Tract",
-          "definition": "ASCENDING (sensory). Carries PAIN, TEMPERATURE, crude touch. Crosses to OPPOSITE SIDE within 1–2 segments of entering. Travels in anterolateral column to thalamus."
+          "definition": "ASCENDING (sensory). Carries PAIN, TEMPERATURE, crude touch. Crosses to OPPOSITE SIDE within 1–2 segments of entering. Travels in anterolateral column to thalamus.",
+          "clinicalTieIn": "Knowledge of the spinothalamic tract is essential for evaluating sensory deficits like loss of pain or temperature sensation."
         },
         {
           "term": "Dorsal Columns",
-          "definition": "ASCENDING (sensory). Carry PROPRIOCEPTION, FINE TOUCH, VIBRATION. Travel IPSILATERAL all the way to medulla where they CROSS. Gracile (lower body) + cuneate (upper body) fasciculi."
+          "definition": "ASCENDING (sensory). Carry PROPRIOCEPTION, FINE TOUCH, VIBRATION. Travel IPSILATERAL all the way to medulla where they CROSS. Gracile (lower body) + cuneate (upper body) fasciculi.",
+          "clinicalTieIn": "Assessing dorsal column function is important for detecting proprioceptive and fine touch deficits in spinal cord disorders."
         },
         {
           "term": "Lateral Corticospinal Tract",
-          "definition": "DESCENDING (motor). VOLUNTARY motor control. Originates in motor cortex → crosses in medulla (pyramidal decussation) → descends in lateral white matter → anterior horn motor neurons → muscles."
+          "definition": "DESCENDING (motor). VOLUNTARY motor control. Originates in motor cortex → crosses in medulla (pyramidal decussation) → descends in lateral white matter → anterior horn motor neurons → muscles.",
+          "clinicalTieIn": "Understanding the lateral corticospinal tract is vital for evaluating voluntary motor control and detecting upper motor neuron lesions."
         },
         {
           "term": "Cervical Enlargement & Lumbar Enlargement",
-          "definition": "Cervical (C4–T1): enlarged area supplying UPPER LIMBS (brachial plexus). Lumbar (L1–S3): enlarged area supplying LOWER LIMBS (lumbosacral plexus)."
+          "definition": "Cervical (C4–T1): enlarged area supplying UPPER LIMBS (brachial plexus). Lumbar (L1–S3): enlarged area supplying LOWER LIMBS (lumbosacral plexus).",
+          "clinicalTieIn": "Recognizing cervical and lumbar enlargements is key for assessing nerve compression syndromes affecting limbs."
         },
         {
           "term": "Brachial Plexus",
-          "definition": "C5–T1. Innervates ENTIRE UPPER LIMB. Key nerves: Musculocutaneous, Axillary, Radial (wrist drop = Saturday night palsy), Ulnar (claw hand), Median (carpal tunnel syndrome)."
+          "definition": "C5–T1. Innervates ENTIRE UPPER LIMB. Key nerves: Musculocutaneous, Axillary, Radial (wrist drop = Saturday night palsy), Ulnar (claw hand), Median (carpal tunnel syndrome).",
+          "clinicalTieIn": "Familiarity with the brachial plexus is necessary for diagnosing upper limb neuropathies and injuries like wrist drop."
         },
         {
           "term": "Sciatic Nerve",
-          "definition": "LARGEST nerve in body. From sacral plexus (L4–S4). Innervates posterior thigh then divides → tibial + common fibular → entire leg/foot. Sciatica from L4–L5 or L5–S1 disc herniation."
+          "definition": "LARGEST nerve in body. From sacral plexus (L4–S4). Innervates posterior thigh then divides → tibial + common fibular → entire leg/foot. Sciatica from L4–L5 or L5–S1 disc herniation.",
+          "clinicalTieIn": "Knowledge of the sciatic nerve is crucial for assessing lower limb function and diagnosing sciatica or nerve compression."
         },
         {
           "term": "Plexus",
-          "definition": "Network formed by ANTERIOR RAMI of several spinal nerve levels intermingling to form named peripheral nerves. Cervical (C1–C5), Brachial (C5–T1), Lumbar (L1–L4), Sacral (L4–S4)."
+          "definition": "Network formed by ANTERIOR RAMI of several spinal nerve levels intermingling to form named peripheral nerves. Cervical (C1–C5), Brachial (C5–T1), Lumbar (L1–L4), Sacral (L4–S4).",
+          "clinicalTieIn": "Understanding plexus formation aids in diagnosing peripheral nerve injuries and planning surgical interventions."
         },
         {
           "term": "Reflex Arc",
-          "definition": "BYPASSES conscious brain. Receptor → Afferent neuron → Spinal cord integration center → Efferent neuron → Effector. Fast protective response — brain informed AFTER."
+          "definition": "BYPASSES conscious brain. Receptor → Afferent neuron → Spinal cord integration center → Efferent neuron → Effector. Fast protective response — brain informed AFTER.",
+          "clinicalTieIn": "Knowing reflex arc pathways helps evaluate reflex integrity and detect potential neurological impairments."
         },
         {
           "term": "Stretch Reflex",
-          "definition": "MONOSYNAPTIC. Muscle spindle stretched → Ia afferent → DIRECTLY synapses on alpha motor neuron → same muscle contracts. Patellar reflex = L2–L4. Hyperreflexia = upper MN damage."
+          "definition": "MONOSYNAPTIC. Muscle spindle stretched → Ia afferent → DIRECTLY synapses on alpha motor neuron → same muscle contracts. Patellar reflex = L2–L4. Hyperreflexia = upper MN damage.",
+          "clinicalTieIn": "Assessing stretch reflexes is essential for identifying abnormalities in muscle tone and neuromuscular function."
         },
         {
           "term": "Withdrawal + Crossed Extension Reflex",
-          "definition": "Painful stimulus → IPSILATERAL LIMB FLEXES (withdraw) + CONTRALATERAL LIMB EXTENDS (support weight). Crossed interneurons coordinate both sides simultaneously."
+          "definition": "Painful stimulus → IPSILATERAL LIMB FLEXES (withdraw) + CONTRALATERAL LIMB EXTENDS (support weight). Crossed interneurons coordinate both sides simultaneously.",
+          "clinicalTieIn": "Understanding withdrawal and crossed extension reflexes aids in evaluating spinal cord integrity following injury."
         },
         {
           "term": "Dermatome",
-          "definition": "Area of SKIN innervated by sensory fibers of ONE spinal nerve/segment. Used to localize nerve root damage (shingles, spinal injury). C6 = thumb, L4 = medial leg, S1 = lateral foot."
+          "definition": "Area of SKIN innervated by sensory fibers of ONE spinal nerve/segment. Used to localize nerve root damage (shingles, spinal injury). C6 = thumb, L4 = medial leg, S1 = lateral foot.",
+          "clinicalTieIn": "Dermatome knowledge assists in localizing nerve root damage and diagnosing conditions like shingles or radiculopathy."
         },
         {
           "term": "Autonomic NS Organization",
-          "definition": "Preganglionic neuron (CNS) → ganglion → postganglionic neuron → effector (2-neuron chain). Sympathetic: thoracolumbar (T1–L2). Parasympathetic: craniosacral (CN III,VII,IX,X + S2–S4)."
+          "definition": "Preganglionic neuron (CNS) → ganglion → postganglionic neuron → effector (2-neuron chain). Sympathetic: thoracolumbar (T1–L2). Parasympathetic: craniosacral (CN III,VII,IX,X + S2–S4).",
+          "clinicalTieIn": "Understanding autonomic NS organization is crucial for managing autonomic dysfunctions in conditions like spinal cord injuries."
         },
         {
           "term": "Preganglionic vs Postganglionic",
-          "definition": "Preganglionic: cell body in CNS, MYELINATED axon, NT = ACh (always). Postganglionic: cell body in ganglion, UNMYELINATED, NT = NE (sympathetic) or ACh (parasympathetic)."
+          "definition": "Preganglionic: cell body in CNS, MYELINATED axon, NT = ACh (always). Postganglionic: cell body in ganglion, UNMYELINATED, NT = NE (sympathetic) or ACh (parasympathetic).",
+          "clinicalTieIn": "Differentiating preganglionic and postganglionic neurons is vital for pharmacological management of autonomic disorders."
         },
         {
           "term": "Conus Medullaris",
-          "definition": "Tapered END of spinal cord at L1–L2 in adults. Below it = only cauda equina in vertebral canal. Lumbar punctures done BELOW L2 to avoid spinal cord damage."
+          "definition": "Tapered END of spinal cord at L1–L2 in adults. Below it = only cauda equina in vertebral canal. Lumbar punctures done BELOW L2 to avoid spinal cord damage.",
+          "clinicalTieIn": "Recognizing the conus medullaris location is important for safely performing lumbar punctures and diagnosing tethered cord syndrome."
         },
         {
           "term": "Cauda Equina",
-          "definition": "Bundle of spinal nerve ROOTS (L2–Co) below the conus medullaris. Named for horse-tail appearance. Cauda equina syndrome (compression) = bowel/bladder loss, saddle anesthesia — surgical emergency."
+          "definition": "Bundle of spinal nerve ROOTS (L2–Co) below the conus medullaris. Named for horse-tail appearance. Cauda equina syndrome (compression) = bowel/bladder loss, saddle anesthesia — surgical emergency.",
+          "clinicalTieIn": "Knowledge of cauda equina anatomy is crucial for identifying cauda equina syndrome, a surgical emergency."
         },
         {
           "term": "Filum Terminale",
-          "definition": "Thin strand of PIA MATER extending from conus medullaris to coccyx. ANCHORS and stabilizes spinal cord. Tethered cord syndrome = abnormally short/thick filum."
+          "definition": "Thin strand of PIA MATER extending from conus medullaris to coccyx. ANCHORS and stabilizes spinal cord. Tethered cord syndrome = abnormally short/thick filum.",
+          "clinicalTieIn": "Understanding the filum terminale's role is important for diagnosing tethered cord syndrome and planning surgical interventions."
         },
         {
           "term": "Gray vs White Rami Communicantes",
-          "definition": "White rami: PREGANGLIONIC myelinated sympathetic fibers FROM spinal cord TO sympathetic chain (white = myelin). Gray rami: POSTGANGLIONIC unmyelinated fibers FROM chain BACK to spinal nerve to body wall."
+          "definition": "White rami: PREGANGLIONIC myelinated sympathetic fibers FROM spinal cord TO sympathetic chain (white = myelin). Gray rami: POSTGANGLIONIC unmyelinated fibers FROM chain BACK to spinal nerve to body wall.",
+          "clinicalTieIn": "Differentiating gray and white rami communicantes is essential for understanding sympathetic nervous system pathways and dysfunctions."
         }
       ]
     },
@@ -3998,83 +4234,103 @@ export const anatomyCourse: Course = {
       "flashcards": [
         {
           "term": "Cerebral Lobes & Functions",
-          "definition": "Frontal: executive function, motor cortex, Broca's (speech production). Parietal: sensory integration, body position. Temporal: hearing, memory, Wernicke's (speech comprehension). Occipital: vision."
+          "definition": "Frontal: executive function, motor cortex, Broca's (speech production). Parietal: sensory integration, body position. Temporal: hearing, memory, Wernicke's (speech comprehension). Occipital: vision.",
+          "clinicalTieIn": "Understanding cerebral lobe functions aids in assessing stroke patients for specific deficits like speech or sensory loss."
         },
         {
           "term": "Thalamus",
-          "definition": "SENSORY RELAY STATION. ALL sensory info (except olfaction) passes through thalamus before reaching cortex. Gateway to conscious awareness. Also involved in motor function, consciousness, sleep."
+          "definition": "SENSORY RELAY STATION. ALL sensory info (except olfaction) passes through thalamus before reaching cortex. Gateway to conscious awareness. Also involved in motor function, consciousness, sleep.",
+          "clinicalTieIn": "Recognizing thalamic function is crucial for evaluating altered sensory pathways in conditions like thalamic pain syndrome."
         },
         {
           "term": "Hypothalamus",
-          "definition": "HOMEOSTASIS master. Controls: temperature (thermostat), hunger, thirst, circadian rhythms, emotion, stress response. Controls PITUITARY via infundibulum (pituitary stalk). Links NS to endocrine system."
+          "definition": "HOMEOSTASIS master. Controls: temperature (thermostat), hunger, thirst, circadian rhythms, emotion, stress response. Controls PITUITARY via infundibulum (pituitary stalk). Links NS to endocrine system.",
+          "clinicalTieIn": "Monitoring hypothalamic function helps manage patients with thermoregulation issues or endocrine disorders like diabetes insipidus."
         },
         {
           "term": "Cerebellum",
-          "definition": "COORDINATION, BALANCE, POSTURE, motor learning. Compares intended vs actual movement → sends error correction to motor cortex. Damage → ATAXIA, intention tremor, dysmetria."
+          "definition": "COORDINATION, BALANCE, POSTURE, motor learning. Compares intended vs actual movement → sends error correction to motor cortex. Damage → ATAXIA, intention tremor, dysmetria.",
+          "clinicalTieIn": "Assessing cerebellar function is vital for identifying ataxia or coordination issues in patients with neurological disorders."
         },
         {
           "term": "Brainstem",
-          "definition": "Midbrain (CN III,IV; substantia nigra) + Pons (CN V,VI,VII,VIII; breathing) + Medulla (CN IX,X,XI,XII; cardiovascular/respiratory centers; pyramidal decussation). Controls vital functions."
+          "definition": "Midbrain (CN III,IV; substantia nigra) + Pons (CN V,VI,VII,VIII; breathing) + Medulla (CN IX,X,XI,XII; cardiovascular/respiratory centers; pyramidal decussation). Controls vital functions.",
+          "clinicalTieIn": "Brainstem assessment is critical for evaluating vital functions like breathing and consciousness in trauma or stroke patients."
         },
         {
           "term": "Meninges — 3 Layers",
-          "definition": "DURA MATER (tough fibrous outer layer) → ARACHNOID MATER (middle, web-like) → PIA MATER (thin, adheres to brain). PAD from inside out. Subarachnoid space between arachnoid and pia = contains CSF."
+          "definition": "DURA MATER (tough fibrous outer layer) → ARACHNOID MATER (middle, web-like) → PIA MATER (thin, adheres to brain). PAD from inside out. Subarachnoid space between arachnoid and pia = contains CSF.",
+          "clinicalTieIn": "Knowledge of meninges is essential when evaluating for signs of meningitis, such as nuchal rigidity or photophobia."
         },
         {
           "term": "CSF Production & Circulation",
-          "definition": "Choroid plexus PRODUCES CSF in ventricles → lateral → third → cerebral aqueduct → fourth ventricle → subarachnoid space → ARACHNOID GRANULATIONS reabsorb into dural sinuses → blood. Blockage = hydrocephalus."
+          "definition": "Choroid plexus PRODUCES CSF in ventricles → lateral → third → cerebral aqueduct → fourth ventricle → subarachnoid space → ARACHNOID GRANULATIONS reabsorb into dural sinuses → blood. Blockage = hydrocephalus.",
+          "clinicalTieIn": "Understanding CSF flow is crucial for recognizing hydrocephalus symptoms, such as increased intracranial pressure or headache."
         },
         {
           "term": "Blood-Brain Barrier (BBB)",
-          "definition": "TIGHT JUNCTIONS between brain capillary endothelial cells + ASTROCYTE end-feet. Selectively restricts passage. Allows: O₂, CO₂, glucose, lipid-soluble molecules. Blocks: large molecules, most drugs, pathogens."
+          "definition": "TIGHT JUNCTIONS between brain capillary endothelial cells + ASTROCYTE end-feet. Selectively restricts passage. Allows: O₂, CO₂, glucose, lipid-soluble molecules. Blocks: large molecules, most drugs, pathogens.",
+          "clinicalTieIn": "Recognizing the blood-brain barrier's role is important when administering drugs that need CNS penetration for conditions like meningitis."
         },
         {
           "term": "Basal Nuclei",
-          "definition": "Regulate INITIATION and SMOOTHNESS of voluntary movement. Suppress unwanted movements. Modulate motor cortex via thalamus. DOPAMINE pathway crucial. Parkinson's = ↓dopamine → rigidity/tremor/bradykinesia."
+          "definition": "Regulate INITIATION and SMOOTHNESS of voluntary movement. Suppress unwanted movements. Modulate motor cortex via thalamus. DOPAMINE pathway crucial. Parkinson's = ↓dopamine → rigidity/tremor/bradykinesia.",
+          "clinicalTieIn": "Assessing basal nuclei function helps identify movement disorders like Parkinson's disease, characterized by tremors or bradykinesia."
         },
         {
           "term": "Limbic System",
-          "definition": "EMOTION and MEMORY. Hippocampus (memory consolidation), Amygdala (fear, emotional responses), Cingulate gyrus. Directly linked to olfaction — why smells trigger emotional memories."
+          "definition": "EMOTION and MEMORY. Hippocampus (memory consolidation), Amygdala (fear, emotional responses), Cingulate gyrus. Directly linked to olfaction — why smells trigger emotional memories.",
+          "clinicalTieIn": "Understanding the limbic system aids in managing patients with mood disorders or PTSD, focusing on emotional regulation."
         },
         {
           "term": "12 Cranial Nerves (Name + Function)",
-          "definition": "I-Olfactory(S), II-Optic(S), III-Oculomotor(M), IV-Trochlear(M), V-Trigeminal(B), VI-Abducens(M), VII-Facial(B), VIII-Vestibulocochlear(S), IX-Glossopharyngeal(B), X-Vagus(B), XI-Accessory(M), XII-Hypoglossal(M). Some Say Marry Money But My Brother Says Big Brains Matter More."
+          "definition": "I-Olfactory(S), II-Optic(S), III-Oculomotor(M), IV-Trochlear(M), V-Trigeminal(B), VI-Abducens(M), VII-Facial(B), VIII-Vestibulocochlear(S), IX-Glossopharyngeal(B), X-Vagus(B), XI-Accessory(M), XII-Hypoglossal(M). Some Say Marry Money But My Brother Says Big Brains Matter More.",
+          "clinicalTieIn": "Knowledge of cranial nerves is essential for performing a thorough neurological assessment and identifying deficits like anosmia or diplopia."
         },
         {
           "term": "CN VII (Facial) — Clinical",
-          "definition": "MIXED. Motor = facial EXPRESSION muscles. Parasympathetic = lacrimal + salivary glands. Sensory = TASTE anterior 2/3 tongue. BELL'S PALSY = CN VII damage → unilateral facial paralysis, dry eye, taste loss."
+          "definition": "MIXED. Motor = facial EXPRESSION muscles. Parasympathetic = lacrimal + salivary glands. Sensory = TASTE anterior 2/3 tongue. BELL'S PALSY = CN VII damage → unilateral facial paralysis, dry eye, taste loss.",
+          "clinicalTieIn": "Assessing CN VII function is crucial for diagnosing Bell's palsy, characterized by facial asymmetry and loss of taste."
         },
         {
           "term": "CN X (Vagus)",
-          "definition": "WANDERER — widest distribution. Parasympathetic: ↓HR, ↑GI motility, bronchoconstriction. Sensory: viscera. Controls swallowing, speaking, cough reflex. Vagal maneuvers ↓HR. Damage → hoarseness, dysphagia."
+          "definition": "WANDERER — widest distribution. Parasympathetic: ↓HR, ↑GI motility, bronchoconstriction. Sensory: viscera. Controls swallowing, speaking, cough reflex. Vagal maneuvers ↓HR. Damage → hoarseness, dysphagia.",
+          "clinicalTieIn": "Monitoring CN X function is vital for managing patients with dysphagia or autonomic dysfunction affecting heart rate or digestion."
         },
         {
           "term": "CN III (Oculomotor) — Clinical",
-          "definition": "MOTOR. Eye movement (medial/superior/inferior rectus, inferior oblique), eyelid elevation, PUPIL CONSTRICTION (parasympathetic). CN III palsy → ptosis, 'down and out' eye, DILATED PUPIL = sign of uncal herniation."
+          "definition": "MOTOR. Eye movement (medial/superior/inferior rectus, inferior oblique), eyelid elevation, PUPIL CONSTRICTION (parasympathetic). CN III palsy → ptosis, 'down and out' eye, DILATED PUPIL = sign of uncal herniation.",
+          "clinicalTieIn": "Evaluating CN III function helps identify oculomotor nerve palsy, presenting as ptosis or pupil dilation."
         },
         {
           "term": "CN XII (Hypoglossal) — Clinical",
-          "definition": "MOTOR — all TONGUE muscles. Tongue deviates TOWARD LESION SIDE when protruded (ipsilateral deviation). Damage → dysarthria, dysphagia. Important in stroke assessment."
+          "definition": "MOTOR — all TONGUE muscles. Tongue deviates TOWARD LESION SIDE when protruded (ipsilateral deviation). Damage → dysarthria, dysphagia. Important in stroke assessment.",
+          "clinicalTieIn": "Assessing CN XII function is important for diagnosing hypoglossal nerve damage, indicated by tongue deviation and dysarthria."
         },
         {
           "term": "Dural Folds",
-          "definition": "Dura mater extensions: FALX CEREBRI (separates cerebral hemispheres), TENTORIUM CEREBELLI (separates cerebrum above from cerebellum below), FALX CEREBELLI (separates cerebellar hemispheres), DIAPHRAGMA SELLAE (covers pituitary)."
+          "definition": "Dura mater extensions: FALX CEREBRI (separates cerebral hemispheres), TENTORIUM CEREBELLI (separates cerebrum above from cerebellum below), FALX CEREBELLI (separates cerebellar hemispheres), DIAPHRAGMA SELLAE (covers pituitary).",
+          "clinicalTieIn": "Understanding dural folds is crucial for recognizing complications like subdural hematomas in head trauma patients."
         },
         {
           "term": "Choroid Plexus",
-          "definition": "Specialized capillaries + modified ependymal cells in the VENTRICLES. PRODUCES CSF (~500 mL/day; ~150 mL circulating). Found in lateral, third, and fourth ventricles."
+          "definition": "Specialized capillaries + modified ependymal cells in the VENTRICLES. PRODUCES CSF (~500 mL/day; ~150 mL circulating). Found in lateral, third, and fourth ventricles.",
+          "clinicalTieIn": "Knowledge of the choroid plexus is essential for understanding CSF production and potential hydrocephalus management."
         },
         {
           "term": "Circle of Willis",
-          "definition": "Arterial anastomosis at base of brain formed by internal carotid arteries + basilar artery (from vertebral arteries). Provides COLLATERAL CIRCULATION if one vessel is blocked. Reduces risk of total infarction from single vessel occlusion."
+          "definition": "Arterial anastomosis at base of brain formed by internal carotid arteries + basilar artery (from vertebral arteries). Provides COLLATERAL CIRCULATION if one vessel is blocked. Reduces risk of total infarction from single vessel occlusion.",
+          "clinicalTieIn": "Recognizing the Circle of Willis is important for understanding collateral circulation in cases of cerebral artery occlusion."
         },
         {
           "term": "Broca's vs Wernicke's Aphasia",
-          "definition": "Broca's (frontal lobe): EXPRESSIVE aphasia — understands language but CANNOT PRODUCE fluent speech. Wernicke's (temporal lobe): RECEPTIVE aphasia — speaks fluently but words don't make sense, CANNOT UNDERSTAND language."
+          "definition": "Broca's (frontal lobe): EXPRESSIVE aphasia — understands language but CANNOT PRODUCE fluent speech. Wernicke's (temporal lobe): RECEPTIVE aphasia — speaks fluently but words don't make sense, CANNOT UNDERSTAND language.",
+          "clinicalTieIn": "Differentiating Broca's from Wernicke's aphasia helps in assessing language deficits and planning appropriate speech therapy interventions."
         },
         {
           "term": "Foramen Magnum",
-          "definition": "Large opening in occipital bone where BRAINSTEM (medulla) transitions to SPINAL CORD. Also transmits vertebral arteries and CN XI. Tonsillar herniation here → compresses vital centers → RESPIRATORY ARREST."
+          "definition": "Large opening in occipital bone where BRAINSTEM (medulla) transitions to SPINAL CORD. Also transmits vertebral arteries and CN XI. Tonsillar herniation here → compresses vital centers → RESPIRATORY ARREST.",
+          "clinicalTieIn": "Understanding the foramen magnum is crucial for recognizing signs of brain herniation in increased intracranial pressure emergencies."
         }
       ]
     }

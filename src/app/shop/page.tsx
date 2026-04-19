@@ -17,6 +17,7 @@ import {
   getShopProducts,
   getShopCategories,
   getShopProductBySlug,
+  PHYSICAL_KITS,
   type ShopProduct,
 } from "@/lib/shop/products";
 import { SHOP_BADGE_MAP, SHOP_OUTCOME_MAP } from "@/lib/shop/shop-marketing";
@@ -190,6 +191,61 @@ export default function ShopPage() {
       </section>
 
       {growthSystemProduct ? <GrowthSystemShowcase product={growthSystemProduct} /> : null}
+
+      {/* PHYSICAL KITS */}
+      <section className="border-b border-white/10 bg-[#111] py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-10 flex flex-col items-start gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#D4537E]">
+                Ships to your door
+              </p>
+              <h2 className="mt-2 font-serif text-2xl font-bold sm:text-3xl">
+                Physical Study &amp; Clinical Kits
+              </h2>
+              <p className="mt-2 text-sm text-gray-400">
+                Printed notebooks, flashcard decks, and clinical reference cards — delivered in 3–5 business days.
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {PHYSICAL_KITS.map((kit) => (
+              <div
+                key={kit.slug}
+                className="flex flex-col rounded-2xl border border-white/10 bg-[#1a1a1a] p-6 transition hover:border-[#D4537E]/40"
+              >
+                <div className="mb-4 flex items-start justify-between gap-3">
+                  <h3 className="text-base font-bold leading-snug">{kit.title}</h3>
+                  <span className="shrink-0 rounded-full bg-[#D4537E]/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#D4537E]">
+                    Ships to door
+                  </span>
+                </div>
+                <p className="mb-4 text-sm text-gray-400">{kit.description}</p>
+                <ul className="mb-6 flex-1 space-y-1.5">
+                  {kit.includes.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-gray-300">
+                      <span className="mt-0.5 shrink-0 text-[#D4537E]">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto flex items-center justify-between gap-4 border-t border-white/10 pt-4">
+                  <div>
+                    <p className="text-xl font-bold">${(kit.priceCents / 100).toFixed(0)}</p>
+                    <p className="text-xs text-gray-500">Ships in 3–5 business days via Printify</p>
+                  </div>
+                  <Link
+                    href={`/shop/${kit.slug}`}
+                    className="rounded-xl bg-[#D4537E] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#D4537E]/80"
+                  >
+                    Order Now
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CATEGORY NAV */}
       <section className="sticky top-14 z-30 border-b border-white/10 bg-[#1A1A1A]/95 backdrop-blur supports-[backdrop-filter]:bg-[#1A1A1A]/90">

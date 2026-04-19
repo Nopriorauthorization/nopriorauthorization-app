@@ -171,6 +171,72 @@ async function persistCheckoutAttemptAfterPayment(opts: {
   }
 }
 
+async function fetchSquareOrderShipping(
+  orderId: string,
+): Promise<import("@/lib/printify/submit-order").PrintifyShippingAddressInput | null> {
+  const token = process.env.SQUARE_ACCESS_TOKEN?.trim();
+  if (!token || !orderId) return null;
+  try {
+    const res = await fetch(
+      `https://connect.squareup.com/v2/orders/${encodeURIComponent(orderId)}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          "Square-Version": "2026-01-22",
+        },
+      },
+    );
+    if (!res.ok) {
+      console.warn(`[square-webhook] Orders API ${res.status} for order ${orderId}`);
+      return null;
+    }
+    const json = (await res.json()) as {
+      order?: {
+        fulfillments?: Array<{
+          shipment_details?: {
+            recipient?: {
+              display_name?: string;
+              email_address?: string;
+              phone_number?: string;
+              address?: {
+                address_line_1?: string;
+                address_line_2?: string;
+                locality?: string;
+                administrative_district_level_1?: string;
+                postal_code?: string;
+                country?: string;
+                first_name?: string;
+                last_name?: string;
+              };
+            };
+          };
+        }>;
+      };
+    };
+    const addr =
+      json.order?.fulfillments?.[0]?.shipment_details?.recipient;
+    if (!addr?.address) return null;
+    const a = addr.address;
+    if (!a.address_line_1 || !a.locality || !a.postal_code || !a.country) return null;
+    return {
+      firstName: a.first_name || addr.display_name?.split(" ")[0] || undefined,
+      lastName: a.last_name || addr.display_name?.split(" ").slice(1).join(" ") || undefined,
+      email: addr.email_address || "",
+      phone: addr.phone_number || undefined,
+      address1: a.address_line_1,
+      address2: a.address_line_2 || undefined,
+      city: a.locality,
+      region: a.administrative_district_level_1 || undefined,
+      zip: a.postal_code,
+      country: a.country || "US",
+    };
+  } catch (e) {
+    console.warn(`[square-webhook] fetchSquareOrderShipping error for ${orderId}:`, e);
+    return null;
+  }
+}
+
 async function handlePaymentCompleted(event: Record<string, unknown>) {
   const payment = extractPaymentFromEvent(event);
 
@@ -278,13 +344,21 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
     }
   }
 
-  const { getVirtualDeliveryProductTitle, getDeliveryProductBySlug } = await import(
-    "@/lib/delivery/catalog"
-  );
+  const {
+    getVirtualDeliveryProductTitle,
+    getDeliveryProductBySlug,
+    getFulfillmentTypeForProductSlug,
+  } = await import("@/lib/delivery/catalog");
   const { getShopProductBySlug } = await import("@/lib/shop/products");
   const { issueDeliveryToken } = await import("@/lib/delivery/token");
   const { sendEmail } = await import("@/lib/email");
   const { generateDeliveryEmail } = await import("@/lib/email/delivery-email");
+  const { tryParseSquarePaymentShipping, trySquarePaymentBuyerName } = await import(
+    "@/lib/printify/square-shipping"
+  );
+  const { recordPhysicalPurchaseAndFulfillPrintify, recordPhysicalKitPurchasePending } =
+    await import("@/lib/printify/fulfill-after-purchase");
+  const { isPhysicalKitBundleSlug } = await import("@/lib/printify/products");
 
   const origin = process.env.NEXTAUTH_URL || "https://nopriorauthorization.com";
 
@@ -303,6 +377,61 @@ async function handlePaymentCompleted(event: Record<string, unknown>) {
     if (shopProduct) productTitle = shopProduct.title;
 
     const shareCents = centsBySlug.get(productSlug) ?? 0;
+
+    if (getFulfillmentTypeForProductSlug(productSlug) === "physical") {
+      const pay = payment as Record<string, unknown>;
+      let shipping = tryParseSquarePaymentShipping(pay, email, null);
+
+      if (!shipping) {
+        const orderId = String(payment.order_id || "");
+        if (orderId) {
+          shipping = await fetchSquareOrderShipping(orderId);
+          if (!shipping) {
+            console.warn(
+              `[square-webhook] Could not fetch shipping for order ${orderId} — pending fulfillment`,
+            );
+          }
+        }
+      }
+
+      try {
+        if (isPhysicalKitBundleSlug(productSlug)) {
+          await recordPhysicalKitPurchasePending({
+            stripeSessionId: sessionId,
+            stripePaymentId: paymentId,
+            customerEmail: email,
+            customerName: trySquarePaymentBuyerName(pay),
+            productSlug,
+            productTitle,
+            amountPaid: shareCents,
+            shipping,
+            paymentProvider: "square",
+          });
+          console.log(
+            `[square/webhook] Physical kit pending for ${productSlug} → ${email}`,
+          );
+        } else {
+          await recordPhysicalPurchaseAndFulfillPrintify({
+            stripeSessionId: sessionId,
+            stripePaymentId: paymentId,
+            customerEmail: email,
+            customerName: trySquarePaymentBuyerName(pay),
+            productSlug,
+            productTitle,
+            amountPaid: shareCents,
+            shipping,
+            paymentProvider: "square",
+          });
+          console.log(
+            `[square/webhook] Physical / Printify flow for ${productSlug} → ${email}`,
+          );
+        }
+      } catch (e) {
+        console.error("[square/webhook] Physical fulfillment error:", e);
+      }
+      continue;
+    }
+
     const token = issueDeliveryToken({
       productSlug,
       buyerEmail: email,

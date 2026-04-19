@@ -155,6 +155,11 @@ const CATEGORY_MAP: Record<string, string> = {
   "glp1-story-templates": "Social Media",
   "31-day-social-media-content-calendar": "Social Media",
   "peptide-canva-marketing-pack": "Social Media",
+  "ap-survival-kit": "Physical Kits",
+  "micro-270-kit": "Physical Kits",
+  "pre-nursing-bundle": "Physical Kits",
+  "nurse-injector-clinical-kit": "Physical Kits",
+  "give-me-everything-kit": "Physical Kits",
 };
 
 const PRICE_MAP: Record<string, number> = {
@@ -265,6 +270,11 @@ const PRICE_MAP: Record<string, number> = {
   "micro270-bank-ai-bundle": 6700,
   "micro270-full-access": 9700,
   "anatomy-physiology-study-complete": 3900,
+  "ap-survival-kit": 4999,
+  "micro-270-kit": 4999,
+  "pre-nursing-bundle": 8999,
+  "nurse-injector-clinical-kit": 7999,
+  "give-me-everything-kit": 14999,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -324,6 +334,78 @@ const AUDIENCE_MAP: Record<string, string[]> = {
     "Anyone who wants professor-style practice questions with explanations",
   ],
 };
+
+export type PhysicalKitProduct = {
+  slug: string;
+  title: string;
+  description: string;
+  priceCents: number;
+  includes: string[];
+};
+
+export const PHYSICAL_KITS: PhysicalKitProduct[] = [
+  {
+    slug: "ap-survival-kit",
+    title: "The A&P Survival Kit",
+    description: "A&P Cheat Sheet Spiral Notebook + 240-Card Flashcard Deck + Digital Access",
+    priceCents: 4999,
+    includes: [
+      "A&P Cheat Sheet Spiral Notebook (128 pages, ruled)",
+      "A&P Flashcard Deck (240 cards, clinical tie-ins)",
+      "Digital access to A&P Study Hub",
+    ],
+  },
+  {
+    slug: "micro-270-kit",
+    title: "The Micro 270 Kit",
+    description: "Micro 270 Notebook + 1,000 Q&A Flashcard Deck + Digital Access",
+    priceCents: 4999,
+    includes: [
+      "Micro 270 Study Notebook (128 pages, ruled)",
+      "Micro 270 Flashcard Deck (1,000 Q&A cards)",
+      "Digital access to Micro 270 Study Hub",
+    ],
+  },
+  {
+    slug: "pre-nursing-bundle",
+    title: "The Pre-Nursing Complete Bundle",
+    description: "All 4 physical products + Full Digital Access",
+    priceCents: 8999,
+    includes: [
+      "A&P Spiral Notebook",
+      "A&P Flashcard Deck (240 cards)",
+      "Micro 270 Notebook",
+      "Micro 270 Flashcard Deck (1,000 cards)",
+      "Digital access to both study hubs",
+    ],
+  },
+  {
+    slug: "nurse-injector-clinical-kit",
+    title: "The Nurse Injector Clinical Kit",
+    description: "Reference Cards + Cheat Sheets + Consent Templates + Digital Access",
+    priceCents: 7999,
+    includes: [
+      "Botox Dosing Reference Cards (business card size)",
+      "GLP-1 / Peptide Clinical Cheat Sheet booklet",
+      "Consent form templates (print-ready)",
+      "Digital access to NPA clinical library",
+    ],
+  },
+  {
+    slug: "give-me-everything-kit",
+    title: '"Give Me Everything" Kit',
+    description: "Every NPA physical product + Full Digital Library Access",
+    priceCents: 14999,
+    includes: [
+      "A&P Spiral Notebook",
+      "A&P Flashcard Deck",
+      "Micro 270 Notebook",
+      "Micro 270 Flashcard Deck",
+      "Nurse Injector Reference Cards",
+      "Full digital access to NPA library",
+    ],
+  },
+];
 
 /** Map from slug to the asset subdirectory name in etsy-products/store-launch/assets/ */
 const ASSET_DIR_MAP: Record<string, string> = {
@@ -758,7 +840,31 @@ export function getShopProducts(): ShopProduct[] {
     _products.push(anatomy);
   }
 
-  const PIN_FIRST = [HELLO_GORGEOUS_BOOK_SLUG, GROWTH_SYSTEM_SLUG];
+  for (const kit of PHYSICAL_KITS) {
+    if (_products.some((p) => p.slug === kit.slug)) continue;
+    const kitProduct: ShopProduct = {
+      slug: kit.slug,
+      title: kit.title,
+      shortDescription: kit.description,
+      longDescription: `${kit.description}\n\nShips to your door via Printify print-on-demand. Estimated delivery 3–5 business days after order.\n\nIncludes: ${kit.includes.join(", ")}.`,
+      priceCents: kit.priceCents,
+      priceDisplay: formatPrice(kit.priceCents),
+      templateCount: kit.includes.length,
+      category: "Physical Kits",
+      features: [
+        ...kit.includes,
+        "Ships in 3–5 business days",
+        "Printed and shipped via Printify",
+      ],
+      featured: false,
+      stripePriceId: null,
+      previewImages: ["/shop-previews/default/default-thumbnail.png"],
+      audience: ["Nursing students", "Nurse injectors", "Aesthetic providers"],
+    };
+    _products.push(kitProduct);
+  }
+
+  const PIN_FIRST: string[] = [HELLO_GORGEOUS_BOOK_SLUG, GROWTH_SYSTEM_SLUG];
   const pinRank = (slug: string) => {
     const i = PIN_FIRST.indexOf(slug);
     return i === -1 ? 999 : i;

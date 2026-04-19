@@ -15,6 +15,7 @@ import {
 import { STUDY_GUIDE_NCLEX, STUDY_GUIDE_NCLEX_TEMPLATES } from "@/config/study-guides.config";
 import catalog from "@/lib/delivery/catalog.generated.json";
 import prisma from "@/lib/db";
+import { isPrintifyPhysicalSku } from "@/lib/printify/products";
 
 function resolveDeliveryProductSlug(productSlug: string): string {
   return DELIVERY_PRODUCT_SLUG_ALIASES[productSlug] || productSlug;
@@ -33,6 +34,8 @@ export type DeliveryProduct = {
   productTitle: string;
   templateCount: number;
   templates: DeliveryTemplateLink[];
+  /** When `physical`, checkout should route fulfillment to Printify (with SKU + inventory). */
+  fulfillmentType?: "digital" | "physical";
 };
 
 /** Token delivery for products not listed in `catalog.generated.json` (e.g. study guides). */
@@ -168,6 +171,18 @@ export function getDeliveryProductBySlug(
     getDeliveryProducts().find((product) => product.productSlug === resolved) ||
     null
   );
+}
+
+export function getFulfillmentTypeForProductSlug(
+  productSlug: string,
+): "digital" | "physical" {
+  const resolved = resolveDeliveryProductSlug(productSlug);
+  const row = getDeliveryProductBySlug(productSlug);
+  if (row?.fulfillmentType === "physical") return "physical";
+  if (isPrintifyPhysicalSku(resolved) || isPrintifyPhysicalSku(productSlug)) {
+    return "physical";
+  }
+  return "digital";
 }
 
 export function getDeliveryCatalogGeneratedAt(): string | null {

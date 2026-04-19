@@ -106,11 +106,16 @@ export default function LectureFlashcards({
             </p>
           </div>
           <div
-            className="absolute inset-0 flex items-center justify-center rounded-xl border border-[#FF69B4]/40 bg-gray-950 p-6 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+            className="absolute inset-0 flex flex-col items-center justify-center rounded-xl border border-[#FF69B4]/40 bg-gray-950 p-6 [backface-visibility:hidden] [transform:rotateY(180deg)]"
           >
             <p className="text-center text-base leading-relaxed text-gray-200 md:text-lg">
               {card.definition}
             </p>
+            {card.clinicalTieIn && (
+              <p className="mt-4 text-center text-xs leading-relaxed text-[#FF69B4]/80 border-t border-gray-800 pt-3 w-full">
+                🩺 {card.clinicalTieIn}
+              </p>
+            )}
           </div>
         </div>
       </button>

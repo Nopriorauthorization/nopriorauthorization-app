@@ -146,7 +146,22 @@ Use **HTTPS** only. Request bodies should use **UTF-8** (e.g. `Content-Type: app
 - Read Etsy’s API / developer terms and rate limits.
 - For this codebase, wiring real routes (e.g. `/api/etsy/callback`) is a separate step once credentials exist.
 
-## 7. Links
+## 7. Batch digital publisher (this repo)
+
+After OAuth works and migrations include `EtsyListingSync`:
+
+| Command | Purpose |
+|---------|---------|
+| `pnpm etsy:smoke` | Read-only: one active listing page (token + shop + key). |
+| `pnpm etsy:verify-write` | `listings_r` GET + `listings_w` create **disposable draft** (delete in Shop Manager). |
+| `pnpm etsy:verify-e2e` | Full pipeline for **one** test product (draft → image → file → type → optional `--publish`). Writes `EtsyListingSync`. |
+| `pnpm etsy:batch-publish -- etsy-products/your-table.json` | Processes a **single JSON table** with `defaults` + `products[]` (idempotent; skips rows already `active`). |
+
+Copy `etsy-products/batch-publish-table.example.json` and fill real copy + **PDF** paths for `digitalFilePath` (Etsy may reject non-PDF types).
+
+Pipeline and Etsy tutorial: [Listings tutorial](https://developer.etsy.com/documentation/tutorials/listings).
+
+## 8. Links
 
 - [Register a developer app](https://www.etsy.com/developers/register)
 - [Etsy Developers](https://developers.etsy.com/)

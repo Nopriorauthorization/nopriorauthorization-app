@@ -179,6 +179,25 @@ model Analytics {
   @@index([createdAt])
 }
 
+/// Etsy Open API listing sync (batch publisher + idempotency). One row per shop product slug.
+model EtsyListingSync {
+  id              String    @id @default(cuid())
+  productSlug     String    @unique
+  etsyListingId   Int?
+  /// pending | draft | has_image | has_file | type_download | active | failed
+  syncStatus      String    @default("pending")
+  lastError       String?   @db.Text
+  listingUrl      String?
+  idempotencyKey  String?   @unique
+  metadata        Json?
+  lastSyncedAt    DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([syncStatus])
+  @@index([etsyListingId])
+}
+
 model UserMemory {
   id                     String   @id @default(cuid())
   userId                 String?  @unique

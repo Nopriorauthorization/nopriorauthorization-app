@@ -1,7 +1,8 @@
 import type { DraftListingInput, EtsyListingResult } from "./types";
 import { EtsyServiceError } from "./types";
 
-const ETSY_BASE = "https://openapi.etsy.com/v3";
+/** Open API base — same host works for most v3 routes; override with `ETSY_API_BASE` if needed. */
+const DEFAULT_ETSY_BASE = "https://openapi.etsy.com/v3";
 
 type EtsyCredentials = {
   accessToken: string;
@@ -11,15 +12,16 @@ type EtsyCredentials = {
 };
 
 /**
- * Server-side Etsy API service for CLI / product pipeline.
+ * Server-side Etsy Open API v3 client (drafts, images, files, PATCH listing).
  *
- * Credentials resolved from:
- * - env (ETSY_ACCESS_TOKEN, ETSY_API_KEYSTRING, ETSY_API_SHARED_SECRET, ETSY_SHOP_ID)
- * - explicit constructor args
- * - DB token via tryLoadFromDb (optional async init)
+ * Credentials: `ETSY_ACCESS_TOKEN`, `ETSY_API_KEYSTRING`, `ETSY_API_SHARED_SECRET`, `ETSY_SHOP_ID`
+ * Optional: `ETSY_API_BASE` (default `https://openapi.etsy.com/v3`; Etsy documents `api.etsy.com` as equivalent).
+ *
+ * @see https://developer.etsy.com/documentation/tutorials/listings
  */
 export class EtsyService {
   private creds: EtsyCredentials;
+  private readonly baseUrl: string;
 
   constructor(creds?: Partial<EtsyCredentials>) {
     const accessToken =
@@ -51,13 +53,38 @@ export class EtsyService {
       apiSharedSecret,
       shopId,
     };
+    this.baseUrl = (
+      process.env.ETSY_API_BASE?.trim() || DEFAULT_ETSY_BASE
+    ).replace(/\/$/, "");
   }
 
-  private headers(): Record<string, string> {
+  private xApiKey(): string {
+    return `${this.creds.apiKeystring}:${this.creds.apiSharedSecret}`;
+  }
+
+  /** JSON POST/PATCH (create listing). */
+  private jsonHeaders(): Record<string, string> {
     return {
-      "x-api-key": `${this.creds.apiKeystring}:${this.creds.apiSharedSecret}`,
+      "x-api-key": this.xApiKey(),
       Authorization: `Bearer ${this.creds.accessToken}`,
       "Content-Type": "application/json",
+    };
+  }
+
+  /** Auth only (multipart — do not set Content-Type). */
+  private authHeaders(): Record<string, string> {
+    return {
+      "x-api-key": this.xApiKey(),
+      Authorization: `Bearer ${this.creds.accessToken}`,
+    };
+  }
+
+  /** application/x-www-form-urlencoded PATCH (updateListing). */
+  private formHeaders(): Record<string, string> {
+    return {
+      "x-api-key": this.xApiKey(),
+      Authorization: `Bearer ${this.creds.accessToken}`,
+      "Content-Type": "application/x-www-form-urlencoded",
     };
   }
 
@@ -66,9 +93,6 @@ export class EtsyService {
     console.log(`[${ts}] [etsy] ${msg}`);
   }
 
-  /**
-   * Validate listing input before API call.
-   */
   validateListingInput(input: DraftListingInput): string[] {
     const errors: string[] = [];
     if (!input.title?.trim()) errors.push("title is required");
@@ -85,7 +109,7 @@ export class EtsyService {
   }
 
   /**
-   * Create a draft listing on the connected Etsy shop.
+   * Create a draft listing (`listings_w`). Digital: `type: "download"`, `is_digital: true`.
    */
   async createDraftListing(
     input: DraftListingInput,
@@ -98,7 +122,7 @@ export class EtsyService {
       };
     }
 
-    const url = `${ETSY_BASE}/application/shops/${this.creds.shopId}/listings`;
+    const url = `${this.baseUrl}/application/shops/${this.creds.shopId}/listings`;
     const body = {
       quantity: input.quantity,
       title: input.title,
@@ -120,7 +144,7 @@ export class EtsyService {
     try {
       res = await fetch(url, {
         method: "POST",
-        headers: this.headers(),
+        headers: this.jsonHeaders(),
         body: JSON.stringify(body),
       });
     } catch (e) {
@@ -152,15 +176,157 @@ export class EtsyService {
     return {
       ok: false,
       httpStatus: res.status,
-      error: JSON.stringify(json).slice(0, 300),
+      error: JSON.stringify(json).slice(0, 800),
+    };
+  }
+
+  /**
+   * Upload a listing image (`listings_w`). Multipart field `image` + filename.
+   * @see https://developer.etsy.com/documentation/tutorials/listings#adding-an-image-to-a-listing
+   */
+  async uploadListingImage(
+    listingId: number,
+    imageBytes: Buffer,
+    filename: string,
+    rank?: number,
+  ): Promise<{ ok: true; raw: unknown } | { ok: false; error: string; httpStatus?: number }> {
+    const url = `${this.baseUrl}/application/shops/${this.creds.shopId}/listings/${listingId}/images`;
+    const form = new FormData();
+    const blob = new Blob([new Uint8Array(imageBytes)]);
+    form.append("image", blob, filename);
+    if (rank !== undefined) form.append("rank", String(rank));
+
+    this.log(`POST listing image listing_id=${listingId} file=${filename}`);
+    let res: Response;
+    try {
+      res = await fetch(url, {
+        method: "POST",
+        headers: this.authHeaders(),
+        body: form,
+      });
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      return { ok: false, error: `Network: ${msg}` };
+    }
+
+    const json = await res.json().catch(() => ({}));
+    if (res.ok) {
+      this.log(`  OK image upload`);
+      return { ok: true, raw: json };
+    }
+    return {
+      ok: false,
+      httpStatus: res.status,
+      error: JSON.stringify(json).slice(0, 800),
+    };
+  }
+
+  /**
+   * Upload a digital listing file (`listings_w`). Multipart field `file`.
+   * @see https://developer.etsy.com/documentation/tutorials/listings#listing-a-digital-product-for-sale
+   */
+  async uploadListingFile(
+    listingId: number,
+    fileBytes: Buffer,
+    filename: string,
+  ): Promise<{ ok: true; raw: unknown } | { ok: false; error: string; httpStatus?: number }> {
+    const url = `${this.baseUrl}/application/shops/${this.creds.shopId}/listings/${listingId}/files`;
+    const form = new FormData();
+    const blob = new Blob([new Uint8Array(fileBytes)]);
+    form.append("file", blob, filename);
+
+    this.log(`POST listing file listing_id=${listingId} file=${filename}`);
+    let res: Response;
+    try {
+      res = await fetch(url, {
+        method: "POST",
+        headers: this.authHeaders(),
+        body: form,
+      });
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      return { ok: false, error: `Network: ${msg}` };
+    }
+
+    const json = await res.json().catch(() => ({}));
+    if (res.ok) {
+      this.log(`  OK file upload`);
+      return { ok: true, raw: json };
+    }
+    return {
+      ok: false,
+      httpStatus: res.status,
+      error: JSON.stringify(json).slice(0, 800),
+    };
+  }
+
+  /**
+   * PATCH listing (partial update). Pass only fields to change, e.g. `{ type: "download" }`, `{ state: "active" }`.
+   */
+  async patchListing(
+    listingId: number,
+    fields: Record<string, string>,
+  ): Promise<{ ok: true; raw: unknown } | { ok: false; error: string; httpStatus?: number }> {
+    const url = `${this.baseUrl}/application/shops/${this.creds.shopId}/listings/${listingId}`;
+    const body = new URLSearchParams(fields);
+
+    this.log(`PATCH listing_id=${listingId} ${JSON.stringify(fields)}`);
+    let res: Response;
+    try {
+      res = await fetch(url, {
+        method: "PATCH",
+        headers: this.formHeaders(),
+        body: body.toString(),
+      });
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      return { ok: false, error: `Network: ${msg}` };
+    }
+
+    const json = await res.json().catch(() => ({}));
+    if (res.ok) {
+      this.log(`  OK patch`);
+      return { ok: true, raw: json };
+    }
+    return {
+      ok: false,
+      httpStatus: res.status,
+      error: JSON.stringify(json).slice(0, 800),
+    };
+  }
+
+  /** GET one page of active listings — smoke test for `listings_r`. */
+  async getActiveListingsPage(params?: {
+    limit?: number;
+    offset?: number;
+  }): Promise<{ ok: true; status: number; raw: unknown } | { ok: false; error: string; httpStatus?: number }> {
+    const limit = params?.limit ?? 1;
+    const offset = params?.offset ?? 0;
+    const url = new URL(
+      `${this.baseUrl}/application/shops/${encodeURIComponent(this.creds.shopId)}/listings/active`,
+    );
+    url.searchParams.set("limit", String(limit));
+    url.searchParams.set("offset", String(offset));
+
+    let res: Response;
+    try {
+      res = await fetch(url.toString(), {
+        method: "GET",
+        headers: this.authHeaders(),
+      });
+    } catch (e) {
+      return { ok: false, error: String(e), httpStatus: undefined };
+    }
+    const raw = await res.json().catch(() => ({}));
+    if (res.ok) return { ok: true, status: res.status, raw };
+    return {
+      ok: false,
+      httpStatus: res.status,
+      error: JSON.stringify(raw).slice(0, 500),
     };
   }
 }
 
-/**
- * Helper to attempt loading credentials from DB if env vars are missing.
- * Useful in scripts that run outside the Next.js server.
- */
 export async function tryLoadEtsyCredsFromDb(): Promise<
   Partial<{ accessToken: string; shopId: string }> | null
 > {

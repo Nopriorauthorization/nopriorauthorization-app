@@ -1,0 +1,32 @@
+{
+  "defaults": {
+    "taxonomyId": 2078,
+    "quantity": 999,
+    "publish": false,
+    "tags": [
+      "glp1",
+      "weight loss",
+      "canva template",
+      "instagram story",
+      "med spa",
+      "semaglutide",
+      "tirzepatide",
+      "digital download",
+      "patient education",
+      "clinic marketing",
+      "injectable",
+      "provider",
+      "template"
+    ]
+  },
+  "products": [
+    {
+      "productSlug": "glp1-story-templates",
+      "title": "GLP-1 Story Templates | 10 Canva Instagram Stories | Weight Loss Clinic Marketing",
+      "description": "PLACEHOLDER — paste final Etsy description here (plain text / minimal HTML per Etsy rules).",
+      "price": 29,
+      "imagePath": "public/shop-previews/weight-loss/etsy-wl-01-main-thumbnail.png",
+      "digitalFilePath": "etsy-products/store-launch/delivery/glp1-story-templates-etsy-delivery.html"
+    }
+  ]
+}

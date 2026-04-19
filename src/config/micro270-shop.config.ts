@@ -4,6 +4,8 @@
  */
 /** Printable chapter HTML (mirrors under /micro270/cheat-sheets/); upgrade path to full bank. */
 export const MICRO270_SHOP_SLUG_CHEATS = "micro270-chapter-cheat-sheets";
+/** One checkout: study PDF + full hub + printable chapters + unlimited AI cram (same access as “full access”). */
+export const MICRO270_SHOP_SLUG_FLAGSHIP = "micro270-complete-microbiology";
 export const MICRO270_SHOP_SLUG_BANK = "micro270-question-bank";
 export const MICRO270_SHOP_SLUG_BUNDLE = "micro270-bank-ai-bundle";
 export const MICRO270_SHOP_SLUG_FULL = "micro270-full-access";
@@ -21,6 +23,23 @@ export type Micro270ShopProductDef = {
 export function getMicro270ShopProductDefs(): Micro270ShopProductDef[] {
   return [
     {
+      slug: MICRO270_SHOP_SLUG_FLAGSHIP,
+      title: "Micro 270 — Complete Microbiology (everything in one)",
+      priceCents: 7900,
+      templateCount: 22,
+      shortDescription:
+        "Study guide PDF + full 1,000-question hub + printable chapter pack + unlimited AI cram — one Square checkout, one email.",
+      longDescription:
+        "The consolidated microbiology path on No Prior Authorization: download the complete study guide PDF (Micro 250 / exam prep), activate the full Micro 270 interactive hub (all 20 chapters, exam-trap flags, explanations), open every chapter as a printable page under /micro270/cheat-sheets/, and use the AI cram tool without generation limits (same entitlement as “Full access”). Personal study license — see /terms. Checkout via Square; delivery link by email.",
+      features: [
+        "Complete study guide PDF (download from delivery)",
+        "Full Micro 270 hub — 1,000 questions · 20 chapters",
+        "Printable chapter paths for every topic",
+        "Unlimited AI cram generations (per product terms)",
+        "Secure checkout via Square",
+      ],
+    },
+    {
       slug: MICRO270_SHOP_SLUG_CHEATS,
       title: "Micro 270 — Chapter cheat sheets (all 20 topics)",
       priceCents: 999,
@@ -28,7 +47,7 @@ export function getMicro270ShopProductDefs(): Micro270ShopProductDef[] {
       shortDescription:
         "Printable chapter layouts for every Micro 270 topic — perfect if you want visuals first, then upgrade to the full interactive bank later.",
       longDescription:
-        "Twenty chapter-aligned printable pages (same chapter HTML as the full bank, opened from a dedicated /cheat-sheets/ path after you activate). Use Print → Save as PDF for your binder. This tier does not include the AI cram tool. Upgrade anytime by purchasing Micro 270 — Complete Question Bank (you keep what you already bought; the bank unlocks hub + all chapters + explanations). Checkout is via Square; delivery link arrives by email.",
+        "Twenty chapter-aligned printable pages (same chapter HTML as the full bank, opened from a dedicated /cheat-sheets/ path after you activate). Use Print → Save as PDF for your binder. This tier does not include the AI cram tool. Upgrade anytime with Micro 270 — Complete Question Bank ($47) or get everything at once with Complete Microbiology ($79). Checkout is via Square; delivery link arrives by email.",
       features: [
         "All 20 chapter topics — print-friendly HTML from your browser",
         "Activate once per device (cookie) from your delivery email",

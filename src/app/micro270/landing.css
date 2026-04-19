@@ -82,7 +82,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 40px
 /* PRICING */
 .pricing-section{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 40px;}
 .pricing-inner{max-width:1000px;margin:0 auto;}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:36px;}
 .price-card{background:var(--bg);border:1.5px solid var(--border);border-radius:16px;padding:28px;text-align:center;position:relative;}
 .price-card.featured{background:var(--white);border-color:var(--pink);border-width:2px;}
 .price-popular{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--pink);color:#fff;font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap;letter-spacing:.5px;}

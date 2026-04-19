@@ -5,6 +5,7 @@ import {
   MICRO270_SHOP_SLUG_BANK,
   MICRO270_SHOP_SLUG_BUNDLE,
   MICRO270_SHOP_SLUG_CHEATS,
+  MICRO270_SHOP_SLUG_FLAGSHIP,
   MICRO270_SHOP_SLUG_FULL,
 } from "@/config/micro270-shop.config";
 
@@ -22,6 +23,8 @@ export const micro270PricingHref = "/micro270#pricing";
 
 /** Product detail pages — CheckoutButton → POST /api/shop/checkout → Square payment link. */
 export const micro270ShopCheckout = {
+  /** Study PDF + full hub + printable chapters + unlimited cram */
+  completeMicrobiology: `/shop/${MICRO270_SHOP_SLUG_FLAGSHIP}`,
   bankOnly: `/shop/${MICRO270_SHOP_SLUG_BANK}`,
   bankBundle: `/shop/${MICRO270_SHOP_SLUG_BUNDLE}`,
   fullAccess: `/shop/${MICRO270_SHOP_SLUG_FULL}`,
@@ -37,11 +40,13 @@ export const MICRO270_CRAM_LIMIT: Record<string, number> = {
   [MICRO270_SHOP_SLUG_CHEATS]: 0,
   [MICRO270_SHOP_SLUG_BANK]: 0,
   [MICRO270_SHOP_SLUG_BUNDLE]: 3,
+  [MICRO270_SHOP_SLUG_FLAGSHIP]: 999,
   [MICRO270_SHOP_SLUG_FULL]: 999,
 };
 
 /** Slugs that include cram tool access. */
 export const MICRO270_CRAM_SLUGS = new Set([
+  MICRO270_SHOP_SLUG_FLAGSHIP,
   MICRO270_SHOP_SLUG_BUNDLE,
   MICRO270_SHOP_SLUG_FULL,
 ]);

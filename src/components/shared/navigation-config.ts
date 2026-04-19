@@ -67,6 +67,13 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
       hasDropdown: true,
       dropdownItems: [
         {
+          label: "Complete Microbiology ($79)",
+          href: "/shop/micro270-complete-microbiology",
+          icon: "✅",
+          description: "PDF + hub + printables + unlimited AI cram — one checkout",
+          color: "text-emerald-300",
+        },
+        {
           label: "Micro270 Study Hub",
           href: "/micro270",
           icon: "🧫",
@@ -91,7 +98,7 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
           label: "Buy Micro270 Bank",
           href: "/shop/micro270-question-bank",
           icon: "🛒",
-          description: "$47 · full 1,000-question bank",
+          description: "$47 · bank only (no PDF bundle)",
           color: "text-emerald-400",
         },
         {

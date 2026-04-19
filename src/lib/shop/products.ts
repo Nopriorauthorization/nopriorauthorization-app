@@ -162,6 +162,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "micro250-exam-prep-digital": "Nursing Study Series",
   "micro250-exam-prep-physical": "Nursing Study Series",
   "micro270-chapter-cheat-sheets": "Study guides",
+  "micro270-complete-microbiology": "Study guides",
 };
 
 const PRICE_MAP: Record<string, number> = {
@@ -268,6 +269,7 @@ const PRICE_MAP: Record<string, number> = {
   "consent-waxing": 1900,
   "consent-microneedling-rf": 1900,
   "consent-photography-hipaa": 1900,
+  "micro270-complete-microbiology": 7900,
   "micro270-question-bank": 4700,
   "micro270-bank-ai-bundle": 6700,
   "micro270-full-access": 9700,
@@ -553,6 +555,7 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "micro270-bank-ai-bundle": "/shop-previews/generated/micro270-bank-ai-bundle-thumbnail.png",
   "micro270-full-access": "/shop-previews/generated/micro270-full-access-thumbnail.png",
   "micro270-chapter-cheat-sheets": "/shop-previews/generated/micro270-question-bank-thumbnail.png",
+  "micro270-complete-microbiology": "/shop-previews/generated/micro270-full-access-thumbnail.png",
   "micro270-question-bank": "/shop-previews/generated/micro270-question-bank-thumbnail.png",
   "microblading-pmu-playbook": "/shop-previews/generated/microblading-pmu-playbook-thumbnail.png",
   "microneedling-depth-cheat-sheet": "/shop-previews/content/microneedling-depth-cheat-sheet-thumbnail.png",

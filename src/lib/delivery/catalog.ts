@@ -12,6 +12,8 @@ import {
 import {
   MICRO270_SHOP_SLUG_BANK,
   MICRO270_SHOP_SLUG_BUNDLE,
+  MICRO270_SHOP_SLUG_CHEATS,
+  MICRO270_SHOP_SLUG_FLAGSHIP,
   MICRO270_SHOP_SLUG_FULL,
 } from "@/config/micro270-shop.config";
 import { STUDY_GUIDE_NCLEX, STUDY_GUIDE_NCLEX_TEMPLATES } from "@/config/study-guides.config";
@@ -42,6 +44,24 @@ function micro270ChapterCheatDeliveryTemplates(): DeliveryTemplateLink[] {
     console.error("[delivery] micro270 cheat templates:", e);
     return [];
   }
+}
+
+function micro270FlagshipDeliveryTemplates(): DeliveryTemplateLink[] {
+  const base: DeliveryTemplateLink[] = [
+    {
+      title: "Complete study guide & exam prep (PDF download)",
+      designId: null,
+      editUrl: "/micro-exam-prep/micro250-exam-prep.pdf",
+      viewUrl: null as string | null,
+    },
+    {
+      title: "Micro 270 Study Hub — 1,000 interactive questions (activate after purchase)",
+      designId: null,
+      editUrl: "/micro270",
+      viewUrl: null as string | null,
+    },
+  ];
+  return [...base, ...micro270ChapterCheatDeliveryTemplates()];
 }
 
 export type DeliveryTemplateLink = {
@@ -131,6 +151,26 @@ const VIRTUAL_DELIVERY_PRODUCTS: DeliveryProduct[] = [
       },
     ],
   },
+  (() => {
+    const flagshipTemplates = micro270FlagshipDeliveryTemplates();
+    return {
+      productKey: MICRO270_SHOP_SLUG_FLAGSHIP,
+      productSlug: MICRO270_SHOP_SLUG_FLAGSHIP,
+      productTitle: "Micro 270 — Complete Microbiology (everything in one)",
+      templateCount: flagshipTemplates.length || 22,
+      templates:
+        flagshipTemplates.length > 0
+          ? flagshipTemplates
+          : [
+              {
+                title: "Micro 270 Complete Microbiology — see delivery email after purchase",
+                designId: null,
+                editUrl: "/micro270",
+                viewUrl: null as string | null,
+              },
+            ],
+    };
+  })(),
   (() => {
     const cheatTemplates = micro270ChapterCheatDeliveryTemplates();
     return {

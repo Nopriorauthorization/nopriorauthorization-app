@@ -20,13 +20,16 @@ import {
 import {
   MICRO270_SHOP_SLUG_BUNDLE,
   MICRO270_SHOP_SLUG_CHEATS,
+  MICRO270_SHOP_SLUG_FLAGSHIP,
   MICRO270_SHOP_SLUG_FULL,
 } from "@/config/micro270-shop.config";
 
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 
 function tierForSlug(slug: string): string | null {
-  if (slug === MICRO270_SHOP_SLUG_FULL) return MICRO270_TIER_FULL;
+  if (slug === MICRO270_SHOP_SLUG_FULL || slug === MICRO270_SHOP_SLUG_FLAGSHIP) {
+    return MICRO270_TIER_FULL;
+  }
   if (slug === MICRO270_SHOP_SLUG_BUNDLE) return MICRO270_TIER_BUNDLE;
   return null;
 }

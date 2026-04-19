@@ -26,16 +26,17 @@ export default function Micro270LandingPage() {
         <div className="hero-inner">
           <div className="hero-eyebrow">Microbiology 270 · Nursing</div>
           <h1>
-            Two products.
+            Complete Microbiology.
             <br />
-            One launch.
+            One checkout.
             <br />
             <em>Study smarter.</em>
           </h1>
           <p className="hero-sub">
-            One for students who want ready-made questions. One for students
-            who want questions from their own notes. Both sold on
-            nopriorauthorization.com.
+            Start with the free hub preview, then grab the{" "}
+            <strong>Complete Microbiology</strong> bundle (PDF + full bank +
+            printables + unlimited AI cram) — or choose smaller tiers if you
+            prefer.
           </p>
             <div className="hero-actions">
             <Link href="/micro270/hub" className="btn-primary">
@@ -44,8 +45,8 @@ export default function Micro270LandingPage() {
             <a href="#pricing" className="btn-outline">
               See pricing
             </a>
-            <Link href={micro270ShopCheckout.bankOnly} className="btn-outline">
-              Buy the bank
+            <Link href={micro270ShopCheckout.completeMicrobiology} className="btn-outline">
+              Buy complete — $79
             </Link>
           </div>
           <div className="hero-stats">
@@ -167,23 +168,38 @@ export default function Micro270LandingPage() {
           <div className="section-label">Pricing strategy</div>
           <h2 className="section-title">Simple. One-time. No subscription.</h2>
           <div className="pricing-grid">
+            <div className="price-card featured">
+              <div className="price-popular">Best value · everything in one</div>
+              <div className="price-tier">Complete Microbiology</div>
+              <div className="price-amount">$79</div>
+              <div className="price-desc">
+                Study guide PDF + full 1,000-question hub + printable chapters +
+                unlimited AI cram
+              </div>
+              <Link
+                href={micro270ShopCheckout.completeMicrobiology}
+                className="price-cta"
+              >
+                Buy now — $79
+              </Link>
+            </div>
+
             <div className="price-card">
               <div className="price-tier">Micro 270 Bank only</div>
               <div className="price-amount">$47</div>
               <div className="price-desc">
-                1,000 questions · 20 chapters · one-time download
+                1,000 questions · 20 chapters · hub access (no PDF bundle)
               </div>
               <Link href={micro270ShopCheckout.bankOnly} className="price-cta">
                 Buy now — $47
               </Link>
             </div>
 
-            <div className="price-card featured">
-              <div className="price-popular">Best value · most popular</div>
+            <div className="price-card">
               <div className="price-tier">Bank + AI Cram Tool</div>
               <div className="price-amount">$67</div>
               <div className="price-desc">
-                Micro 270 Bank + 3 custom cram sheet generations
+                Bank + 3 custom cram generations (no bundled study PDF)
               </div>
               <Link href={micro270ShopCheckout.bankBundle} className="price-cta">
                 Buy now — $67
@@ -191,10 +207,11 @@ export default function Micro270LandingPage() {
             </div>
 
             <div className="price-card">
-              <div className="price-tier">Full access</div>
+              <div className="price-tier">Full access (hub only)</div>
               <div className="price-amount">$97</div>
               <div className="price-desc">
-                Bank + unlimited custom cram sheets for any course
+                Bank + unlimited cram — same hub power as Complete, without the
+                bundled PDF path
               </div>
               <Link href={micro270ShopCheckout.fullAccess} className="price-cta">
                 Buy now — $97

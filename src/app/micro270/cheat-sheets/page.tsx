@@ -31,10 +31,17 @@ export default function Micro270CheatSheetsIndexPage() {
       <p className="mt-4 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-gray-300">
         Ready for the full interactive bank (all questions + explanations + hub)?{" "}
         <Link
-          href={micro270ShopCheckout.bankOnly}
+          href={micro270ShopCheckout.completeMicrobiology}
           className="font-semibold text-[#D4537E] underline-offset-2 hover:underline"
         >
-          Upgrade to Micro 270 — Complete Question Bank
+          Get everything in one — Complete Microbiology ($79)
+        </Link>{" "}
+        <span className="text-gray-500">or</span>{" "}
+        <Link
+          href={micro270ShopCheckout.bankOnly}
+          className="font-semibold text-teal-300/90 underline-offset-2 hover:underline"
+        >
+          bank only ($47)
         </Link>
         .
       </p>

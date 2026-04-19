@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPA — Botox & Neurotoxin Clinical Cheat Sheet</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&family=Source+Code+Pro:wght@500&display=swap');
+
+:root {
+  --black: #1A1A1A;
+  --pink: #D4537E;
+  --darkpink: #A83560;
+  --blush: #FBEAF0;
+  --navy: #1a2940;
+  --teal: #1a7a6e;
+  --gold: #b8760a;
+  --red: #c0392b;
+  --purple: #6c3483;
+  --green: #1e6b3c;
+  --blue: #1a3a6b;
+  --lt: #f5f3f1;
+  --border: #ddd0d5;
+  --text: #1A1A1A;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 7.6pt;
+  background: #e8dde3;
+  color: var(--text);
+  line-height: 1.28;
+}
+
+.page {
+  width: 10.5in;
+  min-height: 8in;
+  background: white;
+  margin: 0.15in auto;
+  padding: 0.12in 0.15in;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0.07in;
+  page-break-after: always;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+
+.page-header {
+  grid-column: 1 / -1;
+  background: var(--black);
+  color: white;
+  padding: 0.05in 0.1in;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 3px;
+  margin-bottom: 0.03in;
+}
+
+.page-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20pt;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.page-header .subtitle {
+  font-size: 8pt;
+  color: #D4537E;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.page-header .npa-brand {
+  text-align: right;
+}
+
+.page-header .npa-brand .brand-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13pt;
+  letter-spacing: 1.5px;
+  color: #D4537E;
+  display: block;
+}
+
+.page-header .npa-brand .brand-sub {
+  font-size: 6.5pt;
+  color: #888;
+  letter-spacing: 0.5px;
+}
+
+.page-label {
+  background: var(--pink);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 2px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13pt;
+  letter-spacing: 1px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05in;
+}
+
+.card {
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.card-head {
+  padding: 2px 6px;
+  color: white;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 9.5pt;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-body {
+  padding: 4px 6px;
+  background: white;
+}
+
+/* Color variants */
+.c-black .card-head { background: var(--black); }
+.c-pink .card-head { background: var(--pink); }
+.c-darkpink .card-head { background: var(--darkpink); }
+.c-navy .card-head { background: var(--navy); }
+.c-teal .card-head { background: var(--teal); }
+.c-gold .card-head { background: var(--gold); }
+.c-red .card-head { background: var(--red); }
+.c-purple .card-head { background: var(--purple); }
+.c-green .card-head { background: var(--green); }
+.c-blue .card-head { background: var(--blue); }
+
+.c-black { border-color: var(--black); }
+.c-pink { border-color: var(--pink); }
+.c-darkpink { border-color: var(--darkpink); }
+.c-navy { border-color: var(--navy); }
+.c-teal { border-color: var(--teal); }
+.c-gold { border-color: var(--gold); }
+.c-red { border-color: var(--red); }
+.c-purple { border-color: var(--purple); }
+.c-green { border-color: var(--green); }
+.c-blue { border-color: var(--blue); }
+
+.row {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 2px;
+  align-items: flex-start;
+}
+.row:last-child { margin-bottom: 0; }
+
+.tag {
+  background: var(--black);
+  color: white;
+  border-radius: 2px;
+  padding: 0 4px;
+  font-size: 6.5pt;
+  font-weight: 700;
+  white-space: nowrap;
+  min-width: 14px;
+  text-align: center;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+.tag.pink { background: var(--pink); }
+.tag.teal { background: var(--teal); }
+.tag.gold { background: var(--gold); }
+.tag.red { background: var(--red); }
+.tag.purple { background: var(--purple); }
+.tag.green { background: var(--green); }
+.tag.navy { background: var(--navy); }
+.tag.blue { background: var(--blue); }
+
+.info { flex: 1; }
+b, strong { color: var(--black); }
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7pt;
+}
+.tbl th {
+  background: var(--black);
+  color: white;
+  padding: 1px 4px;
+  font-weight: 700;
+  text-align: left;
+  font-size: 6.8pt;
+}
+.tbl th.pink { background: var(--pink); }
+.tbl th.teal { background: var(--teal); }
+.tbl th.navy { background: var(--navy); }
+.tbl th.red { background: var(--red); }
+.tbl th.gold { background: var(--gold); }
+.tbl th.purple { background: var(--purple); }
+.tbl td {
+  padding: 1px 4px;
+  border-bottom: 1px solid #e8dde3;
+  vertical-align: top;
+}
+.tbl tr:nth-child(even) td { background: #fdf5f8; }
+
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+}
+.flow-box {
+  background: var(--black);
+  color: white;
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-size: 6.5pt;
+  font-weight: 600;
+}
+.flow-box.pink { background: var(--pink); }
+.flow-box.teal { background: var(--teal); }
+.flow-box.gold { background: var(--gold); }
+.flow-box.red { background: var(--red); }
+.flow-box.purple { background: var(--purple); }
+.flow-box.green { background: var(--green); }
+.flow-box.navy { background: var(--navy); }
+.flow-box.lt { background: #f5eff2; color: var(--black); }
+
+.arrow { font-size: 8pt; color: var(--pink); font-weight: 900; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; }
+
+.mini-box {
+  background: #f5f0f2;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2px 4px;
+}
+.mini-box .lbl {
+  font-size: 6pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--pink);
+  letter-spacing: 0.3px;
+}
+
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.compare-side {
+  background: #fdf5f8;
+  border-radius: 2px;
+  padding: 2px 4px;
+}
+.compare-side .hd {
+  font-weight: 700;
+  font-size: 7pt;
+  color: white;
+  background: var(--teal);
+  margin: -2px -4px 2px;
+  padding: 1px 4px;
+  border-radius: 2px 2px 0 0;
+}
+.compare-side .hd.pink { background: var(--pink); }
+.compare-side .hd.red { background: var(--red); }
+.compare-side .hd.navy { background: var(--navy); }
+
+.star { color: var(--pink); font-weight: 900; margin-right: 2px; }
+.warn { color: var(--red); font-weight: 700; }
+.ok { color: var(--green); font-weight: 700; }
+
+.divider { height: 1px; background: var(--border); margin: 3px 0; }
+
+.hl  { background: #fdeef4; border-radius: 1px; padding: 0 1px; }
+.hl2 { background: #d4f0e8; border-radius: 1px; padding: 0 1px; }
+.hl3 { background: #fde8d4; border-radius: 1px; padding: 0 1px; }
+.hl4 { background: #e8d4f0; border-radius: 1px; padding: 0 1px; }
+
+.badge {
+  display: inline-block;
+  background: var(--pink);
+  color: white;
+  border-radius: 2px;
+  padding: 0 3px;
+  font-size: 6pt;
+  font-weight: 700;
+  margin-right: 2px;
+}
+.badge.red { background: var(--red); }
+.badge.teal { background: var(--teal); }
+.badge.gold { background: var(--gold); }
+.badge.navy { background: var(--navy); }
+
+.em { font-style: italic; color: #555; }
+
+.footer-strip {
+  grid-column: 1 / -1;
+  background: var(--black);
+  color: #888;
+  font-size: 6pt;
+  padding: 2px 8px;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.03in;
+}
+.footer-strip span { color: var(--pink); font-weight: 700; }
+
+@media print {
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; page-break-after: always; }
+  @page { size: 11in 8.5in landscape; margin: 0.1in; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div>
+      <h1>Botox &amp; Neurotoxin — Clinical Reference</h1>
+      <div class="subtitle">Dosing · Dilution · Onset · Complications · Contraindications · Reconstitution</div>
+    </div>
+    <div class="page-label">CHEAT SHEET</div>
+    <div class="npa-brand">
+      <span class="brand-name">NO PRIOR AUTHORIZATION</span>
+      <span class="brand-sub">nopriorauthorization.com · Danielle Alcala</span>
+    </div>
+  </div>
+
+  <!-- COL 1: PRODUCT COMPARISON + RECONSTITUTION -->
+  <div class="col">
+
+    <div class="card c-black">
+      <div class="card-head">⚗️ Neurotoxin Product Comparison</div>
+      <div class="card-body">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th class="pink">Maker</th>
+              <th>Units</th>
+              <th>Onset</th>
+              <th>Duration</th>
+              <th>Spread</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Botox</strong></td><td>Allergan</td><td>OnabotulinumA</td><td>3–5 days</td><td>3–4 mo</td><td>Low</td></tr>
+            <tr><td><strong>Dysport</strong></td><td>Galderma</td><td>AbobotulinumA</td><td>2–3 days</td><td>3–4 mo</td><td>Higher</td></tr>
+            <tr><td><strong>Xeomin</strong></td><td>Merz</td><td>IncobotulinumA</td><td>3–5 days</td><td>3–4 mo</td><td>Low</td></tr>
+            <tr><td><strong>Jeuveau</strong></td><td>Evolus</td><td>PrabotulinumA</td><td>2–3 days</td><td>3–4 mo</td><td>Low</td></tr>
+            <tr><td><strong>Daxxify</strong></td><td>Revance</td><td>DaxibotulinumA</td><td>3–5 days</td><td>6–9 mo</td><td>Low</td></tr>
+          </tbody>
+        </table>
+        <div class="divider"></div>
+        <div class="row">
+          <div class="tag pink">KEY</div>
+          <div class="info"><b>Dysport ratio:</b> 2.5–3 units Dysport = 1 unit Botox. <span class="warn">Never substitute 1:1.</span> Xeomin has no accessory proteins — good for antibody resistance.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card c-teal">
+      <div class="card-head">🧪 Reconstitution Guide</div>
+      <div class="card-body">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Saline Added</th>
+              <th class="teal">Units/0.1mL</th>
+              <th>Use Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1.0 mL</td><td><strong>10 u/0.1mL</strong></td><td>Concentrated — masseter, hyperhidrosis</td></tr>
+            <tr><td>2.0 mL</td><td><strong>5 u/0.1mL</strong></td><td><span class="hl">Most common — facial aesthetics</span></td></tr>
+            <tr><td>2.5 mL</td><td><strong>4 u/0.1mL</strong></td><td>Intermediate — fine muscle control</td></tr>
+            <tr><td>4.0 mL</td><td><strong>2.5 u/0.1mL</strong></td><td>Dilute — sweat glands, fine lines</td></tr>
+          </tbody>
+        </table>
+        <div class="divider"></div>
+        <div class="row">
+          <div class="tag red">!</div>
+          <div class="info">Use <b>preservative-free 0.9% NS</b>. Bacteriostatic NS acceptable per provider preference. Roll vial — <span class="warn">never shake.</span> Refrigerate 2–8°C. Use within 4 weeks of reconstitution.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card c-gold">
+      <div class="card-head">🧴 Storage &amp; Handling</div>
+      <div class="card-body">
+        <div class="row"><div class="tag gold">BEFORE</div><div class="info">Store <b>unopened</b> at 2–8°C (refrigerated). Keep from light. Do not freeze.</div></div>
+        <div class="row"><div class="tag gold">AFTER</div><div class="info"><b>Reconstituted:</b> refrigerate. Botox/Jeuveau up to 4 wks. Xeomin up to 4 wks. Dysport up to 4 hrs per label (most use 24 hrs).</div></div>
+        <div class="row"><div class="tag red">NEVER</div><div class="info">Do not use if discolored, particulate matter visible, or vial seal compromised.</div></div>
+        <div class="row"><div class="tag teal">TEMP</div><div class="info">Safe up to 25°C for up to 5 days per Allergan data. Use clinical judgment.</div></div>
+      </div>
+    </div>
+
+    <div class="card c-purple">
+      <div class="card-head">🚫 Contraindications</div>
+      <div class="card-body">
+        <div class="row"><div class="tag red">ABS</div><div class="info"><b>Absolute:</b> Known hypersensitivity to BTX-A or albumin. Infection at injection site. Myasthenia gravis, Eaton-Lambert syndrome, ALS.</div></div>
+        <div class="row"><div class="tag gold">REL</div><div class="info"><b>Relative:</b> Pregnancy / breastfeeding. Neuromuscular disorders. Blood thinners / anticoagulants. Recent facial surgery (&lt;2 wks). Keloidal scarring tendency.</div></div>
+        <div class="row"><div class="tag pink">MED</div><div class="info"><b>Drug interactions ↑ effect:</b> Aminoglycosides, quinidine, chloroquine, cyclosporine, penicillamine, lincomycin.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COL 2: DOSING BY AREA -->
+  <div class="col">
+
+    <div class="card c-pink">
+      <div class="card-head">💉 Standard Dosing by Treatment Area</div>
+      <div class="card-body">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th class="pink">Botox (u)</th>
+              <th>Dysport (u)</th>
+              <th>Injection Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Glabella (11s)</strong></td><td><span class="hl">20–25</span></td><td>50–60</td><td>5 points standard</td></tr>
+            <tr><td>Forehead (H-lines)</td><td>10–20</td><td>25–50</td><td>4–8 points</td></tr>
+            <tr><td>Crow's feet (each)</td><td>6–15</td><td>15–45</td><td>3–4 points/side</td></tr>
+            <tr><td>Brow lift</td><td>2–4</td><td>5–10</td><td>1–2 points/side</td></tr>
+            <tr><td>Bunny lines</td><td>4–8</td><td>10–20</td><td>2 points/side</td></tr>
+            <tr><td>Lip flip (orbicularis)</td><td>4–6</td><td>10–15</td><td>4–6 points</td></tr>
+            <tr><td>Gummy smile</td><td>2–4</td><td>5–10</td><td>2 points</td></tr>
+            <tr><td>DAO (downturned corners)</td><td>3–6</td><td>8–15</td><td>2 points</td></tr>
+            <tr><td>Mentalis (chin dimpling)</td><td>4–8</td><td>10–20</td><td>1–2 points</td></tr>
+            <tr><td>Neck (platysmal bands)</td><td>25–50</td><td>60–120</td><td>6–12 points/band</td></tr>
+            <tr><td>Masseter (each)</td><td>20–30</td><td>50–75</td><td>3–5 points/side</td></tr>
+            <tr><td>Hyperhidrosis axilla</td><td>50/axilla</td><td>125/axilla</td><td>10–15 pts/axilla</td></tr>
+            <tr><td>Hyperhidrosis palms</td><td>100/palm</td><td>250/palm</td><td>Grid pattern</td></tr>
+          </tbody>
+        </table>
+        <div class="divider"></div>
+        <div class="row">
+          <div class="tag navy">NOTE</div>
+          <div class="info">Doses are starting ranges. Titrate based on patient muscle mass, prior response, and desired outcome. <b>Conservative first visit</b> — touch up at 2 weeks.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card c-navy">
+      <div class="card-head">🎯 Injection Depth &amp; Technique</div>
+      <div class="card-body">
+        <div class="row"><div class="tag pink">UPPER</div><div class="info"><b>Glabella/forehead:</b> Intradermal to subcutaneous. Inject <b>superior to orbital rim</b> for forehead to avoid brow ptosis.</div></div>
+        <div class="row"><div class="tag pink">MID</div><div class="info"><b>Crow's feet:</b> Subcutaneous, lateral to orbit. Stay <b>≥1cm from orbital rim.</b> Fan technique at each point.</div></div>
+        <div class="row"><div class="tag pink">LOWER</div><div class="info"><b>Lip flip/DAO/mentalis:</b> Superficial intradermal — orbicularis is superficial. Small volumes (0.05–0.1mL/point).</div></div>
+        <div class="row"><div class="tag pink">NECK</div><div class="info"><b>Platysma:</b> Pinch and inject intramuscularly. Avoid deep — risk to carotid, jugular, thyroid.</div></div>
+        <div class="row"><div class="tag gold">MASSETER</div><div class="info">IM injection. Have patient clench — identify bulk. Inject into central mass. Avoid parotid gland (anterior border of masseter).</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COL 3: COMPLICATIONS + TIMELINE -->
+  <div class="col">
+
+    <div class="card c-red">
+      <div class="card-head">⚠️ Complication Management</div>
+      <div class="card-body">
+        <div class="row"><div class="tag red">PTOSIS</div><div class="info"><b>Lid ptosis</b> (droopy eyelid): Apraclonidine 0.5% eye drops (Iopidine) — stimulates Müller's muscle. 1–2 drops TID. Resolves with toxin metabolism (4–12 wks).</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag red">BROW</div><div class="info"><b>Brow ptosis:</b> Educate patient — resolves spontaneously. No reversal agent. Avoid repeating the same injection pattern. Consider Apraclonidine for compensatory lid opening.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag gold">ASYM</div><div class="info"><b>Asymmetry:</b> Wait until day 14 for full effect. Touch-up with 1–2 units on weaker side. Document pre-existing asymmetry at consult.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag gold">BRUISE</div><div class="info"><b>Bruising:</b> Arnica gel/supplements. Avoid aspirin/NSAIDs pre-treatment. Cold compress immediately post-injection. Resolves 5–14 days.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag purple">HEADACHE</div><div class="info"><b>Post-injection headache:</b> Common within 24–48hrs. Tylenol (avoid NSAIDs x24hrs). Ice pack. Usually resolves spontaneously.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag red">SPREAD</div><div class="info"><b>Unwanted spread:</b> Dysphagia, diplopia, dysphonia — <span class="warn">rare but serious.</span> Document, monitor, supportive care. Refer to ER if dysphagia is severe.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag red">ALLERGY</div><div class="info"><b>Anaphylaxis:</b> Epi 0.3mg IM (EpiPen). Call 911. Have epi on-site at all times. Extremely rare — botulinum protein allergy.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag teal">RESIST</div><div class="info"><b>Antibody resistance:</b> Switch to Xeomin (no accessory proteins). Extend intervals. Minimize dose per session. Consider alternative toxin brand.</div></div>
+      </div>
+    </div>
+
+    <div class="card c-teal">
+      <div class="card-head">⏱️ Onset, Peak &amp; Duration Timeline</div>
+      <div class="card-body">
+        <div class="flow">
+          <div class="flow-box lt">Injection Day 0</div>
+          <div class="arrow">→</div>
+          <div class="flow-box navy">Day 3–5: First effect</div>
+          <div class="arrow">→</div>
+          <div class="flow-box pink">Day 7–10: Visible</div>
+          <div class="arrow">→</div>
+          <div class="flow-box teal">Day 14: PEAK</div>
+          <div class="arrow">→</div>
+          <div class="flow-box gold">Month 3: Wearing</div>
+          <div class="arrow">→</div>
+          <div class="flow-box red">Month 4: Gone</div>
+        </div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag pink">2 WK</div><div class="info">Always assess at <b>day 14</b> — full effect reached. Touch-ups appropriate now. Never touch up before day 14.</div></div>
+        <div class="row"><div class="tag teal">FACTORS</div><div class="info">Duration affected by: metabolism, muscle mass, exercise frequency, zinc levels, stress, immune status. Athletes and high-metabolism patients wear off faster.</div></div>
+        <div class="row"><div class="tag gold">ZINC</div><div class="info">Zinc + phytase supplementation may extend duration. Zytaze (zinc + phytase) take 4 days before treatment. Evidence limited but low risk.</div></div>
+      </div>
+    </div>
+
+    <div class="card c-green">
+      <div class="card-head">✅ Pre-Treatment Checklist</div>
+      <div class="card-body">
+        <div class="row"><div class="tag green">48HR</div><div class="info">Hold: <b>aspirin, NSAIDs, fish oil, vitamin E, garlic, ginger, turmeric</b> supplements. Alcohol 24hr prior.</div></div>
+        <div class="row"><div class="tag green">LABS</div><div class="info">Not required for standard cosmetic use. Required for therapeutic use (hyperhidrosis, migraine, spasticity) per payer.</div></div>
+        <div class="row"><div class="tag green">PHOTO</div><div class="info">Always photograph: <b>anterior, bilateral obliques, lateral</b>. Document pre-existing asymmetry. Patient signs photo consent.</div></div>
+        <div class="row"><div class="tag red">SCREEN</div><div class="info">Screen: neuromuscular disease, current illness/fever, pregnancy, recent toxin (&lt;3 months), antibiotics (aminoglycosides).</div></div>
+        <div class="row"><div class="tag pink">CONSENT</div><div class="info">Informed consent: risks, alternatives, no guarantee of results. Review pre and post care verbally AND in writing.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COL 4: ADVANCED TECHNIQUES + POST CARE + RETENTION -->
+  <div class="col">
+
+    <div class="card c-navy">
+      <div class="card-head">🔬 Advanced Techniques &amp; Clinical Pearls</div>
+      <div class="card-body">
+        <div class="row"><div class="tag navy">BROW LIFT</div><div class="info">1–2u lateral frontalis above tail of brow. Relaxes depressors (orbicularis, corrugator) — brow elevates medially. Avoid mid-frontalis — causes Spock brow.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag navy">NEFERTITI</div><div class="info">Neck lift: Platysmal band injections + lower face border. 25–50u total. Tightens lower jaw definition. Results subtle — manage expectations.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag navy">FLIP</div><div class="info"><b>Lip flip:</b> 4–6u orbicularis oris (upper lip). Result: slight eversion/curl of upper lip. NOT a volume replacement. Warn: temporary difficulty with straws, kissing, wind instruments.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag navy">MASSET</div><div class="info"><b>Masseter reduction:</b> 20–30u/side. Results seen at 4–6 weeks. Full slimming at 3 months. Repeat 2–3x before maintenance interval lengthens.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag navy">TRAPEZIUS</div><div class="info"><b>Trap tox (Barbie shot):</b> 50–100u/trap. Pain relief + shoulder slimming. Use grid injection pattern. Insurance may cover for medical indication.</div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag pink">COMBO</div><div class="info"><b>Tox + filler synergy:</b> Treat dynamic lines with tox first. Wait 2 weeks, then address residual static lines with filler. Better results, longer duration.</div></div>
+      </div>
+    </div>
+
+    <div class="card c-pink">
+      <div class="card-head">📋 Post-Care Instructions (Patient-Facing)</div>
+      <div class="card-body">
+        <div class="row"><div class="tag red">4HR</div><div class="info">Stay upright. No lying down. No bending at waist. No rubbing or massaging treated areas.</div></div>
+        <div class="row"><div class="tag red">24HR</div><div class="info">No strenuous exercise. No alcohol. No heat exposure (sauna, steam, direct sun). No facial.</div></div>
+        <div class="row"><div class="tag gold">2WK</div><div class="info">Full results at day 14. Normal to have: mild bruising, asymmetry, heaviness. <span class="warn">NOT normal:</span> lid drooping, difficulty swallowing.</div></div>
+        <div class="row"><div class="tag teal">REBOOK</div><div class="info">Most patients: 3–4 month interval. Send rebook text at <b>week 10</b>. Consistent scheduling = longer-lasting results over time.</div></div>
+      </div>
+    </div>
+
+    <div class="card c-darkpink">
+      <div class="card-head">📊 The Retention System (Hello Gorgeous Protocol)</div>
+      <div class="card-body">
+        <div class="flow">
+          <div class="flow-box lt">Day 0: Treat</div>
+          <div class="arrow">→</div>
+          <div class="flow-box pink">Day 1: Post-care text</div>
+          <div class="arrow">→</div>
+          <div class="flow-box navy">Day 14: Follow-up</div>
+          <div class="arrow">→</div>
+          <div class="flow-box teal">Wk 10: Rebook text</div>
+          <div class="arrow">→</div>
+          <div class="flow-box gold">Birthday: Personal text</div>
+        </div>
+        <div class="divider"></div>
+        <div class="row"><div class="tag pink">RESULT</div><div class="info"><b>Hello Gorgeous outcome:</b> <span class="hl">14 → 71 Google reviews in 90 days</span> using this touchpoint system. Week 10 rebook text = 60%+ rebook rate.</div></div>
+        <div class="row"><div class="tag teal">REVIEW</div><div class="info">Send Google review link within 1hr of Day 14 visit. Direct URL — not instructions. Include in rebook confirmation.</div></div>
+      </div>
+    </div>
+
+    <div class="card c-gold">
+      <div class="card-head">💊 Therapeutic Botox Reference</div>
+      <div class="card-body">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Indication</th>
+              <th class="gold">FDA Approved</th>
+              <th>Dose Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Chronic migraine</td><td>✓ Botox</td><td>155u / 31 sites</td></tr>
+            <tr><td>Hyperhidrosis (axilla)</td><td>✓ Botox</td><td>50u/axilla</td></tr>
+            <tr><td>Overactive bladder</td><td>✓ Botox</td><td>100u</td></tr>
+            <tr><td>Cervical dystonia</td><td>✓ Multi</td><td>Varies</td></tr>
+            <tr><td>Upper limb spasticity</td><td>✓ Multi</td><td>Varies</td></tr>
+            <tr><td>Blepharospasm</td><td>✓ Botox</td><td>1.25–2.5u/site</td></tr>
+          </tbody>
+        </table>
+        <div class="row" style="margin-top:3px"><div class="tag navy">NOTE</div><div class="info">Therapeutic use may require prior auth, diagnosis codes, and different billing pathway. Cosmetic use is always cash-pay.</div></div>
+      </div>
+    </div>
+
+    <div class="card c-purple">
+      <div class="card-head">🧠 High-Yield Clinical Pearls</div>
+      <div class="card-body">
+        <div class="row"><div class="star">★</div><div class="info"><b>Conservative first visit always.</b> Under-treat and touch up at 2 weeks. Never over-treat a new patient.</div></div>
+        <div class="row"><div class="star">★</div><div class="info"><b>Photograph every patient every visit.</b> Protects you legally. Helps patient see results objectively.</div></div>
+        <div class="row"><div class="star">★</div><div class="info"><b>Document pre-existing asymmetry</b> at consultation and have patient acknowledge it on consent form.</div></div>
+        <div class="row"><div class="star">★</div><div class="info"><b>Never treat above the periosteum</b> in the glabellar area — risk of spreading to levator palpebrae → ptosis.</div></div>
+        <div class="row"><div class="star">★</div><div class="info"><b>Wait 14 days</b> before any touch-up. Tox continues to work for 2 weeks post-injection.</div></div>
+        <div class="row"><div class="star">★</div><div class="info"><b>Dysport ratio:</b> 2.5:1 to 3:1 vs Botox. Never assume equal dosing between brands.</div></div>
+        <div class="row"><div class="star">★</div><div class="info"><b>Antibody resistance</b> risk increases with high-dose, high-frequency injections. Minimum effective dose, maximum interval.</div></div>
+        <div class="row"><div class="star">★</div><div class="info"><b>Epi on-site always.</b> Anaphylaxis is extremely rare but requires immediate response.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-strip">
+    <span>No Prior Authorization</span> · Danielle Alcala · nopriorauthorization.com · For licensed providers only · Educational reference — not a substitute for clinical training
+    <span style="color:#888;font-weight:400">© 2026 NPA · Botox &amp; Neurotoxin Clinical Cheat Sheet · $17</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Pellet Therapy Clinical Cheat Sheet</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap');
+:root{--black:#1A1A1A;--pink:#D4537E;--darkpink:#A83560;--navy:#1a2940;--teal:#1a7a6e;--gold:#b8760a;--red:#c0392b;--purple:#6c3483;--green:#1e6b3c;--border:#ddd0d5;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Source Sans 3',sans-serif;font-size:7.6pt;background:#e8dde3;color:#1A1A1A;line-height:1.28;}
+.page{width:10.5in;min-height:8in;background:white;margin:.15in auto;padding:.12in .15in;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto 1fr;gap:.07in;box-shadow:0 4px 24px rgba(0,0,0,.18);}
+.page-header{grid-column:1/-1;background:#1A1A1A;color:white;padding:.05in .1in;display:flex;align-items:center;justify-content:space-between;border-radius:3px;margin-bottom:.03in;}
+.page-header h1{font-family:'Bebas Neue',sans-serif;font-size:20pt;letter-spacing:2px;}
+.subtitle{font-size:8pt;color:#D4537E;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.page-label{background:#D4537E;color:white;padding:2px 10px;border-radius:2px;font-family:'Bebas Neue',sans-serif;font-size:13pt;letter-spacing:1px;}
+.brand-name{font-family:'Bebas Neue',sans-serif;font-size:13pt;color:#D4537E;display:block;letter-spacing:1.5px;}
+.brand-sub{font-size:6.5pt;color:#888;}
+.col{display:flex;flex-direction:column;gap:.05in;}
+.card{border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+.card-head{padding:2px 6px;color:white;font-family:'Bebas Neue',sans-serif;font-size:9.5pt;letter-spacing:.8px;}
+.card-body{padding:4px 6px;background:white;}
+.c-black .card-head{background:#1A1A1A;}.c-black{border-color:#1A1A1A;}
+.c-pink .card-head{background:#D4537E;}.c-pink{border-color:#D4537E;}
+.c-darkpink .card-head{background:#A83560;}.c-darkpink{border-color:#A83560;}
+.c-navy .card-head{background:#1a2940;}.c-navy{border-color:#1a2940;}
+.c-teal .card-head{background:#1a7a6e;}.c-teal{border-color:#1a7a6e;}
+.c-gold .card-head{background:#b8760a;}.c-gold{border-color:#b8760a;}
+.c-red .card-head{background:#c0392b;}.c-red{border-color:#c0392b;}
+.c-purple .card-head{background:#6c3483;}.c-purple{border-color:#6c3483;}
+.c-green .card-head{background:#1e6b3c;}.c-green{border-color:#1e6b3c;}
+.row{display:flex;gap:3px;margin-bottom:2px;align-items:flex-start;}
+.row:last-child{margin-bottom:0;}
+.tag{background:#1A1A1A;color:white;border-radius:2px;padding:0 4px;font-size:6.5pt;font-weight:700;white-space:nowrap;min-width:14px;text-align:center;line-height:1.5;flex-shrink:0;}
+.tag.pink{background:#D4537E;}.tag.teal{background:#1a7a6e;}.tag.gold{background:#b8760a;}.tag.red{background:#c0392b;}.tag.purple{background:#6c3483;}.tag.green{background:#1e6b3c;}.tag.navy{background:#1a2940;}
+.info{flex:1;} b,strong{color:#1A1A1A;}
+.tbl{width:100%;border-collapse:collapse;font-size:7pt;}
+.tbl th{background:#1A1A1A;color:white;padding:1px 4px;font-weight:700;text-align:left;font-size:6.8pt;}
+.tbl th.pink{background:#D4537E;}.tbl th.teal{background:#1a7a6e;}.tbl th.navy{background:#1a2940;}.tbl th.red{background:#c0392b;}.tbl th.gold{background:#b8760a;}.tbl th.purple{background:#6c3483;}.tbl th.green{background:#1e6b3c;}
+.tbl td{padding:1px 4px;border-bottom:1px solid #e8dde3;vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#fdf5f8;}
+.star{color:#D4537E;font-weight:900;margin-right:2px;}
+.warn{color:#c0392b;font-weight:700;}
+.divider{height:1px;background:#ddd0d5;margin:3px 0;}
+.hl{background:#fdeef4;border-radius:1px;padding:0 1px;}.hl2{background:#d4f0e8;border-radius:1px;padding:0 1px;}.hl3{background:#fef3cd;border-radius:1px;padding:0 1px;}
+.flow{display:flex;align-items:center;gap:2px;flex-wrap:wrap;margin-bottom:2px;}
+.flow-box{background:#1A1A1A;color:white;padding:1px 5px;border-radius:2px;font-size:6.5pt;font-weight:600;}
+.flow-box.pink{background:#D4537E;}.flow-box.teal{background:#1a7a6e;}.flow-box.gold{background:#b8760a;}.flow-box.red{background:#c0392b;}.flow-box.navy{background:#1a2940;}.flow-box.lt{background:#f5eff2;color:#1A1A1A;}
+.arrow{font-size:8pt;color:#D4537E;font-weight:900;}
+.footer-strip{grid-column:1/-1;background:#1A1A1A;color:#888;font-size:6pt;padding:2px 8px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;margin-top:.03in;}
+.footer-strip span{color:#D4537E;font-weight:700;}
+@media print{body{background:white;}.page{margin:0;box-shadow:none;}@page{size:11in 8.5in landscape;margin:.1in;}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="page-header">
+  <div><h1>Pellet Therapy — Clinical Reference</h1><div class="subtitle">Testosterone · Estrogen · Dosing Formulas · Insertion Protocol · Monitoring · Complications · BioTE · EvexiPEL</div></div>
+  <div class="page-label">CHEAT SHEET</div>
+  <div><span class="brand-name">NO PRIOR AUTHORIZATION</span><span class="brand-sub">nopriorauthorization.com · Danielle Alcala · Ryan Kent FNP-BC</span></div>
+</div>
+
+<div class="col">
+  <div class="card c-black">
+    <div class="card-head">📊 Testosterone Pellet Dosing — Women</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Factor</th><th class="pink">Starting Dose</th><th>Adjust For</th></tr></thead>
+        <tbody>
+          <tr><td><b>Standard (premenopausal)</b></td><td>50–75 mg</td><td>Symptoms, activity level</td></tr>
+          <tr><td><b>Standard (postmenopausal)</b></td><td>75–100 mg</td><td>Baseline testosterone level</td></tr>
+          <tr><td><b>Active/athletic</b></td><td>100–150 mg</td><td>Higher metabolism</td></tr>
+          <tr><td><b>Low baseline T (&lt;15 ng/dL)</b></td><td>75–100 mg</td><td>Increase if symptomatic</td></tr>
+          <tr><td><b>Prior pellet patient</b></td><td>Based on prior dose + symptom response</td><td>Trough labs guide adjustment</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">TARGET</div><div class="info">Total T: <b>150–300 ng/dL</b> (women). Free T: <b>5–15 pg/mL</b>. Symptom resolution is primary goal — don't chase a number. Draw labs at trough (4 weeks before next insertion).</div></div>
+      <div class="row"><div class="tag gold">INTERVAL</div><div class="info">Women: <b>every 3–4 months.</b> Athletes or high-metabolism patients may need q3 months. Symptom return before 12 weeks = underdosed or interval too long.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-navy">
+    <div class="card-head">📊 Testosterone Pellet Dosing — Men</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Baseline Total T</th><th class="navy">Starting Dose</th><th>Interval</th></tr></thead>
+        <tbody>
+          <tr><td>&lt;200 ng/dL (severe)</td><td><b>900–1200 mg</b></td><td>q4–5 months</td></tr>
+          <tr><td>200–350 ng/dL (low)</td><td><b>700–900 mg</b></td><td>q4–6 months</td></tr>
+          <tr><td>350–500 ng/dL (low-normal)</td><td><b>600–700 mg</b></td><td>q5–6 months</td></tr>
+          <tr><td>Prior pellet patient</td><td>Prior dose ± 100–200mg</td><td>Based on trough labs</td></tr>
+          <tr><td>Active/athletic men</td><td>Add 100–200mg to standard</td><td>May need q4 months</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag navy">TARGET</div><div class="info">Total T: <b>700–1100 ng/dL</b> (men). Free T: <b>150–250 pg/mL</b>. Hematocrit: <b>&lt;54%</b>. PSA: monitor annually. Estradiol: keep &lt;40 pg/mL.</div></div>
+      <div class="row"><div class="tag gold">INTERVAL</div><div class="info">Men: <b>every 4–6 months.</b> Higher dose = longer duration. Draw labs 4 weeks before next scheduled insertion for accurate trough.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-pink">
+    <div class="card-head">📊 Estrogen Pellet Dosing — Women</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Patient Status</th><th class="pink">Estradiol Dose</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Perimenopausal</td><td>6–12.5 mg</td><td>Lower dose — still cycling</td></tr>
+          <tr><td>Postmenopausal</td><td>12.5–25 mg</td><td>Standard range</td></tr>
+          <tr><td>Surgically menopausal</td><td>25–50 mg</td><td>Higher need — abrupt loss</td></tr>
+          <tr><td>Prior pellet — low E2</td><td>Increase by 6.25mg increments</td><td>Based on trough E2 + symptoms</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">TARGET</div><div class="info">Estradiol (E2): <b>50–150 pg/mL</b> at trough. Symptom relief primary guide. <span class="warn">Progesterone required in all patients with intact uterus.</span></div></div>
+      <div class="row"><div class="tag purple">COMBO</div><div class="info">Estrogen + testosterone pellets inserted at same session. Estrogen pellet interval: 3–4 months. May insert at different sites in same buttock if combining.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-head">🧪 Required Labs — Before Every Insertion</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Lab</th><th class="teal">Women</th><th>Men</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Total Testosterone</td><td>✓ (trough)</td><td>✓ (trough)</td><td>Dose adjustment</td></tr>
+          <tr><td>Free Testosterone</td><td>✓</td><td>✓</td><td>Bioavailable T</td></tr>
+          <tr><td>Estradiol (E2)</td><td>✓</td><td>✓</td><td>Aromatization check (men)</td></tr>
+          <tr><td>SHBG</td><td>✓</td><td>✓</td><td>Affects free T calculation</td></tr>
+          <tr><td>CBC (Hematocrit)</td><td>✓</td><td>✓ critical</td><td>Polycythemia risk</td></tr>
+          <tr><td>CMP</td><td>✓</td><td>✓</td><td>Organ function</td></tr>
+          <tr><td>PSA</td><td>—</td><td>✓</td><td>Prostate screening</td></tr>
+          <tr><td>Progesterone</td><td>✓</td><td>—</td><td>Uterine protection</td></tr>
+          <tr><td>Mammogram</td><td>Annual ✓</td><td>—</td><td>Must be current</td></tr>
+          <tr><td>Thyroid (TSH)</td><td>✓</td><td>Annual</td><td>Symptom overlap</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-green">
+    <div class="card-head">💉 Insertion Protocol — Step by Step</div>
+    <div class="card-body">
+      <div class="row"><div class="tag green">SITE</div><div class="info"><b>Upper outer buttock / posterior flank.</b> 1–2 inches below iliac crest, lateral to midline. Mark site with pen. Rotate sides each insertion — document which side used.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag green">PREP</div><div class="info">Betadine or chlorhexidine prep — wide area. Sterile drape. Lidocaine 1–2% with epi: <b>1–2 mL subQ + IM</b> along trocar track. Wait 2–3 min for full anesthesia.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag green">INCISION</div><div class="info"><b>Small stab incision</b> with #11 blade — 3–4mm for women, 4–5mm for men. Bevel up, parallel to skin surface. Depth through subQ only — not into fascia.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag green">TROCAR</div><div class="info">Insert trocar at <b>30–45° angle</b> through incision, advancing horizontally in subQ plane. Women: advance 2–3cm. Men: advance 3–4cm (larger pellets need more depth). Use obturator to deploy pellet.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag green">CONFIRM</div><div class="info">Withdraw trocar while keeping obturator in place. Palpate site — pellet should not be palpable if properly placed. If palpable and superficial, reposition or note for monitoring.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag green">CLOSE</div><div class="info"><b>Steri-strip closure</b> — 2–3 strips perpendicular to incision. Pressure dressing (folded gauze + tegaderm or athletic tape). Hold firm pressure 2–3 minutes before dressing.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">MULTIPLE</div><div class="info"><b>Multiple pellets:</b> Deploy through same incision — partial withdrawal, redirect slightly, deploy each pellet sequentially. Fan technique. Avoids multiple incisions.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">📋 Post-Insertion Instructions</div>
+    <div class="card-body">
+      <div class="row"><div class="tag gold">48HR</div><div class="info"><b>No swimming, hot tubs, baths, or soaking</b> for 48 hours. Shower is fine — keep dressing dry. No soaking the incision site.</div></div>
+      <div class="row"><div class="tag gold">1WK</div><div class="info"><b>No strenuous lower body exercise</b> involving glute/hip for 5–7 days. Walking is fine. No squats, lunges, cycling classes, running — increases extrusion risk.</div></div>
+      <div class="row"><div class="tag gold">DRESSING</div><div class="info">Keep pressure dressing in place 24–48 hours. Remove Steri-strips after 5–7 days or allow to fall off naturally. Do not pull.</div></div>
+      <div class="row"><div class="tag teal">EXPECT</div><div class="info">Mild bruising and tenderness normal for 5–7 days. Small firm lump at insertion site normal — this is the pellet. Resolves as pellet absorbs (3–6 months).</div></div>
+      <div class="row"><div class="tag pink">ONSET</div><div class="info">Women feel benefit: <b>2–4 weeks</b>. Men: <b>4–6 weeks</b> for full effect. Sleep often improves first (week 1–2), libido and energy follow. Full effect at 6–8 weeks.</div></div>
+      <div class="row"><div class="tag red">CALL IF</div><div class="info">Increasing pain after day 3. Redness spreading beyond insertion site. Fever. Yellow/green discharge. Pellet visibly protruding through skin (extrusion).</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-red">
+    <div class="card-head">⚠️ Complications & Management</div>
+    <div class="card-body">
+      <div class="row"><div class="tag red">EXTRUSION</div><div class="info"><b>Pellet extrusion (2–5% incidence):</b> Pellet works its way to skin surface. Risk factors: too superficial placement, early strenuous exercise, infection. Management: wound care, allow to extrude naturally or minor procedure to remove. Document and adjust technique next insertion.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">INFXN</div><div class="info"><b>Infection (&lt;1%):</b> Increasing pain, warmth, erythema, purulent discharge, fever. Treatment: remove pellet(s) if accessible, oral antibiotics (keflex or augmentin), wound care. Cultures if systemic signs.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">HEMATOMA</div><div class="info"><b>Hematoma/significant bruising:</b> More common in patients on anticoagulants. Pressure dressing immediately. Hold blood thinners 5–7 days pre-insertion when possible. Ice PRN. Usually self-resolving.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">FIBROSIS</div><div class="info"><b>Scar tissue / fibrosis:</b> Builds with repeated insertions at same site. Rotate sides every insertion. Document site used. Fibrosis makes insertion harder — use alternate location if significant resistance felt.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag purple">POLY</div><div class="info"><b>Polycythemia (men):</b> Hematocrit &gt;54%. Hold next pellet until Hct normalizes. Therapeutic phlebotomy if symptomatic (&gt;58%). Reduce testosterone dose at next insertion. Monitor q3 months.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag purple">AROM</div><div class="info"><b>Excess aromatization (men):</b> High E2, gynecomastia, water retention, mood changes. Add anastrozole 0.5–1mg 2x/week. Recheck E2 in 6 weeks. Target E2 &lt;40 pg/mL in men.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">VIRILIZE</div><div class="info"><b>Virilization (women):</b> Acne, hirsutism, voice changes, clitoromegaly, hair thinning. Reduce testosterone dose at next insertion. Consider spironolactone for androgenic side effects. Cannot remove pellet — manage symptomatically.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-head">🏭 Pellet Vendor Comparison</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Vendor</th><th class="purple">Training</th><th>Pellet Sizes</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>BioTE</b></td><td>Required cert program</td><td>Women: 12.5–100mg T; 6.25–25mg E2. Men: 100–300mg T pellets</td><td>Largest network. Standardized dosing calc. Proprietary algorithm.</td></tr>
+          <tr><td><b>EvexiPEL</b></td><td>Training program</td><td>Similar range to BioTE</td><td>Independent provider-owned model. No franchise fees.</td></tr>
+          <tr><td><b>Noven/SottoPelle</b></td><td>Training required</td><td>Custom compounded</td><td>Proprietary dosing. Strong female patient focus.</td></tr>
+          <tr><td><b>Custom 503A pharmacy</b></td><td>Provider-directed</td><td>Any size — custom</td><td>Most flexibility. Provider sets dose formula. No proprietary algorithm.</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag purple">NOTE</div><div class="info">All pellets must come from <b>FDA-registered 503A compounding pharmacy.</b> Pellets are implantable devices — sterility is non-negotiable. Never use pellets from unregistered sources.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-darkpink">
+    <div class="card-head">📐 BioTE Dosing Formula Reference</div>
+    <div class="card-body">
+      <div class="row"><div class="tag pink">WOMEN T</div><div class="info"><b>BioTE women's testosterone formula (simplified):</b> Baseline total T + symptom score + activity modifier. Typical starting range 50–125mg. Proprietary calculator — training required for exact formula.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag navy">MEN T</div><div class="info"><b>BioTE men's testosterone formula (simplified):</b> Based on weight, baseline T, symptoms, and prior response. Typical 600–1200mg. Proprietary calculator — 100mg pellets stacked in same site.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag teal">DHEA</div><div class="info"><b>DHEA pellets (BioTE):</b> 10mg DHEA often added to women's insertion. Adrenal support, libido, energy. Added to same trocar track as testosterone pellet.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">BORON</div><div class="info"><b>BioTE Nutraceuticals:</b> ADK5/ADK10 (Vit A/D/K), DIM (estrogen metabolism), IC capsules (iodine), Senolytic Complex. Recommended to all pellet patients as adjunct protocol.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-teal">
+    <div class="card-head">🔬 Aromatase Inhibitor Protocol — Men</div>
+    <div class="card-body">
+      <div class="row"><div class="tag teal">WHEN</div><div class="info">Add anastrozole when: E2 &gt;40 pg/mL, symptoms of excess estrogen (gynecomastia, water retention, mood swings, reduced libido despite adequate T levels).</div></div>
+      <div class="divider"></div>
+      <table class="tbl">
+        <thead><tr><th>Drug</th><th class="teal">Dose</th><th>Frequency</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Anastrozole</b></td><td>0.5–1.0 mg</td><td>2x/week or EOD</td><td>First-line AI for men on TRT. Monitor E2 q6wks.</td></tr>
+          <tr><td><b>Exemestane</b></td><td>12.5–25 mg</td><td>2–3x/week</td><td>Steroidal AI — irreversible. Second-line.</td></tr>
+          <tr><td><b>DIM supplement</b></td><td>200–400mg</td><td>Daily</td><td>Mild natural AI. Use for borderline E2 or prevention.</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">!</div><div class="info"><span class="warn">Don't over-suppress E2 in men.</span> E2 &lt;20 pg/mL = joint pain, low libido, depression, poor bone density. Target E2: 20–40 pg/mL in men on TRT.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">📅 Follow-Up & Re-Pellet Schedule</div>
+    <div class="card-body">
+      <div class="flow">
+        <div class="flow-box lt">Insertion Day 0</div><div class="arrow">→</div>
+        <div class="flow-box pink">Wk 4–6: First effect</div><div class="arrow">→</div>
+        <div class="flow-box navy">Wk 6–8: Full benefit</div><div class="arrow">→</div>
+        <div class="flow-box gold">4 wks before due: Labs</div><div class="arrow">→</div>
+        <div class="flow-box teal">Re-insert</div>
+      </div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">WOMEN</div><div class="info">Labs at <b>week 4–6 post-insertion</b> (peak level check). Labs again at <b>4 weeks before next scheduled insertion</b> (trough — guides next dose). Re-pellet every 3–4 months.</div></div>
+      <div class="row"><div class="tag navy">MEN</div><div class="info">Labs at <b>6–8 weeks</b> post-insertion (peak). Trough labs <b>4 weeks before next insertion.</b> PSA and hematocrit every insertion cycle. Re-pellet every 4–6 months.</div></div>
+      <div class="row"><div class="tag red">ADJUST</div><div class="info"><b>Dose adjustment guidelines:</b> Trough T below optimal + symptoms = increase dose 10–15%. Virilization in women or Hct&gt;52% in men = decrease dose 10–15%.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-darkpink">
+    <div class="card-head">🧠 High-Yield Clinical Pearls</div>
+    <div class="card-body">
+      <div class="row"><div class="star">★</div><div class="info"><b>Cannot remove a pellet once inserted.</b> If patient has adverse reaction — manage symptomatically. This is the most important consent point.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Extrusion risk = superficial placement + early exercise.</b> Place deep enough in subQ. Rest site for 7 days. Enforce exercise restriction.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Rotate insertion sides.</b> Document which side. Fibrosis from repeated same-site insertions makes subsequent procedures harder.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Trough labs guide dosing</b> — not peak. Draw 4 weeks BEFORE next scheduled insertion, not right after.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Men: watch Hct every cycle.</b> Polycythemia is the most common serious side effect of testosterone pellets. Hold if Hct &gt;54%.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Women feeling "wore off early"</b> = underdosed, not interval too long. Increase dose — don't shorten interval below 3 months.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Mammogram current before every estrogen cycle</b> in women. Document in chart. Non-negotiable for liability protection.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Consent must include:</b> Cannot remove pellet, virilization risk (women), polycythemia risk (men), extrusion risk, infection risk, no guarantee of results.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-head">✅ Contraindications</div>
+    <div class="card-body">
+      <div class="row"><div class="tag red">ABS-W</div><div class="info"><b>Women absolute:</b> Breast cancer (current or history). Estrogen-sensitive cancers. Unexplained vaginal bleeding. Active VTE/PE. Pregnancy.</div></div>
+      <div class="row"><div class="tag red">ABS-M</div><div class="info"><b>Men absolute:</b> Prostate cancer (active). Breast cancer. Hematocrit &gt;54% (defer until corrected). Severe BPH with urinary obstruction.</div></div>
+      <div class="row"><div class="tag gold">REL</div><div class="info"><b>Relative:</b> Active skin infection at proposed site. Severe coagulopathy. Immunosuppression (infection risk). BRCA carriers — shared decision-making with OB/GYN.</div></div>
+      <div class="row"><div class="tag teal">CONSENT</div><div class="info">Document all contraindications screened and cleared. Signed informed consent must specifically address irreversibility before every insertion.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>No Prior Authorization</span> · Danielle Alcala · Ryan Kent FNP-BC · nopriorauthorization.com · For licensed prescribing providers only · Not a substitute for clinical training
+  <span style="color:#888;font-weight:400">© 2026 NPA · Pellet Therapy Clinical Cheat Sheet · $17</span>
+</div>
+</div>
+</body>
+</html>

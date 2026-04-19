@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NPA — Hormone Therapy Clinical Cheat Sheet</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap');
+:root{--black:#1A1A1A;--pink:#D4537E;--darkpink:#A83560;--navy:#1a2940;--teal:#1a7a6e;--gold:#b8760a;--red:#c0392b;--purple:#6c3483;--green:#1e6b3c;--border:#ddd0d5;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Source Sans 3',sans-serif;font-size:7.6pt;background:#e8dde3;color:#1A1A1A;line-height:1.28;}
+.page{width:10.5in;min-height:8in;background:white;margin:.15in auto;padding:.12in .15in;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto 1fr;gap:.07in;box-shadow:0 4px 24px rgba(0,0,0,.18);}
+.page-header{grid-column:1/-1;background:#1A1A1A;color:white;padding:.05in .1in;display:flex;align-items:center;justify-content:space-between;border-radius:3px;margin-bottom:.03in;}
+.page-header h1{font-family:'Bebas Neue',sans-serif;font-size:20pt;letter-spacing:2px;}
+.page-header .subtitle{font-size:8pt;color:#D4537E;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.page-label{background:#D4537E;color:white;padding:2px 10px;border-radius:2px;font-family:'Bebas Neue',sans-serif;font-size:13pt;letter-spacing:1px;}
+.brand-name{font-family:'Bebas Neue',sans-serif;font-size:13pt;color:#D4537E;display:block;letter-spacing:1.5px;}
+.brand-sub{font-size:6.5pt;color:#888;}
+.col{display:flex;flex-direction:column;gap:.05in;}
+.card{border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+.card-head{padding:2px 6px;color:white;font-family:'Bebas Neue',sans-serif;font-size:9.5pt;letter-spacing:.8px;}
+.card-body{padding:4px 6px;background:white;}
+.c-black .card-head{background:#1A1A1A;}.c-black{border-color:#1A1A1A;}
+.c-pink .card-head{background:#D4537E;}.c-pink{border-color:#D4537E;}
+.c-darkpink .card-head{background:#A83560;}.c-darkpink{border-color:#A83560;}
+.c-navy .card-head{background:#1a2940;}.c-navy{border-color:#1a2940;}
+.c-teal .card-head{background:#1a7a6e;}.c-teal{border-color:#1a7a6e;}
+.c-gold .card-head{background:#b8760a;}.c-gold{border-color:#b8760a;}
+.c-red .card-head{background:#c0392b;}.c-red{border-color:#c0392b;}
+.c-purple .card-head{background:#6c3483;}.c-purple{border-color:#6c3483;}
+.c-green .card-head{background:#1e6b3c;}.c-green{border-color:#1e6b3c;}
+.row{display:flex;gap:3px;margin-bottom:2px;align-items:flex-start;}
+.row:last-child{margin-bottom:0;}
+.tag{background:#1A1A1A;color:white;border-radius:2px;padding:0 4px;font-size:6.5pt;font-weight:700;white-space:nowrap;min-width:14px;text-align:center;line-height:1.5;flex-shrink:0;}
+.tag.pink{background:#D4537E;}.tag.teal{background:#1a7a6e;}.tag.gold{background:#b8760a;}.tag.red{background:#c0392b;}.tag.purple{background:#6c3483;}.tag.green{background:#1e6b3c;}.tag.navy{background:#1a2940;}
+.info{flex:1;} b,strong{color:#1A1A1A;}
+.tbl{width:100%;border-collapse:collapse;font-size:7pt;}
+.tbl th{background:#1A1A1A;color:white;padding:1px 4px;font-weight:700;text-align:left;font-size:6.8pt;}
+.tbl th.pink{background:#D4537E;}.tbl th.teal{background:#1a7a6e;}.tbl th.navy{background:#1a2940;}.tbl th.red{background:#c0392b;}.tbl th.gold{background:#b8760a;}.tbl th.purple{background:#6c3483;}
+.tbl td{padding:1px 4px;border-bottom:1px solid #e8dde3;vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#fdf5f8;}
+.star{color:#D4537E;font-weight:900;margin-right:2px;}
+.warn{color:#c0392b;font-weight:700;}
+.divider{height:1px;background:#ddd0d5;margin:3px 0;}
+.hl{background:#fdeef4;border-radius:1px;padding:0 1px;}.hl2{background:#d4f0e8;border-radius:1px;padding:0 1px;}
+.flow{display:flex;align-items:center;gap:2px;flex-wrap:wrap;margin-bottom:2px;}
+.flow-box{background:#1A1A1A;color:white;padding:1px 5px;border-radius:2px;font-size:6.5pt;font-weight:600;}
+.flow-box.pink{background:#D4537E;}.flow-box.teal{background:#1a7a6e;}.flow-box.gold{background:#b8760a;}.flow-box.navy{background:#1a2940;}.flow-box.lt{background:#f5eff2;color:#1A1A1A;}
+.arrow{font-size:8pt;color:#D4537E;font-weight:900;}
+.footer-strip{grid-column:1/-1;background:#1A1A1A;color:#888;font-size:6pt;padding:2px 8px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;margin-top:.03in;}
+.footer-strip span{color:#D4537E;font-weight:700;}
+@media print{body{background:white;}.page{margin:0;box-shadow:none;}@page{size:11in 8.5in landscape;margin:.1in;}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="page-header">
+  <div><h1>Hormone Therapy (BHRT) — Clinical Reference</h1><div class="subtitle">Estrogen · Progesterone · Testosterone · Dosing · Labs · Delivery Methods · Monitoring · Contraindications</div></div>
+  <div class="page-label">CHEAT SHEET</div>
+  <div><span class="brand-name">NO PRIOR AUTHORIZATION</span><span class="brand-sub">nopriorauthorization.com · Danielle Alcala · Ryan Kent FNP-BC</span></div>
+</div>
+
+<div class="col">
+  <div class="card c-pink">
+    <div class="card-head">💊 Estrogen — Delivery Methods & Starting Doses</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Delivery</th><th class="pink">Starting Dose</th><th>Adjust</th><th>VTE Risk</th></tr></thead>
+        <tbody>
+          <tr><td><b>Transdermal patch</b></td><td>0.025–0.05 mg/day</td><td>q4–6 wks</td><td><span class="hl2">Lowest</span></td></tr>
+          <tr><td><b>Gel (EstroGel/Divigel)</b></td><td>0.5–1.0 g/day</td><td>q4–6 wks</td><td><span class="hl2">Very low</span></td></tr>
+          <tr><td><b>Spray (Evamist)</b></td><td>1 spray/day</td><td>q4–6 wks</td><td><span class="hl2">Very low</span></td></tr>
+          <tr><td><b>Vaginal ring (Estring)</b></td><td>2 mg/90 days</td><td>Replace q90d</td><td>Minimal systemic</td></tr>
+          <tr><td><b>Oral estradiol</b></td><td>0.5–1.0 mg/day</td><td>q4–6 wks</td><td><span class="hl">Higher</span></td></tr>
+          <tr><td><b>Pellet</b></td><td>6–12.5 mg</td><td>q3–6 mo</td><td>Low</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">KEY</div><div class="info">Transdermal preferred over oral — bypasses first-pass hepatic metabolism. Lower VTE risk, lower clotting factor elevation, lower triglyceride effect.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-head">💊 Progesterone — Delivery & Dosing</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Delivery</th><th class="purple">Dose</th><th>Timing</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Oral micronized (Prometrium)</b></td><td>100–200 mg</td><td>Nightly</td><td>Bioidentical. Sedating — take at HS.</td></tr>
+          <tr><td><b>Vaginal gel (Crinone)</b></td><td>4–8%</td><td>Daily</td><td>High uterine concentration</td></tr>
+          <tr><td><b>Topical cream</b></td><td>20–40 mg/day</td><td>Daily</td><td>Variable absorption — monitor levels</td></tr>
+          <tr><td><b>Pellet</b></td><td>50–100 mg</td><td>q3–6 mo</td><td>Combined with estrogen pellet</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag purple">RULE</div><div class="info"><b>Progesterone required</b> in any patient with an intact uterus on systemic estrogen. Prevents endometrial hyperplasia and cancer. Hysterectomy = progesterone optional.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-navy">
+    <div class="card-head">💊 Testosterone — Women & Men</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Population</th><th class="navy">Route</th><th>Starting Dose</th><th>Target Level</th></tr></thead>
+        <tbody>
+          <tr><td><b>Women</b></td><td>Topical cream</td><td>0.5–1.0 mg/day</td><td>30–80 ng/dL free T</td></tr>
+          <tr><td><b>Women</b></td><td>SubQ pellet</td><td>50–100 mg</td><td>q3–4 mo</td></tr>
+          <tr><td><b>Men</b></td><td>Topical gel</td><td>50–100 mg/day</td><td>400–700 ng/dL total T</td></tr>
+          <tr><td><b>Men</b></td><td>SubQ pellet</td><td>600–1200 mg</td><td>q4–6 mo</td></tr>
+          <tr><td><b>Men</b></td><td>IM injection</td><td>100–200 mg/wk</td><td>Monitor trough level</td></tr>
+          <tr><td><b>Men</b></td><td>SubQ injection</td><td>50–100 mg/wk</td><td>Stable levels preferred</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">!</div><div class="info"><b>Women:</b> Monitor for virilization — acne, hirsutism, voice changes, clitoromegaly. Reduce dose if present. <b>Men:</b> Monitor hematocrit (polycythemia risk), PSA, fertility impact.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-teal">
+    <div class="card-head">🧪 Baseline Labs — Required Before Initiating</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Lab Panel</th><th class="teal">Women</th><th>Men</th><th>Timing</th></tr></thead>
+        <tbody>
+          <tr><td>Estradiol (E2)</td><td>✓</td><td>✓</td><td>Day 2–3 of cycle (cycling) or any time (post-meno)</td></tr>
+          <tr><td>FSH / LH</td><td>✓</td><td>✓</td><td>Baseline — confirms menopause/hypogonadism</td></tr>
+          <tr><td>Total Testosterone</td><td>✓</td><td>✓</td><td>AM fasting, day 2–3 cycle (women)</td></tr>
+          <tr><td>Free Testosterone</td><td>✓</td><td>✓</td><td>With total T</td></tr>
+          <tr><td>SHBG</td><td>✓</td><td>✓</td><td>Affects free hormone calculation</td></tr>
+          <tr><td>Progesterone</td><td>✓</td><td>—</td><td>Day 21 (cycling) or any time</td></tr>
+          <tr><td>DHEA-S</td><td>✓</td><td>✓</td><td>Adrenal function baseline</td></tr>
+          <tr><td>Cortisol (AM)</td><td>Optional</td><td>Optional</td><td>If fatigue/stress symptoms</td></tr>
+          <tr><td>Thyroid (TSH, fT4)</td><td>✓</td><td>✓</td><td>Overlap with hormone symptoms</td></tr>
+          <tr><td>CBC</td><td>✓</td><td>✓</td><td>Hematocrit baseline</td></tr>
+          <tr><td>CMP</td><td>✓</td><td>✓</td><td>Liver/kidney function</td></tr>
+          <tr><td>Lipid panel</td><td>✓</td><td>✓</td><td>Cardiovascular baseline</td></tr>
+          <tr><td>PSA</td><td>—</td><td>✓</td><td>Prostate cancer screening (men)</td></tr>
+          <tr><td>Mammogram</td><td>✓</td><td>—</td><td>Current within 1 year before initiating</td></tr>
+          <tr><td>Pap/GYN current</td><td>✓</td><td>—</td><td>Within recommended screening interval</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-head">📊 Monitoring Schedule</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Timepoint</th><th class="gold">Labs</th><th>Clinical</th></tr></thead>
+        <tbody>
+          <tr><td><b>6–8 weeks</b></td><td>E2, T, progesterone, CBC</td><td>Symptom review, side effects</td></tr>
+          <tr><td><b>3 months</b></td><td>Full panel repeat</td><td>Dose adjustment if needed</td></tr>
+          <tr><td><b>6 months</b></td><td>Full panel + lipids</td><td>Cardiovascular risk review</td></tr>
+          <tr><td><b>Annual</b></td><td>Full panel + mammogram (women) + PSA (men)</td><td>Annual wellness + cancer screening</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">TIMING</div><div class="info">Draw labs at <b>trough</b> for pellets (just before next insertion). Topical/gel — draw 2–4 hours after application to capture peak. IM — draw at trough (day before next injection).</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-red">
+    <div class="card-head">🚫 Contraindications</div>
+    <div class="card-body">
+      <div class="row"><div class="tag red">ABS-E</div><div class="info"><b>Estrogen absolute CI:</b> Breast cancer (current or history). Endometrial cancer. Unexplained vaginal bleeding. Active VTE or PE. Active liver disease. Stroke or MI within 12 months.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag red">ABS-T</div><div class="info"><b>Testosterone absolute CI (men):</b> Prostate cancer. Breast cancer. Severe BPH with urinary symptoms. Hematocrit >54%.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">REL</div><div class="info"><b>Relative CI:</b> BRCA1/2 carriers — shared decision-making. Uncontrolled HTN. Severe obesity (BMI >40) — higher VTE risk. Migraines with aura — transdermal preferred over oral.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">TIMING</div><div class="info"><b>WHI study context:</b> WHI used conjugated equine estrogen + MPA (synthetic) — NOT bioidentical HRT. Do not apply WHI risk data directly to BHRT. Evidence base differs.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-head">📋 Symptom Screening Checklist</div>
+    <div class="card-body">
+      <div class="row"><div class="tag pink">FEMALE</div><div class="info"><b>Menopausal symptoms:</b> Hot flashes, night sweats, vaginal dryness, dyspareunia, sleep disruption, mood changes, brain fog, fatigue, decreased libido, weight gain, hair thinning, dry skin.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag navy">MALE</div><div class="info"><b>Hypogonadism symptoms:</b> Low energy/fatigue, decreased libido, erectile dysfunction, mood changes/depression, decreased muscle mass, increased body fat, poor concentration, hot flashes, night sweats.</div></div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag teal">TOOLS</div><div class="info">Use validated symptom tools: <b>MENQOL</b> (menopause quality of life), <b>Menopause Rating Scale (MRS)</b>, <b>ADAM questionnaire</b> (men). Document baseline for treatment tracking.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-head">💉 Pellet Therapy Protocol</div>
+    <div class="card-body">
+      <div class="row"><div class="tag green">SITE</div><div class="info">Upper outer buttock or flank. Local anesthetic (lidocaine 1%). Small trocar incision. Pellet inserted subcutaneously. Steri-strip + pressure dressing.</div></div>
+      <div class="row"><div class="tag green">POST</div><div class="info"><b>48 hours:</b> No swimming, hot tubs, soaking. No strenuous exercise involving insertion site. Keep dry. No pressure on site.</div></div>
+      <div class="row"><div class="tag green">INTERVAL</div><div class="info">Women: q3–4 months. Men: q4–6 months. Draw labs 4 weeks before next insertion (trough level) to guide dosing adjustment.</div></div>
+      <div class="row"><div class="tag gold">EXTRUSION</div><div class="info">Pellet extrusion risk: ~2–3%. Signs: redness, discharge, palpable pellet near surface. Maintain pressure, wound care. May need removal if symptomatic.</div></div>
+      <div class="row"><div class="tag red">FIBROSIS</div><div class="info">Scar tissue from repeated insertions at same site — rotate sites. Use same buttock but different location each insertion. Document site used.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card c-gold">
+    <div class="card-head">📈 Lab Reference Ranges — Hormone Targets</div>
+    <div class="card-body">
+      <table class="tbl">
+        <thead><tr><th>Hormone</th><th class="gold">Women Target</th><th>Men Target</th><th>Units</th></tr></thead>
+        <tbody>
+          <tr><td>Estradiol (E2)</td><td>50–150 (meno: 50–100)</td><td>20–40</td><td>pg/mL</td></tr>
+          <tr><td>Total Testosterone</td><td>30–80</td><td>400–700 (opt)</td><td>ng/dL</td></tr>
+          <tr><td>Free Testosterone</td><td>1–5</td><td>50–200</td><td>pg/mL</td></tr>
+          <tr><td>Progesterone</td><td>5–20 (luteal)</td><td>N/A</td><td>ng/mL</td></tr>
+          <tr><td>DHEA-S</td><td>100–250</td><td>200–400</td><td>mcg/dL</td></tr>
+          <tr><td>SHBG</td><td>30–130</td><td>10–60</td><td>nmol/L</td></tr>
+          <tr><td>FSH (post-meno)</td><td>&gt;25 confirms</td><td>—</td><td>mIU/mL</td></tr>
+          <tr><td>Hematocrit</td><td>&lt;48%</td><td>&lt;54%</td><td>%</td></tr>
+          <tr><td>PSA</td><td>—</td><td>&lt;4.0 (age adj)</td><td>ng/mL</td></tr>
+        </tbody>
+      </table>
+      <div class="divider"></div>
+      <div class="row"><div class="tag pink">PRINCIPLE</div><div class="info"><b>Dose to symptom resolution</b> — not just lab numbers. Optimal range is individualized. Patient who feels best at E2 of 80 may differ from one who needs 130.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-navy">
+    <div class="card-head">⏱ Expected Timeline — Patient Education</div>
+    <div class="card-body">
+      <div class="flow">
+        <div class="flow-box lt">Start</div><div class="arrow">→</div>
+        <div class="flow-box navy">Wk 2–3: Sleep + mood</div><div class="arrow">→</div>
+        <div class="flow-box pink">Wk 4–6: Hot flashes ↓</div><div class="arrow">→</div>
+        <div class="flow-box teal">Wk 6–8: Libido, energy</div><div class="arrow">→</div>
+        <div class="flow-box gold">Mo 3+: Full benefit</div>
+      </div>
+      <div class="divider"></div>
+      <div class="row"><div class="tag gold">EDUCATE</div><div class="info">Patients who aren't counseled on the 6–8 week timeline call at week 2 saying "it isn't working." Set expectations at the initiation appointment.</div></div>
+    </div>
+  </div>
+
+  <div class="card c-darkpink">
+    <div class="card-head">🧠 High-Yield Clinical Pearls</div>
+    <div class="card-body">
+      <div class="row"><div class="star">★</div><div class="info"><b>Transdermal &gt; oral estrogen</b> for VTE risk. Always prefer transdermal unless patient-specific reason for oral.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Progesterone protects the uterus.</b> Never give systemic estrogen to intact uterus without progestogen. Non-negotiable.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>WHI data ≠ BHRT data.</b> Understand the difference. Educate patients who present with fear from outdated media coverage.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Hematocrit monitoring</b> in men on testosterone is critical. Polycythemia = increased stroke/clot risk. Hold if Hct &gt;54%.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Dose to symptoms, not just labs.</b> A patient with E2 of 60 who feels terrible may need 100. The number is a guide, not the goal.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Mammogram required</b> before initiating estrogen therapy in women. Annual mammography during therapy. Document in chart.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Collaborative practice agreement</b> (if required by state) must be current before prescribing. Verify scope of practice laws annually.</div></div>
+      <div class="row"><div class="star">★</div><div class="info"><b>Thyroid overlap:</b> Hypothyroid and menopause symptoms are nearly identical. Always check TSH before attributing to hormone deficiency.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>No Prior Authorization</span> · Danielle Alcala · Ryan Kent FNP-BC · nopriorauthorization.com · For licensed prescribing providers only · Not a substitute for clinical training
+  <span style="color:#888;font-weight:400">© 2026 NPA · Hormone Therapy Clinical Cheat Sheet · $17</span>
+</div>
+</div>
+</body>
+</html>

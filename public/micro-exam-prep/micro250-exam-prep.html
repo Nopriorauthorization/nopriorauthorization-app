@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro 270 Complete Exam Prep — All 17 Chapters</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#0a1628;color:#fff;padding:0;font-size:15px;line-height:1.7}
+
+/* ── COVER PAGE ── */
+.cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:60px 40px;text-align:center;border-bottom:3px solid #E8559F;page-break-after:always}
+.cover-eyebrow{font-family:'DM Sans',sans-serif;font-size:14px;letter-spacing:6px;color:#E8559F;
+  text-transform:uppercase;margin-bottom:32px;opacity:.8}
+.cover-title{font-family:'Bebas Neue',sans-serif;font-size:96px;color:#ffffff;letter-spacing:-2px;
+  line-height:1;margin-bottom:16px}
+.cover-title span{color:#E8559F}
+.cover-subtitle{font-family:'DM Sans',sans-serif;font-size:22px;color:#ffffff;opacity:.7;
+  margin-bottom:48px;font-style:italic}
+.cover-stats{display:flex;gap:60px;justify-content:center;margin-bottom:56px}
+.cover-stat-num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:#E8559F;line-height:1}
+.cover-stat-label{font-size:13px;color:#ffffff;opacity:.5;letter-spacing:2px;text-transform:uppercase}
+.cover-rule{width:200px;height:1px;background:#E8559F;opacity:.4;margin:0 auto 48px}
+.cover-author{font-size:18px;color:#ffffff;opacity:.8;margin-bottom:8px}
+.cover-credentials{font-size:13px;color:#E8559F;letter-spacing:2px;margin-bottom:4px}
+.cover-url{font-size:14px;color:#ffffff;opacity:.4}
+.cover-slogan{font-family:'DM Sans',sans-serif;font-size:20px;font-style:italic;color:#ffffff;
+  opacity:.6;margin-top:48px;border-top:1px solid rgba(232,85,159,.2);padding-top:32px}
+
+/* ── TABLE OF CONTENTS ── */
+.toc{padding:60px 40px;page-break-after:always;max-width:800px;margin:0 auto}
+.toc-title{font-family:'Bebas Neue',sans-serif;font-size:48px;color:#E8559F;letter-spacing:2px;margin-bottom:32px}
+.toc-item{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid rgba(232,85,159,.15)}
+.toc-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#E8559F;min-width:56px}
+.toc-info{flex:1}
+.toc-chapter{font-size:15px;font-weight:600;color:#ffffff}
+.toc-topics{font-size:13px;color:#ffffff;opacity:.45;margin-top:2px}
+.toc-count{font-size:12px;color:#E8559F;font-weight:600;letter-spacing:1px;white-space:nowrap;padding-left:16px}
+
+/* ── CHAPTER HEADER ── */
+.ch-header{padding:48px 40px 32px;page-break-before:always;border-bottom:2px solid #E8559F;
+  margin-bottom:0;max-width:900px;margin:0 auto}
+.ch-eyebrow{font-size:12px;letter-spacing:5px;color:#E8559F;text-transform:uppercase;margin-bottom:12px;opacity:.7}
+.ch-title{font-family:'Bebas Neue',sans-serif;font-size:64px;color:#ffffff;letter-spacing:-1px;line-height:1;margin-bottom:12px}
+.ch-topics{font-size:14px;color:#ffffff;opacity:.5;font-style:italic;margin-bottom:16px}
+.ch-badge{display:inline-block;background:#E8559F;color:#fff;font-size:12px;font-weight:600;
+  padding:4px 14px;border-radius:20px;letter-spacing:1px}
+
+/* ── Q&A BLOCKS ── */
+.chapter-content{padding:0 40px 48px;max-width:900px;margin:0 auto}
+.q-block{background:#111e35;border-radius:12px;margin:16px 0;overflow:hidden;border:1px solid rgba(232,85,159,.2)}
+.q-header{background:#1a2a45;padding:12px 18px;display:flex;align-items:flex-start;gap:14px}
+.q-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#E8559F;min-width:36px;line-height:1}
+.q-text{font-size:14px;font-weight:500;color:#fff;line-height:1.5}
+.a-body{padding:14px 18px;color:#e0e8f5;font-size:14px;line-height:1.7}
+.a-body p{margin-bottom:6px}
+.a-body ul{padding-left:20px;margin:6px 0}
+.a-body ul li{margin-bottom:4px;color:#e0e8f5;font-size:14px}
+.key{background:#1a0a2e;border-left:3px solid #E8559F;padding:10px 14px;border-radius:0 8px 8px 0;margin:8px 0;font-size:14px}
+.key strong{color:#E8559F}
+.warn{background:rgba(230,57,70,.12);border:1px solid rgba(230,57,70,.3);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:14px;color:#ffb3b8}
+.tip{background:rgba(42,157,143,.12);border:1px solid rgba(42,157,143,.3);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:14px;color:#a7f3d0}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+th{background:#E8559F;color:#fff;padding:8px 12px;text-align:left;font-weight:600}
+tr:nth-child(even){background:#0d1a2e}
+tr:nth-child(odd){background:#111e35}
+td{padding:8px 12px;color:#e0e8f5;border-bottom:1px solid rgba(255,255,255,.05)}
+.badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:600;margin:2px}
+.b-pink{background:#E8559F;color:#fff}
+.b-teal{background:#2a9d8f;color:#fff}
+.b-red{background:#e63946;color:#fff}
+.b-gold{background:#c77b2a;color:#fff}
+
+/* ── BACK COVER ── */
+.back-cover{padding:80px 40px;text-align:center;border-top:3px solid #E8559F;margin-top:60px;page-break-before:always}
+.back-cover-title{font-family:'Bebas Neue',sans-serif;font-size:48px;color:#E8559F;letter-spacing:2px;margin-bottom:16px}
+.back-cover-text{font-size:16px;color:#ffffff;opacity:.7;max-width:600px;margin:0 auto 32px;line-height:1.8}
+.back-cover-url{font-size:20px;color:#E8559F;letter-spacing:2px;margin-bottom:8px}
+
+/* ── PRINT ── */
+@media print{
+  .cover,.toc,.ch-header,.chapter-content,.back-cover{padding-left:20px;padding-right:20px}
+  .cover{page-break-after:always}
+  .toc{page-break-after:always}
+  .ch-header{page-break-before:always}
+  body{background:#0a1628;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ COVER ════════════════════ -->
+<div class="cover">
+  <div class="cover-eyebrow">No Prior Authorization · Nursing Study Series</div>
+  <div class="cover-title">Micro<span> 270</span><br>Exam Prep</div>
+  <div class="cover-subtitle">Complete Study Guide — All 17 Chapters</div>
+  
+  <div class="cover-stats">
+    <div>
+      <div class="cover-stat-num">17</div>
+      <div class="cover-stat-label">Chapters</div>
+    </div>
+    <div>
+      <div class="cover-stat-num">244</div>
+      <div class="cover-stat-label">Questions</div>
+    </div>
+    <div>
+      <div class="cover-stat-num">1</div>
+      <div class="cover-stat-label">Book</div>
+    </div>
+  </div>
+
+  <div class="cover-rule"></div>
+
+  <div class="cover-author">By Danielle Alcala</div>
+  <div class="cover-credentials">RN STUDENT · LICENSED ESTHETICIAN · PHLEBOTOMIST · CNA · CMAA</div>
+  <div class="cover-credentials" style="margin-top:4px">CO-FOUNDER · NO PRIOR AUTHORIZATION</div>
+  <div class="cover-url" style="margin-top:12px">nopriorauthorization.com</div>
+
+  <div class="cover-slogan">
+    "I did the hard work already.<br>Now I'm handing it to you."
+  </div>
+</div>
+
+<!-- ════════════════════ TABLE OF CONTENTS ════════════════════ -->
+<div class="toc">
+  <div class="toc-title">Table of Contents</div>
+
+  <div class="toc-item">
+    <div class="toc-num">3</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Prokaryotic Cell Structure</div>
+      <div class="toc-topics">Binary fission · Cell walls · Gram stain · Endospores · Flagella</div>
+    </div>
+    <div class="toc-count">21 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">4</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Eukaryotic Cells</div>
+      <div class="toc-topics">Endosymbiosis · Mitosis vs meiosis · Organelles · Fungal ergosterol</div>
+    </div>
+    <div class="toc-count">23 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">5</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Microbial Genetics</div>
+      <div class="toc-topics">DNA replication · Transcription · Translation · HGT · Mutations</div>
+    </div>
+    <div class="toc-count">29 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">6</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Virology</div>
+      <div class="toc-topics">Viral replication · Lytic vs lysogenic · Oncogenic viruses · Antigenic shift</div>
+    </div>
+    <div class="toc-count">20 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">7</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Microbial Growth</div>
+      <div class="toc-topics">Growth phases · Temperature classes · Oxygen requirements</div>
+    </div>
+    <div class="toc-count">10 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">8</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Microbial Metabolism</div>
+      <div class="toc-topics">Glycolysis · Krebs cycle · ETC · Fermentation · Biochemical tests</div>
+    </div>
+    <div class="toc-count">33 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">9</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Epidemiology</div>
+      <div class="toc-topics">Koch's postulates · Transmission · HAIs · Incidence vs prevalence</div>
+    </div>
+    <div class="toc-count">19 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">10</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Pathogenicity</div>
+      <div class="toc-topics">Virulence factors · Endotoxins vs exotoxins · Portals of entry</div>
+    </div>
+    <div class="toc-count">5 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">11</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Innate Immunity</div>
+      <div class="toc-topics">Inflammation · Complement · Cytokines · Fever · NK cells</div>
+    </div>
+    <div class="toc-count">9 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">12</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Adaptive Immunity</div>
+      <div class="toc-topics">B cells · T cells · Antibody isotypes · Memory · MHC</div>
+    </div>
+    <div class="toc-count">6 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">13</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Immune Disorders</div>
+      <div class="toc-topics">Hypersensitivity types · Autoimmunity · Blood typing · GVHD</div>
+    </div>
+    <div class="toc-count">8 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">14</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Vaccines & Diagnostics</div>
+      <div class="toc-topics">Vaccine types · ELISA · PCR · IGRA · Recombinant DNA · CRISPR</div>
+    </div>
+    <div class="toc-count">10 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">15</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Antimicrobial Drugs</div>
+      <div class="toc-topics">Beta-lactams · MRSA · Resistance mechanisms · MIC · MBC · Stewardship</div>
+    </div>
+    <div class="toc-count">34 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">16</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Respiratory Infections</div>
+      <div class="toc-topics">TB · Pneumonia · Influenza · Atypical pathogens</div>
+    </div>
+    <div class="toc-count">5 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">17</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Skin & Eye Infections</div>
+      <div class="toc-topics">S. aureus · Dermatophytes · VZV · Shingles</div>
+    </div>
+    <div class="toc-count">4 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">19</div>
+    <div class="toc-info">
+      <div class="toc-chapter">GI Tract Infections</div>
+      <div class="toc-topics">C. diff · H. pylori · Foodborne illness · Dysentery</div>
+    </div>
+    <div class="toc-count">4 Questions</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">20</div>
+    <div class="toc-info">
+      <div class="toc-chapter">Urogenital Infections</div>
+      <div class="toc-topics">UTIs · STIs · HPV · Syphilis stages · Chlamydia</div>
+    </div>
+    <div class="toc-count">4 Questions</div>
+  </div>
+  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(232,85,159,.3);display:flex;justify-content:space-between;align-items:center">
+    <div style="font-size:14px;color:#ffffff;opacity:.5">Total questions answered in full</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#E8559F">244 Questions</div>
+  </div>
+</div>
+
+<!-- ════════════════════ CHAPTERS ════════════════════ -->
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 3 · Exam Prep</div>
+  <div class="ch-title">Chapter 3</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Prokaryotic Cell Structure</div>
+  <div class="ch-topics">Binary fission · Cell walls · Gram stain · Endospores · Flagella</div>
+  <span class="ch-badge">21 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">Name the two prokaryotic domains. List one way these domains differ and one way they are similar.</div></div>
+<div class="a-body"><p><strong>Two prokaryotic domains:</strong> <span class="badge b-pink">Bacteria</span> <span class="badge b-teal">Archaea</span></p>
+<p><strong>How they differ:</strong> Cell membrane and cell wall composition. Bacteria have peptidoglycan cell walls; Archaea lack peptidoglycan entirely and have unique lipid membranes (ether-linked lipids vs ester-linked in bacteria).</p>
+<p><strong>How they are similar:</strong> Both are prokaryotes — no membrane-bound nucleus, no membrane-bound organelles, similar small cell size, and both have 70S ribosomes.</p></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">List three key features of prokaryotic cells.</div></div>
+<div class="a-body"><ul><li>No membrane-bound nucleus — DNA is in the nucleoid region</li><li>No membrane-bound organelles</li><li>Have 70S ribosomes (smaller than eukaryotic 80S)</li><li>Typically have cell walls (except Mycoplasma)</li><li>Small size — typically 0.2–2 micrometers</li></ul></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">Explain why the surface area-to-volume ratio impacts prokaryotic cell size.</div></div>
+<div class="a-body"><p>Prokaryotes must efficiently exchange nutrients and waste with their environment. As a cell grows larger, volume increases faster than surface area. A smaller cell has a <strong>higher surface area-to-volume ratio</strong> — meaning more membrane surface is available per unit of cell volume to import nutrients and export waste. If a cell gets too large, the surface area becomes insufficient to support the metabolic needs of the volume → cell can't survive. This is why prokaryotes stay small.</p></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">Describe three prokaryotic cell shapes and three arrangements.</div></div>
+<div class="a-body">
+<table><tr><th>Shape</th><th>Term</th><th>Example</th></tr>
+<tr><td>Spherical</td><td>Coccus</td><td>Staphylococcus</td></tr>
+<tr><td>Rod-shaped</td><td>Bacillus</td><td>E. coli</td></tr>
+<tr><td>Spiral</td><td>Spirillum/Spirochete</td><td>Treponema pallidum</td></tr></table>
+<table><tr><th>Arrangement</th><th>Term</th><th>Meaning</th></tr>
+<tr><td>Pairs</td><td>Diplo-</td><td>Diplococci</td></tr>
+<tr><td>Chains</td><td>Strepto-</td><td>Streptococci</td></tr>
+<tr><td>Grape-like clusters</td><td>Staphylo-</td><td>Staphylococci</td></tr></table></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">What is pleomorphism and how can it improve a bacterium's ability to cause disease?</div></div>
+<div class="a-body"><p><strong>Pleomorphism:</strong> The ability of a bacterium to change its shape or size depending on environmental conditions — it doesn't have a fixed, consistent shape.</p>
+<p><strong>Why it helps cause disease:</strong> Shape changes can help bacteria evade immune detection (antibodies and immune cells recognize specific shapes), adapt to different host environments, and resist phagocytosis. A bacterium that can alter its morphology is harder for the immune system to consistently target.</p></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">06</div><div class="q-text">Describe what binary fission is and explain the steps of this process.</div></div>
+<div class="a-body"><p><strong>Binary fission:</strong> The primary method of asexual reproduction in prokaryotes. One cell divides into two identical daughter cells.</p>
+<p><strong>Steps:</strong></p>
+<ul><li>1. Cell elongates</li><li>2. Circular chromosome replicates — each copy moves to opposite ends of the cell</li><li>3. Cell membrane pinches inward at the midpoint (FtsZ protein forms the Z-ring)</li><li>4. Cell wall forms between the two halves</li><li>5. Two identical daughter cells separate</li></ul>
+<div class="tip">✓ Result: Two genetically identical cells. The time to complete one division = generation time.</div></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">07</div><div class="q-text">Describe the structural and functional features of prokaryotic plasma membranes.</div></div>
+<div class="a-body"><p><strong>Structure:</strong> Phospholipid bilayer with embedded proteins. In bacteria: ester-linked fatty acids. In archaea: ether-linked, branched lipids (more stable in extreme environments).</p>
+<p><strong>Functions:</strong></p>
+<ul><li>Selectively permeable barrier — controls what enters and exits</li><li>Site of transport proteins (active and passive transport)</li><li>Location of electron transport chain (no mitochondria in prokaryotes — ETC is on the plasma membrane)</li><li>Site of ATP synthesis</li><li>Anchors the chromosome during replication</li></ul></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">08</div><div class="q-text">Compare and contrast archaeal and bacterial cell walls and cell membranes.</div></div>
+<div class="a-body">
+<table><tr><th></th><th>Bacteria</th><th>Archaea</th></tr>
+<tr><td>Cell wall</td><td>Peptidoglycan</td><td>No peptidoglycan — pseudopeptidoglycan or S-layer proteins</td></tr>
+<tr><td>Membrane lipids</td><td>Ester-linked fatty acids</td><td>Ether-linked, branched isoprenoids — more stable</td></tr>
+<tr><td>Membrane structure</td><td>Standard bilayer</td><td>Can form monolayer in extreme thermophiles</td></tr>
+<tr><td>Similarity</td><td colspan="2">Both are selectively permeable, regulate transport, anchor DNA</td></tr></table></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">09</div><div class="q-text">Compare and contrast Gram-positive and Gram-negative bacterial cell walls.</div></div>
+<div class="a-body">
+<table><tr><th></th><th>Gram-Positive</th><th>Gram-Negative</th></tr>
+<tr><td>Peptidoglycan</td><td>Thick layer (many layers)</td><td>Thin layer (1–2 layers)</td></tr>
+<tr><td>Outer membrane</td><td>ABSENT</td><td>PRESENT — contains LPS (lipopolysaccharide)</td></tr>
+<tr><td>Teichoic acids</td><td>Present</td><td>Absent</td></tr>
+<tr><td>Periplasmic space</td><td>Smaller</td><td>Larger (between inner and outer membrane)</td></tr>
+<tr><td>Gram stain result</td><td>Purple (retains crystal violet)</td><td>Pink/red (loses crystal violet, takes safranin)</td></tr></table>
+<div class="warn">⚠ LPS in Gram-negative outer membrane = endotoxin → triggers fever and septic shock in patients</div></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">10</div><div class="q-text">Name two acid-fast bacteria genera, state what makes them so, and explain their clinical importance.</div></div>
+<div class="a-body"><p><strong>Genera:</strong> <em>Mycobacterium</em> and <em>Nocardia</em></p>
+<p><strong>What makes them acid-fast:</strong> Their cell walls are rich in <strong>mycolic acids</strong> — long-chain, waxy fatty acids that make the wall hydrophobic and difficult to penetrate. When stained with carbolfuchsin (a red dye), the dye binds tightly and resists decolorization with acid-alcohol → they stay red = acid-fast positive.</p>
+<p><strong>Clinical importance:</strong></p>
+<ul><li><em>Mycobacterium tuberculosis</em> — causes tuberculosis</li><li><em>Mycobacterium leprae</em> — causes leprosy (Hansen's disease)</li><li>The waxy wall makes them resistant to many antibiotics and disinfectants → hard to treat</li><li>Detected by the Ziehl-Neelsen (acid-fast) stain</li></ul></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">11</div><div class="q-text">Explain how L-forms and Mycoplasma are different from other prokaryotic cells.</div></div>
+<div class="a-body"><p><strong>Mycoplasma:</strong> A genus of bacteria that <strong>naturally lack cell walls</strong>. They have the smallest known prokaryotic genome. Because they have no cell wall they are pleomorphic (no fixed shape) and are <strong>intrinsically resistant to cell wall-targeting antibiotics</strong> (penicillins, cephalosporins). Their membranes contain sterols for stability.</p>
+<p><strong>L-forms:</strong> Bacteria that have <strong>lost their cell walls</strong> due to antibiotic exposure or environmental conditions. They can revert to their walled form when conditions improve. Like Mycoplasma, L-forms are resistant to beta-lactam antibiotics while in this state.</p>
+<div class="key"><strong>Key clinical point:</strong> Mycoplasma pneumoniae causes "walking pneumonia" — treated with macrolides or tetracyclines, NOT penicillin (which targets cell walls that Mycoplasma doesn't have).</div></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">12</div><div class="q-text">Describe the passive and active transport mechanisms that exist in prokaryotic cells.</div></div>
+<div class="a-body">
+<table><tr><th>Mechanism</th><th>Energy Needed?</th><th>How It Works</th></tr>
+<tr><td>Simple diffusion</td><td>No</td><td>Small nonpolar molecules move down concentration gradient</td></tr>
+<tr><td>Facilitated diffusion</td><td>No</td><td>Uses channel or carrier proteins; moves down gradient</td></tr>
+<tr><td>Osmosis</td><td>No</td><td>Water moves across membrane toward higher solute concentration</td></tr>
+<tr><td>Active transport</td><td>Yes (ATP)</td><td>Moves molecules AGAINST concentration gradient via pumps</td></tr>
+<tr><td>Group translocation</td><td>Yes (PEP)</td><td>Prokaryote-specific; molecule modified as it crosses membrane (e.g., glucose → glucose-6-phosphate)</td></tr></table></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">13</div><div class="q-text">Define osmosis, then state the outcomes of putting a bacterium with a damaged cell wall in a very salty solution versus a pure water solution.</div></div>
+<div class="a-body"><p><strong>Osmosis:</strong> The passive movement of water across a selectively permeable membrane from an area of lower solute concentration to higher solute concentration.</p>
+<p><strong>Very salty solution (hypertonic):</strong> Water moves OUT of the cell → cell shrinks/plasmolysis. The damaged wall can't protect against this → cell dehydrates and dies.</p>
+<p><strong>Pure water (hypotonic):</strong> Water rushes INTO the cell → cell swells. With a damaged wall, it can't withstand the turgor pressure → <strong>cell bursts (lysis)</strong>. Intact cell walls normally prevent this in bacteria.</p>
+<div class="key"><strong>This is how beta-lactam antibiotics kill:</strong> They weaken the cell wall → bacteria exposed to normal body fluids lyse because their damaged walls can't handle the osmotic pressure difference.</div></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">14</div><div class="q-text">Name the structures prokaryotes use for motility and adhesion.</div></div>
+<div class="a-body"><p><strong>Motility:</strong></p>
+<ul><li><strong>Flagella</strong> — whip-like appendages that rotate to propel the cell. Made of flagellin protein.</li><li><strong>Pili (type IV)</strong> — some use retractile pili for twitching motility</li><li><strong>Periplasmic flagella (axial filaments)</strong> — in spirochetes; wind around the cell between the outer sheath and cell body → corkscrew motility</li></ul>
+<p><strong>Adhesion:</strong></p>
+<ul><li><strong>Fimbriae</strong> — short, hair-like projections that attach bacteria to host cells and surfaces</li><li><strong>Pili</strong> — longer than fimbriae; used for adhesion AND conjugation (sex pili)</li><li><strong>Glycocalyx/capsule</strong> — sticky polysaccharide layer that helps bacteria adhere to surfaces and form biofilms</li></ul></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">15</div><div class="q-text">Describe prokaryotic flagella arrangements and discuss how periplasmic flagella differ from regular flagella.</div></div>
+<div class="a-body">
+<table><tr><th>Arrangement</th><th>Description</th><th>Example</th></tr>
+<tr><td>Monotrichous</td><td>Single flagellum at one pole</td><td>Vibrio cholerae</td></tr>
+<tr><td>Lophotrichous</td><td>Cluster of flagella at one pole</td><td>Pseudomonas</td></tr>
+<tr><td>Amphitrichous</td><td>Flagella at both poles</td><td>Campylobacter</td></tr>
+<tr><td>Peritrichous</td><td>Flagella all around the cell</td><td>E. coli, Salmonella</td></tr></table>
+<p><strong>Periplasmic flagella (axial filaments):</strong> Found in spirochetes (e.g., Treponema, Borrelia). Located in the periplasmic space — wrapped around the cell body between the inner and outer membranes. When they rotate, they cause the whole cell to move in a corkscrew motion — allows movement through thick, viscous environments like tissue and mucus.</p></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">16</div><div class="q-text">What is in the nucleoid region of prokaryotes, and how is it different from the eukaryotic nucleus?</div></div>
+<div class="a-body">
+<table><tr><th></th><th>Prokaryotic Nucleoid</th><th>Eukaryotic Nucleus</th></tr>
+<tr><td>Membrane</td><td>NO membrane — open to cytoplasm</td><td>Double membrane (nuclear envelope)</td></tr>
+<tr><td>DNA form</td><td>Single circular chromosome + plasmids</td><td>Multiple linear chromosomes</td></tr>
+<tr><td>Histones</td><td>No true histones (HU proteins)</td><td>Yes — DNA wrapped around histone proteins</td></tr>
+<tr><td>Nucleolus</td><td>Absent</td><td>Present (rRNA synthesis)</td></tr></table></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">17</div><div class="q-text">What is the prokaryotic cytoskeleton made of, and what is its general function?</div></div>
+<div class="a-body"><p><strong>Composition:</strong> Prokaryotic cytoskeleton proteins are homologs of eukaryotic cytoskeletal proteins but simpler:</p>
+<ul><li><strong>FtsZ</strong> — homolog of tubulin; forms the Z-ring during binary fission to pinch the cell in two</li><li><strong>MreB</strong> — homolog of actin; determines cell shape (rod-shaped bacteria)</li><li><strong>Crescentin</strong> — homolog of intermediate filaments; gives curved shape (Caulobacter)</li></ul>
+<p><strong>General function:</strong> Cell division, maintaining cell shape, chromosome segregation during replication.</p></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">18</div><div class="q-text">What is a 70S ribosome and what does it do? What structural feature of prokaryotic ribosomes supports the endosymbiotic theory?</div></div>
+<div class="a-body"><p><strong>70S ribosome:</strong> The prokaryotic ribosome composed of two subunits — <strong>30S (small)</strong> and <strong>50S (large)</strong>. The S stands for Svedberg units (a measure of sedimentation rate). Together they form the 70S ribosome.</p>
+<p><strong>Function:</strong> Site of protein synthesis (translation) — reads mRNA and assembles amino acids into proteins.</p>
+<div class="key"><strong>Endosymbiotic theory support:</strong> Mitochondria and chloroplasts have 70S ribosomes — the same size as prokaryotic ribosomes (not 80S like the rest of the eukaryotic cell). This supports the idea that these organelles were once free-living prokaryotes engulfed by ancestral eukaryotic cells.</div>
+<div class="tip">✓ Clinical relevance: Antibiotics that target 70S ribosomes (macrolides, aminoglycosides, tetracyclines) kill bacteria without harming human 80S ribosomes — this is selective toxicity.</div></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">19</div><div class="q-text">State the role of inclusion bodies and give some examples of substances found in inclusion bodies.</div></div>
+<div class="a-body"><p><strong>Role:</strong> Inclusion bodies are storage granules inside prokaryotic cells that store reserve nutrients and other materials for use when environmental supplies are limited.</p>
+<p><strong>Examples:</strong></p>
+<ul><li><strong>Polyphosphate granules</strong> — store phosphate for nucleotide synthesis</li><li><strong>Glycogen granules</strong> — store carbon/energy</li><li><strong>Sulfur globules</strong> — in sulfur bacteria; store elemental sulfur</li><li><strong>Polyhydroxybutyrate (PHB)</strong> — carbon and energy storage (used in biodegradable plastics)</li><li><strong>Gas vesicles</strong> — in aquatic cyanobacteria; provide buoyancy to control depth in water</li><li><strong>Magnetosomes</strong> — iron-containing granules that act as compasses for magnetic field navigation</li></ul></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">20</div><div class="q-text">Why are Clostridium and Bacillus species a challenge in healthcare sanitation practices?</div></div>
+<div class="a-body"><p>Both <em>Clostridium</em> and <em>Bacillus</em> are <strong>endospore-forming bacteria</strong>. Endospores are dormant, highly resistant structures that can survive:</p>
+<ul><li>Boiling (100°C) for extended periods</li><li>Most chemical disinfectants</li><li>UV radiation</li><li>Desiccation (drying out)</li><li>Years to decades in the environment</li></ul>
+<p><strong>Healthcare challenge:</strong> Standard disinfection protocols that kill vegetative bacteria often FAIL to destroy endospores. Only <strong>sterilization</strong> (autoclaving at 121°C for 15+ min, or chemical sterilants like glutaraldehyde) kills endospores.</p>
+<div class="warn">⚠ C. difficile endospores persist on hospital surfaces and survive alcohol-based hand sanitizers — soap and water is required for C. diff decontamination.</div></div></div>
+
+<div class="q-block"><div class="q-header"><div class="q-num">21</div><div class="q-text">What are endospores and why do certain bacteria make them?</div></div>
+<div class="a-body"><p><strong>Endospores:</strong> Dormant, highly resistant structures formed INSIDE bacterial cells (primarily Gram-positive: Clostridium, Bacillus) when environmental conditions become unfavorable (nutrient depletion, temperature extremes, etc.).</p>
+<p><strong>Structure:</strong> Contains a copy of the chromosome, surrounded by layers including the cortex and spore coat — extremely dehydrated and metabolically inactive.</p>
+<p><strong>Why they form:</strong> Survival strategy. When resources run out, the bacterium forms an endospore that can persist indefinitely until conditions improve. When favorable conditions return, the endospore <strong>germinates</strong> back into a vegetative (active) cell.</p>
+<div class="key"><strong>Clinically important endospore formers:</strong> C. difficile (antibiotic-associated colitis), C. botulinum (botulism), C. tetani (tetanus), B. anthracis (anthrax)</div></div></div>
+
+<div class="footer">Chapter 3 · Prokaryotic Cell Structure · All 21 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 4 · Exam Prep</div>
+  <div class="ch-title">Chapter 4</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Eukaryotic Cells</div>
+  <div class="ch-topics">Endosymbiosis · Mitosis vs meiosis · Organelles · Fungal ergosterol</div>
+  <span class="ch-badge">23 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block">
+  <div class="q-header"><div class="q-num">01</div><div class="q-text">How did eukaryotic mitochondria and chloroplasts likely develop?</div></div>
+  <div class="a-body"><p>Endosymbiotic theory: an ancestral eukaryotic cell engulfed free-living prokaryotes via phagocytosis. Instead of digesting them, they formed a mutualistic relationship. Evidence: mitochondria and chloroplasts have their own circular DNA, 70S ribosomes (same as prokaryotes), double membranes, and reproduce by binary fission independently of the cell.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">02</div><div class="q-text">Name at least three ways that eukaryotes differ from prokaryotes.</div></div>
+  <div class="a-body"><p>1. Membrane-bound nucleus (eukaryotes) vs nucleoid region (prokaryotes). 2. Membrane-bound organelles (ER, Golgi, mitochondria) in eukaryotes — absent in prokaryotes. 3. 80S ribosomes in eukaryotes vs 70S in prokaryotes. 4. Linear chromosomes with histones vs single circular chromosome. 5. Larger cell size overall. 6. Cell division by mitosis/meiosis vs binary fission.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">03</div><div class="q-text">List the ways that mitosis and meiosis differ and some ways they are similar.</div></div>
+  <div class="a-body"><p>SIMILAR: Both start with DNA replication, both involve spindle formation, both result in cell division. DIFFER: Mitosis = 1 division → 2 identical diploid cells (somatic). Meiosis = 2 divisions → 4 genetically unique haploid cells (gametes). Meiosis involves crossing over (genetic recombination) and homolog pairing — mitosis does not. Meiosis only occurs in reproductive cells.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">04</div><div class="q-text">What are the two main classes of endocytosis and how are they different from one another? What is exocytosis and why is it important?</div></div>
+  <div class="a-body"><p>Phagocytosis: cell engulfs large particles/organisms (solids) by extending pseudopods — 'cell eating.' Pinocytosis: cell takes in extracellular fluid and dissolved solutes in small vesicles — 'cell drinking.' Exocytosis: vesicles fuse with plasma membrane and release contents outside the cell. Important for secreting hormones, enzymes, neurotransmitters, and antibodies.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">05</div><div class="q-text">What eukaryotic kingdom(s) include unicellular organisms? Which include multicellular organisms? Which have photosynthetic organisms?</div></div>
+  <div class="a-body"><p>Unicellular: Protista (protozoans, some algae), some Fungi (yeasts). Multicellular: Animalia, Plantae, most Fungi (molds), some Protista (seaweeds). Photosynthetic: Plantae (all), some Protista (algae, diatoms), some Chromista. Animals and Fungi: NOT photosynthetic.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">06</div><div class="q-text">What are the two main groupings of helminths?</div></div>
+  <div class="a-body"><p>1. Flatworms (Platyhelminthes): includes flukes (trematodes) and tapeworms (cestodes). 2. Roundworms (Nematoda): includes hookworms, pinworms, Ascaris, Trichinella. Key clinical difference: flatworms are generally flat and ribbon-like; roundworms are cylindrical and tapered at both ends.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">07</div><div class="q-text">What are the tubular extensions that make up most fungi called?</div></div>
+  <div class="a-body"><p>Hyphae (singular: hypha). They are tubular filaments that make up the body (mycelium) of most fungi. Hyphae can be septate (divided by cross-walls called septa) or coenocytic/aseptate (no cross-walls — multinucleate continuous tubes). The mass of hyphae = mycelium.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">08</div><div class="q-text">Name the types of sexual and asexual fungal spores and state how they are made.</div></div>
+  <div class="a-body"><p>ASEXUAL: Conidia — formed on conidiophores without sex; Sporangiospores — formed inside a sac (sporangium); Budding — yeast asexual reproduction. SEXUAL: Ascospores — formed in an ascus (sac fungi/Ascomycetes); Basidiospores — formed on basidia (club fungi/Basidiomycetes); Zygospores — formed by fusion of two compatible hyphae (Zygomycetes). Sexual spores involve meiosis; asexual do not.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">09</div><div class="q-text">Define the term mycosis and give an example from this chapter.</div></div>
+  <div class="a-body"><p>Mycosis: any infection caused by a fungus. Examples: Tinea pedis (athlete's foot — Trichophyton), Candidiasis (Candida albicans — thrush, vaginal yeast infections), Aspergillosis (Aspergillus species), Histoplasmosis (Histoplasma capsulatum — from bird/bat droppings). Mycoses can be superficial, cutaneous, subcutaneous, or systemic.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">10</div><div class="q-text">Why is it challenging to develop specific criteria for describing protists?</div></div>
+  <div class="a-body"><p>Protists are an extremely diverse, paraphyletic group — they don't share a single common ancestor exclusive to themselves. They include organisms with vastly different feeding strategies (photosynthetic, heterotrophic, mixotrophic), reproduction methods, cell structures, and habitats. Some are more closely related to plants, fungi, or animals than to each other. There's no single defining feature that applies to ALL protists.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">11</div><div class="q-text">What are animal-like protists called and how are they primarily classified?</div></div>
+  <div class="a-body"><p>Animal-like protists are called protozoa (singular: protozoan). They are heterotrophic (cannot make their own food). They are primarily classified by their method of locomotion/motility: Amoeba (pseudopods), Flagellates (flagella — e.g., Giardia, Trypanosoma), Ciliates (cilia — e.g., Paramecium), Sporozoans/Apicomplexa (non-motile as adults, complex life cycles — e.g., Plasmodium, Toxoplasma).</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">12</div><div class="q-text">How are fungal plasma membranes distinguishable from other eukaryotic plasma membranes?</div></div>
+  <div class="a-body"><p>Fungal plasma membranes contain ERGOSTEROL instead of cholesterol (which is found in animal cell membranes). This is the key target for antifungal drugs (azoles, allylamines, polyenes) — they exploit this difference for selective toxicity. Plant cells use phytosterols. This single difference makes fungal membranes targetable without harming human cells.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">13</div><div class="q-text">List some eukaryotes that have cell walls.</div></div>
+  <div class="a-body"><p>Plants (cellulose cell walls), Fungi (chitin cell walls), most Algae (cellulose or other polysaccharides), Diatoms (silica — glass-like cell walls called frustules). Animals do NOT have cell walls. Protozoa generally do NOT have cell walls.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">14</div><div class="q-text">What is the eukaryotic glycocalyx and what does it do?</div></div>
+  <div class="a-body"><p>The glycocalyx is a carbohydrate-rich coat on the outer surface of the plasma membrane, made of glycoproteins and glycolipids. Functions: cell-to-cell recognition and communication, protection from mechanical and chemical damage, facilitates cell adhesion (cells stick to each other and to surfaces), helps immune cells identify self vs non-self, provides a protective layer against pathogens.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">15</div><div class="q-text">Name three differences between prokaryotic and eukaryotic flagella.</div></div>
+  <div class="a-body"><p>1. STRUCTURE: Prokaryotic flagella are made of flagellin protein and rotate like a motor. Eukaryotic flagella are made of tubulin (9+2 microtubule arrangement) and use a whip-like bending motion. 2. LOCATION: Prokaryotic flagella originate from the cell membrane (basal body). Eukaryotic flagella are extensions of the cytoplasm with a membrane covering. 3. SIZE: Eukaryotic flagella are larger and structurally more complex.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">16</div><div class="q-text">What are cilia and where can they be found?</div></div>
+  <div class="a-body"><p>Cilia are short, hair-like projections made of microtubules (9+2 arrangement — same as eukaryotic flagella). They beat in coordinated waves. Found in: respiratory tract epithelium (sweep mucus and debris upward — mucociliary escalator), fallopian tubes (move eggs toward uterus), tracheal cells, some protists (Paramecium uses cilia for locomotion and feeding).</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">17</div><div class="q-text">How are eukaryotic ribosomes different from prokaryotic ribosomes? Where are they located in eukaryotic cells?</div></div>
+  <div class="a-body"><p>Eukaryotic: 80S (60S large + 40S small subunits). Prokaryotic: 70S (50S large + 30S small subunits). Eukaryotic ribosomes are larger and more complex. Location in eukaryotes: Free ribosomes in cytoplasm (make proteins for cytoplasm), Ribosomes bound to rough ER (make proteins for secretion, membranes, or organelles). Note: Mitochondria and chloroplasts have their own 70S ribosomes.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">18</div><div class="q-text">What is the cytoskeleton made of and what does it do? Describe the centrosome and its function.</div></div>
+  <div class="a-body"><p>Cytoskeleton made of: Microfilaments (actin — thinnest; cell shape, movement, phagocytosis), Intermediate filaments (medium; structural support, nuclear lamina), Microtubules (tubulin — largest; cell shape, flagella/cilia, chromosome movement during division). Centrosome: organelle near the nucleus containing two centrioles at right angles. Function: organizes the mitotic spindle during cell division, anchors microtubules. Plants lack centrioles.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">19</div><div class="q-text">Provide three features of the nucleus.</div></div>
+  <div class="a-body"><p>1. Enclosed by a DOUBLE membrane (nuclear envelope) with nuclear pores that regulate transport in/out. 2. Contains the genetic material (DNA) organized into linear chromosomes associated with histone proteins (chromatin). 3. Contains the nucleolus — the site where rRNA is synthesized and ribosomal subunits are assembled.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">20</div><div class="q-text">Name two functions of the endoplasmic reticulum.</div></div>
+  <div class="a-body"><p>ROUGH ER (has ribosomes): 1. Protein synthesis for secretion, membrane insertion, or organelle delivery. 2. Initial protein folding and modification. SMOOTH ER (no ribosomes): 1. Lipid and phospholipid synthesis. 2. Detoxification of drugs and poisons (especially in liver cells). 3. Calcium ion storage (in muscle cells).</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">21</div><div class="q-text">Name two functions of the Golgi apparatus.</div></div>
+  <div class="a-body"><p>1. Receives proteins from rough ER, further modifies them (glycosylation, phosphorylation, cleavage). 2. Sorts and packages proteins into vesicles for delivery to correct destination (lysosomes, secretion outside cell, plasma membrane). Think of it as the cell's post office — receives, processes, and ships packages.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">22</div><div class="q-text">What are lysosomes and what do they do? What are secretory vesicles?</div></div>
+  <div class="a-body"><p>Lysosomes: membrane-bound organelles containing digestive enzymes (hydrolases). Functions: Break down worn-out organelles (autophagy), digest engulfed pathogens/debris (after phagocytosis), programmed cell death (apoptosis). Secretory vesicles: membrane-bound sacs that carry materials from Golgi to the plasma membrane for release by exocytosis. Examples: insulin vesicles in pancreatic cells, neurotransmitter vesicles in neurons.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">23</div><div class="q-text">What features of mitochondria are similar to bacteria? Why are they called the powerhouse of the cell?</div></div>
+  <div class="a-body"><p>BACTERIAL FEATURES: Own circular DNA, 70S ribosomes, double membrane, divide by binary fission independently of cell — all support endosymbiotic theory. POWERHOUSE: Mitochondria are the primary site of aerobic cellular respiration — they produce the majority of ATP via the electron transport chain and oxidative phosphorylation. One glucose → ~30-32 ATP, most made in mitochondria.</p></div>
+</div>
+<div class="footer">Chapter 4 · Eukaryotic Cells · 23 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 5 · Exam Prep</div>
+  <div class="ch-title">Chapter 5</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Microbial Genetics</div>
+  <div class="ch-topics">DNA replication · Transcription · Translation · HGT · Mutations</div>
+  <span class="ch-badge">29 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">What is the primary difference between genotype and phenotype?</div></div><div class="a-body">Genotype: the organism's actual genetic makeup — the DNA sequence it carries, including genes that may not be expressed. Phenotype: the observable characteristics/traits that result from gene expression interacting with the environment — what you can actually see or measure. Same genotype can produce different phenotypes in different environments. Different genotypes can produce similar phenotypes.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">List the various sources of genomic material in eukaryotes and prokaryotes.</div></div><div class="a-body">Prokaryotes: Circular chromosome in nucleoid region, Plasmids (small circular extrachromosomal DNA). Eukaryotes: Multiple linear chromosomes in nucleus (nuclear genome), Mitochondrial DNA (circular), Chloroplast DNA (circular, in plants/algae). Both prokaryotes and eukaryotes can also carry transposable elements (transposons) that move within genomes.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">Compare and contrast how DNA is packaged in prokaryotic and eukaryotic cells.</div></div><div class="a-body">Prokaryotes: Circular chromosome supercoiled and compacted by proteins (like HU proteins — not true histones). Located in nucleoid region — no membrane. Plasmids can be present as separate circles. Eukaryotes: Linear chromosomes wrapped around histone proteins forming nucleosomes → chromatin → chromosomes. Enclosed in membrane-bound nucleus. Much more DNA organized with more complex packaging (heterochromatin vs euchromatin).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">Describe the building blocks of nucleic acids and describe how they differ between DNA and RNA.</div></div><div class="a-body">Building blocks = NUCLEOTIDES. Each nucleotide has: Sugar + Phosphate group + Nitrogenous base. DNA sugar: deoxyribose (missing one OH). RNA sugar: ribose (has OH at 2' position). DNA bases: Adenine, Thymine, Guanine, Cytosine. RNA bases: Adenine, URACIL (instead of Thymine), Guanine, Cytosine. DNA is double-stranded helix. RNA is usually single-stranded.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">Explain how DNA's chemical 5' to 3' directionality is established.</div></div><div class="a-body">Each nucleotide is connected by phosphodiester bonds. The 5' carbon of the sugar is attached to the phosphate group; the 3' carbon has a free OH group. New nucleotides are always added to the 3' OH end → DNA synthesis always proceeds 5' to 3'. The two strands of the double helix are antiparallel: one runs 5'→3' and the complementary strand runs 3'→5'.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">06</div><div class="q-text">What does the 'central dogma' state?</div></div><div class="a-body">DNA → RNA → Protein. Information flows from DNA (the master template) to RNA (via transcription) to protein (via translation). DNA is replicated. DNA is transcribed into mRNA. mRNA is translated into protein. Note: Reverse transcriptase (in retroviruses) can copy RNA back into DNA — this is the major exception to the central dogma.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">07</div><div class="q-text">When do cells carry out DNA replication, why is it essential, and what contributes to its accuracy?</div></div><div class="a-body">When: Before cell division (S phase in eukaryotes; before binary fission in prokaryotes) — must duplicate genome so each daughter cell gets a complete copy. Why essential: Ensures genetic continuity — each daughter cell needs complete genetic information to function and reproduce. Accuracy contributions: Complementary base pairing (A-T, G-C) ensures correct bases are added. DNA polymerase proofreading (3'→5' exonuclease) removes mismatched bases. Mismatch repair systems fix errors post-replication.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">08</div><div class="q-text">How is DNA replication started?</div></div><div class="a-body">Replication begins at specific sequences called ORIGINS OF REPLICATION (ori). Initiator proteins bind ori and recruit helicase → helicase unwinds and separates the double helix → creates replication fork. Primase synthesizes short RNA primers (needed because DNA polymerase can't start from scratch — it can only extend an existing strand). DNA polymerase III then begins synthesis from the primer.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">09</div><div class="q-text">What is the main enzyme that builds DNA? Describe at least one of its rules or limitations.</div></div><div class="a-body">DNA polymerase III (in prokaryotes) is the main replicative enzyme. Key rules/limitations: Can ONLY add nucleotides in the 5'→3' direction. Cannot start a new chain — requires a primer (RNA primer made by primase). Requires a template strand. Has 3'→5' exonuclease proofreading activity — removes mismatched bases. DNA polymerase I removes RNA primers and replaces them with DNA.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">10</div><div class="q-text">What enzyme builds RNA primers, and what role do RNA primers have in DNA replication?</div></div><div class="a-body">Primase (an RNA polymerase) synthesizes short RNA primers. Role: DNA polymerase III cannot initiate new DNA synthesis — it can only extend an existing strand. RNA primers provide the free 3' OH that DNA polymerase needs to begin adding DNA nucleotides. After replication, RNA primers are removed by DNA polymerase I and replaced with DNA. DNA ligase then seals the nicks.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">11</div><div class="q-text">How are the leading and lagging strands defined and how is replication performed differently on these strands?</div></div><div class="a-body">Leading strand: synthesized continuously in the 5'→3' direction toward the replication fork — one primer, one continuous piece of new DNA. Lagging strand: synthesized in the 5'→3' direction but AWAY from the replication fork — must be synthesized in short fragments (Okazaki fragments) each requiring its own primer. After synthesis, primers removed, gaps filled, Okazaki fragments joined by DNA ligase.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">12</div><div class="q-text">What is the role of DNA polymerase I in DNA replication?</div></div><div class="a-body">DNA polymerase I removes RNA primers using its 5'→3' exonuclease activity. As it removes each ribonucleotide, it simultaneously replaces it with a deoxyribonucleotide using the complementary strand as template. It fills the gaps left by primer removal. DNA ligase then seals the remaining nick between adjacent Okazaki fragments or between the leading strand and the filled gap.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">13</div><div class="q-text">What is transcription, and what enzyme is primarily responsible for it?</div></div><div class="a-body">Transcription: The process of copying a segment of DNA into RNA. The template (antisense) strand of DNA is read 3'→5' and RNA is synthesized 5'→3'. Primary enzyme: RNA polymerase (no primer required — it can start new chains). Product: mRNA (messenger RNA) in protein-coding genes; also produces rRNA and tRNA. In prokaryotes: RNA polymerase starts at promoter sequences. In eukaryotes: Three different RNA polymerases for different RNA types.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">14</div><div class="q-text">What is the general function of reverse transcriptase?</div></div><div class="a-body">Reverse transcriptase is an enzyme (found in retroviruses like HIV) that copies RNA into DNA — the reverse of normal transcription. It creates a DNA copy (cDNA) from an RNA template. In HIV: viral RNA genome → DNA → integrates into host chromosome (provirus). Lab use: RT-PCR uses reverse transcriptase to make cDNA from mRNA for amplification and detection.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">15</div><div class="q-text">What are introns, and how do they impact protein synthesis?</div></div><div class="a-body">Introns: Non-coding sequences within eukaryotic genes that interrupt the coding sequences (exons). They are transcribed into pre-mRNA but must be removed by RNA splicing (via spliceosomes) before translation. Only exons remain in mature mRNA. Impact: If splicing fails, wrong proteins are made. Alternative splicing: one gene can produce multiple different proteins by including/excluding different exons. Prokaryotes generally lack introns.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">16</div><div class="q-text">Explain the term 'redundancy' as it relates to the genetic code.</div></div><div class="a-body">Redundancy (also called degeneracy): Multiple codons (triplets of bases) can encode the SAME amino acid. There are 64 possible codons but only 20 amino acids — so most amino acids are specified by 2-6 different codons (synonymous codons). Example: Leucine is encoded by 6 different codons. Benefit: Protects against some mutations — if the third base of a codon changes (wobble position), it often still codes for the same amino acid → synonymous/silent mutation.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">17</div><div class="q-text">What is meant by 'triplet code'?</div></div><div class="a-body">The genetic code is read in sets of THREE consecutive nucleotides called codons. Each codon specifies one amino acid (or start/stop signals). Three nucleotides × 4 possible bases = 64 possible codons. AUG = start codon (methionine). UAA, UAG, UGA = stop codons. The ribosome reads mRNA codons 5'→3', three bases at a time, without overlap and without gaps.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">18</div><div class="q-text">What is an anticodon, where is it found, and how does it factor into protein synthesis?</div></div><div class="a-body">Anticodon: A sequence of three nucleotides on a tRNA molecule that is complementary to a specific mRNA codon. Location: Found on the anticodon loop of the tRNA molecule. Function: During translation at the ribosome, the anticodon of a tRNA base-pairs (antiparallel) with the complementary mRNA codon → ensures the correct amino acid (carried by that tRNA) is added to the growing polypeptide chain.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">19</div><div class="q-text">How are facultative genes different from constitutive genes?</div></div><div class="a-body">Constitutive genes: always expressed regardless of environmental conditions — they encode essential housekeeping proteins needed at all times (e.g., ribosomes, ATP synthase). Facultative genes: expressed only when needed — regulated by environmental signals. Example: lac operon genes are only expressed when lactose is present and glucose is absent. Facultative expression conserves energy — why make an enzyme when its substrate isn't available?</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">20</div><div class="q-text">Compare and contrast inducible and repressible operons.</div></div><div class="a-body">INDUCIBLE operon: Normally OFF. Turned ON by an inducer molecule. Example: lac operon — normally repressed; lactose (inducer) causes conformational change in repressor → repressor falls off operator → genes transcribed. REPRESSIBLE operon: Normally ON. Turned OFF by a corepressor. Example: trp operon — normally expressed; when tryptophan (corepressor) accumulates, it binds repressor → repressor binds operator → blocks transcription. Both use negative control via repressor proteins.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">21</div><div class="q-text">Why are transcription factors important regulators of pre-transcriptional control?</div></div><div class="a-body">Transcription factors are proteins that bind to specific DNA sequences (promoters, enhancers) and either promote or inhibit RNA polymerase binding. They allow cells to precisely control when, where, and how much of a gene is transcribed. They respond to environmental or cellular signals (hormones, nutrients, stress). Multiple transcription factors can work together (combinatorial control) allowing complex regulatory patterns from a limited number of proteins.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">22</div><div class="q-text">What is DNA methylation, and how can it impact protein synthesis?</div></div><div class="a-body">DNA methylation: Addition of a methyl group (CH3) to cytosine bases (usually at CpG sites in eukaryotes). Impact: Heavily methylated regions = silenced genes — transcription factors and RNA polymerase cannot bind → no mRNA produced → no protein. In prokaryotes: methylation can protect own DNA from restriction enzymes and regulate gene expression. Epigenetic — heritable change in gene expression without changing DNA sequence. Associated with genomic imprinting, X-chromosome inactivation, cancer.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">23</div><div class="q-text">What are plasmids and why are they important in nature and in the laboratory?</div></div><div class="a-body">Plasmids: Small, circular, double-stranded DNA molecules that replicate independently of the main chromosome. Carry genes but not essential for basic survival. In NATURE: Often carry antibiotic resistance genes, virulence factors, toxin genes — transmitted between bacteria by conjugation (horizontal gene transfer). Critical driver of antibiotic resistance spread. In the LAB: Used as cloning vectors — insert foreign genes into plasmids → transform into bacteria → produce large amounts of the encoded protein (e.g., insulin production).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">24</div><div class="q-text">What are the three main mechanisms that microbes use to resist antimicrobial drugs and how does each mechanism work?</div></div><div class="a-body">1. Target alteration — mutate the drug's target so drug can't bind (e.g., MRSA alters transpeptidase). 2. Drug inactivation — produce enzymes that destroy or modify the drug (e.g., beta-lactamases break the beta-lactam ring; chloramphenicol acetyltransferase inactivates chloramphenicol). 3. Reduce drug concentration — prevent entry (alter porins) or actively pump drug out (efflux pumps). All three can be encoded on plasmids and spread by horizontal gene transfer.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">25</div><div class="q-text">How does a fertility plasmid facilitate conjugation?</div></div><div class="a-body">The F (fertility) factor is a plasmid that encodes genes for pilus formation. F+ cell (has F plasmid) extends a sex pilus → contacts F- cell → pilus retracts, drawing cells together → cytoplasmic bridge (mating bridge) forms → copy of F plasmid transfers to F- cell (rolling circle replication) → F- cell becomes F+. HFR (high frequency recombination) strains: F factor integrated into chromosome → during conjugation, chromosomal DNA transferred (starting from F sequences).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">26</div><div class="q-text">What are competent cells, and how can they alter their genetic makeup?</div></div><div class="a-body">Competent cells: Bacterial cells capable of taking up naked DNA from the environment (natural transformation). Some bacteria are naturally competent at certain growth phases (e.g., Streptococcus pneumoniae, Bacillus subtilis, Neisseria). They express surface proteins that bind and transport DNA across membrane. Artificially: cells can be made competent by chemical treatment (CaCl2) or electroporation (electric shock creates temporary pores). Alters genetic makeup: incorporated foreign DNA can recombine with chromosome → new genes (including antibiotic resistance, virulence factors).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">27</div><div class="q-text">Why was the result of Griffith's fourth experimental scenario surprising, and what did the scenario demonstrate?</div></div><div class="a-body">Griffith's experiment (1928): Mixed KILLED smooth (pathogenic) pneumococcus + LIVE rough (nonpathogenic) pneumococcus → injected mice → mice DIED and live smooth bacteria recovered. Surprising: The killed bacteria shouldn't be able to cause disease. Something from the dead smooth bacteria had TRANSFORMED the rough bacteria into smooth (pathogenic) bacteria. Demonstrated: A chemical substance (later identified as DNA by Avery, MacLeod, McCarty in 1944) carried genetic information and could transform bacteria — foundational evidence that DNA is the genetic material.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">28</div><div class="q-text">How are specialized and generalized transduction different?</div></div><div class="a-body">GENERALIZED transduction: Bacteriophage accidentally packages a random piece of host bacterial DNA (instead of phage DNA) → delivers that host DNA to a new host cell. Any gene can be transferred — it's random. SPECIALIZED transduction: Phage DNA integrates into a SPECIFIC site in the host chromosome (as a prophage). When it excises, it may accidentally take some adjacent host genes with it → delivers those specific genes to a new host. Only genes near the integration site can be transferred.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">29</div><div class="q-text">Why were transposons such a revolutionary discovery in genetics?</div></div><div class="a-body">Before transposons (discovered by Barbara McClintock in the 1940s-50s), DNA was thought to be static — genes stayed in fixed positions on chromosomes. Transposons (jumping genes) showed that DNA sequences could MOVE to new locations within or between genomes. This discovery explained spontaneous mutations (transposon insertion disrupts genes), genetic rearrangements, antibiotic resistance gene spreading, and genome evolution. McClintock won the Nobel Prize in 1983 for this discovery — initially not believed.</div></div>
+<div class="footer">Chapter 5 · Microbial Genetics · 29 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 6 · Exam Prep</div>
+  <div class="ch-title">Chapter 6</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Virology</div>
+  <div class="ch-topics">Viral replication · Lytic vs lysogenic · Oncogenic viruses · Antigenic shift</div>
+  <span class="ch-badge">20 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">What is the primary reason that viruses are not considered alive?</div></div><div class="a-body">Viruses cannot carry out independent metabolism — they have no ribosomes, no ATP production machinery, no metabolic enzymes. They cannot reproduce on their own — they are obligate intracellular parasites that must hijack a host cell's machinery to replicate. They do not respond to the environment, maintain homeostasis, or grow. They are essentially inert packages of genetic information outside a host cell.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">How do viruses differ from prokaryotes and eukaryotes?</div></div><div class="a-body">Viruses: Not cells — no plasma membrane, no cytoplasm, no ribosomes, no metabolism. Acellular. Either DNA OR RNA genome (not both). Can only replicate inside a host cell. Much smaller than cells. Prokaryotes and Eukaryotes: True cells with plasma membranes, cytoplasm, ribosomes, metabolism. Both have DNA AND RNA. Can reproduce independently. Viruses lack ALL defining features of cellular life.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">Describe the features and functions of viral capsids, spikes, and envelopes.</div></div><div class="a-body">CAPSID: Protein coat surrounding the viral genome. Made of capsomers (protein subunits). Protects nucleic acid. Determines virus shape (icosahedral, helical, complex). Mediates attachment to host cells. SPIKES: Glycoprotein projections from envelope or capsid. Key role in HOST CELL ATTACHMENT — bind specific receptors on host cells (determines tropism/host range). ENVELOPE: Lipid bilayer derived from host cell membrane surrounding some viruses. Contains viral glycoproteins (spikes). Helps evade immune detection. Makes virus susceptible to alcohol, soap (destroys lipid envelope).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">Why are bacteriophages always naked?</div></div><div class="a-body">Bacteriophages (viruses that infect bacteria) must inject their genetic material through the rigid bacterial cell wall. Enveloped viruses gain their envelopes from host cell membranes — but bacteria do NOT have a membrane surrounding them on the outside (their membrane is inside the cell wall). Therefore bacteriophages cannot acquire an envelope when they exit. They are always non-enveloped (naked).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">What are the possible genomic variations for viruses?</div></div><div class="a-body">DNA viruses: Single-stranded DNA (ssDNA) or Double-stranded DNA (dsDNA). Linear or circular. RNA viruses: Single-stranded RNA (ssRNA): Positive-sense (+ssRNA) — acts directly as mRNA. Negative-sense (-ssRNA) — must make complementary strand first. Double-stranded RNA (dsRNA) — reoviruses. Retroviruses: ssRNA that uses reverse transcriptase to make DNA. Segmented genomes: genome in multiple pieces (influenza has 8 RNA segments). Some viruses have ambisense genomes.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">06</div><div class="q-text">How do DNA viruses use their genomes to make mRNA?</div></div><div class="a-body">Most DNA viruses enter the nucleus and use host cell RNA polymerase to transcribe their DNA into mRNA (just like normal gene expression). The viral DNA template → host RNA polymerase → viral mRNA → host ribosomes translate → viral proteins. Exception: Poxviruses replicate in the cytoplasm and bring their own RNA polymerase. The mRNA is then translated by host ribosomes to make viral proteins.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">07</div><div class="q-text">What are four ways that RNA viruses may make mRNA?</div></div><div class="a-body">1. Positive-sense ssRNA (+ssRNA): genome itself serves as mRNA — directly translated by host ribosomes (e.g., poliovirus, hepatitis C). 2. Negative-sense ssRNA (-ssRNA): must use virus-encoded RNA-dependent RNA polymerase (RdRp) to make a + strand mRNA first (e.g., influenza, rabies). 3. dsRNA viruses: use RdRp to transcribe one strand into mRNA (e.g., rotavirus). 4. Retroviruses: ssRNA → reverse transcriptase → DNA → RNA polymerase → mRNA (e.g., HIV).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">08</div><div class="q-text">What are the leading contributors to viral genome evolution and what are their potential effects on viral features?</div></div><div class="a-body">1. MUTATION: RNA polymerases lack proofreading → high error rate in RNA viruses → rapid mutation → new variants. 2. GENETIC RECOMBINATION: Two viruses infecting same cell can exchange genetic material → new combinations. 3. REASSORTMENT: Segmented viruses (influenza) can mix segments from two different strains → major new variants. Effects: New surface proteins → immune evasion, new host range (tropism changes), drug resistance, increased or decreased virulence, pandemic potential.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">09</div><div class="q-text">Why do RNA viruses evolve faster than DNA viruses?</div></div><div class="a-body">RNA-dependent RNA polymerases (used by RNA viruses to replicate) lack proofreading activity — they cannot correct errors made during replication. Error rate is approximately 1 error per 10,000 nucleotides vs 1 per 10^9 for DNA polymerases with proofreading. More errors = more mutations per replication cycle = faster evolution. This is why influenza vaccines must be updated annually and why HIV rapidly develops drug resistance.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">10</div><div class="q-text">Define antigenic shift and antigenic drift and describe how they influence influenza evolution and outbreaks.</div></div><div class="a-body">ANTIGENIC DRIFT: Gradual accumulation of point mutations in surface proteins (HA and NA) over time. Small changes → partial immune evasion → seasonal flu outbreaks → reason flu vaccine needs annual updating. ANTIGENIC SHIFT: Sudden, dramatic change when two influenza strains infect the same cell → reassortment of RNA segments → completely new HA and/or NA combination. Major immune evasion → little or no existing immunity in population → PANDEMIC potential (e.g., 1918, 2009 H1N1).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">11</div><div class="q-text">What criteria are used to classify viruses?</div></div><div class="a-body">1. Type of nucleic acid (DNA vs RNA, ss vs ds, + vs - sense). 2. Presence or absence of envelope. 3. Capsid symmetry (icosahedral, helical, complex). 4. Genome organization (segmented vs non-segmented, circular vs linear). 5. Host range (which organisms they infect). 6. Baltimore classification system (groups I-VII based on genome type and mRNA production strategy). 7. Size and morphology.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">12</div><div class="q-text">What is meant by host range and tropism?</div></div><div class="a-body">Host range: The spectrum of host species a virus can infect. Determined by whether the virus has the right surface proteins to match host cell receptors. Some viruses infect only one species (narrow range); others infect many species (wide range — zoonotic potential). Tropism: Which specific cell or tissue types within a host the virus preferentially infects. Determined by receptor availability on host cells. Example: HIV has tropism for CD4+ T cells and macrophages (express CD4 receptor). Rhinovirus has tropism for upper respiratory epithelium.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">13</div><div class="q-text">Compare and contrast lytic and lysogenic bacteriophage replication.</div></div><div class="a-body">LYTIC cycle: Phage injects DNA → takes over bacterial machinery → replicates extensively → assembles new phages → LYSES (destroys) the host cell → releases hundreds of new phages. Host cell is KILLED. LYSOGENIC cycle: Phage DNA INTEGRATES into host chromosome (becomes prophage) → replicates with the host passively → no immediate cell death. Can be induced (stress) to enter lytic cycle. Prophage can confer new properties on bacteria (phage conversion).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">14</div><div class="q-text">How does phage conversion impact bacterial pathogens?</div></div><div class="a-body">Phage conversion (lysogenic conversion): The prophage carries genes that change the host bacterium's phenotype — making it more virulent. Examples: Corynebacterium diphtheriae — diphtheria toxin gene is encoded by a prophage. Vibrio cholerae — cholera toxin genes are on a prophage. Clostridium botulinum — botulinum toxin from prophage. Streptococcus pyogenes — exotoxins from prophage. These bacteria would NOT be pathogenic without their prophages — the phage genes encode the virulence factors.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">15</div><div class="q-text">What are the steps in animal virus replication and what occurs in each step?</div></div><div class="a-body">1. ATTACHMENT: Viral surface protein binds specific receptor on host cell (determines tropism). 2. PENETRATION: Virus enters cell — enveloped viruses fuse with membrane; naked viruses are endocytosed. 3. UNCOATING: Capsid removed → viral genome released into cytoplasm/nucleus. 4. BIOSYNTHESIS: Viral genome replicated, mRNA produced, viral proteins synthesized using host machinery. 5. MATURATION/ASSEMBLY: New viral components assembled into complete virions. 6. RELEASE: New virions exit — naked viruses by cell lysis; enveloped viruses by budding (acquire envelope from host membrane).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">16</div><div class="q-text">How does the presence or absence of an envelope impact viral entry and release?</div></div><div class="a-body">ENVELOPED viruses: Enter by membrane FUSION (envelope fuses with host cell membrane — releases capsid directly into cytoplasm) or receptor-mediated endocytosis. Released by BUDDING — bud through host membrane, acquiring their envelope. Does NOT necessarily kill host cell immediately. Sensitive to detergents, alcohol, heat (lipid envelope disrupted). NON-ENVELOPED (naked) viruses: Enter by endocytosis or direct injection. Released by HOST CELL LYSIS — kills the cell. More resistant to environmental conditions (no lipid envelope to disrupt).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">17</div><div class="q-text">Compare and contrast latent and chronic infections.</div></div><div class="a-body">LATENT infection: Virus is present but in a dormant, inactive state — no viral replication, no symptoms. Viral genome persists (integrated or episomal). Can reactivate with stress, immune suppression. Examples: HSV-1 (cold sores reactivate), Varicella-zoster (chickenpox → shingles). CHRONIC infection: Virus continuously replicates at low levels for extended periods — ongoing, persistent infection. Symptoms may be mild or absent for long periods. Examples: Hepatitis B and C, HIV. Both: Long-term persistence. Different: Latent = dormant; Chronic = ongoing replication.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">18</div><div class="q-text">Give three examples of oncogenic viruses and the cancers they cause.</div></div><div class="a-body">1. HPV (Human Papillomavirus) — cervical cancer, oropharyngeal cancer, anal cancer (HPV types 16 and 18 most oncogenic). 2. HBV/HCV (Hepatitis B and C viruses) — hepatocellular carcinoma (liver cancer). 3. EBV (Epstein-Barr Virus) — Burkitt's lymphoma, Hodgkin's lymphoma, nasopharyngeal carcinoma. Also: HTLV-1 — adult T-cell leukemia. HIV (indirectly — causes AIDS → Kaposi's sarcoma). Merkel cell polyomavirus — Merkel cell carcinoma.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">19</div><div class="q-text">In general, how do oncogenic viruses generate cancer?</div></div><div class="a-body">Oncogenic viruses drive uncontrolled cell proliferation by: 1. Inactivating TUMOR SUPPRESSOR genes (e.g., HPV E6 protein degrades p53; E7 inactivates Rb) — removes brakes on cell division. 2. Activating PROTO-ONCOGENES → become oncogenes → uncontrolled growth signals. 3. Disrupting apoptosis — cells that should die continue surviving. 4. Causing chronic inflammation → DNA damage → mutations → cancer. 5. Integration of viral DNA near proto-oncogenes → their overexpression.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">20</div><div class="q-text">What are the different main methods for detecting if a patient has been exposed to a virus or if a virus is present in a sample?</div></div><div class="a-body">1. SEROLOGY: Detect patient ANTIBODIES against virus (ELISA, Western blot) — indicates past exposure or current infection. 2. PCR: Detect viral GENETIC MATERIAL (DNA/RNA) in patient sample — very sensitive and specific, can detect active infection early. 3. VIRAL CULTURE: Grow virus in cell culture — time-consuming but confirms active virus. 4. ANTIGEN DETECTION: ELISA or rapid tests detect viral proteins (antigens) directly in sample. 5. MICROSCOPY: EM to visualize virus; inclusion bodies in infected cells. 6. PLAQUE ASSAY: Counts infectious viral particles.</div></div>
+<div class="footer">Chapter 6 · Virology · 20 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 7 · Exam Prep</div>
+  <div class="ch-title">Chapter 7</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Microbial Growth</div>
+  <div class="ch-topics">Growth phases · Temperature classes · Oxygen requirements</div>
+  <span class="ch-badge">10 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block">
+  <div class="q-header"><div class="q-num">01</div><div class="q-text">Define binary fission and compare it to budding and spore formation.</div></div>
+  <div class="a-body"><p>Binary fission: one cell splits into two equal identical daughter cells — the primary prokaryotic reproduction method. Budding: a new cell grows as an outgrowth (bud) from the parent cell — the bud is smaller at first, eventually separates (e.g., yeast, Hyphomicrobium). Spore formation (sporulation): vegetative cell forms a dormant spore (endospore in Bacillus/Clostridium) when stressed — NOT reproduction per se, it's survival. One cell = one spore.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">02</div><div class="q-text">What would the generation time be for an organism that goes through five generations in 150 minutes?</div></div>
+  <div class="a-body"><p>Generation time = Total time ÷ Number of generations = 150 min ÷ 5 = 30 minutes per generation.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">03</div><div class="q-text">Name and describe the phases of bacterial growth in a closed batch system.</div></div>
+  <div class="a-body"><p>LAG PHASE: Adaptation period. Bacteria adjust to new environment, synthesize enzymes and proteins — no net growth yet. EXPONENTIAL (LOG) PHASE: Rapid doubling at constant generation time. Population size doubles each generation. Most metabolically active — most susceptible to antibiotics. STATIONARY PHASE: Birth rate = death rate. Nutrients depleting, waste accumulating. Net population stays stable. DEATH (DECLINE) PHASE: Death rate exceeds birth rate. Cells dying faster than reproducing due to nutrient exhaustion and toxic waste buildup.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">04</div><div class="q-text">State some differences between how cells grow in a lab versus in nature.</div></div>
+  <div class="a-body"><p>LAB: Controlled, optimal conditions (temperature, pH, nutrients). Closed batch system — resources deplete over time. Pure cultures. Predictable growth phases. NATURE: Variable, often nutrient-poor conditions. Open systems — nutrients may be replenished (like a river). Mixed microbial communities competing for resources. Bacteria often in biofilms. Rarely experience true exponential growth — usually in lag or stationary-like states. Exposed to predation, immune defenses.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">05</div><div class="q-text">How do the terms optimal, minimum, and maximum apply to temperature and pH conditions?</div></div>
+  <div class="a-body"><p>Optimal: The temperature or pH at which the organism grows FASTEST and most efficiently. Minimum: The lowest temperature/pH at which the organism can still grow (just barely). Maximum: The highest temperature/pH at which the organism can still grow. Outside the minimum-maximum range = no growth (may die). The range between minimum and maximum = growth range.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">06</div><div class="q-text">Using temperature classification terms, describe the microbes that would thrive in: a deep-sea hydrothermal vent, the human intestinal tract, or beneath a glacier.</div></div>
+  <div class="a-body"><p>Deep-sea hydrothermal vent (extremely hot, 80-121°C+): HYPERTHERMOPHILE (optimal growth >80°C; e.g., Pyrolobus fumarii). Human intestinal tract (~37°C): MESOPHILE (optimal growth 25-45°C; e.g., E. coli). Beneath a glacier (near 0°C): PSYCHROPHILE (optimal growth 0-15°C; e.g., Polaromonas vacuolata).</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">07</div><div class="q-text">Define the terms acidophile, alkaliphile, and neutralophile. Explain ways microbes may adapt to pH extremes.</div></div>
+  <div class="a-body"><p>Acidophile: thrives at low pH (below 5.5); e.g., Helicobacter pylori in stomach (pH 1-2), Thiobacillus. Alkaliphile: thrives at high pH (above 8.5); e.g., Vibrio cholerae (prefers alkaline environment). Neutralophile: grows best at neutral pH (6-8); most pathogens including E. coli. Adaptations to extremes: Modified enzymes that remain stable at extreme pH, proton pumps to maintain internal pH near neutral, modified cell membranes with different lipid compositions.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">08</div><div class="q-text">What are halophiles, and what adaptations do they possess to manage osmotic stress?</div></div>
+  <div class="a-body"><p>Halophiles: microorganisms that REQUIRE or tolerate high salt concentrations (NaCl). Extreme halophiles require very high salt (e.g., Halobacterium in salt lakes). Moderate halophiles tolerate but don't require high salt. Adaptations: Accumulate compatible solutes (organic compounds like betaine, glycine) in cytoplasm to balance external osmotic pressure. Modified proteins that require salt for stability. Specialized membranes that resist dehydration.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">09</div><div class="q-text">Name the various classes of microbes according to their oxygen use and tolerance. Explain why oxygen is toxic to anaerobes.</div></div>
+  <div class="a-body"><p>Obligate aerobe: REQUIRES O2. Obligate anaerobe: CANNOT tolerate O2 (killed by it). Facultative anaerobe: PREFERS O2 but can survive without it. Aerotolerant anaerobe: Doesn't use O2 but can tolerate it. Microaerophile: Requires SMALL amounts of O2 (less than atmospheric). WHY O2 IS TOXIC TO ANAEROBES: Oxygen generates toxic reactive oxygen species (ROS) — superoxide (O2−), hydrogen peroxide (H2O2), hydroxyl radical. Aerobes have enzymes (superoxide dismutase, catalase, peroxidase) to neutralize these. Anaerobes LACK these enzymes — ROS damages their DNA, proteins, and lipids → death.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">10</div><div class="q-text">Define the terms 'essential nutrient' and 'growth factor' and describe the energy sources required by phototrophs versus chemotrophs.</div></div>
+  <div class="a-body"><p>Essential nutrient: A nutrient the organism absolutely requires for growth that it cannot synthesize itself — must be obtained from environment (e.g., carbon, nitrogen, phosphorus, sulfur). Growth factor: Organic essential nutrients needed in small amounts — vitamins, amino acids, purines, pyrimidines that the organism cannot synthesize (e.g., some bacteria require vitamin B12). Phototrophs: Use LIGHT as energy source (photosynthesis) — e.g., cyanobacteria, algae. Chemotrophs: Use CHEMICAL compounds as energy source — oxidize organic (chemoorganotrophs) or inorganic (chemolithotrophs) molecules. Most pathogens are chemoorganotrophs.</p></div>
+</div>
+<div class="footer">Chapter 7 · Microbial Growth · 10 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 8 · Exam Prep</div>
+  <div class="ch-title">Chapter 8</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Microbial Metabolism</div>
+  <div class="ch-topics">Glycolysis · Krebs cycle · ETC · Fermentation · Biochemical tests</div>
+  <span class="ch-badge">33 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block">
+  <div class="q-header"><div class="q-num">01</div><div class="q-text">Give a general description of metabolism.</div></div>
+  <div class="a-body"><p>Metabolism is the sum of ALL chemical reactions occurring within a living cell. It includes both: Catabolism — breaking down complex molecules into simpler ones, releasing energy (e.g., glycolysis, cellular respiration). Anabolism — building complex molecules from simpler ones, consuming energy (e.g., protein synthesis, DNA replication). The energy released from catabolism is captured as ATP to fuel anabolic reactions.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">02</div><div class="q-text">Describe how anabolic and catabolic reactions are interconnected, yet different.</div></div>
+  <div class="a-body"><p>Different: Catabolism breaks things DOWN → releases energy. Anabolism builds things UP → requires energy. Interconnected: Products of catabolism (simple molecules like pyruvate, acetyl-CoA) serve as raw materials (precursors) for anabolism. ATP generated by catabolism powers anabolic reactions. NADH/NADPH produced catabolically are used anabolically. They are coupled so energy flows from breakdown to building.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">03</div><div class="q-text">Describe how ATP acts as a go-between, or intermediate, in catabolic and anabolic reactions.</div></div>
+  <div class="a-body"><p>ATP (adenosine triphosphate) is the universal energy currency of cells. Catabolic reactions release energy → used to phosphorylate ADP to ATP. Anabolic reactions consume energy → ATP is hydrolyzed back to ADP + Pi, releasing the energy to drive the reaction. ATP doesn't store energy long-term — it's constantly regenerated and spent. Think of it as a rechargeable battery that couples energy-releasing and energy-consuming reactions.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">04</div><div class="q-text">Even though ATP is not very high energy, why is it an ideal molecule for fueling cellular processes?</div></div>
+  <div class="a-body"><p>ATP releases just the right amount of energy per hydrolysis — not so much that it destroys delicate biological molecules. It's water-soluble (can diffuse through cytoplasm easily). It's stable enough to be made and used efficiently but reactive enough to transfer its phosphate group to substrates. It's a universal currency — works in essentially all organisms. It couples well to enzymes through phosphorylation reactions.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">05</div><div class="q-text">What is an active site and what role does it have in enzyme specificity?</div></div>
+  <div class="a-body"><p>The active site is a specific region on an enzyme where the substrate binds and the chemical reaction is catalyzed. Its three-dimensional shape is complementary to the substrate — like a lock and key. Only substrates with the correct shape and chemical properties fit the active site → enzyme specificity. The induced fit model: active site flexibly adjusts shape when substrate binds to optimize the reaction.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">06</div><div class="q-text">Why is enzyme specificity an advantage to a cell?</div></div>
+  <div class="a-body"><p>Specificity ensures each enzyme catalyzes only its intended reaction — preventing wasteful or harmful side reactions. It allows precise metabolic control — different pathways can run simultaneously without interference. It prevents substrates from being sent down wrong metabolic paths. Cells can regulate specific steps without disrupting entire pathways.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">07</div><div class="q-text">How do enzymes help reactions occur more quickly and efficiently?</div></div>
+  <div class="a-body"><p>Enzymes lower the activation energy required for a reaction to proceed — the energy needed to get the reaction started. By binding substrates at the active site, they: Orient substrates in the correct position, Strain/distort chemical bonds making them easier to break, Provide a microenvironment that stabilizes the transition state. Result: reactions proceed thousands to millions of times faster than they would spontaneously, at body temperature.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">08</div><div class="q-text">Describe the functions of NAD+ and FAD coenzymes.</div></div>
+  <div class="a-body"><p>NAD+ (nicotinamide adenine dinucleotide) and FAD (flavin adenine dinucleotide) are electron carriers — coenzymes that accept electrons (and H+) during oxidation reactions. NAD+ → NADH (gains electrons during glycolysis and Krebs cycle). FAD → FADH2 (gains electrons during Krebs cycle). They then donate these electrons to the electron transport chain to drive ATP production. They are recycled — NADH and FADH2 are oxidized back to NAD+ and FAD after donating electrons.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">09</div><div class="q-text">What are ribozymes and how are they different from typical enzymes?</div></div>
+  <div class="a-body"><p>Ribozymes are RNA molecules that have catalytic activity — they can act as enzymes. Typical enzymes are made of PROTEIN. Ribozymes are made of RNA. Examples: the ribosomal peptidyl transferase activity that forms peptide bonds during translation is catalyzed by rRNA. Some introns self-splice. Significance: Supports the RNA world hypothesis — RNA may have been the first catalyst before protein enzymes evolved.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">10</div><div class="q-text">List at least four different factors that affect enzyme activity and describe how they do so.</div></div>
+  <div class="a-body"><p>1. TEMPERATURE: Too low → reduced molecular motion → slower reaction. Too high → enzyme denatures (loses 3D shape) → activity lost. 2. pH: Changes ionization of amino acids in active site → alters shape → altered activity or denaturation. 3. Substrate concentration: More substrate → more collisions with enzyme → faster reaction (up to Vmax). 4. Competitive inhibitors: Mimic substrate, bind active site, block substrate access. 5. Noncompetitive inhibitors: Bind allosteric site → change enzyme shape → reduce activity. 6. Cofactors/coenzymes: Required for enzyme function — absence reduces activity.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">11</div><div class="q-text">How does feedback inhibition help cells live more efficiently?</div></div>
+  <div class="a-body"><p>Feedback inhibition (end-product inhibition): The final product of a metabolic pathway inhibits an enzyme earlier in the pathway — usually the first committed step. When product levels are high enough, production automatically slows. When levels drop, inhibition is released and production resumes. This prevents wasteful overproduction of metabolites and allows the cell to self-regulate without external signals.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">12</div><div class="q-text">What are redox reactions and how are NAD+ and FAD central to them in cells?</div></div>
+  <div class="a-body"><p>Redox reactions: Oxidation-Reduction reactions — one molecule loses electrons (oxidation) and another gains electrons (reduction). OIL RIG: Oxidation Is Loss, Reduction Is Gain. In cells, redox reactions release or store energy. NAD+ and FAD are the primary electron acceptors: When a substrate is oxidized (loses electrons), NAD+ or FAD accepts those electrons → becomes NADH or FADH2. These electron carriers then deliver electrons to the ETC where the energy is used to make ATP.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">13</div><div class="q-text">Why is glucose important to cells?</div></div>
+  <div class="a-body"><p>Glucose is the primary fuel molecule for most cells. It's the main substrate for glycolysis — the universal first step of energy metabolism. It can be used in aerobic respiration, anaerobic respiration, or fermentation to generate ATP. It's also a carbon skeleton for biosynthesis of other molecules (amino acids, nucleotides, lipids). Most organisms can catabolize glucose, making it a universal energy currency among carbon sources.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">14</div><div class="q-text">Describe the three general ways that ADP is recharged to ATP.</div></div>
+  <div class="a-body"><p>1. SUBSTRATE-LEVEL PHOSPHORYLATION: Direct transfer of a phosphate group from a high-energy substrate to ADP → ATP. Occurs in glycolysis and Krebs cycle. Does not require oxygen. 2. OXIDATIVE PHOSPHORYLATION: Uses energy from electrons flowing through the ETC to pump H+ ions → creates proton gradient → drives ATP synthase. Requires electron acceptor (O2 in aerobic). Most ATP produced here. 3. PHOTOPHOSPHORYLATION: In photosynthetic organisms only — uses light energy to drive electron flow through photosystems → powers ATP synthase.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">15</div><div class="q-text">Describe the link between redox reactions and the phosphorylation reactions.</div></div>
+  <div class="a-body"><p>Oxidation reactions in glycolysis and Krebs cycle release electrons captured by NAD+ and FAD → forming NADH and FADH2. These electron carriers deliver their electrons to the ETC. As electrons flow down the ETC (from higher to lower energy), the energy released pumps H+ ions across the membrane. The resulting proton gradient drives ATP synthase (chemiosmosis) → oxidative phosphorylation → ATP. So redox reactions provide the electrons that ultimately power phosphorylation.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">16</div><div class="q-text">What is cellular respiration and what pathways comprise cellular respiration?</div></div>
+  <div class="a-body"><p>Cellular respiration: The process of breaking down organic molecules (glucose) to produce ATP using an external electron acceptor. PATHWAYS: 1. Glycolysis (cytoplasm) → glucose → 2 pyruvate, 2 ATP, 2 NADH. 2. Pyruvate oxidation (link reaction) → pyruvate → Acetyl-CoA + CO2 + NADH. 3. Krebs cycle (mitochondrial matrix/prokaryote cytoplasm) → Acetyl-CoA → CO2 + NADH + FADH2 + ATP. 4. Electron transport chain + oxidative phosphorylation (inner mitochondrial membrane/prokaryote plasma membrane) → most ATP produced.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">17</div><div class="q-text">Summarize the chemical steps in the investment and payoff stages of glycolysis.</div></div>
+  <div class="a-body"><p>INVESTMENT STAGE (steps 1-5): Uses 2 ATP to phosphorylate glucose → fructose-1,6-bisphosphate → split into 2 G3P molecules. PAYOFF STAGE (steps 6-10): Each G3P is oxidized → 2 NADH produced, 2 ATP produced by substrate-level phosphorylation (×2 for each G3P). NET RESULT: 2 pyruvate, 2 ATP net gain (4 made - 2 invested), 2 NADH. Occurs in cytoplasm. No oxygen required.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">18</div><div class="q-text">Describe what occurs in the Krebs cycle (pay particular attention to the roles of NAD+ and FAD).</div></div>
+  <div class="a-body"><p>Also called the citric acid cycle. Acetyl-CoA (2 carbons) enters and combines with oxaloacetate (4C) → citrate (6C). Through a series of oxidation and decarboxylation reactions: 2 CO2 released per turn, 3 NAD+ → 3 NADH (primary electron harvesters), 1 FAD → 1 FADH2, 1 GTP (equivalent to ATP) produced by substrate-level phosphorylation, Oxaloacetate regenerated → ready for next turn. Per glucose: 2 turns → 6 NADH, 2 FADH2, 2 GTP.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">19</div><div class="q-text">How do electrons get to the electron transport chain and what happens to them once there?</div></div>
+  <div class="a-body"><p>NADH and FADH2 (from glycolysis, pyruvate oxidation, and Krebs) deliver electrons to the ETC. NADH donates electrons to Complex I (NADH dehydrogenase). FADH2 donates electrons to Complex II (succinate dehydrogenase) — enters at a lower point. Electrons flow through protein complexes (I → ubiquinone → III → cytochrome c → IV). Energy released at each transfer pumps H+ ions across the membrane → proton gradient. At Complex IV: final electron acceptor is O2 → forms H2O. Proton gradient drives ATP synthase → produces most ATP.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">20</div><div class="q-text">List three ways anaerobic and aerobic respiration are alike and three ways they are different.</div></div>
+  <div class="a-body"><p>ALIKE: Both use ETC and oxidative phosphorylation, both use glycolysis and Krebs cycle, both involve electron carriers (NADH, FADH2). DIFFERENT: Aerobic uses O2 as final electron acceptor; anaerobic uses inorganic molecules (NO3-, SO4²-, CO2). Aerobic produces far more ATP (~30-32 vs 2-10). Aerobic produces H2O as byproduct; anaerobic produces other byproducts (H2S, CH4, N2).</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">21</div><div class="q-text">Even though the pentose phosphate and Entner-Doudoroff pathways do not produce much ATP, they are useful. Explain why.</div></div>
+  <div class="a-body"><p>Pentose phosphate pathway: Produces NADPH (needed for biosynthesis and antioxidant defense) and ribose-5-phosphate (needed for nucleotide/nucleic acid synthesis). Entner-Doudoroff pathway: Alternative to glycolysis used by some bacteria (e.g., Pseudomonas); produces pyruvate and G3P from glucose with less ATP but is used when glycolysis enzymes are absent. Both provide precursor molecules for biosynthesis even if they're not efficient ATP generators.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">22</div><div class="q-text">Describe three different examples of fermentation and state how fermentation is different from anaerobic respiration.</div></div>
+  <div class="a-body"><p>FERMENTATION examples: 1. Lactic acid fermentation (lactobacillus, muscle cells) — pyruvate → lactic acid, regenerates NAD+. 2. Alcohol fermentation (yeast) — pyruvate → ethanol + CO2, regenerates NAD+. 3. Mixed acid fermentation (E. coli) — produces multiple acids. DIFFERENCE from anaerobic respiration: Fermentation does NOT use an ETC or external electron acceptor — it uses organic molecules as the final electron acceptor. Fermentation produces only 2 ATP (from glycolysis only). Anaerobic respiration uses ETC with inorganic final acceptors → more ATP.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">23</div><div class="q-text">Why do organisms that survive using fermentation require an abundance of sugars?</div></div>
+  <div class="a-body"><p>Fermentation only generates 2 ATP per glucose (glycolysis only — no ETC, no Krebs). To meet energy demands, fermenters must process enormous quantities of glucose. They rely on substrate-level phosphorylation exclusively. Compare to aerobic respiration: ~30-32 ATP per glucose. Fermenters must ferment ~15x more glucose than aerobes to get the same energy. This is why fermenting organisms (like yeast) rapidly consume carbohydrates.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">24</div><div class="q-text">Describe the general processes of protein and lipid catabolism.</div></div>
+  <div class="a-body"><p>PROTEIN catabolism: Proteins are hydrolyzed by proteases into amino acids. Amino acids undergo deamination — amino group removed (forms NH3 or NH4+, excreted). The carbon skeleton enters metabolism as pyruvate, acetyl-CoA, or Krebs cycle intermediates → oxidized for energy or used for biosynthesis. LIPID catabolism: Fats are hydrolyzed by lipases → glycerol + fatty acids. Glycerol → converted to DHAP → enters glycolysis. Fatty acids undergo beta-oxidation → generates acetyl-CoA, NADH, FADH2 → enters Krebs cycle. Fats yield MORE energy per gram than carbohydrates.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">25</div><div class="q-text">Amino acids are used to build proteins, but where do cells get their amino acids?</div></div>
+  <div class="a-body"><p>Sources: 1. Biosynthesis — cells can synthesize amino acids from carbon skeletons (from glycolysis/Krebs) + a nitrogen source (NH4+ from the environment or from deamination reactions). 2. Breakdown of proteins — proteolytic digestion of dietary or cellular proteins releases amino acids. 3. Salvage — amino acids from protein turnover (degraded proteins) are recycled. Humans can synthesize 11 of 20 amino acids — the remaining 9 essential amino acids must come from diet.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">26</div><div class="q-text">How are lipids linked to the catabolism of glucose?</div></div>
+  <div class="a-body"><p>Glycerol (from fat hydrolysis) is converted to DHAP (dihydroxyacetone phosphate) which enters glycolysis directly. Fatty acids undergo beta-oxidation → acetyl-CoA, which enters the Krebs cycle — the same intermediate generated from pyruvate during glucose catabolism. So lipid catabolism feeds INTO the same central metabolic pathways (glycolysis, Krebs, ETC) used for glucose catabolism. When glucose is plentiful, excess glucose is converted to fats for storage → reverse connection.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">27</div><div class="q-text">Why are purines and pyrimidines usually recycled instead of being built from scratch?</div></div>
+  <div class="a-body"><p>De novo synthesis of purines and pyrimidines is energetically very expensive — requires many steps, multiple enzymes, and significant ATP investment. Recycling (salvage pathways) recovers nucleotides from degraded DNA/RNA at much lower energy cost. Cells preferentially use salvage pathways for efficiency. De novo synthesis is used only when salvage supply is insufficient. This is why drugs that block purine synthesis (methotrexate) are effective cancer and antimicrobial treatments — rapidly dividing cells need lots of nucleotides.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">28</div><div class="q-text">Define what an amphibolic pathway is and provide an example.</div></div>
+  <div class="a-body"><p>Amphibolic: A metabolic pathway that serves BOTH catabolic AND anabolic functions — it can go in both directions and its intermediates are used for both energy production and biosynthesis. Example: The Krebs cycle — catabolically it oxidizes acetyl-CoA to produce NADH/FADH2/ATP. Anabolically, its intermediates (alpha-ketoglutarate, oxaloacetate, succinyl-CoA) are drawn off to synthesize amino acids, porphyrins, and other molecules. Glycolysis is also amphibolic.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">29</div><div class="q-text">Based on metabolic properties, how are most medically important microbes classified?</div></div>
+  <div class="a-body"><p>Most medically important microbes are CHEMOORGANOHETEROTROPHS (also called chemoheterotrophs): They use CHEMICAL energy (not light), obtained from ORGANIC compounds (not inorganic), and require ORGANIC carbon sources. This is because they inhabit the human body — an organic carbon-rich environment. They compete with host cells for the same types of nutrients. Examples: E. coli, Staphylococcus, Streptococcus, Mycobacterium, etc.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">30</div><div class="q-text">Describe the basic underlying principle that makes biochemical testing useful for identifying an unknown specimen.</div></div>
+  <div class="a-body"><p>Different microbial species have different metabolic capabilities — different enzymes, different metabolic pathways, different end products. Biochemical tests detect these differences by testing for specific enzyme activities or metabolic products. Each species has a characteristic metabolic fingerprint. By running a panel of tests, you build a profile that matches a known organism. The principle: if two organisms have the same metabolic profile, they are likely the same species.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">31</div><div class="q-text">Describe three different categories of biochemical tests and how they work.</div></div>
+  <div class="a-body"><p>1. FERMENTATION TESTS: Test whether an organism can ferment specific carbohydrates. pH indicator in media changes color if acids are produced during fermentation (e.g., phenol red broth). 2. ENZYME TESTS: Detect specific enzymes (catalase test — add H2O2, bubbles = catalase present; coagulase test — plasma clots if coagulase present, specific for S. aureus). 3. METABOLIC PRODUCT TESTS: Detect specific metabolic end products (indole test — tryptophan → indole; H2S production from sulfur-containing amino acids shown by black precipitate in media).</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">32</div><div class="q-text">In addition to standard biochemical tests, what else is often used to identify a specimen?</div></div>
+  <div class="a-body"><p>Molecular methods: PCR (amplify specific gene sequences), 16S rRNA gene sequencing (identifies bacteria by comparing rRNA gene sequence to databases), MALDI-TOF mass spectrometry (identifies organisms by protein fingerprint — rapid, accurate). Immunological methods: antibody-based tests (ELISA, agglutination). Serotyping: identify specific surface antigens with antibodies. Microscopy: Gram stain, acid-fast stain, fluorescent staining.</p></div>
+</div>
+<div class="q-block">
+  <div class="q-header"><div class="q-num">33</div><div class="q-text">Give an example of a rapid ID tool and state when such a tool would be helpful.</div></div>
+  <div class="a-body"><p>MALDI-TOF (Matrix-Assisted Laser Desorption/Ionization Time-Of-Flight) mass spectrometry: identifies organisms within minutes by analyzing their protein profiles — creates a unique mass spectrum matched to a database. Helpful in: hospital clinical labs when rapid identification is critical for patient treatment decisions (e.g., sepsis — every hour of appropriate antibiotic therapy improves survival). Also: API strips — small plastic strips with multiple miniaturized biochemical tests read after incubation for species identification.</p></div>
+</div>
+<div class="footer">Chapter 8 · Microbial Metabolism · 33 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 9 · Exam Prep</div>
+  <div class="ch-title">Chapter 9</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Epidemiology</div>
+  <div class="ch-topics">Koch's postulates · Transmission · HAIs · Incidence vs prevalence</div>
+  <span class="ch-badge">19 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">What epidemiological terms describe: a disease commonly found in a population, one that tends to only infect the immunocompromised, one with sudden onset, and one that transmits person to person?</div></div><div class="a-body">Commonly found in a population = ENDEMIC (constant baseline level in a geographic area). Only infects immunocompromised = OPPORTUNISTIC infection (caused by normally harmless organisms when immune defenses are down). Sudden onset = ACUTE disease. Person to person transmission = COMMUNICABLE/CONTAGIOUS disease.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">What is an epidemic and how is it different from a pandemic?</div></div><div class="a-body">EPIDEMIC: A sudden, significant increase in disease cases ABOVE the expected baseline level within a specific geographic area or community. PANDEMIC: An epidemic that has spread across MULTIPLE COUNTRIES or continents — worldwide or very widespread geographic distribution. Key difference: Scale of geographic spread. COVID-19 began as an epidemic in Wuhan → became a pandemic. Influenza becomes epidemic seasonally; certain strains cause pandemics.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">What differentiates an emerging disease from a reemerging disease?</div></div><div class="a-body">EMERGING disease: A NEW disease — either a previously unknown pathogen infecting humans for the first time (e.g., HIV, SARS, Ebola), or a known disease appearing in a new geographic area or population. REEMERGING disease: A previously controlled or declining disease that is increasing again in incidence or spreading to new areas (e.g., tuberculosis reemerging due to drug resistance; pertussis reemerging due to waning vaccine immunity; measles returning due to decreased vaccination rates).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">List Koch's postulates of disease and state why they are useful.</div></div><div class="a-body">1. The pathogen must be found in ALL cases of the disease. 2. The pathogen must be ISOLATED from the diseased host and grown in pure culture. 3. The cultured pathogen must CAUSE DISEASE when introduced into a healthy susceptible host. 4. The pathogen must be RE-ISOLATED from the experimentally diseased host and be identical to the original. Useful: Provide a rigorous framework for proving that a specific organism CAUSES a specific disease — establishes causation, not just correlation.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">What step(s) in Koch's postulates of disease could prove impossible to fulfill in the case of a disease that only affects humans?</div></div><div class="a-body">Postulate 3: Introducing the pathogen into a healthy susceptible host — if the disease ONLY affects humans, you cannot ethically infect a human volunteer, and no animal model may be susceptible. This was a major issue with proving Treponema pallidum causes syphilis, and early work on HIV. Solutions: Use molecular Koch's postulates (gene-based), use animal models that may be partially susceptible, or rely on natural experiments (healthcare workers accidentally exposed).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">06</div><div class="q-text">Name the six different pathogen categories.</div></div><div class="a-body">1. Bacteria (e.g., Mycobacterium tuberculosis). 2. Viruses (e.g., influenza, HIV). 3. Fungi (e.g., Candida, Aspergillus). 4. Protozoa (e.g., Plasmodium — malaria, Giardia). 5. Helminths/parasitic worms (e.g., tapeworms, roundworms). 6. Prions (misfolded proteins — e.g., CJD, mad cow disease). Some sources also include: Arthropod ectoparasites (lice, ticks, mites) that can be vectors or direct pathogens.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">07</div><div class="q-text">What do the terms reservoir, source, and transmission mean and how are exogenous and endogenous pathogen sources different?</div></div><div class="a-body">RESERVOIR: The natural habitat where a pathogen is maintained long-term (e.g., animals, soil, water, humans). SOURCE: The specific location from which a pathogen reaches a host (may be same as reservoir or different). TRANSMISSION: The mechanism by which the pathogen spreads from source to new host. EXOGENOUS source: Pathogen comes from OUTSIDE the patient's body (e.g., touching a contaminated surface, breathing airborne pathogen). ENDOGENOUS source: Pathogen comes from the patient's OWN normal microbiota (e.g., E. coli from gut causing UTI when it travels to urinary tract).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">08</div><div class="q-text">What are the various modes of direct and indirect contact transmission? Be sure to give examples of each.</div></div><div class="a-body">DIRECT CONTACT (requires physical contact): Person-to-person (touching, kissing, sexual contact), droplet transmission (large respiratory droplets within ~1 meter — influenza, COVID), vertical transmission (mother to child — HIV, herpes during birth). INDIRECT CONTACT (no direct contact needed): Vehicle-borne (contaminated food/water/blood — Salmonella in food, hepatitis C via blood), airborne (small aerosol particles traveling >1 meter — TB, measles), fomite transmission (contaminated objects — stethoscopes, doorknobs). Vector-borne: mechanical (fly carries pathogen externally) or biological (mosquito — pathogen replicates inside vector — malaria, West Nile).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">09</div><div class="q-text">How are mechanical and biological vectors different?</div></div><div class="a-body">MECHANICAL vector: Simply carries pathogen on body surface from one place to another — pathogen does NOT replicate inside the vector. Example: Housefly carries Salmonella on its legs from feces to food. BIOLOGICAL vector: Pathogen REPLICATES or develops inside the vector — the vector is a necessary part of the pathogen's life cycle. Example: Anopheles mosquito — Plasmodium (malaria) undergoes part of its life cycle inside the mosquito before transmission to humans.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">10</div><div class="q-text">Name the five stages of infectious disease and state their features.</div></div><div class="a-body">1. INCUBATION: Exposure to first symptoms. Pathogen replicating, no symptoms yet. Duration varies (hours to years). 2. PRODROMAL: Vague, nonspecific early symptoms (fatigue, mild fever, malaise). Highly contagious in some diseases. 3. ILLNESS (ACME): Peak symptoms — most severe stage. Immune system actively fighting. 4. DECLINE: Symptoms decreasing as immune response gains upper hand. Susceptible to secondary infections. 5. CONVALESCENCE: Recovery — patient returns to normal health. Pathogen cleared or reduced to non-harmful levels.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">11</div><div class="q-text">Why would a long incubation period be a particular challenge to epidemiologists?</div></div><div class="a-body">Long incubation: Infected people spread the disease without knowing they're sick (presymptomatic transmission). Hard to trace the source exposure (occurred long ago — patient can't remember). Many people may be exposed before the outbreak is detected. Contact tracing becomes extremely difficult (large time window, many potential exposures). Quarantine periods must be extended. Example: HIV (weeks to months), rabies (weeks to months), prion diseases (years to decades).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">12</div><div class="q-text">How are chronic carriers different from asymptomatic carriers?</div></div><div class="a-body">ASYMPTOMATIC carrier: Has the pathogen but shows NO symptoms — may be transient (temporarily carrying during incubation). CHRONIC carrier: Has been infected, may have recovered from symptoms, but continues to harbor and shed the pathogen for months to years (sometimes for life). Classic example: Typhoid Mary — Salmonella typhi chronic carrier, never sick, infected hundreds. Both are public health risks because they spread disease without appearing ill. Chronic carriers are harder to identify and manage.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">13</div><div class="q-text">What is epidemiology and what are its two key goals?</div></div><div class="a-body">Epidemiology: The study of the distribution, determinants, and control of disease in populations. TWO KEY GOALS: 1. Determine the cause and distribution of disease (who gets sick, where, when, why — identify risk factors). 2. Develop and evaluate strategies to prevent and control disease in populations. Epidemiology studies populations (not individual patients) — it asks 'why is this disease occurring here, now, and in these people?'</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">14</div><div class="q-text">What does the epidemiological triangle describe and how can it be broken to limit disease?</div></div><div class="a-body">The epidemiological triangle describes the relationship between three factors required for disease to occur: HOST (susceptible person), AGENT (pathogen), ENVIRONMENT (conditions that facilitate transmission). All three must align for disease to occur. Breaking the triangle: Reduce HOST susceptibility (vaccination, improving nutrition/immunity). Eliminate or reduce the AGENT (antimicrobial treatment, disinfection, pasteurization). Modify the ENVIRONMENT (improve sanitation, eliminate mosquito breeding sites, improve ventilation). Interrupting any one side prevents disease.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">15</div><div class="q-text">What is quarantine and when might quarantine be a useful control measure?</div></div><div class="a-body">Quarantine: Separation and restriction of movement of people who have been EXPOSED to a contagious disease but are not yet symptomatic — to prevent potential spread during the incubation period. (Different from isolation: isolating known SICK people). Useful when: Disease has significant asymptomatic/presymptomatic transmission, long incubation period, high severity, no effective treatment. Examples: COVID-19 quarantine for exposed individuals, Ebola quarantine, TB quarantine for resistant cases.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">16</div><div class="q-text">If there were 600 cases of a disease in a given year and 10,000 people in a susceptible host population in that same year, what is the prevalence rate?</div></div><div class="a-body">Prevalence rate = (Number of cases / Population at risk) × 100 = (600 / 10,000) × 100 = 6% prevalence rate. Factors that impact prevalence: Duration of illness (longer = higher prevalence), Immigration of sick individuals, Emigration of sick individuals, New cases occurring (incidence), Recovery rate, Death rate, Effectiveness of treatment (cures reduce prevalence).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">17</div><div class="q-text">What is the incidence rate for a disease that has three new cases per year out of 100 in the at-risk population?</div></div><div class="a-body">Incidence rate = (Number of NEW cases in a period / Population at risk during that period) × 100 = (3 / 100) × 100 = 3% incidence rate per year. Incidence measures NEW cases only (risk of getting disease). Prevalence measures ALL existing cases (proportion of population currently diseased).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">18</div><div class="q-text">Describe Semmelweis's efforts and state why they were not initially accepted.</div></div><div class="a-body">Ignaz Semmelweis (1840s, Vienna): Observed that mortality from puerperal (childbed) fever was much higher in wards where medical students came directly from autopsy rooms than in midwife-staffed wards. Proposed: doctors' hands carried 'cadaverous particles' → infecting mothers. Implemented mandatory handwashing with chlorinated lime solution → mortality dropped dramatically. NOT ACCEPTED because: Germ theory not yet established (before Pasteur and Koch). He couldn't explain the mechanism. His personality was abrasive, he insulted colleagues. The medical establishment was resistant to the idea that doctors were causing harm.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">19</div><div class="q-text">What are healthcare-acquired infections and how can they be prevented?</div></div><div class="a-body">HAIs (Healthcare-Acquired Infections/nosocomial infections): Infections acquired IN a healthcare setting — not present or incubating at admission. Occur ≥48 hours after admission. Caused by: Gram-negative bacteria (E. coli, Klebsiella, Pseudomonas), S. aureus/MRSA, C. difficile, Candida. PREVENTION: Hand hygiene (most important — soap and water for C. diff, alcohol gel for others), Proper sterilization/disinfection of equipment, Correct catheter insertion technique, Isolation precautions (contact, droplet, airborne), Antimicrobial stewardship (limit unnecessary antibiotic use).</div></div>
+<div class="footer">Chapter 9 · Epidemiology · 19 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 10 · Exam Prep</div>
+  <div class="ch-title">Chapter 10</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Pathogenicity</div>
+  <div class="ch-topics">Virulence factors · Endotoxins vs exotoxins · Portals of entry</div>
+  <span class="ch-badge">5 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">What are host-microbe interactions and how do they impact health and disease?</div></div><div class="a-body">Host-microbe interactions describe the relationship between microorganisms and their host. These range on a spectrum: Mutualism (both benefit — gut microbiota help digestion), Commensalism (one benefits, one unaffected — skin S. epidermidis), Parasitism (microbe benefits, host harmed — disease). The outcome depends on host immune status, pathogen virulence factors, and the site of infection. Normal microbiota are beneficial under normal circumstances but can become pathogenic if displaced (endogenous infections).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">What effects could changing the level or location of normal microbiota have?</div></div><div class="a-body">LEVEL change: Antibiotics kill normal flora → opportunistic pathogens overgrow (C. diff after antibiotics, vaginal Candida after antibiotics kill Lactobacillus). LOCATION change: Normal flora in wrong location → disease. E. coli is harmless in gut but causes UTI if it reaches the urinary tract. Gut bacteria in peritoneum (from perforation) = peritonitis. S. aureus from skin in bloodstream = bacteremia. Normal microbiota are safe only in their proper location.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">Compare and contrast endotoxins and exotoxins and describe the three main classes of exotoxins.</div></div><div class="a-body">ENDOTOXIN: LPS (lipopolysaccharide) component of Gram-NEGATIVE outer membrane. Released when bacteria die (lysis). Heat-stable. Causes fever, inflammation, septic shock. NON-specific immune response. Same effect regardless of organism. EXOTOXIN: Secreted PROTEINS produced by bacteria (both G+ and G-). Heat-labile (most). Specific effects. Highly potent — can be lethal in tiny amounts. 3 CLASSES: 1. Superantigens: overstimulate T cells → cytokine storm (e.g., TSST-1 from S. aureus → toxic shock). 2. Intracellular targeting toxins (A-B toxins): B component binds cell; A component disrupts function (cholera toxin, botulinum, diphtheria). 3. Membrane-disrupting toxins: Pore-forming or phospholipase activity → lyse cells (streptolysin, alpha toxin).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">What are the different portals of entry and exit?</div></div><div class="a-body">PORTALS OF ENTRY: Mucous membranes (respiratory tract — most common; GI tract; genitourinary tract; conjunctiva). Skin (intact is a barrier, but wounds, insect bites, medical devices breach it). Placenta (vertical transmission — TORCH pathogens). PORTALS OF EXIT: Respiratory secretions (coughing, sneezing, talking). Feces (fecal-oral route — Salmonella, hepatitis A). Blood (needles, insect vectors, transfusion). Urine (leptospira, some bacteria). Skin lesions (herpes, syphilis chancre). Milk (breastfeeding — CMV, HIV).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">What approaches may a pathogen use to avoid immune detection and elimination?</div></div><div class="a-body">Antigenic variation: Change surface proteins so antibodies no longer recognize (influenza, trypanosomes, Borrelia). Capsule: Blocks phagocytosis and complement activation (S. pneumoniae, H. influenzae). Intracellular survival: Hide inside host cells away from antibodies (Mycobacterium, Listeria, Leishmania). Inhibit phagocytosis: Leukocidins kill phagocytes; some survive inside phagosomes (prevent phagolysosome fusion). Immunoglobulin proteases: Cleave IgA antibodies on mucous membranes (Neisseria, Haemophilus). Biofilm formation: Antibiotic and immune cell resistance.</div></div>
+<div class="footer">Chapter 10 · Pathogenicity · 5 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 11 · Exam Prep</div>
+  <div class="ch-title">Chapter 11</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Innate Immunity</div>
+  <div class="ch-topics">Inflammation · Complement · Cytokines · Fever · NK cells</div>
+  <span class="ch-badge">9 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">Compare and contrast innate and adaptive immunity.</div></div><div class="a-body">INNATE: Non-specific — responds the same to all pathogens. Immediate response (minutes to hours). No memory — same response on re-exposure. Components: skin, mucous membranes, phagocytes, NK cells, complement, inflammation, fever. ADAPTIVE: Specific — tailored to a particular antigen. Slower initial response (days to weeks). Has MEMORY — faster, stronger response on re-exposure. Components: B cells (antibodies), T cells (cytotoxic and helper). BOTH: Work together — innate activates and directs adaptive; adaptive enhances innate responses.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">What is the main goal of first-line defenses?</div></div><div class="a-body">Keep pathogens OUT of the body — prevent initial infection. First-line defenses are PHYSICAL and CHEMICAL BARRIERS that stop pathogens before they enter tissues. Examples: Intact skin (physical barrier), mucous membranes lining body openings, mucus trapping pathogens, cilia sweeping mucus out of respiratory tract, stomach acid (pH 1-2) killing ingested pathogens, normal microbiota competing with pathogens, lysozyme in tears/saliva/mucus destroying bacterial cell walls.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">What are antimicrobial peptides and what do they do?</div></div><div class="a-body">Antimicrobial peptides (AMPs) — also called defensins — are small proteins produced by epithelial cells and phagocytes. They have broad-spectrum antimicrobial activity. Mechanism: Insert into microbial membranes → disrupt membrane integrity → kill bacteria, fungi, some viruses. Examples: Alpha-defensins (in neutrophil granules and intestinal Paneth cells), Beta-defensins (skin and respiratory epithelium), Cathelicidins (skin). They provide immediate, non-specific killing without requiring immune cell recruitment.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">What are the three main categories of lymphocytes, and which are involved in innate immunity versus adaptive immunity?</div></div><div class="a-body">1. B lymphocytes (B cells): ADAPTIVE immunity — produce antibodies (humoral immunity). 2. T lymphocytes (T cells): ADAPTIVE immunity — cell-mediated immunity (helper T, cytotoxic T, regulatory T). 3. Natural Killer (NK) cells: INNATE immunity — kill virus-infected cells and cancer cells without needing antigen-specific receptors. They recognize 'missing self' (cells lacking MHC I). All lymphocytes originate from lymphoid progenitor cells in bone marrow.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">Define the term cytokine and then name four different classes of cytokines and state their functions.</div></div><div class="a-body">Cytokines: Small signaling proteins secreted by immune cells that regulate immune responses — they act as chemical messengers between immune cells. 1. INTERLEUKINS (ILs): Regulate communication between leukocytes (e.g., IL-1 fever; IL-2 T cell proliferation; IL-4 B cell activation). 2. INTERFERONS (IFNs): Antiviral proteins — trigger antiviral state in neighboring cells; alpha/beta from infected cells, gamma from T and NK cells. 3. TUMOR NECROSIS FACTOR (TNF): Promotes inflammation, fever, activates phagocytes; can cause septic shock if overproduced. 4. CHEMOKINES: Attract immune cells to sites of infection (chemotaxis) — direct neutrophil and macrophage migration.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">06</div><div class="q-text">Compare and contrast the three key complement activation pathways.</div></div><div class="a-body">CLASSICAL pathway: Triggered by antibody-antigen complexes (IgG or IgM binding pathogen) → ADAPTIVE immunity bridges to complement. LECTIN pathway: Triggered by mannose-binding lectin (MBL) binding to mannose on pathogen surfaces — no antibody needed. ALTERNATIVE pathway: Spontaneous activation on foreign surfaces (bacterial cell walls, fungal surfaces) — always running at low level; amplified when complement proteins bind pathogen. ALL THREE converge on C3 convertase → cleave C3 → C3a (inflammation) + C3b (opsonization) → membrane attack complex (MAC) → pore in pathogen membrane → lysis.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">07</div><div class="q-text">What are the primary goals of inflammation?</div></div><div class="a-body">1. LOCALIZE the infection — prevent spread to rest of body. 2. DESTROY pathogens — recruit phagocytes (neutrophils, macrophages) to the site. 3. REMOVE damaged tissue and cellular debris. 4. INITIATE repair processes — prepare for tissue healing. 5. Alert the adaptive immune system — APCs at the infection site process antigens and travel to lymph nodes to activate B and T cells.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">08</div><div class="q-text">What are the three phases of inflammation and what occurs in each?</div></div><div class="a-body">1. VASODILATION: Blood vessels widen → increased blood flow to area → redness (rubor) and warmth (calor). Triggered by histamine, prostaglandins. 2. INCREASED VASCULAR PERMEABILITY: Blood vessel walls become leaky → plasma proteins (complement, antibodies, clotting factors) and fluid leak into tissue → swelling (tumor) and pain (dolor). 5 cardinal signs: rubor, calor, tumor, dolor, loss of function (functio laesa). 3. CELLULAR RECRUITMENT: Chemokines attract neutrophils → diapedesis (squeeze through vessel walls) → phagocytose pathogens. Macrophages arrive later for cleanup.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">09</div><div class="q-text">What is fever and how is it generated, treated, and potentially useful?</div></div><div class="a-body">Fever: Elevated body temperature above normal (~37°C/98.6°F). Generated: Pathogens or immune cells release pyrogens (e.g., endotoxin/LPS from bacteria, IL-1, IL-6, TNF) → act on hypothalamus → raise temperature set point → shivering, vasoconstriction raise temperature. Treated: Antipyretics (NSAIDs — aspirin, ibuprofen; acetaminophen) inhibit prostaglandin synthesis → reset thermostat. POTENTIALLY USEFUL: Higher temperature inhibits bacterial growth (many pathogens grow optimally at 37°C), enhances immune cell activity, speeds up adaptive immune responses. However, very high fever (>40°C) can be dangerous — denatures enzymes, neurological damage.</div></div>
+<div class="footer">Chapter 11 · Innate Immunity · 9 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 12 · Exam Prep</div>
+  <div class="ch-title">Chapter 12</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Adaptive Immunity</div>
+  <div class="ch-topics">B cells · T cells · Antibody isotypes · Memory · MHC</div>
+  <span class="ch-badge">6 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">What are the branches of adaptive immunity and how does adaptive immunity differ from innate immunity?</div></div><div class="a-body">Two branches: 1. HUMORAL immunity (B cell mediated) — antibody production targets extracellular pathogens and toxins. 2. CELL-MEDIATED immunity (T cell mediated) — cytotoxic T cells kill infected cells; helper T cells coordinate responses. Differences from innate: Adaptive is SPECIFIC (recognizes particular antigens), has MEMORY (faster/stronger on re-exposure), SLOWER initial response (days), REQUIRES antigen presentation and lymphocyte activation.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">What do the terms epitope, antigen, hapten, and immunogenicity mean?</div></div><div class="a-body">ANTIGEN: Any substance (usually foreign protein, polysaccharide, or lipid) that the immune system can specifically recognize and respond to. EPITOPE: The specific region on an antigen that antibodies or T cell receptors bind — the 'binding site' of the antigen. One antigen can have multiple epitopes. HAPTEN: A small molecule that is too small to trigger an immune response alone — becomes immunogenic only when bound to a larger carrier protein (e.g., penicillin can become a hapten → allergic reaction). IMMUNOGENICITY: The ability of a substance to trigger an immune response — determined by size, complexity, foreignness, route of entry.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">What are TCRs and BCRs, what role do they play in antigen recognition, and how does their diversity come about?</div></div><div class="a-body">TCR (T cell receptor): Protein on T cell surface — recognizes antigen fragments (peptides) displayed on MHC molecules on other cells. Cannot recognize free antigen. BCR (B cell receptor): Membrane-bound antibody on B cell surface — directly recognizes intact antigens (no MHC needed). DIVERSITY: Generated by V(D)J recombination — random joining of different gene segments (Variable, Diversity, Joining) during lymphocyte development creates millions of unique receptor sequences. Junctional diversity (imprecise joining) adds further variety. Result: >10^11 unique antigen receptors possible.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">What is isotype switching and how is it advantageous?</div></div><div class="a-body">Isotype (class) switching: B cells initially produce IgM → after activation and with T helper cell signals (IL-4, IL-5, etc.), they switch to producing IgG, IgA, IgE, or IgD — while keeping the SAME antigen specificity (same variable region). Advantageous: Different antibody classes have different EFFECTOR FUNCTIONS: IgG — most abundant, best opsonization, crosses placenta. IgA — secreted at mucosal surfaces. IgE — allergic responses, parasite defense. Switching allows the same antigen-specific B cell to mount the most appropriate type of response for the situation.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">Name the five antibody isotypes and provide details on their structures and functions.</div></div><div class="a-body">1. IgM: Pentamer (5 antibody units). First produced in primary response. Best at activating complement. Agglutination. 2. IgG: Most abundant (80%). Monomer. Best opsonization. Crosses placenta (passive immunity to fetus). Longest half-life. 3. IgA: Dimer at mucosal surfaces (secretory IgA). Monomer in blood. Found in saliva, tears, breast milk, intestinal secretions. Protects mucosal surfaces. 4. IgE: Monomer. Lowest concentration in blood. Binds mast cells/basophils → triggers allergic reactions and anti-parasitic responses. 5. IgD: Monomer on B cell surface (along with IgM) — functions mainly as B cell antigen receptor before activation.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">06</div><div class="q-text">Name the four categories of adaptive immunity, provide an example of each, and state which ones generate long-term immunity and why they can do so.</div></div><div class="a-body">1. ACTIVE NATURAL: Infection → immune response → memory cells formed (e.g., having chickenpox). LONG-TERM — memory B and T cells persist. 2. ACTIVE ARTIFICIAL: Vaccination → immune response → memory cells (e.g., MMR vaccine). LONG-TERM — memory cells from immune response. 3. PASSIVE NATURAL: Maternal antibodies transferred to fetus via placenta or breast milk (IgG crosses placenta; IgA in breast milk). SHORT-TERM — borrowed antibodies degrade, no memory cells made. 4. PASSIVE ARTIFICIAL: Injection of pre-formed antibodies (antitoxin, immunoglobulin therapy — e.g., rabies immune globulin after exposure). SHORT-TERM — no memory cells generated.</div></div>
+<div class="footer">Chapter 12 · Adaptive Immunity · 6 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 13 · Exam Prep</div>
+  <div class="ch-title">Chapter 13</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Immune Disorders</div>
+  <div class="ch-topics">Hypersensitivity types · Autoimmunity · Blood typing · GVHD</div>
+  <span class="ch-badge">8 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">Compare and contrast primary and secondary immunodeficiencies.</div></div><div class="a-body">PRIMARY immunodeficiency: Genetic/congenital — born with defective immune component. Examples: SCID (severe combined immunodeficiency — no T or B cells), DiGeorge syndrome (no thymus → no T cells), X-linked agammaglobulinemia (no B cells/antibodies). Treat with bone marrow transplant, gene therapy, immunoglobulin replacement. SECONDARY immunodeficiency: Acquired — develops later in life due to disease, drugs, or other causes. Examples: HIV/AIDS (destroys CD4+ T cells), chemotherapy/immunosuppressive drugs, malnutrition, aging. Treat underlying cause; prophylactic antimicrobials.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">What is an autoimmune disorder, and what is an example of one?</div></div><div class="a-body">Autoimmune disorder: The immune system fails to distinguish self from non-self → attacks the body's own tissues. Caused by breakdown of self-tolerance (failure of clonal deletion or regulatory T cells). Examples: Rheumatoid arthritis (attacks joints), Systemic lupus erythematosus/SLE (attacks multiple organs — kidneys, skin, heart, brain), Type 1 diabetes (attacks pancreatic beta cells → no insulin), Multiple sclerosis (attacks myelin in CNS), Hashimoto's thyroiditis (attacks thyroid), Graves' disease (attacks thyroid — overstimulation).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">Describe the following as type I, II, III, or IV reactions: delayed hypersensitivity, allergy, immune complex, and cytotoxic reactions.</div></div><div class="a-body">Type I: ALLERGY (immediate hypersensitivity) — IgE mediated, mast cells/basophils, immediate (minutes). Examples: hay fever, anaphylaxis, asthma. Type II: CYTOTOXIC reactions — IgG/IgM against cell surface antigens → complement activation or ADCC → cell destruction. Examples: hemolytic transfusion reactions, HDN, Graves' disease. Type III: IMMUNE COMPLEX reactions — antigen-antibody complexes deposit in tissues → complement activation → inflammation. Examples: serum sickness, SLE, post-streptococcal glomerulonephritis. Type IV: DELAYED HYPERSENSITIVITY — T cell mediated (NOT antibody), 48-72 hours. Examples: TB skin test, contact dermatitis (poison ivy, nickel).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">What is anaphylaxis and what allergens are most likely to cause it?</div></div><div class="a-body">Anaphylaxis: Severe, life-threatening systemic Type I hypersensitivity reaction. On re-exposure to allergen, massive IgE-mediated mast cell/basophil degranulation throughout body → systemic histamine release → vasodilation, bronchoconstriction, urticaria, angioedema, hypotension, shock, death if untreated. TREATMENT: EPINEPHRINE (first-line, always — not antihistamine). Common triggers: Peanuts, tree nuts, shellfish, fish, milk, eggs (food allergies), Penicillin and other drugs, Insect venom (bees, wasps), Latex.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">What are all of the compatible blood types that an A− patient could receive? How about someone who is O+?</div></div><div class="a-body">A− patient: Can receive A− and O− (must be Rh NEGATIVE since patient is Rh−). A− patient has anti-B antibodies and anti-Rh(D) antibodies → cannot receive B or Rh+ blood. O+ patient: Can receive O+ and O− (O has no A or B antigens; O+ patient can receive Rh+ or Rh−). Cannot receive A, B, or AB (has anti-A AND anti-B antibodies). Universal recipient for RBCs is AB+. Universal donor for RBCs is O−.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">06</div><div class="q-text">How does hemolytic disease of the newborn develop and how can it be prevented?</div></div><div class="a-body">HDN (erythroblastosis fetalis): Rh− mother carrying Rh+ fetus. During delivery (or miscarriage), fetal Rh+ RBCs enter maternal circulation → mother makes IgG anti-Rh antibodies. In SUBSEQUENT Rh+ pregnancies: maternal IgG anti-Rh antibodies cross placenta → attack fetal RBCs → hemolysis → anemia, jaundice, heart failure, death. PREVENTION: Administer Rho(D) immune globulin (RhoGAM) to Rh− mother within 72 hours of delivery, miscarriage, or amniocentesis. RhoGAM antibodies neutralize fetal Rh+ RBCs before mother's immune system responds → no sensitization → no anti-Rh memory.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">07</div><div class="q-text">What does the term 'immune-privileged site' mean?</div></div><div class="a-body">Immune-privileged sites: Anatomical locations where the immune response is suppressed or limited to protect delicate tissues from inflammation-mediated damage. Examples: EYE (anterior chamber — damage from inflammation could impair vision), BRAIN and CNS (blood-brain barrier limits immune access), TESTES (blood-testes barrier protects sperm from immune attack), UTERUS/PLACENTA (prevents rejection of semi-allogeneic fetus). Mechanisms: Physical barriers, local immunosuppressive factors (TGF-β, Fas ligand), regulatory T cells, absence of lymphatic drainage.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">08</div><div class="q-text">What is graft-versus-host disease and when can it develop?</div></div><div class="a-body">GVHD: Occurs in allogeneic bone marrow/hematopoietic stem cell transplants. Donor immune cells (T cells in the transplant) recognize host tissues as foreign → donor T cells ATTACK recipient organs. Opposite of normal transplant rejection (where host attacks graft). Affects: Skin (rash), GI tract (diarrhea, nausea), liver (jaundice). Can be acute (within 100 days) or chronic. Prevention: Match MHC as closely as possible, deplete T cells from graft, immunosuppressants. GVHD actually has benefit: graft-versus-leukemia effect — donor T cells may also kill residual cancer cells.</div></div>
+<div class="footer">Chapter 13 · Immune Disorders · 8 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 14 · Exam Prep</div>
+  <div class="ch-title">Chapter 14</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Vaccines & Diagnostics</div>
+  <div class="ch-topics">Vaccine types · ELISA · PCR · IGRA · Recombinant DNA · CRISPR</div>
+  <span class="ch-badge">10 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">What is variolation and how does it compare to the way Jenner protected his patients from smallpox?</div></div><div class="a-body">VARIOLATION (18th century): Material taken from a SMALLPOX pustule was deliberately introduced into a healthy person (via skin scratch). Risk: Could cause actual smallpox illness and death (~2% mortality). JENNER's METHOD (1796): Edward Jenner observed milkmaids who got COWPOX didn't get smallpox. He inoculated James Phipps with COWPOX material → later exposed to smallpox → protected. Key difference: Jenner used a related but SAFER organism (cowpox) to provide protection — far less dangerous than variolation. This became the basis of vaccination (vacca = cow).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">What prompted people to stop immunizing their children starting in the late 1990s, and how have dips in immunization rates affected public health?</div></div><div class="a-body">Cause: A fraudulent 1998 study published in The Lancet by Andrew Wakefield falsely claimed the MMR (measles-mumps-rubella) vaccine caused autism. The study was later shown to be fabricated and ethically violated. Wakefield lost his medical license. The Lancet retracted the paper in 2010. Public health impact of decreased vaccination: Measles outbreaks returned in countries where it had been eliminated. Whooping cough (pertussis) outbreaks resurged. Herd immunity thresholds dropped below protective levels in some communities. Demonstrated that misinformation can have deadly public health consequences.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">What is the general immunological premise behind how vaccines protect patients?</div></div><div class="a-body">Vaccines introduce antigens (in a safe form) that prime the ADAPTIVE immune system — specifically trigger clonal expansion of antigen-specific B and T cells. Most importantly, vaccines generate IMMUNOLOGICAL MEMORY — long-lived memory B and T cells that persist after the initial response. On real exposure to the pathogen, the secondary immune response is FASTER (shorter lag time), STRONGER (more antibodies, more T cells), and more EFFECTIVE than the primary response — clearing the infection before it causes disease.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">What are adjuvants and when would they be used?</div></div><div class="a-body">Adjuvants: Substances added to vaccines that ENHANCE the immune response to the antigen without being immunogenic themselves. They stimulate innate immunity, promote antigen presentation, cause local inflammation at injection site → better activation of adaptive immune system. Examples: Alum (aluminum salts — most common), AS04, MF59 (oil emulsion). Used with: SUBUNIT vaccines (purified protein antigens that are poorly immunogenic alone — not whole pathogen, so weaker signal). Inactivated vaccines may also need adjuvants. Live attenuated vaccines generally don't need adjuvants (infection itself provides the innate signal).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">How do DNA vaccines and recombinant vector vaccines stimulate immunity?</div></div><div class="a-body">DNA vaccines: Inject plasmid DNA encoding the pathogen antigen directly into host cells → host cells transcribe and translate the DNA → produce the antigen → immune response against it. Not yet widely approved for humans but used in veterinary medicine. Recombinant vector vaccines: Take a harmless virus (vector — e.g., adenovirus) and insert the target pathogen's gene into it → inject vector into patient → vector infects cells → cells produce pathogen protein → immune response. Example: Some COVID-19 vaccines used adenovirus vectors (Johnson & Johnson, AstraZeneca). Both generate robust cellular AND humoral responses.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">06</div><div class="q-text">What advantages do immunological tests hold over biochemical testing?</div></div><div class="a-body">1. SPECIFICITY: Antibody-antigen binding is highly specific — can identify a pathogen by a single unique protein. Biochemical tests may give similar results for related organisms. 2. SENSITIVITY: Can detect tiny amounts of antigen or antibody — biochemical reactions may require more material. 3. SPEED: Many immunological tests (rapid antigen tests, ELISA) give results in minutes to hours vs days for culture. 4. No need to culture: Can detect dead or non-culturable pathogens. Can detect ANTIBODIES (showing past exposure) not just live organisms. 5. Can detect TOXINS not just the organism itself.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">07</div><div class="q-text">What are the similarities and differences between agglutination and precipitation reactions and how are they clinically useful?</div></div><div class="a-body">SIMILARITY: Both involve antigen-antibody binding forming visible complexes. Both can be used to identify antigens or antibodies. AGGLUTINATION: Antibodies cross-link PARTICULATE antigens (cells, bacteria, large particles) → visible clumping. Examples: Blood typing (antibodies cause RBCs to clump), latex agglutination test, Widal test for typhoid. PRECIPITATION: Antibodies cross-link SOLUBLE antigens → visible precipitate forms. Examples: Ouchterlony double diffusion (gel precipitation — shows identity/non-identity of antigens), Mancini radial immunodiffusion (quantifies antigen). Clinical use: Blood typing, identifying unknown bacteria, quantifying proteins.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">08</div><div class="q-text">What are IGRAs, how do they work, and why are they an advancement over prior tuberculosis diagnostics?</div></div><div class="a-body">IGRAs (Interferon-Gamma Release Assays): Blood tests for TB infection. How they work: Patient blood sample is exposed to TB-specific antigens (ESAT-6 and CFP-10 — NOT present in BCG vaccine or most non-TB mycobacteria) → if patient has been infected with M. tuberculosis, their sensitized T cells release INTERFERON-GAMMA (IFN-γ) → measured by ELISA. Advantage over tuberculin skin test (TST/PPD): DOES NOT give false positives in BCG-vaccinated individuals (major problem with TST in countries using BCG). Single visit (no need to return to read skin test). Can distinguish true TB infection from BCG vaccination.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">09</div><div class="q-text">What are the various PCR methodologies, how do they each work, and what are their clinical applications?</div></div><div class="a-body">STANDARD PCR: Amplify specific DNA sequence using repeated cycles of denaturation (95°C), annealing (primers bind), extension (DNA polymerase builds new strand, 72°C). Detects presence/absence of target. RT-PCR (Reverse Transcriptase PCR): Converts RNA → cDNA first (using reverse transcriptase) → then amplify cDNA. Detects RNA viruses (HIV, COVID-19, influenza). qPCR (Quantitative/Real-Time PCR): Fluorescent dyes/probes measure DNA amplification in REAL TIME → quantifies initial copy number. Tells you HOW MUCH virus/bacteria is present. Clinical use: Diagnosing viral and bacterial infections, detecting antibiotic resistance genes, identifying pathogens that can't be cultured, monitoring viral load (HIV), forensic medicine.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">10</div><div class="q-text">What is the general process for making recombinant DNA constructs and what are clinical applications?</div></div><div class="a-body">1. Cut target gene AND vector (plasmid) with SAME restriction enzyme → creates complementary sticky ends. 2. Mix cut gene and vector → sticky ends base-pair (anneal). 3. DNA LIGASE seals the nicks → recombinant DNA formed. 4. Transform into host cell (bacteria, yeast) → host replicates the recombinant plasmid → produces the protein encoded by the inserted gene. Clinical applications: Produce human insulin (diabetics), HGH (growth hormone), clotting factors (hemophilia), erythropoietin, vaccines (hepatitis B surface antigen), monoclonal antibodies for cancer treatment.</div></div>
+<div class="footer">Chapter 14 · Vaccines and Diagnostics · 10 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 15 · Exam Prep</div>
+  <div class="ch-title">Chapter 15</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Antimicrobial Drugs</div>
+  <div class="ch-topics">Beta-lactams · MRSA · Resistance mechanisms · MIC · MBC · Stewardship</div>
+  <span class="ch-badge">34 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<p style="color:#e0e8f5">Content for Chapter 15 coming soon.</p>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 16 · Exam Prep</div>
+  <div class="ch-title">Chapter 16</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Respiratory Infections</div>
+  <div class="ch-topics">TB · Pneumonia · Influenza · Atypical pathogens</div>
+  <span class="ch-badge">5 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">List the anatomical structures that make up the human upper and lower respiratory tract.</div></div><div class="a-body">UPPER respiratory tract: Nose and nasal cavity, sinuses (paranasal sinuses), pharynx (nasopharynx, oropharynx, laryngopharynx), larynx. LOWER respiratory tract: Trachea, bronchi, bronchioles, alveoli. The lower tract is where gas exchange occurs. Upper tract infections are more common; lower tract infections (pneumonia, bronchitis) are generally more serious.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">Why is it challenging to differentiate colds from influenza?</div></div><div class="a-body">Both cause respiratory symptoms — runny nose, sore throat, congestion, cough. Many symptoms overlap. Key DIFFERENCES: Influenza: sudden onset, high fever (38-40°C), severe myalgia (muscle aches), headache, fatigue is PROFOUND, can lead to pneumonia. Common cold: gradual onset, low or no fever, milder symptoms, primarily nasal symptoms (rhinorrhea). However, symptoms alone are unreliable — lab tests (rapid flu test, PCR) are needed for definitive diagnosis, especially important for treatment decisions (antivirals for flu, none for cold).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">Describe the bacterium that causes tuberculosis and state how it can be detected in a patient.</div></div><div class="a-body">Causative agent: Mycobacterium tuberculosis. Characteristics: Acid-fast bacillus (waxy mycolic acid cell wall — resists acid decolorization in Ziehl-Neelsen stain), obligate aerobe (infects upper lobes of lung where O2 is highest), slow-growing (generation time ~15-20 hours — cultures take weeks), intracellular pathogen (survives inside macrophages). Detection: Acid-fast staining of sputum (AFB smear — fast but less sensitive), Culture (gold standard but slow — 2-8 weeks), Tuberculin skin test (PPD/Mantoux — induration ≥10mm = positive), IGRA blood test (QuantiFERON-TB Gold — preferred over TST in BCG-vaccinated), PCR (rapid, specific, detects resistance genes too).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">What features distinguish a latent tuberculosis infection from an active one?</div></div><div class="a-body">LATENT TB: Bacteria present but dormant — walled off in granulomas (macrophages surround and contain bacteria). NO symptoms. NOT infectious — cannot spread to others. TST/IGRA positive. Chest X-ray normal or calcified granuloma. 5-10% lifetime risk of reactivation → active TB. ACTIVE TB: Bacteria actively replicating — granuloma breaks down. SYMPTOMS: cough (often with blood-tinged sputum), night sweats, weight loss, fever. INFECTIOUS — can spread via droplet nuclei. Chest X-ray shows infiltrates, cavities. Sputum AFB smear/culture positive. Treatment required immediately.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">05</div><div class="q-text">Compare and contrast typical and atypical bacterial pneumonia.</div></div><div class="a-body">TYPICAL pneumonia: Caused by encapsulated bacteria — Streptococcus pneumoniae (most common), Haemophilus influenzae, Klebsiella pneumoniae. Sudden onset, high fever, productive cough (rust-colored sputum for S. pneumoniae), lobar consolidation on X-ray. RESPOND to beta-lactam antibiotics. ATYPICAL (walking pneumonia): Caused by organisms without typical cell walls — Mycoplasma pneumoniae (most common), Chlamydia pneumoniae, Legionella. Gradual onset, lower fever, DRY (non-productive) cough, patient often able to walk around. X-ray: patchy interstitial infiltrates. Do NOT respond to beta-lactams — need macrolides (azithromycin), fluoroquinolones, or tetracyclines.</div></div>
+<div class="footer">Chapter 16 · Respiratory Infections · 5 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 17 · Exam Prep</div>
+  <div class="ch-title">Chapter 17</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Skin & Eye Infections</div>
+  <div class="ch-topics">S. aureus · Dermatophytes · VZV · Shingles</div>
+  <span class="ch-badge">4 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">List the parts of the skin and explain how each is protective.</div></div><div class="a-body">EPIDERMIS (outer layer): Physical barrier — tightly packed keratinocytes prevent pathogen entry. Low pH (acid mantle ~5.5) inhibits most bacteria. Constant shedding removes attached microbes. DERMIS (middle layer): Contains immune cells (macrophages, mast cells, dendritic cells) ready to respond to breaches. Collagen provides structural strength. Blood vessels bring immune cells to infection. HYPODERMIS/subcutaneous (inner): Fatty layer — provides physical padding and insulation. Less directly involved in immune defense but anchors the skin.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">Describe the connection between chickenpox and shingles, and how cases can be prevented.</div></div><div class="a-body">PRIMARY INFECTION (Chickenpox): Varicella-zoster virus (VZV) — highly contagious via respiratory route. Causes widespread vesicular rash. After recovery: virus is NOT eliminated — it establishes LATENCY in dorsal root ganglia (nerve cells). REACTIVATION (Shingles/Herpes Zoster): Decades later, usually with immunosuppression or aging → virus reactivates → travels down nerve → painful vesicular rash in a dermatomal pattern (follows nerve distribution, one side of body). Can cause postherpetic neuralgia (chronic nerve pain). PREVENTION: Varicella vaccine (live attenuated) prevents chickenpox. Shingrix (recombinant subunit) or Zostavax (live attenuated) prevents shingles in adults ≥50.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">Describe Staphylococcus aureus virulence factors and some of the skin diseases it causes.</div></div><div class="a-body">VIRULENCE FACTORS: Protein A (binds antibody backwards — blocks opsonization), Coagulase (clots plasma — creates fibrin shell, protects from phagocytes), Leukocidin/PVL (kills neutrophils and macrophages), TSST-1 (superantigen → toxic shock syndrome), Exfoliative toxins (ETs — cause skin to split apart — bullous impetigo, SSSS), Alpha toxin (pore-forming toxin). SKIN DISEASES: Impetigo (crusted lesions — superficial), Folliculitis (hair follicle infection), Furuncle/boil (deeper follicle infection), Carbuncle (multiple furuncles), Cellulitis (diffuse skin infection), SSSS (staphylococcal scalded skin syndrome — whole-body skin sloughing in neonates), Wound infections, Surgical site infections.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">Describe different types of dermatophytic skin infections.</div></div><div class="a-body">Dermatophytoses: Superficial fungal infections caused by dermatophytes — fungi that colonize only dead keratinized tissue (skin, hair, nails). They release keratinase to digest keratin. Tinea pedis: Athlete's foot — between toes, scaling, itching. Tinea capitis: Scalp ringworm — circular patches of hair loss, scaling; mainly in children. Tinea corporis: Ringworm of the body — circular scaly rings on skin. Tinea cruris: Jock itch — groin area. Tinea unguium (Onychomycosis): Nail infection — thickened, discolored, brittle nails. Treatment: Topical antifungals (clotrimazole, terbinafine) for most. Oral antifungals for nail or extensive infections (terbinafine, fluconazole). 'Tinea' = Latin for worm (but caused by fungi, not worms).</div></div>
+<div class="footer">Chapter 17 · Skin and Eye Infections · 4 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 19 · Exam Prep</div>
+  <div class="ch-title">Chapter 19</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">GI Tract Infections</div>
+  <div class="ch-topics">C. diff · H. pylori · Foodborne illness · Dysentery</div>
+  <span class="ch-badge">4 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">Compare and contrast diarrhea and dysentery, and define gastritis, enteritis, and gastroenteritis.</div></div><div class="a-body">DIARRHEA: Increased frequency/liquid stool. Water and electrolyte imbalance. Caused by toxins or secretory mechanisms. Usually watery, no blood. DYSENTERY: Diarrhea WITH blood and mucus in stool. Indicates mucosal invasion and inflammation. Caused by Shigella, invasive E. coli, Entamoeba histolytica. GASTRITIS: Inflammation of the STOMACH lining (e.g., H. pylori). ENTERITIS: Inflammation of the SMALL INTESTINE. GASTROENTERITIS: Inflammation of BOTH stomach and small intestine — nausea, vomiting, diarrhea (stomach flu).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">How does Helicobacter pylori cause ulcers?</div></div><div class="a-body">H. pylori is a urease-producing, microaerophilic Gram-negative bacterium. It colonizes the gastric mucosa — survives the acidic environment by: Producing urease → splits urea → NH3 + CO2 → neutralizes local acid around the bacterium. H. pylori adheres to gastric epithelium → triggers inflammation (gastritis) → the chronic inflammation damages the protective mucous layer → stomach acid reaches and damages the underlying epithelium → ULCER forms. Also produces vacuolating toxin (VacA) and CagA pathogenicity island proteins → increased inflammation and cancer risk. Treated with triple therapy: PPI + amoxicillin + clarithromycin.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">Compare and contrast foodborne infections to food poisoning, including the common bacterial culprits of each.</div></div><div class="a-body">FOODBORNE INFECTION: Live bacteria ingested in food → colonize GI tract → multiply → cause infection. Longer incubation (hours to days). Diarrhea, fever common. Examples: Salmonella (contaminated eggs/poultry), Campylobacter (raw poultry — most common bacterial diarrhea in US), Listeria (deli meats, soft cheeses — dangerous in pregnancy), E. coli O157:H7 (undercooked beef — HUS risk). FOOD POISONING (Intoxication): Bacteria grew in food beforehand and produced TOXINS → eating preformed toxin causes rapid symptoms (1-6 hours). NO live bacteria needed. No fever typically. Examples: S. aureus (enterotoxin in potato salad, cream pies), C. botulinum (botulinum toxin in improperly canned foods), B. cereus (fried rice syndrome — rice left at room temp).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">What disease is caused by Clostridium difficile and why is it an increasing concern in healthcare settings?</div></div><div class="a-body">C. difficile causes PSEUDOMEMBRANOUS COLITIS (CDI — Clostridioides difficile infection). Mechanism: Antibiotic use disrupts normal gut microbiota → C. diff (spore-former, survives antibiotics) overgrows → produces toxin A (enterotoxin) and toxin B (cytotoxin) → inflammation, diarrhea (watery to severe), abdominal cramps, fever. Severe cases: toxic megacolon, perforation, death. Increasing concern: Forms endospores that survive on surfaces for months, resist alcohol sanitizers (soap and water required), resistant to many antibiotics, recurrence rate 20-30%, community-acquired cases rising, hyper-virulent NAP1/BI/027 strain. Treatment: Stop offending antibiotic, give vancomycin (oral) or fidaxomicin. Severe/recurrent: Fecal microbiota transplant (FMT).</div></div>
+<div class="footer">Chapter 19 · GI Tract Infections · 4 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<div class="ch-header">
+  <div class="ch-eyebrow">Micro 270 · Chapter 20 · Exam Prep</div>
+  <div class="ch-title">Chapter 20</div>
+  <div class="ch-title" style="font-size:48px;color:#E8559F;margin-top:-8px">Urogenital Infections</div>
+  <div class="ch-topics">UTIs · STIs · HPV · Syphilis stages · Chlamydia</div>
+  <span class="ch-badge">4 Study Questions · All Answered</span>
+</div>
+<div class="chapter-content">
+<div class="q-block"><div class="q-header"><div class="q-num">01</div><div class="q-text">What differentiates complicated from uncomplicated urinary tract infections?</div></div><div class="a-body">UNCOMPLICATED UTI: Infection in a structurally and functionally NORMAL urinary tract. In non-pregnant women. Lower tract (cystitis/urethritis). Usually caused by E. coli. Responds to short course oral antibiotics. COMPLICATED UTI: Any UTI with factors that increase risk of treatment failure or serious complications: Structural abnormalities (kidney stones, obstruction, catheter), Male gender, Pregnancy, Diabetes, Immunocompromised, Upper tract involvement (pyelonephritis), Hospital-acquired, Caused by resistant organisms. Requires longer treatment, often IV antibiotics, further workup.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">02</div><div class="q-text">What are the clinical and epidemiological features of human papillomavirus (HPV) infections?</div></div><div class="a-body">HPV: Most common STI worldwide — >200 strains. Transmission: skin-to-skin contact (sexual or non-sexual). HIGH-RISK strains (HPV 16, 18): Cause cervical cancer, oropharyngeal cancer, anal cancer, penile cancer, vaginal/vulvar cancer. 70% of cervical cancers caused by HPV 16/18. LOW-RISK strains (HPV 6, 11): Cause genital warts (condylomata acuminata). Prevention: Gardasil 9 vaccine (covers HPV 6, 11, 16, 18, 31, 33, 45, 52, 58) — recommended ages 9-26 (ideally before sexual debut). Cervical screening (Pap smear, HPV co-test) for early detection of cervical dysplasia. Most HPV infections clear spontaneously within 2 years.</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">03</div><div class="q-text">What causes syphilis, what are the clinical features of each infection stage, and what are the consequences of congenital syphilis?</div></div><div class="a-body">Causative agent: Treponema pallidum — spirochete, gram negative, cannot be cultured in standard lab. Transmission: Sexual contact, vertical. STAGES: Primary: Painless chancre (ulcer) at infection site → heals spontaneously in 3-6 weeks. Secondary: Diffuse rash (INCLUDING PALMS AND SOLES — classic), flu-like symptoms, condylomata lata (moist wart-like lesions) → highly infectious. Latent: No symptoms — early latent (<1yr) vs late latent. Tertiary: Gummas (destructive granulomas), cardiovascular syphilis (aortic aneurysm), neurosyphilis (dementia, tabes dorsalis). CONGENITAL: Crosses placenta — stillbirth, hydrops fetalis, or newborn with: rash, snuffles (bloody nasal discharge), bone lesions, Hutchinson teeth, saddle nose deformity, interstitial keratitis. Treatment: Penicillin G (all stages).</div></div>
+<div class="q-block"><div class="q-header"><div class="q-num">04</div><div class="q-text">What are the clinical and epidemiological features of chlamydia and the potential complications in untreated women and neonates?</div></div><div class="a-body">Chlamydia trachomatis: Most common bacterial STI in the US. Obligate intracellular pathogen. Often ASYMPTOMATIC (especially women). Symptoms when present: Urethritis, cervicitis, unusual discharge. COMPLICATIONS in untreated women: PID (pelvic inflammatory disease) → fallopian tube scarring → infertility, ectopic pregnancy, chronic pelvic pain. NEONATAL complications: If mother has active infection during delivery, newborn exposed → Neonatal conjunctivitis (ophthalmia neonatorum — most common cause) → can cause blindness if untreated. Neonatal pneumonia (develops weeks after birth). Treatment: Azithromycin or doxycycline (sexual partners must be treated too). Screening: Annual screening recommended for all sexually active women <25.</div></div>
+<div class="footer">Chapter 20 · Urogenital Infections · 4 Questions<br>By Danielle Alcala · No Prior Authorization · nopriorauthorization.com</div>
+</div>
+
+<!-- ════════════════════ BACK COVER ════════════════════ -->
+<div class="back-cover">
+  <div class="back-cover-title">Keep Going.</div>
+  <div class="back-cover-text">
+    You picked up this book because you wanted to understand the material —
+    not just memorize it. Every question in here was answered with that
+    same goal in mind. Clinical context. Real explanations. The WHY behind
+    every answer.
+    <br><br>
+    You've got this.
+  </div>
+  <div class="back-cover-url">nopriorauthorization.com</div>
+  <div style="font-size:14px;color:#ffffff;opacity:.4;margin-top:8px">
+    Danielle Alcala · RN Student · Licensed Esthetician · No Prior Authorization
+  </div>
+  <div style="margin-top:32px;font-size:12px;color:#ffffff;opacity:.25">
+    © 2026 Danielle Alcala · No Prior Authorization · All rights reserved.<br>
+    This material represents the author's original work and clinical knowledge.
+    Not affiliated with any educational institution.
+  </div>
+</div>
+
+</body>
+</html>

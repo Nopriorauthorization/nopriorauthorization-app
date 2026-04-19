@@ -160,6 +160,8 @@ const CATEGORY_MAP: Record<string, string> = {
   "pre-nursing-bundle": "Physical Kits",
   "nurse-injector-clinical-kit": "Physical Kits",
   "give-me-everything-kit": "Physical Kits",
+  "micro250-exam-prep-digital": "Nursing Study Series",
+  "micro250-exam-prep-physical": "Nursing Study Series",
 };
 
 const PRICE_MAP: Record<string, number> = {
@@ -275,6 +277,8 @@ const PRICE_MAP: Record<string, number> = {
   "pre-nursing-bundle": 8999,
   "nurse-injector-clinical-kit": 7999,
   "give-me-everything-kit": 14999,
+  "micro250-exam-prep-digital": 1500,
+  "micro250-exam-prep-physical": 2500,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -332,6 +336,11 @@ const AUDIENCE_MAP: Record<string, string[]> = {
     "Nursing students in Microbiology / Micro 270",
     "RN and allied health students preparing for exams",
     "Anyone who wants professor-style practice questions with explanations",
+  ],
+  "Nursing Study Series": [
+    "Nursing students in Microbiology / Micro 250",
+    "Pre-nursing and allied health students",
+    "Anyone studying microbiology for the first time",
   ],
 };
 
@@ -504,6 +513,8 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "med-spa-starter-kit": "/shop-previews/playbooks/npa-promo-med-spa-starter-kit.png",
   "facial-anatomy-nurse-injector": "/shop-previews/playbooks/npa-promo-facial-anatomy-nurse-injector.png",
   "npa-49-star-system": "/shop-previews/playbooks/npa-thumbnail-social-media-system.png",
+  "micro250-exam-prep-digital": "/shop-previews/generated/micro250-exam-prep-digital-thumbnail.png",
+  "micro250-exam-prep-physical": "/shop-previews/generated/micro250-exam-prep-physical-thumbnail.png",
   // ── Generated mockups ─────────────────────────────────────────────────
   "anatomy-physiology-study-complete": "/shop-previews/generated/anatomy-physiology-study-complete-thumbnail.png",
   "ap-survival-kit": "/shop-previews/generated/ap-survival-kit-thumbnail.png",
@@ -924,6 +935,55 @@ export function getShopProducts(): ShopProduct[] {
       audience: ["Nursing students", "Nurse injectors", "Aesthetic providers"],
     };
     _products.push(kitProduct);
+  }
+
+  // ── Micro 250 Exam Prep (digital + physical) ─────────────────────────
+  const micro250Audience = AUDIENCE_MAP["Nursing Study Series"] ?? ["Nursing students"];
+  if (!_products.some((p) => p.slug === "micro250-exam-prep-digital")) {
+    _products.push({
+      slug: "micro250-exam-prep-digital",
+      title: "Micro 250 Complete Exam Prep — Digital PDF",
+      shortDescription: "All 17 chapters · 244 study questions answered in full with clinical context and mnemonics. Instant PDF download.",
+      longDescription: "Complete Micro 250 exam prep guide — all 17 chapters covered with 244 questions answered in full. Written by Danielle Alcala, RN Student. Clinical context, mnemonics, and explanations throughout. Instant PDF download after purchase.\n\nNot affiliated with any professor or institution. Educational use — not a substitute for attending class.",
+      priceCents: 1500,
+      priceDisplay: "$15",
+      templateCount: 1,
+      category: "Nursing Study Series",
+      features: [
+        "17 chapters · 244 questions answered in full",
+        "Clinical context + mnemonics throughout",
+        "Cover page · Table of contents · All chapters",
+        "Written by Danielle Alcala, RN Student",
+        "Instant PDF — study today",
+      ],
+      featured: false,
+      stripePriceId: null,
+      previewImages: ["/shop-previews/generated/micro250-exam-prep-digital-thumbnail.png"],
+      audience: micro250Audience,
+    });
+  }
+  if (!_products.some((p) => p.slug === "micro250-exam-prep-physical")) {
+    _products.push({
+      slug: "micro250-exam-prep-physical",
+      title: "Micro 250 Complete Exam Prep — Spiral Notebook",
+      shortDescription: "All 17 chapters · 244 questions · NPA dark-brand spiral notebook. Ships to your door in 3–5 business days.",
+      longDescription: "Complete Micro 250 exam prep spiral notebook — all 17 chapters, 244 study questions answered in full. Printed on-demand and shipped to your door by SPOKE Custom Products via Printify.\n\nWritten by Danielle Alcala, RN Student. Not affiliated with any professor or institution. Ships in 3–5 business days after order.",
+      priceCents: 2500,
+      priceDisplay: "$25",
+      templateCount: 1,
+      category: "Nursing Study Series",
+      features: [
+        "17 chapters · 244 questions answered in full",
+        "NPA dark-brand spiral notebook cover",
+        "Ruled lines — write notes in the margins",
+        "Ships in 3–5 business days",
+        "Printed by SPOKE Custom Products via Printify",
+      ],
+      featured: false,
+      stripePriceId: null,
+      previewImages: ["/shop-previews/generated/micro250-exam-prep-physical-thumbnail.png"],
+      audience: micro250Audience,
+    });
   }
 
   const PIN_FIRST: string[] = [HELLO_GORGEOUS_BOOK_SLUG, GROWTH_SYSTEM_SLUG];

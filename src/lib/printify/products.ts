@@ -19,6 +19,10 @@ export const PHYSICAL_KIT_BUNDLE_SLUGS = new Set([
   "micro-270-kit",
   "pre-nursing-bundle",
   "give-me-everything-kit",
+  "medspa-clinical-kit",
+  "medspa-business-starter-kit",
+  "give-me-everything-medspa-kit",
+  "micro250-exam-prep-physical",
 ]);
 
 export function isPhysicalKitBundleSlug(slug: string): boolean {

@@ -47,6 +47,7 @@
     "delivery:sync-db": "node scripts/sync-manifests-to-db.mjs",
     "delivery:issue": "node scripts/issue-delivery-link.mjs",
     "email:test-resend": "node scripts/test-resend.mjs",
+    "cheat-sheets:export-pdf": "node scripts/cheat-sheets/export-all-cheat-sheets-pdf.mjs",
     "printify:dump-print-providers": "node scripts/printify/dump-print-providers.mjs",
     "printify:gen-study-designs": "node scripts/printify/generate-study-kit-designs.mjs",
     "printify:create-study-kits": "node scripts/printify/create-study-kit-products.mjs",

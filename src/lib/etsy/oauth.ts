@@ -1,4 +1,5 @@
 import { createHash, randomBytes } from "crypto";
+import { NPA_ETSY_OAUTH_REDIRECT_URI } from "@/config/etsy-oauth";
 
 const ETSY_OAUTH_CONNECT = "https://www.etsy.com/oauth/connect";
 const ETSY_TOKEN_URL = "https://api.etsy.com/v3/public/oauth/token";
@@ -34,8 +35,9 @@ export type EtsyEnvConfig = {
 export function getEtsyEnv(): EtsyEnvConfig | null {
   const clientId = process.env.ETSY_API_KEYSTRING?.trim();
   const sharedSecret = process.env.ETSY_API_SHARED_SECRET?.trim();
-  const redirectUri = process.env.ETSY_OAUTH_REDIRECT_URI?.trim();
-  if (!clientId || !sharedSecret || !redirectUri) return null;
+  const redirectUri =
+    process.env.ETSY_OAUTH_REDIRECT_URI?.trim() || NPA_ETSY_OAUTH_REDIRECT_URI;
+  if (!clientId || !sharedSecret) return null;
   const scopes =
     process.env.ETSY_OAUTH_SCOPES?.trim() ||
     "shops_r shops_w listings_r listings_w";

@@ -54,9 +54,11 @@ Implemented in this repo:
 | `GET /api/etsy/shops` | Read-only probe: fetch the connected seller's shop data |
 | `GET /etsy/connected` | Success / error message |
 
-Example production callback to register: `https://nopriorauthorization.com/api/etsy/callback`
+Canonical callback (also the **default** if `ETSY_OAUTH_REDIRECT_URI` is unset in env): **`https://nopriorauthorization.com/api/etsy/callback`** — defined in `src/config/etsy-oauth.ts` and used by `getEtsyEnv()` in `src/lib/etsy/oauth.ts`.
 
-Set `ETSY_OAUTH_REDIRECT_URI` to that **exact** string in `.env` / `.env.local` (Next.js does not load `.env.etsy.local` unless you merge vars there).
+CLI: run `pnpm etsy:print-callback` locally to print the **effective** redirect (env override vs default) so you can paste it into Etsy.
+
+Set `ETSY_OAUTH_REDIRECT_URI` in Vercel **only** if you must differ from the canonical URL (e.g. alternate domain); it must still match Etsy’s registered URI **exactly**.
 
 ## 3. Environment variables (local)
 

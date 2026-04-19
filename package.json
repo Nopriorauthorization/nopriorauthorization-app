@@ -39,6 +39,7 @@
     "etsy:delivery": "node scripts/generate-all-etsy-delivery.mjs",
     "etsy:pdfs": "node scripts/generate-etsy-pdfs.mjs",
     "etsy:smoke": "node scripts/etsy-smoke-test.mjs",
+    "etsy:print-callback": "node scripts/etsy-print-callback.mjs",
     "etsy:verify-write": "tsx scripts/etsy/verify-write.ts",
     "etsy:verify-e2e": "tsx scripts/etsy/verify-e2e.ts",
     "etsy:batch-publish": "tsx scripts/etsy/batch-publish.ts",

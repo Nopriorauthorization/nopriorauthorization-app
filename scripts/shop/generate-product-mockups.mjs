@@ -19,7 +19,7 @@ const ROOT = path.join(__dirname, "../..");
 const OUT_DIR = path.join(ROOT, "public/shop-previews/generated");
 if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
-const SIZE = 2000;
+const SIZE = 1200;
 
 const CATEGORY_CONFIG = {
   "Clinical Forms": { icon: "🩺", accent: "#FF69B4", badge: "Clinical Forms", bullets: ["Consent forms & patient docs", "Fully editable · Print-ready", "HIPAA-aware format", "Instant digital delivery"], deliveryLabel: "Instant Download" },

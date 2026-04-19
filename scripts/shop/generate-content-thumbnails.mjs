@@ -7,19 +7,30 @@
  *
  * Output: public/shop-previews/content/[slug]-thumbnail.png
  * Run:    node scripts/shop/generate-content-thumbnails.mjs
- * Resume-safe: skips already-generated files.
+ * Resume-safe: skips already-generated files unless --force is passed.
  */
 
 import puppeteer from "puppeteer";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT    = path.join(__dirname, "../..");
 const OUT_DIR = path.join(ROOT, "public/shop-previews/content");
 const FORMS   = path.join(ROOT, "public/forms");
 if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
+
+const FORCE = process.argv.includes("--force");
+
+function resolveHtmlPath(relFile) {
+  const primary = path.join(FORMS, relFile);
+  if (fs.existsSync(primary)) return { abs: primary, kind: "primary" };
+  const base = path.basename(relFile, ".html");
+  const preview = path.join(FORMS, "previews", `${base}-PREVIEW.html`);
+  if (fs.existsSync(preview)) return { abs: preview, kind: "preview" };
+  return { abs: null, kind: "missing" };
+}
 
 // Slug → { file, title, price, category }
 const PRODUCTS = {
@@ -194,7 +205,7 @@ body { width:${THUMB_W}px; height:${THUMB_H}px; overflow:hidden; font-family:-ap
 
 async function run() {
   const slugs = Object.keys(PRODUCTS);
-  console.log(`Generating ${slugs.length} content thumbnails → ${OUT_DIR}\n`);
+  console.log(`Generating ${slugs.length} content thumbnails → ${OUT_DIR}${FORCE ? " (force overwrite)" : ""}\n`);
 
   const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
   const contentPage = await browser.newPage();
@@ -204,21 +215,30 @@ async function run() {
 
   for (const slug of slugs) {
     const outPath = path.join(OUT_DIR, `${slug}-thumbnail.png`);
-    if (fs.existsSync(outPath)) { skipped++; continue; }
+    if (fs.existsSync(outPath) && !FORCE) {
+      skipped++;
+      continue;
+    }
 
     const product = PRODUCTS[slug];
-    const htmlPath = path.join(FORMS, product.file);
+    const resolved = resolveHtmlPath(product.file);
 
-    if (!fs.existsSync(htmlPath)) {
+    if (!resolved.abs) {
       console.log(`  ⚠ missing: ${product.file} (${slug})`);
       failed++;
       continue;
+    }
+    if (resolved.kind === "preview") {
+      console.log(`  ↳ preview: ${path.basename(resolved.abs)} (${slug})`);
     }
 
     try {
       // 1. Screenshot the real content
       await contentPage.setViewport({ width: VP_W, height: 900, deviceScaleFactor: 1.5 });
-      await contentPage.goto("file://" + htmlPath, { waitUntil: "networkidle0", timeout: 20000 });
+      const fileUrl = pathToFileURL(resolved.abs).href;
+      await contentPage.goto(fileUrl, { waitUntil: "load", timeout: 120000 });
+      await contentPage.evaluate(() => document.fonts?.ready ?? Promise.resolve());
+      await new Promise((r) => setTimeout(r, 1200));
       const contentH = await contentPage.evaluate(() => Math.min(document.body.scrollHeight, 1400));
       const contentBuf = await contentPage.screenshot({
         type: "png",

@@ -586,6 +586,18 @@ const NICHE_THUMBNAIL: Record<string, string> = {
 };
 
 function discoverPreviewImages(slug: string, category: string): string[] {
+  /** Real HTML screenshot + brand bar — see `scripts/shop/generate-content-thumbnails.mjs`. */
+  const contentThumb = path.join(
+    process.cwd(),
+    "public",
+    "shop-previews",
+    "content",
+    `${slug}-thumbnail.png`,
+  );
+  if (fs.existsSync(contentThumb)) {
+    return [`/shop-previews/content/${slug}-thumbnail.png`];
+  }
+
   const assetDir = ASSET_DIR_MAP[slug];
   if (assetDir) {
     const publicDir = path.join(process.cwd(), "public", "shop-previews", assetDir);

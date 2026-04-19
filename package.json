@@ -22,6 +22,8 @@
     "product:create-draft": "tsx scripts/products/create-draft.ts",
     "shop:seed-stripe": "tsx scripts/shop/seed-stripe-products.ts",
     "shop:screenshot-cheat-sheets": "tsx scripts/shop/screenshot-cheat-sheets.ts",
+    "shop:content-thumbnails": "node scripts/shop/generate-content-thumbnails.mjs",
+    "shop:content-thumbnails:force": "node scripts/shop/generate-content-thumbnails.mjs --force",
     "micro270:protect-chapters": "node scripts/micro270/patch-chapter-protection.mjs",
     "study-guides:nclex-slides": "tsx scripts/study-guides/screenshot-nclex-slides.ts",
     "shop:screenshot-consent-forms": "tsx scripts/shop/screenshot-consent-forms.ts",

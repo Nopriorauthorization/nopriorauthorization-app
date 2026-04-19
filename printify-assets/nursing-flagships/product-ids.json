@@ -1,0 +1,22 @@
+{
+  "NPA-NITM-MICRO-SPIRAL": {
+    "productId": "69e5587ea3852b1b6f00c9d8",
+    "variantId": 34240,
+    "price": 6800
+  },
+  "NPA-NITM-ANATOMY-SPIRAL": {
+    "productId": "69e55882e0ec6eb5180d13c4",
+    "variantId": 34240,
+    "price": 6800
+  },
+  "NPA-NITM-NURSING-SPIRAL": {
+    "productId": "69e5588685e8c2e35909a3d4",
+    "variantId": 34240,
+    "price": 6800
+  },
+  "NPA-NITM-NCLEX-CARDS": {
+    "productId": "69e55889032b5a818c0f3fc5",
+    "variantId": 87236,
+    "price": 5200
+  }
+}

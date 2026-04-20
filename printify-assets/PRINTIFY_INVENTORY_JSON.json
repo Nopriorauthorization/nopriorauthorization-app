@@ -1,0 +1,62 @@
+{
+  "ap-survival-kit": [
+    {
+      "productId": "69e4dd53eae4f3fd3d0724d2",
+      "variantId": 34240
+    }
+  ],
+  "micro-270-kit": [
+    {
+      "productId": "69e4dd59e1b544748a0541d1",
+      "variantId": 34240
+    }
+  ],
+  "pre-nursing-bundle": [
+    {
+      "productId": "69e4dd53eae4f3fd3d0724d2",
+      "variantId": 34240
+    },
+    {
+      "productId": "69e4dd59e1b544748a0541d1",
+      "variantId": 34240
+    }
+  ],
+  "give-me-everything-kit": [
+    {
+      "productId": "69e4dd53eae4f3fd3d0724d2",
+      "variantId": 34240
+    },
+    {
+      "productId": "69e4dd59e1b544748a0541d1",
+      "variantId": 34240
+    }
+  ],
+  "NPA-STUDY-AP-BOOKLET": {
+    "productId": "69e4dd53eae4f3fd3d0724d2",
+    "variantId": 34240
+  },
+  "NPA-NITM-MICRO-SPIRAL": {
+    "productId": "69e5587ea3852b1b6f00c9d8",
+    "variantId": 34240
+  },
+  "NPA-NITM-ANATOMY-SPIRAL": {
+    "productId": "69e55882e0ec6eb5180d13c4",
+    "variantId": 34240
+  },
+  "NPA-NITM-NURSING-SPIRAL": {
+    "productId": "69e5588685e8c2e35909a3d4",
+    "variantId": 34240
+  },
+  "NPA-NITM-NCLEX-CARDS": {
+    "productId": "69e55889032b5a818c0f3fc5",
+    "variantId": 87236
+  },
+  "NPA-HG-BOOK-SPIRAL": {
+    "productId": "69e637d6a9fc12855b0358d7",
+    "variantId": 34240
+  },
+  "micro250-exam-prep-physical": {
+    "productId": "69e51de7504bfa3d3c09cab1",
+    "variantId": 34240
+  }
+}

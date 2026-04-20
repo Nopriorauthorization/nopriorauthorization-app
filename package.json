@@ -54,6 +54,7 @@
     "printify:gen-study-designs": "node scripts/printify/generate-study-kit-designs.mjs",
     "printify:create-study-kits": "node scripts/printify/create-study-kit-products.mjs",
     "printify:build-inventory": "node scripts/printify/build-inventory-json.mjs",
+    "printify:compose-inventory": "node scripts/printify/compose-full-inventory-json.mjs",
     "printify:create-nursing-flagships": "tsx scripts/printify/create-nursing-flagships.ts",
     "printify:notebooks": "node scripts/printify/generate-notebook-covers.mjs && node scripts/printify/create-notebook-products.mjs",
     "printify:build-all": "node scripts/printify/build-all-products.mjs",

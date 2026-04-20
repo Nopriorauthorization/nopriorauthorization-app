@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { FreeTemplatesHomeBanner } from "@/components/marketing/FreeTemplatesHomeBanner";
 import { NPA_PRIMARY_MESSAGE, NPA_SITE_URL } from "@/config/npa-brand.config";
 import {
@@ -6,6 +7,22 @@ import {
   defaultBrandOpenGraphImages,
   defaultBrandTwitterImages,
 } from "@/lib/seo/brand-social-meta";
+
+const HomepageAudienceStrip = dynamic(
+  () =>
+    import("@/components/marketing/HomepageAudienceStrip").then(
+      (m) => m.HomepageAudienceStrip,
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className="relative z-10 min-h-[min(80dvh,920px)] border-b border-white/10 bg-gradient-to-b from-[#0a0a0a] via-[#111] to-[#0d0d0d]"
+        aria-hidden
+      />
+    ),
+  },
+);
 
 export const metadata: Metadata = {
   title: "No Prior Authorization — Med spa templates, playbooks & Pro Membership",
@@ -30,6 +47,7 @@ export default function HomePage() {
   return (
     <div className="-mt-16 flex min-h-dvh flex-col">
       <FreeTemplatesHomeBanner />
+      <HomepageAudienceStrip />
       <iframe
         src="/npa-homepage.html"
         className="min-h-0 w-full flex-1 border-0"

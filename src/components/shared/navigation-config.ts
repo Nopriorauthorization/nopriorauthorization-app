@@ -42,6 +42,18 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
       icon: "🏠",
     },
     {
+      label: "Students",
+      href: "/for-students?source=nav",
+      icon: "🎓",
+      color: "text-teal-400",
+    },
+    {
+      label: "Providers",
+      href: "/for-providers?source=nav",
+      icon: "💉",
+      color: "text-amber-400",
+    },
+    {
       label: "Free Audit",
       href: "/audit",
       icon: "📊",

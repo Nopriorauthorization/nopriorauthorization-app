@@ -9,6 +9,11 @@ import { getNavigationConfig, NavigationItem } from "@/components/shared/navigat
 // Get app mode from environment (set by Vercel configs)
 const APP_MODE = process.env.NEXT_PUBLIC_APP_MODE || 'app';
 
+/** Pathname only — hrefs may include `?source=` for analytics. */
+function hrefPathname(href: string) {
+  return href.split("#")[0].split("?")[0];
+}
+
 // Navigation structure with dropdowns - SINGLE SOURCE OF TRUTH
 const navigationItems: NavigationItem[] = getNavigationConfig(APP_MODE as 'marketing' | 'app');
 
@@ -61,9 +66,9 @@ export default function MainNavigation() {
   };
 
   const isActive = (item: NavigationItem) => {
-    if (pathname === item.href) return true;
+    if (pathname === hrefPathname(item.href)) return true;
     if (item.hasDropdown && item.dropdownItems) {
-      return item.dropdownItems.some(d => pathname === d.href);
+      return item.dropdownItems.some((d) => pathname === hrefPathname(d.href));
     }
     return false;
   };
@@ -98,7 +103,7 @@ export default function MainNavigation() {
                         key={dropdownItem.href}
                         onClick={() => directNavigate(dropdownItem.href)}
                         className={`w-full text-left px-3 py-3 rounded-lg transition-all flex items-start gap-3 group ${
-                          pathname === dropdownItem.href
+                          pathname === hrefPathname(dropdownItem.href)
                             ? "bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/30"
                             : "hover:bg-white/5"
                         }`}
@@ -107,7 +112,7 @@ export default function MainNavigation() {
                           {dropdownItem.icon}
                         </span>
                         <div className="flex-1 min-w-0">
-                          <div className={`text-sm font-medium ${pathname === dropdownItem.href ? 'text-pink-400' : 'text-white'}`}>
+                          <div className={`text-sm font-medium ${pathname === hrefPathname(dropdownItem.href) ? 'text-pink-400' : 'text-white'}`}>
                             {dropdownItem.label}
                           </div>
                           {dropdownItem.description && (
@@ -166,11 +171,11 @@ export default function MainNavigation() {
                     <button
                       key={dropdownItem.href}
                       onClick={() => directNavigate(dropdownItem.href)}
-                      className={`w-full text-left px-3 py-2.5 rounded-lg transition-all flex items-center gap-3 ${
-                        pathname === dropdownItem.href
-                          ? "bg-pink-500/20 text-pink-400"
-                          : "text-white/70 hover:text-white hover:bg-white/5"
-                      }`}
+                        className={`w-full text-left px-3 py-2.5 rounded-lg transition-all flex items-center gap-3 ${
+                          pathname === hrefPathname(dropdownItem.href)
+                            ? "bg-pink-500/20 text-pink-400"
+                            : "text-white/70 hover:text-white hover:bg-white/5"
+                        }`}
                     >
                       <span className={dropdownItem.color || ''}>{dropdownItem.icon}</span>
                       <div>

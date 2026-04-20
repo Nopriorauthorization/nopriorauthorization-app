@@ -3,6 +3,7 @@ import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import { ConditionalAppChrome } from "@/components/layout/conditional-app-chrome";
 import Providers from "@/components/layout/providers";
 import { MascotControllerProvider } from "@/context/MascotController";
+import { getHomeStripAbInitScript } from "@/lib/experiments/home-strip-ab";
 import type { Metadata, Viewport } from "next";
 import {
   NPA_OG_IMAGE_PATH,
@@ -158,6 +159,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          id="npa-home-strip-ab-init"
+          dangerouslySetInnerHTML={{
+            __html: getHomeStripAbInitScript(),
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -27,6 +27,7 @@ import {
   formatFamilyFloorPrice,
   getFeaturedFamiliesForHome,
 } from "@/lib/shop/families";
+import { ShopAudienceLane } from "@/components/marketing/ShopAudienceLane";
 import { ShopCategoryFilter } from "./ShopCategoryFilter";
 import { EmailCapture } from "./EmailCapture";
 import { PlaybookShowcase } from "./PlaybookShowcase";
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
 
 const QUICK_CATEGORIES: { label: string; href: string }[] = [
   { label: "Hello Gorgeous — THE BOOK", href: "/book" },
-  { label: "Growth System", href: "/shop/growth-system" },
+  { label: "NPA Growth System", href: "/shop/growth-system" },
   { label: "Botox & filler", href: "/shop/families/botox-filler-injectables" },
   { label: "Weight loss / GLP-1", href: "/shop/families/weight-loss-glp1" },
   { label: "IV therapy", href: "/shop/families/iv-therapy" },
@@ -143,6 +144,7 @@ export default function ShopPage() {
             </Link>
           </div>
         </div>
+        <ShopAudienceLane />
         <div className="mx-auto max-w-5xl px-4 py-14 text-center sm:px-6 sm:py-28">
           <p className="text-xs font-bold uppercase tracking-[0.4em] text-[#D4537E]">
             No Prior Authorization
@@ -162,7 +164,7 @@ export default function ShopPage() {
                 href="/shop/growth-system"
                 className="min-h-[48px] rounded-xl border-2 border-amber-400/60 bg-gradient-to-r from-amber-500/25 to-amber-600/10 px-8 py-3 text-center text-base font-bold text-amber-100 shadow-[0_0_24px_rgba(245,158,11,0.15)] transition hover:border-amber-300/80 hover:from-amber-500/35 sm:min-h-0 sm:py-4"
               >
-                Get the Growth System — {GROWTH_SYSTEM_PRODUCT.nowPriceLabel}
+                Get the {GROWTH_SYSTEM_PRODUCT.title} — {GROWTH_SYSTEM_PRODUCT.nowPriceLabel}
               </Link>
             ) : null}
             <a

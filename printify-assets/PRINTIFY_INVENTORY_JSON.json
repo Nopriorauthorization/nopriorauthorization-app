@@ -1,62 +1,53 @@
 {
   "ap-survival-kit": [
-    {
-      "productId": "69e4dd53eae4f3fd3d0724d2",
-      "variantId": 34240
-    }
+    { "productId": "69e4dd53eae4f3fd3d0724d2", "variantId": 34240 }
   ],
   "micro-270-kit": [
-    {
-      "productId": "69e4dd59e1b544748a0541d1",
-      "variantId": 34240
-    }
+    { "productId": "69e4dd59e1b544748a0541d1", "variantId": 34240 }
   ],
   "pre-nursing-bundle": [
-    {
-      "productId": "69e4dd53eae4f3fd3d0724d2",
-      "variantId": 34240
-    },
-    {
-      "productId": "69e4dd59e1b544748a0541d1",
-      "variantId": 34240
-    }
+    { "productId": "69e4dd53eae4f3fd3d0724d2", "variantId": 34240 },
+    { "productId": "69e4dd59e1b544748a0541d1", "variantId": 34240 }
   ],
   "give-me-everything-kit": [
-    {
-      "productId": "69e4dd53eae4f3fd3d0724d2",
-      "variantId": 34240
-    },
-    {
-      "productId": "69e4dd59e1b544748a0541d1",
-      "variantId": 34240
-    }
+    { "productId": "69e4dd53eae4f3fd3d0724d2", "variantId": 34240 },
+    { "productId": "69e4dd59e1b544748a0541d1", "variantId": 34240 }
   ],
-  "NPA-STUDY-AP-BOOKLET": {
-    "productId": "69e4dd53eae4f3fd3d0724d2",
-    "variantId": 34240
-  },
-  "NPA-NITM-MICRO-SPIRAL": {
-    "productId": "69e5587ea3852b1b6f00c9d8",
-    "variantId": 34240
-  },
-  "NPA-NITM-ANATOMY-SPIRAL": {
-    "productId": "69e55882e0ec6eb5180d13c4",
-    "variantId": 34240
-  },
-  "NPA-NITM-NURSING-SPIRAL": {
-    "productId": "69e5588685e8c2e35909a3d4",
-    "variantId": 34240
-  },
-  "NPA-NITM-NCLEX-CARDS": {
-    "productId": "69e55889032b5a818c0f3fc5",
-    "variantId": 87236
-  },
-  "NPA-HG-BOOK-SPIRAL": {
-    "productId": "69e637d6a9fc12855b0358d7",
-    "variantId": 34240
-  },
-  "micro250-exam-prep-physical": {
-    "productId": "69e51de7504bfa3d3c09cab1",
-    "variantId": 34240
-  }
+  "medspa-clinical-kit": [
+    { "productId": "69e4fb85deb324cc1606ca24", "variantId": 76854 },
+    { "productId": "69e4fb88d7ad38891500a48c", "variantId": 76854 },
+    { "productId": "69e4fb8ed7ad38891500a48e", "variantId": 76854 },
+    { "productId": "69e4fb93a3852b1b6f00a9a7", "variantId": 76854 },
+    { "productId": "69e501dca3852b1b6f00ab56", "variantId": 34240 }
+  ],
+  "medspa-business-starter-kit": [
+    { "productId": "69e4fb9885e8c2e35909841e", "variantId": 76854 },
+    { "productId": "69e4fb9ca3852b1b6f00a9a8", "variantId": 76854 },
+    { "productId": "69e4fba0a3852b1b6f00a9a9", "variantId": 76854 },
+    { "productId": "69e4fba3f2671100e10e452a", "variantId": 76854 },
+    { "productId": "69e4fba6eae4f3fd3d073186", "variantId": 76854 },
+    { "productId": "69e4fbaa032b5a818c0f202b", "variantId": 76854 }
+  ],
+  "give-me-everything-medspa-kit": [
+    { "productId": "69e4fb85deb324cc1606ca24", "variantId": 76854 },
+    { "productId": "69e4fb88d7ad38891500a48c", "variantId": 76854 },
+    { "productId": "69e4fb8ed7ad38891500a48e", "variantId": 76854 },
+    { "productId": "69e4fb93a3852b1b6f00a9a7", "variantId": 76854 },
+    { "productId": "69e4fb9885e8c2e35909841e", "variantId": 76854 },
+    { "productId": "69e4fb9ca3852b1b6f00a9a8", "variantId": 76854 },
+    { "productId": "69e4fba0a3852b1b6f00a9a9", "variantId": 76854 },
+    { "productId": "69e4fba3f2671100e10e452a", "variantId": 76854 },
+    { "productId": "69e4fba6eae4f3fd3d073186", "variantId": 76854 },
+    { "productId": "69e4fbaa032b5a818c0f202b", "variantId": 76854 },
+    { "productId": "69e501dca3852b1b6f00ab56", "variantId": 34240 }
+  ],
+  "hello-gorgeous-notebook": { "productId": "69e501dca3852b1b6f00ab56", "variantId": 34240 },
+  "NPA-STUDY-AP-BOOKLET": { "productId": "69e4dd53eae4f3fd3d0724d2", "variantId": 34240 },
+  "NPA-CLINICAL-REF-CARDS": { "productId": "69e4dd5ee9b8abdb01099586", "variantId": 76854 },
+  "micro250-exam-prep-physical": { "productId": "69e51de7504bfa3d3c09cab1", "variantId": 34240 },
+  "NPA-NITM-MICRO-SPIRAL": { "productId": "69e5587ea3852b1b6f00c9d8", "variantId": 34240 },
+  "NPA-NITM-ANATOMY-SPIRAL": { "productId": "69e55882e0ec6eb5180d13c4", "variantId": 34240 },
+  "NPA-NITM-NURSING-SPIRAL": { "productId": "69e5588685e8c2e35909a3d4", "variantId": 34240 },
+  "NPA-NITM-NCLEX-CARDS": { "productId": "69e55889032b5a818c0f3fc5", "variantId": 87236 },
+  "NPA-HG-BOOK-SPIRAL": { "productId": "69e637d6a9fc12855b0358d7", "variantId": 34240 }
 }

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NPA audience IA — internal review</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+        margin: 0;
+        padding: 2rem 1.5rem 4rem;
+        line-height: 1.5;
+      }
+      h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+      }
+      p.note {
+        color: #737373;
+        font-size: 0.875rem;
+        max-width: 42rem;
+        margin: 0 0 2rem;
+      }
+      section {
+        margin-bottom: 3rem;
+      }
+      h2 {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #d4537e;
+        margin: 0 0 1rem;
+      }
+      .pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .pair {
+          grid-template-columns: 1fr;
+        }
+      }
+      figure {
+        margin: 0;
+        border: 1px solid #262626;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #141414;
+      }
+      figcaption {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+        color: #a3a3a3;
+        border-top: 1px solid #262626;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Audience split — hierarchy &amp; emotional clarity</h1>
+    <p class="note">
+      Open this file locally after deploy, or from
+      <code>/deliverables/audience-review-2026-04-21/</code> on the site. Desktop vs mobile
+      pairs for copy and emotional read—not layout QA at 1:1 scale.
+    </p>
+
+    <section>
+      <h2>Homepage · above the fold</h2>
+      <div class="pair">
+        <figure>
+          <img src="./01-home-desktop-above-fold.png" alt="Home desktop above fold" />
+          <figcaption>Desktop · 1440×900 viewport</figcaption>
+        </figure>
+        <figure>
+          <img src="./02-home-mobile-above-fold.png" alt="Home mobile above fold" />
+          <figcaption>Mobile · 390×844 viewport</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>/for-students · hero + first content block</h2>
+      <div class="pair">
+        <figure>
+          <img src="./03-students-desktop-hero-and-core.png" alt="Students desktop" />
+          <figcaption>Desktop · hero + “Then / Core study tools”</figcaption>
+        </figure>
+        <figure>
+          <img src="./04-students-mobile-hero-and-core.png" alt="Students mobile" />
+          <figcaption>Mobile</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>/for-providers · hero + first content block</h2>
+      <div class="pair">
+        <figure>
+          <img src="./05-providers-desktop-hero-and-first.png" alt="Providers desktop" />
+          <figcaption>Desktop · hero + patient-ed flagship</figcaption>
+        </figure>
+        <figure>
+          <img src="./06-providers-mobile-hero-and-first.png" alt="Providers mobile" />
+          <figcaption>Mobile</figcaption>
+        </figure>
+      </div>
+    </section>
+  </body>
+</html>

@@ -168,6 +168,7 @@ const CATEGORY_MAP: Record<string, string> = {
   "physical-complete-anatomy-spiral": "Nursing Study Series",
   "physical-complete-nursing-core-spiral": "Nursing Study Series",
   "physical-nclex-essentials-flashcards": "Nursing Study Series",
+  "hello-gorgeous-the-book-physical": "Patient education",
 };
 
 const PRICE_MAP: Record<string, number> = {
@@ -290,6 +291,7 @@ const PRICE_MAP: Record<string, number> = {
   "physical-complete-anatomy-spiral": 6800,
   "physical-complete-nursing-core-spiral": 6800,
   "physical-nclex-essentials-flashcards": 5200,
+  "hello-gorgeous-the-book-physical": 6800,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -532,6 +534,8 @@ const SLUG_THUMBNAIL: Record<string, string> = {
     "/shop-previews/generated/physical-complete-nursing-core-spiral-thumbnail.png",
   "physical-nclex-essentials-flashcards":
     "/shop-previews/generated/physical-nclex-essentials-flashcards-thumbnail.png",
+  "hello-gorgeous-the-book-physical":
+    "/shop-previews/generated/hello-gorgeous-the-book-physical-thumbnail.png",
   // ── Generated mockups ─────────────────────────────────────────────────
   "anatomy-physiology-study-complete": "/shop-previews/generated/anatomy-physiology-study-complete-thumbnail.png",
   "ap-survival-kit": "/shop-previews/generated/ap-survival-kit-thumbnail.png",
@@ -899,6 +903,30 @@ export function getShopProducts(): ShopProduct[] {
       audience: AUDIENCE_MAP["Patient education"] ?? ["Patients and clients"],
     };
     _products.push(book);
+  }
+
+  if (!_products.some((p) => p.slug === "hello-gorgeous-the-book-physical")) {
+    _products.push({
+      slug: "hello-gorgeous-the-book-physical",
+      title: "Hello Gorgeous — THE BOOK (Physical Spiral Edition)",
+      shortDescription:
+        "Physical spiral print edition of Hello Gorgeous — THE BOOK. Ships via Printify.",
+      longDescription:
+        "Physical spiral print edition of Hello Gorgeous — THE BOOK by Danielle Alcala. Printed and shipped via Printify/SPOKE. Educational content for patient-facing aesthetics literacy and informed care conversations.\n\nShips in 3–5 business days (typical) after checkout.",
+      priceCents: 6800,
+      priceDisplay: "$68",
+      templateCount: 1,
+      category: "Patient education",
+      features: [
+        "Spiral-bound physical edition",
+        "Hello Gorgeous cover art",
+        "Printed and shipped via Printify (SPOKE)",
+        "Ships in 3–5 business days (typical)",
+      ],
+      featured: true,
+      previewImages: discoverPreviewImages("hello-gorgeous-the-book-physical", "Patient education"),
+      audience: AUDIENCE_MAP["Patient education"] ?? ["Patients and clients"],
+    });
   }
 
   for (const def of getMicro270ShopProductDefs()) {

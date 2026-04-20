@@ -63,6 +63,10 @@ export const PRINTIFY_PRODUCTS: Record<string, PrintifyProductRow> = {
     blueprint_id: 1138,
     title: "NCLEX Essentials — Flashcard Deck",
   },
+  "NPA-HG-BOOK-SPIRAL": {
+    blueprint_id: 74,
+    title: "Hello Gorgeous — THE BOOK (Physical Spiral Edition)",
+  },
 };
 
 /** Optional: shop checkout slug → Printify SKU key (when slug differs from SKU). */
@@ -71,6 +75,7 @@ export const PRINTIFY_SHOP_SLUG_TO_SKU: Record<string, string> = {
   "physical-complete-anatomy-spiral": "NPA-NITM-ANATOMY-SPIRAL",
   "physical-complete-nursing-core-spiral": "NPA-NITM-NURSING-SPIRAL",
   "physical-nclex-essentials-flashcards": "NPA-NITM-NCLEX-CARDS",
+  "hello-gorgeous-the-book-physical": "NPA-HG-BOOK-SPIRAL",
 };
 
 export function resolvePrintifySku(productSlug: string): string | null {

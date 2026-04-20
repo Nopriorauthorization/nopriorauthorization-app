@@ -46,11 +46,31 @@ export const PRINTIFY_PRODUCTS: Record<string, PrintifyProductRow> = {
     blueprint_id: 812,
     title: "Clinical Reference Cards",
   },
+  /** Four flagship “Nurse-in-the-Making style” nursing study POD products — see `nursing-study-printify-flagships.config.ts` */
+  "NPA-NITM-MICRO-SPIRAL": {
+    blueprint_id: 74,
+    title: "Complete Microbiology — Spiral Study Book",
+  },
+  "NPA-NITM-ANATOMY-SPIRAL": {
+    blueprint_id: 74,
+    title: "Complete Anatomy & Physiology — Spiral Study Book",
+  },
+  "NPA-NITM-NURSING-SPIRAL": {
+    blueprint_id: 74,
+    title: "Complete Nursing Core — Spiral Study Book",
+  },
+  "NPA-NITM-NCLEX-CARDS": {
+    blueprint_id: 1138,
+    title: "NCLEX Essentials — Flashcard Deck",
+  },
 };
 
 /** Optional: shop checkout slug → Printify SKU key (when slug differs from SKU). */
 export const PRINTIFY_SHOP_SLUG_TO_SKU: Record<string, string> = {
-  // "my-shop-slug": "NPA-STUDY-AP-CARDS",
+  "physical-complete-microbiology-spiral": "NPA-NITM-MICRO-SPIRAL",
+  "physical-complete-anatomy-spiral": "NPA-NITM-ANATOMY-SPIRAL",
+  "physical-complete-nursing-core-spiral": "NPA-NITM-NURSING-SPIRAL",
+  "physical-nclex-essentials-flashcards": "NPA-NITM-NCLEX-CARDS",
 };
 
 export function resolvePrintifySku(productSlug: string): string | null {

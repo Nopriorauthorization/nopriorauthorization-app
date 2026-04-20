@@ -109,6 +109,13 @@ export const getNavigationConfig = (_mode: 'marketing' | 'app' = 'app'): Navigat
           color: "text-amber-300",
         },
         {
+          label: "Physical study books (Printify)",
+          href: "/shop/physical-complete-microbiology-spiral",
+          icon: "📕",
+          description: "Spiral + flashcards · 4 flagship POD products",
+          color: "text-orange-300",
+        },
+        {
           label: "NCLEX Study Bundle",
           href: "/study-guides",
           icon: "📋",

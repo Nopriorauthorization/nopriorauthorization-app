@@ -14,6 +14,7 @@ import {
 } from "@/config/hello-gorgeous-book.config";
 import { getAnatomyStudyShopProductDef } from "@/config/anatomy-study.config";
 import { getMicro270ShopProductDefs } from "@/config/micro270-shop.config";
+import { NURSING_STUDY_PRINTIFY_FLAGSHIPS } from "@/config/nursing-study-printify-flagships.config";
 import type { BundleTierEmphasis, BundleTierId } from "@/lib/shop/bundle-tier-config";
 import {
   getBundleTierDefinition,
@@ -163,6 +164,10 @@ const CATEGORY_MAP: Record<string, string> = {
   "micro250-exam-prep-physical": "Nursing Study Series",
   "micro270-chapter-cheat-sheets": "Study guides",
   "micro270-complete-microbiology": "Study guides",
+  "physical-complete-microbiology-spiral": "Nursing Study Series",
+  "physical-complete-anatomy-spiral": "Nursing Study Series",
+  "physical-complete-nursing-core-spiral": "Nursing Study Series",
+  "physical-nclex-essentials-flashcards": "Nursing Study Series",
 };
 
 const PRICE_MAP: Record<string, number> = {
@@ -281,6 +286,10 @@ const PRICE_MAP: Record<string, number> = {
   "give-me-everything-kit": 14999,
   "micro250-exam-prep-digital": 1500,
   "micro250-exam-prep-physical": 2500,
+  "physical-complete-microbiology-spiral": 6800,
+  "physical-complete-anatomy-spiral": 6800,
+  "physical-complete-nursing-core-spiral": 6800,
+  "physical-nclex-essentials-flashcards": 5200,
 };
 
 const FEATURED_SLUGS = new Set([
@@ -515,6 +524,14 @@ const SLUG_THUMBNAIL: Record<string, string> = {
   "npa-49-star-system": "/shop-previews/content/npa-49-star-system-thumbnail.png",
   "micro250-exam-prep-digital": "/shop-previews/generated/micro250-exam-prep-digital-thumbnail.png",
   "micro250-exam-prep-physical": "/shop-previews/generated/micro250-exam-prep-physical-thumbnail.png",
+  "physical-complete-microbiology-spiral":
+    "/shop-previews/generated/physical-complete-microbiology-spiral-thumbnail.png",
+  "physical-complete-anatomy-spiral":
+    "/shop-previews/generated/physical-complete-anatomy-spiral-thumbnail.png",
+  "physical-complete-nursing-core-spiral":
+    "/shop-previews/generated/physical-complete-nursing-core-spiral-thumbnail.png",
+  "physical-nclex-essentials-flashcards":
+    "/shop-previews/generated/physical-nclex-essentials-flashcards-thumbnail.png",
   // ── Generated mockups ─────────────────────────────────────────────────
   "anatomy-physiology-study-complete": "/shop-previews/generated/anatomy-physiology-study-complete-thumbnail.png",
   "ap-survival-kit": "/shop-previews/generated/ap-survival-kit-thumbnail.png",
@@ -989,6 +1006,30 @@ export function getShopProducts(): ShopProduct[] {
       featured: false,
       previewImages: ["/shop-previews/generated/micro250-exam-prep-physical-thumbnail.png"],
       audience: micro250Audience,
+    });
+  }
+
+  const nursingPhysicalAudience =
+    AUDIENCE_MAP["Nursing Study Series"] ?? ["Nursing students"];
+  for (const row of NURSING_STUDY_PRINTIFY_FLAGSHIPS) {
+    if (_products.some((p) => p.slug === row.shopSlug)) continue;
+    _products.push({
+      slug: row.shopSlug,
+      title: row.title,
+      shortDescription: row.shortDescription,
+      longDescription: `${row.longDescription}\n\nShips to your door in 3–5 business days (typical) via Printify print-on-demand. After checkout, Square captures your shipping address for fulfillment.`,
+      priceCents: row.priceCents,
+      priceDisplay: formatPrice(row.priceCents),
+      templateCount: 1,
+      category: "Nursing Study Series",
+      features: [
+        ...row.features,
+        "Ships in 3–5 business days",
+        "Printed and shipped via Printify",
+      ],
+      featured: false,
+      previewImages: discoverPreviewImages(row.shopSlug, "Nursing Study Series"),
+      audience: nursingPhysicalAudience,
     });
   }
 

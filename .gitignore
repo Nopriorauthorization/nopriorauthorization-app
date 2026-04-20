@@ -57,6 +57,12 @@ public/videos/roots-intro.mp4
 # Local export from GET /api/canva/list-designs (see CANVA-NAMING-GUIDE.md)
 imports/canva-list-designs.json
 
+# Micro exam prep asset sync progress (local only; never commit)
+public/micro-exam-prep/upload-progress.json
+
+# Local backup patches (e.g. git format-patch); keep out of version control
+/patches/
+
 # Internal product pipeline CLI output (see docs/TICKET-PIPELINE-IMPLEMENTATION-NEXT.md)
 /output/
 

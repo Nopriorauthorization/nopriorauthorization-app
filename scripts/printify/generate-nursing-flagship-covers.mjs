@@ -19,7 +19,7 @@ const COVERS = [
     dir: "complete-microbiology",
     accent: "#00C896",
     glow: "rgba(0,200,150,0.13)",
-    eyebrow: "Complete Study Series · Microbiology",
+    series: "Complete Study Series · Microbiology",
     headline1: "COMPLETE",
     headline2: "MICROBIOLOGY",
     sub: "Prokaryotes to Pathogens · Everything on the Exam",
@@ -37,7 +37,7 @@ const COVERS = [
     dir: "complete-anatomy",
     accent: "#60A5FA",
     glow: "rgba(96,165,250,0.13)",
-    eyebrow: "Complete Study Series · Anatomy & Physiology",
+    series: "Complete Study Series · Anatomy & Physiology",
     headline1: "COMPLETE",
     headline2: "A&P",
     sub: "Cells to Systems · The Full Body in One Book",
@@ -55,7 +55,7 @@ const COVERS = [
     dir: "complete-nursing-core",
     accent: "#FB923C",
     glow: "rgba(251,146,60,0.13)",
-    eyebrow: "Complete Study Series · Nursing Core",
+    series: "Complete Study Series · Nursing Core",
     headline1: "COMPLETE",
     headline2: "NURSING\nCORE",
     sub: "Fundamentals Through Med-Surg · NCLEX Ready",
@@ -73,7 +73,7 @@ const COVERS = [
     dir: "nclex-essentials-cards",
     accent: "#C084FC",
     glow: "rgba(192,132,252,0.13)",
-    eyebrow: "Flashcard Deck Series · NCLEX",
+    series: "Flashcard Deck Series · NCLEX",
     headline1: "NCLEX",
     headline2: "ESSENTIALS",
     sub: "High-Yield Cards · Study Anywhere",
@@ -90,10 +90,8 @@ const COVERS = [
 ];
 
 function coverHtml(c) {
-  const headline2Lines = c.headline2.split("\n");
-  const h2Html = headline2Lines.map(l => `<span style="display:block">${l}</span>`).join("");
   const topicRows = c.topics.map(t =>
-    `<div class="topic-row"><span class="dot" style="color:${c.accent}">◆</span><span>${t}</span></div>`
+    `<div class="topic-row"><span class="dot" style="background:${c.accent}"></span><span>${t}</span></div>`
   ).join("");
 
   return `<!DOCTYPE html><html><head><meta charset="utf-8">
@@ -106,128 +104,134 @@ body {
   color:white; position:relative;
 }
 
-/* Grid texture */
-body::before {
-  content:''; position:absolute; inset:0; z-index:0;
-  background-image:
-    linear-gradient(${c.glow.replace("0.13","0.05")} 1px, transparent 1px),
-    linear-gradient(90deg, ${c.glow.replace("0.13","0.05")} 1px, transparent 1px);
-  background-size:60px 60px;
+/* Color header band */
+.header-band {
+  position:absolute; top:0; left:0; right:0; height:1050px;
+  background: linear-gradient(160deg, ${c.accent}22 0%, ${c.accent}08 100%);
+  border-bottom: 3px solid ${c.accent}55;
 }
 
 /* Top radial glow */
-.glow-top {
-  position:absolute; top:-400px; right:-300px;
-  width:1200px; height:1200px; border-radius:50%; z-index:0;
-  background: radial-gradient(circle, ${c.glow} 0%, transparent 60%);
-}
-/* Bottom left glow */
-.glow-btm {
-  position:absolute; bottom:-200px; left:-200px;
-  width:800px; height:800px; border-radius:50%; z-index:0;
-  background: radial-gradient(circle, ${c.glow.replace("0.13","0.07")} 0%, transparent 60%);
+.glow {
+  position:absolute; top:-200px; left:-200px;
+  width:1100px; height:1100px; border-radius:50%;
+  background: radial-gradient(circle, ${c.glow} 0%, transparent 65%);
 }
 
-/* Accent left bar */
-.accent-bar {
-  position:absolute; left:0; top:0; bottom:0;
-  width:18px; background:${c.accent}; z-index:2;
-}
-
-/* Content wrapper */
+/* Safe-zone content wrapper — 220px margin all sides */
 .wrap {
-  position:relative; z-index:1;
-  padding:110px 130px 220px 160px;
-  display:flex; flex-direction:column; height:100%;
+  position:relative; z-index:2;
+  margin:220px;
+  width:${W - 440}px;
+  height:${H - 440}px;
+  display:flex; flex-direction:column;
 }
 
-/* Eyebrow */
-.eyebrow {
-  font-size:26px; letter-spacing:0.2em; text-transform:uppercase;
-  color:${c.accent}; font-weight:700; margin-bottom:70px;
+.top-section {}
+
+/* Brand label */
+.brand {
+  font-size:26px; letter-spacing:0.28em; text-transform:uppercase;
+  color:rgba(255,255,255,0.4); font-weight:600;
+  margin-bottom:52px;
 }
 
-/* Main headline */
-.hl1 {
-  font-size:140px; font-weight:900; line-height:0.9;
-  color:rgba(255,255,255,0.18); letter-spacing:-2px;
-  text-transform:uppercase;
-}
-.hl2 {
-  font-size:200px; font-weight:900; line-height:0.85;
-  color:#ffffff; letter-spacing:-5px; text-transform:uppercase;
-  margin-bottom:50px;
+/* Series pill */
+.series {
+  display:inline-block;
+  background:${c.accent}22; border:1px solid ${c.accent}66;
+  color:${c.accent}; font-size:24px; font-weight:700;
+  letter-spacing:0.18em; text-transform:uppercase;
+  padding:16px 36px; border-radius:4px;
+  margin-bottom:72px; align-self:flex-start;
 }
 
-/* Sub */
-.sub {
-  font-size:38px; color:rgba(255,255,255,0.55);
-  font-style:italic; font-family:Georgia,'Times New Roman',serif;
-  line-height:1.4; margin-bottom:60px;
+/* Main title block */
+.title-block { margin-bottom:56px; }
+.complete-word {
+  font-size:62px; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; color:rgba(255,255,255,0.35);
+  line-height:1; margin-bottom:14px;
+}
+.main-title {
+  font-size:156px; font-weight:900; line-height:0.95;
+  color:#ffffff; letter-spacing:-3px; text-transform:uppercase;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size:34px; color:rgba(255,255,255,0.5);
+  font-style:italic; font-family:Georgia,serif;
+  line-height:1.5; margin-bottom:0;
 }
 
 /* Divider */
 .div {
-  width:100%; height:1px;
-  background: linear-gradient(to right, ${c.accent}, transparent);
-  margin:50px 0;
+  width:100%; height:2px; margin:60px 0;
+  background:linear-gradient(to right, ${c.accent}99, transparent);
 }
 
-/* Topics */
-.topics { margin-bottom:50px; }
+/* Topics list */
+.topics { flex:1; display:flex; flex-direction:column; justify-content:space-between; margin-bottom:0; }
 .topic-row {
   display:flex; align-items:center; gap:28px;
-  padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.06);
-  font-size:34px; color:rgba(255,255,255,0.72); font-weight:400;
+  padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.08);
+  font-size:34px; color:rgba(255,255,255,0.75); font-weight:400;
+  line-height:1.3;
 }
-.dot { font-size:20px; flex-shrink:0; }
-
-/* Quote */
-.quote {
-  font-family:Georgia,'Times New Roman',serif; font-style:italic;
-  font-size:40px; color:rgba(255,255,255,0.45); line-height:1.6;
-  margin-bottom:50px; max-width:1300px;
+.dot {
+  width:10px; height:10px; border-radius:50%;
+  flex-shrink:0; margin-top:2px;
 }
 
-/* Author block */
+/* Author */
+.author {
+  padding-top:48px; border-top:1px solid rgba(255,255,255,0.12);
+}
 .author-name {
-  font-family:Georgia,'Times New Roman',serif; font-style:italic;
-  font-size:58px; color:${c.accent}; margin-bottom:12px;
+  font-family:Georgia,serif; font-style:italic;
+  font-size:48px; color:${c.accent}; margin-bottom:14px;
 }
 .author-creds {
-  font-size:24px; letter-spacing:4px; font-weight:700;
-  color:${c.accent}; text-transform:uppercase; opacity:0.8;
+  font-size:22px; letter-spacing:3px; font-weight:600;
+  color:rgba(255,255,255,0.3); text-transform:uppercase;
 }
 
-/* Bottom bar */
+/* Bottom NPA bar */
 .bar {
-  position:absolute; bottom:0; left:0; right:0;
-  background:#E8559F; padding:38px 160px;
-  font-size:26px; font-weight:700; letter-spacing:3px;
-  color:white; text-transform:uppercase; z-index:2;
+  position:absolute; bottom:0; left:0; right:0; height:120px;
+  background:#E8559F;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; font-weight:800; letter-spacing:4px;
+  color:white; text-transform:uppercase; z-index:3;
 }
 </style>
 </head><body>
-  <div class="glow-top"></div>
-  <div class="glow-btm"></div>
-  <div class="accent-bar"></div>
+  <div class="header-band"></div>
+  <div class="glow"></div>
   <div class="wrap">
-    <div class="eyebrow">${c.eyebrow}</div>
-    <div class="hl1">${c.headline1}</div>
-    <div class="hl2">${h2Html}</div>
-    <div class="sub">${c.sub}</div>
+    <div class="top-section">
+      <div class="brand">No Prior Authorization</div>
+      <div class="series">${c.series}</div>
+      <div class="title-block">
+        <div class="complete-word">${c.headline1}</div>
+        <div class="main-title">${c.headline2.replace("\n","<br>")}</div>
+      </div>
+      <div class="subtitle">${c.sub}</div>
+    </div>
     <div class="div"></div>
     <div class="topics">${topicRows}</div>
-    <div class="div"></div>
-    <div class="quote">${c.quote}</div>
-    <div class="author-name">Danielle Alcala</div>
-    <div class="author-creds">RN Student · Licensed Esthetician · CNA · Phlebotomist</div>
+    <div class="author">
+      <div class="author-name">Danielle Alcala</div>
+      <div class="author-creds">RN Student · Esthetician · CNA · Phlebotomist</div>
+    </div>
   </div>
   <div class="bar">${c.bottom}</div>
 </body></html>`;
 }
 
 async function run() {
+  const force = process.argv.includes("--force");
   const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
   const page = await browser.newPage();
   await page.setViewport({ width: W, height: H, deviceScaleFactor: 1 });
@@ -237,7 +241,7 @@ async function run() {
     const outPath = path.join(outDir, "cover.png");
     fs.mkdirSync(outDir, { recursive: true });
 
-    if (fs.existsSync(outPath)) {
+    if (fs.existsSync(outPath) && !force) {
       console.log(`  ↷ exists: ${cover.dir}/cover.png`);
       continue;
     }

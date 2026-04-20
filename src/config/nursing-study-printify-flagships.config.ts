@@ -4,8 +4,8 @@
  * `src/lib/printify/products.ts` and a shop slug for Square checkout.
  *
  * Covers for the create script: `printify-assets/nursing-flagships/<coverDir>/cover.png`
- * (same aspect as Micro 250 notebook cover). Interior PDFs are attached in Printify dashboard
- * after products exist (same workflow as `create-micro250-notebook.mjs`).
+ * (same aspect as Micro 250 notebook cover). Optional `interiorPdfPath` is the file to upload in
+ * Printify as interior (spiral inner pages / card faces). Same workflow as `create-micro250-notebook.mjs`.
  */
 export type NursingStudyPrintifyFlagship = {
   shopSlug: string;
@@ -19,6 +19,11 @@ export type NursingStudyPrintifyFlagship = {
   variantId: number;
   /** Subfolder under `printify-assets/nursing-flagships/` holding `cover.png` */
   coverDir: string;
+  /**
+   * Repo-relative path to interior PDF for Printify dashboard upload (optional).
+   * Symlinks are OK — resolves to the canonical build (e.g. Micro 250 exam prep PDF).
+   */
+  interiorPdfPath?: string;
   shortDescription: string;
   longDescription: string;
   features: string[];
@@ -34,6 +39,9 @@ export const NURSING_STUDY_PRINTIFY_FLAGSHIPS: NursingStudyPrintifyFlagship[] = 
     printProviderId: 1,
     variantId: 34240,
     coverDir: "complete-microbiology",
+    /** Same content as `public/micro-exam-prep/micro250-exam-prep.pdf` — marketed as Micro250-Complete-Study-Guide.pdf */
+    interiorPdfPath:
+      "printify-assets/nursing-flagships/complete-microbiology/Micro250-Complete-Study-Guide.pdf",
     shortDescription:
       "Dense micro reference in one spiral — for students who want the book in hand, not just on screen.",
     longDescription:

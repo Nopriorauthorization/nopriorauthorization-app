@@ -132,9 +132,12 @@ async function main() {
   console.log(
     "\nNext: merge JSON keys (NPA-NITM-*) into PRINTIFY_INVENTORY_JSON on Vercel with { productId, variantId } per key.",
   );
-  console.log(
-    "Printify dashboard: add interior PDFs / publish to channel when each product is ready.",
-  );
+  console.log("Printify dashboard: attach interior PDF where `interiorPdfPath` is set in nursing-study-printify-flagships.config.ts.");
+  for (const row of NURSING_STUDY_PRINTIFY_FLAGSHIPS) {
+    if (row.interiorPdfPath) {
+      console.log(`  • ${row.printifySkuKey} → ${row.interiorPdfPath}`);
+    }
+  }
 }
 
 main().catch((e) => {

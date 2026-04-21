@@ -68,26 +68,26 @@ export function HomepageAudienceStrip() {
         </div>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10 lg:items-stretch">
-          {/* Student card */}
+          {/* Student card — badges sit above the artwork so they never cover baked-in headlines */}
           <article className="group relative flex flex-col overflow-hidden rounded-3xl border border-teal-500/20 bg-[#141414] shadow-[0_0_0_1px_rgba(45,212,191,0.08)] transition hover:border-teal-400/35 hover:shadow-[0_24px_80px_-24px_rgba(45,212,191,0.25)]">
-            <div className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[16/9]">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.07] bg-[#121212] px-4 py-2.5 sm:px-5">
+              <span className="rounded-full bg-teal-500/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-teal-200 ring-1 ring-teal-400/30">
+                {c.student.eyebrow}
+              </span>
+              <span className="rounded-full bg-black/55 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-teal-100/95 ring-1 ring-teal-400/25 backdrop-blur-sm">
+                {HOME_STRIP_RECOMMENDED_BADGE}
+              </span>
+            </div>
+            <div className="relative aspect-[16/11] w-full overflow-hidden sm:aspect-[16/10]">
               <Image
                 src={c.student.image}
                 alt={c.student.imageAlt}
                 fill
-                className="object-cover object-center transition duration-700 group-hover:scale-[1.02]"
+                className="object-cover object-left-top transition duration-700 group-hover:scale-[1.02]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
-              <div className="absolute left-4 top-4 flex flex-wrap gap-2 sm:left-5 sm:top-5">
-                <span className="rounded-full bg-teal-500/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-teal-200 ring-1 ring-teal-400/30">
-                  {c.student.eyebrow}
-                </span>
-                <span className="rounded-full bg-black/55 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-teal-100/95 ring-1 ring-teal-400/25 backdrop-blur-sm">
-                  {HOME_STRIP_RECOMMENDED_BADGE}
-                </span>
-              </div>
             </div>
             <div className="flex flex-1 flex-col p-6 sm:p-8">
               <h3 className="font-serif text-2xl font-bold leading-snug text-white sm:text-3xl">
@@ -118,26 +118,26 @@ export function HomepageAudienceStrip() {
             </div>
           </article>
 
-          {/* Provider card */}
+          {/* Provider card — same badge placement for visual parity */}
           <article className="group relative flex flex-col overflow-hidden rounded-3xl border border-[#D4537E]/25 bg-[#141414] shadow-[0_0_0_1px_rgba(212,83,126,0.12)] transition hover:border-[#D4537E]/45 hover:shadow-[0_24px_80px_-24px_rgba(212,83,126,0.3)]">
-            <div className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[16/9]">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.07] bg-[#121212] px-4 py-2.5 sm:px-5">
+              <span className="rounded-full bg-[#D4537E]/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-pink-100 ring-1 ring-[#D4537E]/35">
+                {c.provider.eyebrow}
+              </span>
+              <span className="rounded-full bg-black/55 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-pink-100/95 ring-1 ring-[#D4537E]/25 backdrop-blur-sm">
+                {HOME_STRIP_RECOMMENDED_BADGE}
+              </span>
+            </div>
+            <div className="relative aspect-[16/11] w-full overflow-hidden sm:aspect-[16/10]">
               <Image
                 src={c.provider.image}
                 alt={c.provider.imageAlt}
                 fill
-                className="object-cover object-center transition duration-700 group-hover:scale-[1.02]"
+                className="object-cover object-left-top transition duration-700 group-hover:scale-[1.02]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/35 to-transparent" />
-              <div className="absolute left-4 top-4 flex flex-wrap gap-2 sm:left-5 sm:top-5">
-                <span className="rounded-full bg-[#D4537E]/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-pink-100 ring-1 ring-[#D4537E]/35">
-                  {c.provider.eyebrow}
-                </span>
-                <span className="rounded-full bg-black/55 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-pink-100/95 ring-1 ring-[#D4537E]/25 backdrop-blur-sm">
-                  {HOME_STRIP_RECOMMENDED_BADGE}
-                </span>
-              </div>
             </div>
             <div className="flex flex-1 flex-col p-6 sm:p-8">
               <h3 className="font-serif text-2xl font-bold leading-snug text-white sm:text-3xl">
